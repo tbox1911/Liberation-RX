@@ -5,7 +5,7 @@ private ["_townName", "_marker_mission"];
 
 _setupVars = {
 	_missionType = "STR_AMMODELI";
-	_locationsArray = [LRX_MissionMarkersMil, false, true] call checkSpawn;
+	_locationsArray = [LRX_MissionMarkersMil] call checkSpawn;
 	_ignoreAiDeaths = true;
 };
 

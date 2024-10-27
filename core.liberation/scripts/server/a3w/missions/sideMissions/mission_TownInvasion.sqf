@@ -5,7 +5,7 @@ private ["_managed_units", "_grp_civ", "_townName"];
 
 _setupVars = {
 	_missionType = "STR_INVASION";
-	_locationsArray = [LRX_MissionMarkersCap, false, true] call checkSpawn;
+	_locationsArray = [LRX_MissionMarkersCap] call checkSpawn;
 	_missionTimeout = (30 * 60);
 };
 

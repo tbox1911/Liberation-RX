@@ -5,7 +5,7 @@ private ["_location_name", "_grp_wnded"];
 
 _setupVars = {
 	_missionType = "STR_HEAL_CIV";
-	_locationsArray = [LRX_MissionMarkersCap, false, true] call checkSpawn;
+	_locationsArray = [LRX_MissionMarkersCap] call checkSpawn;
 	_ignoreAiDeaths = true;
 };
 

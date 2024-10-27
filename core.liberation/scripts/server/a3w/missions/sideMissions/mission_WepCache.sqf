@@ -5,7 +5,7 @@ private ["_nbUnits", "_box1", "_box2", "_box3"];
 
 _setupVars = {
 	_missionType = "STR_WEAPCACHE";
-	_locationsArray = [ForestMissionMarkers, true] call checkSpawn;
+	_locationsArray = [ForestMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 	_precise_marker = false;
 };

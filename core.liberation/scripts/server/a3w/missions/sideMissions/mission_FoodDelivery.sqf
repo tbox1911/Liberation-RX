@@ -5,7 +5,7 @@ private ["_townName", "_marker_mission"];
 
 _setupVars = {
 	_missionType = "STR_FOODDELI";
-	_locationsArray = [LRX_MissionMarkersCap, false, true] call checkSpawn;
+	_locationsArray = [LRX_MissionMarkersCap] call checkSpawn;
 	_ignoreAiDeaths = true;
 };
 

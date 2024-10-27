@@ -1,5 +1,5 @@
 // Filter markers list too close from blufor sectors and/or FOB
-params ["_markers", ["_fob_only", false], ["_opfor", false]];
+params ["_markers"];
 
 if (count _markers == 0) exitWith {[]};
 
@@ -11,21 +11,20 @@ private _list = [];
 	_sector = _x select 0;
 	_sector_pos = markerPos _sector;
 
-	if (_opfor) then {
-		if (_sector in opfor_sectors) then { _keep_sector = false };
-	} else {
-		if (_sector in (A3W_sectors_in_use + active_sectors)) then { _keep_sector = false };
-		{
-			if (_x distance2D _sector_pos < GRLIB_spawn_min) exitWith { _keep_sector = false };
-		} foreach GRLIB_all_fobs;
+	// no opfor sector
+	if (_sector in opfor_sectors) then { _keep_sector = false };
 
-		if (!_fob_only && _keep_sector) then {
-			{
-				if ((markerPos _x) distance2D _sector_pos < (GRLIB_sector_size * 1.25)) exitWith { _keep_sector = false };
-			} foreach blufor_sectors;
-		};
-	};
+	// sector in use
+	if (_sector in (A3W_sectors_in_use + active_sectors)) then { _keep_sector = false };
+
+	// sector too close from any FOB
+	if (_sector_pos distance2D ([_sector_pos] call F_getNearestFob) <= (GRLIB_sector_size * 1.25)) then { _keep_sector = false };
+
+	// sector too far from any blufor sectors
+	if (([GRLIB_spawn_min, _sector_pos, blufor_sectors] call F_getNearestSector) == "") then { _keep_sector = false };
+
 	if (_keep_sector) then { _list pushBack _x };
+
 } forEach _markers;
 
 _list;

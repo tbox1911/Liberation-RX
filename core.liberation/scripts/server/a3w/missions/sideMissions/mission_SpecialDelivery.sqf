@@ -7,7 +7,7 @@ private ["_quest_item"];
 _setupVars = {
 	_missionType = "STR_SPECIALDELI";
 	_ignoreAiDeaths = true;
-	_locationsArray = [SpawnMissionMarkers, true] call checkSpawn;
+	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 };
 
 _setupObjects = {
