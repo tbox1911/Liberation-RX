@@ -88,6 +88,7 @@ while { true } do {
 		private _vehicles_list = vehicles select {
 			(alive _x) && !(isObjectHidden _x) &&
 			(count (crew _x) > 0) && (side _x == GRLIB_side_friendly) &&
+			(isNil {_x getVariable "GRLIB_mission_AI"}) &&
 			!(typeOf _x in uavs_vehicles + static_vehicles_AI)
 		};
 		{
