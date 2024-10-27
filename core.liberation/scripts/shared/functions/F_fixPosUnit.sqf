@@ -8,10 +8,12 @@ if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit > 1) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
 
-private _spawnpos = getPosATL _unit;
+private ["_spawnpos", "_curalt", "_maxalt", "_maxpos" ];
+_spawnpos = getPosASL _unit;
 if (surfaceIsWater _spawnpos) exitWith {};
 
-private _maxalt = 100;
+_curalt = _spawnpos select 2;
+_maxalt = _curalt + 100;
 private _forest_type = ["forest", "wood"];
 private _typepos = tolower (surfaceType getPosWorld _unit);
 private _forest = count (_forest_type select { (_typepos find _x) > -1 });
@@ -24,11 +26,10 @@ if (_obstacle > 0) then { _maxalt = 2.3 };
 // private _obstacle_rock = count (nearestTerrainObjects [_spawnpos, ["ROCK"], 20]);
 // if (_obstacle_rock > 0) then {_maxalt = 60 };
 
-private _spawnpos = ATLtoASL (_spawnpos vectorAdd [0,0,0.5]);
-private _maxpos = (_spawnpos vectorAdd [0,0,_maxalt]);
+_spawnpos = (_spawnpos vectorAdd [0,0,0.5]);
+_maxpos = (_spawnpos vectorAdd [0,0,_maxalt]);
 if !(lineIntersects [_spawnpos, _maxpos, _unit]) exitWith {};
 
-private _curalt = _spawnpos select 2;
 while { (lineIntersects [_spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 	_curalt = _curalt + 0.5;
 	_spawnpos set [2, _curalt];
