@@ -1,16 +1,16 @@
 waituntil {
 	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
-	uIsleep 2;
+	uIsleep 1;
 	titleText ["... Please Wait ...", "BLACK FADED", 100];
-	uIsleep 2;
+	uIsleep 1;
 	(player getVariable ["GRLIB_score_set", 0] == 1);
 };
 
 waituntil {
 	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
-	uIsleep 2;
+	uIsleep 1;
 	titleText ["... Please Wait ...", "BLACK FADED", 100];
-	uIsleep 2;
+	uIsleep 1;
 	(!isNil "LRX_arsenal_init_done");
 };
 

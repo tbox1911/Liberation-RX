@@ -9,8 +9,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-sleep 4;
-
+waitUntil {sleep 1; !isNil "GRLIB_player_spawned"};
 waituntil {sleep 1; GRLIB_player_spawned};
 private [
 	"_liste_nouveaux_objets", "_liste_statiques", "_liste_nouveaux_statiques",

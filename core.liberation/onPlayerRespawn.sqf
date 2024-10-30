@@ -5,14 +5,14 @@ params ["_unit", "_oldUnit", "_respawn", "_respawnDelay"];
 titleText ["" ,"BLACK FADED", 100];
 1 fadeSound 0;
 
+waitUntil {!isNil "GRLIB_init_server"};
+if (!GRLIB_init_server) exitWith {};
+waitUntil {!isNil "GRLIB_LRX_params_loaded"};
+waitUntil {(alive _unit)};
 _unit allowDamage false;
 _unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
 GRLIB_player_spawned = false;
 
-waitUntil {sleep 0.1; (alive _unit)};
-waitUntil {sleep 0.1; !isNil "GRLIB_init_server"};
-if (!GRLIB_init_server) exitWith {};
-waitUntil {sleep 0.1; !isNil "GRLIB_LRX_params_loaded"};
 if (PAR_grave == 1) then { deleteVehicle _oldUnit };
 
 if (GRLIB_ACE_medical_enabled) then {
