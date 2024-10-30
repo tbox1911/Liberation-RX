@@ -79,7 +79,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		};
 	} forEach GRLIB_player_scores;
 
-	// Save objects
+	// Save Objects
 	{
 		private _savedpos = getPosWorld _x;
 		private _nextclass = typeof _x;
@@ -132,7 +132,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		};
 	} foreach _all_buildings;
 
-	// Save scores
+	// Save Scores
 	private _permissions = [];
 	{
 		_uid = _x select 0;

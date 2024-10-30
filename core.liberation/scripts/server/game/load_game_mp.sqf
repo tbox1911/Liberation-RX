@@ -68,9 +68,11 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 				_x set [1, GRLIB_perm_tank];	// score
 			};
 			if (_x select 2 > 3000) then {
-				_x set [2, 3000];				// ammo
+				_x set [2, 3000];		// ammo
 			};
-			_x set [3, GREUH_start_fuel];		// fuel
+			if (_x select 3 > 400) then {
+				_x set [3, 400];		// fuel
+			};
 			_keep_players pushback _x;
 		} foreach (profileNamespace getVariable GRLIB_save_key select 16);
 		GRLIB_player_scores = _keep_players;

@@ -33,7 +33,6 @@
 
 if (isDedicated) exitWith {};
 
-
 // Filters disabled
 waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
 if (GRLIB_filter_arsenal == 0) exitWith {
@@ -50,7 +49,10 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 	GRLIB_personal_arsenal = [];
 		
 	// Default Personal Arsenal
+	// can be overide by:
+	// personal_arsenal = []; in \mod_template\<TEMPLATE>\arsenal.sqf
 	private _default_personal_arsenal = [
+		// basic: [items, nb]
 		["FirstAidKit", 15],
 		["Medikit", 2],
 		["ToolKit", 2],
