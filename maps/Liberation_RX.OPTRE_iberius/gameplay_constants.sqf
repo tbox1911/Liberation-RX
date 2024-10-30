@@ -1,6 +1,5 @@
 GRLIB_map_modder = "pSiKO";
 GRLIB_save_key = "LRX_OPTRE_IBERIUS_SAVEGAME_PSK"; // change this value if you want different savegames on different map
-GRLIB_respawn_marker = "respawn_west";
 GRLIB_sector_size = 500;
 GRLIB_capture_size = 175;
 GRLIB_radiotower_size = 2500;

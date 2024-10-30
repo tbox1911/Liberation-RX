@@ -74,6 +74,7 @@ ai_resupply_sources = [];
 ai_healing_sources = [];
 vehicle_rearm_sources = [];
 vehicle_big_units = [];
+GRLIB_respawn_marker = "respawn_west";
 GRLIB_music_startup = "BackgroundTrack02_F";      //"LeadTrack01a_F" (This Is War)
 GRLIB_music_endgame = "LeadTrack06_F_Tank";
 GRLIB_vehicle_whitelist = [];
