@@ -11,44 +11,33 @@ if (time < _save_warmup && !_force) exitWith {
 diag_log format ["--- LRX Save start at %1", time];
 
 if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
-	if (GRLIB_param_wipe_keepscore == 1) then {
-		GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 12;
-		GRLIB_player_scores = [];
-		{
-			if (_x select 1 > GRLIB_perm_tank) then {
-				_x set [1, GRLIB_perm_tank];	// score
-			};
-			if (_x select 2 > 3000) then {
-				_x set [2, 3000];				// ammo
-			};
-			_x set [3, GREUH_start_fuel];		// fuel
-			GRLIB_player_scores pushback _x;
-		} foreach (profileNamespace getVariable GRLIB_save_key select 16);
-
-		private _savegame = [
-			[],
-			[],
-			[],
-			time_of_day,
-			0,
-			[],
-			GRLIB_game_ID,
-			GRLIB_mod_west,
-			GRLIB_mod_east,
-			[2,2,1,0],
-			[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-			[33,33,33],
-			[],
-			GRLIB_permissions,
-			[],
-			0,
-			GRLIB_player_scores
-		];
-		profileNamespace setVariable [GRLIB_save_key, _savegame];
-	} else {
+	if (GRLIB_param_wipe_keepscore == 0 && GRLIB_param_wipe_keepcontext == 0) exitWith {
 		profileNamespace setVariable [GRLIB_save_key, nil];
-		GRLIB_game_ID = round floor random 65535;
+		saveProfileNamespace;
 	};
+
+	[] call keep_context;
+
+	private _savegame = [
+		[],
+		[],
+		[],
+		time_of_day,
+		0,
+		[],
+		0,
+		GRLIB_mod_west,
+		GRLIB_mod_east,
+		[2,2,1,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[33,33,33],
+		[],
+		GRLIB_permissions,
+		GRLIB_player_context,
+		0,
+		GRLIB_player_scores
+	];
+	profileNamespace setVariable [GRLIB_save_key, _savegame];
 	saveProfileNamespace;
 } else {
 	buildings_to_save = [];
@@ -199,7 +188,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		time_of_day,
 		round combat_readiness,
 		GRLIB_sector_defense,
-		GRLIB_game_ID,
+		0,
 		GRLIB_mod_west,
 		GRLIB_mod_east,
 		_warehouse,

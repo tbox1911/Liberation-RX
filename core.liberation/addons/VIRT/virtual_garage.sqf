@@ -98,17 +98,16 @@ while { dialog && alive player } do {
 				private _color = _vehicle getVariable ["GRLIB_vehicle_color", ""];
 				private _compo = _vehicle getVariable ["GRLIB_vehicle_composant", []];
 				private _ammo = [_vehicle] call F_getVehicleAmmoDef;
-				private _lst_a3 = [_vehicle, true] call F_getCargo;
+				//private _lst_a3 = [_vehicle, true] call F_getCargo;
+				private _lst_a3 = [];
 				private _lst_r3f = [];
 				{ _lst_r3f pushback (typeOf _x)} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 				private _lst_grl = [];
 				{_lst_grl pushback (typeOf _x)} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 				GRLIB_virtual_garage append [[typeOf _vehicle,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_grl]];
 				[_vehicle, true, true] call clean_vehicle;
-
+				player setVariable [format ["GRLIB_virtual_garage_%1", PAR_Grp_ID], GRLIB_virtual_garage, true];
 				hintSilent (format [localize "STR_LOADED", _vehicle_name]);
-				profileNamespace setVariable [format ["GRLIB_virtual_garage_%1", GRLIB_game_ID], GRLIB_virtual_garage];
-				saveProfileNamespace;
 			};
 
 			// Unload
@@ -126,8 +125,7 @@ while { dialog && alive player } do {
 				if (build_confirmed == 0) then {
 					hintSilent (format ["Vehicle %1\nUnloaded from Garage.", [(_vehicle select 0)] call F_getLRXName]);
 					GRLIB_virtual_garage deleteAt _selected_item;
-					profileNamespace setVariable [format ["GRLIB_virtual_garage_%1", GRLIB_game_ID], GRLIB_virtual_garage];
-					saveProfileNamespace;
+					player setVariable [format ["GRLIB_virtual_garage_%1", PAR_Grp_ID], GRLIB_virtual_garage, true];
 				};
 			};
 

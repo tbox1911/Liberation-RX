@@ -1,6 +1,7 @@
 // *** GLOBAL DEFINITIOON ***
 if (abort_loading) exitWith {};
 
+private ["_ret", "_path"];
 GRLIB_perm_hidden = 99999;
 markers_reset = [99999,99999,0];
 zeropos = [0,0,10000];
@@ -10,7 +11,8 @@ zeropos = [0,0,10000];
 // *** DEFAULT ***
 [] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_classnames.sqf"];
 
-private ["_ret", "_path"];
+// *** Arsenal ****
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
 
 // *** FRIENDLIES ***
 _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
