@@ -24,6 +24,18 @@ class Params
 		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
 		default = 0;
 	};
+	class ResetPA {
+		title = $STR_RESET_PA;
+		values[] = { 0, 1 };
+		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
+		default = 0;
+	};
+	class ResetVG {
+		title = $STR_RESET_VG;
+		values[] = { 0, 1 };
+		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
+		default = 0;
+	};
 	class Space1 {
 		title = "";
 		values[] = { "" };
@@ -77,7 +89,7 @@ class Params
 		values[] = {0,1};
 		texts[] = { $STR_NO,$STR_YES };
 		default = 0;
-	};	
+	};
 	class Space99 {
 		title = "";
 		values[] = { "" };

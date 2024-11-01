@@ -67,3 +67,16 @@ if (count _context >= 1) then {
     _player setVariable ["GRLIB_player_context_loaded", true, true];
     _player setVariable ["GRLIB_squad_context_loaded", true, true];
 };
+
+// Load Personal Arsenal
+private _personal_arsenal = [];
+if (GRLIB_filter_arsenal == 4) then {
+    _personal_arsenal = default_personal_arsenal;
+    if (count _context >= 4) then { _personal_arsenal = (_context select 3) };
+};
+_player setVariable [format ["GRLIB_personal_arsenal_%1", _uid], _personal_arsenal, true];
+
+// Load Virtual Garage
+private _virtual_garage = [];
+if (count _context >= 5) then { _virtual_garage = (_context select 4) };
+_player setVariable [format ["GRLIB_virtual_garage_%1", _uid], _virtual_garage, true];

@@ -71,7 +71,7 @@ GRLIB_checkArsenal = {
 
 GRLIB_checkArsenalPerso = {
 	private _near_arsenal = [player, "ARSENAL", GRLIB_ActionDist_5, false] call F_check_near;
-	(GRLIB_player_is_menuok && GRLIB_filter_arsenal == 4 && _near_arsenal)
+	(GRLIB_player_is_menuok && GRLIB_filter_arsenal == 4 && LRX_arsenal_init_done && _near_arsenal)
 };
 
 GRLIB_checkGarage = {

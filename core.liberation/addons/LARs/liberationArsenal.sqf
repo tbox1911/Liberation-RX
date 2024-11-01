@@ -33,8 +33,9 @@
 
 if (isDedicated) exitWith {};
 
-// Filters disabled
 waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
+
+// Filters disabled
 if (GRLIB_filter_arsenal == 0) exitWith {
 	//Enable ACE Arsenal for no filter cases
 	if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };
@@ -45,37 +46,12 @@ if (GRLIB_filter_arsenal == 0) exitWith {
 
 // Personal Arsenal
 if (GRLIB_filter_arsenal == 4) exitWith {
-	// Initalize Personal Arsenal
-	GRLIB_personal_arsenal = [];
-		
-	// Default Personal Arsenal
-	// can be overide by:
-	// personal_arsenal = []; in \mod_template\<TEMPLATE>\arsenal.sqf
-	private _default_personal_arsenal = [
-		// basic: [items, nb]
-		["FirstAidKit", 15],
-		["Medikit", 2],
-		["ToolKit", 2],
-		// container: ["class", [[[items],[nb]],[[magazine],[nb]]],0]
-		["B_AssaultPack_blk", [[[],[]],[[],[]]],0],
-		["B_AssaultPack_blk",[[["FirstAidKit"],[1]],[["11Rnd_45ACP_Mag","30Rnd_65x39_caseless_mag"],[2,2]]],0],
-		["V_Chestrig_blk", [[[],[]],[[],[]]],0],
-		["arifle_MX_Hamr_pointer_F", 2],
-		["30Rnd_65x39_caseless_mag", 20],
-		["launch_RPG32_F", 1],
-		["RPG32_F",4],
-		["HandGrenade", 6],
-		["SatchelCharge_Remote_Mag", 2]
-	];
-	if (isNil "personal_arsenal") then { personal_arsenal = _default_personal_arsenal };
-
-	private _player_arsenal = profileNamespace getVariable [format ["GRLIB_personal_arsenal_%1", GRLIB_game_ID], nil];
-	if (isNil "_player_arsenal") then {
-		GRLIB_personal_arsenal = personal_arsenal;
-	} else {
-		GRLIB_personal_arsenal = _player_arsenal;
- 	};
-
+	LRX_arsenal_init_done = false;
+	waitUntil {
+		sleep 1;
+		GRLIB_personal_arsenal = player getVariable format ["GRLIB_personal_arsenal_%1", PAR_Grp_ID];
+		!(isNil "GRLIB_personal_arsenal")
+	};
 	GRLIB_personal_box = Arsenal_typename createVehicle (markerPos GRLIB_respawn_marker); // Arsenal_typename
 	GRLIB_personal_box allowDamage false;
 	[GRLIB_personal_box] remoteExec ["hide_object_remote_call", 2];
@@ -85,7 +61,6 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 
 	diag_log format ["--- LRX Personal Arsenal initialized. (%1)", count GRLIB_personal_arsenal];
 	LRX_arsenal_init_done = true;
-	publicVariable "LRX_arsenal_init_done";
 };
 
 // Init functions
@@ -105,46 +80,6 @@ if (GRLIB_filter_arsenal in [1,2,3]) then {
 		// Lock Init
 		LRX_arsenal_init_done = false;
 		publicVariable "LRX_arsenal_init_done";
-
-		// Initalize Blacklist
-		GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
-
-		// Initalize Withelist
-		GRLIB_whitelisted_from_arsenal = [];			// Global whitelist when Arsenal is enabled
-
-		// Mod signature
-		GRLIB_MOD_signature = [];						// Used to filter several MOD items		
-
-		// Import list from Mod template
-		private _path = format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
-		[_path] call F_getTemplateFile;
-
-		// Default LRX blacklist
-		GRLIB_blacklisted_from_arsenal = [
-			"Zasleh2",
-			"CMFlare",
-			"SmokeLauncher",
-			"FlareLauncher",
-			"Laserdesignator",
-			"weapon_Fighter"
-		] + blacklisted_bag + blacklisted_weapon;
-
-		// UAVs Terminal
-		private _blacklisted_uavs_terminal = [
-			"B_UavTerminal",
-			"O_UavTerminal",
-			"I_UavTerminal",
-			"I_E_UavTerminal",
-			"C_UavTerminal"
-		] - [uavs_terminal_typename];
-		GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal + _blacklisted_uavs_terminal;
-
-		// Default LRX whitelist
-		GRLIB_whitelisted_from_arsenal = [
-			mobile_respawn_bag,
-			uavs_terminal_typename,
-			"B_Parachute"
-		] + whitelisted_from_arsenal;
 
 		// Add Mod Items (Weapons,Uniform,etc.)
 		[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";

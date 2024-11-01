@@ -1,4 +1,9 @@
 waitUntil {!(isNull (findDisplay 46))};
-waitUntil {sleep 1; !isNil "GRLIB_game_ID"};
-GRLIB_virtual_garage = profileNamespace getVariable [format ["GRLIB_virtual_garage_%1", GRLIB_game_ID], []];
+
+waitUntil {
+    sleep 1;
+    GRLIB_virtual_garage = player getVariable format ["GRLIB_virtual_garage_%1", PAR_Grp_ID];
+    !(isNil "GRLIB_virtual_garage")
+};
+
 systemChat "-------- Virtual Garage Initialized --------";

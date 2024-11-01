@@ -6,5 +6,4 @@ if (GRLIB_personal_box distance2D _pos > 20) then {
 };
 
 GRLIB_personal_arsenal = [GRLIB_personal_box, true] call F_getCargo;
-profileNamespace setVariable [format ["GRLIB_personal_arsenal_%1", GRLIB_game_ID], GRLIB_personal_arsenal];
-saveProfileNamespace;
+player setVariable [format ["GRLIB_personal_arsenal_%1", PAR_Grp_ID], GRLIB_personal_arsenal, true];

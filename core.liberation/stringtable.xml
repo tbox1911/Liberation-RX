@@ -706,6 +706,14 @@
 			<Chinesesimp>重置任务参数</Chinesesimp>
 			<Chinese>重置任务参数</Chinese>
 		</Key>
+		<Key ID="STR_RESET_PA">
+			<Original>Reset the Personal Arsenal</Original>
+			<French>RAZ de l'Arsenal Personel</French>
+		</Key>
+		<Key ID="STR_RESET_VG">
+			<Original>Reset the Virtual Garage</Original>
+			<French>RAZ du Garage Virtuel</French>
+		</Key>		
 		<Key ID="STR_WIPE_NO">
 			<Original>No</Original>
 			<French>Non</French>
@@ -5806,11 +5814,15 @@
 			<Chinese>服务器处于持续模式</Chinese>
 		</Key>
 		<Key ID="STR_KEEP_SCORE">
-			<Original>Keep players score on map restart</Original>
-			<French>Garder le score des joueurs au redemarage de la Map</French>
+			<Original>Keep the Basic Players datas (score, permissions)</Original>
+			<French>Garder les données de Base (score, permissions)</French>
 			<Chinesesimp>地图重启时保留玩家成绩</Chinesesimp>
 			<Chinese>地图重启时保留玩家成绩</Chinese>
 		</Key>
+		<Key ID="STR_KEEP_CONTEXT">
+			<Original>Keep the Extended Players datas (squad, arsenal, garage)</Original>
+			<French>Garder les données Étendue (squad, arsenal, garage)</French>
+		</Key>		
 		<Key ID="STR_RESPAWN">
 			<Original>PAR: Respawn button Timer (sec)</Original>
 			<French>PAR: Attente Bouton Respawn (sec)</French>

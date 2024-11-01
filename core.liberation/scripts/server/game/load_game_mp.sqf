@@ -48,7 +48,6 @@ GRLIB_permissions = [];
 GRLIB_player_context = [];
 resources_intel = 0;
 GRLIB_player_scores = [];
-GRLIB_game_ID = 0;
 GRLIB_warehouse = [
 	[waterbarrel_typename, 2],
 	[fuelbarrel_typename, 2],
@@ -57,29 +56,14 @@ GRLIB_warehouse = [
 ];
 GRLIB_sector_defense = [];
 
+// Keep Context
+[] call keep_context;
+
 // Wipe Savegame
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
-	if (GRLIB_param_wipe_keepscore == 1) then {
-		GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 13;
-		if (isNil "GRLIB_permissions") then { GRLIB_permissions = [] };
-		private _keep_players = [];
-		{
-			if (_x select 1 > GRLIB_perm_tank) then {
-				_x set [1, GRLIB_perm_tank];	// score
-			};
-			if (_x select 2 > 3000) then {
-				_x set [2, 3000];		// ammo
-			};
-			if (_x select 3 > 400) then {
-				_x set [3, 400];		// fuel
-			};
-			_keep_players pushback _x;
-		} foreach (profileNamespace getVariable GRLIB_save_key select 16);
-		GRLIB_player_scores = _keep_players;
-	};
-	diag_log format ["--- LRX Savegame %1 Erased!", GRLIB_save_key] ;
 	profileNamespace setVariable [GRLIB_save_key, nil];
 	saveProfileNamespace;
+	diag_log format ["--- LRX Savegame %1 Erased!", GRLIB_save_key];
 	sleep 1;
 };
 
@@ -108,7 +92,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	time_of_day = _lrx_liberation_savegame select 3;
 	combat_readiness = _lrx_liberation_savegame select 4;
 	GRLIB_sector_defense = _lrx_liberation_savegame select 5;
-	GRLIB_game_ID = _lrx_liberation_savegame select 6;
+	//_unused = _lrx_liberation_savegame select 6;
 	_side_west = _lrx_liberation_savegame select 7;
 	_side_east = _lrx_liberation_savegame select 8;
 	_warehouse = _lrx_liberation_savegame select 9;
@@ -147,7 +131,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		air_weight = _weights select 2;
 	GRLIB_vehicle_to_military_base_links = _lrx_liberation_savegame select 12;
 	GRLIB_permissions = _lrx_liberation_savegame select 13;
-	GRLIB_player_context = _lrx_liberation_savegame select 14;
+	if (count GRLIB_player_context == 0) then { GRLIB_player_context = _lrx_liberation_savegame select 14 };
 	resources_intel = _lrx_liberation_savegame select 15;
 	GRLIB_player_scores = _lrx_liberation_savegame select 16;
 
@@ -346,7 +330,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 		if ( _nextclass in respawn_vehicles ) then {
 			GRLIB_mobile_respawn pushback _nextbuilding;
-		};		
+		};
 
 		if ( _owner != "" ) then {
 			if (_owner == "public") then {
@@ -460,8 +444,6 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
 
-if (typeName GRLIB_game_ID == "ARRAY" || GRLIB_game_ID == 0) then { GRLIB_game_ID = floor random 65535 };
-
 if (count GRLIB_permissions == 0) then {
 	GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
 };
@@ -484,7 +466,6 @@ publicVariable "GRLIB_vehicle_huron";
 publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_warehouse";
 publicVariable "blufor_sectors";
-publicVariable "GRLIB_game_ID";
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
 publicVariable "GRLIB_mobile_respawn";

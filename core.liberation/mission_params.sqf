@@ -90,6 +90,10 @@ LRX_Mission_Params = [
 	["SectorDespawn", 72], 			// Time for a sector to Despawn if no attackers - [default 72] - values = [(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
 	["BuildingRatio", 1],			// AI in Building ratio (CQB) - [default 1] - values = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
 
+	["---", "RESTART"],
+	["KeepScore", 0],				// Keep the Basic Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["KeepContext", 0],				// Keep the Extended Players datas (squad, arsenal, garage) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+
 	["---", "SYSTEM"],
 	["Permissions", 1],				// Permissions management - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["CleanupVehicles", 1800],		// Cleanup abandoned vehicles outside FOBs - values = {0,900,1800,3600,7200,14400}
@@ -98,7 +102,6 @@ LRX_Mission_Params = [
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["FancyInfo", 2],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
-	["KeepScore", 0],				// Keep the Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 	["RespawnCD", 0],				// Cooldown if player respawn too fast - [default 0] - values = [0,xxx] - Text {Disabled,Enabled}
 	["KickIdle", 0],				// Kick player if idle too long - [default 0] - values = {0,900,1200,1800,3600,7200}
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
@@ -156,8 +159,8 @@ LRX_Mission_Params_Def = [
 		[0.25, 0.5, 1, 2, 4]
 	],
 	["SectorRadius", localize "STR_PARAM_SECTOR_RADIUS",
-		["AUTO", "300", "400", "600", "800", "1000", "1200", "1500"],
-		[0, 300, 400, 600, 800, 1000, 1200, 1500]
+		[format ["AUTO (%1)", GRLIB_sector_size], "300", "400", "600", "800", "1000", "1200", "1500", "2000"],
+		[0, 300, 400, 600, 800, 1000, 1200, 1500, 2000]
 	],
 	["TFRadioRange", localize "STR_PARAM_TFAR_RADIUS",
 		["2.5km", "5km", "7.5km", "10km", "15km", "20km", "50km"],
@@ -238,9 +241,9 @@ LRX_Mission_Params_Def = [
 		["3", "4", "5", "6", "7", "8", "9", "10"],
 		[3, 4, 5, 6, 7, 8, 9, 10]
 	],
-	["CivPenalties", localize "STR_CIV_PENALTIES", 
+	["CivPenalties", localize "STR_CIV_PENALTIES",
 		[localize "STR_PARAMS_DISABLED", "4", "6", "8", "10", "20", "25", "30", "40", "50"],
-		[0, 4, 6, 8, 10, 20, 25, 30, 40, 50]		
+		[0, 4, 6, 8, 10, 20, 25, 30, 40, 50]
 	],
 	["Civilians", localize "STR_PARAMS_CIVILIANS", [
 		localize "STR_PARAMS_DISABLED",
@@ -364,5 +367,6 @@ LRX_Mission_Params_Def = [
 	["AirSupport", localize "STR_ENABLE_AIR_SUPPORT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Redeploy", localize "STR_REDEPLOY", [localize "STR_PARAMS_DISABLED", localize "STR_PARAM_REDEPLOY_ALL", localize "STR_PARAM_REDEPLOY_FOB"]],
 	["KeepScore", localize "STR_KEEP_SCORE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	["KeepContext", localize "STR_KEEP_CONTEXT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Persistent", localize "STR_PERSISTENT_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]]
 ];

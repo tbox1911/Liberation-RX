@@ -72,6 +72,8 @@ GRLIB_use_exclusive = ["Exclusive",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_params = ["WipeSave3",0] call bis_fnc_getParamValue;
+GRLIB_reset_pa = ["ResetPA",0] call bis_fnc_getParamValue;
+GRLIB_reset_vg = ["ResetVG",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
 GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 
@@ -187,6 +189,7 @@ GRLIB_admin_menu = ["AdminMenu"] call lrx_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles"] call lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave"] call lrx_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore"] call lrx_getParamValue;
+GRLIB_param_wipe_keepcontext = ["KeepContext"] call lrx_getParamValue;
 GRLIB_respawn_timer = ["Respawn"] call lrx_getParamValue;
 GRLIB_respawn_cooldown = ["RespawnCD"] call lrx_getParamValue;
 GRLIB_kick_idle = ["KickIdle"] call lrx_getParamValue;
