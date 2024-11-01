@@ -1729,6 +1729,18 @@
 			<Chinesesimp>占领所有军事和信号塔区域</Chinesesimp>
 			<Chinese>占领所有军事和信号塔区域</Chinese>
 		</Key>
+		<Key ID="STR_VICTORY_COND7">
+			<Original>4 Radio Towers captured</Original>
+		</Key>
+		<Key ID="STR_VICTORY_COND8">
+			<Original>6 Sectors captured</Original>
+		</Key>
+		<Key ID="STR_VICTORY_COND9">
+			<Original>4 Sectors and 2 Radio Tower captured</Original>
+		</Key>
+		<Key ID="STR_VICTORY_CONDA">
+			<Original>3 Military Sectors and 2 Radio Tower captured</Original>
+		</Key>
 		<Key ID="STR_PARAMS_DIFFICULTY">
 			<Original>Difficulty</Original>
 			<French>Difficulté</French>
@@ -6223,7 +6235,7 @@
 			<Chinese>-- MISSION 管理員菜單 --</Chinese>
 			<Portuguese>-- MISSION MENU ADMIN</Portuguese>
 			<Czech>-- MISSION ADMIN MENU</Czech>
-		</Key>		
+		</Key>
 		<Key ID="STR_DESTROY_OUTPOST">
 			<Original>-- DESTROY OUTPOST</Original>
 			<Russian>-- УНИЧТОЖИТЬ АВАНПОСТ</Russian>

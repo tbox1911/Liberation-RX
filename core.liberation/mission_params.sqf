@@ -197,7 +197,12 @@ LRX_Mission_Params_Def = [
 		localize "STR_VICTORY_COND2",
 		localize "STR_VICTORY_COND3",
 		localize "STR_VICTORY_COND4",
-		localize "STR_VICTORY_COND5"
+		localize "STR_VICTORY_COND5",
+		localize "STR_VICTORY_COND6",		
+		localize "STR_VICTORY_COND7",
+		localize "STR_VICTORY_COND8",
+		localize "STR_VICTORY_COND9",
+		localize "STR_VICTORY_CONDA"		
 		]
 	],
 	["ResourcesMultiplier", localize "STR_PARAMS_RESOURCESMULTIPLIER",

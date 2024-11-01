@@ -27,7 +27,31 @@ switch (GRLIB_victory_condition) do {
 	// 2500 Intel points
 	case 5: { _ret = (resources_intel >= 2500) };
 
-	//case 6: { _ret = false };
+	// All Military and Radio Sectors captured
+	case 6: {
+		_ret = ({ _x in opfor_sectors} count sectors_military == 0 && { _x in opfor_sectors} count sectors_tower == 0)
+	};
+	
+	// 4 Radio Towers captured
+	case 7: {
+		_ret = ({ _x in sectors_tower } count blufor_sectors >= 4)
+	};
+		
+	// 6 small towns captured
+	case 8: {
+		_ret = ({ _x in sectors_capture } count blufor_sectors >= 6)
+	};
+
+	// 4 Sectors and 2 Radio Tower captured
+	case 9: {
+		_ret = ({ _x in sectors_capture } count blufor_sectors >= 4) &&  ({ _x in sectors_tower } count blufor_sectors >= 2)
+	};
+
+	// 2 Military Sectors and 2 Radio Tower captured
+	case 10: {
+		_ret = ({ _x in sectors_military } count blufor_sectors >= 3) &&  ({ _x in sectors_tower } count blufor_sectors >= 2)
+	};
+
 };
 
 _ret;
