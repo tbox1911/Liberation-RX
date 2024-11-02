@@ -15,9 +15,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		profileNamespace setVariable [GRLIB_save_key, nil];
 		saveProfileNamespace;
 	};
-
 	[] call keep_context;
-
 	private _savegame = [
 		[],
 		[],
@@ -25,7 +23,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		time_of_day,
 		0,
 		[],
-		0,
+		[],
 		GRLIB_mod_west,
 		GRLIB_mod_east,
 		[2,2,1,0],
@@ -188,7 +186,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		time_of_day,
 		round combat_readiness,
 		GRLIB_sector_defense,
-		0,
+		[],
 		GRLIB_mod_west,
 		GRLIB_mod_east,
 		_warehouse,

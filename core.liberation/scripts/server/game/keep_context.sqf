@@ -1,6 +1,5 @@
 GRLIB_permissions = [];
 GRLIB_player_scores = [];
-GRLIB_player_context = [];
 
 if (GRLIB_param_wipe_keepscore == 1) then {
     diag_log "--- LRX Config: Keep players scores and perms.";
@@ -19,15 +18,7 @@ if (GRLIB_param_wipe_keepscore == 1) then {
     } foreach (profileNamespace getVariable GRLIB_save_key select 16);
 };
 
-if (GRLIB_param_wipe_keepcontext == 1 || GRLIB_reset_pa == 1 || GRLIB_reset_vg == 1) then {
-    diag_log format ["--- LRX Config: Keep players context. Reset PA=%1, Reset VG=%2", GRLIB_reset_pa, GRLIB_reset_vg];
-    {
-        if (GRLIB_reset_pa == 1) then {
-            _x set [3, default_personal_arsenal];
-        };
-        if (GRLIB_reset_vg == 1) then {
-            _x set [4, []];
-        };
-        GRLIB_player_context pushback _x;
-    } foreach (profileNamespace getVariable GRLIB_save_key select 14);
+if (GRLIB_param_wipe_keepcontext == 1) then {
+    diag_log "--- LRX Config: Keep players context.";
+    GRLIB_player_context = (profileNamespace getVariable GRLIB_save_key select 14);
 };

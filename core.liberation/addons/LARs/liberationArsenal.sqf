@@ -40,7 +40,6 @@ if (GRLIB_filter_arsenal == 0) exitWith {
 	//Enable ACE Arsenal for no filter cases
 	if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };
     LRX_arsenal_init_done = true;
-	publicVariable "LRX_arsenal_init_done";
     diag_log "--- LRX Arsenal filters disabled.";
 };
 
@@ -76,32 +75,14 @@ if (GRLIB_filter_arsenal in [1,2,3]) then {
 	// LARs Init
 	[] call LARs_fnc_initOverride;
 
-	if (isNil "LRX_arsenal_init_done") then {
-		// Lock Init
-		LRX_arsenal_init_done = false;
-		publicVariable "LRX_arsenal_init_done";
+	// Add Mod Items (Weapons,Uniform,etc.)
+	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";
+	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_east.sqf";
 
-		// Add Mod Items (Weapons,Uniform,etc.)
-		[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";
-		[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_east.sqf";
-
-		// Dedup list
-		GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;
-		GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;
-		GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect GRLIB_blacklisted_from_arsenal;
-
-		// MP share :)
-		publicVariable "GRLIB_MOD_signature";
-		publicVariable "GRLIB_whitelisted_from_arsenal";
-		publicVariable "GRLIB_blacklisted_from_arsenal";
-		sleep 1;
-
-		// Init done
-		LRX_arsenal_init_done = true;
-		publicVariable "LRX_arsenal_init_done";
-	} else {
-		waitUntil { sleep 1; LRX_arsenal_init_done };
-	};
+	// Dedup list
+	GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;
+	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;
+	GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect GRLIB_blacklisted_from_arsenal;
 
 	// Initialize Arsenal
 	if (GRLIB_ACE_enabled) then {
@@ -116,6 +97,9 @@ if (GRLIB_filter_arsenal in [1,2,3]) then {
 		private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];
 		myLARsBox setVariable ["bis_addVirtualWeaponCargo_cargo", _cargo];
 	};
+
+	// Init done
+	LRX_arsenal_init_done = true;
 };
 diag_log format ["--- LRX Arsenal initialized. blacklist: %1 - whitelist: %2", count GRLIB_blacklisted_from_arsenal, count GRLIB_whitelisted_from_arsenal];
 diag_log format ["--- LRX MOD %1 use: %2 signatures", GRLIB_mod_west, count GRLIB_MOD_signature];

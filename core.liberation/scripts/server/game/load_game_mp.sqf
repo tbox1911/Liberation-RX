@@ -45,7 +45,6 @@ air_weight = 33;
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_vehicle_huron = objNull;
 GRLIB_permissions = [];
-GRLIB_player_context = [];
 resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_warehouse = [
@@ -56,11 +55,9 @@ GRLIB_warehouse = [
 ];
 GRLIB_sector_defense = [];
 
-// Keep Context
-[] call keep_context;
-
 // Wipe Savegame
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
+	[] call keep_context;
 	profileNamespace setVariable [GRLIB_save_key, nil];
 	saveProfileNamespace;
 	diag_log format ["--- LRX Savegame %1 Erased!", GRLIB_save_key];
@@ -131,7 +128,9 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		air_weight = _weights select 2;
 	GRLIB_vehicle_to_military_base_links = _lrx_liberation_savegame select 12;
 	GRLIB_permissions = _lrx_liberation_savegame select 13;
-	if (count GRLIB_player_context == 0) then { GRLIB_player_context = _lrx_liberation_savegame select 14 };
+	if (count GRLIB_player_context == 0) then {
+		GRLIB_player_context = _lrx_liberation_savegame select 14;
+	};
 	resources_intel = _lrx_liberation_savegame select 15;
 	GRLIB_player_scores = _lrx_liberation_savegame select 16;
 

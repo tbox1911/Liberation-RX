@@ -301,6 +301,20 @@ switch (GRLIB_naval_type) do {
 	case 3: { FOB_carrier = "fob_water1" };
 };
 
+// Player Context
+GRLIB_player_context = [];
+if (GRLIB_reset_pa == 1 || GRLIB_reset_vg == 1) then {
+    {
+        if (GRLIB_reset_pa == 1) then {
+            _x set [3, default_personal_arsenal];
+        };
+        if (GRLIB_reset_vg == 1) then {
+            _x set [4, []];
+        };
+        GRLIB_player_context pushback _x;
+    } foreach (profileNamespace getVariable GRLIB_save_key select 14);
+};
+
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
 if ( GRLIB_ACE_medical_enabled ) then { PAR_revive = 0; GRLIB_fatigue = 1 };		// Disable PAR/Fatigue if ACE Medical is present
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
