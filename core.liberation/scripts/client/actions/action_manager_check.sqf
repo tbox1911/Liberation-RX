@@ -79,7 +79,7 @@ GRLIB_checkGarage = {
 };
 
 GRLIB_checkBuild = {
-	(GRLIB_player_is_menuok && GRLIB_player_near_fob && (getPos player select 2) < 30 && (([player, 3] call fetch_permission) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && (([player, 3] call fetch_permission) || GRLIB_player_admin))
 };
 
 GRLIB_checkSquadMgmt = {
@@ -142,7 +142,7 @@ GRLIB_checkCapture = {
 
 GRLIB_checkBuildDef = {
 	params ["_target"];
-	(GRLIB_player_is_menuok && alive _target && (GRLIB_player_owner_fob || _target getVariable ["GRLIB_vehicle_owner", "public"] == "") && ([] call F_getFobType) in [0,1])
+	(GRLIB_player_is_menuok && alive _target && (GRLIB_player_owner_fob || _target getVariable ["GRLIB_vehicle_owner", ""] == "") && ([] call F_getFobType) in [0,1])
 };
 
 GRLIB_checkRemoveHelipad = {

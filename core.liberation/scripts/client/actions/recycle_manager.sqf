@@ -1,7 +1,8 @@
 private  ["_vehicle", "_distvehclose"];
+
+waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "GRLIB_player_near_fob" };
-waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
 	if (GRLIB_player_near_fob) then {

@@ -15,6 +15,8 @@ player addAction ["<t color='#FF8000'>-- DUMP FOB TEMPLATE </t> <img size='1' im
 // Extended Options
 player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true];
 
+waituntil {sleep 1; GRLIB_player_configured};
+
 // Juke Box
 player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
 

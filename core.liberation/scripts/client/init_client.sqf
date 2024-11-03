@@ -94,6 +94,7 @@ GRLIB_ActionDist_5 = 5;
 GRLIB_ActionDist_10 = 10;
 GRLIB_ActionDist_15 = 15;
 GRLIB_max_respawn_reached = false;
+GRLIB_player_configured = false;
 
 add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
 dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";

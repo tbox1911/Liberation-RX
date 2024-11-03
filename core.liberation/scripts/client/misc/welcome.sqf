@@ -47,3 +47,5 @@ private _msg = format [
 	name player, _rank, _score, _ammo_collected, _color, _text
 ];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
+
+GRLIB_player_configured = true;

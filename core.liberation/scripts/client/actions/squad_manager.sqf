@@ -1,4 +1,4 @@
-waitUntil {sleep 1; GRLIB_player_spawned};
+waitUntil {sleep 1; GRLIB_player_configured};
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 private _cargo_seat_free = 0;

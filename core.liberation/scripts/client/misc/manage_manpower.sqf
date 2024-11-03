@@ -1,4 +1,4 @@
-waitUntil {sleep 1; GRLIB_player_spawned};
+waitUntil {sleep 1; GRLIB_player_configured};
 
 private ["_manpower_used", "_player_vehicles", "_player_respawn", "_unit"];
 private _search_list = [] + light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable;
