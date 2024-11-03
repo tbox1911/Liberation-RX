@@ -1,6 +1,6 @@
 params ["_unit1", "_unit2", "_vehicle"];
 
-if (_vehicle iskindof "Steerable_Parachute_F") exitWith { true };
+if (_vehicle iskindof "ParachuteBase") exitWith { true };
 if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,FOB_boat_typename,huron_typename]) exitWith { true }; // Allowed at start
 
 private _doeject = false;
@@ -11,7 +11,7 @@ private _turret = [0];
 if (count _info == 2) then { _turret = _info select 1 };
 
 private _msg = "";
-if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _vehicle in list_static_weapons)) then {
+if (!(_role == "cargo" || typeOf _vehicle in list_static_weapons)) then {
 	if (GRLIB_permissions_param) then {
 		if (!([player, 0] call fetch_permission)) then {
 			_doeject = true;
@@ -39,8 +39,7 @@ if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _v
 		};
 
 		_support_vehicles = [];
-		{_support_vehicles pushBack ( _x select 0 )} foreach (support_vehicles);
-		if ((typeOf _vehicle) in _support_vehicles && _score < GRLIB_perm_inf) then {
+		if ((typeOf _vehicle) in support_vehicles_classname && _score < GRLIB_perm_inf) then {
 			_doeject = true;
 			_msg = localize "STR_PERMISSION_NO_SUP";
 		};

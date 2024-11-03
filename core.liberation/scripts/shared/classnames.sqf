@@ -216,14 +216,17 @@ support_vehicles = support_vehicles + [
 	[FOB_box_typename,0,1500,0,GRLIB_perm_max],
 	[FOB_truck_typename,5,1500,10,GRLIB_perm_max],
 	[FOB_boat_typename,5,2500,10,GRLIB_perm_max],
-	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
-	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
-	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
+	[ammobox_b_typename,0,round(300/GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
+	[ammobox_o_typename,0,round(300/GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
+	[ammobox_i_typename,0,round(300/GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[basic_weapon_typename,0,round(150 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[waterbarrel_typename,0,110,0,GRLIB_perm_hidden],
 	[fuelbarrel_typename,0,120,50,GRLIB_perm_hidden],
 	[foodbarrel_typename,0,130,0,GRLIB_perm_hidden]
 ] + support_vehicles_west;
+
+support_vehicles_classname = [];
+{support_vehicles_classname pushBack ( _x select 0 )} foreach support_vehicles;
 
 // RESPAWN VEHICLES
 if (isNil "respawn_vehicles_west") then { respawn_vehicles_west = [] };

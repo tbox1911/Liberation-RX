@@ -19,7 +19,7 @@ _classnames_to_destroy append all_buildings_classnames + fob_buildings_classname
 
 private _sleep = 0.05;
 if (surfaceIsWater _fob_pos) then {
-	{ _classnames_to_destroy pushback (_x select 0) } foreach support_vehicles;
+	_classnames_to_destroy append support_vehicles_classname;
 	_sleep = 0;
 };
 

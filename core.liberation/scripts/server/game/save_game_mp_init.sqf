@@ -20,8 +20,8 @@ GRLIB_classnames_to_save = GRLIB_classnames_to_save apply { toLower _x };
 
 GRLIB_vehicles_light = [mobile_respawn] + GRLIB_vehicle_blacklist + list_static_weapons + uavs_vehicles;
 {
-	if !((_x select 0) isKindOf "AllVehicles") then { GRLIB_vehicles_light pushBackUnique (_x select 0) };
-} foreach support_vehicles;
+	if !(_x isKindOf "AllVehicles") then { GRLIB_vehicles_light pushBackUnique _x };
+} foreach support_vehicles_classname;
 GRLIB_vehicles_light = GRLIB_vehicles_light arrayIntersect GRLIB_vehicles_light;
 
 GRLIB_quick_delete = [Arsenal_typename, FOB_box_typename, foodbarrel_typename, waterbarrel_typename, medic_heal_typename];
