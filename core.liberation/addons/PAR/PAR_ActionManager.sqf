@@ -15,8 +15,8 @@ while {true} do {
         (_x getVariable ["PAR_wounded", false]) &&
         ([_x] call _checkAction) &&
         isNull objectParent _x &&
-        isNil {_x getVariable 'PAR_busy'} &&
-        isNil {_x getVariable 'PAR_healed'}
+        isNil {_x getVariable "PAR_busy"} &&
+        isNil {_x getVariable "PAR_healed"}
     };
 
     if (count _wnded_list > 0) then {

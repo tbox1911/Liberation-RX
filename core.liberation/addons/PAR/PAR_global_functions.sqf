@@ -20,7 +20,7 @@ PAR_medic_units = {
 	(units GRLIB_side_friendly) select {
 		!isPlayer _x &&
 		lifeState _x != "INCAPACITATED" &&
-		isNil {_x getVariable 'PAR_busy'} &&
+		isNil {_x getVariable "PAR_busy"} &&
 		(_x getVariable ["PAR_Grp_ID","0"]) == _grp_id
 	};
 };
@@ -42,7 +42,7 @@ PAR_unblock_AI = {
 	} else {
 		{
 			_unit = _x;
-			if (isNull (objectParent _unit) && (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED')) then {
+			if (isNull (objectParent _unit) && (player distance2D _unit) < 50 && (lifeState _unit != "INCAPACITATED")) then {
 				_unit stop true;
 				sleep 1;
 				_unit doWatch objNull;

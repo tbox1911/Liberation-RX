@@ -1,27 +1,27 @@
 params ["_medic", "_wnded"];
 
-_wnded setVariable ['PAR_healed', true];
+_wnded setVariable ["PAR_healed", true];
 if (_wnded == _medic) exitWith {
 	_wnded playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 	sleep 7;
-	if (lifeState _wnded != 'INCAPACITATED') then {
+	if (lifeState _wnded != "INCAPACITATED") then {
 		_wnded setDamage 0;
 	};
 	sleep 2;
-	_wnded setVariable ['PAR_healed', nil];
+	_wnded setVariable ["PAR_healed", nil];
 };
 
 _medic groupchat format [localize "STR_PAR_CW_01", name _wnded];
-_medic setVariable ['PAR_heal', true];
+_medic setVariable ["PAR_heal", true];
 
 while {
 	(currentCommand _medic != "STOP") &&
 	alive _wnded &&
 	alive _medic &&
-	isNil {_wnded getVariable 'PAR_busy'} &&
-	isNil {_medic getVariable 'PAR_busy'} &&
-	lifeState _wnded != 'INCAPACITATED' &&
-	lifeState _medic != 'INCAPACITATED' &&
+	isNil {_wnded getVariable "PAR_busy"} &&
+	isNil {_medic getVariable "PAR_busy"} &&
+	lifeState _wnded != "INCAPACITATED" &&
+	lifeState _medic != "INCAPACITATED" &&
 	damage _wnded  >= 0.1 &&
 	vehicle _medic == _medic &&
 	vehicle _wnded == _wnded &&
@@ -46,10 +46,10 @@ while {
 			sleep 3;
 		};
 	};
-	sleep 1;	
+	sleep 1;
 };
 
-if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && (_medic distance2D _wnded) <= 3) then {
+if (lifeState _medic != "INCAPACITATED" && lifeState _wnded != "INCAPACITATED" && (_medic distance2D _wnded) <= 3) then {
 	_medic setDir (_medic getDir _wnded);
 	if (stance _medic == 'PRONE') then {
 		_medic playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
@@ -57,7 +57,7 @@ if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' &
 		_medic playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 	};
 	sleep 7;
-	if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && (_medic distance2D _wnded) <= 3) then {
+	if (lifeState _medic != "INCAPACITATED" && lifeState _wnded != "INCAPACITATED" && (_medic distance2D _wnded) <= 3) then {
 		_wnded setDamage 0;
 	};
 	[[_medic, _wnded]] call PAR_fn_fixPos;
@@ -65,6 +65,6 @@ if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' &
 
 sleep 2;
 _wnded stop false;
-_medic setVariable ['PAR_heal', nil];
-_wnded setVariable ['PAR_healed', nil];
+_medic setVariable ["PAR_heal", nil];
+_wnded setVariable ["PAR_healed", nil];
 [_medic, _wnded] doFollow (leader group player);

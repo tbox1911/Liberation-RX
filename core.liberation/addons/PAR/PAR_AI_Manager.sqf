@@ -18,8 +18,8 @@ while {true} do {
                     isNull objectParent _x &&
                     damage _x >= 0.1 &&
                     behaviour _x != "COMBAT" &&
-                    isNil {_x getVariable 'PAR_busy'} &&
-                    isNil {_x getVariable 'PAR_healed'}
+                    isNil {_x getVariable "PAR_busy"} &&
+                    isNil {_x getVariable "PAR_healed"}
                 };
 
                 if (count _wnded_list > 0) then {
@@ -30,9 +30,9 @@ while {true} do {
                         isNull objectParent _unit &&
                         (behaviour _unit) != "COMBAT" &&
                         (currentCommand _unit != "STOP") &&
-                        lifeState _unit != 'INCAPACITATED' &&
-                        isNil {_unit getVariable 'PAR_busy'} &&
-                        isNil {_unit getVariable 'PAR_heal'}
+                        lifeState _unit != "INCAPACITATED" &&
+                        isNil {_unit getVariable "PAR_busy"} &&
+                        isNil {_unit getVariable "PAR_heal"}
                     ) then {
                         [_unit, _wnded] spawn PAR_fn_heal;
                     };
@@ -63,7 +63,7 @@ while {true} do {
 
             // AI stop doing shit !
             private _not_leader = !(leader (group player) == player);
-            if (lifeState player == 'INCAPACITATED' && _not_leader) then {
+            if (lifeState player == "INCAPACITATED" && _not_leader) then {
                 if (_unit distance2D player <= 500) then {
                     unassignVehicle _unit;
                     [_unit] orderGetIn false;
