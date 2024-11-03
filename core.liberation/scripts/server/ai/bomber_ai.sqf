@@ -20,12 +20,11 @@ removeGoggles _unit;
 
 private _cloth = getText(configfile >> "CfgVehicles" >> selectRandom civilians >> "uniformClass");
 _unit forceAddUniform _cloth;
+[_unit] call F_fixPosUnit;
+sleep 3;
 
 {_unit disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
-[_unit] spawn F_fixPosUnit;
 _unit setUnitPos "UP";
-_unit switchMove "";
-_unit setHitPointDamage ["hitLegs", 0];
 sleep 1;
 
 private _grp = createGroup [GRLIB_side_civilian, true];
