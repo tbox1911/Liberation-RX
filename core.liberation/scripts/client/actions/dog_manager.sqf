@@ -5,6 +5,13 @@ while { true } do {
 	// If player have Dog
 	_my_dog = player getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then {
+		// check
+		if (isNull _my_dog) exitWith {
+			player setVariable ["my_dog", nil, true];
+			private _id = player getVariable ["my_dog_marker", 0];
+			(findDisplay 12 displayCtrl 51) ctrlRemoveEventHandler ["Draw", _id];			
+		 };
+
 		// Hide Dog
 		// go to ..\addons\PAR\PAR_EventHandler.sqf
 		_onfoot = isNull objectParent player;
