@@ -22,3 +22,10 @@ if (count _init > 0) then {
 	[_vehicle, false, _init] spawn BIS_fnc_initVehicle;
 	sleep 0.5;
 };
+
+// Give real truck horn to APC,Truck
+if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Truck_F" ) then {
+	_vehicle removeWeaponTurret ["TruckHorn", [-1]];
+	_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
+	_vehicle addWeaponTurret ["TruckHorn3", [-1]];
+};

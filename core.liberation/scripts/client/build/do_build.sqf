@@ -422,14 +422,7 @@ while { true } do {
 			};
 
 			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air") then {
-				// Give real truck horn to APC,Truck,Tank
-				if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
-					_vehicle removeWeaponTurret ["TruckHorn", [-1]];
-					_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
-					_vehicle addWeaponTurret ["TruckHorn3", [-1]];
-				};
-
-				// CUP/RHS remove panel
+				// Cutomize Vehicle
 				[_vehicle] call F_fixModVehicle;
 
 				// Color
