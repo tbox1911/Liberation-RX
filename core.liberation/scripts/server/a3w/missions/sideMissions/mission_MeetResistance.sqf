@@ -34,15 +34,17 @@ _setupObjects = {
 	// the Resistance!
 	private _grp = [_missionPos, _nbUnits, "resistance"] call createCustomGroup;
 	_managed_units append (units _grp);
-	{
-		_x setVariable ["GRLIB_can_speak", true, true];
-		_x setVariable ["GRLIB_A3W_Mission_MR1", true, true];
-	} foreach _managed_units;
 	sleep 1;
 
 	// get Houses nearbby
 	_managed_units append (["resistance", 2, _missionPos] call F_spawnBuildingSquad);
 	sleep 1;
+
+	// enable speak
+	{
+		_x setVariable ["GRLIB_can_speak", true, true];
+		_x setVariable ["GRLIB_A3W_Mission_MR1", true, true];
+	} foreach _managed_units;	
 
 	// create static weapons
 	_veh1 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];

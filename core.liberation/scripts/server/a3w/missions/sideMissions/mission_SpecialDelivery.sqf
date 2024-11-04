@@ -68,7 +68,6 @@ _setupObjects = {
 
 	// man 4
 	private _man4 = _aiGroup createUnit ["C_Nikos_aged", _missionEnd, [], 0, "NONE"];
-	[_man4]	spawn F_fixPosUnit;
 	_man4 allowDamage false;
 	_man4 setVariable ["acex_headless_blacklist", true, true];
 	_man4 setVariable ["GRLIB_vehicle_owner", "server", true];
