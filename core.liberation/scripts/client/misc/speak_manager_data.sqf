@@ -33,6 +33,12 @@ speak_civil_AI = {
 	if (_unit getVariable ["GRLIB_A3W_Mission_HC1", false]) exitWith {[_unit] call speak_mission_heal_doctor};
 	if (_unit getVariable ["GRLIB_A3W_Mission_HC2", false]) exitWith {[_unit] call speak_mission_heal_wounded};
 	if (damage _unit > 0.15) exitWith {[_unit] call speak_heal_civ};
+	// transport
+	//	if (_unit getVariable ["GRLIB_Mission_CIV01", false]) exitWith {[_unit] call speak_mission_civ01};
+	// need ammo
+	//	if (_unit getVariable ["GRLIB_Mission_CIV02", false]) exitWith {[_unit] call speak_mission_civ02};
+	// need fuel
+	//	if (_unit getVariable ["GRLIB_Mission_CIV03", false]) exitWith {[_unit] call speak_mission_civ03};
 
 	player globalChat localize "STR_SPEAKMANAGER1";
 	sleep 2;
@@ -303,4 +309,16 @@ speak_mission_heal_wounded = {
 	[_unit, player, 20] remoteExec ["a3w_follow_player", 2];
 	sleep 4;
 	_unit globalChat "Where are the Doctors ??";
+};
+
+// Civilian Transport
+speak_mission_civ01 = {
+};
+
+// Civilian need ammo
+speak_mission_civ02 = {
+};
+
+// Civilian need fuel
+speak_mission_civ03 = {
 };
