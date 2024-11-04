@@ -39,7 +39,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 	saveProfileNamespace;
 } else {
 	buildings_to_save = [];
-	private _all_buildings = [GRLIB_vehicle_huron];
+	private _all_buildings = [];
 	{
 		_fobpos = _x;
 		_nextbuildings = _fobpos nearObjects (GRLIB_fob_range * 2) select {
@@ -84,6 +84,9 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 				};
 				if (_owner == "") exitWith {
 					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
+				};
+				if (_owner == "lrx") exitWith {
+					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
 				};
 				if (_owner in _keep_score_id) then {
 					if (_nextclass in GRLIB_vehicles_light) then {

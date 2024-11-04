@@ -230,7 +230,7 @@ addMissionEventHandler ["Draw3D",{
 		private _near_outpost = ([_sign, "OUTPOST", 30] call F_check_near);
 		if (_near_outpost) then { _type = "Outpost" };
 		private _name = "- LRX";
-		if (_gid != "") then {
+		if (_gid != "lrx") then {
 			_name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 5;
 		};
 		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- %1 %2 -", _type, _name], 2, 0.07, "RobotoCondensed", "center"];

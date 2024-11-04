@@ -11,7 +11,7 @@ while { true } do {
 		_huron = huron_typename createVehicle (getPosATL huronspawn);
 		_huron allowdamage false;
 		_huron addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_huron setVariable ["GRLIB_vehicle_owner", "public", true];
+		_huron setVariable ["GRLIB_vehicle_owner", "lrx", true];
 		_huron setDir (getDir huronspawn);
 		_huron setPosATL (getPosATL huronspawn);
 		sleep 1;
