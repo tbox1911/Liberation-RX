@@ -7,6 +7,7 @@ if (!alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit > 1) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
+if (round (getPosATL _unit select 2) > 2) exitWith {};
 
 private ["_spawnpos", "_curalt", "_maxalt", "_maxpos" ];
 _spawnpos = getPosASL _unit;
