@@ -24,6 +24,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 	_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 	sleep 1;
 	_unit allowDamage true;
+	if (floor random 100 >= 70) then { _unit setDamage 0.30 };	
 } foreach _class_civ;
 
 _grp setCombatMode "BLUE";
