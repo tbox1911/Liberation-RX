@@ -23,7 +23,7 @@ private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] ca
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 	_x setVariable ["GRLIB_battlegroup", true];
-} foreach (crew _troup_transport);
+} foreach (units _troup_group);
 (units _troup_group) allowGetIn true;
 (units _troup_group) orderGetIn true;
 sleep 1;
@@ -40,7 +40,7 @@ _waypoint setWaypointCompletionRadius 100;
 {_x doFollow (leader _transport_group)} foreach units _transport_group;
 
 waitUntil { sleep 1;
-	!(alive _troup_transport) || (damage _troup_transport > 0.2) || (_troup_transport distance2D _objective_pos < 300)
+	!(alive _troup_transport) || (damage _troup_transport > 0.2) || (_troup_transport distance2D _objective_pos < 250)
 };
 
 // Board out

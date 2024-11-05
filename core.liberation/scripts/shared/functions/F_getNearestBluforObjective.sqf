@@ -19,7 +19,11 @@ if (count GRLIB_all_fobs > 0 || count blufor_sectors > 0) then {
 	{
 		_sector_pos = _x;
 		_sector_dist = _startpos distance2D _sector_pos;
-		if (_sector_dist < _refdistance) then {
+		_is_water = false;
+		if (_check_water) then {
+			_is_water = [_startpos, _sector_pos] call F_isWaterBetween;
+		};
+		if (_sector_dist < _refdistance && !_is_water) then {
 			_refdistance = round _sector_dist;
 			_currentnearest = [_sector_pos, _refdistance];
 		};

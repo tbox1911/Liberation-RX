@@ -14,20 +14,16 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 	};
 
 	_countplayers = count (AllPlayers - (entities "HeadlessClient_F"));
-	if ((opforcap < GRLIB_battlegroup_cap) && (combat_readiness >= 75) && (diag_fps > 30.0) && _countplayers > 1) then {
-		private _hc = [] call F_lessLoadedHC;
-		if (isNull _hc) then {
-			diag_log format ["Spawn Random BattleGroup at %1", time];
-			[] spawn spawn_battlegroup;
-		} else {
-			diag_log format ["Spawn Random BattleGroup at %1 on %2", time, _hc];
-			[] remoteExec ["spawn_battlegroup", owner _hc];
-		};
+	if (((opforcap + 15) < GRLIB_battlegroup_cap) && (combat_readiness >= 75) && (diag_fps > 30.0) && _countplayers > 1) then {
+		diag_log format ["Spawn Random BattleGroup at %1", time];
+		[] spawn spawn_battlegroup;
 		stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
+		sleep 60;
 	};
 
 	private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
 	if (count _pilots > 0 ) then {
 		[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
+		sleep 60;		
 	};
 };
