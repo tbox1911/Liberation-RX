@@ -543,6 +543,7 @@ military_alphabet = ["Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","
 opfor_squad_low_intensity = [
 	opfor_squad_leader,
 	opfor_medic,
+	opfor_engineer,
 	opfor_rpg,
 	opfor_marksman,
 	opfor_rifleman,
@@ -553,6 +554,7 @@ opfor_squad_low_intensity = [
 opfor_squad_8_standard = [
 	opfor_squad_leader,
 	opfor_medic,
+	opfor_engineer,
 	opfor_machinegunner,
 	opfor_rpg,
 	opfor_heavygunner,
@@ -563,6 +565,7 @@ opfor_squad_8_standard = [
 opfor_squad_8_infkillers = [
 	opfor_squad_leader,
 	opfor_medic,
+	opfor_engineer	
 	opfor_machinegunner,
 	opfor_heavygunner,
 	opfor_marksman,
@@ -575,6 +578,7 @@ opfor_squad_8_infkillers = [
 opfor_squad_8_tankkillers = [
 	opfor_squad_leader,
 	opfor_medic,
+	opfor_engineer,
 	opfor_machinegunner,
 	opfor_rpg,
 	opfor_rpg,
@@ -585,6 +589,7 @@ opfor_squad_8_tankkillers = [
 opfor_squad_8_airkillers = [
 	opfor_squad_leader,
 	opfor_medic,
+	opfor_engineer,
 	opfor_machinegunner,
 	opfor_rpg,
 	opfor_aa,
