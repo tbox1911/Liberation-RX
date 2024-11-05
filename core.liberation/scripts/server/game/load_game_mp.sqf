@@ -332,8 +332,8 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 
 		if ( _owner != "" ) then {
-			if (_owner == "public") then {
-				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
+			if (_owner == "lrx") then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", "lrx", true];
 				if ( _nextclass == huron_typename ) then { GRLIB_vehicle_huron = _nextbuilding };
 			} else {
 				[_nextbuilding, "lock", _owner] call F_vehicleLock;

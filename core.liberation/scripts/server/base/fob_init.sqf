@@ -47,7 +47,9 @@ _sign setPosASL _sign_pos;
 _sign enableSimulationGlobal false;
 _sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
 _sign setVariable ["GRLIB_fob_type", _fob_class, true];
-if (count GRLIB_all_fobs > 0) then {
+if (count GRLIB_all_fobs == 0) then {
+	_sign setVariable ["GRLIB_vehicle_owner", "lrx", true];
+} else {
 	_sign setVariable ["GRLIB_vehicle_owner", _owner, true];
 };
 

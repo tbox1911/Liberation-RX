@@ -23,6 +23,9 @@ private _list = [];
 	// sector too far from any blufor sectors
 	if (([GRLIB_spawn_min, _sector_pos, blufor_sectors] call F_getNearestSector) == "") then { _keep_sector = false };
 
+	// sector too close from any opfor sectors
+	if (([GRLIB_sector_size, _sector_pos, opfor_sectors] call F_getNearestSector) != "") then { _keep_sector = false };
+
 	if (_keep_sector) then { _list pushBack _x };
 
 } forEach _markers;
