@@ -565,7 +565,7 @@ opfor_squad_8_standard = [
 opfor_squad_8_infkillers = [
 	opfor_squad_leader,
 	opfor_medic,
-	opfor_engineer	
+	opfor_engineer,
 	opfor_machinegunner,
 	opfor_heavygunner,
 	opfor_marksman,
