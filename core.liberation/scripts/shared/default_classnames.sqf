@@ -57,6 +57,7 @@ repair_offroad = "C_Offroad_01_repair_F";
 commander_classname = "B_officer_F";
 crewman_classname = "B_crew_F";
 pilot_classname = "B_Helipilot_F";
+PAR_grave_box_typename = "Land_PlasticCase_01_small_black_F";
 PAR_Medikit = "Medikit";
 PAR_AidKit = "FirstAidKit";
 basic_weapon_typename = "Box_East_Wps_F";

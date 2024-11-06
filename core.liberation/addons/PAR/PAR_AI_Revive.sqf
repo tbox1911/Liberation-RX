@@ -61,7 +61,9 @@ PAR_graves = [
 	"Land_Grave_dirt_F"
 ];
 
-PAR_grave_box_typename = "Land_PlasticCase_01_small_black_F";
+// PAR_grave_box_typename = "Land_PlasticCase_01_small_black_F";
+// PAR_Medikit = "Medikit";
+// PAR_AidKit = "FirstAidKit";
 
 // Grave Box
 PAR_grave_box = createVehicle [PAR_grave_box_typename, ([] call F_getFreePos), [], 0, "NONE"];
