@@ -509,8 +509,15 @@ while { true } do {
 			};
 
 			// Storage
-			if (_classname in [storage_medium_typename,storage_large_typename]) then {
+			if (_classname == storage_medium_typename) then {
 				_vehicle setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
+				private _drop_zone_dir = (getdir _vehicle);
+				private _drop_zone_pos = (getposATL _vehicle) vectorAdd ([[0, -5, 0], -_drop_zone_dir] call BIS_fnc_rotateVector2D);
+				private _drop_zone = createVehicle ["VR_Area_01_square_2x2_yellow_F", ([] call F_getFreePos), [], 0, "NONE"];
+				_drop_zone_pos set [2, 0.02];
+				_drop_zone setDir _drop_zone_dir;
+				_drop_zone setPosATL _drop_zone_pos;
+				_drop_zone setVectorDirAndUp [[-cos _drop_zone_dir, sin _drop_zone_dir, 0] vectorCrossProduct surfaceNormal _drop_zone_pos, surfaceNormal _drop_zone_pos];
 				_allow_damage = false;
 			};
 

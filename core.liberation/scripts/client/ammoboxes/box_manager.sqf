@@ -9,7 +9,7 @@ GRLIB_checkAction_UnloadBox = {
 	params ["_target", "_unit"];
     private _owned = (([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2);
     private _loaded = (count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 0);
-    if (typeOf _target in [storage_medium_typename,storage_large_typename]) then { _owned = true };
+    if (typeOf _target == storage_medium_typename) then { _owned = true };
 	(GRLIB_player_is_menuok && alive _target && isNil "GRLIB_load_box" && _owned && _loaded && isNull (_target getVariable ['R3F_LOG_remorque', objNull]))
 };
 
@@ -17,7 +17,7 @@ GRLIB_checkAction_UnloadLastBox = {
 	params ["_target", "_unit"];
     private _owned = (([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2);
     private _loaded = (count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 1);
-    if (typeOf _target in [storage_medium_typename,storage_large_typename]) then { _owned = true };
+    if (typeOf _target == storage_medium_typename) then { _owned = true };
 	(GRLIB_player_is_menuok && alive _target && isNil "GRLIB_load_box" && _owned && _loaded && isNull (_target getVariable ['R3F_LOG_remorque', objNull]))
 };
 
@@ -29,7 +29,7 @@ while { true } do {
     _neartransport = (nearestObjects [player, transport_vehicles, _searchradius]) select {
         alive _x && speed vehicle _x < 5 &&
         ((getpos _x) select 2) < 5 &&
-        ([player, _x] call is_owner || [_x] call is_public || typeOf _x in [storage_medium_typename,storage_large_typename]) &&
+        ([player, _x] call is_owner || [_x] call is_public || typeOf _x == storage_medium_typename) &&
         !(_x getVariable ['R3F_LOG_disabled', false]) &&
         isNil {_x getVariable "GRLIB_vehicle_transport"}
     };

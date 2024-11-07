@@ -74,6 +74,12 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in al
 		[player] call F_correctUAVT;
 	};
 
+	if (_veh_class == storage_medium_typename) then {
+		{
+			deleteVehicle _x;
+		} forEach ((nearestObjects [getPos _vehicle, ["VR_Area_01_square_2x2_yellow_F"], 20]));
+	};
+
 	stats_vehicles_recycled = stats_vehicles_recycled + 1;
 	publicVariable "stats_vehicles_recycled";
 };

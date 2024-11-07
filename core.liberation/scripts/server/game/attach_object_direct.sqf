@@ -42,7 +42,7 @@ if ( count _truck_load < _maxload ) then {
 	};
 
 	// Storage
-	if (typeOf _truck in [storage_medium_typename,storage_large_typename]) then {
+	if (typeOf _truck == storage_medium_typename) then {
 		_object setVariable ["GRLIB_vehicle_owner", "", true];
 	};
 

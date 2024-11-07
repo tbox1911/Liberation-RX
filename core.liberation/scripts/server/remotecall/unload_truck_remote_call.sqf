@@ -23,12 +23,13 @@ if (_mode == "one") then {
 	reverse _all_objects;
 };
 
+private _ingore_collision = ["VR_Area_01_square_2x2_yellow_F"];
 private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 {
 	_next_box = _x;
 	if (!isNull _next_box) then {
 		_next_pos = _truck getPos [_offset, getdir _truck];
-		_obstacle = (nearestObjects [_next_pos, ["All"], 3]) - _all_objects - [player];
+		_obstacle = ((nearestObjects [_next_pos, ["All"], 3]) - _all_objects - [player]) select { !(typeOf _x in _ingore_collision) };
 		if (count _obstacle == 0) then {
 			_next_box allowDamage false;
 			_next_box enableSimulationGlobal false;

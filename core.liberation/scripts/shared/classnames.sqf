@@ -201,10 +201,10 @@ support_vehicles = support_vehicles + [
 	[Respawn_truck_typename,10,750,15,GRLIB_perm_log],
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
 	[medic_heal_typename,0,100,0,GRLIB_perm_log],
+	[Warehouse_typename,0,0,0,GRLIB_perm_inf],
 	["Land_RepairDepot_01_civ_F",0,300,0,GRLIB_perm_log],
 	["Land_fs_feed_F",0,200,50,GRLIB_perm_tank],
 	[storage_medium_typename,0,0,50,GRLIB_perm_inf],
-	[storage_large_typename,0,0,100,GRLIB_perm_log],
 	[repair_sling_typename,0,200,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
 	[ammo_sling_typename,0,400,0,GRLIB_perm_log],
@@ -254,8 +254,7 @@ opfor_troup_transports_truck = opfor_troup_transports_truck + [opfor_transport_t
 // *** BUILDINGS ***
 buildings = [
 	[FOB_sign,0,0,0,GRLIB_perm_hidden],
-	[helipad_typename,0,0,0,0],
-	[Warehouse_typename,0,0,0,GRLIB_perm_inf]
+	[helipad_typename,0,0,0,0]
 ];
 if (isNil "buildings_west_overide") then {
 	buildings append buildings_default + buildings_west;
@@ -489,8 +488,7 @@ GRLIB_vehicle_blacklist = [
 	medicalbox_typename,
 	land_cutter_typename,
 	basic_weapon_typename,
-	storage_medium_typename,
-	storage_large_typename
+	storage_medium_typename
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects

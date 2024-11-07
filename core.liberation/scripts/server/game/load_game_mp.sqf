@@ -270,8 +270,15 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			_nextbuilding setAmmoCargo 0;
 		};
 
-		if ( _nextclass in [storage_medium_typename,storage_large_typename] ) then {
+		if ( _nextclass == storage_medium_typename ) then {
 			{[_nextbuilding, _x] call attach_object_direct} forEach (_x select 5);
+			private _drop_zone_dir = (getdir _nextbuilding);
+			private _drop_zone_pos = (getposATL _nextbuilding) vectorAdd ([[0, -5, 0], -_drop_zone_dir] call BIS_fnc_rotateVector2D);
+			private _drop_zone = createVehicle ["VR_Area_01_square_2x2_yellow_F", ([] call F_getFreePos), [], 0, "NONE"];
+			_drop_zone_pos set [2, 0.02];
+			_drop_zone setDir _drop_zone_dir;
+			_drop_zone setPosATL _drop_zone_pos;
+			_drop_zone setVectorDirAndUp [[-cos _drop_zone_dir, sin _drop_zone_dir, 0] vectorCrossProduct surfaceNormal _drop_zone_pos, surfaceNormal _drop_zone_pos];
 		};
 
 		if ( _owner != "" ) then {
@@ -402,7 +409,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			Warehouse_typename,
 			playerbox_typename,
 			storage_medium_typename,
-			storage_large_typename,
 			"Land_PortableHelipadLight_01_F"
 		];
 		{

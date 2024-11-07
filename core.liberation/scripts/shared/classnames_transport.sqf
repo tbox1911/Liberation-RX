@@ -40,7 +40,7 @@ box_transport_offset = box_transport_offset + [
 
 // Storage
 box_transport_config = box_transport_config + [
-	[storage_medium_typename, -5,
+	["ContainmentArea_02_black_F", -5,
         [-2.34961,1.80078,0.6],
         [-0.75,1.80078,0.6],
         [0.850586,1.80078,0.6],
@@ -54,7 +54,7 @@ box_transport_config = box_transport_config + [
         [0.850586,-1.79883,0.6],
         [2.4502,-1.79883,0.6]
     ],
-	[storage_large_typename, -5,
+	["ContainmentArea_01_black_F", -5,
 		[-5.59961,3.60938,0.6],
 		[-3.99902,3.60938,0.6],
 		[-2.39941,3.60938,0.6],

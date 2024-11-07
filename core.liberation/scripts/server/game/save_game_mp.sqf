@@ -95,7 +95,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, [_x, true] call F_getCargo ];
 							_default = false;
 						};
-						if (_nextclass in [storage_medium_typename,storage_large_typename]) then {
+						if (_nextclass == storage_medium_typename) then {
 							private	_lst_grl = [];
 							{_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
 							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_grl ];

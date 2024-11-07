@@ -39,6 +39,7 @@ if (count squads == 0) then {
 };
 
 private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
+private _near_warehouse = ([player, "WAREHOUSE", GRLIB_fob_range, false] call F_check_near);
 private _water_fob = surfaceIsWater ([] call F_getNearestFob);
 private _squad_leader = (player == leader group player);
 private _has_box = false;
@@ -164,16 +165,11 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 					};
 					if (!(player getVariable ["GRLIB_squad_context_loaded", false])) then {
 						_affordable = false;
-					};					
+					};
 				};
 			};
 
 			if ( buildtype == 6 ) then {
-				if (_build_class == Warehouse_typename) then {
-					if ([player, "WAREHOUSE", GRLIB_fob_range, false] call F_check_near) then {
-						_affordable = false;
-					};
-				};
 			};
 
 			if ( buildtype == 7 ) then {
@@ -183,7 +179,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 					};
 					if (GRLIB_allow_redeploy == 0) then {
 						_affordable = false;
-					};				
+					};
 				};
 				if (_build_class == playerbox_typename && _has_box) then {
 					_affordable = false;
@@ -192,6 +188,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 					_affordable = false;
 				};
 				if (_build_class == FOB_boat_typename && GRLIB_naval_type == 0) then {
+					_affordable = false;
+				};
+				if (_build_class == Warehouse_typename && _near_warehouse) then {
 					_affordable = false;
 				};
 			};
