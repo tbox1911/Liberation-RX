@@ -25,14 +25,13 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	_usable_sectors = [];
 	_all_players = (AllPlayers - (entities "HeadlessClient_F"));
 	{
-		if ( (count ([markerPos  _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos  _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0) ) then {
+		if ( (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0) ) then {
 			_usable_sectors pushback _x;
 		};
 		sleep 0.1;
-
 	} foreach (sectors_allSectors - active_sectors);
 
-	if ( count _usable_sectors > 0 ) then {
+	if (count _usable_sectors > 0) then {
 		_sector_pos = markerPos (selectRandom _usable_sectors);
 		// 50% in vehicles
 		if ( floor random 100 > 50 && count militia_vehicles > 0 ) then {
@@ -68,7 +67,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };	
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 		[_opfor_veh] spawn cleanMissionVehicles;
 		{ deleteVehicle _x } forEach (units _opfor_grp);
 		deleteGroup _opfor_grp;
