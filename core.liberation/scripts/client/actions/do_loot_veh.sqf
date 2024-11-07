@@ -1,6 +1,7 @@
 params ["_target", "_caller", "_actionId", "_arguments"];
 if (isNil "_target") exitWith {};
 
+private _radius = 30;
 {
 	// All items
 	private _items = (itemCargo _x);
@@ -26,4 +27,4 @@ if (isNil "_target") exitWith {};
 
 	deleteVehicle _x;
 	sleep 0.1;
-} forEach (nearestObjects [_target, ["GroundWeaponHolder", "WeaponHolderSimulated"], 10]);
+} forEach (nearestObjects [_target, ["GroundWeaponHolder", "WeaponHolderSimulated"], _radius]);
