@@ -32,5 +32,5 @@ private _quick_delete = ["Land_MedicalTent_01_base_F", "CargoNet_01_base_F", "Sh
 	};
 } foreach all_buildings_classnames + fob_buildings_classnames;
 
-GRLIB_no_kill_handler_classnames = [FOB_typename, FOB_outpost, FOB_carrier] + all_buildings_classnames + fob_buildings_classnames;
+GRLIB_no_kill_handler_classnames = [FOB_typename, FOB_outpost, FOB_carrier, Warehouse_typename] + all_buildings_classnames + fob_buildings_classnames;
 GRLIB_explo_delete = [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename];
