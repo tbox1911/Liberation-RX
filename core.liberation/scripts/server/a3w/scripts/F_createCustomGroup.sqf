@@ -4,7 +4,7 @@ params [
 	["_nbUnits", 7],
 	["_type", "infantry"],
 	["_patrol", true],
-	["_radius", 100]
+	["_radius", 50]
 ];
 
 
