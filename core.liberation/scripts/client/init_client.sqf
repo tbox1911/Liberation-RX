@@ -235,6 +235,7 @@ addMissionEventHandler ["Draw3D",{
 		};
 		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- %1 %2 -", _type, _name], 2, 0.07, "RobotoCondensed", "center"];
 	};
+
 	private _near_box = nearestObjects [player, [playerbox_typename], 2];
 	if (count (_near_box) > 0) then {
 		private _box = _near_box select 0;
@@ -242,6 +243,13 @@ addMissionEventHandler ["Draw3D",{
 		private _gid = _box getVariable ["GRLIB_vehicle_owner", ""];
 		private _name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 5;
 		drawIcon3D ["", [1,1,1,1], _box_pos vectorAdd [0, 0, 1], 2, 2, 0, format ["- %1 Personal Box -", _name], 2, 0.05, "RobotoCondensed", "center"];
+	};
+
+	private _near_storage = nearestObjects [player, ["VR_Area_01_square_2x2_yellow_F"], 2];
+	if (count (_near_storage) > 0) then {
+		private _storage = _near_storage select 0;
+		private _storage_pos = ASLToAGL getPosASL _storage;
+		drawIcon3D ["", [1,1,1,1], _storage_pos vectorAdd [0, 0, 1], 2, 2, 0, "Use LOAD / UNLOAD Action", 2, 0.05, "RobotoCondensed", "center"];
 	};
 }];
 
