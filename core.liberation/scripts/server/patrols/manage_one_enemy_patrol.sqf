@@ -2,7 +2,6 @@ params ["_readiness"];
 
 private [
 	"_usable_sectors",
-	"_all_players",
 	"_sector",
 	"_player_nearby",
 	"_dist",
@@ -23,13 +22,13 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	_opfor_veh = objNull;
 	_opfor_grp = grpNull;
 	_usable_sectors = [];
-	_all_players = (AllPlayers - (entities "HeadlessClient_F"));
 	{
 		if ( (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0) ) then {
 			_usable_sectors pushback _x;
 		};
 		sleep 0.1;
-	} foreach (sectors_allSectors - active_sectors);
+	} foreach (sectors_allSectors + sectors_opforSpawn - active_sectors);
+	{ _usable_sectors pushBack (_x select 0) } forEach SpawnMissionMarkers;
 
 	if (count _usable_sectors > 0) then {
 		_sector_pos = markerPos (selectRandom _usable_sectors);
