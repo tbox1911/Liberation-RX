@@ -5,7 +5,7 @@ params ["_unit"];
 
 if (!alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
-if (speed vehicle _unit > 1) exitWith {};
+if (speed vehicle _unit >= 3) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
 if (round (getPosATL _unit select 2) > 2) exitWith {};
 
@@ -39,8 +39,8 @@ while { (lineIntersects [_spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 
 _unit allowDamage false;
 _unit setPosASL _spawnpos;
-_unit switchMove "AmovPercMwlkSrasWrflDf";
-_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-sleep 3;
+//_unit switchMove "AmovPercMwlkSrasWrflDf";
+//_unit playMoveNow "AmovPercMwlkSrasWrflDf";
+sleep 1;
 _unit setHitPointDamage ["hitLegs", 0];
 _unit allowDamage true;

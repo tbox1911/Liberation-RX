@@ -63,6 +63,7 @@ private ["_unit", "_pos", "_backpack"];
 		};
 
 		if !(_type in ["divers", "para", "building"]) then {
+			[_unit] call F_fixPosUnit;
 			_unit switchMove "AmovPercMwlkSnonWnonDf";
 			_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 		};
