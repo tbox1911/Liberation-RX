@@ -1,5 +1,5 @@
 // thanks to soldierXXXX
-params ["_start", "_end", ["_precision", 0.05]];
+params ["_start", "_end", ["_precision", 0.01]];
 
 private ["_pos"];
 private _ret = false;
