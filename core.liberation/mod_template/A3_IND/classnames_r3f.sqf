@@ -29,18 +29,14 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	["I_UAV_01_F", 3],
 	["I_UAV_06_F", 3],
-	["I_UAV_02_dynamicLoadout_F", 5],
-	["I_T_UAV_03_dynamicLoadout_F", 5],
-	["I_UAV_05_F", 30]
+	["I_UAV_02_dynamicLoadout_F", 5]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
 	"I_UAV_01_F",
 	"I_UAV_06_F",
-	"I_UAV_02_dynamicLoadout_F",
-	"I_T_UAV_03_dynamicLoadout_F",
-	"I_UAV_05_F"
+	"I_UAV_02_dynamicLoadout_F"
 ];
 
 //--------------- Ground ---------------
@@ -119,7 +115,6 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["I_Static_Designator_01_F",3],
 	["I_HMG_01_F",5],
 	["I_HMG_01_high_F",5],
 	["I_GMG_01_F",5],

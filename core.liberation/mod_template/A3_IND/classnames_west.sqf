@@ -12,7 +12,7 @@ FOB_truck_typename = "B_Truck_01_box_F";
 Respawn_truck_typename = "I_Truck_02_medical_F";
 ammo_truck_typename = "I_Truck_02_ammo_F";
 fuel_truck_typename = "I_Truck_02_fuel_F";
-repair_truck_typename = "I_Truck_02_Repair_F";
+repair_truck_typename = "B_Truck_01_Repair_F";
 repair_sling_typename = "B_Slingload_01_Repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
@@ -62,8 +62,6 @@ light_vehicles = [
 	["I_LT_01_cannon_F",2,200,12,GRLIB_perm_log],
 	["I_LT_01_AT_F",2,200,12,GRLIB_perm_tank],
 	["I_LT_01_AA_F",2,200,12,GRLIB_perm_air],
-	["I_LSV_01_unarmed_F",2,25,10,GRLIB_perm_inf],
-	["I_LSV_01_armed_F",5,100,10,GRLIB_perm_log],
 	["I_UGV_01_F",5,10,5,GRLIB_perm_inf],
 	["I_UGV_01_rcws_F",5,250,5,GRLIB_perm_log]
 ];
@@ -72,8 +70,7 @@ heavy_vehicles = [
 	["I_E_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_log],
 	["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	["I_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_tank],
-	["I_MBT_01_cannon_F",15,1000,25,GRLIB_perm_tank],
-	["I_MBT_03_cannon_F",15,3500,25,GRLIB_perm_max],
+	["I_MBT_03_cannon_F",15,1000,25,GRLIB_perm_tank],
 	["I_Truck_02_MRL_F",15,4000,25,GRLIB_perm_max]
 ];
 
@@ -81,8 +78,6 @@ air_vehicles = [
 	["I_UAV_01_F",1,10,5,GRLIB_perm_log],
 	["I_UAV_06_F",1,30,5,GRLIB_perm_tank],
 	["I_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
-	["I_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
-	["I_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["I_Heli_light_03_unarmed_F",1,50,15,GRLIB_perm_tank],
 	["I_Heli_light_03_dynamicLoadout_F",1,150,15,GRLIB_perm_air],
@@ -105,7 +100,6 @@ blufor_air = [
 
 static_vehicles = [
 	["I_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
-	["I_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
 	["I_HMG_01_F",0,10,0,GRLIB_perm_log],
 	["I_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
 	["I_GMG_01_F",0,20,0,GRLIB_perm_log],
