@@ -9,7 +9,7 @@ private [
 ];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
-	sleep (30 + floor(random 150));
+	sleep (30 + (floor random 150));
 	while { civcap > GRLIB_civilians_amount || (diag_fps < 20) } do {
 		sleep 60;
 	};

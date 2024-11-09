@@ -14,7 +14,7 @@ private [
 ];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
-	sleep (300 + floor(random 300));
+	sleep (60 + (floor random 120));
 	while { opforcap > GRLIB_patrol_cap || (diag_fps < 35.0) || combat_readiness < _readiness } do {
 		sleep 60;
 	};
@@ -33,7 +33,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	if (count _usable_sectors > 0) then {
 		_sector_pos = markerPos (selectRandom _usable_sectors);
 		// 50% in vehicles
-		if ( floor random 100 > 50 && count militia_vehicles > 0 ) then {
+		if (floor random 100 > 50 && count militia_vehicles > 0) then {
 			_opfor_veh = [_sector_pos, (selectRandom militia_vehicles)] call F_libSpawnVehicle;
 			if !(isNull _opfor_veh) then {
 				_opfor_grp = group (driver _opfor_veh);
@@ -41,9 +41,10 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach (units _opfor_grp);
 			};
 		} else {
-			_opfor_grp = [_sector_pos, (6 + floor random 6), "militia"] call createCustomGroup;
+			_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", true, 200] call createCustomGroup;
 		};
 
+		diag_log format ["--- LRX Spawn Enemy Patrol %1 (veh %2) - trigger alert %3", _opfor_grp, typeOf _opfor_veh, _readiness];
 		private _hc = [] call F_lessLoadedHC;
 		if (!isNull _hc) then {
 			_opfor_grp setGroupOwner (owner _hc);
