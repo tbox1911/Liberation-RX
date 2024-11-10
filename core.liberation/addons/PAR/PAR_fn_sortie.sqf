@@ -3,8 +3,6 @@ params ["_wnded", "_medic"];
 if (isDedicated) exitWith {};
 if !(local _wnded) exitWith { [_wnded, _medic] remoteExec ["PAR_remote_sortie", 2] };
 
-private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
-if (local _medic && (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 if (lifeState _wnded != "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 if (!isPlayer _medic) then {
@@ -19,7 +17,7 @@ if (!isPlayer _medic) then {
 	} else {
 		_medic switchMove "AinvPknlMstpSlayWrflDnon_medicOther";
 		_medic playMoveNow "AinvPknlMstpSlayWrflDnon_medicOther";
-	};	
+	};
 	[_wnded] call PAR_spawn_gargbage;
 	_cnt = 6;
 	while { _cnt > 0 && (_wnded getVariable ["PAR_myMedic", objNull] == _medic) } do {
@@ -27,8 +25,7 @@ if (!isPlayer _medic) then {
 		_cnt = _cnt -1
 	};
 };
-private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
-if (local _medic && (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
+
 if (lifeState _medic == "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 // Revived
@@ -67,7 +64,7 @@ if (_wnded == player) then {
 	};
 } else {
 	_wnded setSpeedMode (speedMode group player);
-	_wnded doFollow player;	
+	_wnded doFollow player;
 };
 
 [_wnded] spawn {
