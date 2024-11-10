@@ -15,8 +15,6 @@ _unit allowDamage false;
 _unit setVariable ["PAR_isUnconscious", true, true];
 _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 _unit setVariable ["PAR_busy", nil];
-_unit setVariable ["PAR_heal", nil];
-_unit setVariable ["PAR_healed", nil];
 _unit setVariable ["PAR_myMedic", nil];
 _unit setVariable ["PAR_isDragged", 0, true];
 
