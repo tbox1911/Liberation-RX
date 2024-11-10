@@ -44,7 +44,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", true, 200] call createCustomGroup;
 		};
 
-		diag_log format ["--- LRX Spawn Enemy Patrol %1 (veh %2) - trigger alert %3", _opfor_grp, typeOf _opfor_veh, _readiness];
+		diag_log format ["--- LRX Spawn Enemy Patrol %1 (%2) - trigger alert %3", _opfor_grp, typeOf _opfor_veh, _readiness];
 		private _hc = [] call F_lessLoadedHC;
 		if (!isNull _hc) then {
 			_opfor_grp setGroupOwner (owner _hc);
