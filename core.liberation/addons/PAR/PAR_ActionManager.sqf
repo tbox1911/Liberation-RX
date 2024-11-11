@@ -36,18 +36,17 @@ while {true} do {
 				"(alive _target && _caller distance _target < 3)",
 				{
 					[(_target getVariable ["PAR_myMedic", objNull]), _target] call PAR_fn_medicRelease;
-					if (local _caller) then { _target setVariable ["PAR_myMedic", _caller] };
 					private _msg = format [localize "STR_PAR_ST_01", name _caller, name _target];
 					[_target, _msg] remoteExec ["PAR_fn_globalchat", 0];
 					private _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
 					_target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_bleedout_extra, true];
 					[_target] call PAR_spawn_gargbage;
 					if (stance _caller == "PRONE") then {
-					_caller switchMove 'ainvppnemstpslaywrfldnon_medicother';
-					_caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
+						_caller switchMove 'ainvppnemstpslaywrfldnon_medicother';
+						_caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
 					} else {
-					_caller switchMove 'ainvpknlmstpslaywrfldnon_medicother';
-					_caller playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
+						_caller switchMove 'ainvpknlmstpslaywrfldnon_medicother';
+						_caller playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 					};
 				},
 				{},
