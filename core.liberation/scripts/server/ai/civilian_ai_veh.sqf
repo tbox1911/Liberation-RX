@@ -30,7 +30,10 @@ private _vehicle_damage = 0;
 private _countVehDamage = {
 	params ["_vehicle"];
 	private _damage = 0;
-	private _hitpoints = (getAllHitPointsDamage _vehicle select 2);
+	if (isNull _vehicle) exitWith { _damage };
+	private _hitpoints_veh = getAllHitPointsDamage _vehicle;
+	if (count _hitpoints_veh < 3) exitWith { _damage };
+	private _hitpoints = _hitpoints_veh select 2;
 	if (isNil "_hitpoints") exitWith { _damage };
 	{ _damage = _damage + _x } forEach _hitpoints;
 	_damage;
