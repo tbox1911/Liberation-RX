@@ -79,7 +79,7 @@ private _opfor_vehicles = [];
 );
 
 {
-	if !(_x in _opfor_recyclable) then { diag_log "--- LRX Config Check : vehicle %1 is NOT defined in opfor_recyclable !"};
+	if !(_x in _opfor_recyclable) then { diag_log format ["--- LRX Config Check (%1) : vehicle %2 is NOT defined in opfor_recyclable !", _forEachIndex, _x]};
 } forEach _opfor_vehicles;
 
 // *** SIDES ***

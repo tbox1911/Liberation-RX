@@ -1,7 +1,7 @@
 params [ ["_mission_cost", 0], "_caller" ];
 
-private _spawn_marker = [GRLIB_spawn_min, 99999] call F_findOpforSpawnPoint;
-if ( _spawn_marker == "" ) exitWith { [gamelogic, "Could not find position for search and rescue mission"] remoteExec ["globalChat", 0] };
+private _spawn_marker = [GRLIB_spawn_min, 99999, [], false] call F_findOpforSpawnPoint;
+if (_spawn_marker == "") exitWith { [gamelogic, "Could not find position for search and rescue mission"] remoteExec ["globalChat", 0] };
 GRLIB_secondary_used_positions pushbackUnique _spawn_marker;
 
 diag_log format ["--- LRX: %1 start static mission: SAR at %2", _caller, time];
@@ -9,7 +9,7 @@ resources_intel = resources_intel - _mission_cost;
 GRLIB_secondary_in_progress = 2;
 publicVariable "GRLIB_secondary_in_progress";
 
-[ 6 ] remoteExec ["remote_call_intel", 0];
+[6] remoteExec ["remote_call_intel", 0];
 
 private _helopos = markerpos _spawn_marker;
 private _helowreck = GRLIB_sar_wreck createVehicle _helopos;

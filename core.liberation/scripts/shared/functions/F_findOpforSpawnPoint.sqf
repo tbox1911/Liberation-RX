@@ -1,4 +1,4 @@
-params ["_mindist", "_maxdist", ["_spawn_target", zeropos]];
+params ["_mindist", "_maxdist", ["_spawn_target", []], ["_check_water", true]];
 
 private _all_possible_sectors = sectors_opforSpawn;
 { _all_possible_sectors pushBack (_x select 0) } forEach SpawnMissionMarkers;
@@ -27,10 +27,17 @@ private [ "_current_sector", "_sector_pos", "_accept_current_sector"];
 		_accept_current_sector = false;
 	};
 
-	if !(_spawn_target isEqualTo zeropos) then {
-		_sector_dist = _sector_pos distance2D _spawn_target;
-		if (_sector_dist < _mindist || _sector_dist > _maxdist) then {
-			_accept_current_sector = false;
+	if (_accept_current_sector) then {
+		if (count _spawn_target > 0) then {
+			if (_check_water) then {
+				if ([_sector_pos, _spawn_target] call F_isWaterBetween) then {
+					_accept_current_sector = false;
+				};
+			};
+			_sector_dist = _sector_pos distance2D _spawn_target;
+			if (_sector_dist < _mindist || _sector_dist > _maxdist) then {
+				_accept_current_sector = false;
+			};
 		};
 	};
 
@@ -48,7 +55,7 @@ private [ "_current_sector", "_sector_pos", "_accept_current_sector"];
 
 private _opfor_spawn_point = "";
 if ( count _possible_sectors > 0 ) then {
-	if (_spawn_target isEqualTo zeropos) then {
+	if (count _spawn_target == 0) then {
 		_opfor_spawn_point = selectRandom _possible_sectors;
 	} else {
 		_opfor_spawn_point = ([_possible_sectors, [_spawn_target], {_input0 distance2D (markerPos _x)}, 'ASCEND'] call BIS_fnc_sortBy) select 0;
