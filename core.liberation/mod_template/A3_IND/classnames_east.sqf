@@ -140,11 +140,13 @@ opfor_battlegroup_vehicles_low_intensity = [
 ];
 
 opfor_troup_transports_truck = [
+	opfor_transport_truck,
 	"I_Truck_02_covered_F",
 	"I_Truck_02_transport_F"
 ];
 
 opfor_troup_transports_heli = [
+	opfor_transport_helo,
 	"I_Heli_Transport_02_F",
 	"I_Heli_light_03_unarmed_F"
 ];

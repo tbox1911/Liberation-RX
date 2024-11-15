@@ -135,11 +135,13 @@ opfor_battlegroup_vehicles_low_intensity = [
 
 // used by opfor_battlegroup as transport
 opfor_troup_transports_truck = [
+	opfor_transport_truck,
 	"B_T_Truck_01_transport_F",
 	"B_T_Truck_01_covered_F"
 ];
 
 opfor_troup_transports_heli = [
+	opfor_transport_helo,
 	"B_Heli_Transport_03_F",
 	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_03_F",
