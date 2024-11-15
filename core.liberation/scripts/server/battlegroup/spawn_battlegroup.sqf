@@ -39,11 +39,13 @@ if (_spawn_marker == "") exitWith {
 };
 
 diag_log format ["Spawn BattlegGroup target %1 from %2 at %3", _objective_pos, markerPos _spawn_marker, time];
+
 GRLIB_last_battlegroup_time = time;
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
 private _target_size = round ((GRLIB_battlegroup_size * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
-if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
+private _current_players = count (AllPlayers - (entities "HeadlessClient_F"));
+if ( _current_players <= 2 ) then { _target_size = round (_target_size / 2) };
 if ( _target_size > 10 && GRLIB_csat_aggressivity >= 2 ) then { _target_size = 10 };
 if ( _target_size > 8 && GRLIB_csat_aggressivity < 2 ) then { _target_size = 8 };
 if ( _target_size < 2 ) then { _target_size = 2 };
@@ -52,7 +54,7 @@ if ( _target_size < 2 ) then { _target_size = 2 };
 
 private ["_nextgrp", "_vehicle", "_vehicle_class"];
 private _bg_groups = [];
-for "_i" from 0 to _target_size do {
+for "_i" from 1 to _target_size do {
 	_vehicle_class = selectRandom _vehicle_pool;
 	_vehicle = [markerpos _spawn_marker, _vehicle_class] call F_libSpawnVehicle;
 	_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
@@ -72,8 +74,9 @@ for "_i" from 0 to _target_size do {
 };
 
 private _nb_squad = round ((2 * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
-if ( _nb_squad > 4 ) then { _nb_squad = 4 };
-for "_i" from 0 to _nb_squad do {
+if (_nb_squad > 4) then { _nb_squad = 4 };
+if ( _current_players <= 2 ) then { _nb_squad = round (_nb_squad / 2) };
+for "_i" from 1 to _nb_squad do {
 	if (floor random 2 == 0) then {
 		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 		[_nextgrp, _objective_pos] spawn battlegroup_ai;
@@ -90,7 +93,7 @@ for "_i" from 0 to _nb_squad do {
 };
 
 sleep 15;
-if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 ) then {
+if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 && _current_players >= 3 ) then {
 	if (floor random 2 == 0) then {
 		[_objective_pos, GRLIB_side_enemy, 4] spawn spawn_air;
 	} else {
