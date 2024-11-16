@@ -9,7 +9,7 @@ if (!(_object_class in GRLIB_Ammobox_keep)) then {
 
 // Mobile respawn
 if (_object_class == mobile_respawn) then {
-	[_object, "add"] call mobile_respawn_remote_call;
+	GRLIB_mobile_respawn pushback _object;
 };
 
 // UAVs
