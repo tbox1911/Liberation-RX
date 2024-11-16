@@ -6,27 +6,27 @@ private _offset = [0,0,0];
 
 // Default
 if (_fob_class == "Cargo_HQ_base_F") then {
-	_offset = [5, -6, -0.2];
+	_offset = [5, -6, -0.4];
 	_fob_dir = _fob_dir + 90;
 };
 if (_fob_class == "Land_BagBunker_Tower_F") then {
-	_offset = [4, -4, -0.2];
+	_offset = [4, -4, -0.4];
 	_fob_dir = _fob_dir - 90;
 };
 
 // SoG
 if (_fob_class == "Land_vn_bunker_big_02") then {
-	_offset = [-3, -5, -0.2];
+	_offset = [-3, -5, -0.4];
 	_fob_dir = _fob_dir - 180;
 };
 if (_fob_class == "Land_vn_b_trench_bunker_01_02") then {
-	_offset = [-1.5, -6, -0.2];
+	_offset = [-1.5, -6, -0.4];
 	_fob_dir = _fob_dir + 90;
 };
 
 // SPE
 if (_fob_class == "Land_SPE_House_Thatch_03") then {
-	_offset = [5, -3.5, -0.2];
+	_offset = [5, -3.5, -0.4];
 	_fob_dir = _fob_dir + 90;
 };
 
