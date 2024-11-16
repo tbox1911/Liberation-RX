@@ -10,11 +10,11 @@ if (typeOf _vehicle in uavs_vehicles + static_vehicles_AI) exitWith {
 };
 
 private _vehicle_roles = [];
-if (typeOf _vehicle in list_static_weapons) then {
+if (_vehicle isKindOf "StaticWeapon") then {
 	_vehicle_roles = ["gunner"];
 } else {
 	{
-		if ((_x select 1) in ["driver", "commander", "gunner"]) then { _vehicle_roles pushBackUnique (_x select 1) };
+		if ((_x select 1) in ["driver","commander","gunner"]) then { _vehicle_roles pushBackUnique (_x select 1) };
 	} forEach (fullCrew [_vehicle, "", true]);
 };
 if (count _vehicle_roles == 0) exitWith {[]};
