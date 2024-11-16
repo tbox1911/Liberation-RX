@@ -20,6 +20,8 @@
 //
 // - FilterArsenal = 4    Personal Arsenal - no autofill
 //
+// - FilterArsenal = 5    Whitelist/Blacklist Only - no autofill
+//
 // The Whitelist and Blacklist apply from FilterArsenal = 1 and up
 //
 // customize Arsenal:
@@ -71,13 +73,15 @@ LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blac
 LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
 LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";
 
-if (GRLIB_filter_arsenal in [1,2,3]) then {
+if (GRLIB_filter_arsenal in [1,2,3,5]) then {
 	// LARs Init
 	[] call LARs_fnc_initOverride;
 
-	// Add Mod Items (Weapons,Uniform,etc.)
-	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";
-	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_east.sqf";
+	if (GRLIB_filter_arsenal != 5) then {
+		// Add Mod Items (Weapons,Uniform,etc.)
+		[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";
+		[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_east.sqf";
+	};
 
 	// Dedup list
 	GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;

@@ -183,7 +183,8 @@ LRX_Mission_Params_Def = [
 		localize "STR_LIMIT_ARSENAL_PARAM1",
 		localize "STR_LIMIT_ARSENAL_PARAM2",
 		localize "STR_LIMIT_ARSENAL_PARAM3",
-		localize "STR_LIMIT_ARSENAL_PARAM4"
+		localize "STR_LIMIT_ARSENAL_PARAM4",
+		localize "STR_LIMIT_ARSENAL_PARAM5"
 		]
 	],
 	["Weather", localize "STR_WEATHER_PARAM", [

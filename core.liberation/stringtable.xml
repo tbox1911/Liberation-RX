@@ -5936,6 +5936,9 @@
 			<Chinesesimp>个人武器库</Chinesesimp>
 			<Chinese>个人武器库</Chinese>
 		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_PARAM5">
+			<Original>Whitelist / Blacklist Only</Original>
+		</Key>		
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
 			<Russian>Включить Владение Транспортом</Russian>
