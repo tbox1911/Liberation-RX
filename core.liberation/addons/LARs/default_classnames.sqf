@@ -31,5 +31,13 @@ GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal + _blacklisted_u
 GRLIB_whitelisted_from_arsenal = [
 	mobile_respawn_bag,
 	uavs_terminal_typename,
-	"B_Parachute"
+	"B_Parachute",
+	"arifle_SDAR_F",
+	"20Rnd_556x45_UW_mag",
+	"U_B_Wetsuit",
+	"U_O_Wetsuit",
+	"U_I_Wetsuit",
+	"V_RebreatherB",
+	"V_RebreatherIA",
+	"V_RebreatherIR"
 ] + whitelisted_from_arsenal;
