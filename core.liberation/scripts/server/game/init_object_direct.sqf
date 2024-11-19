@@ -10,6 +10,7 @@ if (!(_object_class in GRLIB_Ammobox_keep)) then {
 // Mobile respawn
 if (_object_class == mobile_respawn) then {
 	GRLIB_mobile_respawn pushback _object;
+	publicVariable "GRLIB_mobile_respawn";
 };
 
 // UAVs

@@ -465,17 +465,7 @@ while { true } do {
 			};
 
 			// A3 / R3F Inventory
-			if ( count _lst_a3 > 0 ) then {
-				[_vehicle, _lst_a3] call F_setCargo;
-			};
-
-			if ( count _lst_r3f > 0 ) then {
-				[_vehicle, _lst_r3f] call load_object_direct;
-			};
-
-			if ( count _lst_grl > 0 ) then {
-				{[_vehicle, _x] call attach_object_direct} forEach _lst_grl;
-			};
+			[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
 
 			// Arsenalbox
 			if ( _classname == Arsenal_typename ) then {
