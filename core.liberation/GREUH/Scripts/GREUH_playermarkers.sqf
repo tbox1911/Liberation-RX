@@ -15,6 +15,7 @@ while { true } do {
 		private _players_markers_bak = [];
 		private _players_list = (units GRLIB_side_friendly + units GRLIB_side_civilian) select {
 			alive _x && isNull objectParent _x &&
+			_x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_capture_size &&
 			(!isNil {_x getVariable "PAR_Grp_ID"} || !isNil {_x getVariable "GRLIB_is_prisoner"})
 		};
 		{
