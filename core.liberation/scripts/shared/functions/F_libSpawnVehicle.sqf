@@ -112,7 +112,7 @@ if ( _side == GRLIB_side_civilian ) then {
 	_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
 	_vehicle lockCargo true;
 	_vehicle lockDriver true;
-	for "_i" from 0 to (_vehicle emptyPositions "Cargo") do { _vehicle lockCargo [_i, true] };
+	{ _vehicle lockTurret [_x, true] } forEach (allTurrets _vehicle);
 	_vehicle setVehicleLock "LOCKED";
 };
 
