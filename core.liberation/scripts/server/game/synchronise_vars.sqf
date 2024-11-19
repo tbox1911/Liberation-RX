@@ -8,7 +8,6 @@ while { true } do {
 	opforcap = { alive _x && local _x && !(captive _x) } count (units GRLIB_side_enemy);
 	civcap = { alive _x && local _x && (isNil {_x getVariable "GRLIB_vehicle_owner"})} count (units GRLIB_side_civilian);
 	opfor_sectors = (sectors_allSectors - blufor_sectors);
-	stats_playtime = stats_playtime + 2;
 
 	publicVariable "unitcap";
 	publicVariable "opforcap";
@@ -18,5 +17,6 @@ while { true } do {
 	publicVariable "combat_readiness";
 	publicVariable "resources_intel";
 	publicVariable "active_sectors";
-	sleep 2;
+	sleep 5;
+	stats_playtime = stats_playtime + 5;	
 };
