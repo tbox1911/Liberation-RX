@@ -54,7 +54,7 @@ _setupObjects = {
 		_plane removeAllEventHandlers "HandleDamage";
 		_plane addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
 		_plane addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-		_plane flyInHeightASL [1500, 1500, 1500];
+		_plane flyInHeight 1500;
 		_plane setVariable ["GRLIB_mission_AI", true, true];
 		_vehicles pushBack _plane;
 		(crew _plane) joinSilent _aiGroup;
