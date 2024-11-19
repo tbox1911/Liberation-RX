@@ -15,8 +15,6 @@ player addAction ["<t color='#FF8000'>-- DUMP FOB TEMPLATE </t> <img size='1' im
 // Extended Options
 player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true];
 
-waituntil {sleep 1; GRLIB_player_configured};
-
 // Juke Box
 player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
 
@@ -48,9 +46,6 @@ player addAction ["<t color='#00F080'>" + localize "STR_BUY_FUEL" + "</t> <img s
 
 // Heal Self
 player addAction ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Heal_ca.paa'/> Heal self", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", "call GRLIB_checkHeal"];
-
-// Take Leadrship
-player addAction ["<t color='#80FF80'>" + localize "STR_TAKE_LEADRSHIP" + "</t> <img size='1' image='" + _icon_grp + "'/>", {(group player) selectLeader player}, [],0,true,true,"", "call GRLIB_checkLeader"];
 
 // Air Drop
 player addAction ["<t color='#00F0F0'>" + localize "STR_AIR_SUPPORT" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true,"","call GRLIB_checkAirDrop"];

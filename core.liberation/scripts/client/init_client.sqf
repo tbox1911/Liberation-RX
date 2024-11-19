@@ -135,13 +135,13 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 // Start intro
 [] spawn compileFinal preprocessFileLineNumbers "scripts\client\ui\intro.sqf";
 
-private _grp = createGroup [GRLIB_side_friendly, true];
+GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 waitUntil {
-	[player] joinSilent _grp;
+	[player] joinSilent GRLIB_player_group;
 	sleep 0.5;
 	(side group player == GRLIB_side_friendly);
 };
-[_grp, "add"] remoteExec ["addel_group_remote_call", 2];
+[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
 // Markers
 GRLIB_MapOpen = false;

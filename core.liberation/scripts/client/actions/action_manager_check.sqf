@@ -53,10 +53,6 @@ GRLIB_checkHeal = {
 	(GRLIB_player_is_menuok && GRLIB_player_near_base && damage player >= 0.02)
 };
 
-GRLIB_checkLeader = {
-	(!(isPlayer (leader (group player))) && (local (group player)))
-};
-
 GRLIB_checkAirDrop = {
 	(GRLIB_player_is_menuok && GRLIB_air_support && GRLIB_player_fobdistance >= (2 * GRLIB_fob_range) && !GRLIB_player_near_lhd)
 };
