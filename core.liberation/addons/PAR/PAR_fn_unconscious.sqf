@@ -32,6 +32,7 @@ if (isPlayer _unit) then {
 	sleep 3;
 };
 
+waitUntil { sleep 0.5; isNull objectParent _unit };
 _unit switchMove "AinjPpneMstpSnonWrflDnon_rolltoback";
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
 sleep 5;
