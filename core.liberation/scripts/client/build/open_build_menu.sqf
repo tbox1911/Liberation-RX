@@ -263,7 +263,8 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 	};
 
 	_affordable_crew = _affordable;
-	if (unitcap >= GRLIB_blufor_cap) then {
+	private _unitcap = { alive _x && (_x distance2D lhd) >= 200 } count (units GRLIB_side_friendly);
+	if (_unitcap >= GRLIB_blufor_cap) then {
 		_affordable_crew = false;
 		if (buildtype == 1 || buildtype == 8) then {
 			_affordable = false;
@@ -273,7 +274,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 	ctrlSetText [131, format ["%1 : %2/%3", localize "STR_MANPOWER", resources_infantry, infantry_cap] ];
 	ctrlSetText [132, format ["%1 : %2", localize "STR_AMMO", (player getVariable ["GREUH_ammo_count",0])] ];
 	ctrlSetText [133, format ["%1 : %2", localize "STR_FUEL", (player getVariable ["GREUH_fuel_count",0])] ];
-	ctrlSetText [134, format ["%1 : %2/%3", localize "STR_UNITCAP", unitcap, GRLIB_blufor_cap] ];
+	ctrlSetText [134, format ["%1 : %2/%3", localize "STR_UNITCAP", _unitcap, GRLIB_blufor_cap] ];
 
 	_link_color = "#0040e0";
 	_link_str = localize "STR_VEHICLE_UNLOCKED";
@@ -288,7 +289,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 	ctrlEnable [ 120, _affordable && _linked_unlocked && dobuild == 0];
 	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5]];
 	ctrlEnable [ 121, _affordable_crew && _linked_unlocked && dobuild == 0];
-	sleep 0.1;
+	sleep 0.2;
 };
 
 hintSilent "";

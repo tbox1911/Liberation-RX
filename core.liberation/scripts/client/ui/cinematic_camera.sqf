@@ -6,6 +6,7 @@ private [
 ];
 
 if ( isNil "GRLIB_all_fobs" ) then { GRLIB_all_fobs = [] };
+if ( isNil "active_sectors" ) then { active_sectors = [] };
 
 titleText ["" ,"BLACK IN", 3];
 cinematic_camera_started = true;
