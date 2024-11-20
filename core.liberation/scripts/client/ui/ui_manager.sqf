@@ -63,7 +63,7 @@ while { true } do {
 			if ( combat_readiness >= 25 ) then { _color_readiness = [0.8,0.8,0,1] };
 			if ( combat_readiness >= 50 ) then { _color_readiness = [0.8,0.6,0,1] };
 			if ( combat_readiness >= 75 ) then { _color_readiness = [0.8,0.3,0,1] };
-			if ( combat_readiness >= 100 ) then { _color_readiness = [0.8,0,0,1] };
+			if ( combat_readiness >= 95 ) then { _color_readiness = [0.8,0,0,1] };
 
 			(_overlay displayCtrl (105)) ctrlSetTextColor _color_readiness;
 			(_overlay displayCtrl (135)) ctrlSetTextColor _color_readiness;
@@ -83,7 +83,8 @@ while { true } do {
 		};
 
 		if ( _uiticks % 25 == 0 ) then {
-			if (opforcap >= GRLIB_opfor_cap || count active_sectors >= GRLIB_max_active_sectors) then {
+			private _opforcap = { alive _x && !(captive _x) } count (units GRLIB_side_enemy);
+			if (_opforcap >= GRLIB_opfor_cap || count active_sectors >= GRLIB_max_active_sectors) then {
 				(_overlay displayCtrl (517)) ctrlShow true;
 
 				if ( !_active_sectors_hint ) then {

@@ -3,7 +3,7 @@ private ["_marker"];
 private _marker_debug = false;
 if (!isNil "GRLIB_LRX_debug") then { _marker_debug = true };
 
-waitUntil { sleep 1; !isNil "opfor_sectors" };
+waitUntil {sleep 1; !isNil "blufor_sectors"};
 
 if (_full) then {
 	// Game markers
@@ -23,7 +23,7 @@ if (_full) then {
 	"base_chimera" setMarkerColorLocal GRLIB_color_friendly;
 
 	// Hide all markers
-	{ _x setMarkerTypeLocal "Empty" } foreach opfor_sectors;
+	{ _x setMarkerTypeLocal "Empty" } foreach (sectors_allSectors - blufor_sectors);
 
 	// LRX Markers
 	GRLIB_Marker_SRV = [];
