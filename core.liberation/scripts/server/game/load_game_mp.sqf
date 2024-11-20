@@ -471,6 +471,8 @@ publicVariable "GRLIB_vehicle_huron";
 publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_warehouse";
 publicVariable "blufor_sectors";
+publicVariable "resources_intel";
+publicVariable "combat_readiness";
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
 publicVariable "GRLIB_mobile_respawn";
