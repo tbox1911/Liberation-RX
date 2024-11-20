@@ -19,4 +19,4 @@ _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The Wind direction is <t co
 _msg = _msg + "<t color='#777777'>------------------------------</t><br/>";
 _msg = _msg + "<br/>Have a nice day....";
 
-[_msg, 0, -1, 15, 0, -2, 5];
+[_msg, 0, -1, 8, 0, -2, 5];

@@ -10,4 +10,4 @@ for "_i" from 0 to (_max-1) do {
     _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>Name : <t color='#000080'>%1</t> -- Score : <t color='#008000'>%2</t></t><br/><br/>", (_HoF select _i) select 1, (_HoF select _i) select 0];
 };
 
-[_msg, 0, -1, 10, 0, -2, 5];
+[_msg, 0, -1, 8, 0, -2, 5];
