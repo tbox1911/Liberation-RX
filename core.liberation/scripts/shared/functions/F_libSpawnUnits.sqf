@@ -30,7 +30,7 @@ private ["_unit", "_pos", "_backpack"];
 		};
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] spawn F_fixModUnit;
-		if (_type == "militia") then { [_unit] call loadout_militia };
+		if (_type in ["militia", "building"]) then { [_unit] call loadout_militia };
 		if (_type == "bandits") then { 
 			[_unit] call loadout_militia;
 			_unit addMPEventHandler ["MPKilled", {
@@ -49,7 +49,7 @@ private ["_unit", "_pos", "_backpack"];
 
 		if (_type == "para") then {
 			_backpack = backpack _unit;
-			if ( _backpack != "" && _backpack != "B_Parachute" ) then {
+			if (_backpack != "" && !(_backpack isKindOf "B_Parachute")) then {
 				_unit setVariable ["GRLIB_para_backpack", _backpack];
 				_unit setVariable ["GRLIB_para_backpack_contents", (backpackItems _unit)];
 				removeBackpack _unit;
