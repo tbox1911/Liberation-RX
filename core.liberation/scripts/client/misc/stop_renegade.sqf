@@ -1,7 +1,7 @@
 waitUntil {sleep 1; GRLIB_player_spawned};
 
 while { true } do {
- 	waitUntil {sleep 1; alive player && lifeState player != 'INCAPACITATED'};
+ 	waitUntil { sleep 1; alive player && !(player getVariable ["PAR_wounded", false]) };
 
 	// Renegade
 	if (side player != GRLIB_side_friendly) then {
