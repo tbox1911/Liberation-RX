@@ -5,7 +5,7 @@ while { true } do {
 
 	// Renegade
 	if (side player != GRLIB_side_friendly) then {
-		sleep 10;
+		sleep 5;
 		if (side player == GRLIB_side_friendly) exitWith {};
 		player setcaptive true;
 		player addrating 3000;
