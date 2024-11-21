@@ -35,6 +35,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_civ_grp = [_sector_pos, (selectRandom _rndciv)] call F_spawnCivilians;
 		};
 
+		if (isNull _civ_grp) exitWith {};
+
 		private _hc = [] call F_lessLoadedHC;
 		if (!isNull _hc) then {
 			_civ_grp setGroupOwner (owner _hc);

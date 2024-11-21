@@ -47,7 +47,7 @@ if (isNull _civ_veh) then {
 		_check_water = false;
 	};
 
-	private _min_waypoints = 4;
+	private _min_waypoints = 3;
 	private _citylist = ((sectors_allSectors - sectors_tower - active_sectors) select { (_pos distance2D (markerPos _x) < _radius) });
 	private _convoy_destinations_markers = [_radius, _citylist, _min_waypoints, 20, _check_water] call F_getSectorPath;
 	private _convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
