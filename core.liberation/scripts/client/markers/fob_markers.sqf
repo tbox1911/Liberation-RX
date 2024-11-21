@@ -45,9 +45,7 @@ while { true } do {
 		} forEach GRLIB_sector_defense;
 	};
 
-	if (isNil "GRLIB_vehicle_huron") then {
-		"huronmarker" setMarkerPosLocal markers_reset;
-	} else {
+	if !(isNull GRLIB_vehicle_huron) then {
 		"huronmarker" setMarkerPosLocal (getPosATL GRLIB_vehicle_huron);
 	};
 	sleep 3;

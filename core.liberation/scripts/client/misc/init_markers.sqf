@@ -18,8 +18,12 @@ if (_full) then {
 	_marker setMarkerTypeLocal "Select";
 
 	// Base markers color
-	"huronmarker" setMarkerColorLocal GRLIB_color_friendly;
-	"huronmarker" setMarkerTextLocal "";
+	if (GRLIB_fob_type == 0) then {
+		"huronmarker" setMarkerColorLocal GRLIB_color_friendly;
+		"huronmarker" setMarkerTextLocal "Huron";
+	} else {
+		deleteMarkerLocal "huronmarker";
+	};
 	"base_chimera" setMarkerColorLocal GRLIB_color_friendly;
 
 	// Hide all markers
