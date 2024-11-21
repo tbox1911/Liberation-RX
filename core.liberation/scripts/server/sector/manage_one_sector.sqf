@@ -136,7 +136,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 				[group (driver _vehicle), _spawn_pos, (50 + floor random 60)] spawn defence_ai;
 				_managed_units pushback _vehicle;
 				{ _managed_units pushback _x } foreach (crew _vehicle);
-				sleep 5;
+				sleep 10;
 			};
 		} foreach _vehtospawn;
 	} else {
@@ -154,42 +154,42 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 	if ( _building_ai_max > 0 ) then {
 		_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
 		_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range] call F_spawnBuildingSquad);
-		sleep 5;
+		sleep 10;
 	};
 
 	if ( count _squad1 > 0 ) then {
 		_grp = [ _sector, _infsquad1, _squad1 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 50 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 5;
+		sleep 10;
 	};
 
 	if ( count _squad2 > 0 ) then {
 		_grp = [ _sector, _infsquad2, _squad2 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 100 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 5;
+		sleep 10;
 	};
 
 	if ( count _squad3 > 0 ) then {
 		_grp = [ _sector, _infsquad3, _squad3 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 100 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 5;
+		sleep 10;
 	};
 
 	if ( count _squad4 > 0 ) then {
 		_grp = [ _sector, _infsquad4, _squad4 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 200 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 5;
+		sleep 10;
 	};
 
 	if ( count _squad5 > 0 ) then {
 		_grp = [ _sector, _infsquad5, _squad5 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 300 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 5;
+		sleep 10;
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
@@ -205,7 +205,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 			[_grp, _sector_pos] spawn civilian_ai;			
 			_managed_units = _managed_units + (units _grp);
 			_nbcivs = _nbcivs - _maxcivs;
-			sleep 0.5;
+			sleep 3;
 		};
 	};
 
