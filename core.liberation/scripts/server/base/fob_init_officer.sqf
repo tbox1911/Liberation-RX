@@ -13,7 +13,7 @@ private _fob_dir = getDir _fob;
 private _offset = [0,0,0];
 
 // Default
-if (_fob_class == "Cargo_HQ_base_F") then {
+if (_fob_class isKindOf "Cargo_HQ_base_F") then {
 	_offset = [-2, 2, 0.6];
 	_fob_dir = _fob_dir + 55;
 };
