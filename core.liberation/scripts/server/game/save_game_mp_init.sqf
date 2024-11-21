@@ -1,20 +1,21 @@
 if (!isServer) exitWith {};
 
-GRLIB_classnames_to_save = [] + all_buildings_classnames + fob_buildings_classnames;
-GRLIB_classnames_to_save_blu = [
+GRLIB_base_objects = [
+	FOB_sign,
 	FOB_typename,
 	FOB_outpost,
 	FOB_carrier,
-	FOB_sign,
-	huron_typename,
 	Warehouse_typename
-] + all_friendly_classnames + all_hostile_classnames;
+];
+GRLIB_classnames_to_save = [] + all_buildings_classnames + fob_buildings_classnames + fob_defenses_classnames;
+GRLIB_classnames_to_save_blu = [
+	huron_typename
+] + GRLIB_base_objects + all_friendly_classnames + all_hostile_classnames;
 
 GRLIB_classnames_to_save_blu = GRLIB_classnames_to_save_blu arrayIntersect GRLIB_classnames_to_save_blu;
 GRLIB_classnames_to_save_blu = GRLIB_classnames_to_save_blu apply { toLower _x };
 
-GRLIB_classnames_to_save append GRLIB_classnames_to_save_blu;
-GRLIB_classnames_to_save = GRLIB_classnames_to_save - GRLIB_disabled_arsenal;
+GRLIB_classnames_to_save = GRLIB_classnames_to_save + GRLIB_classnames_to_save_blu - GRLIB_disabled_arsenal;
 GRLIB_classnames_to_save = GRLIB_classnames_to_save arrayIntersect GRLIB_classnames_to_save;
 GRLIB_classnames_to_save = GRLIB_classnames_to_save apply { toLower _x };
 
@@ -30,7 +31,7 @@ private _quick_delete = ["Land_MedicalTent_01_base_F", "CargoNet_01_base_F", "Sh
 	if ([_x, _quick_delete] call F_itemIsInClass) then {
 		GRLIB_quick_delete pushBackUnique _x;
 	};
-} foreach all_buildings_classnames + fob_buildings_classnames;
+} foreach all_buildings_classnames + fob_buildings_classnames + fob_defenses_classnames;
 
-GRLIB_no_kill_handler_classnames = [FOB_typename, FOB_outpost, FOB_carrier, Warehouse_typename] + all_buildings_classnames + fob_buildings_classnames;
+GRLIB_no_kill_handler_classnames = GRLIB_base_objects + GRLIB_quick_delete;
 GRLIB_explo_delete = [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename];

@@ -31,6 +31,7 @@ GRLIB_FOB_Defense_Sea_level = [
     "Land_Cargo_Tower_V1_F"
 ];
 
+fob_defenses_classnames = [];
 {
     private _path = (_x select 1);
     if (count _path > 0) then {

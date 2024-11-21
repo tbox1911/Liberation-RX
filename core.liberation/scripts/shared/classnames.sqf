@@ -276,7 +276,8 @@ all_buildings_classnames = [];
 { all_buildings_classnames pushBackUnique (_x select 0) } foreach buildings;
 
 // FOB Defense buildings
-fob_defenses_classnames = [];
+[] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
+
 fob_buildings_classnames = [];
 if (GRLIB_naval_type == 3) then {
 	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);

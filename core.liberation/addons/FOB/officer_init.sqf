@@ -1,4 +1,5 @@
-[] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
+waituntil {sleep 1; GRLIB_player_spawned};
+
 [] spawn {
 	waituntil { sleep 1; !isNil "GRLIB_FOB_Group" };
 	while {true} do {
