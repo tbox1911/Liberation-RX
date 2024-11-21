@@ -9,6 +9,7 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosWorld _veh_pos;
+	waitUntil {sleep 0.5; _vehicle distance2D _veh_pos < 10 };
 	[_vehicle, getPlayerUID _owner] call fob_init;
 	_fob_pos = getPosATL _vehicle;
 	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
@@ -36,6 +37,7 @@ if (_classname in ["fob_water1"]) then {
 	_veh_pos set [2, _fob_water_alt];
 	_vehicle setVectorDirAndUp [[0,1,0], [0,0,1]];
 	_vehicle setPosWorld _veh_pos;
+	waitUntil {sleep 0.5; _vehicle distance2D _veh_pos < 10 };
 	_fob_pos = getPosASL _vehicle;
 	_fob_dir = getDir _vehicle;
 	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", _classname]);
