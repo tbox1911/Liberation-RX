@@ -8,8 +8,13 @@ addMissionEventHandler ['HandleDisconnect', {
 	params ["_unit", "_id", "_uid", "_name"];
 	[_unit, _uid, true] call save_context;
 	[_unit, _uid] call cleanup_player;
-	private _player_left = (AllPlayers - (entities "HeadlessClient_F") select { alive _x });
-	if (count _player_left == 0) then {
+	false;
+}];
+
+addMissionEventHandler ["PlayerDisconnected", {
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+	private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
+	if (_player_left == 0) then {
 		diag_log "--- LRX Mission End!";
 		[] call save_game_mp;
 		if (!GRLIB_server_persistent) then {
@@ -20,7 +25,6 @@ addMissionEventHandler ['HandleDisconnect', {
 			forceEnd;
 		};
 	};
-	false;
 }];
 
 addMissionEventHandler ["OnUserAdminStateChanged", {
@@ -53,8 +57,8 @@ GRLIB_side_friendly setFriend [civilian, 1];
 civilian setFriend [GRLIB_side_enemy, 1];
 GRLIB_side_enemy setFriend [civilian, 1];
 
-resistance setFriend [GRLIB_side_friendly, 1];
-GRLIB_side_friendly setFriend [resistance, 1];
+resistance setFriend [GRLIB_side_friendly, 0];
+GRLIB_side_friendly setFriend [resistance, 0];
 resistance setFriend [GRLIB_side_enemy, 0];
 GRLIB_side_enemy setFriend [resistance, 0];
 
