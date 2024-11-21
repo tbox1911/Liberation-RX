@@ -101,7 +101,7 @@ if ( _random_rotate ) then {
 	_vehicle setdir (random 360);
 };
 
-if ( _side == GRLIB_side_civilian ) then {
+if (_side == GRLIB_side_civilian) then {
 	_vehicle addEventHandler ["Fuel", {
 		params ["_vehicle", "_hasFuel"];
 		if (_vehicle getVariable ["GRLIB_civ_incd", 0] > 0) exitWith {};
@@ -116,7 +116,7 @@ if ( _side == GRLIB_side_civilian ) then {
 	_vehicle setVehicleLock "LOCKED";
 };
 
-if ( _side == GRLIB_side_friendly ) then {
+if (_side == GRLIB_side_friendly) then {
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 
 	// LRX textures
@@ -126,7 +126,7 @@ if ( _side == GRLIB_side_friendly ) then {
 	};
 };
 
-if ( _side == GRLIB_side_enemy ) then {
+if (_side == GRLIB_side_enemy) then {
 	_vehicle addEventHandler ["Fuel", {
 		params ["_vehicle", "_hasFuel"];
 		if (count (crew _vehicle) == 0) exitWith {};
@@ -142,9 +142,13 @@ if ( _side == GRLIB_side_enemy ) then {
 	};
 
 	// A3 textures
-	if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
+	if (_classname == "I_E_Truck_02_MRL_F") then {
 		[_vehicle, ["Opfor",1], true ] spawn BIS_fnc_initVehicle;
 	};
+	// SPE GER Plane
+	if (_classname == "SPEX_C47_Skytrain") then {
+		[_vehicle, ["bare",1,"Hide_Door",1], true ] spawn BIS_fnc_initVehicle;
+	};	
 
 	// Lock vehicles
 	if !(GRLIB_permission_enemy) then {
