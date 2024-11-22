@@ -1,6 +1,9 @@
 private [ "_playtime_days", "_playtime_hours", "_playtime_minutes", "_playtime_seconds", "_comma", "_playtime_str" ];
 if (isDedicated) exitWith {};
 
+0 fadeMusic 1;
+playMusic GRLIB_music_endgame;
+
 disableUserInput true;
 player allowDamage false;
 closeDialog 0;
@@ -9,9 +12,8 @@ if (lifestate player == "INCAPACITATED") then {
 	"filmGrain" ppEffectEnable false;
 };
 
-["<t size = '2.5'>" + localize "STR_VICTORY_TITLE" + "</t>", 0, 0, 15, 0, 0, 90] spawn BIS_fnc_dynamicText;
-playMusic GRLIB_music_endgame;
-sleep 10;
+["<t size = '3'>" + localize "STR_VICTORY_TITLE" + "</t>", 0, 0, 15, 0, 0, 90] spawn BIS_fnc_dynamicText;
+sleep 8;
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 private _line_delay = 0.75;
@@ -21,7 +23,7 @@ if (alive player && isNull objectParent player) then {
 	player switchCamera "EXTERNAL";
 	player switchMove "";
 	player playMoveNow "acts_briefing_sb_in";
-	uiSleep 14;
+	uiSleep 10;
 };
 
 [] spawn cinematic_camera;
