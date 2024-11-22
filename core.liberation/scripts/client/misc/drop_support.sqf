@@ -49,7 +49,9 @@ if (_rank in ["Captain"]) then {_list_perm = [1604,1605,1608]};
 if (_rank in ["Major"]) then {_list_perm = [1605]};
 { ctrlEnable [_x, false] } forEach _list_perm;
 
+if (!LRX_Taxi_enabled) then { ctrlEnable [1607, false] };
 if (count blufor_air == 0) then { ctrlEnable [1605, false] };
+
 while { dialog && (alive player) && do_action == 0 } do {
 	sleep 0.1;
 };

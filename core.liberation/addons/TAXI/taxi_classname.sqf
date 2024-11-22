@@ -77,3 +77,6 @@ taxi_type_2 = taxi_type_2 arrayIntersect taxi_type_2;
 taxi_type_6 = taxi_type_6 arrayIntersect taxi_type_6;
 taxi_type_8 = taxi_type_8 arrayIntersect taxi_type_8;
 taxi_type_14 = taxi_type_14 arrayIntersect taxi_type_14;
+
+LRX_Taxi_enabled = true;
+if (count (taxi_type_2 + taxi_type_6 + taxi_type_8 + taxi_type_14) == 0) then { LRX_Taxi_enabled = flase };
