@@ -17,22 +17,9 @@ GRLIB_blacklisted_from_arsenal = [
 	"weapon_Fighter"
 ] + blacklisted_bag + blacklisted_weapon;
 
-if (!GRLIB_SOG_enabled && !GRLIB_SPE_enabled) then {
-	// UAVs Terminal
-	private _blacklisted_uavs_terminal = [
-		"B_UavTerminal",
-		"O_UavTerminal",
-		"I_UavTerminal",
-		"I_E_UavTerminal",
-		"C_UavTerminal"
-	] - [uavs_terminal_typename];
-	GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal + _blacklisted_uavs_terminal;
-};
-
 // Default LRX whitelist
 GRLIB_whitelisted_from_arsenal = [
 	mobile_respawn_bag,
-	uavs_terminal_typename,
 	"B_Parachute",
 	"arifle_SDAR_F",
 	"20Rnd_556x45_UW_mag",
@@ -43,3 +30,17 @@ GRLIB_whitelisted_from_arsenal = [
 	"V_RebreatherIA",
 	"V_RebreatherIR"
 ] + whitelisted_from_arsenal;
+
+// MOD Spec
+if (!GRLIB_SOG_enabled && !GRLIB_SPE_enabled) then {
+	// UAVs Terminal
+	private _blacklisted_uavs_terminal = [
+		"B_UavTerminal",
+		"O_UavTerminal",
+		"I_UavTerminal",
+		"I_E_UavTerminal",
+		"C_UavTerminal"
+	] - [uavs_terminal_typename];
+	GRLIB_blacklisted_from_arsenal append _blacklisted_uavs_terminal;
+	GRLIB_whitelisted_from_arsenal append [uavs_terminal_typename];
+};
