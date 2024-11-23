@@ -34,6 +34,7 @@ if (GRLIB_WS_enabled) then {
 };
 
 private _type = selectRandom _type_random;
+private _count = (3 + floor(random 4));
 if (_type select [0,11] == "Dromedary_") then { _count = 3 };
 if (_type in ["Alsatian_Random_F","Fin_random_F"]) then { _count = 2 };
 if (_type in ["Cock_random_F","Hen_random_F"]) then { _count = _count + 2 };
