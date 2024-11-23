@@ -46,6 +46,7 @@ private _no_cleanup_classnames = [
 // HIDDEN-FROM-PLAYERS FUNCTION
 private _isHidden = {
 	params ["_unit", "_dist", "_list"];
+	if (([_unit] call F_getNearestFob) < GRLIB_capture_size) exitWith { true };
 	private _c = false;
 	if ( ({(( _unit distance2D _x) < _dist)} count _list) == 0 ) then { _c = true };
 	_c;
