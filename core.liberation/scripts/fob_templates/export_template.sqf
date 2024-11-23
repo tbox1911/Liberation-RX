@@ -7,7 +7,7 @@ private _fob_dir = round (getDir _fob);
 if (_fob_dir != 0) exitWith { hintSilent format ["Error: Incorect FOB azimuth!\ncurrent: (%1) must be zero (0).", _fob_dir] };
 
 private _clipboard = "";
-private _objects_to_save = all_buildings_classnames + fob_buildings_classnames;
+private _objects_to_save = [] + all_buildings_classnames + fob_defenses_classnames;
 
 if (surfaceIsWater (getPos _fob)) then {
     private _fob_pos = getPosASL _fob;

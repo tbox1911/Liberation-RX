@@ -15,7 +15,7 @@ private _classnames_to_destroy = [
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_hull_base_F"
 ];
-_classnames_to_destroy append all_buildings_classnames + fob_buildings_classnames + fob_defenses_classnames + list_static_weapons;
+_classnames_to_destroy append all_buildings_classnames + fob_defenses_classnames + list_static_weapons;
 
 private _sleep = 0.05;
 if (surfaceIsWater _fob_pos) then {

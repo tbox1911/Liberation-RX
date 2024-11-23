@@ -16,7 +16,7 @@ private _no_marker_classnames = [
 	"Land_HumanSkull_F",
 	"Land_HumanSkeleton_F",
 	"WeaponHolderSimulated"
-] + GRLIB_force_cleanup_classnames + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
+] + GRLIB_force_cleanup_classnames + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames + fob_defenses_classnames;
 
 if (GRLIB_allow_redeploy > 0) then {
 	_no_marker_classnames = _no_marker_classnames + respawn_vehicles;

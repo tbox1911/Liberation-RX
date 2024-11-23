@@ -516,7 +516,7 @@ while { true } do {
 			_vehicle setDamage 0;
 			build_vehicle = _vehicle;
 
-			if ( !(_classname in (all_buildings_classnames + fob_buildings_classnames))) then {
+			if !(_classname in all_buildings_classnames) then {
 				_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};
 

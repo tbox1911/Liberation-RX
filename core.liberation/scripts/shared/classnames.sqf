@@ -278,10 +278,9 @@ all_buildings_classnames = [];
 // FOB Defense buildings
 [] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
 
-fob_buildings_classnames = [];
 if (GRLIB_naval_type == 3) then {
 	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
-	{ fob_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
+	{ all_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
 };
 
 // *** ELITES ***
@@ -683,7 +682,7 @@ GRLIB_ignore_colisions = [
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_base_F",
 	"Land_Carrier_01_hull_base_F"
-] + fob_buildings_classnames;
+] + all_buildings_classnames;
 
 // FORCE DELETE (used by GC)
 GRLIB_force_cleanup_classnames = [
