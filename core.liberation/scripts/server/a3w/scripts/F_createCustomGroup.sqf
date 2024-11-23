@@ -17,14 +17,14 @@ switch (_type) do {
 	case ("infantry"): { _unitTypes = opfor_infantry };
 	case ("militia"): { _unitTypes = militia_squad };
 	case ("bandits"): { _unitTypes = militia_squad };
-	case ("divers"): { _unitTypes = divers_squad };
-	case ("guards"): { _unitTypes = guard_squad };
+	case ("divers"): { _unitTypes = a3w_divers_squad };
+	case ("guards"): { _unitTypes = a3w_guard_squad };
 	case ("medics"): {
 		_unitTypes = a3w_heal_medics;
 		_side = GRLIB_side_civilian;
 	};
 	case ("resistance"): {
-		_unitTypes = resistance_squad;
+		_unitTypes = a3w_resistance_squad;
 		_side = GRLIB_side_friendly;
 	};
 	case ("prisoner"): {

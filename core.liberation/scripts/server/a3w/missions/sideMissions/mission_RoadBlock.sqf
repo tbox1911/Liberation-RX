@@ -63,14 +63,14 @@ _setupObjects = {
 	_def2 setVariable ["R3F_LOG_disabled", true, true];
 
 	private _veh1_pos = (getPosATL _def1) vectorAdd ([[0, -1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
-	_veh1 = createVehicle ["O_HMG_01_high_F", _veh1_pos, [], 0, "None"];
+	_veh1 = createVehicle [selectRandom a3w_enemy_static, _veh1_pos, [], 0, "None"];
 	_veh1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_veh1 disableCollisionWith _def1;
 	_veh1 setDir _bunker_dir;
 	_veh1 setPos _veh1_pos;
 
 	private _veh2_pos = (getPosATL _def2) vectorAdd ([[0, 1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
-	_veh2 = createVehicle ["O_GMG_01_high_F", _veh2_pos, [], 0, "None"];
+	_veh2 = createVehicle [selectRandom a3w_enemy_static, _veh2_pos, [], 0, "None"];
 	_veh2 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_veh2 disableCollisionWith _def2;
 	_veh2 setDir (_bunker_dir -180);

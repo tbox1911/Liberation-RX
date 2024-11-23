@@ -300,8 +300,8 @@ if ( isNil "civilian_boats" ) then {
 boats_names = [FOB_boat_typename, FOB_carrier] + civilian_boats + opfor_boats + boats_west;
 
 // *** LRX - A3W Side Mission ***
-if ( isNil "guard_squad" ) then {
-	guard_squad = [
+if ( isNil "a3w_guard_squad" ) then {
+	a3w_guard_squad = [
 		"O_GEN_Commander_F",
 		"O_GEN_Soldier_F",
 		"O_GEN_Soldier_F",
@@ -310,8 +310,8 @@ if ( isNil "guard_squad" ) then {
 	];
 };
 
-if ( isNil "divers_squad" ) then {
-	divers_squad = [
+if ( isNil "a3w_divers_squad" ) then {
+	a3w_divers_squad = [
 		"O_diver_TL_F",
 		"O_diver_TL_F",
 		"O_diver_exp_F",
@@ -325,8 +325,8 @@ if ( isNil "divers_squad" ) then {
 	];
 };
 
-if ( isNil "resistance_squad" ) then {
-	resistance_squad = [
+if ( isNil "a3w_resistance_squad" ) then {
+	a3w_resistance_squad = [
 		"B_G_Soldier_SL_F",
 		"B_G_Soldier_A_F",
 		"B_G_Soldier_AR_F",
@@ -342,8 +342,12 @@ if ( isNil "resistance_squad" ) then {
 	];
 };
 
-if ( isNil "resistance_squad_static" ) then {
-	resistance_squad_static = "B_static_AA_F";
+if ( isNil "a3w_resistance_static" ) then {
+	a3w_resistance_static = "B_static_AA_F";
+};
+
+if ( isNil "a3w_enemy_static" ) then {
+	a3w_enemy_static = ["O_HMG_01_high_F", "O_GMG_01_high_F"];
 };
 
 if ( isNil "a3w_vip_vehicle" ) then {
@@ -388,7 +392,7 @@ blufor_statics = [];
 	if !(( _x select 0) in uavs_vehicles) then { blufor_statics pushback ( _x select 0) };
 } foreach static_vehicles;
 
-list_static_weapons = [resistance_squad_static] + blufor_statics + opfor_statics;
+list_static_weapons = [a3w_resistance_static] + blufor_statics + opfor_statics;
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [
