@@ -14,16 +14,20 @@ while { count _destinations_markers < _min_wp && _max_try > 0} do {
 
 	while { count _destinations_markers < _min_wp && count _sector_list_tmp > _min_wp} do {
 		_next_marker = [_sector_list_tmp, _start_marker, _radius] call F_getNextSector;
-		if (_next_marker == "") exitWith {};
-		if (_check_water && [markerPos _start_marker, markerPos _next_marker] call F_isWaterBetween) then {
-			_sector_list_tmp = _sector_list_tmp - [_next_marker];
+		if (_next_marker != "") then {
+			if (_check_water && [markerPos _start_marker, markerPos _next_marker] call F_isWaterBetween) then {
+				_sector_list_tmp = _sector_list_tmp - [_next_marker];
+			} else {
+				_destinations_markers pushback _next_marker;
+				_start_marker = _next_marker;
+				_sector_list_tmp = _sector_list_tmp - [_start_marker];
+			};
 		} else {
-			_destinations_markers pushback _next_marker;
-			_start_marker = _next_marker;
-			_sector_list_tmp = _sector_list_tmp - [_start_marker];
+			_sector_list_tmp = [];
 		};
 	};
     _max_try = _max_try - 1;
+	sleep 0.1;
 };
 
 _destinations_markers;
