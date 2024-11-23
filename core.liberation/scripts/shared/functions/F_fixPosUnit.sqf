@@ -19,7 +19,7 @@ private _forest_type = ["forest", "wood"];
 private _typepos = tolower (surfaceType getPosWorld _unit);
 private _forest = count (_forest_type select { (_typepos find _x) > -1 });
 _forest = _forest + count (nearestTerrainObjects [_unit, ["Tree","Small Tree"], 6]);
-if (_forest > 2) exitWith {};
+if (_forest > 0) exitWith {};
 
 private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 10]);
 if (_obstacle > 0) then { _maxalt = 2.3 };
