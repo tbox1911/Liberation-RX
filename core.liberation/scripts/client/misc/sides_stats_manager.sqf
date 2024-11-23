@@ -29,7 +29,7 @@ while { true } do {
 
 		// Others
 		if (_mission in _stats_marker) then {
-			_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size } count (units GRLIB_side_enemy);
+			_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size  && !(isNil {_x getVariable "GRLIB_mission_AI"})} count (units GRLIB_side_enemy);
 			if (_opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", _opf]};
 		};
 	};
@@ -38,7 +38,7 @@ while { true } do {
 	if ( !isNil "GRLIB_A3W_Mission_SD" ) then {
 		_res = (GRLIB_A3W_Mission_SD select 1) select 3;
 		if (player distance2D _res < GRLIB_capture_size) then {
-			_opf = { alive _x && _x distance2D _res < GRLIB_sector_size } count (units GRLIB_side_enemy);
+			_opf = { alive _x && _x distance2D _res < GRLIB_sector_size && !(isNil {_x getVariable "GRLIB_mission_AI"})} count (units GRLIB_side_enemy);
 			if (_opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", _opf]};
 		};
 	};
