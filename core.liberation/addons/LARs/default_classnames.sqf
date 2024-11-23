@@ -17,15 +17,17 @@ GRLIB_blacklisted_from_arsenal = [
 	"weapon_Fighter"
 ] + blacklisted_bag + blacklisted_weapon;
 
-// UAVs Terminal
-private _blacklisted_uavs_terminal = [
-	"B_UavTerminal",
-	"O_UavTerminal",
-	"I_UavTerminal",
-	"I_E_UavTerminal",
-	"C_UavTerminal"
-] - [uavs_terminal_typename];
-GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal + _blacklisted_uavs_terminal;
+if (!GRLIB_SOG_enabled && !GRLIB_SPE_enabled) then {
+	// UAVs Terminal
+	private _blacklisted_uavs_terminal = [
+		"B_UavTerminal",
+		"O_UavTerminal",
+		"I_UavTerminal",
+		"I_E_UavTerminal",
+		"C_UavTerminal"
+	] - [uavs_terminal_typename];
+	GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal + _blacklisted_uavs_terminal;
+};
 
 // Default LRX whitelist
 GRLIB_whitelisted_from_arsenal = [
