@@ -5,7 +5,9 @@ GRLIB_base_objects = [
 	FOB_typename,
 	FOB_outpost,
 	FOB_carrier,
-	Warehouse_typename
+	Warehouse_typename,
+	land_cutter_typename,
+	helipad_typename
 ];
 GRLIB_classnames_to_save = [] + all_buildings_classnames + fob_defenses_classnames;
 GRLIB_classnames_to_save_blu = [
