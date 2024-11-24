@@ -32,7 +32,7 @@ speak_civil_AI = {
 	if (_unit getVariable ["GRLIB_A3W_Mission_DL4", false]) exitWith {[_unit] call speak_mission_delivery_ammo};
 	if (_unit getVariable ["GRLIB_A3W_Mission_HC1", false]) exitWith {[_unit] call speak_mission_heal_doctor};
 	if (_unit getVariable ["GRLIB_A3W_Mission_HC2", false]) exitWith {[_unit] call speak_mission_heal_wounded};
-	if (damage _unit > 0.15) exitWith {[_unit] call speak_heal_civ};
+	if (damage _unit > 0.15 && side _unit == GRLIB_side_civilian) exitWith {[_unit] call speak_heal_civ};
 	// transport
 	//	if (_unit getVariable ["GRLIB_Mission_CIV01", false]) exitWith {[_unit] call speak_mission_civ01};
 	// need ammo
