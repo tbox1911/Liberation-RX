@@ -83,10 +83,10 @@ private _opfor_vehicles = [];
 } forEach _opfor_vehicles;
 
 // *** SIDES ***
-GRLIB_side_friendly = WEST;
-GRLIB_side_enemy = EAST;
 GRLIB_side_civilian = CIVILIAN;
-GRLIB_side_resistance = RESISTANCE;
+if (GRLIB_side_enemy == GRLIB_side_friendly) then {
+	GRLIB_side_enemy = ([WEST, EAST, INDEPENDENT] - [GRLIB_side_friendly]) select 0;
+};
 
 // *** COLORS ***
 // Default WEST

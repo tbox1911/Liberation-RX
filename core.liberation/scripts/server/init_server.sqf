@@ -53,14 +53,13 @@ if (isDedicated) then {
 
 // Relationship
 civilian setFriend [GRLIB_side_friendly, 1];
-GRLIB_side_friendly setFriend [civilian, 1];
 civilian setFriend [GRLIB_side_enemy, 1];
+
+GRLIB_side_friendly setFriend [civilian, 1];
 GRLIB_side_enemy setFriend [civilian, 1];
 
-resistance setFriend [GRLIB_side_friendly, 0];
-GRLIB_side_friendly setFriend [resistance, 0];
-resistance setFriend [GRLIB_side_enemy, 0];
-GRLIB_side_enemy setFriend [resistance, 0];
+GRLIB_side_enemy setFriend [GRLIB_side_friendly, 0];
+GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 
 // Init owner on map vehicles
 {

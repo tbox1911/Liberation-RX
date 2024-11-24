@@ -115,7 +115,6 @@ while { true } do {
 				_sectorSide = ([ markerpos _nearest_active_sector, _zone_size ] call F_sectorOwnership);
 				if ( _sectorSide == GRLIB_side_friendly ) then { _colorzone = GRLIB_color_friendly };
 				if ( _sectorSide == GRLIB_side_enemy ) then { _colorzone = GRLIB_color_enemy };
-				if ( _sectorSide == GRLIB_side_resistance ) then { _colorzone = GRLIB_color_friendly };
 				"zone_capture" setmarkercolorlocal _colorzone;
 
 				private _color_F = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
