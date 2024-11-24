@@ -53,7 +53,7 @@ LRX_Mission_Params = [
 	["ModPresetWest", 0],			// Select MOD Preset for Friendly - value = computed
 	["ModPresetEast", 0],			// Select MOD Preset for Enemy - values = computed
 	["ModPresetCiv", 1],			// Select MOD Preset for Civilian - values = "All", "Friendly", "Enemy"
-	["ModPresetTaxi", 1],			// Select MOD Preset for Taxi - values = "All", "Friendly", "Enemy"
+	["ModPresetTaxi", 1],			// Select MOD Preset for Taxi - values = "All", "Friendly", "Enemy", "Disabled"
 
 	["---", "PLAYER"],
 	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -124,7 +124,8 @@ LRX_Mission_Params_Def = [
 	["ModPresetTaxi",  "MOD Preset Taxi", [
 		"All",
 		"Friendly",
-		"Enemy"
+		"Enemy",
+		localize "STR_PARAMS_DISABLED"
 		]
 	],
 	["Unitcap", localize "STR_PARAMS_UNITCAP", [
