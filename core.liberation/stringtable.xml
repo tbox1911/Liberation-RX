@@ -5938,6 +5938,8 @@
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM5">
 			<Original>Whitelist / Blacklist Only</Original>
+			<Chinesesimp>仅限白名单/黑名单</Chinesesimp>
+			<Chinese>僅白名單/黑名單</Chinese>
 		</Key>		
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
