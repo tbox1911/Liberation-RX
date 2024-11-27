@@ -7,35 +7,9 @@ while {true} do {
 	waitUntil { sleep 1; count (units player) > 1 };
 	//PAR_AI_bros = ((units player) + (units GRLIB_side_civilian)) select {!isPlayer _x && alive _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", PAR_Grp_ID]};
 	PAR_AI_bros = PAR_AI_bros select { alive _x };
-	if ( count PAR_AI_bros > 0) then {
+	if (count PAR_AI_bros > 0) then {
 		{
 			_unit = _x;
-			// Auto heal units
-			if (PAR_revive != 0 && behaviour player in ["SAFE", "AWARE"] && isNull objectParent _unit) then {
-				if (lifeState _unit == "INCAPACITATED") exitWith {};
-				_is_medic = [_unit] call PAR_is_medic;
-				_has_medikit = [_unit] call PAR_has_medikit;
-				_not_busy = _unit getVariable "PAR_busy";
-				_not_healing = _unit getVariable "PAR_heal";
-				if (isNil "_not_busy" && isNil "_not_healing" && _is_medic && _has_medikit) then {
-					_wnded_list = PAR_AI_bros + [player] select {
-						(_x distance2D _unit) < 30 &&
-						!(surfaceIsWater (getPos _x)) &&
-						isNull objectParent _x &&
-						damage _x >= 0.1 &&
-						lifeState _x != "INCAPACITATED" &&
-						isNil {_x getVariable "PAR_busy"} &&
-						isNil {_x getVariable "PAR_heal"}
-					};
-
-					// go heal
-					if (count _wnded_list > 0) then {
-						_wnded = _wnded_list select 0;
-						[_unit, _wnded] spawn PAR_fn_heal;
-						sleep 2;
-					};
-				};
-			};
 
 			// Blood trail
 			if (damage _unit > 0.6 && isNull objectParent _unit && !(surfaceIsWater (getPos _unit))) then {
@@ -75,6 +49,34 @@ while {true} do {
 
 			// AI revive
 			if (PAR_ai_revive > 0) then {
+				// Auto heal units
+				if (PAR_revive != 0 && behaviour player in ["SAFE", "AWARE"] && isNull objectParent _unit) then {
+					if (lifeState _unit == "INCAPACITATED") exitWith {};
+					_is_medic = [_unit] call PAR_is_medic;
+					_has_medikit = [_unit] call PAR_has_medikit;
+					_not_busy = _unit getVariable "PAR_busy";
+					_not_healing = _unit getVariable "PAR_heal";
+					if (isNil "_not_busy" && isNil "_not_healing" && _is_medic && _has_medikit) then {
+						_wnded_list = PAR_AI_bros + [player] select {
+							(_x distance2D _unit) < 30 &&
+							!(surfaceIsWater (getPos _x)) &&
+							isNull objectParent _x &&
+							damage _x >= 0.1 &&
+							lifeState _x != "INCAPACITATED" &&
+							isNil {_x getVariable "PAR_busy"} &&
+							isNil {_x getVariable "PAR_heal"}
+						};
+
+						// go heal
+						if (count _wnded_list > 0) then {
+							_wnded = _wnded_list select 0;
+							[_unit, _wnded] spawn PAR_fn_heal;
+							sleep 2;
+						};
+					};
+				};
+
+				// AI medical status
 				private _timer = _unit getVariable ["PAR_revive_msg_timer", 0];
 				if (time > _timer) then {
 					private _msg = "";

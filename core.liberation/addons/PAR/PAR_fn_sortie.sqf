@@ -71,7 +71,6 @@ if (_wnded == player) then {
 [_wnded] spawn {
 	params ["_unit"];
 	sleep 10;   //time to recover
-	_unit setVariable ["PAR_wounded", false, true];
 	_unit allowDamage true;
 	_unit setCaptive false;
 };

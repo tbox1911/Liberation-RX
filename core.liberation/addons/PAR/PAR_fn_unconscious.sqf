@@ -7,12 +7,10 @@ if (PAR_ai_revive > 0 && !isPlayer _unit && local _unit) then {
 	_cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
 };
 if (_cur_revive <= 0) exitWith {_unit setDamage 1};
-if (_unit getVariable ["PAR_isUnconscious", false]) exitWith {};
 
 _unit setUnconscious true;
 _unit setCaptive true;
 _unit allowDamage false;
-_unit setVariable ["PAR_isUnconscious", true, true];
 _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 _unit setVariable ["PAR_busy", nil];
 _unit setVariable ["PAR_myMedic", nil];
@@ -87,7 +85,6 @@ if (time > _unit getVariable ["PAR_BleedOutTimer", 0]) exitWith {
 };
 
 // Good end
-_unit setVariable ["PAR_isDragged", 0, true];
 if (isPlayer _unit) then {
 	(group _unit) selectLeader _unit;
 	if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };

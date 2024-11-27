@@ -1,5 +1,7 @@
 // PAR Manage Action
 
+if (PAR_revive == 0) exitWith {};
+
 private ["_unit", "_wnded_list", "_id1", "_id2", "_id3"];
 private _checkAction = {
 	params ["_unit"];
@@ -12,7 +14,7 @@ while {true} do {
 	_wnded_list = (getPos player) nearEntities ["CAManBase", 30];
 	_wnded_list = _wnded_list select {
 		alive _x && side _x == GRLIB_side_civilian &&
-		(_x getVariable ["PAR_wounded", false]) &&
+		(_x getVariable ["PAR_isUnconscious", false]) &&
 		([_x] call _checkAction) &&
 		isNull objectParent _x &&
 		isNil {_x getVariable "PAR_busy"}
@@ -36,6 +38,7 @@ while {true} do {
 				"(alive _target && _caller distance _target < 3)",
 				{
 					[(_target getVariable ["PAR_myMedic", objNull]), _target] call PAR_fn_medicRelease;
+					_target setVariable ["PAR_myMedic", _caller];
 					private _msg = format [localize "STR_PAR_ST_01", name _caller, name _target];
 					[_target, _msg] remoteExec ["PAR_fn_globalchat", 0];
 					private _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
@@ -55,11 +58,11 @@ while {true} do {
 				},
 				{
 					if (animationState _caller == 'ainvppnemstpslaywrfldnon_medicother') then {
-					_caller switchMove "amovppnemstpsraswrfldnon";
-					_caller playMoveNow "amovppnemstpsraswrfldnon";
+						_caller switchMove "amovppnemstpsraswrfldnon";
+						_caller playMoveNow "amovppnemstpsraswrfldnon";
 					} else {
-					_caller switchMove "amovpknlmstpsraswrfldnon";
-					_caller playMoveNow "amovpknlmstpsraswrfldnon";
+						_caller switchMove "amovpknlmstpsraswrfldnon";
+						_caller playMoveNow "amovpknlmstpsraswrfldnon";
 					};
 					_target setVariable ["PAR_myMedic", nil];
 				},
@@ -70,5 +73,5 @@ while {true} do {
 		} forEach  _wnded_list;
 	};
 
-	sleep 2;
+	sleep 5;
 };

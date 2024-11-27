@@ -216,7 +216,6 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_EH_Installed", true];
 	[_unit] call PAR_EventHandler;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	_unit setVariable ["PAR_wounded", false, true];
 	_unit setVariable ["PAR_isUnconscious", false, true];
 	_unit setVariable ["PAR_isDragged", 0, true];
 	_unit setVariable ["PAR_myMedic", nil];
@@ -229,7 +228,6 @@ PAR_fn_AI_Damage_EH = {
 // Player Section
 PAR_Player_Init = {
 	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	player setVariable ["PAR_wounded", false, true];
 	player setVariable ["PAR_isUnconscious", false, true];
 	player setVariable ["PAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
@@ -266,7 +264,7 @@ PAR_HandleDamage_EH = {
 		};
 	};
 
-	private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
+	private _isNotWounded = !(_unit getVariable ["PAR_isUnconscious", false]);
 	private _veh_unit = objectParent _unit;
 
 	if (GRLIB_tk_mode > 0) then {
@@ -286,9 +284,9 @@ PAR_HandleDamage_EH = {
 		};
 	};
 
-	if ( _isNotWounded && _amountOfDamage >= 0.86) then {
+	if (_isNotWounded && _amountOfDamage >= 0.86) then {
 		if (!(isNull _veh_unit)) then {[_unit, _veh_unit] spawn PAR_fn_eject};
-		_unit setVariable ["PAR_wounded", true, true];
+		_unit setVariable ["PAR_isUnconscious", true, true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};
 

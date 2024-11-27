@@ -1,7 +1,6 @@
 params ["_unit"];
 
 [(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
-_unit setVariable ['PAR_wounded', false, true];
 
 removeAllActions _unit;
 if (_unit == player) then {
@@ -60,8 +59,8 @@ if (_unit == player) then {
 } else {
 	PAR_AI_bros = PAR_AI_bros - [_unit];
 	gamelogic globalChat (format [localize "STR_PAR_DE_01", name _unit]);
-	// removeAllWeapons _unit;
-	sleep 60;
+	sleep 50;
+	removeAllWeapons _unit;
 	hideBody _unit;
 	sleep 10;
 	deleteVehicle _unit;
