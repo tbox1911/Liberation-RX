@@ -254,6 +254,7 @@ opfor_troup_transports_truck = opfor_troup_transports_truck + [opfor_transport_t
 // *** BUILDINGS ***
 buildings = [
 	[FOB_sign,0,0,0,GRLIB_perm_hidden],
+	[blufor_flag,0,0,0,0],
 	[helipad_typename,0,0,0,0]
 ];
 if (isNil "buildings_west_overide") then {

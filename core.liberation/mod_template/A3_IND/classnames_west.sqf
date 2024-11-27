@@ -20,6 +20,7 @@ medic_sling_typename = "B_Slingload_01_Medevac_F";
 pilot_classname = "I_Helipilot_F";
 crewman_classname = "I_crew_F";
 uavs_terminal_typename = "I_UavTerminal";
+blufor_flag = "Flag_FIA_F";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units_west = [
@@ -125,8 +126,7 @@ support_vehicles_west = [
 buildings_west = [
 	["Land_Cargo_Tower_V2_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V2_F",0,0,0,GRLIB_perm_inf],
-	["Land_Cargo_Patrol_V2_F",0,0,0,GRLIB_perm_log],
-	["Flag_FIA_F",0,0,0,0]
+	["Land_Cargo_Patrol_V2_F",0,0,0,GRLIB_perm_log]
 ];
 
 // Boats

@@ -20,6 +20,8 @@ medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "O_Helipilot_F";
 crewman_classname = "O_crew_F";
 uavs_terminal_typename = "O_UavTerminal";
+blufor_flag = "Flag_CSAT_F";
+
 chimera_vehicle_overide = [
 	["B_Heli_Transport_01_F", "O_Heli_Light_02_dynamicLoadout_F"]
 ];
@@ -146,8 +148,7 @@ support_vehicles_west = [
 buildings_west = [
 	["Land_Cargo_Tower_V3_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V3_F",0,0,0,GRLIB_perm_inf],
-	["Land_Cargo_Patrol_V3_F",0,0,0,GRLIB_perm_log],
-	["Flag_CSAT_F",0,0,0,0]
+	["Land_Cargo_Patrol_V3_F",0,0,0,GRLIB_perm_log]
 ];
 
 // Boats

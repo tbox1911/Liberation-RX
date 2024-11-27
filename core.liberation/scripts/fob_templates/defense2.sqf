@@ -24,7 +24,7 @@
     ["Land_HBarrierBig_F", [22.38, -10.86, 0], 90],
     ["Land_HBarrierBig_F", [-22.8, 10.09, 0], 270],
     ["Land_HBarrierBig_F", [17.11, 18.6, 0], 1],
-    ["Flag_NATO_F", [20.65, 16.82, 0], 45],
+    [blufor_flag, [20.65, 16.82, 0], 45],
     ["Land_HBarrierBig_F", [22.46, 15.65, 0], 89],
     ["Land_HBarrierBig_F", [-23.05, -16.17, 0], 269],
     ["Land_HBarrierBig_F", [-22.88, 18.83, 0], 270],
@@ -33,7 +33,7 @@
     ["Land_HBarrierBig_F", [-2, -30.79, 0], 180],
     ["Land_HBarrierBig_F", [6.86, -30.62, 0], 180],
     ["Land_CncBarrierMedium4_F", [-20.85, -24.21, 0], 235],
-    ["Flag_NATO_F", [-11.65, -30.68, 0], 45],
+    [blufor_flag, [-11.65, -30.68, 0], 45],
     ["Land_HBarrierBig_F", [-10.31, -31.57, 0], 347],
     ["Land_HBarrierBig_F", [15.64, -30.46, 0], 180],
     ["Land_HBarrierBig_F", [21.95, -27.64, 0], 277]
