@@ -11,7 +11,7 @@ private _release_medic = {
 		[group _medic, _medic] selectLeader groupOwner (_medic getVariable "PAR_AIgrp");
 	};
 
-	if (lifeState _medic != "INCAPACITATED") then {
+	if !([_medic] call PAR_is_wounded) then {
 		_medic doFollow leader _medic;
 		_medic setSpeedMode (speedMode group player);
 		_medic setCaptive false;

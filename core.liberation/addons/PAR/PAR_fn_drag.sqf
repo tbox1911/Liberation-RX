@@ -14,8 +14,8 @@ sleep 1;
 waitUntil {
 	sleep 0.1;
 	!alive player || !alive _target ||
-	lifeState _target != "INCAPACITATED" ||
-	lifeState player == "INCAPACITATED" ||
+	!([_target] call PAR_is_wounded) ||
+	([player] call PAR_is_wounded) ||
 	_target getVariable ["PAR_isDragged", 0] == 0 ||
 	!PAR_isDragging
 };

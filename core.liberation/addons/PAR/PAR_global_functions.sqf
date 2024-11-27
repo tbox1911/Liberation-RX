@@ -19,7 +19,7 @@ PAR_medic_units = {
 	private _grp_id = _wnded getVariable ["PAR_Grp_ID","1"];
 	(units GRLIB_side_friendly) select {
 		!isPlayer _x &&
-		lifeState _x != "INCAPACITATED" &&
+		!([_x] call PAR_is_wounded) &&
 		isNil {_x getVariable "PAR_busy"} &&
 		(_x getVariable ["PAR_Grp_ID","0"]) == _grp_id
 	};
@@ -42,7 +42,7 @@ PAR_unblock_AI = {
 	} else {
 		{
 			_unit = _x;
-			if (isNull (objectParent _unit) && (player distance2D _unit) < 50 && (lifeState _unit != "INCAPACITATED")) then {
+			if (isNull (objectParent _unit) && (player distance2D _unit) < 50 && !([_unit] call PAR_is_wounded)) then {
 				_unit stop true;
 				sleep 1;
 				_unit doWatch objNull;
@@ -134,6 +134,10 @@ PAR_fn_fixPos = {
 PAR_is_medic = {
 	params ["_unit"];
 	(getNumber (configOf _unit >> "attendant") == 1);
+};
+PAR_is_wounded = {
+	params ["_unit"];
+	(_unit getVariable ["PAR_isUnconscious", false]);
 };
 PAR_has_medikit = {
 	params ["_unit"];
@@ -264,7 +268,7 @@ PAR_HandleDamage_EH = {
 		};
 	};
 
-	private _isNotWounded = !(_unit getVariable ["PAR_isUnconscious", false]);
+	private _isNotWounded = !([_unit] call PAR_is_wounded);
 	private _veh_unit = objectParent _unit;
 
 	if (GRLIB_tk_mode > 0) then {
@@ -322,7 +326,7 @@ PAR_Player_Unconscious = {
 	[_unit] spawn PAR_fn_unconscious;
 	sleep 1;
 
-	while { alive _unit && (_unit getVariable ["PAR_isUnconscious", false])} do {
+	while { alive _unit && ([_unit] call PAR_is_wounded) } do {
 		private _bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
@@ -330,7 +334,7 @@ PAR_Player_Unconscious = {
 	};
 
 	// Player got revived
-	if (!(_unit getVariable ["PAR_isUnconscious", false])) then {
+	if !([_unit] call PAR_is_wounded) then {
 		// Unmute Radio
 		5 fadeRadio 1;
 

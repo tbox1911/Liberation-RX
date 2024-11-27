@@ -5,7 +5,7 @@ _wnded setVariable ["PAR_heal", true];
 if (_wnded == _medic) exitWith {
 	_wnded playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 	sleep 7;
-	if (lifeState _wnded != "INCAPACITATED") then {
+	if !([_wnded] call PAR_is_wounded) then {
 		_wnded setDamage 0;
 	};
 	sleep 2;
@@ -24,8 +24,8 @@ waitUntil {
 	sleep 3;
 	_wnded_healed = damage _wnded == 0;
 	_in_vehicle = !(isNull objectParent _wnded && isNull objectParent _medic);
-	_wnded_hit = lifeState _wnded == "INCAPACITATED";
-	_medic_hit = lifeState _medic == "INCAPACITATED";
+	_wnded_hit = ([_wnded] call PAR_is_wounded);
+	_medic_hit = ([_medic] call PAR_is_wounded);
 	_medic_busy = _medic getVariable ["PAR_busy", false];
 	_exit = (time > _timer || _medic_busy || _medic_hit || _wnded_hit || _wnded_healed || _in_vehicle);
 	(_exit || _medic distance2D _wnded <= 3)
@@ -44,7 +44,7 @@ if (stance _medic == 'PRONE') then {
 	_medic playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 };
 sleep 7;
-if (lifeState _medic != "INCAPACITATED" && lifeState _wnded != "INCAPACITATED" && (_medic distance2D _wnded) <= 3) then {
+if (!([_medic] call PAR_is_wounded) && !([_wnded] call PAR_is_wounded) && (_medic distance2D _wnded) <= 3) then {
 	_wnded setDamage 0;
 };
 [[_medic, _wnded]] call PAR_fn_fixPos;

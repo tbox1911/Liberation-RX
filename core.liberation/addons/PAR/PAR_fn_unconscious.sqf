@@ -41,7 +41,7 @@ waituntil { sleep 1; (round (getPos _unit select 2) <= 0) };
 private _bld = [_unit] call PAR_spawn_blood;
 private _cnt = 0;
 private ["_medic", "_msg"];
-while { alive _unit && (_unit getVariable ["PAR_isUnconscious", false]) && time <= (_unit getVariable ["PAR_BleedOutTimer", 0])} do {
+while { alive _unit && ([_unit] call PAR_is_wounded) && time <= (_unit getVariable ["PAR_BleedOutTimer", 0])} do {
 	if (_cnt == 0) then {
 		_unit setOxygenRemaining 1;
 		if ( {alive _x} count PAR_AI_bros > 0 ) then {
@@ -53,7 +53,7 @@ while { alive _unit && (_unit getVariable ["PAR_isUnconscious", false]) && time 
 			};
 		} else {
 			_msg = format [localize "STR_PAR_UC_03", name player];
-			if (lifeState player == "INCAPACITATED") then {
+			if ([player] call PAR_is_wounded) then {
 				_msg = format [localize "STR_PAR_UC_02", name player];
 			};
 			_last_msg = player getVariable ["PAR_last_message", 0];

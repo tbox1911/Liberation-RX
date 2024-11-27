@@ -35,7 +35,7 @@ while {true} do {
 
 			// AI stop doing shit !
 			private _not_leader = !(leader (group player) == player);
-			if (lifeState player == "INCAPACITATED" && _not_leader) then {
+			if (([player] call PAR_is_wounded) && _not_leader) then {
 				if (_unit distance2D player <= 500) then {
 					unassignVehicle _unit;
 					[_unit] orderGetIn false;
@@ -51,7 +51,7 @@ while {true} do {
 			if (PAR_ai_revive > 0) then {
 				// Auto heal units
 				if (PAR_revive != 0 && behaviour player in ["SAFE", "AWARE"] && isNull objectParent _unit) then {
-					if (lifeState _unit == "INCAPACITATED") exitWith {};
+					if ([_unit] call PAR_is_wounded) exitWith {};
 					_is_medic = [_unit] call PAR_is_medic;
 					_has_medikit = [_unit] call PAR_has_medikit;
 					_not_busy = _unit getVariable "PAR_busy";
@@ -62,7 +62,7 @@ while {true} do {
 							!(surfaceIsWater (getPos _x)) &&
 							isNull objectParent _x &&
 							damage _x >= 0.1 &&
-							lifeState _x != "INCAPACITATED" &&
+							!([_x] call PAR_is_wounded) &&
 							isNil {_x getVariable "PAR_busy"} &&
 							isNil {_x getVariable "PAR_heal"}
 						};

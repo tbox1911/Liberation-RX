@@ -3,7 +3,7 @@ params ["_wnded", "_medic"];
 if (isDedicated) exitWith {};
 if !(local _wnded) exitWith { [_wnded, _medic] remoteExec ["PAR_remote_sortie", 2] };
 
-if (lifeState _wnded != "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
+if (!([_wnded] call PAR_is_wounded) || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 if (!isPlayer _medic) then {
 	private _msg = format [localize "STR_PAR_ST_01", name _medic, name _wnded];
@@ -26,7 +26,7 @@ if (!isPlayer _medic) then {
 	};
 };
 
-if (lifeState _medic == "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
+if (([_medic] call PAR_is_wounded) || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 // Revived
 if (PAR_revive == 2) then {

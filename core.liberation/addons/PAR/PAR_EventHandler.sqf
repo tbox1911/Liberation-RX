@@ -182,7 +182,7 @@ if (_unit == player) then {
 			params ["_unit","","_dam"];
 			_veh = objectParent _unit;
 
-			if (!(_unit getVariable ["PAR_isUnconscious", false]) && _dam >= 0.86) then {
+			if (!([_unit] call PAR_is_wounded) && _dam >= 0.86) then {
 				_unit setVariable ["PAR_isUnconscious", true, true];
 				if (!isNull _veh) then {[_unit, _veh] spawn PAR_fn_eject};
 				[_unit] spawn PAR_fn_unconscious;
