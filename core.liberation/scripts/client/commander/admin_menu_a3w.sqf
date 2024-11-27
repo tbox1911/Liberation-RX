@@ -28,6 +28,17 @@ lbClear _timeout_list;
 
 // Build Mission list
 if (isNil "LRX_A3W_sectors_init") then {
+	sectors_capture = [];
+	sectors_military = [];
+	{
+		if (_x select [0,7] == "capture") then {
+			sectors_capture pushback _x;
+		};
+
+		if (_x select [0,8] == "military") then {
+			sectors_military pushback _x;
+		};
+	} foreach allMapMarkers;
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 } else {
 	{ waitUntil {sleep 0.2; LRX_A3W_sectors_init} };
