@@ -103,7 +103,7 @@ while { true } do {
 							[gamelogic, _text] remoteExec ["globalChat", 0];
 							_text = "Over.";
 							[gamelogic, _text] remoteExec ["globalChat", 0];
-						};						
+						};
 					};
 
 					// set player rank
@@ -111,7 +111,7 @@ while { true } do {
 					_x setVariable ["GRLIB_Rank", _new_rank, true];
 
 					// fireworks !!
-					if (_firework) then { 
+					if (_firework) then {
 						[getPosATL _x, _rounds] remoteExec ["remote_call_fireworks", 0];
 					};
 				};
