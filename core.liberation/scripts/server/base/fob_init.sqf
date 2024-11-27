@@ -29,6 +29,10 @@ if (_fob_class == "Land_SPE_House_Thatch_03") then {
 	_offset = [5, -3.5, -0.4];
 	_fob_dir = _fob_dir + 90;
 };
+if (_fob_class == "Land_SPE_H679") then {
+	_offset = [4, -6, -0.4]; 
+	_fob_dir = _fob_dir + 0;
+};
 
 // Naval FOB
 if (_fob_class == "Land_Destroyer_01_base_F") then {
@@ -46,7 +50,7 @@ if (_fob_class == FOB_typename) then {
 };
 
 private _sign_pos = (getposASL _fob) vectorAdd ([_offset, -_fob_dir] call BIS_fnc_rotateVector2D);
-private _sign = createVehicle [FOB_sign, ([] call F_getFreePos), [], 0, "NONE"];
+private _sign = createVehicle [FOB_sign, ([] call F_getFreePos), [], 0, "CAN_COLLIDE"];
 _sign allowDamage false;
 _sign setDir _fob_dir;
 _sign setPosASL _sign_pos;
@@ -63,7 +67,7 @@ if (count GRLIB_all_fobs == 0) then {
 // 	sleep 1;
 // 	private _ammo_pos = (getposATL _sign) vectorAdd ([[10, 0, 0], -(getDir _sign) - 90] call BIS_fnc_rotateVector2D);
 // 	{
-// 		_ammo1 = createVehicle [_x, _ammo_pos, [], 1, "NONE"];
+// 		_ammo1 = createVehicle [_x, _ammo_pos, [], 1, "CAN_COLLIDE"];
 // 		_ammo1 allowDamage false;
 // 		_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
 // 		_ammo1 setVariable ["R3F_LOG_disabled", true, true];
