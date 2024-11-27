@@ -124,7 +124,6 @@ load_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_
 save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
 keep_context = compileFinal preprocessFileLineNumbers "scripts\server\game\keep_context.sqf";
 blufor_victory = compileFinal preprocessFileLineNumbers "scripts\server\game\blufor_victory.sqf";
-get_rank = compileFinal preprocessFileLineNumbers "scripts\server\game\get_rank.sqf";
 
 // Bases
 fob_init = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init.sqf";

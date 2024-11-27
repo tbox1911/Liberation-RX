@@ -221,7 +221,6 @@ GRLIB_civilians_amount = 12;
 GRLIB_civilians_amount = GRLIB_civilians_amount * GRLIB_civilian_activity;
 GRLIB_patrol_amount = 8;
 GRLIB_patrol_amount = GRLIB_patrol_amount * GRLIB_patrols_activity;
-GRLIB_squad_size_bonus = 0;
 GRLIB_secondary_missions_costs = [100, 50, 10, 800];
 GRLIB_defense_costs = [0, 100, 200, 300];
 

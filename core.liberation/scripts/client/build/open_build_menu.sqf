@@ -1,6 +1,6 @@
 private ["_build_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
 
-if (([player , 500 , GRLIB_side_enemy] call F_getUnitsCount) > 4) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
+if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 
 if ( isNil "buildtype" ) then { buildtype = 1 };
 if ( buildtype > 8 ) then { buildtype = 1 };
@@ -159,8 +159,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 						_affordable = false;
 					};
 				} else {
-					PAR_AI_bros = ((units player) + (units GRLIB_side_civilian)) select {!isPlayer _x && alive _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", PAR_Grp_ID]};
-					if (count PAR_AI_bros >= (GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
+					if (count PAR_AI_bros >= ([_score] call F_getRank) select 1) then {
 						_affordable = false;
 					};
 					if (!(player getVariable ["GRLIB_squad_context_loaded", false])) then {

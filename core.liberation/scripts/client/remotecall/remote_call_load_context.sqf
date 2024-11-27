@@ -9,6 +9,7 @@ private _pos = getPosATL player;
 private _alt = _pos select 2;
 
 {
+    PAR_AI_bros = PAR_AI_bros + [_x];
     _x setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
     [_x] call PAR_fn_AI_Damage_EH;
     [_x] call F_fixModUnit;

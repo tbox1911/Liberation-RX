@@ -23,7 +23,7 @@ while { true } do {
 				// score has changed for player _x
 
 				_uid = getPlayerUID _x;
-				_new_rank = [_cur] call get_rank;
+				_new_rank = ([_cur] call F_getRank) select 0;
 
 				if (_cur <= GRLIB_perm_ban || !([] call F_getValid)) exitWith {
 					BTC_logic setVariable [_uid, 99, true];
@@ -107,7 +107,7 @@ while { true } do {
 					};
 
 					// set player rank
-					[] remoteExec ["set_rank", owner _x];
+					[_cur] remoteExec ["set_rank", owner _x];
 					_x setVariable ["GRLIB_Rank", _new_rank, true];
 
 					// fireworks !!

@@ -33,6 +33,8 @@ if (count _context >= 1) then {
 
     // AIs loadout
     if (count (_context select 2) >= 1 && alive _player) then {
+        private _score = [_player] call F_getScore;
+        private _squad_size = ([_score] call F_getRank) select 1;
         private _wait = true;
         while { _wait } do {
             _player = _uid call BIS_fnc_getUnitByUID;
@@ -47,7 +49,7 @@ if (count _context >= 1) then {
                         _class = _x select 0;
                         _rank = _x select 1;
                         _loadout = _x select 2;
-                        if (count units _player > (GRLIB_squad_size + GRLIB_squad_size_bonus)) exitWith {};
+                        if (count units _grp >= _squad_size) exitWith {};
                         _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
                         _unit allowDamage false;
                         _unit setPos (getPos _unit);

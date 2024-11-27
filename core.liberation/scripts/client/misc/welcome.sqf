@@ -8,6 +8,9 @@ private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 
+// set Rank
+[_score] call set_rank;
+
 // first time notice
 if (_score == 0) then {
 	createDialog "liberation_notice";
@@ -32,8 +35,6 @@ if ([player] call F_getCommander) then {
 private _my_squad = player getVariable ["my_squad", nil];
 if (!isNil "_my_squad") then { player hcSetGroup [_my_squad] };
 
-// set Rank
-[] call set_rank;
 private _reput = [player] call F_getReputText;
 private _color = _reput select 0;
 private _text = _reput select 1;

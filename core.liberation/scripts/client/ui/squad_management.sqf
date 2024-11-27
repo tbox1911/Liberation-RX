@@ -84,9 +84,9 @@ while { dialog && alive player && _membercount > 0 } do {
 			} else {
 				gamelogic globalChat format ["Soldier Refund: %1, Thank you !", _refund];
 			};
+			PAR_AI_bros = PAR_AI_bros - [_selectedmember];
 			deleteVehicle _selectedmember;
 			hint localize 'STR_REMOVE_OK';
-			PAR_AI_bros = ((units player) + (units GRLIB_side_civilian)) select {!isPlayer _x && alive _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", PAR_Grp_ID]};
 			if (count PAR_AI_bros == 0) then {
 				lbSetCurSel [101, -1];
 			} else {
