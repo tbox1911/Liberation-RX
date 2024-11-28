@@ -3,11 +3,11 @@ waitUntil {sleep 1; !isNil "combat_readiness"};
 waitUntil {sleep 1; !isNil "resources_intel"};
 
 private _blufor_sectors = [];
-private _active_sectors = [];
 private _combat_readiness = 0;
 private _resources_intel = 0;
 
 active_sectors = [];
+publicVariable "active_sectors";
 
 while { true } do {
 	unitcap = { alive _x && local _x && (_x distance2D lhd) >= 200 } count (units GRLIB_side_friendly);
@@ -18,11 +18,6 @@ while { true } do {
 	if !(blufor_sectors isEqualTo _blufor_sectors) then {
 		_blufor_sectors = blufor_sectors;
 		publicVariable "blufor_sectors";
-	};
-
-	if !(active_sectors isEqualTo _active_sectors) then {
-		_active_sectors = active_sectors;
-		publicVariable "active_sectors";
 	};
 
 	if !(combat_readiness == _combat_readiness) then {
