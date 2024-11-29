@@ -52,6 +52,3 @@ if !(SunkenMissionMarkers isEqualTo []) then {
 
 LRX_MissionMarkersCap = sectors_capture apply {[_x, false, 0]};
 LRX_MissionMarkersMil = sectors_military apply {[_x, false, 0]};
-
-sleep 1;
-LRX_A3W_sectors_init = true;

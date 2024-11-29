@@ -21,6 +21,8 @@ GRLIB_ACE_enabled = false;
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+[] call compileFinal preprocessFileLineNumbers "scripts\server\sector\init_sectors.sqf";
+[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 
 if (!isDedicated && hasInterface) then {
 	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";

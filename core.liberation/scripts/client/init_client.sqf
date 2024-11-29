@@ -86,9 +86,6 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
-// Map Sector init
-{ waitUntil {sleep 1; !isNil "GRLIB_sectors_init"} };
-
 GRLIB_ActionDist_3 = 3;
 GRLIB_ActionDist_5 = 5;
 GRLIB_ActionDist_10 = 10;

@@ -1,7 +1,5 @@
 if (!isServer) exitWith {};
 
-waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
-
 // Load fixed positions
 [] call compileFinal preprocessFileLineNumbers "fixed_position.sqf";
 

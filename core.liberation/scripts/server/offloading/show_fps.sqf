@@ -1,6 +1,5 @@
 private [ "_sourcestr", "_position", "_myfpsmarker", "_myfps", "_opforcap", "_civcap"];
 
-waitUntil{ sleep 1; !isNil "opfor_sectors" };
 waitUntil{ sleep 1; !isNil "unitcap" };
 
 _sourcestr = "Server";
@@ -16,12 +15,8 @@ while { true } do {
 	if ( _myfps < 20 ) then { _myfpsmarker setMarkerColor "ColorORANGE"; };
 	if ( _myfps < 10 ) then { _myfpsmarker setMarkerColor "ColorRED"; };
 
-	_opforcap = opforcap;
-	_civcap = civcap;
-	if (count (entities "HeadlessClient_F") > 0) then {
-		_opforcap = { alive _x && local _x && !(captive _x) } count (units GRLIB_side_enemy);
-		_civcap = { alive _x && local _x && (isNil {_x getVariable "GRLIB_vehicle_owner"}) } count (units GRLIB_side_civilian);
-	};
+	_opforcap = { alive _x && local _x && !(captive _x) } count (units GRLIB_side_enemy);
+	_civcap = { alive _x && local _x && (isNil {_x getVariable "GRLIB_vehicle_owner"}) } count (units GRLIB_side_civilian);
 
 	_myfpsmarker setMarkerText format [ "%1: %2 fps - Up: %6 - civ:%3 blu:%4 red:%5",
 		_sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 ,

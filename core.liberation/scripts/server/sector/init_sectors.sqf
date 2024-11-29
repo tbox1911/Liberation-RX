@@ -51,6 +51,9 @@ sectors_airSpawn = [];
 	};
 } foreach allMapMarkers;
 
+// Only on client
+if (!hasInterface) exitWith {};
+
 {
 	private _marker = _x;
 	private _marker_dist = 999;
@@ -73,17 +76,6 @@ sectors_airSpawn = [];
 			if (_marker in sectors_factory) then {_marker_text = format ["Fuel Depot #%1", _forEachIndex]};
 			diag_log format ["--- LRX World: %1 - Auto-Name failed for marker: %2", worldname, _marker]
 		};
-		_marker setMarkerText _marker_text;
+		_marker setMarkerTextLocal _marker_text;
  };
 } forEach (sectors_capture + sectors_bigtown + sectors_factory + sectors_military);
-
-publicVariable "sectors_allSectors";
-publicVariable "sectors_bigtown";
-publicVariable "sectors_factory";
-publicVariable "sectors_military";
-publicVariable "sectors_tower";
-publicVariable "sectors_airSpawn";
-
-sleep 1;
-GRLIB_sectors_init = true;
-publicVariable "GRLIB_sectors_init";

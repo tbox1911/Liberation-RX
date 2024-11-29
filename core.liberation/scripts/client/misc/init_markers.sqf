@@ -37,8 +37,6 @@ if (_full) then {
 
 	// Objects too long to search (atm, phone, etc ..)
 	[] call compileFinal preprocessFileLineNumbers "fixed_position.sqf";
-
-	waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 	waituntil {sleep 1; !isNil "GRLIB_marker_init"};
 };
 
