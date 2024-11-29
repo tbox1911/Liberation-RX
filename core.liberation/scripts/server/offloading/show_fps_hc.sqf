@@ -1,7 +1,5 @@
 private [ "_sourcestr", "_position", "_myfpsmarker", "_myfps", "_bluforcap", "_opforcap", "_civcap"];
 
-waitUntil{ sleep 1; !isNil "opfor_sectors" };
-
 if ( isServer ) then {
 	_sourcestr = "Server";
 	_position = 0;
