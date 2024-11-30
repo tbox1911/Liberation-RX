@@ -37,7 +37,7 @@ if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
 // IGNORE VEHICLES
 private _no_cleanup_classnames = [
-	"Steerable_Parachute_F",
+	Arsenal_typename,
 	"Land_Device_assembled_F",
 	"Land_Device_disassembled_F"
 ] + GRLIB_vehicle_blacklist;
@@ -200,7 +200,7 @@ while {deleteManagerPublic} do {
 			alive _x &&
 			[_x] call is_abandoned &&
 			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
-			!(_x getVariable ['R3F_LOG_disabled', true]) &&
+			!(_x getVariable ['R3F_LOG_disabled', false]) &&
 			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 			!([_x, _no_cleanup_classnames] call F_itemIsInClass)
 		};
