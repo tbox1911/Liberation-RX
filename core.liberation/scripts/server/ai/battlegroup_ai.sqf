@@ -2,9 +2,15 @@ params ["_grp", "_objective_pos"];
 if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
-private _vehicle = objectParent (leader _grp);
+private _vehicle = objectParent leader _grp;
 if (_vehicle isKindOf "Ship") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
+};
+
+if (_vehicle isKindOf "ParachuteBase") then {
+	_vehicle = objNull;
+	waitUntil { sleep 1; ({getPosATL _x select 2 > 1} count (units _grp) == 0) };
+	sleep 5;
 };
 
 diag_log format ["Group %1 (%2) - Attack: %3", _grp, typeOf _vehicle, _objective_pos];
