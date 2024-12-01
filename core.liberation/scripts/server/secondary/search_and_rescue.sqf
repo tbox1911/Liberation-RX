@@ -28,7 +28,7 @@ _pilotUnits joinSilent _pilotsGrp;
 {
 	[_x, true] spawn prisoner_ai;
 	_x setDir (random 360);
-} foreach (_pilotUnits);
+} foreach _pilotUnits;
 sleep 5;
 
 private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
@@ -61,7 +61,7 @@ publicVariable "secondary_objective_position_marker";
 
 waitUntil {
 	sleep 5;
-	({(alive _x) && !([_x, "FOB", 50] call F_check_near)} count _pilotUnits == 0)
+	({alive _x  && !([_x, "FOB", 50] call F_check_near && isNull objectParent _x)} count _pilotUnits == 0)
 };
 
 sleep 5;

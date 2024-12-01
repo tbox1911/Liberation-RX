@@ -7,7 +7,7 @@ private _timeout = time + (30 * 60);
 
 while { alive _unit && !_captured } do {
 	// Captured
-	if ([_unit, "FOB", 30] call F_check_near && (round (getPos _unit select 2) <= 0) && (round (speed vehicle _unit) == 0)) exitWith {
+	if ([_unit, "FOB", 30] call F_check_near && (isNull objectParent _unit) && (round (speed vehicle _unit) == 0)) exitWith {
 		_unit setVariable ["GRLIB_can_speak", false, true];
 		_captured = true;
 	};
@@ -50,13 +50,13 @@ while { alive _unit && !_captured } do {
 };
 
 if (alive _unit && _captured) then {
-	sleep 3;
+	[_unit] orderGetIn false;
+	[_unit] allowGetIn false;
+	sleep (3 + floor random 4);
 	private _leader = leader group _unit;
 	private _grp = createGroup [GRLIB_side_civilian, true];
 	[_unit] joinSilent _grp;
 	_unit setVariable ["GRLIB_is_prisoner", nil, true];
-	sleep 1;
 	[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
-	sleep 3;
 	[_unit, _leader, _friendly] spawn prisoner_captured;
 };
