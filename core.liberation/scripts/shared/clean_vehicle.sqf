@@ -1,7 +1,7 @@
 params ["_vehicle", ["_delete", true], ["_force", false], ["_anim", false]];
 
 if (isNull _vehicle) exitWith {};
-if (_vehicle isKindOf "Steerable_Parachute_F") exitWith {};
+if (_vehicle isKindOf "ParachuteBase") exitWith {};
 
 private _towed = false;
 private _owned = false;

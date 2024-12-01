@@ -4,7 +4,7 @@ private _medics = ([_wnded] call PAR_medic_units) select {
   speed vehicle _x <= 20 &&
   _x distance2D _wnded <= 500 &&
   getPos _x select 2 <= 20 &&
-  (!(objectParent _x iskindof "Steerable_Parachute_F"))
+  (!(objectParent _x iskindof "ParachuteBase"))
 };
 
 if (count _medics == 0) exitWith {};

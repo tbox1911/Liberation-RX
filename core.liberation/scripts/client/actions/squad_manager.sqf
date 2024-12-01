@@ -28,9 +28,9 @@ while { true } do {
 			} forEach units _my_squad;
 		} else {
 			//para drop
-			if (_veh_player iskindof "Steerable_Parachute_F") then {
+			if (_veh_player iskindof "ParachuteBase") then {
 				{
-					if ( vehicle _x != _x && !(vehicle _x iskindof "Steerable_Parachute_F") ) then {
+					if ( vehicle _x != _x && !(vehicle _x iskindof "ParachuteBase") ) then {
 						[_x, getPos _x] spawn paraDrop;
 						sleep 0.3;
 					};
