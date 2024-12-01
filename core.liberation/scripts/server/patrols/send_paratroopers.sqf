@@ -12,13 +12,24 @@ if (_qrf == true) then {
 };
 
 private _vehicle = [_targetpos, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
+if (isNull _vehicle) exitWith { grpNull };
 private _pilot_group = group driver _vehicle;
-_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+private _escort = objNull;
+if (floor random 4 == 0) then {
+	if (count opfor_air > 0) then {
+		sleep 3;
+		_escort = [_targetpos, selectRandom opfor_air] call F_libSpawnVehicle;
+		(crew _escort) joinSilent _pilot_group;
+		_escort setVariable ["GRLIB_counter_TTL", round(time + 900)];
+		_escort setVariable ["GRLIB_battlegroup", true];		
+	};
+};
+_vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
 _vehicle setVariable ["GRLIB_battlegroup", true];
 {
-	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+	_x setVariable ["GRLIB_counter_TTL", round(time + 900)];
 	_x setVariable ["GRLIB_battlegroup", true];
-} foreach (crew _vehicle);
+} foreach (units _pilot_group);
 sleep 1;
 private _spawnpos = getPosATL _vehicle;
 
@@ -26,8 +37,8 @@ private _spawnpos = getPosATL _vehicle;
 private _waypoint = _pilot_group addWaypoint [_targetpos, 100];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "SAFE";
-_waypoint setWaypointCombatMode "WHITE";
+_waypoint setWaypointBehaviour "COMBAT";
+_waypoint setWaypointCombatMode "YELLOW";
 _waypoint setWaypointCompletionRadius 300;
 {_x doFollow (leader _pilot_group)} foreach units _pilot_group;
 
@@ -65,19 +76,19 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 	waitUntil { sleep 1;
 		!(alive _vehicle) || (damage _vehicle > 0.2 ) || (_vehicle distance2D _targetpos <= _unload_dist)
 	};
-	if (!alive _vehicle) exitWith {};
+
 	if ({alive _x} count (units _para_group) > 0) then {
 		[_para_group, _vehicle] call F_ejectGroup;
 		[_para_group, _targetpos] spawn battlegroup_ai;
 	};
 
-	if (!alive _vehicle) exitWith {};
+	if ({alive _x} count (units _pilot_group) == 0) exitWith {};
 	[_pilot_group] call F_deleteWaypoints;
 	private _waypoint = _pilot_group addWaypoint [_spawnpos, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCombatMode "WHITE";
+	_waypoint setWaypointBehaviour "COMBAT";
+	_waypoint setWaypointCombatMode "YELLOW";
 	_waypoint setWaypointCompletionRadius 300;
 	_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
 	{_x doFollow (leader _pilot_group)} foreach units _pilot_group;
