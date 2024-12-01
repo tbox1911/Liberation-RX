@@ -5,7 +5,7 @@ while { true } do {
 
 	// Renegade
 	private _side = side player;
-	if (!captive player && _side in [GRLIB_side_friendly, GRLIB_side_civilian]) then {
+	if (!captive player && !(_side in [GRLIB_side_friendly, GRLIB_side_civilian])) then {
 		player setcaptive true;
 		player addrating 3000;
 		if (isNull GRLIB_player_group) then {
