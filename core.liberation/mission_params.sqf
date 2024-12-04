@@ -44,10 +44,8 @@ LRX_Mission_Params = [
 	["Patrols", 1],					// Patrols Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
-	["CivPenalties", 20],			// Enable Civilian Penalty [default 20] - values = [0, 4, 6, 8, 10, 20, 25, 30, 40, 50 }
 	["AirSupport", 1],				// Enable Air Support - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["EnableLock", 1],				// Enable Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["EnemyLock", 1],				// Lock Enemy Vehicles - [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["CivPenalties", 20],			// Enable Civilian Penalty [default 20] - values = [0, 4, 6, 8, 10, 20, 25, 30, 40, 50 }
 
 	["---", "MOD TEMPLATE"],
 	["ModPresetWest", 0],			// Select MOD Preset for Friendly - value = computed
@@ -61,6 +59,7 @@ LRX_Mission_Params = [
 	["PAR_AI_Revive", 7],			// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
 	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
 	["PAR_Grave", 1],				// PAR grave with stuuf in box - [default 1] - values [1,0] - Text {Enabled,Disabled}
+	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["MaxSpawnPoint", 3],			// Spawn Point limit per player. [default 3] - values = {1,2,3,4}
 	["Redeploy", 1],				// Allow Redeploy to all mobile Respawn - [default 1] - values = [0, 1, 2] - Text {Disabled, All, Only FOB}
 	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}
@@ -85,10 +84,13 @@ LRX_Mission_Params = [
 	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2] - Text {"USS Liberty", "USS Freedom", "Offshare plateform"}
 
 	["---", "MISC"],
+	["FancyInfo", 2],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
+	["EnableLock", 1],				// Enable Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["EnemyLock", 1],				// Lock Enemy Vehicles - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["MaxGarageSize", 6],			// Virtual Garage vehicle limit [default 6] - values = {0,1,2,3,4,5,6,7,8,9,10}
 	["SectorRadius", 0],			// The size of the sector - [default 0] - values = {0,300,400,500,600,700,800,900,1000,1200,1500};
 	["SectorDespawn", 72], 			// Time for a sector to Despawn if no attackers - [default 72] - values = [(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
-	["BuildingRatio", 1],			// AI in Building ratio (CQB) - [default 1] - values = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+	["BuildingRatio", 1.5],			// AI in Building ratio (CQB) - [default 1] - values = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
 
 	["---", "RESTART"],
 	["KeepScore", 0],				// Keep the Basic Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
@@ -100,8 +102,6 @@ LRX_Mission_Params = [
 	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
 	["TFRadioRange", 5000],			// The radius of TFAR relay - [default 5000] - values = {2500, 5000, 7500, 10000, 15000, 20000};
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
-	["FancyInfo", 2],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["RespawnCD", 0],				// Cooldown if player respawn too fast - [default 0] - values = [0,xxx] - Text {Disabled,Enabled}
 	["KickIdle", 0],				// Kick player if idle too long - [default 0] - values = {0,900,1200,1800,3600,7200}
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}

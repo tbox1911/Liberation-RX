@@ -6082,9 +6082,9 @@
 			<Chinese>僅白名單/黑名單</Chinese>
 		</Key>
 		<Key ID="STR_VEH_LOCK">
-			<Original>Enable Vehicles Ownership</Original>
+			<Original>Permission: vehicles ownership</Original>
 			<Russian>Включить Владение Транспортом</Russian>
-			<French>Activer la Propriété des Véhicules </French>
+			<French>Autorisation : propriété des véhicules</French>
 			<Chinesesimp>车辆所有权</Chinesesimp>
 			<Chinese>車輛所有權</Chinese>
 			<Japanese>乗り物の所有権</Japanese>
