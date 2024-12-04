@@ -37,7 +37,7 @@ switch (GREUH_allow_nametags) do {
 
 private _group_name = profileNamespace getVariable ["GRLIB_group_name", ""];
 if (_group_name != "") then {
-	(group player) setGroupId [_group_name];
+	(group player) setGroupIdGlobal [_group_name];
 };
 
 [] call compile preprocessFileLineNumbers "GREUH\GREUH_config.sqf";
@@ -46,7 +46,6 @@ if (_group_name != "") then {
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_platoonoverlay.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_playermarkers.sqf";
 
-if ( GREUH_allow_customsquads ) then { [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_squadmanagement.sqf"; };
 if ( GREUH_allow_viewdistance ) then {
 	[] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_view_distance_management.sqf";
 	//[] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_dynamic_view_distance.sqf";

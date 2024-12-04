@@ -3,7 +3,7 @@ params ["_classname"];
 private _pos = getPosATL player;
 private _grp = createGroup [GRLIB_side_friendly, true];
 player setVariable ["my_squad", _grp, true];
-_grp setGroupId [format ["%1 %2", squads_names select buildindex, groupId _grp]];
+_grp setGroupIdGlobal [format ["%1 %2", squads_names select buildindex, groupId _grp]];
 
 private ["_unitrank", "_unit"];
 {
@@ -13,7 +13,7 @@ private ["_unitrank", "_unit"];
 	_unit = _grp createUnit [_x, _pos, [], 15, "NONE"];
 	_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 	[_unit] call PAR_fn_AI_Damage_EH;
-	[_unit] call F_fixModUnit;	
+	[_unit] call F_fixModUnit;
 	[_unit] joinSilent _grp;
 	_unit setUnitRank _unitrank;
 	_unit setSkill 0.6;

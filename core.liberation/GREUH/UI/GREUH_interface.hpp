@@ -185,7 +185,7 @@ class GREUH_Progress {
 	shadow = 2;
 	colorBar[] = {0.8,0,0,1};
 	colorExtBar[] = {1,1,1,1};
-	colorFrame[] = {1,1,1,1};	
+	colorFrame[] = {1,1,1,1};
     texture = "#(argb,8,8,3)color(1,1,1,1)";
 	x = 0;
 	y = 0;
@@ -279,10 +279,8 @@ class GREUH_Menu {
 	"GREUH_ButtonJoin","GREUH_ButtonNew","GREUH_ButtonRename","GREUH_PlatoonZone","GREUH_ViewZone","GREUH_WorldZone",
 	"GREUH_MarkersZone","GREUH_LabelZone","GREUH_Squad_OuterBG","GREUH_Squad_InnerBG","GREUH_Squad_OuterBG_F",
 	"GREUH_Squad_InnerBG_F","GREUH_ButtonName_Rename","GREUH_ButtonName_Abort","GREUH_Squad_TextField","GREUH_LabelVD",
-	"GREUH_ButtonLeader","GREUH_SliderVeh","GREUH_LabelVDVeh","GREUH_SliderVDVeh","GREUH_SliderObj","GREUH_LabelVDObj",
-	"GREUH_SliderVDObj","GREUH_Leader_OuterBG", "GREUH_Leader_InnerBG", "GREUH_Leader_OuterBG_F", "GREUH_Leader_InnerBG_F",
-	"GREUH_ButtonLeader_Choose", "GREUH_ButtonLeader_Abort", "GREUH_Squad_Combo","GREUH_ButtonLock",
-	"GREUH_LabelNametags","GREUH_NametagsActive","GREUH_NametagsYes","GREUH_NametagsNo",
+	"GREUH_SliderVeh","GREUH_LabelVDVeh","GREUH_SliderVDVeh","GREUH_SliderObj","GREUH_LabelVDObj","GREUH_SliderVDObj",
+	"GREUH_ButtonLock","GREUH_LabelNametags","GREUH_NametagsActive","GREUH_NametagsYes","GREUH_NametagsNo",
 	"GREUH_FPSLabel","GREUH_FPSEdit","GREUH_earplug","GREUH_Slider2","GREUH_SliderEP","GREUH_LabelEP"};
 
 	objects[] = {};
@@ -454,31 +452,31 @@ class GREUH_Menu {
 	class GREUH_ButtonJoin : GREUH_ButtonSquad {
 		idc = 511;
 		text = "Join";
-		action = "squadaction = 'join';";
+		action = "squadaction = 'join'";
 		y = ((BASE_Y + 0.11) * safezoneH) + safezoneY;
 	};
 	class GREUH_ButtonNew : GREUH_ButtonSquad {
 		idc = 512;
 		text = "Leave";
-		action = "squadaction = 'leave';";
+		action = "squadaction = 'leave'";
 		y = ((BASE_Y + 0.15) * safezoneH) + safezoneY;
 	};
 	class GREUH_ButtonRename : GREUH_ButtonSquad {
 		idc = 513;
 		text = "Rename";
-		action = "squadaction = 'rename';";
+		action = "squadaction = 'rename'";
 		y = ((BASE_Y + 0.19) * safezoneH) + safezoneY;
 	};
-	class GREUH_ButtonLeader : GREUH_ButtonSquad {
-		idc = 514;
-		text = "Leader";
-		action = "squadaction = 'leader';";
-		y = ((BASE_Y + 0.23) * safezoneH) + safezoneY;
-	};
+	// class GREUH_ButtonLeader : GREUH_ButtonSquad {
+	// 	idc = 514;
+	// 	text = "Leader";
+	// 	action = "squadaction = 'leader'";
+	// 	y = ((BASE_Y + 0.23) * safezoneH) + safezoneY;
+	// };
 	class GREUH_ButtonLock : GREUH_ButtonSquad {
 		idc = 516;
 		text = "Lock";
-		action = "squadaction = 'lock';";
+		action = "squadaction = 'lock'";
 		y = ((BASE_Y + 0.27) * safezoneH) + safezoneY;
 	};
 	class GREUH_Squad_OuterBG : GREUH_OuterBG {
@@ -513,13 +511,13 @@ class GREUH_Menu {
 		idc = 525;
 		x = 0.4875 * safezoneW + safezoneX;
 		text = "Rename";
-		action = "squadname = ctrlText 527;";
+		action = "squadname = ctrlText 527";
 	};
 	class GREUH_ButtonName_Abort : GREUH_ButtonName {
 		idc = 526;
 		x = (0.4875 * safezoneW + safezoneX) + ((0.2 * safezoneW) / 5);
 		text = "Cancel";
-		action = "squadaction = '';";
+		action = "squadaction = ''";
 	};
 	class GREUH_Squad_TextField : GREUH_ButtonName {
 		idc = 527;
@@ -534,53 +532,8 @@ class GREUH_Menu {
 		autocomplete = "";
 	};
 
-	class GREUH_Leader_OuterBG : GREUH_OuterBG {
-		idc = 561;
-		style = ST_SINGLE;
-		x = (0.37 * safezoneW + safezoneX) - (BORDERSIZE);
-		y = ((BASE_Y + 0.22) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
-		w = 0.2 * safezoneW +  (2 * BORDERSIZE);
-		h = 0.05 * safezoneH  + (3 * BORDERSIZE);
-	};
-	class GREUH_Leader_InnerBG : GREUH_OuterBG {
-		idc = 562;
-		colorBackground[] = COLOR_GREEN;
-		x = (0.37 * safezoneW + safezoneX);
-		y = ((BASE_Y + 0.22) * safezoneH) + safezoneY;
-		w = 0.2 * safezoneW;
-		h = 0.05 * safezoneH;
-	};
-	class GREUH_Leader_OuterBG_F : GREUH_Leader_OuterBG {
-		idc = 563;
-		style = ST_FRAME;
-	};
-	class GREUH_Leader_InnerBG_F : GREUH_Leader_InnerBG {
-		idc = 564;
-		style = ST_FRAME;
-	};
-	class GREUH_ButtonLeaderGen : GREUH_ButtonGeneric {
-		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
-		y = ((BASE_Y + 0.23) * safezoneH) + safezoneY;
-	};
-	class GREUH_ButtonLeader_Choose : GREUH_ButtonLeaderGen {
-		idc = 565;
-		x = 0.4875 * safezoneW + safezoneX;
-		text = "Choose";
-		action = "choose_squadleader = lbCurSel 567;";
-	};
-	class GREUH_ButtonLeader_Abort : GREUH_ButtonLeaderGen {
-		idc = 566;
-		x = (0.4875 * safezoneW + safezoneX) + ((0.2 * safezoneW) / 5);
-		text = "Cancel";
-		action = "squadaction = ''";
-	};
-	class GREUH_Squad_Combo : RscCombo {
-		idc = 567;
-		x = (0.37 * safezoneW + safezoneX) + BORDERSIZE;
-		w = 0.11 * safezoneW;
-		y = ((BASE_Y + 0.23) * safezoneH) + safezoneY;
-		h = 0.03 * safezoneH;
-	};
+	// free idc 561 - 567
+
 	class GREUH_PlatoonZone : GREUH_DefaultZone {
 		idc = 601;
 		y = ((BASE_Y + 0.35) * safezoneH) + safezoneY;
@@ -837,7 +790,7 @@ class GREUH_Menu {
 		idc = 910;
 		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;
 		h = (0.04 * safezoneH) - (2 * BORDERSIZE);
-	};	
+	};
 	class GREUH_LabelMarkers : GREUH_RegularLabel {
 		idc = 911;
 		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;

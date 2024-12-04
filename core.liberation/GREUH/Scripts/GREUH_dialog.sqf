@@ -1,14 +1,15 @@
-_squadcontrols = [511,512,513,514,515,521,522,523,524,525,526,527];
-_platooncontrols = [611,612,613,614];
-_viewcontrols = [712,713,714,722,723,724,732,733,734];
-_worldcontrols = [812,813,814,815];
-_markerscontrols = [911,912,913,914];
-_nametags_controls = [961,962,963,964];
-_allbuttons = [6677,511,512,513,514,613,614,812,813,814,815,913,914,712,722,732];
-_rename_controls = [521,522,523,524,525,526,527];
-_leader_controls = [561,562,563,564,565,566,567];
-renaming = false;
+private _squadcontrols = [511,512,513,514,515,521,522,523,524,525,526,527];
+private _platooncontrols = [611,612,613,614];
+private _viewcontrols = [712,713,714,722,723,724,732,733,734];
+private _worldcontrols = [812,813,814,815];
+private _markerscontrols = [911,912,913,914];
+private _nametags_controls = [961,962,963,964];
+private _allbuttons = [6677,511,512,513,514,516,613,614,712,722,732,812,813,814,815,913,914,963,964];
+private _rename_controls = [521,522,523,524,525,526,527];
+
 choosingleader = false;
+groups_list = [];
+squadaction = "";
 
 createDialog "GREUH_Menu";
 waitUntil { dialog };
@@ -71,36 +72,33 @@ if ( true ) then {
 	sliderSetPosition [ 1102, desired_vehvolume ];
 };
 
-while { dialog && alive player } do {
+{ ctrlEnable [_x, true] } foreach _allbuttons;
+{ ctrlShow [_x, false] } foreach _rename_controls;
 
-	if ( renaming ) then {
-		{ ctrlEnable [_x, false] } foreach (_allbuttons);
-		{ ctrlShow [_x, true] } foreach _rename_controls;
-		{ ctrlShow [_x, false] } foreach _leader_controls;
-	} else {
-		if ( choosingleader ) then {
-			{ ctrlEnable [_x, false] } foreach _allbuttons;
-			{ ctrlShow [_x, false] } foreach _rename_controls;
-			{ ctrlShow [_x, true] } foreach _leader_controls;
-		} else {
-			{ ctrlEnable [_x, true] } foreach _allbuttons;
-			{ ctrlShow [_x, false] } foreach (_rename_controls + _leader_controls);
-			ctrlEnable [513,(leader (group player) == player)];
-			ctrlEnable [514,(leader (group player) == player)];
-		};
-	};
+while { dialog && alive player } do {
+	ctrlEnable [513,(leader (group player) == player)];
+	ctrlEnable [514,(leader (group player) == player)];
 
 	if ( GREUH_allow_platoonview ) then { ctrlShow [612, show_platoon]; };
 	if ( GREUH_allow_mapmarkers ) then { ctrlShow [912, show_teammates]; };
 	if ( GREUH_allow_nametags ) then { ctrlShow [ 962, show_nametags ]; };
 
 	if ( GREUH_allow_customsquads ) then {
+		groups_list = ((groups GRLIB_side_friendly) select { isPlayer leader _x });
 		lbClear 515;
 		{
 			_brakets = "";
 			if ( _x == group player ) then { _brakets = ">> "; };
 			lbAdd [515, format [ "%4%1 - %2 (%3)",groupId _x, name leader _x, count units _x,_brakets ]];
 		} foreach groups_list;
+
+		if (lbCurSel 515 == -1) then { lbSetCurSel [515, 0] };
+		_grp = groups_list select (lbCurSel 515);
+		if (_grp in global_locked_group) then {
+			ctrlSetText [516, "UnLock"];
+		} else {
+			ctrlSetText [516, "Lock"];
+		};
 	};
 
 	if ( GREUH_allow_viewdistance ) then {
@@ -112,6 +110,13 @@ while { dialog && alive player } do {
 	ctrlSetText [ 1103, format [ "%1%2", round (desired_vehvolume), "%" ] ];
 	desired_fps = parseNumber (ctrlText 960);
 
+	if (squadaction != "") then {
+		{ ctrlEnable [_x, false] } foreach (_allbuttons);
+		[] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_squadmanagement.sqf";
+		uiSleep 0.5;
+		{ ctrlEnable [_x, true] } foreach (_allbuttons);
+		squadaction = "";
+	};
 	uiSleep 0.5;
 };
 
