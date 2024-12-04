@@ -11,6 +11,7 @@ sleep 3;
 if (!alive _unit) exitWith {};
 
 // Init bomber
+_unit setSkill ["courage", 1];
 removeAllWeapons _unit;
 removeHeadgear _unit;
 removeBackpack _unit;

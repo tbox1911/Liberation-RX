@@ -7,7 +7,7 @@ if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
 
-sleep 10;
+sleep 3;
 if (!alive _unit) exitWith {};
 
 // Init priso
@@ -26,14 +26,18 @@ _unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
 _unit setCaptive true;
 [_unit] call F_fixPosUnit;
-sleep 3;
+
+if (!_canmove) then {
+	// Halt	
+	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
+	sleep 7;
+};
+
+if (!alive _unit) exitWith {};
+_unit setVariable ["GRLIB_is_prisoner", true, true];
 
 // Wait
 if (!_canmove) then {
-	// Halt
-	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
-	sleep 3;
-	_unit setVariable ["GRLIB_is_prisoner", true, true];
 	if (_friendly) then {
 		waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly) };
 	} else {
@@ -43,10 +47,9 @@ if (!_canmove) then {
 	// Follow
 	[_unit, "move"] remoteExec ["remote_call_prisoner", 0];
 	sleep 3;
-} else {
-	_unit setVariable ["GRLIB_is_prisoner", true, true];
 };
 
+if (!alive _unit) exitWith {};
 if (isServer) then {
 	[_unit, _friendly] spawn prisoner_ai_loop;
 } else {

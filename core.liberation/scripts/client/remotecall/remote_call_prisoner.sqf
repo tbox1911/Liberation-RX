@@ -25,7 +25,7 @@ if (_cmd == "stop") exitWith {
 };
 
 if (_cmd == "move") exitWith {
-	_unit switchMove _anim;   
+	_unit switchMove _anim;
 	_unit stop false;
 	_unit enableAI "ANIM";
 	_unit enableAI "MOVE";
@@ -35,16 +35,11 @@ if (_cmd == "move") exitWith {
 };
 
 if (_cmd == "flee") exitWith {
-    _unit switchMove _anim;
     _unit stop false;
-    _unit setUnitPos "AUTO";
     _unit enableAI "ANIM";
     _unit enableAI "MOVE";
-    unassignVehicle _unit;
-    [_unit] orderGetIn false;
-    [_unit] allowGetIn false;
-    doGetOut _unit;
-    sleep 2;
+    if !(isNull objectParent _unit) then { [_unit] call F_ejectUnit };
+    _unit setUnitPos "AUTO";
     _anim = "AmovPercMwlkSnonWnonDf";  // "AmovPercMwlkSrasWrflDf"; // "AmovPercMwlkSnonWnonDf"
     _unit switchMove _anim;
     _unit playMoveNow _anim;
