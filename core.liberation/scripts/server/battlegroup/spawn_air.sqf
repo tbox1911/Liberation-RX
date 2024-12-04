@@ -57,10 +57,10 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) } do {
 	} else {
 		if ([_vehicle, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount == 0) then {
 			_next_objective = [getPos _vehicle] call F_getNearestBluforObjective;
-			if ((_next_objective select 1) <= GRLIB_spawn_max) then { _targetpos = (_next_objective select 0) } else { _targetpos = zeropos };
+			if ((_next_objective select 1) <= GRLIB_spawn_max) then { _targetpos = (_next_objective select 0) } else { _targetpos = [] };
 		};
 	};
-	if (_targetpos isEqualTo zeropos) exitWith {};
+	if (count _targetpos == 0) exitWith {};
 
 	if (count _targetpos > 0) then {
 		[_grp] call F_deleteWaypoints;

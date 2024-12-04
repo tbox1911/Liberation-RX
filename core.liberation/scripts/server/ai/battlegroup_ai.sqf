@@ -20,7 +20,7 @@ private _last_pos = getPosATL (leader _grp);
 
 sleep (2 + floor random 5);
 private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer", "_target"];
-while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos)} do {
+while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 	if (_attack) then {
 		_attack = false;
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
@@ -67,9 +67,9 @@ while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos
 			_objective_pos = (_next_objective select 0);
 			_attack = true;
 		} else {
-			_objective_pos = zeropos;
+			_objective_pos = [];
 		};
-		_timer = round (time + (5 * 60));
+		_timer = round (time + (10 * 60));
 	};
 
 	{

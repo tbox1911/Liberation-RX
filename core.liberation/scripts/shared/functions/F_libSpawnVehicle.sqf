@@ -13,12 +13,12 @@ private _vehicle = objNull;
 private _spawn_pos = [];
 private _airveh_alt = 300;
 
-if ( _classname isKindOf "Air" ) then {
+if (_classname isKindOf "Air") then {
 	_spawn_pos = [_sectorpos] call F_getAirSpawn;
 	if (count _spawn_pos > 0) then {
-		if ( _classname isKindOf "Plane" ) then { _airveh_alt = 800 };
-		if ( GRLIB_SOG_enabled || GRLIB_SPE_enabled) then { _airveh_alt = 350 };
-		if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
+		if (_classname isKindOf "Plane") then { _airveh_alt = 800 };
+		if (GRLIB_SOG_enabled || GRLIB_SPE_enabled) then { _airveh_alt = 350 };
+		if (_side == GRLIB_side_civilian) then { _airveh_alt = 150 };
 		_spawn_pos = _spawn_pos getPos [floor random 300, random 360];
 		_spawn_pos set [2, (_airveh_alt + floor random 100)];
 		_vehicle = createVehicle [_classname, _spawn_pos, [], 50, "FLY"];
@@ -29,13 +29,13 @@ if ( _classname isKindOf "Air" ) then {
 		_vehicle setVariable ["GRLIB_vehicle_init", true, true];
 	};
 } else {
-	if ( _size == 0 ) then {
+	if (_size == 0) then {
 		_spawn_pos = _sectorpos;
 	} else {
 		_spawn_pos = [_sectorpos, _size, true] call F_findSafePlace;
 	};
 
-	if ( count _spawn_pos == 0 ) exitWith {
+	if (count _spawn_pos == 0) exitWith {
 		diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos];
 		objNull;
 	};
@@ -51,6 +51,9 @@ if ( _classname isKindOf "Air" ) then {
 			};
 			if (count civilian_boats >= 1 && _side == GRLIB_side_civilian) then {
 				_classname = selectRandom civilian_boats;
+			};
+			if (_classname == "") then {
+				diag_log format ["--- LRX Error: Cannot find Boats classname in template %1", _side];
 			};
 		};
 	};
@@ -72,7 +75,7 @@ if ( _classname isKindOf "Air" ) then {
 };
 sleep 0.5;
 
-if ( isNull _vehicle ) exitWith {
+if (isNull _vehicle) exitWith {
 	diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos];
 	objNull;
 };
@@ -91,13 +94,13 @@ _vehicle setUnloadInCombat [true, false];
 [_vehicle] call F_vehicleDefense;
 if (GRLIB_ACE_enabled) then { [_vehicle] call F_aceInitVehicle };
 
-if ( _vehicle isKindOf "Air" ) then {
+if (_vehicle isKindOf "Air") then {
 	_vehicle engineOn true;
 	_vehicle flyInHeight _airveh_alt;
 	_vehicle flyInHeightASL [_airveh_alt, _airveh_alt, _airveh_alt];
 };
 
-if ( _random_rotate ) then {
+if (_random_rotate) then {
 	_vehicle setdir (random 360);
 };
 
