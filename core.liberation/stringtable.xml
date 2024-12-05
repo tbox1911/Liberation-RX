@@ -2004,6 +2004,8 @@
 		<Key ID="STR_PARAMS_FUEL_CONSO">
 			<Original>Vehicles Fuel Consumption</Original>
 			<French>Consommation Carburant des Véhicules</French>
+			<Chinesesimp>车辆油耗</Chinesesimp>
+			<Chinese>車輛油耗</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_INTRO">
 			<Original>Introduction</Original>
