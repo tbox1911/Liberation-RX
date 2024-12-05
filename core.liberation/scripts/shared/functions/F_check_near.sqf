@@ -23,7 +23,6 @@ switch ( _list ) do {
 	case "SRV" : { _classlist = GRLIB_Marker_SRV};
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
-	case "REPAIR" : { _classlist = [repair_offroad]};
 	case "SHOP" : { _classlist = GRLIB_Marker_SHOP};
 	case "SPAWN" : { _classlist = GRLIB_mobile_respawn select { typeOf _x != mobile_respawn }};
 	case "SPAWNT" : { _classlist = GRLIB_mobile_respawn select { typeOf _x == mobile_respawn }};
@@ -33,6 +32,7 @@ switch ( _list ) do {
 	case "REAMMO" : { _classlist = vehicle_rearm_sources};
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
 	case "REPAIR_AI" : { _classlist = vehicle_repair_sources};
+	case "REPAIR" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"]};
 	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"]};
 	case "WAREHOUSE" : { _classlist = [Warehouse_typename]; _use_fast = false};
 	case "TRANSPORT" : { _classlist = transport_vehicles; _use_fast = false};
@@ -61,6 +61,7 @@ if (typeName (_classlist select 0) == "STRING") then {
 		_near = _obj_list select {
 			alive _x && getObjectType _x >= 8 &&
 			(
+				(_x getVariable ["GRLIB_vehicle_owner", ""] == "server") ||
 				!(_x getVariable ['R3F_LOG_disabled', false]) ||
 				!(isNull (attachedTo  _x))
 			)
