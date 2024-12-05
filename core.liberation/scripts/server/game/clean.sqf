@@ -31,6 +31,12 @@ Instructions:
 
 	[] execVM "clean.sqf";				// If you put the file in mission directory
 	[] execVM "scripts\clean.sqf";		// If you put the file in a folder, in this case called "scripts"
+
+	(DBG) Execute in game debug console:
+
+	GRLIB_force_cleanup = true;			// to force script execution
+	GRLIB_run_cleanup = false;			// to terminate script
+
 _________________________________________________________________________*/
 
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
@@ -62,7 +68,8 @@ private  _getTTLunits = {
 };
 
 // CONFIG
-deleteManagerPublic = true;							// To terminate script via debug console
+GRLIB_run_cleanup = true;							// To terminate script via debug console
+GRLIB_force_cleanup = false;						// To force script execution via debug console
 
 private _checkPlayerCount = true;					// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
 private _playerThreshold = 4;						// How many players before accelerated cycle kicks in?
@@ -112,9 +119,10 @@ private _count = 0;
 private _stats = 0;
 private _sleep = _checkFrequencyDefault;
 
-while {deleteManagerPublic} do {
+while {GRLIB_run_cleanup} do {
 	_stats = 0;
 	_list = [];
+	_deleted = [];
 
 	// SLEEP
 	_sleep = _checkFrequencyDefault;
@@ -132,15 +140,16 @@ while {deleteManagerPublic} do {
 	};
 
 	waitUntil {
-		sleep 60;
 		if (_sleep % 300 == 0) then {
 			// FORCE DELETE
 			_list = entities [GRLIB_force_cleanup_classnames, []];
 			{ deleteVehicle _x } forEach _list;			
 		};
+		sleep 60;
 		_sleep = _sleep - 60;
-		(_sleep <= 0)
+		(_sleep <= 0 || GRLIB_force_cleanup)
 	};
+	if (GRLIB_force_cleanup) then { GRLIB_force_cleanup = false };	
 
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
 
@@ -194,42 +203,6 @@ while {deleteManagerPublic} do {
 		};
 	};
 
-	// VEHICLES
-	if (!(_vehiclesLimit == -1)) then {
-		private _nbVehicles = vehicles select {
-			alive _x &&
-			[_x] call is_abandoned &&
-			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
-			!(_x getVariable ['R3F_LOG_disabled', false]) &&
-			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
-			!([_x, _no_cleanup_classnames] call F_itemIsInClass)
-		};
-
-		if ((count _nbVehicles) > _vehiclesLimit) then {
-			if (_vehicleDistCheck) then {
-				{
-					if ([_x, _vehicleDist, _hidden_from] call _isHidden) then {
-						[_x] call clean_vehicle;
-						_stats = _stats + 1;
-					};
-				} count (_nbVehicles);
-				sleep 0.1;
-				_list = _nbVehicles select {!isNull _x};
-				_count = count _list;
-				while {((_count - _vehiclesLimitMax) > 0)} do {
-					[selectRandom _list] call clean_vehicle;
-					_stats = _stats + 1;
-					_count = _count - 1;
-				};
-			} else {
-				while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
-					[selectRandom _nbVehicles] call clean_vehicle;
-					_stats = _stats + 1;
-				};
-			};
-		};
-	};
-
 	// WEAPON HOLDERS
 	if (!(_weaponHolderLimit == -1)) then {
 		_list = (allMissionObjects "WeaponHolder");
@@ -262,9 +235,47 @@ while {deleteManagerPublic} do {
 		};
 	};
 
+	// VEHICLES
+	if (!(_vehiclesLimit == -1)) then {
+		private _nbVehicles = vehicles select {
+			alive _x &&
+			[_x] call is_abandoned &&
+			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
+			!(_x getVariable ['R3F_LOG_disabled', false]) &&
+			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+			!([_x, _no_cleanup_classnames] call F_itemIsInClass)
+		};
+
+		if ((count _nbVehicles) > _vehiclesLimit) then {
+			if (_vehicleDistCheck) then {
+				{
+					if ([_x, _vehicleDist, _hidden_from] call _isHidden) then {
+						_deleted pushBack (typeOf _x);
+						[_x] call clean_vehicle;
+						_stats = _stats + 1;
+					};
+				} count (_nbVehicles);
+				sleep 0.1;
+				_list = _nbVehicles select {!isNull _x};
+				_count = count _list;
+				while {((_count - _vehiclesLimitMax) > 0)} do {
+					_deleted pushBack (typeOf _x);
+					[selectRandom _list] call clean_vehicle;
+					_stats = _stats + 1;
+					_count = _count - 1;
+				};
+			} else {
+				while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
+					[selectRandom _nbVehicles] call clean_vehicle;
+					_stats = _stats + 1;
+				};
+			};
+		};
+	};
+
 	// WRECKS
 	if (!(_deadVehiclesLimit == -1)) then {
-		_list = (allDead - allDeadMen) select { !([_x, _no_cleanup_classnames] call F_itemIsInClass) };
+		_list = (allDead - allDeadMen) select { !([_x, _no_cleanup_classnames] call F_itemIsInClass) && getObjectType _x >= 8 };
 		_count = count _list;
 		if (_count > _deadVehiclesLimit) then {
 			if (_deadVehicleDistCheck) then {
@@ -295,8 +306,8 @@ while {deleteManagerPublic} do {
 
 	// CRATERS
 	if (!(_craterLimit == -1)) then {
-		_list = (allMissionObjects "Crater");
-		_list append (allMissionObjects "CraterLong");
+		_list = (allMissionObjects "Crater") select { getObjectType _x >= 8 };
+		_list append (allMissionObjects "CraterLong") select { getObjectType _x >= 8 };
 		_count = count _list;
 		if (_count > _craterLimit) then {
 			if (_craterDistCheck) then {
@@ -348,6 +359,7 @@ while {deleteManagerPublic} do {
 			if (_staticsDistCheck) then {
 				{
 					if ([_x, _staticsDist, _hidden_from] call _isHidden) then {
+						_deleted pushBack (typeOf _x);
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
@@ -355,6 +367,7 @@ while {deleteManagerPublic} do {
 				} count _list;
 			} else {
 				while {((_count - _staticsLimit) > 0)} do {
+					_deleted pushBack (typeOf _x);
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
@@ -388,4 +401,5 @@ while {deleteManagerPublic} do {
 
 	sleep 2;
 	diag_log format ["--- LRX Garbage Collector --- End at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
+	// { diag_log format ["  %1", _x] } forEach _deleted;
 };
