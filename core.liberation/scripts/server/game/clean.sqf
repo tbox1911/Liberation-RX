@@ -259,8 +259,9 @@ while {GRLIB_run_cleanup} do {
 				_list = _nbVehicles select {!isNull _x};
 				_count = count _list;
 				while {((_count - _vehiclesLimitMax) > 0)} do {
-					_deleted pushBack (typeOf _x);
-					[selectRandom _list] call clean_vehicle;
+					private _veh = selectRandom _list;
+					_deleted pushBack (typeOf _veh);
+					[_veh] call clean_vehicle;
 					_stats = _stats + 1;
 					_count = _count - 1;
 				};

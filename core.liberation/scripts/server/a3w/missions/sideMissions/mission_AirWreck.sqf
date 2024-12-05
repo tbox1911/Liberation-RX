@@ -24,7 +24,7 @@ _setupObjects = {
 	_box3 = [basic_weapon_typename, _missionPos, true] call boxSetup;
 
 	[_missionPos, 30] call createlandmines;
-	_aiGroup = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;
+	_aiGroup = [getPos _vehicle, _nbUnits, "infantry"] call createCustomGroup;
 
 	_missionPicture = "\A3\Air_F\Heli_Light_02\Data\UI\Heli_Light_02_CA.paa";
 	_missionHintText = "STR_AIRWRECK_MESSAGE1";
