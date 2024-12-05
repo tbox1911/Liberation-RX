@@ -2001,6 +2001,10 @@
 			<Portuguese>Ativado - Apenas médicos podem reviver</Portuguese>
 			<Czech>Povoleno – Oživit mohou pouze medici</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_FUEL_CONSO">
+			<Original>Vehicles Fuel Consumption</Original>
+			<French>Consommation Carburant des Véhicules</French>
+		</Key>
 		<Key ID="STR_PARAMS_INTRO">
 			<Original>Introduction</Original>
 			<French>Introduction</French>

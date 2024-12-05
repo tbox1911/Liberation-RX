@@ -87,6 +87,7 @@ LRX_Mission_Params = [
 	["FancyInfo", 2],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["EnableLock", 1],				// Enable Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["EnemyLock", 1],				// Lock Enemy Vehicles - [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["FuelConso", 1],				// Vehicles fuel Consumption [default 0] - values = [0,0.5,1,1.5,2] - Text {Disabled,Low, Normal, Medium, High}
 	["MaxGarageSize", 6],			// Virtual Garage vehicle limit [default 6] - values = {0,1,2,3,4,5,6,7,8,9,10}
 	["SectorRadius", 0],			// The size of the sector - [default 0] - values = {0,300,400,500,600,700,800,900,1000,1200,1500};
 	["SectorDespawn", 72], 			// Time for a sector to Despawn if no attackers - [default 72] - values = [(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
@@ -179,6 +180,10 @@ LRX_Mission_Params_Def = [
 		["0.5", "1", "1.5", "2", "2.5", "3"],
 		[0.5, 1, 1.5, 2, 2.5, 3]
 	],
+	["FuelConso", localize "STR_PARAMS_FUEL_CONSO", 
+		[localize "STR_PARAMS_DISABLED", "Low", "Normal", "Medium", "High"],
+		[0, 0.5, 1, 1.5, 2]
+	],	
 	["FilterArsenal", localize "STR_LIMIT_ARSENAL", [
 		localize "STR_PARAMS_DISABLED",
 		localize "STR_LIMIT_ARSENAL_PARAM1",

@@ -188,6 +188,7 @@ GRLIB_civ_penalties = ["CivPenalties"] call lrx_getParamValue;
 GRLIB_halo_param = ["HaloJump"] call lrx_getParamValue;
 GRLIB_admin_menu = ["AdminMenu"] call lrx_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles"] call lrx_getParamValue;
+GRLIB_vehicles_fuel = ["FuelConso"] call lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave"] call lrx_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore"] call lrx_getParamValue;
 GRLIB_param_wipe_keepcontext = ["KeepContext"] call lrx_getParamValue;

@@ -2,6 +2,7 @@ params ["_unit", "_vehicle"];
 
 if (!local _vehicle) exitWith {};
 if (isNull _vehicle) exitWith {};
+if (GRLIB_vehicles_fuel == 0) exitWith {};
 _vehicle removeAllEventHandlers "Fuel";
 
 private ["_fuel_veh", "_fuel_collected"];
@@ -11,6 +12,7 @@ private _refuel_cost = 5;
 if (_vehicle isKindOf "Wheeled_APC_F") then { _conso = 0.003 };
 if (_vehicle isKindOf "Tank") then { _conso = 0.004 };
 if (_vehicle isKindOf "Air") then { _conso = 0.0045 };
+_conso = (_conso * GRLIB_vehicles_fuel);
 
 _vehicle setVariable ["GREUH_vehicle_fuel_managed", true];
 while {!(isNull _vehicle) && (_unit == driver _vehicle)} do {
