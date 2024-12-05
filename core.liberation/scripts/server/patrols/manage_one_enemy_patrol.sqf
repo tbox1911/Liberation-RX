@@ -45,7 +45,9 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		if (isNull _opfor_grp) exitWith {};
-		diag_log format ["--- LRX Spawn Enemy Patrol %1 (%2) - trigger alert %3", _opfor_grp, typeOf _opfor_veh, _readiness];
+		private _veh_type = "No vehicle";
+		if !(isNull _opfor_veh) then { _veh_type = typeOf _opfor_veh };
+		diag_log format ["--- LRX Spawn Enemy Patrol %1 (%2) - trigger alert %3", _opfor_grp, _veh_type, _readiness];
 
 		private _hc = [] call F_lessLoadedHC;
 		if (!isNull _hc) then {
