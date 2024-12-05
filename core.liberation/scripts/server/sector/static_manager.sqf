@@ -1,9 +1,9 @@
-params [ "_sector", "_count" ];
+params ["_sector", "_count", ["_timer", 1800]];
 
 if (_count == 0) exitWith {};
 if (_count >= 1) then {
 	sleep 5;
-	[_sector, _count - 1] spawn static_manager;
+	[_sector, _count - 1, _timer] spawn static_manager;
 };
 
 // Create
@@ -48,15 +48,10 @@ _spawn_pos = getPos _vehicle;
 [_grp, _spawn_pos, 20] spawn patrol_ai;
 
 // Wait
-private _unit_ttl = round (time + 1800);
+private _unit_ttl = round (time + _timer);
 waitUntil {
 	sleep 60;
-	(
-		GRLIB_global_stop == 1 ||
-		({alive _x} count (units _grp) == 0) ||
-		([_spawn_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount == 0) ||
-		(time > _unit_ttl)
-	)
+	( GRLIB_global_stop == 1 || ({alive _x} count (units _grp) == 0) || (time > _unit_ttl) )
 };
 
 // Cleanup

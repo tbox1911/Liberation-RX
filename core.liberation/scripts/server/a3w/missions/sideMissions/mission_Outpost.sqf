@@ -35,6 +35,7 @@ _setupObjects = {
 		sleep 0.3;
 	};
 	_prisonners = (units _grp_prisonners);
+	[_missionPos, 3, _missionTimeout] spawn static_manager;
 	true;
 };
 
