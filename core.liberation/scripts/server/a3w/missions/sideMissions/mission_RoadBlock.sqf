@@ -77,7 +77,7 @@ _setupObjects = {
 	_veh2 setPos _veh2_pos;
 
 	//----- spawn units ---------------------------------
-	_guard_grp = [_missionPos, 3, "guards", false] call createCustomGroup;
+	_guard_grp = [_missionPos, 3, "militia", false] call createCustomGroup;
 	private _guard = (units _guard_grp) select 0;
 	_guard setPosATL (getPosATL _bunker);
 	_guard setUnitPos "UP";
