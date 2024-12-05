@@ -13,14 +13,17 @@ if (_vehicle isKindOf "ParachuteBase") then {
 	sleep 5;
 };
 
-diag_log format ["Group %1 (%2) - Attack: %3", _grp, typeOf _vehicle, _objective_pos];
+private _veh_type = "No vehicle";
+if !(isNull _vehicle) then { _veh_type = typeOf _vehicle };
+diag_log format ["Group %1 (%2) - Attack: %3", _grp, _veh_type, _objective_pos];
 private _attack = true;
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
 
 sleep (2 + floor random 5);
-private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer", "_target"];
+private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer", "_sleep", "_target"];
 while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
+	_sleep = 300;
 	if (_attack) then {
 		_attack = false;
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
@@ -54,7 +57,8 @@ while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 		_timer = round (time + (15 * 60));
 	};
 
-	if (time > _timer) then {
+	_sector = [100, _objective_pos] call F_getNearestSector;
+	if (time > _timer || _sector in opfor_sectors) then {
 		_last_pos = getPosATL (leader _grp);
 		if (GRLIB_global_stop == 1) then {
 			_target = [_last_pos, GRLIB_spawn_max] call F_getNearestBlufor;
@@ -70,6 +74,7 @@ while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 			_objective_pos = [];
 		};
 		_timer = round (time + (10 * 60));
+		_sleep = 5;
 	};
 
 	{
@@ -83,7 +88,7 @@ while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 		_last_pos = getPosATL _vehicle;
 	};
 
-	sleep 300;
+	sleep _sleep;
 };
 
 // Cleanup
