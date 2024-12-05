@@ -49,6 +49,37 @@ if (_side == GRLIB_side_friendly) exitWith {
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 };
 diag_log format ["Spawn Air Squad %1 objective %2 at %3", typeOf _vehicle, _targetpos, time];
+
+if (_vehicle isKindOf "Plane") then {
+	[_vehicle] spawn {
+		params ["_plane"];
+		private _bombs = ["Bomb_03_F","Bomb_04_F","Bo_GBU12_LGB","Bo_GBU12_LGB_MI10","Bo_Mk82","Bo_Mk82_MI08"];
+
+		while { alive _plane } do {
+			private _plane_dir = getDir _plane;
+			private _spot = _plane getPos [1000, _plane_dir];
+			if ([_spot, 80, GRLIB_side_friendly] call F_getUnitsCount > 0) then {
+				_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
+				_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
+				_bomb setDir _plane_dir;
+				_bomb setVelocity (velocity _plane);
+				sleep 0.5;
+				_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
+				_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
+				_bomb setDir _plane_dir;
+				_bomb setVelocity (velocity _plane);
+				sleep 0.5;
+				_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
+				_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
+				_bomb setDir _plane_dir;
+				_bomb setVelocity (velocity _plane);
+				_plane setVehicleAmmo 1;
+				sleep 60;
+			};
+			sleep 1;
+		};
+	};
+};
 sleep 300;
 
 while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && count _targetpos > 0 } do {
