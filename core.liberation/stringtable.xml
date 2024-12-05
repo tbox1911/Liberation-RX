@@ -7498,9 +7498,12 @@
 			<Chinese>宙斯模式</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_SAVE">
-			<Original>Save Game</Original>
+			<Original>SAVE</Original>
 			<Chinesesimp>保存游戏</Chinesesimp>
 			<Chinese>保存遊戲</Chinese>
+		</Key>
+		<Key ID="STR_ADMIN_CLEAN">
+			<Original>CLEANUP</Original>
 		</Key>
 		<Key ID="STR_ADMIN_UNLOCK">
 			<Original>Unlock Vehicle</Original>

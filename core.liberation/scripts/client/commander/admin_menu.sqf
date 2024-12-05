@@ -71,6 +71,9 @@ if (!isNil "GRLIB_active_commander") then {
 private _sector = [GRLIB_sector_size, player] call F_getNearestSector;
 if (_sector == "" || _sector in blufor_sectors) then { ctrlEnable [1627, false] };
 
+// GC
+if (GRLIB_force_cleanup) then { ctrlEnable [1629, false] };
+
 // Clear listbox
 private _ban_combo = _display displayCtrl 1611;
 lbClear _ban_combo;
@@ -111,6 +114,8 @@ private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620,1626];
 (_display displayCtrl 1622) ctrlSetToolTip "BAN Player!";
 (_display displayCtrl 1610) ctrlSetToolTip "Delete object on cursor";
 (_display displayCtrl 1626) ctrlSetToolTip "Call Magic Mower";
+(_display displayCtrl 1628) ctrlSetToolTip "Force saving Game on server";
+(_display displayCtrl 1629) ctrlSetToolTip "Force execute Cleanup manager";
 
 // Build Banned
 [_ban_combo] call _getBannedUID;
@@ -358,6 +363,8 @@ while { alive player && dialog } do {
 		closeDialog 0;
 		sleep 0.5;
 	};
+
+	if (GRLIB_force_cleanup) then { ctrlEnable [1629, false] } else { ctrlEnable [1629, true] };
 	sleep 0.5;
 };
 closeDialog 0;

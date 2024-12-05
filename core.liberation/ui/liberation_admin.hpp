@@ -35,6 +35,7 @@ class liberation_admin {
     "DeleteButton",
     "MowerButton",
     "SaveButton",
+    "CleanButton",
 	  "Item01Button",
 	  "Item02Button",
     "Item03Button",
@@ -321,9 +322,18 @@ class liberation_admin {
     text = $STR_ADMIN_SAVE;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
-    w = 0.0875 * safezoneW;
+    w = 0.042 * safezoneW;
     h = 0.04 * safezoneH;
-  };  
+  };
+  class CleanButton: StdButton {
+    idc = 1629;
+    action = "GRLIB_force_cleanup = true";
+    text = $STR_ADMIN_CLEAN;
+    x = 0.3725 * safezoneW + safezoneX;
+    y = 0.624 * safezoneH + safezoneY;
+    w = 0.042 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
   //----------------
 	class Input_OuterBG : OuterBG {
 		idc = 521;
