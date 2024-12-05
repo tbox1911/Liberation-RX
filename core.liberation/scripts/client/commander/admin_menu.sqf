@@ -25,6 +25,18 @@ do_zeus = 0;
 do_capture = 0;
 do_save = 0;
 
+// Watchdog
+if (isNil "lrx_admin_watchdog") then {
+	lrx_admin_watchdog = true;
+	[] spawn {
+		while {true} do {
+			if (do_admin == 0 && !(isDamageAllowed player)) then { player allowDamage true };
+			if (do_admin == 1 && (isDamageAllowed player)) then { player allowDamage false };
+			sleep 0.5;
+		};
+	};
+};
+
 private _msg = "";
 private _getBannedUID = {
 	params ["_ban_combo"];

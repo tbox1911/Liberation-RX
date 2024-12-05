@@ -10,7 +10,9 @@ if (_ctrl_chkd) then {
 	player setDamage 0;
 	do_admin = 1;
 } else {
+	hintSilent "GodMode OFF !";	
 	player forceAddUniform "U_B_CombatUniform_mcam";
 	player allowDamage true;
+	player setDamage 0;	
 	do_admin = 0;
 };
