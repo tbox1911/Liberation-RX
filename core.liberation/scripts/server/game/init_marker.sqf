@@ -68,14 +68,17 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 	_desk enableSimulationGlobal false;
 	_desk setDir _desk_dir;
 	_desk setPosASL _desk_pos;
+	_desk setVariable ["R3F_LOG_disabled", true, true];
+
+	// Create Man
 	_desk_dir = (180 + _desk_dir);
 	_manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_desk_dir] call BIS_fnc_rotateVector2D);
 	_man = GRLIB_SHOP_Group createUnit [SHOP_Man, zeropos, [], 0, "CAN_COLLIDE"];
+	_man allowDamage false;
+	_man disableCollisionWith _desk;
 	[_man] joinSilent GRLIB_SHOP_Group;
 	_man setVariable ["acex_headless_blacklist", true, true];
 	_man setVariable ["GRLIB_vehicle_owner", "server", true];
-	_man allowDamage false;
-	_man disableCollisionWith _desk;
 	_man setDir _desk_dir;
 	_man setPosATL _manPos;
 	doStop _man;
