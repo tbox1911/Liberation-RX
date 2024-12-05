@@ -54,7 +54,7 @@ _setupObjects = {
 		{
 			_prisoners pushBack _x;
 			removeAllWeapons _x;
-			_x setSkill ["courage", 0.8];
+			_x setSkill ["courage", 0.5];
 			_x assignAsCargo _vehicle2;
 			_x moveInCargo _vehicle2;
 			[_x] spawn {
