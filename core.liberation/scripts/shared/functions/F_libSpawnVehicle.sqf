@@ -40,8 +40,9 @@ if (_classname isKindOf "Air") then {
 		objNull;
 	};
 
+	private _sea_deep = ((getPosATL _spawn_pos select 2) - (getPosASL _spawn_pos select 2));
 	if (_classname isKindOf "LandVehicle") then {
-		if (surfaceIsWater _spawn_pos && !(_classname isKindOf "Ship")) then {
+		if (_sea_deep > 1.5) then {
 			_classname = "";
 			if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
 				_classname = selectRandom opfor_boats;
@@ -56,6 +57,10 @@ if (_classname isKindOf "Air") then {
 				diag_log format ["--- LRX Error: Cannot find Boats classname in template %1", _side];
 			};
 		};
+	};
+
+	if (_classname isKindOf "Ship") then {
+		if (_sea_deep <= 3) then { _classname = "" };
 	};
 
 	if (_classname != "") then {
