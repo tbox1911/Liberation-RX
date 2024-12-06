@@ -2,6 +2,7 @@ params ["_vehicle", ["_delete", true], ["_force", false], ["_anim", false]];
 
 if (isNull _vehicle) exitWith {};
 if (_vehicle isKindOf "ParachuteBase") exitWith {};
+if (_vehicle isKindOf "WeaponHolderSimulated") exitWith { deleteVehicle _vehicle };
 
 private _towed = false;
 private _owned = false;

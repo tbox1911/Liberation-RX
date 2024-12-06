@@ -177,6 +177,7 @@ while {GRLIB_run_cleanup} do {
 				sleep 0.1;
 			};
 		} count _units_ttl;
+		sleep 1;
 	};
 
 	// DEAD MEN
@@ -200,6 +201,7 @@ while {GRLIB_run_cleanup} do {
 					_stats = _stats + 1;
 				};
 			};
+			sleep 1;
 		};
 	};
 
@@ -232,6 +234,7 @@ while {GRLIB_run_cleanup} do {
 					_count = _count - 1;
 				};
 			};
+			sleep 1;
 		};
 	};
 
@@ -271,6 +274,7 @@ while {GRLIB_run_cleanup} do {
 					_stats = _stats + 1;
 				};
 			};
+			sleep 1;
 		};
 	};
 
@@ -302,6 +306,7 @@ while {GRLIB_run_cleanup} do {
 					_count = _count - 1;
 				};
 			};
+			sleep 1;
 		};
 	};
 
@@ -326,6 +331,7 @@ while {GRLIB_run_cleanup} do {
 					_count = _count - 1;
 				};
 			};
+			sleep 1;
 		};
 	};
 
@@ -349,6 +355,7 @@ while {GRLIB_run_cleanup} do {
 					_stats = _stats + 1;
 				};
 			};
+			sleep 1;
 		};
 	};
 
@@ -374,6 +381,7 @@ while {GRLIB_run_cleanup} do {
 					_count = _count - 1;
 				};
 			};
+			sleep 1;
 		};
 	};
 
@@ -397,6 +405,7 @@ while {GRLIB_run_cleanup} do {
 					_count = _count - 1;
 				};
 			};
+			sleep 1;
 		};
 	};
 
