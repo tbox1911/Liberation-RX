@@ -1,19 +1,8 @@
-waitUntil {sleep 0.1; (!alive player || GRLIB_player_spawned) };
-if (!alive player) exitWith {};
+// Fix player traits
+[player] call F_fixModUnit;
 
-// Load Player Context
-if (GRLIB_player_spawned && !(player getVariable ["GRLIB_player_context_loaded", false])) then {
-	[player] remoteExec ["load_context_remote_call", 2];
-	// Allow time for load_context
-	sleep 2;
-	waitUntil {sleep 0.1; (player getVariable ["GRLIB_player_context_loaded", false])};
-};
-
-// Fix player pos
-[player] spawn F_fixModUnit;
-
+// Load Player Loadout
 if (isNil {player getVariable "GREUH_stuff_price"}) then {
-	// Manage Player Loadout
 	if (!isNil "GRLIB_respawn_loadout") then {
 		player setUnitLoadout GRLIB_respawn_loadout;
 	} else {
@@ -33,4 +22,11 @@ if (isNil {player getVariable "GREUH_stuff_price"}) then {
 
 	GRLIB_backup_loadout = getUnitLoadout player;
 	player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice), true];
+};
+
+// Load Player Context
+if !(player getVariable ["GRLIB_player_context_loaded", false]) then {
+	[player] remoteExec ["load_context_remote_call", 2];
+	sleep 2; 	// Allow time for load_context
+	waitUntil {sleep 0.1; (player getVariable ["GRLIB_player_context_loaded", false])};
 };

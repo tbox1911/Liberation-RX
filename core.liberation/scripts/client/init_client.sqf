@@ -269,4 +269,5 @@ if (isServer && hasInterface) then {
 initAmbientLife;
 enableEnvironment [true, true];
 
+GRLIB_init_client = true;
 diag_log "--- Client Init stop ---";

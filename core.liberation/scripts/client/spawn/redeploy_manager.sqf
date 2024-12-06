@@ -149,9 +149,10 @@ closeDialog 0;
 (findDisplay 5201) displayRemoveEventHandler ["KeyDown", _noesckey];
 if (!alive player) exitWith {};
 
+private _sleep = 3;
+if (GRLIB_deployment_cinematic) then { _sleep = 8 };
 
 if (deploy == 1) then {
-	titleText ["","BLACK IN", 5];
 	player setVariable ["GRLIB_action_inuse", true, true];
 
 	// choosen loadout
@@ -167,7 +168,7 @@ if (deploy == 1) then {
 	if ( _spawn_str == _basenamestr) then {
 		// LHD (Chimera)
 		player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
-		player setVariable ["GRLIB_action_inuse", false, true];
+		[_spawn_str, false] spawn spawn_camera;
 	} else {
 		private _destpos = [];
 		private _destdir = random 360;
@@ -183,10 +184,13 @@ if (deploy == 1) then {
 			_destdist = 12;
 		};
 		if (_destpos distance2D zeropos < 300) exitWith {};
-		[_destpos, _destdist, _mobile] spawn do_redeploy;
+		if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
+		[_spawn_str, _mobile] spawn spawn_camera;
+		[_destpos, _destdist, _mobile] call do_redeploy;
 	};
-	GRLIB_player_spawned = ([] call F_getValid);
+
 	cinematic_camera_started = false;
+	titleText ["","BLACK IN", 5];
 };
 
 sleep 2;
@@ -195,10 +199,6 @@ if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) the
 	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
 };
 
-if (alive player && deploy == 1) then {
-	if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
-	[_spawn_str, _mobile] spawn spawn_camera;
-};
-
-sleep 8;
+sleep _sleep;
 player setVariable ["GRLIB_action_inuse", false, true];
+GRLIB_player_spawned = ([] call F_getValid);

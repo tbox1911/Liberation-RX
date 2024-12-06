@@ -7,7 +7,7 @@ private _near_sign = nearestObjects [_pos, [FOB_sign], 20] select 0;
 if (isNil "_near_sign" && !_mobile) exitWith {};
 
 private _destdir = random 360;
-if (_mobile) then { 
+if (_mobile) then {
     _dist = 5;
 } else {
     private _near_outpost = ([_near_sign, "OUTPOST", 30] call F_check_near);
@@ -27,10 +27,11 @@ private _list_redep = _unit_list select {
 player setDir _destdir;
 player setPosATL (_pos getPos [_dist, (_destdir-180)]);
 
-sleep 1;
-{
-    _x setPosATL (player getPos [5, random 360]);
-    sleep 0.5;
-} forEach _list_redep;
-sleep 3;
-player setVariable ["GRLIB_action_inuse", false, true];
+[_list_redep] spawn {
+    params ["_list"];
+    {
+        _x setPosATL (player getPos [5, random 360]);
+        sleep 0.5;
+    } forEach _list;
+};
+
