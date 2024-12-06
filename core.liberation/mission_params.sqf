@@ -13,15 +13,18 @@ private _lrx_getParamValue = {
 	(_ret select 1);
 };
 
-private _list_west = [];
-{
-  _list_west pushback ([_x] call _lrx_getParamValue);
-} foreach GRLIB_mod_list_west;
+private _lrx_get_mod_template = {
+	params ["_mod_list"];
+	private _mod_data = [[], []];
+	{
+		(_mod_data select 0) pushBack ([_x] call _lrx_getParamValue);
+		(_mod_data select 1) pushBack _x;
+	} foreach _mod_list;
+	_mod_data;
+};
 
-private _list_east = [];
-{
-  _list_east pushback ([_x] call _lrx_getParamValue);
-} foreach GRLIB_mod_list_east;
+private _list_west = ([GRLIB_mod_list_west] call _lrx_get_mod_template);
+private _list_east = ([GRLIB_mod_list_east] call _lrx_get_mod_template);
 
 LRX_Mission_Params = [
 	["---", "GAME"],
@@ -48,8 +51,8 @@ LRX_Mission_Params = [
 	["CivPenalties", 20],			// Enable Civilian Penalty [default 20] - values = [0, 4, 6, 8, 10, 20, 25, 30, 40, 50 }
 
 	["---", "MOD TEMPLATE"],
-	["ModPresetWest", 0],			// Select MOD Preset for Friendly - value = computed
-	["ModPresetEast", 0],			// Select MOD Preset for Enemy - values = computed
+	["ModPresetWest", "A3_BLU"],	// Select MOD Preset for Friendly - value = computed
+	["ModPresetEast", "A3_OPF"],	// Select MOD Preset for Enemy - values = computed
 	["ModPresetCiv", 1],			// Select MOD Preset for Civilian - values = "All", "Friendly", "Enemy"
 	["ModPresetTaxi", 1],			// Select MOD Preset for Taxi - values = "All", "Friendly", "Enemy", "Disabled"
 
@@ -110,12 +113,10 @@ LRX_Mission_Params = [
 	["Persistent", 0]				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 ];
 
-//add sec,min,hour translation
-
 LRX_Mission_Params_Def = [
 	["---", "=========", []],
-	["ModPresetWest", "MOD Preset Friendly", _list_west],
-	["ModPresetEast", "MOD Preset Enemy", _list_east],
+	["ModPresetWest", "MOD Preset Friendly", _list_west select 0, _list_west select 1],
+	["ModPresetEast", "MOD Preset Enemy", _list_east select 0, _list_east select 1],
 	["ModPresetCiv",  "MOD Preset Civilian", [
 		"All",
 		"Friendly",
@@ -180,10 +181,10 @@ LRX_Mission_Params_Def = [
 		["0.5", "1", "1.5", "2", "2.5", "3"],
 		[0.5, 1, 1.5, 2, 2.5, 3]
 	],
-	["FuelConso", localize "STR_PARAMS_FUEL_CONSO", 
+	["FuelConso", localize "STR_PARAMS_FUEL_CONSO",
 		[localize "STR_PARAMS_DISABLED", "Low", "Normal", "Medium", "High"],
 		[0, 0.5, 1, 1.5, 2]
-	],	
+	],
 	["FilterArsenal", localize "STR_LIMIT_ARSENAL", [
 		localize "STR_PARAMS_DISABLED",
 		localize "STR_LIMIT_ARSENAL_PARAM1",
@@ -208,11 +209,11 @@ LRX_Mission_Params_Def = [
 		localize "STR_VICTORY_COND3",
 		localize "STR_VICTORY_COND4",
 		localize "STR_VICTORY_COND5",
-		localize "STR_VICTORY_COND6",		
+		localize "STR_VICTORY_COND6",
 		localize "STR_VICTORY_COND7",
 		localize "STR_VICTORY_COND8",
 		localize "STR_VICTORY_COND9",
-		localize "STR_VICTORY_CONDA"		
+		localize "STR_VICTORY_CONDA"
 		]
 	],
 	["ResourcesMultiplier", localize "STR_PARAMS_RESOURCESMULTIPLIER",

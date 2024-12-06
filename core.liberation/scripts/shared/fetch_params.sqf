@@ -73,17 +73,14 @@ GRLIB_use_exclusive = ["Exclusive",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_params = ["WipeSave3",0] call bis_fnc_getParamValue;
-GRLIB_reset_pa = ["ResetPA",0] call bis_fnc_getParamValue;
-GRLIB_reset_vg = ["ResetVG",0] call bis_fnc_getParamValue;
+GRLIB_param_wipe_context = ["WipeContext",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
 GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 
+// Reset LRX Settings
 if (GRLIB_param_wipe_params == 1 && isServer) then {
 	profileNamespace setVariable [GRLIB_params_save_key, LRX_Mission_Params];
-};
-
-if (GRLIB_param_wipe_params == 1 && !isDedicated && hasInterface) then {
-	profileNamespace setVariable ["GREUH_OPTIONS_PROFILE", nil];
+	saveProfileNamespace;
 };
 
 // Load Mission Parameters
@@ -92,6 +89,7 @@ if (isServer) then {
 	if ( isNil "GRLIB_LRX_params" ) then {
 		GRLIB_LRX_params = LRX_Mission_Params;
 		profileNamespace setVariable [GRLIB_params_save_key, GRLIB_LRX_params];
+		saveProfileNamespace;
 	};
 	publicVariable "GRLIB_LRX_params";
 	if (GRLIB_log_settings > 0) then {
@@ -125,7 +123,6 @@ if (isServer) then {
 if (isNil "GRLIB_param_open_params") then {
 	GRLIB_param_open_params = ["OpenParams",0] call bis_fnc_getParamValue;
 };
-
 if (GRLIB_param_open_params == 1) then {
 	if (!isDedicated && hasInterface) then {
 		[] execVM "scripts\client\commander\open_params.sqf";
@@ -154,8 +151,8 @@ GRLIB_passive_delay = ["PassiveIncomeDelay"] call lrx_getParamValue;
 GRLIB_passive_ammount = ["PassiveIncomeAmmount"] call lrx_getParamValue;
 GRLIB_resources_multiplier = ["ResourcesMultiplier"] call lrx_getParamValue;
 GRLIB_disable_death_chat = ["DeathChat"] call lrx_getParamValue;
-GRLIB_mod_preset_west = ["ModPresetWest"] call lrx_getParamValue;
-GRLIB_mod_preset_east = ["ModPresetEast"] call lrx_getParamValue;
+GRLIB_mod_west = ["ModPresetWest"] call lrx_getParamValue;
+GRLIB_mod_east = ["ModPresetEast"] call lrx_getParamValue;
 GRLIB_mod_preset_civ = ["ModPresetCiv"] call lrx_getParamValue;
 GRLIB_mod_preset_taxi = ["ModPresetTaxi"] call lrx_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal"] call lrx_getParamValue;
@@ -224,30 +221,31 @@ GRLIB_patrol_amount = 8;
 GRLIB_patrol_amount = GRLIB_patrol_amount * GRLIB_patrols_activity;
 GRLIB_secondary_missions_costs = [100, 50, 10, 800];
 GRLIB_defense_costs = [0, 100, 200, 300];
-
-// Select MOD name
-GRLIB_mod_west = "";
-GRLIB_mod_east = "";
-if (GRLIB_mod_preset_west <= count GRLIB_mod_list_west) then {
-	GRLIB_mod_west = GRLIB_mod_list_west select GRLIB_mod_preset_west;
-};
-if (GRLIB_mod_preset_east <= count GRLIB_mod_list_east) then {
-	GRLIB_mod_east = GRLIB_mod_list_east select GRLIB_mod_preset_east;
-};
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
 
-if ( GRLIB_mod_west == "" || GRLIB_mod_east == "") then { abort_loading = true };
+if ( typeName GRLIB_mod_west != "STRING" || typeName GRLIB_mod_east != "STRING") then { abort_loading = true };
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - old Parameters version detected !\n\n
+	Your Settings are incompatible with this version of LRX,\n
+	Go to Game Parameters and Reset Mission Settings.\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Mod Template selection.\n
+	*********************************"];
+};
+
+if ( GRLIB_mod_list_west find GRLIB_mod_west < 0 || GRLIB_mod_list_east find GRLIB_mod_east < 0 ) then { abort_loading = true };
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
 	FATAL! - Missing MOD Template !\n\n
-	Template for side West or East do not exist.\n
+	Template for side West (%1) or East (%2) do not exist.\n
 	you must add LRX_Template Mod to your setup.\n
 	see: https://steamcommunity.com/sharedfiles/filedetails/?id=3014195090\n\n
 	Loading Aborted to protect data integrity.\n
 	Correct the Mod Template selection.\n
-	*********************************"];
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
 diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
@@ -300,20 +298,6 @@ switch (GRLIB_naval_type) do {
 	case 1: { FOB_carrier = "Land_Destroyer_01_base_F" };
 	case 2: { FOB_carrier = "Land_Carrier_01_base_F" };
 	case 3: { FOB_carrier = "fob_water1" };
-};
-
-// Player Context
-GRLIB_player_context = [];
-if (GRLIB_reset_pa == 1 || GRLIB_reset_vg == 1) then {
-    {
-        if (GRLIB_reset_pa == 1) then {
-            _x set [3, default_personal_arsenal];
-        };
-        if (GRLIB_reset_vg == 1) then {
-            _x set [4, []];
-        };
-        GRLIB_player_context pushback _x;
-    } foreach (profileNamespace getVariable GRLIB_save_key select 14);
 };
 
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
