@@ -7,7 +7,7 @@ params [
 	["_crewed", true]
 ];
 
-if (isNil "_sectorpos" || isNil "_classname") exitWith {objNull};
+if (isNil "_sectorpos" || isNil "_classname") exitWith { objNull };
 
 private _vehicle = objNull;
 private _spawn_pos = [];
@@ -40,9 +40,9 @@ if (_classname isKindOf "Air") then {
 		objNull;
 	};
 
-	private _sea_deep = ((getPosATL _spawn_pos select 2) - (getPosASL _spawn_pos select 2));
+	private _sea_deep = (ATLtoASL (_spawn_pos) select 2);
 	if (_classname isKindOf "LandVehicle") then {
-		if (_sea_deep > 1.5) then {
+		if (_sea_deep < -1.5) then {
 			_classname = "";
 			if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
 				_classname = selectRandom opfor_boats;
@@ -60,7 +60,10 @@ if (_classname isKindOf "Air") then {
 	};
 
 	if (_classname isKindOf "Ship") then {
-		if (_sea_deep <= 3) then { _classname = "" };
+		if (_sea_deep >= -4) then {
+			diag_log format ["--- LRX Error: No enough depth (%1) to build boat %2", _sea_deep, _classname];
+			_classname = "";
+		};
 	};
 
 	if (_classname != "") then {
@@ -80,6 +83,7 @@ if (_classname isKindOf "Air") then {
 };
 sleep 0.5;
 
+if (_classname == "") exitWith { objNull };
 if (isNull _vehicle) exitWith {
 	diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos];
 	objNull;
