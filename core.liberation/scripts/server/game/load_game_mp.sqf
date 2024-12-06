@@ -54,6 +54,7 @@ GRLIB_warehouse = [
 	[basic_weapon_typename, 0]
 ];
 GRLIB_sector_defense = [];
+GRLIB_player_context = [];
 
 // Wipe Savegame
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
@@ -128,7 +129,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		air_weight = _weights select 2;
 	GRLIB_vehicle_to_military_base_links = _lrx_liberation_savegame select 12;
 	GRLIB_permissions = _lrx_liberation_savegame select 13;
-	if (count GRLIB_player_context == 0) then {
+	if (GRLIB_param_wipe_context == 0) then {
 		GRLIB_player_context = _lrx_liberation_savegame select 14;
 	};
 	resources_intel = _lrx_liberation_savegame select 15;

@@ -706,17 +706,9 @@
 			<Chinesesimp>重置任务参数</Chinesesimp>
 			<Chinese>重置任务参数</Chinese>
 		</Key>
-		<Key ID="STR_RESET_PA">
-			<Original>Reset the Personal Arsenal</Original>
-			<French>RAZ de l'Arsenal Personel</French>
-			<Chinesesimp>重置个人军火库</Chinesesimp>
-			<Chinese>重置个人军火库</Chinese>
-		</Key>
-		<Key ID="STR_RESET_VG">
-			<Original>Reset the Virtual Garage</Original>
-			<French>RAZ du Garage Virtuel</French>
-			<Chinesesimp>重置虚拟车库</Chinesesimp>
-			<Chinese>重置虛擬車庫</Chinese>
+		<Key ID="STR_WIPE_CONTEXT">
+			<Original>Reset Players data (loadout,squad,garage,arsenal)</Original>
+			<French>RAZ des données Joueurs (loadout,squad,garage,arsenal)</French>
 		</Key>
 		<Key ID="STR_WIPE_NO">
 			<Original>No</Original>

@@ -24,14 +24,8 @@ class Params
 		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
 		default = 0;
 	};
-	class ResetPA {
-		title = $STR_RESET_PA;
-		values[] = { 0, 1 };
-		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
-		default = 0;
-	};
-	class ResetVG {
-		title = $STR_RESET_VG;
+	class WipeContext {
+		title = $STR_WIPE_CONTEXT;
 		values[] = { 0, 1 };
 		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
 		default = 0;
