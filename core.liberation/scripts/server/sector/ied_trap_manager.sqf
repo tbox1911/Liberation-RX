@@ -29,7 +29,8 @@ if ( count _ide_pos > 0 ) then {
 	private _ied_obj = createVehicle [_ied_type, _ide_pos, [], 3, "None"];
 	[_ied_obj] call F_clearCargo;
 	_ied_obj allowDamage false;
-	_ied_obj setVariable ["GRLIB_intel_search", true, true];
+	_ied_obj setVariable ["R3F_LOG_disabled", true, true];
+	_ied_obj setVariable ["GRLIB_intel_search", true, true];	
 	_ied_obj setPos (getPos _ied_obj);
 	_ied_obj enableSimulationGlobal false;
 	_ide_pos = getPosATL _ied_obj;
