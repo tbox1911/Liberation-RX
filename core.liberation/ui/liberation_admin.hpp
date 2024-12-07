@@ -327,7 +327,7 @@ class liberation_admin {
   };
   class CleanButton: StdButton {
     idc = 1629;
-    action = "GRLIB_force_cleanup = true";
+    action = "GRLIB_force_cleanup = true; publicVariable 'GRLIB_force_cleanup'";
     text = $STR_ADMIN_CLEAN;
     x = 0.3725 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;

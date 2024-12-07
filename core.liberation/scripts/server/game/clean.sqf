@@ -70,6 +70,7 @@ private  _getTTLunits = {
 // CONFIG
 GRLIB_run_cleanup = true;							// To terminate script via debug console
 GRLIB_force_cleanup = false;						// To force script execution via debug console
+publicVariable "GRLIB_force_cleanup";
 
 private _checkPlayerCount = true;					// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
 private _playerThreshold = 4;						// How many players before accelerated cycle kicks in?
@@ -149,7 +150,11 @@ while {GRLIB_run_cleanup} do {
 		_sleep = _sleep - 60;
 		(_sleep <= 0 || GRLIB_force_cleanup)
 	};
-	if (GRLIB_force_cleanup) then { GRLIB_force_cleanup = false };	
+
+	if (GRLIB_force_cleanup) then {
+		GRLIB_force_cleanup = false;
+		publicVariable "GRLIB_force_cleanup";
+	};	
 
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
 
