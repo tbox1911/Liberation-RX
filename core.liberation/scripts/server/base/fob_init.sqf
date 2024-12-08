@@ -4,50 +4,7 @@ private _fob_class = typeOf _fob;
 private _fob_dir = getDir _fob;
 private _offset = [0,0,0];
 
-// Default
-if (_fob_class isKindOf "Cargo_HQ_base_F") then {
-	_offset = [5, -6, -0.4];
-	_fob_dir = _fob_dir + 90;
-};
-if (_fob_class isKindOf "Land_BagBunker_Tower_F") then {
-	_offset = [4, -4, -0.4];
-	_fob_dir = _fob_dir - 90;
-};
-
-// SoG
-if (_fob_class == "Land_vn_bunker_big_02") then {
-	_offset = [-3, -5, -0.4];
-	_fob_dir = _fob_dir - 180;
-};
-if (_fob_class == "Land_vn_b_trench_bunker_01_02") then {
-	_offset = [-1.5, -6, -0.4];
-	_fob_dir = _fob_dir + 90;
-};
-
-// SPE
-if (_fob_class == "Land_SPE_House_Thatch_03") then {
-	_offset = [5, -3.5, -0.4];
-	_fob_dir = _fob_dir + 90;
-};
-if (_fob_class == "Land_SPE_H679") then {
-	_offset = [4, -6, -0.4]; 
-	_fob_dir = _fob_dir + 0;
-};
-
-// Naval FOB
-if (_fob_class == "Land_Destroyer_01_base_F") then {
-	_offset = [-2, -32, 8.5];
-	_fob_dir = _fob_dir + 180;
-};
-if (_fob_class == "Land_Carrier_01_base_F") then {
-	_offset = [110, 20, 23.5];
-	_fob_dir = _fob_dir - 90;
-};
-
-// FOB Officer
-if (_fob_class == FOB_typename) then {
-	[_fob] call fob_init_officer;
-};
+#include "fob_init_fobsign.sqf"
 
 private _sign_pos = (getposASL _fob) vectorAdd ([_offset, -_fob_dir] call BIS_fnc_rotateVector2D);
 private _sign = createVehicle [FOB_sign, ([] call F_getFreePos), [], 0, "CAN_COLLIDE"];
@@ -61,6 +18,12 @@ if (count GRLIB_all_fobs == 0) then {
 	_sign setVariable ["GRLIB_vehicle_owner", "lrx", true];
 } else {
 	_sign setVariable ["GRLIB_vehicle_owner", _owner, true];
+};
+sleep 1;
+
+// FOB Officer
+if (_fob_class == FOB_typename) then {
+	[_fob] call fob_init_officer;
 };
 
 // if (GRLIB_enable_arsenal == 0) then {
