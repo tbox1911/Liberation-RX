@@ -35,7 +35,7 @@ if ( isServer ) then {
 	//diag_log format ["DBG: Killed: %1 %2", name _unit, _unit_side];
 
 	// Quick Delete
-	if (_unit_class in GRLIB_quick_delete) exitWith {
+	if ([_unit_class, GRLIB_quick_delete] call F_itemIsInClass) exitWith {
 		_unit setDamage 1;
 		sleep 5;
 		deleteVehicle _unit;

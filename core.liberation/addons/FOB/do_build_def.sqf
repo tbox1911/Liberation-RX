@@ -76,7 +76,6 @@ _msg = format ["Defense Template: %1\nCreated by: %2\nThanks to him !!", _defens
 [_msg] remoteExec ["hint", 0];
 
 // Build defense in FOB direction
-private _defenses_blacklist = GRLIB_recycleable_blacklist + all_friendly_classnames + all_hostile_classnames;
 private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 _fob_pos set [2, 0];
 {
@@ -89,7 +88,7 @@ _fob_pos set [2, 0];
 	_nextdir = (_x select 2) + _fob_dir;
     _nextpos = _fob_pos vectorAdd ([_nextpos, -_fob_dir] call BIS_fnc_rotateVector2D);
 
-    if (!surfaceIsWater _nextpos && !isOnRoad _nextpos && !(_nextclass in _defenses_blacklist)) then {
+    if (!surfaceIsWater _nextpos && !isOnRoad _nextpos && _nextclass in fob_defenses_classnames) then {
         _nextobject = _nextclass createVehicle _nextpos;
         _nextobject allowDamage false;
         _nextobject setPosATL _nextpos;
@@ -100,6 +99,7 @@ _fob_pos set [2, 0];
         };
         sleep 0.1;
     };
+    if !(_nextclass in fob_defenses_classnames) then { diag_log format ["Defense Template: %1 - Rejected item: %2", _defense_name, _nextclass] };
 } foreach _objects_to_build;
 
 gamelogic globalChat "Construction completed.";

@@ -238,9 +238,6 @@ respawn_vehicles = [
 	huron_typename
 ] + respawn_vehicles_west;
 
-// AIR DROP
-[] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_airdrop_classnames.sqf"];
-
 // *** CLASSNAME LIST ***
 all_hostile_classnames = [];
 { all_hostile_classnames pushBackUnique (_x select 0) } foreach opfor_recyclable;
@@ -252,39 +249,6 @@ air_vehicles_classnames = [] + opfor_troup_transports_heli;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
 
 opfor_troup_transports_truck = opfor_troup_transports_truck + [opfor_transport_truck];
-
-// *** BUILDINGS ***
-buildings = [
-	[FOB_sign,0,0,0,GRLIB_perm_hidden],
-	[blufor_flag,0,0,0,0],
-	[helipad_typename,0,0,0,0]
-];
-if (isNil "buildings_west_overide") then {
-	buildings append buildings_default + buildings_west;
-} else {
-	buildings append buildings_west;
-};
-
-buildings append [
-	[land_cutter_typename,0,0,0,GRLIB_perm_inf]
-];
-
-private _buildings_to_delete = [];
-{
-	if (( _x select 0) in (all_friendly_classnames + all_hostile_classnames)) then { _buildings_to_delete pushBack _x };
-} forEach buildings;
-buildings = buildings - _buildings_to_delete;
-
-all_buildings_classnames = [];
-{ all_buildings_classnames pushBackUnique (_x select 0) } foreach buildings;
-
-// FOB Defense buildings
-[] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
-
-if (GRLIB_naval_type == 3) then {
-	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
-	{ all_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
-};
 
 // *** ELITES ***
 elite_vehicles = [];
@@ -410,7 +374,7 @@ ai_healing_sources = [
 	medic_truck_typename,
 	medicalbox_typename,
 	medic_sling_typename,
-	"Land_MedicalTent_01_MTP_closed_F"
+	medic_heal_typename
 ] + ai_healing_sources_west;
 
 // Everything the AI vehicle should be able to reammo from
@@ -512,6 +476,40 @@ GRLIB_recycleable_blacklist = [
 	basic_weapon_typename
 ];
 
+// *** BUILDINGS ***
+buildings = [
+	[FOB_sign,0,0,0,GRLIB_perm_hidden],
+	[blufor_flag,0,0,0,0],
+	[helipad_typename,0,0,0,0]
+];
+if (isNil "buildings_west_overide") then {
+	buildings append buildings_default + buildings_west;
+} else {
+	buildings append buildings_west;
+};
+
+buildings append [
+	[land_cutter_typename,0,0,0,GRLIB_perm_inf]
+];
+
+private _buildings_to_delete = [];
+{
+	if (( _x select 0) in (all_friendly_classnames + all_hostile_classnames)) then { _buildings_to_delete pushBack _x };
+} forEach buildings;
+buildings = buildings - _buildings_to_delete;
+
+all_buildings_classnames = [];
+{ all_buildings_classnames pushBackUnique (_x select 0) } foreach buildings;
+
+// FOB Defense buildings
+[] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
+
+if (GRLIB_naval_type == 3) then {
+	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
+	{ all_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
+};
+
+// Recyclable
 GRLIB_recycleable_classnames = ["Air","Ship","LandVehicle","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	GRLIB_recycleable_classnames pushBackUnique (_x select 0);
@@ -519,6 +517,9 @@ GRLIB_recycleable_classnames = ["Air","Ship","LandVehicle","StaticWeapon","Sling
 GRLIB_recycleable_classnames = GRLIB_recycleable_classnames arrayIntersect GRLIB_recycleable_classnames;
 GRLIB_recycleable_classnames = GRLIB_recycleable_classnames - GRLIB_recycleable_blacklist;
 GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable);
+
+// AIR DROP
+[] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_airdrop_classnames.sqf"];
 
 // Filter Mods
 infantry_units = [ infantry_units ] call F_filterMods;

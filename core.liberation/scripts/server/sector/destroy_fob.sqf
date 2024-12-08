@@ -8,7 +8,7 @@ private _classnames_to_destroy = [
 	Warehouse_typename,
 	Warehouse_desk_typename,
 	"Land_RepairDepot_01_civ_F",
-	"Land_MedicalTent_01_MTP_closed_F",
+	"Land_MedicalTent_01_base_F",
 	"Helipad_base_F",
 	"Land_fs_feed_F",
 	"FlagCarrier",

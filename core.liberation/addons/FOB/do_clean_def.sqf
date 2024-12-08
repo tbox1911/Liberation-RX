@@ -11,11 +11,10 @@ if (isNil "_fob") exitWith {};
 
 build_confirmed = 1;
 private _fob_pos = getPosATL _fob;
-private _objects_to_delete = fob_defenses_classnames - (GRLIB_recycleable_blacklist + all_friendly_classnames);
 {
     if (getObjectType _x >= 8 && _x distance2D _fob_pos > 14) then { deleteVehicle _x };
     sleep 0.05;
-} foreach (nearestObjects [_fob_pos, _objects_to_delete, GRLIB_fob_range]);
+} foreach (nearestObjects [_fob_pos, fob_defenses_classnames, GRLIB_fob_range]);
 
 gamelogic globalChat "Defenses Removed...";
 sleep 1;

@@ -31,11 +31,17 @@ GRLIB_FOB_Defense_Sea_level = [
     "Land_Cargo_Tower_V1_F"
 ];
 
+private _defenses_blacklist = [] + GRLIB_recycleable_blacklist + all_friendly_classnames + all_hostile_classnames;
 fob_defenses_classnames = [];
 {
     private _path = (_x select 1);
     if (count _path > 0) then {
 	    private _objects_to_build = ([] call compile preprocessFileLineNumbers _path);
-	    { fob_defenses_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
+	    { 
+            _class = (_x select 0);
+            if !(_class in _defenses_blacklist) then {
+                fob_defenses_classnames pushBackUnique _class;
+            };
+        } forEach _objects_to_build;
     };
 } forEach GRLIB_FOB_Defense;
