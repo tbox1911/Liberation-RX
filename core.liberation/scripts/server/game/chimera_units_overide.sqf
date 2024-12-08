@@ -18,7 +18,9 @@ private _chimera_soldiers = units group chimeraofficer;
 	removeVest _unit;
 	removeAllWeapons _unit;
 	removeAllAssignedItems _unit;
-	{if ("Vest" in (_x call BIS_fnc_itemType)) then {_unit addVest _x} else {_unit linkItem _x}} forEach _items;
+	removeHeadgear _unit;
+	{if ("Headgear" in (_x call BIS_fnc_itemType)) then {_unit addHeadgear _x}} forEach _items;
+	{if ("Vest" in (_x call BIS_fnc_itemType)) then {_unit addVest _x} else {_unit linkItem _x}} forEach _items;	
 	if (!isNil "_mag") then {
 		for "_i" from 1 to 3 do {_unit addItem _mag};
 		for "_i" from 1 to 4 do {_unit addItemToVest _mag};
@@ -60,6 +62,19 @@ private _chimera_soldiers = units group chimeraofficer;
 		};
 	} forEach _veh_lst;
 } forEach chimera_vehicle_overide;
+
+// Remove Helipad
+if (GRLIB_fob_type > 0) then {
+	private _air_items = (nearestObjects [lhd, ["Helipad_base_F","Land_PortableHelipadLight_01_F"], 150]);
+	_air_items = _air_items + (allSimpleObjects ["PortableHelipadLight_01_blue_F"]);
+	{
+		if (_x == huronspawn) then { 
+			huronspawn = "Land_HelipadEmpty_F" createVehicle (getPos _x);
+			huronspawn setDir (getDir _x);
+		};
+		deleteVehicle _x;
+	} forEach _air_items;
+};
 
 // Optre bonus
 if (GRLIB_OPTRE_enabled) then {
