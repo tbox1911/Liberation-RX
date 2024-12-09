@@ -1,12 +1,13 @@
 params ["_fob","_owner"];
 
 private _fob_class = typeOf _fob;
+private _fob_pos = getPosASL _fob;
 private _fob_dir = getDir _fob;
 private _fob_data = [_fob_class] call fob_init_data;
-private _sign_offset = _fob_data select 0 select 0;
+private _sign_offset = (_fob_data select 0 select 0);
 private _sign_dir = _fob_dir + (_fob_data select 0 select 1);
+private _sign_pos = _fob_pos vectorAdd ([_sign_offset, -_sign_dir] call BIS_fnc_rotateVector2D);
 
-private _sign_pos = (getposASL _fob) vectorAdd ([_sign_offset, -_sign_dir] call BIS_fnc_rotateVector2D);
 private _sign = createVehicle [FOB_sign, zeropos, [], 0, "CAN_COLLIDE"];
 _sign allowDamage false;
 _sign setDir _sign_dir;
@@ -23,7 +24,7 @@ sleep 1;
 
 // FOB Officer
 if (_fob_class == FOB_typename) then {
-	[_fob, (_fob_data select 1)] call fob_init_officer;
+	[_fob] call fob_init_officer;
 };
 
 // if (GRLIB_enable_arsenal == 0) then {

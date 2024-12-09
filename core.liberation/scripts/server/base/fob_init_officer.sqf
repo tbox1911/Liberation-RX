@@ -1,4 +1,4 @@
-params ["_fob", "_fob_data"];
+params ["_fob"];
 
 if (isNil "GRLIB_FOB_Group") then {
 	GRLIB_FOB_Group = createGroup [GRLIB_side_civilian, true];
@@ -10,10 +10,11 @@ if (isNull GRLIB_FOB_Group) then {
 private _fob_class = typeOf _fob;
 private _fob_pos = getPosATL _fob;
 private _fob_dir = getDir _fob;
-private _map_offset = _fob_data select 0 select 0;
-private _map_dir = _fob_dir + (_fob_data select 0 select 1);
-
+private _fob_data = [_fob_class] call fob_init_data;
+private _map_offset = (_fob_data select 1 select 0);
+private _map_dir = _fob_dir + (_fob_data select 1 select 1);
 private _map_pos = _fob_pos vectorAdd ([_map_offset, -_map_dir] call BIS_fnc_rotateVector2D);
+
 private _map = createVehicle ["MapBoard_seismic_F", zeropos, [], 0, "CAN_COLLIDE"];
 _map allowDamage false;
 _map enableSimulationGlobal false;
