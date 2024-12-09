@@ -2,14 +2,15 @@ params ["_fob","_owner"];
 
 private _fob_class = typeOf _fob;
 private _fob_dir = getDir _fob;
-private _offset = [0,0,0];
 
-#include "fob_init_fobsign.sqf"
+private _fob_data = [_fob_class] call fob_init_data;
+private _sign_offset = _fob_data select 0 select 0;
+private _sign_dir = _fob_dir + (_fob_data select 0 select 0);
 
-private _sign_pos = (getposASL _fob) vectorAdd ([_offset, -_fob_dir] call BIS_fnc_rotateVector2D);
-private _sign = createVehicle [FOB_sign, ([] call F_getFreePos), [], 0, "CAN_COLLIDE"];
+private _sign_pos = (getposASL _fob) vectorAdd ([_sign_offset, -_sign_dir] call BIS_fnc_rotateVector2D);
+private _sign = createVehicle [FOB_sign, zeropos, [], 0, "CAN_COLLIDE"];
 _sign allowDamage false;
-_sign setDir _fob_dir;
+_sign setDir _sign_dir;
 _sign setPosASL _sign_pos;
 _sign enableSimulationGlobal false;
 _sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
@@ -23,7 +24,7 @@ sleep 1;
 
 // FOB Officer
 if (_fob_class == FOB_typename) then {
-	[_fob] call fob_init_officer;
+	[_fob, (_fob_data select 1)] call fob_init_officer;
 };
 
 // if (GRLIB_enable_arsenal == 0) then {

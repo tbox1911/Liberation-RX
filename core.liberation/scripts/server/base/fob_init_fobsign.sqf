@@ -67,3 +67,29 @@ if (_fob_class == "Land_Carrier_01_base_F") then {
 	_offset = [110, 20, 23.5];
 	_fob_dir = _fob_dir - 90;
 };
+
+// // Default A3
+// if (_fob_class isKindOf "Cargo_HQ_base_F") then {
+// 	_offset = [-2, 2, 0.6];
+// 	_fob_dir = _fob_dir + 55;
+// };
+// if (_fob_class == "Land_Bunker_01_HQ_F") then {
+// 	_offset = [-1.5, 2, -0.2];
+// 	_fob_dir = _fob_dir + 0;
+// };
+// if (_fob_class isKindOf "Land_GuardHouse_02_F") then {
+// 	_offset = [2.5, 3, 0.2]; 
+// 	_fob_dir = _fob_dir + 0; 
+// };
+
+// // SoG
+// if (_fob_class == "Land_vn_bunker_big_02") then {
+// 	_offset = [0, 1.5, 2];
+// 	_fob_dir = _fob_dir + 180;
+// };
+
+// // SPE
+// if (_fob_class == "Land_SPE_H679") then {
+// 	_offset = [0, 2, 0]; 
+// 	_fob_dir = _fob_dir + 0
+// };

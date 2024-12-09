@@ -124,6 +124,7 @@ blufor_victory = compileFinal preprocessFileLineNumbers "scripts\server\game\blu
 
 // Bases
 fob_init = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init.sqf";
+fob_init_data = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init_data.sqf";
 fob_init_officer = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init_officer.sqf";
 
 // Patrol
