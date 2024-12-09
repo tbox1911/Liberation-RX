@@ -2,7 +2,6 @@ params ["_fob","_owner"];
 
 private _fob_class = typeOf _fob;
 private _fob_dir = getDir _fob;
-
 private _fob_data = [_fob_class] call fob_init_data;
 private _sign_offset = _fob_data select 0 select 0;
 private _sign_dir = _fob_dir + (_fob_data select 0 select 0);
