@@ -4,7 +4,7 @@ private _fob_class = typeOf _fob;
 private _fob_dir = getDir _fob;
 private _fob_data = [_fob_class] call fob_init_data;
 private _sign_offset = _fob_data select 0 select 0;
-private _sign_dir = _fob_dir + (_fob_data select 0 select 0);
+private _sign_dir = _fob_dir + (_fob_data select 0 select 1);
 
 private _sign_pos = (getposASL _fob) vectorAdd ([_sign_offset, -_sign_dir] call BIS_fnc_rotateVector2D);
 private _sign = createVehicle [FOB_sign, zeropos, [], 0, "CAN_COLLIDE"];

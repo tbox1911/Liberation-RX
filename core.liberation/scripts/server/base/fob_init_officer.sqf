@@ -11,7 +11,7 @@ private _fob_class = typeOf _fob;
 private _fob_pos = getPosATL _fob;
 private _fob_dir = getDir _fob;
 private _map_offset = _fob_data select 0 select 0;
-private _map_dir = _fob_dir + (_fob_data select 0 select 0);
+private _map_dir = _fob_dir + (_fob_data select 0 select 1);
 
 private _map_pos = _fob_pos vectorAdd ([_map_offset, -_map_dir] call BIS_fnc_rotateVector2D);
 private _map = createVehicle ["MapBoard_seismic_F", zeropos, [], 0, "CAN_COLLIDE"];
