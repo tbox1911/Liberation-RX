@@ -190,6 +190,8 @@ while { true } do {
 		if (_radius > 20) then { _radius = 20 };
 		_dist = (_radius / 2) + 1.5;
 		if (_dist > 5) then { _dist = 5 };
+
+		// customize by classname
 		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
 		if (_classname == "Land_BagBunker_Tower_F") then { build_rotation = 90; build_altitude = -0.2 };
 		if (_classname == "Land_vn_bunker_big_02") then { build_rotation = 270 };
