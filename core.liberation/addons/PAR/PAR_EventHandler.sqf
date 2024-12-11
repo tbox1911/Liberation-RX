@@ -137,7 +137,7 @@ if (_unit == player) then {
 		};
 		_fuel = round (fuel _vehicle * 100);
 		_ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
-		_damage = round (damage _vehicle * 100);
+		_damage = round (([_vehicle] call F_getVehicleDamage) * 100);
 		hintSilent format ["Damage: %1%2\nFuel: %3%4\nAmmo: %5%6", _damage,"%",_fuel,"%",_ammo,"%"];
 	}];
 
@@ -184,7 +184,7 @@ if (_unit == player) then {
 
 			if (!([_unit] call PAR_is_wounded) && _dam >= 0.86) then {
 				_unit setVariable ["PAR_isUnconscious", true, true];
-				if (!isNull _veh) then {[_unit, _veh] spawn PAR_fn_eject};
+				if !(isNull _veh) then {[_unit, _veh] spawn PAR_fn_eject};
 				[_unit] spawn PAR_fn_unconscious;
 			};
 			_dam min 0.86;

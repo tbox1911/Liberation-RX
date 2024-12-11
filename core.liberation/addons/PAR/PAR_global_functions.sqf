@@ -289,7 +289,7 @@ PAR_HandleDamage_EH = {
 	};
 
 	if (_isNotWounded && _amountOfDamage >= 0.86) then {
-		if (!(isNull _veh_unit)) then {[_unit, _veh_unit] spawn PAR_fn_eject};
+		if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
 		_unit setVariable ["PAR_isUnconscious", true, true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};
