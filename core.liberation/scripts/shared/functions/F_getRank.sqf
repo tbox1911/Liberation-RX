@@ -40,16 +40,17 @@ if (_score >= GRLIB_perm_air && _score < GRLIB_perm_max) then {
 
 if (_score >= GRLIB_perm_max) then {
 	_rank = "Colonel";
-	_squad_bonus = 5;
+	_squad_bonus = GRLIB_max_squad_size;
 	_infantry_cap = 70 * GRLIB_resources_multiplier;
 };
 
 if (_score >= GRLIB_perm_max*2) then {
 	_rank = "Colonel";
-	_squad_bonus = 6;
+	_squad_bonus = GRLIB_max_squad_size;
 	_infantry_cap = 100 * GRLIB_resources_multiplier;
 };
 
-_squad_bonus = (GRLIB_squad_size + _squad_bonus) min GRLIB_max_squad_size;
+_squad_bonus = (GRLIB_squad_size + _squad_bonus);
+if (_squad_bonus > GRLIB_max_squad_size) then { _squad_bonus = GRLIB_max_squad_size };
 
 [_rank, _squad_bonus, _infantry_cap];
