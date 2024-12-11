@@ -9,7 +9,7 @@ private _fob = (player nearObjects [_fob_class, 20] select 0);
 if (isNil "_fob") exitWith {};
 
 private _fob_pos = getPosATL _fob;
-private _fob_dir = getDir _fob;
+private _fob_dir = (getDir _fob_sign - 90);
 
 private _walls = count (_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]);
 _walls = _walls + count (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]);
