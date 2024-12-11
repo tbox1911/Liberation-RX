@@ -19,23 +19,24 @@ if (typeName _vehicle == "OBJECT" ) then {
 if (isNil "_list") exitWith {_ret};
 
 switch ( _list ) do {
-	case "LHD" : { _classlist = [lhd]};
-	case "SRV" : { _classlist = GRLIB_Marker_SRV};
-	case "ATM" : { _classlist = GRLIB_Marker_ATM};
-	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
-	case "SHOP" : { _classlist = GRLIB_Marker_SHOP};
-	case "SPAWN" : { _classlist = GRLIB_mobile_respawn select { typeOf _x != mobile_respawn }};
-	case "SPAWNT" : { _classlist = GRLIB_mobile_respawn select { typeOf _x == mobile_respawn }};
-	case "MEDIC" : { _classlist = ai_healing_sources};
-	case "ARSENAL" : { _classlist = [Arsenal_typename]};
-	case "REFUEL" : { _classlist = vehicle_refuel_sources};
-	case "REAMMO" : { _classlist = vehicle_rearm_sources};
-	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
-	case "REPAIR_AI" : { _classlist = vehicle_repair_sources};
-	case "REPAIR" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"]};
-	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"]};
-	case "WAREHOUSE" : { _classlist = [Warehouse_typename]; _use_fast = false};
-	case "TRANSPORT" : { _classlist = transport_vehicles; _use_fast = false};
+	case "LHD" : { _classlist = [lhd] };
+	case "SRV" : { _classlist = GRLIB_Marker_SRV };
+	case "ATM" : { _classlist = GRLIB_Marker_ATM };
+	case "FUEL" : { _classlist = GRLIB_Marker_FUEL };
+	case "SHOP" : { _classlist = GRLIB_Marker_SHOP };
+	case "SPAWN" : { _classlist = GRLIB_mobile_respawn select {typeOf _x != mobile_respawn} };
+	case "SPAWNT" : { _classlist = GRLIB_mobile_respawn select {typeOf _x == mobile_respawn} };
+	case "MEDIC" : { _classlist = ai_healing_sources };
+	case "ARSENAL" : { _classlist = [Arsenal_typename] };
+	case "REFUEL" : { _classlist = vehicle_refuel_sources };
+	case "REAMMO" : { _classlist = vehicle_rearm_sources };
+	case "REAMMO_AI" : { _classlist = ai_resupply_sources };
+	case "REPAIR_AI" : { _classlist = vehicle_repair_sources };
+	case "REPAIR" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"] };
+	case "REPAIR_BOX" : { _classlist = [repairbox_typename] };
+	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"] };
+	case "WAREHOUSE" : { _classlist = [Warehouse_typename]; _use_fast = false };
+	case "TRANSPORT" : { _classlist = transport_vehicles; _use_fast = false };
 	default { _classlist = [] };
 };
 
