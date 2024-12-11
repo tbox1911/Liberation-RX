@@ -261,7 +261,8 @@ if ( isNil "civilian_boats" ) then {
 		"C_Boat_Civil_01_F",
 		"C_Boat_Transport_02_F",
 		"C_Boat_Civil_01_police_F",
-		"C_Boat_Civil_01_rescue_F"
+		"C_Boat_Civil_01_rescue_F",
+		"C_Rubberboat"	
 	];
 };
 boats_names = [FOB_boat_typename, FOB_carrier] + civilian_boats + opfor_boats + boats_west;

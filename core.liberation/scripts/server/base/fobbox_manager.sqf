@@ -15,8 +15,6 @@ if ( GRLIB_fob_type == 1 ) then {
 
 if ( GRLIB_fob_type == 2 ) then {
 	_fob_type = FOB_boat_typename;
-	_fob_pos = getPosATL huronspawn;
-	_fob_dir = getdir huronspawn;
 };
 
 while { true } do {

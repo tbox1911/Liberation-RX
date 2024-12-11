@@ -2,7 +2,7 @@
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "B_Truck_01_box_F";
-FOB_boat_typename = "C_Boat_Civil_01_rescue_F";
+FOB_boat_typename = "I_C_Boat_Transport_02_F";
 FOB_outpost = "Land_BagBunker_Tower_F";
 FOB_box_outpost = "Land_Cargo10_grey_F";
 FOB_sign = "SignAd_Sponsor_F";

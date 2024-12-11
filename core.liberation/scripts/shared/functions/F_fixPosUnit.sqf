@@ -34,7 +34,6 @@ if !(lineIntersects [_spawnpos, _maxpos, _unit]) exitWith {};
 while { (lineIntersects [_spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 	_curalt = _curalt + 0.5;
 	_spawnpos set [2, _curalt];
-	sleep 0.1;
 };
 
 _unit allowDamage false;
