@@ -21,6 +21,9 @@ pilot_classname = "I_Helipilot_F";
 crewman_classname = "I_crew_F";
 uavs_terminal_typename = "I_UavTerminal";
 blufor_flag = "Flag_FIA_F";
+chimera_vehicle_overide = [
+	["B_Heli_Transport_01_F", "I_Heli_Transport_02_F"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units_west = [
@@ -82,7 +85,7 @@ air_vehicles = [
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["I_Heli_light_03_unarmed_F",1,50,15,GRLIB_perm_tank],
 	["I_Heli_light_03_dynamicLoadout_F",1,150,15,GRLIB_perm_air],
-	["I_E_Heli_light_03_dynamicLoadout_F",1,150,15,GRLIB_perm_tank],	
+	["I_E_Heli_light_03_dynamicLoadout_F",1,150,15,GRLIB_perm_tank],
 	["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,50,GRLIB_perm_max],
 	["I_Plane_Fighter_03_Cluster_F",20,3000,50,GRLIB_perm_max],
 	["I_Plane_Fighter_04_F",20,4500,50,GRLIB_perm_max],

@@ -8,7 +8,7 @@ GRLIB_west_modder = "pSiKO";
 //huron_typename = "B_Heli_Transport_03_unarmed_F";  // // to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
-FOB_truck_typename = "B_Truck_01_box_F" ;
+FOB_truck_typename = "B_Truck_01_box_F";
 Respawn_truck_typename = "B_Truck_01_medical_F";
 ammo_truck_typename = "B_Truck_01_ammo_F";
 fuel_truck_typename = "B_Truck_01_fuel_F";
@@ -82,7 +82,7 @@ heavy_vehicles = [
 	["B_APC_Tracked_01_rcws_F",10,500,20,GRLIB_perm_log],
 	["B_APC_Wheeled_01_cannon_F",10,500,20,GRLIB_perm_log],
 	["B_APC_Tracked_01_AA_F",10,500,20,GRLIB_perm_tank],
-	["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
+	["B_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	["B_MBT_01_cannon_F",15,1000,35,GRLIB_perm_tank],
 	["B_MBT_01_TUSK_F",15,1500,35,GRLIB_perm_air],
 	["B_AFV_Wheeled_01_cannon_F",15,3000,35,GRLIB_perm_max],
