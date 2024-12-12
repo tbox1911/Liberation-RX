@@ -1,15 +1,19 @@
 params ["_score"];
 
 private _data = [_score] call F_getRank;
-player setUnitRank (_data select 0);
+private _rank = _data select 0;
 infantry_cap = _data select 2;
+
 player addRating 3000;
 
 // Ability
-if (_score >= GRLIB_perm_max) then {
+if (_rank == "Colonel") then { 
 	player setUnitTrait ["Medic", true];
 };
 
-if (_score >= GRLIB_perm_max*2) then {
+if (_rank == "Super Colonel") then {
 	player setUnitTrait ["Engineer", true];
+	_rank = "Colonel" 
 };
+
+player setUnitRank _rank;
