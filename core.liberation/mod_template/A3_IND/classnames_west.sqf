@@ -22,7 +22,7 @@ crewman_classname = "I_crew_F";
 uavs_terminal_typename = "I_UavTerminal";
 blufor_flag = "Flag_FIA_F";
 chimera_vehicle_overide = [
-	["B_Heli_Transport_01_F", "I_Heli_Transport_02_F"]
+	["B_Heli_Transport_01_F", "I_Heli_light_03_unarmed_F"]
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
