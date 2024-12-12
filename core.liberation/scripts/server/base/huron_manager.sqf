@@ -1,21 +1,37 @@
-if (GRLIB_fob_type > 0) exitWith {};
 waitUntil {sleep 1; !isNil "GRLIB_all_fobs" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
-sleep 8;
+sleep 2;
+
+// Heli
+private _huron_type = huron_typename;
+private _huron_pos = getPosATL huronspawn;
+private _huron_dir = getdir huronspawn;
+
+// Truck
+if (GRLIB_fob_type == 1) then {
+	_huron_type = FOB_truck_typename;
+	_huron_pos = getPosATL base_boxspawn;
+	_huron_dir = getdir base_boxspawn;
+};
+
+// Boat
+if (GRLIB_fob_type == 2) then {
+	_huron_type = FOB_boat_typename;
+};
 
 private ["_huron"];
 
 while { true } do {
+	if (GRLIB_fob_type in [1,2]) then { waitUntil {sleep 1; count GRLIB_all_fobs == 0}};
 	if (isNull GRLIB_vehicle_huron ) then {
-		_huron = huron_typename createVehicle (getPosATL huronspawn);
+		_huron = _huron_type createVehicle _huron_pos;
 		_huron allowdamage false;
 		_huron addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_huron setVariable ["GRLIB_vehicle_owner", "lrx", true];
-		_huron setDir (getDir huronspawn);
-		_huron setPosATL (getPosATL huronspawn);
+		_huron setDir _huron_dir;
+		_huron setPosATL _huron_pos;
 		sleep 1;
-		_huron AnimateDoor ["Door_rear_source", 1, true];
 		[_huron] call F_clearCargo;
 		[_huron] call F_fixModVehicle;
 		sleep 3;
@@ -25,7 +41,10 @@ while { true } do {
 			_huron setVariable ["ace_cargo_hasCargo", true, true];
 			_huron setVariable ["ace_cargo_space", 200, true];
 		};
-		[_huron, "add"] call mobile_respawn_remote_call;
+		if (_huron_type isKindOf "Helicopter_Base_F") then {
+			_huron AnimateDoor ["Door_rear_source", 1, true];
+			[_huron, "add"] call mobile_respawn_remote_call;
+		};
 		GRLIB_vehicle_huron = _huron;
 		publicVariable "GRLIB_vehicle_huron";
 	};

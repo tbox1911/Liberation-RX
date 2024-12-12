@@ -95,6 +95,7 @@ GRLIB_checkBuildFOB = {
 };
 
 GRLIB_checkBuildFOBWater = {
+	if (GRLIB_naval_type == 0) exitWith { false };
 	(alive player && surfaceIsWater getPos player && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (typeOf (vehicle player) == FOB_boat_typename) && driver (vehicle player) == player && round (speed vehicle player) == 0 && !((vehicle player) getVariable ["box_in_use", false]))
 };
 

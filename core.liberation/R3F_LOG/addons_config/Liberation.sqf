@@ -130,6 +130,10 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
+ 	[FOB_truck_typename, 10],
+	[ammo_truck_typename, 0],
+	[fuel_truck_typename, 0],
+	[repair_truck_typename, 0],
 	["Quadbike_01_base_F", 3],
 	["Tank_F", 50],
 	["Truck_F", 100],
@@ -163,8 +167,9 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
+	[FOB_boat_typename, 100],
 	["Boat_Armed_01_base_F", 40],
-	["Rubber_duck_base_F",10],
+	["Rubber_duck_base_F", 0],
 	["SDV_01_base_F", 10],
 	["C_Boat_Transport_02_F",30],
   	["Boat_Civil_01_base_F",20]
@@ -174,6 +179,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	["B_Boat_Transport_01_F", 15],
 	["C_Scooter_Transport_01_F", 5],
+	["Rubber_duck_base_F", 5],
 	["B_SDV_01_F", 50]
 ];
 
@@ -197,12 +203,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[FOB_box_typename, 0],
 	[FOB_box_outpost, 0],
-	[playerbox_typename, 0],
- 	[FOB_truck_typename, 0],
-	[FOB_boat_typename, 0],
-	[ammo_truck_typename, 0],
-	[fuel_truck_typename, 0],
-	[repair_truck_typename, 0]
+	[playerbox_typename, 0]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -316,7 +317,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["O_GMG_01_high_F",5],
 	["O_static_AA_F",10],
 	["O_static_AT_F",10],
-	["O_Mortar_01_F",10],	
+	["O_Mortar_01_F",10],
 	["Land_CzechHedgehog_01_new_F", 5],
 	["StaticGrenadeLauncher", 10],
 	["StaticMortar", 15]
@@ -337,7 +338,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_Cargo_House_V1_F",
 	"Land_Cargo_Patrol_V1_F",
 	"Land_Cargo_House_V2_F",
-	"Land_Cargo_Patrol_V2_F",	
+	"Land_Cargo_Patrol_V2_F",
 	"Land_Cargo_House_V3_F",
 	"Land_Cargo_Patrol_V3_F",
 	"Land_PortableLight_double_F",
@@ -377,7 +378,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_Cargo_House_V1_F", 5],
 	["Land_Cargo_Patrol_V1_F", 5],
 	["Land_Cargo_House_V2_F", 5],
-	["Land_Cargo_Patrol_V2_F", 5],	
+	["Land_Cargo_Patrol_V2_F", 5],
 	["Land_Cargo_House_V3_F", 5],
 	["Land_Cargo_Patrol_V3_F", 5],
 	["Land_PortableLight_double_F", 5],

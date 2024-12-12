@@ -14,6 +14,7 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 	_fob_pos = getPosATL _vehicle;
 	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 	if (_classname == FOB_outpost) then { GRLIB_all_outposts pushBack _fob_pos };
+	if (GRLIB_fob_type == 2) then { deleteVehicle GRLIB_vehicle_huron };
 };
 
 // Naval FOB
