@@ -1,6 +1,6 @@
 GRLIB_map_modder = "pSiKO";
 GRLIB_save_key = "LRX_YULAKIA_SAVEGAME_PSK";	// change this value if you want different savegames on different map
-GRLIB_sector_size = 800;
+GRLIB_sector_size = 600;
 GRLIB_capture_size = 175;
 GRLIB_radiotower_size = 2500;
 GRLIB_spawn_min = 1500;

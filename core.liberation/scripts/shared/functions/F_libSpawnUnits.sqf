@@ -70,7 +70,7 @@ private ["_unit", "_pos", "_backpack"];
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
-	sleep 0.1;
+	sleep 0.2;
 } foreach _classname;
 
 _grp;
