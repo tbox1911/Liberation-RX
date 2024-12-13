@@ -25,8 +25,8 @@ waitUntil { dialog };
 private _display = findDisplay 5119;
 private _noesckey = _display displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 
-_control = _display ctrlCreate [ "RscText", (100 + 0), _display displayCtrl 9969 ];
-_control ctrlSetPosition [ 0,  (0 * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
+_control = _display ctrlCreate ["RscText", (100 + 0), _display displayCtrl 9969];
+_control ctrlSetPosition [0,  (0 * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
 _control ctrlSetText format ["Parameters Profile name: %1", GRLIB_params_save_key];
 _control ctrlSetTextColor [0.5,0.5,0.5,1];
 _control ctrlCommit 0;

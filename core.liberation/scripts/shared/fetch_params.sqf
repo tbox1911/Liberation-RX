@@ -225,7 +225,7 @@ GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
 
-if ( typeName GRLIB_mod_west != "STRING" || typeName GRLIB_mod_east != "STRING") then { abort_loading = true };
+if (typeName GRLIB_mod_west != "STRING" || typeName GRLIB_mod_east != "STRING") then { abort_loading = true };
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
 	FATAL! - old Parameters version detected !\n\n
@@ -236,15 +236,15 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	*********************************"];
 };
 
-if ( GRLIB_mod_list_west find GRLIB_mod_west < 0 || GRLIB_mod_list_east find GRLIB_mod_east < 0 ) then { abort_loading = true };
+if (GRLIB_mod_list_west find GRLIB_mod_west < 0 || GRLIB_mod_list_east find GRLIB_mod_east < 0) then { abort_loading = true };
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
-	FATAL! - Missing MOD Template !\n\n
+	FATAL! - Missing: LRX_Template MOD !\n\n
 	Template for side West (%1) or East (%2) do not exist.\n
 	you must add LRX_Template Mod to your setup.\n
 	see: https://steamcommunity.com/sharedfiles/filedetails/?id=3014195090\n\n
 	Loading Aborted to protect data integrity.\n
-	Correct the Mod Template selection.\n
+	Load the LRX_Template Mod or change Mission Settings.\n
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
