@@ -52,7 +52,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 		};
 	};
 
-	{ [_x] call F_fixPosUnit } forEach (units _grp);
+	{ [_x] spawn F_fixPosUnit } forEach (units _grp);
 
 	sleep 300;
 };

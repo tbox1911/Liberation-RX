@@ -7,39 +7,42 @@ if (!alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit >= 3) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
+if (_unit getVariable ["GRLIB_action_inuse", false]) exitWith {};
 if (round (getPosATL _unit select 2) > 2) exitWith {};
+if (surfaceIsWater (getPosATL _unit)) exitWith {};
 
-private ["_spawnpos", "_curalt", "_maxalt", "_maxpos" ];
-_spawnpos = getPosASL _unit;
-if (surfaceIsWater _spawnpos) exitWith {};
-
-_curalt = _spawnpos select 2;
-_maxalt = _curalt + 100;
+// Exit if forest / tree
 private _forest_type = ["forest", "wood"];
 private _typepos = tolower (surfaceType getPosWorld _unit);
 private _forest = count (_forest_type select { (_typepos find _x) > -1 });
-_forest = _forest + count (nearestTerrainObjects [_unit, ["Tree","Small Tree"], 6]);
-if (_forest > 0) exitWith {};
+_forest = _forest + count (nearestTerrainObjects [_unit, ["Tree","Small Tree"], 10]);
+private _obstacle_rock = count (nearestTerrainObjects [_unit, ["ROCK"], 20]);
+if (_forest > 0 && _obstacle_rock == 0) exitWith {};
 
-private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 10]);
-if (_obstacle > 0) then { _maxalt = 2.3 };
+// Default
+private _curalt = 0;
+private _maxalt = 80;
+private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 15]);
+if (_obstacle > 0) then { _maxalt = 2.0 };
+private _spawnpos = (getPosASL _unit) vectorAdd [0,0,0.5];
+private _maxpos = _spawnpos vectorAdd [0,0,_maxalt];
 
-// private _obstacle_rock = count (nearestTerrainObjects [_spawnpos, ["ROCK"], 20]);
-// if (_obstacle_rock > 0) then {_maxalt = 60 };
-
-_spawnpos = (_spawnpos vectorAdd [0,0,0.5]);
-_maxpos = (_spawnpos vectorAdd [0,0,_maxalt]);
 if !(lineIntersects [_spawnpos, _maxpos, _unit]) exitWith {};
+_unit setVariable ["GRLIB_action_inuse", true];
 
 while { (lineIntersects [_spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 	_curalt = _curalt + 0.5;
-	_spawnpos set [2, _curalt];
+	_spawnpos = (_spawnpos vectorAdd [0,0,_curalt]);
+};
+
+if (lineIntersects [_spawnpos, (_spawnpos vectorAdd [0,0,_maxalt]), _unit]) then {
+	diag_log format ["--- LRX Error: unit %1 is still blocked at %2...", name _unit, getpos _unit];
+	// deleteVehicle _unit;
 };
 
 _unit allowDamage false;
 _unit setPosASL _spawnpos;
-//_unit switchMove "AmovPercMwlkSrasWrflDf";
-//_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-sleep 1;
+sleep 5;
 _unit setHitPointDamage ["hitLegs", 0];
 _unit allowDamage true;
+_unit setVariable ["GRLIB_action_inuse", false];

@@ -79,7 +79,7 @@ while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 
 	if (count _objective_pos == 0) exitWith {};
 	{
-		if (surfaceIsWater (getPosATL _x) && _x distance2D _objective_pos > 400) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
+		if (surfaceIsWater (getPosATL _x) && _x distance2D _objective_pos > 400) then { deleteVehicle _x } else { [_x] spawn F_fixPosUnit };
 	} forEach (units _grp);
 
 	if (!isNull _vehicle) then {
