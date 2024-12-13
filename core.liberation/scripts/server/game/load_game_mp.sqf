@@ -174,7 +174,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	private _s3 = [];
 	{
 		_nextclass = _x select 0;
-		if (_nextclass in GRLIB_no_kill_handler_classnames) then {
+		if ((toLower _nextclass) in GRLIB_no_kill_handler_classnames) then {
 			_s1 pushBack _x;
 		} else {
 			if (_nextclass iskindOf "AllVehicles") then {

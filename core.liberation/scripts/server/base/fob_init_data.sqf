@@ -21,9 +21,9 @@ if (_fob_class isKindOf "Cargo_HQ_base_F") then {
     _sign_data = [[5, -6, -0.4], 90];
     _map_data = [[-2, 2, 0.6], 55];
 };
-if (_fob_class isKindOf "Land_GuardHouse_02_F") then {
+if (_fob_class == "Land_GuardHouse_02_F") then {
     _sign_data = [[3, -5, -0.4], 90];
-	_map_data = [[3.5, 3, 0.2], 0];
+	_map_data = [[3.5, 3, 0.4], 0];
 };
 if (_fob_class == "Land_Bunker_01_HQ_F") then {
     _sign_data = [[4, -7, -0.4], 0];

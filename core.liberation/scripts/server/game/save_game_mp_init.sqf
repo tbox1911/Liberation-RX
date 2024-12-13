@@ -1,8 +1,8 @@
 if (!isServer) exitWith {};
 
 GRLIB_base_objects = [
-	FOB_sign,
 	FOB_typename,
+	FOB_sign,
 	FOB_outpost,
 	FOB_carrier,
 	Warehouse_typename,
@@ -38,9 +38,9 @@ GRLIB_quick_delete = [
 	"Shelter_base_F"
 ];
 
-GRLIB_no_kill_handler_classnames = [] + GRLIB_base_objects;
+GRLIB_no_kill_handler_classnames = [];
 {
-	GRLIB_no_kill_handler_classnames pushBackUnique _x;
-} foreach (all_buildings_classnames + fob_defenses_classnames);
+	GRLIB_no_kill_handler_classnames pushBackUnique (toLower _x);
+} foreach (GRLIB_base_objects + all_buildings_classnames + fob_defenses_classnames);
 
 GRLIB_explo_delete = [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename];
