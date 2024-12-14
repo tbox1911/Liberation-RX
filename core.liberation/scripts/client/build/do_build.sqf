@@ -1,6 +1,6 @@
 private [
 	"_unit", "_pos", "_grp", "_classname", "_fob_box",
-	"_idx", "_unitrank", "_ghost_spot", "_vehicle", "_allow_damage",
+	"_idx", "_unitrank", "_ghost_spot", "_vehicle",
 	"_dist", "_radius", "_actualdir", "_near_objects"
 ];
 
@@ -24,6 +24,17 @@ private _ammo = 0;
 private _lst_a3 = [];
 private _lst_r3f = [];
 private _lst_grl = [];
+
+// player build actions
+private _idactview = -1;
+private _idactsnap = -1;
+private _idactupper = -1;
+private _idactlower = -1;
+private _idactrotate = -1;
+private _idactmode = -1;
+private _idactcancel = -1;
+private _idactplace = -1;
+private _idactplacebis = -1;
 
 GRLIB_build_force_mode = [
 	FOB_typename,
@@ -142,35 +153,28 @@ while { true } do {
 			};
 		};
 
-		// Add Actions
-		_idactview = -1;
-		_idactsnap = -1;
-		_idactupper = -1;
-		_idactlower = -1;
-		_idactrotate = -1;
-		_idactmode = -1;
-		_idactplacebis = -1;
+		if ( !repeatbuild ) then {
+			if (build_water == 0) then {
+				if ( _buildtype == 6 && !(_classname in GRLIB_build_force_mode) ) then {
+					_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,true,false,"","build_invalid == 0 && build_confirmed == 1"];
+					_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
+				};
 
-		if (build_water == 0) then {
-			if ( _buildtype == 6 && !(_classname in GRLIB_build_force_mode) ) then {
-				_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
-				_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
+				if ( _buildtype in [6,99,98] ) then {
+					_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
+					_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
+				};
 			};
 
-			if ( _buildtype in [6,99,98] ) then {
-				_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
-				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
+			if ( _buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
+				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
 			};
-		};
 
-		if ( _buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
-			_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
-			_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
-			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
+			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,false,"","build_invalid == 0 && build_confirmed == 1"];
+			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,false,"","build_confirmed == 1"];
 		};
-
-		_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
-		_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1"];
 		_ghost_spot = (markerPos "ghost_spot") findEmptyPosition [1,150,"B_Heli_Transport_03_unarmed_F"];
 		_ghost_spot = _ghost_spot vectorAdd [0, 0, build_altitude];
 
@@ -337,7 +341,6 @@ while { true } do {
 			if (!([_price, _price_fuel] call F_pay)) exitWith {deleteVehicle _vehicle};
 			private _veh_dir = vectorDir _vehicle;
 			private _veh_vup = vectorUp _vehicle;
-			private _veh_pos = getPosWorld _vehicle;
 			deleteVehicle _vehicle;
 			sleep 0.1;
 
@@ -350,7 +353,13 @@ while { true } do {
 					{ _x allowDamage false } forEach _unit_list_redep;
 					disableUserInput true;
 				};
-				[_classname, _veh_pos, _veh_dir, _veh_vup, player] remoteExec ["build_fob_remote_call", 2];
+				[
+					player,
+					_classname,
+					_truepos,
+					_veh_dir,
+					_veh_vup
+				] remoteExec ["build_fob_remote_call", 2];
 				sleep 3;
 				if (_classname == FOB_carrier) then {
 					[] spawn do_onboard;
@@ -363,125 +372,53 @@ while { true } do {
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 			};
 
-			_vehicle = _classname createVehicle _truepos;
-			if (isNull _vehicle) exitWith {};
-			_vehicle allowDamage false;
-			_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-			_vehicle setPosWorld _veh_pos;
-
-			if ( _classname in boats_names && surfaceIsWater _truepos ) then {
-				_vehicle setposASL _truepos;
+			// Building
+			if(_buildtype == 6) exitWith {
+				private _vehicle = _classname createVehicle _truepos;
+				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
+				_vehicle setPosATL _truepos;
 			};
 
-			_allow_damage = true;
-			sleep 0.1;
-
-			// ACE Support
-			[_vehicle] call F_aceInitVehicle;
-
-			// Ammo Box clean inventory
-			if ( !(_classname in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) ) then {
-				[_vehicle] call F_clearCargo;
+			private _owner = "";
+			if (_buildtype in [2,3,4,5,7,9,10]) then {
+				_owner = PAR_Grp_ID;
 			};
 
-			// Vehicle owner
-			if ( _buildtype in [2,3,4,5,7,9,10] ) then {
-				if (!([_vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
-					_vehicle setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
-					_vehicle allowCrewInImmobile [true, false];
-					_vehicle setUnloadInCombat [true, false];
-				};
+			// Server creation
+			player setVariable ["GRLIB_player_vehicle_build", objNull, true];
+			[
+				player,
+				_classname,
+				_owner,
+				manned,
+				_truepos,
+				_veh_dir,
+				_veh_vup
+			] remoteExec ["build_vehicle_remote_call", 2];
+			waitUntil { sleep 1; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
+
+			_vehicle = player getVariable "GRLIB_player_vehicle_build";
+			if (isNil "_vehicle") exitWith { systemchat format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _truepos] };
+
+			waitUntil { sleep 1; (!alive _vehicle|| local _vehicle) };
+			if (!alive _vehicle) exitWith {};
+
+			// Killed EH
+			if !(_classname in all_buildings_classnames) then {
+				_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};
 
 			// Crewed vehicle
 			if (manned) then {
-				[_vehicle] call F_forceCrew;
-				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 				player hcSetGroup [group _vehicle];
 			};
 
 			// UAVs
 			if (_classname in uavs_vehicles) then {
-				[_vehicle] call F_forceCrew;
-				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 				if ((player getSlotItemName 612) != uavs_terminal_typename) then {
 					player linkItem uavs_terminal_typename;
 					[player] call F_correctUAVT;
 				};
-			};
-
-			// AI Static Weapon
-			if (_classname in static_vehicles_AI) then {
-				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-				[_vehicle] call F_forceCrew;
-				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-				_vehicle setVehicleLock "LOCKED";
-				_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-				_vehicle allowCrewInImmobile [true, false];
-				_vehicle setUnloadInCombat [true, false];
-				_vehicle setAutonomous true;
-				player disableUAVConnectability [_vehicle, true];
-			};
-
-			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air") then {
-				// Cutomize Vehicle
-				[_vehicle] call F_fixModVehicle;
-
-				// Color
-				if ( count _color > 0 ) then {
-					[_vehicle, _color] call RPT_fnc_TextureVehicle;
-				};
-
-				// Composant
-				if ( count _compo > 0 ) then {
-					[_vehicle, _compo] call RPT_fnc_CompoVehicle;
-				};
-
-				// Remaining Ammo
-				if ( _ammo > 0 ) then {
-					_vehicle setVehicleAmmo _ammo;
-				};
-
-				// Default Paint
-				if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
-					[_vehicle, ["EAF",1], true ] spawn BIS_fnc_initVehicle;
-				};
-
-				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-			};
-
-			// Automatic ReAmmo
-			if ( _classname in vehicle_rearm_sources ) then {
-				_vehicle setAmmoCargo 0;
-			};
-
-			// Mobile respawn
-			if ( _classname in respawn_vehicles) then {
-				[_vehicle, "add"] remoteExec ["mobile_respawn_remote_call", 2];
-			};
-
-			// Personal Box
-			if ( _classname == playerbox_typename ) then {
-				[_vehicle, playerbox_cargospace] remoteExec ["setMaxLoad", 2];
-				_allow_damage = false;
-			};
-
-			// A3 / R3F Inventory
-			[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
-
-			// Arsenalbox
-			if ( _classname == Arsenal_typename ) then {
-				[_vehicle, 0] remoteExec ["setMaxLoad", 2];
-			};
-
-			// Ammobox (add Charge)
-			if ( _classname == Box_Ammo_typename ) then {
-				_vehicle addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
-			};
-
-			// Helipad lights
-			if ( _classname isKindOf "Land_PortableHelipadLight_01_F" ) then {
-				_allow_damage = false;
 			};
 
 			// Static Weapon
@@ -489,63 +426,44 @@ while { true } do {
 				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 			};
 
-			// Magic ClutterCutter
-			if (_classname == land_cutter_typename) then {
-				[_truepos] remoteExec ["build_cutter_remote_call", 2];
+			// AI Static Weapon
+			if (_classname in static_vehicles_AI) then {
+				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+				_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+				player disableUAVConnectability [_vehicle, true];
 			};
 
-			// WareHouse
-			if (_classname == Warehouse_typename) then {
-				[_vehicle] remoteExec ["warehouse_init_remote_call", 2];
-				_allow_damage = false;
+			// Vehicles
+			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air") then {
+				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+				// Color
+				if ( count _color > 0) then {
+					[_vehicle, _color] call RPT_fnc_TextureVehicle;
+				};
+				// Composant
+				if ( count _compo > 0) then {
+					[_vehicle, _compo] call RPT_fnc_CompoVehicle;
+				};
+				// Remaining Ammo
+				if ( _ammo > 0) then {
+					_vehicle setVehicleAmmo _ammo;
+				};
 			};
 
-			// Storage
-			if (_classname == storage_medium_typename) then {
-				_vehicle setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
-				private _drop_zone_dir = (getdir _vehicle);
-				private _drop_zone_pos = (getposATL _vehicle) vectorAdd ([[0, -5, 0], -_drop_zone_dir] call BIS_fnc_rotateVector2D);
-				private _drop_zone = createVehicle ["VR_Area_01_square_2x2_yellow_F", ([] call F_getFreePos), [], 0, "NONE"];
-				_drop_zone_pos set [2, 0.02];
-				_drop_zone setDir _drop_zone_dir;
-				_drop_zone setPosATL _drop_zone_pos;
-				_drop_zone setVectorDirAndUp [[-cos _drop_zone_dir, sin _drop_zone_dir, 0] vectorCrossProduct surfaceNormal _drop_zone_pos, surfaceNormal _drop_zone_pos];
-				_allow_damage = false;
-			};
+			// A3 / R3F Inventory
+			[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
 
-			sleep 0.3;
-			if (_allow_damage) then { _vehicle allowDamage true };
-			_vehicle setDamage 0;
 			build_vehicle = _vehicle;
-
-			if !(_classname in all_buildings_classnames) then {
-				_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-			};
 
 			stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
 			publicVariable "stats_blufor_vehicles_built";
 		};
-
-		// Remove Actions
-		if ( _idactsnap != -1 ) then { player removeAction _idactsnap };
-		if ( _idactview != -1 ) then { player removeAction _idactview };
-		if ( _idactplacebis != -1 ) then { player removeAction _idactplacebis };
-		if ( _idactmode != -1 ) then { player removeAction _idactmode };
-		if ( _idactupper != -1 ) then {
-			player removeAction _idactupper;
-			player removeAction _idactlower;
-			player removeAction _idactrotate;
-		};
-		player removeAction _idactcancel;
-		player removeAction _idactplace;
 	};
 
-	build_confirmed = 0;
 	sleep 1;
 
 	if ( repeatbuild ) then {
 		dobuild = 1;
-		repeatbuild = false;
 		building_altitude = build_altitude;
 	} else {
 		dobuild = 0;
@@ -553,6 +471,16 @@ while { true } do {
 		building_altitude = 0;
 		build_mode = 0;
 		build_water = 0;
+		build_confirmed = 0;
+		player removeAction _idactsnap;
+		player removeAction _idactview;
+		player removeAction _idactmode;
+		player removeAction _idactupper;
+		player removeAction _idactlower;
+		player removeAction _idactrotate;
+		player removeAction _idactcancel;
+		player removeAction _idactplace;
+		player removeAction _idactplacebis;
 	};
 	manned = false;
 };

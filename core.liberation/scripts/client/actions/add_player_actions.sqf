@@ -13,7 +13,7 @@ player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t
 player addAction ["<t color='#FF8000'>-- DUMP FOB TEMPLATE </t> <img size='1' image='res\ui_build.paa'/>","scripts\fob_templates\export_template.sqf","",995,false,true,"","call GRLIB_checkCommander && GRLIB_player_near_fob"];
 
 // Extended Options
-player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true];
+player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true,"","GRLIB_player_is_menuok"];
 
 // Juke Box
 player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];

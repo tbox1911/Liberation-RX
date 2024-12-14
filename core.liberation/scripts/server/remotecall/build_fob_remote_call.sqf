@@ -1,5 +1,5 @@
 if (!isServer && hasInterface) exitWith {};
-params ["_classname", "_veh_pos", "_veh_dir", "_veh_vup", "_owner"];
+params ["_owner", "_classname", "_veh_pos", "_veh_dir", "_veh_vup"];
 private ["_fob_pos"];
 private _vehicle = objNull;
 
