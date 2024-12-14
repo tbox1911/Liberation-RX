@@ -5,7 +5,7 @@ if ( isNil "GRLIB_military_sectors_already_activated" ) then { GRLIB_military_se
 
 if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 
-	GRLIB_military_sectors_already_activated pushback _sector;
+	GRLIB_military_sectors_already_activated pushBackUnique _sector;
 
 	if ( !GRLIB_passive_income ) then {
 		_crates_amount = round ((1 + floor random 4) * GRLIB_resources_multiplier) min 6;

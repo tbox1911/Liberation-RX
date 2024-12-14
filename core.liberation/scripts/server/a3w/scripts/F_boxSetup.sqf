@@ -13,7 +13,8 @@ if (_locked) then {
 	_box setVariable ["GRLIB_vehicle_owner", "server", true];
 	[_box] call F_aceLockVehicle;
 } else {
-	[_box, "abandon"] call F_vehicleLock;
+	_box setVariable ["R3F_LOG_disabled", false, true];
+	_box setVariable ["GRLIB_vehicle_owner", "", true];	
 	[_box] call F_aceInitVehicle;
 };
 

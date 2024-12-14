@@ -29,7 +29,8 @@ if ( _liberated_sector in sectors_military ) then {
 		_x getVariable ["GRLIB_vehicle_owner", ""] == "server"
 	};
 	{
-		[_x, "abandon"] call F_vehicleLock;
+		_x setVariable ["R3F_LOG_disabled", false, true];
+		_x setVariable ["GRLIB_vehicle_owner", "", true];	
 		[_x] call F_aceInitVehicle;
 	} forEach _boxlist;
 };
