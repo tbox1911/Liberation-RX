@@ -15,7 +15,7 @@ private _lrx_getParamValue = {
 
 private _lrx_get_mod_template = {
 	params ["_mod_list"];
-	private _mod_data = [[], []];
+	private _mod_data = [["---"], ["---"]];
 	{
 		(_mod_data select 0) pushBack ([_x] call _lrx_getParamValue);
 		(_mod_data select 1) pushBack _x;

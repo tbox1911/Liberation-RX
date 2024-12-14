@@ -89,6 +89,7 @@ save_changes = 0;
 		_selection = _nextparam select 1;
 		if (count (_nextparam select 5) > 0) then {
 			_selection = (_nextparam select 5) find _selection;
+			if (_selection == -1) then { _selection = 0 };
 		};
 		_control lbSetCurSel _selection;
 

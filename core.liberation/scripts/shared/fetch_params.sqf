@@ -236,6 +236,16 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	*********************************"];
 };
 
+if (GRLIB_mod_west == "---" ||  GRLIB_mod_east == "---") then { abort_loading = true };
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid MOD Template Selection !\n\n
+	Invalid Template Selection for side West (%1) or East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Side selection or add needed Addons.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
+};
+
 if (GRLIB_mod_list_west find GRLIB_mod_west < 0 || GRLIB_mod_list_east find GRLIB_mod_east < 0) then { abort_loading = true };
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
