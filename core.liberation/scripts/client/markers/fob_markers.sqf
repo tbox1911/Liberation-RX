@@ -2,7 +2,6 @@ waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_all_fobs"};
 
 private _markers = [];
-private _markers_defense = [];
 GRLIB_redraw_marker_fob = false;
 
 while { true } do {
@@ -30,19 +29,6 @@ while { true } do {
 			_marker setMarkerPosLocal _fobpos;
 			_markers pushback _marker;
 		} forEach GRLIB_all_fobs;
-	};
-
-	if ( count _markers_defense != count GRLIB_sector_defense ) then {
-		{ deleteMarkerLocal _x } foreach _markers_defense;
-		{
-			private _sector = (_x select 0);
-			private _marker = createMarkerLocal [format ["defense_%1", _sector], (markerPos _sector)];
-			_marker setMarkerShapeLocal "ICON";
-			_marker setMarkerTypeLocal "loc_defend";
-			_marker setMarkerColorLocal "ColorGrey";
-			//_marker setMarkerSizeLocal [100, 200];
-			_markers_defense pushback _marker;
-		} forEach GRLIB_sector_defense;
 	};
 
 	if !(isNull GRLIB_vehicle_huron) then {

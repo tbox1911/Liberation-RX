@@ -457,6 +457,13 @@ if (count GRLIB_permissions == 0) then {
 if (typeName GRLIB_sector_defense != "ARRAY") then {
 	GRLIB_sector_defense = [];
 };
+{
+	private _sector = (_x select 0);
+	private _marker = createMarkerLocal [format ["defense_%1", _sector], (markerPos _sector)];
+	_marker setMarkerShapeLocal "ICON";
+	_marker setMarkerTypeLocal "loc_defend";
+	_marker setMarkerColor "ColorGrey";
+} forEach GRLIB_sector_defense;
 
 publicVariable "stats_blufor_soldiers_recruited";
 publicVariable "stats_blufor_vehicles_built";
