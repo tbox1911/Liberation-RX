@@ -21,3 +21,4 @@ sleep 1;
 
 [_fob, _owner] call fob_init;
 [_fob_pos, 6] remoteExec ["remote_call_fob", 0];
+GRLIB_redraw_marker_fob = true; 

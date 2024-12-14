@@ -128,7 +128,6 @@ save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\a
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
-	[] execVM "scripts\client\markers\fob_markers.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
 	[] execVM "scripts\client\markers\sector_manager.sqf";
 	[] execVM "scripts\client\markers\spot_timer.sqf";
@@ -176,7 +175,6 @@ addMissionEventHandler ["Map", {
 [] execVM "scripts\client\misc\init_markers.sqf";
 [] execVM "scripts\client\misc\speak_manager_data.sqf";
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
-[] execVM "scripts\client\markers\fob_markers.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";

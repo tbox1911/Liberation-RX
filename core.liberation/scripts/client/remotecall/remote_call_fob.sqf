@@ -41,5 +41,4 @@ if ( _status == 5 ) then {
 
 if ( _status == 6 ) then {
 	[ "lib_fob_upgraded", [ _fob_type, _fob_name ] ] call BIS_fnc_showNotification;
-	GRLIB_redraw_marker_fob = true; 
 };
