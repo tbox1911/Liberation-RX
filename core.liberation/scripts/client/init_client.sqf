@@ -22,6 +22,7 @@ if (abort_loading) exitWith {
 	diag_log abort_loading_msg;
 	uisleep 10;
 	endMission "LOSER";
+	disableUserInput false;
 };
 
 PAR_Grp_ID = getPlayerUID player;
@@ -30,6 +31,7 @@ if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER";
+	disableUserInput false;
 };
 
 if (!isMultiplayer) exitWith {
@@ -37,6 +39,7 @@ if (!isMultiplayer) exitWith {
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER";
+	disableUserInput false;
 };
 
 GRLIB_Player_VIP = (PAR_Grp_ID in GRLIB_whitelisted_steamids);
@@ -45,6 +48,7 @@ if (GRLIB_use_exclusive && !([] call is_admin || GRLIB_Player_VIP)) exitWith {
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER";
+	disableUserInput false;
 };
 
 private _commander_check = [] call compileFinal preprocessFileLineNumbers "scripts\client\commander\enforce_whitelist.sqf";
@@ -56,6 +60,7 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER";
+	disableUserInput false;
 };
 
 playMusic GRLIB_music_startup;
@@ -66,6 +71,7 @@ if (GRLIB_global_stop == 1) exitWith {
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER";
+	disableUserInput false;
 };
 
 if (GRLIB_kick_idle > 0) then {

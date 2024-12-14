@@ -48,7 +48,6 @@ if (!abort_loading) then {
 } else {
 	if (isServer) then {
 		GRLIB_init_server = false;
-		disableUserInput false;
 		publicVariable "GRLIB_init_server";
 		publicVariable "abort_loading";
 		publicVariable "abort_loading_msg";
