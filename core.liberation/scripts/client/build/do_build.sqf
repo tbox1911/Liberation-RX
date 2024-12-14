@@ -341,6 +341,7 @@ while { true } do {
 			if (!([_price, _price_fuel] call F_pay)) exitWith {deleteVehicle _vehicle};
 			private _veh_dir = vectorDir _vehicle;
 			private _veh_vup = vectorUp _vehicle;
+			private _veh_pos = getPosWorld _vehicle;
 			deleteVehicle _vehicle;
 			sleep 0.1;
 
@@ -356,7 +357,7 @@ while { true } do {
 				[
 					player,
 					_classname,
-					_truepos,
+					_veh_pos,
 					_veh_dir,
 					_veh_vup
 				] remoteExec ["build_fob_remote_call", 2];
@@ -374,9 +375,9 @@ while { true } do {
 
 			// Building
 			if(_buildtype == 6) exitWith {
-				private _vehicle = _classname createVehicle _truepos;
+				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-				_vehicle setPosATL _truepos;
+				_vehicle setPosWorld _veh_pos;
 			};
 
 			private _owner = "";
@@ -391,14 +392,14 @@ while { true } do {
 				_classname,
 				_owner,
 				manned,
-				_truepos,
+				_veh_pos,
 				_veh_dir,
 				_veh_vup
 			] remoteExec ["build_vehicle_remote_call", 2];
 			waitUntil { sleep 1; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
 
 			_vehicle = player getVariable "GRLIB_player_vehicle_build";
-			if (isNil "_vehicle") exitWith { systemchat format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _truepos] };
+			if (isNil "_vehicle") exitWith { systemchat format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _veh_pos] };
 
 			waitUntil { sleep 1; (!alive _vehicle|| local _vehicle) };
 			if (!alive _vehicle) exitWith {};

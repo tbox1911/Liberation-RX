@@ -10,15 +10,15 @@ params [
 ];
 
 private _allow_damage = true;
-private _vehicle = _classname createVehicle _truepos;
+private _vehicle = createVehicle [_classname, _truepos, [], 0, "CAN_COLLIDE"];
 if (isNull _vehicle) exitWith { _player setVariable ["GRLIB_player_vehicle_build", nil, true] };
 
 _vehicle allowDamage false;
 _vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 if (_classname in boats_names && surfaceIsWater _truepos) then {
-	_vehicle setposASL _truepos;
+	_vehicle setPosASL _truepos;
 } else {
-	_vehicle setPosATL _truepos;
+	_vehicle setPosWorld _truepos;
 };
 
 // ACE Support
