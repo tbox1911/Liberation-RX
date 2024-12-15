@@ -10,16 +10,12 @@ params [
 ];
 
 private _allow_damage = true;
-private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
+private _vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 if (isNull _vehicle) exitWith { _player setVariable ["GRLIB_player_vehicle_build", nil, true] };
-
 _vehicle allowDamage false;
 _vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-if (_classname in boats_names && surfaceIsWater _veh_pos) then {
-	_vehicle setPosASL _veh_pos;
-} else {
-	_vehicle setPosWorld _veh_pos;
-};
+_vehicle setPosWorld _veh_pos;
+sleep 1;
 
 // ACE Support
 [_vehicle] call F_aceInitVehicle;
@@ -115,7 +111,7 @@ if (_classname == Warehouse_typename) then {
 
 // Storage
 if (_classname == storage_medium_typename) then {
-	_vehicle setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
+	_vehicle setVariable ["GRLIB_vehicle_owner", _owner, true];
 	private _drop_zone_dir = (getdir _vehicle);
 	private _drop_zone_pos = (getposATL _vehicle) vectorAdd ([[0, -5, 0], -_drop_zone_dir] call BIS_fnc_rotateVector2D);
 	private _drop_zone = createVehicle ["VR_Area_01_square_2x2_yellow_F", ([] call F_getFreePos), [], 0, "NONE"];
@@ -126,14 +122,19 @@ if (_classname == storage_medium_typename) then {
 	_allow_damage = false;
 };
 
+sleep 1;
 if (_allow_damage) then { _vehicle allowDamage true };
 _vehicle setDamage 0;
 
-if (count crew _vehicle == 0) then {
-	_vehicle setOwner (owner _player);
-} else {
-	private _grp = group (crew _vehicle select 0);
-    _grp setGroupOwner (owner _player);
+private _owner = (owner _player);
+if (_owner != 0) then {
+	if (count crew _vehicle == 0) then {
+		_vehicle setOwner _owner;
+	} else {
+		private _grp = group (crew _vehicle select 0);
+		_grp setGroupOwner _owner;
+	};
 };
+
 sleep 1;
 _player setVariable ["GRLIB_player_vehicle_build", _vehicle, true];
