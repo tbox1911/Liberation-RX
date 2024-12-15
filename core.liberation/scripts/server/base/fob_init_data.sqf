@@ -21,16 +21,20 @@ if (_fob_class isKindOf "Cargo_HQ_base_F") then {
     _sign_data = [[5, -6, -0.4], 90];
     _map_data = [[-2, 2, 0.6], 55];
 };
-if (_fob_class == "Land_GuardHouse_02_F") then {
+if (_fob_class isKindOf "land_guardhouse_02_f") then {
     _sign_data = [[3, -5, -0.4], 90];
 	_map_data = [[3.5, 3, 0.4], 0];
 };
-if (_fob_class == "Land_Bunker_01_HQ_F") then {
+if (_fob_class isKindOf "Land_Bunker_01_HQ_F") then {
     _sign_data = [[4, -7, -0.4], 0];
 	_map_data = [[-1.5, 2, 0], 0];
 };
-if (_fob_class == "Land_Bunker_01_small_F") then {
+if (_fob_class isKindOf "Land_Bunker_01_small_F") then {
     _sign_data = [[2.5, -3, -0.4], 180];
+	//_map_data = [];
+};
+if (_fob_class isKindOf "land_guardhouse_03_f") then {
+    _sign_data = [[3, -5, -0.4], 90];
 	//_map_data = [];
 };
 if (_fob_class isKindOf "Land_BagBunker_Tower_F") then {
@@ -39,11 +43,11 @@ if (_fob_class isKindOf "Land_BagBunker_Tower_F") then {
 };
 
 // Naval FOB
-if (_fob_class == "Land_Destroyer_01_base_F") then {
+if (_fob_class isKindOf "Land_Destroyer_01_base_F") then {
     _sign_data = [[-2, -32, 8.5], 180];
 	//_map_data = [];
 };
-if (_fob_class == "Land_Carrier_01_base_F") then {
+if (_fob_class isKindOf "Land_Carrier_01_base_F") then {
     _sign_data = [[110, 20, 23.5], 270];
 	//_map_data = [];
 };
