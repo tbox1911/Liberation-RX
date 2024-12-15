@@ -40,13 +40,13 @@ while { true } do {
 			private _marker = createMarkerLocal [format ["defense_%1", _sector], markers_reset];
 			_marker setMarkerShapeLocal "ICON";
 			_marker setMarkerTypeLocal "loc_defend";
-			private _color = "ColorRed";
-			// "MarkerOne" setMarkerColor "#(1,0,0,1)";
-			switch (_x select 1) do {
-				case 1:	{ _color = "ColorWhite" };
-				case 2:	{ _color = "ColorGrey" };
-				case 3:	{ _color = "ColorBlack" };
-			};
+			private _color = "ColorGrey";
+			// wait for Arma 3 v2.20
+			// switch (_x select 1) do {
+			// 	case 1:	{ _color = "#(0.25, 0.25, 0.25, 1.00)" };	// "ColorWhite
+			// 	case 2:	{ _color = "#(0.50, 0.50, 0.50, 1.00)" };	// "ColorGrey"
+			// 	case 3:	{ _color = "#(0.75, 0.75, 0.75, 1.00)" };	// "ColorBlack
+			// };
 			_marker setMarkerColorLocal _color;
 			_marker setMarkerPos (markerPos _sector);
 			_markers_def pushback _marker;
