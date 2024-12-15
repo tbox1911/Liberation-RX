@@ -4,21 +4,21 @@ params [
 		"_classname",
 		"_owner",
 		"_manned",
-		"_truepos",
+		"_veh_pos",
 		"_veh_dir",
 		"_veh_vup"
 ];
 
 private _allow_damage = true;
-private _vehicle = createVehicle [_classname, _truepos, [], 0, "CAN_COLLIDE"];
+private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 if (isNull _vehicle) exitWith { _player setVariable ["GRLIB_player_vehicle_build", nil, true] };
 
 _vehicle allowDamage false;
 _vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-if (_classname in boats_names && surfaceIsWater _truepos) then {
-	_vehicle setPosASL _truepos;
+if (_classname in boats_names && surfaceIsWater _veh_pos) then {
+	_vehicle setPosASL _veh_pos;
 } else {
-	_vehicle setPosWorld _truepos;
+	_vehicle setPosWorld _veh_pos;
 };
 
 // ACE Support
@@ -104,7 +104,7 @@ if (_classname isKindOf "Land_PortableHelipadLight_01_F") then {
 
 // Magic ClutterCutter
 if (_classname == land_cutter_typename) then {
-	[_truepos] call build_cutter_remote_call;
+	[_veh_pos] call build_cutter_remote_call;
 };
 
 // WareHouse
