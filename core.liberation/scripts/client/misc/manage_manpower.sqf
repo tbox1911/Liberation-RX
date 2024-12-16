@@ -1,6 +1,5 @@
 waitUntil {sleep 1; GRLIB_player_configured};
 
-private ["_manpower_used", "_player_vehicles", "_player_respawn", "_unit"];
 private _search_list = [] + light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable;
 
 private _get_mp = {
@@ -13,8 +12,9 @@ private _get_mp = {
 	_ret;
 };
 
+private ["_manpower_used", "_player_respawn", "_player_vehicles"];
 while { true } do {
-		_new_manpower_used = count ((units player) select { !(isPlayer _x) && alive _x });
+		_manpower_used = count ((units player) select { !(isPlayer _x) && alive _x });
 		_player_respawn = [PAR_Grp_ID] call F_getMobileRespawns;
 		_player_vehicles = (vehicles - _player_respawn) select {
 			(alive _x) && ([player, _x, true] call is_owner) &&
@@ -23,9 +23,9 @@ while { true } do {
 		};
 
 		{
-			_new_manpower_used = _new_manpower_used + ([_x] call _get_mp);
+			_manpower_used = _manpower_used + ([_x] call _get_mp);
 		} foreach (_player_vehicles + _player_respawn);
 
-		resources_infantry = _new_manpower_used;
+		resources_infantry = _manpower_used;
 	sleep 3;
 };
