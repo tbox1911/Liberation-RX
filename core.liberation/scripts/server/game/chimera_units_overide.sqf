@@ -1,5 +1,5 @@
 if (!isServer) exitWith {};
-if (isNil "chimera_vehicle_overide") exitWith {};
+if (GRLIB_mod_west == "A3_BLU") exitWith {};
 private [ "_unit_model", "_cloth", "_items", "_weapon", "_mag", "_src_class", "_dst_class", "_veh_lst", "_veh", "_src_pos", "_src_dir" ];
 
 // repaint man units
@@ -30,38 +30,40 @@ private _chimera_soldiers = units group chimeraofficer;
 } forEach _chimera_soldiers;
 
 // repaint vehicle
-{
-	_src_class = _x select 0;
-	_dst_class = _x select 1;
-	_veh_lst = vehicles select { alive _x && (_x distance2D lhd < GRLIB_fob_range) && typeOf _x == _src_class };
+if (!isNil "chimera_vehicle_overide") then {
 	{
-		_src_pos = (getPosATL _x) vectorAdd [0, 0, 0.2];
-		_src_dir = getDir _x;
-		deleteVehicle _x;
-		sleep 0.5;
-		if (_dst_class != "") then {
-			_veh = _dst_class createVehicle _src_pos;
-			_veh allowDamage false;
-			_veh setDir _src_dir;
-			_veh setPosATL _src_pos;
-			_veh setVariable ["GRLIB_vehicle_owner", "public", true];
-			_veh addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		_src_class = _x select 0;
+		_dst_class = _x select 1;
+		_veh_lst = vehicles select { alive _x && (_x distance2D lhd < GRLIB_fob_range) && typeOf _x == _src_class };
+		{
+			_src_pos = (getPosATL _x) vectorAdd [0, 0, 0.2];
+			_src_dir = getDir _x;
+			deleteVehicle _x;
+			sleep 0.5;
+			if (_dst_class != "") then {
+				_veh = _dst_class createVehicle _src_pos;
+				_veh allowDamage false;
+				_veh setDir _src_dir;
+				_veh setPosATL _src_pos;
+				_veh setVariable ["GRLIB_vehicle_owner", "public", true];
+				_veh addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
-			if (GRLIB_ACE_enabled) then {
-				if (_src_class == "B_Heli_Light_01_F") then {
-					_veh setVariable ["ace_cargo_hasCargo", true, true];
-					_veh setVariable ["ace_cargo_space", 15, true];
+				if (GRLIB_ACE_enabled) then {
+					if (_src_class == "B_Heli_Light_01_F") then {
+						_veh setVariable ["ace_cargo_hasCargo", true, true];
+						_veh setVariable ["ace_cargo_space", 15, true];
+					};
+					if (_src_class == "B_Heli_Transport_01_F") then {
+						_veh setVariable ["ace_cargo_hasCargo", true, true];
+						_veh setVariable ["ace_cargo_space", 30, true];
+					};
 				};
-				if (_src_class == "B_Heli_Transport_01_F") then {
-					_veh setVariable ["ace_cargo_hasCargo", true, true];
-					_veh setVariable ["ace_cargo_space", 30, true];
-				};
+				sleep 1;
+				_veh allowDamage true;
 			};
-			sleep 1;
-			_veh allowDamage true;
-		};
-	} forEach _veh_lst;
-} forEach chimera_vehicle_overide;
+		} forEach _veh_lst;
+	} forEach chimera_vehicle_overide;
+};
 
 // Remove Helipad
 if (GRLIB_fob_type > 0) then {
