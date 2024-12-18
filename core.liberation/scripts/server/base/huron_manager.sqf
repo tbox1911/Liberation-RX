@@ -11,8 +11,6 @@ private _huron_dir = getdir huronspawn;
 // Truck
 if (GRLIB_fob_type == 1) then {
 	_huron_type = FOB_truck_typename;
-	_huron_pos = getPosATL base_boxspawn;
-	_huron_dir = getdir base_boxspawn;
 };
 
 // Boat
