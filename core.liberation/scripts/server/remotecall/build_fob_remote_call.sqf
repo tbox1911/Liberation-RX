@@ -8,8 +8,7 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-	_vehicle setPosWorld _veh_pos;
-	waitUntil {sleep 0.5; _vehicle distance2D _veh_pos < 10 };
+	_vehicle setPosATL _veh_pos;
 	[_vehicle, getPlayerUID _owner] call fob_init;
 	_fob_pos = getPosATL _vehicle;
 	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
@@ -22,7 +21,7 @@ if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
 	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-	_vehicle setPosWorld _veh_pos;
+	_vehicle setPosATL _veh_pos;
 	[_vehicle] call BIS_fnc_carrier01Init;
 	[_vehicle] call BIS_fnc_Carrier01PosUpdate;
 	[_vehicle, getPlayerUID _owner] call fob_init;
@@ -47,8 +46,7 @@ if (_classname in ["fob_water1"]) then {
 		_nextobject setPosASL _nextpos;
 	} foreach _objects_to_build;
 	sleep 1;
-	_vehicle = createVehicle [FOB_typename, zeropos, [], 0, "CAN_COLLIDE"];
-	_vehicle allowDamage false;
+
 	private _curalt = 0;
 	private _maxalt = 50;
 	private _maxpos = (_veh_pos vectorAdd [0,0,_maxalt]);
@@ -56,10 +54,10 @@ if (_classname in ["fob_water1"]) then {
 		_curalt = _curalt + 0.5;
 		_veh_pos set [2, _curalt];
 	};
-	_veh_pos = _veh_pos vectorAdd [0,0,4];
+	_vehicle = createVehicle [FOB_typename, zeropos, [], 0, "CAN_COLLIDE"];
+	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [[0,1,0], [0,0,1]];
-	_vehicle setPosWorld _veh_pos;
-	waitUntil {sleep 0.5; _vehicle distance2D _veh_pos < 10 };
+	_vehicle setPosASL _veh_pos;
 	[_vehicle, getPlayerUID _owner] call fob_init;
 	_fob_pos = getPosATL _vehicle;
 	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];

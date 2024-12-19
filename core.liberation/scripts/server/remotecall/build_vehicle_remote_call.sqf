@@ -11,11 +11,14 @@ params [
 
 private _allow_damage = true;
 private _vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
-if (isNull _vehicle) exitWith { _player setVariable ["GRLIB_player_vehicle_build", nil, true] };
 _vehicle allowDamage false;
 _vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-_vehicle setPosWorld _veh_pos;
-sleep 1;
+waitUntil {
+	_vehicle setPosATL _veh_pos;
+	sleep 0.5;
+	(_vehicle distance2D _veh_pos < 10);
+};
+sleep 0.5;
 
 // ACE Support
 [_vehicle] call F_aceInitVehicle;
@@ -57,7 +60,7 @@ if (_classname in static_vehicles_AI) then {
 };
 
 // Vehicles
-if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air") then {
+if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship") then {
 	// Cutomize Vehicle
 	[_vehicle] call F_fixModVehicle;
 
@@ -136,5 +139,4 @@ if (_owner != 0) then {
 	};
 };
 
-sleep 1;
 _player setVariable ["GRLIB_player_vehicle_build", _vehicle, true];
