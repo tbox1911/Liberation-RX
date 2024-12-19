@@ -9,7 +9,15 @@ if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATl _unit)) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
 
-private _radius = (150 + floor random 150);
+private _moveTo = {
+	params ["_unit", "_target", ["_radius", 5]];
+	private _dest = getPos _target;
+	waitUntil {
+		_unit doMove _dest;
+		sleep 5;
+		(!alive _unit || (_target getVariable ["PAR_isUnconscious", false]) || (_unit distance2D _dest <= _radius) || (_unit distance2D _dest > GRLIB_capture_size))
+	};
+};
 private _delay = (300 + floor random 300);
 private _continue = true;
 private _weapons_light = [
@@ -39,10 +47,10 @@ private [
 sleep (60 + floor random 60);
 while {alive _unit && _continue} do {
 	_list_actions = [0];
-	_nearby_players = ([_unit, _radius] call F_getNearbyPlayers);
+	_nearby_players = ([_unit, GRLIB_capture_size] call F_getNearbyPlayers);
 	if (count _nearby_players > 0) then {
 		_target = selectRandom _nearby_players;
-		_target_veh = vehicles select { (alive _x) && ([_target, _x, true] call is_owner) && (_x distance2D _unit < _radius) };
+		_target_veh = vehicles select { (alive _x) && ([_target, _x, true] call is_owner) && (_x distance2D _unit <= GRLIB_capture_size) };
 		_reputation = [_target] call F_getReput;
 		if ( _reputation >= 25 ) then { _list_actions = [0,1,1,1,2] };
 		if ( _reputation >= 50 ) then { _list_actions = [1,2,2,2,3] };
@@ -64,11 +72,7 @@ while {alive _unit && _continue} do {
 		case 1;
 		case 10: {
 			[_grp] call F_deleteWaypoints;
-			waitUntil {
-				_unit doMove (getPos _target);
-				sleep 5;
-				(!alive _unit || _unit distance2D _target <= 5 || _unit distance2D _target > _radius)
-			};
+			[_unit, _target] call _moveTo;
 			if (alive _unit && _unit distance2D _target <= 5) then {
 				if (isServer) then {
 					[_unit, _action, _target] spawn speak_manager_remote_call;
@@ -86,69 +90,57 @@ while {alive _unit && _continue} do {
 
 		//--- Heal
 		case 2: {
-			if (damage _target > 0.25 && !(_target getVariable ["PAR_isUnconscious", false])) then {
-				[_grp] call F_deleteWaypoints;
-				waitUntil {
-					_unit doMove (getPos _target);
-					sleep 5;
-					(!alive _unit || !(isNull objectParent _unit) || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
+			if (damage _target < 0.25 || (_target getVariable ["PAR_isUnconscious", false])) exitWith {};
+			[_grp] call F_deleteWaypoints;
+			[_unit, _target] call _moveTo;
+			if (alive _unit && _unit distance2D _target <= 5 && (isNull objectParent _unit) && damage _target > 0.25 ) then {
+				if (isServer) then {
+					[_unit, _action, _target] spawn speak_manager_remote_call;
+				} else {
+					[_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
 				};
-
-				if (alive _unit && isNull objectParent _unit && _unit distance2D _target <= 7 && damage _target > 0.25 ) then {
-					if (isServer) then {
-						[_unit, _action, _target] spawn speak_manager_remote_call;
-					} else {
-						[_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
-					};
-					_unit stop true;
-					_unit setDir (_unit getDir _target);
-					_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
-					_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
-					sleep 6;
-					_target setDamage 0;
-					_unit stop false;
-					_unit switchMove "AmovPercMwlkSnonWnonDf";
-					_unit playMoveNow "AmovPercMwlkSnonWnonDf";
-				};
-				[_grp, getPosATL _unit] spawn add_civ_waypoints;
+				_unit stop true;
+				_unit setDir (_unit getDir _target);
+				_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
+				_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
+				sleep 6;
+				_target setDamage 0;
+				_unit stop false;
+				_unit switchMove "AmovPercMwlkSnonWnonDf";
+				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
+			[_grp, getPosATL _unit] spawn add_civ_waypoints;
 			sleep _delay;
 		};
 
 		//--- Repair
 		case 3: {
 			_target_veh = _target_veh select { ([_x] call F_VehicleNeedRepair) };
-			if (count _target_veh > 0) then {
-				_target = selectRandom _target_veh;
-				if (damage _target < 0.2) exitWith {};
-				[_grp] call F_deleteWaypoints;
-				waitUntil {
-					_unit doMove (getPos _target);
-					sleep 5;
-					(!alive _unit || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
+			if (count _target_veh == 0) exitWith {};
+			_target = selectRandom _target_veh;
+			[_grp] call F_deleteWaypoints;
+			[_unit, _target, 7] call _moveTo;
+			if (alive _unit && _unit distance2D _target <= 7) then {
+				if (isServer) then {
+					[_unit, _action, _target] spawn speak_manager_remote_call;
+				} else {
+					[_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
 				};
-				if (alive _unit && _unit distance2D _target <= 7) then {
-					if (isServer) then {
-						[_unit, _action, _target] spawn speak_manager_remote_call;
-					} else {
-						[_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
-					};
-					sleep 6;
-					_unit stop true;
-					_unit setDir (_unit getDir _target);
-					_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
-					_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
-					playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250];
-					sleep 3;
-					playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250];
-					sleep 3;
-					_target setDamage 0;
-					_unit stop false;
-					_unit switchMove "AmovPercMwlkSnonWnonDf";
-					_unit playMoveNow "AmovPercMwlkSnonWnonDf";
-				};
-				[_grp, getPosATL _unit] spawn add_civ_waypoints;
+				sleep 6;
+				_unit stop true;
+				_unit setDir (_unit getDir _target);
+				_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
+				_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
+				playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250];
+				sleep 3;
+				playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250];
+				sleep 3;
+				{ _target setHitPointDamage [_x, 0] } forEach (getAllHitPointsDamage _target select 0);
+				_unit stop false;
+				_unit switchMove "AmovPercMwlkSnonWnonDf";
+				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
+			[_grp, getPosATL _unit] spawn add_civ_waypoints;
 			sleep _delay;
 		};
 
@@ -157,18 +149,13 @@ while {alive _unit && _continue} do {
 			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
 			if (_danger) then {
 				[_grp] call F_deleteWaypoints;
-				waitUntil {
-					_unit doMove (getPos _target);
-					sleep 5;
-					(!alive _unit || _unit distance2D _target <= 5 || _unit distance2D _target > _radius)
-				};
+				[_unit, _target] call _moveTo;
 				if (alive _unit && _unit distance2D _target <= 5) then {
 					if (isServer) then {
 						[_unit, _action, _target] spawn speak_manager_remote_call;
 					} else {
 						[_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
 					};
-
 					_box = createVehicle ["Box_Syndicate_Ammo_F", getPosATL _unit, [], 2, "CAN_COLLIDE"];
 					_box allowDamage false;
 					[_box] call F_clearCargo;
@@ -192,12 +179,8 @@ while {alive _unit && _continue} do {
 			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
 			if (_danger && count (units group _target) < 8) then {
 				[_grp] call F_deleteWaypoints;
-				waitUntil {
-					_unit doMove (getPos _target);
-					sleep 5;
-					(!alive _unit || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
-				};
-				if (alive _unit && _unit distance2D _target <= 7) then {
+				[_unit, _target] call _moveTo;
+				if (alive _unit && _unit distance2D _target <= 5) then {
 					if (isServer) then {
 						[_unit, _action, _target] spawn speak_manager_remote_call;
 					} else {
@@ -225,35 +208,30 @@ while {alive _unit && _continue} do {
 
 		//--- Sabotage
 		case 11: {
-			if (count _target_veh > 0) then {
-				[_grp] call F_deleteWaypoints;
-				_target = selectRandom _target_veh;
-				waitUntil {
-					_unit doMove (getPos _target);
-					sleep 5;
-					(!alive _unit || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
+			if (count _target_veh == 0) exitWith {};
+			_target = selectRandom _target_veh;
+			[_grp] call F_deleteWaypoints;
+			[_unit, _target, 7] call _moveTo;
+			if (alive _unit && _unit distance2D _target <= 7) then {
+				_unit stop true;
+				_unit setDir (_unit getDir _target);
+				_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
+				_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
+				sleep 3;
+				if (_target isKindOf "AllVehicles") then {
+					_hit_index = selectRandom ["HitBody", "HitEngine", "HitFuel", "HitLFWheel", "HitLBWheel", "HitRFWheel", "HitRBWheel"];
+					_target setHitPointDamage [_hit_index, 1];
+				} else {
+					_damage = damage _target;
+					_target setDamage (_damage + 0.25);
 				};
-				if (alive _unit && _unit distance2D _target <= 7) then {
-					_unit stop true;
-					_unit setDir (_unit getDir _target);
-					_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
-					_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
-					sleep 3;
-					if (_target isKindOf "AllVehicles") then {
-						_hit_index = selectRandom ["HitBody", "HitEngine", "HitFuel", "HitLFWheel", "HitLBWheel", "HitRFWheel", "HitRBWheel"];
-						_target setHitPointDamage [_hit_index, 1];
-					} else {
-						_damage = damage _target;
-						_target setDamage (_damage + 0.25);
-					};
-					sleep 5;
-					_unit stop false;
-					_unit switchMove "AmovPercMwlkSnonWnonDf";
-					_unit playMoveNow "AmovPercMwlkSnonWnonDf";
-				};
-				[_grp, getPosATL _unit] spawn add_civ_waypoints;
-				sleep _delay;
+				sleep 5;
+				_unit stop false;
+				_unit switchMove "AmovPercMwlkSnonWnonDf";
+				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
+			[_grp, getPosATL _unit] spawn add_civ_waypoints;
+			sleep _delay;
 		};
 
 		//--- Attack (armed)
@@ -288,31 +266,26 @@ while {alive _unit && _continue} do {
 
 		//--- Bomb Attack
 		case 14: {
-			if (count _target_veh > 0) then {
-				[_grp] call F_deleteWaypoints;
-				_target = selectRandom _target_veh;
-				waitUntil {
-					_unit doMove (getPos _target);
-					sleep 5;
-					(!alive _unit || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
-				};
-				if (alive _unit && _unit distance2D _target <= 7) then {
-					_unit stop true;
-					_unit setDir (_unit getDir _target);
-					_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
-					_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
-					sleep 3;
-					_ied = createMine ["IEDUrbanSmall_F", (_target getPos [1, random(360)]), [], 0];					
-					_ied setPos (getPos _ied);
-					[_ied] spawn { sleep 40; (_this select 0) setDamage 1 };
-					sleep 5;
-					_unit stop false;
-					_unit switchMove "AmovPercMwlkSnonWnonDf";
-					_unit playMoveNow "AmovPercMwlkSnonWnonDf";
-				};
-				[_grp, getPosATL _unit] spawn add_civ_waypoints;
-				sleep _delay;
+			if (count _target_veh == 0) exitWith {};
+			_target = selectRandom _target_veh;
+			[_grp] call F_deleteWaypoints;
+			[_unit, _target, 7] call _moveTo;
+			if (alive _unit && _unit distance2D _target <= 7) then {
+				_unit stop true;
+				_unit setDir (_unit getDir _target);
+				_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
+				_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
+				sleep 3;
+				_ied = createMine ["IEDUrbanSmall_F", (_target getPos [1, random(360)]), [], 0];
+				_ied setPos (getPos _ied);
+				[_ied] spawn { sleep 40; (_this select 0) setDamage 1 };
+				sleep 5;
+				_unit stop false;
+				_unit switchMove "AmovPercMwlkSnonWnonDf";
+				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
+			[_grp, getPosATL _unit] spawn add_civ_waypoints;
+			sleep _delay;
 		};
 
 		//--- Normal
