@@ -1,4 +1,4 @@
-private ["_build_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
+private ["_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
 
 if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 
@@ -81,43 +81,42 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 		build_refresh = false;
 		lbClear 110;
 		_build_list = [];
-		{
-			if (!_squad_leader && buildtype in [1,8]) exitWith {};
-			if (_near_outpost && buildtype in [3,4,8]) exitWith {};
-			if (_water_fob && buildtype in [3,6,8]) exitWith {};
-			if (buildtype == 8 ) then {
-				_build_list pushback _x;
-			} else {
-				if ( _score >= (_x select 4) && (_x select 4) < GRLIB_perm_hidden) then { _build_list pushback _x };
-			};
-		} forEach (build_lists select buildtype);
-
-		private _limited = false;
 		private _msg = "";
-		if (count _build_list == 0) then {
-			_msg = "       Score too low!";
-			if (_near_outpost && buildtype in [3,4,8]) then {
-				_msg = "       Unavailable at Outpost.";
-			};
 
-			if (_water_fob && buildtype in [3,6,8]) then {
-				_msg = "       Unavailable at Naval.";
-			};
-
-			if (!_squad_leader && buildtype in [1,8]) then {
-				_msg = "       Only for Squad Leader.";
-			};
-			_limited = true;
+		if (!_squad_leader && buildtype in [1,8]) then {
+			_msg = "       Only for Squad Leader.";
 		};
-		if (_limited) then {
+		if (_near_outpost && buildtype in [3,4,8]) then {
+			_msg = "       Unavailable at Outpost.";
+		};
+		if (_water_fob && buildtype in [3,6,8]) then {
+			_msg = "       Unavailable at Naval.";
+		};
+
+		if (_msg == "") then {
+			_config_list = (build_lists select buildtype);
+			if (count _config_list == 0) exitWith {	_msg = "       No Vehicle Available." };
+			{
+				if (buildtype == 8 ) then {
+					_build_list pushback _x;
+				} else {
+					if ( _score >= (_x select 4) && (_x select 4) < GRLIB_perm_hidden) then { _build_list pushback _x };
+				};
+			} forEach _config_list;
+			if (count _build_list == 0) then { _msg = "       Score too low!" };
+		};
+
+		if (_msg != "") then {
 			_row = (_display displayCtrl (110)) lnbAddRow [_msg,"-","-","-"];
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], "false"];
 			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\unavailable.jpg";
 		};
 
 		_old_buildtype = buildtype;
+		_old_selected_item = -1;
 		_row = 0;
 		ctrlSetText [ 151, _buildpages select (buildtype - 1) ];
+		if (count _build_list == 0) exitWith {};
 
 		{
 			_build_class = _x select 0;
@@ -219,8 +218,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 			};
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], str _affordable];
 		} foreach _build_list;
-
-		_old_selected_item = -1;
 	};
 
 	_selected_item = lbCurSel 110;
