@@ -1,5 +1,7 @@
 params ["_unit"];
 
+if (isNull _unit) exitWith { "Unknown" };
+
 private _playername = "";
 private _clantag = squadParams _unit select 0 select 0;
 if (!isNil "_clantag") then {
