@@ -171,14 +171,16 @@ while {GRLIB_run_cleanup} do {
 	if (count _units_ttl > 0) then {
 		{
 			private _ttl = _x getVariable "GRLIB_counter_TTL";
-			if ([_x, _deadMenDist, _hidden_from] call _isHidden && time > _ttl ) then {
-				if (_x isKindOf "CAManBase") then {
-					deleteVehicle _x;
-				} else {
-					[_x] call clean_vehicle;
+			if (!isNil "_ttl") then {
+				if ([_x, _deadMenDist, _hidden_from] call _isHidden && time > _ttl) then {
+					if (_x isKindOf "CAManBase") then {
+						deleteVehicle _x;
+					} else {
+						[_x] call clean_vehicle;
+					};
+					_stats = _stats + 1;
+					sleep 0.1;
 				};
-				_stats = _stats + 1;
-				sleep 0.1;
 			};
 		} count _units_ttl;
 		sleep 1;
