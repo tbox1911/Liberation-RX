@@ -1,6 +1,7 @@
 private _selection = 0;
 private _selectedmember = objNull;
 private _rename_controls = [521,522,523,524,525,526,527];
+private _button_controls = [210,211,212,215,217];
 private _update = false;
 
 createDialog "liberation_squad";
@@ -15,11 +16,16 @@ GRLIB_Squad_camera camSetTarget GRLIB_Squad_target;
 GRLIB_Squad_camera camcommit 0;
 "rtt" setPiPEffect [0];
 
+{ ctrlEnable [_x, false] } forEach _button_controls;
+
 // LikeMe Button disabled
-if (GRLIB_filter_arsenal == 4) then { ctrlEnable [ 215, false ] };
+if (GRLIB_filter_arsenal == 4) then { _button_controls = _button_controls - [215] };
 
 // Arsenal Button disabled
-if (GRLIB_enable_arsenal == 0) then { ctrlEnable [ 212, false ] };
+if (GRLIB_enable_arsenal == 0) then { _button_controls = _button_controls - [212] };
+
+// Squad list
+private _squad_list = [player] + PAR_AI_bros;
 
 // Create unit list
 lbClear 101;
@@ -29,17 +35,30 @@ private _membercount = 0;
 	_unitname = format ["%1. %2", [ _x ] call F_getUnitPositionId, name _x];
 	lbAdd [101, _unitname];
 	_membercount = _membercount + 1;
-} foreach PAR_AI_bros;
+} foreach _squad_list;
+
 lbSetCurSel [101, 0];
 
 while { dialog && alive player && _membercount > 0 } do {
 	_update = false;
 	GRLIB_squadaction = -1;
-	waitUntil { sleep 0.2; (!dialog || GRLIB_squadaction != -1) };
+	private _old_selection = -1;
+	waitUntil {
+		_selection = lbCurSel 101;
+		if (_selection != _old_selection) then {
+			if (_selection == 0) then {
+				{ ctrlEnable [_x, false] } forEach _button_controls;
+			} else {
+				{ ctrlEnable [_x, true] } forEach _button_controls;
+			};
+			_old_selection = _selection;
+		};
+		sleep 0.2;
+		(!dialog || GRLIB_squadaction != -1);
+	};
 	if (!dialog) exitWith {};
 
-	_selection = (lbCurSel 101);
-	_selectedmember = PAR_AI_bros select _selection;
+	_selectedmember = _squad_list select _selection;
 
 	// Promote
 	if ( GRLIB_squadaction == 1 ) then {
@@ -87,11 +106,6 @@ while { dialog && alive player && _membercount > 0 } do {
 			PAR_AI_bros = PAR_AI_bros - [_selectedmember];
 			deleteVehicle _selectedmember;
 			hint localize 'STR_REMOVE_OK';
-			if (count PAR_AI_bros == 0) then {
-				lbSetCurSel [101, -1];
-			} else {
-				lbSetCurSel [101, 0];
-			};
 			_update = true;
 		};
 		sleep 0.5;
@@ -155,16 +169,17 @@ while { dialog && alive player && _membercount > 0 } do {
 
 	// Update unit list
 	if (_update) then {
+		_squad_list = [player] + PAR_AI_bros;
 		_membercount = 0;
 		lbClear 101;
 		{
 			_unitname = format ["%1. %2", [ _x ] call F_getUnitPositionId, name _x];
 			lbAdd [101, _unitname];
 			_membercount = _membercount + 1;
-		} foreach PAR_AI_bros;
+		} foreach _squad_list;
+		lbSetCurSel [101, _selection];
 	};
 
-	uiSleep 0.5;
 };
 
 closeDialog 0;

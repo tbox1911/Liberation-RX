@@ -1,12 +1,11 @@
 params ["_control", "_lbCurSel", "_lbSelection"];
 
 if (_lbCurSel == -1) exitWith {};
-if (count PAR_AI_bros == 0) exitWith {};
 
-private ["_primary_mags", "_secondary_mags", "_vehstring"];
+private _squad_list = [player] + PAR_AI_bros;
 private _cfgVehicles = configFile >> "cfgVehicles";
 private _cfgWeapons = configFile >> "cfgWeapons";
-private _selectedmember = PAR_AI_bros select _lbCurSel;
+private _selectedmember = _squad_list select _lbCurSel;
 
 "spawn_marker" setMarkerPosLocal (getpos _selectedmember);
 ctrlMapAnimClear ((findDisplay 5155) displayCtrl 100);
@@ -39,12 +38,11 @@ ctrlSetText [ 204, format ["%1 %2m", localize 'STR_DISTANCE', round (player dist
 if ( primaryWeapon _selectedmember != "") then {
 	ctrlSetText [ 205, format ["%1: %2", localize 'STR_PRIMARY_WEAPON', getText (_cfgWeapons >> (primaryWeapon _selectedmember) >> "displayName") ] ];
 
-	_primary_mags = 0;
+	private _primary_mags = 0;
 	if ( count primaryWeaponMagazine _selectedmember > 0 ) then {
 		_primary_mags = 1;
 		{ if ( ( _x select 0 ) == ( ( primaryWeaponMagazine _selectedmember ) select 0 ) ) then { _primary_mags = _primary_mags + 1; } } foreach (magazinesAmmo _selectedmember);
 	};
-
 	ctrlSetText [ 206, format ["%1: %2", localize 'STR_AMMO', _primary_mags ] ];
 } else {
 	ctrlSetText [ 205, format ["%1: %2", localize 'STR_PRIMARY_WEAPON', localize 'STR_NONE' ] ];
@@ -54,12 +52,11 @@ if ( primaryWeapon _selectedmember != "") then {
 if ( secondaryWeapon _selectedmember != "") then {
 	ctrlSetText [ 207, format ["%1: %2", localize 'STR_SECONDARY_WEAPON', getText (_cfgWeapons >> (secondaryWeapon _selectedmember) >> "displayName") ] ];
 
-	_secondary_mags = 0;
+	private _secondary_mags = 0;
 	if ( count secondaryWeaponMagazine _selectedmember > 0 ) then {
 		_secondary_mags = 1;
 		{ if ( ( _x select 0 ) == ( ( secondaryWeaponMagazine _selectedmember ) select 0 ) ) then { _secondary_mags = _secondary_mags + 1; } } foreach (magazinesAmmo _selectedmember);
 	};
-
 	ctrlSetText [ 208, format ["%1: %2", localize 'STR_AMMO', _secondary_mags ] ];
 } else {
 	ctrlSetText [ 207, format ["%1: %2", localize 'STR_SECONDARY_WEAPON', localize 'STR_NONE' ] ];
@@ -70,7 +67,7 @@ ctrlSetText [ 216, format ["Loadout Price: %1 Ammo", ([_selectedmember] call F_l
 if ( vehicle _selectedmember == _selectedmember ) then {
 	ctrlSetText [ 209, "" ];
 } else {
-	_vehstring = localize 'STR_PASSENGER';
+	private _vehstring = localize 'STR_PASSENGER';
 	if (driver vehicle _selectedmember == _selectedmember ) then { _vehstring = localize 'STR_DRIVER'; };
 	if (gunner vehicle _selectedmember == _selectedmember ) then { _vehstring = localize 'STR_GUNNER'; };
 	if (commander vehicle _selectedmember == _selectedmember ) then { _vehstring = localize 'STR_COMMANDER'; };
