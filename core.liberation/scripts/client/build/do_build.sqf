@@ -378,6 +378,11 @@ while { true } do {
 				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				_vehicle setPosATL _veh_pos;
+
+				// Magic ClutterCutter
+				if (_classname == land_cutter_typename) then {
+					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
+				};
 			};
 
 			private _owner = "";

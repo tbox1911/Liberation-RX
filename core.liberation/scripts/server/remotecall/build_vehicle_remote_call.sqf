@@ -101,11 +101,6 @@ if (_classname isKindOf "Land_PortableHelipadLight_01_F") then {
 	_allow_damage = false;
 };
 
-// Magic ClutterCutter
-if (_classname == land_cutter_typename) then {
-	[ATLtoASL _veh_pos] call build_cutter_remote_call;
-};
-
 // WareHouse
 if (_classname == Warehouse_typename) then {
 	[_vehicle] call warehouse_init_remote_call;
