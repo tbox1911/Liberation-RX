@@ -462,7 +462,9 @@ while { true } do {
 			};
 
 			// A3 / R3F Inventory
-			[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
+			if (count  _lst_a3 > 0 || count _lst_r3f > 0 || count _lst_grl > 0) then {
+				[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
+			};
 
 			build_vehicle = _vehicle;
 			stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
