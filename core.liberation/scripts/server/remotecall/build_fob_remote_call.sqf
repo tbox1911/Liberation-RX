@@ -7,8 +7,10 @@ private _vehicle = objNull;
 if (_classname in [FOB_typename, FOB_outpost]) then {
 	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
+	_vehicle hideobjectglobal true;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosATL _veh_pos;
+	_vehicle hideobjectglobal false;
 	[_vehicle, getPlayerUID _owner] call fob_init;
 	_fob_pos = getPosATL _vehicle;
 	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
@@ -20,8 +22,10 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
 	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
+	_vehicle hideobjectglobal true;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosATL _veh_pos;
+	_vehicle hideobjectglobal false;
 	[_vehicle] call BIS_fnc_carrier01Init;
 	[_vehicle] call BIS_fnc_Carrier01PosUpdate;
 	[_vehicle, getPlayerUID _owner] call fob_init;
@@ -56,8 +60,10 @@ if (_classname in ["fob_water1"]) then {
 	};
 	_vehicle = createVehicle [FOB_typename, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
+	_vehicle hideobjectglobal true;
 	_vehicle setVectorDirAndUp [[0,1,0], [0,0,1]];
 	_vehicle setPosASL _veh_pos;
+	_vehicle hideobjectglobal false;
 	[_vehicle, getPlayerUID _owner] call fob_init;
 	_fob_pos = getPosATL _vehicle;
 	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];

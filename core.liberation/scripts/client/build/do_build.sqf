@@ -399,9 +399,20 @@ while { true } do {
 			waitUntil { sleep 1; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
 
 			_vehicle = player getVariable "GRLIB_player_vehicle_build";
+			if (isNil "_vehicle") exitWith {
+				private _msg = format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _veh_pos];
+				systemchat _msg;
+				diag_log _msg;
+			};
+
 			waitUntil { sleep 1; (!alive _vehicle || local _vehicle) };
 			if (!alive _vehicle) exitWith {};
-			if (_vehicle distance2D _veh_pos > 10) then { _vehicle setPosATL _veh_pos };
+
+			// MP fix pos
+			if (_vehicle distance2D _veh_pos > 10) then {
+				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
+				_vehicle setPosATL _veh_pos;
+			};
 
 			// Killed EH
 			if !(_classname in all_buildings_classnames) then {
@@ -448,9 +459,10 @@ while { true } do {
 				if ( _ammo > 0) then {
 					_vehicle setVehicleAmmo _ammo;
 				};
-				// A3 / R3F Inventory
-				[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
 			};
+
+			// A3 / R3F Inventory
+			[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
 
 			build_vehicle = _vehicle;
 			stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
