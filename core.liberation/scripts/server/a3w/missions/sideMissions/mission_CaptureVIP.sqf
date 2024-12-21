@@ -61,7 +61,7 @@ _setupObjects = {
 	// VIP
 	_vip = _aiGroup createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
 	[_vip] joinSilent _aiGroup;
-	_vip addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
+	_vip addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vip setVariable ["GRLIB_mission_AI", true, true];
 	_vip setSkill ["courage", 0.8];

@@ -27,7 +27,7 @@ if (_unit isKindOf "AllVehicles") then {
 	};
 };
 
-private _ret = _amountOfDamage;
+private _damage = _amountOfDamage;
 
 if (isPlayer _killer && _unit != _killer) then {
 	private _veh_unit = vehicle _unit;
@@ -42,8 +42,10 @@ if (isPlayer _killer && _unit != _killer) then {
 			_veh_unit fireAtTarget [_killer];
 			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 		};
-		_ret = 0;
+		_damage = 0;
 	};
 };
 
-_ret;
+if (side _killer != GRLIB_side_friendly) then { _damage = 0 };
+
+_damage;

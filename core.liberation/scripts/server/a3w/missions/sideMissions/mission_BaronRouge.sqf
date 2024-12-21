@@ -51,7 +51,6 @@ _setupObjects = {
 	_vehicles = [];
 	for "_i" from 1 to 3 do {
 		_plane = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
-		_plane removeAllEventHandlers "HandleDamage";
 		_plane addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
 		_plane addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 		_plane flyInHeight 1500;
