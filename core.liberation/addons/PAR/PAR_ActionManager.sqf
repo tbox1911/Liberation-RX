@@ -13,11 +13,11 @@ private _checkAction = {
 while {true} do {
 	_wnded_list = (getPos player) nearEntities ["CAManBase", 30];
 	_wnded_list = _wnded_list select {
-		alive _x && side _x == GRLIB_side_civilian &&
+		alive _x &&
 		([_x] call PAR_is_wounded) &&
 		([_x] call _checkAction) &&
-		isNull objectParent _x &&
-		isNil {_x getVariable "PAR_busy"}
+		(isNull objectParent _x) &&
+		(isNil {_x getVariable "PAR_busy"})
 	};
 
 	if (count _wnded_list > 0) then {
@@ -45,11 +45,11 @@ while {true} do {
 					_target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_bleedout_extra, true];
 					[_target] call PAR_spawn_gargbage;
 					if (stance _caller == "PRONE") then {
-						_caller switchMove 'ainvppnemstpslaywrfldnon_medicother';
-						_caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
+						_caller switchMove "ainvppnemstpslaywrfldnon_medicother";
+						_caller playMoveNow "ainvppnemstpslaywrfldnon_medicother";
 					} else {
-						_caller switchMove 'ainvpknlmstpslaywrfldnon_medicother';
-						_caller playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
+						_caller switchMove "ainvpknlmstpslaywrfldnon_medicother";
+						_caller playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
 					};
 				},
 				{},
@@ -57,14 +57,14 @@ while {true} do {
 					[_target, _caller] spawn PAR_fn_sortie;
 				},
 				{
-					if (animationState _caller == 'ainvppnemstpslaywrfldnon_medicother') then {
+					if (animationState _caller == "ainvppnemstpslaywrfldnon_medicother") then {
 						_caller switchMove "amovppnemstpsraswrfldnon";
 						_caller playMoveNow "amovppnemstpsraswrfldnon";
 					} else {
 						_caller switchMove "amovpknlmstpsraswrfldnon";
 						_caller playMoveNow "amovpknlmstpsraswrfldnon";
 					};
-					_target setVariable ["PAR_myMedic", nil];
+					[_caller, _target] call PAR_fn_medicRelease;
 				},
 				[time],6,12,false
 			] call BIS_fnc_holdActionAdd;

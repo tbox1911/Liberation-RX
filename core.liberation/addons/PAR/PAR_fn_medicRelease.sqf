@@ -25,4 +25,4 @@ if (!isNull _my_medic && _my_medic != _medic) then {
 	[_my_medic] call _release_medic;
 };
 
-_wnded setVariable ['PAR_myMedic', nil];
+_wnded setVariable ["PAR_myMedic", nil];

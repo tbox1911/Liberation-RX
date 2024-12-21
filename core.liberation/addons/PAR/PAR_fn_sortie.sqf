@@ -20,13 +20,14 @@ if (!isPlayer _medic) then {
 	};
 	[_wnded] call PAR_spawn_gargbage;
 	_cnt = 6;
-	while { _cnt > 0 && (_wnded getVariable ["PAR_myMedic", objNull] == _medic) } do {
+	while { _cnt > 0 && (_wnded getVariable ["PAR_myMedic", objNull]) == _medic } do {
 		sleep 1;
 		_cnt = _cnt -1
 	};
 };
 
-if (([_medic] call PAR_is_wounded) || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
+if (_medic != (_wnded getVariable ["PAR_myMedic", objNull])) exitWith { _medic switchMove "" };
+if ((!alive _wnded) || (!alive _medic) || ([_medic] call PAR_is_wounded) ) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 // Revived
 if (PAR_revive == 2) then {
