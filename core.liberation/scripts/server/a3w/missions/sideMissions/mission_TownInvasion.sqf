@@ -43,7 +43,6 @@ _setupObjects = {
 		_x setVariable ["GRLIB_vehicle_owner", "server", true];
 		_x setVariable ["acex_headless_blacklist", true, true];
 	} forEach (units _grp_civ);
-	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 	[_grp_civ, _missionPos] spawn civilian_ai;
 
 	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, (count units _aiGroup + count _managed_units)];

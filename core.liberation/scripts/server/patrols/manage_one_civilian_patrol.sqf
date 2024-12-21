@@ -43,10 +43,10 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			sleep 1;
 		};
 
-		[_civ_grp, _sector_pos] spawn add_civ_waypoints;
 		if (isNull _civ_veh) then {
 			[_civ_grp, _sector_pos] spawn civilian_ai;
 		} else {
+			[_civ_grp, _sector_pos] spawn add_civ_waypoints;
 			[_civ_veh] spawn civilian_ai_veh;
 		};
 

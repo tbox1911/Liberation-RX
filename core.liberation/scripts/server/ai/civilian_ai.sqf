@@ -18,8 +18,7 @@ private _moveTo = {
 		(!alive _unit || (_target getVariable ["PAR_isUnconscious", false]) || (_unit distance2D _dest <= _radius) || (_unit distance2D _dest > GRLIB_capture_size))
 	};
 };
-private _delay = (300 + floor random 300);
-private _continue = true;
+
 private _weapons_light = [
 	"hgun_ACPC2_F",
 	"hgun_P07_F",
@@ -44,7 +43,11 @@ private [
 	"_box", "_magType", "_ied"
 ];
 
+[_grp, getPosATL _unit] spawn add_civ_waypoints;
+
 sleep (60 + floor random 60);
+
+private _continue = true;
 while {alive _unit && _continue} do {
 	_list_actions = [0];
 	_nearby_players = ([_unit, GRLIB_capture_size] call F_getNearbyPlayers);
@@ -53,11 +56,11 @@ while {alive _unit && _continue} do {
 		_target_veh = vehicles select { (alive _x) && ([_target, _x, true] call is_owner) && (_x distance2D _unit <= GRLIB_capture_size) };
 		_reputation = [_target] call F_getReput;
 		if ( _reputation >= 25 ) then { _list_actions = [0,1,1,1,2] };
-		if ( _reputation >= 50 ) then { _list_actions = [1,2,2,2,3] };
+		if ( _reputation >= 50 ) then { _list_actions = [0,1,2,2,2,3] };
 		if ( _reputation >= 75 ) then { _list_actions = [2,2,3,4,4,5] };
 		if ( _reputation >= 100 ) then { _list_actions = [2,3,4,5,5] };
-		if ( _reputation <= -25 ) then { _list_actions = [0,10] };
-		if ( _reputation <= -50 ) then { _list_actions = [10,11,11] };
+		if ( _reputation <= -25 ) then { _list_actions = [0,10,10] };
+		if ( _reputation <= -50 ) then { _list_actions = [0,10,11,11] };
 		if ( _reputation <= -75 ) then { _list_actions = [11,11,12,12,14] };
 		if ( _reputation <= -100 ) then { _list_actions = [11,12,12,13,13,14] };
 	};
@@ -84,8 +87,6 @@ while {alive _unit && _continue} do {
 				};
 				sleep 3;
 			};
-			[_grp, getPosATL _unit] spawn add_civ_waypoints;
-			sleep _delay;
 		};
 
 		//--- Heal
@@ -93,7 +94,7 @@ while {alive _unit && _continue} do {
 			if (damage _target < 0.25 || (_target getVariable ["PAR_isUnconscious", false])) exitWith {};
 			[_grp] call F_deleteWaypoints;
 			[_unit, _target] call _moveTo;
-			if (alive _unit && _unit distance2D _target <= 5 && (isNull objectParent _unit) && damage _target > 0.25 ) then {
+			if (alive _unit && _unit distance2D _target <= 5 && (isNull objectParent _unit) && damage _target < 0.04) then {
 				if (isServer) then {
 					[_unit, _action, _target] spawn speak_manager_remote_call;
 				} else {
@@ -109,8 +110,6 @@ while {alive _unit && _continue} do {
 				_unit switchMove "AmovPercMwlkSnonWnonDf";
 				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
-			[_grp, getPosATL _unit] spawn add_civ_waypoints;
-			sleep _delay;
 		};
 
 		//--- Repair
@@ -140,8 +139,6 @@ while {alive _unit && _continue} do {
 				_unit switchMove "AmovPercMwlkSnonWnonDf";
 				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
-			[_grp, getPosATL _unit] spawn add_civ_waypoints;
-			sleep _delay;
 		};
 
 		//--- Reammo
@@ -170,8 +167,6 @@ while {alive _unit && _continue} do {
 					sleep 3;
 				};
 			};
-			[_grp, getPosATL _unit] spawn add_civ_waypoints;
-			sleep _delay;
 		};
 
 		//--- Help (armed)
@@ -230,8 +225,6 @@ while {alive _unit && _continue} do {
 				_unit switchMove "AmovPercMwlkSnonWnonDf";
 				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
-			[_grp, getPosATL _unit] spawn add_civ_waypoints;
-			sleep _delay;
 		};
 
 		//--- Attack (armed)
@@ -284,13 +277,15 @@ while {alive _unit && _continue} do {
 				_unit switchMove "AmovPercMwlkSnonWnonDf";
 				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
-			[_grp, getPosATL _unit] spawn add_civ_waypoints;
-			sleep _delay;
 		};
 
 		//--- Normal
 		default { };
 	};
 
-	sleep 200;
+	if (_continue) then {
+		sleep 5;
+		[_grp, getPosATL _unit] spawn add_civ_waypoints;
+		sleep (300 + floor random 200);
+	};
 };
