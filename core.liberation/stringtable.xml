@@ -521,16 +521,16 @@
 			<Chinese>FOB船隻</Chinese>
 		</Key>
 		<Key ID="STR_RESPAWN_TRUCK">
-			<Original>Mobile Respawn</Original>
-			<French>Respawn Mobile</French>
-			<German>Mobiler Respawn</German>
-			<Spanish>Respawn Móvil</Spanish>
-			<Russian>Мобильная КШМ</Russian>
+			<Original>Respawn</Original>
+			<French>Respawn</French>
+			<German>Respawn</German>
+			<Spanish>Respawn</Spanish>
+			<Russian>Мобильная</Russian>
 			<Chinesesimp>移动重生点</Chinesesimp>
 			<Chinese>移動重生點</Chinese>
 			<Japanese>モバイルリスポーン</Japanese>
-			<Portuguese>Ressurgimento Móvel</Portuguese>
-			<Czech>Mobilní Respawn</Czech>
+			<Portuguese>Ressurgimento</Portuguese>
+			<Czech>Respawn</Czech>
 		</Key>
 		<Key ID="STR_ARSENAL_BOX">
 			<Original>Arsenal box</Original>
