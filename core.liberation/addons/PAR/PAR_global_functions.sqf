@@ -116,20 +116,22 @@ PAR_fn_globalchat = {
 	};
 };
 PAR_fn_fixPos = {
-	params ["_list"];
+	params ["_medic", "_wnded"];
 	{
-		private _pos = getPosASL _x;
-		if (surfaceIsWater _pos) then {
-			if (isPlayer _x) then {
-				_x switchMove ""; // reset
-				_x playMoveNow "";
-			} else {
-				private _zpos = _pos select 2;
-				if (_zpos < -1.2) then { _pos set [2, -1.2 max _zpos] };
-				_x setPosASL _pos;
+		if (local _x) then {
+			private _pos = getPosASL _x;
+			if (surfaceIsWater _pos) then {
+				if (isPlayer _x) then {
+					_x switchMove ""; // reset
+					_x playMoveNow "";
+				} else {
+					private _zpos = _pos select 2;
+					if (_zpos < -1.2) then { _pos set [2, -1.2 max _zpos] };
+					_x setPosASL _pos;
+				};
 			};
 		};
-	} forEach _list;
+	} forEach [_medic, _wnded];
 };
 PAR_is_medic = {
 	params ["_unit"];

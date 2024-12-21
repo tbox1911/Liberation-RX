@@ -61,7 +61,7 @@ sleep 7;
 if (!([_medic] call PAR_is_wounded) && !([_wnded] call PAR_is_wounded) && (_medic distance2D _wnded) <= 3) then {
 	_wnded setDamage 0;
 };
-[[_medic, _wnded]] call PAR_fn_fixPos;
+[_medic, _wnded] call PAR_fn_fixPos;
 
 sleep 2;
 _wnded stop false;

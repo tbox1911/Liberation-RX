@@ -26,7 +26,7 @@ if (!isPlayer _medic) then {
 	};
 };
 
-if (_medic != (_wnded getVariable ["PAR_myMedic", objNull])) exitWith { _medic switchMove "" };
+if (local _medic && _medic != (_wnded getVariable ["PAR_myMedic", objNull])) exitWith { _medic switchMove "" };
 if ((!alive _wnded) || (!alive _medic) || ([_medic] call PAR_is_wounded) ) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 // Revived
@@ -54,7 +54,7 @@ sleep 2;
 _wnded switchmove "AidlPpneMstpSrasWrflDnon_G01";
 
 [_medic, _wnded] call PAR_fn_medicRelease;
-[[_medic, _wnded]] call PAR_fn_fixPos;
+[_medic, _wnded] call PAR_fn_fixPos;
 
 if (_wnded == player) then {
 	group _wnded selectLeader _wnded;
