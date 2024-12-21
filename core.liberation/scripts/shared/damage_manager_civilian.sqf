@@ -13,11 +13,11 @@ if (!isNull _instigator) then {
 	};
 };
 
-private _ret = 0;
+private _damage = 0;
 if ( side _killer == GRLIB_side_friendly ) then {
 	private _vehicle = objectParent _killer;
 	private _isDriver = (_killer == driver _vehicle && speed _vehicle < 10);
-	if (!_isDriver) then { _ret = _amountOfDamage };
+	if (!_isDriver) then { _damage = _amountOfDamage };
 };
 
-_ret;
+_damage;

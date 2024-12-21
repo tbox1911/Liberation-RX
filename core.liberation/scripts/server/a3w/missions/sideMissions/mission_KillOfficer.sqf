@@ -30,7 +30,7 @@ _setupObjects = {
 	_hvt = _grp_hvt createUnit [ opfor_officer, _missionPos, [], 0, "NONE"];
 	[_hvt] joinSilent _grp_hvt;
 	_hvt setVariable ["GRLIB_mission_AI", true, true];
-	_hvt addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
+	_hvt addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 	_hvt addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_hvt setrank "COLONEL";
 
