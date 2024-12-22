@@ -351,9 +351,8 @@ while { alive player && dialog } do {
 		do_capture = 0;
 		[_sector, {
 			blufor_sectors pushBackUnique _this;
-			publicVariable "blufor_sectors";
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
-			publicVariable "opfor_sectors";
+			publicVariable "blufor_sectors";
 		}] remoteExec ["bis_fnc_call", 2];
 
 		_msg = format ["Sector %1 Forcefully Captured!", markerText _sector];

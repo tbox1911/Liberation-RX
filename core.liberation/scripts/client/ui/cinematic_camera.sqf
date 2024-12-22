@@ -1,12 +1,12 @@
-private [ 
+private [
 	"_positions", "_position",
 	"_nearentities", "_camtarget", "_activeplayers",
-	"_startpos", "_endpos", "_startfov", "_endfov", 
+	"_startpos", "_endpos", "_startfov", "_endfov",
 	"_nearest_sector", "_unitname"
 ];
 
-if ( isNil "GRLIB_all_fobs" ) then { GRLIB_all_fobs = [] };
-if ( isNil "active_sectors" ) then { active_sectors = [] };
+waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
+waitUntil { sleep 1; !isNil "active_sectors" };
 
 titleText ["" ,"BLACK IN", 3];
 cinematic_camera_started = true;
@@ -40,11 +40,11 @@ while { cinematic_camera_started } do {
 
 			if ( count active_sectors > 0 ) then {
 				for "_i" from 0 to 5 do {
-					_positions pushback (markerPos  (selectRandom active_sectors));
+					_positions pushback (markerPos (selectRandom active_sectors));
 				};
 			} else {
 				for "_i" from 0 to 5 do {
-					_positions pushback (markerPos  (selectRandom sectors_allSectors));
+					_positions pushback (markerPos (selectRandom sectors_allSectors));
 				};
 			};
 
@@ -58,7 +58,7 @@ while { cinematic_camera_started } do {
 			};
 
 		};
-		_position = selectRandom  (_positions - [_last_position]);
+		_position = selectRandom (_positions - [_last_position]);
 		_last_position = _position;
 		_cinematic_pointer setpos [ _position select 0, _position select 1, (_position select 2) + 7 ];
 		_nearentities = _position nearEntities [ "CAManBase", 100 ];

@@ -27,7 +27,7 @@ if (_full) then {
 	"base_chimera" setMarkerColorLocal GRLIB_color_friendly;
 
 	// Hide all markers
-	{ _x setMarkerTypeLocal "Empty" } foreach (sectors_allSectors - blufor_sectors);
+	{ _x setMarkerTypeLocal "Empty" } foreach opfor_sectors;
 
 	// LRX Markers
 	GRLIB_Marker_SRV = [];

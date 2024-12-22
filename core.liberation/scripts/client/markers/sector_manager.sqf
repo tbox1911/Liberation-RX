@@ -1,6 +1,5 @@
-private [ "_marker", "_nextbase", "_nextvehicle", "_nextmarker", "_sector_pos", "_nearest_sector", "_near_fob", "_opfor_sectors" ];
+private [ "_marker", "_nextbase", "_nextvehicle", "_nextmarker", "_sector_pos", "_nearest_sector", "_near_fob" ];
 
-waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "blufor_sectors"};
 
 private _getMarkerType = {
@@ -34,8 +33,7 @@ sleep 1;
 while { GRLIB_endgame == 0 } do {
 	waitUntil {sleep 1; GRLIB_MapOpen && (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
 
-	_opfor_sectors = (sectors_allSectors - blufor_sectors);
-	if (GRLIB_hide_opfor && count _opfor_sectors > 3) then {
+	if (GRLIB_hide_opfor && count opfor_sectors > 3) then {
 		{
 			_sector_pos = markerPos _x;
 			_dist = [_sector_pos, false] call F_getNearestBluforObjective select 1;
@@ -45,7 +43,7 @@ while { GRLIB_endgame == 0 } do {
 			} else {
 				_x setMarkerTypeLocal "Empty";
 			};
-		} foreach _opfor_sectors;
+		} foreach opfor_sectors;
 		{
 			_x setMarkerColorLocal GRLIB_color_friendly;
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);
@@ -54,7 +52,7 @@ while { GRLIB_endgame == 0 } do {
 		{
 			_x setMarkerColorLocal GRLIB_color_enemy;
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);
-		} foreach _opfor_sectors;
+		} foreach opfor_sectors;
 		{
 			_x setMarkerColorLocal GRLIB_color_friendly;
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);

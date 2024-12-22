@@ -59,7 +59,6 @@ if (_ownership == GRLIB_side_enemy) then {
 			blufor_sectors = blufor_sectors - [ _sector ];
 			publicVariable "blufor_sectors";
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
-			publicVariable "opfor_sectors";
 			[_sector, 0] call sector_defenses_remote_call;
 			if (GRLIB_TFR_enabled && _sector in sectors_tower) then {
 				private _tower = (nearestObjects [_sector_pos, [Radio_tower], 20]) select { (alive _x) && (_x getVariable ['GRLIB_Radio_Tower', false])} select 0;

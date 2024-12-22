@@ -71,7 +71,6 @@ publicVariable "stats_readiness_earned";
 blufor_sectors pushBackUnique _liberated_sector;
 publicVariable "blufor_sectors";
 opfor_sectors = (sectors_allSectors - blufor_sectors);
-publicVariable "opfor_sectors";
 stats_sectors_liberated = stats_sectors_liberated + 1;
 
 sleep 45;

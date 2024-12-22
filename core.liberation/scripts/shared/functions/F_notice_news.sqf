@@ -5,7 +5,7 @@ if ( (date select 4) < 10 ) then { _leadingzero_minute = "0" };
 
 private _count_players = count (AllPlayers - (entities "HeadlessClient_F"));
 private _count_blufor = count blufor_sectors;
-private _count_opfor = (count sectors_allSectors - _count_blufor);
+private _count_opfor = count opfor_sectors;
 private _datestring = format ["<t color='#0000A0'>%1%2:%3%4</t>", _leadingzero_hour, date select 3, _leadingzero_minute, date select 4];
 private _msg = format ["<t color='#4BC9B0' shadow='2' size='1.75'>Today's LRX News</t><br/>"];
 _msg = _msg + "<t color='#777777'>------------------------------</t><br/>";
