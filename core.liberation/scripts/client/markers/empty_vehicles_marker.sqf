@@ -1,4 +1,3 @@
-waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
 private _no_marker_classnames = [

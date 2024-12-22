@@ -1,10 +1,9 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
-private ["_fuel", "_can", "_result"];
 
-_fuel = fuel _vehicle;
+private _fuel = fuel _vehicle;
 if (_fuel >= 0.25) then {
-	_result = [format [localize "STR_DO_DEFUEL", typeOf _vehicle], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
+	private _result = [format [localize "STR_DO_DEFUEL", typeOf _vehicle], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 	if (_result) then {
 		buildtype = 9;
 		build_unit = [canister_fuel_typename,[],1,[],[],[],[]];

@@ -1,8 +1,6 @@
 private [ "_marker", "_nextgroup", "_leader", "_mission_ai", "_sector", "_sideMission", "_permMission", "_nearRadioTower" ];
 if (GRLIB_fancy_info == 0) exitWith {};
 
-waitUntil {sleep 1; !isNil "GRLIB_init_server"};
-
 if (isNil "A3W_sectors_in_use") then {
 	A3W_sectors_in_use = [];
 };
