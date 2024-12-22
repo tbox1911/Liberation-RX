@@ -449,7 +449,7 @@
 			<Czech>Zde nelze postavit nový FOB, musíte být alespoň %1 metrů od každé zachytitelné zóny. Nejbližší FOB je %2 metrů daleko.</Czech>
 		</Key>
 		<Key ID="STR_FOB_BUILDING_CAPTURE_SECTOR">
-			<Original>&lt;t align='center'&gt;Replace Sector %1 by the new FOB&lt;br/&gt;Sector will be Removed from the Game!&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Original>&lt;t align='center'&gt;Replace Sector "%1" by the new FOB&lt;br/&gt;Sector will be Removed from the Game!&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 		</Key>
 		<Key ID="STR_BUILD_ERROR_WATER">
 			<Original>Can't build on water.</Original>
