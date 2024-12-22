@@ -43,6 +43,7 @@ _setupObjects = {
 	(crew _vehicle1) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
 	_aiGroup selectLeader (driver _vehicle1);
+	_vehicle1 setVariable ["GRLIB_vehicle_owner", "public", true];
 	sleep 1;
 
 	// Waypoints
@@ -56,6 +57,7 @@ _setupObjects = {
 	// veh2 + ressources
 	_vehicle2 = [_missionPos, a3w_truck_open, 0] call F_libSpawnVehicle;
 	(crew _vehicle2) joinSilent _aiGroup;
+	_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
 
 	_ressources = [];
 	if !(isNull _vehicle2) then {
@@ -75,6 +77,7 @@ _setupObjects = {
 	// veh3
 	_vehicle3 = [_missionPos, a3w_truck_covered, 0] call F_libSpawnVehicle;
 	(crew _vehicle3) joinSilent _aiGroup;
+	_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
 
 	if !(isNull _vehicle3) then {
 		// troops

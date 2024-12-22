@@ -64,6 +64,7 @@ _setupObjects = {
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
 	_aiGroup selectLeader (driver _vehicle1);
+	_vehicle1 setVariable ["GRLIB_vehicle_owner", "public", true];
 	sleep 1;
 
 	// Waypoints
@@ -79,6 +80,7 @@ _setupObjects = {
 	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle2, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
+	_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
 
 	// wait
 	(driver _vehicle2) MoveTo (_convoy_destinations select 1);
@@ -90,6 +92,7 @@ _setupObjects = {
 	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle3, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
+	_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
 	(driver _vehicle3) MoveTo (_convoy_destinations select 1);
 	sleep 1;
 
