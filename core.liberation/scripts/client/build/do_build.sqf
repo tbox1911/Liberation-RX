@@ -410,7 +410,7 @@ while { true } do {
 				diag_log _msg;
 			};
 
-			waitUntil { sleep 1; (!alive _vehicle || local _vehicle) };
+			waitUntil { sleep 0.5; (!alive _vehicle || local _vehicle) };
 			if (!alive _vehicle) exitWith {};
 
 			// MP fix pos
@@ -476,8 +476,6 @@ while { true } do {
 			publicVariable "stats_blufor_vehicles_built";
 		};
 	};
-
-	sleep 1;
 
 	if ( repeatbuild ) then {
 		dobuild = 1;

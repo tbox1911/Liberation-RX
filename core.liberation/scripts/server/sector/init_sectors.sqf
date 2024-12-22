@@ -36,8 +36,17 @@ sectors_airSpawn = [];
 	};
 
 	if (_x select [0,8] == "military") then {
-		sectors_military pushback _x;
-		_ismissionsector = true;
+		if (isNil "GRLIB_all_fobs") then {
+			sectors_military pushback _x;
+			_ismissionsector = true;
+		} else {
+			private _min_sector_dist = round ((GRLIB_capture_size + GRLIB_fob_range) * 1.5);
+			private _sector = [_min_sector_dist, _x] call F_getNearestSector;
+			if (_sector != "") then {
+				_ismissionsector = false;
+				deleteMarker _sector;
+			};			
+		};
 	};
 
 	if (_x select [0,5] == "tower") then {

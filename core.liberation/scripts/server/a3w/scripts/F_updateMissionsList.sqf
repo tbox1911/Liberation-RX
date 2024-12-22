@@ -7,7 +7,7 @@ if (count _missionsList == 0) exitWith {};
 private _spawn_place = count ([SpawnMissionMarkers] call checkSpawn);
 private _spawn_place_forest = count ([ForestMissionMarkers] call checkSpawn);
 private _spawn_place_water = count ([SunkenMissionMarkers] call checkSpawn);
-private _opfor_factor = round ((opfor_sectors / (count sectors_allSectors)) * 100);
+private _opfor_factor = round ((count opfor_sectors / count sectors_allSectors) * 100);
 private _opfor_chopper = { !(_x isKindOf "Plane") } count (opfor_air);
 private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 
