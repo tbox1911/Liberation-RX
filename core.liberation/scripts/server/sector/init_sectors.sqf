@@ -1,3 +1,5 @@
+private _min_sector_dist = round ((GRLIB_capture_size + GRLIB_fob_range) * 1.5);
+
 sectors_allSectors = [];
 sectors_capture = [];
 sectors_bigtown = [];
@@ -40,12 +42,14 @@ sectors_airSpawn = [];
 			sectors_military pushback _x;
 			_ismissionsector = true;
 		} else {
-			private _min_sector_dist = round ((GRLIB_capture_size + GRLIB_fob_range) * 1.5);
-			private _sector = [_min_sector_dist, _x] call F_getNearestSector;
-			if (_sector != "") then {
+			private _fob_pos = [markerPos _x] call F_getNearestFob;
+			if (_fob_pos distance2D markerPos _x < _min_sector_dist) then {
 				_ismissionsector = false;
-				deleteMarker _sector;
-			};			
+				deleteMarker _x;
+			} else {
+				sectors_military pushback _x;
+				_ismissionsector = true;
+			};
 		};
 	};
 

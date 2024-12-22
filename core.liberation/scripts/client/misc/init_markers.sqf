@@ -3,7 +3,7 @@ private ["_marker"];
 private _marker_debug = false;
 if (!isNil "GRLIB_LRX_debug") then { _marker_debug = true };
 
-waitUntil {sleep 1; !isNil "blufor_sectors"};
+waitUntil {sleep 1; !isNil "opfor_sectors"};
 
 if (_full) then {
 	// Game markers
