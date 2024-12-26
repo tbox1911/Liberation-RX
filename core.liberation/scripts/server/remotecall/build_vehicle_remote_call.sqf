@@ -25,7 +25,7 @@ _vehicle hideobjectglobal false;
 
 // Vehicle owner
 if (_owner != "") then {
-	if (!([_vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
+	if !([_vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass) then {
 		_vehicle setVariable ["GRLIB_vehicle_owner", _owner, true];
 		_vehicle allowCrewInImmobile [true, false];
 		_vehicle setUnloadInCombat [true, false];

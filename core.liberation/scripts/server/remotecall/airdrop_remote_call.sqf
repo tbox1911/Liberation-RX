@@ -9,7 +9,7 @@ if (isNil "_forced_pos") then {
 	_text = format ["Player %1 call Air Drop Support.", name _unit];
 	_vehicle = createVehicle [_class, _pos, [], 0, "NONE"];
 	_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-	//[_vehicle, "lock", (getPlayerUID _unit)] call F_vehicleLock;
+	_vehicle setVariable ["GRLIB_vehicle_owner", (getPlayerUID _unit), true];
 	_pos = getPosATL _unit;
 } else {
 	_text = format ["Player %1 Air Drop Vehicle.", name _unit];
