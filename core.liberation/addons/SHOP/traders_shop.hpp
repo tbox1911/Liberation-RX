@@ -48,7 +48,7 @@ class Traders_Shop {
 
 		class VehList1 : StdListNBox {
 			idc = 110;
-			columns[] = {0,0.78};
+			columns[] = {0,0.80};
 			onLBSelChanged = "";
 			shadow = 2;
 			rowHeight = "1.25 * 0.018 * safezoneH";
@@ -63,7 +63,7 @@ class Traders_Shop {
 
 		class VehList2: StdListNBox {
 			idc = 111;
-			columns[] = {0,0.78};
+			columns[] = {0,0.80};
 			onLBSelChanged = "";
 			shadow = 2;
 			rowHeight = "1.25 * 0.018 * safezoneH";
