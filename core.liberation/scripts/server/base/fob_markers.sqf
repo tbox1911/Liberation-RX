@@ -8,7 +8,6 @@ GRLIB_redraw_marker_fob = false;
 sleep 2;
 while { true } do {
 	if (count GRLIB_all_fobs > 0 && (count _markers != count GRLIB_all_fobs || GRLIB_redraw_marker_fob)) then {
-		GRLIB_redraw_marker_fob = false;
 		{ deleteMarkerLocal _x } foreach _markers;
 		_markers = [];
 		{
@@ -56,5 +55,7 @@ while { true } do {
 	if !(isNull GRLIB_vehicle_huron) then {
 		"huronmarker" setMarkerPos (getPosATL GRLIB_vehicle_huron);
 	};
+
+	if (GRLIB_redraw_marker_fob) then { GRLIB_redraw_marker_fob = false };
 	sleep 3;
 };
