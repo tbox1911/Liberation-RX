@@ -128,12 +128,8 @@ _setupObjects = {
 	} forEach (units _aiGroup);
 
 	//----- spawn civilians ---------------------------------
-	_grp_civ = [_missionPos, (5 + random(5))] call F_spawnCivilians;
-	{
-		_x setVariable ["GRLIB_vehicle_owner", "server", true];
-		_x setVariable ["acex_headless_blacklist", true, true];
-	} forEach (units _grp_civ);
-	[_grp_civ, _missionPos] spawn civilian_ai;
+	_grp_civ = [_missionPos, (5 + floor random 5)] call F_spawnCivilians;
+	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
 	//----- spawn mines ---------------------------------
 	[_missionPos, 30] call createlandmines;

@@ -12,7 +12,11 @@ if (typeOf _vehicle in uavs_vehicles + static_vehicles_AI) exitWith {
 private _vehicle_roles = [];
 if (_vehicle isKindOf "StaticWeapon") then {
 	_vehicle_roles = ["gunner"];
-} else {
+};
+if (_side == GRLIB_side_civilian) then {
+		_vehicle_roles = ["driver"];
+};
+if (count _vehicle_roles == 0) then {
 	{
 		if ((_x select 1) in ["driver","commander","gunner"]) then { _vehicle_roles pushBackUnique (_x select 1) };
 	} forEach (fullCrew [_vehicle, "", true]);

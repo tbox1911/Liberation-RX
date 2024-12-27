@@ -64,11 +64,7 @@ _setupObjects = {
 
 	// Spawn civvies
 	_grp_civ = [_hvt_pos, (5 + floor random 5)] call F_spawnCivilians;
-	{
-		_x setVariable ["GRLIB_vehicle_owner", "server", true];
-		_x setVariable ["acex_headless_blacklist", true, true];
-	} forEach (units _grp_civ);
-	[_grp_civ, _hvt_pos] spawn civilian_ai;
+	[_grp_civ, _hvt_pos] spawn add_civ_waypoints;
 
 	_missionPos = _hvt_pos;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");

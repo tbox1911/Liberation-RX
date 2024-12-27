@@ -19,6 +19,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 	_unit allowDamage false;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ['GRLIB_can_speak', true, true];
+	_unit setVariable ["acex_headless_blacklist", true, true];
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
 	_unit switchMove "AmovPercMwlkSnonWnonDf";
 	_unit playMoveNow "AmovPercMwlkSnonWnonDf";
