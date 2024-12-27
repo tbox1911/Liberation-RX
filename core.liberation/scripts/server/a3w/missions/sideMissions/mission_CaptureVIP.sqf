@@ -12,7 +12,7 @@ _setupVars = {
 
 _setupObjects = {
 	private _min_waypoints = 3;
-	private _citylist = ((sectors_bigtown - active_sectors) select { _x in opfor_sectors });
+	private _citylist = ((sectors_bigtown - active_sectors) select { _x in opfor_sectors && (count ([markerPos _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0) });
 	if (count _citylist < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
