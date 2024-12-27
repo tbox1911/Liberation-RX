@@ -79,9 +79,9 @@ private _nearRadioTower = ([markerPos _liberated_sector, GRLIB_side_enemy] call 
 if ( GRLIB_endgame == 0 && _nearRadioTower ) then {
 	if (
 	   !(_liberated_sector in sectors_tower) &&
-	   ((combat_readiness > 70) || (_liberated_sector in sectors_bigtown)) &&
+	   ((combat_readiness > 70 && floor random 3 > 0) || (_liberated_sector in sectors_bigtown)) &&
 	   (opforcap < GRLIB_battlegroup_cap) &&
-	   (diag_fps > 30.0) && (floor random 3 > 0)
+	   (diag_fps > 30.0)
 	) then {
 		sleep (floor random 300);
 		diag_log format ["Spawn Revenge BattlegGroup at %1", time];

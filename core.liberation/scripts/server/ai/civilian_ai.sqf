@@ -5,9 +5,7 @@ if (!local _grp) exitWith { [_grp] remoteExec ["civilian_ai", groupOwner _grp] }
 
 private _unit = (units _grp) select 0;
 if ((typeOf _unit) select [0,10] == "RyanZombie") exitWith {};
-if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATl _unit)) exitWith {};
-if (_unit skill "courage" == 1) exitWith {};
 
 private _moveTo = {
 	params ["_unit", "_target", ["_radius", 5]];

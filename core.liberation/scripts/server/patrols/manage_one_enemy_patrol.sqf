@@ -55,6 +55,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			sleep 1;
 		};
 
+		sleep 60;
+
 		// Wait
 		_unit_ttl = round (time + 1800);
 		_unit_pos = getPosATL (leader _opfor_grp);
@@ -62,6 +64,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		waitUntil {
 			if (alive (leader _opfor_grp)) then { _unit_pos = getPosATL (leader _opfor_grp) };
 			sleep 60;
+			if (round (speed vehicle leader _opfor_grp) == 0) then {[leader _opfor_grp] spawn F_fixPosUnit };
 			(
 				GRLIB_global_stop == 1 ||
 				({alive _x} count (units _opfor_grp) == 0) ||

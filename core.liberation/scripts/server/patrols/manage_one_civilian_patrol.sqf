@@ -31,8 +31,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_civ_veh = [_sector_pos, (selectRandom civilian_vehicles), 3, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 			if !(isNull _civ_veh) then { _civ_grp = group (driver _civ_veh) };
 		} else {
-			private _rndciv = [1,1,1,1,2,3];
-			_civ_grp = [_sector_pos, (selectRandom _rndciv)] call F_spawnCivilians;
+			_civ_grp = [_sector_pos] call F_spawnCivilians;
 		};
 
 		if (isNull _civ_grp) exitWith {};
@@ -50,6 +49,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			[_civ_veh] spawn civilian_ai_veh;
 		};
 
+		sleep 60;
+
 		// Wait
 		_unit_ttl = round (time + 1800);
 		_unit_pos = getPosATL (leader _civ_grp);
@@ -57,6 +58,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		waitUntil {
 			if (alive (leader _civ_grp)) then { _unit_pos = getPosATL (leader _civ_grp) };
 			sleep 60;
+			if (round (speed vehicle leader _civ_grp) == 0) then {[leader _civ_grp] spawn F_fixPosUnit };
 			(
 				GRLIB_global_stop == 1 ||
 				(diag_fps < 25) ||
