@@ -36,7 +36,7 @@ private _replace_sector = false;
 private _min_sector_dist = round ((GRLIB_capture_size + GRLIB_fob_range) * 1.5);
 if (_box_type == FOB_box_outpost) then { _min_sector_dist = (GRLIB_capture_size + GRLIB_fob_range) };
 private _next_sector = [_min_sector_dist] call F_getNearestSector;
-if (_next_sector in blufor_sectors && _next_sector in sectors_military) then {
+if (_box_type == FOB_box_typename && _next_sector in blufor_sectors && _next_sector in sectors_military) then {
 	private _result = [format [localize "STR_FOB_BUILDING_CAPTURE_SECTOR", markerText _next_sector], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 	if (_result) then {
 		_replace_sector = true;
