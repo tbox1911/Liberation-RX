@@ -1,5 +1,6 @@
 params ["_vehicle"];
 
+if !(_vehicle isKindOf "AllVehicles") exitWith {};
 if (surfaceIsWater (getPos _vehicle)) exitWith {};
 
 if (vectorUp _vehicle select 2 < 0.60) then {
