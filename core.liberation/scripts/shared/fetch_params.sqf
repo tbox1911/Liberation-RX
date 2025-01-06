@@ -295,6 +295,9 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
+// Disable TFAR Relay
+if (GRLIB_TFR_radius == 0) then { GRLIB_TFR_enabled = false };
+
 // Overide Huron type
 switch (GRLIB_huron_type) do {
 	case 0: { huron_typename = "B_Heli_Transport_03_unarmed_F" };
