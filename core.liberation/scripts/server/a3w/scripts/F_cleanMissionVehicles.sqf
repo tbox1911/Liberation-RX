@@ -13,7 +13,7 @@ if (typeName _vehicles != "ARRAY") then {
 		if (!alive _vehicle) exitWith {};
 		if (_vehicle isKindOf "AllVehicles") then {
 			if (_vehicle getVariable ["GRLIB_vehicle_owner", ""] == "server") then {
-				_vehicle setVariable ["GRLIB_vehicle_owner", ""];
+				_vehicle setVariable ["GRLIB_vehicle_owner", "", true];
 			};
 			private _veh_pos = getPos _vehicle;
 			private _fob_pos = [_veh_pos] call F_getNearestFob;

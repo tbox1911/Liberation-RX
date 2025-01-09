@@ -52,6 +52,7 @@ waitUntil {sleep 1; _scout_vehicle distance2D _spawnpos > 30 || time > _timout};
 private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _transport_vehicle) joinSilent _convoy_group;
 
+_transport_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _transport_vehicle allowCrewInImmobile [true, true];
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
@@ -110,12 +111,13 @@ for "_i" from 0 to ((count _convoy_destinations) -1) do {
 // Mission loop
 private _mission_timeout = time + 3600;	// 1 hours tiemout
 private _mission_in_progress = true;
+private _enemy_left = 0;
 
 while { _mission_in_progress } do {
-	if ( !(alive _transport_vehicle) || (side group _transport_vehicle == GRLIB_side_friendly) || time >= _mission_timeout) then {
+	_enemy_left = { alive _x } count ((units _troops_group) + (crew _transport_vehicle));
+	if (!alive _transport_vehicle || _enemy_left == 0 || time > _mission_timeout) then {
 		_mission_in_progress = false;
 	};
-
 	_convoy_marker setMarkerPos (getpos _transport_vehicle);
 	sleep 5;
 };
@@ -124,13 +126,14 @@ while { _mission_in_progress } do {
 // Mission cleanup
 { deleteMarker _x } foreach _convoy_marker_list;
 
-if (time > _mission_timeout) then {
+if (time > _mission_timeout || !alive _transport_vehicle) then {
 	[51] remoteExec ["remote_call_intel", 0];
 } else {
-	if (side group _transport_vehicle == GRLIB_side_friendly) then {
+	if (_enemy_left == 0) then {
 		combat_readiness = 15 max (combat_readiness - 10);
 		stats_secondary_objectives = stats_secondary_objectives + 1;
 		[5] remoteExec ["remote_call_intel", 0];
+		_transport_vehicle setVariable ["GRLIB_vehicle_owner", "", true];
 	} else {
 		combat_readiness = combat_readiness + 5;
 		if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
@@ -138,7 +141,7 @@ if (time > _mission_timeout) then {
 	};
 };
 
-private _vehicles = [_scout_vehicle, _troop_vehicle];
+private _vehicles = [_scout_vehicle, _transport_vehicle, _troop_vehicle];
 [_vehicles] spawn cleanMissionVehicles;
 
 sleep 120;
