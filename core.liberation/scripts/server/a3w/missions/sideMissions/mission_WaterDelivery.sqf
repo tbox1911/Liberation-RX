@@ -50,7 +50,7 @@ _successExec = {
 		private _bonus = round (22 + random 25);
         [_bonus] remoteExec ["remote_call_a3w_info", owner _winner];
         [_winner, _bonus] call F_addScore;
-		[_winner, 5] call F_addReput
+		[_winner, 5] call F_addReput;
 	};
 	_successHintMessage = ["STR_WATERDELI_MESSAGE3", sideMissionColor];
 	deleteMarker _marker_mission;
