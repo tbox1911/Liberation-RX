@@ -190,9 +190,10 @@ if (deploy == 1) then {
 	};
 
 	cinematic_camera_started = false;
-	titleText ["","BLACK IN", 5];
+	sleep 1;
 };
 
+titleText ["","BLACK IN", 5];
 sleep 2;
 if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) then {
 	_spawn_str = _basenamestr;
