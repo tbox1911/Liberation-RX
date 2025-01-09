@@ -104,7 +104,7 @@ LRX_Mission_Params = [
 	["Permissions", 1],				// Permissions management - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["CleanupVehicles", 1800],		// Cleanup abandoned vehicles outside FOBs - values = {0,900,1800,3600,7200,14400}
 	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
-	["TFRadioRange", 2000],			// The radius of TFAR relay - [default 5000] - values = {Disabled, 1000, 2000, 3000, 5000, 7500, 10000, 15000, 20000};
+	["TFRadioRange", 2000],			// The radius of TFAR relay - [default 5000] - values = {Disabled, 1km, 2km, 3km, 4km, 5km, 10km, 15km};
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["RespawnCD", 0],				// Cooldown if player respawn too fast - [default 0] - values = [0,xxx] - Text {Disabled,Enabled}
 	["KickIdle", 0],				// Kick player if idle too long - [default 0] - values = {0,900,1200,1800,3600,7200}
@@ -166,8 +166,8 @@ LRX_Mission_Params_Def = [
 		[0, 300, 400, 600, 800, 1000, 1200, 1500, 2000]
 	],
 	["TFRadioRange", localize "STR_PARAM_TFAR_RADIUS",
-		[localize "STR_PARAMS_DISABLED", "1 km", "2 km", "3 km", "5 km", "7.5 km", "10 km", "15 km", "20 km"],
-		[0, 1000, 2000, 3000, 5000, 7500, 10000, 15000, 20000]
+		[localize "STR_PARAMS_DISABLED", "1 km", "2 km", "3 km", "4 km", "5 km", "7.5 km", "10 km", "15 km"],
+		[0, 1000, 2000, 3000, 4000, 5000, 7500, 10000, 15000]
 	],
 	["DayDuration", localize "STR_PARAMS_DAYDURATION",
 		["0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "7", "10", "20", "30", "40", "50"],
