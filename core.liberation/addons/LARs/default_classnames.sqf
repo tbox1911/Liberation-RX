@@ -31,16 +31,14 @@ GRLIB_whitelisted_from_arsenal = [
 	"V_RebreatherIR"
 ] + whitelisted_from_arsenal;
 
-// MOD Spec
-if (!GRLIB_SOG_enabled && !GRLIB_SPE_enabled) then {
-	// UAVs Terminal
-	private _blacklisted_uavs_terminal = [
-		"B_UavTerminal",
-		"O_UavTerminal",
-		"I_UavTerminal",
-		"I_E_UavTerminal",
-		"C_UavTerminal"
-	] - [uavs_terminal_typename];
-	GRLIB_blacklisted_from_arsenal append _blacklisted_uavs_terminal;
-	GRLIB_whitelisted_from_arsenal append [uavs_terminal_typename];
-};
+// UAVs Terminal
+private _blacklisted_uavs_terminal = [
+	"B_UavTerminal",
+	"O_UavTerminal",
+	"I_UavTerminal",
+	"I_E_UavTerminal",
+	"C_UavTerminal"
+] - [uavs_terminal_typename];
+
+GRLIB_blacklisted_from_arsenal append _blacklisted_uavs_terminal;
+GRLIB_whitelisted_from_arsenal append [uavs_terminal_typename];

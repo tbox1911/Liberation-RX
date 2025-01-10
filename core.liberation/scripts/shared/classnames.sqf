@@ -11,14 +11,15 @@ zeropos = [0,0,10000];
 // *** DEFAULT ***
 [] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_classnames.sqf"];
 
-// *** Arsenal ****
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
-
 // *** FRIENDLIES ***
 _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
 _ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
 
+// *** Arsenal ****
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
+
+// *** MFR Dogs ****
 MFR_Dogs_classname = [];
 if (GRLIB_MFR_enabled) then {
 	MFR_Dogs = [
