@@ -16,8 +16,6 @@ waituntil {
 
 titleText ["", "BLACK FADED", 100];
 
-if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
-
 [] spawn cinematic_camera;
 
 if ( GRLIB_introduction ) then {
@@ -60,6 +58,7 @@ if ( howtoplay == 1 ) then {
 };
 
 cinematic_camera_started = false;
+titleText ["","BLACK FADED", 100];
 introDone = true;
 dostartgame = 1;
 

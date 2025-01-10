@@ -32,7 +32,7 @@ if (_kill > GRLIB_tk_count) exitWith {
 	closeDialog 0;
 	GRLIB_introduction = false;
 	cinematic_camera_started = false;
-	sleep 1;
+	titleText ["","BLACK FADED", 100];
 	waitUntil {!(isNull (findDisplay 46))};
 	player enableSimulationGlobal false;
 	createDialog "deathscreen";

@@ -42,7 +42,8 @@ if (sector_timer <= 0) then {
 		"filmGrain" ppEffectEnable false;
 	};
 
-	cinematic_camera_started = true;
+	cinematic_camera_started = false;
+	titleText ["","BLACK FADED", 100];
 	sector_timer = 0;
 	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 

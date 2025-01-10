@@ -151,6 +151,8 @@ if (!alive player) exitWith {};
 
 private _sleep = 3;
 if (GRLIB_deployment_cinematic) then { _sleep = 8 };
+cinematic_camera_started = false;
+titleText ["","BLACK IN", 5];
 
 if (deploy == 1) then {
 	player setVariable ["GRLIB_action_inuse", true, true];
@@ -188,13 +190,8 @@ if (deploy == 1) then {
 		[_spawn_str, _mobile] spawn spawn_camera;
 		[_destpos, _destdist, _mobile] call do_redeploy;
 	};
-
-	cinematic_camera_started = false;
-	sleep 1;
 };
 
-titleText ["","BLACK IN", 5];
-sleep 2;
 if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) then {
 	_spawn_str = _basenamestr;
 	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
