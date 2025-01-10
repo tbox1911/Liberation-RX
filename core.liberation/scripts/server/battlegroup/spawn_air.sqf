@@ -36,9 +36,9 @@ _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "COMBAT";
 _waypoint setWaypointCombatMode "RED";
 _waypoint = _grp addWaypoint [ _targetpos, _radius];
-_waypoint setWaypointType "SAD";
+_waypoint setWaypointType "MOVE";
 _waypoint = _grp addWaypoint [ _targetpos, _radius];
-_waypoint setWaypointType "SAD";
+_waypoint setWaypointType "MOVE";
 _wp0 = waypointPosition [_grp, 0];
 _waypoint = _grp addWaypoint [_wp0, 0];
 _waypoint setWaypointType "CYCLE";
@@ -55,6 +55,7 @@ if (_vehicle isKindOf "Plane") then {
 		params ["_plane"];
 		private _bombs = ["Bomb_03_F","Bomb_04_F","Bo_GBU12_LGB","Bo_GBU12_LGB_MI10","Bo_Mk82","Bo_Mk82_MI08"];
 
+		sleep 30;
 		while { alive _plane } do {
 			private _plane_dir = getDir _plane;
 			private _spot = _plane getPos [1000, _plane_dir];
@@ -76,7 +77,7 @@ if (_vehicle isKindOf "Plane") then {
 				_plane setVehicleAmmo 1;
 				sleep 60;
 			};
-			sleep 1;
+			sleep 3;
 		};
 	};
 };
@@ -98,11 +99,11 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && count _ta
 	_waypoint setWaypointBehaviour "COMBAT";
 	_waypoint setWaypointCombatMode "RED";
 	_waypoint = _grp addWaypoint [_targetpos, _radius];
-	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointType "MOVE";
 	_waypoint = _grp addWaypoint [_targetpos, _radius];
-	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointType "MOVE";
 	_waypoint = _grp addWaypoint [_targetpos, _radius];
-	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointType "MOVE";
 	_wp0 = waypointPosition [_grp, 0];
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
