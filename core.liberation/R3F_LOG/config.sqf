@@ -93,7 +93,7 @@ R3F_LOG_CFG_language = switch (language) do
  * The condition is evaluted in real time, so it can use condition depending on the mission progress : "alive officer && taskState task1 == ""Succeeded"""
  * Or to deny logistics in a circular area defined by a marker : "player distance markerPos  ""markerName"" > getMarkerSize ""markerName"" select 0"
  * Note that quotes of the strings inside the string condition must be doubled.
- * Note : if the condition depends of the aimed objects/vehicle, you can use the command cursorTarget
+ * Note : if the condition depends of the aimed objects/vehicle, you can use the command cursorObject
  * To allow the logistics to everyone, just set the condition to "true".
  */
 R3F_LOG_CFG_string_condition_allow_logistics_on_this_client = "true";
@@ -109,7 +109,7 @@ R3F_LOG_CFG_string_condition_allow_logistics_on_this_client = "true";
  * Or based on the profile name : "profileName in [""john"", ""jack"", ""james""]"
  * Or only for the server admin : "serverCommandAvailable "#kick"""
  * Note that quotes of the strings inside the string condition must be doubled.
- * Note : if the condition depends of the aimed objects/v�hicule, you can use the command cursorTarget
+ * Note : if the condition depends of the aimed objects/v�hicule, you can use the command cursorObject
  * Note also that the condition is evaluted in real time, so it can use condition depending on the mission progress :
  * "alive officer && taskState task1 == ""Succeeded"""
  * To allow the creation factory to everyone, just set the condition to "true".

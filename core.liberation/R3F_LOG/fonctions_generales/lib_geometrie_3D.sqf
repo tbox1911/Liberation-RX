@@ -617,7 +617,7 @@ R3F_LOG_FNCT_3D_cursorTarget_distance_bbox =
 {
 	private ["_objet", "_joueur"];
 
-	_objet = cursorTarget;
+	_objet = cursorObject;
 	_joueur = player;
 
 	if (!isNull _objet && !isNull _joueur && alive _joueur && cameraOn == _joueur) then
@@ -659,12 +659,9 @@ R3F_LOG_FNCT_3D_cursorTarget_virtuel =
 
 	if (!isNull (_cursorTarget_distance select 0) &&
 		{!((_cursorTarget_distance select 0) in _liste_ingores) && (_cursorTarget_distance select 1) <= _distance_max}
-	) then
-	{
-		_objet_pointe = cursorTarget;
-	}
-	else
-	{
+	) then	{
+		_objet_pointe = cursorObject;
+	} else {
 		private ["_vec_dir_unite_world", "_pos_unite_world", "_liste_objets"];
 
 		_vec_dir_unite_world = (ATLtoASL positionCameraToWorld [0, 0, 1]) vectorDiff (ATLtoASL positionCameraToWorld [0,0,0]);
@@ -1014,7 +1011,7 @@ addMissionEventHandler ["Draw3D",
 	{
 		private ["_objet"];
 
-		_objet = cursorTarget;
+		_objet = cursorObject;
 
 		if (!isNull R3F_LOG_joueur_deplace_objet) then
 		{

@@ -299,8 +299,8 @@
 			{
 				private ["_objet"];
 
-				// R�cup�ration de l'arme d�mont�e avec cursorTarget au lieu de _this (http://feedback.arma3.com/view.php?id=18090)
-				_objet = cursorTarget;
+				// R�cup�ration de l'arme d�mont�e avec cursorObject au lieu de _this (http://feedback.arma3.com/view.php?id=18090)
+				_objet = cursorObject;
 
 				if (!isNull _objet && {!isNull (_objet getVariable ["R3F_LOG_est_deplace_par", objNull])}) then
 				{
