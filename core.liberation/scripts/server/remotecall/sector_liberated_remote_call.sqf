@@ -47,7 +47,12 @@ if ( _liberated_sector in sectors_tower ) then {
 
 private _rwd_ammo = (100 + floor(random 100)) * GRLIB_resources_multiplier;
 private _rwd_fuel = (10 + floor(random 10)) * GRLIB_resources_multiplier;
-private _rwd_rep = (5 + floor(random 10));
+private _rwd_rep = 0;
+if (_liberated_sector in (sectors_capture + sectors_bigtown)) then {
+	_rwd_rep = (3 + floor(random 7));
+	if (_liberated_sector in sectors_bigtown) then { _rwd_rep = _rwd_rep * 2 };
+};
+
 private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_fuel];
 {
 	if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size ) then {
@@ -55,7 +60,7 @@ private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_
 			[markerPos _liberated_sector, 15] remoteExec ["remote_call_fireworks", owner _x];
 		};
 		[_x, _rwd_ammo, _rwd_fuel] call ammo_add_remote_call;
-		[_x, _rwd_rep] call F_addReput;
+		if (_rwd_rep > 0) then { [_x, _rwd_rep] call F_addReput };
 		[gamelogic, _text] remoteExec ["globalChat", owner _x];
 	};
 } forEach (AllPlayers - (entities "HeadlessClient_F"));
