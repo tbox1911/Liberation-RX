@@ -15,7 +15,8 @@ waituntil {
 };
 
 titleText ["", "BLACK FADED", 100];
-
+waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
+waitUntil { sleep 1; !isNil "active_sectors" };
 [] spawn cinematic_camera;
 
 if ( GRLIB_introduction ) then {

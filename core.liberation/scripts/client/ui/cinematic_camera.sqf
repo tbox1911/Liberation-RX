@@ -5,9 +5,6 @@ private [
 	"_nearest_sector", "_unitname"
 ];
 
-waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
-waitUntil { sleep 1; !isNil "active_sectors" };
-
 titleText ["" ,"BLACK IN", 3];
 cinematic_camera_started = true;
 private _last_transition = -1;
