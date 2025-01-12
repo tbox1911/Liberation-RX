@@ -45,16 +45,17 @@ outlw_MR_ctrl = outlw_MR_keyList select 1;
 outlw_MR_alt = outlw_MR_keyList select 2;
 outlw_MR_keybinding = outlw_MR_keyList select 3;
 
-[] spawn compileFinal preprocessFileLineNumbers "addons\MGR\Scripts\MagRepack_Main.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\MGR\Scripts\MagRepack_Keybindings.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\MGR\Scripts\MagRepack_Misc.sqf";
+[] call compileFinal preprocessFileLineNumbers "addons\MGR\Scripts\MagRepack_Main.sqf";
+[] call compileFinal preprocessFileLineNumbers "addons\MGR\Scripts\MagRepack_Keybindings.sqf";
+[] call compileFinal preprocessFileLineNumbers "addons\MGR\Scripts\MagRepack_Misc.sqf";
 
-waitUntil {sleep 0.5;!(isNil "outlw_MR_getIDCs")};
+waitUntil {sleep 0.5; !(isNil "outlw_MR_getIDCs")};
 
 outlw_MR_listIDCs = [(missionConfigFile >> "MR_Dialog" >> "Controls")] call outlw_MR_getIDCs;
 
 waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call outlw_MR_keyDown;"];
+
 systemChat "-------- Mag Repack Initialized --------";
 systemChat format ["Keybinding: %1", call outlw_MR_keyListToString];
 
