@@ -55,14 +55,37 @@ speak_civil_AI = {
 
 speak_info_unit = {
 	params ["_unit"];
+	if (([player] call F_getReput) < 25) exitWith {	[_unit] call speak_insult_unit };
+
 	private _greetings = [
-		"Hey, I love you !",
-		"You are doing a great job here !",
-		"We're all glad to see you here !",
-		"Good morning, God bless your army !",
-		"I would like my daughter to marry you.",
-		"Hey, kill them all for us !"
+		"Hello,",
+		"Hi,",
+		"Hey,",
+		"Good morning,"
 	];
+	private _goodbye = [
+		"bye.",
+		"take care.",
+		"ciao."
+	];
+	if (([player] call F_getReput) >= 50) then {
+		_goodbye = [
+			"You are doing a great job here !",
+			"We're all glad to see you here !",
+			"This war will never end ?",
+			"Kill them all !"
+		];
+	};
+	if (([player] call F_getReput) >= 75) then {
+		_goodbye = [
+			"God bless your army !",
+			"Hey, I love you !",
+			"I would like my daughter to marry you !",
+			"You will win this war !"
+		];
+	};
+	_unit globalChat (selectRandom _greetings);
+	sleep 2;
 	private _opfor_list = (units GRLIB_side_enemy) select {alive _x && _x distance2D getPos _unit < 500};
 	if (count _opfor_list > 0) then {
 		_opfor = _opfor_list select 0;
@@ -71,7 +94,7 @@ speak_info_unit = {
 		_unit globalChat "I'm sorry, I have no informations.";
 	};
 	sleep 2;
-	_unit globalChat (selectRandom _greetings);
+	_unit globalChat (selectRandom _goodbye);
 };
 
 speak_insult_unit = {
@@ -82,7 +105,9 @@ speak_insult_unit = {
 		"We hate you !",
 		"Go back home, Fuckers !",
 		"You better leave this land...",
-		"You're not Welcome here, Go away !"
+		"You're not Welcome here, Go away !",
+		"I don't like you !",
+		"I don't want to speak with you."
 	];
 	_unit globalChat (selectRandom _insults);
 };

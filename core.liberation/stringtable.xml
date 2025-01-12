@@ -8304,12 +8304,12 @@
 			<Czech>Ahoj, vidíš tady nějaké nepřátele?</Czech>
 		</Key>
 		<Key ID="STR_SPEAKMANAGER2">
-			<Original>Hi, Yes, I see someone at %1 meters, Azimut %2, Hurry up!</Original>
-			<Russian>Привет, Да, я вижу кого-то на %1 метрах, Азимут %2, Поторопись!</Russian>
-			<Japanese>はい、%2方向、%1mに敵兵を見ました。急いでください。</Japanese>
-			<Chinesesimp>嗨，是的，我看到有人在 %1米处，方位角 %2，快去！</Chinesesimp>
-			<Chinese>嗨，是的，我看到有人在 %1米處，方位角 %2，快去！</Chinese>
-			<Czech>Ahoj, Ano, vidím někoho na %1 metrů, Azimut %2, Pospěšte si!</Czech>
+			<Original>Yes, I see someone at %1 meters, Azimut %2, Hurry up!</Original>
+			<Russian>Да, я вижу кого-то на %1 метрах, Азимут %2, Поторопись!</Russian>
+			<Japanese>%2方向、%1mに敵兵を見ました。急いでください。</Japanese>
+			<Chinesesimp>是的，我看到有人在 %1米处，方位角 %2，快去！</Chinesesimp>
+			<Chinese>是的，我看到有人在 %1米處，方位角 %2，快去！</Chinese>
+			<Czech>Ano, vidím někoho na %1 metrů, Azimut %2, Pospěšte si!</Czech>
 		</Key>
 		<Key ID="STR_SPEAKMANAGER3">
 			<Original>Hi, Sorry No.</Original>
