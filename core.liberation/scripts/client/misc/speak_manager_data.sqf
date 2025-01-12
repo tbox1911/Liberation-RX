@@ -43,20 +43,14 @@ speak_civil_AI = {
 	player globalChat localize "STR_SPEAKMANAGER1";
 	sleep 2;
 	private _reputation = [player] call F_getReput;
-	if (_reputation >= 25) exitWith {
-		[_unit] call speak_info_unit
-	};
-	if (_reputation <= -25) exitWith {
-		[_unit] call speak_insult_unit;
-	};
+	if (_reputation >= 25) exitWith { [_unit] call speak_info_unit };
+	if (_reputation <= -25) exitWith { [_unit] call speak_insult_unit };
 	_msg = selectRandom [localize "STR_SPEAKMANAGER3",localize "STR_SPEAKMANAGER4",localize "STR_SPEAKMANAGER5", "Anerríphthô kúbos ?"];
 	_unit globalChat _msg;
 };
 
 speak_info_unit = {
 	params ["_unit"];
-	if (([player] call F_getReput) < 25) exitWith {	[_unit] call speak_insult_unit };
-
 	private _greetings = [
 		"Hello,",
 		"Hi,",
