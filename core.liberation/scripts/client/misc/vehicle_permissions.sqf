@@ -58,7 +58,7 @@ if (!(_role == "cargo" || _vehicle_class in list_static_weapons)) then {
 		};
 	};
 
-	if (side _unit1 != GRLIB_side_friendly) then {
+	if (side _unit1 != GRLIB_side_friendly && !isPlayer _unit1) then {
 		_doeject = true;
 		_msg = localize "STR_PERMISSION_NO_PRI";
 	};
