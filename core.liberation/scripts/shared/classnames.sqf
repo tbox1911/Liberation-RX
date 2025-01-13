@@ -390,13 +390,25 @@ vehicle_rearm_sources = [
 
 // Everything the AI vehicle should be able to repair from
 vehicle_repair_sources = [
+	repair_offroad,
 	repair_sling_typename,
 	repair_truck_typename,
 	"B_APC_Tracked_01_CRV_F",
 	"C_Offroad_01_repair_F",
 	"B_G_Offroad_01_repair_F",
 	"Land_RepairDepot_01_civ_F"
-];
+] + vehicle_repair_sources_west;
+
+// Everything the player can use as a Repair box
+vehicle_repair_box = [
+	repairbox_typename
+] + vehicle_repair_box_west;
+
+// Everything the AI vehicle should be able to repaint from
+vehicle_repaint_sources = [
+	repair_offroad,
+	"Land_RepairDepot_01_civ_F"
+] + vehicle_repaint_sources_west;
 
 // Everything the AI vehicle should be able to refuel from
 vehicle_refuel_sources = [
@@ -406,7 +418,7 @@ vehicle_refuel_sources = [
 	opfor_fuel_container,
 	"Land_fs_feed_F",
 	"C_Van_01_fuel_F"
-];
+] + vehicle_refuel_sources_west;
 
 // *** TRANSPORT CONFIG ***
 box_transport_config = [];

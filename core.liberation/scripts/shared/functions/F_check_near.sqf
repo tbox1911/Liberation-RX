@@ -16,7 +16,7 @@ if (typeName _vehicle == "OBJECT" ) then {
 	_vehpos = getPosATL _vehicle;
 };
 
-if (isNil "_list") exitWith {_ret};
+if (isNil "_list") exitWith { false };
 
 switch ( _list ) do {
 	case "LHD" : { _classlist = [lhd] };
@@ -32,9 +32,9 @@ switch ( _list ) do {
 	case "REAMMO" : { _classlist = vehicle_rearm_sources };
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources };
 	case "REPAIR_AI" : { _classlist = vehicle_repair_sources };
-	case "REPAIR" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"] };
-	case "REPAIR_BOX" : { _classlist = [repairbox_typename] };
-	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"] };
+	case "REPAIR" : { _classlist = vehicle_repair_sources };
+	case "REPAIR_BOX" : { _classlist = vehicle_repair_box };
+	case "REPAINT" : { _classlist = vehicle_repaint_sources };
 	case "WAREHOUSE" : { _classlist = [Warehouse_typename]; _use_fast = false };
 	case "TRANSPORT" : { _classlist = transport_vehicles; _use_fast = false };
 	default { _classlist = [] };
