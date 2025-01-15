@@ -122,9 +122,10 @@ while { dialog && alive player && _membercount > 0 } do {
 			private _oldprice = [_unit] call F_loadoutPrice;
 			private _oldstuff = getUnitLoadout _unit;
 			["Open", [false, myLARsBox, _unit]] call BIS_fnc_arsenal;
+			waitUntil { sleep 0.5; isNull (uiNameSpace getVariable ["BIS_fnc_arsenal_cam", objNull])};
 			[_unit] call F_filterLoadout;
 			private _newprice = [_unit] call F_loadoutPrice;
-			private _cost = 0 max (_newprice - _price_ai);
+			private _cost = 0 max (_newprice - _oldprice);
 			if (!([_cost] call F_pay)) then { _unit setUnitLoadout _oldstuff };
 			titleText ["" ,"BLACK IN", 3];
 		};
