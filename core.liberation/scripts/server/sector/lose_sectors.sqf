@@ -2,6 +2,7 @@ waitUntil {sleep 1; !isNil "GRLIB_all_fobs" };
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; (count (blufor_sectors) > 0 || count (GRLIB_all_fobs) > 0)};
 
+attack_in_progress = [];
 attack_in_progress_cooldown = [];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {

@@ -183,7 +183,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 
 	// Save Blob
 	private _lrx_liberation_savegame = [
-		blufor_sectors,
+		(blufor_sectors - attack_in_progress),
 		GRLIB_all_fobs,
 		buildings_to_save,
 		time_of_day,

@@ -22,6 +22,7 @@ if (_sector in attack_in_progress_cooldown) then {
 	};
 };
 
+attack_in_progress pushBack _sector;
 private _sideMission = (_sector in A3W_sectors_in_use);
 if (_sideMission) then { _defenders_cooldown = true };
 
@@ -95,6 +96,7 @@ if (_ownership == GRLIB_side_enemy) then {
 	};
 };
 
+attack_in_progress = attack_in_progress - [_sector];
 if (!isNull _arsenal) then {_arsenal spawn {sleep 120; deleteVehicle _this}};
 if (!isNull _vehicle) then {_vehicle spawn {sleep 60; [_this, true, true] call clean_vehicle}};
 if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
