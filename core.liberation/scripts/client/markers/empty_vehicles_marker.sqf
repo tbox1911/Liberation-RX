@@ -129,9 +129,7 @@ while { true } do {
 		if (_nextvehicle in GRLIB_mobile_respawn) then {
 			_marker_color = "ColorYellow";
 			_marker_type = "mil_end";
-			private _uid = _nextvehicle getVariable ["GRLIB_vehicle_owner", ""];
-			private _player = _uid call BIS_fnc_getUnitByUID;
-			_nextmarker setMarkerTextLocal format ["%1 - %2", [_nextvehicle] call F_getLRXName, [_player] call get_player_name];
+			_nextmarker setMarkerTextLocal format ["%1 - %2", [_nextvehicle] call F_getLRXName, mapGridPosition _nextvehicle];
 		};
 
 		_nextmarker setMarkerColorLocal _marker_color;

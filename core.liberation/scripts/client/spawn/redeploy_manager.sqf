@@ -69,17 +69,19 @@ for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 	_fobpos = GRLIB_all_fobs select _idx;
 	_near_outpost = (_fobpos in GRLIB_all_outposts);
 	if (_near_outpost) then {
-		_choiceslist = _choiceslist + [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
+		_choiceslist append [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
 	} else {
-		_choiceslist = _choiceslist + [[format [ "FOB %1 - %2", (military_alphabet select _idx), mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
+		_choiceslist append [[format [ "FOB %1 - %2", (military_alphabet select _idx), mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
 	};
 };
 
 private _mobile_respawn_list = [] call F_getMobileRespawns;
 _mobile_respawn_list = ([_mobile_respawn_list, [player], {_input0 distance2D _x}, 'ASCEND'] call BIS_fnc_sortBy);
+private ["_vehicle", "_player"];
 for "_idx" from 0 to ((count _mobile_respawn_list) -1) do {
 	_vehicle = _mobile_respawn_list select _idx;
-	_choiceslist = _choiceslist + [[format ["%1 - %2", [_vehicle] call F_getLRXName, mapGridPosition (getpos _vehicle)], getpos _vehicle, _vehicle]];
+	_player = (_vehicle getVariable ["GRLIB_vehicle_owner", ""]) call BIS_fnc_getUnitByUID;
+	_choiceslist append [[format ["%1 - %2 #%3", [_vehicle] call F_getLRXName, [_player] call get_player_name, _idx], getPos _vehicle, _vehicle]];
 };
 
 lbClear 201;
