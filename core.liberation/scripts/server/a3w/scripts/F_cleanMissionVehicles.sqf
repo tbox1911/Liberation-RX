@@ -1,8 +1,6 @@
 params ["_vehicles"];
 if (isNil "_vehicles") exitWith {};
-if (typeName _vehicles != "ARRAY") then {
-	_vehicles = [_vehicles];
-};
+if (typeName _vehicles != "ARRAY") then { _vehicles = [_vehicles] };
 
 {
 	[_x] spawn {
@@ -15,11 +13,7 @@ if (typeName _vehicles != "ARRAY") then {
 			if (_vehicle getVariable ["GRLIB_vehicle_owner", ""] == "server") then {
 				_vehicle setVariable ["GRLIB_vehicle_owner", "", true];
 			};
-			private _veh_pos = getPos _vehicle;
-			private _fob_pos = [_veh_pos] call F_getNearestFob;
-			if (_veh_pos distance2D _fob_pos > GRLIB_capture_size) then {
-				[_vehicle] call clean_vehicle;
-			};
+			[_vehicle] call clean_vehicle;
 		} else {
 			deleteVehicle _vehicle;
 		};

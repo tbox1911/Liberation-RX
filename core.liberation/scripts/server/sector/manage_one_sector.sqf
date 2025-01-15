@@ -12,9 +12,9 @@ private _local_capture_size = GRLIB_capture_size;
 private _ied_count = 0;
 private _static_count = 0;
 private _vehtospawn = [];
-private _vehicle = objNull;
 private _grp = grpNull;
 private _managed_units = [];
+private _managed_vehicles = [];
 private _squad1 = [];
 private _infsquad1 = "militia";
 private _squad2 = [];
@@ -132,10 +132,10 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 	if ( count _vehtospawn > 0 ) then {
 		{
 			private _spawn_pos = _sector_pos getPos [2 + (floor random 125), random 360];
-			_vehicle = [_spawn_pos, _x] call F_libSpawnVehicle;
+			private _vehicle = [_spawn_pos, _x] call F_libSpawnVehicle;
 			if (!isNull _vehicle) then {
+				_managed_vehicles pushback _vehicle;
 				[group (driver _vehicle), _spawn_pos, (50 + floor random 60)] spawn defence_ai;
-				_managed_units pushback _vehicle;
 				{ _managed_units pushback _x } foreach (crew _vehicle);
 				sleep 3;
 			};
@@ -318,13 +318,6 @@ diag_log format ["End Defend Sector %1 at %2", _sector, time];
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
 
-private _managed_veh = [];
-{
-	if (_x isKindOf "CAManBase") then {
-		deleteVehicle _x;
-	} else {
-		_managed_veh pushBack _x;
-	};
-} forEach _managed_units;
-_managed_veh spawn cleanMissionVehicles;
+{ [_x] call clean_vehicle } forEach _managed_vehicles;
+{ deleteVehicle _x } forEach _managed_units;
 [_sector_pos] call clearlandmines;
