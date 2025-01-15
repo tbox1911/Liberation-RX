@@ -24,7 +24,7 @@ player addAction ["<t color='#FF8000'>" + localize "STR_DOG_FIND_GUN" + "</t> <i
 player addAction ["<t color='#FF8000'>" + localize "STR_DOG_PATROL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","patrol",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
 player addAction ["<t color='#FF8000'>" + localize "STR_DOG_RECALL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogOnDuty"];
 player addAction ["<t color='#FF8000'>" + localize "STR_DOG_STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
-player addAction ["<t color='#F02000'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-642,false,true,"","call GRLIB_check_Dog && call GRLIB_check_Dog"];
+player addAction ["<t color='#F02000'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-642,false,true,"","call GRLIB_check_Dog && GRLIB_player_near_fob"];
 
 // Squad - Actions
 player addAction ["<t color='#8080FF'>" + localize "STR_SQUAD_MOVE" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","move",-935,false,true,"","call GRLIB_checkSquad"];
