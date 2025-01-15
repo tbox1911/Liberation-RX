@@ -67,6 +67,7 @@ if (_ownership == GRLIB_side_enemy) then {
 			};
 			stats_sectors_lost = stats_sectors_lost + 1;
 			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
+			{ [_x, -15] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
 		} else {
 			[ _sector, 3 ] remoteExec ["remote_call_sector", 0];

@@ -300,6 +300,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 
 			if ( _sector_despawn_tickets <= 1 ) then {
 				_stopit = true;
+				{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 			};
 		};
 		sleep 3;
