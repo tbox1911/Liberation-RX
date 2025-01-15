@@ -197,12 +197,17 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 		private _nbciv_cur = [_sector_pos, GRLIB_capture_size, GRLIB_side_civilian] call F_getUnitsCount;
 		private _nbcivs = round ((6 + (floor random 6)) * GRLIB_civilian_activity);
 		_nbcivs = _nbcivs min (_nbcivs - _nbciv_cur);
-		private _rndciv = [1,1,1,1,1,2,2,2];
+		private _rndciv = [1,1,1,1,2,2,2,3];
 		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 12 };
 		while { _nbcivs > 0 } do {
-			_maxcivs = (selectRandom _rndciv) min _nbcivs;
+			private _grp_size = selectRandom _rndciv;
+			private _maxcivs = _grp_size min _nbcivs;
 			_grp = [_sector_pos, _maxcivs] call F_spawnCivilians;
-			[_grp, _sector_pos] spawn add_civ_waypoints;
+			if (_grp_size == 1) then {
+				[_grp, _sector_pos] spawn civilian_ai;
+			} else {
+				[_grp, _sector_pos] spawn add_civ_waypoints;
+			};
 			_managed_units = _managed_units + (units _grp);
 			_nbcivs = _nbcivs - _maxcivs;
 			sleep 3;
