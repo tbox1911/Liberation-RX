@@ -117,8 +117,6 @@ while { dialog && alive player && _membercount > 0 } do {
 		closeDialog 0;
 		[_selectedmember] spawn {
 			params ["_unit"];
-			titleText ["", "BLACK FADED", 1];
-			sleep 1;
 			private _oldprice = [_unit] call F_loadoutPrice;
 			private _oldstuff = getUnitLoadout _unit;
 			["Open", [false, myLARsBox, _unit]] call BIS_fnc_arsenal;
@@ -127,7 +125,6 @@ while { dialog && alive player && _membercount > 0 } do {
 			private _newprice = [_unit] call F_loadoutPrice;
 			private _cost = 0 max (_newprice - _oldprice);
 			if (!([_cost] call F_pay)) then { _unit setUnitLoadout _oldstuff };
-			titleText ["" ,"BLACK IN", 3];
 		};
 	};
 
