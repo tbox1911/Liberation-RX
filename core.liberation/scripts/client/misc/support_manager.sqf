@@ -81,7 +81,7 @@ while { true } do {
 					// check medkit
 					if !([_unit] call PAR_has_medikit) then {
 						_unit addItem PAR_AidKit;
-						_unit addItem PAR_AidKit;						
+						_unit addItem PAR_AidKit;
 					};
 
 					// GL mun
@@ -208,6 +208,11 @@ while { true } do {
 								titleText [ _screenmsg, "PLAIN DOWN" ];
 							};
 						};
+					};
+
+					// UNFLIP
+					if (_unit == driver _vehicle) then {
+						[_vehicle] call F_vehicleUnflip;
 					};
 				};
 			};
