@@ -91,7 +91,8 @@ GRLIB_checkSecObj = {
 };
 
 GRLIB_checkBuildFOB = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (player distance2D cursorObject <= GRLIB_ActionDist_5) && (typeOf cursorObject) in [FOB_box_typename, FOB_truck_typename] && !(cursorObject getVariable ['box_in_use', false]))
+	params ["_target", "_unit"];
+	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && !(_target getVariable ['box_in_use', false]))
 };
 
 GRLIB_checkBuildFOBWater = {
@@ -113,10 +114,6 @@ GRLIB_checkPackBeacon = {
 
 GRLIB_checkUnpackBeacon = {
 	(GRLIB_player_is_menuok && !GRLIB_player_near_lhd && (backpackContainer player) getVariable ["GRLIB_mobile_respawn_bag", false])
-};
-
-GRLIB_checkBuildOutpost = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (player distance2D cursorObject <= GRLIB_ActionDist_5) && (typeOf cursorObject == FOB_box_outpost) && !(cursorObject getVariable ['box_in_use', false]))
 };
 
 GRLIB_checkDelOutpost = {
@@ -145,6 +142,6 @@ GRLIB_checkBuildDef = {
 GRLIB_checkRemoveHelipad = {
 	(
 		GRLIB_player_is_menuok && GRLIB_player_score >= GRLIB_perm_log && GRLIB_player_near_fob &&
-		({ getObjectType _x >= 8 && player distance2D _x <= GRLIB_ActionDist_3 } count (nearestObjects [player, ["Helipad_base_F"], 20]) >= 1) 
+		({ getObjectType _x >= 8 && player distance2D _x <= GRLIB_ActionDist_3 } count (nearestObjects [player, ["Helipad_base_F"], 20]) >= 1)
 	);
 };

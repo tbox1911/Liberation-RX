@@ -2,13 +2,17 @@ params ["_unit"];
 
 if (isNil "_unit") exitWith {};
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
+
+private _is_vehicle = false;
 if (_unit isKindOf "CAManBase") then {
 	{ detach _x } forEach (attachedObjects _unit);
+} else {
+	_is_vehicle = true;
 };
 
 private _result = true;
 private _cost = GRLIB_AirDrop_Vehicle_cost;
-if (_unit isKindOf "LandVehicle") then {
+if (_is_vehicle) then {
 	if ( _unit isKindOf "Truck_F" ) then { _cost = _cost * 1.3 };
 	if ( _unit isKindOf "Wheeled_APC_F" ) then { _cost = _cost * 1.7 };
 	if ( _unit isKindOf "Tank_F" ) then { _cost = _cost * 2 };
@@ -35,7 +39,7 @@ dojump = 0;
 halo_position = getPosATL _unit;
 
 "spawn_marker" setMarkerTextLocal (localize "STR_HALO_PARAM");
-if (_unit isKindOf "LandVehicle") then {
+if (_is_vehicle) then {
 	"spawn_marker" setMarkerTextLocal (localize "STR_HALO_PARAM_VEH");
 	ctrlSetText [201, toUpper (localize "STR_HALO_PARAM_VEH")];
 	ctrlSetText [202, (localize "STR_HALO_PARAM_VEH")];
@@ -62,7 +66,7 @@ diag_log format [ "Airdrop %1 on %2 at %3", (typeOf _unit), halo_position, time 
 
 if ( dojump > 0 ) then {
 	halo_position = halo_position getPos [floor(random 100), floor(random 360)];
-	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
+	if (_is_vehicle) then {
 		// Vehicle HALO
 		if ([_cost] call F_pay) then {
 			titleText ["", "PLAIN"];

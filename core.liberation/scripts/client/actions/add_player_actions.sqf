@@ -72,15 +72,11 @@ player addAction ["<t color='#FFFF00'>" + localize "STR_PACK_BEACON" + "</t> <im
 // UnPack Beacon
 player addAction ["<t color='#FFFF00'>" + localize "STR_UNPACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,false,true,"","call GRLIB_checkUnpackBeacon"];
 
-// Build FOB
-player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","call GRLIB_checkBuildFOB"];
+// Build Water FOB
 player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","call GRLIB_checkBuildFOBWater"];
 
 // Pack FOB
 player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf","",-981,false,true,"","call GRLIB_checkPackFOB"];
-
-// Build Outpost
-player addAction ["<t color='#FF6F00'>" + localize "STR_OUTPOST_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","call GRLIB_checkBuildOutpost"];
 
 // Upgrade Outpost
 player addAction ["<t color='#00FF8F'>" + localize "STR_UPGRADE_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_upgrade_outpost.sqf","",-983,false,true,"","call GRLIB_checkUpgradeOutpost"];
