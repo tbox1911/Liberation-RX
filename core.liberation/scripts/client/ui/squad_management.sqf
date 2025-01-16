@@ -45,8 +45,9 @@ while { dialog && alive player && _membercount > 0 } do {
 	private _old_selection = -1;
 	waitUntil {
 		_selection = lbCurSel 101;
+		_selectedmember = _squad_list select _selection;
 		if (_selection != _old_selection) then {
-			if (_selection == 0) then {
+			if (_selection == 0 || [_selectedmember] call PAR_is_wounded) then {
 				{ ctrlEnable [_x, false] } forEach _button_controls;
 			} else {
 				{ ctrlEnable [_x, true] } forEach _button_controls;
@@ -57,8 +58,6 @@ while { dialog && alive player && _membercount > 0 } do {
 		(!dialog || GRLIB_squadaction != -1);
 	};
 	if (!dialog) exitWith {};
-
-	_selectedmember = _squad_list select _selection;
 
 	// Promote
 	if ( GRLIB_squadaction == 1 ) then {
