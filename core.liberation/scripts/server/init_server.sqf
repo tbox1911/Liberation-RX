@@ -3,14 +3,16 @@ diag_log "--- Server Init start ---";
 // EventHandler
 addMissionEventHandler ['HandleDisconnect', {
 	params ["_unit", "_id", "_uid", "_name"];
-	[_unit, _uid, true] call save_context;
-	[_unit, _uid] call cleanup_player;
+	if (!isNull _unit) then {
+		[_unit, _uid, true] call save_context;
+		[_unit, _uid] call cleanup_player;
+	};
 	false;
 }];
 
 addMissionEventHandler ["PlayerDisconnected", {
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
-	private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
+	private _player_left = { alive _x } count (AllPlayers - (entities "HeadlessClient_F"));
 	if (_player_left == 0) then {
 		diag_log "--- LRX Mission End!";
 		[] call save_game_mp;
