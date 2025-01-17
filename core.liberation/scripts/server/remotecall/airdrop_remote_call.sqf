@@ -6,7 +6,7 @@ private _vehicle = objNull;
 private _pos = ([] call F_getFreePos);
 
 if (isNil "_forced_pos") then {
-	_text = format ["Player %1 call Air Drop Support.", name _unit];
+	_text = format ["Player %1 Air Drop Support.", name _unit];
 	_vehicle = createVehicle [_class, _pos, [], 0, "NONE"];
 	_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_vehicle setVariable ["GRLIB_vehicle_owner", (getPlayerUID _unit), true];

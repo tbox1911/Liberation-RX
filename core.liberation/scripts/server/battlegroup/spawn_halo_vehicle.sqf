@@ -28,7 +28,7 @@ _vehicle setVariable ["GRLIB_battlegroup", true];
 } forEach (crew _vehicle);
 
 [_pos, "parasound"] spawn sound_range_remote_call;
-[_vehicle] spawn F_addParachute;
+[_vehicle, objNull, false] spawn F_addParachute;
 
 private _grp = group (driver _vehicle);
 [_grp, _pos] spawn battlegroup_ai;
