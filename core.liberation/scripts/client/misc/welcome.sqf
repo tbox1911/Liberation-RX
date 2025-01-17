@@ -1,8 +1,9 @@
 /*
  Say hello, and set Rank/Insigna
 */
-waitUntil {sleep 1; GRLIB_player_spawned};
-waitUntil {sleep 1; (player getVariable ["GRLIB_Rank", "init"] != "init")};
+
+waitUntil {sleep 0.5; GRLIB_player_spawned};
+waitUntil {sleep 0.5; (player getVariable ["GRLIB_Rank", "init"] != "init")};
 
 private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
@@ -49,4 +50,5 @@ private _msg = format [
 ];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
+[player] spawn F_correctReload;
 GRLIB_player_configured = true;

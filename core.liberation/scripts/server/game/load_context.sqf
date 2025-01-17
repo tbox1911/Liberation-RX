@@ -25,7 +25,7 @@ _player setVariable [format ["GRLIB_virtual_garage_%1", _uid], _virtual_garage, 
 
 if (count _context >= 1) then {
     // Player loadout
-    _player setUnitLoadout (_context select 1);
+    _player setUnitLoadout [(_context select 1), true];
     _player setVariable ["GRLIB_player_context_loaded", true, true];
     _player setVariable ["GREUH_stuff_price", ([_player] call F_loadoutPrice), true];
     diag_log format ["--- LRX Loaded player %1 profile.", name _player];
@@ -55,7 +55,7 @@ if (count _context >= 1) then {
                         _unit setPos (getPos _unit);
                         [_unit] joinSilent _grp;
                         clearAllItemsFromBackpack _unit;
-                        _unit setUnitLoadout _loadout;
+                        _unit setUnitLoadout [_loadout, true];
                         _unit setUnitRank _rank;
                         _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
                         sleep 0.2;

@@ -151,8 +151,8 @@ closeDialog 0;
 (findDisplay 5201) displayRemoveEventHandler ["KeyDown", _noesckey];
 if (!alive player) exitWith {};
 
-private _sleep = 3;
-if (GRLIB_deployment_cinematic) then { _sleep = 8 };
+private _sleep = 2;
+if (GRLIB_deployment_cinematic) then { _sleep = 7 };
 cinematic_camera_started = false;
 titleText ["","BLACK IN", 5];
 

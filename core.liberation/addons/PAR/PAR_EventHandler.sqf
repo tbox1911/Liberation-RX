@@ -64,9 +64,7 @@ _unit addEventHandler ["FiredMan",	{
 	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") then { deleteVehicle _projectile };
 
 	// Sticky bomb
-	if (_ammo in sticky_bombs_typename && _weapon == "Put") then {
-		[_projectile] spawn set_sticky_bomb;
-	};
+	if (_ammo in sticky_bombs_typename && _weapon == "Put") then { [_projectile] spawn set_sticky_bomb };
 
 	// Pay artillery fire
 	// if (_vehicle isKindOf "StaticMortar") then {
@@ -99,7 +97,6 @@ _unit addEventHandler ["FiredMan",	{
 
 // for Player only
 if (_unit == player) then {
-
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
 		["ace_arsenal_displayClosed", {

@@ -4,7 +4,7 @@
 // Load Player Loadout
 if (isNil {player getVariable "GREUH_stuff_price"}) then {
 	if (!isNil "GRLIB_respawn_loadout") then {
-		player setUnitLoadout GRLIB_respawn_loadout;
+		player setUnitLoadout [GRLIB_respawn_loadout, true];
 	} else {
 		// init loadout
 		if (GRLIB_forced_loadout > 0) exitWith {

@@ -116,6 +116,7 @@ while { dialog && (alive player) && !(player getVariable ["PAR_isUnconscious", f
 			[player, [profileNamespace, _loaded_loadout]] call bis_fnc_loadInventory;
 		};
 		[player] call F_filterLoadout;
+		[player] spawn F_correctReload;
 		hint format [ localize "STR_HINT_LOADOUT_LOADED", _loaded_loadout];
 		if ( exit_on_load == 1 ) then {
 			closeDialog 0;
@@ -132,7 +133,7 @@ while { dialog && (alive player) && !(player getVariable ["PAR_isUnconscious", f
 	if ( load_from_player >= 0 ) then {
 		private _playerselected = ( _loadplayers select load_from_player ) select 1;
 		if ( alive _playerselected ) then {
-    		player setUnitLoadout (getUnitLoadout _playerselected);
+    		player setUnitLoadout [(getUnitLoadout _playerselected), true];
 			hint format [ localize "STR_LOAD_PLAYER_LOADOUT_HINT", name _playerselected ];
 		};
 		load_from_player = -1;
@@ -160,5 +161,6 @@ if ( edit_loadout > 0 ) then {
 	[player] call F_filterLoadout;
 	[player] call F_payLoadout;
 };
+
 sleep 1;
 GRLIB_arsenal_open = false;
