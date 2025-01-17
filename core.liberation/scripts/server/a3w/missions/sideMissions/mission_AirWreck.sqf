@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_box3"];
+private ["_nbUnits", "_smoke", "_box1", "_box2", "_box3"];
 
 _setupVars = {
 	_missionType = "STR_AIRWRECK";
@@ -19,6 +19,8 @@ _setupObjects = {
 	_vehicle = createVehicle [GRLIB_sar_wreck, _missionPos, [], 0, "NONE"];
 	_vehicle allowDamage false;
 	_vehicle setpos (getpos _vehicle);
+	_smoke = GRLIB_sar_fire createVehicle _missionPos;
+	_smoke attachTo [_vehicle, [0, 1.5, 0]];
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box3 = [basic_weapon_typename, _missionPos, true] call boxSetup;
@@ -37,12 +39,13 @@ _waitUntilCondition = nil;
 
 _failedExec = {
 	// Mission failed
-	{ deleteVehicle _x } forEach [_box1, _box2, _box3];
+	{ deleteVehicle _x } forEach [_smoke, _box1, _box2, _box3];
 	[_missionPos] call clearlandmines;
 };
 
 _successExec = {
 	// Mission completed
+	deleteVehicle _smoke;
 	{ [_x, "abandon"] call F_vehicleLock } forEach [_box1, _box2, _box3];
 	_successHintMessage = "STR_AIRWRECK_MESSAGE2";
 	[_missionPos] spawn {

@@ -15,8 +15,7 @@ private _helopos = markerpos _spawn_marker;
 private _helowreck = GRLIB_sar_wreck createVehicle _helopos;
 _helowreck allowDamage false;
 _helowreck setpos (getpos _helowreck);
-
-private _helofire = GRLIB_sar_fire createVehicle (getPos _helowreck);
+private _helofire = GRLIB_sar_fire createVehicle _helopos;
 _helofire attachTo [_helowreck, [0, 1.5, 0]];
 
 private _pilotsGrp = createGroup [GRLIB_side_enemy, true];
