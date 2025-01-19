@@ -8,7 +8,7 @@ GRLIB_redraw_marker_fob = false;
 sleep 2;
 while { true } do {
 	if (count GRLIB_all_fobs > 0 && (count _markers != count GRLIB_all_fobs || GRLIB_redraw_marker_fob)) then {
-		{ deleteMarkerLocal _x } foreach _markers;
+		{ deleteMarker _x } foreach _markers;
 		_markers = [];
 		{
 			_fobpos = _x;
