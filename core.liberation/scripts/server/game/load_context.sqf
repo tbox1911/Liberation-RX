@@ -54,7 +54,8 @@ if (count _context >= 1) then {
                         _unit allowDamage false;
                         _unit setPos (getPos _unit);
                         [_unit] joinSilent _grp;
-                        clearAllItemsFromBackpack _unit;
+                        removeBackpack _unit;
+                        sleep 0.1;
                         _unit setUnitLoadout [_loadout, true];
                         _unit setUnitRank _rank;
                         _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
