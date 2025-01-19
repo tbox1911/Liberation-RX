@@ -47,7 +47,7 @@ if (count (crew _veh_unit) > 0) then {
 		};
 	};
 
-	if (side _killer != GRLIB_side_friendly) then { _damage = 0 };
+	if (side _killer == GRLIB_side_enemy) then { _damage = 0 };
 };
 
 _damage;
