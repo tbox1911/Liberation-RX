@@ -51,7 +51,7 @@ if (!_continue_mission) exitWith {
 };
 
 if (!isNil "_missionlocation") then {
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
+	A3W_sectors_in_use pushBack _missionLocation;
 	publicVariable "A3W_sectors_in_use";
 };
 

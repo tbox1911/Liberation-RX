@@ -15,7 +15,7 @@ private _list = [];
 	if (_sector in opfor_sectors) then { _keep_sector = false };
 
 	// sector in use
-	if (_sector in (A3W_sectors_in_use + active_sectors)) then { _keep_sector = false };
+	if (_sector in (active_sectors + A3W_sectors_in_use)) then { _keep_sector = false };
 
 	// sector too close from any FOB
 	if (_sector_pos distance2D ([_sector_pos] call F_getNearestFob) <= (GRLIB_sector_size * 1.25)) then { _keep_sector = false };
