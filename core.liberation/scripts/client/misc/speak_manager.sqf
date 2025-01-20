@@ -5,8 +5,8 @@ if (player distance2D _unit > 50) exitWith {};
 
 GRLIB_speaking = true;
 if (_unit isKindOf "CAManBase") then {
-	[_unit, (_unit getDir player)] remoteExec ["setDir", 2];
-	[_unit, true] remoteExec ["stop", 2];
+	[_unit, (_unit getDir player)] remoteExec ["setDir", 0];
+	[_unit, true] remoteExec ["stop", 0];
 };
 
 if (_unit in (units player)) then {
@@ -36,6 +36,6 @@ if (_unit in (units player)) then {
 
 sleep 3;
 if (_unit isKindOf "CAManBase") then {
-	[_unit, false] remoteExec ["stop", 2];
+	[_unit, false] remoteExec ["stop", 0];
 };
 GRLIB_speaking = nil;

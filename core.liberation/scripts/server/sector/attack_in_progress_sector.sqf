@@ -57,7 +57,7 @@ if (_ownership == GRLIB_side_enemy) then {
 
 	if ( GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 		if ( _ownership == GRLIB_side_enemy ) then {
-			blufor_sectors = blufor_sectors - [ _sector ];
+			blufor_sectors = blufor_sectors - [_sector];
 			publicVariable "blufor_sectors";
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
 			[_sector, 0] call sector_defenses_remote_call;

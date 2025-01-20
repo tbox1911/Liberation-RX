@@ -1,5 +1,7 @@
 private [ "_sourcestr", "_position", "_myfpsmarker", "_myfps", "_bluforcap", "_opforcap", "_civcap"];
 
+waitUntil { sleep 1; isNil "blufor_sectors" };
+
 if ( isServer ) then {
 	_sourcestr = "Server";
 	_position = 0;
@@ -37,6 +39,7 @@ _myfpsmarker setMarkerType "mil_start";
 _myfpsmarker setMarkerSize [ 0.7, 0.7 ];
 
 while { true } do {
+	opfor_sectors = (sectors_allSectors - blufor_sectors);
 	_myfps = diag_fps;
 	_myfpsmarker setMarkerColor "ColorGREEN";
 	if ( _myfps < 30 ) then { _myfpsmarker setMarkerColor "ColorYELLOW"; };
@@ -51,5 +54,5 @@ while { true } do {
 		_civcap, 0, _opforcap,
 		[time/3600,"HH:MM:SS"] call BIS_fnc_timeToString];
 
-	sleep 15;
+	sleep 10;
 };

@@ -26,12 +26,13 @@ getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\
 createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createOutpost.sqf";
 debugSpawnMarkers = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_debugSpawnMarkers.sqf";
 
-A3W_sectors_in_use = [];
 A3W_delivery_failed = 0;
 A3W_mission_success = 0;
 A3W_mission_failed = 0;
 A3W_Mission_delay = 15*60;			// Time in seconds between Side Missions
 A3W_Mission_timeout = 60*60;		// Time in seconds that a Side Mission will run for, unless completed
+A3W_sectors_in_use = [];
+publicVariable "A3W_sectors_in_use";
 
 /*	***  Debug A3W missions ***
 

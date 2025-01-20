@@ -1,10 +1,6 @@
 private [ "_marker", "_nextgroup", "_leader", "_mission_ai", "_sector", "_sideMission", "_permMission", "_nearRadioTower" ];
 if (GRLIB_fancy_info == 0) exitWith {};
 
-if (isNil "A3W_sectors_in_use") then {
-	A3W_sectors_in_use = [];
-};
-
 if (isNil "secondary_objective_position_marker") then {
 	secondary_objective_position_marker = zeropos;
 };

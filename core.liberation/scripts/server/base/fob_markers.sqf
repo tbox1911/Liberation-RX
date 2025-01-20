@@ -32,7 +32,7 @@ while { true } do {
 
 	// Def marker
 	if (count _markers_def != count GRLIB_sector_defense || GRLIB_redraw_marker_fob) then {
-		{ deleteMarkerLocal _x } foreach _markers_def;
+		{ deleteMarker _x } foreach _markers_def;
 		_markers_def = [];
 		{
 			private _sector = (_x select 0);
