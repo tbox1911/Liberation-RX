@@ -18,11 +18,12 @@ if (_unit isKindOf "AllVehicles") then {
 		_unit setVariable ["GRLIB_last_killer", _killer, true];
 	};
 
-	if (damage _unit >= 0.75) then {
+	private _vehicle_damage = [_unit] call F_getVehicleDamage;
+	if (_vehicle_damage >= 0.65) then {
 		private _evac_in_progress = (_unit getVariable ["GRLIB_vehicle_evac", false]);
 		if (!_evac_in_progress) then {
 			_unit setVariable ["GRLIB_vehicle_evac", true, true];
-			{ [_x, false] spawn F_ejectUnit} forEach (crew _unit);
+			{ [_x, false] spawn F_ejectUnit } forEach (crew _unit);
 		};
 	};
 };
