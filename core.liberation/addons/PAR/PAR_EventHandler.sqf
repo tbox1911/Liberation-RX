@@ -123,19 +123,22 @@ if (_unit == player) then {
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
-		1 fadeSound (round desired_vehvolume / 100.0);
-		3 fadeMusic (getAudioOptionVolumes select 1);
-		NRE_EarplugsActive = 1;
-		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
-		if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
-			_vehicle disableTIEquipment true;
-		} else {
-			_vehicle disableTIEquipment false;
+		[_vehicle] spawn {
+			params ["_vehicle"];
+			1 fadeSound (round desired_vehvolume / 100.0);
+			3 fadeMusic (getAudioOptionVolumes select 1);
+			NRE_EarplugsActive = 1;
+			[player, "hide"] remoteExec ["dog_action_remote_call", 2];
+			if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
+				_vehicle disableTIEquipment true;
+			} else {
+				_vehicle disableTIEquipment false;
+			};
+			private _fuel = round (fuel _vehicle * 100);
+			private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
+			private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
+			hintSilent format ["Damage: %1%2\nFuel: %3%4\nAmmo: %5%6", _damage,"%",_fuel,"%",_ammo,"%"];
 		};
-		_fuel = round (fuel _vehicle * 100);
-		_ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
-		_damage = round (([_vehicle] call F_getVehicleDamage) * 100);
-		hintSilent format ["Damage: %1%2\nFuel: %3%4\nAmmo: %5%6", _damage,"%",_fuel,"%",_ammo,"%"];
 	}];
 
 	// Get out Vehicle
