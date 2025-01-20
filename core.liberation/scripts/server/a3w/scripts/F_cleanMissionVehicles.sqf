@@ -6,7 +6,7 @@ if (typeName _vehicles != "ARRAY") then { _vehicles = [_vehicles] };
 	[_x] spawn {
 		params ["_vehicle"];
 		if (isNull _vehicle) exitWith {};
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || !alive _vehicle || [_vehicle, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || !alive _vehicle || [_vehicle, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 
 		if (!alive _vehicle) exitWith {};
 		if (_vehicle isKindOf "AllVehicles") then {
