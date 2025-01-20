@@ -96,9 +96,11 @@ sleep 15;
 if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 && _current_players >= 3 ) then {
 	if (floor random 2 == 0) then {
 		[_objective_pos, GRLIB_side_enemy, 4] spawn spawn_air;
+		sleep 30;
+		[_objective_pos] spawn spawn_halo_vehicle;		
 	} else {
 		[_objective_pos, GRLIB_side_enemy, 2] spawn spawn_air;
-		sleep 15;
+		sleep 30;
 		[_objective_pos] spawn send_paratroopers;
 	};
 	_target_size = _target_size + 3;
