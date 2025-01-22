@@ -1,6 +1,11 @@
 if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 params ["_liberated_sector"];
 
+private _hc = [] call F_lessLoadedHC;
+if !(isNull _hc) exitWith {
+	[_liberated_sector] remoteExec ["spawn_battlegroup", owner _hc];
+};
+
 private _spawn_marker = "";
 private _objective_pos = [];
 
@@ -106,18 +111,10 @@ if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 && _current_players >=
 	_target_size = _target_size + 3;
 };
 
-// Headless
-{
-	private _hc = [] call F_lessLoadedHC;
-	if (!isNull _hc) then {
-		_x setGroupOwner (owner _hc);
-		sleep 2;
-	};
-} foreach _bg_groups;
-
 combat_readiness = combat_readiness - (10 + (_target_size * 1.75));
-stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
-diag_log format ["Done Spawning BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
-
 if ( combat_readiness < 0 ) then { combat_readiness = 0 };
 publicVariable "combat_readiness";
+stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
+publicVariable "stats_hostile_battlegroups";
+
+diag_log format ["Done Spawning BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];

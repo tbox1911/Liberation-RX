@@ -27,6 +27,7 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 			[] spawn spawn_battlegroup;
 		};
 		stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
+		publicVariable "stats_hostile_battlegroups";
 		sleep 60;
 	};
 

@@ -18,6 +18,7 @@ while { true } do {
 		publicVariable "blufor_sectors";
 	};
 
+	publicVariable "civcap";
 	publicVariable "unitcap";
 	publicVariable "opforcap";
 	publicVariable "combat_readiness";

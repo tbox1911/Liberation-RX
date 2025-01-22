@@ -1,6 +1,11 @@
 if ( GRLIB_endgame == 1 ) exitWith {};
 params ["_objectivepos", "_intensity"];
 
+private _hc = [] call F_lessLoadedHC;
+if !(isNull _hc) exitWith {
+	[_objectivepos,_intensity] remoteExec ["spawn_battlegroup_direct", owner _hc];
+};
+
 private _bg_groups = [];
 private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objectivepos] call F_findOpforSpawnPoint;
 if (_spawn_marker != "") exitWith {};
@@ -36,17 +41,7 @@ for "_i" from 0 to _target_size do {
 	sleep 2;
 } foreach _selected_opfor_battlegroup;
 
-sleep 5;
-
-{
-	private _hc = [] call F_lessLoadedHC;
-	if (!isNull _hc) then {
-		_x setGroupOwner (owner _hc);
-		sleep 1;
-	};
-	sleep 3;
-} foreach _bg_groups;
-
 stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
+publicVariable "stats_hostile_battlegroups";
 diag_log format ["Done Spawning Direct BattlegGroup (%1) objective %2 at %3", _target_size, _objectivepos, time];
 

@@ -7,7 +7,17 @@ manage_one_civilian_patrol = compileFinal preprocessFileLineNumbers "scripts\ser
 sleep 200;
 diag_log "--- LRX Starting Civilian Manager";
 
-for "_i" from 1 to GRLIB_civilians_amount do {
-	[] spawn manage_one_civilian_patrol;
+GRLIB_civilians_current = 0;
+publicVariable "GRLIB_civilians_current";
+
+while { true } do {
+	if (GRLIB_civilians_current < GRLIB_civilians_amount) then {
+		private _hc = [] call F_lessLoadedHC;
+		if !(isNull _hc) then {
+			[] remoteExec ["manage_one_civilian_patrol", owner _hc];
+		} else {
+			[] spawn manage_one_civilian_patrol;
+		};
+	};
 	sleep 15;
 };

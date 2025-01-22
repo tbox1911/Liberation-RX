@@ -115,6 +115,7 @@ spawn_air = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\s
 spawn_halo_vehicle = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_halo_vehicle.sqf";
 spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup.sqf";
 spawn_battlegroup_direct = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup_direct.sqf";
+send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
 
 // Game
 [] call compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp_init.sqf";
@@ -129,9 +130,6 @@ blufor_victory = compileFinal preprocessFileLineNumbers "scripts\server\game\blu
 fob_init = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init.sqf";
 fob_init_data = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init_data.sqf";
 fob_init_officer = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init_officer.sqf";
-
-// Patrol
-send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
 
 // Secondary objectives
 fob_hunting = compileFinal preprocessFileLineNumbers "scripts\server\secondary\fob_hunting.sqf";
@@ -154,7 +152,7 @@ spawn_defenders = compileFinal preprocessFileLineNumbers "scripts\server\sector\
 // Ressources
 count_box = compileFinal preprocessFileLineNumbers "scripts\server\resources\count_box.sqf";
 
-// A3W
+// Various
 boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_boxSetup.sqf";
 createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";

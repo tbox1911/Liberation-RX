@@ -1,9 +1,14 @@
 params ["_targetpos", "_side", "_count"];
 
 if (_count == 0) exitWith {};
-if (_count >= 1) then {
+if (_count > 1) then {
 	sleep 10;
 	[_targetpos, _side, _count - 1] spawn spawn_air;
+};
+
+private _hc = [] call F_lessLoadedHC;
+if !(isNull _hc) exitWith {
+	[_targetpos, _side, 1] remoteExec ["spawn_air", owner _hc];
 };
 
 private _planeType = opfor_air;

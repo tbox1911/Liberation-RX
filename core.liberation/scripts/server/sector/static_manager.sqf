@@ -1,9 +1,14 @@
 params ["_sector", "_count"];
 
 if (_count == 0) exitWith {};
-if (_count >= 1) then {
+if (_count > 1) then {
 	sleep 3;
 	[_sector, _count - 1] spawn static_manager;
+};
+
+private _hc = [] call F_lessLoadedHC;
+if !(isNull _hc) exitWith {
+	[_sector, 1] remoteExec ["static_manager", owner _hc];
 };
 
 // Create
@@ -50,7 +55,7 @@ _spawn_pos = getPos _vehicle;
 
 // Cleanup
 waitUntil {
-	sleep 30; 
+	sleep 30;
 	([_vehicle, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 && !(_sector in (active_sectors + A3W_sectors_in_use)))
 };
 if (!isNull _vehicle) then { deleteVehicle _vehicle };
