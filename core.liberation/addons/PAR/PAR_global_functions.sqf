@@ -18,10 +18,9 @@ PAR_medic_units = {
 	params ["_wnded"];
 	private _grp_id = _wnded getVariable ["PAR_Grp_ID","1"];
 	(units GRLIB_side_friendly) select {
-		!isPlayer _x &&
-		!([_x] call PAR_is_wounded) &&
-		isNil {_x getVariable "PAR_busy"} &&
-		(_x getVariable ["PAR_Grp_ID","0"]) == _grp_id
+		((_x getVariable ["PAR_Grp_ID","0"]) == _grp_id) &&
+		!(isPlayer _x) && !([_x] call PAR_is_wounded) &&
+		isNil {_x getVariable "PAR_busy"}
 	};
 };
 PAR_unblock_AI = {

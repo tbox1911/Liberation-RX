@@ -12,8 +12,6 @@ _unit setUnconscious true;
 _unit setCaptive true;
 _unit allowDamage false;
 _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
-_unit setVariable ["PAR_busy", nil];
-_unit setVariable ["PAR_myMedic", nil];
 _unit setVariable ["PAR_isDragged", 0, true];
 
 if (isPlayer _unit) then {
