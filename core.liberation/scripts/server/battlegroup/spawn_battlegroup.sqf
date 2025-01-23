@@ -2,7 +2,8 @@ if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 params ["_liberated_sector"];
 
 private _hc = [] call F_lessLoadedHC;
-if !(isNull _hc) exitWith {
+if (isDedicated && !isNull _hc) exitWith {
+	diag_log format ["Spawn BattlegGroup on %1 at %2", _hc, time];
 	[_liberated_sector] remoteExec ["spawn_battlegroup", owner _hc];
 };
 

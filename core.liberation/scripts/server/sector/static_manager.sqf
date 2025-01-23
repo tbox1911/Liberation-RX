@@ -6,11 +6,6 @@ if (_count > 1) then {
 	[_sector, _count - 1] spawn static_manager;
 };
 
-private _hc = [] call F_lessLoadedHC;
-if !(isNull _hc) exitWith {
-	[_sector, 1] remoteExec ["static_manager", owner _hc];
-};
-
 // Create
 private _radius = GRLIB_capture_size - 20;
 if (_sector in sectors_bigtown) then { _radius = _radius * 1.4 };
@@ -52,6 +47,12 @@ _spawn_pos = getPos _vehicle;
 
 // AI (managed by manage_static.sqf)
 [_grp, _spawn_pos, 20] spawn patrol_ai;
+
+private _hc = [] call F_lessLoadedHC;
+if (!isNull _hc) then {
+	_grp setGroupOwner (owner _hc);
+	sleep 1;
+};
 
 // Cleanup
 waitUntil {

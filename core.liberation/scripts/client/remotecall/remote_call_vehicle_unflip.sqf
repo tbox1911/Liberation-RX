@@ -1,4 +1,3 @@
-if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params [ "_vehicle" ];
 
 if (isNil "_vehicle") exitWith {};

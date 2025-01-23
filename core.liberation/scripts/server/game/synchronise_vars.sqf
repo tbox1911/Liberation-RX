@@ -8,9 +8,9 @@ active_sectors = [];
 publicVariable "active_sectors";
 
 while { true } do {
-	unitcap = { alive _x && (_x distance2D lhd) >= 200 } count (units GRLIB_side_friendly);
+	unitcap = { alive _x && !(captive _x) && (_x distance2D lhd) >= 200 } count (units GRLIB_side_friendly);
 	opforcap = { alive _x && !(captive _x) } count (units GRLIB_side_enemy);
-	civcap = { alive _x && (isNil {_x getVariable "GRLIB_vehicle_owner"})} count (units GRLIB_side_civilian);
+	civcap = { alive _x && !(captive _x) && (isNil {_x getVariable "GRLIB_vehicle_owner"})} count (units GRLIB_side_civilian);
 	opfor_sectors = (sectors_allSectors - blufor_sectors);
 
 	if !(blufor_sectors isEqualTo _blufor_sectors) then {

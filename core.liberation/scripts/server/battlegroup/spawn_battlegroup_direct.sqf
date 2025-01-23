@@ -2,7 +2,8 @@ if ( GRLIB_endgame == 1 ) exitWith {};
 params ["_objectivepos", "_intensity"];
 
 private _hc = [] call F_lessLoadedHC;
-if !(isNull _hc) exitWith {
+if (isDedicated && !isNull _hc) exitWith {
+	diag_log format ["Spawn Direct BattlegGroup on %1 at %2", _hc, time];
 	[_objectivepos,_intensity] remoteExec ["spawn_battlegroup_direct", owner _hc];
 };
 

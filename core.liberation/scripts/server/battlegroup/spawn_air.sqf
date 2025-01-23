@@ -6,11 +6,6 @@ if (_count > 1) then {
 	[_targetpos, _side, _count - 1] spawn spawn_air;
 };
 
-private _hc = [] call F_lessLoadedHC;
-if !(isNull _hc) exitWith {
-	[_targetpos, _side, 1] remoteExec ["spawn_air", owner _hc];
-};
-
 private _planeType = opfor_air;
 if (_side == GRLIB_side_friendly) then { _planeType = blufor_air };
 
@@ -86,6 +81,12 @@ if (_vehicle isKindOf "Plane") then {
 		};
 	};
 };
+
+private _hc = [] call F_lessLoadedHC;
+if (!isNull _hc) then {
+	_grp setGroupOwner (owner _hc);
+};
+
 sleep 300;
 
 while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && count _targetpos > 0 } do {
