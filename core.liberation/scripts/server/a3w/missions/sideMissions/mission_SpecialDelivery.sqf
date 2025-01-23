@@ -135,7 +135,7 @@ _waitUntilLastPos = {
 	(getPosATL ((GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0)));
 };
 _waitUntilCondition = {
-	if (alive _quest_item && !(_quest_item getVariable ['R3F_LOG_disabled', false])) then {
+	if (alive _quest_item && (isNull (_quest_item getVariable ["R3F_LOG_est_transporte_par", objNull]))) then {
 		"GRLIB_A3W_Mission_SD_Item" setMarkerPosLocal (getPos _quest_item);
 		"GRLIB_A3W_Mission_SD_Item" setMarkerAlpha 1;
 	} else {
