@@ -9,7 +9,7 @@ private _veh_class = typeOf _vehicle;
 
 // Land Money
 if (_veh_class == money_typename) exitWith {
-	private _ammount_ammo = round (42 + floor random 158);
+	private _ammount_ammo = round (10 + floor random 70);
 	[player, _ammount_ammo, 0] remoteExec ["ammo_add_remote_call", 2];
 	deleteVehicle _vehicle;
 	hint format [localize "STR_ADD_AMMO", name player, _ammount_ammo];
