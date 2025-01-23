@@ -7,11 +7,6 @@ manage_one_enemy_patrol = compileFinal preprocessFileLineNumbers "scripts\server
 sleep 300;
 diag_log "--- LRX Starting Patrols Manager";
 
-for "_i" from 1 to GRLIB_patrol_amount do {
-	[round (25 + floor random 70)] spawn manage_one_enemy_patrol;
-	sleep 30;
-};
-
 GRLIB_patrol_current = 0;
 publicVariable "GRLIB_patrol_current";
 
