@@ -44,6 +44,8 @@ if (GRLIB_cleanup_vehicles == 0) exitWith {};
 // IGNORE VEHICLES
 private _no_cleanup_classnames = [
 	Arsenal_typename,
+	GRLIB_sar_wreck,
+	GRLIB_sar_fire,
 	"Land_Device_assembled_F",
 	"Land_Device_disassembled_F"
 ] + GRLIB_vehicle_blacklist;
