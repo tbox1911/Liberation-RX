@@ -118,7 +118,7 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 };
 
 private _hc = [] call F_lessLoadedHC;
-if (!isNull _hc) then {
+if (isDedicated && !isNull _hc) exitWith {
 	_para_group setGroupOwner (owner _hc);
 	sleep 1;
 };

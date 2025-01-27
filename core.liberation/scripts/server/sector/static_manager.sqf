@@ -49,7 +49,7 @@ _spawn_pos = getPos _vehicle;
 [_grp, _spawn_pos, 20] spawn patrol_ai;
 
 private _hc = [] call F_lessLoadedHC;
-if (!isNull _hc) then {
+if (isDedicated && !isNull _hc) exitWith {
 	_grp setGroupOwner (owner _hc);
 	sleep 1;
 };
