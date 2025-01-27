@@ -141,13 +141,15 @@ while { true } do {
 	_nearfobbox = (nearestObjects [player, [FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _searchradius]) select { isNil {_x getVariable "GRLIB_fobbox_action"} };
 	{
 		_unit = _x;
+		if (typeOf _unit == FOB_truck_typename) then {
+			_unit addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
+		};
 		if (typeOf _unit == FOB_box_typename) then {
 			_unit addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
+			_unit addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_5];
 		};
 		if (typeOf _unit == FOB_box_outpost) then {
 			_unit addAction ["<t color='#FF6F00'>" + localize "STR_OUTPOST_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
-		};
-		if (typeOf _unit != FOB_truck_typename) then {
 			_unit addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_5];
 		};
 		_unit setVariable ["GRLIB_fobbox_action", true];
