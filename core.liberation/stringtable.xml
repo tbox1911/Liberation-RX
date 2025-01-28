@@ -7440,22 +7440,22 @@
 
 		<!-- liberation_admin.hpp -->
 		<Key ID="STR_ADMIN_ARSENAL">
-			<Original>Spawn Arsenal</Original>
-			<Russian>Разместить Арсенал</Russian>
+			<Original>Arsenal</Original>
+			<Russian>Арсенал</Russian>
 			<Japanese>アーセナルを出す</Japanese>
 			<Chinesesimp>生成武器库</Chinesesimp>
 			<Chinese>生成武器庫</Chinese>
-			<Portuguese>Renascer Arsenal</Portuguese>
-			<Czech>Spawn Arsenal</Czech>
+			<Portuguese>Arsenal</Portuguese>
+			<Czech>Arsenal</Czech>
 		</Key>
 		<Key ID="STR_ADMIN_AMMOBOX">
-			<Original>Spawn Ammobox</Original>
-			<Russian>Ящик патронов</Russian>
+			<Original>Ammobox</Original>
+			<Russian>патронов</Russian>
 			<Japanese>弾薬箱を出す</Japanese>
 			<Chinesesimp>生成弹药箱</Chinesesimp>
 			<Chinese>生成彈藥箱</Chinese>
-			<Portuguese>Renascer caixa de Ammo</Portuguese>
-			<Czech>Spawn Ammobox</Czech>
+			<Portuguese>Ammobox</Portuguese>
+			<Czech>Ammobox</Czech>
 		</Key>
 		<Key ID="STR_ADMIN_CAPTURE">
 			<Original>Capture Sector</Original>

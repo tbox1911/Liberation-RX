@@ -11,6 +11,7 @@ class liberation_admin {
 	  "ArsenalButton",
 	  "AmmoButton",
     "RespawnButton",
+    "UnusedButton",
     "CaptureButton",
     "BuildButton",
     "BuildList",
@@ -76,43 +77,52 @@ class liberation_admin {
   };
   class ArsenalButton: StdButton {
     idc = 1600;
-    action = "closeDialog 0;buildtype=9;build_unit=[Arsenal_typename,[],1,[],[],[],[]];dobuild=1";
+    action = "do_spawn=1";
     text = $STR_ADMIN_ARSENAL;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
-    w = 0.0875 * safezoneW;
+    w = 0.042 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class AmmoButton: StdButton {
     idc = 1601;
-    action = "closeDialog 0;buildtype=9;build_unit=[ammobox_b_typename,[],1,[],[],[],[]];dobuild=1";
+    action = "do_spawn=2";
     text = $STR_ADMIN_AMMOBOX;
-    x = 0.2275 * safezoneW + safezoneX;
-    y = 0.26 * safezoneH + safezoneY;
-    w = 0.0875 * safezoneW;
+    x = 0.2725 * safezoneW + safezoneX;
+    y = 0.208 * safezoneH + safezoneY;
+    w = 0.042 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class RespawnButton: StdButton {
     idc = 1623;
-    action = "closeDialog 0;buildtype=9;build_unit=[mobile_respawn,[],1,[],[],[],[]];dobuild=1";
+    action = "do_spawn=3";
     text = $STR_RESPAWN_TRUCK;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
-    w = 0.0875 * safezoneW;
+    w = 0.042 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class UnusedButton: StdButton {
+    idc = 1630;
+    action = "do_spawn=4";
+    text = "N/A";
+    x = 0.3725 * safezoneW + safezoneX;
+    y = 0.208 * safezoneH + safezoneY;
+    w = 0.042 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class CaptureButton: StdButton {
     idc = 1627;
     action = "do_capture=1";
     text = $STR_ADMIN_CAPTURE;
-    x = 0.3275 * safezoneW + safezoneX;
+    x = 0.2275 * safezoneW + safezoneX;
     y = 0.26 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class BuildButton: StdButton {
     idc = 1617;
-    action = "do_spawn=1";
+    action = "do_spawn=100";
     text = $STR_ADMIN_BUILD;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.312 * safezoneH + safezoneY;
@@ -270,7 +280,6 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-
   class UnlockButton: StdButton {
     idc = 1609;
     action = "_x = cursorobject;if (isNull _x) exitWith {};_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";

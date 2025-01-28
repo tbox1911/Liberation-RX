@@ -7,10 +7,11 @@
 
 createDialog "liberation_admin";
 waitUntil { dialog };
-disableSerialization;
+
 if (isNil "do_admin" || isDamageAllowed player) then { do_admin = 0 };
 if (isNil "last_build") then { last_build = 0 };
 if (isNil "do_teleport") then { do_teleport = 0 };
+
 do_unban = 0;
 do_score = 0;
 do_spawn = 0;
@@ -38,6 +39,7 @@ if (isNil "lrx_admin_watchdog") then {
 };
 
 private _msg = "";
+private _admin_msg = "";
 private _getBannedUID = {
 	params ["_ban_combo"];
 	lbClear _ban_combo;
@@ -175,17 +177,39 @@ if (PAR_Grp_ID in GRLIB_whitelisted_moderators) then {
 };
 
 while { alive player && dialog } do {
-	if (do_unban == 1) then {
-		do_unban = 0;
-		_dst_id = _ban_combo lbText (lbCurSel _ban_combo);
-		if (_dst_id != "") then {
-			BTC_logic setVariable [_dst_id, 0, true];
-			_msg = format ["Unban player UID: %1", _dst_id];
-			hintSilent _msg;
-			systemchat _msg;
-			lbClear _ban_combo;
-			[_ban_combo] call _getBannedUID;
+	_msg = "";
+	_admin_msg = "";
+
+	if (do_spawn >= 1) then {
+		private ["_veh_text", "_veh_class"];
+		if (do_spawn == 100) then {
+			_veh_text = _build_combo lbText (lbCurSel _build_combo);
+			_veh_class = _build_combo lbData (lbCurSel _build_combo);
+		} else {
+			switch (do_spawn) do {
+				case 1: {
+					_veh_text = "Arsenal";
+					_veh_class = Arsenal_typename;
+				};
+				case 2: {
+					_veh_text = "AmmoBox";
+					_veh_class = ammobox_b_typename;
+				};
+				case 3: {
+					_veh_text = "Mobile Respawn";
+					_veh_class = mobile_respawn;
+				};
+				default { playSound3D ["a3\sounds_f\air\Heli_Light_01\warning.wss", player] };
+			};
 		};
+		do_spawn = 0;
+		if (isNil "_veh_class") exitWith {};
+		_admin_msg = format ["Admin (%1) build vehicle %2 (%3)", name player, _veh_text, _veh_class];
+		buildtype = 9;
+		build_unit = [_veh_class,[],1,[],[],[],[]];
+		dobuild = 1;
+		last_build = (lbCurSel _build_combo);
+		closeDialog 0;
 	};
 
 	if (do_score == 1) then {
@@ -195,23 +219,7 @@ while { alive player && dialog } do {
 		_amount = parseNumber (ctrlText _ammount_edit);
 		[_uid, _amount] remoteExec ["F_addPlayerScore", 2];
 		_msg = format ["Add %1 XP to player: %2.", _amount, _name];
-		hintSilent _msg;
-		systemchat _msg;
-		sleep 1;
-	};
-
-	if (do_spawn == 1) then {
-		do_spawn = 0;
-		_veh_text = _build_combo lbText (lbCurSel _build_combo);
-		_veh_class = _build_combo lbData (lbCurSel _build_combo);
-		_msg = format ["Build Vehicle: %1", _veh_text];
-		hintSilent _msg;
-		systemchat _msg;
-		buildtype = 9;
-		build_unit = [_veh_class,[],1,[],[],[],[]];
-		dobuild = 1;
-		last_build = (lbCurSel _build_combo);
-		closeDialog 0;
+		_admin_msg = format ["Admin (%1) add %2 XP to player %3", name player, _amount, _name];
 	};
 
 	if (do_ammo == 1) then {
@@ -221,9 +229,7 @@ while { alive player && dialog } do {
 		_amount = parseNumber (ctrlText _ammount_edit);
 		[_uid, _amount] remoteExec ["F_addPlayerAmmo", 2];
 		_msg = format ["Add %1 Ammo to player: %2.", _amount, _name];
-		hintSilent _msg;
-		systemchat _msg;
-		sleep 1;
+		_admin_msg = format ["Admin (%1) add %2 Ammo to player %3", name player, _amount, _name];
 	};
 
 	if (do_fuel == 1) then {
@@ -234,9 +240,7 @@ while { alive player && dialog } do {
 		_player = _uid call BIS_fnc_getUnitByUID;
 		[_player, 0, _amount] remoteExec ["ammo_add_remote_call", 2];
 		_msg = format ["Add %1 Fuel to player: %2.", _amount, _name];
-		hintSilent _msg;
-		systemchat _msg;
-		sleep 1;
+		_admin_msg = format ["Admin (%1) add %2 Fuel to player %3", name player, _amount, _name];
 	};
 
 	if (do_rejoin == 1) then {
@@ -245,7 +249,7 @@ while { alive player && dialog } do {
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		_player = _uid call BIS_fnc_getUnitByUID;
 		if (!isNull _player) then {
-			hintSilent format ["Teleport near player: %1.", _name];
+			_msg = format ["Admin Teleport near player %1.", _name];
 			_pos = getPos _player;
 			if (surfaceIsWater _pos) then {
 				player setPosASL _pos;
@@ -264,7 +268,6 @@ while { alive player && dialog } do {
 			[true] call save_game_mp;
 			copyToClipboard str (profileNamespace getVariable [GRLIB_save_key, []]);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
-			hintSilent _msg;
 		} else {
 			{ ctrlEnable [_x, false] } foreach _button_controls;
 			{ ctrlShow [_x, true] } foreach _output_controls;
@@ -272,15 +275,14 @@ while { alive player && dialog } do {
 			[player, {
 				[true] call save_game_mp;
 				[missionNamespace, ["output_save", (profileNamespace getVariable GRLIB_save_key)]] remoteExec ["setVariable", owner _this];
-				["Copy the Savegame from Text Field."] remoteExec ["hintSilent", owner _this];
+				["Copy the save game from the text field."] remoteExec ["hintSilent", owner _this];
 			}] remoteExec ["bis_fnc_call", 2];
-
 			waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};
 			ctrlSetText [ 536, str output_save ];
 			waitUntil {uiSleep 0.3; (!(dialog) || !(alive player)) };
-
 			{ ctrlShow [_x, false] } foreach _output_controls;
 			{ ctrlEnable [_x, true] } foreach _button_controls;
+			_admin_msg = format ["Admin (%1) export the save game (%2)", name player, GRLIB_save_key];
 		};
 	};
 
@@ -291,6 +293,8 @@ while { alive player && dialog } do {
 		input_save = "";
 		waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
 		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
+			_admin_msg = format ["Admin (%1) import the save game (%2)", name player, GRLIB_save_key];
+			[_admin_msg] remoteExec ["diag_log", 2];
 			closeDialog 0;
 			titleText ["Restarting now..." ,"BLACK FADED", 100];
 			disableUserInput true;
@@ -301,7 +305,7 @@ while { alive player && dialog } do {
 				["END"] remoteExec ["endMission", 0];
 			}] remoteExec ["bis_fnc_call", 2];
 			disableUserInput false;
-		} else { systemchat "Error: Invalid data!" };
+		} else { _msg = "Error: Invalid data!" };
 		{ ctrlShow [_x, false] } foreach _input_controls;
 		{ ctrlEnable [_x, true] } foreach _button_controls;
 	};
@@ -311,15 +315,16 @@ while { alive player && dialog } do {
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		[_uid, {
-			private _player = _this call BIS_fnc_getUnitByUID;
-			if (isPlayer _player) then {
-				["LOSER"] remoteExec ["endMission", owner _player];
-				private _msg = format ["Admin kick player %1.", name _player];
-				[_msg] remoteExec ["systemchat", -2];
-				serverCommand format ["#kick %1", name _player];
+			private _kicked = _this call BIS_fnc_getUnitByUID;
+			if (isPlayer _kicked) then {
+				private _name = name _kicked;
+				["LOSER"] remoteExec ["endMission", owner _kicked];
+				serverCommand format ["#kick %1", _name];
+				private _msg = format ["Admin kick player %1.", _name];
+				[gamelogic, _msg] remoteExec ["globalChat", -2];
 			};
 		}] remoteExec ["bis_fnc_call", 2];
-		sleep 1;
+		_admin_msg = format ["Admin (%1) kick player %2", name player, _name];
 	};
 
 	if (do_ban == 1) then {
@@ -332,19 +337,31 @@ while { alive player && dialog } do {
 				BTC_logic setVariable [_this, 99, true];
 				[_player] remoteExec ["LRX_tk_actions", owner _player];
 				private _msg = format ["Admin BAN player %1.", name _player];
-				[_msg] remoteExec ["systemchat", -2];
+				[gamelogic, _msg] remoteExec ["globalChat", -2];
 			};
 		}] remoteExec ["bis_fnc_call", 2];
-		sleep 1;
+		_admin_msg = format ["Admin (%1) ban player %2", name player, _name];
+	};
+
+	if (do_unban == 1) then {
+		do_unban = 0;
+		_dst_id = _ban_combo lbText (lbCurSel _ban_combo);
+		if (_dst_id != "") then {
+			BTC_logic setVariable [_dst_id, 0, true];
+			_msg = format ["Unban player UID: %1", _dst_id];
+			_admin_msg = format ["Admin (%1) unban player %2", name player, _dst_id];
+			lbClear _ban_combo;
+			[_ban_combo] call _getBannedUID;
+		};
 	};
 
 	if (do_zeus == 1) then {
 		do_zeus = 0;
 		GRLIB_active_commander = player;
 		publicVariable 'GRLIB_active_commander';
-		hintSilent "You are Zeus now...";
+		_msg = "You are Zeus now...";
+		_admin_msg = format ["Admin (%1) become Zeus", name player];
 		ctrlEnable [1625, false];
-		sleep 1;
 	};
 
 	if (do_capture == 1) then {
@@ -354,10 +371,8 @@ while { alive player && dialog } do {
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
 			publicVariable "blufor_sectors";
 		}] remoteExec ["bis_fnc_call", 2];
-
 		_msg = format ["Sector %1 Forcefully Captured!", markerText _sector];
-		hintSilent _msg;
-		systemchat _msg;
+		_admin_msg = format ["Admin (%1) forcefully capture sector %2", name player, markerText _sector];
 		closeDialog 0;
 	};
 
@@ -367,14 +382,13 @@ while { alive player && dialog } do {
 			{ [_x, getPlayerUID _x] call save_context } foreach (AllPlayers - (entities "HeadlessClient_F"));
 			[true] call save_game_mp;
 		}] remoteExec ["bis_fnc_call", 2];
-
 		_msg = format ["Game Forcefully Saved in %1" ,GRLIB_save_key];
-		hintSilent _msg;
-		systemchat _msg;
+		_admin_msg = format ["Admin (%1) force save game (%2)", name player, GRLIB_save_key];
 		closeDialog 0;
-		sleep 0.5;
 	};
 
+	if (_admin_msg != "") then { [_admin_msg] remoteExec ["diag_log", 2] };
+	if (_msg != "") then { hintSilent _msg;	systemchat _msg };
 	if (GRLIB_force_cleanup) then { ctrlEnable [1629, false] } else { ctrlEnable [1629, true] };
 	sleep 0.5;
 };
