@@ -3,10 +3,11 @@
 if (!isServer) exitWith {};
 params ["_type", "_pos", "_locked"];
 
+_pos set [2, 0.5];
 private _box = createVehicle [_type, _pos, [], 15, "None"];
 _box allowDamage false;
 _box addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-
+_box setPos (getPos _box);
 if (isNil "_locked") then { _locked = false};
 if (_locked) then {
 	_box setVariable ["R3F_LOG_disabled", true, true];
