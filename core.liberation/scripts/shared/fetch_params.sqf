@@ -13,7 +13,6 @@ GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Return
 GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
 GRLIB_AMF_enabled = isClass(configFile >> "cfgPatches" >> "AMF_weapon_F"); // Returns true if GlobMob is enabled
-GRLIB_APEX_enabled = isClass(configFile >> "cfgPatches" >> "Apex"); // Returns true if Apex is enabled
 GRLIB_CUPU_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Creatures_Extra"); // Returns true if CUP Units is enabled
 GRLIB_CUPV_enabled = isClass(configFile >> "CfgPatches" >> "CUP_AirVehciles_AH1Z"); // Returns true if CUP Vehicles is enabled
 GRLIB_CUP_enabled = (GRLIB_CUPU_enabled || GRLIB_CUPV_enabled); // Returns true if CUP is enabled
@@ -307,6 +306,7 @@ switch (GRLIB_huron_type) do {
 };
 
 // Fix missing Apex 
+GRLIB_APEX_enabled = (395180 in (getDLCs 1));		// Returns true if Apex is enabled
 FOB_boat_typename = "B_G_Boat_Transport_02_F";
 if !(GRLIB_APEX_enabled) then {
 	huron_typename = "B_Heli_Transport_01_F";
