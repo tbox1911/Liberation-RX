@@ -6,7 +6,7 @@ if ( isMultiplayer ) then {
 	if ( !isNil "group_owners" && !(isNil "HC1" && isNil "HC2" && isNil "HC3") ) then {
 		{
 			if ( _x select 0 == gamelogic ) then {
-				_current_load = 10 + ( _x select 4) + ( _x select 5 );
+				_current_load = 15 + ( _x select 4) + ( _x select 5 );
 				if ( _current_load < _previous_min_load ) then {
 					_previous_min_load = _current_load;
 					_less_loaded_HC = objNull;

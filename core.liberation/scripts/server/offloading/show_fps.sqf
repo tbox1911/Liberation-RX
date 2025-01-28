@@ -13,7 +13,7 @@ while { true } do {
 	if ( _myfps < 20 ) then { _myfpsmarker setMarkerColor "ColorORANGE"; };
 	if ( _myfps < 10 ) then { _myfpsmarker setMarkerColor "ColorRED"; };
 
-	_bluforcap = { alive _x && local _x && !(captive _x) } count (units GRLIB_side_friendly);
+	_bluforcap = { alive _x && local _x && !(captive _x) && (_x distance2D lhd) >= 200 } count (units GRLIB_side_friendly);
 	_opforcap = { alive _x && local _x && !(captive _x) } count (units GRLIB_side_enemy);
 	_civcap = { alive _x && local _x  && !(captive _x) && (isNil {_x getVariable "GRLIB_vehicle_owner"}) } count (units GRLIB_side_civilian);
 
