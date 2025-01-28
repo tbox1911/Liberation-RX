@@ -1,7 +1,7 @@
 params ["_grp"];
-if (count (units _grp) > 1) exitWith {};
+if (count units _grp > 1) exitWith {};
 if (isNull _grp) exitWith {};
-if (!local _grp) exitWith { [_grp] remoteExec ["civilian_ai", groupOwner _grp] };
+//if (!local _grp) exitWith { [_grp] remoteExec ["civilian_ai", groupOwner _grp] };
 
 private _unit = (units _grp) select 0;
 if ((typeOf _unit) select [0,10] == "RyanZombie") exitWith {};
@@ -9,12 +9,23 @@ if (surfaceIsWater (getPosATl _unit)) exitWith {};
 
 private _moveTo = {
 	params ["_unit", "_target", ["_radius", 5]];
-	private _dest = getPos _target;
-	waitUntil {
+	private _ret = false;
+	private _continue = true;
+	private _timer = time + 120;
+	while {time < _timer || _continue} do {
+		private _dest = getPos _target;
 		_unit doMove _dest;
 		sleep 5;
-		(!alive _unit || (_target getVariable ["PAR_isUnconscious", false]) || (_unit distance2D _dest <= _radius) || (_unit distance2D _dest > GRLIB_capture_size))
+		private _dist = _unit distance2D _dest;
+		if (!alive _unit || !alive _target || _dist > GRLIB_capture_size) then {
+			_continue = false;
+		};
+		if (_dist <= _radius) then {
+			_ret = true;
+			_continue = false;
+		};
 	};
+	_ret;
 };
 
 private _weapons_light = [
@@ -36,7 +47,7 @@ private _weapons_light = [
 private [
 	"_list_actions", "_action", "_reputation",
 	"_nearby_players", "_target", "_target_veh",
-	"_hit_index", "_damage",
+	"_hit_index", "_damage", "_ret",
 	"_new_grp", "_danger",
 	"_box", "_magType", "_ied"
 ];
@@ -47,24 +58,26 @@ sleep (60 + floor random 60);
 
 private _continue = true;
 while {alive _unit && _continue} do {
-	_list_actions = [0];
-	_nearby_players = ([_unit, GRLIB_capture_size] call F_getNearbyPlayers);
+	_action = 0;
+	_nearby_players = ([_unit, GRLIB_capture_size] call F_getNearbyPlayers) select { isNil {_x getVariable "GRLIB_civilian_action"} };
 	if (count _nearby_players > 0) then {
 		_target = selectRandom _nearby_players;
 		_target_veh = vehicles select { (alive _x) && ([_target, _x, true] call is_owner) && (_x distance2D _unit <= GRLIB_capture_size) };
 		_reputation = [_target] call F_getReput;
+		_list_actions = [0];
 		if ( _reputation >= 25 ) then { _list_actions = [0,1,1,1,2] };
-		if ( _reputation >= 50 ) then { _list_actions = [0,1,2,2,2,3] };
+		if ( _reputation >= 50 ) then { _list_actions = [1,2,2,3,3] };
 		if ( _reputation >= 75 ) then { _list_actions = [2,2,3,4,4,5] };
 		if ( _reputation >= 100 ) then { _list_actions = [2,3,4,5,5] };
 		if ( _reputation <= -25 ) then { _list_actions = [0,10,10] };
-		if ( _reputation <= -50 ) then { _list_actions = [0,10,11,11] };
+		if ( _reputation <= -50 ) then { _list_actions = [10,11,11] };
 		if ( _reputation <= -75 ) then { _list_actions = [11,11,12,12,14] };
-		if ( _reputation <= -100 ) then { _list_actions = [11,12,12,13,13,14] };
+		if ( _reputation <= -100 ) then { _list_actions = [11,12,12,13,13,14,14] };
+		_action = selectRandom _list_actions;
 	};
 
-	_action = selectRandom _list_actions;
 	if (_action > 0) then {
+		_target setVariable ["GRLIB_civilian_action", _action, true];
 		diag_log format ["Civilian AI %1 action %2 at %3", name _unit, _action, time];
 	};
 
@@ -73,8 +86,8 @@ while {alive _unit && _continue} do {
 		case 1;
 		case 10: {
 			[_grp] call F_deleteWaypoints;
-			[_unit, _target] call _moveTo;
-			if (alive _unit && _unit distance2D _target <= 5) then {
+			_ret = [_unit, _target] call _moveTo;
+			if (_ret && !(_target getVariable ["PAR_isUnconscious", false])) then {
 				if (isServer) then {
 					[_unit, _action, _target] spawn speak_manager_remote_call;
 				} else {
@@ -89,10 +102,10 @@ while {alive _unit && _continue} do {
 
 		//--- Heal
 		case 2: {
-			if (damage _target < 0.25 || (_target getVariable ["PAR_isUnconscious", false])) exitWith {};
+			if (damage _target == 0) exitWith {};
 			[_grp] call F_deleteWaypoints;
-			[_unit, _target] call _moveTo;
-			if (alive _unit && _unit distance2D _target <= 5 && (isNull objectParent _unit) && damage _target < 0.04) then {
+			_ret = [_unit, _target] call _moveTo;
+			if (_ret  && damage _target <= 0.1 && !(_target getVariable ["PAR_isUnconscious", false])) then {
 				if (isServer) then {
 					[_unit, _action, _target] spawn speak_manager_remote_call;
 				} else {
@@ -116,8 +129,8 @@ while {alive _unit && _continue} do {
 			if (count _target_veh == 0) exitWith {};
 			_target = selectRandom _target_veh;
 			[_grp] call F_deleteWaypoints;
-			[_unit, _target, 7] call _moveTo;
-			if (alive _unit && _unit distance2D _target <= 7) then {
+			_ret = [_unit, _target, 7] call _moveTo;
+			if (_ret) then {
 				if (isServer) then {
 					[_unit, _action, _target] spawn speak_manager_remote_call;
 				} else {
@@ -144,8 +157,8 @@ while {alive _unit && _continue} do {
 			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
 			if (_danger) then {
 				[_grp] call F_deleteWaypoints;
-				[_unit, _target] call _moveTo;
-				if (alive _unit && _unit distance2D _target <= 5) then {
+				_ret = [_unit, _target] call _moveTo;
+				if (_ret) then {
 					if (isServer) then {
 						[_unit, _action, _target] spawn speak_manager_remote_call;
 					} else {
@@ -172,8 +185,8 @@ while {alive _unit && _continue} do {
 			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
 			if (_danger && count (units group _target) < 8) then {
 				[_grp] call F_deleteWaypoints;
-				[_unit, _target] call _moveTo;
-				if (alive _unit && _unit distance2D _target <= 5) then {
+				_ret = [_unit, _target] call _moveTo;
+				if (_ret) then {
 					if (isServer) then {
 						[_unit, _action, _target] spawn speak_manager_remote_call;
 					} else {
@@ -204,8 +217,8 @@ while {alive _unit && _continue} do {
 			if (count _target_veh == 0) exitWith {};
 			_target = selectRandom _target_veh;
 			[_grp] call F_deleteWaypoints;
-			[_unit, _target, 7] call _moveTo;
-			if (alive _unit && _unit distance2D _target <= 7) then {
+			_ret = [_unit, _target, 7] call _moveTo;
+			if (_ret) then {
 				_unit stop true;
 				_unit setDir (_unit getDir _target);
 				_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
@@ -260,8 +273,8 @@ while {alive _unit && _continue} do {
 			if (count _target_veh == 0) exitWith {};
 			_target = selectRandom _target_veh;
 			[_grp] call F_deleteWaypoints;
-			[_unit, _target, 7] call _moveTo;
-			if (alive _unit && _unit distance2D _target <= 7) then {
+			_ret = [_unit, _target, 7] call _moveTo;
+			if (_ret) then {
 				_unit stop true;
 				_unit setDir (_unit getDir _target);
 				_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
@@ -281,9 +294,12 @@ while {alive _unit && _continue} do {
 		default { };
 	};
 
+	if (_action > 0) then {
+		_target setVariable ["GRLIB_civilian_action", nil, true];
+	};
 	if (_continue) then {
 		sleep 5;
 		[_grp, getPosATL _unit] spawn add_civ_waypoints;
-		sleep (300 + floor random 200);
+		sleep (100 + floor random 200);
 	};
 };

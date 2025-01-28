@@ -1,15 +1,13 @@
 params ["_unit"];
 
-if (isNull _unit) exitWith {};
-if (floor random 6 == 0) exitWith {};
-
 private _move_is_disabled = true;
 private _resume_movement = false;
 private _target = objNull;
 private _hostilecount = 0;
 private _sector = [GRLIB_sector_size, _unit] call F_getNearestSector;
 
-sleep (10 + floor random 50);
+sleep 20;
+
 while { _move_is_disabled && alive _unit && !(captive _unit) } do {
 	_hostilecount = count ([_unit, 80] call F_getNearbyPlayers);
 
