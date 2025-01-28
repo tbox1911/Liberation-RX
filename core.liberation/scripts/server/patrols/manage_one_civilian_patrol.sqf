@@ -2,9 +2,7 @@ GRLIB_civilians_current = GRLIB_civilians_current + 1;
 publicVariable "GRLIB_civilians_current";
 
 sleep (30 + (floor random 150));
-while { civcap > GRLIB_civilians_amount || (diag_fps < 20) } do {
-	sleep 60;
-};
+while { diag_fps <= 20 } do { sleep 60 };
 
 private _civ_veh = objNull;
 private _civ_grp = grpNull;
@@ -26,6 +24,7 @@ if ( count _usable_sectors > 0 ) then {
 		_civ_grp = [_sector_pos] call F_spawnCivilians;
 	};
 
+	sleep 1;
 	if (isNull _civ_grp) exitWith {};
 	if (isNull _civ_veh) then {
 		[_civ_grp, _sector_pos] spawn civilian_ai;
@@ -43,10 +42,15 @@ if ( count _usable_sectors > 0 ) then {
 	waitUntil {
 		if (alive (leader _civ_grp)) then { _unit_pos = getPosATL (leader _civ_grp) };
 		sleep 60;
-		if (round (speed vehicle leader _civ_grp) == 0) then {[leader _civ_grp] spawn F_fixPosUnit };
+		if (round (speed vehicle leader _civ_grp) == 0) then {
+			[leader _civ_grp] spawn F_fixPosUnit;
+			sleep 1;
+			(leader _civ_grp) switchMove "AmovPercMwlkSrasWrflDf";
+			(leader _civ_grp) playMoveNow "AmovPercMwlkSrasWrflDf";
+		};
 		(
 			GRLIB_global_stop == 1 ||
-			(diag_fps < 25) ||
+			(diag_fps < 20) ||
 			({alive _x} count (units _civ_grp) == 0) ||
 			([_unit_pos, _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 			(time > _unit_ttl)
@@ -54,7 +58,7 @@ if ( count _usable_sectors > 0 ) then {
 	};
 
 	// Cleanup
-	waitUntil { sleep 30; (GRLIB_global_stop == 1 || (diag_fps < 25) || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+	waitUntil { sleep 30; (GRLIB_global_stop == 1 || (diag_fps < 10) || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 	[_civ_veh] call clean_vehicle;
 	{ deleteVehicle _x } forEach (units _civ_grp);
 	deleteGroup _civ_grp;

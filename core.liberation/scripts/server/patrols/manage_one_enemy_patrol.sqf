@@ -4,9 +4,7 @@ GRLIB_patrol_current = GRLIB_patrol_current + 1;
 publicVariable "GRLIB_patrol_current";
 
 sleep (60 + (floor random 120));
-while { opforcap > GRLIB_patrol_cap || (diag_fps < 35.0) || combat_readiness < _level } do {
-	sleep 60;
-};
+while { diag_fps <= 20 || combat_readiness < _level } do { sleep 60 };
 
 private _opfor_veh = objNull;
 private _opfor_grp = grpNull;
@@ -33,13 +31,12 @@ if (count _usable_sectors > 0) then {
 		_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", true, 200] call createCustomGroup;
 	};
 
+	sleep 1;
 	if (isNull _opfor_grp) exitWith {};
 	private _veh_type = "No vehicle";
 	if !(isNull _opfor_veh) then { _veh_type = typeOf _opfor_veh };
 	diag_log format ["--- LRX Spawn Enemy Patrol %1 (%2) - trigger alert %3", _opfor_grp, _veh_type, _level];
 
-
-	sleep 60;
 
 	// Wait
 	private _unit_ttl = round (time + 1800);

@@ -42,7 +42,7 @@ if (lineIntersects [_spawnpos, (_spawnpos vectorAdd [0,0,_maxalt]), _unit]) then
 
 _unit allowDamage false;
 _unit setPosASL _spawnpos;
-sleep 5;
 _unit setHitPointDamage ["hitLegs", 0];
+sleep 5;
 _unit allowDamage true;
 _unit setVariable ["GRLIB_action_inuse", false];

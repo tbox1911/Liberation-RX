@@ -1,6 +1,6 @@
-params [ "_pos" ];
+params ["_pos"];
 
-private _spawnpos = [_pos, 3] call F_findSafePlace;
+private _spawnpos = [_pos, 2] call F_findSafePlace;
 if (count _spawnpos == 0) exitWith {[]};
 
 private _type_random = [
@@ -41,7 +41,7 @@ if (_type in ["Cock_random_F","Hen_random_F"]) then { _count = _count + 2 };
 
 private _created_animals = [];
 for "_n" from 1 to _count do {
-	_animal = createAgent [_type, _spawnpos, [], 5, "NONE"];
+	private _animal = createAgent [_type, _spawnpos, [], 5, "NONE"];
 	// _animal setVariable ["BIS_fnc_animalBehaviour_disable", true];
 	_created_animals pushBack _animal;
 	sleep 0.2;
