@@ -48,7 +48,7 @@ private _grp = [_sectorpos, _unitclass, _side, "building"] call F_libSpawnUnits;
 	_x setPos (_buildingpositions select (_position_indexes select _forEachIndex));
 	_x setUnitPos "UP";
 	_x setVariable ["GRLIB_in_building", true, true];
-	[_x] spawn building_defence_ai;
+	if (floor random 2 == 0) then { [_x] spawn building_defence_ai };
 } foreach (units _grp);
 
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];
