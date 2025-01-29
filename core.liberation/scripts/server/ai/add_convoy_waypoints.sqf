@@ -6,7 +6,7 @@ private ["_waypoint", "_wp0"];
 
 // Waypoints
 _grp setFormation "COLUMN";
-_grp setCombatBehaviour "AWARE";
+_grp setBehaviourStrong "AWARE";
 _grp setCombatMode "GREEN";
 _grp setSpeedMode "LIMITED";
 

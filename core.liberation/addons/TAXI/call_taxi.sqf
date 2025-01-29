@@ -62,7 +62,7 @@ if (count (crew _vehicle) == 0) exitWith { diag_log format ["--- LRX Error: Taxi
 	_x allowFleeing 0;
  } foreach (units _air_grp);
 _vehicle setVariable ["GRLIB_taxi_crew", (units _air_grp), true];
-_air_grp setCombatBehaviour "CARELESS";
+_air_grp setBehaviourStrong "CARELESS";
 _air_grp setCombatMode "GREEN";
 _air_grp setSpeedMode "FULL";
 

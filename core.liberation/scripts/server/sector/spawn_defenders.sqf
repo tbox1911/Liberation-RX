@@ -31,7 +31,7 @@ private _defenders_pool = [];
 for "_i" from 0 to _nb_unit do { _defenders_pool pushBack (selectRandom _squad_type) };
 _grp = [_sector_pos, _defenders_pool, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
 _grp setCombatMode "YELLOW";
-_grp setCombatBehaviour "COMBAT";
+_grp setBehaviourStrong "COMBAT";
 {
     _x setSkill 0.65;
     _x setSkill ["courage", 1];

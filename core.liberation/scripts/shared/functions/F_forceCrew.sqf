@@ -86,10 +86,10 @@ private _grp = createGroup [_side, true];
 
 if (_side == GRLIB_side_civilian) then {
 	_grp setCombatMode "BLUE";
-	_grp setCombatBehaviour "CARELESS";
+	_grp setBehaviourStrong "CARELESS";
 } else {
 	_grp setCombatMode "WHITE";
-	_grp setCombatBehaviour "AWARE";
+	_grp setBehaviourStrong "AWARE";
 };
 
 sleep 1;

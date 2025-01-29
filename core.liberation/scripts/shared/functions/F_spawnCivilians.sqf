@@ -29,7 +29,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 } foreach _class_civ;
 
 _grp setCombatMode "BLUE";
-_grp setCombatBehaviour "SAFE";
+_grp setBehaviourStrong "SAFE";
 
 //diag_log format [ "Done Spawning civilian %1 at %2", typeOf _civ_unit, time ];
 _grp;

@@ -4,7 +4,7 @@ if (count _vehicles == 0) exitWith {};
 
 // Group Behaviour
 _grp setFormation "COLUMN";
-_grp setCombatBehaviour "AWARE";
+_grp setBehaviourStrong "AWARE";
 _grp setCombatMode "GREEN";
 _grp setSpeedMode "LIMITED";
 

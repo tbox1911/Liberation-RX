@@ -29,7 +29,7 @@ _setupObjects = {
 
 	//_aiGroup setCombatMode "WHITE"; // Defensive behaviour
 	_aiGroup setCombatMode "YELLOW"; // Agressive behaviour
-	_aiGroup setCombatBehaviour "AWARE";
+	_aiGroup setBehaviourStrong "AWARE";
 	_speedMode = if (count AllPlayers > 2) then { "FULL" } else { "NORMAL" };
 	_aiGroup setSpeedMode _speedMode;
 

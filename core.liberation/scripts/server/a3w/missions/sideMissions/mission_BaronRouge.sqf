@@ -28,7 +28,7 @@ _setupObjects = {
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_aiGroup setFormation "WEDGE";
-	_aiGroup setCombatBehaviour "COMBAT";
+	_aiGroup setBehaviourStrong "COMBAT";
 	_aiGroup setCombatMode "YELLOW";
 	_aiGroup setSpeedMode "FULL";
 

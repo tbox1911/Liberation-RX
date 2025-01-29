@@ -10,7 +10,7 @@ if (count _classname == 0) exitWith { diag_log ["--- LRX Error: no unit to creat
 private _grp = createGroup [_side, true];
 if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpNull };
 _grp setCombatMode "WHITE";
-_grp setCombatBehaviour "COMBAT";
+_grp setBehaviourStrong "COMBAT";
 
 if ((_spawn_pos select 2) < 0) then { _spawn_pos set [2, 0.5] };
 diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawn_pos];

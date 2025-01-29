@@ -24,7 +24,7 @@ _setupObjects = {
 	// Add guards
 	_grp_hvt = [_missionPos, 3, "infantry", false] call createCustomGroup;
 	_grp_hvt setCombatMode "YELLOW"; // Aggresive behaviour
-	_grp_hvt setCombatBehaviour "AWARE";
+	_grp_hvt setBehaviourStrong "AWARE";
 
 	// Add HVT
 	_hvt = _grp_hvt createUnit [ opfor_officer, _missionPos, [], 0, "NONE"];
@@ -58,7 +58,7 @@ _setupObjects = {
 	// Patrolgroup
 	_aiGroup = [_hvt_pos, _nbUnits, "infantry", true, 40] call createCustomGroup;
 	_aiGroup setCombatMode "WHITE"; // Defensive behaviour
-	_aiGroup setCombatBehaviour "AWARE";
+	_aiGroup setBehaviourStrong "AWARE";
 	_aiGroup setFormation "WEDGE";
 	_aiGroup setSpeedMode "NORMAL";
 
