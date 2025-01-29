@@ -308,8 +308,8 @@ switch (GRLIB_huron_type) do {
 // Fix missing Apex 
 GRLIB_APEX_enabled = (395180 in (getDLCs 1));		// Returns true if Apex is enabled
 FOB_boat_typename = "B_G_Boat_Transport_02_F";
-if !(GRLIB_APEX_enabled) then {
-	huron_typename = "B_Heli_Transport_01_F";
+if (!GRLIB_APEX_enabled && !isDedicated) then {
+	huron_typename = "I_Heli_Transport_02_F";
 	FOB_boat_typename = "B_G_Boat_Transport_01_F";
 };
 

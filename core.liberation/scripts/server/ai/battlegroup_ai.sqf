@@ -34,7 +34,7 @@ while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "FULL";
 		_waypoint setWaypointBehaviour "COMBAT";
-		_waypoint setWaypointCombatMode "RED";
+		_waypoint setWaypointCombatMode "YELLOW";
 		_waypoint setWaypointCompletionRadius 50;
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
 		_waypoint setWaypointType "MOVE";
@@ -47,8 +47,8 @@ while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 		_waypoint setWaypointType "CYCLE";
 		sleep 1;
 		_grp setSpeedMode "FULL";
-		_grp setBehaviourStrong "COMBAT";
-		_grp setCombatMode "RED";
+		_grp setCombatBehaviour "COMBAT";
+		_grp setCombatMode "YELLOW";
 		{ _x doFollow (leader _grp) } foreach units _grp;
 
 		if (_vehicle isKindOf "AllVehicles") then {

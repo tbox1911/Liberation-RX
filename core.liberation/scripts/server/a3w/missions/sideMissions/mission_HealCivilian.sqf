@@ -106,7 +106,7 @@ _setupObjects = {
 		sleep 0.2;
 	};
 	_grp_wnded setSpeedMode "LIMITED";
-	_grp_wnded setBehaviourStrong "CARELESS";
+	_grp_wnded setCombatBehaviour "CARELESS";
 	_grp_wnded setCombatMode "GREEN";
 
 	_missionHintText = ["STR_HEAL_CIV_MESSAGE1", sideMissionColor, _location_name];

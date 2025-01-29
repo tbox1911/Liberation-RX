@@ -297,9 +297,9 @@ while {alive _unit && _continue} do {
 	if (_action > 0) then {
 		_target setVariable ["GRLIB_civilian_action", nil, true];
 	};
+
 	if (_continue) then {
-		sleep 5;
 		[_grp, getPosATL _unit] spawn add_civ_waypoints;
-		sleep (100 + floor random 200);
+		sleep 60;
 	};
 };

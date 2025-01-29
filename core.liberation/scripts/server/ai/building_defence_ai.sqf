@@ -22,7 +22,7 @@ while { _move_is_disabled && alive _unit && !(captive _unit) } do {
 			_unit setUnitPos "AUTO";
 			_unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-			(group _unit) setCombatMode "RED";
+			(group _unit) setCombatMode "YELLOW";
 			(group _unit) setCombatBehaviour "COMBAT";
 		};
 	};

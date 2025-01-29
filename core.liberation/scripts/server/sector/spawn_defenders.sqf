@@ -30,7 +30,7 @@ if (_defense_type == 3) then {
 private _defenders_pool = [];
 for "_i" from 0 to _nb_unit do { _defenders_pool pushBack (selectRandom _squad_type) };
 _grp = [_sector_pos, _defenders_pool, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
-_grp setCombatMode "RED";
+_grp setCombatMode "YELLOW";
 _grp setCombatBehaviour "COMBAT";
 {
     _x setSkill 0.65;

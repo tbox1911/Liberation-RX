@@ -27,7 +27,7 @@ private ["_unitrank", "_unit"];
 } foreach _classname;
 
 _grp setCombatMode "GREEN";
-_grp setBehaviourStrong "AWARE";
+_grp setCombatBehaviour "AWARE";
 
 stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp);
 publicVariable "stats_blufor_soldiers_recruited";

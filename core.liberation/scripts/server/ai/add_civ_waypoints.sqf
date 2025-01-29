@@ -18,7 +18,7 @@ if (side _grp == GRLIB_side_enemy) then {
 	_speed = "NORMAL";
 };
 _grp setCombatMode _combatMode;
-_grp setBehaviourStrong  _behaviour;
+_grp setCombatBehaviour  _behaviour;
 _grp setSpeedMode _speed;
 
 private ["_waypoint", "_wp0", "_radius", "_nextpos"];

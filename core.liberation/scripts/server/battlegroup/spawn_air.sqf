@@ -22,8 +22,8 @@ private _grp = createGroup [_side, true];
 private _vehicle = [_targetpos, selectRandom _planeType, 0, false, _side] call F_libSpawnVehicle;
 _vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
 (crew _vehicle) joinSilent _grp;
-_grp setBehaviourStrong "COMBAT";
-_grp setCombatMode "RED";
+_grp setCombatBehaviour "COMBAT";
+_grp setCombatMode "YELLOW";
 _grp setSpeedMode "FULL";
 
 private _spawnpos = getPosATL _vehicle;
@@ -34,7 +34,7 @@ private _waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "COMBAT";
-_waypoint setWaypointCombatMode "RED";
+_waypoint setWaypointCombatMode "YELLOW";
 _waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "MOVE";
 _waypoint = _grp addWaypoint [ _targetpos, _radius];
@@ -103,7 +103,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && count _ta
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
 	_waypoint setWaypointBehaviour "COMBAT";
-	_waypoint setWaypointCombatMode "RED";
+	_waypoint setWaypointCombatMode "YELLOW";
 	_waypoint = _grp addWaypoint [_targetpos, _radius];
 	_waypoint setWaypointType "MOVE";
 	_waypoint = _grp addWaypoint [_targetpos, _radius];
