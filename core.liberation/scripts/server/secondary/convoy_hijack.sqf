@@ -114,8 +114,7 @@ private _mission_in_progress = true;
 private _enemy_left = 0;
 
 while { _mission_in_progress } do {
-	_enemy_left = { alive _x } count ((units _troops_group) + (crew _transport_vehicle));
-	if (!alive _transport_vehicle || _enemy_left == 0 || time > _mission_timeout) then {
+	if (!alive (driver _transport_vehicle) || !alive _transport_vehicle || time > _mission_timeout ) then {
 		_mission_in_progress = false;
 	};
 	_convoy_marker setMarkerPos (getpos _transport_vehicle);
