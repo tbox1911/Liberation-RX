@@ -16,11 +16,11 @@ private _airveh_alt = 300;
 if (_classname isKindOf "Air") then {
 	_spawn_pos = [_sectorpos] call F_getAirSpawn;
 	if (count _spawn_pos > 0) then {
-		if (_classname isKindOf "Plane") then { _airveh_alt = 800 };
+		if (_classname isKindOf "Plane") then { _airveh_alt = 500 };
 		if (GRLIB_SOG_enabled || GRLIB_SPE_enabled) then { _airveh_alt = 350 };
 		if (_side == GRLIB_side_civilian) then { _airveh_alt = 150 };
 		_spawn_pos = _spawn_pos getPos [floor random 300, random 360];
-		_spawn_pos set [2, (_airveh_alt + floor random 100)];
+		_spawn_pos set [2, _airveh_alt];
 		_vehicle = createVehicle [_classname, _spawn_pos, [], 50, "FLY"];
 		_vehicle allowDamage false;
 		_vehicle setDir (_vehicle getDir _sectorpos);
