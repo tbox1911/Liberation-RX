@@ -22,6 +22,11 @@ if (_object_class in uavs_vehicles) then {
 // MPKilled
 _object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
+// Static Weapons
+if (_object_class in list_static_weapons ) then {
+	_object addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+};
+
 // Set Owner
 if (!(_object_class in GRLIB_vehicle_blacklist)) then {
 	private _vehicle_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
