@@ -7,7 +7,7 @@ if (count (GRLIB_all_fobs - GRLIB_all_outposts) >= GRLIB_max_fobs) exitWith {
 	hint format [localize "STR_HINT_FOBS_EXCEEDED", GRLIB_max_fobs];
 };
 
-private _cost = 1500;
+private _cost = 1000;
 private _result = [format [localize "STR_UPGRADE_OUTPOST_PAY", _cost], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 if (!_result) exitWith {};
 if (!([_cost] call F_pay)) exitWith {};
