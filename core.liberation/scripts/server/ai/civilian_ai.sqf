@@ -10,20 +10,15 @@ if (surfaceIsWater (getPosATl _unit)) exitWith {};
 private _moveTo = {
 	params ["_unit", "_target", ["_radius", 5]];
 	private _ret = false;
-	private _continue = true;
 	private _timer = time + 120;
-	while {time < _timer || _continue} do {
+	while {true} do {
 		private _dest = getPos _target;
 		_unit doMove _dest;
 		sleep 5;
 		private _dist = _unit distance2D _dest;
-		if (!alive _unit || !alive _target || _dist > GRLIB_capture_size) then {
-			_continue = false;
-		};
-		if (_dist <= _radius) then {
-			_ret = true;
-			_continue = false;
-		};
+		diag_log [name _target, name _unit, _dist];
+		if (!alive _unit || !alive _target || _dist > GRLIB_capture_size || time >= _timer) exitWith {};
+		if (_dist <= _radius) exitWith { _ret = true };
 	};
 	_ret;
 };
@@ -202,7 +197,7 @@ while {alive _unit && _continue} do {
 					[_unit] joinSilent (group _target);
 					[_unit] spawn {
 						params ["_unit"];
-						waitUntil {sleep 10; !(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount == 0) };
+						waitUntil {sleep 10; (!(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount == 0)) };
 						deleteVehicle _unit;
 					};
 					_continue = false;
