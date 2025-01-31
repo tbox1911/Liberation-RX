@@ -14,8 +14,7 @@ private _usable_sectors = [];
 		_usable_sectors pushback _x;
 	};
 	sleep 0.1;
-} foreach (sectors_allSectors + sectors_opforSpawn - active_sectors);
-{ _usable_sectors pushBack (_x select 0) } forEach SpawnMissionMarkers;
+} foreach (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors);
 
 if (count _usable_sectors > 0) then {
 	private  _sector_pos = markerPos (selectRandom _usable_sectors);
@@ -41,7 +40,7 @@ if (count _usable_sectors > 0) then {
 	// Wait
 	private _unit_ttl = round (time + 1800);
 	private _unit_pos = getPosATL (leader _opfor_grp);
-	private _radius = GRLIB_spawn_max * 2;
+	private _radius = GRLIB_spawn_max * 1.5;
 	waitUntil {
 		if (alive (leader _opfor_grp)) then { _unit_pos = getPosATL (leader _opfor_grp) };
 		sleep 60;

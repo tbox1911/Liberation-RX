@@ -44,7 +44,7 @@ publicVariable "A3W_sectors_in_use";
 */
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
-// move to shared init (HC)
+// moved to init
 //[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 
 for "_i" from 1 to 4 do {

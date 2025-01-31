@@ -29,7 +29,9 @@ SideMissions = [
 	["mission_KillBandits", 1]
 ];
 
-SpawnMissionMarkers = (allMapMarkers select {["Mission_", _x] call F_startsWith}) apply {[_x, false, 0]};
+A3W_mission_sectors = [];
+A3W_mission_sectors = (allMapMarkers select {["Mission_", _x] call F_startsWith});
+SpawnMissionMarkers = A3W_mission_sectors apply {[_x, false, 0]};
 ForestMissionMarkers = (allMapMarkers select {["ForestMission_", _x] call F_startsWith}) apply {[_x, false, 0]};
 SunkenMissionMarkers = (allMapMarkers select {["SunkenMission_", _x] call F_startsWith}) apply {[_x, false, 0]};
 

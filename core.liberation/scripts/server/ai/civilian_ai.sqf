@@ -16,7 +16,7 @@ private _moveTo = {
 		_unit doMove _dest;
 		sleep 5;
 		private _dist = _unit distance2D _dest;
-		diag_log [name _target, name _unit, _dist];
+		// diag_log [name _target, name _unit, _dist];
 		if (!alive _unit || !alive _target || _dist > GRLIB_capture_size || time >= _timer) exitWith {};
 		if (_dist <= _radius) exitWith { _ret = true };
 	};

@@ -9,21 +9,27 @@ if (_vehicle isKindOf "Ship") exitWith {
 
 if (_vehicle isKindOf "ParachuteBase") then {
 	_vehicle = objNull;
-	waitUntil { sleep 1; ({getPosATL _x select 2 > 1} count (units _grp) == 0) };
+	waitUntil { sleep 1; ({getPos _x select 2 > 2} count (units _grp) == 0) };
 	sleep 5;
 };
 
 private _veh_type = "No vehicle";
 if !(isNull _vehicle) then { _veh_type = typeOf _vehicle };
-diag_log format ["Group %1 (%2) - Attack: %3", _grp, _veh_type, _objective_pos];
 private _attack = true;
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
+diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
 
 sleep (2 + floor random 5);
 private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer", "_sleep", "_target"];
-while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
+while {(count _objective_pos > 0)} do {
 	_sleep = 300;
+	{
+		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300) then { deleteVehicle _x } else { [_x] spawn F_fixPosUnit };
+		sleep 1;
+	} forEach (units _grp);
+	if ({alive _x} count (units _grp) == 0) exitWith {};
+
 	if (_attack) then {
 		_attack = false;
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
@@ -58,7 +64,7 @@ while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 	};
 
 	_sector = [100, _objective_pos] call F_getNearestSector;
-	if (time > _timer || _sector in opfor_sectors) then {
+	if (time > _timer) then {
 		_last_pos = getPosATL (leader _grp);
 		if (GRLIB_global_stop == 1) then {
 			_target = [_last_pos, GRLIB_spawn_max] call F_getNearestBlufor;
@@ -76,11 +82,7 @@ while {({alive _x} count (units _grp) > 0) && (count _objective_pos > 0)} do {
 		_timer = round (time + (10 * 60));
 		_sleep = 5;
 	};
-
 	if (count _objective_pos == 0) exitWith {};
-	{
-		if (surfaceIsWater (getPosATL _x) && _x distance2D _objective_pos > 400) then { deleteVehicle _x } else { [_x] spawn F_fixPosUnit };
-	} forEach (units _grp);
 
 	if (!isNull _vehicle) then {
 		[_vehicle] call F_vehicleUnflip;

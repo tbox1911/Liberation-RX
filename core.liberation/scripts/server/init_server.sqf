@@ -13,10 +13,10 @@ addMissionEventHandler ['HandleDisconnect', {
 addMissionEventHandler ["PlayerDisconnected", {
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 	if (_name select [0,13] == "headlessclient") exitWith {};
-	private _player_left = { alive _x } count (AllPlayers - (entities "HeadlessClient_F"));
+	private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
 	if (_player_left == 0) then {
 		diag_log "--- LRX Mission End!";
-		[] call save_game_mp;
+		[true] call save_game_mp;
 		if (!GRLIB_server_persistent) then {
 			{ deleteMarker _x } forEach allMapMarkers;
 			{ deleteVehicle _x } forEach allUnits;
