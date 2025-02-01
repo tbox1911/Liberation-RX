@@ -75,7 +75,7 @@ GRLIB_checkGarage = {
 };
 
 GRLIB_checkBuild = {
-	(GRLIB_player_is_menuok && GRLIB_player_near_fob && (([player, 3] call fetch_permission) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && !(isNil "resources_infantry") && (([player, 3] call fetch_permission) || GRLIB_player_admin))
 };
 
 GRLIB_checkSquadMgmt = {
