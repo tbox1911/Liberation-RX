@@ -422,6 +422,13 @@ while { true } do {
 			// Killed EH
 			if !(_classname in all_buildings_classnames) then {
 				_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+
+				// HandleDamage EH
+				if (_classname in list_static_weapons) then {
+					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+				} else {
+					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+				};
 			};
 
 			// Crewed vehicle
@@ -437,21 +444,14 @@ while { true } do {
 				};
 			};
 
-			// Static Weapon
-			if (_classname in list_static_weapons) then {
-				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-			};
-
 			// AI Static Weapon
 			if (_classname in static_vehicles_AI) then {
-				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-				_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+				//_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 				player disableUAVConnectability [_vehicle, true];
 			};
 
 			// Vehicles
 			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship") then {
-				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 				// Color
 				if ( count _color > 0) then {
 					[_vehicle, _color] call RPT_fnc_TextureVehicle;

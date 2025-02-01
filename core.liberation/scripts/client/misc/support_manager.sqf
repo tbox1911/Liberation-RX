@@ -31,8 +31,6 @@ while { true } do {
 	_my_squad = player getVariable ["my_squad", nil];
 	if (!isNil "_my_squad") then { { _unitList pushBack _x } forEach units _my_squad };
 	{_unitList append units _x} foreach hcAllGroups player;
-	_static_ai = vehicles select { (typeOf _x in static_vehicles_AI) && ([player, _x, true] call is_owner) };
-	{_unitList append crew _x} foreach _static_ai;
 
 	if (count _unitList >= 1) then {
 		_needammo1 = false;
@@ -42,6 +40,7 @@ while { true } do {
 		{
 			_unit = _x;
 			_in_vehicle = !(isNull objectParent _unit);
+			_distarsenal = 30;
 
 			// Out vehicle
 			if (!_in_vehicle && !(isPlayer _unit)) then {
@@ -132,7 +131,9 @@ while { true } do {
 					_vehicle_class = typeOf _vehicle;
 					_vehicle_name = [_vehicle_class] call F_getLRXName;
 					_reammo_cost = 0;
-					if ([_unit, "FOB", 30, true] call F_check_near) then { _reammo_cost = 100 };
+					_is_arty = ([_vehicle_class, _artillery] call F_itemIsInClass);
+					if (_is_arty) then { _distarsenal = 80 };
+					if ([_unit, "FOB", _distarsenal, true] call F_check_near) then { _reammo_cost = 100 };
 
 					// REAMMO
 					_near_arsenal = ([_vehicle, "REAMMO", _distarsenal] call F_check_near || _near_lhd);
@@ -147,19 +148,18 @@ while { true } do {
 						_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 						if (_timer <= time) then {
 							_max_ammo = 3;
-							_vehicle setVehicleAmmo 1;
-							_is_arty = ([_vehicle_class, _artillery] call F_itemIsInClass);
 							_cooldown = 5 * 60;
 							[_reammo_cost] call F_pay;
-							if (_is_arty) then { _cooldown = _cooldown * 2 };
+							_vehicle setVehicleAmmo 1;
+							if (_is_arty) then { _cooldown = _cooldown * 1.5 };
 							_vehicle setVariable ["GREUH_rearm_timer", round (time + _cooldown)];  // min cooldown
 							_screenmsg = format ["%1\n%2 - %3\nCost %4 Ammo", _vehicle_name, localize "STR_REARMING", "100%", _reammo_cost];
-							titleText [ _screenmsg, "PLAIN DOWN" ];
+							titleText [_screenmsg, "PLAIN DOWN"];
 							hintSilent _screenmsg;
 						} else {
-							if (_unit == player || ((uavControl _vehicle select 0) == player)) then {
-								_screenmsg = format [ "%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time) ];
-								titleText [ _screenmsg, "PLAIN DOWN" ];
+							if (_unit distance2D player <= 30) then {
+								_screenmsg = format ["%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time)];
+								titleText [_screenmsg, "PLAIN DOWN"];
 							};
 						};
 					};
@@ -176,13 +176,13 @@ while { true } do {
 						if (_timer <= time) then {
 							_vehicle setDamage 0;
 							_vehicle setVariable ["GREUH_repair_timer", round (time + (5*60))];  // min cooldown
-							_screenmsg = format [ "%1\n%2 - %3", _vehicle_name, localize "STR_REPAIRING", "100%" ];
-							titleText [ _screenmsg, "PLAIN DOWN" ];
+							_screenmsg = format ["%1\n%2 - %3", _vehicle_name, localize "STR_REPAIRING", "100%"];
+							titleText [_screenmsg, "PLAIN DOWN"];
 							hintSilent _screenmsg;
 						} else {
-							if ( _unit == player || ((uavControl _vehicle select 0) == player) ) then {
-								_screenmsg = format [ "%1\nRepairing Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time) ];
-								titleText [ _screenmsg, "PLAIN DOWN" ];
+							if (_unit distance2D player <= 30) then {
+								_screenmsg = format ["%1\nRepairing Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time)];
+								titleText [_screenmsg, "PLAIN DOWN"];
 							};
 						};
 					};
@@ -199,13 +199,13 @@ while { true } do {
 						if (_timer <= time) then {
 							_vehicle setFuel 1;
 							_vehicle setVariable ["GREUH_refuel_timer", round (time + (5*60))];  // min cooldown
-							_screenmsg = format [ "%1\n%2 - %3", _vehicle_name, localize "STR_REFUELING", "100%" ];
-							titleText [ _screenmsg, "PLAIN DOWN" ];
+							_screenmsg = format ["%1\n%2 - %3", _vehicle_name, localize "STR_REFUELING", "100%"];
+							titleText [_screenmsg, "PLAIN DOWN"];
 							hintSilent _screenmsg;
 						} else {
-							if ( _unit == player || ((uavControl _vehicle select 0) == player) ) then {
-								_screenmsg = format [ "%1\nRefueling Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time) ];
-								titleText [ _screenmsg, "PLAIN DOWN" ];
+							if (_unit distance2D player <= 30) then {
+								_screenmsg = format ["%1\nRefueling Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time)];
+								titleText [_screenmsg, "PLAIN DOWN"];
 							};
 						};
 					};
