@@ -70,6 +70,7 @@ private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key,
 private _side_west = "";
 private _side_east = "";
 private _warehouse = [];
+private _sector_defense = [];
 private _buildings_created = [];
 
 if ( !isNil "_lrx_liberation_savegame" ) then {
@@ -89,7 +90,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	buildings_to_load = _lrx_liberation_savegame select 2;
 	time_of_day = _lrx_liberation_savegame select 3;
 	combat_readiness = _lrx_liberation_savegame select 4;
-	GRLIB_sector_defense = _lrx_liberation_savegame select 5;
+	_sector_defense = _lrx_liberation_savegame select 5;
 	//_unused = _lrx_liberation_savegame select 6;
 	_side_west = _lrx_liberation_savegame select 7;
 	_side_east = _lrx_liberation_savegame select 8;
@@ -465,9 +466,9 @@ if (count GRLIB_permissions == 0) then {
 	GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
 };
 
-if (typeName GRLIB_sector_defense != "ARRAY") then {
-	GRLIB_sector_defense = [];
-};
+{
+	if ((_x select 0) in blufor_sectors) then { GRLIB_sector_defense pushBack _x };
+} forEach _sector_defense;
 
 publicVariable "stats_blufor_soldiers_recruited";
 publicVariable "stats_blufor_vehicles_built";
