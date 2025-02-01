@@ -81,6 +81,7 @@ _unit addEventHandler ["FiredMan",	{
 	// };
 
 	// Limit artillery fire
+	if (GRLIB_global_stop == 1) exitWith {};
 	private _free_rounds_typename = [
 		"8Rnd_82mm_Mo_Smoke_white",
 		"8Rnd_82mm_Mo_Flare_white",

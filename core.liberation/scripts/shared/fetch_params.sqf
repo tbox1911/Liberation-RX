@@ -219,7 +219,7 @@ GRLIB_civilians_amount = 12;
 GRLIB_civilians_amount = GRLIB_civilians_amount * GRLIB_civilian_activity;
 GRLIB_patrol_amount = 8;
 GRLIB_patrol_amount = GRLIB_patrol_amount * GRLIB_patrols_activity;
-GRLIB_secondary_missions_costs = [100, 50, 10, 800];
+GRLIB_secondary_missions_costs = [150, 70, 10, 1000];
 GRLIB_defense_costs = [0, 100, 200, 300];
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
@@ -305,7 +305,7 @@ switch (GRLIB_huron_type) do {
 	case 2: { huron_typename = "B_Heli_Transport_01_F" };
 };
 
-// Fix missing Apex 
+// Fix missing Apex
 GRLIB_APEX_enabled = (395180 in (getDLCs 1));		// Returns true if Apex is enabled
 FOB_boat_typename = "B_G_Boat_Transport_02_F";
 if (!GRLIB_APEX_enabled && !isDedicated) then {

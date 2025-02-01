@@ -4,59 +4,21 @@ private _spawnpos = [];
 private _spawnlist = [];
 {
 	_spawnpos = [(markerpos _x), 15] call F_findSafePlace;
-	if !(_spawnpos isEqualTo zeropos) then {_spawnlist pushBack [_spawnpos select 0, _spawnpos select 1, 0]};
+	if (count _spawnpos > 0) then {_spawnlist pushBack [_spawnpos select 0, _spawnpos select 1, 0]};
 } foreach sectors_allSectors;
 if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free space for Armageddon mission"] remoteExec ["globalChat", 0]};
 
 diag_log format ["--- LRX: %1 start static mission: Armageddon at %2", _caller, time];
 resources_intel = resources_intel - _mission_cost;
+
 GRLIB_secondary_in_progress = 3;
 publicVariable "GRLIB_secondary_in_progress";
-
 GRLIB_global_stop = 1;
 publicVariable "GRLIB_global_stop";
 
 { deleteVehicle _x } foreach (units GRLIB_SELL_Group);
 { deleteVehicle _x } foreach (units GRLIB_SHOP_Group);
 { deleteVehicle _x } foreach (units GRLIB_side_enemy);
-
-sleep 30;
-
-// create marker
-_spawnpos = selectRandom _spawnlist;
-private _marker = createMarkerLocal ["final_fight", _spawnpos];
-_marker setMarkerTypeLocal "mil_destroy";
-_marker setMarkerSizeLocal [1.25, 1.25];
-_marker setMarkerColorLocal GRLIB_color_enemy_bright;
-_marker setMarkerText "FINAL FIGHT";
-sectors_allSectors = sectors_allSectors + [_marker];
-blufor_sectors = [_marker];
-GRLIB_secondary_used_positions pushbackUnique _marker;
-
-// spawn nuclear device + static + def squad
-private _base_output = [_spawnpos, false, true] call createOutpost;
-opfor_target = createVehicle ["Land_Device_disassembled_F", _spawnpos, [], 1, "CAN_COLLIDE"];
-opfor_target addEventHandler ["HandleDamage", {
-	params ["_unit", "_selection", "_damage", "_killer"];
-	private _ret = damage _unit;
-	private _amountOfDamage = (_damage - _ret);
-	if (!isNull _killer && side _killer == GRLIB_side_friendly && _amountOfDamage > 1) then {
-		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
-			_ret = _ret + 0.02 + (floor random 0.04);
-			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
-		};
-	};
-	_ret;
-}];
-
-publicVariable "opfor_target";
-
-[_marker, 4] spawn static_manager;
-private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
-[_grp, _spawnpos, 200] spawn defence_ai;
-
-private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVehicle;
-(driver _vehicle) doFollow leader _grp;
 
 // weather cloudy
 [] spawn {
@@ -71,13 +33,64 @@ private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVeh
 skipTime ((10 - dayTime + 24) % 24);
 setTimeMultiplier 0;
 
-private _mission_delay = (35 * 60);
-[_marker, 1, _mission_delay] remoteExec ["remote_call_sector", 0];
-sleep 10;
+private _mission_delay = (5 * 60);
 [] remoteExec ["remote_call_final_fight", 0];
-sleep 30;
+
+// create marker
+_spawnpos = selectRandom _spawnlist;
+private _marker = createMarkerLocal ["final_fight", _spawnpos];
+_marker setMarkerTypeLocal "mil_destroy";
+_marker setMarkerSizeLocal [1.25, 1.25];
+_marker setMarkerColorLocal GRLIB_color_enemy_bright;
+_marker setMarkerText "           FINAL FIGHT";
+[_marker, 1, _mission_delay] remoteExec ["remote_call_sector", 0];
+
+sectors_allSectors = sectors_allSectors + [_marker];
+blufor_sectors = [_marker];
+GRLIB_secondary_used_positions pushbackUnique _marker;
+
+// spawn nuclear device + static + def squad
+private _base_output = [_spawnpos, false, true] call createOutpost;
+opfor_target = createVehicle ["Land_Device_disassembled_F", _spawnpos, [], 1, "CAN_COLLIDE"];
+opfor_target addEventHandler ["HandleDamage", {
+	params ["_unit", "_selection", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
+	if (isNull _unit) exitWith {};
+	if (!alive _unit) exitWith {};
+	if (!isNull _instigator) then {
+		if (isNull (getAssignedCuratorLogic _instigator)) then {
+			_killer = _instigator;
+		};
+	} else {
+		if (!(_killer isKindOf "CAManBase")) then {
+			_killer = effectiveCommander _killer;
+		};
+	};
+
+	private _ret = damage _unit;
+	if (!isNull _killer && side _killer == GRLIB_side_friendly && _damage >= 1) then {
+		if (_unit getVariable ["GRLIB_isProtected", 0] < time) then {
+			_unit setVariable ["GRLIB_isProtected", round(time + 5), true];
+			_ret = _ret + 0.03;
+		};
+	};
+	_ret;
+}];
+publicVariable "opfor_target";
+
+private _savedpos = getPosWorld opfor_target;
+opfor_target_assembled = createVehicle ["Land_Device_assembled_F", zeropos, [], 1, "CAN_COLLIDE"];
+opfor_target_assembled setVectorDirAndUp [vectorDir opfor_target, vectorUp opfor_target];
+opfor_target_assembled hideObjectGlobal true;
+
+[_marker, 4] spawn static_manager;
+private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
+[_grp, _spawnpos, 200] spawn defence_ai;
+
+private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVehicle;
+(driver _vehicle) doFollow leader _grp;
 
 private _timer = round (time + _mission_delay);
+private _players = [];
 private _last_send = 0;
 private _target = objNull;
 private _continue = true;
@@ -97,10 +110,12 @@ while { _continue } do {
 
 	if ((time > _last_send || opforcap < 50) && opforcap < GRLIB_opfor_cap ) then {
 		_last_send = round (time + 300);
-		_target = selectRandom (AllPlayers - (entities "HeadlessClient_F"));
-
-		[getPosATL _target] spawn send_paratroopers;
-		sleep 5;
+		_players = (AllPlayers - (entities "HeadlessClient_F")) select { _x distance2D lhd > GRLIB_sector_size && _x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_sector_size};
+		_target = selectRandom _players;
+		if (isNil "_target") then {
+			[getPosATL _target] spawn send_paratroopers;
+			sleep 5;
+		};
 		if (_target distance2D opfor_target > GRLIB_spawn_max) then {
 			[getPosATL _target, GRLIB_side_enemy, 3] spawn spawn_air;
 			sleep 5;
@@ -123,33 +138,32 @@ while { _continue } do {
 };
 
 deleteMarker _marker;
+sector_timer = 0;
+publicVariable "sector_timer";
 
 if (_success) then {
 	[5] remoteExec ["BIS_fnc_earthquake", 0];
 	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);
 	private _smoke = GRLIB_sar_fire createVehicle (getPos opfor_target);
 	_smoke attachTo [opfor_target, [0, 1.5, 0]];
-	0 setOvercast 0;
-	forceWeatherChange;
-	sleep 10;
-	[] spawn blufor_victory;
-} else {
-	{ deleteVehicle _x } foreach (units GRLIB_side_enemy);
 	0 setFog 0;
 	0 setRain 0;
+	0 setOvercast 0;
 	forceWeatherChange;
-	sleep 9;
-	private _savedpos = getPosWorld opfor_target;
-    private _nextdir = [vectorDir opfor_target, vectorUp opfor_target];
+	sleep 5;
+	[] spawn blufor_victory;
+} else {
+	{ if (count crew _x > 0) then {deleteVehicle _x} } foreach vehicles;
+	{ deleteVehicle _x } foreach (units GRLIB_side_enemy);
+	{ deleteVehicle _x } foreach (units GRLIB_side_friendly);
+	sleep 3;
 	opfor_target hideObjectGlobal true;
-	private _opfor_target_assembled = createVehicle ["Land_Device_assembled_F", _savedpos, [], 1, "CAN_COLLIDE"];
-	_opfor_target_assembled setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
-	_opfor_target_assembled setPosWorld _savedpos;
+	opfor_target_assembled setPosWorld _savedpos;
+	opfor_target_assembled hideObjectGlobal false;
+	sleep 1;
 	GRLIB_endgame = 2;
 	publicVariable "GRLIB_endgame";
-	sleep 300;
-	endMission "END";
-	forceEnd;
+	//sleep 300;
 };
 
 GRLIB_secondary_in_progress = -1;

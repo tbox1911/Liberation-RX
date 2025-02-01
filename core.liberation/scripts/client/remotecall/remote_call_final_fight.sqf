@@ -2,7 +2,6 @@ if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
 private _msg = format ["%1, the <t color='#800000'>ARMAGEDDON</t> has begun...<br/><br/>Be ready for the <t color='#000080'>Final FIGHT</t> !<br/>", name player];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
-sleep 3;
 
 [1] spawn BIS_fnc_earthquake;
 
@@ -34,6 +33,7 @@ ctrlDelete _final_text;
 
 // Mission failed
 if (sector_timer <= 0) then {
+	private _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 	disableUserInput true;
 	player allowDamage false;
 	closeDialog 0;
@@ -42,10 +42,10 @@ if (sector_timer <= 0) then {
 		"filmGrain" ppEffectEnable false;
 	};
 
-	cinematic_camera_started = false;
-	titleText ["","BLACK FADED", 100];
+	cinematic_camera_started = true;
 	sector_timer = 0;
 	"opfor_capture_marker" setMarkerPosLocal markers_reset;
+	sleep 2;
 
 	camUseNVG false;
 	showCinemaBorder false;
@@ -63,34 +63,34 @@ if (sector_timer <= 0) then {
 	_spawn_camera camSetRelPos _startpos0;
 	_spawn_camera camcommit 0;
 	_spawn_camera camSetRelPos _startpos1;
-	_spawn_camera camcommit 0.5;
+	_spawn_camera camcommit 1.5;
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _endpos1;
-	_spawn_camera camcommit 1.75;
+	_spawn_camera camcommit 2;
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _startpos2;
-	_spawn_camera camcommit 0.25;
+	_spawn_camera camcommit 1;
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _endpos2;
-	_spawn_camera camcommit 1.75;
+	_spawn_camera camcommit 2;
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _startpos3;
-	_spawn_camera camcommit 0.25;
+	_spawn_camera camcommit 1;
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _endpos3;
-	_spawn_camera camcommit 1.75;
+	_spawn_camera camcommit 2;
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos [0,0.4,10];
 	_spawn_camera camcommit 2;
 	waitUntil { camCommitted _spawn_camera };
 
-	waitUntil { sleep 0.5; isObjectHidden opfor_target };
+	waitUntil { sleep 1; GRLIB_endgame == 2 };
 	playSoundUI ["a3\missions_f_exp\data\sounds\exp_m05_dramatic.wss", 2];
 	sleep 1;
 
@@ -99,13 +99,13 @@ if (sector_timer <= 0) then {
 	waitUntil { camCommitted _spawn_camera };
 
 	sleep 3;
-	[opfor_target] execVM "addons\NUKE\nuke.sqf";
-	_id1 = playSoundUI [getMissionPath "res\nuke.ogg", 5];
+	[opfor_target] spawn compileFinal preprocessFileLineNumbers "addons\NUKE\nuke.sqf";
+	playSoundUI [getMissionPath "res\nuke.ogg", 4];
 	sleep 6;
 
 	_spawn_camera camSetRelPos [ 0, 2000, 400];
 	_spawn_camera camcommit 22;
-	_id2 = playSoundUI [getMissionPath "res\nuke.ogg", 5];
+	playSoundUI [getMissionPath "res\nuke.ogg", 3];
 	sleep 15;
 	//waitUntil { camCommitted _spawn_camera };
 
@@ -113,16 +113,18 @@ if (sector_timer <= 0) then {
 	titleText [localize "STR_MISSION3_FAILED" ,"BLACK", 3];
 	waitUntil { camCommitted _spawn_camera };
 	sleep 5;
-	disableUserInput false;
-	disableUserInput true;
-	disableUserInput false;
-	titleText ["" ,"BLACK FADED", 100];
-	sleep 15;
+	titleText ["Thank you for playing Liberation RX !" ,"BLACK", 3];
+	sleep 5;
 	_spawn_camera cameraEffect ["Terminate","back"];
 	camDestroy _spawn_camera;
 	camUseNVG false;
+	titleText ["" ,"BLACK FADED", 100];
+	sleep 5;
+	disableUserInput false;
+	disableUserInput true;
+	disableUserInput false;
+	(findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 	endMission "LOSER";
-	player allowDamage true;
 	"colorCorrections" ppEffectEnable false; // disable effect
 	"filmGrain" ppEffectEnable false; // disable effect
 };
