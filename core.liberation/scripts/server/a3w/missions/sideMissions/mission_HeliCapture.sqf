@@ -17,8 +17,8 @@ _setupObjects = {
     	false;
 	};
 	_chopper_only = []; 
-	{if !(_x isKindOf "Plane") then {_chopper_only pushBack _x};true} count opfor_air;
-	_vehicle = createVehicle [ (selectRandom _chopper_only), _missionPos, [], 0, "NONE"];
+	{if !(_x isKindOf "Plane") then {_chopper_only pushBack _x}; true} count opfor_air;
+	_vehicle = createVehicle [(selectRandom _chopper_only), _missionPos, [], 0, "NONE"];
 	_vehicle allowDamage false;
 	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vehicle setPos (getPos _vehicle);
