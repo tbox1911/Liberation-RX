@@ -1,4 +1,4 @@
-params ["_unit", "_selection", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
+params ["_unit", "_selection", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
 
 if (isNull _unit) exitWith {};
 if (!alive _unit) exitWith {};
@@ -13,11 +13,11 @@ if (!isNull _instigator) then {
 	};
 };
 
-private _damage = 0;
+private _ret = 0;
 if ( side _killer == GRLIB_side_friendly ) then {
 	private _vehicle = objectParent _killer;
 	private _isDriver = (_killer == driver _vehicle && speed _vehicle < 10);
-	if (!_isDriver) then { _damage = _amountOfDamage };
+	if (!_isDriver) then { _ret = _damage };
 };
 
-_damage;
+_ret;

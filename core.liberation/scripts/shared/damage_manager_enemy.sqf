@@ -1,4 +1,4 @@
-params ["_unit", "_selection", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
+params ["_unit", "_selection", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
 
 if (isNull _unit) exitWith {};
 if (!alive _unit) exitWith {};
@@ -28,7 +28,6 @@ if (_unit isKindOf "AllVehicles") then {
 	};
 };
 
-private _damage = _amountOfDamage;
 private _veh_unit = vehicle _unit;
 private _veh_killer = vehicle _killer;
 
@@ -42,13 +41,13 @@ if (count (crew _veh_unit) > 0) then {
 				(group _unit) reveal _killer;
 				(gunner _veh_unit) doTarget _killer;
 				_veh_unit fireAtTarget [_killer];
-				_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
+				_unit setVariable ["GRLIB_isProtected", round(time + 4), true];
 			};
 			_damage = 0;
 		};
 	};
 
-	if (side _killer == GRLIB_side_enemy) then { _damage = 0 };
+	if (side group _killer == GRLIB_side_enemy) then { _damage = 0 };
 };
 
 _damage;

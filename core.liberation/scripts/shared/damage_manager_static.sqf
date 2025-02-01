@@ -1,4 +1,4 @@
-params ["_unit", "_selection", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
+params ["_unit", "_selection", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
 
 if (isNull _unit) exitWith {};
 if (!alive _unit) exitWith {};
@@ -13,13 +13,12 @@ if (!isNull _instigator) then {
 	};
 };
 
-private _ret = _amountOfDamage;
-if (!isNull _killer && _unit != _killer) then {
-	if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
-		_ret = damage _unit + (_amountOfDamage min 0.25);
+private _ret = damage _unit;
+if (!isNull _killer && _unit != _killer && _damage >= 1) then {
+	if (_unit getVariable ["GRLIB_isProtected", 0] < time) then {
+		_ret = _ret + 0.25;
+		_unit setDamage _ret;
 		_unit setVariable ["GRLIB_isProtected", round (time + 4), true];
-	} else {
-		_ret = damage _unit;
 	};
 };
 
