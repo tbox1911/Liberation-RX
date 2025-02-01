@@ -28,7 +28,7 @@ _setupObjects = {
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_aiGroup setFormation "WEDGE";
-	_aiGroup setBehaviourStrong "COMBAT";
+	_aiGroup setBehaviourStrong "AWARE";
 	_aiGroup setCombatMode "YELLOW";
 	_aiGroup setSpeedMode "FULL";
 
@@ -38,7 +38,7 @@ _setupObjects = {
 		_waypoint = _aiGroup addWaypoint [markerPos _x, 0];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "FULL";
-		_waypoint setWaypointBehaviour "COMBAT";
+		_waypoint setWaypointBehaviour "AWARE";
 		_waypoint setWaypointCombatMode "YELLOW";
 		_waypoint setWaypointCompletionRadius 500;
 		_waypoint setWaypointFormation "WEDGE";

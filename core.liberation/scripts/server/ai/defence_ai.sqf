@@ -36,7 +36,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 			[_grp] call F_deleteWaypoints;
 			_waypoint = _grp addWaypoint [_basepos, _radius];
 			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointBehaviour "COMBAT";
+			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "YELLOW";
 			_waypoint setWaypointSpeed "FULL";
 			_waypoint = _grp addWaypoint [_basepos, _radius];

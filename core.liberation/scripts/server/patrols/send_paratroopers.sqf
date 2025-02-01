@@ -20,7 +20,7 @@ private _go_target = {
 	private _waypoint = _grp addWaypoint [_target, 100];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "COMBAT";
+	_waypoint setWaypointBehaviour "AWARE";
 	_waypoint setWaypointCombatMode "YELLOW";
 	_waypoint setWaypointCompletionRadius 300;
 	{_x doFollow (leader _grp)} foreach units _grp;
@@ -96,7 +96,7 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 		private _waypoint = _grp addWaypoint [_target, 0];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "FULL";
-		_waypoint setWaypointBehaviour "COMBAT";
+		_waypoint setWaypointBehaviour "AWARE";
 		_waypoint setWaypointCombatMode "YELLOW";
 		_waypoint setWaypointCompletionRadius 300;
 		_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
