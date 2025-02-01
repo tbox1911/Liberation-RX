@@ -4,7 +4,7 @@ params ["_sector", "_defense"];
 private _index = { if ((_x select 0) == _sector) exitWith { _forEachIndex } } forEach GRLIB_sector_defense;
 
 if (isNil "_index") then {
-    if (_sector in blufor_sectors) then { GRLIB_sector_defense pushBack [_sector, _defense] };
+    GRLIB_sector_defense pushBack [_sector, _defense];
 } else {
     if (_defense == 0) then {
         GRLIB_sector_defense deleteAt _index;
