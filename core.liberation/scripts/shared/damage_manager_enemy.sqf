@@ -36,12 +36,12 @@ if (count (crew _veh_unit) > 0) then {
 		// OpFor in vehicle
 		if (_veh_unit != _unit && _veh_killer == _killer && round (_killer distance2D _unit) <= 2) then {
 			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
+				_unit setVariable ["GRLIB_isProtected", round(time + 5), true];
 				private _msg = format ["%1 Stop Cheating !!", name _killer];
 				[gamelogic, _msg] remoteExec ["globalChat", owner _killer];
 				(group _unit) reveal _killer;
 				(gunner _veh_unit) doTarget _killer;
 				_veh_unit fireAtTarget [_killer];
-				_unit setVariable ["GRLIB_isProtected", round(time + 4), true];
 			};
 			_damage = 0;
 		};

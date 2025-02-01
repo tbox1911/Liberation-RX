@@ -257,8 +257,9 @@ PAR_Player_Init = {
 };
 
 PAR_HandleDamage_EH = {
-	params ["_unit", "_selectionName", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
-	if (isNull _unit) exitWith {0};
+	params ["_unit", "_selectionName", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
+	if (isNull _unit) exitWith {};
+	if (!alive _unit) exitWith {};
 	if (!isNull _instigator) then {
 		if (isNull (getAssignedCuratorLogic _instigator)) then {
 			_killer = _instigator;
@@ -279,23 +280,23 @@ PAR_HandleDamage_EH = {
 		if (!isNull _veh_killer) then {
 			_veh_tk = (_veh_killer distance2D _veh_unit > 10);
 		};
-		if (_isNotWounded && isPlayer _killer && _killer != _unit && _veh_tk && _amountOfDamage > 0.15) then {
-			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
+		if (_isNotWounded && isPlayer _killer && _killer != _unit && _veh_tk && _damage >= 0.15) then {
+			if (_unit getVariable ["GRLIB_isProtected", 0] < time) then {
+				_unit setVariable ["GRLIB_isProtected", round(time + 5), true];
 				["PAR_tkMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 				[_unit, _killer] remoteExec ["LRX_tk_check", 0];
-				_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 			};
-			_amountOfDamage = 0;
+			_damage = 0;
 		};
 	};
 
-	if (_isNotWounded && _amountOfDamage >= 0.86) then {
+	if (_isNotWounded && _damage >= 0.86) then {
 		if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
 		_unit setVariable ["PAR_isUnconscious", true, true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};
 
-	_amountOfDamage min 0.86;
+	_damage min 0.86;
 };
 
 PAR_Player_Unconscious = {

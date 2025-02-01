@@ -16,10 +16,9 @@ if (!isNull _instigator) then {
 private _ret = damage _unit;
 if (!isNull _killer && _unit != _killer && _damage >= 1) then {
 	if (_unit getVariable ["GRLIB_isProtected", 0] < time) then {
+		_unit setVariable ["GRLIB_isProtected", round (time + 5), true];
 		_ret = _ret + 0.25;
 		_unit setDamage _ret;
-		_unit setVariable ["GRLIB_isProtected", round (time + 4), true];
 	};
 };
-
 _ret;
