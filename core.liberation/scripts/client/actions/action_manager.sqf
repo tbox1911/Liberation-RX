@@ -3,7 +3,10 @@
 waituntil { sleep 1; GRLIB_player_configured};
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
-private ["_near_spawn", "_near_spawn_tent"];
+GRLIB_activated_sectors = [];
+GRLIB_activated_radius = GRLIB_sector_size * 1.4;
+
+private ["_near_spawn", "_near_spawn_tent", "_next_sector"];
 
 while { true } do {
 	GRLIB_player_is_menuok = [] call is_menuok;
@@ -32,5 +35,34 @@ while { true } do {
 		GRLIB_player_owner_fob = false;
 		sleep 1;
 	};
+
+	// Warn Sector
+	_next_sector = [GRLIB_activated_radius, player, opfor_sectors] call F_getNearestSector;
+	if (_next_sector != "" && !(_next_sector in GRLIB_activated_sectors)) then {
+		_dist_sector = (player distance2D (markerPos _next_sector));
+		if (_dist_sector <= GRLIB_activated_radius) then {
+			GRLIB_activated_sectors pushBackUnique _next_sector;
+			[_next_sector] spawn {
+				params ["_sector"];
+				private _marker_pos = markerPos _sector;
+				if (player distance2D _marker_pos > GRLIB_sector_size) then {
+					private _msg = format ["-- You are entering <t color='#ff0000'>Enemy</t> territory! --"];
+					[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
+					sleep 3;
+				};
+				while {(player distance2D _marker_pos <= GRLIB_activated_radius)} do {
+					if (player distance2D _marker_pos < GRLIB_sector_size) exitWith {
+						private _msg = format ["-- You have entered <t color='#ff0000'>%1</t>. --", markerText _sector];
+						[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
+						sleep 3;
+					};
+					sleep 1;
+				};
+				waitUntil { sleep 10; (player distance2D _marker_pos > GRLIB_activated_radius)};
+				GRLIB_activated_sectors = GRLIB_activated_sectors - [_sector];
+			};
+		};
+	};
+
 	sleep 1;
 };

@@ -3,6 +3,9 @@ waitUntil {sleep 1; !isNil "active_sectors" };
 
 private ["_nextsector", "_hc"];
 
+GRLIB_sector_spawning = false;
+publicVariable "active_sectors";
+
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	{
 		_nextsector = _x;
@@ -20,10 +23,10 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				};
 			};
 		};
-		sleep 0.25;
+		sleep 0.1;
 	} foreach opfor_sectors;
 
 	//diag_log format [ "Full sector scan at %1, active sectors: %2", time, active_sectors ];
 	if ([] call F_checkVictory) then { [] spawn blufor_victory };
-	sleep 5;
+	sleep 1;
 };

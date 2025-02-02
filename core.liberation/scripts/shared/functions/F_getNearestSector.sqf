@@ -1,4 +1,4 @@
-params [ "_radius", [ "_postosearch", getPosATL player ], [ "_sector_list", sectors_allSectors ] ];
+params ["_radius", ["_postosearch", getPosATL player], ["_sector_list", sectors_allSectors]];
 
 private _sector_to_return = "";
 private _close_sectors = _sector_list select { (markerPos _x) distance _postosearch < _radius };

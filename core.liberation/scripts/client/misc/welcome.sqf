@@ -50,4 +50,5 @@ private _msg = format [
 ];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
+sleep 3;
 GRLIB_player_configured = true;

@@ -21,7 +21,7 @@ private _last_pos = getPosATL (leader _grp);
 diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
 
 sleep (2 + floor random 5);
-private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer", "_sleep", "_target"];
+private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
 while {(count _objective_pos > 0)} do {
 	_sleep = 300;
 	{
@@ -63,17 +63,16 @@ while {(count _objective_pos > 0)} do {
 		_timer = round (time + (15 * 60));
 	};
 
-	_sector = [100, _objective_pos] call F_getNearestSector;
 	if (time > _timer) then {
 		_last_pos = getPosATL (leader _grp);
 		if (GRLIB_global_stop == 1) then {
-			_target = [_last_pos, GRLIB_spawn_max] call F_getNearestBlufor;
+			_target = [_last_pos, GRLIB_spawn_min] call F_getNearestBlufor;
 			_next_objective = [getPosATL _target, round (_last_pos distance2D _target)];
 		} else {
 			_next_objective = [_last_pos] call F_getNearestBluforObjective;
 		};
 
-		if ((_next_objective select 1) <= GRLIB_spawn_max) then {
+		if ((_next_objective select 1) <= GRLIB_spawn_min) then {
 			_objective_pos = (_next_objective select 0);
 			_attack = true;
 		} else {
