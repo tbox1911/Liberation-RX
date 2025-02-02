@@ -55,9 +55,10 @@ while { dialog && alive player && _membercount > 0 } do {
 			_old_selection = _selection;
 		};
 		sleep 0.2;
-		(!dialog || GRLIB_squadaction != -1);
+		(!dialog || !(alive player) || GRLIB_squadaction != -1);
 	};
-	if (!dialog) exitWith {};
+	if !(dialog) exitWith {};
+	if !(alive player) exitWith {};
 
 	// Promote
 	if ( GRLIB_squadaction == 1 ) then {
@@ -116,9 +117,12 @@ while { dialog && alive player && _membercount > 0 } do {
 		closeDialog 0;
 		[_selectedmember] spawn {
 			params ["_unit"];
+			titleText ["", "BLACK FADED", 1];
+			sleep 0.5;
 			private _oldprice = [_unit] call F_loadoutPrice;
 			private _oldstuff = getUnitLoadout _unit;
 			["Open", [false, myLARsBox, _unit]] call BIS_fnc_arsenal;
+			titleText ["" ,"BLACK IN", 3];
 			waitUntil { sleep 0.5; isNull (uiNameSpace getVariable ["BIS_fnc_arsenal_cam", objNull])};
 			[_unit] call F_filterLoadout;
 			private _newprice = [_unit] call F_loadoutPrice;
@@ -180,7 +184,6 @@ while { dialog && alive player && _membercount > 0 } do {
 		} foreach _squad_list;
 		lbSetCurSel [101, _selection];
 	};
-
 };
 
 closeDialog 0;
