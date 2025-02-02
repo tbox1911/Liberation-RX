@@ -1,7 +1,7 @@
 params ["_vehicle", ["_side", GRLIB_side_friendly]];
 
-// Drone
-if (typeOf _vehicle in uavs_vehicles + static_vehicles_AI) exitWith {
+// Aircraft / Drone
+if (typeOf _vehicle in uavs_vehicles + static_vehicles_AI || (_vehicle isKindOf "Air")) exitWith {
 	private _grp = createGroup [_side, true];
 	_side createVehicleCrew _vehicle;
 	sleep 0.2;
@@ -24,14 +24,13 @@ if (count _vehicle_roles == 0) then {
 if (count _vehicle_roles == 0) exitWith {[]};
 
 private _path = "";
-private _aircraft = (_vehicle isKindOf "Air");
 private _grp = createGroup [_side, true];
 {
 	private _unit = objNull;
 	if (_side == GRLIB_side_enemy) then {
 		_unit = _grp createUnit [opfor_crew, _vehicle, [], 20, "NONE"];
 		_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-		if (!_aircraft && typeOf _vehicle in militia_vehicles) then {
+		if (typeOf _vehicle in militia_vehicles) then {
 			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
 			[_path, _unit] call F_getTemplateFile;
 			[_unit] spawn reammo_ai;
@@ -41,11 +40,9 @@ private _grp = createGroup [_side, true];
 	if (_side == GRLIB_side_friendly) then {
 		_unit = _grp createUnit [crewman_classname, _vehicle, [], 20, "NONE"];
 		_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-		if (!_aircraft) then {
-			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
-			[_path, _unit] call F_getTemplateFile;
-			[_unit] spawn reammo_ai;
-		};
+		_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
+		[_path, _unit] call F_getTemplateFile;
+		[_unit] spawn reammo_ai;
 	};
 
 	if (_side == GRLIB_side_civilian) then {
