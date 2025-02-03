@@ -10,7 +10,7 @@ private _opfor_veh = objNull;
 private _opfor_grp = grpNull;
 private _usable_sectors = [];
 {
-	if ( (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0) ) then {
+	if ((count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0)) then {
 		_usable_sectors pushback _x;
 	};
 	sleep 0.1;

@@ -8,7 +8,7 @@ private _civ_veh = objNull;
 private _civ_grp = grpNull;
 private _usable_sectors = [];
 {
-	if ( (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) ) then {
+	if (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) then {
 		_usable_sectors pushback _x;
 	};
 	sleep 0.1;
