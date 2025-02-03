@@ -46,13 +46,13 @@ while { true } do {
 				params ["_sector"];
 				private _marker_pos = markerPos _sector;
 				if (player distance2D _marker_pos > GRLIB_sector_size) then {
-					private _msg = format ["-- You are entering <t color='#ff0000'>Enemy</t> territory! --"];
+					private _msg = localize "STR_NOTIFICATION_ENTER_TERRITORY";
 					[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 					sleep 3;
 				};
 				while {(player distance2D _marker_pos <= GRLIB_activated_radius)} do {
 					if (player distance2D _marker_pos < GRLIB_sector_size) exitWith {
-						private _msg = format ["-- You have entered <t color='#ff0000'>%1</t>. --", markerText _sector];
+						private _msg = format [localize "STR_NOTIFICATION_ENTER_SECTOR", markerText _sector];
 						[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 						sleep 3;
 					};

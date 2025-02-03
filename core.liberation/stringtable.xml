@@ -857,6 +857,14 @@
 			<Portuguese>Cancelar</Portuguese>
 			<Czech>Zrušit</Czech>
 		</Key>
+		<Key ID="STR_NOTIFICATION_ENTER_TERRITORY">
+			<Original>-- You are entering <t color='#ff0000'>Enemy</t> territory! --</Original>
+			<French>-- Vous entrez en territoire <t color='#ff0000'>Ennemie</t>! --</French>
+		</Key>
+		<Key ID="STR_NOTIFICATION_ENTER_SECTOR">
+			<Original>-- You have entered <t color='#ff0000'>%1</t>. --</Original>
+			<French>-- Vous entrez dans <t color='#ff0000'>%1</t>. --</French>
+		</Key>
 		<Key ID="STR_NOTIFICATION_SECTORCAPTURED_TITLE">
 			<Original>SECTOR CAPTURED</Original>
 			<French>SECTEUR CAPTURE</French>
