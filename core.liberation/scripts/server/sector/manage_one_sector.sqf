@@ -10,6 +10,8 @@ GRLIB_sector_spawning = true;
 publicVariable "GRLIB_sector_spawning";
 
 private _sector_pos = markerPos _sector;
+if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
+
 private _stopit = false;
 private _spawncivs = false;
 private _building_ai_max = 0;
