@@ -20,7 +20,6 @@ private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
 diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
 
-sleep (2 + floor random 5);
 private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
 while {(count _objective_pos > 0)} do {
 	_sleep = 300;

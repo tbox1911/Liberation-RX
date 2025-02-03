@@ -8,8 +8,6 @@ diag_log format ["Group %1 - Defend: %2", _grp, _flagpos];
 private _grp_veh = objectParent (leader _grp);
 if (_grp_veh isKindOf "Ship") exitWith { [_grp, getPosATL _grp_veh, _radius] spawn patrol_ai };
 
-sleep (1 + floor random 10);
-
 private _timer = 0;
 private _patrol = false;
 private ["_target", "_basepos", "_waypoint", "_wp0"];

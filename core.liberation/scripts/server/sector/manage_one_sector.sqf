@@ -7,7 +7,7 @@ if (GRLIB_sector_spawning) then {
 	waitUntil { sleep 10; !GRLIB_sector_spawning };
 };
 GRLIB_sector_spawning = true;
-publicVariable "active_sectors";
+publicVariable "GRLIB_sector_spawning";
 
 private _sector_pos = markerPos _sector;
 private _stopit = false;

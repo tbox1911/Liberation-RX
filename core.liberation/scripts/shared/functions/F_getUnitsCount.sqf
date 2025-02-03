@@ -5,8 +5,7 @@ if (_side == GRLIB_side_friendly) exitWith {
     {
         (alive _x) && !(captive _x) &&
         (_x distance2D _position < _distance) &&
-        (getPos _x select 2 < 50) && (speed (vehicle _x) <= 80) &&
-        !(isNil {_x getVariable "PAR_Grp_ID"})
+        (getPos _x select 2 < 50) && (speed (vehicle _x) <= 80)
     } count _countblufor;
 };
 
