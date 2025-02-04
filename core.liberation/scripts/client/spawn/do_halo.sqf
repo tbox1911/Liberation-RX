@@ -66,6 +66,7 @@ diag_log format ["Airdrop %1 on %2 at %3", (typeOf _unit), halo_position, time];
 
 if ( dojump > 0 ) then {
 	halo_position = halo_position getPos [floor(random 100), floor(random 360)];
+	player setVariable ["GRLIB_action_inuse", true, true];
 	if (_is_vehicle) then {
 		// Vehicle HALO
 		if ([_cost] call F_pay) then {
@@ -96,7 +97,6 @@ if ( dojump > 0 ) then {
 		if (!isNil "_my_squad") then { { _units pushBack _x } forEach units _my_squad };
 
 		// Jump!
-		player setVariable ["GRLIB_action_inuse", true, true];
 		private _unit_list_halo = _units select {
 			!(isPlayer _x) && (isNull objectParent _x) &&
 			(_x distance2D player < 30) &&
@@ -111,6 +111,7 @@ if ( dojump > 0 ) then {
 			[_x, halo_position] spawn paraDrop;
 			sleep 1;
 		} forEach _unit_list_halo;
-		player setVariable ["GRLIB_action_inuse", false, true];
 	};
+	sleep 1;
+	player setVariable ["GRLIB_action_inuse", false, true];
 };
