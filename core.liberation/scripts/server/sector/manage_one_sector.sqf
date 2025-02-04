@@ -192,7 +192,7 @@ if (count _vehtospawn > 0) then {
 			sleep 1;
 		};
 	} foreach _vehtospawn;
-	sleep &;
+	sleep 1;
 };
 
 // Create garnison
