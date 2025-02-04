@@ -858,12 +858,13 @@
 			<Czech>Zrušit</Czech>
 		</Key>
 		<Key ID="STR_NOTIFICATION_ENTER_TERRITORY">
-			<Original>-- You are entering <t color='#ff0000'>Enemy</t> territory! --</Original>
-			<French>-- Vous entrez en territoire <t color='#ff0000'>Ennemie</t>! --</French>
+		&lt;t color='#00e000'&gt;Forgive&lt;/t&gt;
+			<Original>-- You are entering &lt;t color='#ff0000'&gt;Enemy&lt;/t&gt; territory! --</Original>
+			<French>-- Vous entrez en territoire &lt;t color='#ff0000'&gt;Ennemie&lt;/t&gt;! --</French>
 		</Key>
 		<Key ID="STR_NOTIFICATION_ENTER_SECTOR">
-			<Original>-- You have entered <t color='#ff0000'>%1</t>. --</Original>
-			<French>-- Vous entrez dans <t color='#ff0000'>%1</t>. --</French>
+			<Original>-- You have entered &lt;t color='#ff0000'&gt;%1&lt;/t&gt;. --</Original>
+			<French>-- Vous entrez dans &lt;t color='#ff0000'&gt;%1&lt;/t&gt;. --</French>
 		</Key>
 		<Key ID="STR_NOTIFICATION_SECTORCAPTURED_TITLE">
 			<Original>SECTOR CAPTURED</Original>
