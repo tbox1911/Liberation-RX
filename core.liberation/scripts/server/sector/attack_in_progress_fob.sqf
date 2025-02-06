@@ -17,12 +17,14 @@ if (_defense_type > 0) then {
 	_grp = _data select 0;
 };
 
+attack_in_progress_fob pushBack _fob_pos;
+
 if (_ownership == GRLIB_side_enemy) then {
-	private _sector_timer = GRLIB_vulnerability_timer + (5 * 60);
+	sector_timer = GRLIB_vulnerability_timer + (5 * 60);
 	private _near_outpost = (_fob_pos in GRLIB_all_outposts);
 	private _activeplayers = 0;
 
-	[_fob_pos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];
+	[_fob_pos, 1, sector_timer] remoteExec ["remote_call_fob", 0];
 	[_fob_pos] spawn {
 		params ["_pos"];
 		sleep 60;
@@ -35,12 +37,12 @@ if (_ownership == GRLIB_side_enemy) then {
 	};
 
 	sleep 10;
-	_sector_timer = round (time + _sector_timer);
+	sector_timer = round (time + sector_timer);
 
-	while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
+	while { (time < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [_fob_pos, GRLIB_capture_size] call F_sectorOwnership;
 		_activeplayers = count (allPlayers select { alive _x && (_x distance2D (_fob_pos)) < GRLIB_sector_size });
-		if (_sector_timer mod 60 == 0 && !_near_outpost) then {
+		if (sector_timer mod 60 == 0 && !_near_outpost) then {
 			[_fob_pos, 4] remoteExec ["remote_call_fob", 0];
 		};
 		sleep 3;
@@ -80,6 +82,7 @@ if (_ownership == GRLIB_side_enemy) then {
 	};
 };
 
+attack_in_progress_fob = attack_in_progress_fob - [_fob_pos];
 if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
 
 diag_log format ["End Attack FOB %1 at %2", _fob_pos, time];

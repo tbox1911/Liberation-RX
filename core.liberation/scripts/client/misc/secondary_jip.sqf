@@ -12,3 +12,11 @@ if (GRLIB_secondary_in_progress == 1) then {
 if (GRLIB_secondary_in_progress == 2) then {
 	[6] spawn remote_call_intel;
 };
+
+if (count attack_in_progress > 0) then {
+	[(attack_in_progress select 0), 1, sector_timer] spawn remote_call_sector;
+};
+
+if (count attack_in_progress_fob > 0) then {
+	[(attack_in_progress_fob select 0), 1, sector_timer] spawn remote_call_fob;
+};
