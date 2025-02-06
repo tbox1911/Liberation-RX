@@ -9,12 +9,13 @@ while { diag_fps <= 20 || combat_readiness < _level } do { sleep 60 };
 private _opfor_veh = objNull;
 private _opfor_grp = grpNull;
 private _usable_sectors = [];
+private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors) call BIS_fnc_arrayShuffle;
 {
-	if ((count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0)) then {
+	if ((count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0)) exitWith {
 		_usable_sectors pushback _x;
 	};
 	sleep 0.1;
-} foreach (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors);
+} foreach _search_sectors;
 
 if (count _usable_sectors > 0) then {
 	private  _sector_pos = markerPos (selectRandom _usable_sectors);
