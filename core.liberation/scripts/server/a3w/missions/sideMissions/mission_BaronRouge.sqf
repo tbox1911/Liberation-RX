@@ -84,7 +84,7 @@ _failedExec = nil;
 _successExec = {
 	// Mission completed
 	private _killer = (_vehicles select 0) getVariable ["GRLIB_last_killer", objNull];
-	if (!isNull _killer) then {
+	if (isPlayer _killer) then {
 		private _rwd_xp = 30;
 		private _text = format ["Reward Received: %1 XP", _rwd_xp];
 		[_killer, _rwd_xp] call F_addScore;

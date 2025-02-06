@@ -82,7 +82,7 @@ private _count_blu = false;
 if (isNil "_ignoreAiDeaths") then { _ignoreAiDeaths = false };
 
 waitUntil {
-	sleep 1;
+	sleep 2;
 
 	// Force immediate leader change if current one is dead
 	if ( { alive _x } count (units _aiGroup) > 0) then {
