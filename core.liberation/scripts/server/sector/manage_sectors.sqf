@@ -4,9 +4,9 @@ sleep 3;
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 
-private ["_nextsector", "_unit"];
+private ["_nextsector", "_unit", "_msg"];
 private _countblufor = [];
-
+private _hc_missions = [];
 active_sectors_hc = [];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
@@ -24,30 +24,36 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				if (isNull _hc) then {
 					[_nextsector] spawn manage_one_sector;
 				} else {
-					diag_log format ["Sector: %1 spawned on %2", _nextsector, _hc];
+					diag_log format ["--- LRX Server: Sector: %1 spawned on %2", _nextsector, _hc];
 					[_nextsector] remoteExec ["manage_one_sector", owner _hc];
 					active_sectors_hc pushBack [_nextsector, _hc];
 				};
 				if (_nextsector in sectors_military) then {
 					[_nextsector] spawn manage_ammoboxes;
 				};
-				sleep 2;
+				sleep 30;
 			};
 		};
 	} foreach _countblufor;
 
-	// check HC sectors
+	_hc_missions = active_sectors_hc;
 	{
-		_nextsector = _x select 0:
+		_nextsector = _x select 0;
 		_hc = _x select 1;
-		if (owner _hc == 0 && _nextsector in opfor_sectors) then {
-			gamelogic globalChat format ["Headless client %1 lost sector %2 management.", _hc, _nextsector];
+		if (owner _hc == 2 && _nextsector in active_sectors) then {
+			_msg = format ["Headless client %1 lost control of sector %2!", str _hc, _nextsector];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			sleep 0.1;
+			_msg = format ["Restarting sector %1 on Server, Warning!", _nextsector];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			active_sectors_hc = active_sectors_hc - [_x];
 			active_sectors = active_sectors - [_nextsector];
 			publicVariable "active_sectors";
-			active_sectors_hc = active_sectors_hc - [_x];
-			sleep 1;		
+			GRLIB_sector_spawning = false;
+			publicVariable "GRLIB_sector_spawning";
+			sleep 30;
 		};
-	} forEach active_sectors_hc;
+	} forEach _hc_missions;
 
 	//diag_log format [ "Full sector scan at %1, active sectors: %2", time, active_sectors ];
 	if ([] call F_checkVictory) then { [] spawn blufor_victory };

@@ -2,15 +2,17 @@ diag_log "--- Liberation RX by pSiKO ---";
 if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
 
 titleText ["","BLACK FADED", 100];
-if (isMultiplayer && count (entities "HeadlessClient_F") > 0) then {
+sleep 3;
+if (!isServer && isMultiplayer && count (entities "HeadlessClient_F") > 0) then {
 	titleText ["Waiting for Headless client....","BLACK FADED", 100];
 	sleep 10;
 };
 
+diag_log "--- Init start ---";
+titleText ["-- Liberation RX --","BLACK FADED", 100];
 disableUserInput true;
 
 [] call compileFinal preprocessFileLineNumbers "build_info.sqf";
-diag_log "--- Init start ---";
 
 profileNamespace setVariable ["BIS_SupportDevelopment", nil];
 enableSaving [false, false];
@@ -23,11 +25,17 @@ GRLIB_ACE_enabled = false;
 //GRLIB_LRX_debug = true;
 
 [] call compileFinal preprocessFileLineNumbers "whitelist.sqf";
+sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\liberation_functions.sqf";
+sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
+sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\server\sector\init_sectors.sqf";
+sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+sleep 1;
 
 if (!isDedicated && hasInterface) then {
 	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
@@ -35,6 +43,7 @@ if (!isDedicated && hasInterface) then {
 
 if (!abort_loading) then {
 	[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
+	sleep 1;
 	[] spawn compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init.sqf";
 
 	if (GRLIB_ACE_enabled) then {

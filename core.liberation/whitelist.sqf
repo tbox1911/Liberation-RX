@@ -13,6 +13,9 @@ GRLIB_whitelisted_moderators = [
 
 // Forbiden player names.
 GRLIB_blacklisted_names = [
+    "headlessclient",
+    "hc1",
+    "hc2",
     "server",
     "public",
     "admin",

@@ -3,10 +3,9 @@ diag_log "--- Server Init start ---";
 // EventHandler
 addMissionEventHandler ['HandleDisconnect', {
 	params ["_unit", "_id", "_uid", "_name"];
-	if (!isNull _unit) then {
-		[_unit, _uid, true] call save_context;
-		[_unit, _uid] call cleanup_player;
-	};
+	if (_name select [0,3] in ["HC1", "HC2"]) exitWith {};
+	[_unit, _uid, true] call save_context;
+	[_unit, _uid] call cleanup_player;
 	false;
 }];
 
