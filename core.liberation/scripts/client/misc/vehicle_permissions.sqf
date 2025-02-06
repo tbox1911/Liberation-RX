@@ -13,6 +13,18 @@ if (count _info == 2) then { _turret = _info select 1 };
 
 private _msg = "";
 if (!(_role == "cargo" || _vehicle_class in list_static_weapons)) then {
+	private _owner = [_unit1, _vehicle] call is_owner;
+	private _public = [_vehicle] call is_public;
+	if (!_owner && !_public) exitWith {
+		_msg = localize "STR_PERMISSION_NO_OWN";
+		_doeject = true;
+	};
+
+	if !(_unit1 getVariable ["GRLIB_is_prisoner", false]) exitWith {
+		_msg = localize "STR_PERMISSION_NO_PRI";
+		_doeject = true;
+	};
+
 	if (GRLIB_permissions_param) then {
 		if (!([player, 0] call fetch_permission)) then {
 			_doeject = true;
@@ -33,38 +45,23 @@ if (!(_role == "cargo" || _vehicle_class in list_static_weapons)) then {
 			};
 		};
 
-		_score = [player] call F_getScore;
+		private _score = [player] call F_getScore;
 		if (_vehicle_class in elite_vehicles && _score < GRLIB_perm_max) then {
 			_doeject = true;
 			_msg = localize "STR_PERMISSION_NO_VIP";
 		};
 
-		_support_vehicles = [];
 		if (_vehicle_class in support_vehicles_classname && _score < GRLIB_perm_inf) then {
 			_doeject = true;
 			_msg = localize "STR_PERMISSION_NO_SUP";
 		};
 	};
-
-	if (!_doeject) then {
-		private _owner = [_unit1, _vehicle] call is_owner;
-		private _public = [_vehicle] call is_public;
-		if (!_owner && !_public) then {
-			_msg = localize "STR_PERMISSION_NO_OWN";
-			if (isPlayer _unit1) then {
-				playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 300];
-			};
-			_doeject = true;
-		};
-	};
-
-	if (side _unit1 != GRLIB_side_friendly && !isPlayer _unit1) then {
-		_doeject = true;
-		_msg = localize "STR_PERMISSION_NO_PRI";
-	};
 };
 
 if (_doeject) then {
+	if (isPlayer _unit1) then {
+		playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 300];
+	};
 	[_unit1, false] spawn F_ejectUnit;
 	if (typeName _unit2 == "OBJECT") then {
 		if (!isNull _unit2) then {
