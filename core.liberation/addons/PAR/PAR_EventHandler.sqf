@@ -4,24 +4,6 @@ params ["_unit"];
 // Cannot DisAssemble
 _unit enableWeaponDisassembly false;
 
-// Check Veh perms
-_unit removeAllEventHandlers "GetInMan";
-_unit addEventHandler ["GetInMan", {
-	params ["_unit", "_role", "_vehicle"];
-	[_unit, _role, _vehicle] spawn vehicle_permissions;
-	[_vehicle] spawn F_vehicleDefense;
-}];
-_unit removeAllEventHandlers "SeatSwitchedMan";
-_unit addEventHandler ["SeatSwitchedMan", { _this spawn vehicle_permissions }];
-
-_unit addEventHandler ["GetOutMan", {
-	params ["_unit", "_role", "_vehicle"];
-	if (_vehicle == getConnectedUAV player) then {
-		objNull remoteControl _unit;
-		player switchCamera cameraView;
-	};
-}];
-
 _unit addEventHandler ["InventoryClosed", {
 	params ["_unit", "_container"];
 	[_unit] call F_filterLoadout;
@@ -121,11 +103,12 @@ if (_unit == player) then {
 	"];
 
 	// Get in Vehicle
+	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
-		[_vehicle] spawn {
-			params ["_vehicle"];
+		private _ret = [_unit, _role, _vehicle] call vehicle_permissions;
+		if !(_ret) then {
 			1 fadeSound (round desired_vehvolume / 100.0);
 			3 fadeMusic (getAudioOptionVolumes select 1);
 			NRE_EarplugsActive = 1;
@@ -143,8 +126,13 @@ if (_unit == player) then {
 	}];
 
 	// Get out Vehicle
+	_unit removeAllEventHandlers "GetOutMan";
 	_unit addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
+		if (_vehicle == getConnectedUAV player) then {
+			objNull remoteControl _unit;
+			player switchCamera cameraView;
+		};
 		1 fadeSound 1;
 		3 fadeMusic 0;
 		NRE_EarplugsActive = 0;
@@ -162,6 +150,10 @@ if (_unit == player) then {
 		};
 	}];
 
+	// Switch seat
+	_unit removeAllEventHandlers "SeatSwitchedMan";
+	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_permissions }];
+
 	// Player killed EH
 	player addEventHandler ["Killed", { _this spawn PAR_fn_death }];
 
@@ -175,6 +167,29 @@ if (_unit == player) then {
 } else {
 	// AI killed EH
 	_unit addEventHandler ["Killed", { _this spawn PAR_fn_death }];
+
+	// Get in Vehicle
+	_unit removeAllEventHandlers "GetInMan";
+	_unit addEventHandler ["GetInMan", {
+		params ["_unit", "_role", "_vehicle"];
+		private _ret = [_unit, _role, _vehicle] call vehicle_permissions;
+		if !(_ret) then {
+			[_vehicle] spawn F_vehicleDefense;
+		};
+	}];
+
+	// Get out Vehicle
+	_unit addEventHandler ["GetOutMan", {
+		params ["_unit", "_role", "_vehicle"];
+		if (_vehicle == getConnectedUAV player) then {
+			objNull remoteControl _unit;
+			player switchCamera cameraView;
+		};
+	}];
+
+	// Switch seat
+	_unit removeAllEventHandlers "SeatSwitchedMan";
+	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_permissions }];
 
 	// AI Handle Damage EH
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];

@@ -20,7 +20,7 @@ if (!(_role == "cargo" || _vehicle_class in list_static_weapons)) then {
 		_doeject = true;
 	};
 
-	if !(_unit1 getVariable ["GRLIB_is_prisoner", false]) exitWith {
+	if !(_unit1 getVariable ["GRLIB_is_prisoner", true]) exitWith {
 		_msg = localize "STR_PERMISSION_NO_PRI";
 		_doeject = true;
 	};
