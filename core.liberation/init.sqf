@@ -25,17 +25,12 @@ GRLIB_ACE_enabled = false;
 //GRLIB_LRX_debug = true;
 
 [] call compileFinal preprocessFileLineNumbers "whitelist.sqf";
-sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\liberation_functions.sqf";
-sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
-sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
-sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\server\sector\init_sectors.sqf";
-sleep 1;
 [] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
-sleep 1;
+sleep 2;
 
 if (!isDedicated && hasInterface) then {
 	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
@@ -43,7 +38,6 @@ if (!isDedicated && hasInterface) then {
 
 if (!abort_loading) then {
 	[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
-	sleep 1;
 	[] spawn compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init.sqf";
 
 	if (GRLIB_ACE_enabled) then {

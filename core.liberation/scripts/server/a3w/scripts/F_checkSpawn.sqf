@@ -17,14 +17,20 @@ private _list = [];
 	// sector in use
 	if (_sector in (active_sectors + A3W_sectors_in_use)) then { _keep_sector = false };
 
-	// sector too close from any FOB
-	if (_sector_pos distance2D ([_sector_pos] call F_getNearestFob) <= (GRLIB_sector_size * 1.25)) then { _keep_sector = false };
+	if (_keep_sector) then {
+		// sector too close from any FOB
+		if (_sector_pos distance2D ([_sector_pos] call F_getNearestFob) <= (GRLIB_sector_size * 1.25)) then { _keep_sector = false };
+	};
 
-	// sector too far from any blufor sectors
-	if (([GRLIB_spawn_min, _sector_pos, blufor_sectors] call F_getNearestSector) == "") then { _keep_sector = false };
+	if (_keep_sector) then {
+		// sector too far from any blufor sectors
+		if (([GRLIB_spawn_min, _sector_pos, blufor_sectors] call F_getNearestSector) == "") then { _keep_sector = false };
+	};
 
-	// sector too close from any opfor sectors
-	if (([GRLIB_sector_size, _sector_pos, opfor_sectors] call F_getNearestSector) != "") then { _keep_sector = false };
+	if (_keep_sector) then {
+		// sector too close from any opfor sectors
+		if (([GRLIB_sector_size, _sector_pos, opfor_sectors] call F_getNearestSector) != "") then { _keep_sector = false };
+	};
 
 	if (_keep_sector) then { _list pushBack _x };
 

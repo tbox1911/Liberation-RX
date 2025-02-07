@@ -34,6 +34,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				sleep 30;
 			};
 		};
+		sleep 0.1;
 	} foreach _countblufor;
 
 	_hc_missions = active_sectors_hc;
@@ -52,6 +53,10 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			GRLIB_sector_spawning = false;
 			publicVariable "GRLIB_sector_spawning";
 			sleep 30;
+		};
+
+		if !(_nextsector in active_sectors) then {
+			active_sectors_hc = active_sectors_hc - [_x];
 		};
 	} forEach _hc_missions;
 

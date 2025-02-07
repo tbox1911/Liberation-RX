@@ -29,6 +29,7 @@ while { true } do {
 			_marker setMarkerPosLocal (_leader getPos [floor(random 50), floor(random 360)]);			
 			_hostile_markers pushback _marker;
 		};
+		sleep 0.1;
 	} foreach (groups GRLIB_side_enemy);
 
 	sleep (30 + floor(random 60));
