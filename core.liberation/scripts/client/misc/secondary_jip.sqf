@@ -1,4 +1,7 @@
 waitUntil {	sleep 1; !isNil "GRLIB_secondary_in_progress"};
+waitUntil {	sleep 1; !isNil "sector_attack_in_progress"};
+waitUntil {	sleep 1; !isNil "fob_attack_in_progress"};
+
 if (GRLIB_secondary_in_progress < 0) exitWith {};
 
 if (GRLIB_secondary_in_progress == 0) then {
@@ -13,10 +16,10 @@ if (GRLIB_secondary_in_progress == 2) then {
 	[6] spawn remote_call_intel;
 };
 
-if (count attack_in_progress > 0) then {
-	[(attack_in_progress select 0), 1, sector_timer] spawn remote_call_sector;
+if (count sector_attack_in_progress > 0) then {
+	[(sector_attack_in_progress select 0), 1, sector_timer] spawn remote_call_sector;
 };
 
-if (count attack_in_progress_fob > 0) then {
-	[(attack_in_progress_fob select 0), 1, sector_timer] spawn remote_call_fob;
+if (count fob_attack_in_progress > 0) then {
+	[(fob_attack_in_progress select 0), 1, sector_timer] spawn remote_call_fob;
 };

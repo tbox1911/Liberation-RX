@@ -17,7 +17,8 @@ if (_defense_type > 0) then {
 	_grp = _data select 0;
 };
 
-attack_in_progress_fob pushBack _fob_pos;
+fob_attack_in_progress pushBack _fob_pos;
+publicVariable "fob_attack_in_progress";
 
 if (_ownership == GRLIB_side_enemy) then {
 	sector_timer = GRLIB_vulnerability_timer + (5 * 60);
@@ -82,7 +83,8 @@ if (_ownership == GRLIB_side_enemy) then {
 	};
 };
 
-attack_in_progress_fob = attack_in_progress_fob - [_fob_pos];
+fob_attack_in_progress = fob_attack_in_progress - [_fob_pos];
+publicVariable "fob_attack_in_progress";
 if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
 
 diag_log format ["End Attack FOB %1 at %2", _fob_pos, time];
