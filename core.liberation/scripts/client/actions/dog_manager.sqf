@@ -1,3 +1,4 @@
+waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
 
 private ["_my_dog","_onfoot","_dog_pos","_man","_dist","_reset","_mines"];

@@ -2,6 +2,7 @@ private  ["_unit"];
 private _distvehclose = 5;
 private _searchradius = 50;
 
+waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
 
 while { true } do {
