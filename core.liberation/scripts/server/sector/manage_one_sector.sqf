@@ -1,16 +1,21 @@
 params [ "_sector" ];
 
+diag_log format ["--- LRX Manage Sector %1 (queued: %2)", _sector, GRLIB_sector_spawning];
 active_sectors pushback _sector;
 publicVariable "active_sectors";
 
 if (GRLIB_sector_spawning) then {
 	waitUntil { sleep 10; !GRLIB_sector_spawning };
 };
-GRLIB_sector_spawning = true;
-publicVariable "GRLIB_sector_spawning";
 
 private _sector_pos = markerPos _sector;
-if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
+if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {
+	active_sectors = active_sectors - [_sector];
+	publicVariable "active_sectors";	
+};
+
+GRLIB_sector_spawning = true;
+publicVariable "GRLIB_sector_spawning";
 
 private _spawncivs = false;
 private _building_ai_max = 0;
