@@ -5,7 +5,7 @@ private _box_type = typeOf _box;
 //only one at time
 if ((_box getVariable ["box_in_use", false])) exitWith {};
 
-if (_box_type == FOB_box_typename && count (GRLIB_all_fobs - GRLIB_all_outposts) >= GRLIB_max_fobs) exitWith {
+if (_box_type in [FOB_box_typename, FOB_truck_typename, FOB_boat_typename] && count (GRLIB_all_fobs - GRLIB_all_outposts) >= GRLIB_max_fobs) exitWith {
 	hint format [localize "STR_HINT_FOBS_EXCEEDED", GRLIB_max_fobs];
 };
 if (_box_type == FOB_box_outpost && count (GRLIB_all_outposts) >= GRLIB_max_outpost) exitWith {
