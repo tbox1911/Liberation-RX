@@ -18,8 +18,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	{
 		if (opforcap < GRLIB_opfor_cap && count active_sectors < GRLIB_max_active_sectors) then {
 			_unit = _x;
-			_nextsector = [GRLIB_sector_size, _unit, opfor_sectors] call F_getNearestSector;
-			if (_nextsector != "" && !(_nextsector in active_sectors)) then {
+			_nextsector = [GRLIB_sector_size, _unit, (opfor_sectors - active_sectors)] call F_getNearestSector;
+			if (_nextsector != "") then {
 				private _hc = [] call F_lessLoadedHC;
 				if (isNull _hc) then {
 					[_nextsector] spawn manage_one_sector;
@@ -44,6 +44,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		if (owner _hc == 2 && _nextsector in active_sectors) then {
 			_msg = format ["Headless client %1 lost control of sector %2!", str _hc, _nextsector];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			diag_log _msg;
 			sleep 0.1;
 			_msg = format ["Restarting sector %1 on Server, Warning!", _nextsector];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
