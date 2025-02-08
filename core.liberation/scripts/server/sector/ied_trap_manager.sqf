@@ -2,7 +2,7 @@ params [ "_sector", "_radius", "_number" ];
 
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
-	sleep 4;	
+	sleep 4;
 	[_sector, _radius, _number - 1] spawn ied_trap_manager;
 };
 
@@ -30,18 +30,18 @@ if ( count _ide_pos > 0 ) then {
 	[_ied_obj] call F_clearCargo;
 	_ied_obj allowDamage false;
 	_ied_obj setVariable ["R3F_LOG_disabled", true, true];
-	_ied_obj setVariable ["GRLIB_intel_search", true, true];	
+	_ied_obj setVariable ["GRLIB_intel_search", true, true];
 	_ied_obj setPos (getPos _ied_obj);
 	_ied_obj enableSimulationGlobal false;
 	_ide_pos = getPosATL _ied_obj;
 
 	private _timeout = time + (60 * 60);
 	if (floor random 2 == 0) exitWith {
-		waitUntil { sleep 1; (!alive _ied_obj || time > _timeout) };
-		deleteVehicle _ied_obj;	
+		waitUntil { sleep 1; time > _timeout };
+		deleteVehicle _ied_obj;
 	};
 
-	while {alive _ied_obj && time < _timeout && !_goes_boom } do {
+	while { time < _timeout && !_goes_boom } do {
 		sleep (1 + floor random 3);
 		_hostilecount = [_ide_pos, _activation_radius] call F_getNearbyPlayers;
 		if (count _hostilecount >= _infantry_trigger) then {
@@ -63,5 +63,5 @@ if ( count _ide_pos > 0 ) then {
 			_goes_boom = true;
 		};
 	};
-	deleteVehicle _ied_obj;	
+	deleteVehicle _ied_obj;
 };

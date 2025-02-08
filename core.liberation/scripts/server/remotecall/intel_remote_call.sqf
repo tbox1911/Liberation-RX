@@ -19,7 +19,7 @@ if (typeOf _intel in GRLIB_intel_items) then {
 };
 
 if (typeOf _intel in GRLIB_ide_traps) then {
-    if ( ((random 100) < 30) ) then {
+    if (floor random 2 == 0) then {
         _rwd_xp = round (2 + random 8);
 		_rwd_ammo = round (35 + random 80);
 		_rwd_fuel = round (8 + random 10);
@@ -39,6 +39,6 @@ deleteVehicle _intel;
 	};
 	if (_found == 2) then {
 		_msg = format [localize "STR_INTEL_GOODS", name player, _rwd_xp, _rwd_ammo, _rwd_fuel];
-	};	
+	};
 	hint _msg;
 }] remoteExec ["bis_fnc_call", owner _unit_owner];
