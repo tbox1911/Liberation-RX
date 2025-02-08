@@ -28,7 +28,7 @@ _unit setCaptive true;
 [_unit] call F_fixPosUnit;
 
 if (!_canmove) then {
-	// Halt	
+	// Halt
 	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
 	sleep 7;
 };
@@ -50,8 +50,4 @@ if (!_canmove) then {
 };
 
 if (!alive _unit) exitWith {};
-if (isServer) then {
-	[_unit, _friendly] spawn prisoner_ai_loop;
-} else {
-	[_unit, _friendly] remoteExec ["prisoner_ai_loop", 2];
-};
+[_unit, _friendly] spawn prisoner_ai_loop;
