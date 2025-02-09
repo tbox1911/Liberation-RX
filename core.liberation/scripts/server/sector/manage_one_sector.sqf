@@ -189,7 +189,7 @@ if (count _squad5 > 0) then {
 };
 
 // Create vehicles
-if (opforcap >= GRLIB_opfor_cap) then { _vehtospawn = [] };
+if (opforcap_max) then { _vehtospawn = [] };
 if (count _vehtospawn > 0) then {
 	{
 		private _spawn_pos = _sector_pos getPos [2 + (floor random 125), random 360];
@@ -205,7 +205,7 @@ if (count _vehtospawn > 0) then {
 };
 
 // Create garnison
-if (opforcap >= GRLIB_opfor_cap) then { _building_ai_max = 0 };
+if (opforcap_max) then { _building_ai_max = 0 };
 if (_building_ai_max > 0) then {
 	_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
 	_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range] call F_spawnBuildingSquad);
@@ -268,7 +268,8 @@ if (_nearRadioTower) then {
 // Main loop
 private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
 diag_log format ["Sector %1 wait attack to finish", _sector];
-sleep 30;
+
+sleep 10;
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 

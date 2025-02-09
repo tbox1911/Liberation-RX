@@ -16,7 +16,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	};
 
 	{
-		if (opforcap < GRLIB_opfor_cap && count active_sectors < GRLIB_max_active_sectors) then {
+		if (!opforcap_max && count active_sectors < GRLIB_max_active_sectors) then {
 			_unit = _x;
 			_nextsector = [GRLIB_sector_size, _unit, (opfor_sectors - active_sectors)] call F_getNearestSector;
 			if (_nextsector != "") then {

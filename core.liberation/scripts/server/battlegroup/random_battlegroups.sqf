@@ -17,7 +17,7 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 	};
 
 	_countplayers = count (AllPlayers - (entities "HeadlessClient_F"));
-	if (((opforcap + 15) < GRLIB_battlegroup_cap) && (combat_readiness >= 75) && (diag_fps > 30.0) && _countplayers > 1) then {
+	if (!opforcap_max && combat_readiness >= 75 && diag_fps >= 30.0 && _countplayers > 1) then {
 		if (count GRLIB_all_fobs > 0) then {
 			diag_log format ["Spawn FOB BattleGroup at %1", time];
 			_all_fobs = (allMapMarkers select { _x select [0,9] == "fobmarker" });

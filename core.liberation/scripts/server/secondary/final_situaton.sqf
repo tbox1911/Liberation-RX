@@ -108,7 +108,7 @@ while { _continue } do {
 		};
 	};
 
-	if ((time > _last_send || opforcap < 50) && opforcap < GRLIB_opfor_cap ) then {
+	if ((time > _last_send || opforcap < 50) && !opforcap_max) then {
 		_last_send = round (time + 300);
 		_players = (AllPlayers - (entities "HeadlessClient_F")) select { _x distance2D lhd > GRLIB_sector_size && _x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_sector_size};
 		_target = selectRandom _players;

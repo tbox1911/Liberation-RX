@@ -17,9 +17,14 @@ while { true } do {
 		publicVariable "blufor_sectors";
 	};
 
+	opforcap_max = false;
+	if (opforcap >= GRLIB_opfor_cap) then {
+		opforcap_max = true;
+	};
+
 	publicVariable "civcap";
 	publicVariable "unitcap";
-	publicVariable "opforcap";
+	publicVariable "opforcap_max";
 	publicVariable "combat_readiness";
 	publicVariable "resources_intel";
 

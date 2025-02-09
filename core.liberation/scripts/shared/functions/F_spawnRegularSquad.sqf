@@ -1,6 +1,6 @@
 params [ "_sector", "_infsquad", "_squadies_to_spawn" ];
 
-if (opforcap >= GRLIB_opfor_cap) exitWith {grpNull};
+if (opforcap_max) exitWith {grpNull};
 
 diag_log format [ "Spawn regular squad type %1 (%2) at %3", _infsquad, count _squadies_to_spawn, time ];
 private _max_try = 20;
