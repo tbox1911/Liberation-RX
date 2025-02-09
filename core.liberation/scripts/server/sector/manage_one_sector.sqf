@@ -1,4 +1,4 @@
-params [ "_sector" ];
+params ["_sector"];
 
 diag_log format ["--- LRX Manage Sector %1 (queued: %2)", _sector, GRLIB_sector_spawning];
 active_sectors pushback _sector;
@@ -11,7 +11,7 @@ if (GRLIB_sector_spawning) then {
 private _sector_pos = markerPos _sector;
 if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {
 	active_sectors = active_sectors - [_sector];
-	publicVariable "active_sectors";	
+	publicVariable "active_sectors";
 };
 
 GRLIB_sector_spawning = true;
@@ -154,36 +154,36 @@ if (_sector in sectors_tower) then {
 
 // Create units
 if (count _squad1 > 0) then {
-	_grp = [ _sector, _infsquad1, _squad1 ] call F_spawnRegularSquad;
-	[ _grp, _sector_pos, 50 ] spawn defence_ai;
+	_grp = [_sector, _infsquad1, _squad1] call F_spawnRegularSquad;
+	[_grp, _sector_pos, 50] spawn defence_ai;
 	_managed_units = _managed_units + (units _grp);
 	sleep 1;
 };
 
 if (count _squad2 > 0) then {
-	_grp = [ _sector, _infsquad2, _squad2 ] call F_spawnRegularSquad;
-	[ _grp, _sector_pos, 100 ] spawn defence_ai;
+	_grp = [_sector, _infsquad2, _squad2] call F_spawnRegularSquad;
+	[_grp, _sector_pos, 100] spawn defence_ai;
 	_managed_units = _managed_units + (units _grp);
 	sleep 1;
 };
 
 if (count _squad3 > 0) then {
-	_grp = [ _sector, _infsquad3, _squad3 ] call F_spawnRegularSquad;
-	[ _grp, _sector_pos, 100 ] spawn defence_ai;
+	_grp = [_sector, _infsquad3, _squad3] call F_spawnRegularSquad;
+	[_grp, _sector_pos, 100] spawn defence_ai;
 	_managed_units = _managed_units + (units _grp);
 	sleep 1;
 };
 
 if (count _squad4 > 0) then {
-	_grp = [ _sector, _infsquad4, _squad4 ] call F_spawnRegularSquad;
-	[ _grp, _sector_pos, 200 ] spawn defence_ai;
+	_grp = [_sector, _infsquad4, _squad4] call F_spawnRegularSquad;
+	[_grp, _sector_pos, 200] spawn defence_ai;
 	_managed_units = _managed_units + (units _grp);
 	sleep 1;
 };
 
 if (count _squad5 > 0) then {
-	_grp = [ _sector, _infsquad5, _squad5 ] call F_spawnRegularSquad;
-	[ _grp, _sector_pos, 300 ] spawn defence_ai;
+	_grp = [_sector, _infsquad5, _squad5] call F_spawnRegularSquad;
+	[_grp, _sector_pos, 300] spawn defence_ai;
 	_managed_units = _managed_units + (units _grp);
 	sleep 1;
 };
@@ -238,7 +238,7 @@ if (_nearRadioTower) then {
 			};
 		};
 	};
-	[ _sector_pos ] spawn {
+	[_sector_pos] spawn {
 		params ["_pos"];
 		sleep (300 + floor(random 120));
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};

@@ -21,11 +21,10 @@ fob_attack_in_progress pushBack _fob_pos;
 publicVariable "fob_attack_in_progress";
 
 if (_ownership == GRLIB_side_enemy) then {
-	sector_timer = GRLIB_vulnerability_timer + (5 * 60);
-	private _near_outpost = (_fob_pos in GRLIB_all_outposts);
-	private _activeplayers = 0;
+	sector_timer = round (time + GRLIB_vulnerability_timer + (5 * 60));
+	publicVariable "sector_timer";
 
-	[_fob_pos, 1, sector_timer] remoteExec ["remote_call_fob", 0];
+	[_fob_pos, 1] remoteExec ["remote_call_fob", 0];
 	[_fob_pos] spawn {
 		params ["_pos"];
 		sleep 60;
@@ -38,7 +37,8 @@ if (_ownership == GRLIB_side_enemy) then {
 	};
 
 	sleep 10;
-	sector_timer = round (time + sector_timer);
+	private _near_outpost = (_fob_pos in GRLIB_all_outposts);
+	private _activeplayers = 0;
 
 	while { (time < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [_fob_pos, GRLIB_capture_size] call F_sectorOwnership;
@@ -71,14 +71,18 @@ if (_ownership == GRLIB_side_enemy) then {
 				};
 			} foreach _enemy_left;
 
-			private _rwd_xp = round (15 + random 10);
-			private _text = format ["Glory to the Defenders! +%1 XP", _rwd_xp];
-			{
-				if (_x distance2D _fob_pos < GRLIB_sector_size ) then {
-					[_x, _rwd_xp] call F_addScore;
-					[gamelogic, _text] remoteExec ["globalChat", owner _x];
-				};
-			} forEach (AllPlayers - (entities "HeadlessClient_F"));
+			if ((sector_timer - time) <= 300) then {
+				private _rwd_xp = round (15 + random 10);
+				private _text = format ["Glory to the Defenders! +%1 XP", _rwd_xp];
+				{
+					if (_x distance2D _fob_pos < GRLIB_sector_size ) then {
+						[_x, _rwd_xp] call F_addScore;
+						[gamelogic, _text] remoteExec ["globalChat", owner _x];
+					};
+				} forEach (AllPlayers - (entities "HeadlessClient_F"));
+			};
+			sector_timer = 0;
+			publicVariable "sector_timer";
 		};
 	};
 };

@@ -41,14 +41,14 @@ if (_defense_type > 0 && !_defenders_cooldown) then {
 };
 
 if (_ownership == GRLIB_side_enemy) then {
-	sector_timer = GRLIB_vulnerability_timer;
+	sector_timer = round (time + GRLIB_vulnerability_timer);
 	if (_sector in sectors_bigtown) then {
 		sector_timer = sector_timer + (10 * 60);
 	};
+	publicVariable "sector_timer";
 
-	[_sector, 1, sector_timer] remoteExec ["remote_call_sector", 0];
+	[_sector, 1] remoteExec ["remote_call_sector", 0];
 	sleep 10;
-	sector_timer = round (time + sector_timer);
 
 	private _activeplayers = 0;
 	while { (time < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
@@ -57,8 +57,8 @@ if (_ownership == GRLIB_side_enemy) then {
 		sleep 3;
 	};
 
-	if ( GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
-		if ( _ownership == GRLIB_side_enemy ) then {
+	if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
+		if (_ownership == GRLIB_side_enemy) then {
 			blufor_sectors = blufor_sectors - [_sector];
 			publicVariable "blufor_sectors";
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
@@ -68,11 +68,11 @@ if (_ownership == GRLIB_side_enemy) then {
 				_tower call TFAR_antennas_fnc_deleteRadioTower;
 			};
 			stats_sectors_lost = stats_sectors_lost + 1;
-			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
+			[_sector, 2] remoteExec ["remote_call_sector", 0];
 			{ [_x, -15] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
 		} else {
-			[ _sector, 3 ] remoteExec ["remote_call_sector", 0];
+			[_sector, 3] remoteExec ["remote_call_sector", 0];
 			private _enemy_left = ((markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
 			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) };
 			{
@@ -95,6 +95,8 @@ if (_ownership == GRLIB_side_enemy) then {
 					};
 				} forEach (AllPlayers - (entities "HeadlessClient_F"));
 			};
+			sector_timer = 0;
+			publicVariable "sector_timer";
 		};
 	};
 };

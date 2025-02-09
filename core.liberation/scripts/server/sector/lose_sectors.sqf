@@ -7,7 +7,6 @@ publicVariable "sector_attack_in_progress";
 fob_attack_in_progress = [];
 publicVariable "fob_attack_in_progress";
 attack_in_progress_cooldown = [];
-sector_timer = 0;
 
 private _countopfor = 0;
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {

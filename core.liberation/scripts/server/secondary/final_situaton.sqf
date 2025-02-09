@@ -33,7 +33,8 @@ publicVariable "GRLIB_global_stop";
 skipTime ((10 - dayTime + 24) % 24);
 setTimeMultiplier 0;
 
-private _mission_delay = (5 * 60);
+sector_timer = round (time + (35 * 60));
+publicVariable "sector_timer";	
 [] remoteExec ["remote_call_final_fight", 0];
 
 // create marker
@@ -43,7 +44,7 @@ _marker setMarkerTypeLocal "mil_destroy";
 _marker setMarkerSizeLocal [1.25, 1.25];
 _marker setMarkerColorLocal GRLIB_color_enemy_bright;
 _marker setMarkerText "           FINAL FIGHT";
-[_marker, 1, _mission_delay] remoteExec ["remote_call_sector", 0];
+[_marker, 1] remoteExec ["remote_call_sector", 0];
 
 sectors_allSectors = sectors_allSectors + [_marker];
 blufor_sectors = [_marker];
@@ -89,7 +90,6 @@ private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnR
 private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVehicle;
 (driver _vehicle) doFollow leader _grp;
 
-private _timer = round (time + _mission_delay);
 private _players = [];
 private _last_send = 0;
 private _target = objNull;
@@ -132,7 +132,7 @@ while { _continue } do {
 		sleep 5;
 	};
 
-	if (time > _timer) then { _continue = false };
+	if (time > sector_timer) then { _continue = false };
 	if (damage opfor_target >= 1) then { _success = true; _continue = false };
 	sleep 2;
 };

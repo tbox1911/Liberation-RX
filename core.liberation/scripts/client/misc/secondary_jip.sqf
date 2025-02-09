@@ -17,9 +17,9 @@ if (GRLIB_secondary_in_progress == 2) then {
 };
 
 if (count sector_attack_in_progress > 0) then {
-	[(sector_attack_in_progress select 0), 1, sector_timer] spawn remote_call_sector;
+	[(sector_attack_in_progress select 0), 1] spawn remote_call_sector;
 };
 
 if (count fob_attack_in_progress > 0) then {
-	[(fob_attack_in_progress select 0), 1, sector_timer] spawn remote_call_fob;
+	[(fob_attack_in_progress select 0), 1] spawn remote_call_fob;
 };
