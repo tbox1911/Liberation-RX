@@ -44,6 +44,10 @@ if !(isNil "_roadobj") then {
 
 	// Disarmed
 	if (time <= _timeout) then {
-		[_ied_pos] spawn ied_remote_call;
+		if (isServer) then {
+			[_ied_pos] spawn ied_remote_call;
+		} else {
+			[_ied_pos] remoteExec ["ied_remote_call", 2];
+		};
 	};
 };
