@@ -50,4 +50,10 @@ if (!_canmove) then {
 };
 
 if (!alive _unit) exitWith {};
-[_unit, _friendly] spawn prisoner_ai_loop;
+
+// Priso loop
+if (isServer) then {
+	[_unit, _friendly] spawn prisoner_ai_loop;
+} else {
+	[_unit, _friendly] remoteExec ["prisoner_ai_loop", 2];
+};
