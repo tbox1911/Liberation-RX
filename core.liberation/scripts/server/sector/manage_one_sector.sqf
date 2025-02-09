@@ -268,7 +268,7 @@ if (_nearRadioTower) then {
 // Main loop
 private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
 diag_log format ["Sector %1 wait attack to finish", _sector];
-sleep 10;
+sleep 30;
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 
@@ -319,7 +319,7 @@ while { !_stopit } do {
 	sleep 5;
 };
 
-sleep 25;
+sleep 30;
 
 // Attack finished
 active_sectors = active_sectors - [_sector];
