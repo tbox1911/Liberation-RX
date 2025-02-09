@@ -25,6 +25,9 @@ do_ban = 0;
 do_zeus = 0;
 do_capture = 0;
 do_save = 0;
+do_skip = 0;
+do_unlock = 0;
+do_delete = 0;
 
 // Watchdog
 if (isNil "lrx_admin_watchdog") then {
@@ -384,6 +387,35 @@ while { alive player && dialog } do {
 		}] remoteExec ["bis_fnc_call", 2];
 		_msg = format ["Game Forcefully Saved in %1" ,GRLIB_save_key];
 		_admin_msg = format ["Admin (%1) force save game (%2)", name player, GRLIB_save_key];
+		closeDialog 0;
+	};
+
+	if (do_skip == 1) then {
+		do_skip = 0;
+		10 remoteExec ['SkipTime', 2];
+		_msg = "The Time Forward...";
+		_admin_msg = format ["Admin (%1) skip Time +10h", name player];
+	};
+
+	if (do_unlock == 1) then {
+		do_unlock = 0;
+		_vehicle = cursorobject;
+		if (isNull _vehicle) exitWith {};
+		_vehicle_name = [typeOf _vehicle] call F_getLRXName;
+		_vehicle setvariable ['R3F_LOG_disabled', false, true];
+		_vehicle setvariable ['GRLIB_vehicle_owner', '', true];
+		_msg = format ['%1 Unlocked by Admin.', _vehicle_name];
+		_admin_msg = format ["Admin (%1) Unlock vehicle %2 (%3)", name player, _vehicle_name, typeOf _vehicle];
+	};
+
+	if (do_delete == 1) then {
+		do_delete = 0;
+		_vehicle = cursorobject;
+		if (isNull _vehicle) exitWith {};
+		_vehicle_name = [typeOf _vehicle] call F_getLRXName;
+		deleteVehicle _vehicle;
+		_msg = format ['%1 Deleted by Admin.', _vehicle_name];
+		_admin_msg = format ["Admin (%1) Delete vehicle %2 (%3)", name player, _vehicle_name, typeOf _vehicle];
 		closeDialog 0;
 	};
 

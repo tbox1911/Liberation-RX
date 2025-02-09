@@ -264,7 +264,7 @@ class liberation_admin {
   };
   class SkipTimeButton: StdButton {
     idc = 1604;
-    action = "10 remoteExec ['SkipTime', 2];hint 'Time Forward...'";
+    action = "do_skip=1";
     text = $STR_ADMIN_SKIPTIME;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.520 * safezoneH + safezoneY;
@@ -282,7 +282,7 @@ class liberation_admin {
   };
   class UnlockButton: StdButton {
     idc = 1609;
-    action = "_x = cursorobject;if (isNull _x) exitWith {};_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";
+    action = "do_unlock=1";
     text = $STR_ADMIN_UNLOCK;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.572 * safezoneH + safezoneY;
@@ -291,7 +291,7 @@ class liberation_admin {
   };
   class DeleteButton: StdButton {
     idc = 1610;
-    action = "deleteVehicle (cursorObject);closeDialog 0;";
+    action = "do_delete=1";
     text = $STR_ADMIN_DELETE;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
