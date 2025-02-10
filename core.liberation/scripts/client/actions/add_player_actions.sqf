@@ -19,7 +19,7 @@ player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t
 player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
 
 // Fast Eject Crew
-player addAction ["<t color='#0080F0'>" + localize "STR_EJECT_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",0,false,true,"","call GRLIB_check_EjectCrew"];
+player addAction ["<t color='#0080F0'>" + localize "STR_EJECT_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",999,false,true,"","call GRLIB_check_EjectCrew"];
 
 // Dog - Actions
 player addAction ["<t color='#FF8000'>" + localize "STR_DOG_FIND" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
