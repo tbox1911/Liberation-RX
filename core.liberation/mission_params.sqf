@@ -131,8 +131,7 @@ LRX_Mission_Params_Def = [
 		localize "STR_PARAMS_DISABLED"
 		]
 	],
-	["Opforcap", 200],	
-		["Unitcap", localize "STR_PARAMS_OPFORCAP",
+	["Opforcap", localize "STR_PARAMS_OPFORCAP",
 		["100", "200", "300", "400"],
 		[100, 200, 300, 400]
 	],

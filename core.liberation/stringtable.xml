@@ -142,6 +142,18 @@
 			<Portuguese>Municao</Portuguese>
 			<Czech>Munice</Czech>
 		</Key>
+		<Key ID="STR_UNITCAP">
+			<Original>Unit cap</Original>
+			<French>Limite</French>
+			<German>Einheitenbegrenzung</German>
+			<Spanish>Límite de unidades</Spanish>
+			<Russian>Мобилизованных</Russian>
+			<Chinesesimp>单位上限</Chinesesimp>
+			<Chinese>單位上限</Chinese>
+			<Japanese>ユニット上限</Japanese>
+			<Portuguese>Limite da unidade</Portuguese>
+			<Czech>Limit Jednotky</Czech>
+		</Key>		
 		<Key ID="STR_FUEL">
 			<Original>Fuel</Original>
 			<French>Carburant</French>
@@ -666,14 +678,6 @@
 			<Japanese>AA/AT小隊</Japanese>
 			<Portuguese>Esquadrão Misto AA/AC</Portuguese>
 			<Czech>AA/AC Smíšená četa</Czech>
-		</Key>
-		<Key ID="STR_OPFORCAP">
-			<Original>Maximum number of enemy units</Original>
-			<French>Nombre maximum d'unités ennemies</French>
-		</Key>		
-		<Key ID="STR_UNITCAP">
-			<Original>Maximum unit modifier</Original>
-			<French>Modificateur d'unité maximum</French>
 		</Key>
 		<Key ID="STR_WIPE_TITLE">
 			<Original>Wipe savegame</Original>
@@ -2103,18 +2107,14 @@
 			<Portuguese>Não</Portuguese>
 			<Czech>Ne</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_OPFORCAP">
+			<Original>Maximum number of enemy units</Original>
+			<French>Nombre maximum d'unités ennemies</French>
+		</Key>		
 		<Key ID="STR_PARAMS_UNITCAP">
-			<Original>Maximum amount of AI units</Original>
-			<French>Quantité maximale d'unités IA</French>
-			<German>Maximale Anzahl KI-Einheiten</German>
-			<Spanish>Cantidad máxima de unidades de IA</Spanish>
-			<Russian>Максимальное количество единиц AI</Russian>
-			<Chinesesimp>AI单位最大数量</Chinesesimp>
-			<Chinese>AI單位最大數量</Chinese>
-			<Japanese>AIユニット最大数</Japanese>
-			<Portuguese>Quantidade máxima de unidades AI</Portuguese>
-			<Czech>Maximální počet jednotek AI</Czech>
-		</Key>
+			<Original>Maximum unit modifier</Original>
+			<French>Modificateur d'unité maximum</French>
+		</Key>		
 		<Key ID="STR_PARAMS_UNITCAP1">
 			<Original>50% - Recommended for local hosting</Original>
 			<French>50% - Recommandé pour un hébergement local</French>
