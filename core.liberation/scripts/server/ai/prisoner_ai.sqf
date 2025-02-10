@@ -10,6 +10,9 @@ if (_unit skill "courage" == 1) exitWith {};
 sleep 3;
 if (!alive _unit) exitWith {};
 
+// Check locality
+if (!local _unit) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_remote_call", 2] };
+
 // Init priso
 private _grp = createGroup [GRLIB_side_enemy, true];
 [_unit] joinSilent _grp;

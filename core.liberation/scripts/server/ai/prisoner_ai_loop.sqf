@@ -54,7 +54,7 @@ if (alive _unit && _captured) then {
 	private _leader = leader group _unit;
 	private _grp = createGroup [GRLIB_side_civilian, true];
 	[_unit] joinSilent _grp;
-	_unit setVariable ["GRLIB_is_prisoner", false, true];
+	_unit setVariable ["GRLIB_is_prisoner", nil, true];
 	[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
 	[_unit, _leader, _friendly] spawn prisoner_captured;
 };

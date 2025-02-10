@@ -27,6 +27,7 @@ intel_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remot
 load_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_context_remote_call.sqf";
 load_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_truck_remote_call.sqf";
 load_cargo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_cargo_remote_call.sqf";
+prisoner_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\prisoner_remote_call.sqf";
 remove_sector_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\remove_sector_remote_call.sqf";
 sector_defenses_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sector_defenses_remote_call.sqf";
 sector_liberated_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sector_liberated_remote_call.sqf";
