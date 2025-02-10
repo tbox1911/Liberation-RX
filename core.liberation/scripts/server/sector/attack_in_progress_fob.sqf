@@ -21,7 +21,7 @@ fob_attack_in_progress pushBack _fob_pos;
 publicVariable "fob_attack_in_progress";
 
 if (_ownership == GRLIB_side_enemy) then {
-	sector_timer = round (time + GRLIB_vulnerability_timer + (5 * 60));
+	sector_timer = round (serverTime + GRLIB_vulnerability_timer + (5 * 60));
 	publicVariable "sector_timer";
 
 	[_fob_pos, 1] remoteExec ["remote_call_fob", 0];
@@ -40,7 +40,7 @@ if (_ownership == GRLIB_side_enemy) then {
 	private _near_outpost = (_fob_pos in GRLIB_all_outposts);
 	private _activeplayers = 0;
 
-	while { (time < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
+	while { (serverTime < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [_fob_pos, GRLIB_capture_size] call F_sectorOwnership;
 		_activeplayers = count (allPlayers select { alive _x && (_x distance2D (_fob_pos)) < GRLIB_sector_size });
 		if (sector_timer mod 60 == 0 && !_near_outpost) then {
@@ -71,7 +71,7 @@ if (_ownership == GRLIB_side_enemy) then {
 				};
 			} foreach _enemy_left;
 
-			if ((sector_timer - time) <= 300) then {
+			if ((sector_timer - serverTime) <= 300) then {
 				private _rwd_xp = round (15 + random 10);
 				private _text = format ["Glory to the Defenders! +%1 XP", _rwd_xp];
 				{

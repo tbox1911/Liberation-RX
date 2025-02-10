@@ -41,7 +41,7 @@ if (_defense_type > 0 && !_defenders_cooldown) then {
 };
 
 if (_ownership == GRLIB_side_enemy) then {
-	sector_timer = round (time + GRLIB_vulnerability_timer);
+	sector_timer = round (serverTime + GRLIB_vulnerability_timer);
 	if (_sector in sectors_bigtown) then {
 		sector_timer = sector_timer + (10 * 60);
 	};
@@ -51,7 +51,7 @@ if (_ownership == GRLIB_side_enemy) then {
 	sleep 10;
 
 	private _activeplayers = 0;
-	while { (time < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
+	while { (serverTime < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [_sector_pos, GRLIB_capture_size] call F_sectorOwnership;
 		_activeplayers = { alive _x && (_x distance2D _sector_pos) < GRLIB_sector_size } count (units GRLIB_side_friendly);
 		sleep 3;
@@ -84,7 +84,7 @@ if (_ownership == GRLIB_side_enemy) then {
 				};
 			} foreach _enemy_left;
 
-			if ((sector_timer - time) <= 300) then {
+			if ((sector_timer - serverTime) <= 300) then {
 				private _rwd_xp = round (15 + random 10);
 				private _text = format ["Glory to the Defenders! +%1 XP", _rwd_xp];
 				{

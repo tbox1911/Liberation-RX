@@ -33,7 +33,7 @@ publicVariable "GRLIB_global_stop";
 skipTime ((10 - dayTime + 24) % 24);
 setTimeMultiplier 0;
 
-sector_timer = round (time + (35 * 60));
+sector_timer = round (serverTime + (35 * 60));
 publicVariable "sector_timer";	
 [] remoteExec ["remote_call_final_fight", 0];
 

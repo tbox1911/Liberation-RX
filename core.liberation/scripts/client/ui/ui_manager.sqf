@@ -41,7 +41,7 @@ while { true } do {
 			_attacked_string = [markerpos "opfor_capture_marker"] call F_getLocationName;
 			(_overlay displayCtrl (401)) ctrlShow true;
 			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;
-			_sector_timer = round (sector_timer - time);
+			_sector_timer = round (sector_timer - serverTime);
 			_attacked_timer = "VULNERABLE";
 			if (_sector_timer > 0) then { _attacked_timer = [_sector_timer] call F_secondsToTimer };
 			(_overlay displayCtrl (403)) ctrlSetText _attacked_timer;
