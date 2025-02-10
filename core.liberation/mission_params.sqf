@@ -30,7 +30,8 @@ LRX_Mission_Params = [
 	["---", "GAME"],
 	["Introduction", 1],			// Introduction - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["DeploymentCinematic", 1],		// Deployment cimematic - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["Unitcap", 1],					// Maximum amount AI units - [default 1] - values = [0.5,0.75,1,1.25,1.5,2] - Text {50%,%75,%100,%125,%150,%200}
+	["Opforcap", 200],				// Maximum Amount Enemy units - [default 200] - values = [100,200,300,400]
+	["Unitcap", 1],					// Maximum AI units Modifier - [default 1] - values = [0.5,0.75,1,1.25,1.5,2] - Text {50%,%75,%100,%125,%150,%200}
 	["Difficulty", 1],				// Difficulty - [default 1] - values = [0.5,0.75,1,1.25,1.5,2,4,10] - Text {Tourist,Easy,Normal,Moderate,Hard,Extreme,Ludicrous,Oh god oh god we are all going to die}
 	["Aggressivity",1],				// CSAT aggression - [default 1] - values = [0.25,0.5,1,2,4] - Text {Anemic,Weak,Normal,Strong,Extreme}
 	["VictoryCondition", 0],		// Select the Victory condition - [default 0] - values = [0,1,2,3,4...] -
@@ -129,6 +130,11 @@ LRX_Mission_Params_Def = [
 		"Enemy",
 		localize "STR_PARAMS_DISABLED"
 		]
+	],
+	["Opforcap", 200],	
+		["Unitcap", localize "STR_PARAMS_OPFORCAP",
+		["100", "200", "300", "400"],
+		[100, 200, 300, 400]
 	],
 	["Unitcap", localize "STR_PARAMS_UNITCAP", [
 		localize "STR_PARAMS_UNITCAP1",

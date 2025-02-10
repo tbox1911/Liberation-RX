@@ -667,17 +667,13 @@
 			<Portuguese>Esquadrão Misto AA/AC</Portuguese>
 			<Czech>AA/AC Smíšená četa</Czech>
 		</Key>
+		<Key ID="STR_OPFORCAP">
+			<Original>Maximum number of enemy units</Original>
+			<French>Nombre maximum d'unités ennemies</French>
+		</Key>		
 		<Key ID="STR_UNITCAP">
-			<Original>Unit cap</Original>
-			<French>Limite</French>
-			<German>Einheitenbegrenzung</German>
-			<Spanish>Límite de unidades</Spanish>
-			<Russian>Мобилизованных</Russian>
-			<Chinesesimp>单位上限</Chinesesimp>
-			<Chinese>單位上限</Chinese>
-			<Japanese>ユニット上限</Japanese>
-			<Portuguese>Limite da unidade</Portuguese>
-			<Czech>Limit Jednotky</Czech>
+			<Original>Maximum unit modifier</Original>
+			<French>Modificateur d'unité maximum</French>
 		</Key>
 		<Key ID="STR_WIPE_TITLE">
 			<Original>Wipe savegame</Original>
