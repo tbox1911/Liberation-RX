@@ -145,3 +145,8 @@ GRLIB_checkRemoveHelipad = {
 		({ getObjectType _x >= 8 && player distance2D _x <= GRLIB_ActionDist_3 } count (nearestObjects [player, ["Helipad_base_F"], 20]) >= 1)
 	);
 };
+
+GRLIB_check_EjectCrew = {
+	params ["_target"];
+	((!isNull objectParent _target) && ([_target, objectParent _target] call is_owner) && (getPosATL _target select 2 < 10) && (abs (speed vehicle _target) <= 5) && (count crew (vehicle _target) > 1))
+};

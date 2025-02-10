@@ -138,8 +138,9 @@ player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +1<
 player createDiaryRecord ["Table", ["Table", format ["-= Killing Table =-"]]];
 
 player createDiarySubject ["Shortcut","Shortcut"];
-player createDiaryRecord ["Shortcut", ["Shortcut", format ["(UserAction n°14) Take Screenshot : Key <font color='#ff8000'>%1</font>", ["User14"] call _getkeyName]]];
-player createDiaryRecord ["Shortcut", ["Shortcut", format ["(UserAction n°13) Toggle HUD : Key <font color='#ff8000'>%1</font>", ["User13"] call _getkeyName]]];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["(UserAction n°15) Take Screenshot : Key <font color='#ff8000'>%1</font>", ["User15"] call _getkeyName]]];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["(UserAction n°14) Toggle HUD : Key <font color='#ff8000'>%1</font>", ["User14"] call _getkeyName]]];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["(UserAction n°13) Quick Eject : Key <font color='#ff8000'>%1</font>", ["User13"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["(UserAction n°12) Toggle earplugs : Key <font color='#ff8000'>%1</font>", ["User12"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["(UserAction n°11) Always run : Key <font color='#ff8000'>%1</font>", ["User11"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["(UserAction n°10) Weapon to back : Key <font color='#ff8000'>%1</font>", ["User10"] call _getkeyName]]];

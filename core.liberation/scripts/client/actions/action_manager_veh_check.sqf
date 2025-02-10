@@ -18,11 +18,6 @@ GRLIB_checkAction_Paint = {
 	(GRLIB_player_is_menuok && alive _target && ([_target, 'REPAINT', 30] call F_check_near || [_target, 'FOB', GRLIB_fob_range] call F_check_near) && [_unit, _target] call is_owner && locked _target < 2)
 };
 
-GRLIB_checkAction_Eject = {
-	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && count (crew _target) > 0 && [_unit, _target] call is_owner && !(typeOf _target in uavs_vehicles))
-};
-
 GRLIB_checkAction_Flip = {
 	params ["_target", "_unit"];
 	(GRLIB_player_is_menuok && alive _target && side group _target != GRLIB_side_enemy && ((vectorUp _target) select 2 < 0.60) && locked _target < 2 && !(typeOf _target in uavs_vehicles))
