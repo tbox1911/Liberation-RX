@@ -12,7 +12,7 @@ active_sectors_hc = [];
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	_countblufor = (units GRLIB_side_friendly - units group chimeraofficer) select {
 		(alive _x) && !(captive _x) &&
-		(getPos _x select 2 < 50) && (speed (vehicle _x) <= 80)
+		(getPosATL _x select 2 < 150) && (speed vehicle _x <= 80)
 	};
 
 	{
