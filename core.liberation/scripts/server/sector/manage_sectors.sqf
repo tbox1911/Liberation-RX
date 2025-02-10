@@ -11,9 +11,10 @@ active_sectors_hc = [];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	_countblufor = (units GRLIB_side_friendly - units group chimeraofficer) select {
-		(alive _x) && !(captive _x) &&
-		(getPosATL _x select 2 < 150) && (speed vehicle _x <= 80)
-	};
+        (alive _x) && !(captive _x) &&
+        (getPosATL _x select 2 < 150) && (speed vehicle _x <= 80) &&
+        !(_x getVariable ["GRLIB_mission_AI", false])
+    };
 
 	{
 		if (!opforcap_max && count active_sectors < GRLIB_max_active_sectors) then {

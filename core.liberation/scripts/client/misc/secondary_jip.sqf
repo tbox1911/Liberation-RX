@@ -2,8 +2,6 @@ waitUntil {	sleep 1; !isNil "GRLIB_secondary_in_progress"};
 waitUntil {	sleep 1; !isNil "sector_attack_in_progress"};
 waitUntil {	sleep 1; !isNil "fob_attack_in_progress"};
 
-if (GRLIB_secondary_in_progress < 0) exitWith {};
-
 if (GRLIB_secondary_in_progress == 0) then {
 	[2] spawn remote_call_intel;
 };
