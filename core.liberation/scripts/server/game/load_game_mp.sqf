@@ -492,7 +492,3 @@ publicVariable "GRLIB_mobile_respawn";
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_player_scores";
 publicVariable "GRLIB_sector_defense";
-
-sleep 1;
-save_is_loaded = ([] call F_getValid);
-publicVariable "save_is_loaded";

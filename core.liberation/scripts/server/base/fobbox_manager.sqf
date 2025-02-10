@@ -1,5 +1,4 @@
-waitUntil {sleep 1; !isNil "GRLIB_all_fobs" };
-waitUntil {sleep 1; !isNil "save_is_loaded" };
+waitUntil {sleep 1; !isNil "GRLIB_all_fobs"};
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 // Truck no fob box

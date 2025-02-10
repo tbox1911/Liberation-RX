@@ -1,4 +1,4 @@
-waitUntil {sleep 1; !isNil "save_is_loaded"};
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 sleep 3;
 
 GRLIB_sector_spawning = false;

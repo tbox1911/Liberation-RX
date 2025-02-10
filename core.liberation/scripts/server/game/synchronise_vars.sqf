@@ -1,4 +1,4 @@
-waitUntil {sleep 1; !isNil "save_is_loaded"};
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 private _blufor_sectors = [];
 active_sectors = [];
@@ -6,7 +6,8 @@ publicVariable "active_sectors";
 sector_timer = 0;
 publicVariable "sector_timer";
 
-while { true } do {
+private _loop = ([] call F_getValid);
+while { _loop } do {
 	unitcap = {alive _x && !(captive _x) && (_x distance2D lhd) >= 200} count (units GRLIB_side_friendly);
 	opforcap = {alive _x && !(captive _x)} count (units GRLIB_side_enemy);
 	civcap = {alive _x && !(captive _x) && (isNil {_x getVariable "GRLIB_vehicle_owner"})} count (units GRLIB_side_civilian);
