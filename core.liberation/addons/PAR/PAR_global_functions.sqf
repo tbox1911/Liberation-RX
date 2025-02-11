@@ -225,8 +225,6 @@ PAR_fn_AI_Damage_EH = {
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ["PAR_isUnconscious", false, true];
 	_unit setVariable ["PAR_isDragged", 0, true];
-	_unit setVariable ["PAR_myMedic", nil];
-	_unit setVariable ["PAR_busy", nil];
 	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
 	_unit setVariable ["PAR_revive_max", (PAR_ai_revive + (GRLIB_rank_level find (rank _unit)))];
 	_unit setVariable ["GRLIB_can_speak", true, true];
@@ -239,8 +237,6 @@ PAR_Player_Init = {
 	player setVariable ["PAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
 	player setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
-	player setVariable ["PAR_myMedic", nil];
-	player setVariable ["PAR_busy", nil];
 	if (!GRLIB_fatigue) then { player enableFatigue false; player enableStamina false };
 	if (GRLIB_opfor_english) then {player setSpeaker "Male01ENG"};
 	player setCustomAimCoef 0.35;

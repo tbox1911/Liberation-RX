@@ -2,8 +2,6 @@ params ["_wnded", "_medic"];
 
 if !(local _wnded) exitWith { [_wnded, _medic] remoteExec ["PAR_remote_sortie", 2] };
 
-if (!([_wnded] call PAR_is_wounded) || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
-
 if (!isPlayer _medic) then {
 	private _msg = format [localize "STR_PAR_ST_01", name _medic, name _wnded];
 	[_wnded, _msg] call PAR_fn_globalchat;
@@ -26,7 +24,9 @@ if (!isPlayer _medic) then {
 };
 
 // Medic can't continue
-if ((!alive _wnded) || (!alive _medic) || ([_medic] call PAR_is_wounded) ) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
+private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
+if (local _medic && !isNull _my_medic && _my_medic != _medic) exitWith { _medic switchMove ""; [_medic, _wnded] call PAR_fn_medicRelease };
+if ((!alive _wnded) || (!alive _medic) || ([_medic] call PAR_is_wounded || !([_wnded] call PAR_is_wounded))) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 // Wounded Revived
 if (PAR_revive == 2) then {
