@@ -11,6 +11,7 @@ if (_cur_revive <= 0) exitWith {_unit setDamage 1};
 _unit setUnconscious true;
 _unit setCaptive true;
 _unit allowDamage false;
+_unit setVariable ["PAR_busy", nil];
 _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 _unit setVariable ["PAR_isDragged", 0, true];
 
@@ -43,7 +44,7 @@ while { alive _unit && ([_unit] call PAR_is_wounded) && time <= (_unit getVariab
 	if (_cnt == 0) then {
 		_unit setOxygenRemaining 1;
 		if ( {alive _x} count PAR_AI_bros > 0 ) then {
-			_medic = _unit getVariable ["PAR_myMedic", nil];
+			_medic = _unit getVariable "PAR_myMedic";
 			if (isNil "_medic") then {
 				_unit groupchat localize "STR_PAR_UC_01";
 				_medic = [_unit] call PAR_fn_medic;

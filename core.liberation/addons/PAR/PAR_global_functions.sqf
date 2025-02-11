@@ -19,7 +19,9 @@ PAR_medic_units = {
 	private _grp_id = _wnded getVariable ["PAR_Grp_ID","1"];
 	(units group _wnded) select {
 		((_x getVariable ["PAR_Grp_ID","0"]) == _grp_id) &&
+		(_x distance2D _wnded <= 500) &&
 		!(isPlayer _x) && !([_x] call PAR_is_wounded) &&
+		!(objectParent _x iskindof "ParachuteBase") &&
 		isNil {_x getVariable "PAR_busy"}
 	};
 };

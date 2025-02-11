@@ -1,6 +1,5 @@
 params ["_wnded", "_medic"];
 
-if (isDedicated) exitWith {};
 if !(local _wnded) exitWith { [_wnded, _medic] remoteExec ["PAR_remote_sortie", 2] };
 
 if (!([_wnded] call PAR_is_wounded) || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
@@ -26,10 +25,10 @@ if (!isPlayer _medic) then {
 	};
 };
 
-if (local _medic && _medic != (_wnded getVariable ["PAR_myMedic", objNull])) exitWith { _medic switchMove "" };
+// Medic can't continue
 if ((!alive _wnded) || (!alive _medic) || ([_medic] call PAR_is_wounded) ) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
-// Revived
+// Wounded Revived
 if (PAR_revive == 2) then {
 	_medic removeItem "FirstAidKit";
 };
@@ -45,15 +44,18 @@ if ([_medic] call PAR_is_medic) then {
 };
 
 _wnded setUnconscious false;
-_wnded setVariable ["PAR_isUnconscious", false, true];
-_wnded setVariable ["PAR_isDragged", 0, true];
+[_medic, _wnded] call PAR_fn_medicRelease;
+
+if (isPlayer _wnded) then {
+	_wnded setVariable ["PAR_isUnconscious", false, true];
+	_wnded setVariable ["PAR_isDragged", 0, true];
+};
 
 _wnded switchMove "AinjPpneMstpSnonWrflDnon_rolltofront";
 _wnded playMoveNow "AinjPpneMstpSnonWrflDnon_rolltofront";
 sleep 2;
 _wnded switchmove "AidlPpneMstpSrasWrflDnon_G01";
 
-[_medic, _wnded] call PAR_fn_medicRelease;
 [_medic, _wnded] call PAR_fn_fixPos;
 
 if (_wnded == player) then {
@@ -64,6 +66,8 @@ if (_wnded == player) then {
 		[_medic, _wnded, _bonus] remoteExec ["PAR_remote_bounty", 2];
 	};
 } else {
+	_wnded setVariable ["PAR_isUnconscious", false, true];
+	_wnded setVariable ["PAR_isDragged", 0, true];
 	_wnded setSpeedMode (speedMode group player);
 	_wnded doFollow player;
 };
