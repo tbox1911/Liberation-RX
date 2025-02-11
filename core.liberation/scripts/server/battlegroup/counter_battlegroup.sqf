@@ -4,8 +4,6 @@ if ( isNil "infantry_weight" ) then { infantry_weight = 33 };
 if ( isNil "armor_weight" ) then { armor_weight = 33 };
 if ( isNil "air_weight" ) then { air_weight = 33 };
 
-sleep 1800;
-
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 	_sleeptime = (1800 + floor(random 1800)) / (([] call  F_adaptiveOpforFactor) * GRLIB_csat_aggressivity);

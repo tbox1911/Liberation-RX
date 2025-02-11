@@ -4,16 +4,16 @@ sleep ( 900 / GRLIB_csat_aggressivity );
 
 while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	
-	waitUntil { sleep 5; count GRLIB_all_fobs > 1 };
+	waitUntil { sleep 60; count GRLIB_all_fobs > 1 };
 
-	_sleeptime = (1500 + floor(random 2100)) / (([] call F_adaptiveOpforFactor) * GRLIB_csat_aggressivity);
+	_sleeptime = (1200 + floor random 2100) / (([] call F_adaptiveOpforFactor) * GRLIB_csat_aggressivity);
 	if ( combat_readiness >= 70 ) then { _sleeptime = _sleeptime * 0.85 };
 	if ( combat_readiness >= 90 ) then { _sleeptime = _sleeptime * 0.85 };
 
 	sleep _sleeptime;
 
 	if ( !isNil "GRLIB_last_battlegroup_time" ) then {
-		waitUntil { sleep 5; time > ( GRLIB_last_battlegroup_time + (2100 / GRLIB_csat_aggressivity)) };
+		waitUntil { sleep 60; time > ( GRLIB_last_battlegroup_time + (2100 / GRLIB_csat_aggressivity)) };
 	};
 
 	_countplayers = count (AllPlayers - (entities "HeadlessClient_F"));
