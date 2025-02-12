@@ -142,7 +142,7 @@ attack_in_progress_sector = compileFinal preprocessFileLineNumbers "scripts\serv
 destroy_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\destroy_fob.sqf";
 ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
 ied_trap_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_trap_manager.sqf";
-static_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\static_manager.sqf";
+spawn_static = compileFinal preprocessFileLineNumbers "scripts\server\sector\spawn_static.sqf";
 manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_ammoboxes.sqf";
 manage_intels = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_intels.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
@@ -198,6 +198,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";
 [] execVM "scripts\server\wildlife\manage_wildlife.sqf";
+[] execVM "scripts\server\sector\static_manager.sqf";
 
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";

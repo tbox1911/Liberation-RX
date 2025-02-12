@@ -444,12 +444,8 @@ while { true } do {
 				};
 			};
 
-			// Static Weapon
-			if (_classname in list_static_weapons) then {
-				[_vehicle] spawn manage_one_static;
-				// AI Static Weapon
-				if (_classname in static_vehicles_AI) then { player disableUAVConnectability [_vehicle, true] };
-			};
+			// AI Static Weapon
+			if (_classname in static_vehicles_AI) then { player disableUAVConnectability [_vehicle, true] };
 
 			// Vehicles
 			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship") then {

@@ -224,7 +224,7 @@ if (_spawncivs && GRLIB_civilian_activity > 0) then {
 };
 
 // Create static weapons
-[_sector, _static_count] spawn static_manager;
+[_sector, _static_count] spawn spawn_static;
 
 // Radio send renforcement
 if (_nearRadioTower) then {

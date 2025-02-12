@@ -2,8 +2,8 @@ params ["_static"];
 
 private _static_class = typeOf _static;
 if !(_static_class in list_static_weapons) exitWith {};
+_static setVariable ["LRX_managed_static", true, true];
 
-waitUntil {!isNil "GRLIB_init_server"};
 sleep 1 + (floor random 8);
 
 private ["_near_arsenal", "_vehicle_need_ammo", "_near_repair", "_vehicle_need_repair", "_gunner"];
@@ -12,7 +12,7 @@ private _timer = 0;
 while {alive _static} do {
     waitUntil { sleep 1; (isNull (_static getVariable ["R3F_LOG_est_transporte_par", objNull])) };
 
-    // add locality check + rexec to server
+    if !(local _static) exitWith { _static setVariable ["LRX_managed_static", false, true] };
     
     [_static] call F_vehicleUnflip;
 

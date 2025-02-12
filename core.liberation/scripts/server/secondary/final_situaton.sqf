@@ -83,7 +83,7 @@ opfor_target_assembled = createVehicle ["Land_Device_assembled_F", zeropos, [], 
 opfor_target_assembled setVectorDirAndUp [vectorDir opfor_target, vectorUp opfor_target];
 opfor_target_assembled hideObjectGlobal true;
 
-[_marker, 4] spawn static_manager;
+[_marker, 4] spawn spawn_static;
 private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 [_grp, _spawnpos, 200] spawn defence_ai;
 

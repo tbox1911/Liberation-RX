@@ -25,7 +25,6 @@ _object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 // Static Weapons
 if (_object_class in list_static_weapons ) then {
 	_object addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-	[_object] spawn manage_one_static;
 };
 
 // Set Owner

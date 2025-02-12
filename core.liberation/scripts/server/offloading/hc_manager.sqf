@@ -26,7 +26,7 @@ spawn_battlegroup_direct = compileFinal preprocessFileLineNumbers "scripts\serve
 // Sector
 ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
 ied_trap_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_trap_manager.sqf";
-static_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\static_manager.sqf";
+spawn_static = compileFinal preprocessFileLineNumbers "scripts\server\sector\spawn_static.sqf";
 manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_ammoboxes.sqf";
 manage_intels = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_intels.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
