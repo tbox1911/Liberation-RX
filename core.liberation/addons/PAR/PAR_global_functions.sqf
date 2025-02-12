@@ -14,17 +14,6 @@ PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_u
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_heal = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_heal.sqf";
 
-PAR_medic_units = {
-	params ["_wnded"];
-	private _grp_id = _wnded getVariable ["PAR_Grp_ID","1"];
-	(units group _wnded) select {
-		((_x getVariable ["PAR_Grp_ID","0"]) == _grp_id) &&
-		(_x distance2D _wnded <= 500) &&
-		!(isPlayer _x) && !([_x] call PAR_is_wounded) &&
-		!(objectParent _x iskindof "ParachuteBase") &&
-		isNil {_x getVariable "PAR_busy"}
-	};
-};
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
 	params ["_unit_array"];

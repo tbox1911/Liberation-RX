@@ -46,7 +46,7 @@ if ([_medic] call PAR_is_medic) then {
 _wnded setUnconscious false;
 [_medic, _wnded] call PAR_fn_medicRelease;
 
-if (isPlayer _wnded) then {
+if (isPlayer _wnded || isPlayer _medic) then {
 	_wnded setVariable ["PAR_isUnconscious", false, true];
 	_wnded setVariable ["PAR_isDragged", 0, true];
 };
@@ -66,11 +66,12 @@ if (_wnded == player) then {
 		[_medic, _wnded, _bonus] remoteExec ["PAR_remote_bounty", 2];
 	};
 } else {
-	_wnded setVariable ["PAR_isUnconscious", false, true];
-	_wnded setVariable ["PAR_isDragged", 0, true];
 	_wnded setSpeedMode (speedMode group player);
 	_wnded doFollow player;
 };
+
+_wnded setVariable ["PAR_isUnconscious", false, true];
+_wnded setVariable ["PAR_isDragged", 0, true];
 
 [_wnded] spawn {
 	params ["_unit"];

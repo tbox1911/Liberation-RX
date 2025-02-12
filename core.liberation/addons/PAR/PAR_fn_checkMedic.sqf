@@ -24,7 +24,7 @@ private _check_sortie = {
 	_ret;
 };
 
-while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNil {_wnded getVariable "PAR_myMedic"} || _fail != 99 } do {
+while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNil {_wnded getVariable "PAR_myMedic"} || _fail <= 6 } do {
 	_msg = "";
 	_dist = round (_wnded distance2D _medic);
 	// systemchat format ["dbg: wnded 2D dist : %1 dist speed %2 fail %3", _wnded distance2D _medic, round (speed vehicle _medic), _fail];
@@ -51,13 +51,13 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 			};
 		};
 
-		if (_fail in [3, 4]) then {
+		if (_fail in [3, 4, 5]) then {
 			_medic setDir (_medic getDir _wnded);
 			_relpos = _medic getRelPos [_dist/2, 0];
 			_medic doMove _relpos;
 		};
 
-		if (_fail > 4) then {
+		if (_fail > 5) then {
 			_medic allowDamage false;
 			_newpos = _medic getPos [3, _medic getDir _wnded];
 			_newpos = _newpos vectorAdd [0, 0, 3];
@@ -87,5 +87,4 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 	sleep 3;
 };
 
-sleep 1;
 [_medic, _wnded] call PAR_fn_medicRelease;
