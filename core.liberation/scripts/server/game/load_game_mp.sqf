@@ -42,6 +42,8 @@ stats_readiness_earned = 0;
 infantry_weight = 33;
 armor_weight = 33;
 air_weight = 33;
+sector_attack_in_progress = [];
+fob_attack_in_progress = [];
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_vehicle_huron = objNull;
 GRLIB_permissions = [];
@@ -73,7 +75,7 @@ private _warehouse = [];
 private _sector_defense = [];
 private _buildings_created = [];
 
-if ( !isNil "_lrx_liberation_savegame" ) then {
+if (!isNil "_lrx_liberation_savegame") then {
 	if (count _lrx_liberation_savegame <= 16) exitWith {
 		abort_loading_msg = format [
 		"********************************\n
@@ -86,6 +88,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	diag_log format [ "--- LRX Load Game start at %1", time ];
 
 	blufor_sectors = _lrx_liberation_savegame select 0;
+	if (isNil "blufor_sectors") then { blufor_sectors = [] };
 	GRLIB_all_fobs = _lrx_liberation_savegame select 1;
 	buildings_to_load = _lrx_liberation_savegame select 2;
 	time_of_day = _lrx_liberation_savegame select 3;
@@ -168,7 +171,8 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 	stats_saves_loaded = stats_saves_loaded + 1;
 
-	diag_log format ["--- LRX Load Game %1 objects to load...", count(buildings_to_load)];
+	if (count buildings_to_load == 0) exitWith {};
+	diag_log format ["--- LRX Load Game %1 objects to load...", count buildings_to_load];
 
 	private _s1 = [];
 	private _s2 = [];
@@ -449,7 +453,7 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 
 {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then {
-		 GRLIB_all_outposts pushBack _x;
+		GRLIB_all_outposts pushBack _x;
 	} else {
 		private _min_sector_dist = round ((GRLIB_capture_size + GRLIB_fob_range) * 1.5);
 		private _sector = [_min_sector_dist, _x] call F_getNearestSector;
@@ -492,3 +496,5 @@ publicVariable "GRLIB_mobile_respawn";
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_player_scores";
 publicVariable "GRLIB_sector_defense";
+publicVariable "sector_attack_in_progress";
+publicVariable "fob_attack_in_progress";
