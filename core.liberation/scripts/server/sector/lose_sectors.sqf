@@ -2,10 +2,6 @@ waitUntil {sleep 1; !isNil "GRLIB_all_fobs" };
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; (count (blufor_sectors) > 0 || count (GRLIB_all_fobs) > 0)};
 
-sector_attack_in_progress = [];
-publicVariable "sector_attack_in_progress";
-fob_attack_in_progress = [];
-publicVariable "fob_attack_in_progress";
 attack_in_progress_cooldown = [];
 
 private _countopfor = 0;

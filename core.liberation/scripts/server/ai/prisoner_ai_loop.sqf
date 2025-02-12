@@ -32,6 +32,12 @@ while { alive _unit && !_captured } do {
 			};
 			_grp = createGroup [GRLIB_side_enemy, true];
 			[_unit] joinSilent _grp;
+			_unit removeAllEventHandlers "GetInMan";
+			_unit removeAllEventHandlers "SeatSwitchedMan";
+			_unit removeAllEventHandlers "Take";
+			_unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
+			_unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
+			_unit addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
 			[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
 			sleep 5;
 			[_unit] spawn escape_ai;

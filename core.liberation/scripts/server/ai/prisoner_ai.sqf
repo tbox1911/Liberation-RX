@@ -27,6 +27,12 @@ _unit unassignItem _hmd;
 _unit removeItem _hmd;
 _unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
+_unit removeAllEventHandlers "GetInMan";
+_unit removeAllEventHandlers "SeatSwitchedMan";
+_unit removeAllEventHandlers "Take";
+_unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
+_unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
+_unit addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
 _unit setCaptive true;
 [_unit] call F_fixPosUnit;
 

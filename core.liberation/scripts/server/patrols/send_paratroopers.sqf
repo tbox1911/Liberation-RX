@@ -12,17 +12,23 @@ if (_qrf == true) then {
 };
 
 private _go_target = {
-	params ["_grp", "_target"];
+	params ["_grp", "_target", "_spawnpos"];
 	if (isNull _grp) exitWith {};
 	if ({alive _x} count (units _grp) == 0) exitWith {};
-
 	[_grp] call F_deleteWaypoints;
 	private _waypoint = _grp addWaypoint [_target, 100];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
 	_waypoint setWaypointBehaviour "AWARE";
-	_waypoint setWaypointCombatMode "YELLOW";
+	_waypoint setWaypointCombatMode "WHITE";
 	_waypoint setWaypointCompletionRadius 300;
+	_waypoint = _grp addWaypoint [_spawnpos, 0];
+	_waypoint setWaypointType "MOVE";
+	_waypoint setWaypointSpeed "FULL";
+	_waypoint setWaypointBehaviour "AWARE";
+	_waypoint setWaypointCombatMode "YELLOW";
+	_waypoint setWaypointCompletionRadius 400;
+	_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
 	{_x doFollow (leader _grp)} foreach units _grp;
 };
 
@@ -32,6 +38,13 @@ if (isNull _vehicle) exitWith { grpNull };
 private _pilot_group = group driver _vehicle;
 private _spawnpos = getPosATL _vehicle;
 _vehicle flyInHeight 300;
+_vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
+_vehicle setVariable ["GRLIB_battlegroup", true];
+{
+	_x setVariable ["GRLIB_counter_TTL", round(time + 900)];
+	_x setVariable ["GRLIB_battlegroup", true];
+} foreach (units _pilot_group);
+[_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
 
 private _cargo_seat_free = _vehicle emptyPositions "Cargo";
 if (_cargo_seat_free == 0) exitWith {
@@ -59,52 +72,33 @@ _vehicle lock 0;
 sleep 1;
 _vehicle lock _lock;
 
-private _escort_group = grpNull;
 if (floor random 3 == 0) then {
 	if (count opfor_air > 0) then {
-		sleep 3;
+		sleep 5;
 		private _escort_veh = [_targetpos, selectRandom opfor_air] call F_libSpawnVehicle;
-		_escort_group = group driver _escort_veh;
+		private _escort_group = group driver _escort_veh;
+		{
+			_x setVariable ["GRLIB_counter_TTL", round(time + 900)];
+			_x setVariable ["GRLIB_battlegroup", true];
+		} foreach (units _escort_group);
 		_escort_veh setVariable ["GRLIB_counter_TTL", round(time + 900)];
 		_escort_veh setVariable ["GRLIB_battlegroup", true];
 		_escort_veh flyInHeight 350;
+		[_escort_group, _targetpos, _escort_veh] call _go_target;
 	};
 };
-_vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
-_vehicle setVariable ["GRLIB_battlegroup", true];
-{
-	_x setVariable ["GRLIB_counter_TTL", round(time + 900)];
-	_x setVariable ["GRLIB_battlegroup", true];
-} foreach (units _pilot_group + units _escort_group);
+
 sleep 1;
 
-[_pilot_group, _targetpos] call _go_target;
-[_escort_group, _targetpos] call _go_target;
-
-diag_log format ["Spawn (%1) %2ParaTroopers objective %3 at %4", _cargo_seat_free, _name, _targetpos, time];
+diag_log format ["Send (%1) %2ParaTroopers to objective %3 at %4", _cargo_seat_free, _name, _targetpos, time];
 stats_reinforcements_called = stats_reinforcements_called + 1;
 if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 };
 
-[_vehicle, _spawnpos, _targetpos, _pilot_group, _escort_group, _para_group, _unload_dist] spawn {
-	params [ "_vehicle", "_spawnpos", "_targetpos", "_pilot_group", "_escort_group", "_para_group", "_unload_dist"];
-	private _go_back = {
-		params ["_grp", "_target"];
-		if (isNull _grp) exitWith {};
-		if ({alive _x} count (units _grp) == 0) exitWith {};
-
-		[_grp] call F_deleteWaypoints;
-		private _waypoint = _grp addWaypoint [_target, 0];
-		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointSpeed "FULL";
-		_waypoint setWaypointBehaviour "AWARE";
-		_waypoint setWaypointCombatMode "YELLOW";
-		_waypoint setWaypointCompletionRadius 300;
-		_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
-		{_x doFollow (leader _grp)} foreach units _grp;
-	};
+[_vehicle, _targetpos, _para_group, _unload_dist] spawn {
+	params [ "_vehicle", "_targetpos", "_para_group", "_unload_dist"];
 
 	waitUntil {
-		sleep 0.5;
+		sleep 0.2;
 		!(alive _vehicle) || (damage _vehicle > 0.2 ) || (_vehicle distance2D _targetpos <= _unload_dist)
 	};
 
@@ -112,9 +106,6 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 		[_para_group, _vehicle] call F_ejectGroup;
 		[_para_group, _targetpos] spawn battlegroup_ai;
 	};
-
-	[_pilot_group, _spawnpos] call _go_back;
-	[_escort_group, _spawnpos] call _go_back;
 };
 
 private _hc = [] call F_lessLoadedHC;

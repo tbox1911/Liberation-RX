@@ -7,15 +7,9 @@ private _new_medic = objNull;
 
 private _check_sortie = {
 	params ["_wnded","_medic"];
+	if (isNil {_wnded getVariable "PAR_myMedic"}) exitWith { false };
 	private _ret = false;
-	if ( !alive _medic || !alive _wnded ||
-		isNil {_wnded getVariable "PAR_myMedic"} ||
-		vehicle _medic != _medic || vehicle _wnded != _wnded
-	) then {
-		_fail = 99;
-	};
-
-	if (_wnded distance2D _medic <= 6 && _fail != 99) then {
+	if (_wnded distance2D _medic <= 6) then {
 		if (surfaceIsWater (getPos _wnded)) then {
 			_medic setPosASL (getPosASL _wnded);
 		} else {
@@ -30,15 +24,19 @@ private _check_sortie = {
 	_ret;
 };
 
-while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNil {_wnded getVariable "PAR_myMedic"} || _fail == 99 } do {
+while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNil {_wnded getVariable "PAR_myMedic"} || _fail <= 6 } do {
 	_msg = "";
 	_dist = round (_wnded distance2D _medic);
 	// systemchat format ["dbg: wnded 2D dist : %1 dist speed %2 fail %3", _wnded distance2D _medic, round (speed vehicle _medic), _fail];
 	if (_dist > 500) exitWith {};
+	if (vehicle _medic != _medic || vehicle _wnded != _wnded) exitWith {};
 	_new_medic = [_wnded] call PAR_fn_nearestMedic;
 	if (!isNil "_new_medic" && _dist > 20) then {
-		if ((_new_medic distance2D _wnded) + 6 < (_medic distance2D _wnded)) exitWith {};
+		if ((_new_medic distance2D _wnded) + 6 < (_medic distance2D _wnded)) then { _wnded setVariable ["PAR_myMedic", nil] };
 	};
+
+	if (isNil {_wnded getVariable "PAR_myMedic"}) exitWith {};
+
 	if (round (speed vehicle _medic) == 0) then {
 		_fail = _fail + 1;
 		_medic setDir (_medic getDir _wnded);
@@ -53,13 +51,13 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 			};
 		};
 
-		if (_fail in [3, 4]) then {
+		if (_fail in [3, 4, 5]) then {
 			_medic setDir (_medic getDir _wnded);
 			_relpos = _medic getRelPos [_dist/2, 0];
 			_medic doMove _relpos;
 		};
 
-		if (_fail > 4) then {
+		if (_fail > 5) then {
 			_medic allowDamage false;
 			_newpos = _medic getPos [3, _medic getDir _wnded];
 			_newpos = _newpos vectorAdd [0, 0, 3];
@@ -89,5 +87,4 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 	sleep 3;
 };
 
-sleep 1;
 [_medic, _wnded] call PAR_fn_medicRelease;
