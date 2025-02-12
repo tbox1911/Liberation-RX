@@ -167,6 +167,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
+	["Ship_F", 25],
 	[FOB_boat_typename, 100],
 	["Boat_Armed_01_base_F", 40],
 	["Rubber_duck_base_F", 0],
