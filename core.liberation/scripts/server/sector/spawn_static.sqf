@@ -20,6 +20,8 @@ _vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 _vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+_vehicle setVariable ["GRLIB_vehicle_reward", true, true];
+[_vehicle] call F_aceLockVehicle;
 sleep 1;
 
 // Crew
@@ -35,11 +37,6 @@ sleep 0.5;
 _unit = _grp createUnit [opfor_spotter, _vehicle, [], 3, "None"];
 [_unit] joinSilent _grp;
 _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-
-//_vehicle setVariable ["GRLIB_vehicle_gunner", units _grp];
-_vehicle setVariable ["GRLIB_vehicle_reward", true, true];
-
-[_vehicle] call F_aceLockVehicle;
 
 diag_log format [ "Spawn Static Weapon (%1) on sector %2 at %3", typeOf _vehicle, _sector, time ];
 

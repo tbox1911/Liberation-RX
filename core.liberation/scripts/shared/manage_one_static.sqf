@@ -13,7 +13,7 @@ while {alive _static} do {
     waitUntil { sleep 1; (isNull (_static getVariable ["R3F_LOG_est_transporte_par", objNull])) };
 
     if !(local _static) exitWith { _static setVariable ["LRX_managed_static", false, true] };
-    
+
     [_static] call F_vehicleUnflip;
 
     if (_static_class in static_vehicles_AI) then {
@@ -47,7 +47,9 @@ while {alive _static} do {
             if (side group _gunner == GRLIB_side_friendly) then {
                 [_gunner, GRLIB_side_enemy] spawn F_getNearestEnemy;
             };
+        } else {
+            [_static] call F_searchGunner;
         };
     };
-    sleep 60;
+    sleep 30;
 };

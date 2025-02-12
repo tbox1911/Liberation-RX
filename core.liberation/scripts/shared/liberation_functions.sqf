@@ -78,6 +78,7 @@ F_nearestPosition = compileFinal preprocessFileLineNumbers "scripts\shared\funct
 F_pay = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_pay.sqf";
 F_payLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_payLoadout.sqf";
 F_replaceWith = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_replaceWith.sqf";
+F_searchGunner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_searchGunner.sqf";
 F_secondsToTimer = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_secondsToTimer.sqf";
 F_sectorOwnership = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_sectorOwnership.sqf";
 F_setCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setCargo.sqf";

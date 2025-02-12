@@ -1,6 +1,12 @@
 params ["_unit", "_side"];
 
 if !(local _unit) exitWith {};
+
+private _current_enemy = GRLIB_side_friendly;
+if (_side == GRLIB_side_friendly) then { _current_enemy = GRLIB_side_enemy };
+private _enemy_nearby = [_unit, (GRLIB_sector_size * 2), _current_enemy] call F_getUnitsCount;
+if (_enemy_nearby == 0) exitWith {};
+
 private _vehicle = objectParent _unit;
 private _vehicle_class = typeOf _vehicle;
 
@@ -9,14 +15,14 @@ if (isNull _vehicle) exitWith {};
 
 // Default for HMG, GMG
 private _kind = ["CAManBase"];
-private _dist = 1000;
+private _dist = GRLIB_sector_size;
 
 // Default for AA, AC
-if (_vehicle_class isKindOf "AT_01_base_F") then {_dist = 1500; _kind = ["Car", "Wheeled_APC_F", "Tank"]};
-if (_vehicle_class isKindOf "AA_01_base_F") then {_dist = 2000; _kind = ["Air"]};
+if (_vehicle_class isKindOf "AT_01_base_F") then {_dist = (GRLIB_sector_size * 1.5); _kind = ["Car", "Wheeled_APC_F", "Tank"]};
+if (_vehicle_class isKindOf "AA_01_base_F") then {_dist = (GRLIB_sector_size * 2); _kind = ["Air"]};
 
 // Default Mortar
-if (_vehicle_class isKindOf "StaticMortar") then {_dist = 1800; _kind = ["CAManBase", "Car"]};
+if (_vehicle_class isKindOf "StaticMortar") then { _dist = (GRLIB_sector_size * 1.5); _kind = ["CAManBase", "Car"]};
 
 private _scan_target = (_vehicle nearEntities [_kind, _dist]) select {
     alive _x && side group _x == _side &&
@@ -27,7 +33,7 @@ if (count (_scan_target) > 0) then {
     // closest first
     private _target_list = _scan_target apply {[_x distance2D _vehicle, _x]};
     _target_list sort true;
-    private _next_target = _target_list select 0 select 1;
+    private _next_target = (_target_list select 0 select 1);
 
     private _enemy_dir = _vehicle getDir _next_target;
     private _rel_diff = abs (_enemy_dir - (getDir _vehicle));
