@@ -59,7 +59,7 @@ private ["_unit", "_pos", "_backpack"];
 		};
 
 		if (_type == "defender") then {
-			_unit setVariable ["PAR_Grp_ID", "server", true];
+			_unit setVariable ["GRLIB_mission_AI", true, true]
 		};
 
 		if !(_type in ["divers", "para", "building"]) then {

@@ -38,7 +38,7 @@ _grp setBehaviourStrong "COMBAT";
     _x allowFleeing 0;
     _x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 } foreach (units _grp);
-[_grp, _sector_pos, 50] spawn defence_ai;
+[_grp, _sector_pos, 80] spawn defence_ai;
 
 if (!_fob) then {
     if (_defense_type == 3) then {
