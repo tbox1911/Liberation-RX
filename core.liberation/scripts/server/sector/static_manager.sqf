@@ -46,12 +46,12 @@ diag_log format [ "Spawn Static Weapon (%1) on sector %2 at %3", typeOf _vehicle
 _spawn_pos = getPos _vehicle;
 
 // AI (managed by manage_static.sqf)
+[_vehicle] spawn manage_one_static;
 [_grp, _spawn_pos, 20] spawn patrol_ai;
 
 private _hc = [] call F_lessLoadedHC;
-if (isDedicated && !isNull _hc) exitWith {
+if (isDedicated && !isNull _hc) then {
 	_grp setGroupOwner (owner _hc);
-	sleep 1;
 };
 
 // Cleanup
