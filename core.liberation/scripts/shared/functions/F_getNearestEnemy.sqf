@@ -1,5 +1,6 @@
 params ["_unit", "_side"];
 
+if !(local _unit) exitWith {};
 private _vehicle = objectParent _unit;
 private _vehicle_class = typeOf _vehicle;
 

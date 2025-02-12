@@ -1,6 +1,6 @@
 waitUntil { sleep 1; !isNil "blufor_sectors" };
 private [
-	"_unitList", "_my_squad", "_static_ai",
+	"_unitList", "_my_squad",
 	"_near_arsenal", "_primary_weapon", "_needammo1", "_needammo2", "_maxpri", "_minpri",
 	"_near_medic", "_needmedic",
 	"_near_repair", "_near_lhd", "_list_vehicles", "_vehicle",

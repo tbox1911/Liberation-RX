@@ -444,10 +444,11 @@ while { true } do {
 				};
 			};
 
-			// AI Static Weapon
-			if (_classname in static_vehicles_AI) then {
-				//_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-				player disableUAVConnectability [_vehicle, true];
+			// Static Weapon
+			if (_classname in list_static_weapons) then {
+				[_vehicle] spawn manage_one_static;
+				// AI Static Weapon
+				if (_classname in static_vehicles_AI) then { player disableUAVConnectability [_vehicle, true] };
 			};
 
 			// Vehicles

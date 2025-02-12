@@ -1,6 +1,7 @@
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
 clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_vehicle.sqf";
 untow_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\untow_vehicle.sqf";
+manage_one_static = compileFinal preprocessFileLineNumbers "scripts\shared\manage_one_static.sqf";
 
 // Event Handlers
 damage_manager_civilian = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_civilian.sqf";

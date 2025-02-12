@@ -100,29 +100,29 @@ GRLIB_max_respawn_reached = false;
 GRLIB_player_configured = false;
 
 add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
-dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
+artillery_cooldown = compileFinal preprocessFileLineNumbers "scripts\client\misc\artillery_cooldown.sqf";
+cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
+do_build_squad = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_squad.sqf";
+do_build_unit = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_unit.sqf";
+do_dog = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_dog.sqf";
 do_onboard = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_onboard.sqf";
 do_redeploy = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_redeploy.sqf";
-do_dog = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_dog.sqf";
-do_build_unit = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_unit.sqf";
-do_build_squad = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_squad.sqf";
-spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
-paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
-cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
-write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
-set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
-set_sticky_bomb = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_sticky_bomb.sqf";
-artillery_cooldown = compileFinal preprocessFileLineNumbers "scripts\client\misc\artillery_cooldown.sqf";
-vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
-vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
+dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
+get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
+is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 is_menuok_veh = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok_veh.sqf";
-is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
-get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
+paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
-speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\speak_manager.sqf";
 save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\save_personal_arsenal.sqf";
+set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
+set_sticky_bomb = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_sticky_bomb.sqf";
+spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
+speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\speak_manager.sqf";
+vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
+vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
+write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
@@ -252,6 +252,27 @@ addMissionEventHandler ["Draw3D",{
 		private _storage_pos = ASLToAGL getPosASL _storage;
 		drawIcon3D ["", [1,1,1,1], _storage_pos vectorAdd [0, 0, 1], 2, 2, 0, "Use LOAD / UNLOAD Action", 2, 0.05, "RobotoCondensed", "center"];
 	};
+
+	private _near_static = nearestObjects [player, static_vehicles_AI, 5];
+	if (count (_near_static) > 0) then {
+		private _static = _near_static select 0;
+		private _static_pos = ASLToAGL getPosASL _static;
+		private _screenmsg = "";
+		private _timer = _static getVariable ["GREUH_rearm_timer", 0];
+		private _ammo = [_static] call F_getVehicleAmmoDef;
+		if (_timer > time && _ammo <= 0.85) then {
+			_screenmsg = format [ "%1 Rearming Cooldown (%2 sec)...", ([_static] call F_getLRXName), round (_timer - time) ];
+		};
+		private _timer = _static getVariable ["GREUH_repair_timer", 0];
+		private _damage = [_static] call F_getVehicleDamage;			
+		if (_timer > time && _damage >= 0.04) then {
+			_screenmsg = format [ "%1 Repairing Cooldown (%2 sec)...", ([_static] call F_getLRXName), round (_timer - time) ];
+		};		
+		if (_screenmsg != "") then {
+			drawIcon3D ["", [1,1,1,1], _static_pos vectorAdd [0, 0, 1], 2, 2, 0, _screenmsg, 2, 0.05, "RobotoCondensed", "center"];
+		};
+	};
+
 }];
 
 // kart support

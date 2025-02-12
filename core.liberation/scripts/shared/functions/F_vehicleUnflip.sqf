@@ -1,6 +1,7 @@
 params ["_vehicle"];
 
 if !(_vehicle isKindOf "LandVehicle") exitWith {};
+if !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith {};
 if (surfaceIsWater (getPos _vehicle)) exitWith {};
 
 if (vectorUp _vehicle select 2 < 0.60) then {

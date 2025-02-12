@@ -359,9 +359,9 @@ if (!isNil "_lrx_liberation_savegame") then {
 				_nextbuilding setVehicleLock "DEFAULT";
 				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
 				_nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+				[_nextbuilding] spawn manage_one_static;
 				if (_nextclass in static_vehicles_AI) then {
 					_nextbuilding setVehicleLock "LOCKED";
-					_nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 					_nextbuilding allowCrewInImmobile [true, false];
 					_nextbuilding setUnloadInCombat [true, false];
 					_nextbuilding setAutonomous true;

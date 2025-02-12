@@ -20,6 +20,7 @@ _vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 _vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+[_vehicle] spawn manage_one_static;
 sleep 1;
 
 // Crew
@@ -44,9 +45,6 @@ _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 diag_log format [ "Spawn Static Weapon (%1) on sector %2 at %3", typeOf _vehicle, _sector, time ];
 
 _spawn_pos = getPos _vehicle;
-
-// AI (managed by manage_static.sqf)
-[_vehicle] spawn manage_one_static;
 [_grp, _spawn_pos, 20] spawn patrol_ai;
 
 private _hc = [] call F_lessLoadedHC;
