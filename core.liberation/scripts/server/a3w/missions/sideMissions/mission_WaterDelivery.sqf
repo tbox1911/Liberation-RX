@@ -16,16 +16,15 @@ _setupObjects = {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
-	_aiGroup = createGroup [GRLIB_side_civilian, true];
-	private _man1 = _aiGroup createUnit ["C_Marshal_F", _missionPos, [], 0, "NONE"];
-	[_man1] joinSilent _aiGroup;
+	_man1 = createAgent ["C_Marshal_F", _missionPos, [], 5, "NONE"];
+	_man1 allowDamage false;
 	_man1 setVariable ['GRLIB_can_speak', true, true];
 	_man1 setVariable ["GRLIB_A3W_Mission_DL2", true, true];
-	_man1 setVariable ["acex_headless_blacklist", true, true];
-	_man1 allowDamage false;
+	doStop _man1;
 	[_man1, "LHD_krajPaluby"] spawn F_startAnimMP;
 	_marker_mission = ["DEL4", _missionPos] call createMissionMarkerCiv;
 	_missionHintText = ["STR_WATERDELI_MESSAGE1", sideMissionColor, _townName];
+	_vehicles = [_man1];
 	true;
 };
 

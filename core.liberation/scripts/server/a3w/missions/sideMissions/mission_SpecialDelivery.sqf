@@ -31,38 +31,32 @@ _setupObjects = {
 		false;
 	};
 
-	_aiGroup = createGroup [GRLIB_side_civilian, true];
-
 	//man 1
 	private _missionPos1 = markerPos (_convoy_destinations select 0) getPos [100, random 360];
-	private _man1 = _aiGroup createUnit ["C_Nikos", _missionPos1, [], 0, "NONE"];
-	[_man1]	spawn F_fixPosUnit;
+	private _man1 = createAgent ["C_Nikos", _missionPos1, [], 5, "NONE"];
 	_man1 allowDamage false;
 	_man1 setVariable ["GRLIB_A3W_Mission_SD1", true, true];
 
 	// man2
 	private _missionPos2 = markerPos (_convoy_destinations select 1) getPos [100, random 360];
-	private _man2 = _aiGroup createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
-	[_man2]	spawn F_fixPosUnit;
+	private _man2 = createAgent ["C_Orestes", _missionPos2, [], 5, "NONE"];
 	_man2 allowDamage false;
 	_man2 setVariable ["GRLIB_A3W_Mission_SD2", true, true];
 
 	// man3
 	private _missionPos3 = markerPos (_convoy_destinations select 2) getPos [100, random 360];
-	private _man3 = _aiGroup createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];
-	[_man3]	spawn F_fixPosUnit;
+	private _man3 = createAgent ["C_Orestes", _missionPos3, [], 5, "NONE"];
 	_man3 allowDamage false;
 	_man3 setVariable ["GRLIB_A3W_Mission_SD3", true, true];
 
 	// man 4
-	private _man4 = _aiGroup createUnit ["C_Nikos_aged", _missionEnd, [], 0, "NONE"];
+	private _man4 = createAgent ["C_Nikos_aged", _missionEnd, [], 5, "NONE"];
 	_man4 allowDamage false;
 	_man4 setVariable ["GRLIB_A3W_Mission_SD4", true, true];
 
 	{
-		_x setVariable ["acex_headless_blacklist", true, true];
 		_x setVariable ['GRLIB_can_speak', true, true];
-		//_x setVariable ["GRLIB_is_civilian", true, true];
+		doStop _x;
 		[_x, "LHD_krajPaluby"] spawn F_startAnimMP;
 	} forEach [_man1,_man2,_man3,_man4];
 
@@ -93,8 +87,6 @@ _setupObjects = {
 
 	GRLIB_A3W_Mission_SD = [0, [_man1, _man2, _man3, _man4], _quest_item];  // progression
 	publicVariable "GRLIB_A3W_Mission_SD";
-
-	doStop (units _aiGroup);
 
 	// manage side
 	[_quest_item] spawn {
