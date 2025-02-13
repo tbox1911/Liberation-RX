@@ -35,6 +35,7 @@ F_getCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_
 F_getCargoUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCargoUnit.sqf";
 F_getCommander = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCommander.sqf";
 F_getDefenseType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getDefenseType.sqf";
+F_getEmptyArmored = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getEmptyArmored.sqf";
 F_getFobName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobName.sqf";
 F_getFobOwner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobOwner.sqf";
 F_getFobType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobType.sqf";

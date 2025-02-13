@@ -14,6 +14,7 @@ private ["_target", "_basepos", "_waypoint", "_wp0"];
 
 while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 	if (side _grp == GRLIB_side_enemy) then {
+		[_flagpos] call F_getEmptyArmored;
 		_target = [_flagpos] call F_getNearestBlufor;
 	};
 	if (side _grp == GRLIB_side_friendly) then {

@@ -58,7 +58,10 @@ while {(count _objective_pos > 0)} do {
 
 		if (_vehicle isKindOf "AllVehicles") then {
 			(driver _vehicle) doMove _objective_pos;
+		} else {
+			[_objective_pos] call F_getEmptyArmored;
 		};
+
 		_timer = round (time + (15 * 60));
 	};
 
@@ -71,11 +74,10 @@ while {(count _objective_pos > 0)} do {
 			_next_objective = [_last_pos] call F_getNearestBluforObjective;
 		};
 
+		_objective_pos = [];
 		if ((_next_objective select 1) <= GRLIB_spawn_min) then {
 			_objective_pos = (_next_objective select 0);
 			_attack = true;
-		} else {
-			_objective_pos = [];
 		};
 		_timer = round (time + (10 * 60));
 		_sleep = 5;

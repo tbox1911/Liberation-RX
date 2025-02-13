@@ -48,7 +48,9 @@ while {alive _static} do {
                 [_gunner, GRLIB_side_enemy] spawn F_getNearestEnemy;
             };
         } else {
-            [_static] call F_searchGunner;
+            if (_static_class in opfor_statics) then {
+                [_static] call F_searchGunner;
+            };
         };
     };
     sleep 30;
