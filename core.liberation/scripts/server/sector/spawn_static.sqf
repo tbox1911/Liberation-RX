@@ -19,6 +19,7 @@ private _vehicle = createVehicle [selectRandom opfor_statics, _spawn_pos, [], 0,
 _vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 _vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
+_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 [_vehicle] call F_aceLockVehicle;
 sleep 1;
