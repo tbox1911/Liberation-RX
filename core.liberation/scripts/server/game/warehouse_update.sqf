@@ -1,7 +1,5 @@
-params ["_owner"];
-private _warehouse = _owner getVariable ["GRLIB_Warehouse", objNull];
-if (isNull _warehouse) exitWith {};
-private _warehouse_pos = getPosATL _warehouse;
+params ["_warehouse_pos"];
+
 private ["_typename", "_box_count", "_indx"];
 {
 	_typename = _x select 0;

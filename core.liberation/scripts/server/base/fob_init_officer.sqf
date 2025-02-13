@@ -1,12 +1,5 @@
 params ["_fob"];
 
-if (isNil "GRLIB_FOB_Group") then {
-	GRLIB_FOB_Group = createGroup [GRLIB_side_civilian, true];
-};
-if (isNull GRLIB_FOB_Group) then {
-	GRLIB_FOB_Group = createGroup [GRLIB_side_civilian, true];
-};
-
 private _fob_class = typeOf _fob;
 private _fob_pos = getPosATL _fob;
 private _fob_dir = getDir _fob;
@@ -43,9 +36,8 @@ if !(surfaceIsWater _fob_pos) then {
 
 private _map_dir = getDir _map;
 private _manPos = (getPosATL _map) vectorAdd ([[0, -2, 0.2], -_map_dir] call BIS_fnc_rotateVector2D);
-private _man = GRLIB_FOB_Group createUnit [commander_classname, zeropos, [], 0, "CAN_COLLIDE"];
-[_man] joinSilent GRLIB_FOB_Group;
-_man setVariable ["acex_headless_blacklist", true, true];
+_man = createAgent [commander_classname, zeropos, [], 0, "NONE"];
+_man setVariable ["GRLIB_FOB_Group", true, true];
 _man allowDamage false;
 _man disableCollisionWith _map;
 _man setDir (_map_dir + 180);
@@ -55,5 +47,3 @@ doStop _man;
 
 _fob setVariable ["GRLIB_FOB_Officer", _man];
 _fob setVariable ["GRLIB_FOB_Objects", [_map, _lamp1, _lamp2]];
-
-publicVariable "GRLIB_FOB_Group";
