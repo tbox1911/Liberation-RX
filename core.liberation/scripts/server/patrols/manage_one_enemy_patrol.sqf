@@ -1,10 +1,12 @@
 params ["_level"];
 
+diag_log format ["--- LRX Enemy Patrol- trigger alert %1", _level];
+
 GRLIB_patrol_current = GRLIB_patrol_current + 1;
 publicVariable "GRLIB_patrol_current";
 
-sleep (60 + (floor random 120));
-while { diag_fps <= 20 || combat_readiness < _level } do { sleep 60 };
+sleep (10 + (floor random 60));
+while { combat_readiness < _level } do { sleep 60 };
 
 private _opfor_veh = objNull;
 private _opfor_grp = grpNull;
@@ -35,8 +37,7 @@ if (count _usable_sectors > 0) then {
 	if (isNull _opfor_grp) exitWith {};
 	private _veh_type = "No vehicle";
 	if !(isNull _opfor_veh) then { _veh_type = typeOf _opfor_veh };
-	diag_log format ["--- LRX Spawn Enemy Patrol %1 (%2) - trigger alert %3", _opfor_grp, _veh_type, _level];
-
+	diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
 
 	// Wait
 	private _unit_ttl = round (time + 1800);
