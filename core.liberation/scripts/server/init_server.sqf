@@ -157,6 +157,7 @@ boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_
 createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
+createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
 
 // Warehouse
 warehouse_update = compileFinal preprocessFileLineNumbers "scripts\server\game\warehouse_update.sqf";

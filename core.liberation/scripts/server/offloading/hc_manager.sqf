@@ -39,6 +39,7 @@ createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scr
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
 cleanMissionVehicles = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_cleanMissionVehicles.sqf";
+createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
 
 [] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\show_fps_hc.sqf";
 
