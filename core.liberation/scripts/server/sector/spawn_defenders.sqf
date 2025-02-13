@@ -51,7 +51,6 @@ if (!_fob) then {
         if (count _vehicles_pool > 0) then {
             private _vehiclePos = _sector_pos findEmptyPosition [5, 120, "B_Heli_Transport_03_unarmed_F"];
             _vehicle = [_vehiclePos, selectRandom _vehicles_pool, 3, false, GRLIB_side_friendly] call F_libSpawnVehicle;
-            _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
             [(group driver _vehicle), _sector_pos] spawn defence_ai;
         };
     };

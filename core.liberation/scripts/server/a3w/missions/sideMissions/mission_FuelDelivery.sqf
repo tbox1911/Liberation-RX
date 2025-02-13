@@ -10,7 +10,7 @@ _setupVars = {
 };
 
 _setupObjects = {
-	_townName = markerText _missionLocation;	
+	_townName = markerText _missionLocation;
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
@@ -22,7 +22,6 @@ _setupObjects = {
 	_man1 setVariable ['GRLIB_can_speak', true, true];
 	_man1 setVariable ["GRLIB_A3W_Mission_DL1", true, true];
 	_man1 setVariable ["acex_headless_blacklist", true, true];
-	_man1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man1 allowDamage false;
 	[_man1, "LHD_krajPaluby"] spawn F_startAnimMP;
 	_marker_mission = ["DEL3", _missionPos] call createMissionMarkerCiv;

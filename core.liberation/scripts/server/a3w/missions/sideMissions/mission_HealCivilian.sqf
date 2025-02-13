@@ -78,7 +78,6 @@ _setupObjects = {
 	{
 		_x setVariable ["GRLIB_can_speak", true, true];
 		_x setVariable ["GRLIB_A3W_Mission_HC1", true, true];
-		_x setVariable ["GRLIB_vehicle_owner", "server", true];
 		_x setVariable ["acex_headless_blacklist", true, true];
 	} forEach (units _aiGroup);
 
@@ -90,7 +89,6 @@ _setupObjects = {
 		if (_unit distance2D _pos <= 30) then { _unit setPos (_pos getPos [50, 360]) };
 		_unit setVariable ["GRLIB_can_speak", true, true];
 		_unit setVariable ["GRLIB_A3W_Mission_HC2", true, true];
-		_unit setVariable ["GRLIB_vehicle_owner", "server", true];
 		_unit setVariable ["acex_headless_blacklist", true, true];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		removeAllAssignedItems _unit;

@@ -7,7 +7,7 @@ private ["_quest_item"];
 _setupVars = {
 	_missionType = "STR_SPECIALDELI";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
-	_ignoreAiDeaths = true;	
+	_ignoreAiDeaths = true;
 };
 
 _setupObjects = {
@@ -39,7 +39,6 @@ _setupObjects = {
 	[_man1]	spawn F_fixPosUnit;
 	_man1 allowDamage false;
 	_man1 setVariable ["acex_headless_blacklist", true, true];
-	_man1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man1 setVariable ["GRLIB_A3W_Mission_SD1", true, true];
 	_man1 setVariable ['GRLIB_can_speak', true, true];
 	[_man1, "LHD_krajPaluby"] spawn F_startAnimMP;
@@ -50,7 +49,6 @@ _setupObjects = {
 	[_man2]	spawn F_fixPosUnit;
 	_man2 allowDamage false;
 	_man2 setVariable ["acex_headless_blacklist", true, true];
-	_man2 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man2 setVariable ["GRLIB_A3W_Mission_SD2", true, true];
 	_man2 setVariable ['GRLIB_can_speak', true, true];
 	[_man2, "LHD_krajPaluby"] spawn F_startAnimMP;
@@ -61,7 +59,6 @@ _setupObjects = {
 	[_man3]	spawn F_fixPosUnit;
 	_man3 allowDamage false;
 	_man3 setVariable ["acex_headless_blacklist", true, true];
-	_man3 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man3 setVariable ["GRLIB_A3W_Mission_SD3", true, true];
 	_man3 setVariable ['GRLIB_can_speak', true, true];
 	[_man3, "LHD_krajPaluby"] spawn F_startAnimMP;
@@ -70,7 +67,6 @@ _setupObjects = {
 	private _man4 = _aiGroup createUnit ["C_Nikos_aged", _missionEnd, [], 0, "NONE"];
 	_man4 allowDamage false;
 	_man4 setVariable ["acex_headless_blacklist", true, true];
-	_man4 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man4 setVariable ["GRLIB_A3W_Mission_SD4", true, true];
 	_man4 setVariable ['GRLIB_can_speak', true, true];
 	[_man4, "LHD_krajPaluby"] spawn F_startAnimMP;

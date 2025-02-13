@@ -27,7 +27,6 @@ GRLIB_SELL_Group = createGroup [GRLIB_side_civilian, true];
 	_man = GRLIB_SELL_Group createUnit [SELL_Man, _manPos, [], 5, "NONE"];
 	[_man] joinSilent GRLIB_SELL_Group;
 	_man setVariable ["acex_headless_blacklist", true, true];
-	_man setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man allowDamage false;
 	_man setPosATL (_manPos vectorAdd [0, 0, 0.1]);
 	doStop _man;
@@ -78,7 +77,7 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 	_man disableCollisionWith _desk;
 	[_man] joinSilent GRLIB_SHOP_Group;
 	_man setVariable ["acex_headless_blacklist", true, true];
-	_man setVariable ["GRLIB_vehicle_owner", "server", true];
+
 	_man setDir _desk_dir;
 	_man setPosATL _manPos;
 	doStop _man;
@@ -114,7 +113,6 @@ _manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_desk_dir] call BIS_
 _man = GRLIB_SHOP_Group createUnit [SHOP_Man, zeropos, [], 0, "NONE"];
 [_man] joinSilent GRLIB_SHOP_Group;
 _man setVariable ["acex_headless_blacklist", true, true];
-_man setVariable ["GRLIB_vehicle_owner", "server", true];
 _man allowDamage false;
 _man disableCollisionWith _desk;
 _man setDir _desk_dir;
