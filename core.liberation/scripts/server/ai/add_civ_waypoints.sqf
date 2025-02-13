@@ -4,7 +4,7 @@ if (isNull _grp) exitWith {};
 if (!local _grp) exitWith { [_grp, _basepos] remoteExec ["add_civ_waypoints", groupOwner _grp] };
 
 private _civ_veh = objectParent (leader _grp);
-if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 80] spawn patrol_ai };
+if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 120] spawn patrol_ai };
 
 [_grp] call F_deleteWaypoints;
 

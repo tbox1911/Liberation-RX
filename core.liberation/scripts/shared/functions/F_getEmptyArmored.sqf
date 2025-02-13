@@ -7,5 +7,5 @@ private _armed_veh = vehicles select {
 };
 
 if (count _armed_veh > 0) then {
-    [_armed_veh select 0] call F_searchGunner;
+    [selectRandom _armed_veh] call F_searchGunner;
 };
