@@ -38,38 +38,33 @@ _setupObjects = {
 	private _man1 = _aiGroup createUnit ["C_Nikos", _missionPos1, [], 0, "NONE"];
 	[_man1]	spawn F_fixPosUnit;
 	_man1 allowDamage false;
-	_man1 setVariable ["acex_headless_blacklist", true, true];
 	_man1 setVariable ["GRLIB_A3W_Mission_SD1", true, true];
-	_man1 setVariable ['GRLIB_can_speak', true, true];
-	[_man1, "LHD_krajPaluby"] spawn F_startAnimMP;
 
 	// man2
 	private _missionPos2 = markerPos (_convoy_destinations select 1) getPos [100, random 360];
 	private _man2 = _aiGroup createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
 	[_man2]	spawn F_fixPosUnit;
 	_man2 allowDamage false;
-	_man2 setVariable ["acex_headless_blacklist", true, true];
 	_man2 setVariable ["GRLIB_A3W_Mission_SD2", true, true];
-	_man2 setVariable ['GRLIB_can_speak', true, true];
-	[_man2, "LHD_krajPaluby"] spawn F_startAnimMP;
 
 	// man3
 	private _missionPos3 = markerPos (_convoy_destinations select 2) getPos [100, random 360];
 	private _man3 = _aiGroup createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];
 	[_man3]	spawn F_fixPosUnit;
 	_man3 allowDamage false;
-	_man3 setVariable ["acex_headless_blacklist", true, true];
 	_man3 setVariable ["GRLIB_A3W_Mission_SD3", true, true];
-	_man3 setVariable ['GRLIB_can_speak', true, true];
-	[_man3, "LHD_krajPaluby"] spawn F_startAnimMP;
 
 	// man 4
 	private _man4 = _aiGroup createUnit ["C_Nikos_aged", _missionEnd, [], 0, "NONE"];
 	_man4 allowDamage false;
-	_man4 setVariable ["acex_headless_blacklist", true, true];
 	_man4 setVariable ["GRLIB_A3W_Mission_SD4", true, true];
-	_man4 setVariable ['GRLIB_can_speak', true, true];
-	[_man4, "LHD_krajPaluby"] spawn F_startAnimMP;
+
+	{
+		_x setVariable ["acex_headless_blacklist", true, true];
+		_x setVariable ['GRLIB_can_speak', true, true];
+		//_x setVariable ["GRLIB_is_civilian", true, true];
+		[_x, "LHD_krajPaluby"] spawn F_startAnimMP;
+	} forEach [_man1,_man2,_man3,_man4];
 
 	// create final house
 	private _house = createVehicle ["Land_i_House_Small_01_V1_F", _missionEnd, [], 2, "None"];

@@ -88,6 +88,7 @@ _setupObjects = {
 		[_unit] joinSilent _grp_wnded;
 		if (_unit distance2D _pos <= 30) then { _unit setPos (_pos getPos [50, 360]) };
 		_unit setVariable ["GRLIB_can_speak", true, true];
+		_unit setVariable ["GRLIB_is_civilian", true, true];
 		_unit setVariable ["GRLIB_A3W_Mission_HC2", true, true];
 		_unit setVariable ["acex_headless_blacklist", true, true];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];

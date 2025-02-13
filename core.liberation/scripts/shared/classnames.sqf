@@ -49,8 +49,8 @@ if (isServer) then {
 } else { waitUntil {sleep 1; !isNil "infantry_units"} };
 
 // All the UAVs must be declared here
-// uavs_vehicles (uavs + uavs_west) : define vehicle with inside AI that player can control
-// static_vehicles_AI (directly from west template) : define vehicle with inside AI that player can NOT control
+// uavs_west = [];  			// non AI drones (darter, etc) - player can take control
+// static_vehicles_AI = [];  	// AI drones that need a crew  (SAM, etc) - player cannot control
 uavs_vehicles = [];
 {
 	private _isUav = (getNumber (configfile >> "CfgVehicles" >> (_x select 0) >> "isUav") == 1);
