@@ -26,7 +26,7 @@ if ( count _usable_sectors > 0 ) then {
 	};
 
 	sleep 1;
-	if (isNil "_civ_grp" || isNull _civ_grp) exitWith {};
+	if (isNil "_civ_grp") exitWith {};
 	[_civ_grp, _sector_pos] spawn add_civ_waypoints;
 	if !(isNull _civ_veh) then {
 		[_civ_veh] spawn civilian_ai_veh;
