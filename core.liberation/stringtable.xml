@@ -462,6 +462,8 @@
 		</Key>
 		<Key ID="STR_FOB_BUILDING_CAPTURE_SECTOR">
 			<Original>&lt;t align='center'&gt;Replace Sector "%1" by the new FOB&lt;br/&gt;Sector will be Removed from the Game!&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Chinesesimp>&lt;t align='center'&gt;用新的 FOB 替换 "%1"&lt;br/&gt;该区域将被从游戏中删除！&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;用新的 FOB 替換 "%1"&lt;br/&gt;該區域將被從遊戲中删除！&lt;br/&gt;你確定嗎？&lt;/t&gt;</Chinese>
 		</Key>
 		<Key ID="STR_BUILD_ERROR_WATER">
 			<Original>Can't build on water.</Original>
@@ -712,6 +714,8 @@
 		<Key ID="STR_WIPE_CONTEXT">
 			<Original>Reset Players data (loadout,squad,garage,arsenal)</Original>
 			<French>RAZ des données Joueurs (loadout,squad,garage,arsenal)</French>
+			<Chinesesimp>重置玩家数据（装载、小队、车库、军火库）</Chinesesimp>
+			<Chinese>重置玩家數據（裝載、小隊、車庫、軍火庫）</Chinese>
 		</Key>
 		<Key ID="STR_WIPE_NO">
 			<Original>No</Original>
@@ -861,10 +865,14 @@
 		&lt;t color='#00e000'&gt;Forgive&lt;/t&gt;
 			<Original>-- You are entering &lt;t color='#ff0000'&gt;Enemy&lt;/t&gt; territory! --</Original>
 			<French>-- Vous entrez en territoire &lt;t color='#ff0000'&gt;Ennemie&lt;/t&gt;! --</French>
+			<Chinesesimp>-- 你正在进入 &lt;t color='#ff0000'&gt;敌方&lt;/t&gt; 领地! --</Chinesesimp>
+			<Chinese>-- 你正在進入 &lt;t color='#ff0000'&gt;敵方&lt;/t&gt; 領地! --</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_ENTER_SECTOR">
 			<Original>-- You have entered &lt;t color='#ff0000'&gt;%1&lt;/t&gt;. --</Original>
 			<French>-- Vous entrez dans &lt;t color='#ff0000'&gt;%1&lt;/t&gt;. --</French>
+			<Chinesesimp>-- 你已进入 &lt;t color='#ff0000'&gt;%1&lt;/t&gt;. --</Chinesesimp>
+			<Chinese>-- 你已進入 &lt;t color='#ff0000'&gt;%1&lt;/t&gt;. --</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_SECTORCAPTURED_TITLE">
 			<Original>SECTOR CAPTURED</Original>
@@ -2110,10 +2118,14 @@
 		<Key ID="STR_PARAMS_OPFORCAP">
 			<Original>Maximum number of enemy units</Original>
 			<French>Nombre maximum d'unités ennemies</French>
+			<Chinesesimp>敌方单位的最大数量</Chinesesimp>
+			<Chinese>敵方組織的最大數量</Chinese>
 		</Key>		
 		<Key ID="STR_PARAMS_UNITCAP">
 			<Original>Maximum unit modifier</Original>
 			<French>Modificateur d'unité maximum</French>
+			<Chinesesimp>最大单位修正器</Chinesesimp>
+			<Chinese>最大組織修正器</Chinese>
 		</Key>		
 		<Key ID="STR_PARAMS_UNITCAP1">
 			<Original>50% - Recommended for local hosting</Original>
