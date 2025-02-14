@@ -28,7 +28,7 @@ if (_cmd == 2) then {
 // update all warehouse
 {
     if (_x getVariable ["GRLIB_WHS_Group", false]) then {
-        [getPosATL _x] call warehouse_update;
+        [getPosATL (agent _x)] call warehouse_update;
     };
 } forEach agents;
 
