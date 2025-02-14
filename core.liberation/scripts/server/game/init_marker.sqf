@@ -4,30 +4,28 @@ if (!isServer) exitWith {};
 [] call compileFinal preprocessFileLineNumbers "fixed_position.sqf";
 
 // REPAIR
-private ["_vehicle"];
+private ["_vehicle", "_spawn_pos"];
 {
 	// Add repair pickup
-	_vehicle = createVehicle [repair_offroad, (markerPos _x), [], 20, "NONE"];
-	if (isNull _vehicle) then {
-		diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
-	} else {
+	_spawn_pos = [(markerPos _x), 2] call F_findSafePlace;
+	if (count _spawn_pos > 0) then {
+		_vehicle = createVehicle [repair_offroad, _spawn_pos, [], 20, "NONE"];
 		_vehicle allowDamage false;
 		[_vehicle, "lock", "server"] call F_vehicleLock;
 		[_vehicle] call F_clearCargo;
 		_vehicle enableSimulationGlobal true; // enable to keep facility
+	} else {
+		diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
 	};
 	sleep 0.2;
 } forEach sectors_factory;
 
 // SELL
 private ["_man", "_manPos"];
-GRLIB_SELL_Group = createGroup [GRLIB_side_civilian, true];
 {
 	_manPos = _x;
-	_man = GRLIB_SELL_Group createUnit [SELL_Man, _manPos, [], 5, "NONE"];
-	[_man] joinSilent GRLIB_SELL_Group;
-	_man setVariable ["acex_headless_blacklist", true, true];
-	_man setVariable ["GRLIB_vehicle_owner", "server", true];
+	_man = createAgent [SELL_Man, _manPos, [], 5, "NONE"];
+	_man setVariable ["GRLIB_SELL_group", true, true];
 	_man allowDamage false;
 	_man setPosATL (_manPos vectorAdd [0, 0, 0.1]);
 	doStop _man;
@@ -37,7 +35,6 @@ GRLIB_SELL_Group = createGroup [GRLIB_side_civilian, true];
 
 // SHOP
 private ["_shop", "_desk_dir", "_desk_pos", "_desk", "_man", "_offset", "_str"];
-GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 {
 	_shop = nearestObjects [_x, ["House"], 10] select 0;
 	if (isNil "_shop") then { diag_log format ["--- LRX Error: no building found at pos %1", _x]; _shop = objNull };
@@ -73,12 +70,11 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 	// Create Man
 	_desk_dir = (180 + _desk_dir);
 	_manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_desk_dir] call BIS_fnc_rotateVector2D);
-	_man = GRLIB_SHOP_Group createUnit [SHOP_Man, zeropos, [], 0, "CAN_COLLIDE"];
+	_man = createAgent [SHOP_Man, zeropos, [], 5, "CAN_COLLIDE"];
+	_man setVariable ["GRLIB_SHOP_group", true, true];
 	_man allowDamage false;
 	_man disableCollisionWith _desk;
-	[_man] joinSilent GRLIB_SHOP_Group;
-	_man setVariable ["acex_headless_blacklist", true, true];
-	_man setVariable ["GRLIB_vehicle_owner", "server", true];
+
 	_man setDir _desk_dir;
 	_man setPosATL _manPos;
 	doStop _man;
@@ -87,8 +83,8 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 	sleep 0.2;
 } forEach GRLIB_Marker_SHOP;
 
-publicVariable "GRLIB_SHOP_Group";
-publicVariable "GRLIB_SELL_Group";
+
+
 sleep 3;
 GRLIB_marker_init = true;
 publicVariable "GRLIB_marker_init";
@@ -111,10 +107,8 @@ _desk setDir _desk_dir;
 _desk setPosASL _desk_pos;
 _desk_dir = (180 + _desk_dir);
 _manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_desk_dir] call BIS_fnc_rotateVector2D);
-_man = GRLIB_SHOP_Group createUnit [SHOP_Man, zeropos, [], 0, "NONE"];
-[_man] joinSilent GRLIB_SHOP_Group;
+_man = createAgent [SHOP_Man, zeropos, [], 5, "CAN_COLLIDE"];
 _man setVariable ["acex_headless_blacklist", true, true];
-_man setVariable ["GRLIB_vehicle_owner", "server", true];
 _man allowDamage false;
 _man disableCollisionWith _desk;
 _man setDir _desk_dir;

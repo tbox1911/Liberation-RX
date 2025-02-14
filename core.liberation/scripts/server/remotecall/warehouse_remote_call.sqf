@@ -27,11 +27,9 @@ if (_cmd == 2) then {
 
 // update all warehouse
 {
-    if (typeOf _x == WRHS_Man) then {
-        if (!isNull (_x getVariable ["GRLIB_Warehouse", objNull])) then {
-            [_x] call warehouse_update;
-        };
+    if (_x getVariable ["GRLIB_WHS_Group", false]) then {
+        [getPosATL _x] call warehouse_update;
     };
-} forEach (units GRLIB_WHS_Group);
+} forEach agents;
 
 publicVariable "GRLIB_warehouse";

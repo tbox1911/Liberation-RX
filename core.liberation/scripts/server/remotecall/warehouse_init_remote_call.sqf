@@ -4,13 +4,6 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_warehouse"];
 
-if (isNil "GRLIB_WHS_Group") then {
-	GRLIB_WHS_Group = createGroup [GRLIB_side_civilian, true];
-};
-if (isNull GRLIB_WHS_Group) then {
-	GRLIB_WHS_Group = createGroup [GRLIB_side_civilian, true];
-};
-
 private _row1 = [
 	// row 1 (Water)
 	[[-4,5,0.1], 90],
@@ -62,22 +55,17 @@ _desk enableSimulationGlobal false;
 _desk setDir _warehouse_dir;
 _desk setPosASL _desk_pos;
 _desk setVariable ["R3F_LOG_disabled", true, true];
-_desk setVariable ["GRLIB_vehicle_owner", "server", true];
 _warehouse_dir = (180 + _warehouse_dir);
 private _manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_warehouse_dir] call BIS_fnc_rotateVector2D);
-private _man = GRLIB_WHS_Group createUnit [WRHS_Man, ([] call F_getFreePos), [], 0, "NONE"];
-[_man] joinSilent GRLIB_WHS_Group;
-_man setVariable ["acex_headless_blacklist", true, true];
-_man setVariable ["GRLIB_vehicle_owner", "server", true];
+_man = createAgent [WRHS_Man, zeropos, [], 5, "NONE"];
+_man setVariable ["GRLIB_WHS_Group", true, true];
 _man allowDamage false;
 _man disableCollisionWith _desk;
 _man setDir _warehouse_dir;
 _man setPosATL _manPos;
 doStop _man;
 [_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
-_man setVariable ["GRLIB_Warehouse", _warehouse];
 _warehouse setVariable ["GRLIB_WarehouseOwner", _man];
-publicVariable "GRLIB_WHS_Group";
 
 // build box
 _warehouse_dir = getdir _warehouse;
@@ -99,5 +87,6 @@ _warehouse_dir = getdir _warehouse;
 } foreach GRLIB_warehouse;
 
 // update warehouse
-[_man] call warehouse_update;
+[getPosATL _warehouse] call warehouse_update;
+
 publicVariable "GRLIB_warehouse";

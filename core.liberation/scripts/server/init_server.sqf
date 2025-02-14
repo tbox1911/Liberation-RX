@@ -115,6 +115,7 @@ spawn_halo_vehicle = compileFinal preprocessFileLineNumbers "scripts\server\batt
 spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup.sqf";
 spawn_battlegroup_direct = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup_direct.sqf";
 send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
+manage_one_enemy_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_enemy_patrol.sqf";
 
 // Game
 [] call compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp_init.sqf";
@@ -142,7 +143,7 @@ attack_in_progress_sector = compileFinal preprocessFileLineNumbers "scripts\serv
 destroy_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\destroy_fob.sqf";
 ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
 ied_trap_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_trap_manager.sqf";
-static_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\static_manager.sqf";
+spawn_static = compileFinal preprocessFileLineNumbers "scripts\server\sector\spawn_static.sqf";
 manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_ammoboxes.sqf";
 manage_intels = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_intels.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
@@ -156,6 +157,7 @@ boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_
 createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
+createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
 
 // Warehouse
 warehouse_update = compileFinal preprocessFileLineNumbers "scripts\server\game\warehouse_update.sqf";
@@ -189,7 +191,6 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\manage_score.sqf";
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
-[] execVM "scripts\server\game\manage_static.sqf";
 [] execVM "scripts\server\game\init_marker.sqf";
 [] execVM "scripts\server\base\fob_markers.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
@@ -199,6 +200,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";
 [] execVM "scripts\server\wildlife\manage_wildlife.sqf";
+[] execVM "scripts\server\sector\static_manager.sqf";
 
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";

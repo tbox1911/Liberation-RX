@@ -19,6 +19,7 @@ private _attack = true;
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
 diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
+sleep (5 + floor random 30);
 
 private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
 while {(count _objective_pos > 0)} do {
@@ -58,7 +59,10 @@ while {(count _objective_pos > 0)} do {
 
 		if (_vehicle isKindOf "AllVehicles") then {
 			(driver _vehicle) doMove _objective_pos;
+		} else {
+			[_objective_pos] spawn F_getEmptyArmored;
 		};
+
 		_timer = round (time + (15 * 60));
 	};
 
@@ -71,11 +75,10 @@ while {(count _objective_pos > 0)} do {
 			_next_objective = [_last_pos] call F_getNearestBluforObjective;
 		};
 
+		_objective_pos = [];
 		if ((_next_objective select 1) <= GRLIB_spawn_min) then {
 			_objective_pos = (_next_objective select 0);
 			_attack = true;
-		} else {
-			_objective_pos = [];
 		};
 		_timer = round (time + (10 * 60));
 		_sleep = 5;

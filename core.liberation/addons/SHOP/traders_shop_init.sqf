@@ -11,9 +11,11 @@ SHOP_ratio = [
 ];
 
 {
-    _x setVariable ["SHOP_ratio", (SHOP_ratio select (_forEachIndex % count SHOP_ratio))];
-    _x addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"","", 5];
-} forEach (units GRLIB_SHOP_Group);
+    if (_x getVariable ["GRLIB_SHOP_group", false]) then {
+        (agent _x) addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"","", 5];
+        _x setVariable ["SHOP_ratio", (SHOP_ratio select (_forEachIndex % count SHOP_ratio))];
+    };
+} forEach agents;
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- Traders Shop Initialized --------";

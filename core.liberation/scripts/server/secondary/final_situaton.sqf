@@ -16,9 +16,8 @@ publicVariable "GRLIB_secondary_in_progress";
 GRLIB_global_stop = 1;
 publicVariable "GRLIB_global_stop";
 
-{ deleteVehicle _x } foreach (units GRLIB_SELL_Group);
-{ deleteVehicle _x } foreach (units GRLIB_SHOP_Group);
 { deleteVehicle _x } foreach (units GRLIB_side_enemy);
+{ deleteVehicle _x } foreach agents;
 
 // weather cloudy
 [] spawn {
@@ -34,7 +33,7 @@ skipTime ((10 - dayTime + 24) % 24);
 setTimeMultiplier 0;
 
 sector_timer = round (serverTime + (35 * 60));
-publicVariable "sector_timer";	
+publicVariable "sector_timer";
 [] remoteExec ["remote_call_final_fight", 0];
 
 // create marker
@@ -83,7 +82,7 @@ opfor_target_assembled = createVehicle ["Land_Device_assembled_F", zeropos, [], 
 opfor_target_assembled setVectorDirAndUp [vectorDir opfor_target, vectorUp opfor_target];
 opfor_target_assembled hideObjectGlobal true;
 
-[_marker, 4] spawn static_manager;
+[_marker, 4] spawn spawn_static;
 private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 [_grp, _spawnpos, 200] spawn defence_ai;
 

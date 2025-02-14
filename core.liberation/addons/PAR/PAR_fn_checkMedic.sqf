@@ -24,6 +24,7 @@ private _check_sortie = {
 	_ret;
 };
 
+private _healed = false;
 while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNil {_wnded getVariable "PAR_myMedic"} || _fail <= 6 } do {
 	_msg = "";
 	_dist = round (_wnded distance2D _medic);
@@ -72,7 +73,7 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 		_fail = 0;
 	};
 
-	if ([_wnded, _medic] call _check_sortie) exitWith {[_wnded, _medic] call PAR_fn_sortie};
+	if ([_wnded, _medic] call _check_sortie) exitWith { _healed = true };
 
 	if (_cnt == 0 && !isNull _wnded) then {
 		if (_fail == 0) then {
@@ -87,4 +88,8 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 	sleep 3;
 };
 
-[_medic, _wnded] call PAR_fn_medicRelease;
+if (_healed) then {
+	[_wnded, _medic] call PAR_fn_sortie;
+} else {
+	[_medic, _wnded] call PAR_fn_medicRelease;
+};

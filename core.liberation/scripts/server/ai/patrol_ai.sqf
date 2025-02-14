@@ -12,7 +12,6 @@ if (_grp_veh isKindOf "Ship") then {
 	_flagpos = getPosATL _grp_veh;
 	_patrol_in_water = true;
 };
-if (_patrol_in_water) then { _radius = 60 };
 
 private _patrolcorners = [
 	[ (_flagpos select 0) - _radius, (_flagpos select 1) - _radius, 0 ],

@@ -30,16 +30,15 @@ if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 	_building = _x;
 	if (typeOf _building == Warehouse_typename) then {
 		{
-			if ((getPosATL _x) distance2D (getPosATL _building) < GRLIB_fob_range) then { deleteVehicle _x };
+			if (_x distance2D _building < 30) then { deleteVehicle _x };
 		} foreach allSimpleObjects [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename];
 
-		private _owner = _building getVariable ["GRLIB_WarehouseOwner", objNull];
-		deleteVehicle _owner;
+		deleteVehicle (_building getVariable ["GRLIB_WarehouseOwner", objNull]);
 	};
 
 	if (typeOf _building == FOB_typename) then {
-		deleteVehicle (_building getVariable ["GRLIB_FOB_Officer", objNull]);
 		{ deleteVehicle _x } forEach (_building getVariable ["GRLIB_FOB_Objects", []]);
+		deleteVehicle (_building getVariable ["GRLIB_FOB_Officer", objNull]);
 	};
 	deleteVehicle _building;
 	sleep _sleep;

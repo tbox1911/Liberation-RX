@@ -445,10 +445,7 @@ while { true } do {
 			};
 
 			// AI Static Weapon
-			if (_classname in static_vehicles_AI) then {
-				//_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-				player disableUAVConnectability [_vehicle, true];
-			};
+			if (_classname in static_vehicles_AI) then { player disableUAVConnectability [_vehicle, true] };
 
 			// Vehicles
 			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship") then {

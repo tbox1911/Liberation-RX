@@ -43,14 +43,12 @@ _setupObjects = {
 	// create static weapons
 	_veh1 = createVehicle [a3w_resistance_static, _missionPos, [], 100, "None"];
 	_managed_units append ([_veh1] call F_forceCrew);
-	_veh1 setVariable ["GRLIB_vehicle_gunner", [gunner _veh1]];
-	_veh1 setVariable ["GRLIB_vehicle_owner", "server", true];
+	_veh1 setVariable ["R3F_LOG_disabled", true, true];
 	sleep 1;
 
 	_veh2 = createVehicle [a3w_resistance_static, _missionPos, [], 100, "None"];
 	_managed_units append ([_veh2] call F_forceCrew);
-	_veh2 setVariable ["GRLIB_vehicle_gunner", [gunner _veh2]];
-	_veh2 setVariable ["GRLIB_vehicle_owner", "server", true];
+	_veh2 setVariable ["R3F_LOG_disabled", true, true];
 	sleep 1;
 
 	// enable speak
@@ -58,7 +56,7 @@ _setupObjects = {
 		_x setVariable ["GRLIB_mission_AI", true, true];
 		_x setVariable ["GRLIB_can_speak", true, true];
 		_x setVariable ["GRLIB_A3W_Mission_MR1", true, true];
-	} foreach _managed_units;	
+	} foreach _managed_units;
 
 	GRLIB_A3W_Mission_MR_BLUFOR = _managed_units;
 	publicVariable "GRLIB_A3W_Mission_MR_BLUFOR";

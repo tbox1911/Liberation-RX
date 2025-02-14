@@ -44,8 +44,6 @@ if ([_medic] call PAR_is_medic) then {
 };
 
 _wnded setUnconscious false;
-[_medic, _wnded] call PAR_fn_medicRelease;
-
 if (isPlayer _wnded || isPlayer _medic) then {
 	_wnded setVariable ["PAR_isUnconscious", false, true];
 	_wnded setVariable ["PAR_isDragged", 0, true];
@@ -72,7 +70,8 @@ if (_wnded == player) then {
 
 _wnded setVariable ["PAR_isUnconscious", false, true];
 _wnded setVariable ["PAR_isDragged", 0, true];
-
+sleep 2;
+[_medic, _wnded] call PAR_fn_medicRelease;
 [_wnded] spawn {
 	params ["_unit"];
 	sleep 10;   //time to recover

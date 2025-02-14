@@ -98,7 +98,7 @@ if (_vehicle isKindOf "Plane") then {
 };
 
 private _hc = [] call F_lessLoadedHC;
-if (!isNull _hc) then {
+if (isDedicated && !isNull _hc) then {
 	_grp setGroupOwner (owner _hc);
 };
 
