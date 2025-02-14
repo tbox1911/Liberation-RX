@@ -1,13 +1,12 @@
 params [ "_position", "_distance", "_side" ];
 
 if (_side == GRLIB_side_friendly) exitWith {
-    private _countblufor = (units GRLIB_side_friendly - units group chimeraofficer);
     {
         (_x distance2D _position < _distance) &&
         (alive _x) && !(captive _x) &&
         (getPosATL _x select 2 < 150) && (speed vehicle _x < 80) &&
         !(_x getVariable ["GRLIB_mission_AI", false])
-    } count _countblufor;
+    } count (units GRLIB_side_friendly);
 };
 
 if (_side == GRLIB_side_enemy) exitWith {

@@ -10,7 +10,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
         if (local _static) then {
             [_static] spawn manage_one_static;
         } else {
-            diag_log format ["--- LRX Transfert Static (%1) control to %2", typeOf _static, owner _static];
+            diag_log format ["--- LRX Transfert Static (%1) control to client %2", typeOf _static, owner _static];
             [_static] remoteExec ["manage_one_static", owner _static];
         };
         sleep 0.1;

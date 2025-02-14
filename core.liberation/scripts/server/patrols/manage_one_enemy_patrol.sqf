@@ -1,6 +1,6 @@
 params ["_level"];
 
-diag_log format ["--- LRX Enemy Patrol- trigger alert %1", _level];
+diag_log format ["--- LRX Enemy Patrol - trigger alert %1", _level];
 
 GRLIB_patrol_current = GRLIB_patrol_current + 1;
 publicVariable "GRLIB_patrol_current";
