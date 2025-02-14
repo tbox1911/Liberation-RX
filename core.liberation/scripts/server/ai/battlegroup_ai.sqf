@@ -59,8 +59,6 @@ while {(count _objective_pos > 0)} do {
 
 		if (_vehicle isKindOf "AllVehicles") then {
 			(driver _vehicle) doMove _objective_pos;
-		} else {
-			[_objective_pos] spawn F_getEmptyArmored;
 		};
 
 		_timer = round (time + (15 * 60));

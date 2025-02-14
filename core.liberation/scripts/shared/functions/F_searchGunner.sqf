@@ -1,8 +1,8 @@
-params ["_static"];
+params ["_static", ["_dist", 120]];
 
 private _blufor_nearby = [_static, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount;
 private _gunner_nearby = (units GRLIB_side_enemy) select {
-    (_x distance2D _static < 120) &&
+    (_x distance2D _static < _dist) &&
     (alive _x) && (isNull objectParent _x) &&
     (isNil {_x getVariable "GRLIB_is_prisoner"}) &&
     (secondaryWeapon _x == "") &&

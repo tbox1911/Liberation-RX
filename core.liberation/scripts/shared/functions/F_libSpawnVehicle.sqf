@@ -157,6 +157,7 @@ if (_side == GRLIB_side_enemy) then {
 	if (_classname == "I_E_Truck_02_MRL_F") then {
 		[_vehicle, ["Opfor",1], true ] spawn BIS_fnc_initVehicle;
 	};
+
 	// SPE GER Plane
 	if (_classname == "SPEX_C47_Skytrain") then {
 		[_vehicle, ["bare",1,"Hide_Door",1], true ] spawn BIS_fnc_initVehicle;
@@ -165,6 +166,11 @@ if (_side == GRLIB_side_enemy) then {
 	// Lock vehicles
 	if !(GRLIB_permission_enemy) then {
 		_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+	};
+
+	// Search Gunner
+	if (_classname in (militia_vehicles + light_vehicles + heavy_vehicles)) then {
+		[_vehicle] spawn F_getEmptyArmored;
 	};
 };
 
