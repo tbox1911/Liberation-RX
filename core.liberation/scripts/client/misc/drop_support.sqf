@@ -131,8 +131,9 @@ if (do_action == 1) then {
 	};
 
 	if ([_cost] call F_pay) then {
-		private _AirDrop_sounds = ["parasound", "airdrop_1", "airdrop_2"];
-		[player, selectRandom _AirDrop_sounds] remoteExec ["sound_range_remote_call", 2];
+		[player, selectRandom ["airdrop_1", "airdrop_2"]] remoteExec ["sound_range_remote_call", 2];
+		sleep 2;
+		[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		[player, _class] remoteExec ["airdrop_remote_call", 2];
 		player setVariable ["AirCoolDown", round(time + 15*60)];
 	};
