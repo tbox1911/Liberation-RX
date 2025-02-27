@@ -9,9 +9,9 @@ private _owned = false;
 private _maned = false;
 private _fobed = false;
 private _blued = false;
-private _fob_pos = [_vehicle] call F_getNearestFob;
 
 if (!_force) then {
+	private _fob_pos = [_vehicle] call F_getNearestFob;
 	_towed = !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull]));
 	_owned = !([_vehicle] call is_abandoned || [_vehicle] call is_public);
 	_maned = ({side group _x == GRLIB_side_friendly} count (crew _vehicle) > 0);
@@ -35,6 +35,13 @@ _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 // Delete GRLIB Cargo
 { deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 _vehicle setVariable ["GRLIB_ammo_truck_load", [], true];
+
+// Deep Water
+private _sea_deep = round ((getPosATL _vehicle select 2) - (getPosASL _vehicle select 2));
+if (_sea_deep >= 15) then { 
+	sleep 10;
+	_delete = true;
+};
 
 // Delete Vehicle and Crew
 if (_delete) then {
