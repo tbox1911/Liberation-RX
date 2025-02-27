@@ -18,8 +18,6 @@ private _AirDrop_6_cost = GRLIB_AirDrop_6_cost;
 private _AirDrop_7_cost = GRLIB_AirDrop_7_cost;
 private _AirDrop_8_cost = GRLIB_AirDrop_8_cost;
 
-private _AirDrop_sounds = ["airdrop_1", "airdrop_2"];
-
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 if (_rank == "Super Colonel") then {
 	_AirDrop_1_cost = round (GRLIB_AirDrop_1_cost / 2);
@@ -133,7 +131,7 @@ if (do_action == 1) then {
 	};
 
 	if ([_cost] call F_pay) then {
-		[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
+		private _AirDrop_sounds = ["parasound", "airdrop_1", "airdrop_2"];
 		[player, selectRandom _AirDrop_sounds] remoteExec ["sound_range_remote_call", 2];
 		[player, _class] remoteExec ["airdrop_remote_call", 2];
 		player setVariable ["AirCoolDown", round(time + 15*60)];
