@@ -18,6 +18,8 @@ private _AirDrop_6_cost = GRLIB_AirDrop_6_cost;
 private _AirDrop_7_cost = GRLIB_AirDrop_7_cost;
 private _AirDrop_8_cost = GRLIB_AirDrop_8_cost;
 
+private _AirDrop_sounds = ["airdrop_1", "airdrop_2"];
+
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 if (_rank == "Super Colonel") then {
 	_AirDrop_1_cost = round (GRLIB_AirDrop_1_cost / 2);
@@ -81,6 +83,7 @@ if (do_action == 1) then {
 	if (air_type == 7) exitWith {
 		if ([_cost] call F_pay) then {
 			[player] remoteExec ["send_aircraft_remote_call", 2];
+			[player, "air_superiority"] remoteExec ["sound_range_remote_call", 2];
 			player setVariable ["AirCoolDown", round(time + 20*60)];
 		};
 	};
@@ -120,6 +123,7 @@ if (do_action == 1) then {
 			} else {
 				if ([_cost] call F_pay) then {
 					[player, halo_position] remoteExec ["call_artillery_remote_call", 2];
+					[player, "artillery_fire"] remoteExec ["sound_range_remote_call", 2];
 					player setVariable ["AirCoolDown", round(time + 20*60)];
 				};
 			};
@@ -130,6 +134,7 @@ if (do_action == 1) then {
 
 	if ([_cost] call F_pay) then {
 		[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
+		[player, selectRandom _AirDrop_sounds] remoteExec ["sound_range_remote_call", 2];
 		[player, _class] remoteExec ["airdrop_remote_call", 2];
 		player setVariable ["AirCoolDown", round(time + 15*60)];
 	};

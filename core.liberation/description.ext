@@ -42,6 +42,26 @@ class cfgSounds {
  		sound[] = {"res\c130.ogg", 1, 1};
 		titles[] = {"parasound"};
  	};
+	class airdrop_1 {
+ 		name = "airdrop_1";
+ 		sound[] = {"res\airdrop_1.ogg", 1, 1};
+		titles[] = {"airdrop_1"};
+ 	};
+	class airdrop_2 {
+ 		name = "airdrop_2";
+ 		sound[] = {"res\airdrop_2.ogg", 1, 1};
+		titles[] = {"airdrop_2"};
+ 	};
+	class air_superiority {
+ 		name = "air_superiority";
+ 		sound[] = {"res\air_superiority.ogg", 1, 1};
+		titles[] = {"air_superiority"};
+ 	};
+	class artillery_fire {
+ 		name = "artillery_fire";
+ 		sound[] = {"res\artillery_fire.ogg", 1, 1};
+		titles[] = {"artillery_fire"};
+ 	};
 };
 
 class CfgDebriefing {
