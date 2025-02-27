@@ -15,7 +15,7 @@ private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission
 	sleep 0.1;
 } foreach _search_sectors;
 
-if ( count _usable_sectors > 0 ) then {
+if (count _usable_sectors > 0) then {
 	private _sector_pos = markerPos (selectRandom _usable_sectors);
 	// 40% in vehicles
 	if (floor random 100 >= 60) then {
@@ -41,7 +41,7 @@ if ( count _usable_sectors > 0 ) then {
 	waitUntil {
 		if (alive (leader _civ_grp)) then { _unit_pos = getPosATL (leader _civ_grp) };
 		sleep 60;
-		if (round (speed vehicle leader _civ_grp) == 0) then {
+		if (isNull _civ_veh && round (speed vehicle leader _civ_grp) == 0) then {
 			[leader _civ_grp] spawn F_fixPosUnit;
 			sleep 1;
 			(leader _civ_grp) switchMove "AmovPercMwlkSrasWrflDf";

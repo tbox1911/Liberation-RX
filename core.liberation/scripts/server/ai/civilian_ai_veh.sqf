@@ -28,6 +28,11 @@ private _marker = "";
 private _helped = false;
 private _vehicle_damage = 0;
 
+// Behaviour
+_grp setCombatMode "BLUE";
+_grp setBehaviourStrong "CARELESS";
+_grp setSpeedMode "NORMAL";
+
 sleep (60 + floor random 60);
 
 while { alive _vehicle && alive _driver } do {
@@ -120,8 +125,6 @@ while { alive _vehicle && alive _driver } do {
 			_vehicle allowDamage true;
 			_vehicle setFuel 1;
 			_vehicle engineOn true;
-			_driver moveInDriver _vehicle;
-			_driver assignAsDriver _vehicle;
 			{_x doFollow (leader _grp)} foreach units _grp;
 			_event_stared = false;
 			deleteMarker _marker;

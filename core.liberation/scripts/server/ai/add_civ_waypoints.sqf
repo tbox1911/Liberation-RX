@@ -8,13 +8,13 @@ if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 120] spawn p
 
 [_grp] call F_deleteWaypoints;
 
-private _behaviour = "CARELESS";
-private _combatMode = "BLUE";
+private _behaviour = "AWARE";
+private _combatMode = "GREEN";
 private _speed = "LIMITED";
 
 if (side _grp == GRLIB_side_enemy) then {
 	_behaviour = "AWARE";
-	_combatMode = "GREEN";
+	_combatMode = "YELLOW";
 	_speed = "NORMAL";
 };
 _grp setCombatMode _combatMode;
