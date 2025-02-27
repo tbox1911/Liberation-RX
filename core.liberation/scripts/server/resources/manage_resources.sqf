@@ -15,15 +15,6 @@ if (GRLIB_difficulty_modifier > 1.5) then {
 	GRLIB_FoodBarrel_cap = 3;
 };
 
-private _spawn_ressource = {
-	params ["_sector", "_type"];
-	private _spawn_pos = [(markerPos _sector), 2] call F_findSafePlace;
-	if (count _spawn_pos == 0) exitWith {};
-	private _box = [_type, _spawn_pos, false] call boxSetup;
-	[_box] call F_clearCargo;
-	diag_log format ["Spawn Resources %1 at %2", ([_type] call F_getLRXName), _sector];
-};
-
 private _sectors = [];
 while { GRLIB_endgame == 0 } do {
 	sleep GRLIB_passive_delay;
@@ -57,7 +48,7 @@ while { GRLIB_endgame == 0 } do {
 			} foreach blufor_sectors;
 
 			if (count _sectors > 0) then {
-				[(selectRandom _sectors), ammobox_b_typename] call _spawn_ressource;
+				[(selectRandom _sectors), ammobox_b_typename, false, 80] call spawn_box;
 			};
 		};
 
@@ -69,7 +60,7 @@ while { GRLIB_endgame == 0 } do {
 			} foreach blufor_sectors;
 
 			if (count _sectors > 0) then {
-				[(selectRandom _sectors), fuelbarrel_typename] call _spawn_ressource;
+				[(selectRandom _sectors), fuelbarrel_typename, false, 80] call spawn_box;
 			};
 		};
 
@@ -81,7 +72,7 @@ while { GRLIB_endgame == 0 } do {
 			} foreach blufor_sectors;
 
 			if (count _sectors > 0) then {
-				[(selectRandom _sectors), waterbarrel_typename] call _spawn_ressource;
+				[(selectRandom _sectors), waterbarrel_typename, false, 80] call spawn_box;
 			};
 		};
 
@@ -93,7 +84,7 @@ while { GRLIB_endgame == 0 } do {
 			} foreach blufor_sectors;
 
 			if (count _sectors > 0) then {
-				[(selectRandom _sectors), foodbarrel_typename] call _spawn_ressource;
+				[(selectRandom _sectors), foodbarrel_typename, false, 80] call spawn_box;
 			};
 		};
 	};

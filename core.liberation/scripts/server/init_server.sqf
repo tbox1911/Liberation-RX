@@ -151,6 +151,7 @@ spawn_defenders = compileFinal preprocessFileLineNumbers "scripts\server\sector\
 
 // Ressources
 count_box = compileFinal preprocessFileLineNumbers "scripts\server\resources\count_box.sqf";
+spawn_box = compileFinal preprocessFileLineNumbers "scripts\server\resources\spawn_box.sqf";
 
 // Various
 boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_boxSetup.sqf";
