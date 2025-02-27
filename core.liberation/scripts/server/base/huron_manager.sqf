@@ -12,11 +12,6 @@ if (GRLIB_fob_type == 1) then {
 	_huron_type = FOB_truck_typename;
 };
 
-// Boat
-if (GRLIB_fob_type == 2) then {
-	_huron_type = FOB_boat_typename;
-};
-
 private ["_huron"];
 
 while { true } do {

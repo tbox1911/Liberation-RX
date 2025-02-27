@@ -3,10 +3,16 @@ waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 // Truck no fob box
 if (GRLIB_fob_type == 1) exitWith {};
-sleep 8;
 
 private [ "_box", "_boxlist" ];
 private _box_type = FOB_box_typename;
+
+// Boat replace fob box
+if (GRLIB_fob_type == 2) then {
+	_box_type = FOB_boat_typename;
+};
+sleep 8;
+
 private _box_pos = getPosATL base_boxspawn;
 private _box_dir = getdir base_boxspawn;
 

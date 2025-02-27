@@ -353,7 +353,7 @@ LRX_Mission_Params_Def = [
 		[0, 900, 1200, 1800, 3600, 7200]
 	],
 
-	["FobType", localize "STR_PARAM_FOB_TYPE", ["Huron", "Truck", "Boat"]],
+	["FobType", localize "STR_PARAM_FOB_TYPE", ["Container", "Truck", "Boat"]],
 	["PlatoonView",localize "STR_GUI_PLATOON", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["NameTags",localize "STR_GUI_NAMETAG", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["MapMarkers",localize "STR_GUI_TEAM", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],

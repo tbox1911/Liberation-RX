@@ -5567,8 +5567,8 @@
 			<Czech>Maximální povolený počet Outpost</Czech>
 		</Key>
 		<Key ID="STR_PARAM_FOB_TYPE">
-			<Original>Startup FOB Vehicle</Original>
-			<French>Type du vehicle de FOB</French>
+			<Original>FOB box type at start</Original>
+			<French>Le type de FOB box au début</French>
 			<Chinesesimp>初始FOB载具</Chinesesimp>
 			<Chinese>初始FOB載具</Chinese>
 			<Japanese>ミッション開始時のFOBタイプ</Japanese>
