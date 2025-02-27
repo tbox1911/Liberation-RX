@@ -1,6 +1,5 @@
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "blufor_sectors"};
-private ["_spawnsector", "_newbox", "_sectors"];
 
 // maximum number of ressource by type
 GRLIB_AmmoBox_cap = round (5 * GRLIB_resources_multiplier);
@@ -16,6 +15,16 @@ if (GRLIB_difficulty_modifier > 1.5) then {
 	GRLIB_FoodBarrel_cap = 3;
 };
 
+private _spawn_ressource = {
+	params ["_sector", "_type"];
+	private _spawn_pos = [(markerPos _sector), 2] call F_findSafePlace;
+	if (count _spawn_pos == 0) exitWith {};
+	private _box = [_type, _spawn_pos, false] call boxSetup;
+	[_box] call F_clearCargo;
+	diag_log format ["Spawn Resources %1 at %2", ([_type] call F_getLRXName), _sector];
+};
+
+private _sectors = [];
 while { GRLIB_endgame == 0 } do {
 	sleep GRLIB_passive_delay;
 
@@ -47,11 +56,8 @@ while { GRLIB_endgame == 0 } do {
 				if (_x in sectors_military && (([ammobox_b_typename, _x] call count_box) < 3)) then { _sectors pushback _x };
 			} foreach blufor_sectors;
 
-			if ( count _sectors > 0 ) then {
-				_spawnsector = selectRandom _sectors;
-				_newbox = [ammobox_b_typename, markerpos _spawnsector, false] call boxSetup;
-				[_newbox] call F_clearCargo;
-				diag_log format ["Spawn Resources %1 at %2", ([ammobox_b_typename] call F_getLRXName), _spawnsector];
+			if (count _sectors > 0) then {
+				[(selectRandom _sectors), ammobox_b_typename] call _spawn_ressource;
 			};
 		};
 
@@ -59,14 +65,11 @@ while { GRLIB_endgame == 0 } do {
 		if (([fuelbarrel_typename] call count_box) < _FuelBarrel_cap) then {
 			_sectors = [];
 			{
-				if ( _x in sectors_factory && ([fuelbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
+				if (_x in sectors_factory && ([fuelbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
 			} foreach blufor_sectors;
 
-			if ( count _sectors > 0 ) then {
-				_spawnsector = selectRandom _sectors;
-				_newbox = [fuelbarrel_typename, markerpos _spawnsector, false] call boxSetup;
-				[_newbox] call F_clearCargo;
-				diag_log format ["Spawn Resources %1 at %2", ([fuelbarrel_typename] call F_getLRXName), _spawnsector];
+			if (count _sectors > 0) then {
+				[(selectRandom _sectors), fuelbarrel_typename] call _spawn_ressource;
 			};
 		};
 
@@ -74,14 +77,11 @@ while { GRLIB_endgame == 0 } do {
 		if (([waterbarrel_typename] call count_box) < _WaterBarrel_cap) then {
 			_sectors = [];
 			{
-				if ( _x in sectors_tower && ([waterbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
+				if (_x in sectors_tower && ([waterbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
 			} foreach blufor_sectors;
 
-			if ( count _sectors > 0 ) then {
-				_spawnsector = selectRandom _sectors;
-				_newbox = [waterbarrel_typename, markerpos _spawnsector, false] call boxSetup;
-				[_newbox] call F_clearCargo;
-				diag_log format ["Spawn Resources %1 at %2", ([waterbarrel_typename] call F_getLRXName), _spawnsector];
+			if (count _sectors > 0) then {
+				[(selectRandom _sectors), waterbarrel_typename] call _spawn_ressource;
 			};
 		};
 
@@ -89,14 +89,11 @@ while { GRLIB_endgame == 0 } do {
 		if (([foodbarrel_typename] call count_box) < _FoodBarrel_cap) then {
 			_sectors = [];
 			{
-				if ( _x in sectors_bigtown && ([foodbarrel_typename, _x] call count_box) < 4) then { _sectors pushback _x };
+				if (_x in sectors_bigtown && ([foodbarrel_typename, _x] call count_box) < 4) then { _sectors pushback _x };
 			} foreach blufor_sectors;
 
-			if ( count _sectors > 0 ) then {
-				_spawnsector = selectRandom _sectors;
-				_newbox = [foodbarrel_typename, markerpos _spawnsector, false] call boxSetup;
-				[_newbox] call F_clearCargo;
-				diag_log format ["Spawn Resources %1 at %2", ([foodbarrel_typename] call F_getLRXName), _spawnsector];
+			if (count _sectors > 0) then {
+				[(selectRandom _sectors), foodbarrel_typename] call _spawn_ressource;
 			};
 		};
 	};
