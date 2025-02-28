@@ -61,5 +61,5 @@ if ({alive _x} count (units _transport_group) == 0) exitWith {};
 // Cleanup
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_troup_transport, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 [_troup_transport] call clean_vehicle;
-{ deleteVehicle _x } forEach (units _transport_group);
+{ deleteVehicle _x; sleep 0.1 } forEach (units _transport_group);
 deleteGroup _transport_group;

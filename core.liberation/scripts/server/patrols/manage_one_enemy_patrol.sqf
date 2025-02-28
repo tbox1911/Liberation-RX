@@ -58,7 +58,7 @@ if (count _usable_sectors > 0) then {
 	// Cleanup
 	waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 	[_opfor_veh] spawn cleanMissionVehicles;
-	{ deleteVehicle _x } forEach (units _opfor_grp);
+	{ deleteVehicle _x; sleep 0.1 } forEach (units _opfor_grp);
 	deleteGroup _opfor_grp;
 };
 

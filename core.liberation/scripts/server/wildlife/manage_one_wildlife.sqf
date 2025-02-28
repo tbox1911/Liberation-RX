@@ -27,7 +27,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		// Cleanup
-		{ deleteVehicle _x } forEach _managed_units;
+		{ deleteVehicle _x; sleep 0.1 } forEach _managed_units;
 	};
 
 	sleep 30;
