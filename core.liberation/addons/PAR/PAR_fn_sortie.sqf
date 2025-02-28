@@ -77,4 +77,5 @@ sleep 2;
 	sleep 10;   //time to recover
 	_unit allowDamage true;
 	_unit setCaptive false;
+	[_unit, false] remoteExec ["setCaptive", 0];
 };

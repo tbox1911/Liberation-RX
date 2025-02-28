@@ -10,6 +10,7 @@ if (_cur_revive <= 0) exitWith {_unit setDamage 1};
 
 _unit setUnconscious true;
 _unit setCaptive true;
+[_unit, true] remoteExec ["setCaptive", 0];
 _unit allowDamage false;
 _unit setVariable ["PAR_busy", nil];
 _unit setVariable ["PAR_myMedic", nil];
