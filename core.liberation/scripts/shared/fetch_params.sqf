@@ -8,7 +8,7 @@ GRLIB_east_modder = "Unknow";
 GRLIB_params_save_key = format ["%1-config", GRLIB_save_key];
 
 // Detect Addons
-GRLIB_3CB_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Weapons"); // Returns true if UK3 CB is enabled
+GRLIB_3CB_enabled = isClass(configFile >> "CfgPatches" >> "UK3CB_Factions_Common"); // Returns true if 3CB is enabled
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
