@@ -37,6 +37,7 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 	};
 
 	if (isNil {_wnded getVariable "PAR_myMedic"}) exitWith {};
+	if ([_wnded, _medic] call _check_sortie) exitWith { _healed = true };
 
 	if (round (speed vehicle _medic) == 0) then {
 		_fail = _fail + 1;
