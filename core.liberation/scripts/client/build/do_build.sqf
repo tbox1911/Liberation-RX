@@ -348,7 +348,7 @@ while { true } do {
 			// FOB
 			if(_buildtype in [99,98,97]) exitWith {
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
-				private _unit_list_redep = (units player) select { !(isPlayer _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' };
+				private _unit_list_redep = (units player - [player]) select { (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' };
 				if (_classname == FOB_carrier) then {
 					titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
 					{ _x allowDamage false } forEach _unit_list_redep;
