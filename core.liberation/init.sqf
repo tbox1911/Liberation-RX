@@ -1,6 +1,7 @@
 diag_log "--- Liberation RX by pSiKO ---";
 if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
 
+disableUserInput true;
 titleText ["","BLACK FADED", 100];
 sleep 5;
 if (!isServer && isMultiplayer && count (entities "HeadlessClient_F") > 0) then {
@@ -10,7 +11,6 @@ if (!isServer && isMultiplayer && count (entities "HeadlessClient_F") > 0) then 
 
 diag_log "--- Init start ---";
 titleText ["-- Liberation RX --","BLACK FADED", 100];
-disableUserInput true;
 
 [] call compileFinal preprocessFileLineNumbers "build_info.sqf";
 
