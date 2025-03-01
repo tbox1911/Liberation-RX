@@ -242,11 +242,11 @@ AR_Advanced_Rappelling_Install = {
 	AR_Rappel_AI_From_Heli = {
 		params ["_player","_heli"];
 		{
-			if (!isPlayer _x && !isNull objectParent _x && assignedVehicleRole _x select 0 == "cargo") then {
+			if (!isNull objectParent _x && assignedVehicleRole _x select 0 == "cargo") then {
 				sleep 1;
 				[_x, vehicle _x] call AR_Rappel_From_Heli;
 			};
-		} forEach (units player);
+		} forEach (units player - [player]);
 	};
 
 	AR_Rappel_From_Heli = {
@@ -300,7 +300,7 @@ AR_Advanced_Rappelling_Install = {
 		if (local _player) then {
 			[_player] orderGetIn false;
 			moveOut _player;
-			waitUntil { sleep 1; vehicle _player == _player};
+			waitUntil { isNull objectParent vehicle _player };
 			_playerStartPosition = AGLtoASL (_heli modelToWorldVisual _rappelPoint);
 			_playerStartPosition set [2,(_playerStartPosition select 2) - 1];
 			_playerStartPosition set [1,(_playerStartPosition select 1) - ((((random 100)-50))/25)];
@@ -309,14 +309,13 @@ AR_Advanced_Rappelling_Install = {
 
 			_anchor = "Land_Can_V2_F" createVehicle position _player;
 			_anchor allowDamage false;
-			_anchor hideObjectGlobal true;
+			[_anchor, true] remoteExec ["hideObjectGlobal", 2];
 			_anchor attachTo [_heli,_rappelPoint];
-
 
 			_rappelDevice = "B_static_AA_F" createVehicle position _player;
 			_rappelDevice setPosWorld _playerStartPosition;
 			_rappelDevice allowDamage false;
-			_rappelDevice hideObjectGlobal true;
+			[_rappelDevice, true] remoteExec ["hideObjectGlobal", 2];
 
 			_bottomRopeLength = 60;
 			_bottomRope = ropeCreate [_rappelDevice, [-0.15,0,0], _bottomRopeLength];
@@ -637,7 +636,7 @@ AR_Advanced_Rappelling_Install = {
 		private _canRappelOne = false;
 		{
 			if (!isNull objectParent _x && assignedVehicleRole _x select 0 == "cargo") exitWith {_canRappelOne = true};
-		} forEach (units player);
+		} forEach (units player - [player]);
 		_canRappelOne;
 	};
 
