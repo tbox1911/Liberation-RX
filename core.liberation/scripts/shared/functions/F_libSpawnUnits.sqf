@@ -22,6 +22,7 @@ private ["_unit", "_pos", "_backpack"];
 	if (!isNil "_unit") then {
 		[_unit] joinSilent _grp;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		_unit setPitch 0.5;
 		if (_type == "divers") then {
 			_pos set [2, -6];
 			_unit setPosASL _pos;
