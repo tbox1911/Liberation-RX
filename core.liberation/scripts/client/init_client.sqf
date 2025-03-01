@@ -192,6 +192,7 @@ addMissionEventHandler ["Map", {
 [] execVM "addons\JKB\JKB_init.sqf";
 [] execVM "addons\WHS\warehouse_init.sqf";
 [] execVM "addons\FOB\officer_init.sqf";
+[] execVM "addons\RPL\advancedRappellingInit.sqf";
 
 // LRX Arsenal
 [] execVM "addons\LARs\liberationArsenal.sqf";

@@ -176,7 +176,6 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\synchronise_vars.sqf";
 [] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
-[] execVM "scripts\server\ar\fn_advancedRappellingInit.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
 [] execVM "scripts\server\base\huron_manager.sqf";
 [] execVM "scripts\server\game\spawn_radio_towers.sqf";
