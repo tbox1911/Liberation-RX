@@ -30,3 +30,6 @@ if (count _nearest_cargo > 0) then {
 };
 
 _target setVariable ["loot_in_use", false, true];
+
+sleep (60 + floor random 60);
+deleteVehicle _target;

@@ -28,3 +28,6 @@ private _radius = 30;
 	deleteVehicle _x;
 	sleep 0.1;
 } forEach (nearestObjects [_target, ["GroundWeaponHolder", "WeaponHolderSimulated"], _radius]);
+
+sleep (60 + floor random 60);
+deleteVehicle _target;
