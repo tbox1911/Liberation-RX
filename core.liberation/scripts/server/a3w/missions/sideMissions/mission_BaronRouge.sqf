@@ -49,19 +49,20 @@ _setupObjects = {
 	_waypoint setWaypointType "CYCLE";
 
 	_vehicles = [];
-	for "_i" from 1 to 3 do {
-		_plane = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
-		_plane addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
-		_plane addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-		_plane flyInHeight 1600;
-		_plane setVariable ["GRLIB_mission_AI", true, true];
-		_vehicles pushBack _plane;
-		(crew _plane) joinSilent _aiGroup;
-		sleep 2;
-	};
+	private _airveh_alt = 2000;
+	private _plane = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
+	_plane addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
+	_plane addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+	_plane addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+	_plane flyInHeight _airveh_alt;
+	_plane flyInHeightASL [_airveh_alt, _airveh_alt, _airveh_alt];
+	_plane setVariable ["GRLIB_mission_AI", true, true];
+	_vehicles pushBack _plane;
+	(crew _plane) joinSilent _aiGroup;
+	sleep 2;
 
-	_leader = driver (_vehicles select 0);
-	_leader setSkill 0.70;
+	_leader = driver _plane;
+	_leader setSkill 0.90;
 	_leader setSkill ["courage", 1];
 	_leader allowFleeing 0;
 	_aiGroup selectLeader _leader;
