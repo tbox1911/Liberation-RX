@@ -39,7 +39,7 @@ _vehicle setVariable ["GRLIB_ammo_truck_load", [], true];
 // Deep Water
 private _sea_deep = round ((getPosATL _vehicle select 2) - (getPosASL _vehicle select 2));
 if (_sea_deep >= 15) then { 
-	sleep 10;
+	sleep 30;
 	_delete = true;
 };
 

@@ -49,7 +49,7 @@ private _no_cleanup_classnames = [
 	"Land_Device_assembled_F",
 	"Land_Device_disassembled_F"
 ] + GRLIB_vehicle_blacklist;
-{ _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
+//{ _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
 
 // HIDDEN-FROM-PLAYERS FUNCTION
 private _isHidden = {
@@ -255,7 +255,9 @@ while {GRLIB_run_cleanup} do {
 			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 			!([_x, _no_cleanup_classnames] call F_itemIsInClass)
 		};
-
+		private _nbVehiclesWater = _nbVehicles select { (getPosASL _x select 2) <= -15 };
+		_nbVehicles = _nbVehicles - _nbVehiclesWater;
+		{ deleteVehicle _x } forEach _nbVehiclesWater;
 		if ((count _nbVehicles) > _vehiclesLimit) then {
 			if (_vehicleDistCheck) then {
 				{
@@ -288,6 +290,9 @@ while {GRLIB_run_cleanup} do {
 	// WRECKS
 	if (!(_deadVehiclesLimit == -1)) then {
 		_list = (allDead - allDeadMen) select { !([_x, _no_cleanup_classnames] call F_itemIsInClass) && getObjectType _x >= 8 };
+		private _list_sunken = _list select { (getPosASL _x select 2) <= -15 };
+		_list = _list - _list_sunken;
+		{ deleteVehicle _x } forEach _list_sunken;
 		_count = count _list;
 		if (_count > _deadVehiclesLimit) then {
 			if (_deadVehicleDistCheck) then {
