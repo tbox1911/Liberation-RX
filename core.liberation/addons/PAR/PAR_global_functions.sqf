@@ -34,6 +34,7 @@ PAR_unblock_AI = {
 			_unit = _x;
 			if (isNull (objectParent _unit) && (player distance2D _unit) < 50 && !([_unit] call PAR_is_wounded)) then {
 				_unit stop true;
+				_unit action ["CancelAction", _unit];
 				sleep 1;
 				_unit doWatch objNull;
 				_unit switchmove "";
@@ -54,6 +55,7 @@ PAR_unblock_AI = {
 				_unit stop false;
 				_unit enableAI "ALL";
 				[_unit] joinSilent (group player);
+				_unit action ["CancelAction", _unit];
 				sleep 0.2;
 				_unit doFollow player;
 				if (surfaceIsWater (getPos _unit)) then {
