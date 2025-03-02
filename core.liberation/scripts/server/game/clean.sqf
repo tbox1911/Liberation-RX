@@ -257,7 +257,7 @@ while {GRLIB_run_cleanup} do {
 		};
 		private _nbVehiclesWater = _nbVehicles select { (getPosASL _x select 2) <= -15 };
 		_nbVehicles = _nbVehicles - _nbVehiclesWater;
-		{ deleteVehicle _x } forEach _nbVehiclesWater;
+		{ deleteVehicle _x; _stats = _stats + 1 } forEach _nbVehiclesWater;
 		if ((count _nbVehicles) > _vehiclesLimit) then {
 			if (_vehicleDistCheck) then {
 				{
@@ -292,7 +292,7 @@ while {GRLIB_run_cleanup} do {
 		_list = (allDead - allDeadMen) select { !([_x, _no_cleanup_classnames] call F_itemIsInClass) && getObjectType _x >= 8 };
 		private _list_sunken = _list select { (getPosASL _x select 2) <= -15 };
 		_list = _list - _list_sunken;
-		{ deleteVehicle _x } forEach _list_sunken;
+		{ deleteVehicle _x; _stats = _stats + 1 } forEach _list_sunken;
 		_count = count _list;
 		if (_count > _deadVehiclesLimit) then {
 			if (_deadVehicleDistCheck) then {
