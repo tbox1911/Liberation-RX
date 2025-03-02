@@ -26,8 +26,16 @@ private _radius = 30;
 	{ _target addMagazineCargoGlobal [_x, 1] } forEach (magazineCargo _x);
 
 	deleteVehicle _x;
+
+	// dead body
+	private _body = ((getPos _x) nearEntities ["CAManBase", 2]) select { !alive _x };
+	if (count _body > 0) then {
+		[(_body select 0)] spawn {
+			params ["_body"];
+			hidebody _body;
+			sleep 5;
+			deleteVehicle _body;
+		};
+	};
 	sleep 0.1;
 } forEach (nearestObjects [_target, ["GroundWeaponHolder", "WeaponHolderSimulated"], _radius]);
-
-sleep (60 + floor random 60);
-deleteVehicle _target;

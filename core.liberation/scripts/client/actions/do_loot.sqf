@@ -23,6 +23,8 @@ if (count _nearest_cargo > 0) then {
 	} forEach (nearestObjects [_target, ["GroundWeaponHolder", "WeaponHolderSimulated"], 4]);
 	[_cargo_veh, _target] call save_loadout_cargo;
 	hidebody _target;
+	sleep 5;
+	deleteVehicle _target;
 } else {
 	private _msg = localize "STR_LOADOUT_NOCARGO";
 	hintSilent _msg;
@@ -30,6 +32,3 @@ if (count _nearest_cargo > 0) then {
 };
 
 _target setVariable ["loot_in_use", false, true];
-
-sleep (60 + floor random 60);
-deleteVehicle _target;
