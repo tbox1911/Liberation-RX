@@ -64,8 +64,10 @@ waitUntil {sleep 1; LRX_arsenal_init_done};
 VAM_arsenal_class_names = [];
 VAM_arsenal_cargo_class_names = [
 	Arsenal_typename,
+	mobile_respawn,
 	repairbox_typename,
 	canister_fuel_typename,
+	medicalbox_typename,
 	"Land_CncBarrierMedium4_F",
 	"Land_BagFence_Short_F"
 ];
