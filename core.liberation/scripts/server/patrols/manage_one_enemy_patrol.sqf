@@ -34,7 +34,7 @@ if (count _usable_sectors > 0) then {
 	};
 
 	sleep 1;
-	if (isNil "_opfor_grp") exitWith {};
+	if (isNull _opfor_grp) exitWith {};
 	private _veh_type = "No vehicle";
 	if !(isNull _opfor_veh) then { _veh_type = typeOf _opfor_veh };
 	diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
