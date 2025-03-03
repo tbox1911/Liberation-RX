@@ -12,9 +12,7 @@ private _classlist = [];
 private _obj_list = [];
 private _near = [];
 private _vehpos = _vehicle;
-if (typeName _vehicle == "OBJECT" ) then {
-	_vehpos = getPosATL _vehicle;
-};
+if (typeName _vehicle == "OBJECT") then { _vehpos = getPos _vehicle };
 
 if (isNil "_list") exitWith { false };
 
