@@ -20,17 +20,19 @@ if (GRLIB_SPE_enabled) then {
 };
 
 if (GRLIB_WS_enabled) then {
-	_type_random = _type_random + [
-		"Dromedary_03_lxWS",
-		"Dromedary_02_lxWS",
-		"Dromedary_03_saddle2_lxWS",
-		"Dromedary_03_saddle_lxWS",
-		"Dromedary_01_saddle_lxWS",
-		"Dromedary_01_saddle2_lxWS",
-		"Dromedary_04_saddle_lxWS",
-		"Dromedary_04_saddle2_lxWS",
-		"Dromedary_04_lxWS"
-	];
+	if (worldname in ["SefrouRamal", "Takistan", "Isladuala3"]) then {
+		_type_random = _type_random + [
+			"Dromedary_03_lxWS",
+			"Dromedary_02_lxWS",
+			"Dromedary_03_saddle2_lxWS",
+			"Dromedary_03_saddle_lxWS",
+			"Dromedary_01_saddle_lxWS",
+			"Dromedary_01_saddle2_lxWS",
+			"Dromedary_04_saddle_lxWS",
+			"Dromedary_04_saddle2_lxWS",
+			"Dromedary_04_lxWS"
+		];
+	};
 };
 
 private _type = selectRandom _type_random;
