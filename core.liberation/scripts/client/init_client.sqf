@@ -99,6 +99,7 @@ GRLIB_ActionDist_15 = 15;
 GRLIB_max_respawn_reached = false;
 GRLIB_player_configured = false;
 
+// Local functions
 add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
 artillery_cooldown = compileFinal preprocessFileLineNumbers "scripts\client\misc\artillery_cooldown.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
@@ -119,7 +120,7 @@ save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\a
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
 set_sticky_bomb = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_sticky_bomb.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
-speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\speak_manager.sqf";
+speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\manager\speak_manager.sqf";
 vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
@@ -157,7 +158,8 @@ addMissionEventHandler ["Map", {
 [] execVM "scripts\client\ui\ui_manager.sqf";
 [] execVM "scripts\client\build\do_build.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
-[] execVM "scripts\client\ammoboxes\box_manager.sqf";
+
+// Player actions manager
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";
@@ -165,20 +167,28 @@ addMissionEventHandler ["Map", {
 [] execVM "scripts\client\actions\dog_manager.sqf";
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
-[] execVM "scripts\client\misc\support_manager.sqf";
-[] execVM "scripts\client\misc\vehicle_fuel_manager.sqf";
-[] execVM "scripts\client\misc\sides_stats_manager.sqf";
-[] execVM "scripts\client\misc\secondary_jip.sqf";
-[] execVM "scripts\client\misc\stop_renegade.sqf";
-[] execVM "scripts\client\misc\manage_manpower.sqf";
-[] execVM "scripts\client\misc\no_thermic.sqf";
-[] execVM "scripts\client\misc\init_markers.sqf";
-[] execVM "scripts\client\misc\speak_manager_data.sqf";
+
+// Markers
+[] execVM "scripts\client\markers\init_markers.sqf";
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
-//[] execVM "scripts\client\misc\logs_markers.sqf";
+//[] execVM "scripts\client\markers\logs_markers.sqf";
+
+// Local Manager
+[] execVM "scripts\client\manager\box_manager.sqf";
+[] execVM "scripts\client\manager\uavs_manager.sqf";
+[] execVM "scripts\client\manager\manage_manpower.sqf";
+[] execVM "scripts\client\manager\support_manager.sqf";
+[] execVM "scripts\client\manager\vehicle_fuel_manager.sqf";
+[] execVM "scripts\client\manager\sides_stats_manager.sqf";
+[] execVM "scripts\client\manager\speak_manager_data.sqf";
+
+// Misc
+[] execVM "scripts\client\misc\secondary_jip.sqf";
+[] execVM "scripts\client\misc\stop_renegade.sqf";
+[] execVM "scripts\client\misc\no_thermic.sqf";
 
 // LRX Addons
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";
@@ -265,10 +275,10 @@ addMissionEventHandler ["Draw3D",{
 			_screenmsg = format [ "%1 Rearming Cooldown (%2 sec)...", ([_static] call F_getLRXName), round (_timer - time) ];
 		};
 		private _timer = _static getVariable ["GREUH_repair_timer", 0];
-		private _damage = [_static] call F_getVehicleDamage;			
+		private _damage = [_static] call F_getVehicleDamage;
 		if (_timer > time && _damage >= 0.04) then {
 			_screenmsg = format [ "%1 Repairing Cooldown (%2 sec)...", ([_static] call F_getLRXName), round (_timer - time) ];
-		};		
+		};
 		if (_screenmsg != "") then {
 			drawIcon3D ["", [1,1,1,1], _static_pos vectorAdd [0, 0, 1], 2, 2, 0, _screenmsg, 2, 0.05, "RobotoCondensed", "center"];
 		};

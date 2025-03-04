@@ -1,3 +1,5 @@
+waitUntil { sleep 1; !isNil "blufor_sectors" };
+
 private ["_msg", "_all_sectors", "_sector", "_list", "_opf", "_res", "_mission"];
 private	_cleanup_counter = 0;
 private _stats_marker = [
