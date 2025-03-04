@@ -1,7 +1,8 @@
-[] call compile preprocessFileLineNumbers "scripts\client\actions\action_manager_check.sqf";
 
 waituntil { sleep 1; GRLIB_player_configured};
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
+
+[] call compile preprocessFileLineNumbers "scripts\client\actions\action_manager_player_check.sqf";
 
 GRLIB_activated_sectors = [];
 GRLIB_activated_radius = GRLIB_sector_size * 1.4;

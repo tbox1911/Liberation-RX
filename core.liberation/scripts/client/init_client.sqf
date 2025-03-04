@@ -160,7 +160,7 @@ addMissionEventHandler ["Map", {
 [] execVM "scripts\client\build\build_overlay.sqf";
 
 // Player actions manager
-[] execVM "scripts\client\actions\action_manager.sqf";
+[] execVM "scripts\client\actions\action_manager_player.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";
 [] execVM "scripts\client\actions\intel_manager.sqf";
