@@ -58,7 +58,6 @@ private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 				_next_box setPosATL _next_pos;
 			};
 			sleep 0.2;
-			diag_log _next_pos;
 			_next_box setVelocity [0,0,0];
 			_offset = _offset - 2.2;
 			[format [localize "STR_BOX_UNLOADED", [typeOf _next_box] call F_getLRXName]] remoteExec ["hintSilent", owner _truck];
