@@ -8,7 +8,20 @@ while {true} do {
         if (unitIsUAV _uav) then {
             _uav_control = uavControl _uav;
             if (_uav_control select 1 != "") then {
-                systemChat format ["%1 is connected to %2 (slot %3)", name (_uav_controller select 0), typeOf _uav, _uav_controller select 1];
+                systemchat str _uav_control;
+                private _bombs = (attachedObjects _uav) select { typeOf _x in sticky_bombs_typename };
+                if (count _bombs == 0) exitWith {};
+                waitUntil {
+                    sleep 0.5;
+                    (!alive _uav || (uavControl _uav) select 1 == "")
+                };
+                if (!alive _uav) then {
+                    {
+                        detach _x;
+                        _x setDamage 1;
+                        sleep 0.1;
+                    } foreach _bombs;
+                };
             };
         };
     };

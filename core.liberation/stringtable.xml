@@ -6480,6 +6480,9 @@
 			<Chinesesimp>-- 修理车辆</Chinesesimp>
 			<Chinese>-- 修理車輛</Chinese>
 		</Key>
+		<Key ID="STR_STICKY_BOMB">
+			<Original>-- STICKY BOMB!</Original>
+		</Key>
 		<Key ID="STR_REPAIR_VEH_MSG">
 			<Original>Complete %1 Repair in progress...</Original>
 			<French>Réparation complète de %1 en cours...</French>

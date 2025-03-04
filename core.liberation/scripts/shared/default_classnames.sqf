@@ -88,7 +88,11 @@ GRLIB_vehicle_whitelist = [];
 GRLIB_vehicle_blacklist = [];
 static_vehicles_AI = [];
 units_loadout_overide = [];
-sticky_bombs_typename = ["SatchelCharge_Remote_Ammo", "DemoCharge_Remote_Ammo"];
+sticky_bombs_typename = [
+    // need Magzine and Ammo typename
+    "DemoCharge_Remote_Mag", "DemoCharge_Remote_Ammo",
+    "SatchelCharge_Remote_Mag", "SatchelCharge_Remote_Ammo"
+];
 LOADOUT_fixed_price = [];
 LOADOUT_expensive_items = [];
 LOADOUT_free_items = [];

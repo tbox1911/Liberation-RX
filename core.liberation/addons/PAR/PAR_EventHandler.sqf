@@ -45,9 +45,6 @@ _unit addEventHandler ["FiredMan",	{
 	// No mines in the base zone (Chimera + FOB)
 	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") then { deleteVehicle _projectile };
 
-	// Sticky bomb
-	if (_ammo in sticky_bombs_typename && _weapon == "Put") then { [_projectile] spawn set_sticky_bomb };
-
 	// Pay artillery fire
 	// if (_vehicle isKindOf "StaticMortar") then {
 	// 	[_projectile] spawn {
