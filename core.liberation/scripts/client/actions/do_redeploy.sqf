@@ -31,6 +31,7 @@ player setPosATL (_pos getPos [_dist, (_destdir-180)]);
     params ["_list"];
     {
         _x setPosATL (player getPos [5, random 360]);
+        _x action ["CancelAction", _x];
         sleep 0.5;
     } forEach _list;
 };

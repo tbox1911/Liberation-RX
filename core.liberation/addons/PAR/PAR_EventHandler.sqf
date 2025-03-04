@@ -107,8 +107,9 @@ if (_unit == player) then {
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
-		private _ret = [_unit, _role, _vehicle] call vehicle_permissions;
-		if !(_ret) then {
+		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
+		if !(_eject) then {
+			[_vehicle] spawn F_vehicleDefense;
 			1 fadeSound (round desired_vehvolume / 100.0);
 			3 fadeMusic (getAudioOptionVolumes select 1);
 			NRE_EarplugsActive = 1;
@@ -172,8 +173,8 @@ if (_unit == player) then {
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
-		private _ret = [_unit, _role, _vehicle] call vehicle_permissions;
-		if !(_ret) then {
+		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
+		if !(_eject) then {
 			[_vehicle] spawn F_vehicleDefense;
 		};
 	}];
