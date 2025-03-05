@@ -177,7 +177,6 @@ addMissionEventHandler ["Map", {
 
 // Local Manager
 [] execVM "scripts\client\manager\box_manager.sqf";
-[] execVM "scripts\client\manager\uavs_manager.sqf";
 [] execVM "scripts\client\manager\manage_manpower.sqf";
 [] execVM "scripts\client\manager\support_manager.sqf";
 [] execVM "scripts\client\manager\vehicle_fuel_manager.sqf";

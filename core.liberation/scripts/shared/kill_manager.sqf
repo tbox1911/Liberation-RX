@@ -41,6 +41,19 @@ if ( isServer ) then {
 		deleteVehicle _unit;
 	};
 
+	// UAVs
+	if ([_unit_class, uavs_vehicles] call F_itemIsInClass) exitWith {
+		private _bombs = (attachedObjects _unit) select { typeOf _x in sticky_bombs_typename };
+		if (count _bombs > 0) then {
+			{
+				detach _x;
+				_x setDamage 1;
+				sleep 0.1;
+			} foreach _bombs;
+		};
+		deleteVehicle _unit;
+	};
+
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
