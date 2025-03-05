@@ -34,6 +34,8 @@ if (_spawn_marker == "") exitWith {
 		};
 		[_para_pos, GRLIB_side_enemy, 3] spawn spawn_air;
 		sleep 20;
+		[_para_pos, true, 5] spawn send_drones;
+		sleep 20;
 		[_para_pos] spawn send_paratroopers;
 		sleep 20;
 		[_para_pos] spawn send_paratroopers;
@@ -110,6 +112,11 @@ if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 && _current_players >=
 		[_objective_pos] spawn send_paratroopers;
 	};
 	_target_size = _target_size + 3;
+};
+
+if (combat_readiness >= 50) then {
+	[_objective_pos, true, 5] spawn send_drones;
+	sleep 20;
 };
 
 combat_readiness = combat_readiness - (10 + (_target_size * 1.75));

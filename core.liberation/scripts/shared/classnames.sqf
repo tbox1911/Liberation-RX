@@ -51,7 +51,10 @@ if (isServer) then {
 // All the UAVs must be declared here
 // uavs_west = [];  			// non AI drones (darter, etc) - player can take control
 // static_vehicles_AI = [];  	// AI drones that need a crew  (SAM, etc) - player cannot control
-uavs_vehicles = [];
+uavs_vehicles = [
+	"B_UAV_01_F", "B_UAV_06_F",
+	"O_UAV_01_F", "O_UAV_06_F"
+];
 {
 	private _isUav = (getNumber (configfile >> "CfgVehicles" >> (_x select 0) >> "isUav") == 1);
 	if ([(_x select 0), (uavs_def + uavs_west)] call F_itemIsInClass && _isUav) then {

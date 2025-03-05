@@ -22,6 +22,7 @@ private _building_ai_max = 0;
 private _building_range = 200;
 private _local_capture_size = GRLIB_capture_size;
 private _ied_count = 0;
+private _uavs_count = 0;
 private _static_count = 0;
 private _vehtospawn = [];
 private _grp = grpNull;
@@ -93,6 +94,7 @@ if (_sector in sectors_military) then {
 	_building_ai_max = 6;
 	_building_range = 150;
 	_ied_count = (3 + (floor random 3));
+	_uavs_count = 5;
 	_static_count = 3;
 	// Alarm!
 	[_sector] spawn {
@@ -131,6 +133,7 @@ if (_sector in sectors_factory) then {
 	_building_ai_max = 6;
 	_building_range = 100;
 	_ied_count = (3 + (floor random 3));
+	_uavs_count = 5;
 };
 
 if (_sector in sectors_tower) then {
@@ -146,11 +149,17 @@ if (_sector in sectors_tower) then {
 	if (floor random 100 > 33) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 	[_sector_pos, 50] call createlandmines;
 	_static_count = 4;
+	_uavs_count = 5;
 };
 
 // Create mines
 [_sector, _building_range, round (_ied_count)] spawn ied_manager;
 [_sector, _building_range, round (_ied_count)] spawn ied_trap_manager;
+
+// Create drones defender
+if (_uavs_count > 0) then {
+	[_sector_pos, false, _uavs_count] spawn send_drones;
+};
 
 // Create units
 if (count _squad1 > 0) then {

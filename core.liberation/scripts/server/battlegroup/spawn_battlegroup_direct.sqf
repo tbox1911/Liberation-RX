@@ -42,6 +42,11 @@ for "_i" from 0 to _target_size do {
 	sleep 2;
 } foreach _selected_opfor_battlegroup;
 
+if (combat_readiness >= 50) then {
+	[_objective_pos, true, 5] spawn send_drones;
+	sleep 20;
+};
+
 stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
 publicVariable "stats_hostile_battlegroups";
 diag_log format ["Done Spawning Direct BattlegGroup (%1) objective %2 at %3", _target_size, _objectivepos, time];
