@@ -295,6 +295,6 @@ while {alive _unit && _continue} do {
 
 	if (_continue) then {
 		[_grp, getPosATL _unit] spawn add_civ_waypoints;
-		sleep 60;
+		sleep 120;
 	};
 };
