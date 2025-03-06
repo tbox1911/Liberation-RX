@@ -15,7 +15,6 @@ if (_object_class == mobile_respawn) then {
 
 // UAVs
 if (_object_class in uavs_vehicles) then {
-	[_object] call F_forceCrew;
 	_object setVariable ["GRLIB_vehicle_manned", true, true];
 };
 

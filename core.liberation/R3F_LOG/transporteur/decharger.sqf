@@ -51,7 +51,7 @@ else
 		_objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 		_objets_charges = _objets_charges - [_objet_a_decharger];
 		_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
-		
+
 		if !(isNull _objet_a_decharger) then
 		{
 			[_objet_a_decharger, player] call R3F_LOG_FNCT_definir_proprietaire_verrou;
@@ -69,7 +69,10 @@ else
 			if (!(_objet_a_decharger isKindOf "AllVehicles") || _est_deplacable) then
 			{
 				R3F_LOG_mutex_local_verrou = false;
-				if (typeOf _objet_a_decharger in uavs_vehicles) then { player enableUAVConnectability [_objet_a_decharger, true] };
+				if (typeOf _objet_a_decharger in uavs_vehicles) then {
+					[_objet_a_decharger] call F_forceCrew;
+					player enableUAVConnectability [_objet_a_decharger, true]
+				};
 				[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 			}
 			else
@@ -95,7 +98,10 @@ else
 
 				if (count _pos_degagee > 0) then {
 					detach _objet_a_decharger;
-					if (typeOf _objet_a_decharger in uavs_vehicles) then { player enableUAVConnectability [_objet_a_decharger, true] };
+					if (typeOf _objet_a_decharger in uavs_vehicles) then {
+						[_objet_a_decharger] call F_forceCrew;
+						player enableUAVConnectability [_objet_a_decharger, true];
+					};
 					_objet_a_decharger setPos _pos_degagee;
 					_objet_a_decharger setVectorDirAndUp [[-cos getDir _transporteur, sin getDir _transporteur, 0] vectorCrossProduct surfaceNormal _pos_degagee, surfaceNormal _pos_degagee];
 					_objet_a_decharger setVelocity [0, 0, 0];
