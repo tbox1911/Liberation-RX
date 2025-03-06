@@ -116,8 +116,9 @@ if ( isServer ) then {
 						private _score = [_killer] call F_getScore;
 						if ( _score < GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties/2};
 						if ( _score > GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties };
-						if ( _score > GRLIB_perm_air ) then { _penalty = GRLIB_civ_penalties*2 };
-						if ( _score > GRLIB_perm_max ) then { _penalty = GRLIB_civ_penalties*3 };
+						if ( _score > GRLIB_perm_tank ) then { _penalty = GRLIB_civ_penalties*2 };
+						if ( _score > GRLIB_perm_air ) then { _penalty = GRLIB_civ_penalties*3 };
+						if ( _score > GRLIB_perm_max ) then { _penalty = GRLIB_civ_penalties*4 };
 						[_killer, -_penalty] call F_addScore;
 						[_killer, -5] call F_addReput;
 						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
