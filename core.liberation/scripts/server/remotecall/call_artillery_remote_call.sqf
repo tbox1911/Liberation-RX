@@ -22,21 +22,21 @@ private _ammo_name = [
 ];
 
 private _ammo_list = [
-	"Sh_155mm_AMOS",
-	"Sh_155mm_AMOS",
-	"Sh_155mm_AMOS",
-	"Sh_155mm_AMOS",
 	"Sh_120mm_HE",
 	"Sh_120mm_HE",
 	"Sh_120mm_HE",
-	"Sh_120mm_HE",
-	"Sh_155mm_AMOS_guided",
-	"Sh_155mm_AMOS_guided",
+	"Sh_155mm_AMOS",
+	"Sh_155mm_AMOS",
+	"Cluster_155mm_AMOS",
 	"Cluster_155mm_AMOS",
 	"Bomb_03_F",
+	"Bomb_03_F",
+	"Bomb_04_F",
 	"Bomb_04_F",
 	"BombCluster_01_Ammo_F",
+	"BombCluster_01_Ammo_F",
 	"BombCluster_02_Ammo_F",
+	"BombCluster_03_Ammo_F",
 	"BombCluster_03_Ammo_F"
 ];
 
