@@ -91,7 +91,15 @@ if (_vehicle isKindOf "Plane") then {
 				if (count _blu_veh > 0) then {
 					{ (driver _plane) reveal [_x, 4] } forEach _blu_veh;
 				};
-				sleep 10;
+				private _plane_dir = getDir _plane;
+				private _spot = _plane getPos [1000, _plane_dir];
+				if ([_spot, 100, GRLIB_side_friendly] call F_getUnitsCount > 2) then {
+					_round = "Cluster_155mm_AMOS" createVehicle (getPos _plane);
+					[_round, -80, 0] call BIS_fnc_setPitchBank;
+					_round setVelocity [0,0,-100];
+					sleep 60;
+				};
+				sleep 3;
 			};
 		};
 	};
