@@ -16,7 +16,7 @@ titleText ["-- Liberation RX --","BLACK FADED", 100];
 
 profileNamespace setVariable ["BIS_SupportDevelopment", nil];
 enableSaving [false, false];
-disableMapIndicators [true,true,false,false];
+disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
 
 abort_loading = false;
