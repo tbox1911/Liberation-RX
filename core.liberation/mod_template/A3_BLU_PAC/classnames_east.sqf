@@ -152,19 +152,21 @@ opfor_troup_transports_heli = [
 opfor_air = [
 	"B_Heli_Light_01_dynamicLoadout_F",
 	"B_Heli_Attack_01_F",
-	"B_Heli_Attack_01_F",	
+	"B_Heli_Attack_01_F",
 	"B_Plane_CAS_01_dynamicLoadout_F",
 	"B_Plane_Fighter_01_F"
 ];
 
 opfor_statics = [
-	"B_T_HMG_01_F",
 	"B_T_GMG_01_F",
 	"B_T_HMG_01_F",
-	"B_T_GMG_01_F",	
-	"B_T_Mortar_01_F",
+	"B_HMG_01_high_F",
+	"B_GMG_01_high_F",
+	"B_HMG_01_high_F",
+	"B_GMG_01_high_F",
 	"B_T_Static_AA_F",
-	"B_T_Static_AT_F"
+	"B_T_Static_AT_F",
+	"B_T_Mortar_01_F"
 ];
 
 opfor_recyclable = [
@@ -240,6 +242,8 @@ opfor_recyclable = [
 	//Static:
 	["B_T_HMG_01_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_T_GMG_01_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["B_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["B_GMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_T_Mortar_01_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_T_Static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["B_T_Static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],

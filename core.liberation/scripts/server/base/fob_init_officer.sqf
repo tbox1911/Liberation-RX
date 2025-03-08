@@ -36,7 +36,7 @@ if !(surfaceIsWater _fob_pos) then {
 
 private _map_dir = getDir _map;
 private _manPos = (getPosATL _map) vectorAdd ([[0, -2, 0.2], -_map_dir] call BIS_fnc_rotateVector2D);
-_man = createAgent [commander_classname, zeropos, [], 0, "NONE"];
+_man = createAgent [FOB_Man, zeropos, [], 0, "NONE"];
 _man setVariable ["GRLIB_FOB_Group", true, true];
 _man allowDamage false;
 _man disableCollisionWith _map;

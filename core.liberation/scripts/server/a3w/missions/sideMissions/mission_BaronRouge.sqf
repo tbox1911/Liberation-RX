@@ -26,7 +26,21 @@ _setupObjects = {
     	false;
 	};
 
+	private _airveh_alt = 2000;
+	private _vehicle = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
+	_vehicle addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
+	_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+	_vehicle flyInHeight _airveh_alt;
+	_vehicle flyInHeightASL [_airveh_alt, _airveh_alt, _airveh_alt];
+	_vehicle setVariable ["GRLIB_mission_AI", true, true];
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
+	(crew _vehicle) joinSilent _aiGroup;
+	_leader = driver _vehicle;
+	_leader setSkill 0.90;
+	_leader setSkill ["courage", 1];
+	_leader allowFleeing 0;
+	_aiGroup selectLeader _leader;
 	_aiGroup setFormation "WEDGE";
 	_aiGroup setBehaviourStrong "AWARE";
 	_aiGroup setCombatMode "YELLOW";
@@ -48,26 +62,6 @@ _setupObjects = {
 	_waypoint = _aiGroup addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 
-	_vehicles = [];
-	private _airveh_alt = 2000;
-	private _plane = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
-	_plane addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
-	_plane addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-	_plane addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-	_plane flyInHeight _airveh_alt;
-	_plane flyInHeightASL [_airveh_alt, _airveh_alt, _airveh_alt];
-	_plane setVariable ["GRLIB_mission_AI", true, true];
-	_vehicles pushBack _plane;
-	(crew _plane) joinSilent _aiGroup;
-	sleep 2;
-
-	_leader = driver _plane;
-	_leader setSkill 0.90;
-	_leader setSkill ["courage", 1];
-	_leader allowFleeing 0;
-	_aiGroup selectLeader _leader;
-	{_x doFollow leader _aiGroup} foreach units _aiGroup;
-
 	_missionPos = getPosATL (leader _aiGroup);
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
@@ -78,9 +72,12 @@ _setupObjects = {
 _waitUntilMarkerPos = { getPosATL (leader _aiGroup) };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
-_waitUntilSuccessCondition = { !alive (_vehicles select 0) };
+_waitUntilSuccessCondition = { !alive _vehicle  && !isNull (_vehicle getVariable ["GRLIB_last_killer", objNull])};
 
-_failedExec = nil;
+_failedExec = {
+	{ deleteVehicle _x } forEach (crew _vehicle);
+	deleteVehicle _vehicle;
+};
 
 _successExec = {
 	// Mission completed

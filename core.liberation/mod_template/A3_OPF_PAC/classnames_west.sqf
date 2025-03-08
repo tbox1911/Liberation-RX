@@ -7,6 +7,7 @@ GRLIB_west_modder = "pSiKO";
 
 huron_typename = "O_Heli_Transport_04_black_F";
 FOB_typename = "Land_Cargo_HQ_V3_F";
+FOB_Man = "O_officer_F";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
 FOB_truck_typename = "O_T_Truck_03_device_ghex_F";
 Respawn_truck_typename = "O_T_Truck_03_medical_ghex_F";
