@@ -149,7 +149,12 @@
 		if (isServer) then
 		{
 			if (_commande == "setOwnerTo") then	{
-				_argument setOwner (owner _parametre);
+				if (count crew _argument == 0) then {
+					_argument setOwner (owner _parametre);
+				} else {
+					private _grp = group (crew _argument select 0);
+					_grp setGroupOwner (owner _parametre);
+				};
 			};
 		};
 	};
