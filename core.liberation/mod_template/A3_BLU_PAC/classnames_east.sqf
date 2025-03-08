@@ -215,6 +215,7 @@ opfor_recyclable = [
 	["B_T_MBT_01_mlrs_F",15,round (1800 / GRLIB_recycling_percentage),15],
 	//Heli:
 	["B_Heli_Light_01_dynamicLoadout_F",10,round (150 / GRLIB_recycling_percentage),18],
+	["B_Heli_Attack_01_F",10,round (250 / GRLIB_recycling_percentage),20],
 	["B_Heli_Attack_01_dynamicLoadout_F",10,round (250 / GRLIB_recycling_percentage),20],
 	["B_Heli_Transport_03_F",10,round (50 / GRLIB_recycling_percentage),18],
 	["B_Heli_Transport_03_unarmed_F",10,round (50 / GRLIB_recycling_percentage),18],

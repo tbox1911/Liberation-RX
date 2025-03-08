@@ -33,18 +33,18 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["O_T_UAV_01_F", 3],
-	["O_T_UAV_06_F", 3],
-	["O_T_UAV_02_dynamicLoadout_F", 20],
-	["O_T_T_UAV_04_CAS_F", 30]
+	["O_UAV_01_F", 3],
+	["O_UAV_06_F", 3],
+	["O_UAV_02_dynamicLoadout_F", 20],
+	["O_T_UAV_04_CAS_F", 30]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-	"O_T_UAV_01_F",
-	"O_T_UAV_06_F",
-	"O_T_UAV_02_dynamicLoadout_F",
-	"O_T_T_UAV_04_CAS_F"	
+	"O_UAV_01_F",
+	"O_UAV_06_F",
+	"O_UAV_02_dynamicLoadout_F",
+	"O_T_UAV_04_CAS_F"	
 ];
 
 //--------------- Ground ---------------
@@ -75,9 +75,9 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-	"O_T_UGV_01_F",
-	"O_T_UGV_01_rcws_F",
-	"O_T_UGV_02_Demining_F"	
+	"O_T_UGV_01_ghex_F",
+	"O_T_UGV_01_rcws_ghex_F",
+	"O_UGV_02_Demining_F"	
 ];
 
 //--------------- Ship ---------------
@@ -123,10 +123,10 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["O_T_Static_Designator_01_F",3],
-	["O_T_HMG_01_F",5],
+	["O_Static_Designator_01_F",3],
+	["O_HMG_01_F",5],
 	["O_HMG_01_high_F",5],
-	["O_T_GMG_01_F",5],
+	["O_GMG_01_F",5],
 	["O_GMG_01_high_F",5],
 	["O_static_AA_F",10],
 	["O_static_AT_F",10],
