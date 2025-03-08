@@ -6482,6 +6482,11 @@
 		</Key>
 		<Key ID="STR_STICKY_BOMB">
 			<Original>-- STICKY BOMB!</Original>
+			<Russian>Липкая бомба!</Russian>
+			<French>Bombe adhésive!</French>
+			<Japanese>-- 粘着爆弾！</Japanese>
+			<Chinesesimp>-- 黏性炸弹！</Chinesesimp>
+			<Chinese>-- 黏性炸彈！</Chinese>
 		</Key>
 		<Key ID="STR_REPAIR_VEH_MSG">
 			<Original>Complete %1 Repair in progress...</Original>
