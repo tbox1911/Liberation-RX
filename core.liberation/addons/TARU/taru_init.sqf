@@ -19,6 +19,8 @@
 	Contact : halvhjearne@gmail.com
 */
 
+waitUntil {sleep 1; !isNil "GRLIB_vehicle_huron"};
+
 HALV_attachTarupods = {
 	_heli = _this select 0;
 	_action = _this select 2;
@@ -119,7 +121,7 @@ while {true} do {
 	if !(isNull objectParent player) then {
 		_vehicle = vehicle player;
 		_isTaru = _vehicle isKindOf "O_Heli_Transport_04_F";
-		_isOwner = [player, _vehicle] call is_owner;
+		_isOwner = ([player, _vehicle] call is_owner || _vehicle == GRLIB_vehicle_huron);
 
 		if (_isTaru && _isOwner) then {
 			_currentpod = _vehicle call HALV_fnc_checkattachedpods;
