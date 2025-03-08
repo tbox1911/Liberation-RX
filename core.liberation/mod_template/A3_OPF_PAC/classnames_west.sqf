@@ -116,7 +116,6 @@ blufor_air = [
 
 static_vehicles = [
 	["O_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
-	["O_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
 	["O_HMG_01_F",0,10,0,GRLIB_perm_log],
 	["O_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
 	["O_GMG_01_F",0,20,0,GRLIB_perm_log],
