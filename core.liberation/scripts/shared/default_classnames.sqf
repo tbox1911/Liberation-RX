@@ -66,6 +66,7 @@ land_cutter_typename = "Land_ClutterCutter_large_F";
 canister_fuel_typename = "Land_CanisterFuel_Red_F";
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForSmoke";		//"test_EmptyObjectForFireBig";
+FOB_Man = "B_officer_F";
 SHOP_Man = "C_Man_formal_1_F";
 SELL_Man = "C_Story_Mechanic_01_F";
 WRHS_Man = "B_RangeMaster_F";
@@ -82,16 +83,16 @@ vehicle_repaint_sources_west = [];
 vehicle_refuel_sources_west = [];
 vehicle_big_units = [];
 GRLIB_respawn_marker = "respawn_west";
-GRLIB_music_startup = "BackgroundTrack02_F";        //"LeadTrack01a_F" (This Is War)
+GRLIB_music_startup = "BackgroundTrack02_F";		//"LeadTrack01a_F" (This Is War)
 GRLIB_music_endgame = "LeadTrack06_F_Tank";
 GRLIB_vehicle_whitelist = [];
 GRLIB_vehicle_blacklist = [];
 static_vehicles_AI = [];
 units_loadout_overide = [];
 sticky_bombs_typename = [
-    // need Magzine and Ammo typename
-    "DemoCharge_Remote_Mag", "DemoCharge_Remote_Ammo",
-    "SatchelCharge_Remote_Mag", "SatchelCharge_Remote_Ammo"
+	// need Magzine and Ammo typename
+	"DemoCharge_Remote_Mag", "DemoCharge_Remote_Ammo",
+	"SatchelCharge_Remote_Mag", "SatchelCharge_Remote_Ammo"
 ];
 LOADOUT_fixed_price = [];
 LOADOUT_expensive_items = [];
