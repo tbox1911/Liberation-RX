@@ -378,24 +378,24 @@ AR_Client_Rappel_From_Heli = {
 	};
 
 	while {true} do {
-		private _currentTime = diag_tickTime;
-		private _timeSinceLastUpdate = _currentTime - _lastTime;
-		private _lastTime = _currentTime;
+		_currentTime = diag_tickTime;
+		_timeSinceLastUpdate = _currentTime - _lastTime;
+		_lastTime = _currentTime;
 		if (_timeSinceLastUpdate > 1) then {
 			_timeSinceLastUpdate = 0;
 		};
 
-		private _environmentWindVelocity = wind;
-		private _playerWindVelocity = _velocityVec vectorMultiply -1;
-		private _helicopterWindVelocity = (vectorUp _heli) vectorMultiply -30;
-		private _totalWindVelocity = _environmentWindVelocity vectorAdd _playerWindVelocity vectorAdd _helicopterWindVelocity;
-		private _totalWindForce = _totalWindVelocity vectorMultiply (9.8/53);
+		_environmentWindVelocity = wind;
+		_playerWindVelocity = _velocityVec vectorMultiply -1;
+		_helicopterWindVelocity = (vectorUp _heli) vectorMultiply -30;
+		_totalWindVelocity = _environmentWindVelocity vectorAdd _playerWindVelocity vectorAdd _helicopterWindVelocity;
+		_totalWindForce = _totalWindVelocity vectorMultiply (9.8/53);
 
-		private _accelerationVec = _gravityAccelerationVec vectorAdd _totalWindForce;
-		private _velocityVec = _velocityVec vectorAdd ( _accelerationVec vectorMultiply _timeSinceLastUpdate );
-		private _newPosition = _lastPosition vectorAdd ( _velocityVec vectorMultiply _timeSinceLastUpdate );
+		_accelerationVec = _gravityAccelerationVec vectorAdd _totalWindForce;
+		_velocityVec = _velocityVec vectorAdd ( _accelerationVec vectorMultiply _timeSinceLastUpdate );
+		_newPosition = _lastPosition vectorAdd ( _velocityVec vectorMultiply _timeSinceLastUpdate );
 
-		private _heliPos = AGLtoASL (_heli modelToWorldVisual _rappelPoint);
+		_heliPos = AGLtoASL (_heli modelToWorldVisual _rappelPoint);
 
 		if (_newPosition distance _heliPos > _topRopeLength) then {
 			_newPosition = (_heliPos) vectorAdd (( vectorNormalized ( (_heliPos) vectorFromTo _newPosition )) vectorMultiply _topRopeLength);
