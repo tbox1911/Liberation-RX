@@ -7,7 +7,6 @@ _setupVars = {
 	_missionType = "STR_HOSTILE_HELI";
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_missionTimeout = (35 * 60);
-	_ignoreAiDeaths = true;
 };
 
 _setupObjects = {
@@ -19,6 +18,7 @@ _setupObjects = {
 	};
 	_vehicleClass = selectRandom opfor_troup_transports_heli;
 	_vehicle = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
+	_vehicle setVariable ["GRLIB_mission_AI", true, true];
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	(crew _vehicle) joinSilent _aiGroup;
 	_leader = driver _vehicle;
@@ -59,9 +59,12 @@ _setupObjects = {
 _waitUntilMarkerPos = { getPosATL _leader };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
-_waitUntilSuccessCondition = { !alive _vehicle };
+_waitUntilSuccessCondition = { !alive _vehicle  && !isNull (_vehicle getVariable ["GRLIB_last_killer", objNull])};
 
-_failedExec = nil;
+_failedExec = {
+	{ deleteVehicle _x } forEach (crew _vehicle);
+	deleteVehicle _vehicle;
+};
 
 _successExec = {
 	// Mission completed
