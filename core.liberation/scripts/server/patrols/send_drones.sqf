@@ -5,7 +5,7 @@ if (count uavs_vehicles == 0) exitWith {};
 
 if (_count == 0) exitWith {};
 if (_count > 1) then {
-	sleep 20;
+	sleep 15;
 	[_targetpos, _kamikaze, _count - 1] spawn send_drones;
 };
 
@@ -43,8 +43,8 @@ private _uav_role = 1;
 if (_kamikaze) then {
 	_uav_role = 0;
 } else {
+	//if (floor random 4 == 0) then { _uav_role = 0 };
 	[_grp, _targetpos] call patrol_ai_uavs;
-	if (floor random 4 == 0) then { _uav_role = 0 };
 };
 sleep 5;
 
@@ -54,7 +54,7 @@ private ["_target"];
 while {alive _vehicle} do {
 	// kamikaze + bomb
 	if (_uav_role == 0) then {
-		_target = [_targetpos, 150] call F_getNearestBlufor;
+		_target = [_targetpos, 200] call F_getNearestBlufor;
 		if (!isNil "_target") then {
 			_grp setSpeedMode "FULL";
 			(driver _vehicle) doMove (getPos _target);
@@ -82,7 +82,7 @@ while {alive _vehicle} do {
 
 	// lanch grenades
 	if (_uav_role == 1) then {
-		_target = [_vehicle, 120] call F_getNearestBlufor;
+		_target = [_vehicle, 200] call F_getNearestBlufor;
 		if (!isNil "_target") then {
 			[_grp] call F_deleteWaypoints;
 			_grp setCombatMode "YELLOW";
@@ -90,7 +90,7 @@ while {alive _vehicle} do {
 			waitUntil {
 				(driver _vehicle) doMove (getPos _target);
 				sleep 1;
-				(_vehicle distance2D _target <= 15 || _vehicle distance2D _target >= 100 || !alive _vehicle)
+				(_vehicle distance2D _target <= 15 || _vehicle distance2D _target >= 300 || !alive _vehicle)
 			};
 			if !(alive _vehicle) exitWith {};
 			if (_vehicle distance2D _target <= 15) then {

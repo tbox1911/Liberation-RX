@@ -43,7 +43,7 @@ for "_i" from 0 to _target_size do {
 } foreach _selected_opfor_battlegroup;
 
 if (combat_readiness >= 50) then {
-	[_objective_pos, true, 5] spawn send_drones;
+	[_objective_pos, true, 10] spawn send_drones;
 	sleep 20;
 };
 

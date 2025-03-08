@@ -1,7 +1,7 @@
 params [ "_unit", "_killer", "_instigator"];
 
 if (isNull _unit) exitWith {};
-private ["_msg"];
+private ["_msg", "_owner_id", "_player"];
 
 if ( isServer ) then {
 	if (_unit getVariable ["GRLIB_mp_kill", false]) exitWith {};
@@ -45,6 +45,11 @@ if ( isServer ) then {
 	if ([_unit_class, uavs_vehicles] call F_itemIsInClass) exitWith {
 		private _bombs = (attachedObjects _unit) select { typeOf _x in sticky_bombs_typename };
 		if (count _bombs > 0) then {
+			_owner_id = _unit getVariable ["GRLIB_vehicle_owner", ""];
+			_player = _owner_id call BIS_fnc_getUnitByUID;
+			if (!isNull _player) then {
+				{ _x setVariable ["GRLIB_last_killer", _player, true] } forEach (_unit nearEntities [["AllVehicles"], 15]);
+			};
 			{
 				detach _x;
 				_x setDamage 1;

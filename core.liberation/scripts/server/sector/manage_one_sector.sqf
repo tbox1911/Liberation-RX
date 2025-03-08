@@ -133,7 +133,7 @@ if (_sector in sectors_factory) then {
 	_building_ai_max = 6;
 	_building_range = 100;
 	_ied_count = (3 + (floor random 3));
-	_uavs_count = 5;
+	_uavs_count = 10;
 };
 
 if (_sector in sectors_tower) then {
@@ -149,7 +149,7 @@ if (_sector in sectors_tower) then {
 	if (floor random 100 > 33) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 	[_sector_pos, 50] call createlandmines;
 	_static_count = 4;
-	_uavs_count = 5;
+	_uavs_count = 6;
 };
 
 // Create mines
