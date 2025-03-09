@@ -1,10 +1,8 @@
-params ["_unit", "_side"];
+params ["_unit"];
 
 if !(local _unit) exitWith {};
 
-private _current_enemy = GRLIB_side_friendly;
-if (_side == GRLIB_side_friendly) then { _current_enemy = GRLIB_side_enemy };
-private _enemy_nearby = [_unit, (GRLIB_sector_size * 2), _current_enemy] call F_getUnitsCount;
+private _enemy_nearby = [_unit, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount;
 if (_enemy_nearby == 0) exitWith {};
 
 private _vehicle = objectParent _unit;
@@ -25,7 +23,7 @@ if (_vehicle_class isKindOf "AA_01_base_F") then {_dist = (GRLIB_sector_size * 2
 if (_vehicle_class isKindOf "StaticMortar") then { _dist = (GRLIB_sector_size * 1.5); _kind = ["CAManBase", "Car"]};
 
 private _scan_target = (_vehicle nearEntities [_kind, _dist]) select {
-    alive _x && side group _x == _side &&
+    alive _x && side group _x == GRLIB_side_friendly &&
     !(_x getVariable ['R3F_LOG_disabled', false])
 };
 
@@ -43,6 +41,7 @@ if (count (_scan_target) > 0) then {
 
     _unit doWatch _next_target;
     _unit doTarget _next_target;
+    _unit reveal [_next_target, 4];
     if (_vehicle_class isKindOf "StaticMortar") then {
         _vehicle fireAtTarget [_next_target, currentWeapon _vehicle];
         sleep 5;

@@ -39,7 +39,7 @@ if (count (crew _veh_unit) > 0) then {
 				_unit setVariable ["GRLIB_isProtected", round(time + 5), true];
 				private _msg = format ["%1 Stop Cheating !!", name _killer];
 				[gamelogic, _msg] remoteExec ["globalChat", owner _killer];
-				(group _unit) reveal _killer;
+				_unit reveal [_killer, 4];
 				(gunner _veh_unit) doTarget _killer;
 				_veh_unit fireAtTarget [_killer];
 			};

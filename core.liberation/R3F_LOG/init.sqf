@@ -269,9 +269,8 @@
 			private ["_objet"];
 			_objet = _this select 1;
 
-			if (alive player) then
-			{
-				player reveal _objet;
+			if (alive player) then {
+				player reveal [_objet, 4];
 			};
 		};
 		"R3F_LOG_PUBVAR_reveler_au_joueur" addPublicVariableEventHandler R3F_LOG_FNCT_PUBVAR_reveler_au_joueur;

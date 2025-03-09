@@ -43,10 +43,7 @@ while {alive _static} do {
             if (isPlayer _gunner) exitWith {};
             if (side group _gunner == GRLIB_side_enemy) then {
                 _static setVehicleAmmo 1;       // OPFor infinite Ammo
-                [_gunner, GRLIB_side_friendly] spawn F_getNearestEnemy;
-            };
-            if (side group _gunner == GRLIB_side_friendly) then {
-                [_gunner, GRLIB_side_enemy] spawn F_getNearestEnemy;
+                [_gunner] spawn F_getNearestEnemy;
             };
         } else {
             if (_static_class in opfor_statics) then {
