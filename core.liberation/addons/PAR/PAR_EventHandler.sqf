@@ -77,6 +77,10 @@ _unit addEventHandler ["FiredMan",	{
 
 // for Player only
 if (_unit == player) then {
+	_unit removeAllEventHandlers "Reloaded";
+	_unit removeAllEventHandlers "MagazineUnloaded";
+	_unit removeAllEventHandlers "MagazineReloading";
+
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
 		["ace_arsenal_displayClosed", {
