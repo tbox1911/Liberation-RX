@@ -141,7 +141,7 @@ GRLIB_checkBuildDef = {
 
 GRLIB_checkRemoveHelipad = {
 	(
-		GRLIB_player_is_menuok && GRLIB_player_score >= GRLIB_perm_log && GRLIB_player_near_fob &&
+		GRLIB_player_is_menuok && GRLIB_player_score >= GRLIB_perm_inf && GRLIB_player_near_fob &&
 		({ getObjectType _x >= 8 && player distance2D _x <= GRLIB_ActionDist_3 } count (nearestObjects [player, ["Helipad_base_F"], 20]) >= 1)
 	);
 };

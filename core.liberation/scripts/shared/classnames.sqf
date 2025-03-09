@@ -497,7 +497,7 @@ GRLIB_recycleable_blacklist = [
 buildings = [
 	[FOB_sign,0,0,0,GRLIB_perm_hidden],
 	[blufor_flag,0,0,0,0],
-	[helipad_typename,0,0,0,0]
+	[helipad_typename,0,0,0,GRLIB_perm_inf]
 ];
 if (isNil "buildings_west_overide") then {
 	buildings append buildings_default + buildings_west;
