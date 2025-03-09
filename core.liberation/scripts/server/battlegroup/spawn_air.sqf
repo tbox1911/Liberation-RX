@@ -87,13 +87,16 @@ if (_vehicle isKindOf "Plane") then {
 			params ["_plane"];
 			sleep 30;
 			while { alive _plane } do {
-				private _blu_veh = (units GRLIB_side_friendly) select { _x distance2D _plane < GRLIB_spawn_min && !isNull objectParent _x };
+				private _blu_veh = (units GRLIB_side_friendly) select { _x distance2D _plane <= GRLIB_spawn_max && !isNull objectParent _x };
 				if (count _blu_veh > 0) then {
-					{ (driver _plane) reveal [_x, 4] } forEach _blu_veh;
+					{
+						(driver _plane) reveal [_x, 4];
+						(gunner _plane) doTarget _x;
+					} forEach _blu_veh;
 				};
 				private _plane_dir = getDir _plane;
-				private _spot = _plane getPos [1000, _plane_dir];
-				if ([_spot, 100, GRLIB_side_friendly] call F_getUnitsCount > 2) then {
+				private _spot = _plane getPos [1500, _plane_dir];
+				if ([_spot, 150, GRLIB_side_friendly] call F_getUnitsCount > 2) then {
 					_round = "Cluster_155mm_AMOS" createVehicle (getPos _plane);
 					[_round, -80, 0] call BIS_fnc_setPitchBank;
 					_round setVelocity [0,0,-100];

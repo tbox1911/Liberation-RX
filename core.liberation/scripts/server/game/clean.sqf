@@ -48,7 +48,7 @@ private _no_cleanup_classnames = [
 	GRLIB_sar_fire,
 	"Land_Device_assembled_F",
 	"Land_Device_disassembled_F"
-] + GRLIB_vehicle_blacklist;
+] + uavs_vehicles + GRLIB_vehicle_blacklist;
 //{ _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
 
 // HIDDEN-FROM-PLAYERS FUNCTION
