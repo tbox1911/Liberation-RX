@@ -5,14 +5,14 @@ GRLIB_east_modder = "pSiKO";
 // All class MUST be defined !
 
 opfor_crew = "B_T_Crew_F";
-opfor_sentry = "B_T_Support_AMort_F";
+opfor_sentry = "B_T_Soldier_F";
 opfor_rifleman = "B_T_Soldier_F";
 opfor_grenadier = "B_T_Soldier_GL_F";
 opfor_squad_leader = "B_T_Soldier_SL_F";
 opfor_team_leader = "B_T_Soldier_TL_F";
 opfor_marksman = "B_T_soldier_M_F";
 opfor_machinegunner = "B_T_Soldier_AR_F";
-opfor_heavygunner = "B_T_Support_GMG_F";
+opfor_heavygunner = "B_T_Soldier_GL_F";
 opfor_medic = "B_T_Medic_F";
 opfor_rpg = "B_T_Soldier_LAT2_F";
 opfor_at = "B_T_Soldier_LAT_F";

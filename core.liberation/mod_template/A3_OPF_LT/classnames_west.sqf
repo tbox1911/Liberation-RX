@@ -80,33 +80,17 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
-	["O_APC_Wheeled_02_rcws_v2_F",10,400,10,GRLIB_perm_log]
-	// ["O_APC_Tracked_02_cannon_F",10,800,10,GRLIB_perm_log],
-	// ["O_APC_Tracked_02_AA_F",10,1500,10,GRLIB_perm_tank],
-	// ["O_MBT_02_cannon_F",15,1500,15,GRLIB_perm_tank],
-	// ["O_MBT_02_cannon_F",15,1800,15,GRLIB_perm_air],
-	// ["O_MBT_04_cannon_F",15,2500,15,GRLIB_perm_air],
-	// ["O_MBT_04_command_F",15,2500,15,GRLIB_perm_air],
-	// ["I_MBT_03_cannon_F",15,3500,15,GRLIB_perm_max],
-	// ["O_MBT_02_arty_F",15,4000,15,GRLIB_perm_max],
-	// ["I_E_Truck_02_MRL_F",15,4500,15,GRLIB_perm_max]
+	["O_APC_Wheeled_02_rcws_v2_F",10,400,10,GRLIB_perm_log],
+	["O_APC_Tracked_02_cannon_F",10,800,10,GRLIB_perm_log],
+	["O_APC_Tracked_02_AA_F",10,1500,10,GRLIB_perm_tank],
+	["O_MBT_02_cannon_F",15,1500,15,GRLIB_perm_tank]
 ];
 
 air_vehicles = [
 	["O_UAV_01_F",1,10,5,GRLIB_perm_log],
 	["O_UAV_06_F",1,30,5,GRLIB_perm_tank],
-	// ["O_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
-	// ["O_T_UAV_04_CAS_F",5,1500,10,GRLIB_perm_max],
-	// ["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
 	["O_Heli_Light_02_unarmed_F",1,250,5,GRLIB_perm_air]
-	// ["O_Heli_Transport_04_F",3,500,10,GRLIB_perm_air],
-	// ["O_Heli_Light_02_dynamicLoadout_F",5,1000,10,GRLIB_perm_air],
-	// ["O_Heli_Attack_02_dynamicLoadout_F",10,2000,20,GRLIB_perm_air],
-	// ["O_T_VTOL_02_infantry_dynamicLoadout_F", 10,2500,20,GRLIB_perm_max],
-	// ["O_Plane_CAS_02_dynamicLoadout_F",20,4000,40,GRLIB_perm_max],
-	// ["O_Plane_Fighter_02_F",20,4500,40,GRLIB_perm_max],
-	// ["O_Plane_Fighter_02_Stealth_F",20,4500,40,GRLIB_perm_max]
 ];
 
 blufor_air = [
@@ -128,16 +112,10 @@ static_vehicles = [
 	["O_static_AA_F",0,50,0,GRLIB_perm_air],
 	["O_static_AT_F",0,50,0,GRLIB_perm_air],
 	["O_Mortar_01_F",0,500,0,GRLIB_perm_max]
-	// ["B_SAM_System_01_F",10,1500,0,GRLIB_perm_tank],
-	// ["B_AAA_System_01_F",10,1500,0,GRLIB_perm_air],
-	// ["O_SAM_System_04_F",10,1500,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	// "B_SAM_System_01_F",
-	// "B_AAA_System_01_F",
-	// "O_SAM_System_04_F"
 ];
 
 support_vehicles_west = [
