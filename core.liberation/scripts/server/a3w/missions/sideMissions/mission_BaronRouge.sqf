@@ -27,7 +27,7 @@ _setupObjects = {
 	};
 
 	private _airveh_alt = 2000;
-	private _vehicle = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
 	_vehicle addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
 	_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
@@ -72,7 +72,7 @@ _setupObjects = {
 _waitUntilMarkerPos = { getPosATL (leader _aiGroup) };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
-_waitUntilSuccessCondition = { !alive _vehicle  && !isNull (_vehicle getVariable ["GRLIB_last_killer", objNull])};
+_waitUntilSuccessCondition = { !alive _vehicle && !isNull (_vehicle getVariable ["GRLIB_last_killer", objNull])};
 
 _failedExec = {
 	{ deleteVehicle _x } forEach (crew _vehicle);
