@@ -3,9 +3,9 @@ if (isNil "_vehicle") exitWith {};
 
 private _vehicle_class = typeOf _vehicle;
 private _vehicle_name = [_vehicle_class] call F_getLRXName;
-private _msg = format ["<t align='center'>Do you REALLY want to put a charge on %1?<br/>This action can't be undone!<br/><br/>Are you sure ?</t>", _vehicle_name];
+private _msg = format [localize "STR_STICKY_MSG_ASK", _vehicle_name];
 private _result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
-if !(_result) exitWith {gamelogic globalChat "Wise decision..."};
+if !(_result) exitWith {gamelogic globalChat localize "STR_STICKY_MSG_WISE"};
 
 // find memory points
 // cursorobject removeAllEventHandlers "HitPart";
@@ -29,16 +29,16 @@ private _vehicle_mempoints = [
 ];
 
 private _bombs = (vestItems player + backpackItems player) select { _x in sticky_bombs_typename };
-if (count _bombs == 0) exitWith {gamelogic globalChat "You have no suiteable explosives."};
+if (count _bombs == 0) exitWith {gamelogic globalChat localize "STR_STICKY_NO_CHARGE"};
 
 private _bomb_count_max = 3;
 private _bomb_count = ({typeOf _x in sticky_bombs_typename} count (attachedObjects _vehicle));
 
 if (_vehicle isKindOf "B_UAV_01_F") then { _bomb_count_max = 1 };
-if (_bomb_count >= _bomb_count_max) exitWith { gamelogic globalChat format ["Too many bomb wired to %1!!", _vehicle_name] };
+if (_bomb_count >= _bomb_count_max) exitWith { gamelogic globalChat format [localize "STR_STICKY_LIMIT_CHARGE", _vehicle_name] };
 
 disableUserInput true;
-gamelogic globalChat format ["Wiring bomb to %1...", _vehicle_name];
+gamelogic globalChat format [localize "STR_STICKY_MSG_WIRE", _vehicle_name];
 player setDir (player getDir _vehicle);
 player playMove 'ainvpknlmstpslaywrfldnon_medic';
 sleep 3;
@@ -59,7 +59,7 @@ private _actionId = -1;
 if (_bomb_count >= 1) exitWith {};
 
 _actionId = player addAction [
-	format ["Blow bombs in: <t color='#F88000'>%1</t> !!", _vehicle_name],
+	format [localize "STR_STICKY_ACTION", _vehicle_name],
 	{
 		params ["_target", "_caller", "_actionId", "_bomb"];
 		if (!isNull _bomb) then {

@@ -9032,6 +9032,7 @@
 		</Key>
 	</Package>
 
+	<!-- pSiKO LRX SELL Shop -->
 	<Package name="LRX_SELL">
 		<Key ID="STR_SELL_NAME">
 			<Original>-- Sell Shop --</Original>
@@ -9041,6 +9042,29 @@
 			<Portuguese>-- Loja de Venda --</Portuguese>
 			<Czech>-- Obchod --</Czech>
 		</Key>
+	</Package>
+
+	<!-- pSiKO LRX Sticky Bomb -->
+	<Package name="LRX_STICKY">
+		<Key ID="STR_STICKY_MSG_ASK">
+			<Original>&lt;t align='center'&gt;Do you REALLY want to put a charge on %1?&lt;br/&gt;This action can't be undone!&lt;br/&gt;&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+		</Key>
+		<Key ID="STR_STICKY_MSG_WISE">
+			<Original>Wise decision...</Original>
+		</Key>
+		<Key ID="STR_STICKY_NO_CHARGE">
+			<Original>You have no suitable explosives.</Original>
+		</Key>
+		<Key ID="STR_STICKY_LIMIT_CHARGE">
+			<Original>"Too many bomb wired to %1!!"</Original>
+		</Key>
+		<Key ID="STR_STICKY_MSG_WIRE">
+			<Original>Wiring bomb to %1...</Original>
+		</Key>
+		<Key ID="STR_STICKY_ACTION">
+			<Original>Blow bombs in: &lt;t color='#F88000'&gt;%1&lt;/t&gt; !!</Original>
+		</Key>
+
 	</Package>
 
 	<!-- pSiKO LRX Traders Shop -->
