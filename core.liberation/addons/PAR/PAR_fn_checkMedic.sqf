@@ -34,12 +34,24 @@ private _check_sortie = {
 private _healed = false;
 // we want ALL of these conditions to be satisfied to keep this loop going, not just one of them
 // We also want to make sure this loop is only running while the medic is still the woundeds current medic
-while { ([_wnded] call PAR_is_wounded) && !([_medic] call PAR_is_wounded) && (_wnded getVariable "PAR_myMedic") isEqualTo _medic && _fail <= 12 } do {
+while { 
+		alive _wnded && 
+		alive _medic && 
+		([_wnded] call PAR_is_wounded) && 
+		!([_medic] call PAR_is_wounded) && 
+		(_wnded getVariable "PAR_myMedic") isEqualTo _medic && 
+		_fail <= 12 &&
+		vehicle _medic == _medic &&
+		vehicle _wnded == _wnded
+	} do {
 	_msg = "";
+
+	if ([_wnded, _medic] call _check_sortie) exitWith {
+		_healed = true;
+	};
 	_dist = round (_wnded distance2D _medic);
 	// systemchat format ["dbg: wnded 2D dist : %1 dist speed %2 fail %3", _wnded distance2D _medic, round (speed vehicle _medic), _fail];
 	if (_dist > 500) exitWith {};
-	if (vehicle _medic != _medic || vehicle _wnded != _wnded) exitWith {};
 	//Lets lets the player decide if they want to keep looking for new medics, or if they would rather just respawn at this point
 	if (!isPlayer _medic) then {
 		_new_medic = [_wnded] call PAR_fn_nearestMedic;
@@ -48,14 +60,6 @@ while { ([_wnded] call PAR_is_wounded) && !([_medic] call PAR_is_wounded) && (_w
 				_wnded setVariable ["PAR_myMedic", nil];
 			};
 		};
-	};
-
-	// This was contradicting the above check, so my edit makes sense with this logic
-	if (isNil {
-		_wnded getVariable "PAR_myMedic";
-	}) exitWith {};
-	if ([_wnded, _medic] call _check_sortie) exitWith {
-		_healed = true;
 	};
 
 	if (round (speed vehicle _medic) == 0) then {
@@ -109,7 +113,9 @@ while { ([_wnded] call PAR_is_wounded) && !([_medic] call PAR_is_wounded) && (_w
 		if (_fail == 0) then {
 			_msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _dist, round (speed vehicle _medic)];
 		};
-		[_wnded, _msg] call PAR_fn_globalchat;
+		if (!(_msg isEqualTo "")) then {
+			[_wnded, _msg] call PAR_fn_globalchat;
+		};
 		_cnt = 3;
 	} else {
 		_cnt = _cnt - 1;
