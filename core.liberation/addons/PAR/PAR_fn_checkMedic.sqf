@@ -39,10 +39,10 @@ while {
 		alive _medic && 
 		([_wnded] call PAR_is_wounded) && 
 		!([_medic] call PAR_is_wounded) && 
-		(_wnded getVariable "PAR_myMedic") isEqualTo _medic && 
 		_fail <= 12 &&
-		vehicle _medic == _medic &&
-		vehicle _wnded == _wnded
+		vehicle _medic isEqualTo _medic &&
+		vehicle _wnded isEqualTo _wnded &&
+		(_wnded getVariable ["PAR_myMedic", objNull]) isEqualTo _medic
 	} do {
 	_msg = "";
 
