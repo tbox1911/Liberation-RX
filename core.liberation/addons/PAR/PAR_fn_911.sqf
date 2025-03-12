@@ -15,7 +15,7 @@ if (!isnull objectParent _medic) then {
 };
 _medic stop true;
 sleep 1;
-{_medic disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
+{_medic disableAI _x} forEach ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 _medic setUnitPos "UP";
 _medic setSpeedMode "FULL";
 _medic allowFleeing 0;
