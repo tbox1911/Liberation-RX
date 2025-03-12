@@ -1,4 +1,4 @@
-params ["_wnded","_medic"];
+params ["_wnded", "_medic"];
 private _cnt = 3;
 private _fail = 0;
 private _dist = 0;
@@ -6,8 +6,12 @@ private _msg = "";
 private _new_medic = objNull;
 
 private _check_sortie = {
-	params ["_wnded","_medic"];
-	if (isNil {_wnded getVariable "PAR_myMedic"}) exitWith { false };
+	params ["_wnded", "_medic"];
+	if (isNil {
+		_wnded getVariable "PAR_myMedic"
+	}) exitWith {
+		false
+	};
 	private _ret = false;
 	if (_wnded distance2D _medic <= 6) then {
 		if (surfaceIsWater (getPos _wnded)) then {
@@ -17,7 +21,10 @@ private _check_sortie = {
 				_medic doMove (getPosATL _wnded);
 				sleep 3;
 			};
-			waitUntil {sleep 0.5; round (speed vehicle _medic) == 0};
+			waitUntil {
+				sleep 0.5;
+				round (speed vehicle _medic) == 0
+			};
 		};
 		_ret = true;
 	};
@@ -25,19 +32,31 @@ private _check_sortie = {
 };
 
 private _healed = false;
-while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNil {_wnded getVariable "PAR_myMedic"} || _fail <= 6 } do {
+// we want ALL of these conditions to be satisfied to keep this loop going, not just one of them
+// We also want to make sure this loop is only running while the medic is still the woundeds current medic
+while { ([_wnded] call PAR_is_wounded) && !([_medic] call PAR_is_wounded) && (_wnded getVariable "PAR_myMedic") isEqualTo _medic && _fail <= 12 } do {
 	_msg = "";
 	_dist = round (_wnded distance2D _medic);
 	// systemchat format ["dbg: wnded 2D dist : %1 dist speed %2 fail %3", _wnded distance2D _medic, round (speed vehicle _medic), _fail];
 	if (_dist > 500) exitWith {};
 	if (vehicle _medic != _medic || vehicle _wnded != _wnded) exitWith {};
-	_new_medic = [_wnded] call PAR_fn_nearestMedic;
-	if (!isNil "_new_medic" && _dist > 20) then {
-		if ((_new_medic distance2D _wnded) + 6 < (_medic distance2D _wnded)) then { _wnded setVariable ["PAR_myMedic", nil] };
+	//Lets lets the player decide if they want to keep looking for new medics, or if they would rather just respawn at this point
+	if (!isPlayer _medic) then {
+		_new_medic = [_wnded] call PAR_fn_nearestMedic;
+		if (!isNil "_new_medic" && _dist > 20) then {
+			if ((_new_medic distance2D _wnded) + 6 < (_medic distance2D _wnded)) then {
+				_wnded setVariable ["PAR_myMedic", nil];
+			};
+		};
 	};
 
-	if (isNil {_wnded getVariable "PAR_myMedic"}) exitWith {};
-	if ([_wnded, _medic] call _check_sortie) exitWith { _healed = true };
+	// This was contradicting the above check, so my edit makes sense with this logic
+	if (isNil {
+		_wnded getVariable "PAR_myMedic";
+	}) exitWith {};
+	if ([_wnded, _medic] call _check_sortie) exitWith {
+		_healed = true;
+	};
 
 	if (round (speed vehicle _medic) == 0) then {
 		_fail = _fail + 1;
@@ -59,7 +78,7 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 			_medic doMove _relpos;
 		};
 
-		if (_fail > 5) then {
+		if (_fail > 5 && ( _fail < 8 || _dist > 25)) then {
 			_medic allowDamage false;
 			_newpos = _medic getPos [3, _medic getDir _wnded];
 			_newpos = _newpos vectorAdd [0, 0, 3];
@@ -68,13 +87,23 @@ while {([_wnded] call PAR_is_wounded) || !([_medic] call PAR_is_wounded) || isNi
 			_medic allowDamage true;
 		};
 
+		//If they're close enough, lets just tp them to the wounded
+		if (_fail > 8 && _dist < 25) then {
+            _newpos = getPos _wnded;
+            _newpos = _newpos vectorAdd [0, 0, 3];
+            _medic setPos _newpos;
+            _medic setDir (_medic getDir _wnded);
+        };
+
 		_msg = format [localize "STR_PAR_CM_01", name _wnded, name _medic, _dist, _fail];
 		sleep 3;
 	} else {
 		_fail = 0;
 	};
 
-	if ([_wnded, _medic] call _check_sortie) exitWith { _healed = true };
+	if ([_wnded, _medic] call _check_sortie) exitWith {
+		_healed = true
+	};
 
 	if (_cnt == 0 && !isNull _wnded) then {
 		if (_fail == 0) then {

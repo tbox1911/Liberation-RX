@@ -4,7 +4,8 @@ private _release_medic = {
 	params ["_medic"];
 	if (!local _medic || isNull _medic) exitWith {};
 	_medic setUnitPos "AUTO";
-	{_medic enableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
+	//Change to forEach, count is really meant for specifying an expression to return scalar, the code in here generaly should only be a boolean expression return
+	{_medic enableAI _x} forEach ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 	[_medic] joinSilent (_medic getVariable "PAR_AIgrp");
 
 	if ((_medic getVariable ["isLeader",false]) && (isplayer _medic)) then {
