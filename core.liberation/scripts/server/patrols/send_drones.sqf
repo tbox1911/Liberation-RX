@@ -19,7 +19,7 @@ private _grp = createGroup [GRLIB_side_enemy, true];
 private _radius = round (80 + floor random 100);
 private _spawn_pos = _targetpos getPos [_radius, 360];
 if (_kamikaze) then { _spawn_pos = [_targetpos] call F_getAirSpawn };
-private _airveh_alt = (120 + floor random 50);
+private _airveh_alt = (60 + floor random 50);
 _spawn_pos set [2, _airveh_alt];
 private _vehicle = createVehicle [_uav_classname, _spawn_pos, [], 50, "FLY"];
 _vehicle allowDamage false;
@@ -105,7 +105,7 @@ while {alive _vehicle} do {
 				_round setVelocity [0,0,-50];
 			};
 			sleep 2;
-			_vehicle flyInHeight 100;
+			_vehicle flyInHeight _airveh_alt;
 			[_grp, _targetpos] call patrol_ai_uavs;
 			_grp setCombatMode "BLUE";
 			_grp setSpeedMode "NORMAL";

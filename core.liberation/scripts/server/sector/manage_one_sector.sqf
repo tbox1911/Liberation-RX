@@ -133,7 +133,7 @@ if (_sector in sectors_factory) then {
 	_building_ai_max = 6;
 	_building_range = 100;
 	_ied_count = (3 + (floor random 3));
-	_uavs_count = 10;
+	_uavs_count = 7;
 };
 
 if (_sector in sectors_tower) then {
