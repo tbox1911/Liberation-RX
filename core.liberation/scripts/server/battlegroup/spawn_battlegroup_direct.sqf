@@ -9,7 +9,7 @@ if (isDedicated && !isNull _hc) exitWith {
 
 private _bg_groups = [];
 private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objectivepos] call F_findOpforSpawnPoint;
-if (_spawn_marker != "") exitWith {};
+if (_spawn_marker == "") exitWith {};
 
 diag_log format ["Spawn Direct BattlegGroup level %1 to %2 at %3", _intensity, _objectivepos, time];
 
