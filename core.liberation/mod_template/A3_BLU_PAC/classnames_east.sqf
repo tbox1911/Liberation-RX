@@ -158,8 +158,6 @@ opfor_air = [
 ];
 
 opfor_statics = [
-	"B_T_GMG_01_F",
-	"B_T_HMG_01_F",
 	"B_HMG_01_high_F",
 	"B_GMG_01_high_F",
 	"B_HMG_01_high_F",
