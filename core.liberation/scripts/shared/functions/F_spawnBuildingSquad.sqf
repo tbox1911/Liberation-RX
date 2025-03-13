@@ -1,4 +1,4 @@
-params [ "_infsquad", "_building_ai_max", "_sectorpos", ["_building_range", GRLIB_capture_size] ];
+params [ "_infsquad", "_building_ai_max", "_sectorpos", ["_building_range", GRLIB_capture_size], ["_building", objNull] ];
 
 if (_building_ai_max == 0) exitWith  {[]};
 
@@ -19,11 +19,18 @@ private _building_classname = [
 	"Cargo_House_base_F"
 ];
 
-private _allbuildings = (nearestObjects [_sectorpos, _building_classname, _building_range]) select {alive _x};
+private _keep_position = false;
 private _buildingpositions = [];
-{
-	_buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
-} foreach _allbuildings;
+
+if (isNull _building) then {
+	private _allbuildings = (nearestObjects [_sectorpos, _building_classname, _building_range]) select {alive _x};
+	{
+		_buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
+	} foreach _allbuildings;
+} else {
+	_buildingpositions = ([_building] call BIS_fnc_buildingPositions);
+	_keep_position = true;
+};
 
 private _position_count = count _buildingpositions;
 if (_position_count == 0) exitWith {[]};
@@ -43,12 +50,15 @@ while { count _position_indexes < count _unitclass } do {
 };
 private _grp = [_sectorpos, _unitclass, _side, "building"] call F_libSpawnUnits;
 {
+	_x allowDamage false;
 	//_x disableAI "MOVE";
 	_x disableAI "PATH";
 	_x setPos (_buildingpositions select (_position_indexes select _forEachIndex));
 	_x setUnitPos "UP";
 	_x setVariable ["GRLIB_in_building", true, true];
-	if (floor random 2 == 0) then { [_x] spawn building_defence_ai };
+	[_x, _keep_position] spawn building_defence_ai;
+	sleep 1;
+	_x allowDamage true;
 } foreach (units _grp);
 
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];

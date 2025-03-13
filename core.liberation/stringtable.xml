@@ -7954,6 +7954,20 @@
 			<Chinese>祝賀你們！軍官已被消滅，我們的情報安全了。</Chinese>
 		</Key>
 
+		<!-- mission_FreeHostages.sqf -->
+		<Key ID="STR_FREE_HOSTAGES">
+			<Original>Free Hostages</Original>
+		</Key>
+		<Key ID="STR_FREE_HOSTAGES_MESSAGE1">
+			<Original>A local &lt;t color='%1'&gt;Gangster&lt;/t&gt; group is holding civilians hostage.&lt;br/&gt;We must help these people and free the hostages!&lt;br/&gt;beware of dirty tricks...</Original>
+		</Key>
+		<Key ID="STR_FREE_HOSTAGES_MESSAGE2">
+			<Original>Congratualtion! You have eliminated the threat and freed the hostages!</Original>
+		</Key>
+		<Key ID="STR_FREE_HOSTAGES_MESSAGE3">
+			<Original>The hostages are...&lt;br/&gt;&lt;t color='%1'&gt;DEAD&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+		</Key>
+
 		<!-- mission_MeetResistance.sqf -->
 		<Key ID="STR_RESISTANCE">
 			<Original>The Resistance</Original>

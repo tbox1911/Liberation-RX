@@ -295,7 +295,7 @@ while { !_stopit } do {
 		[_sector] remoteExec ["sector_liberated_remote_call", 2];
 		_stopit = true;
 		private _enemy_left = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]);
-		_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) };
+		_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 		{
 			if (_max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance)) then {
 				[_x] spawn prisoner_ai;

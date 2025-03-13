@@ -74,7 +74,7 @@ if (_ownership == GRLIB_side_enemy) then {
 		} else {
 			[_sector, 3] remoteExec ["remote_call_sector", 0];
 			private _enemy_left = ((markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
-			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) };
+			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 			{
 				if ( !_sideMission && _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisoner_ai;

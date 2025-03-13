@@ -1,35 +1,27 @@
-params ["_unit"];
+params ["_unit", ["_keep_position", false]];
 
-private _move_is_disabled = true;
 private _resume_movement = false;
 private _target = objNull;
-private _hostilecount = 0;
+
 private _sector = [GRLIB_sector_size, _unit] call F_getNearestSector;
 
 sleep 20;
 
-while { _move_is_disabled && alive _unit && !(captive _unit) } do {
-	_hostilecount = count ([_unit, 30] call F_getNearbyPlayers);
+while { alive _unit && !(captive _unit) } do {
+	_target = ([getPos _unit, 50] call F_getNearbyPlayers) select 0;
+	if (!isNil "_target") then { _unit doWatch _target };
 
-	if (_hostilecount > 0 || damage _unit > 0.25 || _sector in blufor_sectors) then {
+	if (!_keep_position && _sector in blufor_sectors && (floor random 5 == 0) ) then {
 		_resume_movement = true;
 	};
 
-	if (_resume_movement) then {
-		if (_move_is_disabled) then {
-			_move_is_disabled = false;
-			_unit enableAI "PATH";
-			_unit setUnitPos "AUTO";
-			_unit switchMove "AmovPercMwlkSrasWrflDf";
-			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-			(group _unit) setCombatMode "YELLOW";
-			(group _unit) setBehaviourStrong "COMBAT";
-		};
-	};
-
-	if (_move_is_disabled) then {
-		_target = assignedTarget _unit;
-		if !(isNull _target) then { _unit setDir (getDir _target) };
+	if (_resume_movement) exitWith {
+		_unit enableAI "PATH";
+		_unit setUnitPos "AUTO";
+		_unit switchMove "AmovPercMwlkSrasWrflDf";
+		_unit playMoveNow "AmovPercMwlkSrasWrflDf";
+		(group _unit) setCombatMode "YELLOW";
+		(group _unit) setBehaviourStrong "COMBAT";
 	};
 
 	sleep 5;

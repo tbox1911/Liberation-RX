@@ -1,17 +1,17 @@
-params ["_unit"];
+params ["_unit", ["_range", 150]];
 
 if (isNull _unit) exitWith {};
 if !(isNull objectParent _unit) exitWith {};
-if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
-if (surfaceIsWater (getPosATl _unit)) exitWith {};
-if (_unit skill "courage" == 1) exitWith {};
+if (surfaceIsWater (getPosATL _unit)) exitWith {};
 
 sleep 3;
 if (!alive _unit) exitWith {};
 
+// Check locality
+if (!local _unit) exitWith { [_unit, _range] remoteExec ["bomber_remote_call", 2] };
+
 // Init bomber
-_unit setSkill ["courage", 1];
 removeAllWeapons _unit;
 removeHeadgear _unit;
 removeBackpack _unit;
@@ -37,7 +37,7 @@ _grp setBehaviourStrong "SAFE";
 
 private ["_targets", "_target", "_expl1","_expl2","_expl3"];
 while {alive _unit} do {
-	_targets = [getpos _unit , 150] call F_getNearbyPlayers;
+	_targets = [getPos _unit, _range] call F_getNearbyPlayers;
 	if (count _targets > 0) then {
 		[_grp] call F_deleteWaypoints;
 		_target = _targets select 0;
@@ -72,9 +72,9 @@ while {alive _unit} do {
 			};
 		};
 	} else {
-		if (count waypoints _grp == 0) then {
+		if (count waypoints _grp == 0 && _range > 20) then {
 			_unit setSpeedMode "NORMAL";
-			[_grp, getPos _unit, 100] call BIS_fnc_taskPatrol;
+			[_grp, getPos _unit, _range] call BIS_fnc_taskPatrol;
 			sleep 2;
 		};
 	};

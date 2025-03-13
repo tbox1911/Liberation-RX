@@ -145,7 +145,7 @@ _waitUntilExec = nil;
 _waitUntilSuccessCondition = { (count (_intels select { alive _x }) == 0) };
 
 _waitUntilCondition = {
-	_ret = false;
+	private _ret = false;
 	{
 		if (_aiGroup knowsAbout _x == 4 ) then { _ret = true };
 	} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);

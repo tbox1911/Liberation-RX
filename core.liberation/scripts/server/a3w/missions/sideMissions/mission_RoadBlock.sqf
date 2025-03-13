@@ -1,13 +1,13 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_guard_grp"];
+private ["_guard_grp", "_detected"];
 
 _setupVars = {
 	_missionType = "STR_ROADBLOCK";
 	_locationsArray = nil;
 	_precise_marker = false;
-	GRLIB_A3W_Mission_BR = (10 * 60);
+	_detected = false;
 };
 
 _setupObjects = {
@@ -102,20 +102,22 @@ _setupObjects = {
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = {
-	if ((count ([_missionPos, 500] call F_getNearbyPlayers) > 0) ) then {
-		GRLIB_A3W_Mission_BR = GRLIB_A3W_Mission_BR - 1;
-		if (GRLIB_A3W_Mission_BR == 0) then {
-			private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
-			playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
-			sleep 5;
-			private _msg = ["<t color='#FFFFFF' size='2'>You have been Detected!!<br/><br/>Enemies launch the </t><t color='#ff0000' size='3'>RED ALERT</t><t color='#FFFFFF' size='2'> !!</t>", "PLAIN", -1, false, true];
-			{
-				[_msg] remoteExec ["titleText", owner _x];
-			} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
-			[_missionPos] spawn send_paratroopers;
-			GRLIB_A3W_Mission_BR = (30 * 60);
-			playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
-		};
+	private _ret = false;
+	{
+		if (_aiGroup knowsAbout _x == 4 ) then { _ret = true };
+	} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
+
+	if (_ret && !_detected) then {
+		_detected = true;
+		private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
+		playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
+		sleep 5;
+		private _msg = ["<t color='#FFFFFF' size='2'>You have been Detected!!<br/><br/>Enemies launch the </t><t color='#ff0000' size='3'>RED ALERT</t><t color='#FFFFFF' size='2'> !!</t>", "PLAIN", -1, false, true];
+		{
+			[_msg] remoteExec ["titleText", owner _x];
+		} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
+		[_missionPos] spawn send_paratroopers;
+		playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
 	};
 };
 _waitUntilCondition = nil;
