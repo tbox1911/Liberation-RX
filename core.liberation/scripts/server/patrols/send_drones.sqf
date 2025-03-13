@@ -88,9 +88,11 @@ while {alive _vehicle} do {
 			_grp setCombatMode "YELLOW";
 			_grp setSpeedMode "LIMITED";
 			waitUntil {
-				(driver _vehicle) doMove (getPos _target);
 				sleep 1;
-				(_vehicle distance2D _target <= 15 || _vehicle distance2D _target >= 300 || !alive _vehicle)
+				private _dist = _vehicle distance2D _target;
+				if (_dist <= 200) then { _vehicle flyInHeight 50 };
+				(driver _vehicle) doMove (getPos _target);
+				(_dist <= 15 || _dist >= 300 || !alive _vehicle)
 			};
 			if !(alive _vehicle) exitWith {};
 			if (_vehicle distance2D _target <= 15) then {
@@ -103,6 +105,7 @@ while {alive _vehicle} do {
 				_round setVelocity [0,0,-50];
 			};
 			sleep 2;
+			_vehicle flyInHeight 100;
 			[_grp, _targetpos] call patrol_ai_uavs;
 			_grp setCombatMode "BLUE";
 			_grp setSpeedMode "NORMAL";
