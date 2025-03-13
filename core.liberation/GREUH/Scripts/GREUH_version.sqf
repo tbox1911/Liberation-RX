@@ -42,8 +42,6 @@ player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Varrk
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>AgentRev</font>, <font color='%2'>Larrow Zurb</font>, <font color='%3'>KillZoneKid</font>, <font color='%4'>Quiksilver</font> for code scripting.", call _getRandomColor,call _getRandomColor,call _getRandomColor,call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Isa</font> for all the love and patience.", "#f80000"]]];
 player createDiaryRecord ["LRX Info", ["Thanks", "Thanks to all the people who contribute to the mission:"]];
-
-player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>Dark Demon</font> for Templates and Maps.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>Z-Warrior</font> for Templates and Maps.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>C0br4</font> for Templates.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Modders", "Thanks to the Mod Template Team:"]];
