@@ -59,17 +59,18 @@ while {alive _unit} do {
 			_expl3 attachTo [_unit, [0.1, 0.1, 0.15], "Pelvis"];
 			_expl3 setVectorDirAndUp [[0.5, -0.5, 0], [0.5, 0.5, 0]];
 			sleep 1.5;
-			playSound3D [getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 500];
+			//playSound3D [getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 500];
 			sleep 0.5;
 			if (alive _unit) then {
 				{
+					detach _x;
 					_x setDamage 1;
-					"R_PG32V_F" createVehicle (getPos _unit);
-					deleteVehicle _x;
-					sleep 0.2;
+					sleep 0.1;
 				} forEach [_expl1,_expl2,_expl3];
 				deleteVehicle _unit;
 			};
+			sleep 1;
+			{ deleteVehicle _x } forEach [_expl1,_expl2,_expl3];
 		};
 	} else {
 		if (count waypoints _grp == 0 && _range > 20) then {

@@ -18,7 +18,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 	[_unit] joinSilent _grp;
 	_unit allowDamage false;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	_unit setPitch 0.5;
+	_unit setPitch 1;
 	_unit setVariable ['GRLIB_can_speak', true, true];
 	_unit setVariable ["GRLIB_is_civilian", true, true];
 	_unit setVariable ["acex_headless_blacklist", true, true];	
@@ -27,7 +27,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 	_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 	sleep 1;
 	_unit allowDamage true;
-	if (floor random 4 == 0) then { _unit setDamage 0.30 };	
+	if (floor random 4 == 0) then { _unit setDamage 0.45 };	
 } foreach _class_civ;
 
 _grp setCombatMode "BLUE";

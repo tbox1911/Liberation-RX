@@ -20,7 +20,8 @@ _setupObjects = {
 	];
 	private _all_buildings = [];
 	{
-		private _buildings = (nearestObjects [markerPos _x, _building_classname, 300]) select {alive _x};
+		_missionlocation = _x;
+		private _buildings = (nearestObjects [markerPos _missionlocation, _building_classname, 300]) select {alive _x};
 		{
 			_nb = count ([_x] call BIS_fnc_buildingPositions);
 			if (_nb >= 9) then { _all_buildings pushBack _x };
@@ -33,7 +34,6 @@ _setupObjects = {
 		false;
 	};
 
-	_vehicleClass = "C_man_1_1_F";
 	_missionBuilding = (selectRandom _all_buildings);
 	_missionPos = getPos _missionBuilding;
 
@@ -47,17 +47,14 @@ _setupObjects = {
 		if (_forEachIndex == 0) then {			
 			doStop _x;
 			_x setPosATL _missionPos;
-			_x addGoggles "G_Blindfold_01_white_F";
 			[_x, 10] spawn bomber_ai;
 		} else {
 			[_x, 40] spawn bomber_ai;
 		};
 	} forEach (units _grp_bomber);
 
-	{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach _managed_units;
-
 	// Spawn hostages
-	_grp_hostages = [_missionPos, 4] call F_spawnCivilians;
+	private _grp_hostages = [_missionPos, 4] call F_spawnCivilians;
 	_hostages = units _grp_hostages;
 	{
 		doStop _x;
@@ -66,6 +63,7 @@ _setupObjects = {
 		_x setPosATL _pos;
 		[_x, true, false] spawn prisoner_ai;
 		_x addGoggles "G_Blindfold_01_black_F";
+		_x setDamage 0;
 		sleep 0.1;
 	} forEach _hostages;
 
@@ -73,8 +71,9 @@ _setupObjects = {
 	_grp_civ = [_missionPos, (5 + floor random 5)] call F_spawnCivilians;
 	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
-	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");
-	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "displayName");
+	_vehicles = _hostages + _managed_units;
+	{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach _vehicles;
+	_missionPicture = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 	_missionHintText = ["STR_FREE_HOSTAGES_MESSAGE1", sideMissionColor];
 	true;
 };
@@ -87,23 +86,17 @@ _waitUntilExec = {
 
 	if (_ret && !_detected) then {
 		_detected = true;
-		// private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
-		//playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
-		// sleep 5;
 		private _msg = ["<t color='#FFFFFF' size='2'>You have been Detected!!<br/><br/>Enemies call for </t><t color='#ff0000' size='3'>Reinforcements</t><t color='#FFFFFF' size='2'> !!</t>", "PLAIN", -1, false, true];
 		{
 			[_msg] remoteExec ["titleText", owner _x];
 		} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
-		// // Patrolgroup
-		// _aiGroup = [_hvt_pos, _nbUnits, "infantry", true, 40] call createCustomGroup;
-		// _aiGroup setCombatMode "WHITE"; // Defensive behaviour
-		// _aiGroup setBehaviourStrong "AWARE";
-		// _aiGroup setFormation "WEDGE";
-		// _aiGroup setSpeedMode "NORMAL";
-
-
-		// [_missionPos] spawn send_paratroopers;
-		// playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
+		private _pos = _missionPos getPos [120, 360];
+		private _grp = [_pos, 6, "militia", false] call createCustomGroup;
+		[_grp, _missionPos] spawn battlegroup_ai;
+		sleep 5;
+		private _pos = _missionPos getPos [120, 360];
+		private _grp = [_pos, 6, "militia", false] call createCustomGroup;
+		[_grp, _missionPos] spawn battlegroup_ai;
 	};
 };
 
@@ -121,16 +114,18 @@ _failedExec = {
 	{ deleteVehicle _x } forEach _hostages;
 	{ deleteVehicle _x } forEach _managed_units;
 	{ deleteVehicle _x } forEach (units _grp_civ);
-	//{ deleteVehicle _x } forEach (units _grp_hvt);
+	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 };
 
 _successExec = {
 	// Mission completed
 	_successHintMessage = "STR_FREE_HOSTAGES_MESSAGE2";
-	{ deleteVehicle _x } forEach _hostages;
-	{ deleteVehicle _x } forEach _managed_units;
+	private _grp = createGroup [GRLIB_side_civilian, true];
+	diag_log _hostages;
+	_hostages joinSilent _grp;
 	{ deleteVehicle _x } forEach (units _grp_civ);
-	//if (combat_readiness > 20) then { combat_readiness = combat_readiness - 7 };
+	if (combat_readiness > 50) then { combat_readiness = combat_readiness - 7 };
+	{ [_x, 10] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 };
 
 _this call sideMissionProcessor;

@@ -54,6 +54,7 @@ private _grp = createGroup [_side, true];
 
 	_unit allowDamage false;
 	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
+	_unit setPitch 1;
 	_unit setSkill 0.65;
 	_unit allowFleeing 0;
 

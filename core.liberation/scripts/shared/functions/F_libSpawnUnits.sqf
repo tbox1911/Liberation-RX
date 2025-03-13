@@ -15,14 +15,18 @@ _grp setBehaviourStrong "AWARE";
 if ((_spawn_pos select 2) < 0) then { _spawn_pos set [2, 0.5] };
 diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawn_pos];
 
-private ["_unit", "_pos", "_backpack"];
+private ["_unit", "_ai_rank", "_pos", "_backpack"];
 {
 	_pos = _spawn_pos getPos [2 + (floor random 25), random 360];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
 	if (!isNil "_unit") then {
 		[_unit] joinSilent _grp;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_unit setPitch 0.5;
+		_unit setPitch 1;
+		_ai_rank = selectRandom (GRLIB_rank_level select [0,4]);
+		_unit setUnitRank _ai_rank;
+		_unit setSkill (0.6 + (GRLIB_rank_level find _ai_rank) * 0.05);
+
 		if (_type == "divers") then {
 			_pos set [2, -6];
 			_unit setPosASL _pos;

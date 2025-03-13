@@ -158,15 +158,15 @@ speak_heal_civ = {
 	params ["_unit"];
 	_unit globalChat "Hey, I'm wounded, please help me ...";
 	private _timer = time + 45;
+	private _damage = damage _unit;
 	waitUntil {
 		sleep 5;
-		(time > _timer || (damage _unit <= 0.15))
+		(time > _timer || (damage _unit < _damage))
 	};
-	if (damage _unit <= 0.15) then {
-		_unit globalChat "Thank you very much !!";
-		[player, 3] remoteExec ["F_addReput", 2];
-		_unit setDamage 0;
-	};
+	if (time > _timer) exitWith {};
+	_unit globalChat "Thank you very much !!";
+	[player, 3] remoteExec ["F_addReput", 2];
+	_unit setDamage 0;
 };
 
 // Nikos
