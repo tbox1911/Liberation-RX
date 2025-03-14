@@ -21,11 +21,28 @@ if (PAR_revive == 3) then { _medics = _medics select {[_x] call PAR_is_medic} };
 // no Medic available
 if (count _medics == 0) exitWith {};
 
-// (try to) keep gunner
-private _medics_lst = _medics select { !("turret" in (assignedVehicleRole _x)) };
-if (count _medics_lst == 0) then { _medics_lst = _medics };
+// Better method of checking gunner
+_outside_veh = _medics select {
+	vehicle _x == _x;
+};
+if (count _outside_veh > 0) then {
+	_medics = _outside_veh;
+} else {
+	// Otherwise lets try to make sure they are not a gunner
+	private _notGunners = _medics select {
+		!("turret" == ((assignedVehicleRole _x)#0)) && gunner vehicle _x != _x && commander vehicle _x != _x;
+	};
 
-private _medics_sorted = _medics_lst apply {[_x distance2D _wnded, _x]};
+	if (count _notGunners > 0) then {
+		_medics = _notGunners
+	};
+};
+
+if (count _medics == 0) exitWith {};
+
+private _medics_sorted = _medics apply {
+	[_x distance2D _wnded, _x]
+};
 _medics_sorted sort true;
 
 (_medics_sorted select 0 select 1);
