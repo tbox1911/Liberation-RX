@@ -29,7 +29,7 @@ while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 	_msg = "";
 	_dist = round (_wnded distance2D _medic);
 	// systemchat format ["dbg: wnded 2D dist : %1 dist speed %2 fail %3", _wnded distance2D _medic, round (speed vehicle _medic), _fail];
-	if (_dist > 500 || vehicle _medic != _medic || vehicle _wnded != _wnded || [_medic] call PAR_is_wounded) exitWith {};
+	if (_dist > 500 || vehicle _medic != _medic || vehicle _wnded != _wnded) exitWith {};
 	_new_medic = [_wnded] call PAR_fn_nearestMedic;
 	if (!isNil "_new_medic" && _dist > 20) then {
 		if ((_new_medic distance2D _wnded) + 6 < (_medic distance2D _wnded)) then { _wnded setVariable ["PAR_myMedic", nil] };
