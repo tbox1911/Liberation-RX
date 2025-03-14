@@ -20,7 +20,7 @@ if ( _notiftype == 2 ) then {
 	private _location_name = [secondary_objective_position_marker] call F_getLocationName;
 	["lib_intel_fob", [_location_name]] call BIS_fnc_showNotification;
 
-	private _secondary_random_position_marker = secondary_objective_position_marker getPos [800, random 360];
+	private _secondary_random_position_marker = secondary_objective_position_marker getPos [800, floor random 360];
 	private _secondary_marker = createMarkerLocal ["secondarymarker", _secondary_random_position_marker];
 	_secondary_marker setMarkerColorLocal GRLIB_color_enemy_bright;
 	_secondary_marker setMarkerTypeLocal "hd_unknown";
@@ -61,7 +61,7 @@ if ( _notiftype == 6 ) then {
 	private _location_name = [secondary_objective_position_marker] call F_getLocationName;
 	["lib_intel_sar", [_location_name]] call BIS_fnc_showNotification;
 
-	private _secondary_random_position_marker = secondary_objective_position_marker getPos [800, random 360];
+	private _secondary_random_position_marker = secondary_objective_position_marker getPos [800, floor random 360];
 	private _secondary_marker = createMarkerLocal ["secondarymarker", _secondary_random_position_marker];
 	_secondary_marker setMarkerColorLocal GRLIB_color_enemy_bright;
 	_secondary_marker setMarkerTypeLocal "hd_unknown";

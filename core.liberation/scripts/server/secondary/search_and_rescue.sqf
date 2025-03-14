@@ -19,7 +19,7 @@ private _helofire = GRLIB_sar_fire createVehicle _helopos;
 _helofire attachTo [_helowreck, [0, 1.5, 0]];
 
 private _pilotsGrp = createGroup [GRLIB_side_civilian, true];
-private _pilotsPos = _helowreck getPos [25, random 360];
+private _pilotsPos = ([_helowreck, 25] call F_getRandomPos);
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 private _pilotUnits = units _pilotsGrp;

@@ -9,7 +9,7 @@ if (_count > 1) then {
 private _radius = GRLIB_capture_size - 20;
 if (_sector in sectors_bigtown) then { _radius = _radius * 1.4 };
 
-private _spawn_pos = (markerPos _sector) getPos [_radius, random 360];
+private _spawn_pos = (markerPos _sector) getPos [_radius, floor random 360];
 if (surfaceIsWater _spawn_pos) exitWith {};
 _spawn_pos set [2, 0.5];
 

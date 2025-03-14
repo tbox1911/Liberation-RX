@@ -32,19 +32,19 @@ _setupObjects = {
 	};
 
 	//man 1
-	private _missionPos1 = markerPos (_convoy_destinations select 0) getPos [100, random 360];
+	private _missionPos1 = markerPos (_convoy_destinations select 0) getPos [100, floor random 360];
 	private _man1 = createAgent ["C_Nikos", _missionPos1, [], 5, "NONE"];
 	_man1 allowDamage false;
 	_man1 setVariable ["GRLIB_A3W_Mission_SD1", true, true];
 
 	// man2
-	private _missionPos2 = markerPos (_convoy_destinations select 1) getPos [100, random 360];
+	private _missionPos2 = markerPos (_convoy_destinations select 1) getPos [100, floor random 360];
 	private _man2 = createAgent ["C_Orestes", _missionPos2, [], 5, "NONE"];
 	_man2 allowDamage false;
 	_man2 setVariable ["GRLIB_A3W_Mission_SD2", true, true];
 
 	// man3
-	private _missionPos3 = markerPos (_convoy_destinations select 2) getPos [100, random 360];
+	private _missionPos3 = markerPos (_convoy_destinations select 2) getPos [100, floor random 360];
 	private _man3 = createAgent ["C_Orestes", _missionPos3, [], 5, "NONE"];
 	_man3 allowDamage false;
 	_man3 setVariable ["GRLIB_A3W_Mission_SD3", true, true];

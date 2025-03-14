@@ -9,7 +9,7 @@ _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 [_unit] call F_fixModUnit;
 [_unit] joinSilent _grp;
 if (surfaceIsWater _pos) then {
-    _pos = _pos getPos [3, random 360];
+    _pos = ([_pos, 3] call F_getRandomPos);
     _pos set [2, _alt];
     _unit setPosASL (ATLtoASL _pos);
 };

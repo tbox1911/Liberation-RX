@@ -201,7 +201,7 @@ if (count _squad5 > 0) then {
 if (opforcap_max) then { _vehtospawn = [] };
 if (count _vehtospawn > 0) then {
 	{
-		private _spawn_pos = _sector_pos getPos [2 + (floor random 125), random 360];
+		private _spawn_pos = _sector_pos getPos [2 + (floor random 125), floor random 360];
 		private _vehicle = [_spawn_pos, _x] call F_libSpawnVehicle;
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;

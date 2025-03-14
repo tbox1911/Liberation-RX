@@ -62,7 +62,7 @@ _setupObjects = {
 	];
 
 	//----- build village ---------------------------------
-	_missionPos = _missionPos getPos [100, random 360];
+	_missionPos = ([_missionPos, 100] call F_getRandomPos);
 	_vehicle = createVehicle [selectRandom _statues, _missionPos, [], 1, "None"];
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
 

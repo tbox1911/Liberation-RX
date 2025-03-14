@@ -17,7 +17,7 @@ diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, 
 
 private ["_unit", "_ai_rank", "_pos", "_backpack"];
 {
-	_pos = _spawn_pos getPos [2 + (floor random 25), random 360];
+	_pos = _spawn_pos getPos [2 + (floor random 25), floor random 360];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
 	if (!isNil "_unit") then {
 		[_unit] joinSilent _grp;

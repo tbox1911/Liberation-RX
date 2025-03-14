@@ -19,7 +19,7 @@ if (_classname isKindOf "Air") then {
 		if (_classname isKindOf "Plane") then { _airveh_alt = 500 };
 		if (GRLIB_SOG_enabled || GRLIB_SPE_enabled) then { _airveh_alt = 350 };
 		if (_side == GRLIB_side_civilian) then { _airveh_alt = 150 };
-		_spawn_pos = _spawn_pos getPos [floor random 300, random 360];
+		_spawn_pos = _spawn_pos getPos [floor random 300, floor random 360];
 		_spawn_pos set [2, _airveh_alt];
 		_vehicle = createVehicle [_classname, _spawn_pos, [], 50, "FLY"];
 		_vehicle allowDamage false;

@@ -23,7 +23,7 @@ _setupObjects = {
 		if (_next_objective_dist >= GRLIB_sector_size && _next_objective_dist <= GRLIB_spawn_max) then {
 			private _idx = 200;
 			while {!_found && _idx > 0} do {
-				private _pos_check = _sector_pos getPos [GRLIB_sector_size, random 360];
+				private _pos_check = ([_sector_pos, GRLIB_sector_size] call F_getRandomPos);
 				if ((!isOnRoad _pos_check) && (!surfaceIsWater _pos_check)) then {
 					private _roads = (_pos_check nearRoads 15) select { (getRoadInfo _x select 0) in ["TRACK","ROAD","MAIN ROAD"] };
 					if (count _roads > 0) exitWith {

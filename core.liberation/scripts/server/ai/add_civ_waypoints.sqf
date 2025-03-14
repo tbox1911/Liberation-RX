@@ -26,7 +26,7 @@ if (isNull _civ_veh) then {
 	private _max_try = 50;
 	while { (count (waypoints _grp) <= 4) && _max_try > 0} do {
 		_radius = GRLIB_capture_size + ([[-150,0,150], 0] call F_getRND);
-		_nextpos = _basepos getPos [_radius, random 360];
+		_nextpos = ([_basepos, _radius] call F_getRandomPos);
 		if !(surfaceIsWater _nextpos) then {
 			_waypoint = _grp addWaypoint [_nextpos, 0];
 			_waypoint setWaypointType "MOVE";

@@ -30,7 +30,7 @@ sleep 1;
 player allowDamage true;
 
 {
-    _destpos = player getPos [3, random 360];
+    _destpos = ([player, 3] call F_getRandomPos);
     _destpos set [2, _alt];
 	_x setPosASL _destpos;
 	sleep 0.5;

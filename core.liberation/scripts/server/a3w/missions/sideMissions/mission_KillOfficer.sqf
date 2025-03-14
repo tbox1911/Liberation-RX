@@ -18,7 +18,7 @@ _setupObjects = {
 		false;
 	};
 	_missionPos = markerPos (selectRandom _fobList);
-	_missionPos = _missionPos getPos [50, random 360];
+	_missionPos = ([_missionPos, 50] call F_getRandomPos);
 	_vehicleClass = opfor_mrap_hmg;
 
 	// Add guards

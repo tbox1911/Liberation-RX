@@ -16,7 +16,7 @@ private _alt = _pos select 2;
     [_x] joinSilent (group player);
     while { _x distance2D _pos > 100 } do {
         if (surfaceIsWater _pos) then {
-            private _destpos = _pos getPos [3, random 360];
+            _destpos = ([_pos, 3] call F_getRandomPos);
             _destpos set [2, _alt];
             _x setPosASL (ATLtoASL _destpos);
         } else {

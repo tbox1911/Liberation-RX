@@ -47,7 +47,7 @@ _setupObjects = {
 	];
 
 	//----- build medical Tent ---------------------------------
-	_missionPos = _missionPos getPos [100, random 360];
+	_missionPos = ([_missionPos, 100] call F_getRandomPos);
 	private _pos = [_missionPos, 7, false, 80] call F_findSafePlace;
 	if (count _pos == 0) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot create buildings at %2!", localize _missionType, _missionPos];
