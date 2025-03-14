@@ -86,7 +86,9 @@ _setupObjects = {
 	for "_i" from 1 to 5 do {
 		_unit = _grp_wnded createUnit [(selectRandom civilians), _missionPos, [], 100, "NONE"];
 		[_unit] joinSilent _grp_wnded;
-		if (_unit distance2D _pos <= 30) then { _unit setPos (_pos getPos [50, 360]) };
+		if (_unit distance2D _pos <= 30) then {
+			_unit setPos ([_pos, 50] call F_getRandomPos);
+		};
 		_unit setVariable ["GRLIB_can_speak", true, true];
 		_unit setVariable ["GRLIB_is_civilian", true, true];
 		_unit setVariable ["GRLIB_A3W_Mission_HC2", true, true];

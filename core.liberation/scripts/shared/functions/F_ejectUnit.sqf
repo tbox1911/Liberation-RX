@@ -14,8 +14,10 @@ moveOut _unit;
 sleep 1;
 if (!alive _unit) exitWith {};
 
-if (getPos _unit select 2 >= 50) then {
-	private _pos = _unit getPos [50, 360];
+private _unit_alt = getPos _unit select 2;
+if (_unit_alt >= 50) then {
+	private _pos = [getPos _unit, 25] call F_getRandomPos;
+	_pos set [2, _unit_alt];
 	if (backpack _unit != "B_Parachute") then {
 		private _para = createVehicle ["Steerable_Parachute_F",_pos,[],0,"FLY"];
 		_unit moveInDriver _para;

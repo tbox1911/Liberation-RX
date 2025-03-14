@@ -37,7 +37,7 @@ while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
 				_veh_cur setFuel 1;
 				_veh_cur setDamage 0;
 				[_veh_cur] call F_vehicleUnflip;
-				_veh_cur setPos (_veh_cur getPos [1, 360]);
+				_veh_cur setPos ([getPos _veh_cur, 2] call F_getRandomPos);
 				if (_veh_cur != _veh_leader) then {
 					(driver _veh_cur) doFollow (leader _grp);
 					(driver _veh_cur) doMove getPosATL (leader _grp);

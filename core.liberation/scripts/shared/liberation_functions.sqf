@@ -54,6 +54,7 @@ F_getNearestTower = compileFinal preprocessFileLineNumbers "scripts\shared\funct
 F_getNextSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNextSector.sqf";
 F_getRank = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRank.sqf";
 F_getRND = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRND.sqf";
+F_getRandomPos = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRandomPos.sqf";
 F_getScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getScore.sqf";
 F_getReput = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getReput.sqf";
 F_getReputText = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getReputText.sqf";

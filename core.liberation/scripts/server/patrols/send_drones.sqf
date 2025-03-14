@@ -17,7 +17,7 @@ if (GRLIB_side_enemy == WEST) then {
 // create uav
 private _grp = createGroup [GRLIB_side_enemy, true];
 private _radius = round (80 + floor random 100);
-private _spawn_pos = _targetpos getPos [_radius, 360];
+private _spawn_pos = [_targetpos, _radius] call F_getRandomPos;
 if (_kamikaze) then { _spawn_pos = [_targetpos] call F_getAirSpawn };
 private _airveh_alt = (60 + floor random 50);
 _spawn_pos set [2, _airveh_alt];
