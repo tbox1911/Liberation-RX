@@ -1,16 +1,13 @@
 if (!isServer) exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_hostages", "_managed_units", "_grp_civ", "_detected"];
+private ["_all_buildings", "_hostages", "_managed_units", "_grp_civ", "_detected"];
 
 _setupVars = {
 	_missionType = "STR_FREE_HOSTAGES";
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_ignoreAiDeaths = true;
 	_detected = false;
-};
-
-_setupObjects = {
 	private _building_classname = [
 		"Land_i_Shed_Ind_F",
 		"Land_i_House_Big_01_V2_F",
@@ -18,7 +15,7 @@ _setupObjects = {
 		"Land_i_House_Big_02_V2_F",
 		"Land_Unfinished_Building_01_F"
 	];
-	private _all_buildings = [];
+	_all_buildings = [];
 	{
 		_missionlocation = _x;
 		private _buildings = (nearestObjects [markerPos _missionlocation, _building_classname, 300]) select {alive _x};
@@ -27,8 +24,10 @@ _setupObjects = {
 			if (_nb >= 9) then { _all_buildings pushBack _x };
 		} foreach _buildings;
 		if (count _all_buildings > 0) exitWith {};
-	} forEach (blufor_sectors call BIS_fnc_arrayShuffle);
+	} forEach (blufor_sectors call BIS_fnc_arrayShuffle);	
+};
 
+_setupObjects = {
 	if (count _all_buildings == 0) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;

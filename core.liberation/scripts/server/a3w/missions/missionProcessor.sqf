@@ -39,6 +39,11 @@ if (!isNil "_locationsArray") then {
 	[_locationsArray, _missionLocation, true] call setLocationState;
 };
 
+if (!isNil "_missionlocation") then {
+	A3W_sectors_in_use pushBack _missionLocation;
+	publicVariable "A3W_sectors_in_use";
+};
+
 if (!isNil "_setupObjects" && _continue_mission) then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
 	diag_log format ["--- LRX Error: A3W Side Mission %1 failed to setup: %2", _controllerSuffix, localize _missionType];
@@ -48,11 +53,6 @@ if (!_continue_mission) exitWith {
 	if (!isNil "_vehicles") then {
 		[_vehicles] spawn cleanMissionVehicles;
 	};
-};
-
-if (!isNil "_missionlocation") then {
-	A3W_sectors_in_use pushBack _missionLocation;
-	publicVariable "A3W_sectors_in_use";
 };
 
 ["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
