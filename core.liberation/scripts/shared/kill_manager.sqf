@@ -24,8 +24,11 @@ if ( isServer ) then {
 		};
 	};
 
+	// Indirect kill
+	private _indirect_kill = false;
 	if (isNull _killer) then {
 		_killer = _unit getVariable ["GRLIB_last_killer", objNull];
+		_indirect_kill = true;
 	};
 
 	private _unit_class = typeOf _unit;
@@ -119,11 +122,12 @@ if ( isServer ) then {
 					if ( GRLIB_civ_penalties > 0 ) then {
 						private _penalty = GRLIB_civ_penalties;
 						private _score = [_killer] call F_getScore;
-						if ( _score < GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties/2};
-						if ( _score > GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties };
-						if ( _score > GRLIB_perm_tank ) then { _penalty = GRLIB_civ_penalties*2 };
-						if ( _score > GRLIB_perm_air ) then { _penalty = GRLIB_civ_penalties*3 };
-						if ( _score > GRLIB_perm_max ) then { _penalty = GRLIB_civ_penalties*4 };
+						if (_score < GRLIB_perm_inf) then { _penalty = GRLIB_civ_penalties/2};
+						if (_score > GRLIB_perm_inf) then { _penalty = GRLIB_civ_penalties*1 };
+						if (_score > GRLIB_perm_tank) then { _penalty = GRLIB_civ_penalties*2 };
+						if (_score > GRLIB_perm_air) then { _penalty = GRLIB_civ_penalties*3 };
+						if (_score > GRLIB_perm_max) then { _penalty = GRLIB_civ_penalties*4 };
+						if (_indirect_kill) then { _penalty = GRLIB_civ_penalties };
 						[_killer, -_penalty] call F_addScore;
 						[_killer, -5] call F_addReput;
 						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
