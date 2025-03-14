@@ -8,7 +8,7 @@ private _spawn_place = count ([SpawnMissionMarkers] call checkSpawn);
 private _spawn_place_forest = count ([ForestMissionMarkers] call checkSpawn);
 private _spawn_place_water = count ([SunkenMissionMarkers] call checkSpawn);
 private _opfor_factor = round ((count opfor_sectors / count sectors_allSectors) * 100);
-private _opfor_chopper = { !(_x isKindOf "Plane") } count (opfor_air);
+private _opfor_chopper = { !(_x isKindOf "Plane") } count opfor_air;
 private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 
 // Air Wreck
@@ -186,8 +186,8 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Kill Officer
 _mission_name = "mission_KillOfficer";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	private _blufor_city = sectors_bigtown select {(_x in blufor_sectors)};
-	if (count _blufor_city > 1) then {
+	private _blufor_city = {(_x in blufor_sectors)} count sectors_bigtown;
+	if (_blufor_city > 1) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -201,8 +201,8 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	if (count a3w_br_planes == 0) then {
 		_br_plane = selectRandom (opfor_air select { _x isKindOf "Plane" });
 	};
-
-	if (count sectors_bigtown > 1 && !isNil "_br_plane" && combat_readiness > 20) then {
+	private _opfor_city = {(_x in opfor_sectors)} count sectors_bigtown;
+	if (_opfor_city > 1 && !isNil "_br_plane" && combat_readiness > 80) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -222,7 +222,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Prisoners Convoy
 _mission_name = "mission_PrisonerConvoy";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	private _military = count (sectors_military select { _x in opfor_sectors });
+	private _military = { _x in opfor_sectors } count sectors_military;
 	if (_nb_player > 1 && _military >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
@@ -233,7 +233,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Ressource Convoy
 _mission_name = "mission_RessourceConvoy";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	private _factory = count (sectors_factory select { _x in opfor_sectors });
+	private _factory = { _x in opfor_sectors } count sectors_factory;
 	if (_factory >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
@@ -243,6 +243,16 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 
 // Kill Bandits
 _mission_name = "mission_KillBandits";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (count blufor_sectors >= 15) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+// Free Hostages
+_mission_name = "mission_FreeHostages";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	if (count blufor_sectors >= 20) then {
 		[_missionsList, _mission_name, false] call setMissionState;
