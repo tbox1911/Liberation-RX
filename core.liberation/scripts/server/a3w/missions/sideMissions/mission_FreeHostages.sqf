@@ -35,7 +35,19 @@ _setupObjects = {
 	};
 
 	_missionBuilding = (selectRandom _all_buildings);
-	_missionPos = getPos _missionBuilding;
+	_missionPos = getPosATL _missionBuilding;
+
+	// Spawn hostages
+	private _grp_hostages = [_missionPos, 4] call F_spawnCivilians;
+	_hostages = units _grp_hostages;
+	{
+		doStop _x;
+		_x setPos ([_missionPos, 4] call F_getRandomPos);
+		[_x, true, false] spawn prisoner_ai;
+		_x addGoggles "G_Blindfold_01_black_F";
+		_x setDamage 0;
+		sleep 0.1;
+	} forEach _hostages;
 
 	// Spawn Enemy
 	_managed_units = ["militia", 10, _missionPos, 0, _missionBuilding] call F_spawnBuildingSquad;
@@ -52,20 +64,6 @@ _setupObjects = {
 			[_x, 40] spawn bomber_ai;
 		};
 	} forEach (units _grp_bomber);
-
-	// Spawn hostages
-	private _grp_hostages = [_missionPos, 4] call F_spawnCivilians;
-	_hostages = units _grp_hostages;
-	{
-		doStop _x;
-		private _pos = (_missionPos getPos [4, 360]);
-		_pos set [2, 0.3];
-		_x setPosATL _pos;
-		[_x, true, false] spawn prisoner_ai;
-		_x addGoggles "G_Blindfold_01_black_F";
-		_x setDamage 0;
-		sleep 0.1;
-	} forEach _hostages;
 
 	// Spawn civvies
 	_grp_civ = [_missionPos, (5 + floor random 5)] call F_spawnCivilians;
@@ -90,12 +88,10 @@ _waitUntilExec = {
 		{
 			[_msg] remoteExec ["titleText", owner _x];
 		} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
-		private _pos = _missionPos getPos [120, 360];
-		private _grp = [_pos, 6, "militia", false] call createCustomGroup;
+		private _grp = [([_missionPos, 120] call F_getRandomPos), 6, "militia", false] call createCustomGroup;
 		[_grp, _missionPos] spawn battlegroup_ai;
 		sleep 5;
-		private _pos = _missionPos getPos [120, 360];
-		private _grp = [_pos, 6, "militia", false] call createCustomGroup;
+		private _grp = [([_missionPos, 120] call F_getRandomPos), 6, "militia", false] call createCustomGroup;
 		[_grp, _missionPos] spawn battlegroup_ai;
 	};
 };
@@ -120,9 +116,6 @@ _failedExec = {
 _successExec = {
 	// Mission completed
 	_successHintMessage = "STR_FREE_HOSTAGES_MESSAGE2";
-	private _grp = createGroup [GRLIB_side_civilian, true];
-	diag_log _hostages;
-	_hostages joinSilent _grp;
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	if (combat_readiness > 50) then { combat_readiness = combat_readiness - 7 };
 	{ [_x, 10] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));

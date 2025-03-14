@@ -30,17 +30,7 @@ while { alive _unit && !_captured } do {
 				private _text = format ["Alert! %1 prisoner %2 is escaping!", name _player, name _unit];
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			};
-			_grp = createGroup [GRLIB_side_enemy, true];
-			[_unit] joinSilent _grp;
-			_unit removeAllEventHandlers "GetInMan";
-			_unit removeAllEventHandlers "SeatSwitchedMan";
-			_unit removeAllEventHandlers "Take";
-			_unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
-			_unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
-			_unit addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
-			[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
-			sleep 5;
-			[_unit] spawn escape_ai;
+			[_unit, GRLIB_side_enemy] spawn escape_ai;
 			_timeout = time + (30 * 60);
 		};
 	};

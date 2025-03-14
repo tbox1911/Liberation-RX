@@ -1,6 +1,15 @@
 params ["_unit"];
 if (isNull _unit) exitWith {};
 
+// Free hostages
+if (goggles _unit == "G_Blindfold_01_black_F") exitWith {
+    removeGoggles _unit;
+    _unit globalChat format ["I'm free!!, Thanks you %1...", name player];
+    _unit setVariable ["GRLIB_is_prisoner", false, true];
+    [_unit, GRLIB_side_friendly] remoteExec ["escape_ai", 2];
+    [player, 5] remoteExec ["F_addReput", 2];
+};
+
 waitUntil {
     [_unit] joinSilent (group player);
     gamelogic globalChat format ["Capturing prisoner %1...", name _unit];
@@ -8,11 +17,6 @@ waitUntil {
     ((!alive _unit) || (local _unit && _unit in (units player)));
 };
 if (!alive _unit) exitWith {};
-
-if (goggles _unit == "G_Blindfold_01_black_F") then {
-    removeGoggles _unit;
-    [player, 5] remoteExec ["F_addReput", 2];
-};
 
 _unit removeAllEventHandlers "GetInMan";
 _unit removeAllEventHandlers "SeatSwitchedMan";

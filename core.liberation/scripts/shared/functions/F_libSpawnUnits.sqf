@@ -12,7 +12,7 @@ if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpN
 _grp setCombatMode "WHITE";
 _grp setBehaviourStrong "AWARE";
 
-if ((_spawn_pos select 2) < 0) then { _spawn_pos set [2, 0.5] };
+if ((_spawn_pos select 2) < 0) then { _spawn_pos set [2, 0.3] };
 diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawn_pos];
 
 private ["_unit", "_ai_rank", "_pos", "_backpack"];

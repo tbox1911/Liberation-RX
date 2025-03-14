@@ -1,10 +1,26 @@
-params [ "_unit"];
+params [ "_unit", "_side"];
 
-private _nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
+private _sectors = opfor_sectors;
+if (_side == GRLIB_side_friendly) then {
+    _sectors = blufor_sectors;
+};
+if (count _sectors == 0) exitWith { sleep 10; deleteVehicle _unit };
+
+private _grp = createGroup [_side, true];
+[_unit] joinSilent _grp;
+_unit removeAllEventHandlers "GetInMan";
+_unit removeAllEventHandlers "SeatSwitchedMan";
+_unit removeAllEventHandlers "Take";
+_unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
+_unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
+_unit addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
+[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
+sleep 3;
+
+private _nearest_sector = [_sectors, _unit] call F_nearestPosition;
 if (_nearest_sector != "") then {
-    private _grp = group _unit;
     private _dist = _unit distance2D (markerPos _nearest_sector);
-    if (_dist < GRLIB_spawn_max) then {
+    if (_dist <= GRLIB_spawn_min) then {
         [_grp] call F_deleteWaypoints;
         _waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
         _waypoint setWaypointType "MOVE";
@@ -15,4 +31,7 @@ if (_nearest_sector != "") then {
         _waypoint setWaypointStatements ["true", "deleteVehicle this"];
         { _x doFollow (leader _grp) } foreach (units _grp);
     };
+} else {
+    sleep 60;
+    deleteVehicle _unit;
 };
