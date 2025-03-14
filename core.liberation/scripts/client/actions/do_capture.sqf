@@ -6,7 +6,7 @@ if (goggles _unit == "G_Blindfold_01_black_F") exitWith {
     removeGoggles _unit;
     _unit globalChat format ["I'm free!!, Thanks you %1...", name player];
     _unit setVariable ["GRLIB_is_prisoner", false, true];
-    [_unit, GRLIB_side_friendly] remoteExec ["escape_ai", 2];
+    [_unit] remoteExec ["escape_ai", 2];
     [player, 5] remoteExec ["F_addReput", 2];
 };
 

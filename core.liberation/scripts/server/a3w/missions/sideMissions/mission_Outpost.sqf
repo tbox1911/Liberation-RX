@@ -25,7 +25,7 @@ _setupObjects = {
 	[_missionPos, 30] call createlandmines;
 	_missionHintText = ["STR_OUTPOST_MESSAGE1", sideMissionColor];
 
-	private _grp_prisonners = createGroup [GRLIB_side_enemy, true];
+	private _grp_prisonners = createGroup [GRLIB_side_civilian, true];
 	for "_i" from 0 to 3 do {
 		private _pilotsPos = _missionPos getPos [10, random 360];
 		private _unit = _grp_prisonners createUnit [pilot_classname, _pilotsPos, [], 0, "NONE"];

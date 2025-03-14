@@ -61,7 +61,14 @@ while {alive _unit} do {
 			sleep 1.5;
 			//playSound3D [getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 500];
 			sleep 0.5;
+			private _civils = [];
 			if (alive _unit) then {
+				{
+					if (_x distance2D _unit < 15 && !(_x getVariable ["GRLIB_is_kamikaze", false])) then {
+						_civils pushBack _x;
+						_x setVariable ["GRLIB_last_killer", _target, true];
+					};
+				} forEach (units GRLIB_side_civilian);
 				{
 					detach _x;
 					_x setDamage 1;
@@ -71,6 +78,7 @@ while {alive _unit} do {
 			};
 			sleep 1;
 			{ deleteVehicle _x } forEach [_expl1,_expl2,_expl3];
+			{ _x setVariable ["GRLIB_last_killer", nil, true] } forEach _civils;
 		};
 	} else {
 		if (count waypoints _grp == 0 && _range > 20) then {

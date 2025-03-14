@@ -12,7 +12,7 @@ if (!alive _unit) exitWith {};
 if (!local _unit) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_remote_call", 2] };
 
 // Init priso
-private _grp = createGroup [GRLIB_side_enemy, true];
+private _grp = createGroup [GRLIB_side_civilian, true];
 [_unit] joinSilent _grp;
 
 doStop _unit;

@@ -1,13 +1,8 @@
-params [ "_unit", "_side"];
+params [ "_unit"];
 
-private _sectors = opfor_sectors;
-if (_side == GRLIB_side_friendly) then {
-    _sectors = blufor_sectors;
-};
-if (count _sectors == 0) exitWith { sleep 10; deleteVehicle _unit };
-
-private _grp = createGroup [_side, true];
+private _grp = createGroup [GRLIB_side_civilian, true];
 [_unit] joinSilent _grp;
+
 _unit removeAllEventHandlers "GetInMan";
 _unit removeAllEventHandlers "SeatSwitchedMan";
 _unit removeAllEventHandlers "Take";
@@ -17,7 +12,7 @@ _unit addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
 [_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
 sleep 3;
 
-private _nearest_sector = [_sectors, _unit] call F_nearestPosition;
+private _nearest_sector = [sectors_allSectors, _unit] call F_nearestPosition;
 if (_nearest_sector != "") then {
     private _dist = _unit distance2D (markerPos _nearest_sector);
     if (_dist <= GRLIB_spawn_min) then {
