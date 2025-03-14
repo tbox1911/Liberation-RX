@@ -24,6 +24,8 @@ _msg = format [localize "STR_PAR_MD_03", name _wnded, name _medic, round (_medic
 
 _medic setVariable ["PAR_busy", true];
 _wnded setVariable ["PAR_myMedic", _medic];
+// They became a medic so lets forget about their info before the player leader died
+_medic setVariable ["PAR_unitsInfo", createHashMap];
 
 if (count (units _medic) > 1) then {
 	_medic setVariable ["PAR_AIgrp", group _medic];
