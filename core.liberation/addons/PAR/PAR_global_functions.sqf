@@ -161,33 +161,22 @@ PAR_public_EH = {
 };
 PAR_revive_max = {
 	params ["_unit"];
-
-	private _cur_revive = (_unit getVariable ["PAR_revive_max", PAR_ai_revive]) - 1;
-	_unit setVariable ["PAR_revive_max", _cur_revive];
+	(PAR_AI_reviveMax + (GRLIB_rank_level find (rank _unit)));
+};
+PAR_revive_cur = {
+	params ["_unit"];
+	private _revive_max = (PAR_AI_reviveMax + (GRLIB_rank_level find (rank _unit)));
+	(_revive_max - count (_unit getVariable ["PAR_revive_history", []]));
+};
+PAR_revive_dec = {
+	params ["_unit"];
+	private _cur_revive = ([_unit] call PAR_revive_cur);
 	private _msg = format ["%1, %2 Revive left.", name _unit, _cur_revive];
 	if (_cur_revive == 0) then { _msg = format ["CRITICAL! %1 LAST Revive !!", name _unit] };
 	[_unit, _msg] call PAR_fn_globalchat;
-
-	private _timer = 20;
-	while { _timer >= 0 && alive _unit } do {
-		private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename, a3w_heal_tent], 12]) > 0);
-		if (_near_medical) then {
-			if (_unit distance2D player < 50) then {
-				private _msg = format ["%1 is Healing faster...", name _unit];
-				[_unit, _msg] call PAR_fn_globalchat;
-			};
-			sleep 25;
-		} else {
-			sleep 60;
-		};
-		_timer = _timer - 1;
-	};
-
-	if (!alive _unit) exitWith {};
-	private _revive = (_unit getVariable ["PAR_revive_max", PAR_ai_revive]) + 1;
-	_unit setVariable ["PAR_revive_max", _revive];
-	private _msg = format ["%1 revive restored (%2) !!", name _unit, _revive];
-	[_unit, _msg] call PAR_fn_globalchat;
+	private _history = _unit getVariable ["PAR_revive_history", []];
+	_history pushBack round (time + PAR_AI_recover_revive);
+	_unit setVariable ["PAR_revive_history", _history];
 };
 PAR_spawn_gargbage = {
 	params ["_target"];
@@ -216,7 +205,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_isUnconscious", false, true];
 	_unit setVariable ["PAR_isDragged", 0, true];
 	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
-	_unit setVariable ["PAR_revive_max", (PAR_ai_revive + (GRLIB_rank_level find (rank _unit)))];
+	_unit setVariable ["PAR_revive_history", []];
 	_unit setVariable ["GRLIB_can_speak", true, true];
 };
 

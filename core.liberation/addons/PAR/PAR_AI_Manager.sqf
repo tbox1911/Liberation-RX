@@ -28,8 +28,6 @@ while {true} do {
 					_msg = format ["%1 was promoted to the rank of %2 !", name _unit, _ai_rank];
 					[_unit, _msg] call PAR_fn_globalchat;
 					_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
-					private _cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
-					_unit setVariable ["PAR_revive_max", (_cur_revive + 1)];
 				};
 			};
 
@@ -48,7 +46,7 @@ while {true} do {
 			};
 
 			// AI revive
-			if (PAR_ai_revive > 0) then {
+			if (PAR_AI_reviveMax > 0) then {
 				// Auto heal units
 				if (PAR_revive != 0 && behaviour player in ["SAFE", "AWARE"] && isNull objectParent _unit) then {
 					if ([_unit] call PAR_is_wounded) exitWith {};
@@ -77,21 +75,42 @@ while {true} do {
 				};
 
 				// AI medical status
+				private _msg = "";
+				private _cur_revive = ([_unit] call PAR_revive_cur);
+				private _history = _unit getVariable ["PAR_revive_history", []];
+				if (count _history > 0) then {
+					private _first = _history select 0;
+					if (time >= _first) then {
+						_history deleteAt 0;
+						_unit setVariable ["PAR_revive_history", _history];
+						_msg = format ["%1 revive restored (%2) !!", name _unit, _cur_revive];
+						[_unit, _msg] call PAR_fn_globalchat;
+					} else {
+						private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename, a3w_heal_tent], 12]) > 0);
+						if (_near_medical) then {
+							_history set [0, (_first - 60)];
+							_unit setVariable ["PAR_revive_history", _history];
+							if (_unit distance2D player < 50) then {
+								_msg = format ["%1 is Healing faster...", name _unit];
+							};
+						};
+					};
+				};
+
 				private _timer = _unit getVariable ["PAR_revive_msg_timer", 0];
-				if (time > _timer) then {
-					private _msg = "";
-					private _cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
-					private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename], 12]) > 0);
-					if (_cur_revive <= 3 && !_near_medical) then {
+				if (_msg == "") then {
+					if (_cur_revive <= 3) then {
 						_msg = format ["WARNING: %1 need Medical Support Now !!", name _unit];
+						_timer = 0;
 					};
 					if (_cur_revive == 0) then {
 						_msg = format ["CRITICAL: %1 will NOT Revive anymore !!", name _unit];
+						_timer = 0;
 					};
-					if (_msg != "") then {
-						[_unit, _msg] call PAR_fn_globalchat;
-						_unit setVariable ["PAR_revive_msg_timer", round (time + (3 * 60))];
-					};
+				};
+				if (time > _timer && _msg != "") then {
+					[_unit, _msg] call PAR_fn_globalchat;
+					_unit setVariable ["PAR_revive_msg_timer", round (time + (3 * 60))];
 				};
 			};
 			sleep 0.3;
