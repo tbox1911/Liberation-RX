@@ -77,6 +77,7 @@ while {true} do {
 				// AI medical status
 				private _msg = "";
 				private _cur_revive = ([_unit] call PAR_revive_cur);
+				private _timer = _unit getVariable ["PAR_revive_msg_timer", 0];
 				private _history = _unit getVariable ["PAR_revive_history", []];
 				if (count _history > 0) then {
 					private _first = _history select 0;
@@ -84,7 +85,7 @@ while {true} do {
 						_history deleteAt 0;
 						_unit setVariable ["PAR_revive_history", _history];
 						_msg = format ["%1 revive restored (%2) !!", name _unit, _cur_revive];
-						[_unit, _msg] call PAR_fn_globalchat;
+						_timer = 0;
 					} else {
 						private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename, a3w_heal_tent], 12]) > 0);
 						if (_near_medical) then {
@@ -97,7 +98,6 @@ while {true} do {
 					};
 				};
 
-				private _timer = _unit getVariable ["PAR_revive_msg_timer", 0];
 				if (_msg == "") then {
 					if (_cur_revive <= 3) then {
 						_msg = format ["WARNING: %1 need Medical Support Now !!", name _unit];

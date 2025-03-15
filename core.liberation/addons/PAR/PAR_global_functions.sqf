@@ -165,8 +165,7 @@ PAR_revive_max = {
 };
 PAR_revive_cur = {
 	params ["_unit"];
-	private _revive_max = (PAR_AI_reviveMax + (GRLIB_rank_level find (rank _unit)));
-	(_revive_max - count (_unit getVariable ["PAR_revive_history", []]));
+	(([_unit] call PAR_revive_max) - count (_unit getVariable ["PAR_revive_history", []]));
 };
 PAR_revive_dec = {
 	params ["_unit"];
