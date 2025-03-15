@@ -44,6 +44,7 @@ _setupObjects = {
 		_x setPos ([_missionPos, 4] call F_getRandomPos);
 		[_x, true, false] spawn prisoner_ai;
 		_x addGoggles "G_Blindfold_01_black_F";
+		_x setVariable ["GRLIB_is_prisoner", true, true];
 		_x setDamage 0;
 		sleep 0.1;
 	} forEach _hostages;
@@ -99,7 +100,7 @@ _waitUntilCondition = {	(({ alive _x } count _hostages) == 0) };
 
 _waitUntilSuccessCondition = {
 	private _alive_units = { alive _x } count _hostages;
-	private _free_units = { alive _x && side group _x == GRLIB_side_friendly } count _hostages;
+	private _free_units = { alive _x && !(_x getVariable ["GRLIB_is_prisoner", false]) } count _hostages;
 	(_alive_units > 0 && _free_units == _alive_units);
 };
 
