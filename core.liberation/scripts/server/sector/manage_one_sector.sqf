@@ -158,6 +158,7 @@ if (_sector in sectors_tower) then {
 
 // Create drones defender
 if (_uavs_count > 0) then {
+	[_sector_pos, true, 2] spawn send_drones;
 	[_sector_pos, false, _uavs_count] spawn send_drones;
 };
 

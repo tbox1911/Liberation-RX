@@ -36,8 +36,6 @@ if (_spawn_marker == "") exitWith {
 		sleep 20;
 		[_para_pos, false, 5] spawn send_drones;
 		sleep 20;
-		[_para_pos, true, 5] spawn send_drones;
-		sleep 20;
 		[_para_pos] spawn send_paratroopers;
 		sleep 20;
 		[_para_pos] spawn send_paratroopers;
@@ -118,8 +116,6 @@ if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 && _current_players >=
 
 if (combat_readiness >= 50) then {
 	[_objective_pos, false, 5] spawn send_drones;
-	sleep 20;
-	[_objective_pos, true, 5] spawn send_drones;
 	sleep 20;
 };
 

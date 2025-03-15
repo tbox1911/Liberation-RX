@@ -6,19 +6,18 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 	
 	waitUntil { sleep 60; count GRLIB_all_fobs > 1 };
 
-	_sleeptime = (1200 + floor random 2100) / (([] call F_adaptiveOpforFactor) * GRLIB_csat_aggressivity);
+	_sleeptime = (900 + floor random 900) / (([] call F_adaptiveOpforFactor) * GRLIB_csat_aggressivity);
 	if ( combat_readiness >= 70 ) then { _sleeptime = _sleeptime * 0.85 };
 	if ( combat_readiness >= 90 ) then { _sleeptime = _sleeptime * 0.85 };
-
 	sleep _sleeptime;
 
 	if ( !isNil "GRLIB_last_battlegroup_time" ) then {
-		waitUntil { sleep 60; time > ( GRLIB_last_battlegroup_time + (2100 / GRLIB_csat_aggressivity)) };
+		waitUntil { sleep 60; time > ( GRLIB_last_battlegroup_time + (1200 / GRLIB_csat_aggressivity)) };
 	};
 
 	_countplayers = count (AllPlayers - (entities "HeadlessClient_F"));
-	if (!opforcap_max && combat_readiness >= 75 && diag_fps >= 30.0 && _countplayers > 1) then {
-		if (count GRLIB_all_fobs > 0) then {
+	if (!opforcap_max && combat_readiness >= 75 && diag_fps > 30 && _countplayers > 1) then {
+		if (count GRLIB_all_fobs > 1) then {
 			diag_log format ["Spawn FOB BattleGroup at %1", time];
 			_all_fobs = (allMapMarkers select { _x select [0,9] == "fobmarker" });
 			[selectRandom _all_fobs] spawn spawn_battlegroup;
