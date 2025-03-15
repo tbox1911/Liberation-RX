@@ -107,56 +107,57 @@ if ( isServer ) then {
 
 		if (isNull _killer) exitWith {};
 		if ( _unit != _killer ) then {
-			_isPrisonner = _unit getVariable ["GRLIB_is_prisoner", false];
-			_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
-			_isZombie = (_unit_class select [0,10] == "RyanZombie");
-			if ( _isKamikaz ) then {
-				_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer] ;
-				[gamelogic, _msg] remoteExec ["globalChat", 0];
-				[_killer, 11] call F_addScore;
-			};
-			if ( _isZombie ) then { [_killer, 5] call F_addScore };
-			if ( !_isKamikaz && !_isZombie && _unit_side == GRLIB_side_civilian || _isPrisonner ) then {
-				stats_civilians_killed = stats_civilians_killed + 1;
-				if ( isPlayer _killer ) then {
-					if ( GRLIB_civ_penalties > 0 ) then {
-						private _penalty = GRLIB_civ_penalties;
-						private _score = [_killer] call F_getScore;
-						if (_score < GRLIB_perm_inf) then { _penalty = GRLIB_civ_penalties/2};
-						if (_score > GRLIB_perm_inf) then { _penalty = GRLIB_civ_penalties*1 };
-						if (_score > GRLIB_perm_tank) then { _penalty = GRLIB_civ_penalties*2 };
-						if (_score > GRLIB_perm_air) then { _penalty = GRLIB_civ_penalties*3 };
-						if (_score > GRLIB_perm_max) then { _penalty = GRLIB_civ_penalties*4 };
-						if (_indirect_kill) then { _penalty = GRLIB_civ_penalties };
-						[_killer, -_penalty] call F_addScore;
-						[_killer, -5] call F_addReput;
-						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
-						combat_readiness = combat_readiness + (0.5 * GRLIB_difficulty_modifier);
-						stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
-						if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
-					};
-					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
-				};
-
-				if ( _killer_side == GRLIB_side_friendly && !isPlayer _killer ) then {
-					private _owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
-					if (_owner_id in ["", "server"]) then {
-						_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
-					};
-					if (_owner_id != "0" && GRLIB_civ_penalties > 0) then {
-						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
-						[_owner_player, -GRLIB_civ_penalties] call F_addScore;
-						[_owner_player, -1] call F_addReput;
-						_msg = format ["%1, Your AI kill a Civilian !!", name _owner_player] ;
-						[gamelogic, _msg] remoteExec ["globalChat", 0];
-						[name _unit, GRLIB_civ_penalties, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
-					};
-					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
-				};
-			};
-
 			if ( _killer_side == GRLIB_side_friendly ) then {
-				if ( _unit_side == GRLIB_side_enemy ) then {
+				_isPrisonner = _unit getVariable ["GRLIB_is_prisoner", false];
+				_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
+				_isZombie = (_unit_class select [0,10] == "RyanZombie");
+				if ( _isKamikaz ) exitWith {
+					_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer] ;
+					[gamelogic, _msg] remoteExec ["globalChat", 0];
+					[_killer, 11] call F_addScore;
+					[_killer, 1500] remoteExec ["addrating", owner _killer];
+				};
+				if ( _isZombie ) exitWith { [_killer, 5] call F_addScore };
+				if ( !_isKamikaz && !_isZombie && _unit_side == GRLIB_side_civilian || _isPrisonner ) exitWith {
+					stats_civilians_killed = stats_civilians_killed + 1;
+					if ( isPlayer _killer ) then {
+						if ( GRLIB_civ_penalties > 0 ) then {
+							private _penalty = GRLIB_civ_penalties;
+							private _score = [_killer] call F_getScore;
+							if (_score < GRLIB_perm_inf) then { _penalty = GRLIB_civ_penalties/2};
+							if (_score > GRLIB_perm_inf) then { _penalty = GRLIB_civ_penalties*1 };
+							if (_score > GRLIB_perm_tank) then { _penalty = GRLIB_civ_penalties*2 };
+							if (_score > GRLIB_perm_air) then { _penalty = GRLIB_civ_penalties*3 };
+							if (_score > GRLIB_perm_max) then { _penalty = GRLIB_civ_penalties*4 };
+							if (_indirect_kill) then { _penalty = GRLIB_civ_penalties };
+							[_killer, -_penalty] call F_addScore;
+							[_killer, -5] call F_addReput;
+							[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
+							combat_readiness = combat_readiness + (0.5 * GRLIB_difficulty_modifier);
+							stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
+							if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
+						};
+						stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
+					};
+
+					if ( _killer_side == GRLIB_side_friendly && !isPlayer _killer ) then {
+						private _owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
+						if (_owner_id in ["", "server"]) then {
+							_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
+						};
+						if (_owner_id != "0" && GRLIB_civ_penalties > 0) then {
+							_owner_player = _owner_id call BIS_fnc_getUnitByUID;
+							[_owner_player, -GRLIB_civ_penalties] call F_addScore;
+							[_owner_player, -1] call F_addReput;
+							_msg = format ["%1, Your AI kill a Civilian !!", name _owner_player] ;
+							[gamelogic, _msg] remoteExec ["globalChat", 0];
+							[name _unit, GRLIB_civ_penalties, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
+						};
+						stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
+					};
+				};
+
+				if ( _unit_side == GRLIB_side_enemy ) exitWith {
 					stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
 					if ( isplayer _killer ) then {
 						stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
@@ -178,7 +179,7 @@ if ( isServer ) then {
 						playSound3D [_deathsound, _unit, false, getPosASL _unit, 5, 1, 300];
 					};
 				};
-				if ( _unit_side == GRLIB_side_friendly ) then {
+				if ( _unit_side == GRLIB_side_friendly ) exitWith {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
 					[_killer, -20] call F_addScore;
 					_msg = localize "STR_FRIENDLY_FIRE";
