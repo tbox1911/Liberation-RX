@@ -26,7 +26,7 @@ private _dist = (_medic distance2D _wnded);
 if ( _dist <= 6 ) then {
 	[_wnded, _medic] spawn PAR_fn_sortie
 } else {
-	if (_dist < 25) then {
+	if (_dist < 35) then {
 		_medic doMove (getPosATL _wnded);
 	} else {
 		_medic doMove (getPos _wnded);
