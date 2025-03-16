@@ -25,8 +25,21 @@ private _check_sortie = {
 };
 
 private _healed = false;
-while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
+// we want ALL of these conditions to be satisfied to keep this loop going, not just one of them
+// We also want to make sure this loop is only running while the medic is still the woundeds current medic
+while { 
+		alive _wnded && 
+		alive _medic && 
+		([_wnded] call PAR_is_wounded) && 
+		!([_medic] call PAR_is_wounded) && 
+		_fail <= 12 &&
+		vehicle _medic isEqualTo _medic &&
+		vehicle _wnded isEqualTo _wnded &&
+		(_wnded getVariable ["PAR_myMedic", objNull]) isEqualTo _medic
+	} do {
 	_msg = "";
+
+	if ([_wnded, _medic] call _check_sortie) exitWith { _healed = true };
 	_dist = round (_wnded distance2D _medic);
 	// systemchat format ["dbg: wnded 2D dist : %1 dist speed %2 fail %3", _wnded distance2D _medic, round (speed vehicle _medic), _fail];
 	if (_dist > 500 || vehicle _medic != _medic || vehicle _wnded != _wnded) exitWith {};
@@ -34,9 +47,6 @@ while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 	if (!isNil "_new_medic" && _dist > 20) then {
 		if ((_new_medic distance2D _wnded) + 6 < (_medic distance2D _wnded)) then { _wnded setVariable ["PAR_myMedic", nil] };
 	};
-	if (isNil {_wnded getVariable "PAR_myMedic"}) exitWith {};
-
-	if ([_wnded, _medic] call _check_sortie) exitWith { _healed = true };
 
 	if (round (speed vehicle _medic) == 0) then {
 		_fail = _fail + 1;
@@ -58,7 +68,7 @@ while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 			_medic doMove _relpos;
 		};
 
-		if (_fail > 5) then {
+		if (_fail > 5 && ( _fail < 8 || _dist > 25)) then {
 			_medic allowDamage false;
 			_newpos = _medic getPos [3, _medic getDir _wnded];
 			_newpos = _newpos vectorAdd [0, 0, 3];
@@ -66,6 +76,14 @@ while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 			sleep 1;
 			_medic allowDamage true;
 		};
+
+		//If they're close enough, lets just tp them to the wounded
+		if (_fail > 8 && _dist < 25) then {
+            _newpos = getPos _wnded;
+            _newpos = _newpos vectorAdd [0, 0, 3];
+            _medic setPos _newpos;
+            _medic setDir (_medic getDir _wnded);
+        };
 
 		_msg = format [localize "STR_PAR_CM_01", name _wnded, name _medic, _dist, _fail];
 		sleep 3;
