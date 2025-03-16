@@ -32,7 +32,6 @@ if (!hasInterface) exitWith {};
 
 // Seconds until unconscious unit bleeds out and dies.
 // PAR_bleedout = 300;    // from settings
-// PAR_ai_revive = 10;
 PAR_bleedout_extra = 60;
 
 // Enable info killer message
@@ -40,6 +39,8 @@ PAR_EnableDeathMessages = true;
 
 // player AI brothers
 PAR_AI_bros = [];
+// PAR_AI_reviveMax = 7;    // from settings
+PAR_AI_recover_revive = (20*60);
 
 //------------------------------------------//
 PAR_BloodSplat = [

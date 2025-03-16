@@ -3,8 +3,8 @@ params ["_unit"];
 if (rating _unit < -2000) exitWith {_unit setDamage 1};
 if (!([] call F_getValid)) exitWith {_unit setDamage 1};
 private _cur_revive = 1;
-if (PAR_ai_revive > 0 && !isPlayer _unit && local _unit) then {
-	_cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
+if (PAR_AI_reviveMax > 0 && !isPlayer _unit && local _unit) then {
+	_cur_revive = ([_unit] call PAR_revive_cur);
 };
 if (_cur_revive <= 0) exitWith {_unit setDamage 1};
 

@@ -26,7 +26,7 @@ ctrlSetText [ 201, _unitname];
 
 ctrlSetText [ 202, format ["%1 (%2)", getText (_cfgVehicles >> (typeof _selectedmember) >> "displayName"), rank _selectedmember] ];
 ctrlSetText [ 203, format ["%1 %2%3", localize 'STR_HEALTH', round (100 - ((damage _selectedmember) * 100)), '%'] ];
-ctrlSetText [ 2031, format ["%1 %2", localize 'STR_REVIVE', _selectedmember getVariable ["PAR_revive_max", PAR_ai_revive]] ];
+ctrlSetText [ 2031, format ["%1 %2/%3", localize 'STR_REVIVE', ([_selectedmember] call PAR_revive_cur), ([_selectedmember] call PAR_revive_max)] ];
 
 ((findDisplay 5155) displayCtrl 203) ctrlSetTextColor [1,1,1,1];
 if ( damage _selectedmember > 0.4 ) then { ((findDisplay 5155) displayCtrl 203) ctrlSetTextColor [1,1,0,1]; };

@@ -57,8 +57,6 @@ while {alive _vehicle} do {
 		_target = [_targetpos, 200] call F_getNearestBlufor;
 		if (!isNil "_target") then {
 			_grp setSpeedMode "FULL";
-			(driver _vehicle) doMove (getPos _target);
-			sleep 20;
 			waitUntil {
 				(driver _vehicle) doMove (getPos _target);
 				sleep 1;
@@ -88,10 +86,10 @@ while {alive _vehicle} do {
 			_grp setCombatMode "YELLOW";
 			_grp setSpeedMode "LIMITED";
 			waitUntil {
+				(driver _vehicle) doMove (getPos _target);
 				sleep 1;
 				private _dist = _vehicle distance2D _target;
 				if (_dist <= 200) then { _vehicle flyInHeight 50 };
-				(driver _vehicle) doMove (getPos _target);
 				(_dist <= 15 || _dist >= 300 || !alive _vehicle)
 			};
 			if !(alive _vehicle) exitWith {};

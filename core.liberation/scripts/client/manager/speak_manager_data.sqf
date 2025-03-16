@@ -7,8 +7,8 @@ speak_squad_AI = {
 	params ["_unit"];
 	player globalChat format ["Hey %1, how are you ?", name _unit];
 	sleep 2;
-	private _max_revive = PAR_ai_revive + (GRLIB_rank_level find (rank _unit));
-	private _cur_revive = _unit getVariable ["PAR_revive_max", -1];
+	private _max_revive = ([_unit] call PAR_revive_max);
+	private _cur_revive = ([_unit] call PAR_revive_cur);
 	if (_cur_revive >= 0) then {
 		private _msg = "Fine, not much to say...";
 		if (_cur_revive <= (_max_revive * 0.6)) then { _msg = format ["I'm tired of all this, I was wounded %1 times today !", (_max_revive - _cur_revive)] };
