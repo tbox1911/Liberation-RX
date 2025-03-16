@@ -85,7 +85,7 @@ LRX_Mission_Params = [
 	["MaxOutpost", 4],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
 	["FobType", 0],					// The Startup Fob Vehicle - [default 0] - values = [1,0] - Text {Huron,Truck,Boat}
 	["HuronType", 0],				// The type of Huron - [default 0] - values = [0,1,2] - Text {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"}
-	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2] - Text {Disabled, "USS Liberty", "USS Freedom", "Offshare plateform"}
+	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2,3] - Text {Disabled, "USS Liberty", "USS Freedom", "Offshare plateform"}
 
 	["---", "MISC"],
 	["FancyInfo", 2],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
