@@ -402,7 +402,7 @@ while { true } do {
 				_veh_dir,
 				_veh_vup
 			] remoteExec ["build_vehicle_remote_call", 2];
-			waitUntil { sleep 1; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
+			waitUntil { sleep 0.5; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
 
 			_vehicle = player getVariable "GRLIB_player_vehicle_build";
 			if (isNil "_vehicle") exitWith {

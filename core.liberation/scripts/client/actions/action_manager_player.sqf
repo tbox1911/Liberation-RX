@@ -34,7 +34,6 @@ while { true } do {
 		GRLIB_player_near_base = false;
 		GRLIB_player_near_spawn = false;
 		GRLIB_player_owner_fob = false;
-		sleep 1;
 	};
 
 	// Warn Sector
