@@ -1,28 +1,50 @@
 params ["_unit", ["_keep_position", false]];
 
-private _resume_movement = false;
-private _target = objNull;
+_unit setUnitPos "UP";
+_unit disableAI "PATH";
 
 private _sector = [GRLIB_sector_size, _unit] call F_getNearestSector;
 
-sleep 20;
+[_unit, _keep_position, _sector] spawn {
+	params ["_unit", "_keep_position", "_sector"];
 
-while { alive _unit && !(captive _unit) } do {
-	_target = ([getPos _unit, 50] call F_getNearbyPlayers) select 0;
-	if (!isNil "_target") then { _unit doWatch _target };
+	while {
+		sleep 5;
+		local _unit && alive _unit && !(captive _unit)
+	} do {
 
-	if (!_keep_position && _sector in blufor_sectors && (floor random 5 == 0) ) then {
-		_resume_movement = true;
+		private _targets = _unit nearTargets 100;
+		private _enemyNearby = _targets findIf { side (_x select 4) == WEST } != -1;
+
+		private _target = assignedTarget _unit;
+		private _knowsAbout = if (!isNull _target) then { _unit knowsAbout _target } else { 0 };
+
+		if (_enemyNearby || { _knowsAbout > 1.5 }) exitWith {
+			_unit enableAI "PATH";
+			_unit setUnitPos "AUTO";
+
+			if (!isNull _target) then {
+				_unit doWatch _target;
+				_unit doSuppressiveFire _target;
+			};
+
+			(group _unit) setCombatMode "RED";
+			(group _unit) setBehaviourStrong "AWARE";
+		};
+
+		if (!_keep_position && _sector in blufor_sectors) exitWith {
+			_unit enableAI "PATH";
+			_unit setUnitPos "AUTO";
+			_unit switchMove "AmovPercMwlkSrasWrflDf";
+			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
+
+			(group _unit) setCombatMode "RED";
+			(group _unit) setBehaviourStrong "COMBAT";
+		};
 	};
 
-	if (_resume_movement) exitWith {
+	if (alive _unit) then {
 		_unit enableAI "PATH";
 		_unit setUnitPos "AUTO";
-		_unit switchMove "AmovPercMwlkSrasWrflDf";
-		_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-		(group _unit) setCombatMode "YELLOW";
-		(group _unit) setBehaviourStrong "COMBAT";
 	};
-
-	sleep 5;
 };
