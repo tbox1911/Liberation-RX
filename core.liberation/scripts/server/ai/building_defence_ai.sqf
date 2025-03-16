@@ -9,11 +9,18 @@ sleep 20;
 
 while { alive _unit && !(captive _unit) } do {
 	_target = ([getPos _unit, 50] call F_getNearbyPlayers) select 0;
-	if (!isNil "_target") then { _unit doWatch _target };
-
-	if (!_keep_position && _sector in blufor_sectors && (floor random 5 == 0) ) then {
-		_resume_movement = true;
+	if (!isNil "_target") then {
+		_unit doWatch _target;
+		_unit setDir (_unit getDir _target);
+		if (_unit distance2D _target <= 10 && (floor random 3 == 0)) then {
+			_unit doSuppressiveFire _target;
+			_resume_movement = true 
+		};
 	};
+
+	if (_sector in blufor_sectors && (floor random 5 == 0)) then { _resume_movement = true };
+
+	if (_keep_position) then { _resume_movement = false };
 
 	if (_resume_movement) exitWith {
 		_unit enableAI "PATH";
@@ -24,5 +31,5 @@ while { alive _unit && !(captive _unit) } do {
 		(group _unit) setBehaviourStrong "COMBAT";
 	};
 
-	sleep 5;
+	sleep 15;
 };
