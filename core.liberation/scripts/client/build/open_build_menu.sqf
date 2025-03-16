@@ -238,6 +238,25 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 				};
 			};
 
+			if ( buildtype == 7 ) then {
+				if (_build_class == FOB_boat_typename) then {
+					if (FOB_carrier == "fob_water1") then {
+						_picture = getMissionPath "res\preview\fob_water1.jpg";
+					} else {
+						_picture = getText (configFile >> "CfgVehicles" >> FOB_carrier >> "editorPreview");
+					};
+				};
+			};
+
+			if ( buildtype == 8 ) then {
+				_picture = getMissionPath "res\preview\blufor_squad.jpg";
+			};
+
+			if (_picture == "") then { _picture = getText (configFile >> "CfgVehicles" >> _build_class >> "editorPreview") };
+			if (_picture == "") then { _picture = getMissionPath "res\preview\no_image.jpg" };
+			(_display displayCtrl (162)) ctrlSetText _picture;
+
+			// Locked by capture
 			_linked = false;
 			_linked_unlocked = true;
 			_base_link = "";
@@ -247,14 +266,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 				_linked_unlocked = _linked_state select 1;
 				_base_link = _linked_state select 2;
 			};
-
-			if ( buildtype == 8 ) then {
-				_picture = getMissionPath "res\preview\blufor_squad.jpg";
-			} else {
-				if (_picture == "") then { _picture = getText (configFile >> "CfgVehicles" >> _build_class >> "editorPreview") };
-			};
-			if (_picture == "") then { _picture = getMissionPath "res\preview\no_image.jpg" };
-			(_display displayCtrl (162)) ctrlSetText _picture;
 		};
 	};
 

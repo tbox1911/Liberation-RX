@@ -1,6 +1,6 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_owner", "_classname", "_veh_pos", "_veh_dir", "_veh_vup"];
-private ["_fob_pos"];
+
 private _vehicle = objNull;
 
 // Ground FOB
@@ -10,11 +10,6 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 	_vehicle hideobjectglobal true;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosATL _veh_pos;
-	_vehicle hideobjectglobal false;
-	[_vehicle, getPlayerUID _owner] call fob_init;
-	_fob_pos = getPosATL _vehicle;
-	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
-	if (_classname == FOB_outpost) then { GRLIB_all_outposts pushBack _fob_pos };
 	if (GRLIB_fob_type == 2) then { deleteVehicle GRLIB_vehicle_huron };
 };
 
@@ -25,12 +20,8 @@ if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
 	_vehicle hideobjectglobal true;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosATL _veh_pos;
-	_vehicle hideobjectglobal false;
 	[_vehicle] call BIS_fnc_carrier01Init;
 	[_vehicle] call BIS_fnc_Carrier01PosUpdate;
-	[_vehicle, getPlayerUID _owner] call fob_init;
-	_fob_pos = getPosATL (nearestObjects [_veh_pos, [FOB_sign], 200] select 0);
-	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 };
 
 // Offshore FOB
@@ -63,13 +54,22 @@ if (_classname in ["fob_water1"]) then {
 	_vehicle hideobjectglobal true;
 	_vehicle setVectorDirAndUp [[0,1,0], [0,0,1]];
 	_vehicle setPosASL _veh_pos;
-	_vehicle hideobjectglobal false;
-	[_vehicle, getPlayerUID _owner] call fob_init;
-	_fob_pos = getPosATL _vehicle;
-	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 };
 
 if (isNull _vehicle) exitWith {};
+
+sleep 1;
+_vehicle hideobjectglobal false;
+[_vehicle, getPlayerUID _owner] call fob_init;
+
+sleep 1;
+private _fob_pos = getPosATL _vehicle;
+if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
+	_fob_pos = getPosATL (nearestObjects [_fob_pos, [FOB_sign], 200] select 0);
+};
+GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
+if (_classname == FOB_outpost) then { GRLIB_all_outposts pushBack _fob_pos };
+
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
 

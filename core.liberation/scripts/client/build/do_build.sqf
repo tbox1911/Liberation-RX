@@ -350,7 +350,8 @@ while { true } do {
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 				private _unit_list_redep = (units player - [player]) select { (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' };
 				if (_classname == FOB_carrier) then {
-					titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
+					private _fob_text = ((["NavalFobType"] call lrx_getParamData) select 1) select (["NavalFobType"] call lrx_getParamValue);
+					titleText [format ["Naval FOB (%1) Incoming...", _fob_text] ,"BLACK FADED", 30];
 					{ _x allowDamage false } forEach _unit_list_redep;
 					disableUserInput true;
 				};
