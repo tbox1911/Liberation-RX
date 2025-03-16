@@ -60,7 +60,7 @@ LRX_Mission_Params = [
 	["---", "PLAYER"],
 	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PAR_Revive", 1],				// PAR revive - [default 1] - values = [0,1,2,3] - Text {Disabled, Everyone can revive, Everyone can revive using Medikit/FAK, Only medics can revive}
-	["PAR_AI_ReviveMax", 7],		// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
+	["PAR_AI_Revive", 7],		// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
 	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
 	["PAR_Grave", 1],				// PAR grave with stuuf in box - [default 1] - values [1,0] - Text {Enabled,Disabled}
 	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
@@ -232,7 +232,7 @@ LRX_Mission_Params_Def = [
 		localize "STR_PARAMS_REVIVE3"
 		]
 	],
-	["PAR_AI_ReviveMax", localize "STR_PARAMS_PAR_AI_REVIVE",
+	["PAR_AI_Revive", localize "STR_PARAMS_PAR_AI_REVIVE",
 		["Unlimited", "3", "5", "7", "10", "15", "20"],
 		[0, 3, 5, 7, 10, 15, 20]
 	],

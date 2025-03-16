@@ -201,7 +201,7 @@ GRLIB_victory_condition = ["VictoryCondition"] call lrx_getParamValue;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
-PAR_AI_reviveMax = ["PAR_AI_ReviveMax"] call lrx_getParamValue;
+PAR_AI_reviveMax = ["PAR_AI_Revive"] call lrx_getParamValue;
 PAR_bleedout = ["PAR_BleedOut"] call lrx_getParamValue;
 PAR_grave = ["PAR_Grave"] call lrx_getParamValue;
 
