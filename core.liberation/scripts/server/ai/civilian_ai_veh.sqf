@@ -137,9 +137,9 @@ while { alive _vehicle && alive _driver } do {
 
 deleteMarker _marker;
 
-// if (!alive _driver && alive _vehicle) then {
-// 	_vehicle setVariable ["GRLIB_vehicle_owner", "", true];
-// 	_vehicle lockCargo false;
-// 	_vehicle lockDriver false;
-// 	_vehicle setVehicleLock "UNLOCKED";
-// };
+if (alive _vehicle && !alive _driver) then {
+	_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
+	_vehicle lockCargo false;
+	_vehicle lockDriver false;
+	_vehicle setVehicleLock "UNLOCKED";
+};
