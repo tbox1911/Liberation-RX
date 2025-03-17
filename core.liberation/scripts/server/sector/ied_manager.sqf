@@ -21,7 +21,7 @@ private _ied_type = selectRandom [
 private _sector_pos = markerPos _sector;
 private _roadobj = selectRandom (_sector_pos nearRoads _radius);
 
-if (!(isNil "_roadobj") && selectRandom[true,false]) then {
+if !(isNil "_roadobj") then {
 	private _ied_obj = createMine [_ied_type, (_roadobj getPos [1, random(360)]), [], 0];
 	private _ied_pos = (getPos _ied_obj);
 	_ied_obj setPos _ied_pos;

@@ -25,7 +25,7 @@ private _sector_pos = markerPos _sector;
 private _ide_pos = (_sector_pos getPos [floor(random _radius), random(360)]) findEmptyPosition [0,20,"B_Quadbike_01_F"];
 private _goes_boom = false;
 
-if ( count _ide_pos > 0 && selectRandom[true,false]) then {
+if (count _ide_pos > 0) then {
 	private _ied_obj = createVehicle [_ied_type, _ide_pos, [], 3, "None"];
 	[_ied_obj] call F_clearCargo;
 	_ied_obj allowDamage false;
