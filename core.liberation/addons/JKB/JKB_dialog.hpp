@@ -125,7 +125,7 @@ class JKB_dialog {
  		};
 		class AutoplayCB: RscCheckbox {
 			idc = 233;
-			text = "$STR_JKB_AUTOPLAY";
+			text = $STR_JKB_AUTOPLAY;
 			x = (0.210 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.0125 * safezoneW;
@@ -138,7 +138,7 @@ class JKB_dialog {
 		};
 		class AutoplayCBText: GREUH_RscStructuredText {
 			idc = -1;
-			text = "<t size='0.7'>$STR_JKB_AUTOPLAY</t>";
+			text = <t size='0.7'>$STR_JKB_AUTOPLAY</t>;
 			x = (0.226 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -146,7 +146,7 @@ class JKB_dialog {
 		};
 		class RandomCB: RscCheckbox {
 			idc = 234;
-			text = "$STR_JKB_RANDOM";
+			text = $STR_JKB_RANDOM;
 			x = (0.300 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.0125 * safezoneW;
@@ -159,7 +159,7 @@ class JKB_dialog {
 		};
 		class RandomCBText: GREUH_RscStructuredText	{
 			idc = -1;
-			text = "<t size='0.7'>$STR_JKB_RANDOM</t>";
+			text = <t size='0.7'>$STR_JKB_RANDOM</t>;
 			x = (0.316 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -167,7 +167,7 @@ class JKB_dialog {
 		};
 		class StopButton: StdButton {
 			idc = -1;
-			text = "$STR_JKB_STOP";
+			text = $STR_JKB_STOP;
 			onButtonClick = "play_music = 2";
 			x = 0.2100 * safezoneW + safezoneX;
 			y = 0.386 * safezoneH + safezoneY;
@@ -177,7 +177,7 @@ class JKB_dialog {
 		};
 		class PlayButton: StdButton {
 			idc = -1;
-			text = "$STR_JKB_START";
+			text = $STR_JKB_START;
 			onButtonClick = "play_music = 1";
 			x = 0.3300 * safezoneW + safezoneX;
 			y = 0.386 * safezoneH + safezoneY;
