@@ -1,17 +1,6 @@
 private ["_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
 
 if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
-
-InfantryBuildType = 1;
-TransportVehicleBuildType = 2;
-CombatVehicleBuildType = 3;
-AerialBuildType = 4;
-DefenceBuildType = 5;
-BuildingBuildType = 6;
-SupportBuildType = 7;
-SquadBuildType = 8;
-
-
 if ( isNil "buildtype" ) then { buildtype = InfantryBuildType };
 if ( buildtype > SquadBuildType ) then { buildtype = InfantryBuildType };
 if ( isNil "buildindex" ) then { buildindex = -1 };

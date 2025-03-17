@@ -99,6 +99,16 @@ GRLIB_ActionDist_15 = 15;
 GRLIB_max_respawn_reached = false;
 GRLIB_player_configured = false;
 
+// Local Constants
+InfantryBuildType = 1;
+TransportVehicleBuildType = 2;
+CombatVehicleBuildType = 3;
+AerialBuildType = 4;
+DefenceBuildType = 5;
+BuildingBuildType = 6;
+SupportBuildType = 7;
+SquadBuildType = 8;
+
 // Local functions
 add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
 artillery_cooldown = compileFinal preprocessFileLineNumbers "scripts\client\misc\artillery_cooldown.sqf";
