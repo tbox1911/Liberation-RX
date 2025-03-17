@@ -39,7 +39,7 @@ waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 		} else {
 			showHUD [true,true,true,true,true,true,true,true,true,true];
 		};
-		gamelogic globalChat format ["HUD Toggle %1.", _state];
+		gamelogic globalChat format [localize "STR_KEY_HUD_TOGGLE", _state];
 	};
 }];
 
@@ -48,7 +48,7 @@ waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 	if (_this select 1 == (actionKeys 'User15') select 0) then {
 		_name = format ["%1_%2_%3-%4_%5.png", name player, worldname, date select 3, date select 4, round(time)];
 		screenshot _name;
-		gamelogic globalChat format ["Take screenshot: %1.", _name];
+		gamelogic globalChat format [localize "STR_KEY_TAKE_SCREENSHOT", _name];
 	};
 }];
 
@@ -59,7 +59,7 @@ if (GRLIB_Player_VIP) then {
 			_save = 0;  // Dump savegame: 0 = no, 1 = yes
 			[_save] execVM "scripts\shared\diag_debug.sqf";
 			[_save, "scripts\shared\diag_debug.sqf"] remoteExec ["execVM", 2];
-			gamelogic globalChat "LRX Diag called.";
+			gamelogic globalChat localize "STR_KEY_LRX_DIAG_CALLED";
 		};
 	}];
 };
