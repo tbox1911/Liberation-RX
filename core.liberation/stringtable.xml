@@ -8556,7 +8556,7 @@
 			<Czech>Počkám zde, až se vrátíte s %1, prosím, pospěšte si!</Czech>
 		</Key>
 	</Package>
-
+	
 	<!-- pSiKO Earplugs -->
 	<Package name="NREEarplugs">
 		<Key ID="STR_NREEP_IN_HINT">
@@ -8609,6 +8609,202 @@
 		</Key>
 	</Package>
 
+	<!-- pSiKO FOB -->
+	<Package name="LRX_FOB">
+		<Key ID="STR_FOB_CONSTRUCTION_TOO_MANY_WALLS">
+			<Original>Cannot start Construction!\nToo many walls/sandbags nearby!</Original>
+			<French>Impossible de commencer la construction !\nTrop de murs ou sacs de sable à proximité !</French>
+			<German>Baubeginn nicht möglich!\nZu viele Wände oder Sandsäcke in der Nähe!</German>
+			<Spanish>¡No se puede iniciar la construcción!\n¡Demasiadas paredes o sacos de arena cerca!</Spanish>
+			<Russian>Невозможно начать строительство!\nСлишком много стен или мешков с песком поблизости!</Russian>
+			<Chinesesimp>无法开始建造！\n附近有太多墙体或沙袋！</Chinesesimp>
+			<Chinese>無法開始建造！\n附近有太多牆體或沙袋！</Chinese>
+			<Japanese>建設を開始できません！\n近くに壁や土嚢が多すぎます！</Japanese>
+			<Portuguese>Não é possível iniciar a construção!\nMuitos muros ou sacos de areia por perto!</Portuguese>
+			<Czech>Nelze zahájit stavbu!\nPříliš mnoho zdí nebo pytlů s pískem v okolí!</Czech>
+		</Key>
+		<Key ID="STR_FOB_ERROR_INVALID_DATA">
+			<Original>Error: Invalid data!</Original>
+			<French>Erreur : Données invalides !</French>
+			<German>Fehler: Ungültige Daten!</German>
+			<Spanish>Error: ¡Datos no válidos!</Spanish>
+			<Russian>Ошибка: Недопустимые данные!</Russian>
+			<Chinesesimp>错误：数据无效！</Chinesesimp>
+			<Chinese>錯誤：資料無效！</Chinese>
+			<Japanese>エラー：無効なデータ！</Japanese>
+			<Portuguese>Erro: Dados inválidos!</Portuguese>
+			<Czech>Chyba: Neplatná data!</Czech>
+		</Key>
+		<Key ID="STR_FOB_BUILD_STATUS">
+			<Original>%1 Build %2 (%3 objects) on FOB %4</Original>
+			<French>%1 a construit %2 (composé de %3 éléments) sur la FOB %4</French>
+			<German>%1 errichtet %2 (insgesamt %3 Objekte) auf FOB %4</German>
+			<Spanish>%1 ha construido %2 (con %3 objetos) en la FOB %4</Spanish>
+			<Russian>%1 построил %2 (в количестве %3 объектов) на базе FOB %4</Russian>
+			<Chinesesimp>%1 在前线基地 %4 建造了 %2（共 %3 个部件）</Chinesesimp>
+			<Chinese>%1 在前線基地 %4 建造了 %2（共 %3 個部件）</Chinese>
+			<Japanese>%1 が FOB %4 に %2（全%3個のオブジェクト）を建設しました</Japanese>
+			<Portuguese>%1 construiu %2 (com %3 itens) na base avançada %4</Portuguese>
+			<Czech>%1 postavil %2 (celkem %3 objektů) na základně FOB %4</Czech>
+		</Key>
+		<Key ID="STR_FOB_DEFENSE_TEMPLATE_INFO">
+			<Original>Defense Template: %1\nCreated by: %2\nThanks to him !!</Original>
+			<French>Modèle de défense : %1\nCréé par : %2\nMerci à lui !!</French>
+			<German>Verteidigungsvorlage: %1\nErstellt von: %2\nVielen Dank an ihn!!</German>
+			<Spanish>Plantilla de defensa: %1\nCreada por: %2\n¡Gracias a él!</Spanish>
+			<Russian>Шаблон обороны: %1\nСоздан: %2\nСпасибо ему!!</Russian>
+			<Chinesesimp>防御模板：%1\n创建者：%2\n感谢他的贡献！</Chinesesimp>
+			<Chinese>防禦模板：%1\n創建者：%2\n感謝他的貢獻！</Chinese>
+			<Japanese>防衛テンプレート: %1\n作成者: %2\n彼に感謝！！</Japanese>
+			<Portuguese>Modelo de defesa: %1\nCriado por: %2\nObrigado a ele!!</Portuguese>
+			<Czech>Obranná šablona: %1\nVytvořil: %2\nDíky němu!!</Czech>
+		</Key>
+		<Key ID="STR_FOB_CONSTRUCTION_IN_PROGRESS">
+			<Original>Construction in progress, %1 objects left...</Original>
+			<French>Construction en cours, il reste %1 objets...</French>
+			<German>Bau läuft, noch %1 Objekte übrig...</German>
+			<Spanish>Construcción en curso, quedan %1 objetos...</Spanish>
+			<Russian>Идёт строительство, осталось %1 объектов...</Russian>
+			<Chinesesimp>建造进行中，剩余 %1 个部件...</Chinesesimp>
+			<Chinese>建造進行中，剩餘 %1 個部件...</Chinese>
+			<Japanese>建設中、残り %1 個のオブジェクト...</Japanese>
+			<Portuguese>Construção em andamento, faltam %1 objetos...</Portuguese>
+			<Czech>Stavba probíhá, zbývá %1 objektů...</Czech>
+		</Key>
+		<Key ID="STR_FOB_DEFENSE_TEMPLATE_REJECTED">
+			<Original>Defense Template: %1 - Rejected item: %2</Original>
+			<French>Modèle de défense : %1 - Élément refusé : %2</French>
+			<German>Verteidigungsvorlage: %1 - Abgelehntes Objekt: %2</German>
+			<Spanish>Plantilla de defensa: %1 - Objeto rechazado: %2</Spanish>
+			<Russian>Шаблон обороны: %1 — Отклонённый объект: %2</Russian>
+			<Chinesesimp>防御模板：%1 - 被拒绝的对象：%2</Chinesesimp>
+			<Chinese>防禦模板：%1 - 被拒絕的對象：%2</Chinese>
+			<Japanese>防衛テンプレート: %1 - 却下された項目: %2</Japanese>
+			<Portuguese>Modelo de defesa: %1 - Item rejeitado: %2</Portuguese>
+			<Czech>Obranná šablona: %1 - Zamítnutý objekt: %2</Czech>
+		</Key>
+		<Key ID="STR_FOB_CONSTRUCTION_COMPLETED">
+			<Original>Construction completed.</Original>
+			<French>Construction terminée.</French>
+			<German>Bau abgeschlossen.</German>
+			<Spanish>Construcción completada.</Spanish>
+			<Russian>Строительство завершено.</Russian>
+			<Chinesesimp>建造完成。</Chinesesimp>
+			<Chinese>建造完成。</Chinese>
+			<Japanese>建設完了。</Japanese>
+			<Portuguese>Construção concluída.</Portuguese>
+			<Czech>Stavba dokončena.</Czech>
+		</Key>
+		<Key ID="STR_FOB_REMOVE_GARRISON_TOOLTIP">
+			<Original>Remove Defenses.</Original>
+			<French>Retirer la garnison.</French>
+			<German>Garnison entfernen.</German>
+			<Spanish>Retirar la guarnición.</Spanish>
+			<Russian>Убрать гарнизон.</Russian>
+			<Chinesesimp>移除守军。</Chinesesimp>
+			<Chinese>移除守軍。</Chinese>
+			<Japanese>守備隊を撤去する。</Japanese>
+			<Portuguese>Remover guarnição.</Portuguese>
+			<Czech>Odebrat posádku.</Czech>
+		</Key>
+		<Key ID="STR_FOB_SET_LIGHT_GARRISON">
+			<Original>Set Light Defenses for %1 Ammo.</Original>
+			<French>Déployer une petite garnison pour %1 munitions.</French>
+			<German>Leichte Garnison für %1 Munition einsetzen.</German>
+			<Spanish>Asignar una guarnición ligera por %1 munición.</Spanish>
+			<Russian>Выставить лёгкий гарнизон за %1 боеприпасов.</Russian>
+			<Chinesesimp>部署轻型守军，消耗 %1 弹药。</Chinesesimp>
+			<Chinese>部署輕型守軍，消耗 %1 彈藥。</Chinese>
+			<Japanese>%1 弾薬で軽守備隊を配置。</Japanese>
+			<Portuguese>Designar uma guarnição leve por %1 de munição.</Portuguese>
+			<Czech>Nasadit lehkou posádku za %1 munice.</Czech>
+		</Key>
+		<Key ID="STR_FOB_SET_MEDIUM_GARRISON">
+			<Original>Set Medium Defenses for %1 Ammo.</Original>
+			<French>Déployer une garnison moyenne pour %1 munitions.</French>
+			<German>Mittlere Garnison für %1 Munition einsetzen.</German>
+			<Spanish>Asignar una guarnición media por %1 munición.</Spanish>
+			<Russian>Выставить средний гарнизон за %1 боеприпасов.</Russian>
+			<Chinesesimp>部署中型守军，消耗 %1 弹药。</Chinesesimp>
+			<Chinese>部署中型守軍，消耗 %1 彈藥。</Chinese>
+			<Japanese>%1 弾薬で中型守備隊を配置。</Japanese>
+			<Portuguese>Designar uma guarnição média por %1 de munição.</Portuguese>
+			<Czech>Nasadit střední posádku za %1 munice.</Czech>
+		</Key>
+		<Key ID="STR_FOB_SET_HEAVY_GARRISON">
+			<Original>Set Heavy Defenses for %1 Ammo.</Original>
+			<French>Déployer une garnison lourde pour %1 munitions.</French>
+			<German>Schwere Garnison für %1 Munition einsetzen.</German>
+			<Spanish>Asignar una guarnición pesada por %1 munición.</Spanish>
+			<Russian>Выставить тяжёлый гарнизон за %1 боеприпасов.</Russian>
+			<Chinesesimp>部署重型守军，消耗 %1 弹药。</Chinesesimp>
+			<Chinese>部署重型守軍，消耗 %1 彈藥。</Chinese>
+			<Japanese>%1 弾薬で重守備隊を配置。</Japanese>
+			<Portuguese>Designar uma guarnição pesada por %1 de munição.</Portuguese>
+			<Czech>Nasadit těžkou posádku za %1 munice.</Czech>
+		</Key>
+		<Key ID="STR_FOB_REMOVE_GARRISON_CONFIRM">
+			<Original>You Remove Defenses from %1.</Original>
+			<French>Vous avez retiré la garnison de %1.</French>
+			<German>Du hast die Garnison aus %1 entfernt.</German>
+			<Spanish>Has retirado la guarnición de %1.</Spanish>
+			<Russian>Вы убрали гарнизон из %1.</Russian>
+			<Chinesesimp>你已从 %1 移除守军。</Chinesesimp>
+			<Chinese>你已從 %1 移除守軍。</Chinese>
+			<Japanese>%1 から守備隊を撤去しました。</Japanese>
+			<Portuguese>Você removeu a guarnição de %1.</Portuguese>
+			<Czech>Odstranil jsi posádku z %1.</Czech>
+		</Key>
+		<Key ID="STR_FOB_PLAYER_SET_GARRISON">
+			<Original>Player %1 Set %2 Defenses on %3.</Original>
+			<French>Le joueur %1 a déployé une garnison %2 sur %3.</French>
+			<German>Spieler %1 hat %2 Garnison auf %3 eingesetzt.</German>
+			<Spanish>El jugador %1 asignó una guarnición %2 en %3.</Spanish>
+			<Russian>Игрок %1 разместил гарнизон %2 на %3.</Russian>
+			<Chinesesimp>玩家 %1 在 %3 部署了 %2 守军。</Chinesesimp>
+			<Chinese>玩家 %1 在 %3 部署了 %2 守軍。</Chinese>
+			<Japanese>プレイヤー %1 が %3 に %2 守備隊を配置しました。</Japanese>
+			<Portuguese>O jogador %1 designou uma guarnição %2 em %3.</Portuguese>
+			<Czech>Hráč %1 umístil %2 posádku na %3.</Czech>
+		</Key>
+		<Key ID="STR_FOB_MAX_GARRISON_REACHED">
+			<Original>You reach the Maximum Defenses limit (%1)!</Original>
+			<French>Vous avez atteint la limite maximale de garnison (%1) !</French>
+			<German>Du hast das maximale Garnisonslimit erreicht (%1)!</German>
+			<Spanish>¡Has alcanzado el límite máximo de guarniciones (%1)!</Spanish>
+			<Russian>Достигнут лимит гарнизона (%1)!</Russian>
+			<Chinesesimp>你已达到最大守军数量限制（%1）！</Chinesesimp>
+			<Chinese>你已達到最大守軍數量限制（%1）！</Chinese>
+			<Japanese>守備隊の最大数制限（%1）に達しました！</Japanese>
+			<Portuguese>Você atingiu o limite máximo de guarnições (%1)!</Portuguese>
+			<Czech>Dosáhl jsi maximálního limitu posádky (%1)!</Czech>
+		</Key>
+		<Key ID="STR_FOB_DEFENSE_REMOVED">
+			<Original>Defenses Removed...</Original>
+			<French>Défenses supprimées...</French>
+			<German>Verteidigungen entfernt...</German>
+			<Spanish>Defensas eliminadas...</Spanish>
+			<Russian>Укрепления удалены...</Russian>
+			<Chinesesimp>防御工事已拆除……</Chinesesimp>
+			<Chinese>防禦工事已拆除……</Chinese>
+			<Japanese>防御設備を撤去しました...</Japanese>
+			<Portuguese>Defesas removidas...</Portuguese>
+			<Czech>Obrana odstraněna...</Czech>
+		</Key>
+		<Key ID="STR_FOB_INITIALIZED">
+			<Original>-------- LRX FOB Initialized --------</Original>
+			<French>-------- LRX FOB initialisée --------</French>
+			<German>-------- LRX FOB initialisiert --------</German>
+			<Spanish>-------- LRX FOB iniciada --------</Spanish>
+			<Russian>-------- LRX FOB запущена --------</Russian>
+			<Chinesesimp>-------- LRX FOB 已初始化 --------</Chinesesimp>
+			<Chinese>-------- LRX FOB 已初始化 --------</Chinese>
+			<Japanese>-------- LRX FOB が起動しました --------</Japanese>
+			<Portuguese>-------- LRX FOB inicializada --------</Portuguese>
+			<Czech>-------- LRX FOB inicializována --------</Czech>
+		</Key>
+	</Package>
+	
 	<!-- pSiKO AI Revive -->
 	<Package name="LRX_PAR">
 		<Key ID="STR_PAR_Need_Medic1">
