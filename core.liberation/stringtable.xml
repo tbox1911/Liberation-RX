@@ -7189,40 +7189,6 @@
 			<Czech>Přemalovat</Czech>
 		</Key>
 
-		<!-- JKB_dialog -->
-		<Key ID="STR_JKB_MENU">
-			<Original>-- Juke Box --</Original>
-			<Russian>-- Музыка</Russian>
-			<Chinesesimp>-- 音乐播放器 --</Chinesesimp>
-			<Chinese>-- 音樂播放器 --</Chinese>
-			<Portuguese>-- Juke Box --</Portuguese>
-			<Czech>-- Juke Box --</Czech>
-		</Key>
-		<Key ID="STR_JKB_ACTION">
-			<Original>Open JukeBox</Original>
-			<Russian>Открыть Музыку</Russian>
-			<Chinesesimp>打开音乐播放器</Chinesesimp>
-			<Chinese>打開音樂播放器</Chinese>
-			<Portuguese>Abrir Juke Box</Portuguese>
-			<Czech>Otevřete JukeBox</Czech>
-		</Key>
-		<Key ID="STR_JKB_START">
-			<Original>Play</Original>
-			<Russian>Play</Russian>
-			<Chinesesimp>播放</Chinesesimp>
-			<Chinese>播放</Chinese>
-			<Portuguese>Jogar</Portuguese>
-			<Czech>Play</Czech>
-		</Key>
-		<Key ID="STR_JKB_STOP">
-			<Original>Stop</Original>
-			<Russian>Stop</Russian>
-			<Chinesesimp>暂停</Chinesesimp>
-			<Chinese>暫停</Chinese>
-			<Portuguese>Pare</Portuguese>
-			<Czech>Stop</Czech>
-		</Key>
-
 		<!-- liberation_airdrop.hpp -->
 		<Key ID="STR_AIRDROP_CANCEL">
 			<Original>Cancel</Original>
@@ -8556,7 +8522,7 @@
 			<Czech>Počkám zde, až se vrátíte s %1, prosím, pospěšte si!</Czech>
 		</Key>
 	</Package>
-
+	
 	<!-- pSiKO Earplugs -->
 	<Package name="NREEarplugs">
 		<Key ID="STR_NREEP_IN_HINT">
@@ -8609,6 +8575,470 @@
 		</Key>
 	</Package>
 
+	<!-- pSiKO FOB -->
+	<Package name="LRX_FOB">
+		<Key ID="STR_FOB_CONSTRUCTION_TOO_MANY_WALLS">
+			<Original>Cannot start Construction!\nToo many walls/sandbags nearby!</Original>
+			<French>Impossible de commencer la construction !\nTrop de murs ou sacs de sable à proximité !</French>
+			<German>Baubeginn nicht möglich!\nZu viele Wände oder Sandsäcke in der Nähe!</German>
+			<Spanish>¡No se puede iniciar la construcción!\n¡Demasiadas paredes o sacos de arena cerca!</Spanish>
+			<Russian>Невозможно начать строительство!\nСлишком много стен или мешков с песком поблизости!</Russian>
+			<Chinesesimp>无法开始建造！\n附近有太多墙体或沙袋！</Chinesesimp>
+			<Chinese>無法開始建造！\n附近有太多牆體或沙袋！</Chinese>
+			<Japanese>建設を開始できません！\n近くに壁や土嚢が多すぎます！</Japanese>
+			<Portuguese>Não é possível iniciar a construção!\nMuitos muros ou sacos de areia por perto!</Portuguese>
+			<Czech>Nelze zahájit stavbu!\nPříliš mnoho zdí nebo pytlů s pískem v okolí!</Czech>
+		</Key>
+		<Key ID="STR_FOB_ERROR_INVALID_DATA">
+			<Original>Error: Invalid data!</Original>
+			<French>Erreur : Données invalides !</French>
+			<German>Fehler: Ungültige Daten!</German>
+			<Spanish>Error: ¡Datos no válidos!</Spanish>
+			<Russian>Ошибка: Недопустимые данные!</Russian>
+			<Chinesesimp>错误：数据无效！</Chinesesimp>
+			<Chinese>錯誤：資料無效！</Chinese>
+			<Japanese>エラー：無効なデータ！</Japanese>
+			<Portuguese>Erro: Dados inválidos!</Portuguese>
+			<Czech>Chyba: Neplatná data!</Czech>
+		</Key>
+		<Key ID="STR_FOB_BUILD_STATUS">
+			<Original>%1 Build %2 (%3 objects) on FOB %4</Original>
+			<French>%1 a construit %2 (composé de %3 éléments) sur la FOB %4</French>
+			<German>%1 errichtet %2 (insgesamt %3 Objekte) auf FOB %4</German>
+			<Spanish>%1 ha construido %2 (con %3 objetos) en la FOB %4</Spanish>
+			<Russian>%1 построил %2 (в количестве %3 объектов) на базе FOB %4</Russian>
+			<Chinesesimp>%1 在前线基地 %4 建造了 %2（共 %3 个部件）</Chinesesimp>
+			<Chinese>%1 在前線基地 %4 建造了 %2（共 %3 個部件）</Chinese>
+			<Japanese>%1 が FOB %4 に %2（全%3個のオブジェクト）を建設しました</Japanese>
+			<Portuguese>%1 construiu %2 (com %3 itens) na base avançada %4</Portuguese>
+			<Czech>%1 postavil %2 (celkem %3 objektů) na základně FOB %4</Czech>
+		</Key>
+		<Key ID="STR_FOB_DEFENSE_TEMPLATE_INFO">
+			<Original>Defense Template: %1\nCreated by: %2\nThanks to him !!</Original>
+			<French>Modèle de défense : %1\nCréé par : %2\nMerci à lui !!</French>
+			<German>Verteidigungsvorlage: %1\nErstellt von: %2\nVielen Dank an ihn!!</German>
+			<Spanish>Plantilla de defensa: %1\nCreada por: %2\n¡Gracias a él!</Spanish>
+			<Russian>Шаблон обороны: %1\nСоздан: %2\nСпасибо ему!!</Russian>
+			<Chinesesimp>防御模板：%1\n创建者：%2\n感谢他的贡献！</Chinesesimp>
+			<Chinese>防禦模板：%1\n創建者：%2\n感謝他的貢獻！</Chinese>
+			<Japanese>防衛テンプレート: %1\n作成者: %2\n彼に感謝！！</Japanese>
+			<Portuguese>Modelo de defesa: %1\nCriado por: %2\nObrigado a ele!!</Portuguese>
+			<Czech>Obranná šablona: %1\nVytvořil: %2\nDíky němu!!</Czech>
+		</Key>
+		<Key ID="STR_FOB_CONSTRUCTION_IN_PROGRESS">
+			<Original>Construction in progress, %1 objects left...</Original>
+			<French>Construction en cours, il reste %1 objets...</French>
+			<German>Bau läuft, noch %1 Objekte übrig...</German>
+			<Spanish>Construcción en curso, quedan %1 objetos...</Spanish>
+			<Russian>Идёт строительство, осталось %1 объектов...</Russian>
+			<Chinesesimp>建造进行中，剩余 %1 个部件...</Chinesesimp>
+			<Chinese>建造進行中，剩餘 %1 個部件...</Chinese>
+			<Japanese>建設中、残り %1 個のオブジェクト...</Japanese>
+			<Portuguese>Construção em andamento, faltam %1 objetos...</Portuguese>
+			<Czech>Stavba probíhá, zbývá %1 objektů...</Czech>
+		</Key>
+		<Key ID="STR_FOB_DEFENSE_TEMPLATE_REJECTED">
+			<Original>Defense Template: %1 - Rejected item: %2</Original>
+			<French>Modèle de défense : %1 - Élément refusé : %2</French>
+			<German>Verteidigungsvorlage: %1 - Abgelehntes Objekt: %2</German>
+			<Spanish>Plantilla de defensa: %1 - Objeto rechazado: %2</Spanish>
+			<Russian>Шаблон обороны: %1 — Отклонённый объект: %2</Russian>
+			<Chinesesimp>防御模板：%1 - 被拒绝的对象：%2</Chinesesimp>
+			<Chinese>防禦模板：%1 - 被拒絕的對象：%2</Chinese>
+			<Japanese>防衛テンプレート: %1 - 却下された項目: %2</Japanese>
+			<Portuguese>Modelo de defesa: %1 - Item rejeitado: %2</Portuguese>
+			<Czech>Obranná šablona: %1 - Zamítnutý objekt: %2</Czech>
+		</Key>
+		<Key ID="STR_FOB_CONSTRUCTION_COMPLETED">
+			<Original>Construction completed.</Original>
+			<French>Construction terminée.</French>
+			<German>Bau abgeschlossen.</German>
+			<Spanish>Construcción completada.</Spanish>
+			<Russian>Строительство завершено.</Russian>
+			<Chinesesimp>建造完成。</Chinesesimp>
+			<Chinese>建造完成。</Chinese>
+			<Japanese>建設完了。</Japanese>
+			<Portuguese>Construção concluída.</Portuguese>
+			<Czech>Stavba dokončena.</Czech>
+		</Key>
+		<Key ID="STR_FOB_REMOVE_GARRISON_TOOLTIP">
+			<Original>Remove Defenses.</Original>
+			<French>Retirer la garnison.</French>
+			<German>Garnison entfernen.</German>
+			<Spanish>Retirar la guarnición.</Spanish>
+			<Russian>Убрать гарнизон.</Russian>
+			<Chinesesimp>移除守军。</Chinesesimp>
+			<Chinese>移除守軍。</Chinese>
+			<Japanese>守備隊を撤去する。</Japanese>
+			<Portuguese>Remover guarnição.</Portuguese>
+			<Czech>Odebrat posádku.</Czech>
+		</Key>
+		<Key ID="STR_FOB_SET_LIGHT_GARRISON">
+			<Original>Set Light Defenses for %1 Ammo.</Original>
+			<French>Déployer une petite garnison pour %1 munitions.</French>
+			<German>Leichte Garnison für %1 Munition einsetzen.</German>
+			<Spanish>Asignar una guarnición ligera por %1 munición.</Spanish>
+			<Russian>Выставить лёгкий гарнизон за %1 боеприпасов.</Russian>
+			<Chinesesimp>部署轻型守军，消耗 %1 弹药。</Chinesesimp>
+			<Chinese>部署輕型守軍，消耗 %1 彈藥。</Chinese>
+			<Japanese>%1 弾薬で軽守備隊を配置。</Japanese>
+			<Portuguese>Designar uma guarnição leve por %1 de munição.</Portuguese>
+			<Czech>Nasadit lehkou posádku za %1 munice.</Czech>
+		</Key>
+		<Key ID="STR_FOB_SET_MEDIUM_GARRISON">
+			<Original>Set Medium Defenses for %1 Ammo.</Original>
+			<French>Déployer une garnison moyenne pour %1 munitions.</French>
+			<German>Mittlere Garnison für %1 Munition einsetzen.</German>
+			<Spanish>Asignar una guarnición media por %1 munición.</Spanish>
+			<Russian>Выставить средний гарнизон за %1 боеприпасов.</Russian>
+			<Chinesesimp>部署中型守军，消耗 %1 弹药。</Chinesesimp>
+			<Chinese>部署中型守軍，消耗 %1 彈藥。</Chinese>
+			<Japanese>%1 弾薬で中型守備隊を配置。</Japanese>
+			<Portuguese>Designar uma guarnição média por %1 de munição.</Portuguese>
+			<Czech>Nasadit střední posádku za %1 munice.</Czech>
+		</Key>
+		<Key ID="STR_FOB_SET_HEAVY_GARRISON">
+			<Original>Set Heavy Defenses for %1 Ammo.</Original>
+			<French>Déployer une garnison lourde pour %1 munitions.</French>
+			<German>Schwere Garnison für %1 Munition einsetzen.</German>
+			<Spanish>Asignar una guarnición pesada por %1 munición.</Spanish>
+			<Russian>Выставить тяжёлый гарнизон за %1 боеприпасов.</Russian>
+			<Chinesesimp>部署重型守军，消耗 %1 弹药。</Chinesesimp>
+			<Chinese>部署重型守軍，消耗 %1 彈藥。</Chinese>
+			<Japanese>%1 弾薬で重守備隊を配置。</Japanese>
+			<Portuguese>Designar uma guarnição pesada por %1 de munição.</Portuguese>
+			<Czech>Nasadit těžkou posádku za %1 munice.</Czech>
+		</Key>
+		<Key ID="STR_FOB_REMOVE_GARRISON_CONFIRM">
+			<Original>You Remove Defenses from %1.</Original>
+			<French>Vous avez retiré la garnison de %1.</French>
+			<German>Du hast die Garnison aus %1 entfernt.</German>
+			<Spanish>Has retirado la guarnición de %1.</Spanish>
+			<Russian>Вы убрали гарнизон из %1.</Russian>
+			<Chinesesimp>你已从 %1 移除守军。</Chinesesimp>
+			<Chinese>你已從 %1 移除守軍。</Chinese>
+			<Japanese>%1 から守備隊を撤去しました。</Japanese>
+			<Portuguese>Você removeu a guarnição de %1.</Portuguese>
+			<Czech>Odstranil jsi posádku z %1.</Czech>
+		</Key>
+		<Key ID="STR_FOB_PLAYER_SET_GARRISON">
+			<Original>Player %1 Set %2 Defenses on %3.</Original>
+			<French>Le joueur %1 a déployé une garnison %2 sur %3.</French>
+			<German>Spieler %1 hat %2 Garnison auf %3 eingesetzt.</German>
+			<Spanish>El jugador %1 asignó una guarnición %2 en %3.</Spanish>
+			<Russian>Игрок %1 разместил гарнизон %2 на %3.</Russian>
+			<Chinesesimp>玩家 %1 在 %3 部署了 %2 守军。</Chinesesimp>
+			<Chinese>玩家 %1 在 %3 部署了 %2 守軍。</Chinese>
+			<Japanese>プレイヤー %1 が %3 に %2 守備隊を配置しました。</Japanese>
+			<Portuguese>O jogador %1 designou uma guarnição %2 em %3.</Portuguese>
+			<Czech>Hráč %1 umístil %2 posádku na %3.</Czech>
+		</Key>
+		<Key ID="STR_FOB_MAX_GARRISON_REACHED">
+			<Original>You reach the Maximum Defenses limit (%1)!</Original>
+			<French>Vous avez atteint la limite maximale de garnison (%1) !</French>
+			<German>Du hast das maximale Garnisonslimit erreicht (%1)!</German>
+			<Spanish>¡Has alcanzado el límite máximo de guarniciones (%1)!</Spanish>
+			<Russian>Достигнут лимит гарнизона (%1)!</Russian>
+			<Chinesesimp>你已达到最大守军数量限制（%1）！</Chinesesimp>
+			<Chinese>你已達到最大守軍數量限制（%1）！</Chinese>
+			<Japanese>守備隊の最大数制限（%1）に達しました！</Japanese>
+			<Portuguese>Você atingiu o limite máximo de guarnições (%1)!</Portuguese>
+			<Czech>Dosáhl jsi maximálního limitu posádky (%1)!</Czech>
+		</Key>
+		<Key ID="STR_FOB_DEFENSE_REMOVED">
+			<Original>Defenses Removed...</Original>
+			<French>Défenses supprimées...</French>
+			<German>Verteidigungen entfernt...</German>
+			<Spanish>Defensas eliminadas...</Spanish>
+			<Russian>Укрепления удалены...</Russian>
+			<Chinesesimp>防御工事已拆除……</Chinesesimp>
+			<Chinese>防禦工事已拆除……</Chinese>
+			<Japanese>防御設備を撤去しました...</Japanese>
+			<Portuguese>Defesas removidas...</Portuguese>
+			<Czech>Obrana odstraněna...</Czech>
+		</Key>
+		<Key ID="STR_FOB_INITIALIZED">
+			<Original>-------- LRX FOB Initialized --------</Original>
+			<French>-------- LRX FOB initialisée --------</French>
+			<German>-------- LRX FOB initialisiert --------</German>
+			<Spanish>-------- LRX FOB iniciada --------</Spanish>
+			<Russian>-------- LRX FOB запущена --------</Russian>
+			<Chinesesimp>-------- LRX FOB 已初始化 --------</Chinesesimp>
+			<Chinese>-------- LRX FOB 已初始化 --------</Chinese>
+			<Japanese>-------- LRX FOB が起動しました --------</Japanese>
+			<Portuguese>-------- LRX FOB inicializada --------</Portuguese>
+			<Czech>-------- LRX FOB inicializována --------</Czech>
+		</Key>
+		<Key ID="STR_FOB_DEFENSE_NAME">
+			<Original>DEFENSE NAME</Original>
+			<French>Nom de la défense</French>
+			<German>Verteidigungsname</German>
+			<Spanish>Nombre de defensa</Spanish>
+			<Russian>Название обороны</Russian>
+			<Chinesesimp>防御名称</Chinesesimp>
+			<Chinese>防禦名稱</Chinese>
+			<Japanese>防衛名</Japanese>
+			<Portuguese>Nome da defesa</Portuguese>
+			<Czech>Název obrany</Czech>
+		</Key>
+		<Key ID="STR_FOB_BUILD">
+			<Original>BUILD</Original>
+			<French>CONSTRUIRE</French>
+			<German>BAUEN</German>
+			<Spanish>CONSTRUIR</Spanish>
+			<Russian>ПОСТРОИТЬ</Russian>
+			<Chinesesimp>建造</Chinesesimp>
+			<Chinese>建造</Chinese>
+			<Japanese>建設</Japanese>
+			<Portuguese>CONSTRUIR</Portuguese>
+			<Czech>Postavit</Czech>
+		</Key>
+		<Key ID="STR_FOB_OK">
+			<Original>OK</Original>
+			<French>OK</French>
+			<German>OK</German>
+			<Spanish>OK</Spanish>
+			<Russian>ОК</Russian>
+			<Chinesesimp>确定</Chinesesimp>
+			<Chinese>確定</Chinese>
+			<Japanese>OK</Japanese>
+			<Portuguese>OK</Portuguese>
+			<Czech>OK</Czech>
+		</Key>
+		<Key ID="STR_FOB_CANCEL">
+			<Original>Cancel</Original>
+			<French>Annuler</French>
+			<German>Abbrechen</German>
+			<Spanish>Cancelar</Spanish>
+			<Russian>Отмена</Russian>
+			<Chinesesimp>取消</Chinesesimp>
+			<Chinese>取消</Chinese>
+			<Japanese>キャンセル</Japanese>
+			<Portuguese>Cancelar</Portuguese>
+			<Czech>Zrušit</Czech>
+		</Key>
+		<Key ID="STR_FOB_SECTORS_LIST">
+			<Original>SECTORS LIST</Original>
+			<French>LISTE DES SECTEURS</French>
+			<German>Sektor-Liste</German>
+			<Spanish>Lista de sectores</Spanish>
+			<Russian>Список секторов</Russian>
+			<Chinesesimp>区域列表</Chinesesimp>
+			<Chinese>區域列表</Chinese>
+			<Japanese>セクター一覧</Japanese>
+			<Portuguese>Lista de Setores</Portuguese>
+			<Czech>Seznam sektorů</Czech>
+		</Key>
+		<Key ID="STR_FOB_OFF">
+			<Original>OFF</Original>
+			<French>OFF</French>
+			<German>Aus</German>
+			<Spanish>Apagado</Spanish>
+			<Russian>Выкл</Russian>
+			<Chinesesimp>关闭</Chinesesimp>
+			<Chinese>關閉</Chinese>
+			<Japanese>オフ</Japanese>
+			<Portuguese>Desligado</Portuguese>
+			<Czech>Vypnuto</Czech>
+		</Key>
+		<Key ID="STR_FOB_LIGHT">
+			<Original>Light</Original>
+			<French>Léger</French>
+			<German>Leicht</German>
+			<Spanish>Ligero</Spanish>
+			<Russian>Лёгкий</Russian>
+			<Chinesesimp>轻型</Chinesesimp>
+			<Chinese>輕型</Chinese>
+			<Japanese>軽量</Japanese>
+			<Portuguese>Leve</Portuguese>
+			<Czech>Lehký</Czech>
+		</Key>
+		<Key ID="STR_FOB_MEDIUM">
+			<Original>Medium</Original>
+			<French>Moyen</French>
+			<German>Mittel</German>
+			<Spanish>Medio</Spanish>
+			<Russian>Средний</Russian>
+			<Chinesesimp>中型</Chinesesimp>
+			<Chinese>中型</Chinese>
+			<Japanese>中型</Japanese>
+			<Portuguese>Médio</Portuguese>
+			<Czech>Střední</Czech>
+		</Key>
+		<Key ID="STR_FOB_HEAVY">
+			<Original>Heavy</Original>
+			<French>Lourd</French>
+			<German>Schwer</German>
+			<Spanish>Pesado</Spanish>
+			<Russian>Тяжёлый</Russian>
+			<Chinesesimp>重型</Chinesesimp>
+			<Chinese>重型</Chinese>
+			<Japanese>重量</Japanese>
+			<Portuguese>Pesado</Portuguese>
+			<Czech>Těžký</Czech>
+		</Key>
+		<Key ID="STR_FOB_EXIT">
+			<Original>Exit</Original>
+			<French>Quitter</French>
+			<German>Beenden</German>
+			<Spanish>Salir</Spanish>
+			<Russian>Выход</Russian>
+			<Chinesesimp>退出</Chinesesimp>
+			<Chinese>退出</Chinese>
+			<Japanese>終了</Japanese>
+			<Portuguese>Sair</Portuguese>
+			<Czech>Ukončit</Czech>
+		</Key>
+	</Package>
+	
+	<!-- pSiKO JKB -->
+	<Package name="LRX_JKB">
+		<Key ID="STR_JKB_NOW_PLAYING">
+			<Original>Now Playing:\n%1</Original>
+			<French>Lecture en cours :\n%1</French>
+			<German>Jetzt läuft:\n%1</German>
+			<Spanish>Reproduciendo:\n%1</Spanish>
+			<Russian>Сейчас играет:\n%1</Russian>
+			<Chinesesimp>正在播放：\n%1</Chinesesimp>
+			<Chinese>正在播放：\n%1</Chinese>
+			<Japanese>再生中：\n%1</Japanese>
+			<Portuguese>Tocando agora:\n%1</Portuguese>
+			<Czech>Nyní hraje:\n%1</Czech>
+		</Key>
+		<Key ID="STR_JKB_NOW_LISTENING">
+			<Original>Now Playing:</Original>
+			<French>Lecture en cours :</French>
+			<German>Jetzt läuft:</German>
+			<Spanish>Reproduciendo:</Spanish>
+			<Russian>Сейчас играет:</Russian>
+			<Chinesesimp>正在播放：</Chinesesimp>
+			<Chinese>正在播放：</Chinese>
+			<Japanese>再生中：</Japanese>
+			<Portuguese>Tocando agora:</Portuguese>
+			<Czech>Nyní hraje:</Czech>
+		</Key>
+		<Key ID="STR_JKB_JUKEBOX_INITIALIZED">
+			<Original>-------- Juke Box Initialized --------</Original>
+			<French>-------- Juke-box initialisé --------</French>
+			<German>-------- Jukebox initialisiert --------</German>
+			<Spanish>-------- Juke Box iniciada --------</Spanish>
+			<Russian>-------- Джукбокс запущен --------</Russian>
+			<Chinesesimp>-------- 音乐播放器已初始化 --------</Chinesesimp>
+			<Chinese>-------- 音樂播放器已初始化 --------</Chinese>
+			<Japanese>-------- ジュークボックスが起動しました --------</Japanese>
+			<Portuguese>-------- Juke Box inicializado --------</Portuguese>
+			<Czech>-------- Jukebox inicializován --------</Czech>
+		</Key>
+		<Key ID="STR_JKB_JUKEBOX_MUSIC">
+			<Original>Music in Jukebox: </Original>
+			<French>Musique dans le Jukebox : </French>
+			<German>Musik in der Jukebox: </German>
+			<Spanish>Música en la Jukebox: </Spanish>
+			<Russian>Музыка в джукбоксе: </Russian>
+			<Chinesesimp>音乐播放器音乐：</Chinesesimp>
+			<Chinese>音樂播放器音樂：</Chinese>
+			<Japanese>ジュークボックスの音楽：</Japanese>
+			<Portuguese>Música na Jukebox: </Portuguese>
+			<Czech>Hudba v jukeboxu: </Czech>
+		</Key>
+		<Key ID="STR_JKB_AUTOPLAY">
+			<Original>Auto play</Original>
+			<French>Lecture automatique</French>
+			<German>Automatisch abspielen</German>
+			<Spanish>Reproducción automática</Spanish>
+			<Russian>Автовоспроизведение</Russian>
+			<Chinesesimp>自动播放</Chinesesimp>
+			<Chinese>自動播放</Chinese>
+			<Japanese>自動再生</Japanese>
+			<Portuguese>Reprodução automática</Portuguese>
+			<Czech>Automatické přehrávání</Czech>
+		</Key>
+		<Key ID="STR_JKB_RANDOM">
+			<Original>Random</Original>
+			<French>Aléatoire</French>
+			<German>Zufällig</German>
+			<Spanish>Aleatorio</Spanish>
+			<Russian>Случайный</Russian>
+			<Chinesesimp>随机播放</Chinesesimp>
+			<Chinese>隨機播放</Chinese>
+			<Japanese>ランダム</Japanese>
+			<Portuguese>Aleatório</Portuguese>
+			<Czech>Náhodně</Czech>
+		</Key>
+		<Key ID="STR_JKB_MENU">
+			<Original>-- Juke Box --</Original>
+			<Russian>-- Музыка</Russian>
+			<Chinesesimp>-- 音乐播放器 --</Chinesesimp>
+			<Chinese>-- 音樂播放器 --</Chinese>
+			<Portuguese>-- Juke Box --</Portuguese>
+			<Czech>-- Juke Box --</Czech>
+		</Key>
+		<Key ID="STR_JKB_ACTION">
+			<Original>Open JukeBox</Original>
+			<Russian>Открыть Музыку</Russian>
+			<Chinesesimp>打开音乐播放器</Chinesesimp>
+			<Chinese>打開音樂播放器</Chinese>
+			<Portuguese>Abrir Juke Box</Portuguese>
+			<Czech>Otevřete JukeBox</Czech>
+		</Key>
+		<Key ID="STR_JKB_START">
+			<Original>Play</Original>
+			<Russian>Play</Russian>
+			<Chinesesimp>播放</Chinesesimp>
+			<Chinese>播放</Chinese>
+			<Portuguese>Jogar</Portuguese>
+			<Czech>Play</Czech>
+		</Key>
+		<Key ID="STR_JKB_STOP">
+			<Original>Stop</Original>
+			<Russian>Stop</Russian>
+			<Chinesesimp>暂停</Chinesesimp>
+			<Chinese>暫停</Chinese>
+			<Portuguese>Pare</Portuguese>
+			<Czech>Stop</Czech>
+		</Key>
+	</Package>
+
+	<!-- pSiKO KEY -->
+	<Package name="LRX_KEY">
+		<Key ID="STR_KEY_HUD_TOGGLE">
+			<Original>HUD Toggle %1.</Original>
+			<French>Affichage tête haute : %1.</French>
+			<German>HUD umgeschaltet: %1.</German>
+			<Spanish>HUD cambiado: %1.</Spanish>
+			<Russian>Интерфейс переключен: %1.</Russian>
+			<Chinesesimp>HUD 已切换：%1。</Chinesesimp>
+			<Chinese>HUD 已切換：%1。</Chinese>
+			<Japanese>HUD を切り替えました: %1。</Japanese>
+			<Portuguese>HUD alternado: %1.</Portuguese>
+			<Czech>HUD přepnuto: %1.</Czech>
+		</Key>
+		<Key ID="STR_KEY_TAKE_SCREENSHOT">
+			<Original>Take screenshot: %1.</Original>
+			<French>Capture d'écran : %1.</French>
+			<German>Screenshot aufgenommen: %1.</German>
+			<Spanish>Captura de pantalla: %1.</Spanish>
+			<Russian>Скриншот сделан: %1.</Russian>
+			<Chinesesimp>已截图：%1。</Chinesesimp>
+			<Chinese>已截圖：%1。</Chinese>
+			<Japanese>スクリーンショットを撮影しました: %1。</Japanese>
+			<Portuguese>Captura de tela: %1.</Portuguese>
+			<Czech>Snímek obrazovky: %1.</Czech>
+		</Key>
+		<Key ID="STR_KEY_LRX_DIAG_CALLED">
+			<Original>LRX Diag called.</Original>
+			<French>Diagnostic LRX appelé.</French>
+			<German>LRX-Diagnose aufgerufen.</German>
+			<Spanish>Diagnóstico LRX activado.</Spanish>
+			<Russian>Вызван LRX-диагностика.</Russian>
+			<Chinesesimp>已调用 LRX 调试功能。</Chinesesimp>
+			<Chinese>已調用 LRX 調試功能。</Chinese>
+			<Japanese>LRX 診断が呼び出されました。</Japanese>
+			<Portuguese>Diagnóstico LRX acionado.</Portuguese>
+			<Czech>LRX diagnostika spuštěna.</Czech>
+		</Key>
+	</Package>
+	
 	<!-- pSiKO AI Revive -->
 	<Package name="LRX_PAR">
 		<Key ID="STR_PAR_Need_Medic1">

@@ -83,11 +83,11 @@ addMusicEventHandler ["MusicStop", {
 		} else {
 			playMusic _classname;
 		};
-		hintSilent format ["Now Playing:\n%1", JKB_current_music splitString "-" select 0];
+		hintSilent format [localize "STR_JKB_NOW_PLAYING", JKB_current_music splitString "-" select 0];
 	} else {
 		[JKB_current_sound] spawn JKB_stopMusic;
 	};
 }];
 
 waitUntil {!(isNull (findDisplay 46))};
-systemChat "-------- Juke Box Initialized --------";
+systemChat localize "STR_JKB_JUKEBOX_INITIALIZED";

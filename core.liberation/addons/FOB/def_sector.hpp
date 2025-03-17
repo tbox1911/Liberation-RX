@@ -29,7 +29,7 @@ class Sector_Defense {
 
 	class controls {
 		class Header: StdHeader {
-			text = "SECTORS LIST";
+			text = "$STR_FOB_SECTORS_LIST";
 			x = 0.198875 * safezoneW + safezoneX;
 			y = 0.1414 * safezoneH + safezoneY;
 			w = 0.2340 * safezoneW;
@@ -64,7 +64,7 @@ class Sector_Defense {
 
 		class Button0 : StdButton {
 			idc = 120;
-			text = "OFF";
+			text = "$STR_FOB_OFF";
 			action = "build_type = 0; build_action = 1";
 			x = 0.3572 * safezoneW + safezoneX;
 			y = 0.2074 * safezoneH + safezoneY;
@@ -74,7 +74,7 @@ class Sector_Defense {
 
 		class Button1 : StdButton {
 			idc = 121;
-			text = "Light";
+			text = "$STR_FOB_LIGHT";
 			action = "build_type = 1; build_action = 1";
 			x = 0.3572 * safezoneW + safezoneX;
 			y = 0.2474 * safezoneH + safezoneY;
@@ -84,7 +84,7 @@ class Sector_Defense {
 
 		class Button2 : StdButton {
 			idc = 122;
-			text = "Medium";
+			text = "$STR_FOB_MEDIUM";
 			action = "build_type = 2; build_action = 1";
 			x = 0.3572 * safezoneW + safezoneX;
 			y = 0.2874 * safezoneH + safezoneY;
@@ -94,7 +94,7 @@ class Sector_Defense {
 
 		class Button3 : StdButton {
 			idc = 123;
-			text = "Heavy";
+			text = "$STR_FOB_HEAVY";
 			action = "build_type = 3; build_action = 1";
 			x = 0.3572 * safezoneW + safezoneX;
 			y = 0.3274 * safezoneH + safezoneY;
@@ -103,7 +103,7 @@ class Sector_Defense {
 		};
 
 		class ButtonExit : StdButton {
-			text = "Exit";
+			text = "$STR_FOB_EXIT";
 			action = "closeDialog 0";
 			x = 0.3572 * safezoneW + safezoneX;
 			y = 0.4474 * safezoneH + safezoneY;
