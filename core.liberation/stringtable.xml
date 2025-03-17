@@ -8805,6 +8805,36 @@
 		</Key>
 	</Package>
 	
+	<!-- pSiKO JKB -->
+	<Package name="LRX_JKB">
+		<Key ID="STR_JKB_NOW_PLAYING">
+			<Original>Now Playing:\n%1</Original>
+			<French>Lecture en cours :\n%1</French>
+			<German>Jetzt läuft:\n%1</German>
+			<Spanish>Reproduciendo:\n%1</Spanish>
+			<Russian>Сейчас играет:\n%1</Russian>
+			<Chinesesimp>正在播放：\n%1</Chinesesimp>
+			<Chinese>正在播放：\n%1</Chinese>
+			<Japanese>再生中：\n%1</Japanese>
+			<Portuguese>Tocando agora:\n%1</Portuguese>
+			<Czech>Nyní hraje:\n%1</Czech>
+		</Key>
+		<Key ID="STR_JKB_JUKEBOX_INITIALIZED">
+			<Original>-------- Juke Box Initialized --------</Original>
+			<French>-------- Juke-box initialisé --------</French>
+			<German>-------- Jukebox initialisiert --------</German>
+			<Spanish>-------- Juke Box iniciada --------</Spanish>
+			<Russian>-------- Джукбокс запущен --------</Russian>
+			<Chinesesimp>-------- 点唱机已初始化 --------</Chinesesimp>
+			<Chinese>-------- 點唱機已初始化 --------</Chinese>
+			<Japanese>-------- ジュークボックスが起動しました --------</Japanese>
+			<Portuguese>-------- Juke Box inicializado --------</Portuguese>
+			<Czech>-------- Jukebox inicializován --------</Czech>
+		</Key>
+
+
+	</Package>
+	
 	<!-- pSiKO AI Revive -->
 	<Package name="LRX_PAR">
 		<Key ID="STR_PAR_Need_Medic1">

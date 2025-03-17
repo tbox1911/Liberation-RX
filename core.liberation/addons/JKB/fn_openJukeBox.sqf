@@ -40,7 +40,7 @@ if(!isNull (findDisplay 2306)) then {
 			};
 			JKB_current_music = _title;
 			JKB_last_music = _selected;
-			hintSilent format ["Now Playing:\n%1", JKB_current_music splitString "-" select 0];
+			hintSilent format [localize "STR_JKB_NOW_PLAYING", JKB_current_music splitString "-" select 0];
 			play_music = 0;
 		};
 
