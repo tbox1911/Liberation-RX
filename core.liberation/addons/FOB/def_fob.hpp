@@ -29,7 +29,7 @@ class FOB_Defense {
 
 	class controls {
 		class Header: StdHeader {
-			text = "DEFENSE NAME";
+			text = "$STR_FOB_DEFENSE_NAME";
 			x = 0.198875 * safezoneW + safezoneX;
 			y = 0.1414 * safezoneH + safezoneY;
 			w = 0.1515 * safezoneW;
@@ -64,7 +64,7 @@ class FOB_Defense {
 
 		class SellButton : StdButton {
 			idc = 120;
-			text = "BUILD";
+			text = "$STR_FOB_BUILD";
 			action = "build_action = 1";
 			x = 0.2300 * safezoneW + safezoneX;
 			y = 0.7100 * safezoneH + safezoneY;
@@ -103,7 +103,7 @@ class FOB_Defense {
 			x = 0.58 * safezoneW + safezoneX;
 			y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;
 			w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
-			text = "OK";
+			text = "$STR_FOB_OK";
 			action = "input_save = ctrlText 527;";
 		};
 		class Input_ButtonName_Abort : StdButton {
@@ -111,7 +111,7 @@ class FOB_Defense {
 			x = 0.58 * safezoneW + safezoneX;
 			y = ((BASE_Y + 0.36) * safezoneH) + safezoneY;
 			w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
-			text = "Cancel";
+			text = "$STR_FOB_CANCEL";
 			action = "input_save = 'null';";
 		};
 		class Input_TextField : StdButton {

@@ -8803,6 +8803,126 @@
 			<Portuguese>-------- LRX FOB inicializada --------</Portuguese>
 			<Czech>-------- LRX FOB inicializována --------</Czech>
 		</Key>
+		<Key ID="STR_FOB_DEFENSE_NAME">
+			<Original>DEFENSE NAME</Original>
+			<French>Nom de la défense</French>
+			<German>Verteidigungsname</German>
+			<Spanish>Nombre de defensa</Spanish>
+			<Russian>Название обороны</Russian>
+			<Chinesesimp>防御名称</Chinesesimp>
+			<Chinese>防禦名稱</Chinese>
+			<Japanese>防衛名</Japanese>
+			<Portuguese>Nome da defesa</Portuguese>
+			<Czech>Název obrany</Czech>
+		</Key>
+		<Key ID="STR_FOB_BUILD">
+			<Original>BUILD</Original>
+			<French>CONSTRUIRE</French>
+			<German>BAUEN</German>
+			<Spanish>CONSTRUIR</Spanish>
+			<Russian>ПОСТРОИТЬ</Russian>
+			<Chinesesimp>建造</Chinesesimp>
+			<Chinese>建造</Chinese>
+			<Japanese>建設</Japanese>
+			<Portuguese>CONSTRUIR</Portuguese>
+			<Czech>Postavit</Czech>
+		</Key>
+		<Key ID="STR_FOB_OK">
+			<Original>OK</Original>
+			<French>OK</French>
+			<German>OK</German>
+			<Spanish>OK</Spanish>
+			<Russian>ОК</Russian>
+			<Chinesesimp>确定</Chinesesimp>
+			<Chinese>確定</Chinese>
+			<Japanese>OK</Japanese>
+			<Portuguese>OK</Portuguese>
+			<Czech>OK</Czech>
+		</Key>
+		<Key ID="STR_FOB_CANCEL">
+			<Original>Cancel</Original>
+			<French>Annuler</French>
+			<German>Abbrechen</German>
+			<Spanish>Cancelar</Spanish>
+			<Russian>Отмена</Russian>
+			<Chinesesimp>取消</Chinesesimp>
+			<Chinese>取消</Chinese>
+			<Japanese>キャンセル</Japanese>
+			<Portuguese>Cancelar</Portuguese>
+			<Czech>Zrušit</Czech>
+		</Key>
+		<Key ID="STR_FOB_SECTORS_LIST">
+			<Original>SECTORS LIST</Original>
+			<French>LISTE DES SECTEURS</French>
+			<German>Sektor-Liste</German>
+			<Spanish>Lista de sectores</Spanish>
+			<Russian>Список секторов</Russian>
+			<Chinesesimp>区域列表</Chinesesimp>
+			<Chinese>區域列表</Chinese>
+			<Japanese>セクター一覧</Japanese>
+			<Portuguese>Lista de Setores</Portuguese>
+			<Czech>Seznam sektorů</Czech>
+		</Key>
+		<Key ID="STR_FOB_OFF">
+			<Original>OFF</Original>
+			<French>OFF</French>
+			<German>Aus</German>
+			<Spanish>Apagado</Spanish>
+			<Russian>Выкл</Russian>
+			<Chinesesimp>关闭</Chinesesimp>
+			<Chinese>關閉</Chinese>
+			<Japanese>オフ</Japanese>
+			<Portuguese>Desligado</Portuguese>
+			<Czech>Vypnuto</Czech>
+		</Key>
+		<Key ID="STR_FOB_LIGHT">
+			<Original>Light</Original>
+			<French>Léger</French>
+			<German>Leicht</German>
+			<Spanish>Ligero</Spanish>
+			<Russian>Лёгкий</Russian>
+			<Chinesesimp>轻型</Chinesesimp>
+			<Chinese>輕型</Chinese>
+			<Japanese>軽量</Japanese>
+			<Portuguese>Leve</Portuguese>
+			<Czech>Lehký</Czech>
+		</Key>
+		<Key ID="STR_FOB_MEDIUM">
+			<Original>Medium</Original>
+			<French>Moyen</French>
+			<German>Mittel</German>
+			<Spanish>Medio</Spanish>
+			<Russian>Средний</Russian>
+			<Chinesesimp>中型</Chinesesimp>
+			<Chinese>中型</Chinese>
+			<Japanese>中型</Japanese>
+			<Portuguese>Médio</Portuguese>
+			<Czech>Střední</Czech>
+		</Key>
+		<Key ID="STR_FOB_HEAVY">
+			<Original>Heavy</Original>
+			<French>Lourd</French>
+			<German>Schwer</German>
+			<Spanish>Pesado</Spanish>
+			<Russian>Тяжёлый</Russian>
+			<Chinesesimp>重型</Chinesesimp>
+			<Chinese>重型</Chinese>
+			<Japanese>重量</Japanese>
+			<Portuguese>Pesado</Portuguese>
+			<Czech>Těžký</Czech>
+		</Key>
+		<Key ID="STR_FOB_EXIT">
+			<Original>Exit</Original>
+			<French>Quitter</French>
+			<German>Beenden</German>
+			<Spanish>Salir</Spanish>
+			<Russian>Выход</Russian>
+			<Chinesesimp>退出</Chinesesimp>
+			<Chinese>退出</Chinese>
+			<Japanese>終了</Japanese>
+			<Portuguese>Sair</Portuguese>
+			<Czech>Ukončit</Czech>
+		</Key>
 	</Package>
 	
 	<!-- pSiKO JKB -->
