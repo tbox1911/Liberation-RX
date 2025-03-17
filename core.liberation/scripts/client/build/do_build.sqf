@@ -91,7 +91,7 @@ while { true } do {
             _price_fuel = 0;
             _fob_box = build_vehicle;
         };
-        case 9:
+        case 9;
         case 10: {
             _price = 0;
             _price_fuel = 0;
