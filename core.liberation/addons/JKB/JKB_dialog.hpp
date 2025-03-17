@@ -79,7 +79,7 @@ class JKB_dialog {
             align = "center";
 			colorText[] = {1, 1, 1};
 			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-			text = "Now listening: ";
+			text = "$STR_JKB_NOW_PLAYING";
  		};
         class VehText2: StdText {
 			idc = 230;
@@ -110,7 +110,7 @@ class JKB_dialog {
             align = "center";
 			colorText[] = {1, 1, 1};
 			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-			text = "Music in Jukebox: ";
+			text = "$STR_JKB_JUKEBOX_MUSIC";
  		};
         class VehText4: StdText {
 			idc = 232;
@@ -125,7 +125,7 @@ class JKB_dialog {
  		};
 		class AutoplayCB: RscCheckbox {
 			idc = 233;
-			text = "Auto play";
+			text = "$STR_JKB_AUTOPLAY";
 			x = (0.210 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.0125 * safezoneW;
@@ -138,7 +138,7 @@ class JKB_dialog {
 		};
 		class AutoplayCBText: GREUH_RscStructuredText {
 			idc = -1;
-			text = "<t size='0.7'>Auto play</t>";
+			text = "<t size='0.7'>$STR_JKB_AUTOPLAY</t>";
 			x = (0.226 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -146,7 +146,7 @@ class JKB_dialog {
 		};
 		class RandomCB: RscCheckbox {
 			idc = 234;
-			text = "Random";
+			text = "$STR_JKB_RANDOM";
 			x = (0.300 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.0125 * safezoneW;
@@ -159,7 +159,7 @@ class JKB_dialog {
 		};
 		class RandomCBText: GREUH_RscStructuredText	{
 			idc = -1;
-			text = "<t size='0.7'>Random</t>";
+			text = "<t size='0.7'>$STR_JKB_RANDOM</t>";
 			x = (0.316 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -167,7 +167,7 @@ class JKB_dialog {
 		};
 		class StopButton: StdButton {
 			idc = -1;
-			text = $STR_JKB_STOP;
+			text = "$STR_JKB_STOP";
 			onButtonClick = "play_music = 2";
 			x = 0.2100 * safezoneW + safezoneX;
 			y = 0.386 * safezoneH + safezoneY;
@@ -177,7 +177,7 @@ class JKB_dialog {
 		};
 		class PlayButton: StdButton {
 			idc = -1;
-			text = $STR_JKB_START;
+			text = "$STR_JKB_START";
 			onButtonClick = "play_music = 1";
 			x = 0.3300 * safezoneW + safezoneX;
 			y = 0.386 * safezoneH + safezoneY;

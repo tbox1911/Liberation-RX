@@ -7189,40 +7189,6 @@
 			<Czech>Přemalovat</Czech>
 		</Key>
 
-		<!-- JKB_dialog -->
-		<Key ID="STR_JKB_MENU">
-			<Original>-- Juke Box --</Original>
-			<Russian>-- Музыка</Russian>
-			<Chinesesimp>-- 音乐播放器 --</Chinesesimp>
-			<Chinese>-- 音樂播放器 --</Chinese>
-			<Portuguese>-- Juke Box --</Portuguese>
-			<Czech>-- Juke Box --</Czech>
-		</Key>
-		<Key ID="STR_JKB_ACTION">
-			<Original>Open JukeBox</Original>
-			<Russian>Открыть Музыку</Russian>
-			<Chinesesimp>打开音乐播放器</Chinesesimp>
-			<Chinese>打開音樂播放器</Chinese>
-			<Portuguese>Abrir Juke Box</Portuguese>
-			<Czech>Otevřete JukeBox</Czech>
-		</Key>
-		<Key ID="STR_JKB_START">
-			<Original>Play</Original>
-			<Russian>Play</Russian>
-			<Chinesesimp>播放</Chinesesimp>
-			<Chinese>播放</Chinese>
-			<Portuguese>Jogar</Portuguese>
-			<Czech>Play</Czech>
-		</Key>
-		<Key ID="STR_JKB_STOP">
-			<Original>Stop</Original>
-			<Russian>Stop</Russian>
-			<Chinesesimp>暂停</Chinesesimp>
-			<Chinese>暫停</Chinese>
-			<Portuguese>Pare</Portuguese>
-			<Czech>Stop</Czech>
-		</Key>
-
 		<!-- liberation_airdrop.hpp -->
 		<Key ID="STR_AIRDROP_CANCEL">
 			<Original>Cancel</Original>
@@ -8945,11 +8911,79 @@
 			<German>-------- Jukebox initialisiert --------</German>
 			<Spanish>-------- Juke Box iniciada --------</Spanish>
 			<Russian>-------- Джукбокс запущен --------</Russian>
-			<Chinesesimp>-------- 点唱机已初始化 --------</Chinesesimp>
-			<Chinese>-------- 點唱機已初始化 --------</Chinese>
+			<Chinesesimp>-------- 音乐播放器已初始化 --------</Chinesesimp>
+			<Chinese>-------- 音樂播放器已初始化 --------</Chinese>
 			<Japanese>-------- ジュークボックスが起動しました --------</Japanese>
 			<Portuguese>-------- Juke Box inicializado --------</Portuguese>
 			<Czech>-------- Jukebox inicializován --------</Czech>
+		</Key>
+		<Key ID="STR_JKB_JUKEBOX_MUSIC">
+			<Original>Music in Jukebox: </Original>
+			<French>Musique dans le Jukebox : </French>
+			<German>Musik in der Jukebox: </German>
+			<Spanish>Música en la Jukebox: </Spanish>
+			<Russian>Музыка в джукбоксе: </Russian>
+			<Chinesesimp>音乐播放器音乐：</Chinesesimp>
+			<Chinese>音樂播放器音樂：</Chinese>
+			<Japanese>ジュークボックスの音楽：</Japanese>
+			<Portuguese>Música na Jukebox: </Portuguese>
+			<Czech>Hudba v jukeboxu: </Czech>
+		</Key>
+		<Key ID="STR_JKB_AUTOPLAY">
+			<Original>Auto play</Original>
+			<French>Lecture automatique</French>
+			<German>Automatisch abspielen</German>
+			<Spanish>Reproducción automática</Spanish>
+			<Russian>Автовоспроизведение</Russian>
+			<Chinesesimp>自动播放</Chinesesimp>
+			<Chinese>自動播放</Chinese>
+			<Japanese>自動再生</Japanese>
+			<Portuguese>Reprodução automática</Portuguese>
+			<Czech>Automatické přehrávání</Czech>
+		</Key>
+		<Key ID="STR_JKB_RANDOM">
+			<Original>Random</Original>
+			<French>Aléatoire</French>
+			<German>Zufällig</German>
+			<Spanish>Aleatorio</Spanish>
+			<Russian>Случайный</Russian>
+			<Chinesesimp>随机播放</Chinesesimp>
+			<Chinese>隨機播放</Chinese>
+			<Japanese>ランダム</Japanese>
+			<Portuguese>Aleatório</Portuguese>
+			<Czech>Náhodně</Czech>
+		</Key>
+		<Key ID="STR_JKB_MENU">
+			<Original>-- Juke Box --</Original>
+			<Russian>-- Музыка</Russian>
+			<Chinesesimp>-- 音乐播放器 --</Chinesesimp>
+			<Chinese>-- 音樂播放器 --</Chinese>
+			<Portuguese>-- Juke Box --</Portuguese>
+			<Czech>-- Juke Box --</Czech>
+		</Key>
+		<Key ID="STR_JKB_ACTION">
+			<Original>Open JukeBox</Original>
+			<Russian>Открыть Музыку</Russian>
+			<Chinesesimp>打开音乐播放器</Chinesesimp>
+			<Chinese>打開音樂播放器</Chinese>
+			<Portuguese>Abrir Juke Box</Portuguese>
+			<Czech>Otevřete JukeBox</Czech>
+		</Key>
+		<Key ID="STR_JKB_START">
+			<Original>Play</Original>
+			<Russian>Play</Russian>
+			<Chinesesimp>播放</Chinesesimp>
+			<Chinese>播放</Chinese>
+			<Portuguese>Jogar</Portuguese>
+			<Czech>Play</Czech>
+		</Key>
+		<Key ID="STR_JKB_STOP">
+			<Original>Stop</Original>
+			<Russian>Stop</Russian>
+			<Chinesesimp>暂停</Chinesesimp>
+			<Chinese>暫停</Chinese>
+			<Portuguese>Pare</Portuguese>
+			<Czech>Stop</Czech>
 		</Key>
 	</Package>
 
