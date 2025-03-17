@@ -16,6 +16,6 @@ private _fob_pos = getPosATL _fob;
     sleep 0.05;
 } foreach (nearestObjects [_fob_pos, fob_defenses_classnames, GRLIB_fob_range]);
 
-gamelogic globalChat "Defenses Removed...";
+gamelogic globalChat localize "STR_FOB_GARRISON_REMOVED";
 sleep 1;
 build_confirmed = 0;

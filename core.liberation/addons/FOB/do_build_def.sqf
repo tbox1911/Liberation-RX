@@ -13,7 +13,7 @@ private _fob_dir = (getDir _fob_sign - 90);
 
 private _walls = count (_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]);
 _walls = _walls + count (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]);
-if (_walls > 10) exitWith { hint "Cannot start Construction!\nToo many walls/sandbags nearby!" };
+if (_walls > 10) exitWith { hint localize "STR_FOB_CONSTRUCTION_TOO_MANY_WALLS" };
 
 createDialog "FOB_Defense";
 waitUntil { dialog };
@@ -55,7 +55,7 @@ while { dialog && alive player } do {
             waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
             if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
                 _objects_to_build = (parseSimpleArray input_save);
-            } else { systemchat "Error: Invalid data!" };
+            } else { systemChat localize "STR_FOB_ERROR_INVALID_DATA" };
             { ctrlShow [_x, false] } foreach _input_controls;
         };
         closeDialog 0;
@@ -70,9 +70,9 @@ if (_count_objects == 0) exitWith {};
 if (!([parseNumber _defense_price] call F_pay)) exitWith {};
 
 build_confirmed = 1;
-private _msg = format ["%1 Build %2 (%3 objects) on FOB %4 ", name player, _defense_name, _count_objects, ([_fob_pos] call F_getFobName)];
+private _msg = format [localize "STR_FOB_BUILD_STATUS", name player, _defense_name, _count_objects, ([_fob_pos] call F_getFobName)];
 [gamelogic, _msg] remoteExec ["globalChat", 0];
-_msg = format ["Defense Template: %1\nCreated by: %2\nThanks to him !!", _defense_name, _template_creator];
+_msg = format [localize "STR_FOB_DEFENSE_TEMPLATE_INFO", _defense_name, _template_creator];
 [_msg] remoteExec ["hint", 0];
 
 // Build defense in FOB direction
@@ -81,7 +81,7 @@ _fob_pos set [2, 0];
 {
     if (_forEachIndex % 20 == 0) then {
         [player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
-        gamelogic globalChat format ["Construction in progress, %1 objects left...", (_count_objects - _forEachIndex)];
+        gamelogic globalChat format [localize "STR_FOB_CONSTRUCTION_IN_PROGRESS", (_count_objects - _forEachIndex)];
     };
 	_nextclass = (_x select 0);
 	_nextpos = (_x select 1);
@@ -99,9 +99,9 @@ _fob_pos set [2, 0];
         };
         sleep 0.1;
     };
-    if !(_nextclass in fob_defenses_classnames) then { diag_log format ["Defense Template: %1 - Rejected item: %2", _defense_name, _nextclass] };
+    if !(_nextclass in fob_defenses_classnames) then { diag_log format [localize "STR_FOB_DEFENSE_TEMPLATE_REJECTED", _defense_name, _nextclass] };
 } foreach _objects_to_build;
 
-gamelogic globalChat "Construction completed.";
+gamelogic globalChat localize "STR_FOB_CONSTRUCTION_COMPLETED";
 sleep 1;
 build_confirmed = 0;

@@ -17,4 +17,4 @@ waituntil { sleep 1; !isNil "GRLIB_marker_init" };
 	};
 };
 waitUntil {!(isNull (findDisplay 46))};
-systemChat "-------- LRX FOB Initialized --------";
+systemChat localize "STR_FOB_INITIALIZED";

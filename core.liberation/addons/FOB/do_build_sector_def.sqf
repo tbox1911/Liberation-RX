@@ -11,10 +11,10 @@ private _defense_list = ["None", "Light", "Medium", "Heavy"];
 private _max_defense = 6;
 
 private _butons_id = [120, 121, 122, 123];
-(_display displayCtrl 120) ctrlSetToolTip "Remove Defenses.";
-(_display displayCtrl 121) ctrlSetToolTip format ["Set Light Defenses for %1 Ammo.", GRLIB_defense_costs select 1];
-(_display displayCtrl 122) ctrlSetToolTip format ["Set Medium Defenses for %1 Ammo.", GRLIB_defense_costs select 2];
-(_display displayCtrl 123) ctrlSetToolTip format ["Set Heavy Defenses for %1 Ammo.", GRLIB_defense_costs select 3];
+(_display displayCtrl 120) ctrlSetToolTip localize "STR_FOB_REMOVE_DEFENSES_TOOLTIP";
+(_display displayCtrl 121) ctrlSetToolTip format [localize "STR_FOB_SET_LIGHT_GARRISON", GRLIB_defense_costs select 1];
+(_display displayCtrl 122) ctrlSetToolTip format [localize "STR_FOB_SET_MEDIUM_GARRISON", GRLIB_defense_costs select 2];
+(_display displayCtrl 123) ctrlSetToolTip format [localize "STR_FOB_SET_HEAVY_GARRISON", GRLIB_defense_costs select 3];
 
 private _score = [player] call F_getScore;
 if (_score < GRLIB_perm_log) then {
@@ -66,14 +66,14 @@ while { dialog && alive player } do {
 
         if (build_type == 0) then {
             [_sector, 0] remoteExec ["sector_defenses_remote_call", 2];
-            gamelogic globalChat format ["You Remove Defenses from %1.", _sector_name];
+            gamelogic globalChat format [localize "STR_FOB_REMOVE_GARRISON_CONFIRM", _sector_name];
         } else {
             if (count GRLIB_sector_defense < _max_defense) then {
                 [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
-                private _msg = format ["Player %1 Set %2 Defenses on %3.", name player, (_defense_list select build_type), _sector_name];
+                private _msg = format [localize "STR_FOB_PLAYER_SET_GARRISON", name player, (_defense_list select build_type), _sector_name];
                 [gamelogic, _msg] remoteExec ["globalChat", 0];
             } else {
-                gamelogic globalChat format ["You reach the Maximum Defenses limit (%1)!", _max_defense];
+                gamelogic globalChat format [localize "STR_FOB_MAX_GARRISON_REACHED", _max_defense];
             };
         };
         sleep 1;
