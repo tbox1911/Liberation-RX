@@ -79,7 +79,7 @@ class JKB_dialog {
             align = "center";
 			colorText[] = {1, 1, 1};
 			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-			text = "$STR_JKB_NOW_PLAYING";
+			text = "$STR_JKB_NOW_LISTENING";
  		};
         class VehText2: StdText {
 			idc = 230;
@@ -138,7 +138,7 @@ class JKB_dialog {
 		};
 		class AutoplayCBText: GREUH_RscStructuredText {
 			idc = -1;
-			text = <t size='0.7'>$STR_JKB_AUTOPLAY</t>;
+			text = $STR_JKB_AUTOPLAY;
 			x = (0.226 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -159,7 +159,7 @@ class JKB_dialog {
 		};
 		class RandomCBText: GREUH_RscStructuredText	{
 			idc = -1;
-			text = <t size='0.7'>$STR_JKB_RANDOM</t>;
+			text = $STR_JKB_RANDOM;
 			x = (0.316 * safezoneW + safezoneX);
 			y = 0.3540 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;

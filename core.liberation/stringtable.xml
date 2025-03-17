@@ -8905,6 +8905,18 @@
 			<Portuguese>Tocando agora:\n%1</Portuguese>
 			<Czech>Nyní hraje:\n%1</Czech>
 		</Key>
+		<Key ID="STR_JKB_NOW_LISTENING">
+			<Original>Now Playing:</Original>
+			<French>Lecture en cours :</French>
+			<German>Jetzt läuft:</German>
+			<Spanish>Reproduciendo:</Spanish>
+			<Russian>Сейчас играет:</Russian>
+			<Chinesesimp>正在播放：</Chinesesimp>
+			<Chinese>正在播放：</Chinese>
+			<Japanese>再生中：</Japanese>
+			<Portuguese>Tocando agora:</Portuguese>
+			<Czech>Nyní hraje:</Czech>
+		</Key>
 		<Key ID="STR_JKB_JUKEBOX_INITIALIZED">
 			<Original>-------- Juke Box Initialized --------</Original>
 			<French>-------- Juke-box initialisé --------</French>
