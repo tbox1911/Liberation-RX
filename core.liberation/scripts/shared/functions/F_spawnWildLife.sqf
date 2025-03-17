@@ -34,7 +34,9 @@ if (GRLIB_WS_enabled) then {
 		];
 	};
 };
-
+if (isClass (configFile >> "CfgVehicles" >> "WildBoar_F")) then {
+	_type_random pushBack "WildBoar_F";
+};
 private _type = selectRandom _type_random;
 private _count = (3 + floor(random 4));
 if (_type select [0,11] == "Dromedary_") then { _count = 3 };
