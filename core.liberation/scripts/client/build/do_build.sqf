@@ -69,59 +69,61 @@ while { true } do {
 	_buildindex = buildindex;
 
 	// Init build properties
-	if ( _buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	if ( _buildtype == BuildingBuildType ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
 
-	if ( _buildtype == 99 ) then {
-		_classname = FOB_typename;
-		_price = 0;
-		_price_fuel = 0;
-		_fob_box = build_vehicle;
-	};
-
-	if ( _buildtype == 98 ) then {
-		_classname = FOB_outpost;
-		_price = 0;
-		_price_fuel = 0;
-		_fob_box = build_vehicle;
-	};
-
-	if ( _buildtype == 97 ) then {
-		_classname = FOB_carrier;
-		_price = 0;
-		_price_fuel = 0;
-		_fob_box = build_vehicle;
-	};
-
-	if ( _buildtype in [9,10] ) then {
-		_price = 0;
-		_price_fuel = 0;
-		_classname = build_unit select 0;
-		_color = build_unit select 1;
-		_ammo = build_unit select 2;
-		_compo = build_unit select 3;
-		_lst_a3 = build_unit select 4;
-		_lst_r3f = build_unit select 5;
-		_lst_grl = build_unit select 6;
-		build_altitude = 0.4;
-	};
-
-	if ( _buildtype in [1,2,3,4,5,6,7,8] ) then {
-		_score = [player] call F_getScore;
-		_build_list = [];
-		{
-			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
-		} forEach (build_lists select _buildtype);
-
-		_classname = (_build_list select _buildindex) select 0;
-		_price = (_build_list select _buildindex) select 2;
-		_price_fuel = (_build_list select _buildindex) select 3;
-		_color = [];
-		_compo = [];
-		_ammo = 0;
-		_lst_a3 = [];
-		_lst_r3f = [];
-		_lst_grl = [];
-	};
+    // Configure build properties based on _buildtype using switch-case
+    switch _buildtype do {
+        case 99: {
+            _classname = FOB_typename;
+            _price = 0;
+            _price_fuel = 0;
+            _fob_box = build_vehicle;
+        };
+        case 98: {
+            _classname = FOB_outpost;
+            _price = 0;
+            _price_fuel = 0;
+            _fob_box = build_vehicle;
+        };
+        case 97: {
+            _classname = FOB_carrier;
+            _price = 0;
+            _price_fuel = 0;
+            _fob_box = build_vehicle;
+        };
+        case 9;
+        case 10: {
+            _price = 0;
+            _price_fuel = 0;
+            _classname = build_unit select 0;
+            _color = build_unit select 1;
+            _ammo = build_unit select 2;
+            _compo = build_unit select 3;
+            _lst_a3 = build_unit select 4;
+            _lst_r3f = build_unit select 5;
+            _lst_grl = build_unit select 6;
+            build_altitude = 0.4;
+        };
+        default {
+            if ( _buildtype in [InfantryBuildType, TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, BuildingBuildType, SupportBuildType, SquadBuildType] ) then {
+                _score = [player] call F_getScore;
+                _build_list = [];
+                {
+                    if ( _score >= (_x select 4) ) then { _build_list pushback _x };
+                } forEach (build_lists select _buildtype);
+        
+                _classname = (_build_list select _buildindex) select 0;
+                _price = (_build_list select _buildindex) select 2;
+                _price_fuel = (_build_list select _buildindex) select 3;
+                _color = [];
+                _compo = [];
+                _ammo = 0;
+                _lst_a3 = [];
+                _lst_r3f = [];
+                _lst_grl = [];
+            };
+        };
+    };
 
 	// Build
 	_pos = getPosATL player;
@@ -129,7 +131,7 @@ while { true } do {
 
 	//diag_log format ["--- LRX: Build Called: %1 bt:%2 bi:%3 pos:%4", _classname, _buildtype, _buildindex, _pos];
 
-	if ( _buildtype == 1 ) then {
+	if ( _buildtype == InfantryBuildType ) then {
 		if (_classname isKindOf "Dog_Base_F" || _classname in MFR_Dogs_classname) then {
 			[0,0,0, "add", _classname] call do_dog;
 		} else {
@@ -138,12 +140,12 @@ while { true } do {
 		};
 	};
 
-	if ( _buildtype == 8 ) then {
+	if ( _buildtype == SquadBuildType ) then {
 		if (!([_price] call F_pay)) exitWith {};
 		[_classname] call do_build_squad;
 	};
 
-	if ( _buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
+	if ( _buildtype in [TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, BuildingBuildType, SupportBuildType, 9,10,99,98,97] ) then {
 		if !(_buildtype in [99,98,97]) then {
 			_pos = [] call F_getNearestFob;
 			if (player distance2D _pos < GRLIB_fob_range && surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
@@ -155,18 +157,18 @@ while { true } do {
 
 		if ( !repeatbuild ) then {
 			if (build_water == 0) then {
-				if ( _buildtype == 6 && !(_classname in GRLIB_build_force_mode) ) then {
+				if ( _buildtype == BuildingBuildType && !(_classname in GRLIB_build_force_mode) ) then {
 					_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,true,false,"","build_invalid == 0 && build_confirmed == 1"];
 					_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
 				};
 
-				if ( _buildtype in [6,99,98] ) then {
+				if ( _buildtype in [BuildingBuildType, 99, 98] ) then {
 					_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
 					_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 				};
 			};
 
-			if ( _buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
+			if ( _buildtype in [TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, BuildingBuildType, SupportBuildType, 9,10,99,98] ) then {
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
@@ -195,13 +197,28 @@ while { true } do {
 		_dist = (_radius / 2) + 1.5;
 		if (_dist > 5) then { _dist = 5 };
 
-		// customize by classname
-		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
-		if (_classname == "Land_BagBunker_Tower_F") then { build_rotation = 90; build_altitude = -0.2 };
-		if (_classname == "Land_vn_bunker_big_02") then { build_rotation = 270 };
-		if (_classname == "Land_vn_b_trench_bunker_01_02") then { build_rotation = 270; build_altitude = -0.2 };
-		if (_classname isKindOf "Slingload_base_F") then { _radius = 5 };
-		_dist = 3 max _dist;
+        // Customize by classname using switch-case
+        switch _classname do {
+            case FOB_carrier: {
+                _dist = 35;
+                build_rotation = 90;
+            };
+            case "Land_BagBunker_Tower_F": {
+                build_rotation = 90;
+                build_altitude = -0.2;
+            };
+            case "Land_vn_bunker_big_02": {
+                build_rotation = 270;
+            };
+            case "Land_vn_b_trench_bunker_01_02": {
+                build_rotation = 270;
+                build_altitude = -0.2;
+            };
+            default {
+                if (_classname isKindOf "Slingload_base_F") then { _radius = 5 };
+            };
+        };
+        _dist = 3 max _dist;
 
 		for "_i" from 0 to 5 do { _vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'] };
 		{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
@@ -218,15 +235,18 @@ while { true } do {
 
 			while { _actualdir > 360 } do { _actualdir = _actualdir - 360 };
 			while { _actualdir < 0 } do { _actualdir = _actualdir + 360 };
-			if ( (_buildtype in [6,99,98]) && ((gridmode % 2) == 1) ) then {
-				if ( _actualdir >= 22.5 && _actualdir <= 67.5 ) then { _actualdir = 45 };
-				if ( _actualdir >= 67.5 && _actualdir <= 112.5 ) then { _actualdir = 90 };
-				if ( _actualdir >= 112.5 && _actualdir <= 157.5 ) then { _actualdir = 135 };
-				if ( _actualdir >= 157.5 && _actualdir <= 202.5 ) then { _actualdir = 180 };
-				if ( _actualdir >= 202.5 && _actualdir <= 247.5 ) then { _actualdir = 225 };
-				if ( _actualdir >= 247.5 && _actualdir <= 292.5 ) then { _actualdir = 270 };
-				if ( _actualdir >= 292.5 && _actualdir <= 337.5 ) then { _actualdir = 315 };
-				if ( _actualdir <= 22.5 || _actualdir >= 337.5 ) then { _actualdir = 0 };
+			if ( (_buildtype in [BuildingBuildType,99,98]) && ((gridmode % 2) == 1) ) then {
+				switch true do {
+					case (_actualdir >= 22.5 && _actualdir <= 67.5): { _actualdir = 45 };
+					case (_actualdir >= 67.5 && _actualdir <= 112.5): { _actualdir = 90 };
+					case (_actualdir >= 112.5 && _actualdir <= 157.5): { _actualdir = 135 };
+					case (_actualdir >= 157.5 && _actualdir <= 202.5): { _actualdir = 180 };
+					case (_actualdir >= 202.5 && _actualdir <= 247.5): { _actualdir = 225 };
+					case (_actualdir >= 247.5 && _actualdir <= 292.5): { _actualdir = 270 };
+					case (_actualdir >= 292.5 && _actualdir <= 337.5): { _actualdir = 315 };
+					case (_actualdir <= 22.5 || _actualdir >= 337.5): { _actualdir = 0 };
+					default { };
+				};
 			};
 			if ([] call is_admin) then { hintSilent format ["%1 - %2", _truepos, round _truedir] };
 
@@ -246,7 +266,7 @@ while { true } do {
 			_near_objects = _near_objects + (_truepos nearObjects [Warehouse_typename, 12]);
 			_near_objects = _near_objects + (_truepos nearObjects [medic_heal_typename, 8]);
 
-			if(	_buildtype != 6 ) then {
+			if(	_buildtype != BuildingBuildType ) then {
 				_near_objects = _near_objects + (_truepos nearobjects ["Static", 5]);
 			};
 
@@ -375,7 +395,7 @@ while { true } do {
 			};
 
 			// Building
-			if(_buildtype == 6) exitWith {
+			if(_buildtype == BuildingBuildType) exitWith {
 				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				_vehicle setPosATL _veh_pos;
@@ -387,7 +407,7 @@ while { true } do {
 			};
 
 			private _owner = "";
-			if (_buildtype in [2,3,4,5,7,9,10]) then {
+			if ( _buildtype in [TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, SupportBuildType, 9,10] ) then {
 				_owner = PAR_Grp_ID;
 			};
 
