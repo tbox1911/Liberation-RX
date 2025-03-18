@@ -80,16 +80,16 @@ while {alive _vehicle} do {
 				};
 				if (_dist <= 300) then { _vehicle flyInHeight 50 };
 				sleep 2;
-				(_dist <= 30 || _dist >= 300 || !alive _vehicle)
+				(_dist <= 40 || _dist >= 300 || !alive _vehicle)
 			};
 			if (!alive _vehicle) exitWith {};
-			if (_vehicle distance2D _target <= 20) then {
+			if (_vehicle distance2D _target <= 40) then {
 				sleep 1;
 				private _bomb = "DemoCharge_Remote_Ammo" createVehicle zeropos;
 				_bomb attachTo [_vehicle, [0, 0, 0]];
 				_bomb setVectorDirAndUp [[0.5, 0.5, 0], [-0.5, 0.5, 0]];
 				_vehicle setDir (_vehicle getDir _target);
-				[_vehicle, -75, 0] call BIS_fnc_setPitchBank;
+				[_vehicle, -70, 0] call BIS_fnc_setPitchBank;
 				_vehicle setVelocity [0,0,-100];
 				sleep 20;
 			};
