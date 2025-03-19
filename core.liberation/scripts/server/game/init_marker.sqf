@@ -9,8 +9,9 @@ private ["_vehicle", "_spawn_pos"];
 	// Add repair pickup
 	_spawn_pos = [(markerPos _x), 2] call F_findSafePlace;
 	if (count _spawn_pos > 0) then {
-		_vehicle = createVehicle [repair_offroad, _spawn_pos, [], 20, "NONE"];
+		_vehicle = createVehicle [repair_offroad, _spawn_pos, [], 1, "NONE"];
 		_vehicle allowDamage false;
+		_vehicle setPos _spawn_pos;
 		[_vehicle, "lock", "server"] call F_vehicleLock;
 		[_vehicle] call F_clearCargo;
 		_vehicle enableSimulationGlobal true; // enable to keep facility

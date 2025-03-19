@@ -31,8 +31,8 @@ while { true } do {
 	waitUntil {sleep 1; GRLIB_MapOpen };
 
 	_veh_list = vehicles select {
+		(getObjectType _x >= 8) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
-		(getObjectType _x >= 8) && (isDamageAllowed _x) &&
 		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		(count (crew _x) == 0 || (typeOf _x in uavs_vehicles + static_vehicles_AI)) &&
