@@ -44,7 +44,6 @@ _setupObjects = {
 		_x setPos ([_missionPos, 4] call F_getRandomPos);
 		[_x, true, false] spawn prisoner_ai;
 		_x addGoggles "G_Blindfold_01_black_F";
-		_x setVariable ["GRLIB_is_prisoner", true, true];
 		_x setDamage 0;
 		sleep 0.1;
 	} forEach _hostages;
@@ -69,7 +68,7 @@ _setupObjects = {
 	_grp_civ = [_missionPos, (5 + floor random 5)] call F_spawnCivilians;
 	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
-	_vehicles = _hostages + _managed_units;
+	_vehicles = _managed_units;
 	{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach _vehicles;
 	_missionPicture = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 	_missionHintText = ["STR_FREE_HOSTAGES_MESSAGE1", sideMissionColor];
