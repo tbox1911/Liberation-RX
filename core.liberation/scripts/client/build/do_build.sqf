@@ -107,9 +107,7 @@ while { true } do {
         default {
             if ( _buildtype in [InfantryBuildType, TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, BuildingBuildType, SupportBuildType, SquadBuildType] ) then {
                 _score = [player] call F_getScore;
-                _build_list = (build_lists#_buildtype) select {
-                    _score >= (_x#4)
-                };
+                _build_list = (build_lists#_buildtype) select { _score >= (_x#4) };
 				_build = _build_list#_buildindex;
 				_classname = _build#0;
 				_price = _build#2;
@@ -214,8 +212,8 @@ while { true } do {
                 build_altitude = -0.2;
             };
             default {
-                if (_classname isKindOf "Slingload_base_F") then { 
-					_radius = 5; 
+                if (_classname isKindOf "Slingload_base_F") then {
+					_radius = 5;
 				};
             };
         };
@@ -305,7 +303,6 @@ while { true } do {
 
 			_noObjectsClip = (_near_objects isEqualTo []);
 			_withinDistance = ((_truepos distance2D _pos) < _maxdist || _buildtype == 9);
-			
 			_boatValid = ((_classname in boats_names || build_water == 1) && _isWater);
 			_surfaceIsValid = (!_isWater || _boatValid);
 
@@ -483,11 +480,11 @@ while { true } do {
 			// Vehicles
 			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship") then {
 				// Color
-				if (!(_color isEqualTo [])) then {
+				if !(_color isEqualTo []) then {
 					[_vehicle, _color] call RPT_fnc_TextureVehicle;
 				};
 				// Composant
-				if (!(_compo isEqualTo [])) then {
+				if !(_compo isEqualTo []) then {
 					[_vehicle, _compo] call RPT_fnc_CompoVehicle;
 				};
 				// Remaining Ammo
