@@ -84,7 +84,7 @@ heavy_vehicles = [
 	["O_T_APC_Tracked_02_cannon_ghex_F",10,800,10,GRLIB_perm_log],
 	["O_T_APC_Tracked_02_AA_ghex_F",10,1500,10,GRLIB_perm_tank],
 	["O_T_MBT_02_cannon_ghex_F",15,1500,15,GRLIB_perm_tank],
-	["O_T_MBT_02_railgun_ghex_F",15,1800,15,GRLIB_perm_air],	
+	["O_T_MBT_02_railgun_ghex_F",15,1800,15,GRLIB_perm_air],
 	["O_T_MBT_04_cannon_F",15,2500,15,GRLIB_perm_air],
 	["O_T_MBT_04_command_F",15,2500,15,GRLIB_perm_air],
 	["I_MBT_03_cannon_F",15,3500,15,GRLIB_perm_max],
@@ -173,8 +173,6 @@ blufor_squad_inf = [
 	"O_T_soldier_LAT_F",
 	"O_HeavyGunner_F",
 	"O_T_Soldier_M_F",
-	"O_T_Soldier_F",
-	"O_T_Soldier_F",
 	"O_T_Soldier_F"
 ];
 blufor_squad_at = [

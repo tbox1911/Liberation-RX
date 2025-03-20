@@ -10,7 +10,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
 	"Heli_Transport_04_base_F",
-	"O_Heli_Light_02_dynamicLoadout_F",	
+	"O_Heli_Light_02_dynamicLoadout_F",
 	"O_Heli_Light_02_unarmed_F",
 	"O_Heli_Attack_02_dynamicLoadout_black_F",
 	"O_Heli_Attack_02_dynamicLoadout_F"
@@ -44,17 +44,25 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"O_UAV_01_F",
 	"O_UAV_06_F",
 	"O_UAV_02_dynamicLoadout_F",
-	"O_T_UAV_04_CAS_F"	
+	"O_T_UAV_04_CAS_F"
 ];
 
 //--------------- Ground ---------------
 
 R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 [
+	"O_T_Truck_02_F",
+	"O_T_Truck_02_transport_F",
+	"O_T_Truck_03_transport_ghex_F",
+	"O_T_Truck_03_covered_ghex_F"
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
+	"O_T_Truck_02_F",
+	"O_T_Truck_02_transport_F",
+	"O_T_Truck_03_transport_ghex_F",
+	"O_T_Truck_03_covered_ghex_F"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -77,7 +85,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
 	"O_T_UGV_01_ghex_F",
 	"O_T_UGV_01_rcws_ghex_F",
-	"O_UGV_02_Demining_F"	
+	"O_UGV_02_Demining_F"
 ];
 
 //--------------- Ship ---------------
