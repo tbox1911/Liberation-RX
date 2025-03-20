@@ -287,16 +287,28 @@
 			<Czech>Stavění Potvrzeno</Czech>
 		</Key>
 		<Key ID="STR_PLACEMENT_IMPOSSIBLE">
-			<Original>Can't place here: there are %1 object(s) within %2 meters of the object position.</Original>
-			<French>Impossible de placer ici : il y a %1 objet(s) dans les %2 mètres de la position choisie.</French>
-			<German>Kann hier nicht platziert werden: %1 Objekt(e) innerhalb von %2 Meter der Position</German>
-			<Spanish>Imposible de colocar aqui: hay 1% objeto(s) a %2 metros de la posición del objeto</Spanish>
-			<Russian>Нельзя разместить здесь:  в %2 метрах есть 1% объект(а).</Russian>
-			<Chinesesimp>无法安置在这里：当前位置 %2 米内有 %1 个物体阻挡。</Chinesesimp>
-			<Chinese>無法安置在這裡：當前位置 %2 米內有 %1 個物體阻擋。</Chinese>
-			<Japanese>ここにはビルド出来ません：%1 個のオブジェクトがビルド予定物の %2 メートル内に存在します。</Japanese>
-			<Portuguese>Nao se pode colocar aqui: ha %1 objecto(s) dentro de %2 metros da posicao do objecto.</Portuguese>
-			<Czech>Nelze sem umístit: existují %1 object(s) v rozmezí %2 metrů polohy objektu.</Czech>
+			<Original>Can't place here</Original>
+			<French>Impossible de placer ici</French>
+			<German>Kann hier nicht platziert werden</German>
+			<Spanish>Imposible de colocar aqui</Spanish>
+			<Russian>Нельзя разместить здесь</Russian>
+			<Chinesesimp>无法安置在这里</Chinesesimp>
+			<Chinese>無法安置在這裡</Chinese>
+			<Japanese>ここにはビルド出来ません</Japanese>
+			<Portuguese>Nao se pode colocar aqui</Portuguese>
+			<Czech>Nelze sem umístit</Czech>
+		</Key>
+		<Key ID="STR_BUILD_ERROR_COLLISION">
+			<Original>there are %1 object(s) within %2 meters of the object position.</Original>
+			<French>il y a %1 objet(s) dans les %2 mètres de la position choisie.</French>
+			<German>%1 Objekt(e) innerhalb von %2 Meter der Position</German>
+			<Spanish>hay 1% objeto(s) a %2 metros de la posición del objeto</Spanish>
+			<Russian>в %2 метрах есть 1% объект(а).</Russian>
+			<Chinesesimp>当前位置 %2 米内有 %1 个物体阻挡.</Chinesesimp>
+			<Chinese>當前位置 %2 米內有 %1 個物體阻擋.</Chinese>
+			<Japanese>%1 個のオブジェクトがビルド予定物の %2 メートル内に存在します.</Japanese>
+			<Portuguese>ha %1 objecto(s) dentro de %2 metros da posicao do objecto.</Portuguese>
+			<Czech>existují %1 object(s) v rozmezí %2 metrů polohy objektu.</Czech>
 		</Key>
 		<Key ID="STR_PLACEMENT_POSSIBLE">
 			<Original>This position is valid.</Original>
