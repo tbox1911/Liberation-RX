@@ -1,8 +1,8 @@
 private ["_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
 
 if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
-if ( isNil "buildtype" ) then { buildtype = InfantryBuildType };
-if ( buildtype > SquadBuildType ) then { buildtype = InfantryBuildType };
+if ( isNil "buildtype" ) then { buildtype = GRLIB_InfantryBuildType };
+if ( buildtype > GRLIB_SquadBuildType ) then { buildtype = GRLIB_InfantryBuildType };
 if ( isNil "buildindex" ) then { buildindex = -1 };
 
 dobuild = 0;
@@ -73,7 +73,7 @@ private _is_linked = {
 ctrlEnable [120, false];
 ctrlEnable [121, false];
 
-while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildType || buildtype == SquadBuildType)} do {
+while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBuildType || buildtype == GRLIB_SquadBuildType)} do {
 	if (_old_buildtype != buildtype) then { build_refresh = true };
 
 	if (build_refresh) then {
@@ -82,13 +82,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 		_build_list = [];
 		private _msg = "";
 
-		if (!_squad_leader && buildtype in [InfantryBuildType,SquadBuildType]) then {
+		if (!_squad_leader && buildtype in [GRLIB_InfantryBuildType,GRLIB_SquadBuildType]) then {
 			_msg = "       Only for Squad Leader.";
 		};
-		if (_near_outpost && buildtype in [CombatVehicleBuildType,AerialBuildType,SquadBuildType]) then {
+		if (_near_outpost && buildtype in [GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_SquadBuildType]) then {
 			_msg = "       Unavailable at Outpost.";
 		};
-		if (_water_fob && buildtype in [CombatVehicleBuildType,BuildingBuildType,SquadBuildType]) then {
+		if (_water_fob && buildtype in [GRLIB_CombatVehicleBuildType,GRLIB_BuildingBuildType,GRLIB_SquadBuildType]) then {
 			_msg = "       Unavailable at Naval.";
 		};
 
@@ -96,7 +96,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 			_config_list = (build_lists select buildtype);
 			if (count _config_list == 0) exitWith {	_msg = "       No Vehicle Available." };
 			{
-				if (buildtype == SquadBuildType ) then {
+				if (buildtype == GRLIB_SquadBuildType ) then {
 					_build_list pushback _x;
 				} else {
 					if ( _score >= (_x select 4) && (_x select 4) < GRLIB_perm_hidden) then { _build_list pushback _x };
@@ -119,9 +119,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 
 		{
 			_build_class = _x select 0;
-			if ( buildtype != SquadBuildType ) then {
+			if ( buildtype != GRLIB_SquadBuildType ) then {
 				_entrytext = [_build_class] call F_getLRXName;
-				if (buildtype in [TransportVehicleBuildType,CombatVehicleBuildType,AerialBuildType]) then {
+				if (buildtype in [GRLIB_TransportVehicleBuildType,GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType]) then {
 					_countCrew = [_build_class, false] call BIS_fnc_crewCount;
 					_countCargo = ([_build_class, true] call BIS_fnc_crewCount) - _countCrew;
 					_entrytext = _entrytext + format [" (%1|%2)", str _countCrew, str _countCargo];
@@ -156,7 +156,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 				_affordable = false;
 			};
 
-			if ( buildtype == InfantryBuildType ) then {
+			if ( buildtype == GRLIB_InfantryBuildType ) then {
 				if (_build_class in MFR_Dogs_classname + ["Alsatian_Random_F","Fin_random_F"] ) then {
 					if (!(isNil {player getVariable ["my_dog", nil]})) then {
 						_affordable = false;
@@ -171,10 +171,10 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 				};
 			};
 
-			if ( buildtype == BuildingBuildType ) then {
+			if ( buildtype == GRLIB_BuildingBuildType ) then {
 			};
 
-			if ( buildtype == SupportBuildType ) then {
+			if ( buildtype == GRLIB_SupportBuildType ) then {
 				if (_build_class == mobile_respawn) then {
 					if (GRLIB_max_respawn_reached) then {
 						_affordable = false;
@@ -197,13 +197,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 				};
 			};
 
-			if ( buildtype == SquadBuildType ) then {
+			if ( buildtype == GRLIB_SquadBuildType ) then {
 				if (!(isNil {player getVariable ["my_squad", nil]})) then {
 					_affordable = false;
 				};
 			};
 
-			if ( buildtype in [CombatVehicleBuildType,AerialBuildType,DefenceBuildType] ) then {
+			if ( buildtype in [GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_DefenceBuildType] ) then {
 				if (!(([_build_class] call _is_linked) select 1)) then {
 					_affordable = false;
 				};
@@ -235,14 +235,14 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 			_build_class = _build_item select  0;
 			_picture = "";
 
-			if ( buildtype == InfantryBuildType ) then {
+			if ( buildtype == GRLIB_InfantryBuildType ) then {
 				if (_build_class in ["Alsatian_Random_F","Fin_random_F"] ) then {
 					_picture = getMissionPath "res\preview\dog1_preview.jpg";
 					if (_build_class == "Fin_random_F") then { _picture = getMissionPath "res\preview\dog2_preview.jpg"; };
 				};
 			};
 
-			if ( buildtype == SupportBuildType ) then {
+			if ( buildtype == GRLIB_SupportBuildType ) then {
 				if (_build_class == FOB_boat_typename) then {
 					if (FOB_carrier == "fob_water1") then {
 						_picture = getMissionPath "res\preview\fob_water1.jpg";
@@ -252,7 +252,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 				};
 			};
 
-			if ( buildtype == SquadBuildType ) then {
+			if ( buildtype == GRLIB_SquadBuildType ) then {
 				_picture = getMissionPath "res\preview\blufor_squad.jpg";
 			};
 
@@ -264,7 +264,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 			_linked = false;
 			_linked_unlocked = true;
 			_base_link = "";
-			if ( buildtype in [CombatVehicleBuildType,AerialBuildType,DefenceBuildType] ) then {
+			if ( buildtype in [GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_DefenceBuildType] ) then {
 				_linked_state = [_build_class] call _is_linked;
 				_linked = _linked_state select 0;
 				_linked_unlocked = _linked_state select 1;
@@ -277,7 +277,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 	private _unitcap = { alive _x && (_x distance2D lhd) >= 200 } count (units GRLIB_side_friendly);
 	if (_unitcap >= GRLIB_blufor_cap) then {
 		_affordable_crew = false;
-		if (buildtype == InfantryBuildType || buildtype == SquadBuildType) then {
+		if (buildtype == GRLIB_InfantryBuildType || buildtype == GRLIB_SquadBuildType) then {
 			_affordable = false;
 		};
 	};
@@ -298,7 +298,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == InfantryBuildTyp
 
 	buildindex = _selected_item;
 	ctrlEnable [ 120, _affordable && _linked_unlocked && dobuild == 0];
-	ctrlShow [ 121, _iscommander && buildtype in [TransportVehicleBuildType,CombatVehicleBuildType,AerialBuildType,DefenceBuildType]];
+	ctrlShow [ 121, _iscommander && buildtype in [GRLIB_TransportVehicleBuildType,GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_DefenceBuildType]];
 	ctrlEnable [ 121, _affordable_crew && _linked_unlocked && dobuild == 0];
 	sleep 0.2;
 };

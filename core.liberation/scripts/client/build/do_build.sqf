@@ -69,7 +69,7 @@ while { true } do {
 	_buildindex = buildindex;
 
 	// Init build properties
-	if ( _buildtype == BuildingBuildType ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	if ( _buildtype == GRLIB_BuildingBuildType ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
 
     // Configure build properties based on _buildtype using switch-case
     switch _buildtype do {
@@ -105,7 +105,7 @@ while { true } do {
             build_altitude = 0.4;
         };
         default {
-            if ( _buildtype in [InfantryBuildType, TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, BuildingBuildType, SupportBuildType, SquadBuildType] ) then {
+            if ( _buildtype in [GRLIB_InfantryBuildType, GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, GRLIB_SquadBuildType] ) then {
                 _score = [player] call F_getScore;
                 _build_list = (build_lists#_buildtype) select { _score >= (_x#4) };
 				_build = _build_list#_buildindex;
@@ -128,7 +128,7 @@ while { true } do {
 
 	//diag_log format ["--- LRX: Build Called: %1 bt:%2 bi:%3 pos:%4", _classname, _buildtype, _buildindex, _pos];
 
-	if ( _buildtype == InfantryBuildType ) then {
+	if ( _buildtype == GRLIB_InfantryBuildType ) then {
 		if (_classname isKindOf "Dog_Base_F" || _classname in MFR_Dogs_classname) then {
 			[0,0,0, "add", _classname] call do_dog;
 		} else {
@@ -137,12 +137,12 @@ while { true } do {
 		};
 	};
 
-	if ( _buildtype == SquadBuildType ) then {
+	if ( _buildtype == GRLIB_SquadBuildType ) then {
 		if (!([_price] call F_pay)) exitWith {};
 		[_classname] call do_build_squad;
 	};
 
-	if ( _buildtype in [TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, BuildingBuildType, SupportBuildType, 9,10,99,98,97] ) then {
+	if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, 9,10,99,98,97] ) then {
 		if !(_buildtype in [99,98,97]) then {
 			_pos = [] call F_getNearestFob;
 			if (player distance2D _pos < GRLIB_fob_range && surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
@@ -154,18 +154,18 @@ while { true } do {
 
 		if ( !repeatbuild ) then {
 			if (build_water == 0) then {
-				if ( _buildtype == BuildingBuildType && !(_classname in GRLIB_build_force_mode) ) then {
+				if ( _buildtype == GRLIB_BuildingBuildType && !(_classname in GRLIB_build_force_mode) ) then {
 					_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,true,false,"","build_valid && build_confirmed == 1"];
 					_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
 				};
 
-				if ( _buildtype in [BuildingBuildType, 99, 98] ) then {
+				if ( _buildtype in [GRLIB_BuildingBuildType, 99, 98] ) then {
 					_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
 					_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 				};
 			};
 
-			if ( _buildtype in [TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, BuildingBuildType, SupportBuildType, 9,10,99,98] ) then {
+			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, 9,10,99,98] ) then {
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
@@ -247,7 +247,7 @@ while { true } do {
 			};
 
 			_actualdir = _actualdir - (floor(_actualdir / 360)) * 360;
-			if ( (_buildtype in [BuildingBuildType,99,98]) && ((gridmode % 2) == 1) ) then {
+			if ( (_buildtype in [GRLIB_BuildingBuildType,99,98]) && ((gridmode % 2) == 1) ) then {
 				switch true do {
 					case (_actualdir >= 22.5 && _actualdir <= 67.5): { _actualdir = 45 };
 					case (_actualdir >= 67.5 && _actualdir <= 112.5): { _actualdir = 90 };
@@ -281,7 +281,7 @@ while { true } do {
 				[medic_heal_typename, 8]
 			];
 
-			if(	_buildtype != BuildingBuildType ) then {
+			if(	_buildtype != GRLIB_BuildingBuildType ) then {
 				_near_objects append (_truepos nearobjects ["Static", 5]);
 			};
 
@@ -404,7 +404,7 @@ while { true } do {
 			};
 
 			// Building
-			if(_buildtype == BuildingBuildType) exitWith {
+			if(_buildtype == GRLIB_BuildingBuildType) exitWith {
 				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				_vehicle setPosATL _veh_pos;
@@ -416,7 +416,7 @@ while { true } do {
 			};
 
 			private _owner = "";
-			if ( _buildtype in [TransportVehicleBuildType, CombatVehicleBuildType, AerialBuildType, DefenceBuildType, SupportBuildType, 9,10] ) then {
+			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_SupportBuildType, 9,10] ) then {
 				_owner = PAR_Grp_ID;
 			};
 

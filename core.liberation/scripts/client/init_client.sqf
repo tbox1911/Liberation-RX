@@ -100,14 +100,14 @@ GRLIB_max_respawn_reached = false;
 GRLIB_player_configured = false;
 
 // Local Constants
-InfantryBuildType = 1;
-TransportVehicleBuildType = 2;
-CombatVehicleBuildType = 3;
-AerialBuildType = 4;
-DefenceBuildType = 5;
-BuildingBuildType = 6;
-SupportBuildType = 7;
-SquadBuildType = 8;
+GRLIB_InfantryBuildType = 1;
+GRLIB_TransportVehicleBuildType = 2;
+GRLIB_CombatVehicleBuildType = 3;
+GRLIB_AerialBuildType = 4;
+GRLIB_DefenceBuildType = 5;
+GRLIB_BuildingBuildType = 6;
+GRLIB_SupportBuildType = 7;
+GRLIB_SquadBuildType = 8;
 
 // Local functions
 add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
