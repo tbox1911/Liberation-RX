@@ -57,7 +57,7 @@ while { alive _vehicle && alive _driver } do {
 
 	// Shit happens...
 	if (!_event_stared && time > _trigger) then {
-		_incd = selectRandom [0,0,_incd_repair,_incd_repair,_incd_fuel];
+		_incd = selectRandom [0,0,0,0,_incd_repair,_incd_repair,_incd_fuel];
 
 		// lucky ?
 		if (_incd == 0 || surfaceIsWater (getposATL _vehicle)) exitWith { _trigger = (time + _delay) };
