@@ -14,6 +14,7 @@ _map enableSimulationGlobal false;
 _map setDir _map_dir;
 _map setPosATL _map_pos;
 _map setVariable ["R3F_LOG_disabled", true, true];
+_map setVariable ["GRLIB_vehicle_owner", "server", true];	
 //_map setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
 
 private _lamp1 = objNull;
@@ -25,6 +26,7 @@ if !(surfaceIsWater _fob_pos) then {
 	_lamp1 setDir (_map_dir + 45);
 	_lamp1 setPosATL _lampPos;
 	_lamp1 setVariable ["R3F_LOG_disabled", true, true];
+	_lamp1 setVariable ["GRLIB_vehicle_owner", "server", true];
 
 	private _lampPos = _fob_pos vectorAdd ([[10, 7, 0], -_map_dir] call BIS_fnc_rotateVector2D);
 	_lamp2 = createVehicle ["Land_LampStreet_02_triple_F", zeropos, [], 0, "CAN_COLLIDE"];
@@ -32,6 +34,7 @@ if !(surfaceIsWater _fob_pos) then {
 	_lamp2 setDir (_map_dir + 45);
 	_lamp2 setPosATL _lampPos;
 	_lamp2 setVariable ["R3F_LOG_disabled", true, true];
+	_lamp2 setVariable ["GRLIB_vehicle_owner", "server", true];	
 };
 
 private _map_dir = getDir _map;
