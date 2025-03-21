@@ -19,8 +19,13 @@ if (count _usable_sectors > 0) then {
 	private _sector_pos = markerPos (selectRandom _usable_sectors);
 	// 40% in vehicles
 	if (floor random 100 >= 60) then {
-		_civ_veh = [_sector_pos, (selectRandom civilian_vehicles), 3, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-		if !(isNull _civ_veh) then { _civ_grp = group (driver _civ_veh) };
+		private _spread = 3;
+		private _spawn_pos = [(((_sector_pos select 0) + (75 * _spread)) - (floor random (150 * _spread))),(((_sector_pos select 1) + (75 * _spread)) - (floor random (150 * _spread))), 0.5];
+		_civ_veh = [_spawn_pos, (selectRandom civilian_vehicles), 3, false, GRLIB_side_civilian] call F_libSpawnVehicle;
+		if !(isNull _civ_veh) then {
+			_civ_grp = group (driver _civ_veh);
+			_sector_pos = getPos _civ_veh;
+		};
 	} else {
 		_civ_grp = [_sector_pos] call F_spawnCivilians;
 	};
