@@ -1,7 +1,6 @@
 private ["_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
 
 if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
-if ( isNil "buildtype" ) then { buildtype = GRLIB_InfantryBuildType };
 if ( buildtype > GRLIB_SquadBuildType ) then { buildtype = GRLIB_InfantryBuildType };
 if ( isNil "buildindex" ) then { buildindex = -1 };
 
@@ -112,7 +111,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBu
 		};
 
 		_old_buildtype = buildtype;
-		_old_selected_item = -1;
+		_old_selected_item = 0;
 		_row = 0;
 		ctrlSetText [ 151, _buildpages select (buildtype - 1) ];
 		if (count _build_list == 0) exitWith {};
@@ -222,6 +221,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBu
 			};
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], str _affordable];
 		} foreach _build_list;
+		lbSetCurSel [110, buildtypeSel];
 	};
 
 	_selected_item = lbCurSel 110;
@@ -229,6 +229,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBu
 
 	if (_selected_item != -1 && _selected_item != _old_selected_item) then {
 		_old_selected_item = _selected_item;
+		buildtypeSel = _selected_item;
 
 		if (dobuild == 0 && (_selected_item < (count _build_list))) then {
 			_build_item = _build_list select _selected_item;

@@ -165,7 +165,7 @@ addMissionEventHandler ["Map", {
 // LRX client scripts
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
-[] execVM "scripts\client\build\do_build.sqf";
+[] execVM "scripts\client\build\build_manager.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
 
 // Player actions manager

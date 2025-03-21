@@ -10,6 +10,8 @@ build_unit = [];
 build_vehicle = objNull;
 build_mode = 0;
 build_water = 0;
+buildtype = GRLIB_InfantryBuildType;
+buildtypeSel = 0;
 
 private _buildtype = 0;
 private _buildindex = 0;
