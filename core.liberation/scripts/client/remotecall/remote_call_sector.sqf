@@ -2,6 +2,7 @@ if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params ["_sector", "_status", ["_info", 0]];
 
 private _marker_pos = markerpos _sector;
+if (_marker_pos isEqualTo [0,0,0]) exitWith {};
 private _location_name = [_marker_pos] call F_getLocationName;
 
 if (_status == 0) then {

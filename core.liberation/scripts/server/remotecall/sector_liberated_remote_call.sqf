@@ -73,7 +73,7 @@ publicVariable "combat_readiness";
 stats_readiness_earned = stats_readiness_earned + _combat_readiness_increase;
 publicVariable "stats_readiness_earned";
 
-[ _liberated_sector, 0 ] remoteExec ["remote_call_sector", 0];
+[_liberated_sector, 0] remoteExec ["remote_call_sector", 0];
 
 blufor_sectors pushBackUnique _liberated_sector;
 publicVariable "blufor_sectors";
@@ -83,7 +83,7 @@ stats_sectors_liberated = stats_sectors_liberated + 1;
 sleep 45;
 
 private _nearRadioTower = ([markerPos _liberated_sector, GRLIB_side_enemy] call F_getNearestTower != "");
-if ( GRLIB_endgame == 0 && _nearRadioTower ) then {
+if (GRLIB_endgame == 0 && _nearRadioTower) then {
 	if (
 	   !(_liberated_sector in sectors_tower) &&
 	   ((combat_readiness > 70 && floor random 3 > 0) || (_liberated_sector in sectors_bigtown))
