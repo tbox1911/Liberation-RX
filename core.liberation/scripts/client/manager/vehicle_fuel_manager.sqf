@@ -1,3 +1,4 @@
+if (GRLIB_vehicles_fuel == 0) exitWith {};
 waitUntil { sleep 1; !isNil "blufor_sectors" };
 
 private ["_unitList", "_unit", "_vehicle", "_unmanaged"];

@@ -2,7 +2,6 @@ params ["_unit", "_vehicle"];
 
 if (!local _vehicle) exitWith {};
 if (isNull _vehicle) exitWith {};
-if (GRLIB_vehicles_fuel == 0) exitWith {};
 _vehicle removeAllEventHandlers "Fuel";
 
 private ["_fuel_veh", "_fuel_collected"];
