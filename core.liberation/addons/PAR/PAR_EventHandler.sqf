@@ -77,9 +77,21 @@ _unit addEventHandler ["FiredMan",	{
 
 // for Player only
 if (_unit == player) then {
-	_unit removeAllEventHandlers "Reloaded";
-	_unit removeAllEventHandlers "MagazineUnloaded";
-	_unit removeAllEventHandlers "MagazineReloading";
+	// try to fix the Reload Mag Bug https://feedback.bistudio.com/T185261
+	if (isMultiplayer) then {
+		_unit removeAllEventHandlers "Reloaded";
+		_unit addEventHandler ["Reloaded", {
+			params ["_unit", "_weapon", "_muzzle", "_newMagazine", "_oldMagazine"];
+			if (currentWeapon _unit == _weapon) then {
+				if (_oldMagazine select 1 != 0) then {
+					_unit addMagazine [_oldMagazine select 0, _oldMagazine select 1];
+					if (_oldMagazine select 1 == _newMagazine select 1) then {
+						_unit removeAllEventHandlers "Reloaded";
+					};
+				};
+			};
+		}];
+	};
 
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
@@ -123,7 +135,8 @@ if (_unit == player) then {
 			private _fuel = round (fuel _vehicle * 100);
 			private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
 			private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
-			hintSilent format ["Damage: %1%2\nFuel: %3%4\nAmmo: %5%6", _damage,"%",_fuel,"%",_ammo,"%"];
+			private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
+			hintSilent format ["Damage: %1%2\nFuel: %3%4\nAmmo: %5%6\nCargo: %7/%8", _damage,"%",_fuel,"%",_ammo,"%", _cargo select 0, _cargo select 1];
 		};
 	}];
 
