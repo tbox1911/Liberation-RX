@@ -116,7 +116,9 @@ _waitUntilExec = {
 		{
 			[_msg] remoteExec ["titleText", owner _x];
 		} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
-		[_missionPos] spawn send_paratroopers;
+		private _grp = [([_missionPos, 120] call F_getRandomPos), 6, "infantry", false] call createCustomGroup;
+		[_grp, _missionPos] spawn battlegroup_ai;
+		sleep 5;
 		playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
 	};
 };
