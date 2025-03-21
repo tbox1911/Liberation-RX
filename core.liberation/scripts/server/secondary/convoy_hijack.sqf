@@ -111,33 +111,30 @@ for "_i" from 0 to ((count _convoy_destinations) -1) do {
 // Mission loop
 private _mission_timeout = time + 3600;	// 1 hours tiemout
 private _mission_in_progress = true;
-private _enemy_left = 0;
 
 while { _mission_in_progress } do {
-	if (!alive (driver _transport_vehicle) || !alive _transport_vehicle || time > _mission_timeout ) then {
+	if (!alive _transport_vehicle || (side group _transport_vehicle == GRLIB_side_friendly) || time > _mission_timeout) then {
 		_mission_in_progress = false;
 	};
 	_convoy_marker setMarkerPos (getpos _transport_vehicle);
 	sleep 5;
 };
 
+diag_log format ["--- LRX: %1 end static mission: Convoy Hijack at %2", _caller, time];
+
 //-----------------------------------------
 // Mission cleanup
 { deleteMarker _x } foreach _convoy_marker_list;
 
 if (time > _mission_timeout || !alive _transport_vehicle) then {
-	[51] remoteExec ["remote_call_intel", 0];
+	combat_readiness = combat_readiness + 5;
+	if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
+	[51] remoteExec ["remote_call_intel", 0];	
 } else {
-	if (_enemy_left == 0) then {
-		combat_readiness = 15 max (combat_readiness - 10);
-		stats_secondary_objectives = stats_secondary_objectives + 1;
-		[5] remoteExec ["remote_call_intel", 0];
-		_transport_vehicle setVariable ["GRLIB_vehicle_owner", "", true];
-	} else {
-		combat_readiness = combat_readiness + 5;
-		if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
-		[51] remoteExec ["remote_call_intel", 0];
-	};
+	combat_readiness = 15 max (combat_readiness - 10);
+	stats_secondary_objectives = stats_secondary_objectives + 1;
+	[5] remoteExec ["remote_call_intel", 0];
+	_transport_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
 };
 
 private _vehicles = [_scout_vehicle, _transport_vehicle, _troop_vehicle];
