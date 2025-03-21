@@ -127,7 +127,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			[_unit] call F_filterLoadout;
 			private _newprice = [_unit] call F_loadoutPrice;
 			private _cost = 0 max (_newprice - _oldprice);
-			if (!([_cost] call F_pay)) then { _unit setUnitLoadout [_oldstuff, true] };
+			if (!([_cost] call F_pay)) then { _unit setUnitLoadout _oldstuff };
 		};
 	};
 
@@ -139,7 +139,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			private _price = [player] call F_loadoutPrice;
 			private _cost = 0 max (_price - _price_ai);
 			if ([_cost] call F_pay) then {
-				_selectedmember setUnitLoadout [(getUnitLoadout player), true];
+				_selectedmember setUnitLoadout (getUnitLoadout player);
 				hintSilent format ["Loadout copied, Price: %1\nThank you !", _cost];
 				lbSetCurSel [101, _selection];
 			};

@@ -16,11 +16,11 @@ private _bros = (units GRLIB_side_friendly + units GRLIB_side_civilian) select {
 
 if (_score >= GRLIB_min_score_player) then {
 	if !(_player getVariable ["PAR_isUnconscious", false]) then {
-		_loadout = getUnitLoadout [_player, true];
+		_loadout = getUnitLoadout _player;
 		_squad_loaded = _player getVariable ["GRLIB_squad_context_loaded", false];
 		if (_squad_loaded) then {
 			{
-				_ai_group pushback [typeOf _x, rank _x, getUnitLoadout [_x, true]];
+				_ai_group pushback [typeOf _x, rank _x, getUnitLoadout _x];
 			} forEach (_bros select {!(_x getVariable ["PAR_isUnconscious", false])});
 			diag_log format ["--- LRX Saving %1 unit(s) for %2 Squad.", count _ai_group, name _player];
 		} else {

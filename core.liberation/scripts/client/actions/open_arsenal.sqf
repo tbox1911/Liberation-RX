@@ -132,7 +132,7 @@ while { dialog && (alive player) && !(player getVariable ["PAR_isUnconscious", f
 	if ( load_from_player >= 0 ) then {
 		private _playerselected = ( _loadplayers select load_from_player ) select 1;
 		if ( alive _playerselected ) then {
-    		player setUnitLoadout [(getUnitLoadout _playerselected), true];
+    		player setUnitLoadout (getUnitLoadout _playerselected);
 			hint format [ localize "STR_LOAD_PLAYER_LOADOUT_HINT", name _playerselected ];
 		};
 		load_from_player = -1;
