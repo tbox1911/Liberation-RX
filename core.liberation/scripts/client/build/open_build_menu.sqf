@@ -1,4 +1,4 @@
-private ["_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
+private ["_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
 
 if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 if ( buildtype > GRLIB_SquadBuildType ) then { buildtype = GRLIB_InfantryBuildType };
@@ -78,7 +78,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBu
 	if (build_refresh) then {
 		build_refresh = false;
 		lbClear 110;
-		_build_list = [];
+		CurrentBuildList = [];
 		private _msg = "";
 
 		if (!_squad_leader && buildtype in [GRLIB_InfantryBuildType,GRLIB_SquadBuildType]) then {
@@ -96,12 +96,12 @@ while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBu
 			if (count _config_list == 0) exitWith {	_msg = "       No Vehicle Available." };
 			{
 				if (buildtype == GRLIB_SquadBuildType ) then {
-					_build_list pushback _x;
+					CurrentBuildList pushback _x;
 				} else {
-					if ( _score >= (_x select 4) && (_x select 4) < GRLIB_perm_hidden) then { _build_list pushback _x };
+					if ( _score >= (_x select 4) && (_x select 4) < GRLIB_perm_hidden) then { CurrentBuildList pushback _x };
 				};
 			} forEach _config_list;
-			if (count _build_list == 0) then { _msg = "       Score too low!" };
+			if (count CurrentBuildList == 0) then { _msg = "       Score too low!" };
 		};
 
 		if (_msg != "") then {
@@ -114,7 +114,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBu
 		_old_selected_item = 0;
 		_row = 0;
 		ctrlSetText [ 151, _buildpages select (buildtype - 1) ];
-		if (count _build_list == 0) exitWith {};
+		if (count CurrentBuildList == 0) exitWith {};
 
 		{
 			_build_class = _x select 0;
@@ -220,7 +220,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBu
 				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 3], [0.4,0.4,0.4,1]];
 			};
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], str _affordable];
-		} foreach _build_list;
+		} foreach CurrentBuildList;
 		lbSetCurSel [110, buildtypeSel];
 	};
 
@@ -231,8 +231,8 @@ while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBu
 		_old_selected_item = _selected_item;
 		buildtypeSel = _selected_item;
 
-		if (dobuild == 0 && (_selected_item < (count _build_list))) then {
-			_build_item = _build_list select _selected_item;
+		if (dobuild == 0 && (_selected_item < (count CurrentBuildList))) then {
+			_build_item = CurrentBuildList select _selected_item;
 			_build_class = _build_item select  0;
 			_picture = "";
 

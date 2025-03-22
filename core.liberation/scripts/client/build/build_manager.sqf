@@ -69,9 +69,7 @@ while { true } do {
 	_fob_box = objNull;
 	_buildtype = buildtype;
 	_buildindex = buildindex;
-
-	// Init build properties
-	if ( _buildtype == GRLIB_BuildingBuildType ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	build_altitude = 0.2;
 
     // Configure build properties based on _buildtype using switch-case
     switch _buildtype do {
@@ -109,7 +107,7 @@ while { true } do {
         default {
             if ( _buildtype in [GRLIB_InfantryBuildType, GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, GRLIB_SquadBuildType] ) then {
                 _score = [player] call F_getScore;
-                _build_list = (build_lists#_buildtype) select { _score >= (_x#4) };
+                _build_list = CurrentBuildList;
 				_build = _build_list#_buildindex;
 				_classname = _build#0;
 				_price = _build#2;
@@ -120,6 +118,7 @@ while { true } do {
                 _lst_a3 = [];
                 _lst_r3f = [];
                 _lst_grl = [];
+				if ( _buildtype == GRLIB_BuildingBuildType ) then { build_altitude = building_altitude }
             };
         };
     };
@@ -176,26 +175,16 @@ while { true } do {
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,false,"","build_valid && build_confirmed == 1"];
 			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,false,"","build_confirmed == 1"];
 		};
-		_ghost_spot = (markerPos "ghost_spot") findEmptyPosition [1,150,"B_Heli_Transport_03_unarmed_F"];
+		//Fix sometimes memory crash when building - findEmptyPosition was misused (radius too high) and is unnecessary
+		_ghost_spot = (markerPos "ghost_spot");
 		_ghost_spot = _ghost_spot vectorAdd [0, 0, build_altitude];
-
+		_ghostName = _classname;
 		if (_classname == FOB_carrier) then {
-			_vehicle = "VR_3DSelector_01_default_F" createVehicleLocal _ghost_spot;
-		} else {
-			_vehicle = _classname createVehicleLocal _ghost_spot;
+			_ghostName = "VR_3DSelector_01_default_F";
 		};
-		_vehicle allowdamage false;
-		_vehicle setVehicleLock "LOCKED";
-		_vehicle enableSimulationGlobal false;
-		_vehicle setVariable ["R3F_LOG_disabled", true];
-		[_vehicle] call F_clearCargo;
-
-		_radius = (sizeOf _classname)/2;
-		if (_radius < 3.5) then { _radius = 3.5 };
-		if (_radius > 20) then { _radius = 20 };
-		_dist = (_radius / 2) + 1.5;
-		if (_dist > 5) then { _dist = 5 };
-
+		_vehicle = createSimpleObject [_ghostName, _ghost_spot, true];
+		_radius = ((round((sizeOf _classname)/2) max 3.5) min 20);
+		_dist = ((round(_radius / 2) + 1.5) min 5);
         // Customize by classname using switch-case
         switch _classname do {
             case FOB_carrier: {
@@ -220,8 +209,11 @@ while { true } do {
             };
         };
         _dist = 3 max _dist;
-
-		for "_i" from 0 to 5 do { _vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'] };
+		//Improved retexture for preview
+        { 
+			_vehicle setObjectMaterialGlobal [_forEachIndex, "\a3\data_f\default.rvmat"];
+			_vehicle setObjectTextureGlobal [_forEachIndex, '#(rgb,8,8,3)color(0,1,0,0.8)']; 
+		} forEach (getObjectTextures _vehicle);
 		{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
 
 		// Wait for building

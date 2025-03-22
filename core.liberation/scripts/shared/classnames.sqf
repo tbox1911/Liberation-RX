@@ -561,6 +561,7 @@ opfor_air = opfor_air select { [_x] call F_checkClass };
 civilians = civilians select { [_x] call F_checkClass };
 civilian_vehicles = civilian_vehicles select { [_x] call F_checkClass };
 military_alphabet = ["Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel","India","Juliet","Kilo","Lima","Mike","November","Oscar","Papa","Quebec","Romeo","Sierra","Tango","Uniform","Victor","Whiskey","X-Ray","Yankee","Zulu"];
+CurrentBuildList = [];
 
 // Enemies adaptative squad definition
 opfor_squad_low_intensity = [
