@@ -52,7 +52,7 @@ waitUntil {sleep 1; _scout_vehicle distance2D _spawnpos > 30 || time > _timout};
 private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _transport_vehicle) joinSilent _convoy_group;
 
-_transport_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+_transport_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
 _transport_vehicle allowCrewInImmobile [true, true];
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
@@ -66,6 +66,7 @@ waitUntil {sleep 1; _transport_vehicle distance2D _spawnpos > 30 || time > _timo
 private _troop_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _troop_vehicle) joinSilent _convoy_group;
 
+_troop_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
 _troop_vehicle allowCrewInImmobile [true, true];
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
@@ -85,6 +86,7 @@ _troop_vehicle lock _lock;
 
 (driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
 
+{ _x setVariable ["GRLIB_mission_AI", true, true]} forEach (units _convoy_group + units _troops_group);
 //-----------------------------------------
 // Markers
 private _convoy_marker = createMarkerLocal [ format [ "convoymarker%1", round time], getpos _transport_vehicle ];
@@ -134,7 +136,6 @@ if (time > _mission_timeout || !alive _transport_vehicle) then {
 	combat_readiness = 15 max (combat_readiness - 10);
 	stats_secondary_objectives = stats_secondary_objectives + 1;
 	[5] remoteExec ["remote_call_intel", 0];
-	_transport_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
 };
 
 private _vehicles = [_scout_vehicle, _transport_vehicle, _troop_vehicle];
