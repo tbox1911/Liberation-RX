@@ -4,7 +4,7 @@ if (isNull _grp) exitWith {};
 if (!local _grp) exitWith { [_grp, _basepos] remoteExec ["add_civ_waypoints", groupOwner _grp] };
 
 private _civ_veh = objectParent (leader _grp);
-if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 120] spawn patrol_ai };
+if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 220] spawn patrol_ai };
 
 [_grp] call F_deleteWaypoints;
 
@@ -52,7 +52,7 @@ if (isNull _civ_veh) then {
 	private _convoy_destinations_markers = [_radius, _citylist, _min_waypoints, 20, _check_water] call F_getSectorPath;
 	private _convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
 	if (count _convoy_destinations < _min_waypoints) exitWith {
-		diag_log format ["--- LRX Error: %1 patrol waypoints fail, cannot find sector path!", side _grp];
+		diag_log format ["--- LRX Error: %1 patrol waypoints fail, %2 cannot find sector path!", side _grp, typeOf _civ_veh];
 		false;
 	};
 
