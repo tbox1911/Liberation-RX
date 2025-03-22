@@ -190,11 +190,8 @@ while { true } do {
 		_vehicle setVariable ["R3F_LOG_disabled", true];
 		[_vehicle] call F_clearCargo;
 
-		_radius = (sizeOf _classname)/2;
-		if (_radius < 3.5) then { _radius = 3.5 };
-		if (_radius > 20) then { _radius = 20 };
-		_dist = (_radius / 2) + 1.5;
-		if (_dist > 5) then { _dist = 5 };
+		_radius = ((sizeOf _classname)/2 max 3.5) min 20;
+		_dist = ((_radius / 2) + 1.5) min 5;
 
         // Customize by classname using switch-case
         switch _classname do {
@@ -220,8 +217,12 @@ while { true } do {
             };
         };
         _dist = 3 max _dist;
-
-		for "_i" from 0 to 5 do { _vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'] };
+		
+		//Improved retexture for preview
+        { 
+			_vehicle setObjectMaterialGlobal [_forEachIndex, "\a3\data_f\default.rvmat"];
+			_vehicle setObjectTextureGlobal [_forEachIndex, '#(rgb,8,8,3)color(0,1,0,0.8)']; 
+		} forEach (getObjectTextures _vehicle);
 		{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
 
 		// Wait for building
