@@ -222,14 +222,17 @@ if (_building_ai_max > 0) then {
 };
 
 // Create civilians
-if (_spawncivs && GRLIB_civilian_activity > 0) then {
-	private _nbcivs = round ((4 + (floor random 6)) * GRLIB_civilian_activity);
+if ( _spawncivs && GRLIB_civilian_activity > 0) then {
+	private _nbcivs = round ((5 + (floor random 6)) * GRLIB_civilian_activity);
+	private _rndciv = [1,1,1,1,2,2,3];
 	if (_sector in sectors_bigtown) then { _nbcivs = _nbcivs + 12 };
 	while { _nbcivs > 0 } do {
-		_grp = [_sector_pos] call F_spawnCivilians;
+		_maxcivs = (selectRandom _rndciv) min _nbcivs;
+		_grp = [_sectorpos, _maxcivs] call F_spawnCivilians;
 		[_grp, _sector_pos] spawn civilian_ai;
 		_managed_units = _managed_units + (units _grp);
-		_nbcivs = _nbcivs - 1;
+		_nbcivs = _nbcivs - _maxcivs;
+		sleep 0.3;
 	};
 };
 
