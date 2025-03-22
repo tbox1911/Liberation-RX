@@ -39,7 +39,7 @@ taxi_dest = {
 	private _stop = time + (5 * 60); // wait 5min max
 	private _alt_old = 999;
 
-	waitUntil { sleep 1; speed _vehicle > 5 };
+	sleep 5;
 	waitUntil {
 		sleep 1;
 		if (!isNil "GRLIB_taxi_helipad") then {
