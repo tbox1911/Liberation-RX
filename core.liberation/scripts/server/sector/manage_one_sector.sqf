@@ -228,7 +228,7 @@ if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 	if (_sector in sectors_bigtown) then { _nbcivs = _nbcivs + 12 };
 	while { _nbcivs > 0 } do {
 		_maxcivs = (selectRandom _rndciv) min _nbcivs;
-		_grp = [_sectorpos, _maxcivs] call F_spawnCivilians;
+		_grp = [_sector_pos, _maxcivs] call F_spawnCivilians;
 		[_grp, _sector_pos] spawn civilian_ai;
 		_managed_units = _managed_units + (units _grp);
 		_nbcivs = _nbcivs - _maxcivs;
