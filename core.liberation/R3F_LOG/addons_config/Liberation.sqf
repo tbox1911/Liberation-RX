@@ -170,7 +170,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["Ship_F", 25],
 	[FOB_boat_typename, 100],
 	["Boat_Armed_01_base_F", 40],
-	["Rubber_duck_base_F", 0],
+	["Rubber_duck_base_F", 7],
 	["SDV_01_base_F", 10],
 	["C_Boat_Transport_02_F",30],
   	["Boat_Civil_01_base_F",20]
@@ -180,7 +180,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	["B_Boat_Transport_01_F", 15],
 	["C_Scooter_Transport_01_F", 5],
-	["Rubber_duck_base_F", 5],
+	["Rubber_duck_base_F", 10],
 	["B_SDV_01_F", 50]
 ];
 
