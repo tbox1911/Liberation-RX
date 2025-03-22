@@ -22,7 +22,7 @@ while { dialog && alive player } do {
 		_refresh = false;
 
 		// list outside
-		_vehicles_out = (player nearEntities [["LandVehicle","Air","Ship",playerbox_typename], 150]) select {
+		_vehicles_out = (player nearEntities [["LandVehicle","Air","Ship_F",playerbox_typename], 150]) select {
 			alive _x && (count (crew _x) == 0 || (typeOf _x in uavs_vehicles)) &&
 			(_x distance2D lhd > GRLIB_fob_range) &&
 			(_x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID) &&

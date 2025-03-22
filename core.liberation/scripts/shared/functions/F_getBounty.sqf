@@ -15,7 +15,7 @@ private _heavy_blu = [];
 _bounty = 10;
 _bonus = 2;
 
-if ( _vehicle isKindOf "Ship" ) then {
+if ( _vehicle isKindOf "Ship_F" ) then {
 	_bounty = 15;
 	_bonus = 2;
 };

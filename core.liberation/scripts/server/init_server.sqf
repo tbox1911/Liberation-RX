@@ -62,7 +62,7 @@ GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 
 // Init owner on map vehicles
 {
-	if (_x iskindof "LandVehicle" || _x iskindof "Air" || _x iskindof "Ship") then {
+	if (_x iskindof "LandVehicle" || _x iskindof "Air" || _x iskindof "Ship_F") then {
 		_x removeAllMPEventHandlers "MPKilled";
 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {

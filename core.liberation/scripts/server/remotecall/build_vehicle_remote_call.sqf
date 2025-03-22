@@ -60,7 +60,7 @@ if (_classname in static_vehicles_AI) then {
 };
 
 // Vehicles
-if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship") then {
+if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship_F") then {
 	// Cutomize Vehicle
 	[_vehicle] call F_fixModVehicle;
 

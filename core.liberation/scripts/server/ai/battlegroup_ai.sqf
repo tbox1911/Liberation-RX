@@ -3,7 +3,7 @@ if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
 private _vehicle = objectParent leader _grp;
-if (_vehicle isKindOf "Ship") exitWith {
+if (_vehicle isKindOf "Ship_F") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
 };
 

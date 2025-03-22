@@ -14,7 +14,7 @@ private _nearfobbox = [];
 
 private _wreck_class = [
 	"Air",
-	"Ship",
+	"Ship_F",
 	"LandVehicle",
 	"StaticWeapon",
 	"Slingload_01_Base_F",
@@ -33,7 +33,7 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 while { true } do {
 	// Vehicles actions
-	_nearveh = (player nearEntities [["LandVehicle","Air","Ship"], _searchradius]) select {
+	_nearveh = (player nearEntities [["LandVehicle","Air","Ship_F"], _searchradius]) select {
 		(_x distance2D lhd > GRLIB_fob_range) &&
 		!(typeOf _x in list_static_weapons) &&
 		isNil {_x getVariable "GRLIB_vehicle_action"}

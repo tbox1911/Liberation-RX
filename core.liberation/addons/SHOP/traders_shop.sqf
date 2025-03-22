@@ -79,7 +79,7 @@ private _vehicle_name = "";
 while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
-		private _sell_classnames = ["LandVehicle","Air","Ship","ReammoBox_F","Items_base_F"];
+		private _sell_classnames = ["LandVehicle","Air","Ship_F","ReammoBox_F","Items_base_F"];
 		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
 			alive _x && (count (crew _x) == 0 || (typeOf _x in uavs_vehicles)) &&
 			locked _x != 2 &&

@@ -2,7 +2,7 @@
  * CREATION FACTORY CONFIGURATION FILE
  * 
  * English and French comments
- * Commentaires anglais et français
+ * Commentaires anglais et franï¿½ais
  * 
  * (EN)
  * This file contains the predefined lists of available categories in the creation factory.
@@ -15,14 +15,14 @@
  * The black list is used if no white list is mentioned when calling USER_FUNCT\init_creation_factory.sqf.
  * 
  * (FR)
- * Ce fichier contient la liste des catégories disponibles dans l'usine de création.
- * Les catégories d'objets/véhicules sont les mêmes que dans l'éditeur de mission.
- * Cela correspond à l'arborescence CfgVehicleClasses dans le config file.
- * Pour ajouter une catégorie dans une des listes, vous devez écrire son nom de classe. Utilisez le "Config viewer" de BIS.
+ * Ce fichier contient la liste des catï¿½gories disponibles dans l'usine de crï¿½ation.
+ * Les catï¿½gories d'objets/vï¿½hicules sont les mï¿½mes que dans l'ï¿½diteur de mission.
+ * Cela correspond ï¿½ l'arborescence CfgVehicleClasses dans le config file.
+ * Pour ajouter une catï¿½gorie dans une des listes, vous devez ï¿½crire son nom de classe. Utilisez le "Config viewer" de BIS.
  * 
- * Pour comprendre le système de white/black list, consultez les paramètres requis par USER_FUNCT\init_creation_factory.sqf
+ * Pour comprendre le systï¿½me de white/black list, consultez les paramï¿½tres requis par USER_FUNCT\init_creation_factory.sqf
  * Il y a trois white list "FULL", "MEDIUM" and "LIGHT", et une black list.
- * La black list est utilisée si aucune white list n'est mentionnée lors de l'appel de USER_FUNCT\init_creation_factory.sqf.
+ * La black list est utilisï¿½e si aucune white list n'est mentionnï¿½e lors de l'appel de USER_FUNCT\init_creation_factory.sqf.
  */
 
 /**
@@ -33,10 +33,10 @@
  * Set to -1 to disable the possibility to give back objects to the creation factory.
  * Note : the reimbursement amount take also into account of the damage level of the object.
  * 
- * Taux de remboursement par rapport au prix d'achat accordé à l'usine lors de la restitution d'un objet.
- * Une valeur de 0 signifie pas de crédits en retour, 0.5 donne 50% du prix d'achat, 1 correspond à 100% du prix d'achat.
- * Mettre à -1 pour désactiver la possibilité de redonner les objets à l'usine de création.
- * Note : le montant du remboursement prend aussi en compte l'état (dommage) de l'objet.
+ * Taux de remboursement par rapport au prix d'achat accordï¿½ ï¿½ l'usine lors de la restitution d'un objet.
+ * Une valeur de 0 signifie pas de crï¿½dits en retour, 0.5 donne 50% du prix d'achat, 1 correspond ï¿½ 100% du prix d'achat.
+ * Mettre ï¿½ -1 pour dï¿½sactiver la possibilitï¿½ de redonner les objets ï¿½ l'usine de crï¿½ation.
+ * Note : le montant du remboursement prend aussi en compte l'ï¿½tat (dommage) de l'objet.
  */
 R3F_LOG_CFG_CF_sell_back_bargain_rate = 0.75;
 
@@ -99,7 +99,7 @@ R3F_LOG_CFG_CF_whitelist_full_categories = R3F_LOG_CFG_CF_whitelist_medium_categ
 	"Armored",                          // Armored (16 entries)
 	"Air",                              // Air (19 entries)
 	"Support",                          // Supports (21 entries)
-	"Ship",                             // Ships (13 entries)
+	"Ship_F",                             // Ships (13 entries)
 	"Autonomous",                       // Autonomous (15 entries)
 	"Submarine",                        // Submarines (3 entries)
 	"Wreck",                            // Wrecks (24 entries)
@@ -209,11 +209,11 @@ R3F_LOG_CFG_CF_blacklist_categories =
  * The format of the array is ["categorie class name", multiplication factor].
  * All non-listed categories have a factor of 1x.
  * 
- * Facteur de multiplication pour corriger la propriété "cost" des objets/véhicules dans le CfgVehicles.
- * Par exemple, un sous-marins SDV (Submarine) a un coût (divisé par 100) de 100 et un Hunter (Car) du 5000.
+ * Facteur de multiplication pour corriger la propriï¿½tï¿½ "cost" des objets/vï¿½hicules dans le CfgVehicles.
+ * Par exemple, un sous-marins SDV (Submarine) a un coï¿½t (divisï¿½ par 100) de 100 et un Hunter (Car) du 5000.
  * En appliquant un facteur de correction, le SDV (Submarine) vaut 100x4000 = 400 000 et le Hunter (Car) 5000x12 = 60 000.
- * Le format du tableau est ["nom de classe de la catégorie", facteur de multiplication]
- * Les catégories non listées ont un facteur de 1x.
+ * Le format du tableau est ["nom de classe de la catï¿½gorie", facteur de multiplication]
+ * Les catï¿½gories non listï¿½es ont un facteur de 1x.
  */
 R3F_LOG_CFG_CF_creation_cost_factor =
 [
@@ -222,7 +222,7 @@ R3F_LOG_CFG_CF_creation_cost_factor =
 	["Air", 15],
 	["Support", 100],
 	["Ammo", 5000],
-	["Ship", 8],
+	["Ship_F", 8],
 	["Static", 3],
 	["Autonomous", 10],
 	["Submarine", 1500],

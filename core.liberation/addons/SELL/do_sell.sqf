@@ -21,7 +21,7 @@ private _price = 0;
 while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
-		private _sell_classnames = ["LandVehicle","Air","Ship","ReammoBox_F"] + GRLIB_Ammobox_keep;
+		private _sell_classnames = ["LandVehicle","Air","Ship_F","ReammoBox_F"] + GRLIB_Ammobox_keep;
 		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
 			alive _x && loadAbs _x > 0 &&
 			(_x distance2D lhd > GRLIB_fob_range) &&

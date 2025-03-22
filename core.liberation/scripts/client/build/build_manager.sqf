@@ -480,7 +480,7 @@ while { true } do {
 			if (_classname in static_vehicles_AI) then { player disableUAVConnectability [_vehicle, true] };
 
 			// Vehicles
-			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship") then {
+			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship_F") then {
 				// Color
 				if !(_color isEqualTo []) then {
 					[_vehicle, _color] call RPT_fnc_TextureVehicle;

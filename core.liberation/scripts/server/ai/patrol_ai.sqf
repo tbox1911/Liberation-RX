@@ -9,7 +9,7 @@ private _grp_veh = objectParent (leader _grp);
 if (_grp_veh isKindOf "Air") then { _completion_radius = 250 };
 
 private _patrol_in_water = surfaceIsWater _targetpos;
-if (_grp_veh isKindOf "Ship") then {
+if (_grp_veh isKindOf "Ship_F") then {
 	_targetpos = getPosATL _grp_veh;
 	_patrol_in_water = true;
 };

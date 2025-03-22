@@ -116,8 +116,7 @@ opfor_battlegroup_vehicles = [
 	"B_T_AFV_Wheeled_01_cannon_F",
 	"B_T_MBT_01_cannon_F",
 	"B_T_MBT_01_TUSK_F",
-	"B_T_APC_Tracked_01_AA_F",
-	"B_T_MBT_01_arty_F"
+	"B_T_APC_Tracked_01_AA_F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
