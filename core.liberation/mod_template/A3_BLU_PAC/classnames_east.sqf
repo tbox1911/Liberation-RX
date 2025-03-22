@@ -99,7 +99,6 @@ opfor_vehicles_low_intensity = [
 	"B_T_MRAP_01_hmg_F",
 	"B_T_MRAP_01_gmg_F",
 	"B_T_APC_Wheeled_01_cannon_F",
-	"B_T_APC_Tracked_01_rcws_F",
 	"B_Heli_Light_01_dynamicLoadout_F"
 ];
 
