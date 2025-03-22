@@ -65,12 +65,12 @@ _actionId = player addAction [
 		if (!isNull _bomb) then {
 			{
 				detach _x;
-				sleep 0.1;
 				_x setDamage 1;
+				sleep 0.1;
 			} foreach attachedObjects (attachedTo _bomb);
 		};
 		_caller removeAction _actionId;
-	}, _bomb, 6, false, true
+	}, _bomb, 999, false, true, "", "true"
 ];
 
 waitUntil {	sleep 1; isNull attachedTo _bomb };
