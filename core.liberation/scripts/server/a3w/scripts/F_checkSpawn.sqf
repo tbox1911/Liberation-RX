@@ -29,7 +29,7 @@ private _list = [];
 
 	if (_keep_sector) then {
 		// sector too close from any opfor sectors
-		if (([GRLIB_sector_size, _sector_pos, opfor_sectors] call F_getNearestSector) != "") then { _keep_sector = false };
+		if (([(GRLIB_sector_size * 1.25), _sector_pos, opfor_sectors] call F_getNearestSector) != "") then { _keep_sector = false };
 	};
 
 	if (_keep_sector) then { _list pushBack _x };
