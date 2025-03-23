@@ -60,6 +60,7 @@ player createDiaryRecord ["LRX Info", ["Contributors", format ["R3F Logistics v3
 player createDiaryRecord ["LRX Info", ["Contributors", format ["Robust Air Taxi v2.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Contributors", format ["pSiKO AI Revive v3.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Contributors", format ["LARs Arsenal v1.05<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["LRX Dev board: <br/>by <font color='%1'>ScottTMConnors</font>, <font color='%1'>Ace is Win</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Contributors", format ["LRX Community Manager<br/>by <font color='%1'>-Legend_TS13-</font>", call _getRandomColor]]];
 
 player createDiaryRecord ["LRX Info", ["Contributors", localize "STR_MISSION_TITLE"]];
