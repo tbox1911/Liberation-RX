@@ -50,7 +50,11 @@ if (isNull _civ_veh) then {
 	private _min_waypoints = 3;
 	private _citylist = ((sectors_allSectors - sectors_tower - active_sectors) select { (_pos distance2D (markerPos _x) < _radius) });
 	private _convoy_destinations_markers = [_radius, _citylist, _min_waypoints, 20, _check_water] call F_getSectorPath;
-	private _convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
+	private _convoy_destinations = [];
+	{ _convoy_destinations pushback (markerPos _x) } forEach _convoy_destinations_markers;
+	if !(_civ_veh isKindOf "LandVehicle") then {
+		_convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
+	};
 	if (count _convoy_destinations < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: %1 patrol waypoints fail, %2 cannot find sector path!", side _grp, typeOf _civ_veh];
 		false;

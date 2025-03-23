@@ -1,11 +1,12 @@
 params ["_grp"];
-if (count units _grp != 1) exitWith {};
-if (floor random 4 == 0) exitWith {};
-//if (!local _grp) exitWith { [_grp] remoteExec ["civilian_ai", groupOwner _grp] };
 
+if (count units _grp == 0) exitWith {};
 private _unit = (units _grp) select 0;
 if ((typeOf _unit) select [0,10] == "RyanZombie") exitWith {};
 if (surfaceIsWater (getPosATl _unit)) exitWith {};
+if (count units _grp > 1 || (floor random 4 == 0)) exitWith { [_grp, getPos _unit, GRLIB_capture_size] call BIS_fnc_taskPatrol };
+//if (!local _grp) exitWith { [_grp] remoteExec ["civilian_ai", groupOwner _grp] };
+
 
 private _moveTo = {
 	params ["_unit", "_target", ["_radius", 5]];
