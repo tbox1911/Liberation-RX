@@ -72,8 +72,6 @@ militia_vehicles = [
 ];
 
 opfor_boats = [
-	"B_T_Boat_Transport_01_F",
-	"B_T_Boat_Armed_01_minigun_F",
 	"B_T_Boat_Armed_01_minigun_F"
 ];
 
@@ -87,7 +85,6 @@ opfor_vehicles = [
 	"B_T_MRAP_01_gmg_F",
 	"B_T_APC_Wheeled_01_cannon_F",
 	"B_T_APC_Tracked_01_rcws_F",
-	"B_T_Boat_Armed_01_minigun_F",
 	"B_Heli_Light_01_dynamicLoadout_F"
 ];
 
@@ -167,10 +164,9 @@ opfor_statics = [
 
 opfor_recyclable = [
 	//Boat
-	["B_T_Boat_Transport_01_F",1,round (30 / GRLIB_recycling_percentage),1],
 	["B_T_Lifeboat",1,round (30 / GRLIB_recycling_percentage),1],
+	["B_T_Boat_Transport_01_F",1,round (30 / GRLIB_recycling_percentage),1],
 	["B_T_Boat_Armed_01_minigun_F",1,round (80 / GRLIB_recycling_percentage),2],
-	["C_Scooter_Transport_01_F",1,round (30 / GRLIB_recycling_percentage),1],
 	["B_SDV_01_F",1,round (50 / GRLIB_recycling_percentage),1],
 	//Car:
 	["B_T_Quadbike_01_F",1,round (30 / GRLIB_recycling_percentage),2],
@@ -236,17 +232,11 @@ opfor_recyclable = [
 	["B_UAV_02_dynamicLoadout_F",1,round (175 / GRLIB_recycling_percentage),1],
 	["B_UAV_05_F",1,round (50 / GRLIB_recycling_percentage),1],
 	//Static:
-	["B_T_HMG_01_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["B_T_GMG_01_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_GMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_T_Mortar_01_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_T_Static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["B_T_Static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["B_SAM_System_03_F",0,round (150 / GRLIB_recycling_percentage),0],
-	["B_SAM_System_01_F",0,round (150 / GRLIB_recycling_percentage),0],
-	["B_AAA_System_01_F",0,round (150 / GRLIB_recycling_percentage),0],
-	["B_SAM_System_02_F",0,round (150 / GRLIB_recycling_percentage),0]
+	["B_T_Static_AT_F",0,round (80 / GRLIB_recycling_percentage),0]
 ];
 
 a3w_br_planes = [
