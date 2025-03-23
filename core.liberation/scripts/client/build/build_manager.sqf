@@ -186,7 +186,7 @@ while { true } do {
 		// _vehicle = createSimpleObject [_ghostName, _ghost_spot, true];
 		_vehicle = _ghost_name createVehicleLocal _ghost_spot;
 		_vehicle allowdamage false;
-		_vehicle enableSimulationGlobal false;
+		_vehicle enableSimulation false;
 		_vehicle setVehicleLock "LOCKED";
 		_vehicle setVariable ["R3F_LOG_disabled", true];
 		[_vehicle] call F_clearCargo;
@@ -220,8 +220,8 @@ while { true } do {
 
 		// Improved retexture for preview
         {
-			_vehicle setObjectMaterialGlobal [_forEachIndex, "\a3\data_f\default.rvmat"];
-			_vehicle setObjectTextureGlobal [_forEachIndex, '#(rgb,8,8,3)color(0,1,0,0.8)'];
+			_vehicle setObjectMaterial [_forEachIndex, "\a3\data_f\default.rvmat"];
+			_vehicle setObjectTexture [_forEachIndex, '#(rgb,8,8,3)color(0,1,0,0.8)'];
 		} forEach (getObjectTextures _vehicle);
 		{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } foreach GRLIB_preview_spheres;
 
