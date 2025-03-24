@@ -33,7 +33,7 @@ sleep 1;
 while { GRLIB_endgame == 0 } do {
 	waitUntil {sleep 1; GRLIB_MapOpen && (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
 
-	if (GRLIB_hide_opfor && count opfor_sectors > 3) then {
+	if (GRLIB_hide_opfor && count opfor_sectors > 3 && !GRLIB_Commander_mode) then {
 		{
 			_sector_pos = markerPos _x;
 			_dist = [_sector_pos, false] call F_getNearestBluforObjective select 1;

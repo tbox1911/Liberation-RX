@@ -9,9 +9,13 @@ if (GRLIB_sector_spawning) then {
 };
 
 private _sector_pos = markerPos _sector;
-if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {
+if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0 && !GRLIB_Commander_mode) exitWith {
 	active_sectors = active_sectors - [_sector];
 	publicVariable "active_sectors";
+};
+if (GRLIB_Commander_mode) then {
+	_sector setMarkerType "mil_objective";
+	_sector setMarkerColor "ColorYellow";
 };
 
 GRLIB_sector_spawning = true;
@@ -277,7 +281,16 @@ if (_nearRadioTower) then {
 } else {
 	[gamelogic, "Enemies can't call Air support. No radio tower nearby."] remoteExec ["globalChat", 0];
 };
-
+_marker = ("zone_capture" + _sector);
+if (GRLIB_Commander_mode) then {
+	_createMarker = createMarker [_marker, getMarkerPos _sector];
+	_marker setMarkerPos (getMarkerPos _sector);
+	_marker setMarkerBrush "DiagGrid";
+	_marker setMarkerShape "ELLIPSE";
+	_marker setMarkerAlpha 0.7;
+	_marker setMarkerColor GRLIB_color_enemy;
+	_marker setMarkerSize [_local_capture_size, _local_capture_size];
+};
 // Main loop
 private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
 diag_log format ["Sector %1 wait attack to finish", _sector];
@@ -319,18 +332,24 @@ while { !_stopit } do {
 		};
 		sleep 60;
 	} else {
-		if (([_sector_pos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
-			_sector_despawn_tickets = _sector_despawn_tickets - 1;
-		} else {
-			_sector_despawn_tickets = GRLIB_despawn_tickets;
-		};
+		if (!GRLIB_Commander_mode) then {
+			if (([_sector_pos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
+				_sector_despawn_tickets = _sector_despawn_tickets - 1;
+			} else {
+				_sector_despawn_tickets = GRLIB_despawn_tickets;
+			};
 
-		if (_sector_despawn_tickets <= 1) then {
-			_stopit = true;
-			{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+			if (_sector_despawn_tickets <= 1) then {
+				_stopit = true;
+				{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+			};
 		};
 	};
 	sleep 5;
+};
+
+if (GRLIB_Commander_mode) then {
+	deleteMarker _marker;
 };
 
 sleep 30;
@@ -338,7 +357,6 @@ sleep 30;
 // Attack finished
 active_sectors = active_sectors - [_sector];
 publicVariable "active_sectors";
-
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
