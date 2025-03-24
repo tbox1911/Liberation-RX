@@ -186,7 +186,7 @@ while { true } do {
 		if (_buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType]) then {
 			_vehicle = createSimpleObject [_ghost_name, _ghost_spot, true];
 		} else {
-			_vehicle = _ghost_name createVehicleLocal [_ghost_name, _ghost_spot, [], 0, "CAN_COLLIDE"];
+			_vehicle = createVehicleLocal [_ghost_name, _ghost_spot, [], 0, "CAN_COLLIDE"];
 			_vehicle allowdamage false;
 			_vehicle enableSimulation false;
 			_vehicle setVehicleLock "LOCKED";
