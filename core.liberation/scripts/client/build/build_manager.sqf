@@ -183,16 +183,12 @@ while { true } do {
 		if (_classname == FOB_carrier) then {
 			_ghost_name = "VR_3DSelector_01_default_F";
 		};
-		if (_buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType]) then {
-			_vehicle = createSimpleObject [_ghost_name, _ghost_spot, true];
-		} else {
-			_vehicle = _ghost_name createVehicleLocal [_ghost_name, _ghost_spot, [], 0, "CAN_COLLIDE"];
-			_vehicle allowdamage false;
-			_vehicle enableSimulation false;
-			_vehicle setVehicleLock "LOCKED";
-			_vehicle setVariable ["R3F_LOG_disabled", true];
-			[_vehicle] call F_clearCargo;
-		};
+		_vehicle = createVehicleLocal [_ghost_name, _ghost_spot, [], 0, "CAN_COLLIDE"];
+		_vehicle allowdamage false;
+		_vehicle enableSimulation false;
+		_vehicle setVehicleLock "LOCKED";
+		_vehicle setVariable ["R3F_LOG_disabled", true];
+		[_vehicle] call F_clearCargo;
 		
 		_radius = ((round((sizeOf _classname)/2) max 3.5) min 20);
 		_dist = ((round(_radius / 2) + 1.5) min 5);
