@@ -13,7 +13,6 @@ GRLIB_blacklisted_from_arsenal = [
 	"CMFlare",
 	"SmokeLauncher",
 	"FlareLauncher",
-	"Laserdesignator",
 	"weapon_Fighter"
 ] + blacklisted_bag + blacklisted_weapon;
 
