@@ -54,7 +54,7 @@ _setupObjects = {
 	_vehicle1 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	private _vehicle_seat = (_vehicle1 emptyPositions "") min 4;
 	if (_vehicle_seat < 3) exitWith {
-		diag_log format ["--- LRX Error: side mission %1, vehicle %2, no enough seat!", _missionType ,typeOf _vehicle1];
+		diag_log format ["--- LRX Error: side mission %1, vehicle %2, no enough seat!", localize _missionType ,typeOf _vehicle1];
 		deleteVehicle _vehicle1;
 		false;
 	};
