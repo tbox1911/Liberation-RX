@@ -30,7 +30,7 @@ while { true } do {
 		} forEach GRLIB_all_fobs;
 
 		if (GRLIB_Commander_mode) then {
-			GRLIB_fobSects pushBack _markers;
+			GRLIB_fobSects = [] + _markers;
 			[] spawn GRLIB_CommanderSectors;
 		};
 	};

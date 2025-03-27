@@ -46,7 +46,7 @@ while {!isNull _dlg_contenu_vehicule} do
 	// Si le contenu a chang�, on rafraichit l'interface
 	if !([_chargement, _chargement_precedent] call BIS_fnc_areEqual) then
 	{
-		_chargement_precedent = +_chargement;
+		_chargement_precedent = [] + _chargement;
 
 		_contenu = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 

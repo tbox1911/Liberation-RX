@@ -60,9 +60,9 @@ GRLIB_CommanderSectors = {
     } forEach _sectors_positions;
 
     // Only broadcast a smaller list (Will always be smaller than opfor_sectors list for example)
-    GRLIB_AvailAttackSectors = +_AvailAttackSectors;
+    GRLIB_AvailAttackSectors = [] + _AvailAttackSectors;
     publicVariable "GRLIB_AvailAttackSectors";
-    _connectMarkers = +GRLIB_connectMarkers;
+    _connectMarkers = [] + GRLIB_connectMarkers;
     {
         _pos = _x;
         _duplicatingConnection = false;
