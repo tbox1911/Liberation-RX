@@ -9680,6 +9680,35 @@
 		</Key>
 	</Package>
 
+	<!-- pSiKO LRX RPL -->
+	<Package name="LRX_RPL">
+		<Key ID="STR_RPL_TOO_FAST_LOST_GRIP">
+			<Original>Moving too fast! You've lost grip of the rope.</Original>
+			<French>Vous allez trop vite ! Vous avez perdu la corde.</French>
+			<German>Zu schnell! Du hast das Seil losgelassen.</German>
+			<Spanish>¡Te mueves demasiado rápido! Has perdido la cuerda.</Spanish>
+			<Russian>Слишком быстро! Вы упустили верёвку.</Russian>
+			<Chinesesimp>移动太快！你已失去绳索控制。</Chinesesimp>
+			<Chinese>移動太快！你已失去繩索控制。</Chinese>
+			<Japanese>動きが速すぎます！ロープから手が離れました。</Japanese>
+			<Portuguese>Movendo-se rápido demais! Você perdeu a corda.</Portuguese>
+			<Czech>Pohybujete se příliš rychle! Ztratili jste lano.</Czech>
+		</Key>
+		<Key ID="STR_RPL_ANCHORS_IN_USE">
+			<Original>All rappel anchors in use. Please try again.</Original>
+			<French>Tous les points d'ancrage sont utilisés. Veuillez réessayer.</French>
+			<German>Alle Abseilanker sind belegt. Bitte versuche es erneut.</German>
+			<Spanish>Todos los anclajes de rápel están en uso. Inténtalo de nuevo.</Spanish>
+			<Russian>Все точки крепления заняты. Попробуйте снова.</Russian>
+			<Chinesesimp>所有绳降锚点已被占用，请稍后再试。</Chinesesimp>
+			<Chinese>所有繩降錨點已被佔用，請稍後再試。</Chinese>
+			<Japanese>すべてのラペリングアンカーが使用中です。もう一度お試しください。</Japanese>
+			<Portuguese>Todos os pontos de ancoragem estão em uso. Tente novamente.</Portuguese>
+			<Czech>Všechny kotevní body jsou obsazené. Zkuste to znovu.</Czech>
+		</Key>
+
+	</Package>
+	
 	<!-- pSiKO LRX Taxi -->
 	<Package name="LRX_TAXI">
 		<Key ID="STR_TAXI_ACTION1">
