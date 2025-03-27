@@ -92,8 +92,8 @@ heavy_vehicles = [
 ];
 
 air_vehicles = [
-	["B_UAV_01_F",1,10,5,GRLIB_perm_log],
-	["B_UAV_06_F",1,30,5,GRLIB_perm_tank],
+	["B_UAV_01_F",0,10,0,GRLIB_perm_log],
+	["B_UAV_06_F",0,30,0,GRLIB_perm_tank],
 	["B_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
 	["B_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
 	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
