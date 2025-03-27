@@ -8587,7 +8587,7 @@
 		</Key>
 	</Package>
 
-	<!-- pSiKO FOB -->
+	<!-- pSiKO LRX FOB -->
 	<Package name="LRX_FOB">
 		<Key ID="STR_FOB_CONSTRUCTION_TOO_MANY_WALLS">
 			<Original>Cannot start Construction!\nToo many walls/sandbags nearby!</Original>
@@ -8903,7 +8903,7 @@
 		</Key>
 	</Package>
 	
-	<!-- pSiKO JKB -->
+	<!-- pSiKO LRX JKB -->
 	<Package name="LRX_JKB">
 		<Key ID="STR_JKB_NOW_PLAYING">
 			<Original>Now Playing:\n%1</Original>
@@ -9011,7 +9011,7 @@
 		</Key>
 	</Package>
 
-	<!-- pSiKO KEY -->
+	<!-- pSiKO LRX KEY -->
 	<Package name="LRX_KEY">
 		<Key ID="STR_KEY_HUD_TOGGLE">
 			<Original>HUD Toggle %1.</Original>
@@ -9049,6 +9049,347 @@
 			<Portuguese>Diagnóstico LRX acionado.</Portuguese>
 			<Czech>LRX diagnostika spuštěna.</Czech>
 		</Key>
+	</Package>
+
+	<!-- pSiKO LRX MGR -->
+	<Package name="LRX_MGR">
+		<Key ID="STR_MGR_REPACK_INITIALIZED">
+			<Original>-------- Mag Repack Initialized --------</Original>
+			<French>-------- Mag Repack initialisé --------</French>
+			<German>-------- Mag Repack initialisiert --------</German>
+			<Spanish>-------- Mag Repack iniciado --------</Spanish>
+			<Russian>-------- Mag Repack запущен --------</Russian>
+			<Chinesesimp>-------- 弹匣整理已初始化 --------</Chinesesimp>
+			<Chinese>-------- 彈匣整理已初始化 --------</Chinese>
+			<Japanese>-------- Mag Repack が起動しました --------</Japanese>
+			<Portuguese>-------- Mag Repack inicializado --------</Portuguese>
+			<Czech>-------- Mag Repack inicializován --------</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_KEYBINDING">
+			<Original>Keybinding: %1</Original>
+			<French>Raccourci clavier : %1</French>
+			<German>Tastenkombination: %1</German>
+			<Spanish>Tecla asignada: %1</Spanish>
+			<Russian>Назначение клавиши: %1</Russian>
+			<Chinesesimp>快捷键：%1</Chinesesimp>
+			<Chinese>快捷鍵：%1</Chinese>
+			<Japanese>キー割り当て：%1</Japanese>
+			<Portuguese>Atalho: %1</Portuguese>
+			<Czech>Klávesová zkratka: %1</Czech>
+		</Key>
+		
+		<Key ID="STR_MGR_ABOUT_TITLE">
+			<Original>Mag Repack: About</Original>
+			<French>Mag Repack : À propos</French>
+			<German>Mag Repack: Über</German>
+			<Spanish>Mag Repack: Acerca de</Spanish>
+			<Russian>Mag Repack: О моде</Russian>
+			<Chinesesimp>Mag Repack：关于</Chinesesimp>
+			<Chinese>Mag Repack：關於</Chinese>
+			<Japanese>Mag Repack：情報</Japanese>
+			<Portuguese>Mag Repack: Sobre</Portuguese>
+			<Czech>Mag Repack: O doplňku</Czech>
+		</Key>
+		<Key ID="STR_MGR_OK">
+			<Original>OK</Original>
+			<French>OK</French>
+			<German>OK</German>
+			<Spanish>OK</Spanish>
+			<Russian>ОК</Russian>
+			<Chinesesimp>确定</Chinesesimp>
+			<Chinese>確定</Chinese>
+			<Japanese>OK</Japanese>
+			<Portuguese>OK</Portuguese>
+			<Czech>OK</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_AUTHOR">
+			<Original>Author: Outlawled</Original>
+			<French>Auteur : Outlawled</French>
+			<German>Autor: Outlawled</German>
+			<Spanish>Autor: Outlawled</Spanish>
+			<Russian>Автор: Outlawled</Russian>
+			<Chinesesimp>作者：Outlawled</Chinesesimp>
+			<Chinese>作者：Outlawled</Chinese>
+			<Japanese>作者：Outlawled</Japanese>
+			<Portuguese>Autor: Outlawled</Portuguese>
+			<Czech>Autor: Outlawled</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_VERSION">
+			<Original>Version:</Original>
+			<French>Version :</French>
+			<German>Version:</German>
+			<Spanish>Versión:</Spanish>
+			<Russian>Версия:</Russian>
+			<Chinesesimp>版本：</Chinesesimp>
+			<Chinese>版本：</Chinese>
+			<Japanese>バージョン：</Japanese>
+			<Portuguese>Versão:</Portuguese>
+			<Czech>Verze:</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_UPDATED">
+			<Original>Updated:</Original>
+			<French>Mise à jour :</French>
+			<German>Aktualisiert:</German>
+			<Spanish>Actualizado:</Spanish>
+			<Russian>Обновлено:</Russian>
+			<Chinesesimp>更新日期：</Chinesesimp>
+			<Chinese>更新日期：</Chinese>
+			<Japanese>更新日：</Japanese>
+			<Portuguese>Atualizado em:</Portuguese>
+			<Czech>Aktualizováno:</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_FORUM_URL">
+			<Original>BI Forum URL:</Original>
+			<French>URL du forum BI :</French>
+			<German>BI-Forum-URL:</German>
+			<Spanish>URL del foro BI:</Spanish>
+			<Russian>Ссылка на форум BI:</Russian>
+			<Chinesesimp>BI 论坛链接：</Chinesesimp>
+			<Chinese>BI 論壇連結：</Chinese>
+			<Japanese>BI フォーラムのURL：</Japanese>
+			<Portuguese>URL do fórum BI:</Portuguese>
+			<Czech>Odkaz na BI fórum:</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_COPY">
+			<Original>Copy</Original>
+			<French>Copier</French>
+			<German>Kopieren</German>
+			<Spanish>Copiar</Spanish>
+			<Russian>Скопировать</Russian>
+			<Chinesesimp>复制</Chinesesimp>
+			<Chinese>複製</Chinese>
+			<Japanese>コピー</Japanese>
+			<Portuguese>Copiar</Portuguese>
+			<Czech>Kopírovat</Czech>
+		</Key>
+		
+		<Key ID="STR_MGR_KEYBINDINGS_TITLE">
+			<Original>Mag Repack: Keybindings</Original>
+			<French>Mag Repack : Raccourcis</French>
+			<German>Mag Repack: Tastenbelegung</German>
+			<Spanish>Mag Repack: Teclas rápidas</Spanish>
+			<Russian>Mag Repack: Назначение клавиш</Russian>
+			<Chinesesimp>Mag Repack：快捷键</Chinesesimp>
+			<Chinese>Mag Repack：快捷鍵</Chinese>
+			<Japanese>Mag Repack：キー設定</Japanese>
+			<Portuguese>Mag Repack: Atalhos</Portuguese>
+			<Czech>Mag Repack: Klávesy</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_CANCEL">
+			<Original>Cancel</Original>
+			<French>Annuler</French>
+			<German>Abbrechen</German>
+			<Spanish>Cancelar</Spanish>
+			<Russian>Отмена</Russian>
+			<Chinesesimp>取消</Chinesesimp>
+			<Chinese>取消</Chinese>
+			<Japanese>キャンセル</Japanese>
+			<Portuguese>Cancelar</Portuguese>
+			<Czech>Zrušit</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_APPLY">
+			<Original>Apply</Original>
+			<French>Appliquer</French>
+			<German>Übernehmen</German>
+			<Spanish>Aplicar</Spanish>
+			<Russian>Применить</Russian>
+			<Chinesesimp>应用</Chinesesimp>
+			<Chinese>套用</Chinese>
+			<Japanese>適用</Japanese>
+			<Portuguese>Aplicar</Portuguese>
+			<Czech>Použít</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_KEYBINDING_LABEL">
+			<Original>Keybinding:</Original>
+			<French>Raccourci clavier :</French>
+			<German>Tastenkombination:</German>
+			<Spanish>Tecla asignada:</Spanish>
+			<Russian>Назначение клавиши:</Russian>
+			<Chinesesimp>快捷键：</Chinesesimp>
+			<Chinese>快捷鍵：</Chinese>
+			<Japanese>キー割り当て：</Japanese>
+			<Portuguese>Atalho:</Portuguese>
+			<Czech>Klávesová zkratka:</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_MODIFIERS_LABEL">
+			<Original>Modifiers:</Original>
+			<French>Modificateurs :</French>
+			<German>Modifikatoren:</German>
+			<Spanish>Modificadores:</Spanish>
+			<Russian>Модификаторы:</Russian>
+			<Chinesesimp>组合键：</Chinesesimp>
+			<Chinese>組合鍵：</Chinese>
+			<Japanese>修飾キー：</Japanese>
+			<Portuguese>Modificadores:</Portuguese>
+			<Czech>Modifikátory:</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_TITLE">
+			<Original>Mag Repack</Original>
+			<French>Mag Repack</French>
+			<German>Mag Repack</German>
+			<Spanish>Mag Repack</Spanish>
+			<Russian>Mag Repack</Russian>
+			<Chinesesimp>弹匣整理</Chinesesimp>
+			<Chinese>彈匣整理</Chinese>
+			<Japanese>Mag Repack</Japanese>
+			<Portuguese>Mag Repack</Portuguese>
+			<Czech>Mag Repack</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_ALL_MAGAZINES">
+			<Original>All Magazines</Original>
+			<French>Tous les chargeurs</French>
+			<German>Alle Magazine</German>
+			<Spanish>Todos los cargadores</Spanish>
+			<Russian>Все магазины</Russian>
+			<Chinesesimp>所有弹匣</Chinesesimp>
+			<Chinese>所有彈匣</Chinese>
+			<Japanese>すべてのマガジン</Japanese>
+			<Portuguese>Todos os pentes</Portuguese>
+			<Czech>Všechny zásobníky</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_SOURCE">
+			<Original>Source</Original>
+			<French>Source</French>
+			<German>Quelle</German>
+			<Spanish>Origen</Spanish>
+			<Russian>Источник</Russian>
+			<Chinesesimp>来源</Chinesesimp>
+			<Chinese>來源</Chinese>
+			<Japanese>ソース</Japanese>
+			<Portuguese>Fonte</Portuguese>
+			<Czech>Zdroj</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_TARGET">
+			<Original>Target</Original>
+			<French>Cible</French>
+			<German>Ziel</German>
+			<Spanish>Destino</Spanish>
+			<Russian>Цель</Russian>
+			<Chinesesimp>目标</Chinesesimp>
+			<Chinese>目標</Chinese>
+			<Japanese>ターゲット</Japanese>
+			<Portuguese>Alvo</Portuguese>
+			<Czech>Cíl</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_OPTIONS">
+			<Original>Options</Original>
+			<French>Options</French>
+			<German>Optionen</German>
+			<Spanish>Opciones</Spanish>
+			<Russian>Настройки</Russian>
+			<Chinesesimp>选项</Chinesesimp>
+			<Chinese>選項</Chinese>
+			<Japanese>オプション</Japanese>
+			<Portuguese>Opções</Portuguese>
+			<Czech>Možnosti</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_DEBUG_MODE">
+			<Original>Debug Mode</Original>
+			<French>Mode Debug</French>
+			<German>Debug-Modus</German>
+			<Spanish>Modo de depuración</Spanish>
+			<Russian>Режим отладки</Russian>
+			<Chinesesimp>调试模式</Chinesesimp>
+			<Chinese>調試模式</Chinese>
+			<Japanese>デバッグモード</Japanese>
+			<Portuguese>Modo de depuração</Portuguese>
+			<Czech>Ladicí režim</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_SHOW_FULL">
+			<Original>Show Full</Original>
+			<French>Afficher tout</French>
+			<German>Vollständig anzeigen</German>
+			<Spanish>Mostrar todo</Spanish>
+			<Russian>Показать полностью</Russian>
+			<Chinesesimp>显示完整</Chinesesimp>
+			<Chinese>顯示完整</Chinese>
+			<Japanese>全て表示</Japanese>
+			<Portuguese>Mostrar completo</Portuguese>
+			<Czech>Zobrazit vše</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_KEYBINDINGS">
+			<Original>Keybindings</Original>
+			<French>Raccourcis</French>
+			<German>Tastenbelegung</German>
+			<Spanish>Teclas rápidas</Spanish>
+			<Russian>Назначение клавиш</Russian>
+			<Chinesesimp>快捷键</Chinesesimp>
+			<Chinese>快捷鍵</Chinese>
+			<Japanese>キー設定</Japanese>
+			<Portuguese>Atalhos</Portuguese>
+			<Czech>Klávesy</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_ABOUT">
+			<Original>About</Original>
+			<French>À propos</French>
+			<German>Über</German>
+			<Spanish>Acerca de</Spanish>
+			<Russian>О моде</Russian>
+			<Chinesesimp>关于</Chinesesimp>
+			<Chinese>關於</Chinese>
+			<Japanese>情報</Japanese>
+			<Portuguese>Sobre</Portuguese>
+			<Czech>O doplňku</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_HIDE">
+			<Original>Hide</Original>
+			<French>Masquer</French>
+			<German>Ausblenden</German>
+			<Spanish>Ocultar</Spanish>
+			<Russian>Скрыть</Russian>
+			<Chinesesimp>隐藏</Chinesesimp>
+			<Chinese>隱藏</Chinese>
+			<Japanese>非表示</Japanese>
+			<Portuguese>Ocultar</Portuguese>
+			<Czech>Skrýt</Czech>
+		</Key>
+
+		<Key ID="STR_MGR_KEYBINDING_RESET">
+			<Original>Mag Repack keybinding has been reset to </Original>
+			<French>Le raccourci clavier de Mag Repack a été réinitialisé en </French>
+			<German>Mag Repack-Tastenkombination wurde zurückgesetzt auf </German>
+			<Spanish>La tecla de Mag Repack se ha restablecido a </Spanish>
+			<Russian>Горячая клавиша Mag Repack была сброшена на </Russian>
+			<Chinesesimp>Mag Repack 快捷键已重置为 </Chinesesimp>
+			<Chinese>Mag Repack 快捷鍵已重置為 </Chinese>
+			<Japanese>Mag Repack のキー設定がリセットされました: </Japanese>
+			<Portuguese>A tecla de atalho do Mag Repack foi redefinida para </Portuguese>
+			<Czech>Klávesa pro Mag Repack byla resetována na </Czech>
+		</Key>
+
+		<Key ID="STR_MGR_KEYBINDING_UPDATED">
+			<Original>Mag Repack keybinding has been updated to </Original>
+			<French>Le raccourci clavier de Mag Repack a été mis à jour en </French>
+			<German>Mag Repack-Tastenkombination wurde geändert zu </German>
+			<Spanish>La tecla de Mag Repack se ha actualizado a </Spanish>
+			<Russian>Горячая клавиша Mag Repack была изменена на </Russian>
+			<Chinesesimp>Mag Repack 快捷键已更新为 </Chinesesimp>
+			<Chinese>Mag Repack 快捷鍵已更新為 </Chinese>
+			<Japanese>Mag Repack のキー設定が更新されました: </Japanese>
+			<Portuguese>A tecla de atalho do Mag Repack foi alterada para </Portuguese>
+			<Czech>Klávesa pro Mag Repack byla změněna na </Czech>
+		</Key>
+
 	</Package>
 	
 	<!-- pSiKO AI Revive -->
