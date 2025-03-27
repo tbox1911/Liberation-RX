@@ -9391,6 +9391,23 @@
 		</Key>
 
 	</Package>
+
+	<!-- pSiKO LRX NRE -->
+	<Package name="LRX_NRE">
+		<Key ID="STR_NRE_EARPLUGS_INITIALIZED">
+			<Original>-------- NRE Earplugs Initialized --------</Original>
+			<French>-------- NRE Bouchons d'oreilles initialisés --------</French>
+			<German>-------- NRE Ohrstöpsel initialisiert --------</German>
+			<Spanish>-------- NRE Tapones activados --------</Spanish>
+			<Russian>-------- NRE беруши инициализированы --------</Russian>
+			<Chinesesimp>-------- NRE 耳塞系统已初始化 --------</Chinesesimp>
+			<Chinese>-------- NRE 耳塞系統已初始化 --------</Chinese>
+			<Japanese>-------- NRE 耳栓が初期化されました --------</Japanese>
+			<Portuguese>-------- NRE Protetores de ouvido inicializados --------</Portuguese>
+			<Czech>-------- NRE špunty do uší inicializovány --------</Czech>
+		</Key>
+
+	</Package>
 	
 	<!-- pSiKO AI Revive -->
 	<Package name="LRX_PAR">
