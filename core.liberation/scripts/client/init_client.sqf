@@ -315,8 +315,7 @@ if (isServer && hasInterface) then {
 if (GRLIB_Commander_mode) then {
 	//Stackable version of MapSingleClick
 	addMissionEventHandler ["MapSingleClick", { 
-		params ["", "_pos"];
-		_caller = _thisArgs#0;
+		params ["_caller", "_pos"];
 		if ([_caller] call F_getCommander) then {
 			// Only commander can even send the request to the server, efficient
 			[_caller, _pos] remoteExec ["GRLIB_ActivateCommanderSector", 2];

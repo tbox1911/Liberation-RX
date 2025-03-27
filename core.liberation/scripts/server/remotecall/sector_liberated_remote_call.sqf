@@ -81,7 +81,7 @@ opfor_sectors = (sectors_allSectors - blufor_sectors);
 stats_sectors_liberated = stats_sectors_liberated + 1;
 if (GRLIB_Commander_mode) then {
 	//Recalculate available sectors for commander
-	0 spawn GRLIB_CommanderSectors;
+	[] spawn GRLIB_CommanderSectors;
 };
 sleep 45;
 

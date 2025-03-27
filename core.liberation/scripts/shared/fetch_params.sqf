@@ -90,12 +90,6 @@ if (isServer) then {
 		GRLIB_LRX_params = LRX_Mission_Params;
 		profileNamespace setVariable [GRLIB_params_save_key, GRLIB_LRX_params];
 		saveProfileNamespace;
-	} else {
-		//Add new params to existing save
-		GRLIB_LRX_params append (LRX_Mission_Params select {
-			_param = _x#0;
-			(GRLIB_LRX_params findIf {_x#0 == _param} == -1)
-		});
 	};
 	publicVariable "GRLIB_LRX_params";
 	if (GRLIB_log_settings > 0) then {
@@ -204,7 +198,7 @@ GRLIB_air_support = ["AirSupport"] call lrx_getParamValue;
 GRLIB_despawn_tickets = ["SectorDespawn"] call lrx_getParamValue;
 GRLIB_building_ai_ratio = ["BuildingRatio"] call lrx_getParamValue;
 GRLIB_victory_condition = ["VictoryCondition"] call lrx_getParamValue;
-GRLIB_Commander_mode = (["CommanderMode"] call lrx_getParamValue) == 1;
+GRLIB_Commander_mode = ["CommanderMode"] call lrx_getParamValue;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
@@ -327,6 +321,7 @@ switch (GRLIB_naval_type) do {
 	case 3: { FOB_carrier = "fob_water1" };
 };
 
+// Transfom true/false Param
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
 if ( GRLIB_ACE_medical_enabled ) then { PAR_revive = 0; GRLIB_fatigue = 1 };		// Disable PAR/Fatigue if ACE Medical is present
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
@@ -345,6 +340,7 @@ if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } el
 if ( GRLIB_server_persistent == 1 ) then { GRLIB_server_persistent = true } else { GRLIB_server_persistent = false };
 if ( GRLIB_air_support == 1 ) then { GRLIB_air_support = true } else { GRLIB_air_support = false };
 if ( GRLIB_free_loadout == 1 ) then { GRLIB_free_loadout = true } else { GRLIB_free_loadout = false };
+if ( GRLIB_Commander_mode == 1 ) then { GRLIB_Commander_mode = true } else { GRLIB_Commander_mode = false };
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
