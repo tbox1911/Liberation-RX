@@ -90,6 +90,12 @@ if (isServer) then {
 		GRLIB_LRX_params = LRX_Mission_Params;
 		profileNamespace setVariable [GRLIB_params_save_key, GRLIB_LRX_params];
 		saveProfileNamespace;
+	} else {
+		//Add new params to existing save
+		GRLIB_LRX_params append (LRX_Mission_Params select {
+			_param = _x select 0;
+			(GRLIB_LRX_params findIf {_x select 0 == _param} == -1)
+		});
 	};
 	publicVariable "GRLIB_LRX_params";
 	if (GRLIB_log_settings > 0) then {
