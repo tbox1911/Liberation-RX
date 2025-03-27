@@ -10219,6 +10219,66 @@
 				<Czech>Výbuch</Czech>
 			</Key>
 		</Container>
+		<Key ID="STR_RPL_DALE_INTRO_1">
+			<Original>The Dynamic Aircraft Loadout Editor (DALE) brings BIS' loadout editor into the game.</Original>
+			<French>L'éditeur de charge utile dynamique (DALE) apporte l'éditeur de BIS directement en jeu.</French>
+			<German>Der Dynamic Aircraft Loadout Editor (DALE) bringt den BIS-Bewaffnungseditor ins Spiel.</German>
+			<Spanish>El editor dinámico de carga aérea (DALE) lleva el editor de BIS al juego.</Spanish>
+			<Russian>Динамический редактор подвески (DALE) добавляет редактор BIS прямо в игру.</Russian>
+			<Chinesesimp>动态载具挂载编辑器（DALE）将 BIS 的挂载编辑功能带入游戏中。</Chinesesimp>
+			<Chinese>動態載具掛載編輯器（DALE）將 BIS 的掛載編輯功能帶入遊戲中。</Chinese>
+			<Japanese>Dynamic Aircraft Loadout Editor (DALE) は BIS の装備エディタをゲームに導入します。</Japanese>
+			<Portuguese>O Editor de Cargas Dinâmico (DALE) traz o editor da BIS para dentro do jogo.</Portuguese>
+			<Czech>Dynamický editor výzbroje letadel (DALE) přináší editor BIS přímo do hry.</Czech>
+		</Key>
+		<Key ID="STR_RPL_DALE_INTRO_2">
+			<Original>You can edit the aircraft's pylons when it is at a proper service position.</Original>
+			<French>Vous pouvez modifier les pylônes de l'avion lorsqu'il est dans une zone de service adaptée.</French>
+			<German>Du kannst die Aufhängungen bearbeiten, wenn sich das Flugzeug an der richtigen Wartungsposition befindet.</German>
+			<Spanish>Puedes editar los pilones del avión cuando esté en una posición de servicio adecuada.</Spanish>
+			<Russian>Вы можете редактировать пилоны самолета, когда он находится на месте обслуживания.</Russian>
+			<Chinesesimp>当飞机处于正确的维护位置时，你可以编辑其挂点。</Chinesesimp>
+			<Chinese>當飛機處於正確的維護位置時，你可以編輯其掛點。</Chinese>
+			<Japanese>航空機が適切な整備位置にあるときに、パイロンを編集できます。</Japanese>
+			<Portuguese>Você pode editar os pilones da aeronave quando estiver em posição de manutenção.</Portuguese>
+			<Czech>Výzbroj můžete upravit, pokud je letoun na vhodné servisní pozici.</Czech>
+		</Key>
+		<Key ID="STR_RPL_DALE_INTRO_3">
+			<Original>It is possible to select preset loadouts made by BIS or create your own custom loadout.</Original>
+			<French>Vous pouvez choisir une configuration préétablie de BIS ou créer la vôtre.</French>
+			<German>Du kannst vordefinierte Loadouts von BIS wählen oder eigene erstellen.</German>
+			<Spanish>Puedes seleccionar configuraciones predeterminadas de BIS o crear las tuyas.</Spanish>
+			<Russian>Можно выбрать готовую конфигурацию от BIS или создать свою собственную.</Russian>
+			<Chinesesimp>你可以选择 BIS 预设的挂载方案，也可以创建自定义挂载。</Chinesesimp>
+			<Chinese>你可以選擇 BIS 預設的掛載方案，也可以創建自定義掛載。</Chinese>
+			<Japanese>BISが用意したプリセットを選ぶか、自分でカスタムロードアウトを作成できます。</Japanese>
+			<Portuguese>É possível selecionar configurações pré-definidas da BIS ou criar as suas próprias.</Portuguese>
+			<Czech>Můžete zvolit přednastavené výzbroje od BIS nebo si vytvořit vlastní.</Czech>
+		</Key>
+		<Key ID="STR_RPL_DALE_INTRO_4">
+			<Original>It is also possible to set the priority of your pylons.</Original>
+			<French>Il est aussi possible de définir la priorité des pylônes.</French>
+			<German>Du kannst auch die Priorität der Aufhängungen festlegen.</German>
+			<Spanish>También puedes definir la prioridad de los pilones.</Spanish>
+			<Russian>Также можно задать приоритет пилонов.</Russian>
+			<Chinesesimp>你还可以设置挂点的发射优先级。</Chinesesimp>
+			<Chinese>你還可以設置掛點的發射優先級。</Chinese>
+			<Japanese>パイロンの優先度を設定することもできます。</Japanese>
+			<Portuguese>Também é possível definir a prioridade dos pilones.</Portuguese>
+			<Czech>Lze také nastavit prioritu jednotlivých závěsníků.</Czech>
+		</Key>
+		<Key ID="STR_RPL_DALE_INTRO_5">
+			<Original>Single means that for a weapon one pylon is firing at the time, double means that two mirrored pylons fire at the same time and burst means that all pylons of the same kind fire simultaneously.</Original>
+			<French>"Simple" signifie qu'un seul pylône tire, "double" que deux pylônes en miroir tirent en même temps et "salve" que tous les pylônes similaires tirent ensemble.</French>
+			<German>Einzeln bedeutet, dass pro Waffe ein Pylon feuert, doppelt heißt, zwei gegenüberliegende gleichzeitig, und Salve bedeutet, dass alle gleichen gleichzeitig feuern.</German>
+			<Spanish>Simple: un pilón dispara; Doble: dos espejados disparan; Rafaga: todos disparan al mismo tiempo.</Spanish>
+			<Russian>“Одиночный” — один пилон, “парный” — два зеркальных, “залп” — все одинаковые одновременно.</Russian>
+			<Chinesesimp>单发表示每次仅一个挂点开火，双发为两个镜像挂点同时开火，齐射为同类挂点全部同时开火。</Chinesesimp>
+			<Chinese>單發表示每次僅一個掛點開火，雙發為兩個鏡像掛點同時開火，齊射為同類掛點全部同時開火。</Chinese>
+			<Japanese>「シングル」は1つのパイロンのみ発射、「ダブル」は左右対称で同時発射、「バースト」は同型パイロンすべてが一斉発射します。</Japanese>
+			<Portuguese>Único: um pilone dispara; Duplo: dois espelhados disparam; Rajada: todos disparam ao mesmo tempo.</Portuguese>
+			<Czech>Single: střílí jeden závěsník; Double: dva zrcadlové; Burst: všechny stejné najednou.</Czech>
+		</Key>
 	</Package>
 
 	<!-- Vehicle Appearance Manager -->
