@@ -27,8 +27,6 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["I_UAV_01_F", 3],
-	["I_UAV_06_F", 3],
 	["I_UAV_02_dynamicLoadout_F", 5]
 ];
 

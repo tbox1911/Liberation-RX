@@ -37,16 +37,12 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["I_Heli_light_03_dynamicLoadout_F", 30],
 	["VTOL_01_base_F", 100],
 	["VTOL_02_base_F", 100],
-	["B_UAV_01_F", 1],
 	["B_UAV_02_dynamicLoadout_F", 1],
-	["B_UAV_06_F", 5],
 	["B_T_UAV_03_F", 15]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["B_UAV_01_F", 3],
-	["B_UAV_06_F", 3],
 	["B_UAV_02_dynamicLoadout_F", 30]
 ];
 
