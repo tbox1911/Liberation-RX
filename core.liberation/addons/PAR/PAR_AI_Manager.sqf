@@ -25,7 +25,7 @@ while {true} do {
 					private _ai_rank = GRLIB_rank_level select (GRLIB_rank_level find (rank _unit)) + 1;
 					_unit setSkill (_ai_skill + 0.05);
 					_unit setUnitRank _ai_rank;
-					_msg = format ["%1 was promoted to the rank of %2 !", name _unit, _ai_rank];
+					_msg = format [localize "STR_PAR_PROMOTION_MESSAGE", name _unit, _ai_rank];
 					[_unit, _msg] call PAR_fn_globalchat;
 					_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
 				};
@@ -84,7 +84,7 @@ while {true} do {
 					if (time >= _first) then {
 						_history deleteAt 0;
 						_unit setVariable ["PAR_revive_history", _history];
-						_msg = format ["%1 revive restored (%2) !!", name _unit, _cur_revive];
+						_msg = format [localize "STR_PAR_REVIVE_RESTORED", name _unit, _cur_revive];
 						_timer = 0;
 					} else {
 						private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename, a3w_heal_tent], 12]) > 0);
@@ -92,7 +92,7 @@ while {true} do {
 							_history set [0, (_first - 60)];
 							_unit setVariable ["PAR_revive_history", _history];
 							if (_unit distance2D player < 50) then {
-								_msg = format ["%1 is Healing faster...", name _unit];
+								_msg = format [localize "STR_PAR_HEALING_FASTER", name _unit];
 							};
 						};
 					};
@@ -100,11 +100,11 @@ while {true} do {
 
 				if (_msg == "") then {
 					if (_cur_revive <= 3) then {
-						_msg = format ["WARNING: %1 need Medical Support Now !!", name _unit];
+						_msg = format [localize "STR_PAR_NEED_MEDICAL_SUPPORT", name _unit];
 						_timer = 0;
 					};
 					if (_cur_revive == 0) then {
-						_msg = format ["CRITICAL: %1 will NOT Revive anymore !!", name _unit];
+						_msg = format [localize "STR_PAR_CRITICAL_NO_REVIVE", name _unit];
 						_timer = 0;
 					};
 				};

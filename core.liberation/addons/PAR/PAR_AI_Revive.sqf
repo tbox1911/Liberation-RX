@@ -109,4 +109,4 @@ addMissionEventHandler ["Draw3D",{
 }];
 
 waitUntil {!(isNull (findDisplay 46))};
-systemChat "-------- pSiKo AI Revive Initialized --------";
+systemChat localize "STR_PAR_AI_REVIVE_INITIALIZED";

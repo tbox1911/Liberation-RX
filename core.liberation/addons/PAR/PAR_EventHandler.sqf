@@ -136,7 +136,7 @@ if (_unit == player) then {
 			private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
 			private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
 			private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
-			hintSilent format ["Damage: %1%2\nFuel: %3%4\nAmmo: %5%6\nCargo: %7/%8", _damage,"%",_fuel,"%",_ammo,"%", _cargo select 0, _cargo select 1];
+			hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT",_damage, "%", _fuel, "%", _ammo, "%", _cargo select 0, _cargo select 1];
 		};
 	}];
 

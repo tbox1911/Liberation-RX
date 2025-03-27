@@ -9411,6 +9411,18 @@
 	
 	<!-- pSiKO AI Revive -->
 	<Package name="LRX_PAR">
+		<Key ID="STR_PAR_AI_REVIVE_INITIALIZED">
+			<Original>-------- pSiKo AI Revive Initialized --------</Original>
+			<French>-------- pSiKo Réanimation IA initialisée --------</French>
+			<German>-------- pSiKo KI-Wiederbelebung initialisiert --------</German>
+			<Spanish>-------- pSiKo Reanimación de IA iniciada --------</Spanish>
+			<Russian>-------- pSiKo AI Возрождение инициализировано --------</Russian>
+			<Chinesesimp>-------- pSiKo AI 复活系统已初始化 --------</Chinesesimp>
+			<Chinese>-------- pSiKo AI 復活系統已初始化 --------</Chinese>
+			<Japanese>-------- pSiKo AI 蘇生システムを初期化しました --------</Japanese>
+			<Portuguese>-------- pSiKo Reanimação de IA iniciada --------</Portuguese>
+			<Czech>-------- pSiKo AI oživení inicializováno --------</Czech>
+		</Key>
 		<Key ID="STR_PAR_Need_Medic1">
 			<Original>I need a medic!</Original>
 			<French>J'ai besoin d'un médecin!</French>
@@ -9476,6 +9488,78 @@
 			<Japanese>放す</Japanese>
 			<Portuguese>Liberar</Portuguese>
 			<Czech>Uvolnit</Czech>
+		</Key>
+		<Key ID="STR_PAR_PROMOTION_MESSAGE">
+			<Original>%1 was promoted to the rank of %2 !</Original>
+			<French>%1 a été promu au rang de %2 !</French>
+			<German>%1 wurde zum Rang %2 befördert!</German>
+			<Spanish>¡%1 ha sido ascendido al rango de %2!</Spanish>
+			<Russian>%1 получил звание %2!</Russian>
+			<Chinesesimp>%1 被晋升为 %2！</Chinesesimp>
+			<Chinese>%1 被晉升為 %2！</Chinese>
+			<Japanese>%1 は %2 に昇進しました！</Japanese>
+			<Portuguese>%1 foi promovido ao posto de %2!</Portuguese>
+			<Czech>%1 byl povýšen na hodnost %2!</Czech>
+		</Key>
+		<Key ID="STR_PAR_REVIVE_RESTORED">
+			<Original>%1 revive restored (%2) !!</Original>
+			<French>Réanimer %1 restauré (%2) !!</French>
+			<German>%1 Wiederbelebung wiederhergestellt (%2) !!</German>
+			<Spanish>¡Reanimación de %1 restaurada (%2)!</Spanish>
+			<Russian>Возрождение %1 восстановлено (%2) !!</Russian>
+			<Chinesesimp>%1 的复活已恢复（%2 次）！！</Chinesesimp>
+			<Chinese>%1 的復活已恢復（%2 次）！！</Chinese>
+			<Japanese>%1 の蘇生が復元されました（%2）！！</Japanese>
+			<Portuguese>Reanimação de %1 restaurada (%2) !!</Portuguese>
+			<Czech>Oživení %1 obnoveno (%2) !!</Czech>
+		</Key>
+		<Key ID="STR_PAR_HEALING_FASTER">
+			<Original>%1 is Healing faster...</Original>
+			<French>%1 se soigne plus rapidement...</French>
+			<German>%1 heilt schneller...</German>
+			<Spanish>%1 se está curando más rápido...</Spanish>
+			<Russian>%1 лечится быстрее...</Russian>
+			<Chinesesimp>%1 正在加速治疗……</Chinesesimp>
+			<Chinese>%1 正在加速治療……</Chinese>
+			<Japanese>%1 はより早く回復中…</Japanese>
+			<Portuguese>%1 está se curando mais rápido...</Portuguese>
+			<Czech>%1 se léčí rychleji...</Czech>
+		</Key>
+		<Key ID="STR_PAR_NEED_MEDICAL_SUPPORT">
+			<Original>WARNING: %1 need Medical Support Now !!</Original>
+			<French>ATTENTION : %1 a besoin d'un soutien médical !!</French>
+			<German>WARNUNG: %1 benötigt sofort medizinische Hilfe !!</German>
+			<Spanish>¡ADVERTENCIA: %1 necesita ayuda médica ahora!</Spanish>
+			<Russian>ВНИМАНИЕ: %1 срочно нуждается в медпомощи !!</Russian>
+			<Chinesesimp>警告：%1 现在需要医疗支援！！</Chinesesimp>
+			<Chinese>警告：%1 現在需要醫療支援！！</Chinese>
+			<Japanese>警告：%1 は今すぐ医療支援が必要です！！</Japanese>
+			<Portuguese>AVISO: %1 precisa de ajuda médica agora !!</Portuguese>
+			<Czech>VAROVÁNÍ: %1 potřebuje lékařskou pomoc !!</Czech>
+		</Key>
+		<Key ID="STR_PAR_CRITICAL_NO_REVIVE">
+			<Original>CRITICAL: %1 will NOT Revive anymore !!</Original>
+			<French>CRITIQUE : %1 ne pourra plus être réanimé !!</French>
+			<German>KRITISCH: %1 kann nicht mehr wiederbelebt werden !!</German>
+			<Spanish>CRÍTICO: ¡%1 ya no podrá reanimarse!</Spanish>
+			<Russian>КРИТИЧНО: %1 больше не сможет быть возрождён !!</Russian>
+			<Chinesesimp>致命：%1 将无法再复活！！</Chinesesimp>
+			<Chinese>致命：%1 將無法再復活！！</Chinese>
+			<Japanese>致命：%1 はもう蘇生できません！！</Japanese>
+			<Portuguese>CRÍTICO: %1 não poderá mais ser reanimado !!</Portuguese>
+			<Czech>KRITICKÉ: %1 už nebude možné oživit !!</Czech>
+		</Key>
+		<Key ID="STR_PAR_VEHICLE_STATUS_HINT">
+			<Original>Damage: %1%2\nFuel: %3%4\nAmmo: %5%6\nCargo: %7/%8</Original>
+			<French>Dommages : %1%2\nCarburant : %3%4\nMunitions : %5%6\nCharge : %7/%8</French>
+			<German>Schaden: %1%2\nTreibstoff: %3%4\nMunition: %5%6\nLadung: %7/%8</German>
+			<Spanish>Daño: %1%2\nCombustible: %3%4\nMunición: %5%6\nCarga: %7/%8</Spanish>
+			<Russian>Повреждение: %1%2\nТопливо: %3%4\nБоезапас: %5%6\nГруз: %7/%8</Russian>
+			<Chinesesimp>伤害：%1%2\n燃料：%3%4\n弹药：%5%6\n载员：%7/%8</Chinesesimp>
+			<Chinese>傷害：%1%2\n燃料：%3%4\n彈藥：%5%6\n載員：%7/%8</Chinese>
+			<Japanese>損傷：%1%2\n燃料：%3%4\n弾薬：%5%6\n乗員：%7/%8</Japanese>
+			<Portuguese>Danos: %1%2\nCombustível: %3%4\nMunição: %5%6\nCarga: %7/%8</Portuguese>
+			<Czech>Poškození: %1%2\nPalivo: %3%4\nMunice: %5%6\nNáklad: %7/%8</Czech>
 		</Key>
 		<Key ID="STR_PAR_CM_01">
 			<Original>Bad news %1, your medic (%2) is blocked somewhere... (dist: %3m / try: %4)</Original>
