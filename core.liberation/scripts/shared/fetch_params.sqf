@@ -90,6 +90,12 @@ if (isServer) then {
 		GRLIB_LRX_params = LRX_Mission_Params;
 		profileNamespace setVariable [GRLIB_params_save_key, GRLIB_LRX_params];
 		saveProfileNamespace;
+	} else {
+		//Add new params to existing save
+		GRLIB_LRX_params append (LRX_Mission_Params select {
+			_param = _x#0;
+			(GRLIB_LRX_params findIf {_x#0 == _param} == -1)
+		});
 	};
 	publicVariable "GRLIB_LRX_params";
 	if (GRLIB_log_settings > 0) then {
@@ -198,6 +204,7 @@ GRLIB_air_support = ["AirSupport"] call lrx_getParamValue;
 GRLIB_despawn_tickets = ["SectorDespawn"] call lrx_getParamValue;
 GRLIB_building_ai_ratio = ["BuildingRatio"] call lrx_getParamValue;
 GRLIB_victory_condition = ["VictoryCondition"] call lrx_getParamValue;
+GRLIB_Commander_mode = (["CommanderMode"] call lrx_getParamValue) == 1;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;

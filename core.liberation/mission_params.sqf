@@ -111,7 +111,10 @@ LRX_Mission_Params = [
 	["KickIdle", 0],				// Kick player if idle too long - [default 0] - values = {0,900,1200,1800,3600,7200}
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
-	["Persistent", 0]				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["Persistent", 0],				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["---", "EXPERIMENTAL"],
+	// --- COMMANDER ---
+	["CommanderMode", 0]			// Commander Mode - allow commanders to choose sectors to attack
 ];
 
 LRX_Mission_Params_Def = [
@@ -381,5 +384,7 @@ LRX_Mission_Params_Def = [
 	["Redeploy", localize "STR_REDEPLOY", [localize "STR_PARAMS_DISABLED", localize "STR_PARAM_REDEPLOY_ALL", localize "STR_PARAM_REDEPLOY_FOB"]],
 	["KeepScore", localize "STR_KEEP_SCORE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["KeepContext", localize "STR_KEEP_CONTEXT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Persistent", localize "STR_PERSISTENT_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]]
+	["Persistent", localize "STR_PERSISTENT_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	// --- COMMANDER ---
+	["CommanderMode", "Commander Mode", [localize "STR_PARAMS_DISABLED", "Enabled"]]
 ];

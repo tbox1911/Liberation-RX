@@ -80,6 +80,9 @@ GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 	};
 } forEach (allMissionObjects "");
 
+//For commander mode: Local to server - client doesnt receive info about these
+GRLIB_fobSects = [];
+
 // Init Chimera unit look
 [] call compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
 
@@ -150,6 +153,7 @@ manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector
 manage_intels = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_intels.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 spawn_defenders = compileFinal preprocessFileLineNumbers "scripts\server\sector\spawn_defenders.sqf";
+call compileFinal preprocessFileLineNumbers "scripts\server\sector\commandermode_calcNeighbors.sqf";
 
 // Ressources
 count_box = compileFinal preprocessFileLineNumbers "scripts\server\resources\count_box.sqf";
