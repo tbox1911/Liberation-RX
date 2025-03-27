@@ -182,8 +182,8 @@ while { true } do {
 		_ghost_name = _classname;
 		if (_classname == FOB_carrier) then {
 			_ghost_name = "VR_3DSelector_01_default_F";
-		};
-		_vehicle = createVehicleLocal [_ghost_name, _ghost_spot, [], 0, "CAN_COLLIDE"];
+		};	
+    	_vehicle = _ghost_name createVehicleLocal _ghost_spot;
 		_vehicle allowdamage false;
 		_vehicle enableSimulation false;
 		_vehicle setVehicleLock "LOCKED";
