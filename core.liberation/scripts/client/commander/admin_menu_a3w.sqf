@@ -53,11 +53,11 @@ if (isNil "LRX_A3W_CONFIG") then {
 };
 
 // Tooltips
-_debug_list ctrlSetToolTip "Enable the Debug mode.";
-_debug_marker_list ctrlSetToolTip "Enable the Marker Debug mode.";
-_mission_list ctrlSetToolTip "Selected Mission.";
-_delay_list ctrlSetToolTip "Time in minutes between Side Missions.";
-_timeout_list ctrlSetToolTip "Time in minutes that a Side Mission will run for, unless completed";
+_debug_list ctrlSetToolTip localize "STR_TOOLTIP_DEBUG_MODE";
+_debug_marker_list ctrlSetToolTip localize "STR_TOOLTIP_MARKER_DEBUG_MODE";
+_mission_list ctrlSetToolTip localize "STR_TOOLTIP_SELECTED_MISSION";
+_delay_list ctrlSetToolTip localize "STR_TOOLTIP_SIDE_MISSION_DELAY";
+_timeout_list ctrlSetToolTip localize "STR_TOOLTIP_SIDE_MISSION_TIMEOUT";
 
 apply_a3w_conf = 0;
 while { alive player && dialog } do {
@@ -99,7 +99,7 @@ while { alive player && dialog } do {
 			(lbCurSel _delay_list),
 			(lbCurSel _timeout_list)
 		];
-		systemchat "LRX A3W Mission config set!";
+		systemChat localize "STR_LRX_MISSION_CONFIG_SET";
 		sleep 1;
 		(_display displayCtrl 1610) ctrlEnable true;
 	};

@@ -15,14 +15,14 @@ while { true } do {
 		GRLIB_player_group selectLeader player;
 		player setcaptive false;
 		player addrating 3000;
-		gamelogic globalChat format ["--- LRX info: Player %1 wrong side - (%2)", name player, _side];
+		gamelogic globalChat format [localize "STR_LOG_LRX_WRONG_SIDE", name player, _side];
 	};
 
 	// Leadership
 	if (count units GRLIB_player_group > 1 && leader GRLIB_player_group != player && local GRLIB_player_group) then {
 		player addrating 3000;
 		GRLIB_player_group selectLeader player;
-		gamelogic globalChat format ["-- LRX info: Player %1 (re)take Leadership.", name player];		
+		gamelogic globalChat format [localize "STR_LOG_LRX_LEADERSHIP_TAKEN", name player];	
 	};
 	sleep 5;
 };

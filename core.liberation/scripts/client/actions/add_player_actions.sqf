@@ -10,7 +10,7 @@ player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU" + "</t> <img
 player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU_MISSION" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa'/>","scripts\client\commander\admin_menu_a3w.sqf","",998,false,true,"","call GRLIB_checkOperator"];
 player addAction ["<t color='#008080'>" + localize "STR_ADMIN_CONFIGURE" + "</t> <img size='1' image='\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa'/>","scripts\client\commander\open_params.sqf","",997,false,true,"","call GRLIB_checkAdmin"];
 player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\commander\open_permissions.sqf","",996,false,true,"","call GRLIB_checkCommander"];
-player addAction ["<t color='#FF8000'>-- DUMP FOB TEMPLATE </t> <img size='1' image='res\ui_build.paa'/>","scripts\fob_templates\export_template.sqf","",995,false,true,"","call GRLIB_checkCommander && GRLIB_player_near_fob"];
+player addAction ["<t color='#FF8000'>" + localize "STR_DUMP_FOB_TEMPLATE" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\fob_templates\export_template.sqf","",995,false,true,"","call GRLIB_checkCommander && GRLIB_player_near_fob"];
 
 // Extended Options
 player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true,"","GRLIB_player_is_menuok"];
@@ -48,7 +48,7 @@ player addAction ["<t color='#80FF00'>" + localize "STR_SEND_RSC" + "</t> <img s
 player addAction ["<t color='#00F080'>" + localize "STR_BUY_FUEL" + "</t> <img size='1' image='\A3\ui_f\data\map\mapcontrol\Fuelstation_CA.paa'/>", "scripts\client\actions\do_buy_fuel.sqf","",-900,true,true,"","call GRLIB_checkBuyFuel"];
 
 // Heal Self
-player addAction ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Heal_ca.paa'/> Heal self", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", "call GRLIB_checkHeal"];
+player addAction ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Heal_ca.paa'/>" + localize "STR_HEAL_SELF_ACTION", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", "call GRLIB_checkHeal"];
 
 // Air Drop
 player addAction ["<t color='#00F0F0'>" + localize "STR_AIR_SUPPORT" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true,"","call GRLIB_checkAirDrop"];

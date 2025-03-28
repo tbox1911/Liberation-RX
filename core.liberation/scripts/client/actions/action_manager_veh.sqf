@@ -120,7 +120,7 @@ while { true } do {
 		_unit = _x;
 		_unit addAction ["<t color='#00FF8F'>" + localize "STR_BUILD_FORTIFICATION" + "</t> <img size='1' image='res\ui_build.paa'/>","addons\FOB\do_build_def.sqf","",897,false,true,"","[_target] call GRLIB_checkBuildDef", 5];
 		_unit addAction ["<t color='#F80000'>" + localize "STR_CLEAR_FORTIFICATION" + "</t> <img size='1' image='res\ui_build.paa'/>","addons\FOB\do_clean_def.sqf","",896,false,true,"","[_target] call GRLIB_checkBuildDef", 5];
-		_unit addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[4] call remote_call_showtext},"",889,false,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 0",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_HALL_OF_FAME" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[4] call remote_call_showtext},"",889,false,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 0",5];
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_notice"},"",888,false,true,"","GRLIB_player_is_menuok",5];
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_tips"},"",887,true,true,"","GRLIB_player_is_menuok",5];
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[3] call remote_call_showtext},"",886,false,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 0",5];

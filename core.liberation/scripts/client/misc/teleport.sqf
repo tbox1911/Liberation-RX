@@ -4,7 +4,7 @@ private _array = _this select 0;
 private _ctrl_chkd = (_array select 2 == 1);
 
 if (_ctrl_chkd) then {
-	hintSilent "Teleport ON !";
+	hintSilent localize "STR_HINT_TELEPORT_ON";
 	player onMapSingleClick "
 	if (_alt) then {
 		if (surfaceIsWater _pos) then {

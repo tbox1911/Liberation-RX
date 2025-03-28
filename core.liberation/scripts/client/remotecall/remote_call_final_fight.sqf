@@ -17,14 +17,14 @@ _final_progressBar ctrlCommit 0;
 
 private _final_text = findDisplay 46 ctrlCreate ["RscStructuredText", -1];
 _final_text ctrlSetPosition _position;
-_final_text ctrlSetStructuredText parseText format["<t size='1' align='center'>Enemy Damage: %1%2</t>", 0, "%"];
+_final_text ctrlSetStructuredText parseText format [localize "STR_UI_ENEMY_DAMAGE_TEXT", 0, "%"];
 _final_text ctrlCommit 0;
 
 private _progress = damage opfor_target;
 while {sector_timer > 0 && _progress < 1} do {
 	_progress = damage opfor_target;
 	_final_progressBar progressSetPosition _progress;
-	_final_text ctrlSetStructuredText parseText format["<t size='1' align='center'>Enemy Damage: %1%2</t>", round(100*_progress), "%"];
+	_final_text ctrlSetStructuredText parseText format [localize "STR_UI_ENEMY_DAMAGE_TEXT_2",round (100 * _progress),"%"];
 	sleep 2;
 };
 
@@ -113,7 +113,7 @@ if (sector_timer <= 0) then {
 	titleText [localize "STR_MISSION3_FAILED" ,"BLACK", 3];
 	waitUntil { camCommitted _spawn_camera };
 	sleep 5;
-	titleText ["Thank you for playing Liberation RX !" ,"BLACK", 3];
+	titleText [localize "STR_TITLE_THANKS_RX", "BLACK", 3];
 	sleep 5;
 	_spawn_camera cameraEffect ["Terminate","back"];
 	camDestroy _spawn_camera;

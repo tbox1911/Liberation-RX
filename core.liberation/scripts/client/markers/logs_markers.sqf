@@ -17,7 +17,7 @@ addMissionEventHandler ["MarkerCreated",{
 		case 5: {_channel = "Direct"};
 		default {_channel = "Custom"};
 	};
-	private _msg = format ["%1, Create marker <%2> in channel %3 at position %4", name player, _text, _channel, markerPos _marker];
+	private _msg = format [localize "STR_LOG_MARKER_CREATE", name player, _text, _channel, markerPos _marker];
 	[_msg] remoteExec ["diag_log", 2];
 }];
 
@@ -28,6 +28,6 @@ addMissionEventHandler ["MarkerDeleted",{
 	if (markerChannel _marker == -1) exitWith {};
 	private _text = markerText _marker;
 	if (count _text == 0) exitWith {};
-	private _msg = format ["%1, Delete marker <%2> at position %3.", name player, _text, markerPos _marker];
+	private _msg = format [localize "STR_LOG_MARKER_DELETE", name player, _text, markerPos _marker];
 	[_msg] remoteExec ["diag_log", 2];
 }];
