@@ -43,11 +43,11 @@ outlw_MR_applyKeybinding =
 	
 	if (count _this > 1 && {_this select 1}) then
 	{
-		_systemString = "Mag Repack keybinding has been reset to ";
+		_systemString = localize "STR_MGR_KEYBINDING_RESET";
 	}
 	else
 	{
-		_systemString = "Mag Repack keybinding has been updated to ";
+		_systemString = localize "STR_MGR_KEYBINDING_RESET";
 		closeDialog 0;
 	};
 	
