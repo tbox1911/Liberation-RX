@@ -223,7 +223,7 @@ while { true } do {
 	// Show Hint
 	private _neartower = ((sectors_tower select {(_x in opfor_sectors) && player distance2D (markerPos  _x) <= 20})) select 0;
 	if (!isNil "_neartower") then {
-		_msg = localize "STR_DIALOG_OBJECTIVE_DESTROY_TOWER";
+		_msg = localize "STR_DESTROY_TOWER";
 		[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 	};
 

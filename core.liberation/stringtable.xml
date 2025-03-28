@@ -8104,34 +8104,34 @@
 
 		<Key ID="STR_DESTROY_TOWER">
 			<Original>
-				Use <t color='#FF0000'>Explosives</t> to destroy<br/>the <t color='#0000FF'>Radio Tower</t>.
+				Use &lt;t color='#FF0000'&gt;Explosives&lt;/t&gt; to destroy&lt;br/&gt;the &lt;t color='#0000FF'&gt;Radio Tower&lt;/t&gt;.
 			</Original>
 			<French>
-				Utilisez des <t color='#FF0000'>explosifs</t> pour détruire<br/>la <t color='#0000FF'>tour radio</t>.
+				Utilisez des &lt;t color='#FF0000'&gt;explosifs&lt;/t&gt; pour détruire&lt;br/&gt;la &lt;t color='#0000FF'&gt;tour radio&lt;/t&gt;.
 			</French>
 			<German>
-				Verwende <t color='#FF0000'>Sprengstoff</t>, um<br/>den <t color='#0000FF'>Funkturm</t> zu zerstören.
+				Verwende &lt;t color='#FF0000'&gt;Sprengstoff&lt;/t&gt;, um&lt;br/&gt;den &lt;t color='#0000FF'&gt;Funkturm&lt;/t&gt; zu zerstören.
 			</German>
 			<Spanish>
-				Usa <t color='#FF0000'>explosivos</t> para destruir<br/>la <t color='#0000FF'>torre de radio</t>.
+				Usa &lt;t color='#FF0000'&gt;explosivos&lt;/t&gt; para destruir&lt;br/&gt;la &lt;t color='#0000FF'&gt;torre de radio&lt;/t&gt;.
 			</Spanish>
 			<Russian>
-				Используйте <t color='#FF0000'>взрывчатку</t>, чтобы уничтожить<br/><t color='#0000FF'>радиовышку</t>.
+				Используйте &lt;t color='#FF0000'&gt;взрывчатку&lt;/t&gt;, чтобы уничтожить&lt;br/&gt;&lt;t color='#0000FF'&gt;радиовышку&lt;/t&gt;.
 			</Russian>
 			<Chinesesimp>
-				使用 <t color='#FF0000'>炸药</t> 摧毁<br/><t color='#0000FF'>电台塔</t>。
+				使用 &lt;t color='#FF0000'&gt;炸药&lt;/t&gt; 摧毁&lt;br/&gt;&lt;t color='#0000FF'&gt;电台塔&lt;/t&gt;。
 			</Chinesesimp>
 			<Chinese>
-				使用 <t color='#FF0000'>炸藥</t> 摧毀<br/><t color='#0000FF'>電台塔</t>。
+				使用 &lt;t color='#FF0000'&gt;炸藥&lt;/t&gt; 摧毀&lt;br/&gt;&lt;t color='#0000FF'&gt;電台塔&lt;/t&gt;。
 			</Chinese>
 			<Japanese>
-				<t color='#FF0000'>爆薬</t>を使って<br/><t color='#0000FF'>ラジオタワー</t>を破壊せよ。
+				&lt;t color='#FF0000'&gt;爆薬&lt;/t&gt;を使って&lt;br/&gt;&lt;t color='#0000FF'&gt;ラジオタワー&lt;/t&gt;を破壊せよ。
 			</Japanese>
 			<Portuguese>
-				Use <t color='#FF0000'>explosivos</t> para destruir<br/>a <t color='#0000FF'>torre de rádio</t>.
+				Use &lt;t color='#FF0000'&gt;explosivos&lt;/t&gt; para destruir&lt;br/&gt;a &lt;t color='#0000FF'&gt;torre de rádio&lt;/t&gt;.
 			</Portuguese>
 			<Czech>
-				Použij <t color='#FF0000'>výbušniny</t> k likvidaci<br/><t color='#0000FF'>radiové věže</t>.
+				Použij &lt;t color='#FF0000'&gt;výbušniny&lt;/t&gt; k likvidaci&lt;br/&gt;&lt;t color='#0000FF'&gt;radiové věže&lt;/t&gt;.
 			</Czech>
 		</Key>
 
@@ -8341,60 +8341,60 @@
 		<!-- welcome.sqf -->
 		<Key ID="STR_UI_WELCOME_MSG">
 			<Original>
-				Welcome <t color='#00008f'>%1</t> !<br/><br/>
-				Your Rank : <t color='#000080'>%2</t><br/>
-				Your Score : <t color='#008000'>%3</t> XP<br/>
-				Your Credit : <t color='#800000'>%4</t> AMMO <br/><br/>
-				Your Reputation with Civilians is <t color='%5'>%6</t>
+				Welcome &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Your Rank : &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Your Score : &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Your Credit : &lt;t color='#800000'&gt;%4&lt;/t&gt; AMMO &lt;br/&gt;&lt;br/&gt;
+				Your Reputation with Civilians is &lt;t color='%5'>%6&lt;/t&gt;
 			</Original>
 			<French>
-				Bienvenue <t color='#00008f'>%1</t> !<br/><br/>
-				Votre grade : <t color='#000080'>%2</t><br/>
-				Votre score : <t color='#008000'>%3</t> XP<br/>
-				Vos crédits : <t color='#800000'>%4</t> MUNITIONS <br/><br/>
-				Votre réputation auprès des civils est <t color='%5'>%6</t>
+				Bienvenue &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Votre grade : &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Votre score : &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Vos crédits : &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNITIONS &lt;br/&gt;&lt;br/&gt;
+				Votre réputation auprès des civils est &lt;t color='%5'>%6&lt;/t&gt;
 			</French>
 			<German>
-				Willkommen <t color='#00008f'>%1</t>!<br/><br/>
-				Dein Rang: <t color='#000080'>%2</t><br/>
-				Dein Punktestand: <t color='#008000'>%3</t> XP<br/>
-				Dein Guthaben: <t color='#800000'>%4</t> MUNITION <br/><br/>
-				Dein Ansehen bei Zivilisten ist <t color='%5'>%6</t>
+				Willkommen &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Dein Rang: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Dein Punktestand: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Dein Guthaben: &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNITION &lt;br/&gt;&lt;br/&gt;
+				Dein Ansehen bei Zivilisten ist &lt;t color='%5'>%6&lt;/t&gt;
 			</German>
 			<Spanish>
-				Bienvenido <t color='#00008f'>%1</t>!<br/><br/>
-				Tu Rango: <t color='#000080'>%2</t><br/>
-				Tu Puntuación: <t color='#008000'>%3</t> XP<br/>
-				Tu Crédito: <t color='#800000'>%4</t> MUNICIÓN <br/><br/>
-				Tu Reputación con Civiles es <t color='%5'>%6</t>
+				Bienvenido &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Tu Rango: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Tu Puntuación: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Tu Crédito: &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNICIÓN &lt;br/&gt;&lt;br/&gt;
+				Tu Reputación con Civiles es &lt;t color='%5'>%6&lt;/t&gt;
 			</Spanish>
 			<Russian>
-				Добро пожаловать, <t color='#00008f'>%1</t>!<br/><br/>
-				Ваш ранг: <t color='#000080'>%2</t><br/>
-				Ваш счёт: <t color='#008000'>%3</t> XP<br/>
-				Ваши ресурсы: <t color='#800000'>%4</t> БОЕПРИПАСЫ<br/><br/>
-				Ваша репутация среди гражданских: <t color='%5'>%6</t>
+				Добро пожаловать, &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Ваш ранг: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Ваш счёт: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Ваши ресурсы: &lt;t color='#800000'&gt;%4&lt;/t&gt; БОЕПРИПАСЫ&lt;br/&gt;&lt;br/&gt;
+				Ваша репутация среди гражданских: &lt;t color='%5'>%6&lt;/t&gt;
 			</Russian>
 			<Chinesesimp>
-				欢迎 <t color='#00008f'>%1</t>！<br/><br/>
-				你的军衔：<t color='#000080'>%2</t><br/>
-				你的得分：<t color='#008000'>%3</t> XP<br/>
-				你的弹药：<t color='#800000'>%4</t> 点<br/><br/>
-				你在平民中的声望为 <t color='%5'>%6</t>
+				欢迎 &lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
+				你的军衔：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				你的得分：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				你的弹药：&lt;t color='#800000'&gt;%4&lt;/t&gt; 点&lt;br/&gt;&lt;br/&gt;
+				你在平民中的声望为 &lt;t color='%5'>%6&lt;/t&gt;
 			</Chinesesimp>
 			<Chinese>
-				歡迎 <t color='#00008f'>%1</t>！<br/><br/>
-				你的軍階：<t color='#000080'>%2</t><br/>
-				你的得分：<t color='#008000'>%3</t> XP<br/>
-				你的彈藥：<t color='#800000'>%4</t> 點<br/><br/>
-				你在平民中的聲望為 <t color='%5'>%6</t>
+				歡迎 &lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
+				你的軍階：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				你的得分：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				你的彈藥：&lt;t color='#800000'&gt;%4&lt;/t&gt; 點&lt;br/&gt;&lt;br/&gt;
+				你在平民中的聲望為 &lt;t color='%5'>%6&lt;/t&gt;
 			</Chinese>
 			<Japanese>
-				ようこそ <t color='#00008f'>%1</t> さん！<br/><br/>
-				階級：<t color='#000080'>%2</t><br/>
-				スコア：<t color='#008000'>%3</t> XP<br/>
-				弾薬ポイント：<t color='#800000'>%4</t> <br/><br/>
-				民間人からの評判：<t color='%5'>%6</t>
+				ようこそ &lt;t color='#00008f'&gt;%1&lt;/t&gt; さん！&lt;br/&gt;&lt;br/&gt;
+				階級：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				スコア：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				弾薬ポイント：&lt;t color='#800000'&gt;%4&lt;/t&gt; &lt;br/&gt;&lt;br/&gt;
+				民間人からの評判：&lt;t color='%5'>%6&lt;/t&gt;
 			</Japanese>
 		</Key>
 		
@@ -8464,59 +8464,59 @@
 
 		<Key ID="STR_UI_TUNNEL_CLEARED_MSG">
 			<Original>
-				You Win !<br/>
-				The <t color='#008f00'>Guerrilla</t> tunnel no <t color='#008f00'>%1</t>,<br/><br/>
-				Has been successfully <t color='#00008f'>CLEANED</t> !!<br/>
-				Please take your reward: <t color='#8f0000'>%2 XP</t>.<br/><br/>
+				You Win !&lt;br/&gt;
+				The &lt;t color='#008f00'&gt;Guerrilla&lt;/t&gt; tunnel no &lt;t color='#008f00'&gt;%1&lt;/t&gt;,&lt;br/&gt;&lt;br/&gt;
+				Has been successfully &lt;t color='#00008f'&gt;CLEANED&lt;/t&gt; !!&lt;br/&gt;
+				Please take your reward: &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
 				Thanks for your help.
 			</Original>
 			<French>
-				Victoire !<br/>
-				Le tunnel <t color='#008f00'>Guérilla</t> numéro <t color='#008f00'>%1</t><br/><br/>
-				a été <t color='#00008f'>NETTOYÉ</t> avec succès !!<br/>
-				Récompense : <t color='#8f0000'>%2 XP</t>.<br/><br/>
+				Victoire !&lt;br/&gt;
+				Le tunnel &lt;t color='#008f00'&gt;Guérilla&lt;/t&gt; numéro &lt;t color='#008f00'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				a été &lt;t color='#00008f'&gt;NETTOYÉ&lt;/t&gt; avec succès !!&lt;br/&gt;
+				Récompense : &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
 				Merci pour votre aide.
 			</French>
 			<German>
-				Gewonnen!<br/>
-				Der <t color='#008f00'>Guerilla</t>-Tunnel Nr. <t color='#008f00'>%1</t><br/><br/>
-				wurde erfolgreich <t color='#00008f'>GEREINIGT</t>!!<br/>
-				Belohnung: <t color='#8f0000'>%2 XP</t>.<br/><br/>
+				Gewonnen!&lt;br/&gt;
+				Der &lt;t color='#008f00'&gt;Guerilla&lt;/t&gt;-Tunnel Nr. &lt;t color='#008f00'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				wurde erfolgreich &lt;t color='#00008f'&gt;GEREINIGT&lt;/t&gt;!!&lt;br/&gt;
+				Belohnung: &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
 				Danke für deine Hilfe.
 			</German>
 			<Spanish>
-				¡Victoria!<br/>
-				El túnel <t color='#008f00'>Guerrillero</t> número <t color='#008f00'>%1</t><br/><br/>
-				ha sido <t color='#00008f'>LIMPIADO</t> con éxito!!<br/>
-				Recompensa: <t color='#8f0000'>%2 XP</t>.<br/><br/>
+				¡Victoria!&lt;br/&gt;
+				El túnel &lt;t color='#008f00'&gt;Guerrillero&lt;/t&gt; número &lt;t color='#008f00'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				ha sido &lt;t color='#00008f'&gt;LIMPIADO&lt;/t&gt; con éxito!!&lt;br/&gt;
+				Recompensa: &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
 				Gracias por tu ayuda.
 			</Spanish>
 			<Russian>
-				Вы победили!<br/>
-				Тоннель повстанцев №<t color='#008f00'>%1</t><br/><br/>
-				был успешно <t color='#00008f'>ЗАЧИЩЕН</t>!!<br/>
-				Награда: <t color='#8f0000'>%2 XP</t>.<br/><br/>
+				Вы победили!&lt;br/&gt;
+				Тоннель повстанцев №&lt;t color='#008f00'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				был успешно &lt;t color='#00008f'&gt;ЗАЧИЩЕН&lt;/t&gt;!!&lt;br/&gt;
+				Награда: &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
 				Спасибо за помощь.
 			</Russian>
 			<Chinesesimp>
-				胜利了！<br/>
-				编号 <t color='#008f00'>%1</t> 的 <t color='#008f00'>游击队</t> 隧道<br/><br/>
-				已被成功 <t color='#00008f'>清除</t>！！<br/>
-				请领取奖励：<t color='#8f0000'>%2 XP</t>。<br/><br/>
+				胜利了！&lt;br/&gt;
+				编号 &lt;t color='#008f00'&gt;%1&lt;/t&gt; 的 &lt;t color='#008f00'&gt;游击队&lt;/t&gt; 隧道&lt;br/&gt;&lt;br/&gt;
+				已被成功 &lt;t color='#00008f'&gt;清除&lt;/t&gt;！！&lt;br/&gt;
+				请领取奖励：&lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;。&lt;br/&gt;&lt;br/&gt;
 				感谢你的帮助。
 			</Chinesesimp>
 			<Chinese>
-				勝利了！<br/>
-				編號 <t color='#008f00'>%1</t> 的 <t color='#008f00'>游擊隊</t>隧道<br/><br/>
-				已成功被 <t color='#00008f'>清除</t>！！<br/>
-				請領取獎勵：<t color='#8f0000'>%2 XP</t>。<br/><br/>
+				勝利了！&lt;br/&gt;
+				編號 &lt;t color='#008f00'&gt;%1&lt;/t&gt; 的 &lt;t color='#008f00'&gt;游擊隊&lt;/t&gt;隧道&lt;br/&gt;&lt;br/&gt;
+				已成功被 &lt;t color='#00008f'&gt;清除&lt;/t&gt;！！&lt;br/&gt;
+				請領取獎勵：&lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;。&lt;br/&gt;&lt;br/&gt;
 				感謝你的幫助。
 			</Chinese>
 			<Japanese>
-				勝利！<br/>
-				ゲリラのトンネル <t color='#008f00'>No.%1</t><br/><br/>
-				は無事に<t color='#00008f'>掃討</t>されました！！<br/>
-				報酬：<t color='#8f0000'>%2 XP</t><br/><br/>
+				勝利！&lt;br/&gt;
+				ゲリラのトンネル &lt;t color='#008f00'&gt;No.%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				は無事に&lt;t color='#00008f'&gt;掃討&lt;/t&gt;されました！！&lt;br/&gt;
+				報酬：&lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
 				ご協力ありがとうございます。
 			</Japanese>
 		</Key>
@@ -8536,51 +8536,51 @@
 
 		<Key ID="STR_UI_TUNNEL_ENTRY_WARNING">
 			<Original>
-				You enter in the <t color='#008f00'>Guerrilla</t> tunnel no <t color='#008f00'>%1</t> !<br/><br/>
-				Expect NO <t color='#00008f'>Support</t>,  NO <t color='#00008f'>Help</t>. <br/>
-				...Expect NO <t color='#8f0000'>Mercy</t> !!<br/><br/>
+				You enter in the &lt;t color='#008f00'&gt;Guerrilla&lt;/t&gt; tunnel no &lt;t color='#008f00'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Expect NO &lt;t color='#00008f'&gt;Support&lt;/t&gt;,  NO &lt;t color='#00008f'&gt;Help&lt;/t&gt;. &lt;br/&gt;
+				...Expect NO &lt;t color='#8f0000'&gt;Mercy&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;
 				You are on your own....
 			</Original>
 			<French>
-				Vous entrez dans le tunnel <t color='#008f00'>Guérilla</t> numéro <t color='#008f00'>%1</t> !<br/><br/>
-				N'attendez AUCUN <t color='#00008f'>Soutien</t>, AUCUNE <t color='#00008f'>Aide</t>.<br/>
-				...Et surtout, AUCUNE <t color='#8f0000'>Pitié</t> !!<br/><br/>
+				Vous entrez dans le tunnel &lt;t color='#008f00'&gt;Guérilla&lt;/t&gt; numéro &lt;t color='#008f00'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				N'attendez AUCUN &lt;t color='#00008f'&gt;Soutien&lt;/t&gt;, AUCUNE &lt;t color='#00008f'&gt;Aide&lt;/t&gt;.&lt;br/&gt;
+				...Et surtout, AUCUNE &lt;t color='#8f0000'&gt;Pitié&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;
 				Vous êtes seul...
 			</French>
 			<German>
-				Du betrittst den <t color='#008f00'>Guerilla</t>-Tunnel Nr. <t color='#008f00'>%1</t>!<br/><br/>
-				Erwarte KEINE <t color='#00008f'>Unterstützung</t>, KEINE <t color='#00008f'>Hilfe</t>.<br/>
-				...Erwarte KEIN <t color='#8f0000'>Erbarmen</t>!!<br/><br/>
+				Du betrittst den &lt;t color='#008f00'&gt;Guerilla&lt;/t&gt;-Tunnel Nr. &lt;t color='#008f00'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Erwarte KEINE &lt;t color='#00008f'&gt;Unterstützung&lt;/t&gt;, KEINE &lt;t color='#00008f'&gt;Hilfe&lt;/t&gt;.&lt;br/&gt;
+				...Erwarte KEIN &lt;t color='#8f0000'&gt;Erbarmen&lt;/t&gt;!!&lt;br/&gt;&lt;br/&gt;
 				Du bist auf dich allein gestellt...
 			</German>
 			<Spanish>
-				Entras al túnel <t color='#008f00'>Guerrillero</t> número <t color='#008f00'>%1</t>!<br/><br/>
-				No esperes <t color='#00008f'>apoyo</t>, ni <t color='#00008f'>ayuda</t>.<br/>
-				...No esperes <t color='#8f0000'>piedad</t>!!<br/><br/>
+				Entras al túnel &lt;t color='#008f00'&gt;Guerrillero&lt;/t&gt; número &lt;t color='#008f00'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				No esperes &lt;t color='#00008f'&gt;apoyo&lt;/t&gt;, ni &lt;t color='#00008f'&gt;ayuda&lt;/t&gt;.&lt;br/&gt;
+				...No esperes &lt;t color='#8f0000'&gt;piedad&lt;/t&gt;!!&lt;br/&gt;&lt;br/&gt;
 				Estás por tu cuenta...
 			</Spanish>
 			<Russian>
-				Вы входите в туннель <t color='#008f00'>повстанцев</t> №<t color='#008f00'>%1</t>!<br/><br/>
-				Не ждите <t color='#00008f'>поддержки</t>, <t color='#00008f'>помощи</t>.<br/>
-				...Не ждите <t color='#8f0000'>пощады</t>!!<br/><br/>
+				Вы входите в туннель &lt;t color='#008f00'&gt;повстанцев&lt;/t&gt; №&lt;t color='#008f00'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Не ждите &lt;t color='#00008f'&gt;поддержки&lt;/t&gt;, &lt;t color='#00008f'&gt;помощи&lt;/t&gt;.&lt;br/&gt;
+				...Не ждите &lt;t color='#8f0000'&gt;пощады&lt;/t&gt;!!&lt;br/&gt;&lt;br/&gt;
 				Вы один...
 			</Russian>
 			<Chinesesimp>
-				你进入了编号 <t color='#008f00'>%1</t> 的 <t color='#008f00'>游击队</t>隧道！<br/><br/>
-				不要指望有 <t color='#00008f'>支援</t>、没有 <t color='#00008f'>援助</t>。<br/>
-				……也不要指望有 <t color='#8f0000'>仁慈</t>！！<br/><br/>
+				你进入了编号 &lt;t color='#008f00'&gt;%1&lt;/t&gt; 的 &lt;t color='#008f00'&gt;游击队&lt;/t&gt;隧道！&lt;br/&gt;&lt;br/&gt;
+				不要指望有 &lt;t color='#00008f'&gt;支援&lt;/t&gt;、没有 &lt;t color='#00008f'&gt;援助&lt;/t&gt;。&lt;br/&gt;
+				……也不要指望有 &lt;t color='#8f0000'&gt;仁慈&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;
 				你只能靠自己……
 			</Chinesesimp>
 			<Chinese>
-				你進入了編號 <t color='#008f00'>%1</t> 的 <t color='#008f00'>游擊隊</t>隧道！<br/><br/>
-				不要指望有 <t color='#00008f'>支援</t>、沒有 <t color='#00008f'>援助</t>。<br/>
-				……也不要指望有 <t color='#8f0000'>仁慈</t>！！<br/><br/>
+				你進入了編號 &lt;t color='#008f00'&gt;%1&lt;/t&gt; 的 &lt;t color='#008f00'&gt;游擊隊&lt;/t&gt;隧道！&lt;br/&gt;&lt;br/&gt;
+				不要指望有 &lt;t color='#00008f'&gt;支援&lt;/t&gt;、沒有 &lt;t color='#00008f'&gt;援助&lt;/t&gt;。&lt;br/&gt;
+				……也不要指望有 &lt;t color='#8f0000'&gt;仁慈&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;
 				你只能靠自己……
 			</Chinese>
 			<Japanese>
-				<t color='#008f00'>ゲリラ</t>のトンネルNo.<t color='#008f00'>%1</t> に入った！<br/><br/>
-				<t color='#00008f'>支援</t>も、<t color='#00008f'>助け</t>も期待するな。<br/>
-				…<t color='#8f0000'>慈悲</t>などない！！<br/><br/>
+				&lt;t color='#008f00'&gt;ゲリラ&lt;/t&gt;のトンネルNo.&lt;t color='#008f00'&gt;%1&lt;/t&gt; に入った！&lt;br/&gt;&lt;br/&gt;
+				&lt;t color='#00008f'&gt;支援&lt;/t&gt;も、&lt;t color='#00008f'&gt;助け&lt;/t&gt;も期待するな。&lt;br/&gt;
+				…&lt;t color='#8f0000'&gt;慈悲&lt;/t&gt;などない！！&lt;br/&gt;&lt;br/&gt;
 				君は一人だ…
 			</Japanese>
 		</Key>
@@ -10644,8 +10644,6 @@
 			<Portuguese>Você reconectou ou reapareceu rápido demais!\nEspere %1 segundos.</Portuguese>
 			<Czech>Příliš rychlé opětovné připojení nebo obnovení!\nPočkej %1 sekund.</Czech>
 		</Key>
-
-
 
 	</Package>
 	
