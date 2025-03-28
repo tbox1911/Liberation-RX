@@ -101,6 +101,13 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_grl ];
 							_default = false;
 						};
+						if (_nextclass == box_uavs_typename) then {
+							private _loaded_uavs = [_x] call save_object_direct;
+							if (count _loaded_uavs > 0) then {
+								buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _loaded_uavs ];
+							};
+							_default = false;
+						};						
 						if (_default) then {
 							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
 						};

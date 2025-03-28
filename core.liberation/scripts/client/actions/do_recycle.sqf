@@ -46,6 +46,12 @@ if (_veh_class == fuelbarrel_typename) then { _ammount_ammo = 0 };
 if (_veh_class in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
 	_ammount_ammo = round (([_vehicle] call F_loadoutPrice) * GRLIB_recycling_percentage);
 };
+
+if (_veh_class == box_uavs_typename) then {
+	private _drone_count = count (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+	private _drone_price = (GRLIB_recycleable_info select { _x select 0 == uavs_light }) select 0 select 2;
+	_ammount_ammo = (_drone_price * _drone_count);
+};
 ctrlSetText [131, format ["%1", _objectinfo select 1]];
 ctrlSetText [132, format ["%1", _ammount_ammo]];
 ctrlSetText [133, format ["%1", _ammount_fuel]];

@@ -22,7 +22,7 @@ GRLIB_classnames_to_save = GRLIB_classnames_to_save + GRLIB_classnames_to_save_b
 GRLIB_classnames_to_save = GRLIB_classnames_to_save arrayIntersect GRLIB_classnames_to_save;
 GRLIB_classnames_to_save = GRLIB_classnames_to_save apply { toLower _x };
 
-GRLIB_vehicles_light = [mobile_respawn] + GRLIB_vehicle_blacklist + list_static_weapons + uavs_vehicles;
+GRLIB_vehicles_light = [mobile_respawn, box_uavs_typename] + GRLIB_vehicle_blacklist + list_static_weapons + uavs_vehicles;
 {
 	if !(_x isKindOf "AllVehicles") then { GRLIB_vehicles_light pushBackUnique _x };
 } foreach support_vehicles_classname;

@@ -83,5 +83,9 @@ if ( _class == medic_heal_typename ) then {
 if ( _class == storage_medium_typename ) then {
 	_text = "Medium Storage Zone";
 };
+if ( _class == box_uavs_typename ) then {
+	private _uavs_name = getText (configFile >> "cfgVehicles" >> uavs_light >> "displayName");
+	_text = format ["Box of %1 Drones (%2)", box_uavs_max, _uavs_name];
+};
 
 _text;

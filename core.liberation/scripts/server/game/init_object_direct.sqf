@@ -18,6 +18,13 @@ if (_object_class in uavs_vehicles) then {
 	_object setVariable ["GRLIB_vehicle_manned", true, true];
 };
 
+// UAVs box
+if (_object_class == box_uavs_typename) then {
+	private _loaded_uavs = [];
+	for "_n" from 1 to box_uavs_max do { _loaded_uavs pushBack uavs_light };
+	[_object, _loaded_uavs] call load_object_direct;
+};
+
 // MPKilled
 _object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 

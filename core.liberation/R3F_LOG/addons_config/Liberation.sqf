@@ -23,7 +23,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[huron_typename, 200],
 	["Heli_Light_01_base_F", 10],
-	["UAV_01_base_F", 5],
+	["UAV_01_base_F", 0],
 	["UAV_02_base_F", 5],
 	["UAV_03_base_F", 5],
 	["UAV_04_base_F", 5],
@@ -34,7 +34,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["UAV_01_base_F", 5],
+	["UAV_01_base_F", 3],
 	["UAV_02_base_F", 5],
 	["UAV_03_base_F", 5],
 	["UAV_04_base_F", 5],
@@ -204,7 +204,8 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[FOB_box_typename, 0],
 	[FOB_box_outpost, 0],
-	[playerbox_typename, 0]
+	[playerbox_typename, 0],
+	[box_uavs_typename, 20]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -227,6 +228,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	[ammo_sling_typename, 85],
 	[medic_sling_typename, 85],
 	[basic_weapon_typename, 7],
+	[box_uavs_typename, 30],
 	[a3w_sd_item, 1],
 	["ReammoBox_F", 10],
 	["Box_NATO_Wps_F", 5],
@@ -244,6 +246,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	FOB_box_typename,
 	FOB_box_outpost,
 	playerbox_typename,
+	box_uavs_typename,
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,

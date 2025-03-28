@@ -62,6 +62,17 @@ uavs_vehicles = [
 	};
 } foreach light_vehicles + heavy_vehicles + air_vehicles;
 
+uavs_light = "";
+if (air_vehicles findIf {_x select 0 == "B_UAV_01_F"} >= 0) then {
+	uavs_light = "B_UAV_01_F";
+};
+if (air_vehicles findIf {_x select 0 == "O_UAV_01_F"} >= 0) then {
+	uavs_light = "O_UAV_01_F";
+};
+if (uavs_light != "") then {
+	air_vehicles insert [1, [[box_uavs_typename,0,80,0,GRLIB_perm_log]]];
+};
+
 // *** BADDIES ***
 _path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
 _ret = [_path] call F_getTemplateFile;

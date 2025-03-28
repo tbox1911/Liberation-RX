@@ -276,6 +276,10 @@ if (!isNil "_lrx_liberation_savegame") then {
 			_nextbuilding setAmmoCargo 0;
 		};
 
+		if (_nextclass == box_uavs_typename) then {
+			[_nextbuilding, (_x select 5)] call load_object_direct;
+		};
+
 		if ( _nextclass == storage_medium_typename ) then {
 			{[_nextbuilding, _x] call attach_object_direct} forEach (_x select 5);
 			private _drop_zone_dir = (getdir _nextbuilding);
@@ -292,7 +296,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 			if (_owner != "public") then {
 				_nextbuilding setVehicleLock "LOCKED";
 				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
-				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 			};
 		};
 

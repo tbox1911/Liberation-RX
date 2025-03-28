@@ -477,6 +477,13 @@ while { true } do {
 				};
 			};
 
+			// UAVs box
+			if (_classname == box_uavs_typename) then {
+				private _loaded_uavs = [];
+				for "_n" from 1 to box_uavs_max do { _loaded_uavs pushBack uavs_light };
+				[_vehicle, _loaded_uavs] call load_object_direct;
+			};
+
 			// AI Static Weapon
 			if (_classname in static_vehicles_AI) then { player disableUAVConnectability [_vehicle, true] };
 
