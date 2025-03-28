@@ -264,7 +264,7 @@ AR_Rappel_From_Heli = {
 
 	// All rappel anchors are taken by other players. Hint player to try again.
 	if (count _rappelPoints == _rappelPointIndex) exitWith {
-		hintSilent "All rappel anchors in use. Please try again.";
+		hintSilent localize "STR_RPL_ANCHORS_IN_USE";
 	};
 
 	_heli setVariable ["AR_Rappelling_Player_" + str _rappelPointIndex,_player];
@@ -369,7 +369,7 @@ AR_Client_Rappel_From_Heli = {
 		while {_player getVariable ["AR_Is_Rappelling", false]} do {
 			if (speed vehicle _heli > 150) then {
 				if (isPlayer _player) then {
-					hintSilent "Moving too fast! You've lost grip of the rope.";
+					hintSilent localize "STR_RPL_TOO_FAST_LOST_GRIP";
 				};
 				[_player] call AR_Rappel_Detach_Action;
 			};
