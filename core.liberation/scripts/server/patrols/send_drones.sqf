@@ -117,13 +117,13 @@ while {alive _vehicle} do {
 			};
 			if !(alive _vehicle) exitWith {};
 			if (_vehicle distance2D _target <= 20) then {
-				private _round = "GrenadeHand" createVehicle (getPosATL _vehicle);
-				[_round, -90, 0] call BIS_fnc_setPitchBank;
-				_round setVelocity [0,0,-50];
-				sleep 1;
-				_round = "GrenadeHand" createVehicle (getPosATL _vehicle);
-				[_round, -90, 0] call BIS_fnc_setPitchBank;
-				_round setVelocity [0,0,-50];
+				private _pos = getPosATL _vehicle;
+				_pos set [2, 60];
+				createVehicle ["GrenadeHand", _pos, [], 2, "FLY"];
+				sleep 2;
+				if (floor random 3 == 0) then {
+					createVehicle ["GrenadeHand", _pos, [], 2, "FLY"];
+				};
 			};
 			sleep 2;
 			_vehicle flyInHeight _airveh_alt;
