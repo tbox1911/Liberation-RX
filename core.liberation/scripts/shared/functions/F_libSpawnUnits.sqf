@@ -1,8 +1,9 @@
 params [
-	"_spawn_pos",                    // position to spawn
+	"_spawn_pos",                   // position to spawn
 	["_classname", []],             // array of classname to create
 	["_side", GRLIB_side_enemy],    // side of units group
-	["_type", "infantry"]           // type of unit
+	["_type", "infantry"],          // type of unit
+	["_mission_ai", false]          // from side mission
 ];
 
 if (count _classname == 0) exitWith { diag_log ["--- LRX Error: no unit to create.", _this]; grpNull };
@@ -24,6 +25,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 	_pos = _spawn_pos getPos [2 + (floor random 25), floor random 360];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
 	if (!isNil "_unit") then {
+		if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
 		[_unit] joinSilent _grp;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit setPitch 1;

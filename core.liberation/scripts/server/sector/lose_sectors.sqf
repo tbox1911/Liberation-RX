@@ -18,5 +18,5 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		sleep 0.1;
 	} foreach GRLIB_all_fobs;
 
-	sleep 3;
+	sleep 5;
 };

@@ -33,7 +33,7 @@ switch (_type) do {
 
 private _unitclass = [];
 while { (count _unitclass) < _nbUnits } do { _unitclass pushback (selectRandom _unitTypes) };
-private _grp = [_pos, _unitclass, _side, _type] call F_libSpawnUnits;
+private _grp = [_pos, _unitclass, _side, _type, true] call F_libSpawnUnits;
 
 //Unit Skill;
 //  Novice < 0.25
@@ -59,7 +59,6 @@ private _grp = [_pos, _unitclass, _side, _type] call F_libSpawnUnits;
 	};
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
-	_x setVariable ["GRLIB_mission_AI", true, true];
 	_x setVariable ["acex_headless_blacklist", true, true];
 } forEach (units _grp);
 

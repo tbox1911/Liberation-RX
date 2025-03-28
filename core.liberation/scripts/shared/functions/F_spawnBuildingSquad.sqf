@@ -1,4 +1,9 @@
-params [ "_infsquad", "_building_ai_max", "_sectorpos", ["_building_range", GRLIB_capture_size], ["_building", objNull] ];
+params [
+	"_infsquad", "_building_ai_max", "_sectorpos",
+	["_building_range", GRLIB_capture_size],
+	["_building", objNull],
+	["_mission_ai", true]
+];
 
 if (_building_ai_max == 0) exitWith  {[]};
 
@@ -48,7 +53,7 @@ while { count _position_indexes < count _unitclass } do {
 		_position_indexes pushback _nextposit;
 	};
 };
-private _grp = [_sectorpos, _unitclass, _side, "building"] call F_libSpawnUnits;
+private _grp = [_sectorpos, _unitclass, _side, "building", _mission_ai] call F_libSpawnUnits;
 {
 	_x allowDamage false;
 	//_x disableAI "MOVE";

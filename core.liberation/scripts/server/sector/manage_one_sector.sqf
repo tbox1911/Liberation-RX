@@ -222,7 +222,7 @@ if (count _vehtospawn > 0) then {
 if (opforcap_max) then { _building_ai_max = 0 };
 if (_building_ai_max > 0) then {
 	_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
-	_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range] call F_spawnBuildingSquad);
+	_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_spawnBuildingSquad);
 };
 
 // Create civilians

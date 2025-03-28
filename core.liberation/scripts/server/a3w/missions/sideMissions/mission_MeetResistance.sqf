@@ -36,10 +36,6 @@ _setupObjects = {
 	_managed_units append (units _grp);
 	sleep 1;
 
-	// get Houses nearbby
-	_managed_units append (["resistance", 2, _missionPos] call F_spawnBuildingSquad);
-	sleep 1;
-
 	// create static weapons
 	_veh1 = createVehicle [a3w_resistance_static, _missionPos, [], 100, "None"];
 	_managed_units append ([_veh1] call F_forceCrew);

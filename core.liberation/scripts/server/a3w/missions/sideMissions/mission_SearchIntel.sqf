@@ -117,7 +117,7 @@ _setupObjects = {
 	sleep 0.5;
 
 	//----- spawn units ---------------------------------
-	private _managed_units = (["infantry", ([] call getNbUnits), _missionPos] call F_spawnBuildingSquad);
+	private _managed_units = ["infantry", ([] call getNbUnits), _missionPos] call F_spawnBuildingSquad;
 	_aiGroup = group (_managed_units select 0);
 	{
 		_x setSkill 0.70;
