@@ -313,14 +313,14 @@ if (isServer && hasInterface) then {
 
 // Commander mode 
 if (GRLIB_Commander_mode) then {
-	//Stackable version of MapSingleClick
 	addMissionEventHandler ["MapSingleClick", { 
-		params ["_caller", "_pos"];
+		params ["_units", "_pos"];
+		private _caller = _thisArgs;
 		if ([_caller] call F_getCommander) then {
 			// Only commander can even send the request to the server, efficient
 			[_caller, _pos] remoteExec ["GRLIB_ActivateCommanderSector", 2];
 		};
-	}, [player]];
+	}, player];
 };
 
 initAmbientLife;

@@ -25,11 +25,11 @@ GRLIB_CommanderSectors = {
 
     _fsects = blufor_sectors + GRLIB_fobSects;
     _newConnections = createHashMap;
-    
+
     _AvailAttackSectors = [];
-    
+
     _tolerance = 0.01;
-    
+
     {
         _pos = _x#0;
         _name = _x#1;
@@ -99,7 +99,7 @@ GRLIB_CommanderSectors = {
     GRLIB_connCalculating = false;
 };
 
-GRLIB_ActivateCommanderSector = {        
+GRLIB_ActivateCommanderSector = {
     params ["_caller", "_pos"];
     if ([_caller] call F_getCommander) then {
         if (active_sectors isEqualTo [] && !(GRLIB_AvailAttackSectors isEqualTo [])) then {
