@@ -23,11 +23,10 @@ if (count _usable_sectors > 0) then {
 	private  _sector_pos = markerPos (selectRandom _usable_sectors);
 	// 50% in vehicles
 	if (floor random 100 > 50 && count militia_vehicles > 0) then {
-		_opfor_veh = [_sector_pos, (selectRandom militia_vehicles)] call F_libSpawnVehicle;
+		_opfor_veh = [_sector_pos, (selectRandom militia_vehicles), nil, nil, nil, nil, true] call F_libSpawnVehicle;
 		if !(isNull _opfor_veh) then {
 			_opfor_grp = group (driver _opfor_veh);
 			[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
-			{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach (units _opfor_grp);
 		};
 	} else {
 		_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", true, 200] call createCustomGroup;

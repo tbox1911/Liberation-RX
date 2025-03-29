@@ -54,7 +54,6 @@ _failedExec = {
 	// Mission failed
 	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	_failedHintMessage = ["STR_INVASION_FAILED", sideMissionColor, _townName];
-	//{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	[_missionPos] call clearlandmines;
 };
@@ -73,7 +72,6 @@ _successExec = {
 	} forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
 
 	_successHintMessage = ["STR_INVASION_MESSAGE2", sideMissionColor, _townName];
-	//{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	[_missionPos] spawn {
 		params ["_pos"];

@@ -25,8 +25,8 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 	_pos = _spawn_pos getPos [2 + (floor random 25), floor random 360];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
 	if (!isNil "_unit") then {
-		if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
 		[_unit] joinSilent _grp;
+		if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit setPitch 1;
 		_ai_rank = selectRandom (GRLIB_rank_level select [0,4]);
@@ -42,13 +42,13 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] spawn F_fixModUnit;
 		if (_type in ["militia", "building"]) then { [_unit] call loadout_militia };
-		if (_type == "bandits") then { 
+		if (_type == "bandits") then {
 			[_unit] call loadout_militia;
 			_unit addMPEventHandler ["MPKilled", {
 				params ["_unit", "_killer", "_instigator", "_useEffects"];
 				if (side group _killer != GRLIB_side_friendly || !(isNull objectParent _killer)) exitWith {};
 				if (floor random 3 == 0) then { money_typename createVehicle getPos _unit };
-			}];			
+			}];
 		};
 		if (_type == "guards" && _forEachIndex % 4 == 0) then {
 			removeBackpack _unit;
@@ -69,20 +69,19 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			_unit addBackpack "B_Parachute";
 		};
 
-		if (_type == "defender") then {
-			_unit setVariable ["GRLIB_mission_AI", true, true]
-		};
-
 		if !(_type in ["divers", "para", "building"]) then {
-			sleep 0.1;
-			[_unit] call F_fixPosUnit;
-			_unit switchMove "AmovPercMwlkSnonWnonDf";
-			_unit playMoveNow "AmovPercMwlkSnonWnonDf";
+			[_unit] spawn {
+				params ["_unit"];
+				sleep 1;
+				[_unit] call F_fixPosUnit;
+				_unit switchMove "AmovPercMwlkSnonWnonDf";
+				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
+			};
 		};
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
-	sleep 0.2;
+	//sleep 0.2;
 } foreach _classname;
 
 _grp;

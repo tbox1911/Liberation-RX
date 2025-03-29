@@ -51,9 +51,8 @@ _setupObjects = {
 	private _roads = _hvt_pos nearRoads 50;
 	private _vehicle1_pos = getPos (selectRandom _roads);
 	if (isNil "_vehicle1_pos") then { _vehicle1_pos = _hvt_pos; precise = false };
-	_vehicle = [_vehicle1_pos, _vehicleClass, 0] call F_libSpawnVehicle;
-	_vehicle allowCrewInImmobile true;
-	_grp_hmg createVehicleCrew _vehicle;
+	_vehicle = [_vehicle1_pos, _vehicleClass, 0, nil, nil, nil, true] call F_libSpawnVehicle;
+	(crew _vehicle) joinSilent _grp_hmg;
 
 	// Patrolgroup
 	_aiGroup = [_hvt_pos, _nbUnits, "infantry", true, 40] call createCustomGroup;

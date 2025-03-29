@@ -16,23 +16,25 @@ private _stats_marker = [
 
 while { true } do {
 	_msg = "";
-	_all_sectors = (allMapMarkers select {_x select [0,13] == "side_mission_" && ((markerPos _x) distance2D player) <= GRLIB_capture_size});
-	_sector = [_all_sectors, player] call F_nearestPosition;
-	if (_sector != "") then {
-		_mission = _sector select [13];
-		_opf = 0;
+	if (count A3W_sectors_in_use > 0) then {
+		_all_sectors = (A3W_sectors_in_use select {((markerPos _x) distance2D player) <= GRLIB_capture_size});
+		_sector = [_all_sectors, player] call F_nearestPosition;
+		if (_sector != "") then {
+			_mission = _sector select [13];
+			_opf = 0;
 
-		// Resistance
-		if (_mission == "STR_RESISTANCE" && !isNil "GRLIB_A3W_Mission_MR_OPFOR") then {
-			_opf = { alive _x && _x distance2D (markerPos _sector) < (GRLIB_sector_size * 2) } count GRLIB_A3W_Mission_MR_OPFOR;
-			_res = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size } count GRLIB_A3W_Mission_MR_BLUFOR;
-			if (_opf > 0) then {_msg = format ["Status:\nResistance: %1\nEnemy squad: %2", _res, _opf]};
-		};
+			// Resistance
+			if (_mission == "STR_RESISTANCE" && !isNil "GRLIB_A3W_Mission_MR_OPFOR") then {
+				_opf = { alive _x && _x distance2D (markerPos _sector) < (GRLIB_sector_size * 2) } count GRLIB_A3W_Mission_MR_OPFOR;
+				_res = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size } count GRLIB_A3W_Mission_MR_BLUFOR;
+				if (_opf > 0) then {_msg = format ["Status:\nResistance: %1\nEnemy squad: %2", _res, _opf]};
+			};
 
-		// Others
-		if (_mission in _stats_marker) then {
-			_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size && !(isNil {_x getVariable "GRLIB_mission_AI"})} count (units GRLIB_side_enemy);
-			if (_opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", _opf]};
+			// Others
+			if (_mission in _stats_marker) then {
+				_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size && !(isNil {_x getVariable "GRLIB_mission_AI"})} count (units GRLIB_side_enemy);
+				if (_opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", _opf]};
+			};
 		};
 	};
 

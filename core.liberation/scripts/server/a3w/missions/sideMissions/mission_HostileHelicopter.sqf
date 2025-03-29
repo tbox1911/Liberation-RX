@@ -17,8 +17,7 @@ _setupObjects = {
     	false;
 	};
 	_vehicleClass = selectRandom opfor_troup_transports_heli;
-	_vehicle = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
-	_vehicle setVariable ["GRLIB_mission_AI", true, true];
+	_vehicle = [_missionPos, _vehicleClassnil, nil, nil, nil, nil, true] call F_libSpawnVehicle;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	(crew _vehicle) joinSilent _aiGroup;
 	_leader = driver _vehicle;

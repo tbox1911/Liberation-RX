@@ -1,4 +1,8 @@
-params ["_vehicle", ["_side", GRLIB_side_friendly]];
+params [
+	"_vehicle",
+	["_side", GRLIB_side_friendly],
+	["_mission_ai", false]
+];
 
 // Aircraft / Drone
 if (typeOf _vehicle in uavs_vehicles + static_vehicles_AI || (_vehicle isKindOf "Air")) exitWith {
@@ -23,12 +27,27 @@ if (count _vehicle_roles == 0) then {
 };
 if (count _vehicle_roles == 0) exitWith {[]};
 
+private _unit_class = [opfor_crew];
+if (_side == GRLIB_side_friendly) then {
+	_unit_class = [crewman_classname];
+};
+if (_side == GRLIB_side_civilian) then {
+	_unit_class = civilians;
+};
+
 private _path = "";
+private _unit = objNull;
 private _grp = createGroup [_side, true];
 {
-	private _unit = objNull;
+	_unit = _grp createUnit [(selectRandom _unit_class), _vehicle, [], 20, "NONE"];
+	[_unit] joinSilent _grp;
+	if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
+	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
+	_unit setPitch 1;
+	_unit setSkill 0.65;
+	_unit allowFleeing 0;
+
 	if (_side == GRLIB_side_enemy) then {
-		_unit = _grp createUnit [opfor_crew, _vehicle, [], 20, "NONE"];
 		_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 		if (typeOf _vehicle in militia_vehicles) then {
 			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
@@ -38,7 +57,6 @@ private _grp = createGroup [_side, true];
 	};
 
 	if (_side == GRLIB_side_friendly) then {
-		_unit = _grp createUnit [crewman_classname, _vehicle, [], 20, "NONE"];
 		_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 		_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
 		[_path, _unit] call F_getTemplateFile;
@@ -46,17 +64,10 @@ private _grp = createGroup [_side, true];
 	};
 
 	if (_side == GRLIB_side_civilian) then {
-		_unit = _grp createUnit [(selectRandom civilians), _vehicle, [], 20, "NONE"];
 		_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
 		_unit setVariable ['GRLIB_can_speak', true, true];
 		_unit setVariable ["GRLIB_is_civilian", true, true];
 	};
-
-	_unit allowDamage false;
-	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-	_unit setPitch 1;
-	_unit setSkill 0.65;
-	_unit allowFleeing 0;
 
 	private _role = _vehicle_roles select _forEachIndex;
     if (_role == "driver") then {
@@ -75,10 +86,9 @@ private _grp = createGroup [_side, true];
     //     _unit assignAsTurret _vehicle;
     //     _unit moveInTurret [_vehicle, [1]];
     // };
-	sleep 0.1;
+	// sleep 0.1;
 } forEach _vehicle_roles;
 
-(crew _vehicle) joinSilent _grp;
 (units _grp) allowGetIn true;
 (units _grp) orderGetIn true;
 (_grp) addVehicle _vehicle;
@@ -90,8 +100,5 @@ if (_side == GRLIB_side_civilian) then {
 	_grp setCombatMode "WHITE";
 	_grp setBehaviourStrong "AWARE";
 };
-
-sleep 1;
-{ _x setDamage 0; _x allowDamage true } foreach (units _grp);
 
 (crew _vehicle);

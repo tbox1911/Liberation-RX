@@ -4,7 +4,8 @@ params [
 	["_size", 5],
 	["_random_rotate", false],
 	["_side", GRLIB_side_enemy],
-	["_crewed", true]
+	["_crewed", true],
+	["_mission_ai", false]
 ];
 
 if (isNil "_sectorpos" || isNil "_classname") exitWith { objNull };
@@ -26,7 +27,6 @@ if (_classname isKindOf "Air") then {
 		_vehicle setDir (_vehicle getDir _sectorpos);
 		_vehicle setPosATL _spawn_pos;
 		_vehicle setVelocityModelSpace [0, 80, 0];
-		_vehicle setVariable ["GRLIB_vehicle_init", true, true];
 	};
 } else {
 	if (_size == 0) then {
@@ -77,11 +77,12 @@ if (_classname isKindOf "Air") then {
 			} else {
 				_vehicle setPosATL _spawn_pos;
 			};
-			_vehicle setVariable ["R3F_LOG_disabled", true, true];
 		};
 	};
 };
-sleep 0.5;
+
+_vehicle setVariable ["GRLIB_vehicle_init", true, true];
+if (_mission_ai) then { _vehicle setVariable ["GRLIB_mission_AI", true, true] };
 
 if (_classname == "") exitWith { objNull };
 if (isNull _vehicle) exitWith {
@@ -93,7 +94,7 @@ if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn Vehicle %1 Pos %2 at %3", _classname, getPosATL _vehicle, time ];
 };
 
-if (_crewed) then {	[_vehicle, _side] call F_forceCrew };
+if (_crewed) then {	[_vehicle, _side, _mission_ai] call F_forceCrew };
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
@@ -161,7 +162,7 @@ if (_side == GRLIB_side_enemy) then {
 	// SPE GER Plane
 	if (_classname == "SPEX_C47_Skytrain") then {
 		[_vehicle, ["bare",1,"Hide_Door",1], true ] spawn BIS_fnc_initVehicle;
-	};	
+	};
 
 	// Lock vehicles
 	if !(GRLIB_permission_enemy) then {
@@ -185,7 +186,6 @@ if (_side == GRLIB_side_enemy) then {
 		_x setDamage 0;
 		_x allowDamage true
 	} forEach (crew _vehicle);
-	_vehicle setVariable ["R3F_LOG_disabled", false, true];
 	_vehicle setVariable ["GRLIB_vehicle_init", nil, true];
 };
 

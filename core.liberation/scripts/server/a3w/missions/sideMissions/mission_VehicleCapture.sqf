@@ -7,16 +7,16 @@ _setupVars = {
 	_missionType = "STR_VEHICLECAP";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
-	_missionTimeout = (30 * 60);	
+	_missionTimeout = (30 * 60);
 };
 
 _setupObjects = {
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
-	if (count _missionPos == 0) exitWith { 
+	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
-	_vehicle = [_missionPos, selectRandom opfor_vehicles, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, selectRandom opfor_vehicles, 3, nil, nil, false] call F_libSpawnVehicle;
 	[_vehicle, "lock", "server"] call F_vehicleLock;
 	_vehicle enableSimulationGlobal true;
 	_vehicle setFuel 0.1;

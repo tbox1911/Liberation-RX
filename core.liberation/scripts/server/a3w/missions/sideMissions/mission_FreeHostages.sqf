@@ -69,7 +69,6 @@ _setupObjects = {
 	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
 	_vehicles = _managed_units;
-	{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach _vehicles;
 	_missionPicture = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 	_missionHintText = ["STR_FREE_HOSTAGES_MESSAGE1", sideMissionColor];
 	true;

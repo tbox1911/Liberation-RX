@@ -27,13 +27,12 @@ _setupObjects = {
 	};
 
 	private _airveh_alt = 2000;
-	_vehicle = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, _vehicleClass, nil, nil, nil, nil, true] call F_libSpawnVehicle;
 	_vehicle addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
 	_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 	_vehicle flyInHeight _airveh_alt;
 	_vehicle flyInHeightASL [_airveh_alt, _airveh_alt, _airveh_alt];
-	_vehicle setVariable ["GRLIB_mission_AI", true, true];
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	(crew _vehicle) joinSilent _aiGroup;
 	_leader = driver _vehicle;
