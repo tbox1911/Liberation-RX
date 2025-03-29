@@ -46,9 +46,9 @@ if (_full) then {
 	_marker setMarkerColorLocal "ColorGreen";
 	_marker setMarkerTypeLocal "mil_dot";
 	if (_marker_debug) then {
-		_marker setMarkerTextLocal format ["ATM %1", _x];
+		_marker setMarkerTextLocal format ["%1 %2", localize "STR_MARKER_ATM", _x];
 	} else {
-		_marker setMarkerTextLocal "ATM";
+		_marker setMarkerTextLocal localize "STR_MARKER_ATM";
 	};
 	_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 } forEach GRLIB_Marker_ATM;
@@ -59,9 +59,9 @@ if (_full) then {
 	_marker setMarkerColorLocal "ColorBlue";
 	_marker setMarkerTypeLocal "mil_dot";
 		if (_marker_debug) then {
-		_marker setMarkerTextLocal format ["SELL %1", _x];
+		_marker setMarkerTextLocal format ["%1 %2", localize "STR_MARKER_SELL", _x];
 	} else {
-		_marker setMarkerTextLocal "SELL";
+		_marker setMarkerTextLocal localize "STR_MARKER_SELL";
 	};
 	_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 } forEach GRLIB_Marker_SRV;
@@ -72,9 +72,9 @@ if (_full) then {
 	_marker setMarkerColorLocal "ColorYellow";
 	_marker setMarkerTypeLocal "mil_dot";
 	if (_marker_debug) then {
-		_marker setMarkerTextLocal format ["FUEL %1", _x];
+		_marker setMarkerTextLocal format ["%1 %2", localize "STR_MARKER_FUEL", _x];
 	} else {
-		_marker setMarkerTextLocal "FUEL";
+		_marker setMarkerTextLocal localize "STR_MARKER_FUEL";
 	};
 	_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 } forEach GRLIB_Marker_FUEL;
@@ -85,9 +85,9 @@ if (_full) then {
 	_marker setMarkerColorLocal "ColorPink";
 	_marker setMarkerTypeLocal "mil_dot";
 	if (_marker_debug) then {
-		_marker setMarkerTextLocal format ["SHOP %1", _x];
+		_marker setMarkerTextLocal format ["%1 %2", localize "STR_MARKER_SHOP", _x];
 	} else {
-		_marker setMarkerTextLocal "SHOP";
+		_marker setMarkerTextLocal localize "STR_MARKER_SHOP";
 	};
 	_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 } forEach GRLIB_Marker_SHOP;

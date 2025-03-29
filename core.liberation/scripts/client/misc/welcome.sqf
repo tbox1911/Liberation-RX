@@ -40,14 +40,7 @@ private _reput = [player] call F_getReputText;
 private _color = _reput select 0;
 private _text = _reput select 1;
 
-private _msg = format [
-	"Welcome <t color='#00008f'>%1</t> !<br/><br/>
-	Your Rank : <t color='#000080'>%2</t><br/>
-	Your Score : <t color='#008000'>%3</t> XP<br/>
-	Your Credit : <t color='#800000'>%4</t> AMMO <br/><br/>
-	Your Reputation with Civilians is <t color='%5'>%6</t>",
-	name player, _rank, _score, _ammo_collected, _color, _text
-];
+private _msg = format [localize "STR_UI_WELCOME_MSG", name player, _rank, _score, _ammo_collected, _color, _text];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
 sleep 3;

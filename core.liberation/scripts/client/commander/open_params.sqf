@@ -7,9 +7,9 @@ disableUserInput false;
 
 if ( !([] call is_admin) && GRLIB_param_open_params == 1) then {
 	waitUntil {
-		titleText ["... Waiting for LRX Configuration ...", "BLACK FADED", 100];
+		titleText [localize "STR_WAITING_FOR_LRX_CONFIG", "BLACK FADED", 100];
 		uIsleep 2;
-		titleText ["... Please Wait ...", "BLACK FADED", 100];
+		titleText [localize "STR_PLEASE_WAIT", "BLACK FADED", 100];
 		uIsleep 2;
 		GRLIB_param_open_params == 0;
 	};
@@ -132,7 +132,7 @@ if (save_changes == 1) then {
 
 	waitUntil { sleep 0.5; GRLIB_param_open_params == 0 };
 	if !(isNil "GRLIB_init_server") then {
-		["Mission need to be restarted, to take effect.", "LRX Settings", true] call BIS_fnc_guiMessage;
+		[localize "STR_MISSION_RESTART_REQUIRED",localize "STR_LRX_SETTINGS_TITLE",true] call BIS_fnc_guiMessage;
 	};
 };
 

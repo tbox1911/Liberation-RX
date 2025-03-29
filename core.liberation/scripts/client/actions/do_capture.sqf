@@ -12,7 +12,7 @@ if (goggles _unit == "G_Blindfold_01_black_F") exitWith {
 
 waitUntil {
     [_unit] joinSilent (group player);
-    gamelogic globalChat format ["Capturing prisoner %1...", name _unit];
+    gamelogic globalChat format [localize "STR_PRISONER_CAPTURING", name _unit];
     sleep 2;
     ((!alive _unit) || (local _unit && _unit in (units player)));
 };

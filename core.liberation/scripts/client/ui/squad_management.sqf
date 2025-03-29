@@ -69,8 +69,8 @@ while { dialog && alive player && _membercount > 0 } do {
 		if (!isNil "_ai_score") then {
 			if (_ai_rank < (_pl_rank - 1)) then {
 				private _cost = (_ai_score * 17);
-				private _msg = format ["<t align='center'>Promote %1 for %2 Ammo<br/>Are you sure ?</t>", name _selectedmember, _cost];
-				private _result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
+				private _msg = format [localize "STR_UI_PROMOTE_CONFIRM",name _selectedmember,_cost];
+				private _result = [_msg, localize "STR_UI_WARNING_TITLE", true, true] call BIS_fnc_guiMessage;
 				if (_result) then {
 					if (!([_cost] call F_pay)) exitWith {};
 					_selectedmember setVariable ["PAR_AI_score", 0];
@@ -88,8 +88,8 @@ while { dialog && alive player && _membercount > 0 } do {
 	// Delete
 	if (GRLIB_squadaction == 2) then {
 		ctrlEnable [211, false];
-		private _msg = format ["<t align='center'>Delete %1 %2<br/>Are you sure ?</t>", rank _selectedmember, name _selectedmember];
-		private _result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
+		private _msg = format [localize "STR_UI_DELETE_MEMBER_CONFIRM",rank _selectedmember,name _selectedmember];
+		private _result = [_msg, localize "STR_UI_WARNING_TITLE", true, true] call BIS_fnc_guiMessage;
 		if (_result) then {
 			private _ai_rank = 1 + (GRLIB_rank_level find (rank _selectedmember));
 			private _refund = [_selectedmember] call F_loadoutPrice;
@@ -99,9 +99,9 @@ while { dialog && alive player && _membercount > 0 } do {
 			[player, _refund, 0] remoteExec ["ammo_add_remote_call", 2];
 			playSound "taskSucceeded";
 			if (_ai_rank > 1 ) then {
-				gamelogic globalChat format ["Soldier rank %2 Refund: %1, Thank you !", _refund, _ai_rank];
+				gamelogic globalChat format [localize "STR_LOG_SOLDIER_REFUND_RANKED",_refund,_ai_rank];
 			} else {
-				gamelogic globalChat format ["Soldier Refund: %1, Thank you !", _refund];
+				gamelogic globalChat format [localize "STR_LOG_SOLDIER_REFUND_SIMPLE",_refund];
 			};
 			PAR_AI_bros = PAR_AI_bros - [_selectedmember];
 			deleteVehicle _selectedmember;
@@ -140,11 +140,11 @@ while { dialog && alive player && _membercount > 0 } do {
 			private _cost = 0 max (_price - _price_ai);
 			if ([_cost] call F_pay) then {
 				_selectedmember setUnitLoadout (getUnitLoadout player);
-				hintSilent format ["Loadout copied, Price: %1\nThank you !", _cost];
+				hintSilent format [localize "STR_HINT_LOADOUT_COPIED", _cost];
 				lbSetCurSel [101, _selection];
 			};
 		} else {
-			hintSilent "Unit too far from you.";
+			hintSilent localize "STR_HINT_UNIT_TOO_FAR";
 		};
 		sleep 0.5;
 		ctrlEnable [215, true];
@@ -164,7 +164,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			_p1 = (unitname splitString " ") select 1;
 			if (isNil "_p1") then {_p1 = ""};
 			_selectedmember setName [unitname, _p1, _p2];
-			gamelogic globalChat format ["Renaming %1 to %2", _name, unitname];
+			gamelogic globalChat format [localize "STR_LOG_UNIT_RENAMED",_name,unitname];
 		};
 		{ ctrlShow [_x, false] } foreach _rename_controls;
 		sleep 0.5;

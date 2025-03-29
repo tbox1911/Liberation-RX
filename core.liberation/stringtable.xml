@@ -2947,6 +2947,18 @@
 			<Portuguese>-- PERMISSÕES</Portuguese>
 			<Czech>-- PERMISSIONS</Czech>
 		</Key>
+		<Key ID="STR_DUMP_FOB_TEMPLATE">
+			<Original>-- DUMP FOB TEMPLATE</Original>
+			<French>-- EXPORTER LE MODÈLE DE FOB</French>
+			<German>-- FOB-VORLAGE EXPORTIEREN</German>
+			<Spanish>-- EXPORTAR PLANTILLA FOB</Spanish>
+			<Russian>-- ВЫГРУЗИТЬ ШАБЛОН FOB</Russian>
+			<Chinesesimp>-- 导出 FOB 模板</Chinesesimp>
+			<Chinese>-- 匯出 FOB 模板</Chinese>
+			<Japanese>-- FOB テンプレートを出力</Japanese>
+			<Portuguese>-- EXPORTAR MODELO FOB</Portuguese>
+			<Czech>-- EXPORTOVAT ŠABLONU FOB</Czech>
+		</Key>
 		<Key ID="STR_SAVE_CHANGES">
 			<Original>Save Changes</Original>
 			<French>Sauvegarder</French>
@@ -6337,6 +6349,18 @@
 			<Portuguese>-- COMPRAR COMBUSTÍVEL</Portuguese>
 			<Czech>-- KOUPIT PALIVO</Czech>
 		</Key>
+		<Key ID="STR_HEAL_SELF_ACTION">
+			<Original>Heal self</Original>
+			<French>Se soigner</French>
+			<German>Sich heilen</German>
+			<Spanish>Curarse</Spanish>
+			<Russian>Лечить себя</Russian>
+			<Chinesesimp>自我治疗</Chinesesimp>
+			<Chinese>自我治療</Chinese>
+			<Japanese>自己治療</Japanese>
+			<Portuguese>Cuidar de si mesmo</Portuguese>
+			<Czech>Vyléčit se</Czech>
+		</Key>
 		<Key ID="STR_TAKE_LEADRSHIP">
 			<Original>-- TAKE LEADRSHIP</Original>
 			<Russian>-- ВЗЯТЬ ЛИДЕРСТВО</Russian>
@@ -6708,6 +6732,1975 @@
 			<Czech>&lt;t align='center'&gt;Zničte základnu&lt;br/&gt;Jsi si jistý?&lt;/t&gt;</Czech>
 		</Key>
 
+		<!-- do_capture.sqf -->
+		<Key ID="STR_PRISONER_CAPTURING">
+			<Original>Capturing prisoner %1...</Original>
+			<French>Capturer le prisonnier %1...</French>
+			<German>Gefangener %1 wird gefangen genommen...</German>
+			<Spanish>Capturando al prisionero %1...</Spanish>
+			<Russian>Захват пленного %1...</Russian>
+			<Chinesesimp>正在俘虏 %1……</Chinesesimp>
+			<Chinese>正在俘虜 %1……</Chinese>
+			<Japanese>捕虜 %1 を拘束中…</Japanese>
+			<Portuguese>Capturando o prisioneiro %1...</Portuguese>
+			<Czech>Zajímání zajatce %1...</Czech>
+		</Key>
+
+		<!-- do_eject.sqf -->
+		<Key ID="STR_EJECT_ALL_CREW">
+			<Original>Fast Eject all crew from %1.</Original>
+			<French>Éjection rapide de tout l'équipage du %1.</French>
+			<German>Schneller Ausstieg der gesamten Besatzung aus %1.</German>
+			<Spanish>Expulsión rápida de toda la tripulación de %1.</Spanish>
+			<Russian>Экстренная эвакуация всего экипажа из %1.</Russian>
+			<Chinesesimp>快速弹出 %1 内的所有乘员。</Chinesesimp>
+			<Chinese>快速彈出 %1 內的所有乘員。</Chinese>
+			<Japanese>%1 から全クルーを緊急脱出。</Japanese>
+			<Portuguese>Ejecção rápida de toda a tripulação do %1.</Portuguese>
+			<Czech>Rychlé vysazení celé posádky z %1.</Czech>
+		</Key>
+	
+		<!-- do_repackage.sqf -->
+		<Key ID="STR_NAVAL_FOB_LEAVING">
+			<Original>Naval FOB (%1) Leaves...</Original>
+			<French>FOB naval (%1) en train de partir...</French>
+			<German>Marine-FOB (%1) verlässt das Gebiet...</German>
+			<Spanish>FOB Naval (%1) partiendo...</Spanish>
+			<Russian>Морская FOB (%1) покидает позицию...</Russian>
+			<Chinesesimp>海上前哨（%1）正在离开……</Chinesesimp>
+			<Chinese>海上前哨（%1）正在離開……</Chinese>
+			<Japanese>海上FOB（%1）が離脱中...</Japanese>
+			<Portuguese>FOB Naval (%1) partindo...</Portuguese>
+			<Czech>Námořní FOB (%1) odchází...</Czech>
+		</Key>
+
+		<!-- admin_menu.sqf -->
+		<Key ID="STR_ADD_XP_TOOLTIP">
+			<Original>Add XP Score</Original>
+			<French>Ajouter des points d'XP</French>
+			<German>XP-Punkte hinzufügen</German>
+			<Spanish>Agregar puntos de XP</Spanish>
+			<Russian>Добавить очки опыта</Russian>
+			<Chinesesimp>增加经验值</Chinesesimp>
+			<Chinese>增加經驗值</Chinese>
+			<Japanese>XPスコアを追加</Japanese>
+			<Portuguese>Adicionar XP</Portuguese>
+			<Czech>Přidat XP body</Czech>
+		</Key>
+		<Key ID="STR_ADD_AMMO_TOOLTIP">
+			<Original>Add Ammo credit</Original>
+			<French>Ajouter des crédits de munitions</French>
+			<German>Munitionsguthaben hinzufügen</German>
+			<Spanish>Agregar crédito de munición</Spanish>
+			<Russian>Добавить кредит боеприпасов</Russian>
+			<Chinesesimp>增加弹药点数</Chinesesimp>
+			<Chinese>增加彈藥點數</Chinese>
+			<Japanese>弾薬クレジットを追加</Japanese>
+			<Portuguese>Adicionar crédito de munição</Portuguese>
+			<Czech>Přidat munici (kredity)</Czech>
+		</Key>
+		<Key ID="STR_ADD_FUEL_TOOLTIP">
+			<Original>Add Fuel</Original>
+			<French>Ajouter du carburant</French>
+			<German>Kraftstoff hinzufügen</German>
+			<Spanish>Agregar combustible</Spanish>
+			<Russian>Добавить топливо</Russian>
+			<Chinesesimp>增加燃料</Chinesesimp>
+			<Chinese>增加燃料</Chinese>
+			<Japanese>燃料を追加</Japanese>
+			<Portuguese>Adicionar combustível</Portuguese>
+			<Czech>Přidat palivo</Czech>
+		</Key>
+
+		<Key ID="STR_REJOIN_PLAYER_TOOLTIP">
+			<Original>Rejoin Player</Original>
+			<French>Rejoindre le joueur</French>
+			<German>Spieler wieder beitreten</German>
+			<Spanish>Reincorporarse al jugador</Spanish>
+			<Russian>Присоединиться к игроку</Russian>
+			<Chinesesimp>重新加入该玩家</Chinesesimp>
+			<Chinese>重新加入該玩家</Chinese>
+			<Japanese>プレイヤーに再参加</Japanese>
+			<Portuguese>Reingressar no jogador</Portuguese>
+			<Czech>Znovu se připojit k hráči</Czech>
+		</Key>
+
+		<Key ID="STR_SELECTED_PLAYER_TOOLTIP">
+			<Original>Selected Player</Original>
+			<French>Joueur sélectionné</French>
+			<German>Ausgewählter Spieler</German>
+			<Spanish>Jugador seleccionado</Spanish>
+			<Russian>Выбранный игрок</Russian>
+			<Chinesesimp>已选中玩家</Chinesesimp>
+			<Chinese>已選中玩家</Chinese>
+			<Japanese>選択されたプレイヤー</Japanese>
+			<Portuguese>Jogador selecionado</Portuguese>
+			<Czech>Vybraný hráč</Czech>
+		</Key>
+
+		<Key ID="STR_ADD_AMOUNT_TOOLTIP">
+			<Original>Amount of Ammo or Experience Points to add to Selected Player</Original>
+			<French>Quantité de munitions ou de points d'XP à ajouter au joueur sélectionné</French>
+			<German>Menge an Munition oder Erfahrungspunkten für ausgewählten Spieler</German>
+			<Spanish>Cantidad de munición o experiencia para el jugador seleccionado</Spanish>
+			<Russian>Количество боеприпасов или опыта для выбранного игрока</Russian>
+			<Chinesesimp>为选中玩家添加的弹药或经验值数量</Chinesesimp>
+			<Chinese>為選中玩家添加的彈藥或經驗值數量</Chinese>
+			<Japanese>選択したプレイヤーに追加する弾薬または経験値の量</Japanese>
+			<Portuguese>Quantidade de munição ou XP para o jogador selecionado</Portuguese>
+			<Czech>Množství munice nebo XP pro vybraného hráče</Czech>
+		</Key>
+
+		<Key ID="STR_KICK_PLAYER_TOOLTIP">
+			<Original>Kick Player!</Original>
+			<French>Expulser le joueur !</French>
+			<German>Spieler rauswerfen!</German>
+			<Spanish>¡Expulsar jugador!</Spanish>
+			<Russian>Выгнать игрока!</Russian>
+			<Chinesesimp>踢出玩家！</Chinesesimp>
+			<Chinese>踢出玩家！</Chinese>
+			<Japanese>プレイヤーをキック！</Japanese>
+			<Portuguese>Expulsar jogador!</Portuguese>
+			<Czech>Vyhodit hráče!</Czech>
+		</Key>
+
+		<Key ID="STR_BAN_PLAYER_TOOLTIP">
+			<Original>BAN Player!</Original>
+			<French>Bannir le joueur !</French>
+			<German>Spieler sperren!</German>
+			<Spanish>¡Banear jugador!</Spanish>
+			<Russian>Забанить игрока!</Russian>
+			<Chinesesimp>封禁玩家！</Chinesesimp>
+			<Chinese>封禁玩家！</Chinese>
+			<Japanese>プレイヤーをBAN！</Japanese>
+			<Portuguese>Banir jogador!</Portuguese>
+			<Czech>Ban hráče!</Czech>
+		</Key>
+
+		<Key ID="STR_DELETE_OBJECT_TOOLTIP">
+			<Original>Delete object on cursor</Original>
+			<French>Supprimer l'objet ciblé</French>
+			<German>Objekt unter dem Cursor löschen</German>
+			<Spanish>Eliminar objeto apuntado</Spanish>
+			<Russian>Удалить объект под курсором</Russian>
+			<Chinesesimp>删除准星所指对象</Chinesesimp>
+			<Chinese>刪除準星所指對象</Chinese>
+			<Japanese>カーソル上のオブジェクトを削除</Japanese>
+			<Portuguese>Apagar objeto sob o cursor</Portuguese>
+			<Czech>Smazat objekt pod kurzorem</Czech>
+		</Key>
+
+		<Key ID="STR_CALL_MAGIC_MOWER_TOOLTIP">
+			<Original>Call Magic Mower</Original>
+			<French>Appeler la tondeuse magique</French>
+			<German>Magischen Rasenmäher rufen</German>
+			<Spanish>Llamar al cortacésped mágico</Spanish>
+			<Russian>Вызвать волшебную газонокосилку</Russian>
+			<Chinesesimp>召唤魔法除草机</Chinesesimp>
+			<Chinese>召喚魔法除草機</Chinese>
+			<Japanese>魔法の芝刈り機を呼ぶ</Japanese>
+			<Portuguese>Chamar o cortador mágico</Portuguese>
+			<Czech>Přivolat magickou sekačku</Czech>
+		</Key>
+
+		<Key ID="STR_FORCE_SAVE_TOOLTIP">
+			<Original>Force saving Game on server</Original>
+			<French>Forcer la sauvegarde du jeu sur le serveur</French>
+			<German>Spielstand auf dem Server erzwingen</German>
+			<Spanish>Forzar guardado en el servidor</Spanish>
+			<Russian>Принудительно сохранить игру на сервере</Russian>
+			<Chinesesimp>强制保存服务器上的游戏</Chinesesimp>
+			<Chinese>強制保存伺服器上的遊戲</Chinese>
+			<Japanese>サーバー上での強制セーブ</Japanese>
+			<Portuguese>Forçar salvamento no servidor</Portuguese>
+			<Czech>Vynutit uložení hry na serveru</Czech>
+		</Key>
+
+		<Key ID="STR_FORCE_CLEANUP_TOOLTIP">
+			<Original>Force execute Cleanup manager</Original>
+			<French>Forcer l'exécution du gestionnaire de nettoyage</French>
+			<German>Aufräum-Manager erzwingen</German>
+			<Spanish>Forzar ejecución del limpiador</Spanish>
+			<Russian>Принудительно запустить очистку</Russian>
+			<Chinesesimp>强制执行清理管理器</Chinesesimp>
+			<Chinese>強制執行清理管理器</Chinese>
+			<Japanese>クリーンアップ管理を強制実行</Japanese>
+			<Portuguese>Executar limpeza forçada</Portuguese>
+			<Czech>Vynutit spuštění čištění</Czech>
+		</Key>
+		
+		<Key ID="STR_RESTARTING_NOW">
+			<Original>Restarting now...</Original>
+			<French>Redémarrage en cours...</French>
+			<German>Neustart läuft...</German>
+			<Spanish>Reiniciando...</Spanish>
+			<Russian>Перезапуск...</Russian>
+			<Chinesesimp>正在重启……</Chinesesimp>
+			<Chinese>正在重啟……</Chinese>
+			<Japanese>再起動中...</Japanese>
+			<Portuguese>Reiniciando agora...</Portuguese>
+			<Czech>Restartování...</Czech>
+		</Key>
+		
+		<Key ID="STR_ADMIN_IMPORT_SAVE">
+			<Original>Admin (%1) import the save game (%2)</Original>
+			<French>L'administrateur (%1) a importé la sauvegarde (%2)</French>
+			<German>Admin (%1) hat den Spielstand (%2) importiert</German>
+			<Spanish>El administrador (%1) importó la partida guardada (%2)</Spanish>
+			<Russian>Админ (%1) импортировал сохранение (%2)</Russian>
+			<Chinesesimp>管理员（%1）已导入存档（%2）</Chinesesimp>
+			<Chinese>管理員（%1）已匯入存檔（%2）</Chinese>
+			<Japanese>管理者（%1）がセーブデータ（%2）を読み込みました</Japanese>
+			<Portuguese>Administrador (%1) importou o save (%2)</Portuguese>
+			<Czech>Administrátor (%1) načetl uloženou hru (%2)</Czech>
+		</Key>
+
+		<Key ID="STR_ERROR_INVALID_DATA">
+			<Original>Error: Invalid data!</Original>
+			<French>Erreur : Données invalides !</French>
+			<German>Fehler: Ungültige Daten!</German>
+			<Spanish>Error: ¡Datos no válidos!</Spanish>
+			<Russian>Ошибка: Неверные данные!</Russian>
+			<Chinesesimp>错误：无效数据！</Chinesesimp>
+			<Chinese>錯誤：無效資料！</Chinese>
+			<Japanese>エラー：無効なデータ！</Japanese>
+			<Portuguese>Erro: Dados inválidos!</Portuguese>
+			<Czech>Chyba: Neplatná data!</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_KICK_PLAYER">
+			<Original>Admin kick player %1.</Original>
+			<French>L'administrateur a expulsé le joueur %1.</French>
+			<German>Admin hat Spieler %1 rausgeworfen.</German>
+			<Spanish>El administrador expulsó al jugador %1.</Spanish>
+			<Russian>Админ кикнул игрока %1.</Russian>
+			<Chinesesimp>管理员已将玩家 %1 踢出。</Chinesesimp>
+			<Chinese>管理員已將玩家 %1 踢出。</Chinese>
+			<Japanese>管理者がプレイヤー %1 をキックしました。</Japanese>
+			<Portuguese>Administrador expulsou o jogador %1.</Portuguese>
+			<Czech>Administrátor vykopl hráče %1.</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_BAN_PLAYER">
+			<Original>Admin BAN player %1.</Original>
+			<French>L'administrateur a banni le joueur %1.</French>
+			<German>Admin hat Spieler %1 gebannt.</German>
+			<Spanish>El administrador ha baneado al jugador %1.</Spanish>
+			<Russian>Админ забанил игрока %1.</Russian>
+			<Chinesesimp>管理员已封禁玩家 %1。</Chinesesimp>
+			<Chinese>管理員已封禁玩家 %1。</Chinese>
+			<Japanese>管理者がプレイヤー %1 をBANしました。</Japanese>
+			<Portuguese>Administrador baniu o jogador %1.</Portuguese>
+			<Czech>Administrátor zabanoval hráče %1.</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_BAN_PLAYER_BY">
+			<Original>Admin (%1) ban player %2</Original>
+			<French>L'administrateur (%1) a banni le joueur %2</French>
+			<German>Admin (%1) hat Spieler %2 gebannt</German>
+			<Spanish>El administrador (%1) ha baneado al jugador %2</Spanish>
+			<Russian>Админ (%1) забанил игрока %2</Russian>
+			<Chinesesimp>管理员（%1）已封禁玩家 %2</Chinesesimp>
+			<Chinese>管理員（%1）已封禁玩家 %2</Chinese>
+			<Japanese>管理者（%1）がプレイヤー %2 をBANしました</Japanese>
+			<Portuguese>Administrador (%1) baniu o jogador %2</Portuguese>
+			<Czech>Administrátor (%1) zabanoval hráče %2</Czech>
+		</Key>
+
+		<Key ID="STR_UNBAN_PLAYER_UID">
+			<Original>Unban player UID: %1</Original>
+			<French>Débannir le joueur UID : %1</French>
+			<German>Spieler-UID entbannt: %1</German>
+			<Spanish>Desbanear UID del jugador: %1</Spanish>
+			<Russian>Разбан UID игрока: %1</Russian>
+			<Chinesesimp>解除封禁玩家 UID：%1</Chinesesimp>
+			<Chinese>解除封禁玩家 UID：%1</Chinese>
+			<Japanese>プレイヤーのUIDを解除：%1</Japanese>
+			<Portuguese>Desbanir jogador UID: %1</Portuguese>
+			<Czech>Odbanovat UID hráče: %1</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_UNBAN_PLAYER">
+			<Original>Admin (%1) unban player %2</Original>
+			<French>L'administrateur (%1) a débanni le joueur %2</French>
+			<German>Admin (%1) hat Spieler %2 entbannt</German>
+			<Spanish>El administrador (%1) ha desbaneado al jugador %2</Spanish>
+			<Russian>Админ (%1) снял бан с игрока %2</Russian>
+			<Chinesesimp>管理员（%1）已解除封禁玩家 %2</Chinesesimp>
+			<Chinese>管理員（%1）已解除封禁玩家 %2</Chinese>
+			<Japanese>管理者（%1）がプレイヤー %2 のBANを解除しました</Japanese>
+			<Portuguese>Administrador (%1) desbaniu o jogador %2</Portuguese>
+			<Czech>Administrátor (%1) odbanoval hráče %2</Czech>
+		</Key>
+
+		<Key ID="STR_YOU_ARE_ZEUS_NOW">
+			<Original>You are Zeus now...</Original>
+			<French>Vous êtes désormais Zeus...</French>
+			<German>Du bist jetzt Zeus...</German>
+			<Spanish>Ahora eres Zeus...</Spanish>
+			<Russian>Теперь вы — Зевс...</Russian>
+			<Chinesesimp>你现在是 Zeus 了……</Chinesesimp>
+			<Chinese>你現在是 Zeus 了……</Chinese>
+			<Japanese>あなたは今、Zeus です…</Japanese>
+			<Portuguese>Agora você é o Zeus...</Portuguese>
+			<Czech>Jsi nyní Zeus...</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_BECOME_ZEUS">
+			<Original>Admin (%1) become Zeus</Original>
+			<French>L'administrateur (%1) est devenu Zeus</French>
+			<German>Admin (%1) ist jetzt Zeus</German>
+			<Spanish>El administrador (%1) se ha convertido en Zeus</Spanish>
+			<Russian>Админ (%1) стал Зевсом</Russian>
+			<Chinesesimp>管理员（%1）成为了 Zeus</Chinesesimp>
+			<Chinese>管理員（%1）成為了 Zeus</Chinese>
+			<Japanese>管理者（%1）が Zeus になりました</Japanese>
+			<Portuguese>Administrador (%1) tornou-se Zeus</Portuguese>
+			<Czech>Administrátor (%1) se stal Zeusem</Czech>
+		</Key>
+		
+		<Key ID="STR_SECTOR_FORCEFULLY_CAPTURED">
+			<Original>Sector %1 Forcefully Captured!</Original>
+			<French>Le secteur %1 a été capturé de force !</French>
+			<German>Sektor %1 wurde gewaltsam eingenommen!</German>
+			<Spanish>¡Sector %1 capturado por la fuerza!</Spanish>
+			<Russian>Сектор %1 насильно захвачен!</Russian>
+			<Chinesesimp>战区 %1 被强制夺取！</Chinesesimp>
+			<Chinese>戰區 %1 被強制奪取！</Chinese>
+			<Japanese>セクター %1 が強制的に制圧されました！</Japanese>
+			<Portuguese>Setor %1 capturado à força!</Portuguese>
+			<Czech>Sektor %1 byl násilně obsazen!</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_FORCE_CAPTURE_SECTOR">
+			<Original>Admin (%1) forcefully capture sector %2</Original>
+			<French>L'administrateur (%1) a capturé de force le secteur %2</French>
+			<German>Admin (%1) hat Sektor %2 gewaltsam eingenommen</German>
+			<Spanish>El administrador (%1) capturó a la fuerza el sector %2</Spanish>
+			<Russian>Админ (%1) насильно захватил сектор %2</Russian>
+			<Chinesesimp>管理员（%1）强制夺取了战区 %2</Chinesesimp>
+			<Chinese>管理員（%1）強制奪取了戰區 %2</Chinese>
+			<Japanese>管理者（%1）がセクター %2 を強制的に制圧しました</Japanese>
+			<Portuguese>Administrador (%1) capturou o setor %2 à força</Portuguese>
+			<Czech>Administrátor (%1) násilně obsadil sektor %2</Czech>
+		</Key>
+
+		<Key ID="STR_GAME_FORCEFULLY_SAVED">
+			<Original>Game Forcefully Saved in %1</Original>
+			<French>Partie enregistrée de force dans %1</French>
+			<German>Spiel wurde zwangsweise in %1 gespeichert</German>
+			<Spanish>Partida guardada a la fuerza en %1</Spanish>
+			<Russian>Игра принудительно сохранена в %1</Russian>
+			<Chinesesimp>游戏已强制保存于 %1</Chinesesimp>
+			<Chinese>遊戲已強制保存於 %1</Chinese>
+			<Japanese>ゲームが %1 に強制セーブされました</Japanese>
+			<Portuguese>Jogo salvo à força em %1</Portuguese>
+			<Czech>Hra byla vynuceně uložena do %1</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_FORCE_SAVE_GAME">
+			<Original>Admin (%1) force save game (%2)</Original>
+			<French>L'administrateur (%1) a forcé la sauvegarde de la partie (%2)</French>
+			<German>Admin (%1) hat das Spiel zwangsweise gespeichert (%2)</German>
+			<Spanish>El administrador (%1) forzó el guardado de la partida (%2)</Spanish>
+			<Russian>Админ (%1) принудительно сохранил игру (%2)</Russian>
+			<Chinesesimp>管理员（%1）强制保存了游戏（%2）</Chinesesimp>
+			<Chinese>管理員（%1）強制保存了遊戲（%2）</Chinese>
+			<Japanese>管理者（%1）がゲームを強制保存しました（%2）</Japanese>
+			<Portuguese>Administrador (%1) salvou o jogo à força (%2)</Portuguese>
+			<Czech>Administrátor (%1) vynutil uložení hry (%2)</Czech>
+		</Key>
+
+		<Key ID="STR_TIME_SKIPPED_MESSAGE">
+			<Original>The Time Forward...</Original>
+			<French>Le temps avance...</French>
+			<German>Die Zeit wurde vorgespult...</German>
+			<Spanish>El tiempo avanza...</Spanish>
+			<Russian>Время перемотано вперёд...</Russian>
+			<Chinesesimp>时间向前推进……</Chinesesimp>
+			<Chinese>時間向前推進……</Chinese>
+			<Japanese>時間が進みました...</Japanese>
+			<Portuguese>Tempo avançado...</Portuguese>
+			<Czech>Čas posunut vpřed...</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_SKIP_TIME">
+			<Original>Admin (%1) skip Time +10h</Original>
+			<French>L'administrateur (%1) a avancé le temps de +10h</French>
+			<German>Admin (%1) hat die Zeit um +10 Stunden vorgespult</German>
+			<Spanish>El administrador (%1) adelantó el tiempo +10h</Spanish>
+			<Russian>Админ (%1) перемотал время на +10 часов</Russian>
+			<Chinesesimp>管理员（%1）将时间跳过了 +10 小时</Chinesesimp>
+			<Chinese>管理員（%1）將時間跳過了 +10 小時</Chinese>
+			<Japanese>管理者（%1）が時間を+10時間スキップしました</Japanese>
+			<Portuguese>Administrador (%1) avançou o tempo em +10h</Portuguese>
+			<Czech>Administrátor (%1) posunul čas o +10 hodin</Czech>
+		</Key>
+
+		<Key ID="STR_VEHICLE_UNLOCKED_BY_ADMIN">
+			<Original>%1 Unlocked by Admin.</Original>
+			<French>%1 a été déverrouillé par l'administrateur.</French>
+			<German>%1 wurde vom Admin entsperrt.</German>
+			<Spanish>%1 ha sido desbloqueado por el administrador.</Spanish>
+			<Russian>%1 разблокирован администратором.</Russian>
+			<Chinesesimp>%1 已被管理员解锁。</Chinesesimp>
+			<Chinese>%1 已被管理員解鎖。</Chinese>
+			<Japanese>%1 は管理者によりアンロックされました。</Japanese>
+			<Portuguese>%1 foi destrancado pelo administrador.</Portuguese>
+			<Czech>%1 odemkl administrátor.</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_UNLOCK_VEHICLE">
+			<Original>Admin (%1) Unlock vehicle %2 (%3)</Original>
+			<French>L'administrateur (%1) a déverrouillé le véhicule %2 (%3)</French>
+			<German>Admin (%1) hat das Fahrzeug %2 (%3) entsperrt</German>
+			<Spanish>El administrador (%1) desbloqueó el vehículo %2 (%3)</Spanish>
+			<Russian>Админ (%1) разблокировал технику %2 (%3)</Russian>
+			<Chinesesimp>管理员（%1）解锁了载具 %2（%3）</Chinesesimp>
+			<Chinese>管理員（%1）解鎖了載具 %2（%3）</Chinese>
+			<Japanese>管理者（%1）がビークル %2（%3）をアンロックしました</Japanese>
+			<Portuguese>Administrador (%1) destravou o veículo %2 (%3)</Portuguese>
+			<Czech>Administrátor (%1) odemkl vozidlo %2 (%3)</Czech>
+		</Key>
+
+		<Key ID="STR_VEHICLE_DELETED_BY_ADMIN">
+			<Original>%1 Deleted by Admin.</Original>
+			<French>%1 a été supprimé par l'administrateur.</French>
+			<German>%1 wurde vom Admin gelöscht.</German>
+			<Spanish>%1 ha sido eliminado por el administrador.</Spanish>
+			<Russian>%1 удалён администратором.</Russian>
+			<Chinesesimp>%1 已被管理员删除。</Chinesesimp>
+			<Chinese>%1 已被管理員刪除。</Chinese>
+			<Japanese>%1 は管理者により削除されました。</Japanese>
+			<Portuguese>%1 foi excluído pelo administrador.</Portuguese>
+			<Czech>%1 odstraněno administrátorem.</Czech>
+		</Key>
+
+		<Key ID="STR_ADMIN_DELETE_VEHICLE">
+			<Original>Admin (%1) Delete vehicle %2 (%3)</Original>
+			<French>L'administrateur (%1) a supprimé le véhicule %2 (%3)</French>
+			<German>Admin (%1) hat das Fahrzeug %2 (%3) gelöscht</German>
+			<Spanish>El administrador (%1) eliminó el vehículo %2 (%3)</Spanish>
+			<Russian>Админ (%1) удалил технику %2 (%3)</Russian>
+			<Chinesesimp>管理员（%1）删除了载具 %2（%3）</Chinesesimp>
+			<Chinese>管理員（%1）刪除了載具 %2（%3）</Chinese>
+			<Japanese>管理者（%1）がビークル %2（%3）を削除しました</Japanese>
+			<Portuguese>Administrador (%1) excluiu o veículo %2 (%3)</Portuguese>
+			<Czech>Administrátor (%1) odstranil vozidlo %2 (%3)</Czech>
+		</Key>
+
+		<!-- admin_menu_a3w.sqf -->
+		<Key ID="STR_TOOLTIP_DEBUG_MODE">
+			<Original>Enable the Debug mode.</Original>
+			<French>Activer le mode débogage.</French>
+			<German>Debug-Modus aktivieren.</German>
+			<Spanish>Activar el modo de depuración.</Spanish>
+			<Russian>Включить режим отладки.</Russian>
+			<Chinesesimp>启用调试模式。</Chinesesimp>
+			<Chinese>啟用除錯模式。</Chinese>
+			<Japanese>デバッグモードを有効にします。</Japanese>
+			<Portuguese>Ativar modo de depuração.</Portuguese>
+			<Czech>Zapnout režim ladění.</Czech>
+		</Key>
+
+		<Key ID="STR_TOOLTIP_MARKER_DEBUG_MODE">
+			<Original>Enable the Marker Debug mode.</Original>
+			<French>Activer le mode de débogage des marqueurs.</French>
+			<German>Marker-Debug-Modus aktivieren.</German>
+			<Spanish>Activar el modo de depuración de marcadores.</Spanish>
+			<Russian>Включить отладку маркеров.</Russian>
+			<Chinesesimp>启用标记调试模式。</Chinesesimp>
+			<Chinese>啟用標記除錯模式。</Chinese>
+			<Japanese>マーカーデバッグモードを有効にします。</Japanese>
+			<Portuguese>Ativar modo de depuração de marcadores.</Portuguese>
+			<Czech>Zapnout ladění značek.</Czech>
+		</Key>
+
+		<Key ID="STR_TOOLTIP_SELECTED_MISSION">
+			<Original>Selected Mission.</Original>
+			<French>Mission sélectionnée.</French>
+			<German>Ausgewählte Mission.</German>
+			<Spanish>Misión seleccionada.</Spanish>
+			<Russian>Выбранная миссия.</Russian>
+			<Chinesesimp>当前选中的任务。</Chinesesimp>
+			<Chinese>當前選中的任務。</Chinese>
+			<Japanese>選択されたミッション。</Japanese>
+			<Portuguese>Missão selecionada.</Portuguese>
+			<Czech>Vybraná mise.</Czech>
+		</Key>
+
+		<Key ID="STR_TOOLTIP_SIDE_MISSION_DELAY">
+			<Original>Time in minutes between Side Missions.</Original>
+			<French>Délai (en minutes) entre deux missions secondaires.</French>
+			<German>Zeit in Minuten zwischen Nebenmissionen.</German>
+			<Spanish>Tiempo en minutos entre misiones secundarias.</Spanish>
+			<Russian>Время между побочными заданиями (в минутах).</Russian>
+			<Chinesesimp>支线任务之间的间隔时间（分钟）。</Chinesesimp>
+			<Chinese>支線任務之間的間隔時間（分鐘）。</Chinese>
+			<Japanese>サイドミッションの間隔時間（分）。</Japanese>
+			<Portuguese>Tempo entre missões secundárias (em minutos).</Portuguese>
+			<Czech>Čas mezi vedlejšími misemi (v minutách).</Czech>
+		</Key>
+
+		<Key ID="STR_TOOLTIP_SIDE_MISSION_TIMEOUT">
+			<Original>Time in minutes that a Side Mission will run for, unless completed</Original>
+			<French>Durée maximale d'une mission secondaire (en minutes), sauf si elle est terminée.</French>
+			<German>Zeit in Minuten, die eine Nebenmission dauert, es sei denn sie wird abgeschlossen.</German>
+			<Spanish>Duración de una misión secundaria (en minutos), salvo que se complete.</Spanish>
+			<Russian>Время выполнения побочной миссии (в минутах), если не завершена раньше.</Russian>
+			<Chinesesimp>支线任务的持续时间（分钟），除非提前完成。</Chinesesimp>
+			<Chinese>支線任務的持續時間（分鐘），除非提前完成。</Chinese>
+			<Japanese>サイドミッションの最大実行時間（分）。完了しない限り。</Japanese>
+			<Portuguese>Duração de uma missão secundária (em minutos), salvo se concluída.</Portuguese>
+			<Czech>Trvání vedlejší mise (v minutách), pokud nebude dokončena dříve.</Czech>
+		</Key>
+
+		<Key ID="STR_LRX_MISSION_CONFIG_SET">
+			<Original>LRX A3W Mission config set!</Original>
+			<French>Configuration de mission LRX A3W appliquée !</French>
+			<German>LRX A3W Missionskonfiguration gesetzt!</German>
+			<Spanish>¡Configuración de misión LRX A3W establecida!</Spanish>
+			<Russian>Конфигурация миссии LRX A3W установлена!</Russian>
+			<Chinesesimp>LRX A3W 任务配置已完成！</Chinesesimp>
+			<Chinese>LRX A3W 任務配置已完成！</Chinese>
+			<Japanese>LRX A3W のミッション設定が完了しました！</Japanese>
+			<Portuguese>Configuração de missão LRX A3W definida!</Portuguese>
+			<Czech>Nastavení mise LRX A3W dokončeno!</Czech>
+		</Key>
+
+		<!-- open_parmas.sqf -->
+		<Key ID="STR_WAITING_FOR_LRX_CONFIG">
+			<Original>... Waiting for LRX Configuration ...</Original>
+			<French>... En attente de la configuration LRX ...</French>
+			<German>... Warten auf LRX-Konfiguration ...</German>
+			<Spanish>... Esperando configuración de LRX ...</Spanish>
+			<Russian>... Ожидание конфигурации LRX ...</Russian>
+			<Chinesesimp>……正在等待 LRX 配置……</Chinesesimp>
+			<Chinese>……正在等待 LRX 配置……</Chinese>
+			<Japanese>… LRX 設定を待機中 …</Japanese>
+			<Portuguese>... Aguardando configuração do LRX ...</Portuguese>
+			<Czech>... Čekání na konfiguraci LRX ...</Czech>
+		</Key>
+
+		<Key ID="STR_PLEASE_WAIT">
+			<Original>... Please Wait ...</Original>
+			<French>... Veuillez patienter ...</French>
+			<German>... Bitte warten ...</German>
+			<Spanish>... Por favor espera ...</Spanish>
+			<Russian>... Пожалуйста, подождите ...</Russian>
+			<Chinesesimp>……请稍候……</Chinesesimp>
+			<Chinese>……請稍候……</Chinese>
+			<Japanese>… 少々お待ちください …</Japanese>
+			<Portuguese>... Por favor, aguarde ...</Portuguese>
+			<Czech>... Prosím, čekejte ...</Czech>
+		</Key>
+
+		<Key ID="STR_MISSION_RESTART_REQUIRED">
+			<Original>Mission need to be restarted, to take effect.</Original>
+			<French>La mission doit être redémarrée pour que les changements prennent effet.</French>
+			<German>Die Mission muss neu gestartet werden, damit die Änderungen wirksam werden.</German>
+			<Spanish>La misión debe reiniciarse para que los cambios surtan efecto.</Spanish>
+			<Russian>Чтобы изменения вступили в силу, необходимо перезапустить миссию.</Russian>
+			<Chinesesimp>需重启任务以使设置生效。</Chinesesimp>
+			<Chinese>需重啟任務以使設定生效。</Chinese>
+			<Japanese>設定を有効にするにはミッションを再起動する必要があります。</Japanese>
+			<Portuguese>É necessário reiniciar a missão para aplicar as alterações.</Portuguese>
+			<Czech>Projevení změn vyžaduje restart mise.</Czech>
+		</Key>
+
+		<Key ID="STR_LRX_SETTINGS_TITLE">
+			<Original>LRX Settings</Original>
+			<French>Paramètres LRX</French>
+			<German>LRX-Einstellungen</German>
+			<Spanish>Configuración LRX</Spanish>
+			<Russian>Настройки LRX</Russian>
+			<Chinesesimp>LRX 设置</Chinesesimp>
+			<Chinese>LRX 設定</Chinese>
+			<Japanese>LRX 設定</Japanese>
+			<Portuguese>Configurações do LRX</Portuguese>
+			<Czech>Nastavení LRX</Czech>
+		</Key>
+
+		<Key ID="STR_STATUS_RES_OPF">
+			<Original>Status:\nResistance: %1\nEnemy squad: %2</Original>
+			<French>Statut :\nRésistance : %1\nEscouade ennemie : %2</French>
+			<German>Status:\nWiderstand: %1\nFeindliche Einheit: %2</German>
+			<Spanish>Estado:\nResistencia: %1\nEscuadra enemiga: %2</Spanish>
+			<Russian>Статус:\nСопротивление: %1\nВражеский отряд: %2</Russian>
+			<Chinesesimp>状态：\n抵抗军：%1\n敌方小队：%2</Chinesesimp>
+			<Chinese>狀態：\n抵抗軍：%1\n敵方小隊：%2</Chinese>
+			<Japanese>ステータス：\nレジスタンス：%1\n敵部隊：%2</Japanese>
+			<Portuguese>Status:\nResistência: %1\nEsquadrão inimigo: %2</Portuguese>
+			<Czech>Stav:\nOdboj: %1\nNepřátelská jednotka: %2</Czech>
+		</Key>
+
+		<Key ID="STR_STATUS_OPF_ONLY">
+			<Original>Status:\nEnemy squad: %1</Original>
+			<French>Statut :\nEscouade ennemie : %1</French>
+			<German>Status:\nFeindliche Einheit: %1</German>
+			<Spanish>Estado:\nEscuadra enemiga: %1</Spanish>
+			<Russian>Статус:\nВражеский отряд: %1</Russian>
+			<Chinesesimp>状态：\n敌方小队：%1</Chinesesimp>
+			<Chinese>狀態：\n敵方小隊：%1</Chinese>
+			<Japanese>ステータス：\n敵部隊：%1</Japanese>
+			<Portuguese>Status:\nEsquadrão inimigo: %1</Portuguese>
+			<Czech>Stav:\nNepřátelská jednotka: %1</Czech>
+		</Key>
+
+		<Key ID="STR_OXYGEN_REMAINING">
+			<Original>Oxygen Remaining: %1%2</Original>
+			<French>Oxygène restant : %1%2</French>
+			<German>Verbleibender Sauerstoff: %1%2</German>
+			<Spanish>Oxígeno restante: %1%2</Spanish>
+			<Russian>Осталось кислорода: %1%2</Russian>
+			<Chinesesimp>剩余氧气：%1%2</Chinesesimp>
+			<Chinese>剩餘氧氣：%1%2</Chinese>
+			<Japanese>残り酸素：%1%2</Japanese>
+			<Portuguese>Oxigênio restante: %1%2</Portuguese>
+			<Czech>Zbývající kyslík: %1%2</Czech>
+		</Key>
+
+		<!-- speak_manager_data.sqf -->
+		<Key ID="STR_CHAT_HELLO">
+			<Original>Hey %1, how are you ?</Original>
+			<French>Hé %1, comment ça va ?</French>
+			<German>Hey %1, wie geht's dir?</German>
+			<Spanish>Ey %1, ¿cómo estás?</Spanish>
+			<Russian>Эй, %1, как ты?</Russian>
+			<Chinesesimp>嘿，%1，你还好吗？</Chinesesimp>
+			<Chinese>嘿，%1，你還好嗎？</Chinese>
+			<Japanese>やあ %1、調子はどう？</Japanese>
+			<Portuguese>Ei %1, tudo bem?</Portuguese>
+			<Czech>Hej %1, jak se vede?</Czech>
+		</Key>
+
+		<Key ID="STR_REPLY_FINE">
+			<Original>Fine, not much to say...</Original>
+			<French>Ça va, rien de spécial...</French>
+			<German>Passt schon, nicht viel zu sagen...</German>
+			<Spanish>Bien, nada que decir...</Spanish>
+			<Russian>Нормально, особо нечего сказать...</Russian>
+			<Chinesesimp>还行，没什么特别的……</Chinesesimp>
+			<Chinese>還行，沒什麼特別的……</Chinese>
+			<Japanese>まあまあ、特に何もないよ…</Japanese>
+			<Portuguese>Tudo bem, nada demais...</Portuguese>
+			<Czech>Jde to, nic zvláštního...</Czech>
+		</Key>
+
+		<Key ID="STR_REPLY_TIRED">
+			<Original>I'm tired of all this, I was wounded %1 times today !</Original>
+			<French>J'en ai marre... j'ai été blessé %1 fois aujourd'hui !</French>
+			<German>Ich hab genug... wurde heute schon %1 Mal verletzt!</German>
+			<Spanish>Estoy cansado de esto, me hirieron %1 veces hoy.</Spanish>
+			<Russian>Я устал... сегодня меня ранили уже %1 раз!</Russian>
+			<Chinesesimp>我已经受够了，今天我已经被击伤 %1 次！</Chinesesimp>
+			<Chinese>我已經受夠了，今天我已被擊傷 %1 次！</Chinese>
+			<Japanese>もう疲れた… 今日は%1回も負傷してる！</Japanese>
+			<Portuguese>Estou cansado disso tudo, fui ferido %1 vezes hoje!</Portuguese>
+			<Czech>Už toho mám dost, dnes jsem byl zraněn %1×!</Czech>
+		</Key>
+
+		<Key ID="STR_REPLY_BAD_NEED_MEDIC">
+			<Original>Bad, It's not going well at all, I need Medical Support. %1 Revive left.</Original>
+			<French>Mal... ça ne va pas du tout, j'ai besoin d'aide médicale. Il me reste %1 réanimation(s).</French>
+			<German>Schlecht... läuft gar nicht gut. Ich brauche medizinische Hilfe. Noch %1 Wiederbelebung(en).</German>
+			<Spanish>Mal... esto va muy mal. Necesito ayuda médica. Quedan %1 reanimaciones.</Spanish>
+			<Russian>Плохо... всё совсем плохо. Нужна медпомощь. Осталось %1 попыток оживления.</Russian>
+			<Chinesesimp>糟糕，情况很不妙，我需要医疗支援。剩余复活次数：%1</Chinesesimp>
+			<Chinese>糟糕，情況很不妙，我需要醫療支援。剩餘復活次數：%1</Chinese>
+			<Japanese>ダメだ…全然うまくいってない。医療支援が必要だ。残り %1 回の蘇生。</Japanese>
+			<Portuguese>Mal... está tudo errado. Preciso de suporte médico. Faltam %1 reanimações.</Portuguese>
+			<Czech>Špatně... vůbec to nejde. Potřebuji zdravotní pomoc. Zbývá %1 oživení.</Czech>
+		</Key>
+
+		<Key ID="STR_REPLY_CRITICAL">
+			<Original>CRITICAL! the next bullet and I'm DEAD !!</Original>
+			<French>CRITIQUE ! La prochaine balle et je suis mort !!</French>
+			<German>KRITISCH! Noch ein Treffer und ich bin tot!!</German>
+			<Spanish>¡CRÍTICO! ¡Una bala más y estoy muerto!</Spanish>
+			<Russian>КРИТИЧЕСКОЕ СОСТОЯНИЕ! Следующая пуля — и мне конец!!</Russian>
+			<Chinesesimp>糟透了！再中一枪我就死定了！！</Chinesesimp>
+			<Chinese>糟透了！再中一槍我就死定了！！</Chinese>
+			<Japanese>瀕死だ！次の一発で死ぬ！！</Japanese>
+			<Portuguese>CRÍTICO! O próximo tiro e estou morto!!</Portuguese>
+			<Czech>KRITICKÝ STAV! Ještě jedna kulka a jsem mrtvý!!</Czech>
+		</Key>
+
+		<Key ID="STR_GREETING_HELLO">
+			<Original>Hello,</Original>
+			<French>Bonjour,</French>
+			<German>Hallo,</German>
+			<Spanish>Hola,</Spanish>
+			<Russian>Привет,</Russian>
+			<Chinesesimp>你好，</Chinesesimp>
+			<Chinese>你好，</Chinese>
+			<Japanese>こんにちは、</Japanese>
+			<Portuguese>Olá,</Portuguese>
+			<Czech>Ahoj,</Czech>
+		</Key>
+
+		<Key ID="STR_GREETING_HI">
+			<Original>Hi,</Original>
+			<French>Salut,</French>
+			<German>Hi,</German>
+			<Spanish>Qué tal,</Spanish>
+			<Russian>Здарова,</Russian>
+			<Chinesesimp>嗨，</Chinesesimp>
+			<Chinese>嗨，</Chinese>
+			<Japanese>やあ、</Japanese>
+			<Portuguese>Oi,</Portuguese>
+			<Czech>Čau,</Czech>
+		</Key>
+
+		<Key ID="STR_GREETING_HEY">
+			<Original>Hey,</Original>
+			<French>Hé,</French>
+			<German>Hey,</German>
+			<Spanish>Ey,</Spanish>
+			<Russian>Эй,</Russian>
+			<Chinesesimp>嘿，</Chinesesimp>
+			<Chinese>嘿，</Chinese>
+			<Japanese>ねえ、</Japanese>
+			<Portuguese>Ei,</Portuguese>
+			<Czech>Hej,</Czech>
+		</Key>
+
+		<Key ID="STR_GREETING_GOODMORNING">
+			<Original>Good morning,</Original>
+			<French>Bonjour,</French>
+			<German>Guten Morgen,</German>
+			<Spanish>Buenos días,</Spanish>
+			<Russian>Доброе утро,</Russian>
+			<Chinesesimp>早上好，</Chinesesimp>
+			<Chinese>早安，</Chinese>
+			<Japanese>おはよう、</Japanese>
+			<Portuguese>Bom dia,</Portuguese>
+			<Czech>Dobré ráno,</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_BYE">
+			<Original>bye.</Original>
+			<French>salut.</French>
+			<German>tschüss.</German>
+			<Spanish>adiós.</Spanish>
+			<Russian>пока.</Russian>
+			<Chinesesimp>再见。</Chinesesimp>
+			<Chinese>再見。</Chinese>
+			<Japanese>じゃあね。</Japanese>
+			<Portuguese>tchau.</Portuguese>
+			<Czech>ahoj.</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_TAKECARE">
+			<Original>take care.</Original>
+			<French>prends soin de toi.</French>
+			<German>pass auf dich auf.</German>
+			<Spanish>cuídate.</Spanish>
+			<Russian>береги себя.</Russian>
+			<Chinesesimp>保重。</Chinesesimp>
+			<Chinese>保重。</Chinese>
+			<Japanese>気をつけてね。</Japanese>
+			<Portuguese>se cuida.</Portuguese>
+			<Czech>opatruj se.</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_CIAO">
+			<Original>ciao.</Original>
+			<French>ciao.</French>
+			<German>ciao.</German>
+			<Spanish>chao.</Spanish>
+			<Russian>чао.</Russian>
+			<Chinesesimp>拜。</Chinesesimp>
+			<Chinese>掰。</Chinese>
+			<Japanese>チャオ。</Japanese>
+			<Portuguese>tchau.</Portuguese>
+			<Czech>čau.</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_HIGH_GREATJOB">
+			<Original>You are doing a great job here !</Original>
+			<French>Tu fais du bon boulot ici !</French>
+			<German>Du machst hier einen tollen Job!</German>
+			<Spanish>¡Estás haciendo un gran trabajo aquí!</Spanish>
+			<Russian>Ты тут отлично справляешься!</Russian>
+			<Chinesesimp>你在这儿干得非常棒！</Chinesesimp>
+			<Chinese>你在這裡做得非常棒！</Chinese>
+			<Japanese>ここでよくやってるな！</Japanese>
+			<Portuguese>Você está mandando bem aqui!</Portuguese>
+			<Czech>Odvádíš tady skvělou práci!</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_HIGH_GLAD">
+			<Original>We're all glad to see you here !</Original>
+			<French>On est tous contents de te voir ici !</French>
+			<German>Wir freuen uns alle, dich hier zu sehen!</German>
+			<Spanish>¡Todos estamos contentos de verte aquí!</Spanish>
+			<Russian>Все рады тебя здесь видеть!</Russian>
+			<Chinesesimp>大家都很高兴你在这里！</Chinesesimp>
+			<Chinese>大家都很高興你在這裡！</Chinese>
+			<Japanese>君がいてくれてみんな喜んでるよ！</Japanese>
+			<Portuguese>Todos estamos felizes por te ver aqui!</Portuguese>
+			<Czech>Jsme rádi, že jsi tady!</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_HIGH_ENDLESSWAR">
+			<Original>This war will never end ?</Original>
+			<French>Cette guerre ne finira jamais ?</French>
+			<German>Wird dieser Krieg jemals enden?</German>
+			<Spanish>¿Esta guerra no terminará nunca?</Spanish>
+			<Russian>Эта война когда-нибудь закончится?</Russian>
+			<Chinesesimp>这场战争永远不会结束吗？</Chinesesimp>
+			<Chinese>這場戰爭永遠不會結束嗎？</Chinese>
+			<Japanese>この戦争は終わらないのか？</Japanese>
+			<Portuguese>Essa guerra nunca vai acabar?</Portuguese>
+			<Czech>Skončí tahle válka někdy?</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_HIGH_KILLTHEMALL">
+			<Original>Kill them all !</Original>
+			<French>Tuez-les tous !</French>
+			<German>Tötet sie alle!</German>
+			<Spanish>¡Mátenlos a todos!</Spanish>
+			<Russian>Уничтожь их всех!</Russian>
+			<Chinesesimp>把他们都干掉！</Chinesesimp>
+			<Chinese>把他們都幹掉！</Chinese>
+			<Japanese>奴らを全員始末しろ！</Japanese>
+			<Portuguese>Acaba com todos eles!</Portuguese>
+			<Czech>Sejmi je všechny!</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_ELITE_BLESS">
+			<Original>God bless your army !</Original>
+			<French>Que Dieu bénisse ton armée !</French>
+			<German>Gott segne deine Armee!</German>
+			<Spanish>¡Dios bendiga tu ejército!</Spanish>
+			<Russian>Бог благословит твою армию!</Russian>
+			<Chinesesimp>愿上帝保佑你的军队！</Chinesesimp>
+			<Chinese>願上帝保佑你的軍隊！</Chinese>
+			<Japanese>あなたの軍隊に神のご加護を！</Japanese>
+			<Portuguese>Que Deus abençoe seu exército!</Portuguese>
+			<Czech>Bůh žehnej tvé armádě!</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_ELITE_LOVE">
+			<Original>Hey, I love you !</Original>
+			<French>Hé, je t'aime !</French>
+			<German>Hey, ich liebe dich!</German>
+			<Spanish>¡Ey, te quiero!</Spanish>
+			<Russian>Эй, я тебя люблю!</Russian>
+			<Chinesesimp>嘿，我爱你！</Chinesesimp>
+			<Chinese>嘿，我愛你！</Chinese>
+			<Japanese>ねえ、君のことが大好きだ！</Japanese>
+			<Portuguese>Ei, eu te amo!</Portuguese>
+			<Czech>Hej, miluju tě!</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_ELITE_DAUGHTER">
+			<Original>I would like my daughter to marry you !</Original>
+			<French>J'aimerais que ma fille t'épouse !</French>
+			<German>Ich wünschte, meine Tochter würde dich heiraten!</German>
+			<Spanish>¡Quisiera que mi hija se casara contigo!</Spanish>
+			<Russian>Хочу, чтобы моя дочь вышла за тебя!</Russian>
+			<Chinesesimp>我希望我女儿能嫁给你！</Chinesesimp>
+			<Chinese>我希望我女兒能嫁給你！</Chinese>
+			<Japanese>娘を君と結婚させたいくらいだ！</Japanese>
+			<Portuguese>Gostaria que minha filha se casasse com você!</Portuguese>
+			<Czech>Chtěl bych, aby si tě moje dcera vzala!</Czech>
+		</Key>
+
+		<Key ID="STR_GOODBYE_ELITE_WINWAR">
+			<Original>You will win this war !</Original>
+			<French>Tu vas gagner cette guerre !</French>
+			<German>Du wirst diesen Krieg gewinnen!</German>
+			<Spanish>¡Vas a ganar esta guerra!</Spanish>
+			<Russian>Ты выиграешь эту войну!</Russian>
+			<Chinesesimp>你一定会赢得这场战争！</Chinesesimp>
+			<Chinese>你一定會贏得這場戰爭！</Chinese>
+			<Japanese>君ならこの戦争に勝てる！</Japanese>
+			<Portuguese>Você vai vencer essa guerra!</Portuguese>
+			<Czech>Vyhraješ tuhle válku!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_NO_INFORMATION">
+			<Original>I'm sorry, I have no informations.</Original>
+			<French>Désolé, je n'ai aucune information.</French>
+			<German>Tut mir leid, ich habe keine Informationen.</German>
+			<Spanish>Lo siento, no tengo información.</Spanish>
+			<Russian>Прости, у меня нет информации.</Russian>
+			<Chinesesimp>抱歉，我没有任何情报。</Chinesesimp>
+			<Chinese>抱歉，我沒有任何情報。</Chinese>
+			<Japanese>ごめん、何も情報がないんだ。</Japanese>
+			<Portuguese>Desculpe, não tenho nenhuma informação.</Portuguese>
+			<Czech>Promiň, nemám žádné informace.</Czech>
+		</Key>
+
+		<Key ID="STR_INSULT_FUCK_OFF">
+			<Original>Hey, Fuck Off !</Original>
+			<French>Hé, dégage d'ici !</French>
+			<German>He! Verpiss dich!</German>
+			<Spanish>¡Oye, lárgate de aquí!</Spanish>
+			<Russian>Эй, вали отсюда!</Russian>
+			<Chinesesimp>嘿，滚开！</Chinesesimp>
+			<Chinese>嘿，滾開！</Chinese>
+			<Japanese>おい、失せろ！</Japanese>
+			<Portuguese>Ei, cai fora!</Portuguese>
+			<Czech>Hej, vypadni odsud!</Czech>
+		</Key>
+
+		<Key ID="STR_INSULT_YOU_DIE">
+			<Original>You gonna die !</Original>
+			<French>Tu vas crever !</French>
+			<German>Du wirst sterben!</German>
+			<Spanish>¡Vas a morir!</Spanish>
+			<Russian>Ты труп!</Russian>
+			<Chinesesimp>你死定了！</Chinesesimp>
+			<Chinese>你死定了！</Chinese>
+			<Japanese>死ぬぞ、お前！</Japanese>
+			<Portuguese>Você vai morrer!</Portuguese>
+			<Czech>Ty chcípneš!</Czech>
+		</Key>
+
+		<Key ID="STR_INSULT_WE_HATE_YOU">
+			<Original>We hate you !</Original>
+			<French>On te déteste !</French>
+			<German>Wir hassen dich!</German>
+			<Spanish>¡Te odiamos!</Spanish>
+			<Russian>Мы тебя ненавидим!</Russian>
+			<Chinesesimp>我们恨你！</Chinesesimp>
+			<Chinese>我們恨你！</Chinese>
+			<Japanese>お前のこと大嫌いだ！</Japanese>
+			<Portuguese>Te odiamos!</Portuguese>
+			<Czech>Nenávidíme tě!</Czech>
+		</Key>
+
+		<Key ID="STR_INSULT_GO_HOME">
+			<Original>Go back home, Fuckers !</Original>
+			<French>Rentrez chez vous, bande de bâtards !</French>
+			<German>Verzieht euch in euer Land!</German>
+			<Spanish>¡Regresen a su casa, bastardos!</Spanish>
+			<Russian>Катитесь домой, ублюдки!</Russian>
+			<Chinesesimp>滚回你们自己的地方吧，混蛋！</Chinesesimp>
+			<Chinese>滾回你們自己的地方吧，混蛋！</Chinese>
+			<Japanese>さっさと国に帰れ、このクズども！</Japanese>
+			<Portuguese>Voltem pra casa, idiotas!</Portuguese>
+			<Czech>Táhněte zpátky domů, bastardi!</Czech>
+		</Key>
+
+		<Key ID="STR_INSULT_LEAVE_LAND">
+			<Original>You better leave this land...</Original>
+			<French>Tu ferais mieux de quitter cette terre...</French>
+			<German>Du solltest besser dieses Land verlassen...</German>
+			<Spanish>Será mejor que te vayas de aquí...</Spanish>
+			<Russian>Советую тебе убраться с этой земли…</Russian>
+			<Chinesesimp>你最好离开这片土地……</Chinesesimp>
+			<Chinese>你最好離開這片土地……</Chinese>
+			<Japanese>この土地から出ていった方がいいぞ…</Japanese>
+			<Portuguese>É melhor você sair dessa terra…</Portuguese>
+			<Czech>Raději opusť tohle území…</Czech>
+		</Key>
+
+		<Key ID="STR_INSULT_NOT_WELCOME">
+			<Original>You're not Welcome here, Go away !</Original>
+			<French>Tu n'es pas le bienvenu ici, dégage !</French>
+			<German>Du bist hier nicht willkommen, hau ab!</German>
+			<Spanish>No eres bienvenido aquí, ¡lárgate!</Spanish>
+			<Russian>Ты здесь не приветствуешься, катись отсюда!</Russian>
+			<Chinesesimp>你不受欢迎，快滚！</Chinesesimp>
+			<Chinese>你不受歡迎，快滾！</Chinese>
+			<Japanese>ここにお前の居場所はない、出て行け！</Japanese>
+			<Portuguese>Você não é bem-vindo aqui. Vai embora!</Portuguese>
+			<Czech>Nejsi tady vítaný, zmiz!</Czech>
+		</Key>
+
+		<Key ID="STR_INSULT_DISLIKE">
+			<Original>I don't like you !</Original>
+			<French>Je ne t'aime pas !</French>
+			<German>Ich mag dich nicht!</German>
+			<Spanish>¡No me gustas!</Spanish>
+			<Russian>Ты мне не нравишься!</Russian>
+			<Chinesesimp>我不喜欢你！</Chinesesimp>
+			<Chinese>我不喜歡你！</Chinese>
+			<Japanese>お前が気に入らない！</Japanese>
+			<Portuguese>Não gosto de você!</Portuguese>
+			<Czech>Nemám tě rád!</Czech>
+		</Key>
+
+		<Key ID="STR_INSULT_NO_TALK">
+			<Original>I don't want to speak with you.</Original>
+			<French>Je ne veux pas te parler.</French>
+			<German>Ich will nicht mit dir reden.</German>
+			<Spanish>No quiero hablar contigo.</Spanish>
+			<Russian>Я не хочу с тобой разговаривать.</Russian>
+			<Chinesesimp>我不想跟你说话。</Chinesesimp>
+			<Chinese>我不想跟你說話。</Chinese>
+			<Japanese>お前とは話したくない。</Japanese>
+			<Portuguese>Não quero falar com você.</Portuguese>
+			<Czech>Nechci s tebou mluvit.</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_REPAIR_HELLO">
+			<Original>Hi, Your vehicle is in a bad mood, hahaha !!</Original>
+			<French>Salut, ton véhicule est de mauvaise humeur, hahaha !!</French>
+			<German>Hi, dein Fahrzeug hat wohl schlechte Laune, hahaha!</German>
+			<Spanish>Hola, tu vehículo está de mal humor, ¡jajaja!</Spanish>
+			<Russian>Привет, похоже, твоя техника сегодня не в духе, хаха!</Russian>
+			<Chinesesimp>嗨，你的载具今天脾气不好，哈哈哈！！</Chinesesimp>
+			<Chinese>嗨，你的載具今天脾氣不好，哈哈哈！！</Chinese>
+			<Japanese>やあ、君の車両は機嫌が悪そうだね、ははは！</Japanese>
+			<Portuguese>Oi, seu veículo está de mau humor, hahaha!!</Portuguese>
+			<Czech>Ahoj, tvoje vozidlo má dnes špatnou náladu, haha!!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_REPAIR_WAIT">
+			<Original>I can fix it for you, wait a minute...</Original>
+			<French>Je peux le réparer pour toi, attends une minute...</French>
+			<German>Ich kann es für dich reparieren, einen Moment...</German>
+			<Spanish>Puedo arreglarlo, espera un minuto...</Spanish>
+			<Russian>Я починю, подожди немного...</Russian>
+			<Chinesesimp>我来帮你修它，稍等一下……</Chinesesimp>
+			<Chinese>我來幫你修它，稍等一下……</Chinese>
+			<Japanese>直してあげるよ、ちょっと待ってて…</Japanese>
+			<Portuguese>Posso consertar pra você, espera um pouco...</Portuguese>
+			<Czech>Opravím to, chvilku strpení...</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_JOIN_HELLO">
+			<Original>Hi, my name is %1, the enemies approaching.</Original>
+			<French>Salut, je m'appelle %1, les ennemis approchent.</French>
+			<German>Hi, ich bin %1. Die Feinde nähern sich.</German>
+			<Spanish>Hola, me llamo %1. Se acercan enemigos.</Spanish>
+			<Russian>Привет, меня зовут %1. Враги приближаются.</Russian>
+			<Chinesesimp>你好，我叫 %1，敌人正在逼近。</Chinesesimp>
+			<Chinese>你好，我叫 %1，敵人正在逼近。</Chinese>
+			<Japanese>やあ、%1 だ。敵が近づいてる。</Japanese>
+			<Portuguese>Oi, sou %1. Os inimigos estão vindo.</Portuguese>
+			<Czech>Ahoj, jsem %1. Nepřátelé se blíží.</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_JOIN_FIGHT">
+			<Original>I'm happy to join your group to fight these asshole !</Original>
+			<French>Content de rejoindre ton groupe pour botter les fesses de ces enfoirés !</French>
+			<German>Freut mich, deinem Team beizutreten und diesen Mistkerlen eins auszuwischen!</German>
+			<Spanish>¡Encantado de unirme a tu grupo para patearles el trasero a esos idiotas!</Spanish>
+			<Russian>Рад присоединиться к тебе, чтобы надрать зад этим ублюдкам!</Russian>
+			<Chinesesimp>很高兴加入你的小队，干掉这些混蛋！</Chinesesimp>
+			<Chinese>很高興加入你的小隊，幹掉這些混蛋！</Chinese>
+			<Japanese>チームに加われて嬉しいよ。奴らをやっつけよう！</Japanese>
+			<Portuguese>Feliz por entrar no seu grupo pra acabar com esses desgraçados!</Portuguese>
+			<Czech>Rád se připojím a nakopu těm parchantům zadek!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_NEED_REPAIR">
+			<Original>Hello, my car needs Repairs, please help me !</Original>
+			<French>Bonjour, ma voiture a besoin de réparations, s'il vous plaît aidez-moi !</French>
+			<German>Hallo, mein Auto braucht Reparaturen, bitte hilf mir!</German>
+			<Spanish>¡Hola, mi coche necesita reparaciones, ayúdame por favor!</Spanish>
+			<Russian>Привет, моя машина нуждается в ремонте, помоги мне!</Russian>
+			<Chinesesimp>你好，我的车需要修理，请帮帮我！</Chinesesimp>
+			<Chinese>你好，我的車需要修理，請幫幫我！</Chinese>
+			<Japanese>こんにちは、車が壊れてるんです。助けてください！</Japanese>
+			<Portuguese>Oi, meu carro precisa de conserto. Pode me ajudar?</Portuguese>
+			<Czech>Ahoj, moje auto potřebuje opravu, prosím pomoz mi!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_THANK_REPAIR">
+			<Original>hooo, Thank you for repairing my old car !</Original>
+			<French>Ooooh, merci d'avoir réparé ma vieille voiture !</French>
+			<German>Ooooh, danke fürs Reparieren meines alten Wagens!</German>
+			<Spanish>Oooh, ¡gracias por arreglar mi viejo coche!</Spanish>
+			<Russian>Ох, спасибо, что починил мою старую машину!</Russian>
+			<Chinesesimp>哎呀，谢谢你修好了我的旧车！</Chinesesimp>
+			<Chinese>哎呀，謝謝你修好了我的舊車！</Chinese>
+			<Japanese>わぁ～、古い車を直してくれてありがとう！</Japanese>
+			<Portuguese>Ooooh, obrigado por consertar meu velho carro!</Portuguese>
+			<Czech>Ooo, děkuji, že jsi opravil moje staré auto!</Czech>
+		</Key>
+		<Key ID="STR_DIALOG_NEED_FUEL">
+			<Original>Hello, my car needs Fuel, please help me !</Original>
+			<French>Bonjour, ma voiture n'a plus de carburant, aidez-moi s'il vous plaît !</French>
+			<German>Hallo, mein Auto braucht Treibstoff, bitte hilf mir!</German>
+			<Spanish>¡Hola, mi coche necesita combustible, ayúdame por favor!</Spanish>
+			<Russian>Привет, в моей машине закончился бензин, помоги мне!</Russian>
+			<Chinesesimp>你好，我的车需要加油，请帮帮我！</Chinesesimp>
+			<Chinese>你好，我的車需要加油，請幫幫我！</Chinese>
+			<Japanese>こんにちは、車に燃料が必要なんです。助けてください！</Japanese>
+			<Portuguese>Oi, meu carro precisa de combustível. Pode me ajudar?</Portuguese>
+			<Czech>Ahoj, moje auto potřebuje palivo, prosím pomoz mi!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_THANK_REFUEL">
+			<Original>hooo, Thank you for giving me fuel !</Original>
+			<French>Ooooh, merci pour le carburant !</French>
+			<German>Ooooh, danke für den Treibstoff!</German>
+			<Spanish>Oooh, ¡gracias por darme combustible!</Spanish>
+			<Russian>Ох, спасибо за топливо!</Russian>
+			<Chinesesimp>哎呀，谢谢你给我加油！</Chinesesimp>
+			<Chinese>哎呀，謝謝你給我加油！</Chinese>
+			<Japanese>わぁ～、燃料をありがとう！</Japanese>
+			<Portuguese>Ooooh, obrigado pelo combustível!</Portuguese>
+			<Czech>Ooo, díky za palivo!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_OFFER_AMMO_1">
+			<Original>Hey! do you need ammo for your Weapons ?</Original>
+			<French>Hé ! Tu as besoin de munitions ?</French>
+			<German>Hey! Brauchst du Munition für deine Waffen?</German>
+			<Spanish>¡Ey! ¿Necesitas munición para tus armas?</Spanish>
+			<Russian>Эй! Тебе нужна амуниция?</Russian>
+			<Chinesesimp>嘿！你需要武器弹药吗？</Chinesesimp>
+			<Chinese>嘿！你需要武器彈藥嗎？</Chinese>
+			<Japanese>おい！武器の弾が必要か？</Japanese>
+			<Portuguese>Ei! Precisa de munição para suas armas?</Portuguese>
+			<Czech>Hej! Potřebuješ munici na zbraně?</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_OFFER_AMMO_2">
+			<Original>Look in this crate, it's all we have.</Original>
+			<French>Regarde dans cette caisse, c'est tout ce qu'on a.</French>
+			<German>Schau in diese Kiste, das ist alles, was wir haben.</German>
+			<Spanish>Mira en esta caja, es todo lo que tenemos.</Spanish>
+			<Russian>Посмотри в этот ящик — это всё, что у нас есть.</Russian>
+			<Chinesesimp>看看这个箱子，这是我们所有的补给了。</Chinesesimp>
+			<Chinese>看看這個箱子，這是我們所有的補給了。</Chinese>
+			<Japanese>この箱を見てくれ、それしかないんだ。</Japanese>
+			<Portuguese>Dá uma olhada nessa caixa, é tudo o que temos.</Portuguese>
+			<Czech>Podívej se do téhle bedny, je to vše, co máme.</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_OFFER_HEAL_1">
+			<Original>Hey, You are wounded !</Original>
+			<French>Hé, tu es blessé !</French>
+			<German>Hey, du bist verletzt!</German>
+			<Spanish>¡Ey, estás herido!</Spanish>
+			<Russian>Эй, ты ранен!</Russian>
+			<Chinesesimp>嘿，你受伤了！</Chinesesimp>
+			<Chinese>嘿，你受傷了！</Chinese>
+			<Japanese>おい、お前ケガしてるぞ！</Japanese>
+			<Portuguese>Ei, você está ferido!</Portuguese>
+			<Czech>Hej, jsi zraněný!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_OFFER_HEAL_2">
+			<Original>Please, let's me help you...</Original>
+			<French>Laisse-moi t'aider...</French>
+			<German>Lass mich dir helfen...</German>
+			<Spanish>Déjame ayudarte...</Spanish>
+			<Russian>Позволь мне помочь тебе...</Russian>
+			<Chinesesimp>让我来帮你吧……</Chinesesimp>
+			<Chinese>讓我來幫你吧……</Chinese>
+			<Japanese>頼む、手当てさせてくれ…</Japanese>
+			<Portuguese>Deixa eu te ajudar...</Portuguese>
+			<Czech>Nech mě ti pomoct...</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_REQUEST_HEAL">
+			<Original>Hey, I'm wounded, please help me ...</Original>
+			<French>Hé, je suis blessé, aide-moi s'il te plaît...</French>
+			<German>Hey, ich bin verletzt, bitte hilf mir...</German>
+			<Spanish>Ey, estoy herido, por favor ayúdame...</Spanish>
+			<Russian>Эй, я ранен, помоги мне...</Russian>
+			<Chinesesimp>嘿，我受伤了，求你帮帮我……</Chinesesimp>
+			<Chinese>嘿，我受傷了，求你幫幫我……</Chinese>
+			<Japanese>おい、ケガしてるんだ…助けてくれ…</Japanese>
+			<Portuguese>Ei, estou ferido, me ajuda...</Portuguese>
+			<Czech>Hej, jsem zraněný, prosím, pomoz mi...</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_THANK_YOU">
+			<Original>Thank you very much !!</Original>
+			<French>Merci beaucoup !!</French>
+			<German>Vielen Dank!!</German>
+			<Spanish>¡Muchas gracias!</Spanish>
+			<Russian>Огромное спасибо!!</Russian>
+			<Chinesesimp>太感谢你了！！</Chinesesimp>
+			<Chinese>太感謝你了！！</Chinese>
+			<Japanese>本当にありがとう！！</Japanese>
+			<Portuguese>Muito obrigado!!</Portuguese>
+			<Czech>Moc díky!!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_DOCTOR_INTRO">
+			<Original>Hello, I'm a Doctor, we have a situation here !!</Original>
+			<French>Bonjour, je suis médecin. Nous avons une urgence ici !!</French>
+			<German>Hallo, ich bin Arzt. Wir haben hier einen Notfall!!</German>
+			<Spanish>Hola, soy médico. ¡Tenemos una situación urgente aquí!</Spanish>
+			<Russian>Здравствуйте, я врач. У нас тут ЧП!!</Russian>
+			<Chinesesimp>你好，我是医生，这里出了点状况！！</Chinesesimp>
+			<Chinese>你好，我是醫生，這裡出了點狀況！！</Chinese>
+			<Japanese>こんにちは、私は医者です。ここで緊急事態が発生しています！！</Japanese>
+			<Portuguese>Olá, sou médico. Temos uma emergência aqui!!</Portuguese>
+			<Czech>Dobrý den, jsem doktor. Máme tu problém!!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_DOCTOR_REQUEST_COUNT">
+			<Original>Please help us to treat %1 sick villagers.</Original>
+			<French>Aidez-nous à soigner %1 villageois malades.</French>
+			<German>Bitte hilf uns, %1 kranke Dorfbewohner zu behandeln.</German>
+			<Spanish>Por favor, ayúdanos a tratar a %1 aldeanos enfermos.</Spanish>
+			<Russian>Пожалуйста, помогите нам вылечить %1 больных жителей.</Russian>
+			<Chinesesimp>请帮我们治疗 %1 名生病的村民。</Chinesesimp>
+			<Chinese>請幫我們治療 %1 名生病的村民。</Chinese>
+			<Japanese>%1人の病気の村人を治療するのを手伝ってください。</Japanese>
+			<Portuguese>Ajude-nos a tratar %1 moradores doentes.</Portuguese>
+			<Czech>Pomoz nám ošetřit %1 nemocných vesničanů.</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_DOCTOR_INSTRUCT">
+			<Original>Bring them all to the nearby Medical tent.</Original>
+			<French>Amenez-les tous à la tente médicale voisine.</French>
+			<German>Bring sie alle ins nahegelegene Sanitätszelt.</German>
+			<Spanish>Llévalos a todos a la carpa médica cercana.</Spanish>
+			<Russian>Отведите их всех в ближайшую медпалатку.</Russian>
+			<Chinesesimp>把他们全部送到附近的医疗帐篷里。</Chinesesimp>
+			<Chinese>把他們全部送到附近的醫療帳篷裡。</Chinese>
+			<Japanese>全員を近くの医療テントへ運んでください。</Japanese>
+			<Portuguese>Leve todos para a tenda médica próxima.</Portuguese>
+			<Czech>Odveď je do blízkého zdravotnického stanu.</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_DOCTOR_HURRY">
+			<Original>Hurry up !</Original>
+			<French>Dépêchez-vous !</French>
+			<German>Beeil dich!</German>
+			<Spanish>¡Date prisa!</Spanish>
+			<Russian>Поторопитесь!</Russian>
+			<Chinesesimp>快点！</Chinesesimp>
+			<Chinese>快點！</Chinese>
+			<Japanese>急いで！</Japanese>
+			<Portuguese>Rápido!</Portuguese>
+			<Czech>Pospěš si!</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_HEAL_REQUEST">
+			<Original>Please help me, I'm sick I need a Doctor...</Original>
+			<French>S'il vous plaît, aidez-moi... je suis malade, j'ai besoin d'un médecin...</French>
+			<German>Bitte hilf mir, ich bin krank, ich brauche einen Arzt...</German>
+			<Spanish>Por favor ayúdame... estoy enfermo, necesito un médico...</Spanish>
+			<Russian>Пожалуйста, помогите... я болен, мне нужен врач...</Russian>
+			<Chinesesimp>请帮帮我……我生病了，我需要医生……</Chinesesimp>
+			<Chinese>請幫幫我……我生病了，我需要醫生……</Chinese>
+			<Japanese>お願い…具合が悪いんだ、医者を呼んでくれ…</Japanese>
+			<Portuguese>Por favor, me ajude... estou doente, preciso de um médico...</Portuguese>
+			<Czech>Prosím, pomoz mi... jsem nemocný, potřebuji doktora...</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_HEAL_WEAK_FOLLOW">
+			<Original>I can follow you a little, I'm weak...</Original>
+			<French>Je peux te suivre un peu... je suis faible...</French>
+			<German>Ich kann dir etwas folgen... ich bin schwach...</German>
+			<Spanish>Puedo seguirte un poco... estoy débil...</Spanish>
+			<Russian>Я могу немного идти за тобой... но мне плохо...</Russian>
+			<Chinesesimp>我可以稍微跟着你……但我很虚弱……</Chinesesimp>
+			<Chinese>我可以稍微跟著你……但我很虛弱……</Chinese>
+			<Japanese>少しならついていける…けど、すごく弱ってるんだ…</Japanese>
+			<Portuguese>Consigo te seguir um pouco... mas estou fraco...</Portuguese>
+			<Czech>Trochu tě mohu následovat... ale jsem slabý...</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_HEAL_LOOKING_DOCTOR">
+			<Original>Where are the Doctors ??</Original>
+			<French>Où sont les médecins ??</French>
+			<German>Wo sind die Ärzte??</German>
+			<Spanish>¿Dónde están los médicos?</Spanish>
+			<Russian>Где врачи??</Russian>
+			<Chinesesimp>医生在哪？？</Chinesesimp>
+			<Chinese>醫生在哪？？</Chinese>
+			<Japanese>医者はどこだ！？</Japanese>
+			<Portuguese>Cadê os médicos??</Portuguese>
+			<Czech>Kde jsou doktoři??</Czech>
+		</Key>
+		
+		<!-- support_manager.sqf-->
+		<Key ID="STR_DIALOG_REARM_PRIMARY">
+			<Original>Rearming Primary Weapon.</Original>
+			<French>Réapprovisionnement de l'arme principale.</French>
+			<German>Hauptwaffe wird nachgeladen.</German>
+			<Spanish>Rearmando arma principal.</Spanish>
+			<Russian>Перезаряжаю основное оружие.</Russian>
+			<Chinesesimp>正在补充主武器弹药。</Chinesesimp>
+			<Chinese>正在補充主武器彈藥。</Chinese>
+			<Japanese>主武装を再装填中。</Japanese>
+			<Portuguese>Reabastecendo arma primária.</Portuguese>
+			<Czech>Přezbrojuji hlavní zbraň.</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_REARM_SECONDARY">
+			<Original>Rearming Secondary Weapon.</Original>
+			<French>Réapprovisionnement de l'arme secondaire.</French>
+			<German>Zweitwaffe wird nachgeladen.</German>
+			<Spanish>Rearmando arma secundaria.</Spanish>
+			<Russian>Перезаряжаю вторичное оружие.</Russian>
+			<Chinesesimp>正在补充副武器弹药。</Chinesesimp>
+			<Chinese>正在補充副武器彈藥。</Chinese>
+			<Japanese>副武装を再装填中。</Japanese>
+			<Portuguese>Reabastecendo arma secundária.</Portuguese>
+			<Czech>Přezbrojuji sekundární zbraň.</Czech>
+		</Key>
+
+		<Key ID="STR_DIALOG_REARM_FAILED_FULL">
+			<Original>Cannot Rearm! my Inventory is full!</Original>
+			<French>Impossible de se réapprovisionner ! Mon inventaire est plein !</French>
+			<German>Kann nicht nachladen! Mein Inventar ist voll!</German>
+			<Spanish>¡No puedo rearmarme! ¡Mi inventario está lleno!</Spanish>
+			<Russian>Не могу пополнить боезапас — инвентарь переполнен!</Russian>
+			<Chinesesimp>无法补给！我的背包满了！</Chinesesimp>
+			<Chinese>無法補給！我的背包滿了！</Chinese>
+			<Japanese>補給できない！インベントリが一杯だ！</Japanese>
+			<Portuguese>Não posso reabastecer! Meu inventário está cheio!</Portuguese>
+			<Czech>Nemohu se přezbrojit! Inventář je plný!</Czech>
+		</Key>
+
+		<Key ID="STR_REARM_COST_LINE">
+			<Original>%1\n%2 - %3\nCost %4 Ammo</Original>
+			<French>%1\n%2 - %3\nCoût : %4 munitions</French>
+			<German>%1\n%2 - %3\nKosten: %4 Munition</German>
+			<Spanish>%1\n%2 - %3\nCosto: %4 de munición</Spanish>
+			<Russian>%1\n%2 - %3\nСтоимость: %4 боеприпасов</Russian>
+			<Chinesesimp>%1\n%2 - %3\n消耗弹药：%4</Chinesesimp>
+			<Chinese>%1\n%2 - %3\n消耗彈藥：%4</Chinese>
+			<Japanese>%1\n%2 - %3\n必要弾薬数：%4</Japanese>
+			<Portuguese>%1\n%2 - %3\nCusto: %4 de munição</Portuguese>
+			<Czech>%1\n%2 - %3\nCena: %4 munice</Czech>
+		</Key>
+
+		<Key ID="STR_REARM_COOLDOWN_LINE">
+			<Original>%1\nRearming Cooldown (%2 sec), Please Wait...</Original>
+			<French>%1\nRecharge en cours (%2 sec), veuillez patienter...</French>
+			<German>%1\nNachladezeit (%2 Sekunden), bitte warten...</German>
+			<Spanish>%1\nEn enfriamiento (%2 seg), por favor espera...</Spanish>
+			<Russian>%1\nПерезарядка (%2 сек), пожалуйста, подождите...</Russian>
+			<Chinesesimp>%1\n补给冷却中（%2 秒），请稍候……</Chinesesimp>
+			<Chinese>%1\n補給冷卻中（%2 秒），請稍候……</Chinese>
+			<Japanese>%1\n再装填のクールダウン中（%2 秒）…お待ちください</Japanese>
+			<Portuguese>%1\nReabastecimento em espera (%2 seg), aguarde...</Portuguese>
+			<Czech>%1\nPřezbrojení za %2 sek, čekejte...</Czech>
+		</Key>
+
+		<Key ID="STR_REPAIR_COOLDOWN_LINE">
+			<Original>%1\nRepairing Cooldown (%2 sec), Please Wait...</Original>
+			<French>%1\nTemps de recharge réparation (%2 sec), veuillez patienter...</French>
+			<German>%1\nReparatur-Cooldown (%2 Sekunden), bitte warten...</German>
+			<Spanish>%1\nReparación en enfriamiento (%2 seg), por favor espera...</Spanish>
+			<Russian>%1\nРемонт в откате (%2 сек), пожалуйста, подождите...</Russian>
+			<Chinesesimp>%1\n维修冷却中（%2 秒），请稍候……</Chinesesimp>
+			<Chinese>%1\n維修冷卻中（%2 秒），請稍候……</Chinese>
+			<Japanese>%1\n修理クールダウン中（%2 秒）、お待ちください…</Japanese>
+			<Portuguese>%1\nReparo em espera (%2 seg), aguarde...</Portuguese>
+			<Czech>%1\nOprava za %2 sek, čekejte prosím...</Czech>
+		</Key>
+
+		<Key ID="STR_REFUEL_COOLDOWN_LINE">
+			<Original>%1\nRefueling Cooldown (%2 sec), Please Wait...</Original>
+			<French>%1\nTemps de recharge ravitaillement (%2 sec), veuillez patienter...</French>
+			<German>%1\nAuftank-Zeit (%2 Sekunden), bitte warten...</German>
+			<Spanish>%1\nRepostaje en enfriamiento (%2 seg), por favor espera...</Spanish>
+			<Russian>%1\nЗаправка в откате (%2 сек), пожалуйста, подождите...</Russian>
+			<Chinesesimp>%1\n加油冷却中（%2 秒），请稍候……</Chinesesimp>
+			<Chinese>%1\n加油冷卻中（%2 秒），請稍候……</Chinese>
+			<Japanese>%1\n燃料補給クールダウン中（%2 秒）、お待ちください…</Japanese>
+			<Portuguese>%1\nReabastecimento em espera (%2 seg), aguarde...</Portuguese>
+			<Czech>%1\nTankování za %2 sek, čekejte prosím...</Czech>
+		</Key>
+
+		<Key ID="STR_DESTROY_TOWER">
+			<Original>
+				Use &lt;t color='#FF0000'&gt;Explosives&lt;/t&gt; to destroy&lt;br/&gt;the &lt;t color='#0000FF'&gt;Radio Tower&lt;/t&gt;.
+			</Original>
+			<French>
+				Utilisez des &lt;t color='#FF0000'&gt;explosifs&lt;/t&gt; pour détruire&lt;br/&gt;la &lt;t color='#0000FF'&gt;tour radio&lt;/t&gt;.
+			</French>
+			<German>
+				Verwende &lt;t color='#FF0000'&gt;Sprengstoff&lt;/t&gt;, um&lt;br/&gt;den &lt;t color='#0000FF'&gt;Funkturm&lt;/t&gt; zu zerstören.
+			</German>
+			<Spanish>
+				Usa &lt;t color='#FF0000'&gt;explosivos&lt;/t&gt; para destruir&lt;br/&gt;la &lt;t color='#0000FF'&gt;torre de radio&lt;/t&gt;.
+			</Spanish>
+			<Russian>
+				Используйте &lt;t color='#FF0000'&gt;взрывчатку&lt;/t&gt;, чтобы уничтожить&lt;br/&gt;&lt;t color='#0000FF'&gt;радиовышку&lt;/t&gt;.
+			</Russian>
+			<Chinesesimp>
+				使用 &lt;t color='#FF0000'&gt;炸药&lt;/t&gt; 摧毁&lt;br/&gt;&lt;t color='#0000FF'&gt;电台塔&lt;/t&gt;。
+			</Chinesesimp>
+			<Chinese>
+				使用 &lt;t color='#FF0000'&gt;炸藥&lt;/t&gt; 摧毀&lt;br/&gt;&lt;t color='#0000FF'&gt;電台塔&lt;/t&gt;。
+			</Chinese>
+			<Japanese>
+				&lt;t color='#FF0000'&gt;爆薬&lt;/t&gt;を使って&lt;br/&gt;&lt;t color='#0000FF'&gt;ラジオタワー&lt;/t&gt;を破壊せよ。
+			</Japanese>
+			<Portuguese>
+				Use &lt;t color='#FF0000'&gt;explosivos&lt;/t&gt; para destruir&lt;br/&gt;a &lt;t color='#0000FF'&gt;torre de rádio&lt;/t&gt;.
+			</Portuguese>
+			<Czech>
+				Použij &lt;t color='#FF0000'&gt;výbušniny&lt;/t&gt; k likvidaci&lt;br/&gt;&lt;t color='#0000FF'&gt;radiové věže&lt;/t&gt;.
+			</Czech>
+		</Key>
+
+		<!-- init_markers.sqf-->
+		<Key ID="STR_MARKER_FUEL">
+			<Original>FUEL</Original>
+			<French>CARBURANT</French>
+			<German>BENZIN</German>
+			<Spanish>COMBUSTIBLE</Spanish>
+			<Russian>ТОПЛИВО</Russian>
+			<Chinesesimp>加油站</Chinesesimp>
+			<Chinese>加油站</Chinese>
+			<Japanese>燃料補給所</Japanese>
+			<Portuguese>COMBUSTÍVEL</Portuguese>
+			<Czech>PALIVO</Czech>
+		</Key>
+
+		<Key ID="STR_MARKER_SELL">
+			<Original>SELL</Original>
+			<French>VENTE</French>
+			<German>VERKAUF</German>
+			<Spanish>VENTA</Spanish>
+			<Russian>ПРОДАЖА</Russian>
+			<Chinesesimp>出售点</Chinesesimp>
+			<Chinese>出售點</Chinese>
+			<Japanese>売却所</Japanese>
+			<Portuguese>VENDA</Portuguese>
+			<Czech>PRODEJ</Czech>
+		</Key>
+
+		<Key ID="STR_MARKER_ATM">
+			<Original>ATM</Original>
+			<French>DAB</French>
+			<German>Geldautomat</German>
+			<Spanish>Cajero</Spanish>
+			<Russian>Банкомат</Russian>
+			<Chinesesimp>ATM</Chinesesimp>
+			<Chinese>ATM</Chinese>
+			<Japanese>ATM</Japanese>
+			<Portuguese>Caixa</Portuguese>
+			<Czech>Bankomat</Czech>
+		</Key>
+
+		<Key ID="STR_MARKER_SHOP">
+			<Original>SHOP</Original>
+			<French>BOUTIQUE</French>
+			<German>LADEN</German>
+			<Spanish>TIENDA</Spanish>
+			<Russian>МАГАЗИН</Russian>
+			<Chinesesimp>商店</Chinesesimp>
+			<Chinese>商店</Chinese>
+			<Japanese>ショップ</Japanese>
+			<Portuguese>LOJA</Portuguese>
+			<Czech>OBCHOD</Czech>
+		</Key>
+
+		<Key ID="STR_LOG_MARKER_CREATE">
+			<Original>%1, Create marker (%2) in channel %3 at position %4</Original>
+			<French>%1 a créé le marqueur (%2) sur le canal %3 à la position %4</French>
+			<German>%1 hat Marker (%2) im Kanal %3 bei Position %4 erstellt</German>
+			<Spanish>%1 creó el marcador (%2) en el canal %3 en la posición %4</Spanish>
+			<Russian>%1 создал маркер (%2) в канале %3 на позиции %4</Russian>
+			<Chinesesimp>%1 在频道 %3 的位置 %4 创建了标记 (%2)</Chinesesimp>
+			<Chinese>%1 在頻道 %3 的位置 %4 建立了標記 (%2)</Chinese>
+			<Japanese>%1 がチャンネル %3 の位置 %4 にマーカー (%2) を作成しました</Japanese>
+			<Portuguese>%1 criou o marcador (%2) no canal %3 na posição %4</Portuguese>
+			<Czech>%1 vytvořil značku (%2) v kanálu %3 na pozici %4</Czech>
+		</Key>
+		
+		<Key ID="STR_LOG_MARKER_DELETE">
+			<Original>%1, Delete marker (%2) at position %3.</Original>
+			<French>%1 a supprimé le marqueur (%2) à la position %3.</French>
+			<German>%1 hat den Marker (%2) an Position %3 gelöscht.</German>
+			<Spanish>%1 eliminó el marcador (%2) en la posición %3.</Spanish>
+			<Russian>%1 удалил маркер (%2) на позиции %3.</Russian>
+			<Chinesesimp>%1 在位置 %3 删除了标记 (%2)。</Chinesesimp>
+			<Chinese>%1 在位置 %3 刪除了標記 (%2)。</Chinese>
+			<Japanese>%1 が位置 %3 のマーカー (%2) を削除しました。</Japanese>
+			<Portuguese>%1 removeu o marcador (%2) na posição %3.</Portuguese>
+			<Czech>%1 smazal značku (%2) na pozici %3.</Czech>
+		</Key>
+		
+		<!--artillery_cooldown.sqf -->
+		<Key ID="STR_HINT_ARTILLERY_COOLDOWN">
+			<Original>Artillery Cooldown!\nYou are overusing artillery fire, slow down!</Original>
+			<French>Refroidissement de l'artillerie !\nVous en abusez, ralentissez !</French>
+			<German>Artillerie-Abklingzeit!\nDu nutzt die Artillerie zu oft, langsamer!</German>
+			<Spanish>¡Enfriamiento de artillería!\nEstás abusando del fuego de artillería, reduce el ritmo.</Spanish>
+			<Russian>Откат артиллерии!\nСлишком частый огонь, сбавь темп!</Russian>
+			<Chinesesimp>炮击冷却中！\n你使用过于频繁，请稍等！</Chinesesimp>
+			<Chinese>砲擊冷卻中！\n你使用過於頻繁，請稍等！</Chinese>
+			<Japanese>砲撃はクールダウン中！\n使いすぎだ、落ち着け！</Japanese>
+			<Portuguese>Artilharia em recarga!\nVocê está usando demais, vá com calma!</Portuguese>
+			<Czech>Dělostřelectvo je v přebíjení!\nPoužíváš ho příliš často, zpomal!</Czech>
+		</Key>
+		
+		<!-- godmode.sqf -->
+		<Key ID="STR_HINT_GODMODE_ON">
+			<Original>GodMode ON !</Original>
+			<French>Mode Dieu ACTIVÉ !</French>
+			<German>GodMode AKTIVIERT!</German>
+			<Spanish>¡Modo Dios ACTIVADO!</Spanish>
+			<Russian>Бог-режим ВКЛЮЧЕН!</Russian>
+			<Chinesesimp>无敌模式已开启！</Chinesesimp>
+			<Chinese>無敵模式已開啟！</Chinese>
+			<Japanese>ゴッドモードON！</Japanese>
+			<Portuguese>Modo Deus ATIVADO!</Portuguese>
+			<Czech>GodMode ZAPNUT!</Czech>
+		</Key>
+
+		<Key ID="STR_HINT_GODMODE_OFF">
+			<Original>GodMode OFF !</Original>
+			<French>Mode Dieu DÉSACTIVÉ !</French>
+			<German>GodMode DEAKTIVIERT!</German>
+			<Spanish>¡Modo Dios DESACTIVADO!</Spanish>
+			<Russian>Бог-режим ВЫКЛЮЧЕН!</Russian>
+			<Chinesesimp>无敌模式已关闭！</Chinesesimp>
+			<Chinese>無敵模式已關閉！</Chinese>
+			<Japanese>ゴッドモードOFF！</Japanese>
+			<Portuguese>Modo Deus DESATIVADO!</Portuguese>
+			<Czech>GodMode VYPNUT!</Czech>
+		</Key>
+		
+		<!-- kick_idle.sqf -->
+		<Key ID="STR_MSG_IDLE_TIMEOUT">
+			<Original>You are idle for too long, good bye!</Original>
+			<French>Vous êtes inactif depuis trop longtemps, au revoir !</French>
+			<German>Du warst zu lange untätig – auf Wiedersehen!</German>
+			<Spanish>Estuviste inactivo demasiado tiempo, ¡adiós!</Spanish>
+			<Russian>Вы были бездействующим слишком долго. До свидания!</Russian>
+			<Chinesesimp>你挂机太久了，再见！</Chinesesimp>
+			<Chinese>你掛機太久了，再見！</Chinese>
+			<Japanese>長時間放置されていました。さようなら！</Japanese>
+			<Portuguese>Você ficou inativo por muito tempo, até mais!</Portuguese>
+			<Czech>Byl jsi příliš dlouho neaktivní. Sbohem!</Czech>
+		</Key>
+		
+		<!-- no_thermic.sqf -->
+		<Key ID="STR_UI_THERMAL_OFFLINE">
+			<Original>Thermal OFFLINE...</Original>
+			<French>Thermique HORS LIGNE...</French>
+			<German>Wärmebild AUS...</German>
+			<Spanish>Termal DESCONECTADO...</Spanish>
+			<Russian>Тепловизор ОТКЛЮЧЕН...</Russian>
+			<Chinesesimp>热成像已关闭……</Chinesesimp>
+			<Chinese>熱成像已關閉……</Chinese>
+			<Japanese>サーマルOFFLINE...</Japanese>
+			<Portuguese>Térmico OFFLINE...</Portuguese>
+			<Czech>Termovize VYPNUTÁ...</Czech>
+		</Key>
+
+		<!-- stop_renegade.sqf -->
+		<Key ID="STR_LOG_LRX_WRONG_SIDE">
+			<Original>--- LRX info: Player %1 wrong side - (%2)</Original>
+			<French>--- Info LRX : Joueur %1 dans le mauvais camp - (%2)</French>
+			<German>--- LRX-Info: Spieler %1 ist auf der falschen Seite – (%2)</German>
+			<Spanish>--- LRX info: El jugador %1 está en el bando equivocado – (%2)</Spanish>
+			<Russian>--- Инфо LRX: Игрок %1 на неверной стороне – (%2)</Russian>
+			<Chinesesimp>--- LRX信息：玩家 %1 阵营错误 - (%2)</Chinesesimp>
+			<Chinese>--- LRX資訊：玩家 %1 陣營錯誤 - (%2)</Chinese>
+			<Japanese>--- LRX情報: プレイヤー %1 は陣営が間違っています - (%2)</Japanese>
+			<Portuguese>--- Info LRX: Jogador %1 no lado errado - (%2)</Portuguese>
+			<Czech>--- LRX info: Hráč %1 je ve špatné frakci – (%2)</Czech>
+		</Key>
+
+		<Key ID="STR_LOG_LRX_LEADERSHIP_TAKEN">
+			<Original>-- LRX info: Player %1 (re)take Leadership.</Original>
+			<French>-- Info LRX : Joueur %1 a (re)pris le commandement.</French>
+			<German>-- LRX-Info: Spieler %1 hat die Führung übernommen (erneut).</German>
+			<Spanish>-- LRX info: El jugador %1 asumió el liderazgo.</Spanish>
+			<Russian>-- Инфо LRX: Игрок %1 взял на себя командование.</Russian>
+			<Chinesesimp>-- LRX信息：玩家 %1 （重新）接管了指挥权。</Chinesesimp>
+			<Chinese>-- LRX資訊：玩家 %1 （重新）接管了指揮權。</Chinese>
+			<Japanese>-- LRX情報: プレイヤー %1 が指揮を（再）取得しました。</Japanese>
+			<Portuguese>-- Info LRX: Jogador %1 assumiu a liderança.</Portuguese>
+			<Czech>-- LRX info: Hráč %1 převzal velení.</Czech>
+		</Key>
+
+		<!-- teleport.sqf -->
+		<Key ID="STR_HINT_TELEPORT_ON">
+			<Original>Teleport ON !</Original>
+			<French>Téléportation ACTIVÉE !</French>
+			<German>Teleportation AKTIVIERT!</German>
+			<Spanish>¡Teletransporte ACTIVADO!</Spanish>
+			<Russian>Телепорт ВКЛЮЧЕН!</Russian>
+			<Chinesesimp>传送功能已开启！</Chinesesimp>
+			<Chinese>傳送功能已開啟！</Chinese>
+			<Japanese>テレポートON！</Japanese>
+			<Portuguese>Teleporte ATIVADO!</Portuguese>
+			<Czech>Teleport ZAPNUT!</Czech>
+		</Key>
+		
+		<!-- vehicle_fuel.sqf -->
+		<Key ID="STR_LOG_RESOURCE_FUEL_USED">
+			<Original>%1 Resource Fuel used...</Original>
+			<French>%1 de carburant utilisé...</French>
+			<German>%1 Treibstoff-Ressourcen verbraucht...</German>
+			<Spanish>Se usaron %1 de recurso de combustible...</Spanish>
+			<Russian>Использовано %1 топлива...</Russian>
+			<Chinesesimp>消耗了 %1 点燃料资源……</Chinesesimp>
+			<Chinese>消耗了 %1 點燃料資源……</Chinese>
+			<Japanese>%1 の燃料リソースを使用しました...</Japanese>
+			<Portuguese>%1 de combustível usado...</Portuguese>
+			<Czech>Použito %1 paliva...</Czech>
+		</Key>
+		
+		<!-- welcome.sqf -->
+		<Key ID="STR_UI_WELCOME_MSG">
+			<Original>
+				Welcome &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Your Rank : &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Your Score : &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Your Credit : &lt;t color='#800000'&gt;%4&lt;/t&gt; AMMO &lt;br/&gt;&lt;br/&gt;
+				Your Reputation with Civilians is &lt;t color='%5'>%6&lt;/t&gt;
+			</Original>
+			<French>
+				Bienvenue &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Votre grade : &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Votre score : &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Vos crédits : &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNITIONS &lt;br/&gt;&lt;br/&gt;
+				Votre réputation auprès des civils est &lt;t color='%5'>%6&lt;/t&gt;
+			</French>
+			<German>
+				Willkommen &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Dein Rang: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Dein Punktestand: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Dein Guthaben: &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNITION &lt;br/&gt;&lt;br/&gt;
+				Dein Ansehen bei Zivilisten ist &lt;t color='%5'>%6&lt;/t&gt;
+			</German>
+			<Spanish>
+				Bienvenido &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Tu Rango: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Tu Puntuación: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Tu Crédito: &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNICIÓN &lt;br/&gt;&lt;br/&gt;
+				Tu Reputación con Civiles es &lt;t color='%5'>%6&lt;/t&gt;
+			</Spanish>
+			<Russian>
+				Добро пожаловать, &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Ваш ранг: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				Ваш счёт: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				Ваши ресурсы: &lt;t color='#800000'&gt;%4&lt;/t&gt; БОЕПРИПАСЫ&lt;br/&gt;&lt;br/&gt;
+				Ваша репутация среди гражданских: &lt;t color='%5'>%6&lt;/t&gt;
+			</Russian>
+			<Chinesesimp>
+				欢迎 &lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
+				你的军衔：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				你的得分：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				你的弹药：&lt;t color='#800000'&gt;%4&lt;/t&gt; 点&lt;br/&gt;&lt;br/&gt;
+				你在平民中的声望为 &lt;t color='%5'>%6&lt;/t&gt;
+			</Chinesesimp>
+			<Chinese>
+				歡迎 &lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
+				你的軍階：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				你的得分：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				你的彈藥：&lt;t color='#800000'&gt;%4&lt;/t&gt; 點&lt;br/&gt;&lt;br/&gt;
+				你在平民中的聲望為 &lt;t color='%5'>%6&lt;/t&gt;
+			</Chinese>
+			<Japanese>
+				ようこそ &lt;t color='#00008f'&gt;%1&lt;/t&gt; さん！&lt;br/&gt;&lt;br/&gt;
+				階級：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
+				スコア：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
+				弾薬ポイント：&lt;t color='#800000'&gt;%4&lt;/t&gt; &lt;br/&gt;&lt;br/&gt;
+				民間人からの評判：&lt;t color='%5'>%6&lt;/t&gt;
+			</Japanese>
+		</Key>
+		
+		<!-- remote_call -->
+		<Key ID="STR_UI_ENEMY_DAMAGE_TEXT">
+			<Original>&lt;t size='1' align='center'&gt;Enemy Damage: %1%2&lt;/t&gt;</Original>
+			<French>&lt;t size='1' align='center'&gt;Dégâts ennemis : %1%2&lt;/t&gt;</French>
+			<German>&lt;t size='1' align='center'&gt;Feindschaden: %1%2&lt;/t&gt;</German>
+			<Spanish>&lt;t size='1' align='center'&gt;Daño al enemigo: %1%2&lt;/t&gt;</Spanish>
+			<Russian>&lt;t size='1' align='center'&gt;Урон противнику: %1%2&lt;/t&gt;</Russian>
+			<Chinesesimp>&lt;t size='1' align='center'&gt;敌方伤害：%1%2&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t size='1' align='center'&gt;敵方傷害：%1%2&lt;/t&gt;</Chinese>
+			<Japanese>&lt;t size='1' align='center'&gt;敵へのダメージ: %1%2&lt;/t&gt;</Japanese>
+			<Portuguese>&lt;t size='1' align='center'&gt;Dano ao inimigo: %1%2&lt;/t&gt;</Portuguese>
+			<Czech>&lt;t size='1' align='center'&gt;Poškození nepřítele: %1%2&lt;/t&gt;</Czech>
+		</Key>
+		<Key ID="STR_UI_ENEMY_DAMAGE_TEXT_2">
+			<Original>&lt;t size='1' align='center'&gt;Enemy Damage: %1%2&lt;/t&gt;</Original>
+			<French>&lt;t size='1' align='center'&gt;Dégâts ennemis : %1%2&lt;/t&gt;</French>
+			<German>&lt;t size='1' align='center'&gt;Feindschaden: %1%2&lt;/t&gt;</German>
+			<Spanish>&lt;t size='1' align='center'&gt;Daño al enemigo: %1%2&lt;/t&gt;</Spanish>
+			<Russian>&lt;t size='1' align='center'&gt;Урон по врагу: %1%2&lt;/t&gt;</Russian>
+			<Chinesesimp>&lt;t size='1' align='center'&gt;敌方伤害：%1%2&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t size='1' align='center'&gt;敵方傷害：%1%2&lt;/t&gt;</Chinese>
+			<Japanese>&lt;t size='1' align='center'&gt;敵へのダメージ: %1%2&lt;/t&gt;</Japanese>
+			<Portuguese>&lt;t size='1' align='center'&gt;Dano ao inimigo: %1%2&lt;/t&gt;</Portuguese>
+			<Czech>&lt;t size='1' align='center'&gt;Poškození nepřítele: %1%2&lt;/t&gt;</Czech>
+		</Key>
+		<Key ID="STR_TITLE_THANKS_RX">
+			<Original>Thank you for playing Liberation RX !</Original>
+			<French>Merci d'avoir joué à Liberation RX !</French>
+			<German>Danke fürs Spielen von Liberation RX!</German>
+			<Spanish>¡Gracias por jugar a Liberation RX!</Spanish>
+			<Russian>Спасибо за игру в Liberation RX!</Russian>
+			<Chinesesimp>感谢你游玩 Liberation RX！</Chinesesimp>
+			<Chinese>感謝你遊玩 Liberation RX！</Chinese>
+			<Japanese>Liberation RX を遊んでくれてありがとう！</Japanese>
+			<Portuguese>Obrigado por jogar Liberation RX!</Portuguese>
+			<Czech>Děkujeme za hraní Liberation RX!</Czech>
+		</Key>
+
+		<Key ID="STR_HINT_SQUAD_COMING">
+			<Original>Your squad is coming\nPlease wait...</Original>
+			<French>Votre escouade arrive\nVeuillez patienter...</French>
+			<German>Dein Trupp kommt\nBitte warten...</German>
+			<Spanish>Tu escuadrón se está acercando\nEspera un momento...</Spanish>
+			<Russian>Ваш отряд приближается\nПожалуйста, подождите...</Russian>
+			<Chinesesimp>你的小队正在前来\n请稍候……</Chinesesimp>
+			<Chinese>你的小隊正在前來\n請稍候……</Chinese>
+			<Japanese>分隊が向かっています\n少々お待ちください...</Japanese>
+			<Portuguese>Sua equipe está vindo\nPor favor, aguarde...</Portuguese>
+			<Czech>Tvůj tým přichází\nProsím čekej...</Czech>
+		</Key>
+
+		<Key ID="STR_LOG_SQUAD_ADD_UNIT">
+			<Original>Adds %1 (%2) to your squad.</Original>
+			<French>Ajoute %1 (%2) à votre escouade.</French>
+			<German>%1 (%2) wurde deinem Trupp hinzugefügt.</German>
+			<Spanish>%1 (%2) se unió a tu escuadrón.</Spanish>
+			<Russian>%1 (%2) присоединился к вашему отряду.</Russian>
+			<Chinesesimp>已将 %1（%2）加入你的小队。</Chinesesimp>
+			<Chinese>已將 %1（%2）加入你的小隊。</Chinese>
+			<Japanese>%1（%2）が分隊に加わりました。</Japanese>
+			<Portuguese>%1 (%2) foi adicionado à sua equipe.</Portuguese>
+			<Czech>%1 (%2) byl přidán do tvého týmu.</Czech>
+		</Key>
+
+		<Key ID="STR_UI_TUNNEL_CLEARED_MSG">
+			<Original>
+				You Win !&lt;br/&gt;
+				The &lt;t color='#008f00'&gt;Guerrilla&lt;/t&gt; tunnel no &lt;t color='#008f00'&gt;%1&lt;/t&gt;,&lt;br/&gt;&lt;br/&gt;
+				Has been successfully &lt;t color='#00008f'&gt;CLEANED&lt;/t&gt; !!&lt;br/&gt;
+				Please take your reward: &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
+				Thanks for your help.
+			</Original>
+			<French>
+				Victoire !&lt;br/&gt;
+				Le tunnel &lt;t color='#008f00'&gt;Guérilla&lt;/t&gt; numéro &lt;t color='#008f00'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				a été &lt;t color='#00008f'&gt;NETTOYÉ&lt;/t&gt; avec succès !!&lt;br/&gt;
+				Récompense : &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
+				Merci pour votre aide.
+			</French>
+			<German>
+				Gewonnen!&lt;br/&gt;
+				Der &lt;t color='#008f00'&gt;Guerilla&lt;/t&gt;-Tunnel Nr. &lt;t color='#008f00'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				wurde erfolgreich &lt;t color='#00008f'&gt;GEREINIGT&lt;/t&gt;!!&lt;br/&gt;
+				Belohnung: &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
+				Danke für deine Hilfe.
+			</German>
+			<Spanish>
+				¡Victoria!&lt;br/&gt;
+				El túnel &lt;t color='#008f00'&gt;Guerrillero&lt;/t&gt; número &lt;t color='#008f00'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				ha sido &lt;t color='#00008f'&gt;LIMPIADO&lt;/t&gt; con éxito!!&lt;br/&gt;
+				Recompensa: &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
+				Gracias por tu ayuda.
+			</Spanish>
+			<Russian>
+				Вы победили!&lt;br/&gt;
+				Тоннель повстанцев №&lt;t color='#008f00'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				был успешно &lt;t color='#00008f'&gt;ЗАЧИЩЕН&lt;/t&gt;!!&lt;br/&gt;
+				Награда: &lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;.&lt;br/&gt;&lt;br/&gt;
+				Спасибо за помощь.
+			</Russian>
+			<Chinesesimp>
+				胜利了！&lt;br/&gt;
+				编号 &lt;t color='#008f00'&gt;%1&lt;/t&gt; 的 &lt;t color='#008f00'&gt;游击队&lt;/t&gt; 隧道&lt;br/&gt;&lt;br/&gt;
+				已被成功 &lt;t color='#00008f'&gt;清除&lt;/t&gt;！！&lt;br/&gt;
+				请领取奖励：&lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;。&lt;br/&gt;&lt;br/&gt;
+				感谢你的帮助。
+			</Chinesesimp>
+			<Chinese>
+				勝利了！&lt;br/&gt;
+				編號 &lt;t color='#008f00'&gt;%1&lt;/t&gt; 的 &lt;t color='#008f00'&gt;游擊隊&lt;/t&gt;隧道&lt;br/&gt;&lt;br/&gt;
+				已成功被 &lt;t color='#00008f'&gt;清除&lt;/t&gt;！！&lt;br/&gt;
+				請領取獎勵：&lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;。&lt;br/&gt;&lt;br/&gt;
+				感謝你的幫助。
+			</Chinese>
+			<Japanese>
+				勝利！&lt;br/&gt;
+				ゲリラのトンネル &lt;t color='#008f00'&gt;No.%1&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				は無事に&lt;t color='#00008f'&gt;掃討&lt;/t&gt;されました！！&lt;br/&gt;
+				報酬：&lt;t color='#8f0000'&gt;%2 XP&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+				ご協力ありがとうございます。
+			</Japanese>
+		</Key>
+
+		<Key ID="STR_TITLE_AIRDROP_COUNTDOWN">
+			<Original>Airdrop vehicle in %1 seconds</Original>
+			<French>Véhicule parachuté dans %1 secondes</French>
+			<German>Fahrzeug wird in %1 Sekunden abgeworfen</German>
+			<Spanish>Vehículo será lanzado en %1 segundos</Spanish>
+			<Russian>Сброс техники через %1 секунд</Russian>
+			<Chinesesimp>载具将在 %1 秒后空投</Chinesesimp>
+			<Chinese>載具將在 %1 秒後空投</Chinese>
+			<Japanese>空挺車両が %1 秒後に投下されます</Japanese>
+			<Portuguese>Veículo será lançado em %1 segundos</Portuguese>
+			<Czech>Vozidlo bude shozeno za %1 sekund</Czech>
+		</Key>
+
+		<Key ID="STR_UI_TUNNEL_ENTRY_WARNING">
+			<Original>
+				You enter in the &lt;t color='#008f00'&gt;Guerrilla&lt;/t&gt; tunnel no &lt;t color='#008f00'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Expect NO &lt;t color='#00008f'&gt;Support&lt;/t&gt;,  NO &lt;t color='#00008f'&gt;Help&lt;/t&gt;. &lt;br/&gt;
+				...Expect NO &lt;t color='#8f0000'&gt;Mercy&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;
+				You are on your own....
+			</Original>
+			<French>
+				Vous entrez dans le tunnel &lt;t color='#008f00'&gt;Guérilla&lt;/t&gt; numéro &lt;t color='#008f00'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				N'attendez AUCUN &lt;t color='#00008f'&gt;Soutien&lt;/t&gt;, AUCUNE &lt;t color='#00008f'&gt;Aide&lt;/t&gt;.&lt;br/&gt;
+				...Et surtout, AUCUNE &lt;t color='#8f0000'&gt;Pitié&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;
+				Vous êtes seul...
+			</French>
+			<German>
+				Du betrittst den &lt;t color='#008f00'&gt;Guerilla&lt;/t&gt;-Tunnel Nr. &lt;t color='#008f00'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Erwarte KEINE &lt;t color='#00008f'&gt;Unterstützung&lt;/t&gt;, KEINE &lt;t color='#00008f'&gt;Hilfe&lt;/t&gt;.&lt;br/&gt;
+				...Erwarte KEIN &lt;t color='#8f0000'&gt;Erbarmen&lt;/t&gt;!!&lt;br/&gt;&lt;br/&gt;
+				Du bist auf dich allein gestellt...
+			</German>
+			<Spanish>
+				Entras al túnel &lt;t color='#008f00'&gt;Guerrillero&lt;/t&gt; número &lt;t color='#008f00'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				No esperes &lt;t color='#00008f'&gt;apoyo&lt;/t&gt;, ni &lt;t color='#00008f'&gt;ayuda&lt;/t&gt;.&lt;br/&gt;
+				...No esperes &lt;t color='#8f0000'&gt;piedad&lt;/t&gt;!!&lt;br/&gt;&lt;br/&gt;
+				Estás por tu cuenta...
+			</Spanish>
+			<Russian>
+				Вы входите в туннель &lt;t color='#008f00'&gt;повстанцев&lt;/t&gt; №&lt;t color='#008f00'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Не ждите &lt;t color='#00008f'&gt;поддержки&lt;/t&gt;, &lt;t color='#00008f'&gt;помощи&lt;/t&gt;.&lt;br/&gt;
+				...Не ждите &lt;t color='#8f0000'&gt;пощады&lt;/t&gt;!!&lt;br/&gt;&lt;br/&gt;
+				Вы один...
+			</Russian>
+			<Chinesesimp>
+				你进入了编号 &lt;t color='#008f00'&gt;%1&lt;/t&gt; 的 &lt;t color='#008f00'&gt;游击队&lt;/t&gt;隧道！&lt;br/&gt;&lt;br/&gt;
+				不要指望有 &lt;t color='#00008f'&gt;支援&lt;/t&gt;、没有 &lt;t color='#00008f'&gt;援助&lt;/t&gt;。&lt;br/&gt;
+				……也不要指望有 &lt;t color='#8f0000'&gt;仁慈&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;
+				你只能靠自己……
+			</Chinesesimp>
+			<Chinese>
+				你進入了編號 &lt;t color='#008f00'&gt;%1&lt;/t&gt; 的 &lt;t color='#008f00'&gt;游擊隊&lt;/t&gt;隧道！&lt;br/&gt;&lt;br/&gt;
+				不要指望有 &lt;t color='#00008f'&gt;支援&lt;/t&gt;、沒有 &lt;t color='#00008f'&gt;援助&lt;/t&gt;。&lt;br/&gt;
+				……也不要指望有 &lt;t color='#8f0000'&gt;仁慈&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;
+				你只能靠自己……
+			</Chinese>
+			<Japanese>
+				&lt;t color='#008f00'&gt;ゲリラ&lt;/t&gt;のトンネルNo.&lt;t color='#008f00'&gt;%1&lt;/t&gt; に入った！&lt;br/&gt;&lt;br/&gt;
+				&lt;t color='#00008f'&gt;支援&lt;/t&gt;も、&lt;t color='#00008f'&gt;助け&lt;/t&gt;も期待するな。&lt;br/&gt;
+				…&lt;t color='#8f0000'&gt;慈悲&lt;/t&gt;などない！！&lt;br/&gt;&lt;br/&gt;
+				君は一人だ…
+			</Japanese>
+		</Key>
+		<Key ID="STR_LOG_SECONDARY_MISSION_STARTED">
+			<Original>Player %1 Start Secondary Mission: %2.</Original>
+			<French>Le joueur %1 commence la mission secondaire : %2.</French>
+			<German>Spieler %1 startet Nebenmission: %2.</German>
+			<Spanish>El jugador %1 inicia la misión secundaria: %2.</Spanish>
+			<Russian>Игрок %1 начал побочную миссию: %2.</Russian>
+			<Chinesesimp>玩家 %1 启动了次要任务：%2。</Chinesesimp>
+			<Chinese>玩家 %1 啟動了次要任務：%2。</Chinese>
+			<Japanese>プレイヤー %1 がサブミッション「%2」を開始しました。</Japanese>
+			<Portuguese>O jogador %1 iniciou a missão secundária: %2.</Portuguese>
+			<Czech>Hráč %1 zahájil vedlejší misi: %2.</Czech>
+		</Key>
+
+		<Key ID="STR_UI_PROMOTE_CONFIRM">
+			<Original>&lt;t align='center'&gt;Promote %1 for %2 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Promouvoir %1 pour %2 munitions&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<German>&lt;t align='center'&gt;%1 befördern für %2 Munition&lt;br/&gt;Bist du sicher?&lt;/t&gt;</German>
+			<Spanish>&lt;t align='center'&gt;Ascender a %1 por %2 de munición&lt;br/&gt;¿Estás seguro?&lt;/t&gt;</Spanish>
+			<Russian>&lt;t align='center'&gt;Повысить %1 за %2 боеприпасов&lt;br/&gt;Вы уверены?&lt;/t&gt;</Russian>
+			<Chinesesimp>&lt;t align='center'&gt;花费 %2 弹药晋升 %1&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;花費 %2 彈藥晉升 %1&lt;br/&gt;你確定嗎？&lt;/t&gt;</Chinese>
+			<Japanese>&lt;t align='center'&gt;%2 弾薬で %1 を昇進させます&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
+			<Portuguese>&lt;t align='center'&gt;Promover %1 por %2 de munição&lt;br/&gt;Tem certeza?&lt;/t&gt;</Portuguese>
+			<Czech>&lt;t align='center'&gt;Povýšit %1 za %2 munice&lt;br/&gt;Jsi si jistý?&lt;/t&gt;</Czech>
+		</Key>
+
+		<Key ID="STR_UI_DELETE_MEMBER_CONFIRM">
+			<Original>&lt;t align='center'&gt;Delete %1 %2&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Supprimer %1 %2&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<German>&lt;t align='center'&gt;%1 %2 löschen&lt;br/&gt;Bist du sicher?&lt;/t&gt;</German>
+			<Spanish>&lt;t align='center'&gt;Eliminar a %1 %2&lt;br/&gt;¿Estás seguro?&lt;/t&gt;</Spanish>
+			<Russian>&lt;t align='center'&gt;Удалить %1 %2&lt;br/&gt;Вы уверены?&lt;/t&gt;</Russian>
+			<Chinesesimp>&lt;t align='center'&gt;删除 %1 %2&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;刪除 %1 %2&lt;br/&gt;你確定嗎？&lt;/t&gt;</Chinese>
+			<Japanese>&lt;t align='center'&gt;%1 %2 を削除します&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
+			<Portuguese>&lt;t align='center'&gt;Remover %1 %2&lt;br/&gt;Tem certeza?&lt;/t&gt;</Portuguese>
+			<Czech>&lt;t align='center'&gt;Smazat %1 %2&lt;br/&gt;Jsi si jistý?&lt;/t&gt;</Czech>
+		</Key>
+
+		<Key ID="STR_UI_WARNING_TITLE">
+			<Original>Warning !</Original>
+			<French>Attention !</French>
+			<German>Warnung!</German>
+			<Spanish>¡Advertencia!</Spanish>
+			<Russian>Внимание!</Russian>
+			<Chinesesimp>警告！</Chinesesimp>
+			<Chinese>警告！</Chinese>
+			<Japanese>警告！</Japanese>
+			<Portuguese>Aviso!</Portuguese>
+			<Czech>Varování!</Czech>
+		</Key>
+
+		<Key ID="STR_LOG_SOLDIER_REFUND_RANKED">
+			<Original>Soldier rank %2 Refund: %1, Thank you !</Original>
+			<French>Remboursement du soldat rang %2 : %1, merci !</French>
+			<German>Rückerstattung für Soldat Rang %2: %1, danke!</German>
+			<Spanish>Reembolso del soldado de rango %2: %1, ¡gracias!</Spanish>
+			<Russian>Возврат за солдата звания %2: %1. Спасибо!</Russian>
+			<Chinesesimp>士兵（军衔 %2）已返还：%1，感谢支持！</Chinesesimp>
+			<Chinese>士兵（軍階 %2）已返還：%1，感謝支持！</Chinese>
+			<Japanese>兵士（階級 %2）の返却：%1、ありがとう！</Japanese>
+			<Portuguese>Reembolso do soldado de posto %2: %1, obrigado!</Portuguese>
+			<Czech>Vrácení za vojáka hodnosti %2: %1, díky!</Czech>
+		</Key>
+
+		<Key ID="STR_LOG_SOLDIER_REFUND_SIMPLE">
+			<Original>Soldier Refund: %1, Thank you !</Original>
+			<French>Remboursement du soldat : %1, merci !</French>
+			<German>Rückerstattung für Soldat: %1, danke!</German>
+			<Spanish>Reembolso del soldado: %1, ¡gracias!</Spanish>
+			<Russian>Возврат за солдата: %1. Спасибо!</Russian>
+			<Chinesesimp>士兵返还：%1，感谢支持！</Chinesesimp>
+			<Chinese>士兵返還：%1，感謝支持！</Chinese>
+			<Japanese>兵士の返却：%1、ありがとう！</Japanese>
+			<Portuguese>Reembolso do soldado: %1, obrigado!</Portuguese>
+			<Czech>Vrácení za vojáka: %1, díky!</Czech>
+		</Key>
+
+		<Key ID="STR_HINT_UNIT_TOO_FAR">
+			<Original>Unit too far from you.</Original>
+			<French>L'unité est trop éloignée de vous.</French>
+			<German>Einheit ist zu weit entfernt.</German>
+			<Spanish>La unidad está demasiado lejos de ti.</Spanish>
+			<Russian>Юнит слишком далеко от вас.</Russian>
+			<Chinesesimp>单位离你太远了。</Chinesesimp>
+			<Chinese>單位離你太遠了。</Chinese>
+			<Japanese>ユニットが遠すぎます。</Japanese>
+			<Portuguese>A unidade está muito longe de você.</Portuguese>
+			<Czech>Jednotka je příliš daleko.</Czech>
+		</Key>
+
+		<Key ID="STR_HINT_LOADOUT_COPIED">
+			<Original>Loadout copied, Price: %1\nThank you !</Original>
+			<French>Équipement copié, Prix : %1\nMerci !</French>
+			<German>Ausrüstung kopiert, Preis: %1\nDanke!</German>
+			<Spanish>Carga copiada, Precio: %1\n¡Gracias!</Spanish>
+			<Russian>Снаряжение скопировано, цена: %1\nСпасибо!</Russian>
+			<Chinesesimp>装备已复制，价格：%1\n感谢使用！</Chinesesimp>
+			<Chinese>裝備已複製，價格：%1\n感謝使用！</Chinese>
+			<Japanese>ロードアウトをコピーしました。価格: %1\nありがとうございます！</Japanese>
+			<Portuguese>Equipamento copiado, Preço: %1\nObrigado!</Portuguese>
+			<Czech>Výbava zkopírována, cena: %1\nDěkujeme!</Czech>
+		</Key>
+
+		<Key ID="STR_LOG_UNIT_RENAMED">
+			<Original>Renaming %1 to %2</Original>
+			<French>Renommage de %1 en %2</French>
+			<German>Umbenennen von %1 zu %2</German>
+			<Spanish>Renombrando %1 a %2</Spanish>
+			<Russian>Переименование %1 в %2</Russian>
+			<Chinesesimp>正在将 %1 重命名为 %2</Chinesesimp>
+			<Chinese>正在將 %1 重新命名為 %2</Chinese>
+			<Japanese>%1 を %2 にリネーム中</Japanese>
+			<Portuguese>Renomeando %1 para %2</Portuguese>
+			<Czech>Přejmenování %1 na %2</Czech>
+		</Key>
+
 		<!-- do_dog.sqf -->
 		<Key ID="STR_DISMISS_DOG">
 			<Original>&lt;t align='center'&gt;Dismiss the Dog&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
@@ -7046,6 +9039,18 @@
 			<Original>-=   METEO   =-</Original>
 			<Chinesesimp>-=   天气预报   =-</Chinesesimp>
 			<Chinese>-=   天氣預報   =-</Chinese>
+		</Key>
+		<Key ID="STR_HALL_OF_FAME">
+			<Original>-= Hall of Fame =-</Original>
+			<French>-= Temple de la renommée =-</French>
+			<German>-= Ruhmeshalle =-</German>
+			<Spanish>-= Salón de la Fama =-</Spanish>
+			<Russian>-= Зал Славы =-</Russian>
+			<Chinesesimp>-= 荣誉殿堂 =-</Chinesesimp>
+			<Chinese>-= 榮譽殿堂 =-</Chinese>
+			<Japanese>-= 殿堂入り =-</Japanese>
+			<Portuguese>-= Salão da Fama =-</Portuguese>
+			<Czech>-= Síň slávy =-</Czech>
 		</Key>
 		<Key ID="STR_NEWS_AMMO">
 			<Original>-=   The Rich   =-</Original>
@@ -8533,6 +10538,113 @@
 			<Chinese>我會在這裡等你帶著 %1 回來，請快點！</Chinese>
 			<Czech>Počkám zde, až se vrátíte s %1, prosím, pospěšte si!</Czech>
 		</Key>
+
+		<!-- init_client.sqf -->
+		<!-- 加载提示 -->
+		<Key ID="STR_TITLE_LOADING">
+			<Original>... Loading ...</Original>
+			<French>... Chargement ...</French>
+			<German>... Lade ...</German>
+			<Spanish>... Cargando ...</Spanish>
+			<Russian>... Загрузка ...</Russian>
+			<Chinesesimp>……正在加载……</Chinesesimp>
+			<Chinese>……正在載入……</Chinese>
+			<Japanese>… 読み込み中 …</Japanese>
+			<Portuguese>... Carregando ...</Portuguese>
+			<Czech>... Načítání ...</Czech>
+		</Key>
+
+		<Key ID="STR_TITLE_PLEASE_WAIT">
+			<Original>... Please Wait ...</Original>
+			<French>... Veuillez patienter ...</French>
+			<German>... Bitte warten ...</German>
+			<Spanish>... Por favor espera ...</Spanish>
+			<Russian>... Пожалуйста, подождите ...</Russian>
+			<Chinesesimp>……请稍候……</Chinesesimp>
+			<Chinese>……請稍候……</Chinese>
+			<Japanese>… お待ちください …</Japanese>
+			<Portuguese>... Por favor, aguarde ...</Portuguese>
+			<Czech>... Prosím čekejte ...</Czech>
+		</Key>
+
+		<Key ID="STR_MSG_SERVER_INIT_ERROR">
+			<Original>ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server...</Original>
+			<French>Erreur d'initialisation multijoueur ARMA3 !\nVeuillez vous reconnecter au serveur...</French>
+			<German>ARMA3-Mehrspieler-Initialisierungsfehler!\nBitte erneut mit dem Server verbinden...</German>
+			<Spanish>¡Error de inicialización multijugador de ARMA3!\nPor favor, vuelve a conectarte al servidor...</Spanish>
+			<Russian>Ошибка инициализации ARMA3 в мультиплеере!\nПожалуйста, переподключитесь к серверу...</Russian>
+			<Chinesesimp>ARMA3 多人联机初始化错误！\n请重新连接服务器……</Chinesesimp>
+			<Chinese>ARMA3 多人連線初始化錯誤！\n請重新連接伺服器……</Chinese>
+			<Japanese>ARMA3マルチプレイヤー初期化エラー！\nサーバーに再接続してください…</Japanese>
+			<Portuguese>Erro de inicialização multiplayer do ARMA3!\nReconecte-se ao servidor...</Portuguese>
+			<Czech>Chyba inicializace multiplayeru ARMA3!\nZkuste se znovu připojit k serveru...</Czech>
+		</Key>
+
+		<Key ID="STR_MSG_SERVER_STARTUP_ERROR">
+			<Original>Sorry, An error occured on Server startup.\nPlease check the error logs.\n\n%1</Original>
+			<French>Désolé, une erreur s'est produite au démarrage du serveur.\nVeuillez vérifier les journaux.\n\n%1</French>
+			<German>Fehler beim Serverstart.\nBitte prüfen Sie die Fehlerprotokolle.\n\n%1</German>
+			<Spanish>Ocurrió un error al iniciar el servidor.\nConsulta los registros de errores.\n\n%1</Spanish>
+			<Russian>Произошла ошибка при запуске сервера.\nПроверьте журнал ошибок.\n\n%1</Russian>
+			<Chinesesimp>抱歉，服务器启动时发生错误。\n请检查错误日志。\n\n%1</Chinesesimp>
+			<Chinese>抱歉，伺服器啟動時發生錯誤。\n請檢查錯誤日誌。\n\n%1</Chinese>
+			<Japanese>サーバーの起動中にエラーが発生しました。\nエラーログを確認してください。\n\n%1</Japanese>
+			<Portuguese>Desculpe, ocorreu um erro na inicialização do servidor.\nVerifique os logs de erro.\n\n%1</Portuguese>
+			<Czech>Došlo k chybě při spuštění serveru.\nZkontrolujte chybové logy.\n\n%1</Czech>
+		</Key>
+
+		<Key ID="STR_MSG_MP_ONLY">
+			<Original>Sorry, Liberation RX is a Multiplayer Mission Only...</Original>
+			<French>Désolé, Liberation RX est uniquement jouable en multijoueur...</French>
+			<German>Entschuldigung, Liberation RX ist nur im Mehrspielermodus verfügbar...</German>
+			<Spanish>Lo sentimos, Liberation RX solo está disponible en multijugador...</Spanish>
+			<Russian>Извините, Liberation RX — только для мультиплеера...</Russian>
+			<Chinesesimp>抱歉，Liberation RX 仅支持多人联机游戏……</Chinesesimp>
+			<Chinese>抱歉，Liberation RX 僅支援多人連線遊戲……</Chinese>
+			<Japanese>申し訳ありませんが、Liberation RX はマルチプレイ専用です…</Japanese>
+			<Portuguese>Desculpe, Liberation RX é apenas para multijogador...</Portuguese>
+			<Czech>Omlouváme se, Liberation RX lze hrát pouze v režimu pro více hráčů...</Czech>
+		</Key>
+
+		<Key ID="STR_MSG_INVALID_STEAMID">
+			<Original>Sorry, Invalid SteamID!\nDue to server configuration, you MUST be authorized to connect.\nPlease contact the server administrator.</Original>
+			<French>Désolé, SteamID invalide !\nEn raison de la configuration du serveur, vous DEVEZ être autorisé à vous connecter.\nVeuillez contacter l'administrateur du serveur.</French>
+			<German>Ungültige SteamID!\nLaut Servereinstellungen musst du autorisiert sein, um beizutreten.\nBitte kontaktiere den Serveradministrator.</German>
+			<Spanish>¡SteamID no válida!\nDebido a la configuración del servidor, debes estar autorizado para conectarte.\nContacta con el administrador del servidor.</Spanish>
+			<Russian>Неверный SteamID!\nСервер требует авторизации для подключения.\nСвяжитесь с администратором сервера.</Russian>
+			<Chinesesimp>抱歉，SteamID 无效！\n根据服务器设置，您必须被授权才能连接。\n请联系服务器管理员。</Chinesesimp>
+			<Chinese>抱歉，SteamID 無效！\n根據伺服器設定，您必須被授權才能連線。\n請聯繫伺服器管理員。</Chinese>
+			<Japanese>無効なSteamIDです！\nサーバー設定により、接続には許可が必要です。\nサーバー管理者に連絡してください。</Japanese>
+			<Portuguese>Desculpe, SteamID inválido!\nDevido à configuração do servidor, você DEVE estar autorizado para se conectar.\nPor favor, entre em contato com o administrador do servidor.</Portuguese>
+			<Czech>Neplatné SteamID!\nKvůli nastavení serveru MUSÍTE být autorizováni pro připojení.\nKontaktujte prosím administrátora serveru.</Czech>
+		</Key>
+
+		<Key ID="STR_MSG_FINAL_MISSION_RUNNING">
+			<Original>The Final Mission is running...\nNew connections are prohibited until the end!</Original>
+			<French>La mission finale est en cours...\nLes nouvelles connexions sont interdites jusqu'à la fin !</French>
+			<German>Die finale Mission läuft...\nNeue Verbindungen sind bis zum Ende verboten!</German>
+			<Spanish>La misión final está en curso...\nNo se permiten nuevas conexiones hasta que termine.</Spanish>
+			<Russian>Финальная миссия выполняется...\nНовые подключения запрещены до её завершения!</Russian>
+			<Chinesesimp>最终任务正在进行中……\n在结束前禁止新玩家连接！</Chinesesimp>
+			<Chinese>最終任務正在進行中……\n在結束前禁止新玩家連線！</Chinese>
+			<Japanese>最終ミッションが進行中です…\n終了まで新規接続は禁止されています！</Japanese>
+			<Portuguese>A missão final está em andamento...\nNovas conexões estão proibidas até o fim!</Portuguese>
+			<Czech>Finální mise probíhá...\nNová připojení jsou až do konce zakázána!</Czech>
+		</Key>
+
+		<Key ID="STR_MSG_RESPAWN_COOLDOWN">
+			<Original>You Reconnect or Respawn too fast!\nPlease Wait %1 sec.</Original>
+			<French>Vous vous reconnectez ou réapparaissez trop rapidement !\nVeuillez attendre %1 secondes.</French>
+			<German>Du hast dich zu schnell wieder verbunden oder bist zu früh gespawnt!\nBitte warte %1 Sekunden.</German>
+			<Spanish>¡Has reconectado o reaparecido demasiado rápido!\nEspera %1 segundos.</Spanish>
+			<Russian>Вы слишком быстро переподключились или возродились!\nПожалуйста, подождите %1 секунд.</Russian>
+			<Chinesesimp>你重连或重生过快！\n请等待 %1 秒。</Chinesesimp>
+			<Chinese>你重連或重生過快！\n請等待 %1 秒。</Chinese>
+			<Japanese>再接続またはリスポーンが早すぎます！\nあと %1 秒お待ちください。</Japanese>
+			<Portuguese>Você reconectou ou reapareceu rápido demais!\nEspere %1 segundos.</Portuguese>
+			<Czech>Příliš rychlé opětovné připojení nebo obnovení!\nPočkej %1 sekund.</Czech>
+		</Key>
+
 	</Package>
 	
 	<!-- pSiKO Earplugs -->

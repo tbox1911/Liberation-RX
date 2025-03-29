@@ -32,10 +32,7 @@ if (_ai_follow) then {
 { doStop _x } foreach (units group player);
 
 private _position = (_tunnel getVariable ["tunnel_position", 0]) + 1;
-private _msg = format ["You enter in the <t color='#008f00'>Guerrilla</t> tunnel no <t color='#008f00'>%1</t> !<br/><br/>
-Expect NO <t color='#00008f'>Support</t>,  NO <t color='#00008f'>Help</t>. <br/>
-...Expect NO <t color='#8f0000'>Mercy</t> !!<br/><br/>
-You are on your own....", _position];
+private _msg = format [localize "STR_UI_TUNNEL_ENTRY_WARNING", _position];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
 showMap false;

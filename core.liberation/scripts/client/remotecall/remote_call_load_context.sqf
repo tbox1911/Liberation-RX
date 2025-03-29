@@ -1,7 +1,7 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params ["_grp"];
 
-hintSilent "Your squad is coming\nPlease wait...";
+hintSilent localize "STR_HINT_SQUAD_COMING";
 waitUNtil { sleep 0.1; (local _grp) };
 
 { _x allowDamage false } foreach (units _grp);
@@ -30,7 +30,7 @@ private _alt = _pos select 2;
     _x playMoveNow "AmovPercMwlkSrasWrflDf";
     [_x] spawn {
         params ["_unit"];
-        gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, rank _unit];
+        gamelogic globalChat format [localize "STR_LOG_SQUAD_ADD_UNIT",name _unit,rank _unit];
         sleep 5;
         _unit setDamage 0;
         [_unit, true] remoteExec ["allowDamage", 0];

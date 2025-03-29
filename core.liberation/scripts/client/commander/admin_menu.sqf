@@ -116,23 +116,23 @@ private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,16
 private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620,1626];
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
-(_display displayCtrl 1603) ctrlSetToolTip "Add XP Score";
+(_display displayCtrl 1603) ctrlSetToolTip localize "STR_ADD_XP_TOOLTIP";
 (_display displayCtrl 1615) ctrlSetText getMissionPath "res\ui_arsenal.paa";
-(_display displayCtrl 1615) ctrlSetToolTip "Add Ammo credit";
+(_display displayCtrl 1615) ctrlSetToolTip localize "STR_ADD_AMMO_TOOLTIP";
 (_display displayCtrl 1624) ctrlSetText getMissionPath "res\ui_wfuel.paa";
-(_display displayCtrl 1624) ctrlSetToolTip "Add Fuel";
+(_display displayCtrl 1624) ctrlSetToolTip localize "STR_ADD_FUEL_TOOLTIP";
 (_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
-(_display displayCtrl 1616) ctrlSetToolTip "Rejoin Player";
-(_display displayCtrl 1612) ctrlSetToolTip "Selected Player";
-(_display displayCtrl 1619) ctrlSetToolTip "Amount of Ammo or Experience Points to add to Selected Player";
+(_display displayCtrl 1616) ctrlSetToolTip localize "STR_REJOIN_PLAYER_TOOLTIP";
+(_display displayCtrl 1612) ctrlSetToolTip localize "STR_SELECTED_PLAYER_TOOLTIP";
+(_display displayCtrl 1619) ctrlSetToolTip localize "STR_ADD_AMOUNT_TOOLTIP";
 (_display displayCtrl 1621) ctrlSetText getMissionPath "res\ui_redeploy.paa";
-(_display displayCtrl 1621) ctrlSetToolTip "Kick Player!";
+(_display displayCtrl 1621) ctrlSetToolTip localize "STR_KICK_PLAYER_TOOLTIP";
 (_display displayCtrl 1622) ctrlSetText getMissionPath "res\skull.paa";
-(_display displayCtrl 1622) ctrlSetToolTip "BAN Player!";
-(_display displayCtrl 1610) ctrlSetToolTip "Delete object on cursor";
-(_display displayCtrl 1626) ctrlSetToolTip "Call Magic Mower";
-(_display displayCtrl 1628) ctrlSetToolTip "Force saving Game on server";
-(_display displayCtrl 1629) ctrlSetToolTip "Force execute Cleanup manager";
+(_display displayCtrl 1622) ctrlSetToolTip localize "STR_BAN_PLAYER_TOOLTIP";
+(_display displayCtrl 1610) ctrlSetToolTip localize "STR_DELETE_OBJECT_TOOLTIP";
+(_display displayCtrl 1626) ctrlSetToolTip localize "STR_CALL_MAGIC_MOWER_TOOLTIP";
+(_display displayCtrl 1628) ctrlSetToolTip localize "STR_FORCE_SAVE_TOOLTIP";
+(_display displayCtrl 1629) ctrlSetToolTip localize "STR_FORCE_CLEANUP_TOOLTIP";
 
 // Build Banned
 [_ban_combo] call _getBannedUID;
@@ -296,10 +296,10 @@ while { alive player && dialog } do {
 		input_save = "";
 		waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
 		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
-			_admin_msg = format ["Admin (%1) import the save game (%2)", name player, GRLIB_save_key];
+			_admin_msg = format [localize "STR_ADMIN_IMPORT_SAVE", name player, GRLIB_save_key];
 			[_admin_msg] remoteExec ["diag_log", 2];
 			closeDialog 0;
-			titleText ["Restarting now..." ,"BLACK FADED", 100];
+			titleText [localize "STR_RESTARTING_NOW", "BLACK FADED", 100];
 			disableUserInput true;
 			[(parseSimpleArray input_save), {
 				GRLIB_server_stopped = true;
@@ -308,7 +308,7 @@ while { alive player && dialog } do {
 				["END"] remoteExec ["endMission", 0];
 			}] remoteExec ["bis_fnc_call", 2];
 			disableUserInput false;
-		} else { _msg = "Error: Invalid data!" };
+		} else { _msg = localize "STR_ERROR_INVALID_DATA";};
 		{ ctrlShow [_x, false] } foreach _input_controls;
 		{ ctrlEnable [_x, true] } foreach _button_controls;
 	};
@@ -323,7 +323,7 @@ while { alive player && dialog } do {
 				private _name = name _kicked;
 				["LOSER"] remoteExec ["endMission", owner _kicked];
 				serverCommand format ["#kick %1", _name];
-				private _msg = format ["Admin kick player %1.", _name];
+				private _msg = format [localize "STR_ADMIN_KICK_PLAYER", _name];
 				[gamelogic, _msg] remoteExec ["globalChat", -2];
 			};
 		}] remoteExec ["bis_fnc_call", 2];
@@ -339,11 +339,11 @@ while { alive player && dialog } do {
 			if (isPlayer _player) then {
 				BTC_logic setVariable [_this, 99, true];
 				[_player] remoteExec ["LRX_tk_actions", owner _player];
-				private _msg = format ["Admin BAN player %1.", name _player];
+				private _msg = format [localize "STR_ADMIN_BAN_PLAYER", name _player];
 				[gamelogic, _msg] remoteExec ["globalChat", -2];
 			};
 		}] remoteExec ["bis_fnc_call", 2];
-		_admin_msg = format ["Admin (%1) ban player %2", name player, _name];
+		_admin_msg = format [localize "STR_ADMIN_BAN_PLAYER_BY", name player, _name];
 	};
 
 	if (do_unban == 1) then {
@@ -351,8 +351,8 @@ while { alive player && dialog } do {
 		_dst_id = _ban_combo lbText (lbCurSel _ban_combo);
 		if (_dst_id != "") then {
 			BTC_logic setVariable [_dst_id, 0, true];
-			_msg = format ["Unban player UID: %1", _dst_id];
-			_admin_msg = format ["Admin (%1) unban player %2", name player, _dst_id];
+			_msg = format [localize "STR_UNBAN_PLAYER_UID", _dst_id];
+			_admin_msg = format [localize "STR_ADMIN_UNBAN_PLAYER", name player, _dst_id];
 			lbClear _ban_combo;
 			[_ban_combo] call _getBannedUID;
 		};
@@ -362,8 +362,8 @@ while { alive player && dialog } do {
 		do_zeus = 0;
 		GRLIB_active_commander = player;
 		publicVariable 'GRLIB_active_commander';
-		_msg = "You are Zeus now...";
-		_admin_msg = format ["Admin (%1) become Zeus", name player];
+		_msg = localize "STR_YOU_ARE_ZEUS_NOW";
+		_admin_msg = format [localize "STR_ADMIN_BECOME_ZEUS", name player];
 		ctrlEnable [1625, false];
 	};
 
@@ -374,8 +374,8 @@ while { alive player && dialog } do {
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
 			publicVariable "blufor_sectors";
 		}] remoteExec ["bis_fnc_call", 2];
-		_msg = format ["Sector %1 Forcefully Captured!", markerText _sector];
-		_admin_msg = format ["Admin (%1) forcefully capture sector %2", name player, markerText _sector];
+		_msg = format [localize "STR_SECTOR_FORCEFULLY_CAPTURED", markerText _sector];
+		_admin_msg = format [localize "STR_ADMIN_FORCE_CAPTURE_SECTOR", name player, markerText _sector];
 		closeDialog 0;
 	};
 
@@ -385,16 +385,16 @@ while { alive player && dialog } do {
 			{ [_x, getPlayerUID _x] call save_context } foreach (AllPlayers - (entities "HeadlessClient_F"));
 			[true] call save_game_mp;
 		}] remoteExec ["bis_fnc_call", 2];
-		_msg = format ["Game Forcefully Saved in %1" ,GRLIB_save_key];
-		_admin_msg = format ["Admin (%1) force save game (%2)", name player, GRLIB_save_key];
+		_msg = format [localize "STR_GAME_FORCEFULLY_SAVED", GRLIB_save_key];
+		_admin_msg = format [localize "STR_ADMIN_FORCE_SAVE_GAME", name player, GRLIB_save_key];
 		closeDialog 0;
 	};
 
 	if (do_skip == 1) then {
 		do_skip = 0;
 		10 remoteExec ['SkipTime', 2];
-		_msg = "The Time Forward...";
-		_admin_msg = format ["Admin (%1) skip Time +10h", name player];
+		_msg = localize "STR_TIME_SKIPPED_MESSAGE";
+		_admin_msg = format [localize "STR_ADMIN_SKIP_TIME", name player];
 	};
 
 	if (do_unlock == 1) then {
@@ -404,8 +404,8 @@ while { alive player && dialog } do {
 		_vehicle_name = [typeOf _vehicle] call F_getLRXName;
 		_vehicle setvariable ['R3F_LOG_disabled', false, true];
 		_vehicle setvariable ['GRLIB_vehicle_owner', '', true];
-		_msg = format ['%1 Unlocked by Admin.', _vehicle_name];
-		_admin_msg = format ["Admin (%1) Unlock vehicle %2 (%3)", name player, _vehicle_name, typeOf _vehicle];
+		_msg = format [localize "STR_VEHICLE_UNLOCKED_BY_ADMIN", _vehicle_name];
+		_admin_msg = format [localize "STR_ADMIN_UNLOCK_VEHICLE", name player, _vehicle_name, typeOf _vehicle];
 	};
 
 	if (do_delete == 1) then {
@@ -414,8 +414,8 @@ while { alive player && dialog } do {
 		if (isNull _vehicle) exitWith {};
 		_vehicle_name = [typeOf _vehicle] call F_getLRXName;
 		deleteVehicle _vehicle;
-		_msg = format ['%1 Deleted by Admin.', _vehicle_name];
-		_admin_msg = format ["Admin (%1) Delete vehicle %2 (%3)", name player, _vehicle_name, typeOf _vehicle];
+		_msg = format [localize "STR_VEHICLE_DELETED_BY_ADMIN", _vehicle_name];
+		_admin_msg = format [localize "STR_ADMIN_DELETE_VEHICLE", name player, _vehicle_name, typeOf _vehicle];
 		closeDialog 0;
 	};
 

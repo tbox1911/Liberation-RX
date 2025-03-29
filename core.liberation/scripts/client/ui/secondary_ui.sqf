@@ -75,7 +75,7 @@ while { dialog && alive player && dostartsecondary == 0 } do {
 
 if ( dostartsecondary == 1 ) then {
 	[lbCurSel 101, false, PAR_Grp_ID] remoteExec ["start_secondary_remote_call", 2];
-	private _msg = format ["Player %1 Start Secondary Mission: %2.",name player, localize (_mission_list select (lbCurSel 101))];
+	private _msg = format [localize "STR_LOG_SECONDARY_MISSION_STARTED",name player,localize (_mission_list select (lbCurSel 101))];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 };
 
