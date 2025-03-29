@@ -4,7 +4,7 @@ if (isNil "_vehicle") exitWith {};
 private _vehicle_class = typeOf _vehicle;
 private _vehicle_name = [_vehicle_class] call F_getLRXName;
 private _msg = format [localize "STR_STICKY_MSG_ASK", _vehicle_name];
-private _result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
+private _result = [_msg, localize "STR_UI_WARNING_TITLE", true, true] call BIS_fnc_guiMessage;
 if !(_result) exitWith {gamelogic globalChat localize "STR_STICKY_MSG_WISE"};
 
 // find memory points

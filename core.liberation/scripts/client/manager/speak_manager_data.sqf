@@ -5,15 +5,15 @@ speak_another_time = {
 
 speak_squad_AI = {
 	params ["_unit"];
-	player globalChat format ["Hey %1, how are you ?", name _unit];
+	player globalChat format [localize "STR_CHAT_HELLO", name _unit];
 	sleep 2;
 	private _max_revive = ([_unit] call PAR_revive_max);
 	private _cur_revive = ([_unit] call PAR_revive_cur);
 	if (_cur_revive >= 0) then {
-		private _msg = "Fine, not much to say...";
-		if (_cur_revive <= (_max_revive * 0.6)) then { _msg = format ["I'm tired of all this, I was wounded %1 times today !", (_max_revive - _cur_revive)] };
-		if (_cur_revive <= 3) then { _msg = format ["Bad, It's not going well at all, I need Medical Support. %1 Revive left.", _cur_revive] };
-		if (_cur_revive == 0) then { _msg = format ["CRITICAL! the next bullet and I'm DEAD !!"] };
+		private _msg = localize "STR_REPLY_FINE";
+		if (_cur_revive <= (_max_revive * 0.6)) then { _msg = format [localize "STR_REPLY_TIRED", (_max_revive - _cur_revive)] };
+		if (_cur_revive <= 3) then { _msg = format [localize "STR_REPLY_BAD_NEED_MEDIC", _cur_revive] };
+		if (_cur_revive == 0) then { _msg = localize "STR_REPLY_CRITICAL" };
 		_unit globalChat _msg;
 	};
 };
@@ -52,30 +52,30 @@ speak_civil_AI = {
 speak_info_unit = {
 	params ["_unit"];
 	private _greetings = [
-		"Hello,",
-		"Hi,",
-		"Hey,",
-		"Good morning,"
+		localize "STR_GREETING_HELLO",
+		localize "STR_GREETING_HI",
+		localize "STR_GREETING_HEY",
+		localize "STR_GREETING_GOODMORNING"
 	];
 	private _goodbye = [
-		"bye.",
-		"take care.",
-		"ciao."
+		localize "STR_GOODBYE_BYE",
+		localize "STR_GOODBYE_TAKECARE",
+		localize "STR_GOODBYE_CIAO"
 	];
 	if (([player] call F_getReput) >= 50) then {
 		_goodbye = [
-			"You are doing a great job here !",
-			"We're all glad to see you here !",
-			"This war will never end ?",
-			"Kill them all !"
+			localize "STR_GOODBYE_HIGH_GREATJOB",
+			localize "STR_GOODBYE_HIGH_GLAD",
+			localize "STR_GOODBYE_HIGH_ENDLESSWAR",
+			localize "STR_GOODBYE_HIGH_KILLTHEMALL"
 		];
 	};
 	if (([player] call F_getReput) >= 75) then {
 		_goodbye = [
-			"God bless your army !",
-			"Hey, I love you !",
-			"I would like my daughter to marry you !",
-			"You will win this war !"
+			localize "STR_GOODBYE_ELITE_BLESS",
+			localize "STR_GOODBYE_ELITE_LOVE",
+			localize "STR_GOODBYE_ELITE_DAUGHTER",
+			localize "STR_GOODBYE_ELITE_WINWAR"
 		];
 	};
 	_unit globalChat (selectRandom _greetings);
@@ -85,7 +85,7 @@ speak_info_unit = {
 		_opfor = _opfor_list select 0;
 		_unit globalChat (format [localize "STR_SPEAKMANAGER2", round(_unit distance2D _opfor), round(_unit getDir _opfor)]);
 	} else {
-		_unit globalChat "I'm sorry, I have no informations.";
+		_unit globalChat localize "STR_DIALOG_NO_INFORMATION";
 	};
 	sleep 2;
 	_unit globalChat (selectRandom _goodbye);
@@ -94,48 +94,48 @@ speak_info_unit = {
 speak_insult_unit = {
 	params ["_unit"];
 	private _insults = [
-		"Hey, Fuck Off !",
-		"You gonna die !",
-		"We hate you !",
-		"Go back home, Fuckers !",
-		"You better leave this land...",
-		"You're not Welcome here, Go away !",
-		"I don't like you !",
-		"I don't want to speak with you."
+		localize "STR_INSULT_FUCK_OFF",
+		localize "STR_INSULT_YOU_DIE",
+		localize "STR_INSULT_WE_HATE_YOU",
+		localize "STR_INSULT_GO_HOME",
+		localize "STR_INSULT_LEAVE_LAND",
+		localize "STR_INSULT_NOT_WELCOME",
+		localize "STR_INSULT_DISLIKE",
+		localize "STR_INSULT_NO_TALK"
 	];
 	_unit globalChat (selectRandom _insults);
 };
 
 speak_repair_vehicle = {
-	_unit globalChat "Hi, Your vehicle is in a bad mood, hahaha !!";
-	sleep 2;
-	_unit globalChat "I can fix it for you, wait a minute...";
+    _unit globalChat localize "STR_DIALOG_REPAIR_HELLO";
+    sleep 2;
+    _unit globalChat localize "STR_DIALOG_REPAIR_WAIT";
 };
 
 speak_join_player = {
-	_unit globalChat format ["Hi, my name is %1, the enemies approaching.", name _unit];
-	sleep 2;
-	_unit globalChat "I'm happy to join your group to fight these asshole !";
+    _unit globalChat format [localize "STR_DIALOG_JOIN_HELLO", name _unit];
+    sleep 2;
+    _unit globalChat localize "STR_DIALOG_JOIN_FIGHT";
 };
 
 speak_repair = {
-	_unit globalChat "Hello, my car needs Repairs, please help me !";
+	_unit globalChat localize "STR_DIALOG_NEED_REPAIR";
 };
 
 speak_player_repair = {
-	_unit globalChat "hooo, Thank you for repairing my old car !";
+	_unit globalChat localize "STR_DIALOG_THANK_REPAIR";
 	if (([player] call F_getReput) >= 25) then {
 		sleep 2;
-		[_unit] call speak_info_unit;
+		[_unit] call speak_info_unit; // ← 继续对话，比如提供情报
 	};
 };
 
 speak_refuel = {
-	_unit globalChat "Hello, my car needs Fuel, please help me !";
+	_unit globalChat localize "STR_DIALOG_NEED_FUEL";
 };
 
 speak_player_refuel = {
-	_unit globalChat "hooo, Thank you for giving me fuel !";
+	_unit globalChat localize "STR_DIALOG_THANK_REFUEL";
 	if (([player] call F_getReput) >= 25) then {
 		sleep 2;
 		[_unit] call speak_info_unit;
@@ -143,20 +143,20 @@ speak_player_refuel = {
 };
 
 speak_reammo_player = {
-	_unit globalChat "Hey! do you need ammo for your Weapons ?";
+	_unit globalChat localize "STR_DIALOG_OFFER_AMMO_1";
 	sleep 2;
-	_unit globalChat "Look in this crate, it's all we have.";
+	_unit globalChat localize "STR_DIALOG_OFFER_AMMO_2";
 };
 
 speak_heal_player = {
-	_unit globalChat "Hey, You are wounded !";
+	_unit globalChat localize "STR_DIALOG_OFFER_HEAL_1";
 	sleep 2;
-	_unit globalChat "Please, let's me help you...";
+	_unit globalChat localize "STR_DIALOG_OFFER_HEAL_2";
 };
 
 speak_heal_civ = {
 	params ["_unit"];
-	_unit globalChat "Hey, I'm wounded, please help me ...";
+	_unit globalChat localize "STR_DIALOG_REQUEST_HEAL";
 	private _timer = time + 45;
 	private _damage = damage _unit;
 	waitUntil {
@@ -164,7 +164,7 @@ speak_heal_civ = {
 		(time > _timer || (damage _unit < _damage))
 	};
 	if (time > _timer) exitWith {};
-	_unit globalChat "Thank you very much !!";
+	_unit globalChat localize "STR_DIALOG_THANK_YOU";
 	[player, 3] remoteExec ["F_addReput", 2];
 	_unit setDamage 0;
 };
@@ -309,25 +309,25 @@ speak_mission_delivery = {
 speak_mission_heal_doctor = {
 	params ["_unit"];
 	private _wnded = ({alive _x && !isNil {_x getVariable "GRLIB_A3W_Mission_HC2"}} count (units GRLIB_side_civilian));
-	_unit globalChat "Hello, I'm a Doctor, we have a situation here !!";
+	_unit globalChat localize "STR_DIALOG_DOCTOR_INTRO";
 	sleep 3;
-	_unit globalChat format ["Please help us to treat %1 sick villagers.", _wnded];
+	_unit globalChat format [localize "STR_DIALOG_DOCTOR_REQUEST_COUNT", _wnded];
 	sleep 3;
-	_unit globalChat "Bring them all to the nearby Medical tent.";
+	_unit globalChat localize "STR_DIALOG_DOCTOR_INSTRUCT";
 	sleep 3;
-	_unit globalChat "Hurry up !";
+	_unit globalChat localize "STR_DIALOG_DOCTOR_HURRY";
 };
 
 // Wounded
 speak_mission_heal_wounded = {
 	params ["_unit"];
-	_unit globalChat "Please help me, I'm sick I need a Doctor...";
+	_unit globalChat localize "STR_DIALOG_HEAL_REQUEST";
 	[_unit] spawn F_fixPosUnit;
 	sleep 3;
-	_unit globalChat "I can follow you a little, I'm weak...";
+	_unit globalChat localize "STR_DIALOG_HEAL_WEAK_FOLLOW";
 	[_unit, player, 20] remoteExec ["a3w_follow_player", 2];
 	sleep 4;
-	_unit globalChat "Where are the Doctors ??";
+	_unit globalChat localize "STR_DIALOG_HEAL_LOOKING_DOCTOR";
 };
 
 // Civilian Transport

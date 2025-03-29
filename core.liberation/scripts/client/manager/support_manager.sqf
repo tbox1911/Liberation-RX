@@ -58,7 +58,7 @@ while { true } do {
 					if ( _primary_weapon find "LMG" >= 0 || _primary_weapon find "MMG" >= 0 || _primary_weapon find "RPK12" >= 0 ) then { _minpri = 1; _maxpri = 3 };
 					_needammo1 = [_unit, _primary_weapon, _minpri] call F_UnitNeedAmmo;
 					if (_needammo1) then {
-						_unit groupchat "Rearming Primary Weapon.";
+						_unit groupchat localize "STR_DIALOG_REARM_PRIMARY";
 						_added_pri = [_unit, _primary_weapon, _maxpri] call F_UnitAddAmmo;
 					};
 
@@ -67,7 +67,7 @@ while { true } do {
 						_needammo2 = [_unit, _secondary_weapon, _minsec_def] call F_UnitNeedAmmo;
 						if (_needammo2) then {
 							//clearAllItemsFromBackpack _unit;
-							_unit groupchat "Rearming Secondary Weapon.";
+							_unit groupchat localize "STR_DIALOG_REARM_SECONDARY";
 							_added_sec = [_unit, _secondary_weapon, _maxsec_def] call F_UnitAddAmmo;
 							if (_added_sec > 0 && count (secondaryWeaponMagazine _unit) == 0) then {
 								_unit removeWeapon _secondary_weapon;
@@ -98,7 +98,7 @@ while { true } do {
 				// Animation
 				if (_needammo1 || _needammo2) then {
 					if ((_added_pri + _added_sec) == 0) then {
-						_unit groupchat "Cannot Rearm! my Inventory is full!";
+						_unit groupchat localize "STR_DIALOG_REARM_FAILED_FULL";
 					} else {
 						_unit switchMove 'WeaponMagazineReloadStand';
 						_unit playMoveNow 'WeaponMagazineReloadStand';
@@ -153,12 +153,12 @@ while { true } do {
 							_vehicle setVehicleAmmo 1;
 							if (_is_arty) then { _cooldown = _cooldown * 1.5 };
 							_vehicle setVariable ["GREUH_rearm_timer", round (time + _cooldown)];  // min cooldown
-							_screenmsg = format ["%1\n%2 - %3\nCost %4 Ammo", _vehicle_name, localize "STR_REARMING", "100%", _reammo_cost];
+							_screenmsg = format [localize "STR_REARM_COST_LINE", _vehicle_name, localize "STR_REARMING", "100%", _reammo_cost];
 							titleText [_screenmsg, "PLAIN DOWN"];
 							hintSilent _screenmsg;
 						} else {
 							if (_unit distance2D player <= 30) then {
-								_screenmsg = format ["%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time)];
+								_screenmsg = format [localize "STR_REARM_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
 								titleText [_screenmsg, "PLAIN DOWN"];
 							};
 						};
@@ -181,7 +181,7 @@ while { true } do {
 							hintSilent _screenmsg;
 						} else {
 							if (_unit distance2D player <= 30) then {
-								_screenmsg = format ["%1\nRepairing Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time)];
+								_screenmsg = format [localize "STR_REPAIR_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
 								titleText [_screenmsg, "PLAIN DOWN"];
 							};
 						};
@@ -204,7 +204,7 @@ while { true } do {
 							hintSilent _screenmsg;
 						} else {
 							if (_unit distance2D player <= 30) then {
-								_screenmsg = format ["%1\nRefueling Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time)];
+								_screenmsg = format [localize "STR_REFUEL_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
 								titleText [_screenmsg, "PLAIN DOWN"];
 							};
 						};
@@ -223,7 +223,7 @@ while { true } do {
 	// Show Hint
 	private _neartower = ((sectors_tower select {(_x in opfor_sectors) && player distance2D (markerPos  _x) <= 20})) select 0;
 	if (!isNil "_neartower") then {
-		_msg = format ["Use <t color='#FF0000'>Explosives</t> to destroy<br/>the <t color='#0000FF'>Radio Tower</t>."];
+		_msg = localize "STR_DESTROY_TOWER";
 		[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 	};
 

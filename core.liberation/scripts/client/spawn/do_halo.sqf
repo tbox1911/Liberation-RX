@@ -73,7 +73,7 @@ if ( dojump > 0 ) then {
 			titleText ["", "PLAIN"];
 			sleep 2;
 			for "_i" from 3 to 0 step -1 do {
-				titleText [format ["Airdrop vehicle in %1 seconds", _i], "PLAIN"];
+				titleText [format [localize "STR_TITLE_AIRDROP_COUNTDOWN", _i], "PLAIN"];
 				sleep 1;
 			};
 			titleText ["", "PLAIN"];

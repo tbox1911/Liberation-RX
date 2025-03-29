@@ -4,7 +4,7 @@ private _vehicle = objectParent _target;
 if (isNull _vehicle) exitWith {};
 if !([_target] call GRLIB_check_EjectCrew) exitWith {};
 
-gamelogic globalChat format ["Fast Eject all crew from %1.", [_vehicle] call F_getLRXName];
+gamelogic globalChat format [localize "STR_EJECT_ALL_CREW", [_vehicle] call F_getLRXName];
 {
 	if (local _x) then {
 		[_x, false] spawn F_ejectUnit;
