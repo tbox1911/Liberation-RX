@@ -44,6 +44,13 @@ if (_classname in uavs_vehicles) then {
 	_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 };
 
+// UAVs box
+if (_classname == box_uavs_typename) then {
+	private _loaded_uavs = [];
+	for "_n" from 1 to box_uavs_max do { _loaded_uavs pushBack uavs_light };
+	[_vehicle, _loaded_uavs] call load_object_direct;
+};
+
 // Ammo Box clean inventory
 if !(_classname in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {
 	[_vehicle] call F_clearCargo;
