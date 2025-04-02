@@ -119,11 +119,7 @@ while {alive _vehicle} do {
 			if (_vehicle distance2D _target <= 20) then {
 				private _pos = getPosATL _vehicle;
 				_pos set [2, 60];
-				createVehicle ["GrenadeHand", _pos, [], 2, "FLY"];
-				sleep 2;
-				if (floor random 3 == 0) then {
-					createVehicle ["GrenadeHand", _pos, [], 2, "FLY"];
-				};
+				"R_MRAAWS_HE_F" createVehicle _pos;
 			};
 			sleep 2;
 			_vehicle flyInHeight _airveh_alt;

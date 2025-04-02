@@ -44,29 +44,6 @@ if ( isServer ) then {
 		deleteVehicle _unit;
 	};
 
-	// UAVs
-	if ([_unit_class, uavs_vehicles] call F_itemIsInClass) exitWith {
-		if (_unit_side == GRLIB_side_enemy) exitWith {
-			"R_MRAAWS_HE_F" createVehicle (getPosATL _unit);
-			deleteVehicle _unit;
-		};
-		private _bombs = (attachedObjects _unit) select { typeOf _x in sticky_bombs_typename };
-		if (count _bombs > 0) then {
-			_owner_id = _unit getVariable ["GRLIB_vehicle_owner", ""];
-			_player = _owner_id call BIS_fnc_getUnitByUID;
-			if (!isNull _player) then {
-				{ _x setVariable ["GRLIB_last_killer", _player, true] } forEach (_unit nearEntities [["AllVehicles"], 15]);
-			};
-			{
-				detach _x;
-				_x setDamage 1;
-				sleep 0.1;
-			} foreach _bombs;
-			deleteVehicle _unit;
-		};
-		_unit spawn { sleep 5; deleteVehicle _this };
-	};
-
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
@@ -146,7 +123,7 @@ if ( isServer ) then {
 					};
 
 					if ( _killer_side == GRLIB_side_friendly && !isPlayer _killer ) then {
-						private _owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
+						_owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
 						if (_owner_id in ["", "server"]) then {
 							_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
 						};
@@ -198,18 +175,41 @@ if ( isServer ) then {
 		};
 
 	} else {
-		if (_unit_class == mobile_respawn) exitWith { [_unit, "del"] call mobile_respawn_remote_call };
-		if (_unit_class in respawn_vehicles) then {	[_unit, "del"] call mobile_respawn_remote_call };
+		private _bombs = (attachedObjects _unit) select { typeOf _x in sticky_bombs_typename };
+		if (count _bombs > 0) exitWith {
+			_owner_id = _unit getVariable ["GRLIB_vehicle_owner", ""];
+			_player = _owner_id call BIS_fnc_getUnitByUID;
+			if (!isNull _player) then {
+				{ _x setVariable ["GRLIB_last_killer", _player, true] } forEach (_unit nearEntities [["AllVehicles"], 15]);
+			};
+			{
+				detach _x;
+				_x setDamage 1;
+			} foreach _bombs;
+			deleteVehicle _unit;
+		};
 
-		if (_unit_class in GRLIB_explo_delete && (getPosATL _unit) select 2 < 10) exitWith {
+		if (_unit_class in ["B_UAV_01_F","B_UAV_06_F","O_UAV_01_F","O_UAV_06_F"]) exitWith {
+			if (_unit_side == GRLIB_side_enemy) exitWith {
+				private _explo = "DemoCharge_Remote_Ammo" createVehicle (getPosATL _unit);
+				_explo setDamage 1;				
+				deleteVehicle _unit;
+			};
+			_unit spawn { sleep 5; deleteVehicle _this };
+		};
+
+		if (_unit_class in GRLIB_explo_delete && (getPosATL _unit) select 2 <= 10) exitWith {
 			detach _unit;
-			sleep 0.1;
 			_unit setVelocity [([] call F_getRND), ([] call F_getRND), 10];
 			sleep 2;
 			_unit setDamage 1;
-			( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
+			private _explo = "DemoCharge_Remote_Ammo" createVehicle (getPosATL _unit);
+			_explo setDamage 1;
 			deleteVehicle _unit;
 		};
+
+		if (_unit_class == mobile_respawn) exitWith { [_unit, "del"] call mobile_respawn_remote_call };
+		if (_unit_class in respawn_vehicles) then {	[_unit, "del"] call mobile_respawn_remote_call };
 
 		if (isPlayer _killer) then {
 			_owner_id = getPlayerUID _killer;

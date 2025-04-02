@@ -75,6 +75,7 @@ GRLIB_checkAction_Speak = {
 
 GRLIB_checkAction_Sticky = {
 	params ["_target", "_unit"];
+	if (count attachedObjects _target > 0) exitWith { false };
 	private _explosive = false;
 	{
 		if (_x in sticky_bombs_typename) exitWith { _explosive = true };
