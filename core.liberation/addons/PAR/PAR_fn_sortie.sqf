@@ -1,6 +1,7 @@
 params ["_wnded", "_medic"];
 
 if !(local _wnded) exitWith { [_wnded, _medic] remoteExec ["PAR_remote_sortie", 2] };
+if ((!alive _wnded) || (!alive _medic) || ([_medic] call PAR_is_wounded || !([_wnded] call PAR_is_wounded))) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 if (!isPlayer _medic) then {
 	private _msg = format [localize "STR_PAR_ST_01", name _medic, name _wnded];
