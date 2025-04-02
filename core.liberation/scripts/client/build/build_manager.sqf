@@ -471,10 +471,12 @@ while { true } do {
 
 			// UAVs
 			if (_classname in uavs_vehicles) then {
+				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+				[_vehicle] call F_forceCrew;
 				if ((player getSlotItemName 612) != uavs_terminal_typename) then {
 					player linkItem uavs_terminal_typename;
-					[player] call F_correctUAVT;
 				};
+				[player] call F_correctUAVT;
 			};
 
 			// AI Static Weapon

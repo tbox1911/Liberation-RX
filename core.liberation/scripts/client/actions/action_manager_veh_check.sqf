@@ -1,6 +1,6 @@
 GRLIB_checkAction_Lock = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && (count (crew _target) == 0 || (typeOf _target in uavs_vehicles)) && (GRLIB_permission_vehicles && [_unit, _target] call is_owner) && locked _target < 2 && GRLIB_vehicle_lock)
+	(GRLIB_player_is_menuok && alive _target && count (crew _target) == 0 && (GRLIB_permission_vehicles && [_unit, _target] call is_owner) && locked _target < 2 && GRLIB_vehicle_lock)
 };
 
 GRLIB_checkAction_Unlock = {

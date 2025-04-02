@@ -226,9 +226,9 @@ opfor_recyclable = [
 	["B_T_UAV_03_dynamicLoadout_F",1,round (375 / GRLIB_recycling_percentage),2],
 	["B_T_UGV_01_olive_F",1,round (100 / GRLIB_recycling_percentage),2],
 	["B_T_UGV_01_rcws_olive_F",1,round (100 / GRLIB_recycling_percentage),2],
-	["B_UAV_06_F",1,round (75 / GRLIB_recycling_percentage),2],
-	["B_UAV_06_medical_F",1,round (75 / GRLIB_recycling_percentage),2],
-	["B_UAV_01_F",1,round (50 / GRLIB_recycling_percentage),2],
+	["B_UAV_06_F",0,round (75 / GRLIB_recycling_percentage),0],
+	["B_UAV_06_medical_F",0,round (75 / GRLIB_recycling_percentage),0],
+	["B_UAV_01_F",0,round (50 / GRLIB_recycling_percentage),0],
 	["B_UAV_02_dynamicLoadout_F",1,round (175 / GRLIB_recycling_percentage),1],
 	["B_UAV_05_F",1,round (50 / GRLIB_recycling_percentage),1],
 	//Static:

@@ -38,12 +38,6 @@ if (_manned) then {
 	_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 };
 
-// UAVs
-if (_classname in uavs_vehicles) then {
-	[_vehicle] call F_forceCrew;
-	_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-};
-
 // UAVs box
 if (_classname == box_uavs_typename) then {
 	private _loaded_uavs = [];

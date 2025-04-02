@@ -8,12 +8,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (R3F_LOG_mutex_local_verrou) then
-{
+if (R3F_LOG_mutex_local_verrou) then {
 	hintC STR_R3F_LOG_mutex_action_en_cours;
-}
-else
-{
+} else {
 	R3F_LOG_mutex_local_verrou = true;
 
 	#include "dlg_constantes.h"
@@ -28,17 +25,13 @@ else
 
 	_est_deplacable = ([_type_objet_a_decharger] call R3F_LOG_FNCT_determiner_fonctionnalites_logistique) select R3F_LOG_IDX_can_be_moved_by_player;
 
-	if (!(_type_objet_a_decharger isKindOf "AllVehicles") && !_est_deplacable) then
-	{
+	if (!(_type_objet_a_decharger isKindOf "AllVehicles") && !_est_deplacable) then	{
 		_action_confirmee = [STR_R3F_LOG_action_decharger_deplacable_exceptionnel, "Warning !", true, true] call BIS_fnc_GUImessage;
-	}
-	else
-	{
+	} else {
 		_action_confirmee = true;
 	};
 
-	if (_action_confirmee) then
-	{
+	if (_action_confirmee) then {
 		closeDialog 0;
 
 		// Recherche d'un objet du type demand�
@@ -52,31 +45,33 @@ else
 		_objets_charges = _objets_charges - [_objet_a_decharger];
 		_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
 
-		if !(isNull _objet_a_decharger) then
-		{
+		if !(isNull _objet_a_decharger) then {
 			[_objet_a_decharger, player] call R3F_LOG_FNCT_definir_proprietaire_verrou;
 			_objet_a_decharger setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 
 			// Prise en compte de l'objet dans l'environnement du joueur (acc�l�rer le retour des addActions)
-			_objet_a_decharger spawn
-			{
+			_objet_a_decharger spawn {
 				sleep 4;
 				R3F_LOG_PUBVAR_reveler_au_joueur = _this;
 				publicVariable "R3F_LOG_PUBVAR_reveler_au_joueur";
 				["R3F_LOG_PUBVAR_reveler_au_joueur", R3F_LOG_PUBVAR_reveler_au_joueur] spawn R3F_LOG_FNCT_PUBVAR_reveler_au_joueur;
 			};
 
-			if (!(_objet_a_decharger isKindOf "AllVehicles") || _est_deplacable) then
-			{
+			if (!(_objet_a_decharger isKindOf "AllVehicles") || _est_deplacable) then {
 				R3F_LOG_mutex_local_verrou = false;
 				if (typeOf _objet_a_decharger in uavs_vehicles) then {
+					if !(local _objet_a_decharger) then {
+						if (count crew _objet_a_decharger == 0) then {
+							[_objet_a_decharger , clientOwner] remoteExec ["setOwner", 2];
+						} else {
+							[_objet_a_decharger , clientOwner] remoteExec ["setGroupOwner", 2];
+						};
+					};
 					[_objet_a_decharger] call F_forceCrew;
-					player enableUAVConnectability [_objet_a_decharger, true]
+					player enableUAVConnectability [_objet_a_decharger, true];
 				};
 				[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
-			}
-			else
-			{
+			} else {
 				private ["_bbox_dim", "_pos_degagee", "_rayon"];
 
 				systemChat STR_R3F_LOG_action_decharger_en_cours;
@@ -99,6 +94,13 @@ else
 				if (count _pos_degagee > 0) then {
 					detach _objet_a_decharger;
 					if (typeOf _objet_a_decharger in uavs_vehicles) then {
+						if !(local _objet_a_decharger) then {
+							if (count crew _objet_a_decharger == 0) then {
+								[_objet_a_decharger , clientOwner] remoteExec ["setOwner", 2];
+							} else {
+								[_objet_a_decharger , clientOwner] remoteExec ["setGroupOwner", 2];
+							};
+						};
 						[_objet_a_decharger] call F_forceCrew;
 						player enableUAVConnectability [_objet_a_decharger, true];
 					};
@@ -118,25 +120,19 @@ else
 						systemChat format [STR_R3F_LOG_action_decharger_fait, [_objet_a_decharger] call F_getLRXName];
 					};
 					R3F_LOG_mutex_local_verrou = false;
-				}
-				// Si �chec recherche position d�gag�e, on d�charge l'objet comme un d�pla�able
-				else
-				{
+				} else {
+					// Si �chec recherche position d�gag�e, on d�charge l'objet comme un d�pla�able					
 					systemChat "WARNING : no free position found.";
 
 					R3F_LOG_mutex_local_verrou = false;
 					[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 				};
 			};
-		}
-		else
-		{
+		} else {
 			hintC STR_R3F_LOG_action_decharger_deja_fait;
 			R3F_LOG_mutex_local_verrou = false;
 		};
-	}
-	else
-	{
+	} else {
 		R3F_LOG_mutex_local_verrou = false;
 	};
 };

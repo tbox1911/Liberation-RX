@@ -29,18 +29,20 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["UAV_04_base_F", 5],
 	["UAV_05_base_F", 5],
 	["UAV_06_base_F", 5],
-	["UGV_01_base_F", 5]
+	["UGV_01_base_F", 10],
+	["UGV_02_base_F", 0]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	["UAV_01_base_F", 3],
-	["UAV_02_base_F", 5],
-	["UAV_03_base_F", 5],
-	["UAV_04_base_F", 5],
-	["UAV_05_base_F", 5],
+	["UAV_02_base_F", 50],
+	["UAV_03_base_F", 100],
+	["UAV_04_base_F", 50],
+	["UAV_05_base_F", 100],
 	["UAV_06_base_F", 5],
-	["UGV_01_base_F", 5]
+	["UGV_01_base_F", 40],
+	["UGV_02_base_F", 5]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
@@ -51,7 +53,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"UAV_04_base_F",
 	"UAV_05_Base_F",
 	"UAV_06_base_F",
-	"UGV_01_base_F"
+	"UGV_01_base_F",
+	"UGV_02_base_F"
 ];
 
 //--------------- Ground ---------------

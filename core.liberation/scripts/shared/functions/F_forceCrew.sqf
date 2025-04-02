@@ -4,6 +4,8 @@ params [
 	["_mission_ai", false]
 ];
 
+if (count crew _vehicle > 0) exitWith {};
+
 // Aircraft / Drone
 if (typeOf _vehicle in uavs_vehicles + static_vehicles_AI || (_vehicle isKindOf "Air")) exitWith {
 	private _grp = createGroup [_side, true];
