@@ -58,8 +58,9 @@ if ( isServer ) then {
 				_x setDamage 1;
 				sleep 0.1;
 			} foreach _bombs;
+			deleteVehicle _unit;
 		};
-		deleteVehicle _unit;
+		_unit spawn { sleep 5; deleteVehicle _this };
 	};
 
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
