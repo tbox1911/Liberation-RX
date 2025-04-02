@@ -16,7 +16,7 @@ private _stats_marker = [
 
 while { true } do {
 	_msg = "";
-	if (count A3W_sectors_in_use > 0) then {
+	if (!isNil "A3W_sectors_in_use" && {!(A3W_sectors_in_use isEqualTo [])}) then {
 		_all_sectors = (A3W_sectors_in_use select {((markerPos _x) distance2D player) <= GRLIB_capture_size});
 		_sector = [_all_sectors, player] call F_nearestPosition;
 		if (_sector != "") then {
