@@ -91,8 +91,9 @@ while {true} do {
 						if (_near_medical) then {
 							_history set [0, (_first - 60)];
 							_unit setVariable ["PAR_revive_history", _history];
-							if (_unit distance2D player < 50) then {
+							if (_unit distance2D player < 30) then {
 								_msg = format [localize "STR_PAR_HEALING_FASTER", name _unit];
+								_timer = 0;
 							};
 						};
 					};
