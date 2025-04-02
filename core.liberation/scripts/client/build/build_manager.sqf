@@ -446,22 +446,17 @@ while { true } do {
 			waitUntil { sleep 0.5; (!alive _vehicle || local _vehicle) };
 			if (!alive _vehicle) exitWith {};
 
+			// HandleDamage EH
+			if (_classname in list_static_weapons) then {
+				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+			} else {
+				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+			};
+
 			// MP fix pos
 			if (_vehicle distance2D _veh_pos > 10) then {
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				_vehicle setPosATL _veh_pos;
-			};
-
-			// Killed EH
-			if !(_classname in all_buildings_classnames) then {
-				_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-
-				// HandleDamage EH
-				if (_classname in list_static_weapons) then {
-					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-				} else {
-					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-				};
 			};
 
 			// Crewed vehicle

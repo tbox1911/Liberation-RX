@@ -11,14 +11,16 @@ params [
 
 private _allow_damage = true;
 private _vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
-if (isNull _vehicle) exitWith {
- 	_player setVariable ["GRLIB_player_vehicle_build", nil, true];
-};
+if (isNull _vehicle) exitWith { _player setVariable ["GRLIB_player_vehicle_build", nil, true] };
+
 _vehicle allowDamage false;
 _vehicle hideobjectglobal true;
 _vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 _vehicle setPosATL _veh_pos;
 _vehicle hideobjectglobal false;
+
+// Killed EH
+_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
 // ACE Support
 [_vehicle] call F_aceInitVehicle;

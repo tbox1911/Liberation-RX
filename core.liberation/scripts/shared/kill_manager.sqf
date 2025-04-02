@@ -46,6 +46,10 @@ if ( isServer ) then {
 
 	// UAVs
 	if ([_unit_class, uavs_vehicles] call F_itemIsInClass) exitWith {
+		if (_unit_side == GRLIB_side_enemy) exitWith {
+			"R_MRAAWS_HE_F" createVehicle (getPosATL _unit);
+			deleteVehicle _unit;
+		};
 		private _bombs = (attachedObjects _unit) select { typeOf _x in sticky_bombs_typename };
 		if (count _bombs > 0) then {
 			_owner_id = _unit getVariable ["GRLIB_vehicle_owner", ""];

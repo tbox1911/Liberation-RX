@@ -25,9 +25,6 @@ if (_object_class == box_uavs_typename) then {
 	[_object, _loaded_uavs] call load_object_direct;
 };
 
-// MPKilled
-_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-
 // Static Weapons
 if (_object_class in list_static_weapons ) then {
 	_object addEventHandler ["HandleDamage", { _this call damage_manager_static }];
