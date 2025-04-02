@@ -26,364 +26,701 @@ private _lrx_get_mod_template = {
 private _list_west = ([GRLIB_mod_list_west] call _lrx_get_mod_template);
 private _list_east = ([GRLIB_mod_list_east] call _lrx_get_mod_template);
 
-LRX_Mission_Params = [
-	["---", "GAME"],
-	["Introduction", 1],			// Introduction - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["DeploymentCinematic", 1],		// Deployment cimematic - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["Opforcap", 200],				// Maximum Amount Enemy units - [default 200] - values = [100,200,300,400]
-	["Unitcap", 1],					// Maximum AI units Modifier - [default 1] - values = [0.5,0.75,1,1.25,1.5,2] - Text {50%,%75,%100,%125,%150,%200}
-	["Difficulty", 1],				// Difficulty - [default 1] - values = [0.5,0.75,1,1.25,1.5,2,4,10] - Text {Tourist,Easy,Normal,Moderate,Hard,Extreme,Ludicrous,Oh god oh god we are all going to die}
-	["Aggressivity",1],				// CSAT aggression - [default 1] - values = [0.25,0.5,1,2,4] - Text {Anemic,Weak,Normal,Strong,Extreme}
-	["VictoryCondition", 0],		// Select the Victory condition - [default 0] - values = [0,1,2,3,4...] -
-	["HideOpfor", 1],				// Hide Opfor marker - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["ShowBlufor", 2],				// Hide Blufor marker - [default 1] - values = [0,1,2] - Text {Disabled,"player only",Enabled}
-	["Weather", 1],					// Weather - [default 4] - values = [1,2,3,4] - Text {Always Sunny,Random without rain,Random Cloudy,Random}
-	["DayDuration", 1],				// Day duration (multiplier) - [default 1] - values = [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60]
-	["NightDuration", 1],			// Night duration (multiplier) - [default 1] - values = [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60]
-	["PassiveIncome", 0],			// Replace ammo box spawns with passive income - [default 0] - values = [1,0] - Text {Enabled,Disabled}
-	["PassiveIncomeDelay", 1200],	// Passive Income Delay - values = {1200,1800,3600,7200,14400}
-	["PassiveIncomeAmmount", 300],	// Passive Income Ammount - values = {100,200,300,400,500,1000,1500}
-	["ResourcesMultiplier", 1],		// Resource multiplier - [default 1] - values = [0.25,0.5,0.75,1,1.25,1.5,2,3,5,10,20,50] - Text {x0.25,x0.5,x1,x1.25,x1.5,x2,x3,x5,x10,x20,x50}
-	["HaloJump", 1],				// HALO jump - [default 1] - values = [1,5,10,15,20,30,0] - Text {Enabled - no cooldown,Enabled - 5min cooldown,Enabled - 10min cooldown,Enabled - 15min cooldown,Enabled - 20min cooldown,Enabled - 30min cooldown,Disabled}
-	["Patrols", 1],					// Patrols Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
-	["AirSupport", 1],				// Enable Air Support - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["CivPenalties", 20],			// Enable Civilian Penalty [default 20] - values = [0, 4, 6, 8, 10, 20, 25, 30, 40, 50 }
+GRLIB_PARAM_separatorKey = "---";
 
-	["---", "MOD TEMPLATE"],
-	["ModPresetWest", "A3_BLU"],	// Select MOD Preset for Friendly - value = computed
-	["ModPresetEast", "A3_OPF"],	// Select MOD Preset for Enemy - values = computed
-	["ModPresetCiv", 1],			// Select MOD Preset for Civilian - values = "All", "Friendly", "Enemy"
-	["ModPresetTaxi", 1],			// Select MOD Preset for Taxi - values = "All", "Friendly", "Enemy", "Disabled"
+// Parameter key mapping
+GRLIB_PARAM_introductionKey = "Introduction";
+GRLIB_PARAM_DeploymentCinematic = "DeploymentCinematic";
+GRLIB_PARAM_Opforcap = "Opforcap";
+GRLIB_PARAM_Unitcap = "Unitcap";
+GRLIB_PARAM_Difficulty = "Difficulty";
+GRLIB_PARAM_Aggressivity = "Aggressivity";
+GRLIB_PARAM_VictoryCondition = "VictoryCondition";
+GRLIB_PARAM_HideOpfor = "HideOpfor";
+GRLIB_PARAM_ShowBlufor = "ShowBlufor";
+GRLIB_PARAM_Weather = "Weather";
+GRLIB_PARAM_DayDuration = "DayDuration";
+GRLIB_PARAM_NightDuration = "NightDuration";
+GRLIB_PARAM_PassiveIncome = "PassiveIncome";
+GRLIB_PARAM_PassiveIncomeDelay = "PassiveIncomeDelay";
+GRLIB_PARAM_PassiveIncomeAmmount = "PassiveIncomeAmmount";
+GRLIB_PARAM_ResourcesMultiplier = "ResourcesMultiplier";
+GRLIB_PARAM_HaloJump = "HaloJump";
+GRLIB_PARAM_Patrols = "Patrols";
+GRLIB_PARAM_Wildlife = "Wildlife";
+GRLIB_PARAM_Civilians = "Civilians";
+GRLIB_PARAM_AirSupport = "AirSupport";
+GRLIB_PARAM_CivPenalties = "CivPenalties";
+GRLIB_PARAM_ModPresetWest = "ModPresetWest";
+GRLIB_PARAM_ModPresetEast = "ModPresetEast";
+GRLIB_PARAM_ModPresetCiv = "ModPresetCiv";
+GRLIB_PARAM_ModPresetTaxi = "ModPresetTaxi";
+GRLIB_PARAM_Fatigue = "Fatigue";
+GRLIB_PARAM_PAR_Revive = "PAR_Revive";
+GRLIB_PARAM_PAR_AI_Revive = "PAR_AI_Revive";
+GRLIB_PARAM_PAR_BleedOut = "PAR_BleedOut";
+GRLIB_PARAM_PAR_Grave = "PAR_Grave";
+GRLIB_PARAM_DeathChat = "DeathChat";
+GRLIB_PARAM_MaxSpawnPoint = "MaxSpawnPoint";
+GRLIB_PARAM_Redeploy = "Redeploy";
+GRLIB_PARAM_Respawn = "Respawn";
+GRLIB_PARAM_SquadSize = "SquadSize";
+GRLIB_PARAM_MaxSquadSize = "MaxSquadSize";
+GRLIB_PARAM_PlatoonView = "PlatoonView";
+GRLIB_PARAM_NameTags = "NameTags";
+GRLIB_PARAM_MapMarkers = "MapMarkers";
+GRLIB_PARAM_EnableArsenal = "EnableArsenal";
+GRLIB_PARAM_FilterArsenal = "FilterArsenal";
+GRLIB_PARAM_ForcedLoadout = "ForcedLoadout";
+GRLIB_PARAM_FreeLoadout = "FreeLoadout";
+GRLIB_PARAM_Thermic = "Thermic";
+GRLIB_PARAM_MaxFobs = "MaxFobs";
+GRLIB_PARAM_MaxOutpost = "MaxOutpost";
+GRLIB_PARAM_FobType = "FobType";
+GRLIB_PARAM_HuronType = "HuronType";
+GRLIB_PARAM_NavalFobType = "NavalFobType";
+GRLIB_PARAM_FancyInfo = "FancyInfo";
+GRLIB_PARAM_EnableLock = "EnableLock";
+GRLIB_PARAM_EnemyLock = "EnemyLock";
+GRLIB_PARAM_FuelConso = "FuelConso";
+GRLIB_PARAM_MaxGarageSize = "MaxGarageSize";
+GRLIB_PARAM_SectorRadius = "SectorRadius";
+GRLIB_PARAM_SectorDespawn = "SectorDespawn";
+GRLIB_PARAM_BuildingRatio = "BuildingRatio";
+GRLIB_PARAM_KeepScore = "KeepScore";
+GRLIB_PARAM_KeepContext = "KeepContext";
+GRLIB_PARAM_Permissions = "Permissions";
+GRLIB_PARAM_CleanupVehicles = "CleanupVehicles";
+GRLIB_PARAM_AutoSave = "AutoSave";
+GRLIB_PARAM_TFRadioRange = "TFRadioRange";
+GRLIB_PARAM_AdminMenu = "AdminMenu";
+GRLIB_PARAM_RespawnCD = "RespawnCD";
+GRLIB_PARAM_KickIdle = "KickIdle";
+GRLIB_PARAM_TK_mode = "TK_mode";
+GRLIB_PARAM_TK_count = "TK_count";
+GRLIB_PARAM_Persistent = "Persistent";
+GRLIB_PARAM_CommanderMode = "CommanderMode";
 
-	["---", "PLAYER"],
-	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["PAR_Revive", 1],				// PAR revive - [default 1] - values = [0,1,2,3] - Text {Disabled, Everyone can revive, Everyone can revive using Medikit/FAK, Only medics can revive}
-	["PAR_AI_Revive", 7],		// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
-	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
-	["PAR_Grave", 1],				// PAR grave with stuuf in box - [default 1] - values [1,0] - Text {Enabled,Disabled}
-	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
-	["MaxSpawnPoint", 3],			// Spawn Point limit per player. [default 3] - values = {1,2,3,4}
-	["Redeploy", 1],				// Allow Redeploy to all mobile Respawn - [default 1] - values = [0, 1, 2] - Text {Disabled, All, Only FOB}
-	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}
-	["SquadSize", 2],				// AI per squad at startup [default 2]  - values = {0,1,2,3,4,5,6}
-	["MaxSquadSize", 5],			// AI recruitment limit per squad [default 5] - values = {0,1,2,3,4,5,6,7,8,9,10}
-	["PlatoonView",0],				// UI - Show Platoon Overlay
-	["NameTags",0],					// UI - Show player name tags
-	["MapMarkers",0],				// UI - Show team mates on map
+// Categories - can be localized now
+GRLIB_PARAM_GameCatKey = "Game";
+GRLIB_PARAM_PlayerCatKey = "Player";
+GRLIB_PARAM_ArsenalCatKey = "Arsenal";
+GRLIB_PARAM_TemplateCatKey = "Mod Template";
+GRLIB_PARAM_MiscCatKey = "Misc";
+GRLIB_PARAM_RestartCatKey = "Restart";
+GRLIB_PARAM_ExperimentalCatKey = "Experimental";
+GRLIB_PARAM_SystemCatKey = "System";
+GRLIB_PARAM_FobCatKey = "FOB";
 
-	["---", "ARSENAL"],
-	["EnableArsenal", 1],			// Enable the Arsenal [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["FilterArsenal", 1],			// Arsenal Filter Mode [default 1] - values = [0,1,2,3,4] - Text {Disabled,"Soft","Strict","Strict+MOD",Whitelist only}
-	["ForcedLoadout", 1],			// Force player default equipment  [default 0] - values = [0,1,2] - Text {Disabled,Preset1,Preset2}
-	["FreeLoadout", 0],				// All equipment is worthless [default 0] - values = [1,0] - Text {Enabled,Disabled}
-	["Thermic", 1],					// Enable Thermal Equipment [default 1] - values = [2,1,0] - Text {Enabled,Only at night,Disabled}
+// Save navigation keys
+GRLIB_PARAM_ValueKey = "Value";
+GRLIB_PARAM_NameKey = "Name";
+GRLIB_PARAM_OptionLabelKey = "OptionLabels";
+GRLIB_PARAM_OptionValuesKey = "OptionValues";
+GRLIB_PARAM_CategoryKey = "Category";
 
-	["---", "FOB"],
-	["MaxFobs", 3],					// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
-	["MaxOutpost", 4],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
-	["FobType", 0],					// The Startup Fob Vehicle - [default 0] - values = [1,0] - Text {Huron,Truck,Boat}
-	["HuronType", 0],				// The type of Huron - [default 0] - values = [0,1,2] - Text {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"}
-	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2,3] - Text {Disabled, "USS Liberty", "USS Freedom", "Offshare plateform"}
+LRX_Mission_Params = createHashMapFromArray [
+    [GRLIB_PARAM_introductionKey, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_INTRO"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_DeploymentCinematic, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_DEPLOYMENTCAMERA"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_Opforcap, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 200],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_OPFORCAP"],
+        [GRLIB_PARAM_OptionLabelKey, ["100", "200", "300", "400"]],
+        [GRLIB_PARAM_OptionValuesKey, [100, 200, 300, 400]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_Unitcap, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_UNITCAP"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_UNITCAP1",
+            localize "STR_PARAMS_UNITCAP2",
+            localize "STR_PARAMS_UNITCAP3",
+            localize "STR_PARAMS_UNITCAP4",
+            localize "STR_PARAMS_UNITCAP5",
+            localize "STR_PARAMS_UNITCAP6"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0.5, 0.75, 1, 1.25, 1.5, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_Difficulty, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_DIFFICULTY"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DIFFICULTY1",
+            localize "STR_PARAMS_DIFFICULTY2",
+            localize "STR_PARAMS_DIFFICULTY3",
+            localize "STR_PARAMS_DIFFICULTY4",
+            localize "STR_PARAMS_DIFFICULTY5",
+            localize "STR_PARAMS_DIFFICULTY6",
+            localize "STR_PARAMS_DIFFICULTY7",
+            localize "STR_PARAMS_DIFFICULTY8"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0.5, 0.75, 1, 1.25, 1.5, 2, 4, 10]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_Aggressivity, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_AGGRESSIVITY_PARAM"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_AGGRESSIVITY_PARAM0",
+            localize "STR_AGGRESSIVITY_PARAM1",
+            localize "STR_AGGRESSIVITY_PARAM2",
+            localize "STR_AGGRESSIVITY_PARAM3",
+            localize "STR_AGGRESSIVITY_PARAM4"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0.25, 0.5, 1, 2, 4]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_VictoryCondition, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_VICTORY_CONDITION"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_VICTORY_COND0",
+            localize "STR_VICTORY_COND1",
+            localize "STR_VICTORY_COND2",
+            localize "STR_VICTORY_COND3",
+            localize "STR_VICTORY_COND4",
+            localize "STR_VICTORY_COND5",
+            localize "STR_VICTORY_COND6",
+            localize "STR_VICTORY_COND7",
+            localize "STR_VICTORY_COND8",
+            localize "STR_VICTORY_COND9",
+            localize "STR_VICTORY_CONDA"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_HideOpfor, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_OPFORMARK"],
+        [GRLIB_PARAM_OptionLabelKey, ["All", "Fog of War"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_ShowBlufor, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 2],
+        [GRLIB_PARAM_NameKey, localize "STR_BLUFORMARK"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "Player only", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_Weather, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_WEATHER_PARAM"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_WEATHER_PARAM1",
+            localize "STR_WEATHER_PARAM2",
+            localize "STR_WEATHER_PARAM3",
+            localize "STR_WEATHER_PARAM4"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3, 4]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_DayDuration, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_DAYDURATION"],
+        [GRLIB_PARAM_OptionLabelKey, ["0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "7", "10", "20", "30", "40", "50"]],
+        [GRLIB_PARAM_OptionValuesKey, [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 7, 10, 20, 30, 40, 50]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_NightDuration, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_NIGHTDURATION"],
+        [GRLIB_PARAM_OptionLabelKey, ["0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "7", "10", "20", "30", "40", "50"]],
+        [GRLIB_PARAM_OptionValuesKey, [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 7, 10, 20, 30, 40, 50]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_PassiveIncome, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_PASSIVE_INCOME"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_PassiveIncomeDelay, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1200],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_PASSIVE_INCOME_DELAY"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_CLEANUP_PARAM2",
+            localize "STR_CLEANUP_PARAM3",
+            localize "STR_CLEANUP_PARAM4",
+            localize "STR_CLEANUP_PARAM5"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [1200, 1800, 3600, 7200]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_PassiveIncomeAmmount, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 300],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_PASSIVE_INCOME_AMMOUNT"],
+        [GRLIB_PARAM_OptionLabelKey, ["100", "200", "300", "400", "500", "1000", "1500"]],
+        [GRLIB_PARAM_OptionValuesKey, [100, 200, 300, 400, 500, 1000, 1500]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_ResourcesMultiplier, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_RESOURCESMULTIPLIER"],
+        [GRLIB_PARAM_OptionLabelKey, ["x0.25", "x0.5", "x0.75", "x1", "x1.25", "x1.5", "x2", "x3", "x5", "x10", "x20", "x50"]],
+        [GRLIB_PARAM_OptionValuesKey, [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 3, 5, 10, 20, 50]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_HaloJump, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_HALO_PARAM"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_HALO_PARAM1",
+            localize "STR_HALO_PARAM2",
+            localize "STR_HALO_PARAM3",
+            localize "STR_HALO_PARAM4",
+            localize "STR_HALO_PARAM5",
+            localize "STR_HALO_PARAM6"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 5, 10, 15, 20, 30]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_Patrols, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_PATROLS"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_PARAMS_CIVILIANS1",
+            localize "STR_PARAMS_CIVILIANS2",
+            localize "STR_PARAMS_CIVILIANS3"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 0.5, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_Wildlife, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_WILDLIFE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_Civilians, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_CIVILIANS"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_PARAMS_CIVILIANS1",
+            localize "STR_PARAMS_CIVILIANS2",
+            localize "STR_PARAMS_CIVILIANS3"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 0.5, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_AirSupport, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_ENABLE_AIR_SUPPORT"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
+    [GRLIB_PARAM_CivPenalties, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 20],
+        [GRLIB_PARAM_NameKey, localize "STR_CIV_PENALTIES"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "4", "6", "8", "10", "20", "25", "30", "40", "50"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 4, 6, 8, 10, 20, 25, 30, 40, 50]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey]
+    ]],
 
-	["---", "MISC"],
-	["FancyInfo", 2],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
-	["EnableLock", 1],				// Enable Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["EnemyLock", 1],				// Lock Enemy Vehicles - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["FuelConso", 1],				// Vehicles fuel Consumption [default 0] - values = [0,0.5,1,1.5,2] - Text {Disabled,Low, Normal, Medium, High}
-	["MaxGarageSize", 6],			// Virtual Garage vehicle limit [default 6] - values = {0,1,2,3,4,5,6,7,8,9,10}
-	["SectorRadius", 0],			// The size of the sector - [default 0] - values = {0,300,400,500,600,700,800,900,1000,1200,1500};
-	["SectorDespawn", 72], 			// Time for a sector to Despawn if no attackers - [default 72] - values = [(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
-	["BuildingRatio", 1.5],			// AI in Building ratio (CQB) - [default 1] - values = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+    [GRLIB_PARAM_ModPresetWest, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, "A3_BLU"],
+        [GRLIB_PARAM_NameKey, "MOD Preset Friendly"],
+        [GRLIB_PARAM_OptionLabelKey, _list_west select 0],
+        [GRLIB_PARAM_OptionValuesKey, _list_west select 1],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_TemplateCatKey]
+    ]],
+    [GRLIB_PARAM_ModPresetEast, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, "A3_OPF"],
+        [GRLIB_PARAM_NameKey, "MOD Preset Enemy"],
+        [GRLIB_PARAM_OptionLabelKey, _list_east select 0],
+        [GRLIB_PARAM_OptionValuesKey, _list_east select 1],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_TemplateCatKey]
+    ]],
+    [GRLIB_PARAM_ModPresetCiv, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, "MOD Preset Civilian"],
+        [GRLIB_PARAM_OptionLabelKey, ["All", "Friendly", "Enemy"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_TemplateCatKey]
+    ]],
+    [GRLIB_PARAM_ModPresetTaxi, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, "MOD Preset Taxi"],
+        [GRLIB_PARAM_OptionLabelKey, ["All", "Friendly", "Enemy", localize "STR_PARAMS_DISABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_TemplateCatKey]
+    ]],
 
-	["---", "RESTART"],
-	["KeepScore", 0],				// Keep the Basic Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
-	["KeepContext", 0],				// Keep the Extended Players datas (squad, arsenal, garage) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+    [GRLIB_PARAM_Fatigue, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_FATIGUE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_PAR_Revive, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_PAR_REVIVE"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_PARAMS_REVIVE1",
+            localize "STR_PARAMS_REVIVE2",
+            localize "STR_PARAMS_REVIVE3"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_PAR_AI_Revive, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 7],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_PAR_AI_REVIVE"],
+        [GRLIB_PARAM_OptionLabelKey, ["Unlimited", "3", "5", "7", "10", "15", "20"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 3, 5, 7, 10, 15, 20]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_PAR_BleedOut, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 300],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_PAR_BLEEDOUT"],
+        [GRLIB_PARAM_OptionLabelKey, ["100", "200", "300", "400", "500", "600"]],
+        [GRLIB_PARAM_OptionValuesKey, [100, 200, 300, 400, 500, 600]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_PAR_Grave, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_PAR_GRAVE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_DeathChat, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_DEATHCHAT"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_MaxSpawnPoint, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 3],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_SPAWN_MAX"],
+        [GRLIB_PARAM_OptionLabelKey, ["1", "2", "3", "4", "5", "6"]],
+        [GRLIB_PARAM_OptionValuesKey, [1, 2, 3, 4, 5, 6]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_Redeploy, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_REDEPLOY"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAM_REDEPLOY_ALL", localize "STR_PARAM_REDEPLOY_FOB"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_Respawn, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 20],
+        [GRLIB_PARAM_NameKey, localize "STR_RESPAWN"],
+        [GRLIB_PARAM_OptionLabelKey, ["5", "10", "20", "25", "30", "60"]],
+        [GRLIB_PARAM_OptionValuesKey, [5, 10, 20, 25, 30, 60]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_SquadSize, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 2],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_SQUAD_SIZE_START"],
+        [GRLIB_PARAM_OptionLabelKey, ["0", "1", "2", "3", "4", "5", "6"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3, 4, 5, 6]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_MaxSquadSize, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 5],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_SQUAD_SIZE"],
+        [GRLIB_PARAM_OptionLabelKey, ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "20"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_PlatoonView, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_GUI_PLATOON"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_USER_DEF", localize "STR_PARAMS_ENABLED", localize "STR_PARAMS_DISABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_NameTags, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_GUI_NAMETAG"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_USER_DEF", localize "STR_PARAMS_ENABLED", localize "STR_PARAMS_DISABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
+    [GRLIB_PARAM_MapMarkers, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_GUI_TEAM"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_USER_DEF", localize "STR_PARAMS_ENABLED", localize "STR_PARAMS_DISABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey]
+    ]],
 
-	["---", "SYSTEM"],
-	["Permissions", 1],				// Permissions management - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["CleanupVehicles", 1800],		// Cleanup abandoned vehicles outside FOBs - values = {0,900,1800,3600,7200,14400}
-	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
-	["TFRadioRange", 2000],			// The radius of TFAR relay - [default 5000] - values = {Disabled, 1km, 2km, 3km, 4km, 5km, 10km, 15km};
-	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["RespawnCD", 0],				// Cooldown if player respawn too fast - [default 0] - values = [0,xxx] - Text {Disabled,Enabled}
-	["KickIdle", 0],				// Kick player if idle too long - [default 0] - values = {0,900,1200,1800,3600,7200}
-	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
-	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
-	["Persistent", 0],				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+    [GRLIB_PARAM_EnableArsenal, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_ARSENAL"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED", localize "STR_PARAMS_ARSENAL_FOB"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ArsenalCatKey]
+    ]],
+    [GRLIB_PARAM_FilterArsenal, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_LIMIT_ARSENAL"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_LIMIT_ARSENAL_PARAM1",
+            localize "STR_LIMIT_ARSENAL_PARAM2",
+            localize "STR_LIMIT_ARSENAL_PARAM3",
+            localize "STR_LIMIT_ARSENAL_PARAM4",
+            localize "STR_LIMIT_ARSENAL_PARAM5"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3, 4, 5]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ArsenalCatKey]
+    ]],
+    [GRLIB_PARAM_ForcedLoadout, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_FORCE_LOADOUT"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "Preset 1", "Preset 2"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ArsenalCatKey]
+    ]],
+    [GRLIB_PARAM_FreeLoadout, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_FREE_LOADOUT"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ArsenalCatKey]
+    ]],
+    [GRLIB_PARAM_Thermic, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_THERMAL"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "Only at night", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ArsenalCatKey]
+    ]],
 
-	["---", "EXPERIMENTAL"],
-	["CommanderMode", 0]			// Commander Mode - allow commanders to choose sectors to attack
-];
+    [GRLIB_PARAM_MaxFobs, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 3],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_FOBS_COUNT"],
+        [GRLIB_PARAM_OptionLabelKey, ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_FobCatKey]
+    ]],
+    [GRLIB_PARAM_MaxOutpost, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 4],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_OUTPOST_COUNT"],
+        [GRLIB_PARAM_OptionLabelKey, ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_FobCatKey]
+    ]],
+    [GRLIB_PARAM_FobType, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_FOB_TYPE"],
+        [GRLIB_PARAM_OptionLabelKey, ["Container", "Truck", "Boat"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_FobCatKey]
+    ]],
+    [GRLIB_PARAM_HuronType, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_HURON_TYPE"],
+        [GRLIB_PARAM_OptionLabelKey, ["CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_FobCatKey]
+    ]],
+    [GRLIB_PARAM_NavalFobType, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_NAVAL_TYPE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "USS Liberty", "USS Freedom", "Offshore Plateform"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_FobCatKey]
+    ]],
 
-LRX_Mission_Params_Def = [
-	["---", "=========", []],
-	["ModPresetWest", "MOD Preset Friendly", _list_west select 0, _list_west select 1],
-	["ModPresetEast", "MOD Preset Enemy", _list_east select 0, _list_east select 1],
-	["ModPresetCiv",  "MOD Preset Civilian", [
-		"All",
-		"Friendly",
-		"Enemy"
-		]
-	],
-	["ModPresetTaxi",  "MOD Preset Taxi", [
-		"All",
-		"Friendly",
-		"Enemy",
-		localize "STR_PARAMS_DISABLED"
-		]
-	],
-	["Opforcap", localize "STR_PARAMS_OPFORCAP",
-		["100", "200", "300", "400"],
-		[100, 200, 300, 400]
-	],
-	["Unitcap", localize "STR_PARAMS_UNITCAP", [
-		localize "STR_PARAMS_UNITCAP1",
-		localize "STR_PARAMS_UNITCAP2",
-		localize "STR_PARAMS_UNITCAP3",
-		localize "STR_PARAMS_UNITCAP4",
-		localize "STR_PARAMS_UNITCAP5",
-		localize "STR_PARAMS_UNITCAP6"
-		],
-		[0.5, 0.75, 1, 1.25, 1.5, 2]
-	],
-	["Difficulty", localize "STR_PARAMS_DIFFICULTY", [
-		localize "STR_PARAMS_DIFFICULTY1",
-		localize "STR_PARAMS_DIFFICULTY2",
-		localize "STR_PARAMS_DIFFICULTY3",
-		localize "STR_PARAMS_DIFFICULTY4",
-		localize "STR_PARAMS_DIFFICULTY5",
-		localize "STR_PARAMS_DIFFICULTY6",
-		localize "STR_PARAMS_DIFFICULTY7",
-		localize "STR_PARAMS_DIFFICULTY8"
-		],
-		[0.5, 0.75, 1, 1.25, 1.5, 2, 4, 10]
-	],
-	["Aggressivity", localize "STR_AGGRESSIVITY_PARAM", [
-		localize "STR_AGGRESSIVITY_PARAM0",
-		localize "STR_AGGRESSIVITY_PARAM1",
-		localize "STR_AGGRESSIVITY_PARAM2",
-		localize "STR_AGGRESSIVITY_PARAM3",
-		localize "STR_AGGRESSIVITY_PARAM4"
-		],
-		[0.25, 0.5, 1, 2, 4]
-	],
-	["SectorRadius", localize "STR_PARAM_SECTOR_RADIUS",
-		[format ["AUTO (%1)", GRLIB_sector_size], "300", "400", "600", "800", "1000", "1200", "1500", "2000"],
-		[0, 300, 400, 600, 800, 1000, 1200, 1500, 2000]
-	],
-	["TFRadioRange", localize "STR_PARAM_TFAR_RADIUS",
-		[localize "STR_PARAMS_DISABLED", "1 km", "2 km", "3 km", "4 km", "5 km", "7.5 km", "10 km", "15 km"],
-		[0, 1000, 2000, 3000, 4000, 5000, 7500, 10000, 15000]
-	],
-	["DayDuration", localize "STR_PARAMS_DAYDURATION",
-		["0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "7", "10", "20", "30", "40", "50"],
-		[0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 7, 10, 20, 30, 40, 50]
-	],
-	["NightDuration", localize "STR_PARAMS_NIGHTDURATION",
-		["0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "7", "10", "20", "30", "40", "50"],
-		[0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 7, 10, 20, 30, 40, 50]
-	],
-	["BuildingRatio", localize "STR_PARAMS_BUILDING_RATIO",
-		["0.5", "1", "1.5", "2", "2.5", "3"],
-		[0.5, 1, 1.5, 2, 2.5, 3]
-	],
-	["FuelConso", localize "STR_PARAMS_FUEL_CONSO",
-		[localize "STR_PARAMS_DISABLED", "Low", "Normal", "Medium", "High"],
-		[0, 0.5, 1, 1.5, 2]
-	],
-	["FilterArsenal", localize "STR_LIMIT_ARSENAL", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_LIMIT_ARSENAL_PARAM1",
-		localize "STR_LIMIT_ARSENAL_PARAM2",
-		localize "STR_LIMIT_ARSENAL_PARAM3",
-		localize "STR_LIMIT_ARSENAL_PARAM4",
-		localize "STR_LIMIT_ARSENAL_PARAM5"
-		]
-	],
-	["Weather", localize "STR_WEATHER_PARAM", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_WEATHER_PARAM1",
-		localize "STR_WEATHER_PARAM2",
-		localize "STR_WEATHER_PARAM3",
-		localize "STR_WEATHER_PARAM4"
-		]
-	],
-	["VictoryCondition", localize "STR_VICTORY_CONDITION", [
-		localize "STR_VICTORY_COND0",
-		localize "STR_VICTORY_COND1",
-		localize "STR_VICTORY_COND2",
-		localize "STR_VICTORY_COND3",
-		localize "STR_VICTORY_COND4",
-		localize "STR_VICTORY_COND5",
-		localize "STR_VICTORY_COND6",
-		localize "STR_VICTORY_COND7",
-		localize "STR_VICTORY_COND8",
-		localize "STR_VICTORY_COND9",
-		localize "STR_VICTORY_CONDA"
-		]
-	],
-	["ResourcesMultiplier", localize "STR_PARAMS_RESOURCESMULTIPLIER",
-		["x0.25", "x0.5", "x0.75", "x1", "x1.25","x1.5","x2","x3","x5","x10","x20","x50"],
-		[0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 3, 5, 10, 20, 50]
-	],
-	["PAR_Revive", localize "STR_PARAMS_PAR_REVIVE", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_PARAMS_REVIVE1",
-		localize "STR_PARAMS_REVIVE2",
-		localize "STR_PARAMS_REVIVE3"
-		]
-	],
-	["PAR_AI_Revive", localize "STR_PARAMS_PAR_AI_REVIVE",
-		["Unlimited", "3", "5", "7", "10", "15", "20"],
-		[0, 3, 5, 7, 10, 15, 20]
-	],
-	["PAR_BleedOut", localize "STR_PARAMS_PAR_BLEEDOUT",
-		["100", "200", "300", "400", "500", "600"],
-		[100, 200, 300, 400, 500, 600]
-	],
-	["PAR_Grave", localize "STR_PARAMS_PAR_GRAVE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+    [GRLIB_PARAM_FancyInfo, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 2],
+        [GRLIB_PARAM_NameKey, localize "STR_FANCY"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "Info", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey]
+    ]],
+    [GRLIB_PARAM_EnableLock, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_VEH_LOCK"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey]
+    ]],
+    [GRLIB_PARAM_EnemyLock, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_OPFOR_VEH_LOCK"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey]
+    ]],
+    [GRLIB_PARAM_FuelConso, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_FUEL_CONSO"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "Low", "Normal", "Medium", "High"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 0.5, 1, 1.5, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey]
+    ]],
+    [GRLIB_PARAM_MaxGarageSize, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 6],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_GARAGE_SIZE"],
+        [GRLIB_PARAM_OptionLabelKey, ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey]
+    ]],
+    [GRLIB_PARAM_SectorRadius, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_SECTOR_RADIUS"],
+        [GRLIB_PARAM_OptionLabelKey, [format ["AUTO (%1)", GRLIB_sector_size], "300", "400", "600", "800", "1000", "1200", "1500", "2000"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 300, 400, 600, 800, 1000, 1200, 1500, 2000]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey]
+    ]],
+    [GRLIB_PARAM_SectorDespawn, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 72],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_SECTOR_DESPAWN"],
+        [GRLIB_PARAM_OptionLabelKey, ["3", "6", "8", "12", "16", "20"]],
+        [GRLIB_PARAM_OptionValuesKey, [(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey]
+    ]],
+    [GRLIB_PARAM_BuildingRatio, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1.5],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_BUILDING_RATIO"],
+        [GRLIB_PARAM_OptionLabelKey, ["0.5", "1", "1.5", "2", "2.5", "3"]],
+        [GRLIB_PARAM_OptionValuesKey, [0.5, 1, 1.5, 2, 2.5, 3]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey]
+    ]],
 
-	["Respawn", localize "STR_RESPAWN",
-		["5", "10", "20", "25", "30", "60"],
-		[5, 10, 20, 25, 30, 60]
-	],
-	["RespawnCD", localize "STR_RESPAWN_CD",
-		[localize "STR_PARAMS_DISABLED", "4", "5", "6", "7", "8", "9", "10"],
-		[0, 240, 300, 360, 420, 480, 540, 600]
-	],
-	["TK_count", localize "STR_TK_COUNT",
-		["3", "4", "5", "6", "7", "8", "9", "10"],
-		[3, 4, 5, 6, 7, 8, 9, 10]
-	],
-	["CivPenalties", localize "STR_CIV_PENALTIES",
-		[localize "STR_PARAMS_DISABLED", "4", "6", "8", "10", "20", "25", "30", "40", "50"],
-		[0, 4, 6, 8, 10, 20, 25, 30, 40, 50]
-	],
-	["Civilians", localize "STR_PARAMS_CIVILIANS", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_PARAMS_CIVILIANS1",
-		localize "STR_PARAMS_CIVILIANS2",
-		localize "STR_PARAMS_CIVILIANS3"
-		],
-		[0, 0.5, 1, 2]
-	],
-	["Patrols", localize "STR_PARAMS_PATROLS", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_PARAMS_CIVILIANS1",
-		localize "STR_PARAMS_CIVILIANS2",
-		localize "STR_PARAMS_CIVILIANS3"
-		],
-		[0, 0.5, 1, 2]
-	],
-	["HaloJump", localize "STR_HALO_PARAM", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_HALO_PARAM1",
-		localize "STR_HALO_PARAM2",
-		localize "STR_HALO_PARAM3",
-		localize "STR_HALO_PARAM4",
-		localize "STR_HALO_PARAM5",
-		localize "STR_HALO_PARAM6"
-		],
-		[0, 1, 5, 10, 15, 20, 30]
-	],
-	["MaxFobs", localize "STR_PARAM_FOBS_COUNT",
-		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-	],
-	["MaxOutpost", localize "STR_PARAM_OUTPOST_COUNT",
-		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-	],
-	["SquadSize", localize "STR_PARAM_SQUAD_SIZE_START",
-		["0", "1", "2", "3", "4", "5", "6"]
-	],
-	["MaxSquadSize", localize "STR_PARAM_SQUAD_SIZE",
-		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-	],
-	["MaxGarageSize", localize "STR_PARAM_GARAGE_SIZE",
-		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-	],
-	["MaxSpawnPoint", localize "STR_PARAM_SPAWN_MAX",
-		["1", "2", "3", "4", "5", "6"]
-	],
-	["SectorDespawn", localize "STR_PARAM_SECTOR_DESPAWN",
-		["3", "6", "8", "12", "16", "20"],
-		[(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
-	],
-	["CleanupVehicles", localize "STR_CLEANUP_PARAM", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_CLEANUP_PARAM1",
-		localize "STR_CLEANUP_PARAM2",
-		localize "STR_CLEANUP_PARAM3",
-		localize "STR_CLEANUP_PARAM4",
-		localize "STR_CLEANUP_PARAM5"
-		],
-		[0, 900, 1200, 1800, 3600, 7200]
-	],
-	["AutoSave", localize "STR_AUTO_SAVE", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_CLEANUP_PARAM1",
-		localize "STR_CLEANUP_PARAM2",
-		localize "STR_CLEANUP_PARAM3",
-		localize "STR_CLEANUP_PARAM4",
-		localize "STR_CLEANUP_PARAM5"
-		],
-		[0, 900, 1200, 1800, 3600, 7200]
-	],
+    [GRLIB_PARAM_KeepScore, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_KEEP_SCORE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_RestartCatKey]
+    ]],
+    [GRLIB_PARAM_KeepContext, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_KEEP_CONTEXT"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_RestartCatKey]
+    ]],
 
-	["PassiveIncomeDelay", localize "STR_PARAM_PASSIVE_INCOME_DELAY", [
-		localize "STR_CLEANUP_PARAM2",
-		localize "STR_CLEANUP_PARAM3",
-		localize "STR_CLEANUP_PARAM4",
-		localize "STR_CLEANUP_PARAM5"
-		],
-		[1200, 1800, 3600, 7200]
-	],
+    [GRLIB_PARAM_Permissions, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PERMISSIONS_PARAM"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_CleanupVehicles, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1800],
+        [GRLIB_PARAM_NameKey, localize "STR_CLEANUP_PARAM"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_CLEANUP_PARAM1",
+            localize "STR_CLEANUP_PARAM2",
+            localize "STR_CLEANUP_PARAM3",
+            localize "STR_CLEANUP_PARAM4",
+            localize "STR_CLEANUP_PARAM5"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 900, 1200, 1800, 3600, 7200]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_AutoSave, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1800],
+        [GRLIB_PARAM_NameKey, localize "STR_AUTO_SAVE"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_CLEANUP_PARAM1",
+            localize "STR_CLEANUP_PARAM2",
+            localize "STR_CLEANUP_PARAM3",
+            localize "STR_CLEANUP_PARAM4",
+            localize "STR_CLEANUP_PARAM5"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 900, 1200, 1800, 3600, 7200]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_TFRadioRange, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 2000],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_TFAR_RADIUS"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED", "1 km", "2 km", "3 km", "4 km", "5 km", "7.5 km", "10 km", "15 km"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1000, 2000, 3000, 4000, 5000, 7500, 10000, 15000]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_AdminMenu, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, "Enable the Admin Menu"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_RespawnCD, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_RESPAWN_CD"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "4", "5", "6", "7", "8", "9", "10"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 240, 300, 360, 420, 480, 540, 600]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_KickIdle, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_KICK_IDLE"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_CLEANUP_PARAM1",
+            localize "STR_CLEANUP_PARAM2",
+            localize "STR_CLEANUP_PARAM3",
+            localize "STR_CLEANUP_PARAM4",
+            localize "STR_CLEANUP_PARAM5"
+        ]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 900, 1200, 1800, 3600, 7200]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_TK_mode, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_TK_MODE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_TK_MODE_RELAX", localize "STR_TK_MODE_STRICT"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1, 2]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_TK_count, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 4],
+        [GRLIB_PARAM_NameKey, localize "STR_TK_COUNT"],
+        [GRLIB_PARAM_OptionLabelKey, ["3", "4", "5", "6", "7", "8", "9", "10"]],
+        [GRLIB_PARAM_OptionValuesKey, [3, 4, 5, 6, 7, 8, 9, 10]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
+    [GRLIB_PARAM_Persistent, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_PERSISTENT_MODE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey]
+    ]],
 
-	["PassiveIncomeAmmount", localize "STR_PARAM_PASSIVE_INCOME_AMMOUNT",
-		["100", "200", "300", "400", "500", "1000", "1500"],
-		[100, 200, 300, 400, 500, 1000, 1500]
-	],
-
-	["KickIdle", localize "STR_KICK_IDLE", [
-		localize "STR_PARAMS_DISABLED",
-		localize "STR_CLEANUP_PARAM1",
-		localize "STR_CLEANUP_PARAM2",
-		localize "STR_CLEANUP_PARAM3",
-		localize "STR_CLEANUP_PARAM4",
-		localize "STR_CLEANUP_PARAM5"
-		],
-		[0, 900, 1200, 1800, 3600, 7200]
-	],
-
-	["FobType", localize "STR_PARAM_FOB_TYPE", ["Container", "Truck", "Boat"]],
-	["PlatoonView",localize "STR_GUI_PLATOON", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
-	["NameTags",localize "STR_GUI_NAMETAG", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
-	["MapMarkers",localize "STR_GUI_TEAM", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
-	["HuronType", localize "STR_PARAM_HURON_TYPE", ["CH-67 Huron","CH-49 Mohawk","UH-80 Ghost Hawk"]],
-	["NavalFobType", localize "STR_PARAM_NAVAL_TYPE", [localize "STR_PARAMS_DISABLED","USS Liberty","USS Freedom","Offshore Plateform"]],
-	["TK_mode", localize "STR_TK_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_TK_MODE_RELAX",localize "STR_TK_MODE_STRICT"]],
-	["DeploymentCinematic", localize "STR_PARAMS_DEPLOYMENTCAMERA", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Introduction", localize "STR_PARAMS_INTRO", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Fatigue", localize "STR_PARAMS_FATIGUE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Permissions", localize "STR_PERMISSIONS_PARAM", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Wildlife", localize "STR_PARAM_WILDLIFE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["PassiveIncome", localize "STR_PARAM_PASSIVE_INCOME", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Thermic", localize "STR_THERMAL", [localize "STR_PARAMS_DISABLED","Only at night",localize "STR_PARAMS_ENABLED"]],
-	["EnableArsenal", localize "STR_ARSENAL", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_ARSENAL_FOB"]],
-	["EnableLock", localize "STR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["EnemyLock", localize "STR_OPFOR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["AdminMenu", "Enable the Admin Menu", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["HideOpfor", localize "STR_OPFORMARK", ["All","Fog of War"]],
-	["ShowBlufor", localize "STR_BLUFORMARK", [localize "STR_PARAMS_DISABLED","Player only",localize "STR_PARAMS_ENABLED"]],
-	["ForcedLoadout", localize "STR_FORCE_LOADOUT", [localize "STR_PARAMS_DISABLED","Preset 1","Preset 2"]],
-	["FreeLoadout", localize "STR_FREE_LOADOUT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["DeathChat", localize "STR_DEATHCHAT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["FancyInfo", localize "STR_FANCY", [localize "STR_PARAMS_DISABLED","Info",localize "STR_PARAMS_ENABLED"]],
-	["AirSupport", localize "STR_ENABLE_AIR_SUPPORT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Redeploy", localize "STR_REDEPLOY", [localize "STR_PARAMS_DISABLED", localize "STR_PARAM_REDEPLOY_ALL", localize "STR_PARAM_REDEPLOY_FOB"]],
-	["KeepScore", localize "STR_KEEP_SCORE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["KeepContext", localize "STR_KEEP_CONTEXT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Persistent", localize "STR_PERSISTENT_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["CommanderMode", "Commander Mode", [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]]
+    [GRLIB_PARAM_CommanderMode, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, "Commander Mode"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+		[GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ExperimentalCatKey]
+    ]]
 ];
