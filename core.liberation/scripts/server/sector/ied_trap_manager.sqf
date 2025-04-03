@@ -12,13 +12,14 @@ private _hostilecount = 0;
 
 private _ied_type = selectRandom GRLIB_ide_traps;
 private _ied_power = selectRandom [
+	"SatchelCharge_Remote_Ammo",
+	"DemoCharge_Remote_Ammo",
+	"DemoCharge_Remote_Ammo",
+	"DemoCharge_Remote_Ammo",
+	"DemoCharge_Remote_Ammo",	
 	"GrenadeHand",
-	"M_AT",
-	"R_PG7_F",
-	"R_PG32V_F",
-	"R_MRAAWS_HE_F",
+	"GrenadeHand",	
 	"GrenadeHand"
-	//"Rocket_04_HE_F"
 ];
 
 private _sector_pos = markerPos _sector;
@@ -45,19 +46,19 @@ if (count _ide_pos > 0) then {
 		sleep (1 + floor random 3);
 		_hostilecount = [_ide_pos, _activation_radius] call F_getNearbyPlayers;
 		if (count _hostilecount >= _infantry_trigger) then {
-			sleep (floor random 3);
+			sleep (floor random 4);
 			[_ied_obj] spawn {
 				params ["_obj"];
-				sleep (floor random 2);
+				sleep (floor random 3);
 				for "_i" from 1 to 5 do {
 					playSound3D ["A3\Missions_F_Oldman\Data\sound\beep.ogg", _obj, false, ATLToASL (getPosATL _obj), 4, 1, 100];
 					sleep 0.5;
 				};
 			};
 			sleep 2;
-			_round = _ied_power createVehicle _ide_pos;
-			[_round, -90, 0] call BIS_fnc_setPitchBank;
-			_round setVelocity [0,0,-100];
+			private _explo = _ied_power createVehicle _ide_pos;
+			_explo setDamage 1;
+
 			stats_ieds_detonated = stats_ieds_detonated + 1;
 			publicVariable "stats_ieds_detonated";
 			_goes_boom = true;
