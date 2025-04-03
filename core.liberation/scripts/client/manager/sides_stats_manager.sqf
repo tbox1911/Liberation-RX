@@ -1,4 +1,4 @@
-waitUntil { sleep 1; !isNil "blufor_sectors" };
+waitUntil { sleep 1; !isNil "A3W_sectors_in_use" };
 
 private ["_msg", "_all_sectors", "_sector", "_list", "_opf", "_res", "_mission"];
 private	_cleanup_counter = 0;
