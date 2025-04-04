@@ -454,18 +454,7 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 };
 
 {
-	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then {
-		GRLIB_all_outposts pushBack _x;
-	} else {
-		private _min_sector_dist = round ((GRLIB_capture_size + GRLIB_fob_range) * 1.5);
-		private _sector = [_min_sector_dist, _x] call F_getNearestSector;
-		if (_sector != "") then {
-			sectors_allSectors = sectors_allSectors - [_sector];
-			blufor_sectors = blufor_sectors - [_sector];
-			sectors_military = sectors_military - [_sector];
-			deleteMarker _sector;
-		};
-	};
+	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
 
 if (count GRLIB_permissions == 0) then {
