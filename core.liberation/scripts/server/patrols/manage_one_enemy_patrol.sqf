@@ -13,7 +13,7 @@ private _opfor_grp = grpNull;
 private _usable_sectors = [];
 private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors) call BIS_fnc_arrayShuffle;
 {
-	_player_max_radius = (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0);
+	_player_max_radius = (count ([markerPos _x, GRLIB_spawn_min] call F_getNearbyPlayers) > 0);
 	_player_min_radius = (count ([markerPos _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0);
 	if (_player_max_radius && _player_min_radius) exitWith { _usable_sectors pushback _x };
 	sleep 0.1;
