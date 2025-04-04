@@ -2,7 +2,7 @@
 
 // Weapons + Equipements (uniforms, etc..)
 private _A3_Items = [
-	"acc_","hgun_","arifle_","srifle_","MMG_","LMG_","SMG_","bipod_","launch_","optic_","muzzle_",
+	"acc_","hgun_","arifle_","srifle_","MMG_","LMG_","SMG_","bipod_","launch_","optic_","muzzle_","suppressor_", 
 	"Laserdesignator_","H_Bandanna_","H_Beret_","H_Booniehat_","H_Cap_","H_Hat_","H_Helmet","H_MilCap_",
 	"H_PASGT_","U_B_","U_BG_","U_C_","U_I_","U_O_","V_","NVGoggles", "lxWS_H_"
 ];
