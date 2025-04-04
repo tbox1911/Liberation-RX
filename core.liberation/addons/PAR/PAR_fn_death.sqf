@@ -9,6 +9,7 @@ if (_unit == player) then {
 
 	// Grave + Save Stuff
 	private _pos = getPosATL _unit;
+	private _dir = getDir _unit;
 	if (PAR_grave == 1 && isNull objectParent player &&	!([_unit, "LHD", GRLIB_capture_size] call F_check_near) && (_pos select 2) <= 2 && !(surfaceIsWater _pos)) then {
 
 		// Clean body
@@ -20,8 +21,9 @@ if (_unit == player) then {
 		[PAR_grave_box, PAR_backup_loadout] call F_setCargo;
 
 		// create grave
-		private _grave = (selectRandom PAR_graves) createVehicle _pos;
+		private _grave = createVehicle [(selectRandom PAR_graves), zeropos, [], 0, "CAN_COLLIDE"];
 		_grave allowDamage false;
+		_grave setDir _dir;
 		_grave setPosATL _pos;
 		_grave setvariable ["PAR_grave_message", format ["- R.I.P - %1", name player], true];
 
