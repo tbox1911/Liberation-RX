@@ -34,12 +34,12 @@ taxi_dest = {
 	_vehicle engineOn true;
 
 	(driver _vehicle) doMove _dest;
+	sleep 30;
 
 	private _landing_range = 150;
 	private _stop = time + (5 * 60); // wait 5min max
 	private _alt_old = 999;
 
-	sleep 5;
 	waitUntil {
 		sleep 1;
 		if (!isNil "GRLIB_taxi_helipad") then {
