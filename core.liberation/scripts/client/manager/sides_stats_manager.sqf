@@ -17,10 +17,10 @@ private _stats_marker = [
 while { true } do {
 	_msg = "";
 	if (count A3W_sectors_in_use > 0) then {
-		_all_sectors = (A3W_sectors_in_use select {((markerPos _x) distance2D player) <= GRLIB_capture_size});
+		_all_sectors = allMapMarkers select {_x select [0,13] == "side_mission_" && (markerPos _x) distance2D player <= GRLIB_capture_size};
 		_sector = [_all_sectors, player] call F_nearestPosition;
 		if (_sector != "") then {
-			_mission = _sector select [13];
+			_mission = _sector select [13];		// strip marker prefix
 			_opf = 0;
 			// Resistance
 			if (_mission == "STR_RESISTANCE" && !isNil "GRLIB_A3W_Mission_MR_OPFOR") then {
