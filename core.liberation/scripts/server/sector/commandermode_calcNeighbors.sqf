@@ -105,7 +105,7 @@ GRLIB_ActivateCommanderSector = {
         if (active_sectors isEqualTo [] && !(GRLIB_AvailAttackSectors isEqualTo [])) then {
             _closestMarker = "";
             _closestDistance = 9999;
-            _nearSectorsActivated = 100;
+            _nearSectorsActivated = GRLIB_Commander_radius;
             {
                 _distance = (getMarkerPos _x) distance2D _pos;
                 if ((_distance < _closestDistance) && {(_distance < 20)}) then {

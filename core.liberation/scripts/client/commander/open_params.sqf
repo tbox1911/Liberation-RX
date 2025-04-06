@@ -98,6 +98,12 @@ save_changes = 0;
 			_newValue = _values select _lbCurSel;
 			_saveHash set [GRLIB_PARAM_ValueKey, _newValue];
 			GRLIB_LRX_params set [_key, _saveHash];')];
+
+		_description = _hash get GRLIB_PARAM_DescriptionKey;
+		if (!isNil "_description") then {
+			_control ctrlSetTooltip _description;
+		};
+
 		_control ctrlCommit 0;
 		_idx = _idx + 1;
 	} forEach _paramArray;

@@ -41,6 +41,38 @@ GRLIB_WS_enabled = isClass(configFile >> "CfgPatches" >> "data_f_lxWS"); // Retu
 GRLIB_ASZ_enabled = isClass(configFile >> "CfgPatches" >> "mas_itl_lite_weapons"); // Returns true if Italian ASZ is enabled
 GRLIB_SMA_enabled = isClass(configFile >> "CfgPatches" >> "SMA_CMORE"); // Returns true if Specialist Military Arms (SMA) is enabled
 
+GRLIB_enabledPrefix = [
+	["CP_", GRLIB_CUP_enabled],
+	["EJW_", GRLIB_EJW_enabled],
+	["R3F_", GRLIB_R3F_enabled],
+	["RHS_USAF", GRLIB_RHSUS_enabled],
+	["RHS_AFRF", GRLIB_RHSAF_enabled],
+	["GM_", GRLIB_GM_enabled],
+	["OPTRE", GRLIB_OPTRE_enabled],
+	["WS_", GRLIB_WS_enabled],
+	["SOG_", GRLIB_SOG_enabled],
+	["CWR3_", GRLIB_CWR_enabled],
+	["3CB", GRLIB_3CB_enabled],
+	["UNS_", GRLIB_UNS_enabled],
+	["IFA_", GRLIB_IFA_enabled],
+	["AMF_", GRLIB_AMF_enabled],
+	["ASZ_", GRLIB_ASZ_enabled]
+];
+
+// Function to check if required mod is loaded for faction
+GRLIB_Template_Modloaded = {
+	params ["_faction"];
+	_return = false;
+	if (GRLIB_enabledPrefix findIf {
+		!(_x#1) && {([(_x#0), _faction] call F_startsWith)}
+	} == -1) then {
+		if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
+			_return = blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _X)} == -1;
+		};
+	};
+	_return;
+};
+
 // Classename MOD source
 [] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";
 LRX_mod_list_west = [];
@@ -98,10 +130,10 @@ if (GRLIB_param_wipe_params == 1 && isServer) then {
 
 // Load Mission Parameters
 if (isServer) then {
-	GRLIB_LRX_params = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
+	_savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
 	
-	if ( isNil "GRLIB_LRX_params" ) then {
-		_new_params = +LRX_Mission_Params;
+	if ( isNil "_savedParams" ) then {
+		_savedParams = +LRX_Mission_Params;
 		_v1Params = profileNamespace getVariable [GRLIB_paramsV1_save_key, nil];
 		if (!isNil "_v1Params") then {
 			// Convert V1 to V2
@@ -113,20 +145,37 @@ if (isServer) then {
 					// Dont add obsolete params
 					if (!isNil "_newParamHash") then {
 						_defaultValue = _newParamHash get GRLIB_PARAM_ValueKey;
-						if ((typeName _value) isEqualTo (typeName _defaultValue)) then {
+						if ((typeName _value) isEqualTo (typeName _defaultValue) && {_value in (_newParamHash get GRLIB_PARAM_OptionValuesKey)}) then {
 							// Only value needs to be saved
 							_updateHash = createHashMap;
 							_updateHash set [GRLIB_PARAM_ValueKey, _value];
-							_new_params set [_key, _updateHash];
+							_savedParams set [_key, _updateHash];
 						};
 					};
 				};
 			} forEach _v1Params;
 		};
 		// Trim - Only value needs to be saved
-		GRLIB_LRX_params = [_new_params] call _Trim_Params;
+		GRLIB_LRX_params = [_savedParams] call _Trim_Params;
 		profileNamespace setVariable [GRLIB_paramsV2_save_key, GRLIB_LRX_params];
 		saveProfileNamespace;
+	} else {
+		private _verifiedParams = createHashMapFromArray (_savedParams apply
+		{
+			_key = _x;
+			_value = _y get GRLIB_PARAM_ValueKey;
+			_defParamHash = LRX_Mission_Params get _key;
+			if (!isNil "_defParamHash") then {
+				_defaultValue = _defParamHash get GRLIB_PARAM_ValueKey;
+				if (!((typeName _value) isEqualTo (typeName _defaultValue)) || {!(_value in (_defParamHash get GRLIB_PARAM_OptionValuesKey))}) then {
+					_value = _defaultValue;
+				};
+				[_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _value]]];
+			} else {
+				nil;
+			};
+		});
+		GRLIB_LRX_params = _verifiedParams;
 	};
 	publicVariable "GRLIB_LRX_params";
 } else {
@@ -212,7 +261,8 @@ GRLIB_air_support = [GRLIB_PARAM_AirSupport] call lrx_getParamValue;
 GRLIB_despawn_tickets = [GRLIB_PARAM_SectorDespawn] call lrx_getParamValue;
 GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
 GRLIB_victory_condition = [GRLIB_PARAM_VictoryCondition] call lrx_getParamValue;
-GRLIB_Commander_mode = [GRLIB_PARAM_CommanderMode] call lrx_getParamValue;
+GRLIB_Commander_mode = [GRLIB_PARAM_CommanderModeEnabled] call lrx_getParamValue;
+GRLIB_Commander_radius = [GRLIB_PARAM_CommanderModeRadius] call lrx_getParamValue;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
@@ -284,21 +334,14 @@ private _startsWithMultipleInv = {
 	_ret;
 };
 
-if ( !GRLIB_CUP_enabled && ["CP_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_EJW_enabled && ["EJW_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_R3F_enabled && ["R3F_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_RHSUS_enabled && ["RHS_USAF", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_RHSAF_enabled && ["RHS_AFRF", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_GM_enabled && ["GM_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_OPTRE_enabled && ["OPTRE", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_WS_enabled && ["WS_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_SOG_enabled && ["SOG_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_CWR_enabled && ["CWR3_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_3CB_enabled && ["3CB", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_UNS_enabled && ["UNS_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_IFA_enabled && ["IFA_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_AMF_enabled && ["AMF_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
-if ( !GRLIB_ASZ_enabled && ["ASZ_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ([GRLIB_mod_west] call GRLIB_Template_Modloaded) then { 
+	if !([GRLIB_mod_east] call GRLIB_Template_Modloaded) then {
+		abort_loading = true 
+	};
+} else { 
+	abort_loading = true 
+};
+
 
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
@@ -338,23 +381,23 @@ switch (GRLIB_naval_type) do {
 // Transfom true/false Param
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
 if ( GRLIB_ACE_medical_enabled ) then { PAR_revive = 0; GRLIB_fatigue = 1 };		// Disable PAR/Fatigue if ACE Medical is present
-if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
-if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };
-if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };
-if ( GRLIB_admin_menu == 1 ) then { GRLIB_admin_menu = true } else { GRLIB_admin_menu = false };
-if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
-if ( GRLIB_permission_vehicles == 1 ) then { GRLIB_permission_vehicles = true } else { GRLIB_permission_vehicles = false };
-if ( GRLIB_permission_enemy == 1 ) then { GRLIB_permission_enemy = true } else { GRLIB_permission_enemy = false };
-if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };
-if ( GRLIB_permissions_param == 1 ) then { GRLIB_permissions_param = true } else { GRLIB_permissions_param = false };
-if ( GRLIB_use_whitelist == 1 ) then { GRLIB_use_whitelist = true } else { GRLIB_use_whitelist = false };
-if ( GRLIB_use_exclusive == 1 ) then { GRLIB_use_exclusive = true } else { GRLIB_use_exclusive = false };
-if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };
-if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
-if ( GRLIB_server_persistent == 1 ) then { GRLIB_server_persistent = true } else { GRLIB_server_persistent = false };
-if ( GRLIB_air_support == 1 ) then { GRLIB_air_support = true } else { GRLIB_air_support = false };
-if ( GRLIB_free_loadout == 1 ) then { GRLIB_free_loadout = true } else { GRLIB_free_loadout = false };
-if ( GRLIB_Commander_mode == 1 ) then { GRLIB_Commander_mode = true } else { GRLIB_Commander_mode = false };
+GRLIB_fatigue = (GRLIB_fatigue == 1);
+GRLIB_introduction = (GRLIB_introduction == 1);
+GRLIB_deployment_cinematic = (GRLIB_deployment_cinematic == 1);
+GRLIB_admin_menu = (GRLIB_admin_menu == 1);
+GRLIB_hide_opfor = (GRLIB_hide_opfor == 1);
+GRLIB_permission_vehicles = (GRLIB_permission_vehicles == 1);
+GRLIB_permission_enemy = (GRLIB_permission_enemy == 1);
+GRLIB_passive_income = (GRLIB_passive_income == 1);
+GRLIB_permissions_param = (GRLIB_permissions_param == 1);
+GRLIB_use_whitelist = (GRLIB_use_whitelist == 1);
+GRLIB_use_exclusive = (GRLIB_use_exclusive == 1);
+GRLIB_opfor_english = (GRLIB_opfor_english == 1);
+GRLIB_disable_death_chat = (GRLIB_disable_death_chat == 1);
+GRLIB_server_persistent = (GRLIB_server_persistent == 1);
+GRLIB_air_support = (GRLIB_air_support == 1);
+GRLIB_free_loadout = (GRLIB_free_loadout == 1);
+GRLIB_Commander_mode = (GRLIB_Commander_mode == 1);
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
