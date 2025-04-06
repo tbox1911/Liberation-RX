@@ -1,6 +1,6 @@
 params ["_vehicle"];
 
-if !(_vehicle isKindOf "LandVehicle") exitWith {};
+if !(_vehicle isKindOf "AllVehicles") exitWith {};
 if !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith {};
 if (surfaceIsWater (getPos _vehicle)) exitWith {};
 

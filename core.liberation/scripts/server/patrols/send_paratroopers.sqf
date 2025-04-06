@@ -44,7 +44,6 @@ _vehicle setVariable ["GRLIB_battlegroup", true];
 	_x setVariable ["GRLIB_counter_TTL", round(time + 900)];
 	_x setVariable ["GRLIB_battlegroup", true];
 } foreach (units _pilot_group);
-[_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
 
 private _cargo_seat_free = _vehicle emptyPositions "Cargo";
 if (_cargo_seat_free == 0) exitWith {
@@ -53,6 +52,7 @@ if (_cargo_seat_free == 0) exitWith {
 };
 if (_cargo_seat_free > 10) then { _cargo_seat_free = 10 };
 
+[_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
 private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
@@ -66,6 +66,7 @@ _vehicle lock 0;
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 	_x setVariable ["GRLIB_battlegroup", true];
+	sleep 0.1;
 } foreach (units _para_group);
 (units _para_group) allowGetIn true;
 (units _para_group) orderGetIn true;

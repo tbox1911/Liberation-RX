@@ -49,48 +49,50 @@ private _grp = createGroup [_side, true];
 	_unit setSkill 0.65;
 	_unit allowFleeing 0;
 
-	if (_side == GRLIB_side_enemy) then {
-		_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-		if (typeOf _vehicle in militia_vehicles) then {
-			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
+	// Side
+	switch (_side) do {
+		case GRLIB_side_enemy: {
+			_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
+			if (typeOf _vehicle in militia_vehicles) then {
+				_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
+				[_path, _unit] call F_getTemplateFile;
+				[_unit] spawn reammo_ai;
+			};
+		};
+		case GRLIB_side_friendly: {
+			_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
 			[_path, _unit] call F_getTemplateFile;
 			[_unit] spawn reammo_ai;
 		};
+		case GRLIB_side_civilian: {
+			_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
+			_unit setVariable ['GRLIB_can_speak', true, true];
+			_unit setVariable ["GRLIB_is_civilian", true, true];
+		};
 	};
 
-	if (_side == GRLIB_side_friendly) then {
-		_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-		_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
-		[_path, _unit] call F_getTemplateFile;
-		[_unit] spawn reammo_ai;
-	};
-
-	if (_side == GRLIB_side_civilian) then {
-		_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
-		_unit setVariable ['GRLIB_can_speak', true, true];
-		_unit setVariable ["GRLIB_is_civilian", true, true];
-	};
-
+	// Roles
 	private _role = _vehicle_roles select _forEachIndex;
-    if (_role == "driver") then {
-        _unit assignAsDriver _vehicle;
-        _unit moveInDriver _vehicle;
-    };
-    if (_role == "commander") then {
-        _unit assignAsCommander _vehicle;
-        _unit moveInCommander _vehicle;
-    };
-    if (_role == "gunner") then {
-        _unit assignAsGunner _vehicle;
-        _unit moveInGunner _vehicle;
-    };
-    // if (_role == "turret") then {
-    //     _unit assignAsTurret _vehicle;
-    //     _unit moveInTurret [_vehicle, [1]];
-    // };
-	// sleep 0.1;
+	switch (_role) do {
+		case "driver": {
+			_unit assignAsDriver _vehicle;
+			_unit moveInDriver _vehicle;
+		};
+		case "commander": {
+			_unit assignAsCommander _vehicle;
+			_unit moveInCommander _vehicle;
+		};
+		case "gunner": {
+			_unit assignAsGunner _vehicle;
+			_unit moveInGunner _vehicle;
+		};
+	};
+	sleep 0.1;
 } forEach _vehicle_roles;
+sleep 1;
 
+{ if (isNull objectParent _x) then {deleteVehicle _x} } forEach (units _grp);
 (units _grp) allowGetIn true;
 (units _grp) orderGetIn true;
 (_grp) addVehicle _vehicle;
