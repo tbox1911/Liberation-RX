@@ -225,7 +225,7 @@ if (_building_ai_max > 0) then {
 	if (_sector in sectors_bigtown) then { _building_ai_max = _building_ai_max + 12 };
 	private _rnd = [1,1,2,2,2,2,3,3,3,4];
 	while { _building_ai_max > 0 } do {
-		_max_units = (selectRandom _rndciv) min _building_ai_max;
+		_max_units = (selectRandom _rnd) min _building_ai_max;
 		private _building_ai_created = ([_infsquad1, _max_units, _sector_pos, _building_range, objNull, false] call F_spawnBuildingSquad);
 		if (count _building_ai_created == 0) exitWith {};
 		_managed_units = _managed_units + _building_ai_created;

@@ -1,5 +1,7 @@
 params [
-	"_infsquad", "_building_ai_max", "_sectorpos",
+	"_infsquad", 
+	"_building_ai_max",
+	"_sectorpos",
 	["_building_range", GRLIB_capture_size],
 	["_building", objNull],
 	["_mission_ai", true]
