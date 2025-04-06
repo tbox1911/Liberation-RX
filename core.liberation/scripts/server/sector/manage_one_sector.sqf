@@ -78,7 +78,7 @@ if (_sector in sectors_capture) then {
 	if (floor random 100 > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 	if (floor random 100 > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 	_spawncivs = true;
-	_building_ai_max = 8;
+	_building_ai_max = 10;
 	_building_range = 200;
 	_ied_count = (3 + (floor random 4));
 };
@@ -95,7 +95,7 @@ if (_sector in sectors_military) then {
 	if (floor random 100 > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 	if (floor random 100 > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 	_spawncivs = false;
-	_building_ai_max = 6;
+	_building_ai_max = 8;
 	_building_range = 150;
 	_ied_count = (3 + (floor random 3));
 	_uavs_count = 5;
@@ -222,20 +222,29 @@ if (count _vehtospawn > 0) then {
 if (opforcap_max) then { _building_ai_max = 0 };
 if (_building_ai_max > 0) then {
 	_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
-	_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_spawnBuildingSquad);
+	if (_sector in sectors_bigtown) then { _building_ai_max = _building_ai_max + 12 };
+	private _rnd = [1,1,2,2,2,2,3,3,3,4];
+	while { _building_ai_max > 0 } do {
+		_max_units = (selectRandom _rndciv) min _building_ai_max;
+		private _building_ai_created = ([_infsquad1, _max_units, _sector_pos, _building_range, objNull, false] call F_spawnBuildingSquad);
+		if (count _building_ai_created == 0) exitWith {};
+		_managed_units = _managed_units + _building_ai_created;
+		_building_ai_max = _building_ai_max - _max_units;
+		sleep 0.3;
+	};
 };
 
 // Create civilians
 if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 	private _nbcivs = round ((5 + (floor random 6)) * GRLIB_civilian_activity);
-	private _rndciv = [1,1,1,1,2,2,3];
 	if (_sector in sectors_bigtown) then { _nbcivs = _nbcivs + 12 };
+	private _rnd = [1,1,1,1,2,2,3];
 	while { _nbcivs > 0 } do {
-		_maxcivs = (selectRandom _rndciv) min _nbcivs;
-		_grp = [_sector_pos, _maxcivs] call F_spawnCivilians;
+		_max_units = (selectRandom _rnd) min _nbcivs;
+		_grp = [_sector_pos, _max_units] call F_spawnCivilians;
 		[_grp, _sector_pos] spawn civilian_ai;
 		_managed_units = _managed_units + (units _grp);
-		_nbcivs = _nbcivs - _maxcivs;
+		_nbcivs = _nbcivs - _max_units;
 		sleep 0.3;
 	};
 };
