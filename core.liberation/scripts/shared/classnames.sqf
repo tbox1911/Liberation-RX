@@ -8,8 +8,8 @@ zeropos = [0,0,10000];
 
 // All Object classname used in LRX must be declared here
 
-// *** DEFAULT ***
-[] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_classnames.sqf"];
+// *** LRX DEFAULT BUILDINGS CLASSNAMES ***
+[] call compileFinal preprocessFileLineNumbers "scripts\shared\default_building_classnames.sqf";
 
 // *** FRIENDLIES ***
 _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];

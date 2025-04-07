@@ -1,4 +1,4 @@
-params ["_path", ["_args", objNull]];
+params ["_path", ["_args", objNull], ["_message", true]];
 if (isNil "_path") exitWith {};
 
 private _ret = true;
@@ -15,7 +15,7 @@ if (_template_name in (LRX_mod_list_west + LRX_mod_list_east)) then {
 	};
 };
 
-if (!_ret) then {
+if (!_ret && _message) then {
 	private _msg = format ["--- LRX Error: File %1 not found.", _path];
 	diag_log _msg;
 	systemchat _msg;

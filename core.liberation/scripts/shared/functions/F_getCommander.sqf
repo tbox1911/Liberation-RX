@@ -1,3 +1,3 @@
 params ["_unit"];
-private _commanderobj = allPlayers select {( typeOf _x == commander_classname )};
-(_unit in _commanderobj);
+// Fix error and add lazy evaluation for better performance
+(GRLIB_active_commander isEqualTo _unit || {_unit in (allPlayers select {( typeOf _x isEqualTo commander_classname )})});
