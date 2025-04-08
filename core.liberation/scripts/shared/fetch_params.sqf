@@ -62,14 +62,12 @@ GRLIB_enabledPrefix = [
 // Function to check if required mod is loaded for faction
 GRLIB_Template_Modloaded = {
 	params ["_faction"];
-	_return = false;
-	if (GRLIB_enabledPrefix findIf {
-		!(_x#1) && {([(_x#0), _faction] call F_startsWith)}
-	} == -1) then {
-		if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
-			_return = blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _X)} == -1;
-		};
-	};
+	_return = true;
+	// if (GRLIB_enabledPrefix findIf {!(_x#1) && {([(_x#0), _faction] call F_startsWith)}} == -1) then {
+	// 	if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
+	// 		_return = blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _X)} == -1;
+	// 	};
+	// };
 	_return;
 };
 
@@ -111,7 +109,7 @@ GRLIB_param_wipe_context = ["WipeContext",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
 GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 
-_Trim_Params = {
+private _trim_Params = {
 	params["_params"];
 	_trimmed = createHashMapFromArray (_params apply
 	{
@@ -123,7 +121,7 @@ _Trim_Params = {
 
 // Reset LRX Settings
 if (GRLIB_param_wipe_params == 1 && isServer) then {
-	profileNamespace setVariable [GRLIB_paramsV2_save_key, [LRX_Mission_Params] call _Trim_Params];
+	profileNamespace setVariable [GRLIB_paramsV2_save_key, [LRX_Mission_Params] call _trim_Params];
 	saveProfileNamespace;
 };
 
@@ -138,9 +136,9 @@ if (isServer) then {
 		if (!isNil "_v1Params") then {
 			// Convert V1 to V2
 			{
-				_key = _x#0;
+				_key = _x select 0;
 				if (!(_key isEqualTo GRLIB_PARAM_separatorKey)) then {
-					_value = _x#1;
+					_value = _x select 1;
 					_newParamHash = LRX_Mission_Params get _key;
 					// Dont add obsolete params
 					if (!isNil "_newParamHash") then {
@@ -156,7 +154,7 @@ if (isServer) then {
 			} forEach _v1Params;
 		};
 		// Trim - Only value needs to be saved
-		GRLIB_LRX_params = [_savedParams] call _Trim_Params;
+		GRLIB_LRX_params = [_savedParams] call _trim_Params;
 		profileNamespace setVariable [GRLIB_paramsV2_save_key, GRLIB_LRX_params];
 		saveProfileNamespace;
 	} else {
