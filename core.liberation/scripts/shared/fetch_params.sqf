@@ -42,30 +42,30 @@ GRLIB_ASZ_enabled = isClass(configFile >> "CfgPatches" >> "mas_itl_lite_weapons"
 GRLIB_SMA_enabled = isClass(configFile >> "CfgPatches" >> "SMA_CMORE"); // Returns true if Specialist Military Arms (SMA) is enabled
 
 GRLIB_enabledPrefix = [
-	["CP_", GRLIB_CUP_enabled],
-	["EJW_", GRLIB_EJW_enabled],
-	["R3F_", GRLIB_R3F_enabled],
-	["RHS_USAF", GRLIB_RHSUS_enabled],
-	["RHS_AFRF", GRLIB_RHSAF_enabled],
-	["GM_", GRLIB_GM_enabled],
-	["OPTRE", GRLIB_OPTRE_enabled],
-	["WS_", GRLIB_WS_enabled],
-	["SOG_", GRLIB_SOG_enabled],
-	["CWR3_", GRLIB_CWR_enabled],
 	["3CB", GRLIB_3CB_enabled],
-	["UNS_", GRLIB_UNS_enabled],
-	["IFA_", GRLIB_IFA_enabled],
 	["AMF_", GRLIB_AMF_enabled],
-	["ASZ_", GRLIB_ASZ_enabled]
+	["ASZ_", GRLIB_ASZ_enabled],
+	["CP_", GRLIB_CUP_enabled],
+	["CWR3_", GRLIB_CWR_enabled],
+	["EJW_", GRLIB_EJW_enabled],
+	["GM_", GRLIB_GM_enabled],
+	["IFA_", GRLIB_IFA_enabled],
+	["OPTRE", GRLIB_OPTRE_enabled],
+	["R3F_", GRLIB_R3F_enabled],
+	["RHS_AFRF", GRLIB_RHSAF_enabled],
+	["RHS_USAF", GRLIB_RHSUS_enabled],
+	["SOG_", GRLIB_SOG_enabled],
+	["UNS_", GRLIB_UNS_enabled],
+	["WS_", GRLIB_WS_enabled]
 ];
 
 // Function to check if required mod is loaded for faction
 GRLIB_Template_Modloaded = {
 	params ["_faction"];
-	_return = true;
-	// if (GRLIB_enabledPrefix findIf {!(_x#1) && {([(_x#0), _faction] call F_startsWith)}} == -1) then {
+	private _return = true;
+	// if (GRLIB_enabledPrefix findIf {!(_x select 1) && {([(_x select 0), _faction] call F_startsWith)}} == -1) then {
 	// 	if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
-	// 		_return = blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _X)} == -1;
+	// 		_return = (blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
 	// 	};
 	// };
 	_return;
