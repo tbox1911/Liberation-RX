@@ -61,13 +61,20 @@ GRLIB_enabledPrefix = [
 
 // Function to check if required mod is loaded for faction
 GRLIB_Template_Modloaded = {
-	params ["_faction"];
-	private _return = true;
-	// if (GRLIB_enabledPrefix findIf {!(_x select 1) && {([(_x select 0), _faction] call F_startsWith)}} == -1) then {
-	// 	if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
-	// 		_return = (blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
-	// 	};
-	// };
+	params ["_faction","_side"];
+	private _return = false;
+	if (GRLIB_enabledPrefix findIf {!(_x select 1) && {([(_x select 0), _faction] call F_startsWith)}} == -1) then {
+		if (_side == "west") then {
+			if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
+				_return = (blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
+			};
+		} else {
+			//Check east template and militia classname instead
+			if ([format ["mod_template\%1\classnames_east.sqf", _faction], objNull, false] call F_getTemplateFile) then {
+				_return = (militia_squad findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
+			};
+		};
+	};
 	_return;
 };
 
@@ -119,63 +126,72 @@ private _trim_Params = {
 };
 
 
-// Reset LRX Settings
-if (GRLIB_param_wipe_params == 1 && isServer) then {
-	profileNamespace setVariable [GRLIB_paramsV2_save_key, [LRX_Mission_Params] call _trim_Params];
-	saveProfileNamespace;
-};
-
-
-// Load Mission Parameters
+diag_log "--- LRX: Loading settings ---";
+// Load Mission settings
 if (isServer) then {
-	_savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
-	
-	if ( isNil "_savedParams" ) then {
-		_savedParams = +LRX_Mission_Params;
-		_v1Params = profileNamespace getVariable [GRLIB_paramsV1_save_key, nil];
-		if (!isNil "_v1Params") then {
-			// Convert V1 to V2
-			{
-				_key = _x select 0;
-				if (!(_key isEqualTo GRLIB_PARAM_separatorKey)) then {
-					_value = _x select 1;
-					_newParamHash = LRX_Mission_Params get _key;
-					// Dont add obsolete params
-					if (!isNil "_newParamHash") then {
-						_defaultValue = _newParamHash get GRLIB_PARAM_ValueKey;
-						if ((typeName _value) isEqualTo (typeName _defaultValue) && {_value in (_newParamHash get GRLIB_PARAM_OptionValuesKey)}) then {
-							// Only value needs to be saved
-							_updateHash = createHashMap;
-							_updateHash set [GRLIB_PARAM_ValueKey, _value];
-							_savedParams set [_key, _updateHash];
+	// Reset LRX Settings
+	if (GRLIB_param_wipe_params == 1) then {
+		diag_log "--- LRX: settings resetting ---";
+		GRLIB_LRX_params = [LRX_Mission_Params] call _trim_Params;
+	} else {
+		_savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
+		if ( isNil "_savedParams" ) then {
+			diag_log "--- LRX: No saved settings found, loading default ---";
+			_savedParams = +LRX_Mission_Params;
+			_v1Params = profileNamespace getVariable [GRLIB_paramsV1_save_key, nil];
+			if (!isNil "_v1Params") then {
+				// Convert V1 to V2
+				diag_log format ["--- LRX: Old settings format detected, converting to new ---"];
+				{
+					_key = _x select 0;
+					if (!(_key isEqualTo GRLIB_PARAM_separatorKey)) then {
+						_value = _x select 1;
+						_newParamHash = LRX_Mission_Params get _key;
+						// Dont add obsolete params
+						if (!isNil "_newParamHash") then {
+							_defaultValue = _newParamHash get GRLIB_PARAM_ValueKey;
+							if ((typeName _value) isEqualTo (typeName _defaultValue) && {_value in (_newParamHash get GRLIB_PARAM_OptionValuesKey)}) then {
+								// Only value needs to be saved
+								_updateHash = createHashMap;
+								_updateHash set [GRLIB_PARAM_ValueKey, _value];
+								_savedParams set [_key, _updateHash];
+							};
 						};
 					};
-				};
-			} forEach _v1Params;
-		};
-		// Trim - Only value needs to be saved
-		GRLIB_LRX_params = [_savedParams] call _trim_Params;
-		profileNamespace setVariable [GRLIB_paramsV2_save_key, GRLIB_LRX_params];
-		saveProfileNamespace;
-	} else {
-		private _verifiedParams = createHashMapFromArray (_savedParams apply
-		{
-			_key = _x;
-			_value = _y get GRLIB_PARAM_ValueKey;
-			_defParamHash = LRX_Mission_Params get _key;
-			if (!isNil "_defParamHash") then {
-				_defaultValue = _defParamHash get GRLIB_PARAM_ValueKey;
-				if (!((typeName _value) isEqualTo (typeName _defaultValue)) || {!(_value in (_defParamHash get GRLIB_PARAM_OptionValuesKey))}) then {
-					_value = _defaultValue;
-				};
-				[_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _value]]];
-			} else {
-				nil;
+				} forEach _v1Params;
 			};
-		});
-		GRLIB_LRX_params = _verifiedParams;
+			// Trim - Only value needs to be saved
+			GRLIB_LRX_params = [_savedParams] call _trim_Params;
+		} else {
+			diag_log "--- LRX: settings found - cleaning ---";
+			_savedParams = [_savedParams] call _trim_Params;
+			{
+				_key = _x;
+				_hash = _y;
+				_value = _y get GRLIB_PARAM_ValueKey;
+				_defParamHash = LRX_Mission_Params get _key;
+				if (isNil "_defParamHash") then {
+					// Delete outdated params
+					_savedParams deleteAt _key;
+					diag_log format ["--- LRX: removing outdated setting ---", str _key];
+				} else {
+					_defaultValue = _defParamHash get GRLIB_PARAM_ValueKey;
+					if (!((typeName _value) isEqualTo (typeName _defaultValue)) || {!(_value in (_defParamHash get GRLIB_PARAM_OptionValuesKey))}) then {
+						// Reset invalid values
+						diag_log format ["--- LRX: resetting invalid setting ---", str _key];
+						_hash set [GRLIB_PARAM_ValueKey, _defaultValue];
+						_savedParams set [_key, _hash];
+					};
+				};
+			} forEach _savedParams;
+			GRLIB_LRX_params = _savedParams;
+		};
 	};
+
 	publicVariable "GRLIB_LRX_params";
+	profileNamespace setVariable [GRLIB_paramsV2_save_key, GRLIB_LRX_params];
+	saveProfileNamespace;
+	diag_log format ["--- LRX: settings saved ---"];
 } else {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
 };
@@ -332,8 +348,8 @@ private _startsWithMultipleInv = {
 	_ret;
 };
 
-if ([GRLIB_mod_west] call GRLIB_Template_Modloaded) then { 
-	if !([GRLIB_mod_east] call GRLIB_Template_Modloaded) then {
+if ([GRLIB_mod_west, "west"] call GRLIB_Template_Modloaded) then { 
+	if !([GRLIB_mod_east, "east"] call GRLIB_Template_Modloaded) then {
 		abort_loading = true 
 	};
 } else { 
