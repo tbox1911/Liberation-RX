@@ -14,12 +14,12 @@ private _lrx_getParamValue = {
 };
 
 private _lrx_get_mod_template = {
-	params ["_mod_list"];
+	params ["_mod_list", "_side"];
 	private _mod_data = [["---"], ["---"]];
 	{
         _faction = _x;
         // Filter available factions to ones that can actually be used
-        if ([_x] call GRLIB_Template_Modloaded) then {
+        if ([_x, _side] call GRLIB_Template_Modloaded) then {
             (_mod_data select 0) pushBack ([_faction] call _lrx_getParamValue);
             (_mod_data select 1) pushBack _faction;
         };
@@ -27,8 +27,8 @@ private _lrx_get_mod_template = {
 	_mod_data;
 };
 
-private _list_west = ([GRLIB_mod_list_west] call _lrx_get_mod_template);
-private _list_east = ([GRLIB_mod_list_east] call _lrx_get_mod_template);
+private _list_west = ([GRLIB_mod_list_west, "west"] call _lrx_get_mod_template);
+private _list_east = ([GRLIB_mod_list_east, "east"] call _lrx_get_mod_template);
 
 GRLIB_PARAM_separatorKey = "---";
 
