@@ -112,6 +112,8 @@ save_changes = 0;
 
 waitUntil { sleep 0.5; !dialog || !(alive player) };
 if (save_changes == 1) then {
+	// Broadcast the variable to the server before
+	publicVariable "GRLIB_LRX_params";
 	[
 		[],
 		{
