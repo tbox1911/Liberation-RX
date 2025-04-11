@@ -173,12 +173,12 @@ if (isServer) then {
 				if (isNil "_defParamHash") then {
 					// Delete outdated params
 					_savedParams deleteAt _key;
-					diag_log format ["--- LRX: removing outdated setting ---", str _key];
+					diag_log format ["--- LRX: removing outdated setting: %1 ---", str _key];
 				} else {
 					_defaultValue = _defParamHash get GRLIB_PARAM_ValueKey;
 					if (!((typeName _value) isEqualTo (typeName _defaultValue)) || {!(_value in (_defParamHash get GRLIB_PARAM_OptionValuesKey))}) then {
 						// Reset invalid values
-						diag_log format ["--- LRX: resetting invalid setting ---", str _key];
+						diag_log format ["--- LRX: resetting invalid setting: %1 - %2 to %3 ---", str _key, str _value, str _defaultValue];
 						_hash set [GRLIB_PARAM_ValueKey, _defaultValue];
 						_savedParams set [_key, _hash];
 					};
