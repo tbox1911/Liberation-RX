@@ -59,21 +59,6 @@ GRLIB_enabledPrefix = [
 	["WS_", GRLIB_WS_enabled]
 ];
 
-{
-	private _faction = _x;
-	private _faction_available = (GRLIB_enabledPrefix select { [_x select 0, _faction] call F_startsWith }) select 0 select 1; 
-	if !(_faction_available) exitWith { abort_loading = true };
-} forEach [GRLIB_mod_west, GRLIB_mod_east];
-
-if (abort_loading) exitWith { abort_loading_msg = format [
-	"********************************\n
-	FATAL! - Invalid Side selection !\n\n
-	Missing MOD Addons for side West (%1) or East (%2)\n\n
-	Loading Aborted to protect data integrity.\n
-	Correct the Side selection or add needed Addons.\n
-	*********************************", GRLIB_mod_west, GRLIB_mod_east];
-};
-
 // Classename MOD source
 [] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";
 LRX_mod_list_west = [];
@@ -327,6 +312,21 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	see: https://steamcommunity.com/sharedfiles/filedetails/?id=3014195090\n\n
 	Loading Aborted to protect data integrity.\n
 	Load the LRX_Template Mod or change Mission Settings.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
+};
+
+{
+	private _faction = _x;
+	private _faction_available = (GRLIB_enabledPrefix select { [_x select 0, _faction] call F_startsWith }) select 0 select 1; 
+	if !(_faction_available) exitWith { abort_loading = true };
+} forEach [GRLIB_mod_west, GRLIB_mod_east];
+
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid Side selection !\n\n
+	Missing MOD Addons for side West (%1) or East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Side selection or add needed Addons.\n
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
