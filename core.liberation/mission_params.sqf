@@ -13,23 +13,6 @@ private _lrx_getParamValue = {
 	(_ret select 1);
 };
 
-// private _lrx_get_mod_template = {
-// 	params ["_mod_list", "_side"];
-// 	private _mod_data = [["---"], ["---"]];
-// 	{
-//         _faction = _x;
-//         // Filter available factions to ones that can actually be used
-//         if ([_x, _side] call GRLIB_Template_Modloaded) then {
-//             (_mod_data select 0) pushBack ([_faction] call _lrx_getParamValue);
-//             (_mod_data select 1) pushBack _faction;
-//         };
-// 	} foreach _mod_list;
-// 	_mod_data;
-// };
-
-// private _list_west = ([GRLIB_mod_list_west, "west"] call _lrx_get_mod_template);
-// private _list_east = ([GRLIB_mod_list_east, "east"] call _lrx_get_mod_template);
-
 private _lrx_get_mod_template = {
 	params ["_mod_list"];
 	private _mod_data = [["---"], ["---"]];
@@ -43,7 +26,7 @@ private _lrx_get_mod_template = {
 private _list_west = ([GRLIB_mod_list_west] call _lrx_get_mod_template);
 private _list_east = ([GRLIB_mod_list_east] call _lrx_get_mod_template);
 
-GRLIB_PARAM_separatorKey = "---";
+GRLIB_PARAM_separatorKey = "=========";
 
 // Parameter key mapping
 GRLIB_PARAM_introductionKey = "Introduction";
@@ -120,14 +103,14 @@ GRLIB_PARAM_CommanderModeEnabled = "CommanderMode";
 GRLIB_PARAM_CommanderModeRadius = "CommanderRadius";
 
 // Categories - can be localized now
-GRLIB_PARAM_GameCatKey = "Game";
-GRLIB_PARAM_PlayerCatKey = "Player";
-GRLIB_PARAM_ArsenalCatKey = "Arsenal";
-GRLIB_PARAM_TemplateCatKey = "Mod Template";
-GRLIB_PARAM_MiscCatKey = "Misc";
-GRLIB_PARAM_RestartCatKey = "Restart";
-GRLIB_PARAM_ExperimentalCatKey = "Experimental";
-GRLIB_PARAM_SystemCatKey = "System";
+GRLIB_PARAM_GameCatKey = "GAME";
+GRLIB_PARAM_PlayerCatKey = "PLAYER";
+GRLIB_PARAM_ArsenalCatKey = "ARSENAL";
+GRLIB_PARAM_TemplateCatKey = "MOD TEMPLATE";
+GRLIB_PARAM_MiscCatKey = "MISC";
+GRLIB_PARAM_RestartCatKey = "RESTART";
+GRLIB_PARAM_ExperimentalCatKey = "EXPERIMENTAL";
+GRLIB_PARAM_SystemCatKey = "SYSTEM";
 GRLIB_PARAM_FobCatKey = "FOB";
 
 // Categories will be displayed in this order - this can be changed whenever, but any new categories MUST be added to this list
@@ -707,7 +690,6 @@ LRX_Mission_Params = createHashMapFromArray [
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_RestartCatKey],
         [GRLIB_PARAM_DescriptionKey, "Maintains mission context (settings and state) between restarts"]
     ]],
-
     [GRLIB_PARAM_Permissions, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 1],
         [GRLIB_PARAM_NameKey, localize "STR_PERMISSIONS_PARAM"],
