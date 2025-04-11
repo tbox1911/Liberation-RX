@@ -1,6 +1,8 @@
 params ["_path", ["_args", objNull], ["_message", true]];
 if (isNil "_path") exitWith {};
 
+diag_log _path;
+
 private _ret = true;
 private _template_name = _path splitString "\" select 1;
 private _file_name = _path splitString "\" select 2;

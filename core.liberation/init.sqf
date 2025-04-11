@@ -25,7 +25,6 @@ GRLIB_ACE_enabled = false;
 //GRLIB_LRX_debug = true;
 
 [] call compileFinal preprocessFileLineNumbers "whitelist.sqf";
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\default_classnames.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";

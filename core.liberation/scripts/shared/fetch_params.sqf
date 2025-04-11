@@ -59,24 +59,24 @@ GRLIB_enabledPrefix = [
 	["WS_", GRLIB_WS_enabled]
 ];
 
-// Function to check if required mod is loaded for faction
-GRLIB_Template_Modloaded = {
-	params ["_faction","_side"];
-	private _return = false;
-	if (GRLIB_enabledPrefix findIf {!(_x select 1) && {([(_x select 0), _faction] call F_startsWith)}} == -1) then {
-		if (_side == "west") then {
-			if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
-				_return = (blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
-			};
-		} else {
-			//Check east template and militia classname instead
-			if ([format ["mod_template\%1\classnames_east.sqf", _faction], objNull, false] call F_getTemplateFile) then {
-				_return = (militia_squad findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
-			};
-		};
-	};
-	_return;
-};
+// // Function to check if required mod is loaded for faction
+// GRLIB_Template_Modloaded = {
+// 	params ["_faction","_side"];
+// 	private _return = true;
+// 	if (GRLIB_enabledPrefix findIf {!(_x select 1) && {([(_x select 0), _faction] call F_startsWith)}} == -1) then {
+// 		if (_side == "west") then {
+// 			if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
+// 				_return = (blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
+// 			};
+// 		} else {
+// 			//Check east template and militia classname instead
+// 			if ([format ["mod_template\%1\classnames_east.sqf", _faction], objNull, false] call F_getTemplateFile) then {
+// 				_return = (militia_squad findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
+// 			};
+// 		};
+// 	};
+// 	_return;
+// };
 
 // Classename MOD source
 [] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";
@@ -118,8 +118,7 @@ GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 
 private _trim_Params = {
 	params["_params"];
-	_trimmed = createHashMapFromArray (_params apply
-	{
+	_trimmed = createHashMapFromArray (_params apply {
 		[_x, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _y get GRLIB_PARAM_ValueKey]]]
 	});
 	_trimmed;
@@ -197,7 +196,7 @@ if (isServer) then {
 
 // Open Mission Parameters
 if (isNil "GRLIB_param_open_params") then {
-	GRLIB_param_open_params = ["OpenParams",0] call bis_fnc_getParamValue;
+	GRLIB_param_open_params = ["OpenParams", 0] call bis_fnc_getParamValue;
 };
 if (GRLIB_param_open_params == 1) then {
 	if (!isDedicated && hasInterface) then {
@@ -347,13 +346,13 @@ private _startsWithMultipleInv = {
 	_ret;
 };
 
-if ([GRLIB_mod_west, "west"] call GRLIB_Template_Modloaded) then { 
-	if !([GRLIB_mod_east, "east"] call GRLIB_Template_Modloaded) then {
-		abort_loading = true 
-	};
-} else { 
-	abort_loading = true 
-};
+// if ([GRLIB_mod_west, "west"] call GRLIB_Template_Modloaded) then {
+// 	if !([GRLIB_mod_east, "east"] call GRLIB_Template_Modloaded) then {
+// 		abort_loading = true
+// 	};
+// } else {
+// 	abort_loading = true
+// };
 
 
 if (abort_loading) exitWith { abort_loading_msg = format [

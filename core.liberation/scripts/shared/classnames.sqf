@@ -8,8 +8,8 @@ zeropos = [0,0,10000];
 
 // All Object classname used in LRX must be declared here
 
-// *** LRX DEFAULT BUILDINGS CLASSNAMES ***
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\default_building_classnames.sqf";
+// *** DEFAULT ***
+[] call compileFinal preprocessFileLineNumbers "scripts\shared\default_classnames.sqf";
 
 // *** FRIENDLIES ***
 _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
@@ -277,7 +277,7 @@ if ( isNil "civilian_boats" ) then {
 		"C_Boat_Transport_02_F",
 		"C_Boat_Civil_01_police_F",
 		"C_Boat_Civil_01_rescue_F",
-		"C_Rubberboat"	
+		"C_Rubberboat"
 	];
 };
 boats_names = [FOB_boat_typename, FOB_carrier] + civilian_boats + opfor_boats + boats_west;
