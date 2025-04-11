@@ -47,7 +47,7 @@ save_changes = 0;
 
 {
 	_category = _x;
-	_paramArray = groupedParams get _category;
+	_paramArray = _groupedParams get _category;
 	if (!isNil "_paramArray") then {
 		_control = _display ctrlCreate [ "RscBackground", -1, _display displayCtrl 9969 ];
 		_control ctrlSetPosition [ 0, (_idx * 0.025) * safezoneH, 0.595 * safeZoneW, 0.025 * safezoneH];

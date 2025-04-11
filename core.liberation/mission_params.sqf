@@ -123,11 +123,11 @@ GRLIB_PARAM_CatOrder = [
     GRLIB_PARAM_PlayerCatKey,
     GRLIB_PARAM_ArsenalCatKey,
     GRLIB_PARAM_TemplateCatKey,
+    GRLIB_PARAM_SystemCatKey,
+    GRLIB_PARAM_FobCatKey,
     GRLIB_PARAM_MiscCatKey,
     GRLIB_PARAM_RestartCatKey,
-    GRLIB_PARAM_ExperimentalCatKey,
-    GRLIB_PARAM_SystemCatKey,
-    GRLIB_PARAM_FobCatKey
+    GRLIB_PARAM_ExperimentalCatKey
 ];
 
 // Save navigation keys

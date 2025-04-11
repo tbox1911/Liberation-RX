@@ -125,7 +125,6 @@ private _trim_Params = {
 	_trimmed;
 };
 
-
 diag_log "--- LRX: Loading settings ---";
 // Load Mission settings
 if (isServer) then {
