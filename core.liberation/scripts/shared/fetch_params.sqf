@@ -59,24 +59,20 @@ GRLIB_enabledPrefix = [
 	["WS_", GRLIB_WS_enabled]
 ];
 
-// // Function to check if required mod is loaded for faction
-// GRLIB_Template_Modloaded = {
-// 	params ["_faction","_side"];
-// 	private _return = true;
-// 	if (GRLIB_enabledPrefix findIf {!(_x select 1) && {([(_x select 0), _faction] call F_startsWith)}} == -1) then {
-// 		if (_side == "west") then {
-// 			if ([format ["mod_template\%1\classnames_west.sqf", _faction], objNull, false] call F_getTemplateFile) then {
-// 				_return = (blufor_squad_inf findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
-// 			};
-// 		} else {
-// 			//Check east template and militia classname instead
-// 			if ([format ["mod_template\%1\classnames_east.sqf", _faction], objNull, false] call F_getTemplateFile) then {
-// 				_return = (militia_squad findIf {!isClass (configFile >> "CfgVehicles" >> _x)} == -1);
-// 			};
-// 		};
-// 	};
-// 	_return;
-// };
+{
+	private _faction = _x;
+	private _faction_available = (GRLIB_enabledPrefix select { [_x select 0, _faction] call F_startsWith }) select 0 select 1; 
+	if !(_faction_available) exitWith { abort_loading = true };
+} forEach [GRLIB_mod_west, GRLIB_mod_east];
+
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid Side selection !\n\n
+	Missing MOD Addons for side West (%1) or East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Side selection or add needed Addons.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
+};
 
 // Classename MOD source
 [] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";
@@ -335,34 +331,6 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 };
 
 diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
-
-// Check side Addon
-private _startsWithMultipleInv = {
-	params ["_item", "_list"];
-	private _ret = false;
-	{
-		if ([_item, _x] call F_startsWith) exitWith { _ret = true };
-	} foreach _list;
-	_ret;
-};
-
-// if ([GRLIB_mod_west, "west"] call GRLIB_Template_Modloaded) then {
-// 	if !([GRLIB_mod_east, "east"] call GRLIB_Template_Modloaded) then {
-// 		abort_loading = true
-// 	};
-// } else {
-// 	abort_loading = true
-// };
-
-
-if (abort_loading) exitWith { abort_loading_msg = format [
-	"********************************\n
-	FATAL! - Invalid Side selection !\n\n
-	Missing MOD Addons for side West (%1) or East (%2)\n\n
-	Loading Aborted to protect data integrity.\n
-	Correct the Side selection or add needed Addons.\n
-	*********************************", GRLIB_mod_west, GRLIB_mod_east];
-};
 
 // Disable TFAR Relay
 if (GRLIB_TFR_radius == 0) then { GRLIB_TFR_enabled = false };
