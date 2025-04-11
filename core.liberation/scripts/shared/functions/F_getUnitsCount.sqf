@@ -5,6 +5,7 @@ if (_side == GRLIB_side_friendly) exitWith {
         (_x distance2D _position < _distance) &&
         (alive _x) && !(captive _x) &&
         (getPosATL _x select 2 < 150) && (speed vehicle _x < 80) &&
+        !(typeOf (objectParent _x) in uavs_vehicles) &&
         !(_x getVariable ["GRLIB_mission_AI", false])
     } count (units GRLIB_side_friendly);
 };
@@ -14,6 +15,7 @@ if (_side == GRLIB_side_enemy) exitWith {
         (_x distance2D _position < _distance) &&
         (alive _x) && !(captive _x) &&
         (getPosATL _x select 2 < 150) && (speed vehicle _x < 80) &&
+        !(typeOf (objectParent _x) in uavs_vehicles) &&
         !(_x getVariable ["GRLIB_mission_AI", false]) &&
         !(_x getVariable ["GRLIB_is_prisoner", false]) &&
         !(_x getVariable ["ACE_isUnconscious", false])
