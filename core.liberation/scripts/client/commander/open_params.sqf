@@ -31,16 +31,16 @@ _control ctrlSetText format ["Parameters Profile name: %1", GRLIB_paramsV2_save_
 _control ctrlSetTextColor [0.5,0.5,0.5,1];
 _control ctrlCommit 0;
 
-// Group the parameters by category
+// Group the parameters by category - respects order of params
 private _groupedParams = createHashMap;
 {
 	_key = _x;
-	_hash = _y;
+	_hash = LRX_Mission_Params get _key;
 	_category = _hash get GRLIB_PARAM_CategoryKey;
 	_groupParams = _groupedParams getOrDefault [_category, []];
 	_groupParams pushBack [_key, _hash];
 	_groupedParams set [_category, _groupParams];
-} forEach LRX_Mission_Params;
+} forEach LRX_ParamArray;
 
 private _idx = 1;
 save_changes = 0;
