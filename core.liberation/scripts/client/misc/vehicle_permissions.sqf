@@ -63,7 +63,7 @@ if (!(_role == "cargo" || _vehicle_class in list_static_weapons)) then {
 };
 
 if (_doeject) then {
-	if (isPlayer _unit1 && GRLIB_AlarmsEnabled) then {
+	if (isPlayer _unit1) then {
 		playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 300];
 	};
 	[_unit1, false] spawn F_ejectUnit;
