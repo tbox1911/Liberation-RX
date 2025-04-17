@@ -151,14 +151,18 @@ _waitUntilCondition = {
 
 	if (_ret) then {
 		private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
-		playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
+		if (GRLIB_AlarmsEnabled) then {
+			playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
+		};
 		sleep 5;
 		private _msg = ["<t color='#FFFFFF' size='2'>You have been Detected!!<br/><br/>Enemies destroy the </t><t color='#ff0000' size='3'>INTELS</t><t color='#FFFFFF' size='2'> !!</t>", "PLAIN", -1, false, true];
 		{
 			[_msg] remoteExec ["titleText", owner _x];
 		} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
 		sleep 5;
-		playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
+		if (GRLIB_AlarmsEnabled) then {
+			playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
+		};
 	};
 	_ret;
 };

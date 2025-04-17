@@ -59,6 +59,11 @@ GRLIB_enabledPrefix = [
 	["WS_", GRLIB_WS_enabled]
 ];
 
+GRLIB_Template_Modloaded = {
+	params ["_faction"];
+	GRLIB_enabledPrefix findIf {!(_x#1) && {([(_x#0), _faction] call F_startsWith)}} == -1;
+};
+
 // Classename MOD source
 [] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";
 LRX_mod_list_west = [];
@@ -256,6 +261,8 @@ GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
 GRLIB_victory_condition = [GRLIB_PARAM_VictoryCondition] call lrx_getParamValue;
 GRLIB_Commander_mode = [GRLIB_PARAM_CommanderModeEnabled] call lrx_getParamValue;
 GRLIB_Commander_radius = [GRLIB_PARAM_CommanderModeRadius] call lrx_getParamValue;
+GRLIB_MineProbability = [GRLIB_PARAM_MineProbability] call lrx_getParamValue;
+GRLIB_AlarmsEnabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
@@ -315,11 +322,7 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
-{
-	private _faction = _x;
-	private _faction_available = (GRLIB_enabledPrefix select { [_x select 0, _faction] call F_startsWith }) select 0 select 1; 
-	if !(_faction_available) exitWith { abort_loading = true };
-} forEach [GRLIB_mod_west, GRLIB_mod_east];
+abort_loading = ([GRLIB_mod_west, GRLIB_mod_east] findIf {!([_x] call GRLIB_Template_Modloaded)}) != -1;
 
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
@@ -378,6 +381,7 @@ GRLIB_server_persistent = (GRLIB_server_persistent == 1);
 GRLIB_air_support = (GRLIB_air_support == 1);
 GRLIB_free_loadout = (GRLIB_free_loadout == 1);
 GRLIB_Commander_mode = (GRLIB_Commander_mode == 1);
+GRLIB_AlarmsEnabled = GRLIB_AlarmsEnabled == 1;
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
