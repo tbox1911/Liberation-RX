@@ -211,7 +211,7 @@ while { true } do {
 								};
 							} forEach GRLIB_AvailAttackSectors;
 							//todo: localize
-							(_overlay displayCtrl (205)) ctrlSetText ("Select a sector to attack");
+							(_overlay displayCtrl (205)) ctrlSetText ("Select a sector on the map to attack");
 						} else {
 							(_overlay displayCtrl (205)) ctrlSetText ("Deploy an FOB");
 						};
