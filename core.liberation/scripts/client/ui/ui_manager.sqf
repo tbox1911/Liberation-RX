@@ -22,6 +22,34 @@ waitUntil {sleep 1; !isNil "sector_timer"};
 if (isNil "cinematic_camera_started") then { cinematic_camera_started = false };
 if (isNil "halojumping") then { halojumping = false };
 
+if (GRLIB_Commander_mode) then {
+	0 spawn {
+		_currentCircleMark = "";
+		while {true} do {
+			if (visibleMap) then {
+				_array = ctrlMapMouseOver (findDisplay 12 displayCtrl 51);
+				_circleMark = "";
+				if (!(_array isEqualTo []) && {_array#0 == "marker" && {(_array#1) in GRLIB_AvailAttackSectors} && {((_array#1) + "av") in GRLIB_availableMarkers}}) then {
+					_marker = _array#1;
+					_circleMark = _marker + "av";
+					if (_currentCircleMark != _circleMark) then {
+						_currentCircleMark = _circleMark;
+						[_circleMark,[1.2,1.2],0.009] spawn BIS_fnc_resizeMarker;
+					};
+				} else {
+					_currentCircleMark = "";
+				};
+				{
+					if (!(_x == _circleMark)) then {
+						[_x,[1,1],0.009] spawn BIS_fnc_resizeMarker;
+					};
+				} forEach GRLIB_availableMarkers;
+			};
+			sleep 0.1;
+		};	
+	};
+};
+
 while { true } do {
 	_hide_HUD = !(shownHUD select 0);
 

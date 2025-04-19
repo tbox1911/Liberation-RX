@@ -103,20 +103,20 @@ GRLIB_ActivateCommanderSector = {
     params ["_caller", "_pos"];
     if ([_caller] call F_getCommander) then {
         if (active_sectors isEqualTo [] && !(GRLIB_AvailAttackSectors isEqualTo [])) then {
-            _closestMarker = "";
+            _closestSector = "";
             _closestDistance = 9999;
             _nearSectorsActivated = GRLIB_Commander_radius;
             {
                 _distance = (getMarkerPos _x) distance2D _pos;
-                if ((_distance < _closestDistance) && {(_distance < 20)}) then {
-                    _closestMarker = _x;
+                if ((_distance < _closestDistance) && {(_distance < 100)}) then {
+                    _closestSector = _x;
                     _closestDistance = _distance;
                 };
             } forEach GRLIB_AvailAttackSectors;
-            if (!(_closestMarker isEqualTo "")) then {
+            if (!(_closestSector isEqualTo "")) then {
+                [_closestSector] call GRLIB_ActivateSector;
                 {
-                    // Nearby sectors are activated to defend neighbor enemy sectors within 100m, this can be adjusted
-                    if (((getMarkerPos _x) distance2D (getMarkerPos _closestMarker)) < _nearSectorsActivated) then {
+                    if ((!(_x isEqualTo _closestSector)) && {(((getMarkerPos _x) distance2D (getMarkerPos _closestSector)) < _nearSectorsActivated)}) then {
                         [_x] call GRLIB_ActivateSector;
                     };
                 } forEach opfor_sectors;
