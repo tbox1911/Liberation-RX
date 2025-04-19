@@ -313,13 +313,31 @@ if (isServer && hasInterface) then {
 
 // Commander mode 
 if (GRLIB_Commander_mode) then {
+	GRLIB_Com_lastClicked = time;
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos"];
 		private _caller = _thisArgs select 0;
-		if ([_caller] call F_getCommander) then {
-			// Only commander can even send the request to the server, efficient
-			[_caller, _pos] remoteExec ["GRLIB_ActivateCommanderSector", 2];
+		if ((time - GRLIB_Com_lastClicked) > 3 && {[_caller] call F_getCommander && active_sectors isEqualTo [] && !(GRLIB_AvailAttackSectors isEqualTo [])}) then {
+			GRLIB_Com_lastClicked = time;
+			_closestSector = "";
+			_closestDistance = 9999;
+			{
+				_distance = (getMarkerPos _x) distance2D _pos;
+				if ((_distance < _closestDistance) && (_distance < 100)) then {
+					_closestSector = _x;
+					_closestDistance = _distance;
+				};
+			} forEach GRLIB_AvailAttackSectors;
+			if (!(_closestSector isEqualTo "")) then {
+				playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
+				[_caller, _closestSector] remoteExec ["GRLIB_ActivateCommanderSector", 2];
+				{
+					deleteMarker _x;
+				} forEach GRLIB_availableMarkers;
+				GRLIB_availableMarkers = [];
+			};
 		};
+		GRLIB_Com_lastClicked = time;
 	}, [player]];
 };
 

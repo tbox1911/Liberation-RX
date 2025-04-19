@@ -1,5 +1,9 @@
 params ["_sector"];
 
+if (_sector in active_sectors) exitWith {
+	diag_log format ["Sector %1 already active, aborting.", _sector];
+};
+
 diag_log format ["--- LRX Manage Sector %1 (queued: %2)", _sector, GRLIB_sector_spawning];
 active_sectors pushback _sector;
 publicVariable "active_sectors";
@@ -16,7 +20,8 @@ if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnits
 
 GRLIB_sector_spawning = true;
 publicVariable "GRLIB_sector_spawning";
-
+_sectorName = markerText _sector;
+_sector setMarkerText format ["%1 - Loading", _sectorName];
 private _spawncivs = false;
 private _building_ai_max = 0;
 private _building_range = 200;
@@ -42,7 +47,7 @@ private _max_prisonners = 5;
 private _sector_despawn_tickets = GRLIB_despawn_tickets;
 private _nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
 private _playerRad = (GRLIB_sector_size * 2);
-_sectorName = markerText _sector;
+
 if (GRLIB_Commander_mode) then {
 	_playerRad = 99999;
 	_local_capture_size = 500;
@@ -211,7 +216,7 @@ switch true do {
         diag_log "Sector type did not match any known sector arrays.";
     };
 };
-
+_sector setMarkerText format ["%2 - Loading %1%%", 10, _sectorName];
 // Extra veh based on difficulty
 if ((floor GRLIB_difficulty_modifier) > 1) then {
 	for "_i" from 1 to (floor (GRLIB_difficulty_modifier)) do {
@@ -228,7 +233,7 @@ if (_uavs_count > 0) then {
 	[_sector_pos, true, 2] spawn send_drones;
 	[_sector_pos, false, _uavs_count] spawn send_drones;
 };
-
+_sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 // Create units
 {
 	private _squad = _x select 0;
@@ -238,53 +243,68 @@ if (_uavs_count > 0) then {
 		_grp = [_sector, _infsquad, _squad] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 0.5;
+		sleep 0.2;
 	};
+	_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, 4, _foreachIndex, 20, 40], _sectorName];
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
 
 // Create vehicles
 if (opforcap_max) then { _vehtospawn = [] };
 if (!(_vehtospawn isEqualTo [])) then {
+	_vehCount = count _vehtospawn;
 	{
-		private _spawn_pos = _sector_pos getPos [2 + (floor random 125), floor random 360];
+		_spawn_pos = [];
+		_r = 100;
+		while {true} do { // This will 100% guarantee vehicles do not explode on spawn - i have had a lot of experience with this script on other missions and verified it works
+			_spawn_pos = [(_sector_pos#0), (_sector_pos#1)] getPos [_r * sqrt random 1, random 360];
+			if ((!(_spawn_pos isFlatEmpty [10, -1, 0.5, 8, 0, false] isEqualTo []))
+			&& {((_spawn_pos nearEntities 10) isEqualTo [])
+			&& {((nearestTerrainObjects [_spawn_pos, ["Tree", "Building", "House", "ROCK", "WALL", "POWER LINES", "FENCE", "HIDE", "FUELSTATION", "CHURCH", "WATERTOWER", "TRANSMITTER", "SHIPWRECK", "TOURISM", "HIDE"], 10]) isEqualTo [])}}) exitWith {};
+			_r = _r + 1;
+		};
 		private _vehicle = [_spawn_pos, _x] call F_libSpawnVehicle;
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
 			[group (driver _vehicle), _spawn_pos, (50 + floor random 60)] spawn defence_ai;
 			{ _managed_units pushback _x } foreach (crew _vehicle);
-			sleep 0.5;
+			sleep 0.2;
 		};
+		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _vehCount, _foreachIndex, 40, 60], _sectorName];
 	} foreach _vehtospawn;
 };
 
-// Create garnison
+// Create garrison
 if (opforcap_max) then { _building_ai_max = 0 };
 if (_building_ai_max > 0) then {
 	_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
 	if (_sector in sectors_bigtown) then { _building_ai_max = _building_ai_max + 12 };
 	private _rnd = [1,1,2,2,2,2,3,3,3,4];
+	_bld = _building_ai_max;
 	while { _building_ai_max > 0 } do {
 		_max_units = (selectRandom _rnd) min _building_ai_max;
 		private _building_ai_created = ([_infsquad1, _max_units, _sector_pos, _building_range, objNull, false] call F_spawnBuildingSquad);
 		if (count _building_ai_created == 0) exitWith {};
 		_managed_units = _managed_units + _building_ai_created;
 		_building_ai_max = _building_ai_max - _max_units;
-		sleep 0.3;
+		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _bld, _bld - _building_ai_max, 60, 80], _sectorName];
+		sleep 0.1;
 	};
 };
-
+_sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
 // Create civilians
 if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 	private _nbcivs = round ((5 + (floor random 6)) * GRLIB_civilian_activity);
 	if (_sector in sectors_bigtown) then { _nbcivs = _nbcivs + 12 };
 	private _rnd = [1,1,1,1,2,2,3];
+	_civ = _nbcivs;
 	while { _nbcivs > 0 } do {
 		_max_units = (selectRandom _rnd) min _nbcivs;
 		_grp = [_sector_pos, _max_units] call F_spawnCivilians;
 		[_grp, _sector_pos] spawn civilian_ai;
 		_managed_units = _managed_units + (units _grp);
 		_nbcivs = _nbcivs - _max_units;
-		sleep 0.3;
+		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _civ, _civ - _nbcivs, 80, 99], _sectorName];
+		sleep 0.1;
 	};
 };
 
@@ -357,12 +377,12 @@ if (GRLIB_Commander_mode) then {
 private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
 diag_log format ["Sector %1 wait attack to finish", _sector];
 
-_task = "attack" + str _sector + str time;
-[true, _task, [format ["Attack %1", markerText _sector], format ["Attack %1", markerText _sector], _sector], _sector_pos, "ASSIGNED", 2, true] call BIS_fnc_taskCreate;
+_task = "attack" + _sectorName + str time;
+[true, _task, [format ["Attack %1", _sectorName], format ["Attack %1", _sectorName], _sector], _sector_pos, "ASSIGNED", 2, true] call BIS_fnc_taskCreate;
 [_task, true] call BIS_fnc_taskSetCurrent;
-_startEnemies = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
-
+_sector setMarkerText format ["%1 - Loaded!", _sectorName];
 sleep 10;
+_startEnemies = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 
@@ -376,7 +396,8 @@ while { !_stopit } do {
 	};
 	private _enemy_left = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 	_percentRemaining = round ((count _enemy_left / count _startEnemies) * 100);
-	_sector setMarkerText format ["%2 - %1%% remaining", _percentRemaining, _sectorName];
+	_progress = ((_percentRemaining - 100) * -1) max 0;
+	_sector setMarkerText format ["%2 - %1%%", _progress, _sectorName];
 	if (_sector_ownership == GRLIB_side_friendly) then {
 		[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 		[_sector] remoteExec ["sector_liberated_remote_call", 2];
@@ -419,7 +440,7 @@ while { !_stopit } do {
 				_stage = _forEachIndex + 1;
 				if ((_x#0) >= _percentRemaining && !(_x#1)) then {
 					_x set [1, true];
-					[_sector_pos, _stage] spawn _stageAttack;
+					[_stage, _sector_pos] spawn _stageAttack;
 					sleep 5;
 				};
 			} foreach _attackStages;
