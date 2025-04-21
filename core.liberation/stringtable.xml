@@ -9676,6 +9676,4246 @@
 			<Portuguese>Seu esquadrão está esperando por você\na próxima FOB!</Portuguese>
 			<Czech>Váš tým na vás čeká\nNa dalším FOB!</Czech>
 		</Key>
+
+		<Key ID="STR_PARAMS_INTRO_DESC">
+			<Original>Enables or disables the introduction sequence.</Original>
+			<Russian>Включает или отключает вступительную последовательность.</Russian>
+			<French>Active ou désactive la séquence d'introduction.</French>
+			<Chinesesimp>启用或禁用介绍序列。</Chinesesimp>
+			<Chinese>啟用或停用介紹序列。</Chinese>
+			<Portuguese>Ativa ou desativa a sequência de introdução.</Portuguese>
+			<Czech>Povolí nebo zakáže úvodní sekvenci.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_INTRO_OPT0">
+			<Original>Disable the introduction sequence</Original>
+			<Russian>Отключить вступительную последовательность</Russian>
+			<French>Désactiver la séquence d'introduction</French>
+			<Chinesesimp>禁用介绍序列</Chinesesimp>
+			<Chinese>停用介紹序列</Chinese>
+			<Portuguese>Desativar sequência de introdução</Portuguese>
+			<Czech>Zakázat úvodní sekvenci</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_INTRO_OPT1">
+			<Original>Enable the introduction sequence</Original>
+			<Russian>Включить вступительную последовательность</Russian>
+			<French>Activer la séquence d'introduction</French>
+			<Chinesesimp>启用介绍序列</Chinesesimp>
+			<Chinese>啟用介紹序列</Chinese>
+			<Portuguese>Ativar sequência de introdução</Portuguese>
+			<Czech>Povolit úvodní sekvenci</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DEPLOYMENTCAMERA_DESC">
+			<Original>Toggles the deployment cinematic settings.</Original>
+			<Russian>Переключает настройки кинематографической сцены развертывания.</Russian>
+			<French>Active ou désactive les paramètres cinématiques de déploiement.</French>
+			<Chinesesimp>切换部署动画设置。</Chinesesimp>
+			<Chinese>切換部署電影效果設置。</Chinese>
+			<Portuguese>Alterna as configurações cinematográficas de implantação.</Portuguese>
+			<Czech>Přepíná nastavení nasazovacího kinematického režimu.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DEPLOYMENTCAMERA_OPT0">
+			<Original>Disable the deployment cinematic</Original>
+			<Russian>Отключить кинематографический ролик развертывания</Russian>
+			<French>Désactiver la cinématique de déploiement</French>
+			<Chinesesimp>禁用部署动画</Chinesesimp>
+			<Chinese>停用部署電影</Chinese>
+			<Portuguese>Desativar cinemática de implantação</Portuguese>
+			<Czech>Zakázat nasazovací cinematik</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DEPLOYMENTCAMERA_OPT1">
+			<Original>Enable the deployment cinematic</Original>
+			<Russian>Включить кинематографический ролик развертывания</Russian>
+			<French>Activer la cinématique de déploiement</French>
+			<Chinesesimp>启用部署动画</Chinesesimp>
+			<Chinese>啟用部署電影</Chinese>
+			<Portuguese>Ativar cinemática de implantação</Portuguese>
+			<Czech>Povolit nasazovací cinematik</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_OPFORCAP_DESC">
+			<Original>Sets the enemy force cap to limit maximum enemy units.</Original>
+			<Russian>Устанавливает максимальное ограничение на количество вражеских подразделений.</Russian>
+			<French>Définit le plafond de forces ennemies pour limiter le nombre maximal d'unités ennemies.</French>
+			<Chinesesimp>设置敌方部队上限以限制最大敌军单位数。</Chinesesimp>
+			<Chinese>設置敵軍部隊上限以限制最大敵軍單位數。</Chinese>
+			<Portuguese>Define o limite de forças inimigas para restringir o número máximo de unidades inimigas.</Portuguese>
+			<Czech>Nastavuje strop nepřátelských sil pro omezení maximálního počtu jednotek nepřítele.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_OPFORCAP_OPT0">
+			<Original>Limit enemy force cap to 100 units</Original>
+			<Russian>Ограничить численность вражеских сил до 100 единиц</Russian>
+			<French>Limiter les forces ennemies à 100 unités</French>
+			<Chinesesimp>将敌军部队限制为100个单位</Chinesesimp>
+			<Chinese>將敵軍部隊限制為100個單位</Chinese>
+			<Portuguese>Limitar forças inimigas a 100 unidades</Portuguese>
+			<Czech>Omezit nepřátelské síly na 100 jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_OPFORCAP_OPT1">
+			<Original>Limit enemy force cap to 200 units</Original>
+			<Russian>Ограничить численность вражеских сил до 200 единиц</Russian>
+			<French>Limiter les forces ennemies à 200 unités</French>
+			<Chinesesimp>将敌军部队限制为200个单位</Chinesesimp>
+			<Chinese>將敵軍部隊限制為200個單位</Chinese>
+			<Portuguese>Limitar forças inimigas a 200 unidades</Portuguese>
+			<Czech>Omezit nepřátelské síly na 200 jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_OPFORCAP_OPT2">
+			<Original>Limit enemy force cap to 300 units</Original>
+			<Russian>Ограничить численность вражеских сил до 300 единиц</Russian>
+			<French>Limiter les forces ennemies à 300 unités</French>
+			<Chinesesimp>将敌军部队限制为300个单位</Chinesesimp>
+			<Chinese>將敵軍部隊限制為300個單位</Chinese>
+			<Portuguese>Limitar forças inimigas a 300 unidades</Portuguese>
+			<Czech>Omezit nepřátelské síly na 300 jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_OPFORCAP_OPT3">
+			<Original>Limit enemy force cap to 400 units</Original>
+			<Russian>Ограничить численность вражеских сил до 400 единиц</Russian>
+			<French>Limiter les forces ennemies à 400 unités</French>
+			<Chinesesimp>将敌军部队限制为400个单位</Chinesesimp>
+			<Chinese>將敵軍部隊限制為400個單位</Chinese>
+			<Portuguese>Limitar forças inimigas a 400 unidades</Portuguese>
+			<Czech>Omezit nepřátelské síly na 400 jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_UNITCAP_DESC">
+			<Original>Adjusts the unit cap multiplier for player forces.</Original>
+			<Russian>Настраивает множитель ограничения числа юнитов для сил игрока.</Russian>
+			<French>Ajuste le multiplicateur de plafond d'unités pour les forces du joueur.</French>
+			<Chinesesimp>调整玩家部队单位上限的乘数。</Chinesesimp>
+			<Chinese>調整玩家部隊單位上限的乘數。</Chinese>
+			<Portuguese>Ajusta o multiplicador do limite de unidades para as forças do jogador.</Portuguese>
+			<Czech>Upravuje násobitel stropu jednotek pro hráčovy síly.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_UNITCAP_OPT0">
+			<Original>50% of the normal unit cap</Original>
+			<Russian>50% от обычного ограничения</Russian>
+			<French>50 % du plafond normal d'unités</French>
+			<Chinesesimp>正常单位上限的50%</Chinesesimp>
+			<Chinese>正常單位上限的50%</Chinese>
+			<Portuguese>50% do limite normal de unidades</Portuguese>
+			<Czech>50 % běžného stropu jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_UNITCAP_OPT1">
+			<Original>75% of the normal unit cap</Original>
+			<Russian>75% от обычного ограничения</Russian>
+			<French>75 % du plafond normal d'unités</French>
+			<Chinesesimp>正常单位上限的75%</Chinesesimp>
+			<Chinese>正常單位上限的75%</Chinese>
+			<Portuguese>75% do limite normal de unidades</Portuguese>
+			<Czech>75 % běžného stropu jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_UNITCAP_OPT2">
+			<Original>100% (default) unit cap</Original>
+			<Russian>100 % (по умолчанию) ограничения</Russian>
+			<French>100 % (par défaut) du plafond d'unités</French>
+			<Chinesesimp>100%（默认）单位上限</Chinesesimp>
+			<Chinese>100%（預設）單位上限</Chinese>
+			<Portuguese>100% (padrão) do limite de unidades</Portuguese>
+			<Czech>100 % (výchozí) strop jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_UNITCAP_OPT3">
+			<Original>125% of the normal unit cap</Original>
+			<Russian>125% от обычного ограничения</Russian>
+			<French>125 % du plafond normal d'unités</French>
+			<Chinesesimp>正常单位上限的125%</Chinesesimp>
+			<Chinese>正常單位上限的125%</Chinese>
+			<Portuguese>125% do limite normal de unidades</Portuguese>
+			<Czech>125 % běžného stropu jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_UNITCAP_OPT4">
+			<Original>150% of the normal unit cap</Original>
+			<Russian>150% от обычного ограничения</Russian>
+			<French>150 % du plafond normal d'unités</French>
+			<Chinesesimp>正常单位上限的150%</Chinesesimp>
+			<Chinese>正常單位上限的150%</Chinese>
+			<Portuguese>150% do limite normal de unidades</Portuguese>
+			<Czech>150 % běžného stropu jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_UNITCAP_OPT5">
+			<Original>200% of the normal unit cap</Original>
+			<Russian>200% от обычного ограничения</Russian>
+			<French>200 % du plafond normal d'unités</French>
+			<Chinesesimp>正常单位上限的200%</Chinesesimp>
+			<Chinese>正常單位上限的200%</Chinese>
+			<Portuguese>200% do limite normal de unidades</Portuguese>
+			<Czech>200 % běžného stropu jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_DESC">
+			<Original>Sets the game difficulty level using various multipliers.</Original>
+			<Russian>Устанавливает уровень сложности игры с использованием различных множителей.</Russian>
+			<French>Définit le niveau de difficulté du jeu à l'aide de différents multiplicateurs.</French>
+			<Chinesesimp>使用各种乘数设置游戏难度级别。</Chinesesimp>
+			<Chinese>使用各種乘數設置遊戲難度級別。</Chinese>
+			<Portuguese>Define o nível de dificuldade do jogo usando vários multiplicadores.</Portuguese>
+			<Czech>Nastavuje úroveň obtížnosti hry pomocí různých násobitelů.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_OPT0">
+			<Original>Very Easy (0.5x multiplier)</Original>
+			<Russian>Очень легко (множитель 0.5x)</Russian>
+			<French>Très facile (multiplicateur ×0,5)</French>
+			<Chinesesimp>非常简单（0.5倍乘数）</Chinesesimp>
+			<Chinese>非常簡單（0.5倍乘數）</Chinese>
+			<Portuguese>Muito fácil (multiplicador x0,5)</Portuguese>
+			<Czech>Velmi snadné (násobitel 0,5×)</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_OPT1">
+			<Original>Easy (0.75x multiplier)</Original>
+			<Russian>Легко (множитель 0.75x)</Russian>
+			<French>Facile (multiplicateur ×0,75)</French>
+			<Chinesesimp>简单（0.75倍乘数）</Chinesesimp>
+			<Chinese>簡單（0.75倍乘數）</Chinese>
+			<Portuguese>Fácil (multiplicador x0,75)</Portuguese>
+			<Czech>Snadné (násobitel 0,75×)</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_OPT2">
+			<Original>Normal (1x multiplier)</Original>
+			<Russian>Нормально (множитель 1x)</Russian>
+			<French>Normal (multiplicateur ×1)</French>
+			<Chinesesimp>正常（1倍乘数）</Chinesesimp>
+			<Chinese>正常（1倍乘數）</Chinese>
+			<Portuguese>Normal (multiplicador x1)</Portuguese>
+			<Czech>Normální (násobitel 1×)</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_OPT3">
+			<Original>Hard (1.25x multiplier)</Original>
+			<Russian>Сложно (множитель 1.25x)</Russian>
+			<French>Difficile (multiplicateur ×1,25)</French>
+			<Chinesesimp>困难（1.25倍乘数）</Chinesesimp>
+			<Chinese>困難（1.25倍乘數）</Chinese>
+			<Portuguese>Difícil (multiplicador x1,25)</Portuguese>
+			<Czech>Těžké (násobitel 1,25×)</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_OPT4">
+			<Original>Very Hard (1.5x multiplier)</Original>
+			<Russian>Очень сложно (множитель 1.5x)</Russian>
+			<French>Très difficile (multiplicateur ×1,5)</French>
+			<Chinesesimp>非常困难（1.5倍乘数）</Chinesesimp>
+			<Chinese>非常困難（1.5倍乘數）</Chinese>
+			<Portuguese>Muito difícil (multiplicador x1,5)</Portuguese>
+			<Czech>Velmi těžké (násobitel 1,5×)</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_OPT5">
+			<Original>Extreme (2x multiplier)</Original>
+			<Russian>Экстремально (множитель 2x)</Russian>
+			<French>Extrême (multiplicateur ×2)</French>
+			<Chinesesimp>极端（2倍乘数）</Chinesesimp>
+			<Chinese>極端（2倍乘數）</Chinese>
+			<Portuguese>Extremo (multiplicador x2)</Portuguese>
+			<Czech>Extrémní (násobitel 2×)</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_OPT6">
+			<Original>Insane (4x multiplier)</Original>
+			<Russian>Безумно (множитель 4x)</Russian>
+			<French>Dément (multiplicateur ×4)</French>
+			<Chinesesimp>疯狂（4倍乘数）</Chinesesimp>
+			<Chinese>瘋狂（4倍乘數）</Chinese>
+			<Portuguese>Insano (multiplicador x4)</Portuguese>
+			<Czech>Šílené (násobitel 4×)</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DIFFICULTY_OPT7">
+			<Original>Nightmare (10x multiplier)</Original>
+			<Russian>Кошмар (множитель 10x)</Russian>
+			<French>Cauchemar (multiplicateur ×10)</French>
+			<Chinesesimp>噩梦（10倍乘数）</Chinesesimp>
+			<Chinese>噩夢（10倍乘數）</Chinese>
+			<Portuguese>Pesadelo (multiplicador x10)</Portuguese>
+			<Czech>Noční můra (násobitel 10×)</Czech>
+		</Key>
+		<Key ID="STR_AGGRESSIVITY_PARAM_DESC">
+			<Original>Determines the aggressivity level of enemy forces.</Original>
+			<Russian>Определяет уровень агрессивности вражеских сил.</Russian>
+			<French>Détermine le niveau d'agressivité des forces ennemies.</French>
+			<Chinesesimp>确定敌军的攻击强度等级。</Chinesesimp>
+			<Chinese>確定敵軍的侵略性級別。</Chinese>
+			<Portuguese>Determina o nível de agressividade das forças inimigas.</Portuguese>
+			<Czech>Určuje úroveň agresivity nepřátelských sil.</Czech>
+		</Key>
+		<Key ID="STR_AGGRESSIVITY_PARAM_OPT0">
+			<Original>Very Passive (25% aggressivity)</Original>
+			<Russian>Очень пассивно (25% агрессивности)</Russian>
+			<French>Très passif (25 % d'agressivité)</French>
+			<Chinesesimp>非常被动（25%侵略性）</Chinesesimp>
+			<Chinese>非常被動（25%侵略性）</Chinese>
+			<Portuguese>Muito passivo (25% de agressividade)</Portuguese>
+			<Czech>Velmi pasivní (25% agresivity)</Czech>
+		</Key>
+		<Key ID="STR_AGGRESSIVITY_PARAM_OPT1">
+			<Original>Low Aggressivity (50%)</Original>
+			<Russian>Низкая агрессивность (50%)</Russian>
+			<French>Faible agressivité (50 %)</French>
+			<Chinesesimp>低侵略性（50%）</Chinesesimp>
+			<Chinese>低侵略性（50%）</Chinese>
+			<Portuguese>Baixa agressividade (50%)</Portuguese>
+			<Czech>Nízká agresivita (50%)</Czech>
+		</Key>
+		<Key ID="STR_AGGRESSIVITY_PARAM_OPT2">
+			<Original>Normal Aggressivity (100%)</Original>
+			<Russian>Нормальная агрессивность (100%)</Russian>
+			<French>Agressivité normale (100 %)</French>
+			<Chinesesimp>正常侵略性（100%）</Chinesesimp>
+			<Chinese>正常侵略性（100%）</Chinese>
+			<Portuguese>Agressividade normal (100%)</Portuguese>
+			<Czech>Normální agresivita (100%)</Czech>
+		</Key>
+		<Key ID="STR_AGGRESSIVITY_PARAM_OPT3">
+			<Original>High Aggressivity (200%)</Original>
+			<Russian>Высокая агрессивность (200%)</Russian>
+			<French>Haute agressivité (200 %)</French>
+			<Chinesesimp>高侵略性（200%）</Chinesesimp>
+			<Chinese>高侵略性（200%）</Chinese>
+			<Portuguese>Alta agressividade (200%)</Portuguese>
+			<Czech>Vysoká agresivita (200%)</Czech>
+		</Key>
+		<Key ID="STR_AGGRESSIVITY_PARAM_OPT4">
+			<Original>Extreme Aggressivity (400%)</Original>
+			<Russian>Экстремальная агрессивность (400%)</Russian>
+			<French>Agressivité extrême (400 %)</French>
+			<Chinesesimp>极端侵略性（400%）</Chinesesimp>
+			<Chinese>極端侵略性（400%）</Chinese>
+			<Portuguese>Agressividade extrema (400%)</Portuguese>
+			<Czech>Extrémní agresivita (400%)</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_CONDITION_DESC">
+			<Original>Selects the victory condition for the game scenario.</Original>
+			<Russian>Выбирает условие победы для игрового сценария.</Russian>
+			<French>Sélectionne la condition de victoire pour le scénario de jeu.</French>
+			<Chinesesimp>选择游戏场景的胜利条件。</Chinesesimp>
+			<Chinese>選擇遊戲場景的勝利條件。</Chinese>
+			<Portuguese>Seleciona a condição de vitória para o cenário de jogo.</Portuguese>
+			<Czech>Vybere vítěznou podmínku pro herní scénář.</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT0">
+			<Original>No special victory condition</Original>
+			<Russian>Без специального условия победы</Russian>
+			<French>Aucune condition de victoire spéciale</French>
+			<Chinesesimp>无特殊胜利条件</Chinesesimp>
+			<Chinese>無特殊勝利條件</Chinese>
+			<Portuguese>Nenhuma condição de vitória especial</Portuguese>
+			<Czech>Žádná zvláštní vítězná podmínka</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT1">
+			<Original>Eliminate all enemy forces</Original>
+			<Russian>Уничтожить все вражеские силы</Russian>
+			<French>Éliminer toutes les forces ennemies</French>
+			<Chinesesimp>消灭所有敌军</Chinesesimp>
+			<Chinese>消滅所有敵軍</Chinese>
+			<Portuguese>Eliminar todas as forças inimigas</Portuguese>
+			<Czech>Zničit všechny nepřátelské síly</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT2">
+			<Original>Capture designated objectives</Original>
+			<Russian>Захватить назначенные цели</Russian>
+			<French>Capturer les objectifs désignés</French>
+			<Chinesesimp>占领指定目标</Chinesesimp>
+			<Chinese>佔領指定目標</Chinese>
+			<Portuguese>Capturar os objetivos designados</Portuguese>
+			<Czech>Obsadit určené cíle</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT3">
+			<Original>Defend your position</Original>
+			<Russian>Защитить вашу позицию</Russian>
+			<French>Défendre votre position</French>
+			<Chinesesimp>守卫你的位置</Chinesesimp>
+			<Chinese>守衛你的位置</Chinese>
+			<Portuguese>Defender sua posição</Portuguese>
+			<Czech>Bránit svou pozici</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT4">
+			<Original>Escort VIP to extraction</Original>
+			<Russian>Сопроводить VIP к точке эвакуации</Russian>
+			<French>Escorter le VIP jusqu'à l'extraction</French>
+			<Chinesesimp>护送 VIP 到撤离点</Chinesesimp>
+			<Chinese>護送 VIP 到撤離點</Chinese>
+			<Portuguese>Escoltar o VIP até a extração</Portuguese>
+			<Czech>Doprovodit VIP k evakuaci</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT5">
+			<Original>Hold out for set time</Original>
+			<Russian>Выдержать заданное время</Russian>
+			<French>Tenir pendant une durée déterminée</French>
+			<Chinesesimp>坚持指定时间</Chinesesimp>
+			<Chinese>堅持指定時間</Chinese>
+			<Portuguese>Resistir por tempo determinado</Portuguese>
+			<Czech>Vydržet po stanovený čas</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT6">
+			<Original>Assassinate enemy commander</Original>
+			<Russian>Убить командира противника</Russian>
+			<French>Assassiner le commandant ennemi</French>
+			<Chinesesimp>暗杀敌方指挥官</Chinesesimp>
+			<Chinese>暗殺敵方指揮官</Chinese>
+			<Portuguese>Assassinar o comandante inimigo</Portuguese>
+			<Czech>Zlikvidovat nepřátelského velitele</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT7">
+			<Original>Control majority of sectors</Original>
+			<Russian>Контролировать большинство секторов</Russian>
+			<French>Contrôler la majorité des secteurs</French>
+			<Chinesesimp>控制大多数区域</Chinesesimp>
+			<Chinese>控制大多數區域</Chinese>
+			<Portuguese>Controlar a maioria dos setores</Portuguese>
+			<Czech>Ovládat většinu sektorů</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT8">
+			<Original>Reach score threshold</Original>
+			<Russian>Достичь порога очков</Russian>
+			<French>Atteindre le seuil de score</French>
+			<Chinesesimp>达到分数门槛</Chinesesimp>
+			<Chinese>達到分數門檻</Chinese>
+			<Portuguese>Alcançar o limite de pontuação</Portuguese>
+			<Czech>Dosáhnout prahu bodů</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPT9">
+			<Original>Complete bonus missions</Original>
+			<Russian>Выполнить бонусные миссии</Russian>
+			<French>Terminer les missions bonus</French>
+			<Chinesesimp>完成奖励任务</Chinesesimp>
+			<Chinese>完成獎勵任務</Chinese>
+			<Portuguese>Concluir missões bônus</Portuguese>
+			<Czech>Splnit bonusové mise</Czech>
+		</Key>
+		<Key ID="STR_VICTORY_COND_OPTA">
+			<Original>Custom victory condition</Original>
+			<Russian>Пользовательское условие победы</Russian>
+			<French>Condition de victoire personnalisée</French>
+			<Chinesesimp>自定义胜利条件</Chinesesimp>
+			<Chinese>自定義勝利條件</Chinese>
+			<Portuguese>Condição de vitória personalizada</Portuguese>
+			<Czech>Vlastní vítězná podmínka</Czech>
+		</Key>
+		<Key ID="STR_OPFORMARK_DESC">
+			<Original>Determines if enemy forces are fully visible or hidden in fog of war.</Original>
+			<Russian>Определяет, полностью ли видны вражеские силы или скрыты в тумане войны.</Russian>
+			<French>Détermine si les forces ennemies sont entièrement visibles ou cachées dans le brouillard de guerre.</French>
+			<Chinesesimp>确定敌军是在战争迷雾中完全可见还是被隐藏。</Chinesesimp>
+			<Chinese>確定敵軍是在戰爭迷霧中完全可見還是被隱藏。</Chinese>
+			<Portuguese>Determina se as forças inimigas são totalmente visíveis ou ocultas na névoa de guerra.</Portuguese>
+			<Czech>Určuje, zda jsou nepřátelské síly zcela viditelné, nebo skryté v mlze války.</Czech>
+		</Key>
+		<Key ID="STR_OPFORMARK_OPT0">
+			<Original>Always show all enemy forces</Original>
+			<Russian>Всегда показывать все вражеские силы</Russian>
+			<French>Toujours afficher toutes les forces ennemies</French>
+			<Chinesesimp>始终显示所有敌军</Chinesesimp>
+			<Chinese>始終顯示所有敵軍</Chinese>
+			<Portuguese>Sempre mostrar todas as forças inimigas</Portuguese>
+			<Czech>Vždy zobrazovat všechny nepřátelské síly</Czech>
+		</Key>
+		<Key ID="STR_OPFORMARK_OPT1">
+			<Original>Hide enemy forces under fog of war</Original>
+			<Russian>Скрывать вражеские силы под туманом войны</Russian>
+			<French>Masquer les forces ennemies sous le brouillard de guerre</French>
+			<Chinesesimp>将敌军隐藏在战争迷雾中</Chinesesimp>
+			<Chinese>將敵軍隱藏在戰爭迷霧中</Chinese>
+			<Portuguese>Ocultar forças inimigas na névoa de guerra</Portuguese>
+			<Czech>Skrýt nepřátelské síly v mlze války</Czech>
+		</Key>
+		<Key ID="STR_BLUFORMARK_DESC">
+			<Original>Sets the visibility options of friendly forces on the map.</Original>
+			<Russian>Устанавливает параметры видимости дружественных сил на карте.</Russian>
+			<French>Définit les options de visibilité des forces amies sur la carte.</French>
+			<Chinesesimp>设置地图上友军的可见性选项。</Chinesesimp>
+			<Chinese>設置地圖上友軍的可見性選項。</Chinese>
+			<Portuguese>Define as opções de visibilidade das forças amigas no mapa.</Portuguese>
+			<Czech>Nastavuje možnosti viditelnosti přátelských sil na mapě.</Czech>
+		</Key>
+		<Key ID="STR_BLUFORMARK_OPT0">
+			<Original>Hide all friendly forces</Original>
+			<Russian>Скрыть все дружественные силы</Russian>
+			<French>Masquer toutes les forces amies</French>
+			<Chinesesimp>隐藏所有友军</Chinesesimp>
+			<Chinese>隱藏所有友軍</Chinese>
+			<Portuguese>Ocultar todas as forças amigas</Portuguese>
+			<Czech>Skrýt všechny přátelské síly</Czech>
+		</Key>
+		<Key ID="STR_BLUFORMARK_OPT1">
+			<Original>Show only the player's units</Original>
+			<Russian>Показывать только юниты игрока</Russian>
+			<French>Afficher uniquement les unités du joueur</French>
+			<Chinesesimp>仅显示玩家单位</Chinesesimp>
+			<Chinese>僅顯示玩家單位</Chinese>
+			<Portuguese>Mostrar apenas as unidades do jogador</Portuguese>
+			<Czech>Zobrazit pouze jednotky hráče</Czech>
+		</Key>
+		<Key ID="STR_BLUFORMARK_OPT2">
+			<Original>Show all friendly forces</Original>
+			<Russian>Показывать все дружественные силы</Russian>
+			<French>Afficher toutes les forces amies</French>
+			<Chinesesimp>显示所有友军</Chinesesimp>
+			<Chinese>顯示所有友軍</Chinese>
+			<Portuguese>Mostrar todas as forças amigas</Portuguese>
+			<Czech>Zobrazit všechny přátelské síly</Czech>
+		</Key>
+		<Key ID="STR_WEATHER_PARAM_DESC">
+			<Original>Controls weather settings and intensity during the game.</Original>
+			<Russian>Управляет настройками погоды и её интенсивностью во время игры.</Russian>
+			<French>Contrôle les paramètres météorologiques et leur intensité pendant le jeu.</French>
+			<Chinesesimp>控制游戏中的天气设置和强度。</Chinesesimp>
+			<Chinese>控制遊戲中的天氣設置和強度。</Chinese>
+			<Portuguese>Controla as configurações de clima e intensidade durante o jogo.</Portuguese>
+			<Czech>Ovládá nastavení počasí a jeho intenzitu během hry.</Czech>
+		</Key>
+		<Key ID="STR_WEATHER_PARAM_OPT0">
+			<Original>Disable dynamic weather</Original>
+			<Russian>Отключить динамическую погоду</Russian>
+			<French>Désactiver la météo dynamique</French>
+			<Chinesesimp>禁用动态天气</Chinesesimp>
+			<Chinese>停用動態天氣</Chinese>
+			<Portuguese>Desativar clima dinâmico</Portuguese>
+			<Czech>Zakázat dynamické počasí</Czech>
+		</Key>
+		<Key ID="STR_WEATHER_PARAM_OPT1">
+			<Original>Light weather effects</Original>
+			<Russian>Легкие погодные эффекты</Russian>
+			<French>Effets météorologiques légers</French>
+			<Chinesesimp>轻微天气效果</Chinesesimp>
+			<Chinese>輕微天氣效果</Chinese>
+			<Portuguese>Efeitos climáticos leves</Portuguese>
+			<Czech>Lehké povětrnostní efekty</Czech>
+		</Key>
+		<Key ID="STR_WEATHER_PARAM_OPT2">
+			<Original>Moderate weather effects</Original>
+			<Russian>Умеренные погодные эффекты</Russian>
+			<French>Effets météorologiques modérés</French>
+			<Chinesesimp>中等天气效果</Chinesesimp>
+			<Chinese>中等天氣效果</Chinese>
+			<Portuguese>Efeitos climáticos moderados</Portuguese>
+			<Czech>Mírné povětrnostní efekty</Czech>
+		</Key>
+		<Key ID="STR_WEATHER_PARAM_OPT3">
+			<Original>Heavy weather effects</Original>
+			<Russian>Сильные погодные эффекты</Russian>
+			<French>Effets météorologiques forts</French>
+			<Chinesesimp>强烈天气效果</Chinesesimp>
+			<Chinese>強烈天氣效果</Chinese>
+			<Portuguese>Efeitos climáticos intensos</Portuguese>
+			<Czech>Silné povětrnostní efekty</Czech>
+		</Key>
+		<Key ID="STR_WEATHER_PARAM_OPT4">
+			<Original>Extreme weather effects</Original>
+			<Russian>Экстремальные погодные эффекты</Russian>
+			<French>Effets météorologiques extrêmes</French>
+			<Chinesesimp>极端天气效果</Chinesesimp>
+			<Chinese>極端天氣效果</Chinese>
+			<Portuguese>Efeitos climáticos extremos</Portuguese>
+			<Czech>Extrémní povětrnostní efekty</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_DESC">
+			<Original>Adjusts the duration of daytime within the mission.</Original>
+			<Russian>Настраивает продолжительность дневного времени в миссии.</Russian>
+			<French>Ajuste la durée du jour pendant la mission.</French>
+			<Chinesesimp>调整任务中的白昼持续时间。</Chinesesimp>
+			<Chinese>調整任務中的白晝持續時間。</Chinese>
+			<Portuguese>Ajusta a duração do dia na missão.</Portuguese>
+			<Czech>Upravuje délku denního času v misích.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT0">
+			<Original>Day lasts 0.25x real time – shorter</Original>
+			<Russian>День длится 0,25× реального времени — короче</Russian>
+			<French>La journée dure 0,25× le temps réel – plus courte</French>
+			<Chinesesimp>白天持续0.25倍真实时间——更短</Chinesesimp>
+			<Chinese>白天持續0.25倍真實時間——更短</Chinese>
+			<Portuguese>O dia dura 0,25× do tempo real – mais curto</Portuguese>
+			<Czech>Den trvá 0,25× reálného času – kratší</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT1">
+			<Original>Day lasts 0.5x real time</Original>
+			<Russian>День длится 0,5× реального времени</Russian>
+			<French>La journée dure 0,5× le temps réel</French>
+			<Chinesesimp>白天持续0.5倍真实时间</Chinesesimp>
+			<Chinese>白天持續0.5倍真實時間</Chinese>
+			<Portuguese>O dia dura 0,5× do tempo real</Portuguese>
+			<Czech>Den trvá 0,5× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT2">
+			<Original>Day lasts 1x real time</Original>
+			<Russian>День длится 1× реального времени</Russian>
+			<French>La journée dure 1× le temps réel</French>
+			<Chinesesimp>白天持续1倍真实时间</Chinesesimp>
+			<Chinese>白天持續1倍真實時間</Chinese>
+			<Portuguese>O dia dura o tempo real (1×)</Portuguese>
+			<Czech>Den trvá 1× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT3">
+			<Original>Day lasts 1.5x real time</Original>
+			<Russian>День длится 1,5× реального времени</Russian>
+			<French>La journée dure 1,5× le temps réel</French>
+			<Chinesesimp>白天持续1.5倍真实时间</Chinesesimp>
+			<Chinese>白天持續1.5倍真實時間</Chinese>
+			<Portuguese>O dia dura 1,5× do tempo real</Portuguese>
+			<Czech>Den trvá 1,5× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT4">
+			<Original>Day lasts 2x real time</Original>
+			<Russian>День длится 2× реального времени</Russian>
+			<French>La journée dure 2× le temps réel</French>
+			<Chinesesimp>白天持续2倍真实时间</Chinesesimp>
+			<Chinese>白天持續2倍真實時間</Chinese>
+			<Portuguese>O dia dura 2× do tempo real</Portuguese>
+			<Czech>Den trvá 2× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT5">
+			<Original>Day lasts 2.5x real time</Original>
+			<Russian>День длится 2,5× реального времени</Russian>
+			<French>La journée dure 2,5× le temps réel</French>
+			<Chinesesimp>白天持续2.5倍真实时间</Chinesesimp>
+			<Chinese>白天持續2.5倍真實時間</Chinese>
+			<Portuguese>O dia dura 2,5× do tempo real</Portuguese>
+			<Czech>Den trvá 2,5× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT6">
+			<Original>Day lasts 3x real time</Original>
+			<Russian>День длится 3× реального времени</Russian>
+			<French>La journée dure 3× le temps réel</French>
+			<Chinesesimp>白天持续3倍真实时间</Chinesesimp>
+			<Chinese>白天持續3倍真實時間</Chinese>
+			<Portuguese>O dia dura 3× do tempo real</Portuguese>
+			<Czech>Den trvá 3× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT7">
+			<Original>Day lasts 5x real time</Original>
+			<Russian>День длится 5× реального времени</Russian>
+			<French>La journée dure 5× le temps réel</French>
+			<Chinesesimp>白天持续5倍真实时间</Chinesesimp>
+			<Chinese>白天持續5倍真實時間</Chinese>
+			<Portuguese>O dia dura 5× do tempo real</Portuguese>
+			<Czech>Den trvá 5× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT8">
+			<Original>Day lasts 7x real time</Original>
+			<Russian>День длится 7× реального времени</Russian>
+			<French>La journée dure 7× le temps réel</French>
+			<Chinesesimp>白天持续7倍真实时间</Chinesesimp>
+			<Chinese>白天持續7倍真實時間</Chinese>
+			<Portuguese>O dia dura 7× do tempo real</Portuguese>
+			<Czech>Den trvá 7× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT9">
+			<Original>Day lasts 10x real time</Original>
+			<Russian>День длится 10× реального времени</Russian>
+			<French>La journée dure 10× le temps réel</French>
+			<Chinesesimp>白天持续10倍真实时间</Chinesesimp>
+			<Chinese>白天持續10倍真實時間</Chinese>
+			<Portuguese>O dia dura 10× do tempo real</Portuguese>
+			<Czech>Den trvá 10× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT10">
+			<Original>Day lasts 20x real time</Original>
+			<Russian>День длится 20× реального времени</Russian>
+			<French>La journée dure 20× le temps réel</French>
+			<Chinesesimp>白天持续20倍真实时间</Chinesesimp>
+			<Chinese>白天持續20倍真實時間</Chinese>
+			<Portuguese>O dia dura 20× do tempo real</Portuguese>
+			<Czech>Den trvá 20× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT11">
+			<Original>Day lasts 30x real time</Original>
+			<Russian>День длится 30× реального времени</Russian>
+			<French>La journée dure 30× le temps réel</French>
+			<Chinesesimp>白天持续30倍真实时间</Chinesesimp>
+			<Chinese>白天持續30倍真實時間</Chinese>
+			<Portuguese>O dia dura 30× do tempo real</Portuguese>
+			<Czech>Den trvá 30× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT12">
+			<Original>Day lasts 40x real time</Original>
+			<Russian>День длится 40× реального времени</Russian>
+			<French>La journée dure 40× le temps réel</French>
+			<Chinesesimp>白天持续40倍真实时间</Chinesesimp>
+			<Chinese>白天持續40倍真實時間</Chinese>
+			<Portuguese>O dia dura 40× do tempo real</Portuguese>
+			<Czech>Den trvá 40× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_DAYDURATION_OPT13">
+			<Original>Day lasts 50x real time – longer</Original>
+			<Russian>День длится 50× реального времени — дольше</Russian>
+			<French>La journée dure 50× le temps réel – plus longue</French>
+			<Chinesesimp>白天持续50倍真实时间——更长</Chinesesimp>
+			<Chinese>白天持續50倍真實時間——更長</Chinese>
+			<Portuguese>O dia dura 50× do tempo real – mais longo</Portuguese>
+			<Czech>Den trvá 50× reálného času – delší</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_DESC">
+			<Original>Adjusts the duration of nighttime within the mission.</Original>
+			<Russian>Настраивает продолжительность ночного времени в миссии.</Russian>
+			<French>Ajuste la durée de la nuit pendant la mission.</French>
+			<Chinesesimp>调整任务中的夜晚持续时间。</Chinesesimp>
+			<Chinese>調整任務中的夜晚持續時間。</Chinese>
+			<Portuguese>Ajusta a duração da noite na missão.</Portuguese>
+			<Czech>Upravuje délku nočního času v misích.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT0">
+			<Original>Night lasts 0.25x real time – shorter</Original>
+			<Russian>Ночь длится 0,25× реального времени — короче</Russian>
+			<French>La nuit dure 0,25× le temps réel – plus courte</French>
+			<Chinesesimp>夜晚持续0.25倍真实时间——更短</Chinesesimp>
+			<Chinese>夜晚持續0.25倍真實時間——更短</Chinese>
+			<Portuguese>A noite dura 0,25× do tempo real – mais curta</Portuguese>
+			<Czech>Noc trvá 0,25× reálného času – kratší</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT1">
+			<Original>Night lasts 0.5x real time</Original>
+			<Russian>Ночь длится 0,5× реального времени</Russian>
+			<French>La nuit dure 0,5× le temps réel</French>
+			<Chinesesimp>夜晚持续0.5倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續0.5倍真實時間</Chinese>
+			<Portuguese>A noite dura 0,5× do tempo real</Portuguese>
+			<Czech>Noc trvá 0,5× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT2">
+			<Original>Night lasts 1x real time</Original>
+			<Russian>Ночь длится 1× реального времени</Russian>
+			<French>La nuit dure 1× le temps réel</French>
+			<Chinesesimp>夜晚持续1倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續1倍真實時間</Chinese>
+			<Portuguese>A noite dura o tempo real (1×)</Portuguese>
+			<Czech>Noc trvá 1× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT3">
+			<Original>Night lasts 1.5x real time</Original>
+			<Russian>Ночь длится 1,5× реального времени</Russian>
+			<French>La nuit dure 1,5× le temps réel</French>
+			<Chinesesimp>夜晚持续1.5倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續1.5倍真實時間</Chinese>
+			<Portuguese>A noite dura 1,5× do tempo real</Portuguese>
+			<Czech>Noc trvá 1,5× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT4">
+			<Original>Night lasts 2x real time</Original>
+			<Russian>Ночь длится 2× реального времени</Russian>
+			<French>La nuit dure 2× le temps réel</French>
+			<Chinesesimp>夜晚持续2倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續2倍真實時間</Chinese>
+			<Portuguese>A noite dura 2× do tempo real</Portuguese>
+			<Czech>Noc trvá 2× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT5">
+			<Original>Night lasts 2.5x real time</Original>
+			<Russian>Ночь длится 2,5× реального времени</Russian>
+			<French>La nuit dure 2,5× le temps réel</French>
+			<Chinesesimp>夜晚持续2.5倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續2.5倍真實時間</Chinese>
+			<Portuguese>A noite dura 2,5× do tempo real</Portuguese>
+			<Czech>Noc trvá 2,5× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT6">
+			<Original>Night lasts 3x real time</Original>
+			<Russian>Ночь длится 3× реального времени</Russian>
+			<French>La nuit dure 3× le temps réel</French>
+			<Chinesesimp>夜晚持续3倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續3倍真實時間</Chinese>
+			<Portuguese>A noite dura 3× do tempo real</Portuguese>
+			<Czech>Noc trvá 3× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT7">
+			<Original>Night lasts 5x real time</Original>
+			<Russian>Ночь длится 5× реального времени</Russian>
+			<French>La nuit dure 5× le temps réel</French>
+			<Chinesesimp>夜晚持续5倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續5倍真實時間</Chinese>
+			<Portuguese>A noite dura 5× do tempo real</Portuguese>
+			<Czech>Noc trvá 5× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT8">
+			<Original>Night lasts 7x real time</Original>
+			<Russian>Ночь длится 7× реального времени</Russian>
+			<French>La nuit dure 7× le temps réel</French>
+			<Chinesesimp>夜晚持续7倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續7倍真實時間</Chinese>
+			<Portuguese>A noite dura 7× do tempo real</Portuguese>
+			<Czech>Noc trvá 7× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT9">
+			<Original>Night lasts 10x real time</Original>
+			<Russian>Ночь длится 10× реального времени</Russian>
+			<French>La nuit dure 10× le temps réel</French>
+			<Chinesesimp>夜晚持续10倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續10倍真實時間</Chinese>
+			<Portuguese>A noite dura 10× do tempo real</Portuguese>
+			<Czech>Noc trvá 10× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT10">
+			<Original>Night lasts 20x real time</Original>
+			<Russian>Ночь длится 20× реального времени</Russian>
+			<French>La nuit dure 20× le temps réel</French>
+			<Chinesesimp>夜晚持续20倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續20倍真實時間</Chinese>
+			<Portuguese>A noite dura 20× do tempo real</Portuguese>
+			<Czech>Noc trvá 20× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT11">
+			<Original>Night lasts 30x real time</Original>
+			<Russian>Ночь длится 30× реального времени</Russian>
+			<French>La nuit dure 30× le temps réel</French>
+			<Chinesesimp>夜晚持续30倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續30倍真實時間</Chinese>
+			<Portuguese>A noite dura 30× do tempo real</Portuguese>
+			<Czech>Noc trvá 30× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT12">
+			<Original>Night lasts 40x real time</Original>
+			<Russian>Ночь длится 40× реального времени</Russian>
+			<French>La nuit dure 40× le temps réel</French>
+			<Chinesesimp>夜晚持续40倍真实时间</Chinesesimp>
+			<Chinese>夜晚持續40倍真實時間</Chinese>
+			<Portuguese>A noite dura 40× do tempo real</Portuguese>
+			<Czech>Noc trvá 40× reálného času</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_NIGHTDURATION_OPT13">
+			<Original>Night lasts 50x real time – longer</Original>
+			<Russian>Ночь длится 50× реального времени — дольше</Russian>
+			<French>La nuit dure 50× le temps réel – plus longue</French>
+			<Chinesesimp>夜晚持续50倍真实时间——更长</Chinesesimp>
+			<Chinese>夜晚持續50倍真實時間——更長</Chinese>
+			<Portuguese>A noite dura 50× do tempo real – mais longa</Portuguese>
+			<Czech>Noc trvá 50× reálného času – delší</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_DESC">
+			<Original>Enables or disables automatic passive income generation.</Original>
+			<Russian>Включает или отключает автоматическую генерацию пассивного дохода.</Russian>
+			<French>Active ou désactive la génération automatique de revenus passifs.</French>
+			<Chinesesimp>启用或禁用自动被动收入生成。</Chinesesimp>
+			<Chinese>啟用或停用自動被動收入生成。</Chinese>
+			<Portuguese>Ativa ou desativa a geração automática de renda passiva.</Portuguese>
+			<Czech>Povolí nebo zakáže automatické generování pasivního příjmu.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_OPT0">
+			<Original>Disable passive income</Original>
+			<Russian>Отключить пассивный доход</Russian>
+			<French>Désactiver le revenu passif</French>
+			<Chinesesimp>禁用被动收入</Chinesesimp>
+			<Chinese>停用被動收入</Chinese>
+			<Portuguese>Desativar renda passiva</Portuguese>
+			<Czech>Zakázat pasivní příjem</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_OPT1">
+			<Original>Enable passive income</Original>
+			<Russian>Включить пассивный доход</Russian>
+			<French>Activer le revenu passif</French>
+			<Chinesesimp>启用被动收入</Chinesesimp>
+			<Chinese>啟用被動收入</Chinese>
+			<Portuguese>Ativar renda passiva</Portuguese>
+			<Czech>Povolit pasivní příjem</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_DESC">
+			<Original>Sets the delay (in seconds) between passive income payouts.</Original>
+			<Russian>Устанавливает задержку (в секундах) между выплатами пассивного дохода.</Russian>
+			<French>Définit le délai (en secondes) entre les paiements de revenus passifs.</French>
+			<Chinesesimp>设置被动收入支付之间的延迟（以秒为单位）。</Chinesesimp>
+			<Chinese>設置被動收入支付之間的延遲（以秒為單位）。</Chinese>
+			<Portuguese>Define o atraso (em segundos) entre os pagamentos de renda passiva.</Portuguese>
+			<Czech>Nastaví zpoždění (v sekundách) mezi výplatami pasivního příjmu.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT0">
+			<Original>Delay between payouts: 20 minutes</Original>
+			<Russian>Задержка между выплатами: 20 минут</Russian>
+			<French>Délai entre paiements : 20 minutes</French>
+			<Chinesesimp>支付间隔：20分钟</Chinesesimp>
+			<Chinese>支付間隔：20分鐘</Chinese>
+			<Portuguese>Atraso entre pagamentos: 20 minutos</Portuguese>
+			<Czech>Prodleva mezi výplatami: 20 minut</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT1">
+			<Original>Delay between payouts: 30 minutes</Original>
+			<Russian>Задержка между выплатами: 30 минут</Russian>
+			<French>Délai entre paiements : 30 minutes</French>
+			<Chinesesimp>支付间隔：30分钟</Chinesesimp>
+			<Chinese>支付間隔：30分鐘</Chinese>
+			<Portuguese>Atraso entre pagamentos: 30 minutos</Portuguese>
+			<Czech>Prodleva mezi výplatami: 30 minut</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT2">
+			<Original>Delay between payouts: 1 hour</Original>
+			<Russian>Задержка между выплатами: 1 час</Russian>
+			<French>Délai entre paiements : 1 heure</French>
+			<Chinesesimp>支付间隔：1小时</Chinesesimp>
+			<Chinese>支付間隔：1小時</Chinese>
+			<Portuguese>Atraso entre pagamentos: 1 hora</Portuguese>
+			<Czech>Prodleva mezi výplatami: 1 hodina</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT3">
+			<Original>Delay between payouts: 2 hours</Original>
+			<Russian>Задержка между выплатами: 2 часа</Russian>
+			<French>Délai entre paiements : 2 heures</French>
+			<Chinesesimp>支付间隔：2小时</Chinesesimp>
+			<Chinese>支付間隔：2小時</Chinese>
+			<Portuguese>Atraso entre pagamentos: 2 horas</Portuguese>
+			<Czech>Prodleva mezi výplatami: 2 hodiny</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_DESC">
+			<Original>Defines the amount of passive income awarded per interval.</Original>
+			<Russian>Определяет сумму пассивного дохода, выдаваемого за интервал.</Russian>
+			<French>Définit le montant de revenu passif attribué par intervalle.</French>
+			<Chinesesimp>定义每个周期授予的被动收入金额。</Chinesesimp>
+			<Chinese>定義每個週期授予的被動收入金額。</Chinese>
+			<Portuguese>Define o valor de renda passiva concedido a cada intervalo.</Portuguese>
+			<Czech>Definuje částku pasivního příjmu přidělovanou za interval.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_OPT0">
+			<Original>Award 100 credits per payout</Original>
+			<Russian>Выдавать 100 кредитов за выплату</Russian>
+			<French>Attribuer 100 crédits par paiement</French>
+			<Chinesesimp>每次支付奖励100积分</Chinesesimp>
+			<Chinese>每次支付獎勵100積分</Chinese>
+			<Portuguese>Conceder 100 créditos por pagamento</Portuguese>
+			<Czech>Přidělit 100 kreditů za výplatu</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_OPT1">
+			<Original>Award 200 credits per payout</Original>
+			<Russian>Выдавать 200 кредитов за выплату</Russian>
+			<French>Attribuer 200 crédits par paiement</French>
+			<Chinesesimp>每次支付奖励200积分</Chinesesimp>
+			<Chinese>每次支付獎勵200積分</Chinese>
+			<Portuguese>Conceder 200 créditos por pagamento</Portuguese>
+			<Czech>Přidělit 200 kreditů za výplatu</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_OPT2">
+			<Original>Award 300 credits per payout</Original>
+			<Russian>Выдавать 300 кредитов за выплату</Russian>
+			<French>Attribuer 300 crédits par paiement</French>
+			<Chinesesimp>每次支付奖励300积分</Chinesesimp>
+			<Chinese>每次支付獎勵300積分</Chinese>
+			<Portuguese>Conceder 300 créditos por pagamento</Portuguese>
+			<Czech>Přidělit 300 kreditů za výplatu</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_OPT3">
+			<Original>Award 400 credits per payout</Original>
+			<Russian>Выдавать 400 кредитов за выплату</Russian>
+			<French>Attribuer 400 crédits par paiement</French>
+			<Chinesesimp>每次支付奖励400积分</Chinesesimp>
+			<Chinese>每次支付獎勵400積分</Chinese>
+			<Portuguese>Conceder 400 créditos por pagamento</Portuguese>
+			<Czech>Přidělit 400 kreditů za výplatu</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_OPT4">
+			<Original>Award 500 credits per payout</Original>
+			<Russian>Выдавать 500 кредитов за выплату</Russian>
+			<French>Attribuer 500 crédits par paiement</French>
+			<Chinesesimp>每次支付奖励500积分</Chinesesimp>
+			<Chinese>每次支付獎勵500積分</Chinese>
+			<Portuguese>Conceder 500 créditos por pagamento</Portuguese>
+			<Czech>Přidělit 500 kreditů za výplatu</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_OPT5">
+			<Original>Award 1000 credits per payout</Original>
+			<Russian>Выдавать 1000 кредитов за выплату</Russian>
+			<French>Attribuer 1000 crédits par paiement</French>
+			<Chinesesimp>每次支付奖励1000积分</Chinesesimp>
+			<Chinese>每次支付獎勵1000積分</Chinese>
+			<Portuguese>Conceder 1000 créditos por pagamento</Portuguese>
+			<Czech>Přidělit 1000 kreditů za výplatu</Czech>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_OPT6">
+			<Original>Award 1500 credits per payout</Original>
+			<Russian>Выдавать 1500 кредитов за выплату</Russian>
+			<French>Attribuer 1500 crédits par paiement</French>
+			<Chinesesimp>每次支付奖励1500积分</Chinesesimp>
+			<Chinese>每次支付獎勵1500積分</Chinese>
+			<Portuguese>Conceder 1500 créditos por pagamento</Portuguese>
+			<Czech>Přidělit 1500 kreditů za výplatu</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_DESC">
+			<Original>Applies a multiplier to resources available in the mission.</Original>
+			<Russian>Применяет множитель к ресурсам, доступным в миссии.</Russian>
+			<French>Applique un multiplicateur aux ressources disponibles dans la mission.</French>
+			<Chinesesimp>将乘数应用于任务中可用的资源。</Chinesesimp>
+			<Chinese>將乘數應用於任務中可用的資源。</Chinese>
+			<Portuguese>Aplica um multiplicador aos recursos disponíveis na missão.</Portuguese>
+			<Czech>Používá násobitel na zdroje dostupné v misích.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT0">
+			<Original>Resources at 25% rate</Original>
+			<Russian>Ресурсы на 25%</Russian>
+			<French>Ressources à 25 %</French>
+			<Chinesesimp>资源比例 25%</Chinesesimp>
+			<Chinese>資源比例 25%</Chinese>
+			<Portuguese>Recursos a 25%</Portuguese>
+			<Czech>Zdroje na 25 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT1">
+			<Original>Resources at 50% rate</Original>
+			<Russian>Ресурсы на 50%</Russian>
+			<French>Ressources à 50 %</French>
+			<Chinesesimp>资源比例 50%</Chinesesimp>
+			<Chinese>資源比例 50%</Chinese>
+			<Portuguese>Recursos a 50%</Portuguese>
+			<Czech>Zdroje na 50 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT2">
+			<Original>Resources at 75% rate</Original>
+			<Russian>Ресурсы на 75%</Russian>
+			<French>Ressources à 75 %</French>
+			<Chinesesimp>资源比例 75%</Chinesesimp>
+			<Chinese>資源比例 75%</Chinese>
+			<Portuguese>Recursos a 75%</Portuguese>
+			<Czech>Zdroje na 75 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT3">
+			<Original>Resources at 100% rate</Original>
+			<Russian>Ресурсы на 100%</Russian>
+			<French>Ressources à 100 %</French>
+			<Chinesesimp>资源比例 100%</Chinesesimp>
+			<Chinese>資源比例 100%</Chinese>
+			<Portuguese>Recursos a 100%</Portuguese>
+			<Czech>Zdroje na 100 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT4">
+			<Original>Resources at 125% rate</Original>
+			<Russian>Ресурсы на 125%</Russian>
+			<French>Ressources à 125 %</French>
+			<Chinesesimp>资源比例 125%</Chinesesimp>
+			<Chinese>資源比例 125%</Chinese>
+			<Portuguese>Recursos a 125%</Portuguese>
+			<Czech>Zdroje na 125 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT5">
+			<Original>Resources at 150% rate</Original>
+			<Russian>Ресурсы на 150%</Russian>
+			<French>Ressources à 150 %</French>
+			<Chinesesimp>资源比例 150%</Chinesesimp>
+			<Chinese>資源比例 150%</Chinese>
+			<Portuguese>Recursos a 150%</Portuguese>
+			<Czech>Zdroje na 150 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT6">
+			<Original>Resources at 200% rate</Original>
+			<Russian>Ресурсы на 200%</Russian>
+			<French>Ressources à 200 %</French>
+			<Chinesesimp>资源比例 200%</Chinesesimp>
+			<Chinese>資源比例 200%</Chinese>
+			<Portuguese>Recursos a 200%</Portuguese>
+			<Czech>Zdroje na 200 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT7">
+			<Original>Resources at 300% rate</Original>
+			<Russian>Ресурсы на 300%</Russian>
+			<French>Ressources à 300 %</French>
+			<Chinesesimp>资源比例 300%</Chinesesimp>
+			<Chinese>資源比例 300%</Chinese>
+			<Portuguese>Recursos a 300%</Portuguese>
+			<Czech>Zdroje na 300 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT8">
+			<Original>Resources at 500% rate</Original>
+			<Russian>Ресурсы на 500%</Russian>
+			<French>Ressources à 500 %</French>
+			<Chinesesimp>资源比例 500%</Chinesesimp>
+			<Chinese>資源比例 500%</Chinese>
+			<Portuguese>Recursos a 500%</Portuguese>
+			<Czech>Zdroje na 500 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT9">
+			<Original>Resources at 1000% rate</Original>
+			<Russian>Ресурсы на 1000%</Russian>
+			<French>Ressources à 1000 %</French>
+			<Chinesesimp>资源比例 1000%</Chinesesimp>
+			<Chinese>資源比例 1000%</Chinese>
+			<Portuguese>Recursos a 1000%</Portuguese>
+			<Czech>Zdroje na 1000 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT10">
+			<Original>Resources at 2000% rate</Original>
+			<Russian>Ресурсы на 2000%</Russian>
+			<French>Ressources à 2000 %</French>
+			<Chinesesimp>资源比例 2000%</Chinesesimp>
+			<Chinese>資源比例 2000%</Chinese>
+			<Portuguese>Recursos a 2000%</Portuguese>
+			<Czech>Zdroje na 2000 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_RESOURCESMULTIPLIER_OPT11">
+			<Original>Resources at 5000% rate</Original>
+			<Russian>Ресурсы на 5000%</Russian>
+			<French>Ressources à 5000 %</French>
+			<Chinesesimp>资源比例 5000%</Chinesesimp>
+			<Chinese>資源比例 5000%</Chinese>
+			<Portuguese>Recursos a 5000%</Portuguese>
+			<Czech>Zdroje na 5000 %</Czech>
+		</Key>
+		<Key ID="STR_HALO_PARAM_DESC">
+			<Original>Configures options for halo jump functionality.</Original>
+			<Russian>Настраивает параметры прыжка Halo.</Russian>
+			<French>Configure les options du saut Halo.</French>
+			<Chinesesimp>配置光环跳伞功能的选项。</Chinesesimp>
+			<Chinese>配置光環跳傘功能的選項。</Chinese>
+			<Portuguese>Configura opções da funcionalidade de salto Halo.</Portuguese>
+			<Czech>Nastavuje možnosti funkce skoku Halo.</Czech>
+		</Key>
+		<Key ID="STR_HALO_PARAM_OPT0">
+			<Original>Disable halo jump</Original>
+			<Russian>Отключить прыжок Halo</Russian>
+			<French>Désactiver le saut Halo</French>
+			<Chinesesimp>禁用光环跳伞</Chinesesimp>
+			<Chinese>停用光環跳傘</Chinese>
+			<Portuguese>Desativar salto Halo</Portuguese>
+			<Czech>Zakázat skok Halo</Czech>
+		</Key>
+		<Key ID="STR_HALO_PARAM_OPT1">
+			<Original>Halo jump at 1 m altitude</Original>
+			<Russian>Прыжок Halo на высоте 1 м</Russian>
+			<French>Saut Halo à 1 m d'altitude</French>
+			<Chinesesimp>在1米高度进行光环跳伞</Chinesesimp>
+			<Chinese>在1米高度進行光環跳傘</Chinese>
+			<Portuguese>Salto Halo a 1 m de altitude</Portuguese>
+			<Czech>Skok Halo ve výšce 1 m</Czech>
+		</Key>
+		<Key ID="STR_HALO_PARAM_OPT2">
+			<Original>Halo jump at 5 m altitude</Original>
+			<Russian>Прыжок Halo на высоте 5 м</Russian>
+			<French>Saut Halo à 5 m d'altitude</French>
+			<Chinesesimp>在5米高度进行光环跳伞</Chinesesimp>
+			<Chinese>在5米高度進行光環跳傘</Chinese>
+			<Portuguese>Salto Halo a 5 m de altitude</Portuguese>
+			<Czech>Skok Halo ve výšce 5 m</Czech>
+		</Key>
+		<Key ID="STR_HALO_PARAM_OPT3">
+			<Original>Halo jump at 10 m altitude</Original>
+			<Russian>Прыжок Halo на высоте 10 м</Russian>
+			<French>Saut Halo à 10 m d'altitude</French>
+			<Chinesesimp>在10米高度进行光环跳伞</Chinesesimp>
+			<Chinese>在10米高度進行光環跳傘</Chinese>
+			<Portuguese>Salto Halo a 10 m de altitude</Portuguese>
+			<Czech>Skok Halo ve výšce 10 m</Czech>
+		</Key>
+		<Key ID="STR_HALO_PARAM_OPT4">
+			<Original>Halo jump at 15 m altitude</Original>
+			<Russian>Прыжок Halo на высоте 15 м</Russian>
+			<French>Saut Halo à 15 m d'altitude</French>
+			<Chinesesimp>在15米高度进行光环跳伞</Chinesesimp>
+			<Chinese>在15米高度進行光環跳傘</Chinese>
+			<Portuguese>Salto Halo a 15 m de altitude</Portuguese>
+			<Czech>Skok Halo ve výšce 15 m</Czech>
+		</Key>
+		<Key ID="STR_HALO_PARAM_OPT5">
+			<Original>Halo jump at 20 m altitude</Original>
+			<Russian>Прыжок Halo на высоте 20 м</Russian>
+			<French>Saut Halo à 20 m d'altitude</French>
+			<Chinesesimp>在20米高度进行光环跳伞</Chinesesimp>
+			<Chinese>在20米高度進行光環跳傘</Chinese>
+			<Portuguese>Salto Halo a 20 m de altitude</Portuguese>
+			<Czech>Skok Halo ve výšce 20 m</Czech>
+		</Key>
+		<Key ID="STR_HALO_PARAM_OPT6">
+			<Original>Halo jump at 30 m altitude</Original>
+			<Russian>Прыжок Halo на высоте 30 м</Russian>
+			<French>Saut Halo à 30 m d'altitude</French>
+			<Chinesesimp>在30米高度进行光环跳伞</Chinesesimp>
+			<Chinese>在30米高度進行光環跳傘</Chinese>
+			<Portuguese>Salto Halo a 30 m de altitude</Portuguese>
+			<Czech>Skok Halo ve výšce 30 m</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PATROLS_DESC">
+			<Original>Sets the patrol mode for civilian units in the mission.</Original>
+			<Russian>Устанавливает режим патрулирования для гражданских подразделений в миссии.</Russian>
+			<French>Définit le mode de patrouille pour les unités civiles dans la mission.</French>
+			<Chinesesimp>设置任务中民用单位的巡逻模式。</Chinesesimp>
+			<Chinese>設置任務中民用單位的巡邏模式。</Chinese>
+			<Portuguese>Define o modo de patrulha para unidades civis na missão.</Portuguese>
+			<Czech>Nastavuje režim hlídek pro civilní jednotky v misi.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PATROLS_OPT0">
+			<Original>No civilian patrols</Original>
+			<Russian>Без гражданских патрулей</Russian>
+			<French>Pas de patrouilles civiles</French>
+			<Chinesesimp>无民用巡逻</Chinesesimp>
+			<Chinese>無民用巡邏</Chinese>
+			<Portuguese>Sem patrulhas civis</Portuguese>
+			<Czech>Žádné civilní hlídky</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PATROLS_OPT1">
+			<Original>50% normal patrol density</Original>
+			<Russian>Плотность патрулей 50 %</Russian>
+			<French>Densité de patrouilles civiles à 50 %</French>
+			<Chinesesimp>巡逻密度 50%</Chinesesimp>
+			<Chinese>巡邏密度 50%</Chinese>
+			<Portuguese>Densidade de patrulha civil a 50%</Portuguese>
+			<Czech>Densita hlídek na 50 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PATROLS_OPT2">
+			<Original>100% normal patrol density</Original>
+			<Russian>Плотность патрулей 100 %</Russian>
+			<French>Densité de patrouilles civiles à 100 %</French>
+			<Chinesesimp>巡逻密度 100%</Chinesesimp>
+			<Chinese>巡邏密度 100%</Chinese>
+			<Portuguese>Densidade de patrulha civil a 100%</Portuguese>
+			<Czech>Densita hlídek na 100 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PATROLS_OPT3">
+			<Original>200% patrol density</Original>
+			<Russian>Плотность патрулей 200 %</Russian>
+			<French>Densité de patrouilles civiles à 200 %</French>
+			<Chinesesimp>巡逻密度 200%</Chinesesimp>
+			<Chinese>巡邏密度 200%</Chinese>
+			<Portuguese>Densidade de patrulha civil a 200%</Portuguese>
+			<Czech>Densita hlídek na 200 %</Czech>
+		</Key>
+		<Key ID="STR_PARAM_WILDLIFE_DESC">
+			<Original>Enables or disables wildlife presence in the mission.</Original>
+			<Russian>Включает или отключает присутствие дикой природы в миссии.</Russian>
+			<French>Active ou désactive la présence de faune dans la mission.</French>
+			<Chinesesimp>启用或禁用任务中的野生动物出现。</Chinesesimp>
+			<Chinese>啟用或停用任務中的野生動物出現。</Chinese>
+			<Portuguese>Ativa ou desativa a presença de fauna na missão.</Portuguese>
+			<Czech>Povolí nebo zakáže přítomnost divoké zvěře v misi.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_WILDLIFE_OPT0">
+			<Original>Disable wildlife spawns</Original>
+			<Russian>Отключить появление дикой природы</Russian>
+			<French>Désactiver l'apparition de faune</French>
+			<Chinesesimp>禁用野生动物生成</Chinesesimp>
+			<Chinese>停用野生動物生成</Chinese>
+			<Portuguese>Desativar aparição de fauna</Portuguese>
+			<Czech>Zakázat spawn divoké zvěře</Czech>
+		</Key>
+		<Key ID="STR_PARAM_WILDLIFE_OPT1">
+			<Original>Enable wildlife spawns</Original>
+			<Russian>Включить появление дикой природы</Russian>
+			<French>Activer l'apparition de faune</French>
+			<Chinesesimp>启用野生动物生成</Chinesesimp>
+			<Chinese>啟用野生動物生成</Chinese>
+			<Portuguese>Ativar aparição de fauna</Portuguese>
+			<Czech>Povolit spawn divoké zvěře</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_CIVILIANS_DESC">
+			<Original>Configures civilian presence and behavior settings.</Original>
+			<Russian>Настраивает присутствие и поведение гражданских.</Russian>
+			<French>Configure la présence et le comportement des civils.</French>
+			<Chinesesimp>配置平民出现及行为设置。</Chinesesimp>
+			<Chinese>配置平民出現及行為設置。</Chinese>
+			<Portuguese>Configura presença e comportamento de civis.</Portuguese>
+			<Czech>Nastavuje přítomnost a chování civilistů.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_CIVILIANS_OPT0">
+			<Original>Disable civilians</Original>
+			<Russian>Отключить гражданских</Russian>
+			<French>Désactiver les civils</French>
+			<Chinesesimp>禁用平民</Chinesesimp>
+			<Chinese>停用平民</Chinese>
+			<Portuguese>Desativar civis</Portuguese>
+			<Czech>Zakázat civilisty</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_CIVILIANS_OPT1">
+			<Original>50% civilian density</Original>
+			<Russian>Плотность гражданских 50 %</Russian>
+			<French>Densité de civils à 50 %</French>
+			<Chinesesimp>平民密度 50%</Chinesesimp>
+			<Chinese>平民密度 50%</Chinese>
+			<Portuguese>Densidade de civis a 50%</Portuguese>
+			<Czech>Densita civilistů na 50 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_CIVILIANS_OPT2">
+			<Original>100% civilian density</Original>
+			<Russian>Плотность гражданских 100 %</Russian>
+			<French>Densité de civils à 100 %</French>
+			<Chinesesimp>平民密度 100%</Chinesesimp>
+			<Chinese>平民密度 100%</Chinese>
+			<Portuguese>Densidade de civis a 100%</Portuguese>
+			<Czech>Densita civilistů na 100 %</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_CIVILIANS_OPT3">
+			<Original>200% civilian density</Original>
+			<Russian>Плотность гражданских 200 %</Russian>
+			<French>Densité de civils à 200 %</French>
+			<Chinesesimp>平民密度 200%</Chinesesimp>
+			<Chinese>平民密度 200%</Chinese>
+			<Portuguese>Densidade de civis a 200%</Portuguese>
+			<Czech>Densita civilistů na 200 %</Czech>
+		</Key>
+		<Key ID="STR_ENABLE_AIR_SUPPORT_DESC">
+			<Original>Toggles the availability of air support during the mission.</Original>
+			<Russian>Переключает доступность авиационной поддержки в миссии.</Russian>
+			<French>Active ou désactive le soutien aérien pendant la mission.</French>
+			<Chinesesimp>切换任务中空中支援的可用性。</Chinesesimp>
+			<Chinese>切換任務中空中支援的可用性。</Chinese>
+			<Portuguese>Alterna a disponibilidade de suporte aéreo durante a missão.</Portuguese>
+			<Czech>Přepíná dostupnost letecké podpory během mise.</Czech>
+		</Key>
+		<Key ID="STR_ENABLE_AIR_SUPPORT_OPT0">
+			<Original>Disable air support</Original>
+			<Russian>Отключить авиационную поддержку</Russian>
+			<French>Désactiver le soutien aérien</French>
+			<Chinesesimp>禁用空中支援</Chinesesimp>
+			<Chinese>停用空中支援</Chinese>
+			<Portuguese>Desativar suporte aéreo</Portuguese>
+			<Czech>Zakázat leteckou podporu</Czech>
+		</Key>
+		<Key ID="STR_ENABLE_AIR_SUPPORT_OPT1">
+			<Original>Enable air support</Original>
+			<Russian>Включить авиационную поддержку</Russian>
+			<French>Activer le soutien aérien</French>
+			<Chinesesimp>启用空中支援</Chinesesimp>
+			<Chinese>啟用空中支援</Chinese>
+			<Portuguese>Ativar suporte aéreo</Portuguese>
+			<Czech>Povolit leteckou podporu</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_DESC">
+			<Original>Sets penalty values that affect civilian behavior or losses.</Original>
+			<Russian>Устанавливает штрафные значения, влияющие на поведение или потери гражданских.</Russian>
+			<French>Définit les pénalités affectant le comportement ou les pertes civiles.</French>
+			<Chinesesimp>设置影响平民行为或损失的惩罚值。</Chinesesimp>
+			<Chinese>設置影響平民行為或損失的處罰值。</Chinese>
+			<Portuguese>Define valores de penalidade que afetam o comportamento ou as perdas civis.</Portuguese>
+			<Czech>Nastavuje hodnoty trestů ovlivňujících chování nebo ztráty civilistů.</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT0">
+			<Original>No civilian penalties</Original>
+			<Russian>Без штрафов для гражданских</Russian>
+			<French>Aucune pénalité civile</French>
+			<Chinesesimp>无平民惩罚</Chinesesimp>
+			<Chinese>無平民處罰</Chinese>
+			<Portuguese>Sem penalidades civis</Portuguese>
+			<Czech>Žádné tresty pro civilisty</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT1">
+			<Original>4 penalty points per casualty</Original>
+			<Russian>4 штрафных очка за жертву</Russian>
+			<French>4 points de pénalité par victime</French>
+			<Chinesesimp>每位平民造成4点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成4點處罰分</Chinese>
+			<Portuguese>4 pontos de penalidade por vítima</Portuguese>
+			<Czech>4 trestné body za oběť</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT2">
+			<Original>6 penalty points per casualty</Original>
+			<Russian>6 штрафных очков за жертву</Russian>
+			<French>6 points de pénalité par victime</French>
+			<Chinesesimp>每位平民造成6点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成6點處罰分</Chinese>
+			<Portuguese>6 pontos de penalidade por vítima</Portuguese>
+			<Czech>6 trestných bodů za oběť</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT3">
+			<Original>8 penalty points per casualty</Original>
+			<Russian>8 штрафных очков за жертву</Russian>
+			<French>8 points de pénalité par victime</French>
+			<Chinesesimp>每位平民造成8点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成8點處罰分</Chinese>
+			<Portuguese>8 pontos de penalidade por vítima</Portuguese>
+			<Czech>8 trestných bodů za oběť</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT4">
+			<Original>10 penalty points per casualty</Original>
+			<Russian>10 штрафных очков за жертву</Russian>
+			<French>10 points de pénalité per victime</French>
+			<Chinesesimp>每位平民造成10点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成10點處罰分</Chinese>
+			<Portuguese>10 pontos de penalidade por vítima</Portuguese>
+			<Czech>10 trestných bodů za oběť</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT5">
+			<Original>20 penalty points per casualty</Original>
+			<Russian>20 штрафных очков за жертву</Russian>
+			<French>20 points de pénalité par victime</French>
+			<Chinesesimp>每位平民造成20点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成20點處罰分</Chinese>
+			<Portuguese>20 pontos de penalidade por vítima</Portuguese>
+			<Czech>20 trestných bodů za oběť</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT6">
+			<Original>25 penalty points per casualty</Original>
+			<Russian>25 штрафных очков за жертву</Russian>
+			<French>25 points de pénalité par victime</French>
+			<Chinesesimp>每位平民造成25点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成25點處罰分</Chinese>
+			<Portuguese>25 pontos de penalidade por vítima</Portuguese>
+			<Czech>25 trestných bodů za oběť</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT7">
+			<Original>30 penalty points per casualty</Original>
+			<Russian>30 штрафных очков за жертву</Russian>
+			<French>30 points de pénalité par victime</French>
+			<Chinesesimp>每位平民造成30点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成30點處罰分</Chinese>
+			<Portuguese>30 pontos de penalidade por vítima</Portuguese>
+			<Czech>30 trestných bodů za oběť</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT8">
+			<Original>40 penalty points per casualty</Original>
+			<Russian>40 штрафных очков за жертву</Russian>
+			<French>40 points de pénalité par victime</French>
+			<Chinesesimp>每位平民造成40点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成40點處罰分</Chinese>
+			<Portuguese>40 pontos de penalidade por vítima</Portuguese>
+			<Czech>40 trestných bodů za oběť</Czech>
+		</Key>
+		<Key ID="STR_CIV_PENALTIES_OPT9">
+			<Original>50 penalty points per casualty</Original>
+			<Russian>50 штрафных очков за жертву</Russian>
+			<French>50 points de pénalité par victime</French>
+			<Chinesesimp>每位平民造成50点惩罚分</Chinesesimp>
+			<Chinese>每位平民造成50點處罰分</Chinese>
+			<Portuguese>50 pontos de penalidade por vítima</Portuguese>
+			<Czech>50 trestných bodů za oběť</Czech>
+		</Key>
+		<Key ID="STR_ALARMS_DESC">
+			<Original>Enabled/disabled in‑game alarms</Original>
+			<Russian>Включение/отключение внутриигровых сигнализаций</Russian>
+			<French>Activer/désactiver les alarmes en jeu</French>
+			<Chinesesimp>启用/禁用游戏内警报</Chinesesimp>
+			<Chinese>啟用/禁用遊戲內警報</Chinese>
+			<Portuguese>Ativar/desativar alarmes no jogo</Portuguese>
+			<Czech>Zapnout/vypnout herní alarmy</Czech>
+		</Key>
+		<Key ID="STR_ALARMS_OPT0">
+			<Original>Disable alarms</Original>
+			<Russian>Отключить сигнализации</Russian>
+			<French>Désactiver les alarmes</French>
+			<Chinesesimp>禁用警报</Chinesesimp>
+			<Chinese>停用警報</Chinese>
+			<Portuguese>Desativar alarmes</Portuguese>
+			<Czech>Zakázat alarmy</Czech>
+		</Key>
+		<Key ID="STR_ALARMS_OPT1">
+			<Original>Enable alarms</Original>
+			<Russian>Включить сигнализации</Russian>
+			<French>Activer les alarmes</French>
+			<Chinesesimp>启用警报</Chinesesimp>
+			<Chinese>啟用警報</Chinese>
+			<Portuguese>Ativar alarmes</Portuguese>
+			<Czech>Povolit alarmy</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_DESC">
+			<Original>Probability that mines are spawned after a sector is captured.</Original>
+			<Russian>Вероятность появления мин после захвата сектора.</Russian>
+			<French>Probabilité d'apparition de mines après la capture d'un secteur.</French>
+			<Chinesesimp>占领区域后生成地雷的概率。</Chinesesimp>
+			<Chinese>佔領區域後生成地雷的概率。</Chinese>
+			<Portuguese>Probabilidade de que minas sejam geradas após captura de setor.</Portuguese>
+			<Czech>Pravděpodobnost rozmístění min po obsazení sektoru.</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_OPT0">
+			<Original>No mines</Original>
+			<Russian>Без мин</Russian>
+			<French>Aucune mine</French>
+			<Chinesesimp>无地雷</Chinesesimp>
+			<Chinese>無地雷</Chinese>
+			<Portuguese>Sem minas</Portuguese>
+			<Czech>Žádné miny</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_OPT1">
+			<Original>5% mine spawn chance</Original>
+			<Russian>5% шанс появления мины</Russian>
+			<French>Chance de mine à 5 %</French>
+			<Chinesesimp>5% 地雷生成几率</Chinesesimp>
+			<Chinese>5% 地雷生成幾率</Chinese>
+			<Portuguese>Chance de minas de 5%</Portuguese>
+			<Czech>5% šance na spawn miny</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_OPT2">
+			<Original>10% mine spawn chance</Original>
+			<Russian>10% шанс появления мины</Russian>
+			<French>Chance de mine à 10 %</French>
+			<Chinesesimp>10% 地雷生成几率</Chinesesimp>
+			<Chinese>10% 地雷生成幾率</Chinese>
+			<Portuguese>Chance de minas de 10%</Portuguese>
+			<Czech>10% šance na spawn miny</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_OPT3">
+			<Original>15% mine spawn chance</Original>
+			<Russian>15% шанс появления мины</Russian>
+			<French>Chance de mine à 15 %</French>
+			<Chinesesimp>15% 地雷生成几率</Chinesesimp>
+			<Chinese>15% 地雷生成幾率</Chinese>
+			<Portuguese>Chance de minas de 15%</Portuguese>
+			<Czech>15% šance na spawn miny</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_OPT4">
+			<Original>25% mine spawn chance</Original>
+			<Russian>25% шанс появления мины</Russian>
+			<French>Chance de mine à 25 %</French>
+			<Chinesesimp>25% 地雷生成几率</Chinesesimp>
+			<Chinese>25% 地雷生成幾率</Chinese>
+			<Portuguese>Chance de minas de 25%</Portuguese>
+			<Czech>25% šance na spawn miny</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_OPT5">
+			<Original>50% mine spawn chance</Original>
+			<Russian>50% шанс появления мины</Russian>
+			<French>Chance de mine à 50 %</French>
+			<Chinesesimp>50% 地雷生成几率</Chinesesimp>
+			<Chinese>50% 地雷生成幾率</Chinese>
+			<Portuguese>Chance de minas de 50%</Portuguese>
+			<Czech>50% šance na spawn miny</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_OPT6">
+			<Original>75% mine spawn chance</Original>
+			<Russian>75% шанс появления мины</Russian>
+			<French>Chance de mine à 75 %</French>
+			<Chinesesimp>75% 地雷生成几率</Chinesesimp>
+			<Chinese>75% 地雷生成幾率</Chinese>
+			<Portuguese>Chance de minas de 75%</Portuguese>
+			<Czech>75% šance na spawn miny</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY_OPT7">
+			<Original>100% mine spawn chance</Original>
+			<Russian>100% шанс появления мины</Russian>
+			<French>Chance de mine à 100 %</French>
+			<Chinesesimp>100% 地雷生成几率</Chinesesimp>
+			<Chinese>100% 地雷生成幾率</Chinese>
+			<Portuguese>Chance de minas de 100%</Portuguese>
+			<Czech>100% šance na spawn miny</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_WEST_DESC">
+			<Original>Selects the mod preset configuration for friendly (west) units.</Original>
+			<Russian>Выбирает конфигурацию пресета мода для дружественных (западных) подразделений.</Russian>
+			<French>Sélectionne la configuration du préréglage du mod pour les unités amies (Ouest).</French>
+			<Chinesesimp>选择友军（西方）单位的模组预设配置。</Chinesesimp>
+			<Chinese>選擇友軍（西方）單位的模組預設配置。</Chinese>
+			<Portuguese>Seleciona a configuração de preset do mod para unidades amigas (oeste).</Portuguese>
+			<Czech>Vybere konfiguraci presetů modu pro přátelské (západní) jednotky.</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_EAST_DESC">
+			<Original>Selects the mod preset configuration for enemy (east) units.</Original>
+			<Russian>Выбирает конфигурацию пресета мода для вражеских (восточных) подразделений.</Russian>
+			<French>Sélectionne la configuration du préréglage du mod pour les unités ennemies (Est).</French>
+			<Chinesesimp>选择敌军（东方）单位的模组预设配置。</Chinesesimp>
+			<Chinese>選擇敵軍（東方）單位的模組預設配置。</Chinese>
+			<Portuguese>Seleciona a configuração de preset do mod para unidades inimigas (leste).</Portuguese>
+			<Czech>Vybere konfiguraci presetů modu pro nepřátelské (východní) jednotky.</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_CIV_DESC">
+			<Original>Configures the mod preset for civilian units.</Original>
+			<Russian>Настраивает пресет мода для гражданских подразделений.</Russian>
+			<French>Configure le préréglage du mod pour les unités civiles.</French>
+			<Chinesesimp>配置平民单位的模组预设。</Chinesesimp>
+			<Chinese>配置平民單位的模組預設。</Chinese>
+			<Portuguese>Configura o preset do mod para unidades civis.</Portuguese>
+			<Czech>Nastavuje preset modu pro civilní jednotky.</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_CIV_OPT0">
+			<Original>Apply mod to all civilians</Original>
+			<Russian>Применить мод ко всем гражданским</Russian>
+			<French>Appliquer le mod à tous les civils</French>
+			<Chinesesimp>对所有平民应用模组</Chinesesimp>
+			<Chinese>對所有平民應用模組</Chinese>
+			<Portuguese>Aplicar mod a todos os civis</Portuguese>
+			<Czech>Použít mod na všechny civilisty</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_CIV_OPT1">
+			<Original>Apply mod only to friendly civilians</Original>
+			<Russian>Применить мод только к дружественным гражданским</Russian>
+			<French>Appliquer le mod uniquement aux civils amis</French>
+			<Chinesesimp>仅对友方平民应用模组</Chinesesimp>
+			<Chinese>僅對友軍平民應用模組</Chinese>
+			<Portuguese>Aplicar mod apenas aos civis amigos</Portuguese>
+			<Czech>Použít mod pouze na přátelské civilisty</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_CIV_OPT2">
+			<Original>Apply mod only to enemy civilians</Original>
+			<Russian>Применить мод только к вражеским гражданским</Russian>
+			<French>Appliquer le mod uniquement aux civils ennemis</French>
+			<Chinesesimp>仅对敌方平民应用模组</Chinesesimp>
+			<Chinese>僅對敵軍平民應用模組</Chinese>
+			<Portuguese>Aplicar mod apenas aos civis inimigos</Portuguese>
+			<Czech>Použít mod pouze na nepřátelské civilisty</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_TAXI_DESC">
+			<Original>Configures the mod preset for taxi units.</Original>
+			<Russian>Настраивает пресет мода для такси-подразделений.</Russian>
+			<French>Configure le préréglage du mod pour les unités taxi.</French>
+			<Chinesesimp>配置出租车单位的模组预设。</Chinesesimp>
+			<Chinese>配置計程車單位的模組預設。</Chinese>
+			<Portuguese>Configura o preset do mod para unidades de táxi.</Portuguese>
+			<Czech>Nastavuje preset modu pro taxi jednotky.</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_TAXI_OPT0">
+			<Original>Apply to all taxi units</Original>
+			<Russian>Применить ко всем такси-подразделениям</Russian>
+			<French>Appliquer à toutes les unités taxi</French>
+			<Chinesesimp>对所有出租车单位应用</Chinesesimp>
+			<Chinese>對所有計程車單位應用</Chinese>
+			<Portuguese>Aplicar a todas as unidades de táxi</Portuguese>
+			<Czech>Použít na všechny taxi jednotky</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_TAXI_OPT1">
+			<Original>Apply only to friendly taxi units</Original>
+			<Russian>Применить только к дружественным такси-подразделениям</Russian>
+			<French>Appliquer uniquement aux taxis amis</French>
+			<Chinesesimp>仅对友方出租车单位应用</Chinesesimp>
+			<Chinese>僅對友軍計程車單位應用</Chinese>
+			<Portuguese>Aplicar apenas aos táxis amigos</Portuguese>
+			<Czech>Použít pouze na přátelské taxi jednotky</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_TAXI_OPT2">
+			<Original>Apply only to enemy taxi units</Original>
+			<Russian>Применить только к вражеским такси-подразделениям</Russian>
+			<French>Appliquer uniquement aux taxis ennemis</French>
+			<Chinesesimp>仅对敌方出租车单位应用</Chinesesimp>
+			<Chinese>僅對敵軍計程車單位應用</Chinese>
+			<Portuguese>Aplicar apenas aos táxis inimigos</Portuguese>
+			<Czech>Použít pouze na nepřátelské taxi jednotky</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_TAXI_OPT3">
+			<Original>Disable taxi preset</Original>
+			<Russian>Отключить пресет такси</Russian>
+			<French>Désactiver le préréglage taxi</French>
+			<Chinesesimp>禁用出租车预设</Chinesesimp>
+			<Chinese>停用計程車預設</Chinese>
+			<Portuguese>Desativar preset de táxi</Portuguese>
+			<Czech>Zakázat preset taxi</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FATIGUE_DESC">
+			<Original>Enables or disables fatigue mechanics affecting players.</Original>
+			<Russian>Включает или отключает механики усталости, влияющие на игроков.</Russian>
+			<French>Active ou désactive les mécanismes de fatigue affectant les joueurs.</French>
+			<Chinesesimp>启用或禁用影响玩家的疲劳机制。</Chinesesimp>
+			<Chinese>啟用或停用影響玩家的疲勞機制。</Chinese>
+			<Portuguese>Ativa ou desativa as mecânicas de fadiga que afetam os jogadores.</Portuguese>
+			<Czech>Povolí nebo zakáže mechaniky únavy ovlivňující hráče.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FATIGUE_OPT0">
+			<Original>Disable fatigue mechanics</Original>
+			<Russian>Отключить механику усталости</Russian>
+			<French>Désactiver la mécanique de fatigue</French>
+			<Chinesesimp>禁用疲劳机制</Chinesesimp>
+			<Chinese>停用疲勞機制</Chinese>
+			<Portuguese>Desativar mecânica de fadiga</Portuguese>
+			<Czech>Zakázat mechaniku únavy</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FATIGUE_OPT1">
+			<Original>Enable fatigue mechanics</Original>
+			<Russian>Включить механику усталости</Russian>
+			<French>Activer la mécanique de fatigue</French>
+			<Chinesesimp>启用疲劳机制</Chinesesimp>
+			<Chinese>啟用疲勞機制</Chinese>
+			<Portuguese>Ativar mecânica de fadiga</Portuguese>
+			<Czech>Povolit mechaniku únavy</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_REVIVE_DESC">
+			<Original>Configures the player revive options and settings.</Original>
+			<Russian>Настраивает параметры и настройки воскрешения игрока.</Russian>
+			<French>Configure les options et paramètres de réanimation des joueurs.</French>
+			<Chinesesimp>配置玩家复活选项和设置。</Chinesesimp>
+			<Chinese>配置玩家復活選項和設置。</Chinese>
+			<Portuguese>Configura opções e definições de reviver jogadores.</Portuguese>
+			<Czech>Nastavuje možnosti a nastavení oživení hráče.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_REVIVE_OPT0">
+			<Original>Disable player revive</Original>
+			<Russian>Отключить воскрешение игрока</Russian>
+			<French>Désactiver la réanimation des joueurs</French>
+			<Chinesesimp>禁用玩家复活</Chinesesimp>
+			<Chinese>停用玩家復活</Chinese>
+			<Portuguese>Desativar reviver jogadores</Portuguese>
+			<Czech>Zakázat oživení hráče</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_REVIVE_OPT1">
+			<Original>Basic revive enabled</Original>
+			<Russian>Включено базовое воскрешение</Russian>
+			<French>Réanimation basique activée</French>
+			<Chinesesimp>启用基础复活</Chinesesimp>
+			<Chinese>啟用基礎復活</Chinese>
+			<Portuguese>Reviver básico ativado</Portuguese>
+			<Czech>Zapnuto základní oživení</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_REVIVE_OPT2">
+			<Original>Advanced revive enabled</Original>
+			<Russian>Включено продвинутое воскрешение</Russian>
+			<French>Réanimation avancée activée</French>
+			<Chinesesimp>启用高级复活</Chinesesimp>
+			<Chinese>啟用高級復活</Chinese>
+			<Portuguese>Reviver avançado ativado</Portuguese>
+			<Czech>Zapnuto pokročilé oživení</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_REVIVE_OPT3">
+			<Original>Full revive enabled</Original>
+			<Russian>Включено полное воскрешение</Russian>
+			<French>Réanimation complète activée</French>
+			<Chinesesimp>启用完全复活</Chinesesimp>
+			<Chinese>啟用完全復活</Chinese>
+			<Portuguese>Reviver completo ativado</Portuguese>
+			<Czech>Zapnuto úplné oživení</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE_DESC">
+			<Original>Sets the maximum number of AI revives allowed (0 indicates unlimited).</Original>
+			<Russian>Устанавливает максимальное число воскрешений ИИ (0 — неограниченно).</Russian>
+			<French>Définit le nombre maximal de réanimations d'IA autorisées (0 = illimité).</French>
+			<Chinesesimp>设置AI复活的最大次数（0表示无限）。</Chinesesimp>
+			<Chinese>設置AI復活的最大次數（0表示無限）。</Chinese>
+			<Portuguese>Define o número máximo de revives de IA permitidos (0 = ilimitado).</Portuguese>
+			<Czech>Nastavuje maximální počet oživení AI (0 = neomezeně).</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT0">
+			<Original>Unlimited AI revives</Original>
+			<Russian>Неограниченные воскрешения ИИ</Russian>
+			<French>Réanimations d'IA illimitées</French>
+			<Chinesesimp>无限AI复活</Chinesesimp>
+			<Chinese>無限AI復活</Chinese>
+			<Portuguese>Reviveres de IA ilimitados</Portuguese>
+			<Czech>Neomezená oživení AI</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT1">
+			<Original>Up to 3 AI revives</Original>
+			<Russian>До 3 воскрешений ИИ</Russian>
+			<French>Jusqu'à 3 réanimations d'IA</French>
+			<Chinesesimp>最多3次AI复活</Chinesesimp>
+			<Chinese>最多3次AI復活</Chinese>
+			<Portuguese>Até 3 revives de IA</Portuguese>
+			<Czech>Až 3 oživení AI</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT2">
+			<Original>Up to 5 AI revives</Original>
+			<Russian>До 5 воскрешений ИИ</Russian>
+			<French>Jusqu'à 5 réanimations d'IA</French>
+			<Chinesesimp>最多5次AI复活</Chinesesimp>
+			<Chinese>最多5次AI復活</Chinese>
+			<Portuguese>Até 5 revives de IA</Portuguese>
+			<Czech>Až 5 oživení AI</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT3">
+			<Original>Up to 7 AI revives</Original>
+			<Russian>До 7 воскрешений ИИ</Russian>
+			<French>Jusqu'à 7 réanimations d'IA</French>
+			<Chinesesimp>最多7次AI复活</Chinesesimp>
+			<Chinese>最多7次AI復活</Chinese>
+			<Portuguese>Até 7 revives de IA</Portuguese>
+			<Czech>Až 7 oživení AI</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT4">
+			<Original>Up to 10 AI revives</Original>
+			<Russian>До 10 воскрешений ИИ</Russian>
+			<French>Jusqu'à 10 réanimations d'IA</French>
+			<Chinesesimp>最多10次AI复活</Chinesesimp>
+			<Chinese>最多10次AI復活</Chinese>
+			<Portuguese>Até 10 revives de IA</Portuguese>
+			<Czech>Až 10 oživení AI</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT5">
+			<Original>Up to 15 AI revives</Original>
+			<Russian>До 15 воскрешений ИИ</Russian>
+			<French>Jusqu'à 15 réanimations d'IA</French>
+			<Chinesesimp>最多15次AI复活</Chinesesimp>
+			<Chinese>最多15次AI復活</Chinese>
+			<Portuguese>Até 15 revives de IA</Portuguese>
+			<Czech>Až 15 oživení AI</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT6">
+			<Original>Up to 20 AI revives</Original>
+			<Russian>До 20 воскрешений ИИ</Russian>
+			<French>Jusqu'à 20 réanimations d'IA</French>
+			<Chinesesimp>最多20次AI复活</Chinesesimp>
+			<Chinese>最多20次AI復活</Chinese>
+			<Portuguese>Até 20 revives de IA</Portuguese>
+			<Czech>Až 20 oživení AI</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_BLEEDOUT_DESC">
+			<Original>Defines the bleed-out time (in seconds) for downed players.</Original>
+			<Russian>Задаёт время истекания крови (в секундах) для раненых игроков.</Russian>
+			<French>Définit le temps d'agonie (en secondes) pour les joueurs à terre.</French>
+			<Chinesesimp>定义倒地玩家的流血结束时间（秒）。</Chinesesimp>
+			<Chinese>定義倒地玩家的流血結束時間（秒）。</Chinese>
+			<Portuguese>Define o tempo de sangramento (em segundos) para jogadores incapacitados.</Portuguese>
+			<Czech>Nastavuje čas do vykrvení (v sekundách) pro zraněné hráče.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT0">
+			<Original>Bleed-out time: 100 seconds</Original>
+			<Russian>Время истечения: 100 секунд</Russian>
+			<French>Temps d'agonie : 100 secondes</French>
+			<Chinesesimp>流血结束时间：100秒</Chinesesimp>
+			<Chinese>流血結束時間：100秒</Chinese>
+			<Portuguese>Tempo de sangramento: 100 segundos</Portuguese>
+			<Czech>Čas do vykrvení: 100 s</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT1">
+			<Original>Bleed-out time: 200 seconds</Original>
+			<Russian>Время истечения: 200 секунд</Russian>
+			<French>Temps d'agonie : 200 secondes</French>
+			<Chinesesimp>流血结束时间：200秒</Chinesesimp>
+			<Chinese>流血結束時間：200秒</Chinese>
+			<Portuguese>Tempo de sangramento: 200 segundos</Portuguese>
+			<Czech>Čas do vykrvení: 200 s</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT2">
+			<Original>Bleed-out time: 300 seconds</Original>
+			<Russian>Время истечения: 300 секунд</Russian>
+			<French>Temps d'agonie : 300 secondes</French>
+			<Chinesesimp>流血结束时间：300秒</Chinesesimp>
+			<Chinese>流血結束時間：300秒</Chinese>
+			<Portuguese>Tempo de sangramento: 300 segundos</Portuguese>
+			<Czech>Čas do vykrvení: 300 s</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT3">
+			<Original>Bleed-out time: 400 seconds</Original>
+			<Russian>Время истечения: 400 секунд</Russian>
+			<French>Temps d'agonie : 400 secondes</French>
+			<Chinesesimp>流血结束时间：400秒</Chinesesimp>
+			<Chinese>流血結束時間：400秒</Chinese>
+			<Portuguese>Tempo de sangramento: 400 segundos</Portuguese>
+			<Czech>Čas do vykrvení: 400 s</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT4">
+			<Original>Bleed-out time: 500 seconds</Original>
+			<Russian>Время истечения: 500 секунд</Russian>
+			<French>Temps d'agonie : 500 secondes</French>
+			<Chinesesimp>流血结束时间：500秒</Chinesesimp>
+			<Chinese>流血結束時間：500秒</Chinese>
+			<Portuguese>Tempo de sangramento: 500 segundos</Portuguese>
+			<Czech>Čas do vykrvení: 500 s</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT5">
+			<Original>Bleed-out time: 600 seconds</Original>
+			<Russian>Время истечения: 600 секунд</Russian>
+			<French>Temps d'agonie : 600 secondes</French>
+			<Chinesesimp>流血结束时间：600秒</Chinesesimp>
+			<Chinese>流血結束時間：600秒</Chinese>
+			<Portuguese>Tempo de sangramento: 600 segundos</Portuguese>
+			<Czech>Čas do vykrvení: 600 s</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_GRAVE_DESC">
+			<Original>Enables or disables grave mechanics following player death.</Original>
+			<Russian>Включает или отключает механику могил после смерти игрока.</Russian>
+			<French>Active ou désactive la mécanique de tombe après la mort d'un joueur.</French>
+			<Chinesesimp>启用或禁用玩家死亡后的坟墓机制。</Chinesesimp>
+			<Chinese>啟用或停用玩家死亡後的墳墓機制。</Chinese>
+			<Portuguese>Ativa ou desativa a mecânica de túmulos após a morte do jogador.</Portuguese>
+			<Czech>Povolí nebo zakáže mechaniku hrobů po smrti hráče.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_GRAVE_OPT0">
+			<Original>Disable grave mechanics</Original>
+			<Russian>Отключить механику могил</Russian>
+			<French>Désactiver la mécanique de tombe</French>
+			<Chinesesimp>禁用坟墓机制</Chinesesimp>
+			<Chinese>停用墳墓機制</Chinese>
+			<Portuguese>Desativar mecânica de túmulos</Portuguese>
+			<Czech>Zakázat mechaniku hrobů</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_PAR_GRAVE_OPT1">
+			<Original>Enable grave mechanics</Original>
+			<Russian>Включить механику могил</Russian>
+			<French>Activer la mécanique de tombe</French>
+			<Chinesesimp>启用坟墓机制</Chinesesimp>
+			<Chinese>啟用墳墓機制</Chinese>
+			<Portuguese>Ativar mecânica de túmulos</Portuguese>
+			<Czech>Povolit mechaniku hrobů</Czech>
+		</Key>
+		<Key ID="STR_DEATHCHAT_DESC">
+			<Original>Toggles death chat notifications for player deaths.</Original>
+			<Russian>Переключает уведомления в чате о смертях игроков.</Russian>
+			<French>Active ou désactive les notifications de mort dans le chat.</French>
+			<Chinesesimp>切换玩家死亡的聊天通知。</Chinesesimp>
+			<Chinese>切換玩家死亡的聊天通知。</Chinese>
+			<Portuguese>Alterna notificações de morte no chat.</Portuguese>
+			<Czech>Přepíná oznámení o úmrtích hráčů v chatu.</Czech>
+		</Key>
+		<Key ID="STR_DEATHCHAT_OPT0">
+			<Original>Disable death chat notifications</Original>
+			<Russian>Отключить уведомления о смертях</Russian>
+			<French>Désactiver les notifications de mort</French>
+			<Chinesesimp>禁用死亡聊天通知</Chinesesimp>
+			<Chinese>停用死亡聊天通知</Chinese>
+			<Portuguese>Desativar notificações de morte</Portuguese>
+			<Czech>Zakázat oznámení o úmrtích</Czech>
+		</Key>
+		<Key ID="STR_DEATHCHAT_OPT1">
+			<Original>Enable death chat notifications</Original>
+			<Russian>Включить уведомления о смертях</Russian>
+			<French>Activer les notifications de mort</French>
+			<Chinesesimp>启用死亡聊天通知</Chinesesimp>
+			<Chinese>啟用死亡聊天通知</Chinese>
+			<Portuguese>Ativar notificações de morte</Portuguese>
+			<Czech>Povolit oznámení o úmrtích</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SPAWN_MAX_DESC">
+			<Original>Sets the maximum number of spawn points available.</Original>
+			<Russian>Устанавливает максимальное число точек возрождения.</Russian>
+			<French>Définit le nombre maximal de points de réapparition.</French>
+			<Chinesesimp>设置可用刷新点的最大数量。</Chinesesimp>
+			<Chinese>設置可用刷新點的最大數量。</Chinese>
+			<Portuguese>Define o número máximo de pontos de spawn.</Portuguese>
+			<Czech>Nastavuje maximální počet spawnovacích bodů.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SPAWN_MAX_OPT0">
+			<Original>Allow 1 spawn point</Original>
+			<Russian>Разрешить 1 точку возрождения</Russian>
+			<French>Autoriser 1 point de réapparition</French>
+			<Chinesesimp>允许1个刷新点</Chinesesimp>
+			<Chinese>允許1個刷新點</Chinese>
+			<Portuguese>Permitir 1 ponto de spawn</Portuguese>
+			<Czech>Povolit 1 spawnovací bod</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SPAWN_MAX_OPT1">
+			<Original>Allow 2 spawn points</Original>
+			<Russian>Разрешить 2 точки возрождения</Russian>
+			<French>Autoriser 2 points de réapparition</French>
+			<Chinesesimp>允许2个刷新点</Chinesesimp>
+			<Chinese>允許2個刷新點</Chinese>
+			<Portuguese>Permitir 2 pontos de spawn</Portuguese>
+			<Czech>Povolit 2 spawnovací body</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SPAWN_MAX_OPT2">
+			<Original>Allow 3 spawn points</Original>
+			<Russian>Разрешить 3 точки возрождения</Russian>
+			<French>Autoriser 3 points de réapparition</French>
+			<Chinesesimp>允许3个刷新点</Chinesesimp>
+			<Chinese>允許3個刷新點</Chinese>
+			<Portuguese>Permitir 3 pontos de spawn</Portuguese>
+			<Czech>Povolit 3 spawnovací body</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SPAWN_MAX_OPT3">
+			<Original>Allow 4 spawn points</Original>
+			<Russian>Разрешить 4 точки возрождения</Russian>
+			<French>Autoriser 4 points de réapparition</French>
+			<Chinesesimp>允许4个刷新点</Chinesesimp>
+			<Chinese>允許4個刷新點</Chinese>
+			<Portuguese>Permitir 4 pontos de spawn</Portuguese>
+			<Czech>Povolit 4 spawnovací body</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SPAWN_MAX_OPT4">
+			<Original>Allow 5 spawn points</Original>
+			<Russian>Разрешить 5 точек возрождения</Russian>
+			<French>Autoriser 5 points de réapparition</French>
+			<Chinesesimp>允许5个刷新点</Chinesesimp>
+			<Chinese>允許5個刷新點</Chinese>
+			<Portuguese>Permitir 5 pontos de spawn</Portuguese>
+			<Czech>Povolit 5 spawnovacích bodů</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SPAWN_MAX_OPT5">
+			<Original>Allow 6 spawn points</Original>
+			<Russian>Разрешить 6 точек возрождения</Russian>
+			<French>Autoriser 6 points de réapparition</French>
+			<Chinesesimp>允许6个刷新点</Chinesesimp>
+			<Chinese>允許6個刷新點</Chinese>
+			<Portuguese>Permitir 6 pontos de spawn</Portuguese>
+			<Czech>Povolit 6 spawnovacích bodů</Czech>
+		</Key>
+		<Key ID="STR_REDEPLOY_DESC">
+			<Original>Configures redeployment options available to players.</Original>
+			<Russian>Настраивает параметры повторного развёртывания для игроков.</Russian>
+			<French>Configure les options de redéploiement pour les joueurs.</French>
+			<Chinesesimp>配置玩家可用的重新部署选项。</Chinesesimp>
+			<Chinese>配置玩家可用的重新部署選項。</Chinese>
+			<Portuguese>Configura opções de reimplantação para jogadores.</Portuguese>
+			<Czech>Nastavuje možnosti redeploye pro hráče.</Czech>
+		</Key>
+		<Key ID="STR_REDEPLOY_OPT0">
+			<Original>Disable redeployment</Original>
+			<Russian>Отключить повторное развёртывание</Russian>
+			<French>Désactiver le redéploiement</French>
+			<Chinesesimp>禁用重新部署</Chinesesimp>
+			<Chinese>停用重新部署</Chinese>
+			<Portuguese>Desativar reimplantação</Portuguese>
+			<Czech>Zakázat redeploy</Czech>
+		</Key>
+		<Key ID="STR_REDEPLOY_OPT1">
+			<Original>Allow redeployment to any location</Original>
+			<Russian>Разрешить развёртывание в любую точку</Russian>
+			<French>Autoriser le redéploiement n'importe où</French>
+			<Chinesesimp>允许重新部署到任何位置</Chinesesimp>
+			<Chinese>允許重新部署到任何位置</Chinese>
+			<Portuguese>Permitir reimplantação em qualquer local</Portuguese>
+			<Czech>Povolit redeploy kamkoli</Czech>
+		</Key>
+		<Key ID="STR_REDEPLOY_OPT2">
+			<Original>Allow redeployment only to FOBs</Original>
+			<Russian>Разрешить развёртывание только на FOB</Russian>
+			<French>Autoriser le redéploiement uniquement vers les FOB</French>
+			<Chinesesimp>仅允许重新部署到前进作战基地</Chinesesimp>
+			<Chinese>僅允許重新部署到前進作戰基地</Chinese>
+			<Portuguese>Permitir reimplantação apenas em FOBs</Portuguese>
+			<Czech>Povolit redeploy pouze na FOBy</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_DESC">
+			<Original>Sets the respawn delay (in seconds) after a player dies.</Original>
+			<Russian>Устанавливает задержку возрождения (в секундах) после смерти игрока.</Russian>
+			<French>Définit le délai de réapparition (en secondes) après la mort d'un joueur.</French>
+			<Chinesesimp>设置玩家死亡后的重生延迟（秒）。</Chinesesimp>
+			<Chinese>設置玩家死亡後的重生延遲（秒）。</Chinese>
+			<Portuguese>Define o atraso de respawn (em segundos) após a morte.</Portuguese>
+			<Czech>Nastavuje prodlevu respawnu (v sekundách) po smrti hráče.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_OPT0">
+			<Original>Respawn delay: 5 seconds</Original>
+			<Russian>Задержка возрождения: 5 секунд</Russian>
+			<French>Délai de réapparition : 5 secondes</French>
+			<Chinesesimp>重生延迟：5秒</Chinesesimp>
+			<Chinese>重生延遲：5秒</Chinese>
+			<Portuguese>Atraso de respawn: 5 segundos</Portuguese>
+			<Czech>Prodleva respawnu: 5 s</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_OPT1">
+			<Original>Respawn delay: 10 seconds</Original>
+			<Russian>Задержка возрождения: 10 секунд</Russian>
+			<French>Délai de réapparition : 10 secondes</French>
+			<Chinesesimp>重生延迟：10秒</Chinesesimp>
+			<Chinese>重生延遲：10秒</Chinese>
+			<Portuguese>Atraso de respawn: 10 segundos</Portuguese>
+			<Czech>Prodleva respawnu: 10 s</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_OPT2">
+			<Original>Respawn delay: 20 seconds</Original>
+			<Russian>Задержка возрождения: 20 секунд</Russian>
+			<French>Délai de réapparition : 20 secondes</French>
+			<Chinesesimp>重生延迟：20秒</Chinesesimp>
+			<Chinese>重生延遲：20秒</Chinese>
+			<Portuguese>Atraso de respawn: 20 segundos</Portuguese>
+			<Czech>Prodleva respawnu: 20 s</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_OPT3">
+			<Original>Respawn delay: 25 seconds</Original>
+			<Russian>Задержка возрождения: 25 секунд</Russian>
+			<French>Délai de réapparition : 25 secondes</French>
+			<Chinesesimp>重生延迟：25秒</Chinesesimp>
+			<Chinese>重生延遲：25秒</Chinese>
+			<Portuguese>Atraso de respawn: 25 segundos</Portuguese>
+			<Czech>Prodleva respawnu: 25 s</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_OPT4">
+			<Original>Respawn delay: 30 seconds</Original>
+			<Russian>Задержка возрождения: 30 секунд</Russian>
+			<French>Délai de réapparition : 30 secondes</French>
+			<Chinesesimp>重生延迟：30秒</Chinesesimp>
+			<Chinese>重生延遲：30秒</Chinese>
+			<Portuguese>Atraso de respawn: 30 segundos</Portuguese>
+			<Czech>Prodleva respawnu: 30 s</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_OPT5">
+			<Original>Respawn delay: 60 seconds</Original>
+			<Russian>Задержка возрождения: 60 секунд</Russian>
+			<French>Délai de réapparition : 60 secondes</French>
+			<Chinesesimp>重生延迟：60秒</Chinesesimp>
+			<Chinese>重生延遲：60秒</Chinese>
+			<Portuguese>Atraso de respawn: 60 segundos</Portuguese>
+			<Czech>Prodleva respawnu: 60 s</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_START_DESC">
+			<Original>Defines the starting squad size available to players.</Original>
+			<Russian>Определяет начальный размер отряда для игроков.</Russian>
+			<French>Définit la taille du peloton de départ pour les joueurs.</French>
+			<Chinesesimp>定义玩家可用的初始小队大小。</Chinesesimp>
+			<Chinese>定義玩家可用的初始小隊大小。</Chinese>
+			<Portuguese>Define o tamanho inicial do esquadrão para os jogadores.</Portuguese>
+			<Czech>Definuje počáteční velikost družstva pro hráče.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_START_OPT0">
+			<Original>Start with squad size of 0</Original>
+			<Russian>Начать с отрядом из 0</Russian>
+			<French>Commencer avec une taille de peloton de 0</French>
+			<Chinesesimp>以0人小队开始</Chinesesimp>
+			<Chinese>以0人小隊開始</Chinese>
+			<Portuguese>Iniciar com esquadrão de 0</Portuguese>
+			<Czech>Začít s družstvem o velikosti 0</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_START_OPT1">
+			<Original>Start with squad size of 1</Original>
+			<Russian>Начать с отрядом из 1</Russian>
+			<French>Commencer avec une taille de peloton de 1</French>
+			<Chinesesimp>以1人小队开始</Chinesesimp>
+			<Chinese>以1人小隊開始</Chinese>
+			<Portuguese>Iniciar com esquadrão de 1</Portuguese>
+			<Czech>Začít s družstvem o velikosti 1</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_START_OPT2">
+			<Original>Start with squad size of 2</Original>
+			<Russian>Начать с отрядом из 2</Russian>
+			<French>Commencer avec une taille de peloton de 2</French>
+			<Chinesesimp>以2人小队开始</Chinesesimp>
+			<Chinese>以2人小隊開始</Chinese>
+			<Portuguese>Iniciar com esquadrão de 2</Portuguese>
+			<Czech>Začít s družstvem o velikosti 2</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_START_OPT3">
+			<Original>Start with squad size of 3</Original>
+			<Russian>Начать с отряда из 3 человек</Russian>
+			<French>Commencer avec une escouade de 3</French>
+			<Chinesesimp>开始时小队人数为3</Chinesesimp>
+			<Chinese>開始時小隊人數為3</Chinese>
+			<Portuguese>Começar com esquadrão de 3 membros</Portuguese>
+			<Czech>Začít s družstvem o velikosti 3</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_START_OPT4">
+			<Original>Start with squad size of 4</Original>
+			<Russian>Начать с отряда из 4 человек</Russian>
+			<French>Commencer avec une escouade de 4</French>
+			<Chinesesimp>开始时小队人数为4</Chinesesimp>
+			<Chinese>開始時小隊人數為4</Chinese>
+			<Portuguese>Começar com esquadrão de 4 membros</Portuguese>
+			<Czech>Začít s družstvem o velikosti 4</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_START_OPT5">
+			<Original>Start with squad size of 5</Original>
+			<Russian>Начать с отряда из 5 человек</Russian>
+			<French>Commencer avec une escouade de 5</French>
+			<Chinesesimp>开始时小队人数为5</Chinesesimp>
+			<Chinese>開始時小隊人數為5</Chinese>
+			<Portuguese>Começar com esquadrão de 5 membros</Portuguese>
+			<Czech>Začít s družstvem o velikosti 5</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_START_OPT6">
+			<Original>Start with squad size of 6</Original>
+			<Russian>Начать с отряда из 6 человек</Russian>
+			<French>Commencer avec une escouade de 6</French>
+			<Chinesesimp>开始时小队人数为6</Chinesesimp>
+			<Chinese>開始時小隊人數為6</Chinese>
+			<Portuguese>Começar com esquadrão de 6 membros</Portuguese>
+			<Czech>Začít s družstvem o velikosti 6</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_DESC">
+			<Original>Sets the maximum allowable squad size for players.</Original>
+			<Russian>Устанавливает максимально допустимый размер отряда для игроков.</Russian>
+			<French>Définit la taille maximale autorisée d’escouade pour les joueurs.</French>
+			<Chinesesimp>设置玩家允许的最大小队人数。</Chinesesimp>
+			<Chinese>設置玩家允許的最大小隊人數。</Chinese>
+			<Portuguese>Define o tamanho máximo de esquadrão permitido para os jogadores.</Portuguese>
+			<Czech>Nastavuje maximální povolenou velikost družstva pro hráče.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT0">
+			<Original>Maximum squad size: 0</Original>
+			<Russian>Максимальный размер отряда: 0</Russian>
+			<French>Taille maximale d’escouade : 0</French>
+			<Chinesesimp>最大小队人数：0</Chinesesimp>
+			<Chinese>最大小隊人數：0</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 0</Portuguese>
+			<Czech>Maximální velikost družstva: 0</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT1">
+			<Original>Maximum squad size: 1</Original>
+			<Russian>Максимальный размер отряда: 1</Russian>
+			<French>Taille maximale d’escouade : 1</French>
+			<Chinesesimp>最大小队人数：1</Chinesesimp>
+			<Chinese>最大小隊人數：1</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 1</Portuguese>
+			<Czech>Maximální velikost družstva: 1</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT2">
+			<Original>Maximum squad size: 2</Original>
+			<Russian>Максимальный размер отряда: 2</Russian>
+			<French>Taille maximale d’escouade : 2</French>
+			<Chinesesimp>最大小队人数：2</Chinesesimp>
+			<Chinese>最大小隊人數：2</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 2</Portuguese>
+			<Czech>Maximální velikost družstva: 2</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT3">
+			<Original>Maximum squad size: 3</Original>
+			<Russian>Максимальный размер отряда: 3</Russian>
+			<French>Taille maximale d’escouade : 3</French>
+			<Chinesesimp>最大小队人数：3</Chinesesimp>
+			<Chinese>最大小隊人數：3</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 3</Portuguese>
+			<Czech>Maximální velikost družstva: 3</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT4">
+			<Original>Maximum squad size: 4</Original>
+			<Russian>Максимальный размер отряда: 4</Russian>
+			<French>Taille maximale d’escouade : 4</French>
+			<Chinesesimp>最大小队人数：4</Chinesesimp>
+			<Chinese>最大小隊人數：4</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 4</Portuguese>
+			<Czech>Maximální velikost družstva: 4</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT5">
+			<Original>Maximum squad size: 5</Original>
+			<Russian>Максимальный размер отряда: 5</Russian>
+			<French>Taille maximale d’escouade : 5</French>
+			<Chinesesimp>最大小队人数：5</Chinesesimp>
+			<Chinese>最大小隊人數：5</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 5</Portuguese>
+			<Czech>Maximální velikost družstva: 5</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT6">
+			<Original>Maximum squad size: 6</Original>
+			<Russian>Максимальный размер отряда: 6</Russian>
+			<French>Taille maximale d’escouade : 6</French>
+			<Chinesesimp>最大小队人数：6</Chinesesimp>
+			<Chinese>最大小隊人數：6</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 6</Portuguese>
+			<Czech>Maximální velikost družstva: 6</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT7">
+			<Original>Maximum squad size: 7</Original>
+			<Russian>Максимальный размер отряда: 7</Russian>
+			<French>Taille maximale d’escouade : 7</French>
+			<Chinesesimp>最大小队人数：7</Chinesesimp>
+			<Chinese>最大小隊人數：7</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 7</Portuguese>
+			<Czech>Maximální velikost družstva: 7</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT8">
+			<Original>Maximum squad size: 8</Original>
+			<Russian>Максимальный размер отряда: 8</Russian>
+			<French>Taille maximale d’escouade : 8</French>
+			<Chinesesimp>最大小队人数：8</Chinesesimp>
+			<Chinese>最大小隊人數：8</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 8</Portuguese>
+			<Czech>Maximální velikost družstva: 8</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT9">
+			<Original>Maximum squad size: 9</Original>
+			<Russian>Максимальный размер отряда: 9</Russian>
+			<French>Taille maximale d’escouade : 9</French>
+			<Chinesesimp>最大小队人数：9</Chinesesimp>
+			<Chinese>最大小隊人數：9</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 9</Portuguese>
+			<Czech>Maximální velikost družstva: 9</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT10">
+			<Original>Maximum squad size: 10</Original>
+			<Russian>Максимальный размер отряда: 10</Russian>
+			<French>Taille maximale d’escouade : 10</French>
+			<Chinesesimp>最大小队人数：10</Chinesesimp>
+			<Chinese>最大小隊人數：10</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 10</Portuguese>
+			<Czech>Maximální velikost družstva: 10</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SQUAD_SIZE_OPT11">
+			<Original>Maximum squad size: 20</Original>
+			<Russian>Максимальный размер отряда: 20</Russian>
+			<French>Taille maximale d’escouade : 20</French>
+			<Chinesesimp>最大小队人数：20</Chinesesimp>
+			<Chinese>最大小隊人數：20</Chinese>
+			<Portuguese>Tamanho máximo de esquadrão: 20</Portuguese>
+			<Czech>Maximální velikost družstva: 20</Czech>
+		</Key>
+		<Key ID="STR_GUI_PLATOON_DESC">
+			<Original>Configures the display settings for platoon view.</Original>
+			<Russian>Настраивает параметры отображения вида взвода.</Russian>
+			<French>Configure les paramètres d’affichage de la vue du peloton.</French>
+			<Chinesesimp>配置排视图的显示设置。</Chinesesimp>
+			<Chinese>配置排視圖的顯示設置。</Chinese>
+			<Portuguese>Configura as definições de exibição da visualização de pelotão.</Portuguese>
+			<Czech>Konfiguruje nastavení zobrazení čety.</Czech>
+		</Key>
+		<Key ID="STR_GUI_PLATOON_OPT0">
+			<Original>Use user‑defined platoon view settings</Original>
+			<Russian>Использовать пользовательские параметры вида взвода</Russian>
+			<French>Utiliser les paramètres d’affichage de peloton définis par l’utilisateur</French>
+			<Chinesesimp>使用用户定义的排视图设置</Chinesesimp>
+			<Chinese>使用用戶定義的排視圖設置</Chinese>
+			<Portuguese>Usar configurações de visualização de pelotão definidas pelo usuário</Portuguese>
+			<Czech>Použít uživatelem definovaná nastavení zobrazení čety</Czech>
+		</Key>
+		<Key ID="STR_GUI_PLATOON_OPT1">
+			<Original>Enable platoon view</Original>
+			<Russian>Включить вид взвода</Russian>
+			<French>Activer la vue du peloton</French>
+			<Chinesesimp>启用排视图</Chinesesimp>
+			<Chinese>啟用排視圖</Chinese>
+			<Portuguese>Ativar visualização de pelotão</Portuguese>
+			<Czech>Povolit zobrazení čety</Czech>
+		</Key>
+		<Key ID="STR_GUI_PLATOON_OPT2">
+			<Original>Disable platoon view</Original>
+			<Russian>Отключить вид взвода</Russian>
+			<French>Désactiver la vue du peloton</French>
+			<Chinesesimp>禁用排视图</Chinesesimp>
+			<Chinese>禁用排視圖</Chinese>
+			<Portuguese>Desativar visualização de pelotão</Portuguese>
+			<Czech>Zakázat zobrazení čety</Czech>
+		</Key>
+		<Key ID="STR_GUI_NAMETAG_DESC">
+			<Original>Toggles display options for player nametags.</Original>
+			<Russian>Переключает параметры отображения именных меток игроков.</Russian>
+			<French>Active ou désactive les options d’affichage des étiquettes de nom des joueurs.</French>
+			<Chinesesimp>切换玩家姓名标签的显示选项。</Chinesesimp>
+			<Chinese>切換玩家姓名標籤的顯示選項。</Chinese>
+			<Portuguese>Alterna as opções de exibição das identificações de jogador.</Portuguese>
+			<Czech>Přepíná možnosti zobrazení jmenovek hráčů.</Czech>
+		</Key>
+		<Key ID="STR_GUI_NAMETAG_OPT0">
+			<Original>Use user‑defined nametag settings</Original>
+			<Russian>Использовать пользовательские настройки меток имен</Russian>
+			<French>Utiliser les paramètres d’étiquettes de nom définis par l’utilisateur</French>
+			<Chinesesimp>使用用户定义的姓名标签设置</Chinesesimp>
+			<Chinese>使用用戶定義的姓名標籤設置</Chinese>
+			<Portuguese>Usar configurações de identificação definidas pelo usuário</Portuguese>
+			<Czech>Použít uživatelem definovaná nastavení jmenovek</Czech>
+		</Key>
+		<Key ID="STR_GUI_NAMETAG_OPT1">
+			<Original>Enable nametags</Original>
+			<Russian>Включить метки имен</Russian>
+			<French>Activer les étiquettes de nom</French>
+			<Chinesesimp>启用姓名标签</Chinesesimp>
+			<Chinese>啟用姓名標籤</Chinese>
+			<Portuguese>Ativar identificações</Portuguese>
+			<Czech>Povolit jmenovky</Czech>
+		</Key>
+		<Key ID="STR_GUI_NAMETAG_OPT2">
+			<Original>Disable nametags</Original>
+			<Russian>Отключить метки имен</Russian>
+			<French>Désactiver les étiquettes de nom</French>
+			<Chinesesimp>禁用姓名标签</Chinesesimp>
+			<Chinese>禁用姓名標籤</Chinese>
+			<Portuguese>Desativar identificações</Portuguese>
+			<Czech>Zakázat jmenovky</Czech>
+		</Key>
+		<Key ID="STR_GUI_TEAM_DESC">
+			<Original>Determines how team map markers are displayed.</Original>
+			<Russian>Определяет, как отображаются маркеры команды на карте.</Russian>
+			<French>Détermine comment les marqueurs d’équipe sont affichés sur la carte.</French>
+			<Chinesesimp>确定团队地图标记的显示方式。</Chinesesimp>
+			<Chinese>確定團隊地圖標記的顯示方式。</Chinese>
+			<Portuguese>Determina como os marcadores de equipe são exibidos no mapa.</Portuguese>
+			<Czech>Určuje, jak jsou zobrazeny značky týmu na mapě.</Czech>
+		</Key>
+		<Key ID="STR_GUI_TEAM_OPT0">
+			<Original>Use user‑defined map marker settings</Original>
+			<Russian>Использовать пользовательские настройки маркеров карты</Russian>
+			<French>Utiliser les paramètres de marqueurs de carte définis par l’utilisateur</French>
+			<Chinesesimp>使用用户定义的地图标记设置</Chinesesimp>
+			<Chinese>使用用戶定義的地圖標記設置</Chinese>
+			<Portuguese>Usar configurações de marcadores de mapa definidas pelo usuário</Portuguese>
+			<Czech>Použít uživatelem definovaná nastavení značek na mapě</Czech>
+		</Key>
+		<Key ID="STR_GUI_TEAM_OPT1">
+			<Original>Enable team map markers</Original>
+			<Russian>Включить маркеры команды на карте</Russian>
+			<French>Activer les marqueurs d’équipe</French>
+			<Chinesesimp>启用团队地图标记</Chinesesimp>
+			<Chinese>啟用團隊地圖標記</Chinese>
+			<Portuguese>Ativar marcadores de equipe no mapa</Portuguese>
+			<Czech>Povolit značky týmu na mapě</Czech>
+		</Key>
+		<Key ID="STR_GUI_TEAM_OPT2">
+			<Original>Disable team map markers</Original>
+			<Russian>Отключить маркеры команды на карте</Russian>
+			<French>Désactiver les marqueurs d’équipe</French>
+			<Chinesesimp>禁用团队地图标记</Chinesesimp>
+			<Chinese>禁用團隊地圖標記</Chinese>
+			<Portuguese>Desativar marcadores de equipe no mapa</Portuguese>
+			<Czech>Zakázat značky týmu na mapě</Czech>
+		</Key>
+		<Key ID="STR_ARSENAL_DESC">
+			<Original>Enables or disables the arsenal feature, including FOB‑specific options.</Original>
+			<Russian>Включает или отключает функцию арсенала, включая параметры, специфичные для FOB.</Russian>
+			<French>Active ou désactive la fonctionnalité d’arsenal, y compris les options spécifiques aux FOB.</French>
+			<Chinesesimp>启用或禁用军械库功能，包括 FOB 特定选项。</Chinesesimp>
+			<Chinese>啟用或禁用軍械庫功能，包括 FOB 特定選項。</Chinese>
+			<Portuguese>Ativa ou desativa o recurso de arsenal, incluindo opções específicas de FOB.</Portuguese>
+			<Czech>Povoluje nebo zakazuje funkci arzenálu, včetně možností specifických pro FOB.</Czech>
+		</Key>
+		<Key ID="STR_ARSENAL_OPT0">
+			<Original>Disable arsenal</Original>
+			<Russian>Отключить арсенал</Russian>
+			<French>Désactiver l’arsenal</French>
+			<Chinesesimp>禁用军械库</Chinesesimp>
+			<Chinese>禁用軍械庫</Chinese>
+			<Portuguese>Desativar arsenal</Portuguese>
+			<Czech>Zakázat arzenál</Czech>
+		</Key>
+		<Key ID="STR_ARSENAL_OPT1">
+			<Original>Enable arsenal everywhere</Original>
+			<Russian>Включить арсенал везде</Russian>
+			<French>Activer l’arsenal partout</French>
+			<Chinesesimp>在所有地点启用军械库</Chinesesimp>
+			<Chinese>在所有地點啟用軍械庫</Chinese>
+			<Portuguese>Ativar arsenal em todos os lugares</Portuguese>
+			<Czech>Povolit arzenál všude</Czech>
+		</Key>
+		<Key ID="STR_ARSENAL_OPT2">
+			<Original>Enable arsenal only at FOBs</Original>
+			<Russian>Включить арсенал только на FOB</Russian>
+			<French>Activer l’arsenal uniquement aux FOB</French>
+			<Chinesesimp>仅在 FOB 启用军械库</Chinesesimp>
+			<Chinese>僅在 FOB 啟用軍械庫</Chinese>
+			<Portuguese>Ativar arsenal apenas nos FOB</Portuguese>
+			<Czech>Povolit arzenál pouze na FOB</Czech>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_DESC">
+			<Original>Sets restrictions on the arsenal contents based on the chosen limitation parameter.</Original>
+			<Russian>Устанавливает ограничения на содержимое арсенала в зависимости от выбранного параметра ограничения.</Russian>
+			<French>Définit les restrictions sur le contenu de l’arsenal en fonction du paramètre de limitation choisi.</French>
+			<Chinesesimp>根据所选限制参数设置军械库内容的限制。</Chinesesimp>
+			<Chinese>根據所選限制參數設置軍械庫內容的限制。</Chinese>
+			<Portuguese>Define restrições no conteúdo do arsenal com base no parâmetro de limitação escolhido.</Portuguese>
+			<Czech>Nastavuje omezení obsahu arzenálu podle vybraného parametru omezení.</Czech>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_OPT0">
+			<Original>No arsenal restrictions</Original>
+			<Russian>Без ограничений арсенала</Russian>
+			<French>Aucune restriction de l’arsenal</French>
+			<Chinesesimp>无限制军械库</Chinesesimp>
+			<Chinese>無限制軍械庫</Chinese>
+			<Portuguese>Sem restrições de arsenal</Portuguese>
+			<Czech>Žádná omezení arzenálu</Czech>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_OPT1">
+			<Original>Limit arsenal level 1</Original>
+			<Russian>Ограничить арсенал до уровня 1</Russian>
+			<French>Limiter l’arsenal au niveau 1</French>
+			<Chinesesimp>限制军械库至等级1</Chinesesimp>
+			<Chinese>限制軍械庫至等級1</Chinese>
+			<Portuguese>Restringir arsenal ao nível 1</Portuguese>
+			<Czech>Omezit arzenál na úroveň 1</Czech>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_OPT2">
+			<Original>Limit arsenal level 2</Original>
+			<Russian>Ограничить арсенал до уровня 2</Russian>
+			<French>Limiter l’arsenal au niveau 2</French>
+			<Chinesesimp>限制军械库至等级2</Chinesesimp>
+			<Chinese>限制軍械庫至等級2</Chinese>
+			<Portuguese>Restringir arsenal ao nível 2</Portuguese>
+			<Czech>Omezit arzenál na úroveň 2</Czech>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_OPT3">
+			<Original>Limit arsenal level 3</Original>
+			<Russian>Ограничить арсенал до уровня 3</Russian>
+			<French>Limiter l’arsenal au niveau 3</French>
+			<Chinesesimp>限制军械库至等级3</Chinesesimp>
+			<Chinese>限制軍械庫至等級3</Chinese>
+			<Portuguese>Restringir arsenal ao nível 3</Portuguese>
+			<Czech>Omezit arzenál na úroveň 3</Czech>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_OPT4">
+			<Original>Limit arsenal level 4</Original>
+			<Russian>Ограничить арсенал до уровня 4</Russian>
+			<French>Limiter l’arsenal au niveau 4</French>
+			<Chinesesimp>限制军械库至等级4</Chinesesimp>
+			<Chinese>限制軍械庫至等級4</Chinese>
+			<Portuguese>Restringir arsenal ao nível 4</Portuguese>
+			<Czech>Omezit arzenál na úroveň 4</Czech>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_OPT5">
+			<Original>Limit arsenal level 5</Original>
+			<Russian>Ограничить арсенал до уровня 5</Russian>
+			<French>Limiter l’arsenal au niveau 5</French>
+			<Chinesesimp>限制军械库至等级5</Chinesesimp>
+			<Chinese>限制軍械庫至等級5</Chinese>
+			<Portuguese>Restringir arsenal ao nível 5</Portuguese>
+			<Czech>Omezit arzenál na úroveň 5</Czech>
+		</Key>
+		<Key ID="STR_FORCE_LOADOUT_DESC">
+			<Original>Forces players to use a predefined loadout if enabled.</Original>
+			<Russian>Заставляет игроков использовать предварительно заданный комплект экипировки, если включено.</Russian>
+			<French>Force les joueurs à utiliser un équipement prédéfini si activé.</French>
+			<Chinesesimp>如果启用，则强制玩家使用预定义配置。</Chinesesimp>
+			<Chinese>如果啟用，則強制玩家使用預定義配置。</Chinese>
+			<Portuguese>Força os jogadores a usar um loadout predefinido se ativado.</Portuguese>
+			<Czech>Nutí hráče používat přednastavené vybavení, pokud je povoleno.</Czech>
+		</Key>
+		<Key ID="STR_FORCE_LOADOUT_OPT0">
+			<Original>Disable forced loadout</Original>
+			<Russian>Отключить принудительный комплект</Russian>
+			<French>Désactiver le loadout forcé</French>
+			<Chinesesimp>禁用强制加载配置</Chinesesimp>
+			<Chinese>禁用強制加載配置</Chinese>
+			<Portuguese>Desativar loadout forçado</Portuguese>
+			<Czech>Zakázat vynucené vybavení</Czech>
+		</Key>
+		<Key ID="STR_FORCE_LOADOUT_OPT1">
+			<Original>Force loadout Preset 1</Original>
+			<Russian>Принудительный комплект 1</Russian>
+			<French>Forcer le loadout Préréglage 1</French>
+			<Chinesesimp>强制使用预设1的配置</Chinesesimp>
+			<Chinese>強制使用預設1的配置</Chinese>
+			<Portuguese>Forçar loadout Predefinição 1</Portuguese>
+			<Czech>Vynutit vybavení Předvolba 1</Czech>
+		</Key>
+		<Key ID="STR_FORCE_LOADOUT_OPT2">
+			<Original>Force loadout Preset 2</Original>
+			<Russian>Принудительный комплект 2</Russian>
+			<French>Forcer le loadout Préréglage 2</French>
+			<Chinesesimp>强制使用预设2的配置</Chinesesimp>
+			<Chinese>強制使用預設2的配置</Chinese>
+			<Portuguese>Forçar loadout Predefinição 2</Portuguese>
+			<Czech>Vynutit vybavení Předvolba 2</Czech>
+		</Key>
+		<Key ID="STR_FREE_LOADOUT_DESC">
+			<Original>Allows players to select their own loadout when enabled.</Original>
+			<Russian>Позволяет игрокам выбирать собственный комплект экипировки при включении.</Russian>
+			<French>Permet aux joueurs de sélectionner leur propre équipement lorsqu’il est activé.</French>
+			<Chinesesimp>启用时允许玩家选择自己的配置。</Chinesesimp>
+			<Chinese>啟用時允許玩家選擇自己的配置。</Chinese>
+			<Portuguese>Permite aos jogadores selecionar seu próprio loadout quando ativado.</Portuguese>
+			<Czech>Umožňuje hráčům vybrat si vlastní vybavení, když je povoleno.</Czech>
+		</Key>
+		<Key ID="STR_FREE_LOADOUT_OPT0">
+			<Original>Disable free loadout</Original>
+			<Russian>Отключить свободный выбор экипировки</Russian>
+			<French>Désactiver le loadout libre</French>
+			<Chinesesimp>禁用自由加载配置</Chinesesimp>
+			<Chinese>禁用自由加載配置</Chinese>
+			<Portuguese>Desativar loadout livre</Portuguese>
+			<Czech>Zakázat volné vybavení</Czech>
+		</Key>
+		<Key ID="STR_FREE_LOADOUT_OPT1">
+			<Original>Enable free loadout</Original>
+			<Russian>Включить свободный выбор экипировки</Russian>
+			<French>Activer le loadout libre</French>
+			<Chinesesimp>启用自由加载配置</Chinesesimp>
+			<Chinese>啟用自由加載配置</Chinese>
+			<Portuguese>Ativar loadout livre</Portuguese>
+			<Czech>Povolit volné vybavení</Czech>
+		</Key>
+		<Key ID="STR_THERMAL_DESC">
+			<Original>Enables thermal vision with an option for night‑only activation.</Original>
+			<Russian>Включает тепловизионное видение с возможностью активации только ночью.</Russian>
+			<French>Active la vision thermique avec une option d’activation uniquement la nuit.</French>
+			<Chinesesimp>启用热成像，提供仅夜间激活选项。</Chinesesimp>
+			<Chinese>啟用熱成像，提供僅夜間激活選項。</Chinese>
+			<Portuguese>Ativa a visão térmica com opção de ativação somente à noite.</Portuguese>
+			<Czech>Umožňuje tepelný pohled s možností aktivace pouze v noci.</Czech>
+		</Key>
+		<Key ID="STR_THERMAL_OPT0">
+			<Original>Disable thermal vision</Original>
+			<Russian>Отключить тепловизор</Russian>
+			<French>Désactiver la vision thermique</French>
+			<Chinesesimp>禁用热成像</Chinesesimp>
+			<Chinese>禁用熱成像</Chinese>
+			<Portuguese>Desativar visão térmica</Portuguese>
+			<Czech>Zakázat tepelný pohled</Czech>
+		</Key>
+		<Key ID="STR_THERMAL_OPT1">
+			<Original>Enable thermal vision only at night</Original>
+			<Russian>Включить тепловизор только ночью</Russian>
+			<French>Activer la vision thermique uniquement la nuit</French>
+			<Chinesesimp>仅在夜间启用热成像</Chinesesimp>
+			<Chinese>僅在夜間啟用熱成像</Chinese>
+			<Portuguese>Ativar visão térmica apenas à noite</Portuguese>
+			<Czech>Povolit tepelný pohled pouze v noci</Czech>
+		</Key>
+		<Key ID="STR_THERMAL_OPT2">
+			<Original>Enable thermal vision at all times</Original>
+			<Russian>Включить тепловизор постоянно</Russian>
+			<French>Activer la vision thermique en tout temps</French>
+			<Chinesesimp>始终启用热成像</Chinesesimp>
+			<Chinese>始終啟用熱成像</Chinese>
+			<Portuguese>Ativar visão térmica o tempo todo</Portuguese>
+			<Czech>Povolit tepelný pohled vždy</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_DESC">
+			<Original>Sets the maximum number of FOBs that can be deployed in the mission.</Original>
+			<Russian>Устанавливает максимальное количество FOB, которые можно развернуть в миссии.</Russian>
+			<French>Définit le nombre maximal de FOB pouvant être déployés dans la mission.</French>
+			<Chinesesimp>设置任务中可部署的最大 FOB 数量。</Chinesesimp>
+			<Chinese>設置任務中可部署的最大 FOB 數量。</Chinese>
+			<Portuguese>Define o número máximo de FOBs que podem ser implantados na missão.</Portuguese>
+			<Czech>Nastavuje maximální počet FOB, které lze rozmístit v misi.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT0">
+			<Original>Allow 0 FOBs</Original>
+			<Russian>Разрешить 0 FOB</Russian>
+			<French>Autoriser 0 FOB</French>
+			<Chinesesimp>允许 0 个 FOB</Chinesesimp>
+			<Chinese>允許 0 個 FOB</Chinese>
+			<Portuguese>Permitir 0 FOBs</Portuguese>
+			<Czech>Povolit 0 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT1">
+			<Original>Allow 1 FOB</Original>
+			<Russian>Разрешить 1 FOB</Russian>
+			<French>Autoriser 1 FOB</French>
+			<Chinesesimp>允许 1 个 FOB</Chinesesimp>
+			<Chinese>允許 1 個 FOB</Chinese>
+			<Portuguese>Permitir 1 FOB</Portuguese>
+			<Czech>Povolit 1 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT2">
+			<Original>Allow 2 FOBs</Original>
+			<Russian>Разрешить 2 FOB</Russian>
+			<French>Autoriser 2 FOB</French>
+			<Chinesesimp>允许 2 个 FOB</Chinesesimp>
+			<Chinese>允許 2 個 FOB</Chinese>
+			<Portuguese>Permitir 2 FOBs</Portuguese>
+			<Czech>Povolit 2 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT3">
+			<Original>Allow 3 FOBs</Original>
+			<Russian>Разрешить 3 FOB</Russian>
+			<French>Autoriser 3 FOB</French>
+			<Chinesesimp>允许 3 个 FOB</Chinesesimp>
+			<Chinese>允許 3 個 FOB</Chinese>
+			<Portuguese>Permitir 3 FOBs</Portuguese>
+			<Czech>Povolit 3 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT4">
+			<Original>Allow 4 FOBs</Original>
+			<Russian>Разрешить 4 FOB</Russian>
+			<French>Autoriser 4 FOB</French>
+			<Chinesesimp>允许 4 个 FOB</Chinesesimp>
+			<Chinese>允許 4 個 FOB</Chinese>
+			<Portuguese>Permitir 4 FOBs</Portuguese>
+			<Czech>Povolit 4 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT5">
+			<Original>Allow 5 FOBs</Original>
+			<Russian>Разрешить 5 FOB</Russian>
+			<French>Autoriser 5 FOB</French>
+			<Chinesesimp>允许 5 个 FOB</Chinesesimp>
+			<Chinese>允許 5 個 FOB</Chinese>
+			<Portuguese>Permitir 5 FOBs</Portuguese>
+			<Czech>Povolit 5 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT6">
+			<Original>Allow 6 FOBs</Original>
+			<Russian>Разрешить 6 FOB</Russian>
+			<French>Autoriser 6 FOB</French>
+			<Chinesesimp>允许 6 个 FOB</Chinesesimp>
+			<Chinese>允許 6 個 FOB</Chinese>
+			<Portuguese>Permitir 6 FOBs</Portuguese>
+			<Czech>Povolit 6 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT7">
+			<Original>Allow 7 FOBs</Original>
+			<Russian>Разрешить 7 FOB</Russian>
+			<French>Autoriser 7 FOB</French>
+			<Chinesesimp>允许 7 个 FOB</Chinesesimp>
+			<Chinese>允許 7 個 FOB</Chinese>
+			<Portuguese>Permitir 7 FOBs</Portuguese>
+			<Czech>Povolit 7 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT8">
+			<Original>Allow 8 FOBs</Original>
+			<Russian>Разрешить 8 FOB</Russian>
+			<French>Autoriser 8 FOB</French>
+			<Chinesesimp>允许 8 个 FOB</Chinesesimp>
+			<Chinese>允許 8 個 FOB</Chinese>
+			<Portuguese>Permitir 8 FOBs</Portuguese>
+			<Czech>Povolit 8 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT9">
+			<Original>Allow 9 FOBs</Original>
+			<Russian>Разрешить 9 FOB</Russian>
+			<French>Autoriser 9 FOB</French>
+			<Chinesesimp>允许 9 个 FOB</Chinesesimp>
+			<Chinese>允許 9 個 FOB</Chinese>
+			<Portuguese>Permitir 9 FOBs</Portuguese>
+			<Czech>Povolit 9 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT_OPT10">
+			<Original>Allow 10 FOBs</Original>
+			<Russian>Разрешить 10 FOB</Russian>
+			<French>Autoriser 10 FOB</French>
+			<Chinesesimp>允许 10 个 FOB</Chinesesimp>
+			<Chinese>允許 10 個 FOB</Chinese>
+			<Portuguese>Permitir 10 FOBs</Portuguese>
+			<Czech>Povolit 10 FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_DESC">
+			<Original>Defines the maximum outpost count available during the mission.</Original>
+			<Russian>Определяет максимальное количество форпостов, доступное в миссии.</Russian>
+			<French>Définit le nombre maximal de postes avancés disponibles pendant la mission.</French>
+			<Chinesesimp>定义任务期间可用的最大前哨基地数量。</Chinesesimp>
+			<Chinese>定義任務期間可用的最大前哨基地數量。</Chinese>
+			<Portuguese>Define o número máximo de postos avançados disponíveis durante a missão.</Portuguese>
+			<Czech>Definuje maximální počet předních základen dostupných během mise.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT0">
+			<Original>Allow 0 outposts</Original>
+			<Russian>Разрешить 0 форпостов</Russian>
+			<French>Autoriser 0 postes avancés</French>
+			<Chinesesimp>允许 0 个前哨基地</Chinesesimp>
+			<Chinese>允許 0 個前哨基地</Chinese>
+			<Portuguese>Permitir 0 postos avançados</Portuguese>
+			<Czech>Povolit 0 předních základen</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT1">
+			<Original>Allow 1 outpost</Original>
+			<Russian>Разрешить 1 форпост</Russian>
+			<French>Autoriser 1 poste avancé</French>
+			<Chinesesimp>允许 1 个前哨基地</Chinesesimp>
+			<Chinese>允許 1 個前哨基地</Chinese>
+			<Portuguese>Permitir 1 posto avançado</Portuguese>
+			<Czech>Povolit 1 přední základnu</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT2">
+			<Original>Allow 2 outposts</Original>
+			<Russian>Разрешить 2 форпоста</Russian>
+			<French>Autoriser 2 postes avancés</French>
+			<Chinesesimp>允许 2 个前哨基地</Chinesesimp>
+			<Chinese>允許 2 個前哨基地</Chinese>
+			<Portuguese>Permitir 2 postos avançados</Portuguese>
+			<Czech>Povolit 2 přední základny</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT3">
+			<Original>Allow 3 outposts</Original>
+			<Russian>Разрешить 3 форпоста</Russian>
+			<French>Autoriser 3 postes avancés</French>
+			<Chinesesimp>允许 3 个前哨基地</Chinesesimp>
+			<Chinese>允許 3 個前哨基地</Chinese>
+			<Portuguese>Permitir 3 postos avançados</Portuguese>
+			<Czech>Povolit 3 přední základny</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT4">
+			<Original>Allow 4 outposts</Original>
+			<Russian>Разрешить 4 форпоста</Russian>
+			<French>Autoriser 4 postes avancés</French>
+			<Chinesesimp>允许 4 个前哨基地</Chinesesimp>
+			<Chinese>允許 4 個前哨基地</Chinese>
+			<Portuguese>Permitir 4 postos avançados</Portuguese>
+			<Czech>Povolit 4 přední základny</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT5">
+			<Original>Allow 5 outposts</Original>
+			<Russian>Разрешить 5 форпостов</Russian>
+			<French>Autoriser 5 postes avancés</French>
+			<Chinesesimp>允许 5 个前哨基地</Chinesesimp>
+			<Chinese>允許 5 個前哨基地</Chinese>
+			<Portuguese>Permitir 5 postos avançados</Portuguese>
+			<Czech>Povolit 5 předních základen</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT6">
+			<Original>Allow 6 outposts</Original>
+			<Russian>Разрешить 6 форпостов</Russian>
+			<French>Autoriser 6 postes avancés</French>
+			<Chinesesimp>允许 6 个前哨基地</Chinesesimp>
+			<Chinese>允許 6 個前哨基地</Chinese>
+			<Portuguese>Permitir 6 postos avançados</Portuguese>
+			<Czech>Povolit 6 předních základen</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT7">
+			<Original>Allow 7 outposts</Original>
+			<Russian>Разрешить 7 форпостов</Russian>
+			<French>Autoriser 7 postes avancés</French>
+			<Chinesesimp>允许 7 个前哨基地</Chinesesimp>
+			<Chinese>允許 7 個前哨基地</Chinese>
+			<Portuguese>Permitir 7 postos avançados</Portuguese>
+			<Czech>Povolit 7 předních základen</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT8">
+			<Original>Allow 8 outposts</Original>
+			<Russian>Разрешить 8 форпостов</Russian>
+			<French>Autoriser 8 postes avancés</French>
+			<Chinesesimp>允许 8 个前哨基地</Chinesesimp>
+			<Chinese>允許 8 個前哨基地</Chinese>
+			<Portuguese>Permitir 8 postos avançados</Portuguese>
+			<Czech>Povolit 8 předních základen</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT9">
+			<Original>Allow 9 outposts</Original>
+			<Russian>Разрешить 9 форпостов</Russian>
+			<French>Autoriser 9 postes avancés</French>
+			<Chinesesimp>允许 9 个前哨基地</Chinesesimp>
+			<Chinese>允許 9 個前哨基地</Chinese>
+			<Portuguese>Permitir 9 postos avançados</Portuguese>
+			<Czech>Povolit 9 předních základen</Czech>
+		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT_OPT10">
+			<Original>Allow 10 outposts</Original>
+			<Russian>Разрешить 10 форпостов</Russian>
+			<French>Autoriser 10 postes avancés</French>
+			<Chinesesimp>允许 10 个前哨基地</Chinesesimp>
+			<Chinese>允許 10 個前哨基地</Chinese>
+			<Portuguese>Permitir 10 postos avançados</Portuguese>
+			<Czech>Povolit 10 předních základen</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOB_TYPE_DESC">
+			<Original>Selects the type of FOB used (Container, Truck, or Boat).</Original>
+			<Russian>Выбирает тип используемого FOB (контейнер, грузовик или лодка).</Russian>
+			<French>Sélectionne le type de FOB utilisé (conteneur, camion ou bateau).</French>
+			<Chinesesimp>选择使用的 FOB 类型（集装箱、卡车或船）。</Chinesesimp>
+			<Chinese>選擇使用的 FOB 類型（集裝箱、卡車或船）。</Chinese>
+			<Portuguese>Seleciona o tipo de FOB usado (Contêiner, Caminhão ou Barco).</Portuguese>
+			<Czech>Vybere typ použitého FOB (kontejner, nákladní auto nebo loď).</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOB_TYPE_OPT0">
+			<Original>Use Container FOB</Original>
+			<Russian>Использовать контейнерный FOB</Russian>
+			<French>Utiliser un FOB conteneur</French>
+			<Chinesesimp>使用集装箱 FOB</Chinesesimp>
+			<Chinese>使用集裝箱 FOB</Chinese>
+			<Portuguese>Usar FOB de contêiner</Portuguese>
+			<Czech>Použít kontejnerový FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOB_TYPE_OPT1">
+			<Original>Use Truck FOB</Original>
+			<Russian>Использовать грузовик FOB</Russian>
+			<French>Utiliser un FOB camion</French>
+			<Chinesesimp>使用卡车 FOB</Chinesesimp>
+			<Chinese>使用卡車 FOB</Chinese>
+			<Portuguese>Usar FOB de caminhão</Portuguese>
+			<Czech>Použít kamiónový FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOB_TYPE_OPT2">
+			<Original>Use Boat FOB</Original>
+			<Russian>Использовать лодочный FOB</Russian>
+			<French>Utiliser un FOB bateau</French>
+			<Chinesesimp>使用船只 FOB</Chinesesimp>
+			<Chinese>使用船隻 FOB</Chinese>
+			<Portuguese>Usar FOB de barco</Portuguese>
+			<Czech>Použít lodní FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_HURON_TYPE_DESC">
+			<Original>Determines the helicopter model used for Huron-type vehicles.</Original>
+			<Russian>Определяет модель вертолета, используемую для транспортных средств типа Huron.</Russian>
+			<French>Détermine le modèle d’hélicoptère utilisé pour les véhicules de type Huron.</French>
+			<Chinesesimp>确定用于 Huron 类型载具的直升机型号。</Chinesesimp>
+			<Chinese>確定用於 Huron 類型載具的直升機型號。</Chinese>
+			<Portuguese>Determina o modelo de helicóptero usado para veículos do tipo Huron.</Portuguese>
+			<Czech>Určuje model vrtulníku použitý pro vozidla typu Huron.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_HURON_TYPE_OPT0">
+			<Original>Use CH-67 Huron model</Original>
+			<Russian>Использовать модель CH-67 Huron</Russian>
+			<French>Utiliser le modèle CH-67 Huron</French>
+			<Chinesesimp>使用 CH-67 Huron 型号</Chinesesimp>
+			<Chinese>使用 CH-67 Huron 型號</Chinese>
+			<Portuguese>Usar modelo CH-67 Huron</Portuguese>
+			<Czech>Použít model CH-67 Huron</Czech>
+		</Key>
+		<Key ID="STR_PARAM_HURON_TYPE_OPT1">
+			<Original>Use CH-49 Mohawk model</Original>
+			<Russian>Использовать модель CH-49 Mohawk</Russian>
+			<French>Utiliser le modèle CH-49 Mohawk</French>
+			<Chinesesimp>使用 CH-49 Mohawk 型号</Chinesesimp>
+			<Chinese>使用 CH-49 Mohawk 型號</Chinese>
+			<Portuguese>Usar modelo CH-49 Mohawk</Portuguese>
+			<Czech>Použít model CH-49 Mohawk</Czech>
+		</Key>
+		<Key ID="STR_PARAM_HURON_TYPE_OPT2">
+			<Original>Use UH-80 Ghost Hawk model</Original>
+			<Russian>Использовать модель UH-80 Ghost Hawk</Russian>
+			<French>Utiliser le modèle UH-80 Ghost Hawk</French>
+			<Chinesesimp>使用 UH-80 Ghost Hawk 型号</Chinesesimp>
+			<Chinese>使用 UH-80 Ghost Hawk 型號</Chinese>
+			<Portuguese>Usar modelo UH-80 Ghost Hawk</Portuguese>
+			<Czech>Použít model UH-80 Ghost Hawk</Czech>
+		</Key>
+		<Key ID="STR_PARAM_NAVAL_TYPE_DESC">
+			<Original>Selects the naval FOB type, or disables naval FOBs altogether.</Original>
+			<Russian>Выбирает тип морского FOB или полностью отключает морские FOB.</Russian>
+			<French>Sélectionne le type de FOB naval ou désactive complètement les FOB navals.</French>
+			<Chinesesimp>选择海军 FOB 类型，或完全禁用海军 FOB。</Chinesesimp>
+			<Chinese>選擇海軍 FOB 類型，或完全禁用海軍 FOB。</Chinese>
+			<Portuguese>Seleciona o tipo de FOB naval ou desativa completamente os FOBs navais.</Portuguese>
+			<Czech>Vybere typ námořního FOB nebo zcela zakáže námořní FOB.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_NAVAL_TYPE_OPT0">
+			<Original>Disable naval FOBs</Original>
+			<Russian>Отключить морские FOB</Russian>
+			<French>Désactiver les FOB navals</French>
+			<Chinesesimp>禁用海军 FOB</Chinesesimp>
+			<Chinese>禁用海軍 FOB</Chinese>
+			<Portuguese>Desativar FOBs navais</Portuguese>
+			<Czech>Zakázat námořní FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_NAVAL_TYPE_OPT1">
+			<Original>Use USS Liberty (Destroyer)</Original>
+			<Russian>Использовать USS Liberty (эсминец)</Russian>
+			<French>Utiliser l’USS Liberty (destroyer)</French>
+			<Chinesesimp>使用 USS Liberty（驱逐舰）</Chinesesimp>
+			<Chinese>使用 USS Liberty（驅逐艦）</Chinese>
+			<Portuguese>Usar USS Liberty (Destróier)</Portuguese>
+			<Czech>Použít USS Liberty (torpédoborec)</Czech>
+		</Key>
+		<Key ID="STR_PARAM_NAVAL_TYPE_OPT2">
+			<Original>Use USS Freedom (Carrier)</Original>
+			<Russian>Использовать USS Freedom (авианосец)</Russian>
+			<French>Utiliser l’USS Freedom (porte-avions)</French>
+			<Chinesesimp>使用 USS Freedom（航母）</Chinesesimp>
+			<Chinese>使用 USS Freedom（航母）</Chinese>
+			<Portuguese>Usar USS Freedom (Porta-aviões)</Portuguese>
+			<Czech>Použít USS Freedom (letecká loď)</Czech>
+		</Key>
+		<Key ID="STR_PARAM_NAVAL_TYPE_OPT3">
+			<Original>Use Offshore Platform</Original>
+			<Russian>Использовать морскую платформу</Russian>
+			<French>Utiliser une plateforme offshore</French>
+			<Chinesesimp>使用海上平台</Chinesesimp>
+			<Chinese>使用海上平台</Chinese>
+			<Portuguese>Usar plataforma offshore</Portuguese>
+			<Czech>Použít mořskou platformu</Czech>
+		</Key>
+		<Key ID="STR_FANCY_DESC">
+			<Original>Enables additional in‑game information overlay when enabled.</Original>
+			<Russian>Включает дополнительный информационный оверлей в игре при активации.</Russian>
+			<French>Active une superposition d’informations supplémentaire en jeu lorsqu’elle est activée.</French>
+			<Chinesesimp>启用时显示额外的游戏信息覆盖。</Chinesesimp>
+			<Chinese>啟用時顯示額外的遊戲信息覆蓋。</Chinese>
+			<Portuguese>Ativa sobreposição de informações adicionais no jogo quando ativado.</Portuguese>
+			<Czech>Umožňuje další informační překryv ve hře po povolení.</Czech>
+		</Key>
+		<Key ID="STR_FANCY_OPT0">
+			<Original>Disable fancy info overlay</Original>
+			<Russian>Отключить дополнительный информационный оверлей</Russian>
+			<French>Désactiver la superposition d’informations avancée</French>
+			<Chinesesimp>禁用额外信息覆盖</Chinesesimp>
+			<Chinese>禁用額外信息覆蓋</Chinese>
+			<Portuguese>Desativar sobreposição de informações avançada</Portuguese>
+			<Czech>Zakázat pokročilý informační překryv</Czech>
+		</Key>
+		<Key ID="STR_FANCY_OPT1">
+			<Original>Show basic info overlay</Original>
+			<Russian>Показать базовый информационный оверлей</Russian>
+			<French>Afficher la superposition d’informations de base</French>
+			<Chinesesimp>显示基本信息覆盖</Chinesesimp>
+			<Chinese>顯示基本信息覆蓋</Chinese>
+			<Portuguese>Mostrar sobreposição de informações básicas</Portuguese>
+			<Czech>Zobrazit základní informační překryv</Czech>
+		</Key>
+		<Key ID="STR_FANCY_OPT2">
+			<Original>Show full fancy info overlay</Original>
+			<Russian>Показать полный дополнительный информационный оверлей</Russian>
+			<French>Afficher la superposition d’informations complète</French>
+			<Chinesesimp>显示完整的额外信息覆盖</Chinesesimp>
+			<Chinese>顯示完整的額外信息覆蓋</Chinese>
+			<Portuguese>Mostrar sobreposição de informações completa</Portuguese>
+			<Czech>Zobrazit kompletní pokročilý informační překryv</Czech>
+		</Key>
+		<Key ID="STR_VEH_LOCK_DESC">
+			<Original>Enables vehicle locking to prevent unauthorized use.</Original>
+			<Russian>Включает блокировку транспортных средств для предотвращения несанкционированного использования.</Russian>
+			<French>Active le verrouillage des véhicules pour empêcher toute utilisation non autorisée.</French>
+			<Chinesesimp>启用车辆锁定以防止未经授权的使用。</Chinesesimp>
+			<Chinese>啟用車輛鎖定以防止未經授權的使用。</Chinese>
+			<Portuguese>Ativa o bloqueio de veículos para impedir uso não autorizado.</Portuguese>
+			<Czech>Povoluje zamykání vozidel, aby se zabránilo neoprávněnému použití.</Czech>
+		</Key>
+		<Key ID="STR_VEH_LOCK_OPT0">
+			<Original>Disable vehicle lock</Original>
+			<Russian>Отключить блокировку транспортных средств</Russian>
+			<French>Désactiver le verrouillage des véhicules</French>
+			<Chinesesimp>禁用车辆锁定</Chinesesimp>
+			<Chinese>禁用車輛鎖定</Chinese>
+			<Portuguese>Desativar bloqueio de veículos</Portuguese>
+			<Czech>Zakázat zamykání vozidel</Czech>
+		</Key>
+		<Key ID="STR_VEH_LOCK_OPT1">
+			<Original>Enable vehicle lock</Original>
+			<Russian>Включить блокировку транспортных средств</Russian>
+			<French>Activer le verrouillage des véhicules</French>
+			<Chinesesimp>启用车辆锁定</Chinesesimp>
+			<Chinese>啟用車輛鎖定</Chinese>
+			<Portuguese>Ativar bloqueio de veículos</Portuguese>
+			<Czech>Povolit zamykání vozidel</Czech>
+		</Key>
+		<Key ID="STR_OPFOR_VEH_LOCK_DESC">
+			<Original>Prevents enemy forces from using locked vehicles when enabled.</Original>
+			<Russian>Предотвращает использование заблокированных транспортных средств силами противника при активации.</Russian>
+			<French>Empêche les forces ennemies d’utiliser des véhicules verrouillés lorsqu’elle est activée.</French>
+			<Chinesesimp>启用时阻止敌方使用锁定的车辆。</Chinesesimp>
+			<Chinese>啟用時阻止敵方使用鎖定的車輛。</Chinese>
+			<Portuguese>Impede que forças inimigas usem veículos bloqueados quando ativado.</Portuguese>
+			<Czech>Zabraňuje nepřátelským silám používat zamčená vozidla po povolení.</Czech>
+		</Key>
+		<Key ID="STR_OPFOR_VEH_LOCK_OPT0">
+			<Original>Disable enemy vehicle lock</Original>
+			<Russian>Отключить блокировку транспортных средств противника</Russian>
+			<French>Désactiver le verrouillage des véhicules ennemis</French>
+			<Chinesesimp>禁用敌方车辆锁定</Chinesesimp>
+			<Chinese>禁用敵方車輛鎖定</Chinese>
+			<Portuguese>Desativar bloqueio de veículos inimigos</Portuguese>
+			<Czech>Zakázat zamykání vozidel nepřítele</Czech>
+		</Key>
+		<Key ID="STR_OPFOR_VEH_LOCK_OPT1">
+			<Original>Enable enemy vehicle lock</Original>
+			<Russian>Включить блокировку транспортных средств противника</Russian>
+			<French>Activer le verrouillage des véhicules ennemis</French>
+			<Chinesesimp>启用敌方车辆锁定</Chinesesimp>
+			<Chinese>啟用敵方車輛鎖定</Chinese>
+			<Portuguese>Ativar bloqueio de veículos inimigos</Portuguese>
+			<Czech>Povolit zamykání vozidel nepřítele</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FUEL_CONSO_DESC">
+			<Original>Adjusts the fuel consumption rate for vehicles to simulate different levels of efficiency.</Original>
+			<Russian>Регулирует расход топлива транспортных средств для моделирования разных уровней эффективности.</Russian>
+			<French>Ajuste le taux de consommation de carburant des véhicules pour simuler différents niveaux d’efficacité.</French>
+			<Chinesesimp>调整车辆的燃油消耗率以模拟不同的效率级别。</Chinesesimp>
+			<Chinese>調整車輛的燃油消耗率以模擬不同的效率級別。</Chinese>
+			<Portuguese>Ajusta a taxa de consumo de combustível dos veículos para simular diferentes níveis de eficiência.</Portuguese>
+			<Czech>Upravuje spotřebu paliva vozidel pro simulaci různých úrovní účinnosti.</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FUEL_CONSO_OPT0">
+			<Original>Disable fuel consumption</Original>
+			<Russian>Отключить расход топлива</Russian>
+			<French>Désactiver la consommation de carburant</French>
+			<Chinesesimp>禁用燃油消耗</Chinesesimp>
+			<Chinese>禁用燃油消耗</Chinese>
+			<Portuguese>Desativar consumo de combustível</Portuguese>
+			<Czech>Zakázat spotřebu paliva</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FUEL_CONSO_OPT1">
+			<Original>Low fuel consumption rate</Original>
+			<Russian>Низкий расход топлива</Russian>
+			<French>Taux de consommation de carburant faible</French>
+			<Chinesesimp>低燃油消耗率</Chinesesimp>
+			<Chinese>低燃油消耗率</Chinese>
+			<Portuguese>Taxa de consumo de combustível baixa</Portuguese>
+			<Czech>Nízká spotřeba paliva</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FUEL_CONSO_OPT2">
+			<Original>Normal fuel consumption rate</Original>
+			<Russian>Нормальный расход топлива</Russian>
+			<French>Taux de consommation de carburant normal</French>
+			<Chinesesimp>正常燃油消耗率</Chinesesimp>
+			<Chinese>正常燃油消耗率</Chinese>
+			<Portuguese>Taxa de consumo de combustível normal</Portuguese>
+			<Czech>Normální spotřeba paliva</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FUEL_CONSO_OPT3">
+			<Original>Medium fuel consumption rate</Original>
+			<Russian>Средний расход топлива</Russian>
+			<French>Taux de consommation de carburant moyen</French>
+			<Chinesesimp>中等燃油消耗率</Chinesesimp>
+			<Chinese>中等燃油消耗率</Chinese>
+			<Portuguese>Taxa de consumo de combustível média</Portuguese>
+			<Czech>Střední spotřeba paliva</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_FUEL_CONSO_OPT4">
+			<Original>High fuel consumption rate</Original>
+			<Russian>Высокий расход топлива</Russian>
+			<French>Taux de consommation de carburant élevé</French>
+			<Chinesesimp>高燃油消耗率</Chinesesimp>
+			<Chinese>高燃油消耗率</Chinese>
+			<Portuguese>Taxa de consumo de combustível alta</Portuguese>
+			<Czech>Vysoká spotřeba paliva</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_DESC">
+			<Original>Sets the maximum number of vehicles allowed in the garage.</Original>
+			<Russian>Устанавливает максимальное число транспортных средств, разрешённых в гараже.</Russian>
+			<French>Définit le nombre maximal de véhicules autorisés dans le garage.</French>
+			<Chinesesimp>设置车库中允许的最大小车数量。</Chinesesimp>
+			<Chinese>設置車庫中允許的最大小車數量。</Chinese>
+			<Portuguese>Define o número máximo de veículos permitidos na garagem.</Portuguese>
+			<Czech>Nastavuje maximální počet vozidel povolených v garáži.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT0">
+			<Original>Allow 0 vehicles</Original>
+			<Russian>Разрешить 0 транспортных средств</Russian>
+			<French>Autoriser 0 véhicule</French>
+			<Chinesesimp>允许 0 辆车辆</Chinesesimp>
+			<Chinese>允許 0 輛車輛</Chinese>
+			<Portuguese>Permitir 0 veículos</Portuguese>
+			<Czech>Povolit 0 vozidel</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT1">
+			<Original>Allow 1 vehicle</Original>
+			<Russian>Разрешить 1 транспортное средство</Russian>
+			<French>Autoriser 1 véhicule</French>
+			<Chinesesimp>允许 1 辆车辆</Chinesesimp>
+			<Chinese>允許 1 輛車輛</Chinese>
+			<Portuguese>Permitir 1 veículo</Portuguese>
+			<Czech>Povolit 1 vozidlo</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT2">
+			<Original>Allow 2 vehicles</Original>
+			<Russian>Разрешить 2 транспортных средства</Russian>
+			<French>Autoriser 2 véhicules</French>
+			<Chinesesimp>允许 2 辆车辆</Chinesesimp>
+			<Chinese>允許 2 輛車輛</Chinese>
+			<Portuguese>Permitir 2 veículos</Portuguese>
+			<Czech>Povolit 2 vozidla</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT3">
+			<Original>Allow 3 vehicles</Original>
+			<Russian>Разрешить 3 транспортных средства</Russian>
+			<French>Autoriser 3 véhicules</French>
+			<Chinesesimp>允许 3 辆车辆</Chinesesimp>
+			<Chinese>允許 3 輛車輛</Chinese>
+			<Portuguese>Permitir 3 veículos</Portuguese>
+			<Czech>Povolit 3 vozidla</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT4">
+			<Original>Allow 4 vehicles</Original>
+			<Russian>Разрешить 4 транспортных средства</Russian>
+			<French>Autoriser 4 véhicules</French>
+			<Chinesesimp>允许 4 辆车辆</Chinesesimp>
+			<Chinese>允許 4 輛車輛</Chinese>
+			<Portuguese>Permitir 4 veículos</Portuguese>
+			<Czech>Povolit 4 vozidla</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT5">
+			<Original>Allow 5 vehicles</Original>
+			<Russian>Разрешить 5 транспортных средств</Russian>
+			<French>Autoriser 5 véhicules</French>
+			<Chinesesimp>允许 5 辆车辆</Chinesesimp>
+			<Chinese>允許 5 輛車輛</Chinese>
+			<Portuguese>Permitir 5 veículos</Portuguese>
+			<Czech>Povolit 5 vozidel</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT6">
+			<Original>Allow 6 vehicles</Original>
+			<Russian>Разрешить 6 транспортных средств</Russian>
+			<French>Autoriser 6 véhicules</French>
+			<Chinesesimp>允许 6 辆车辆</Chinesesimp>
+			<Chinese>允許 6 輛車輛</Chinese>
+			<Portuguese>Permitir 6 veículos</Portuguese>
+			<Czech>Povolit 6 vozidel</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT7">
+			<Original>Allow 7 vehicles</Original>
+			<Russian>Разрешить 7 транспортных средств</Russian>
+			<French>Autoriser 7 véhicules</French>
+			<Chinesesimp>允许 7 辆车辆</Chinesesimp>
+			<Chinese>允許 7 輛車輛</Chinese>
+			<Portuguese>Permitir 7 veículos</Portuguese>
+			<Czech>Povolit 7 vozidel</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT8">
+			<Original>Allow 8 vehicles</Original>
+			<Russian>Разрешить 8 транспортных средств</Russian>
+			<French>Autoriser 8 véhicules</French>
+			<Chinesesimp>允许 8 辆车辆</Chinesesimp>
+			<Chinese>允許 8 輛車輛</Chinese>
+			<Portuguese>Permitir 8 veículos</Portuguese>
+			<Czech>Povolit 8 vozidel</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT9">
+			<Original>Allow 9 vehicles</Original>
+			<Russian>Разрешить 9 транспортных средств</Russian>
+			<French>Autoriser 9 véhicules</French>
+			<Chinesesimp>允许 9 辆车辆</Chinesesimp>
+			<Chinese>允許 9 輛車輛</Chinese>
+			<Portuguese>Permitir 9 veículos</Portuguese>
+			<Czech>Povolit 9 vozidel</Czech>
+		</Key>
+		<Key ID="STR_PARAM_GARAGE_SIZE_OPT10">
+			<Original>Allow 10 vehicles</Original>
+			<Russian>Разрешить 10 транспортных средств</Russian>
+			<French>Autoriser 10 véhicules</French>
+			<Chinesesimp>允许 10 辆车辆</Chinesesimp>
+			<Chinese>允許 10 輛車輛</Chinese>
+			<Portuguese>Permitir 10 veículos</Portuguese>
+			<Czech>Povolit 10 vozidel</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_DESC">
+			<Original>Defines the radius for sector-based activation; 'AUTO' uses the default sector size.</Original>
+			<Russian>Определяет радиус для активации по секторам; «AUTO» использует размер сектора по умолчанию.</Russian>
+			<French>Définit le rayon d’activation basé sur les secteurs ; «AUTO» utilise la taille de secteur par défaut.</French>
+			<Chinesesimp>定义基于扇区的激活半径；“AUTO”使用默认扇区大小。</Chinesesimp>
+			<Chinese>定義基於扇區的激活半徑；“AUTO”使用默認扇區大小。</Chinese>
+			<Portuguese>Define o raio de ativação por setor; ‘AUTO’ usa o tamanho de setor padrão.</Portuguese>
+			<Czech>Definuje poloměr aktivace podle sektorů; „AUTO“ používá výchozí velikost sektoru.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT0">
+			<Original>Automatic sector radius</Original>
+			<Russian>Автоматический радиус сектора</Russian>
+			<French>Rayon de secteur automatique</French>
+			<Chinesesimp>自动扇区半径</Chinesesimp>
+			<Chinese>自動扇區半徑</Chinese>
+			<Portuguese>Raio de setor automático</Portuguese>
+			<Czech>Automatický poloměr sektoru</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT1">
+			<Original>Sector radius: 300 m</Original>
+			<Russian>Радиус сектора : 300 м</Russian>
+			<French>Rayon du secteur : 300 m</French>
+			<Chinesesimp>扇区半径：300 米</Chinesesimp>
+			<Chinese>扇區半徑：300 米</Chinese>
+			<Portuguese>Raio do setor: 300 m</Portuguese>
+			<Czech>Poloměr sektoru: 300 m</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT2">
+			<Original>Sector radius: 400 m</Original>
+			<Russian>Радиус сектора : 400 м</Russian>
+			<French>Rayon du secteur : 400 m</French>
+			<Chinesesimp>扇区半径：400 米</Chinesesimp>
+			<Chinese>扇區半徑：400 米</Chinese>
+			<Portuguese>Raio do setor: 400 m</Portuguese>
+			<Czech>Poloměr sektoru: 400 m</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT3">
+			<Original>Sector radius: 600 m</Original>
+			<Russian>Радиус сектора : 600 м</Russian>
+			<French>Rayon du secteur : 600 m</French>
+			<Chinesesimp>扇区半径：600 米</Chinesesimp>
+			<Chinese>扇區半徑：600 米</Chinese>
+			<Portuguese>Raio do setor: 600 m</Portuguese>
+			<Czech>Poloměr sektoru: 600 m</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT4">
+			<Original>Sector radius: 800 m</Original>
+			<Russian>Радиус сектора : 800 м</Russian>
+			<French>Rayon du secteur : 800 m</French>
+			<Chinesesimp>扇区半径：800 米</Chinesesimp>
+			<Chinese>扇區半徑：800 米</Chinese>
+			<Portuguese>Raio do setor: 800 m</Portuguese>
+			<Czech>Poloměr sektoru: 800 m</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT5">
+			<Original>Sector radius: 1000 m</Original>
+			<Russian>Радиус сектора : 1000 м</Russian>
+			<French>Rayon du secteur : 1000 m</French>
+			<Chinesesimp>扇区半径：1000 米</Chinesesimp>
+			<Chinese>扇區半徑：1000 米</Chinese>
+			<Portuguese>Raio do setor: 1000 m</Portuguese>
+			<Czech>Poloměr sektoru: 1000 m</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT6">
+			<Original>Sector radius: 1200 m</Original>
+			<Russian>Радиус сектора : 1200 м</Russian>
+			<French>Rayon du secteur : 1200 m</French>
+			<Chinesesimp>扇区半径：1200 米</Chinesesimp>
+			<Chinese>扇區半徑：1200 米</Chinese>
+			<Portuguese>Raio do setor: 1200 m</Portuguese>
+			<Czech>Poloměr sektoru: 1200 m</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT7">
+			<Original>Sector radius: 1500 m</Original>
+			<Russian>Радиус сектора : 1500 м</Russian>
+			<French>Rayon du secteur : 1500 m</French>
+			<Chinesesimp>扇区半径：1500 米</Chinesesimp>
+			<Chinese>扇區半徑：1500 米</Chinese>
+			<Portuguese>Raio do setor: 1500 m</Portuguese>
+			<Czech>Poloměr sektoru: 1500 m</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_RADIUS_OPT8">
+			<Original>Sector radius: 2000 m</Original>
+			<Russian>Радиус сектора : 2000 м</Russian>
+			<French>Rayon du secteur : 2000 m</French>
+			<Chinesesimp>扇区半径：2000 米</Chinesesimp>
+			<Chinese>扇區半徑：2000 米</Chinese>
+			<Portuguese>Raio do setor: 2000 m</Portuguese>
+			<Czech>Poloměr sektoru: 2000 m</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_DESPAWN_DESC">
+			<Original>Sets the time multiplier for sector despawn delays, affecting sector persistence.</Original>
+			<Russian>Устанавливает множитель времени для задержек исчезновения секторов, влияя на их сохранение.</Russian>
+			<French>Définit le multiplicateur de temps pour les délais de disparition des secteurs, affectant leur persistance.</French>
+			<Chinesesimp>设置扇区消失延迟的时间乘数，影响扇区持久性。</Chinesesimp>
+			<Chinese>設置扇區消失延遲的時間乘數，影響扇區持久性。</Chinese>
+			<Portuguese>Define o multiplicador de tempo para atrasos de desaparecimento de setores, afetando a persistência.</Portuguese>
+			<Czech>Nastavuje časový násobitel pro zpoždění zmizení sektorů, ovlivňující jejich perzistenci.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT0">
+			<Original>Sector despawn after 3 hours</Original>
+			<Russian>Исчезновение сектора через 3 часа</Russian>
+			<French>Disparition du secteur après 3 heures</French>
+			<Chinesesimp>扇区在 3 小时后消失</Chinesesimp>
+			<Chinese>扇區在 3 小時後消失</Chinese>
+			<Portuguese>Desaparecimento do setor após 3 horas</Portuguese>
+			<Czech>Zmizení sektoru po 3 hodinách</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT1">
+			<Original>Sector despawn after 6 hours</Original>
+			<Russian>Исчезновение сектора через 6 часов</Russian>
+			<French>Disparition du secteur après 6 heures</French>
+			<Chinesesimp>扇区在 6 小时后消失</Chinesesimp>
+			<Chinese>扇區在 6 小時後消失</Chinese>
+			<Portuguese>Desaparecimento do setor após 6 horas</Portuguese>
+			<Czech>Zmizení sektoru po 6 hodinách</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT2">
+			<Original>Sector despawn after 8 hours</Original>
+			<Russian>Исчезновение сектора через 8 часов</Russian>
+			<French>Disparition du secteur après 8 heures</French>
+			<Chinesesimp>扇区在 8 小时后消失</Chinesesimp>
+			<Chinese>扇區在 8 小時後消失</Chinese>
+			<Portuguese>Desaparecimento do setor após 8 horas</Portuguese>
+			<Czech>Zmizení sektoru po 8 hodinách</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT3">
+			<Original>Sector despawn after 12 hours</Original>
+			<Russian>Исчезновение сектора через 12 часов</Russian>
+			<French>Disparition du secteur après 12 heures</French>
+			<Chinesesimp>扇区在 12 小时后消失</Chinesesimp>
+			<Chinese>扇區在 12 小時後消失</Chinese>
+			<Portuguese>Desaparecimento do setor após 12 horas</Portuguese>
+			<Czech>Zmizení sektoru po 12 hodinách</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT4">
+			<Original>Sector despawn after 16 hours</Original>
+			<Russian>Исчезновение сектора через 16 часов</Russian>
+			<French>Disparition du secteur após 16 heures</French>
+			<Chinesesimp>扇区在 16 小时后消失</Chinesesimp>
+			<Chinese>扇區在 16 小時後消失</Chinese>
+			<Portuguese>Desaparecimento do setor após 16 horas</Portuguese>
+			<Czech>Zmizení sektoru po 16 hodinách</Czech>
+		</Key>
+		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT5">
+			<Original>Sector despawn after 20 hours</Original>
+			<Russian>Исчезновение сектора через 20 часов</Russian>
+			<French>Disparition du secteur depois de 20 heures</French>
+			<Chinesesimp>扇区在 20 小时后消失</Chinesesimp>
+			<Chinese>扇區在 20 小時後消失</Chinese>
+			<Portuguese>Desaparecimento do setor após 20 horas</Portuguese>
+			<Czech>Zmizení sektoru po 20 hodinách</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO_DESC">
+			<Original>Multiplier for how many units are placed in buildings</Original>
+			<Russian>Множитель количества юнитов, размещаемых в зданиях</Russian>
+			<French>Multiplicateur du nombre d’unités placées dans les bâtiments</French>
+			<Chinesesimp>建筑中放置单位数量的乘数</Chinesesimp>
+			<Chinese>建築中放置單位數量的乘數</Chinese>
+			<Portuguese>Multiplicador de quantas unidades são colocadas em edifícios</Portuguese>
+			<Czech>Násobitel počtu jednotek umístěných v budovách</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO_OPT0">
+			<Original>Half the normal unit amount</Original>
+			<Russian>Половина обычного количества юнитов</Russian>
+			<French>Moitié de la quantité normale d’unités</French>
+			<Chinesesimp>建筑中单位数量减半</Chinesesimp>
+			<Chinese>建築中單位數量減半</Chinese>
+			<Portuguese>Metade da quantidade normal de unidades</Portuguese>
+			<Czech>Polovina normálního počtu jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO_OPT1">
+			<Original>Normal unit amount</Original>
+			<Russian>Обычное количество юнитов</Russian>
+			<French>Quantité normale d’unités</French>
+			<Chinesesimp>正常单位数量</Chinesesimp>
+			<Chinese>正常單位數量</Chinese>
+			<Portuguese>Quantidade normal de unidades</Portuguese>
+			<Czech>Normální počet jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO_OPT2">
+			<Original>One and a half times the unit amount</Original>
+			<Russian>Полтора раза больше юнитов</Russian>
+			<French>Une fois et demie le nombre d’unités</French>
+			<Chinesesimp>单位数量的1.5倍</Chinesesimp>
+			<Chinese>單位數量的1.5倍</Chinese>
+			<Portuguese>Uma vez e meia a quantidade de unidades</Portuguese>
+			<Czech>Jedna a půl násobek jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO_OPT3">
+			<Original>Double the unit amount</Original>
+			<Russian>Вдвое больше юнитов</Russian>
+			<French>Double du nombre d’unités</French>
+			<Chinesesimp>单位数量加倍</Chinesesimp>
+			<Chinese>單位數量加倍</Chinese>
+			<Portuguese>Dobro da quantidade de unidades</Portuguese>
+			<Czech>Dvojnásobek jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO_OPT4">
+			<Original>Two and a half times the unit amount</Original>
+			<Russian>Два с половиной раза больше юнитов</Russian>
+			<French>Deux fois et demie le nombre d’unités</French>
+			<Chinesesimp>单位数量的2.5倍</Chinesesimp>
+			<Chinese>單位數量的2.5倍</Chinese>
+			<Portuguese>Duas vezes e meia a quantidade de unidades</Portuguese>
+			<Czech>Dva a půl násobek jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO_OPT5">
+			<Original>Triple the unit amount</Original>
+			<Russian>Втрое больше юнитов</Russian>
+			<French>Triple du nombre d’unités</French>
+			<Chinesesimp>单位数量的3倍</Chinesesimp>
+			<Chinese>單位數量的3倍</Chinese>
+			<Portuguese>Triplo da quantidade de unidades</Portuguese>
+			<Czech>Trojnásobek jednotek</Czech>
+		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO_OPT6">
+			<Original>6x the unit amount</Original>
+			<Russian>В 6 раз больше юнитов</Russian>
+			<French>6 fois le nombre d’unités</French>
+			<Chinesesimp>单位数量的6倍</Chinesesimp>
+			<Chinese>單位數量的6倍</Chinese>
+			<Portuguese>6 vezes a quantidade de unidades</Portuguese>
+			<Czech>6násobek jednotek</Czech>
+		</Key>
+		<Key ID="STR_KEEP_SCORE_DESC">
+			<Original>Keeps the current score between mission restarts when enabled.</Original>
+			<Russian>Сохраняет текущий счёт между перезапусками миссии при включении.</Russian>
+			<French>Conserve le score actuel entre les redémarrages de mission lorsqu’il est activé.</French>
+			<Chinesesimp>启用时在任务重启之间保留当前分数。</Chinesesimp>
+			<Chinese>啟用時在任務重啟之間保留當前分數。</Chinese>
+			<Portuguese>Mantém a pontuação atual entre reinícios de missão quando ativado.</Portuguese>
+			<Czech>Zachovává aktuální skóre mezi restartováním mise, když je povoleno.</Czech>
+		</Key>
+		<Key ID="STR_KEEP_SCORE_OPT0">
+			<Original>Do not keep score between restarts</Original>
+			<Russian>Не сохранять счёт между перезапусками</Russian>
+			<French>Ne pas conserver le score entre les redémarrages</French>
+			<Chinesesimp>不在重启之间保留分数。</Chinesesimp>
+			<Chinese>不在重啟之間保留分數。</Chinese>
+			<Portuguese>Não manter a pontuação entre reinícios.</Portuguese>
+			<Czech>Neukládat skóre mezi restarty.</Czech>
+		</Key>
+		<Key ID="STR_KEEP_SCORE_OPT1">
+			<Original>Keep score between restarts</Original>
+			<Russian>Сохранять счёт между перезапусками</Russian>
+			<French>Conserver le score entre les redémarrages</French>
+			<Chinesesimp>在重启之间保留分数。</Chinesesimp>
+			<Chinese>在重啟之間保留分數。</Chinese>
+			<Portuguese>Manter a pontuação entre reinícios.</Portuguese>
+			<Czech>Zachovat skóre mezi restarty.</Czech>
+		</Key>
+		<Key ID="STR_KEEP_CONTEXT_DESC">
+			<Original>Maintains mission context (settings and state) between restarts.</Original>
+			<Russian>Сохраняет контекст миссии (настройки и состояние) между перезапусками.</Russian>
+			<French>Conserve le contexte de la mission (paramètres et état) entre les redémarrages.</French>
+			<Chinesesimp>在重启之间保留任务上下文（设置和状态）。</Chinesesimp>
+			<Chinese>在重啟之間保留任務上下文（設置和狀態）。</Chinese>
+			<Portuguese>Mantém o contexto da missão (configurações e estado) entre reinícios.</Portuguese>
+			<Czech>Udržuje kontext mise (nastavení a stav) mezi restarty.</Czech>
+		</Key>
+		<Key ID="STR_KEEP_CONTEXT_OPT0">
+			<Original>Do not maintain context</Original>
+			<Russian>Не сохранять контекст</Russian>
+			<French>Ne pas conserver le contexte</French>
+			<Chinesesimp>不保留上下文。</Chinesesimp>
+			<Chinese>不保留上下文。</Chinese>
+			<Portuguese>Não manter o contexto.</Portuguese>
+			<Czech>Neuchovávat kontext.</Czech>
+		</Key>
+		<Key ID="STR_KEEP_CONTEXT_OPT1">
+			<Original>Maintain context between restarts</Original>
+			<Russian>Сохранять контекст между перезапусками</Russian>
+			<French>Conserver le contexte entre les redémarrages</French>
+			<Chinesesimp>在重启之间保留上下文。</Chinesesimp>
+			<Chinese>在重啟之間保留上下文。</Chinese>
+			<Portuguese>Manter o contexto entre reinícios.</Portuguese>
+			<Czech>Zachovat kontext mezi restarty.</Czech>
+		</Key>
+		<Key ID="STR_PERMISSIONS_PARAM_DESC">
+			<Original>Enforces permission levels for certain player actions and commands.</Original>
+			<Russian>Применяет уровни разрешений для определённых действий и команд игроков.</Russian>
+			<French>Applique des niveaux d’autorisation pour certaines actions et commandes des joueurs.</French>
+			<Chinesesimp>强制执行某些玩家操作和命令的权限级别。</Chinesesimp>
+			<Chinese>強制執行某些玩家操作和命令的權限級別。</Chinese>
+			<Portuguese>Aplica níveis de permissão para certas ações e comandos do jogador.</Portuguese>
+			<Czech>Vynucuje úrovně oprávnění pro určité hráčovy akce a příkazy.</Czech>
+		</Key>
+		<Key ID="STR_PERMISSIONS_PARAM_OPT0">
+			<Original>Disable permission enforcement</Original>
+			<Russian>Отключить проверку разрешений</Russian>
+			<French>Désactiver la vérification des autorisations</French>
+			<Chinesesimp>禁用权限检查。</Chinesesimp>
+			<Chinese>禁用權限檢查。</Chinese>
+			<Portuguese>Desativar aplicação de permissões.</Portuguese>
+			<Czech>Zakázat vynucování oprávnění.</Czech>
+		</Key>
+		<Key ID="STR_PERMISSIONS_PARAM_OPT1">
+			<Original>Enable permission enforcement</Original>
+			<Russian>Включить проверку разрешений</Russian>
+			<French>Activer la vérification des autorisations</French>
+			<Chinesesimp>启用权限检查。</Chinesesimp>
+			<Chinese>啟用權限檢查。</Chinese>
+			<Portuguese>Ativar aplicação de permissões.</Portuguese>
+			<Czech>Povolit vynucování oprávnění.</Czech>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM_DESC">
+			<Original>Sets the delay (in seconds) before unused vehicles are removed from the mission.</Original>
+			<Russian>Устанавливает задержку (в секундах) до удаления неиспользуемых транспортных средств из миссии.</Russian>
+			<French>Définit le délai (en secondes) avant la suppression des véhicules inutilisés de la mission.</French>
+			<Chinesesimp>设置从任务中移除未使用车辆的延迟（秒）。</Chinesesimp>
+			<Chinese>設置從任務中移除未使用車輛的延遲（秒）。</Chinese>
+			<Portuguese>Define o atraso (em segundos) antes de remover veículos não utilizados da missão.</Portuguese>
+			<Czech>Nastavuje prodlevu (v sekundách) před odstraněním nepoužívaných vozidel z mise.</Czech>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM_OPT0">
+			<Original>Do not clean up vehicles</Original>
+			<Russian>Не удалять транспортные средства</Russian>
+			<French>Ne pas supprimer les véhicules</French>
+			<Chinesesimp>不移除车辆。</Chinesesimp>
+			<Chinese>不移除車輛。</Chinese>
+			<Portuguese>Não remover veículos.</Portuguese>
+			<Czech>Neodstraňovat vozidla.</Czech>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM_OPT1">
+			<Original>Clean up after 15 minutes</Original>
+			<Russian>Удалить через 15 минут</Russian>
+			<French>Supprimer après 15 minutes</French>
+			<Chinesesimp>15 分钟后移除。</Chinesesimp>
+			<Chinese>15 分鐘後移除。</Chinese>
+			<Portuguese>Remover após 15 minutos.</Portuguese>
+			<Czech>Odstranit po 15 minutách.</Czech>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM_OPT2">
+			<Original>Clean up after 20 minutes</Original>
+			<Russian>Удалить через 20 минут</Russian>
+			<French>Supprimer après 20 minutes</French>
+			<Chinesesimp>20 分钟后移除。</Chinesesimp>
+			<Chinese>20 分鐘後移除。</Chinese>
+			<Portuguese>Remover após 20 minutos.</Portuguese>
+			<Czech>Odstranit po 20 minutách.</Czech>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM_OPT3">
+			<Original>Clean up after 30 minutes</Original>
+			<Russian>Удалить через 30 минут</Russian>
+			<French>Supprimer après 30 minutes</French>
+			<Chinesesimp>30 分钟后移除。</Chinesesimp>
+			<Chinese>30 分鐘後移除。</Chinese>
+			<Portuguese>Remover após 30 minutos.</Portuguese>
+			<Czech>Odstranit po 30 minutách.</Czech>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM_OPT4">
+			<Original>Clean up after 1 hour</Original>
+			<Russian>Удалить через 1 час</Russian>
+			<French>Supprimer après 1 heure</French>
+			<Chinesesimp>1 小时后移除。</Chinesesimp>
+			<Chinese>1 小時後移除。</Chinese>
+			<Portuguese>Remover após 1 hora.</Portuguese>
+			<Czech>Odstranit po 1 hodině.</Czech>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM_OPT5">
+			<Original>Clean up after 2 hours</Original>
+			<Russian>Удалить через 2 часа</Russian>
+			<French>Supprimer após 2 heures</French>
+			<Chinesesimp>2 小时后移除。</Chinesesimp>
+			<Chinese>2 小時後移除。</Chinese>
+			<Portuguese>Remover após 2 horas.</Portuguese>
+			<Czech>Odstranit po 2 hodinách.</Czech>
+		</Key>
+		<Key ID="STR_AUTO_SAVE_DESC">
+			<Original>Determines the interval (in seconds) for automatic mission saves.</Original>
+			<Russian>Определяет интервал (в секундах) для автоматического сохранения миссии.</Russian>
+			<French>Détermine l’intervalle (en secondes) pour les sauvegardes automatiques de mission.</French>
+			<Chinesesimp>确定自动任务保存的间隔（秒）。</Chinesesimp>
+			<Chinese>確定自動任務保存的間隔（秒）。</Chinese>
+			<Portuguese>Determina o intervalo (em segundos) para salvamentos automáticos de missão.</Portuguese>
+			<Czech>Určuje interval (v sekundách) pro automatické ukládání mise.</Czech>
+		</Key>
+		<Key ID="STR_AUTO_SAVE_OPT0">
+			<Original>Disable autosave</Original>
+			<Russian>Отключить автосохранение</Russian>
+			<French>Désactiver la sauvegarde automatique</French>
+			<Chinesesimp>禁用自动保存。</Chinesesimp>
+			<Chinese>禁用自動保存。</Chinese>
+			<Portuguese>Desativar salvamento automático.</Portuguese>
+			<Czech>Zakázat automatické ukládání.</Czech>
+		</Key>
+		<Key ID="STR_AUTO_SAVE_OPT1">
+			<Original>Autosave every 15 minutes</Original>
+			<Russian>Автосохранение каждые 15 минут</Russian>
+			<French>Sauvegarde automatique toutes les 15 minutes</French>
+			<Chinesesimp>每 15 分钟自动保存。</Chinesesimp>
+			<Chinese>每 15 分鐘自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada 15 minutos.</Portuguese>
+			<Czech>Automaticky ukládat každých 15 minut.</Czech>
+		</Key>
+		<Key ID="STR_AUTO_SAVE_OPT2">
+			<Original>Autosave every 20 minutes</Original>
+			<Russian>Автосохранение каждые 20 минут</Russian>
+			<French>Sauvegarde automatique toutes les 20 minutes</French>
+			<Chinesesimp>每 20 分钟自动保存。</Chinesesimp>
+			<Chinese>每 20 分鐘自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada 20 minutos.</Portuguese>
+			<Czech>Automaticky ukládat každých 20 minut.</Czech>
+		</Key>
+		<Key ID="STR_AUTO_SAVE_OPT3">
+			<Original>Autosave every 30 minutes</Original>
+			<Russian>Автосохранение каждые 30 минут</Russian>
+			<French>Sauvegarde automatique toutes les 30 minutes</French>
+			<Chinesesimp>每 30 分钟自动保存。</Chinesesimp>
+			<Chinese>每 30 分鐘自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada 30 minutos.</Portuguese>
+			<Czech>Automaticky ukládat každých 30 minut.</Czech>
+		</Key>
+		<Key ID="STR_AUTO_SAVE_OPT4">
+			<Original>Autosave every 1 hour</Original>
+			<Russian>Автосохранение каждые 1 час</Russian>
+			<French>Sauvegarde automatique toutes les 1 heure</French>
+			<Chinesesimp>每 1 小时自动保存。</Chinesesimp>
+			<Chinese>每 1 小時自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada 1 hora.</Portuguese>
+			<Czech>Automaticky ukládat každou 1 hodinu.</Czech>
+		</Key>
+		<Key ID="STR_AUTO_SAVE_OPT5">
+			<Original>Autosave every 2 hours</Original>
+			<Russian>Автосохранение каждые 2 часа</Russian>
+			<French>Sauvegarde automatique toutes les 2 heures</French>
+			<Chinesesimp>每 2 小时自动保存。</Chinesesimp>
+			<Chinese>每 2 小時自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada 2 horas.</Portuguese>
+			<Czech>Automaticky ukládat každé 2 hodiny.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_DESC">
+			<Original>Sets the effective range of the TFAR radio for in‑game communications.</Original>
+			<Russian>Устанавливает эффективный радиус радио TFAR для внутриигровой связи.</Russian>
+			<French>Définit la portée effective de la radio TFAR pour les communications en jeu.</French>
+			<Chinesesimp>设置 TFAR 收音机的有效范围，用于游戏内通信。</Chinesesimp>
+			<Chinese>設定 TFAR 收音機的有效範圍，用於遊戲內通信。</Chinese>
+			<Portuguese>Define o alcance efetivo do rádio TFAR para comunicações no jogo.</Portuguese>
+			<Czech>Nastavuje efektivní dosah rádia TFAR pro komunikaci ve hře.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT0">
+			<Original>Disable TFAR radio</Original>
+			<Russian>Отключить TFAR радио</Russian>
+			<French>Désactiver la radio TFAR</French>
+			<Chinesesimp>禁用 TFAR 收音机。</Chinesesimp>
+			<Chinese>禁用 TFAR 收音機。</Chinese>
+			<Portuguese>Desativar rádio TFAR.</Portuguese>
+			<Czech>Zakázat rádio TFAR.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT1">
+			<Original>Set TFAR range to 1 km</Original>
+			<Russian>Установить радиус TFAR на 1 км</Russian>
+			<French>Régler la portée TFAR à 1 km</French>
+			<Chinesesimp>将 TFAR 范围设置为 1 公里。</Chinesesimp>
+			<Chinese>將 TFAR 範圍設置為 1 公里。</Chinese>
+			<Portuguese>Definir alcance TFAR para 1 km.</Portuguese>
+			<Czech>Nastavit dosah TFAR na 1 km.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT2">
+			<Original>Set TFAR range to 2 km</Original>
+			<Russian>Установить радиус TFAR на 2 км</Russian>
+			<French>Régler la portée TFAR à 2 km</French>
+			<Chinesesimp>将 TFAR 范围设置为 2 公里。</Chinesesimp>
+			<Chinese>將 TFAR 範圍設置為 2 公里。</Chinese>
+			<Portuguese>Definir alcance TFAR para 2 km.</Portuguese>
+			<Czech>Nastavit dosah TFAR na 2 km.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT3">
+			<Original>Set TFAR range to 3 km</Original>
+			<Russian>Установить радиус TFAR на 3 км</Russian>
+			<French>Régler la portée TFAR à 3 km</French>
+			<Chinesesimp>将 TFAR 范围设置为 3 公里。</Chinesesimp>
+			<Chinese>將 TFAR 範圍設置為 3 公里。</Chinese>
+			<Portuguese>Definir alcance TFAR para 3 km.</Portuguese>
+			<Czech>Nastavit dosah TFAR na 3 km.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT4">
+			<Original>Set TFAR range to 4 km</Original>
+			<Russian>Установить радиус TFAR на 4 км</Russian>
+			<French>Régler la portée TFAR à 4 km</French>
+			<Chinesesimp>将 TFAR 范围设置为 4 公里。</Chinesesimp>
+			<Chinese>將 TFAR 範圍設置為 4 公里。</Chinese>
+			<Portuguese>Definir alcance TFAR para 4 km.</Portuguese>
+			<Czech>Nastavit dosah TFAR na 4 km.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT5">
+			<Original>Set TFAR range to 5 km</Original>
+			<Russian>Установить радиус TFAR на 5 км</Russian>
+			<French>Régler la portée TFAR à 5 km</French>
+			<Chinesesimp>将 TFAR 范围设置为 5 公里。</Chinesesimp>
+			<Chinese>將 TFAR 範圍設置為 5 公里。</Chinese>
+			<Portuguese>Definir alcance TFAR para 5 km.</Portuguese>
+			<Czech>Nastavit dosah TFAR na 5 km.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT6">
+			<Original>Set TFAR range to 7.5 km</Original>
+			<Russian>Установить радиус TFAR на 7,5 км</Russian>
+			<French>Régler la portée TFAR à 7,5 km</French>
+			<Chinesesimp>将 TFAR 范围设置为 7.5 公里。</Chinesesimp>
+			<Chinese>將 TFAR 範圍設置為 7.5 公里。</Chinese>
+			<Portuguese>Definir alcance TFAR para 7,5 km.</Portuguese>
+			<Czech>Nastavit dosah TFAR na 7,5 km.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT7">
+			<Original>Set TFAR range to 10 km</Original>
+			<Russian>Установить радиус TFAR на 10 км</Russian>
+			<French>Régler la portée TFAR à 10 km</French>
+			<Chinesesimp>将 TFAR 范围设置为 10 公里。</Chinesesimp>
+			<Chinese>將 TFAR 範圍設置為 10 公里。</Chinese>
+			<Portuguese>Definir alcance TFAR para 10 km.</Portuguese>
+			<Czech>Nastavit dosah TFAR na 10 km.</Czech>
+		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS_OPT8">
+			<Original>Set TFAR range to 15 km</Original>
+			<Russian>Установить радиус TFAR на 15 км</Russian>
+			<French>Régler la portée TFAR à 15 km</French>
+			<Chinesesimp>将 TFAR 范围设置为 15 公里。</Chinesesimp>
+			<Chinese>將 TFAR 範圍設置為 15 公里。</Chinese>
+			<Portuguese>Definir alcance TFAR para 15 km.</Portuguese>
+			<Czech>Nastavit dosah TFAR na 15 km.</Czech>
+		</Key>
+		<Key ID="STR_ADMIN_MENU_DESC">
+			<Original>Turns on the admin menu for managing in‑game settings and players.</Original>
+			<Russian>Включает меню администратора для управления настройками и игроками в игре.</Russian>
+			<French>Active le menu administrateur pour gérer les paramètres et les joueurs en jeu.</French>
+			<Chinesesimp>启用管理员菜单以管理游戏内设置和玩家。</Chinesesimp>
+			<Chinese>啟用管理員菜單以管理遊戲內設置和玩家。</Chinese>
+			<Portuguese>Ativa o menu de administrador para gerenciar configurações e jogadores no jogo.</Portuguese>
+			<Czech>Zapne administrační nabídku pro správu herních nastavení a hráčů.</Czech>
+		</Key>
+		<Key ID="STR_ADMIN_MENU_OPT0">
+			<Original>Disable the admin menu</Original>
+			<Russian>Отключить меню администратора</Russian>
+			<French>Désactiver le menu administrateur</French>
+			<Chinesesimp>禁用管理员菜单。</Chinesesimp>
+			<Chinese>禁用管理員菜單。</Chinese>
+			<Portuguese>Desativar menu de administrador.</Portuguese>
+			<Czech>Zakázat administrační nabídku.</Czech>
+		</Key>
+		<Key ID="STR_ADMIN_MENU_OPT1">
+			<Original>Enable the admin menu</Original>
+			<Russian>Включить меню администратора</Russian>
+			<French>Activer le menu administrateur</French>
+			<Chinesesimp>启用管理员菜单。</Chinesesimp>
+			<Chinese>啟用管理員菜單。</Chinese>
+			<Portuguese>Ativar menu de administrador.</Portuguese>
+			<Czech>Povolit administrační nabídku.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_DESC">
+			<Original>Specifies the cooldown period (in seconds) before a player can respawn.</Original>
+			<Russian>Определяет период восстановления (в секундах) перед возрождением игрока.</Russian>
+			<French>Spécifie la période de recharge (en secondes) avant qu’un joueur puisse réapparaître.</French>
+			<Chinesesimp>指定玩家重生前的冷却时间（秒）。</Chinesesimp>
+			<Chinese>指定玩家重生前的冷卻時間（秒）。</Chinese>
+			<Portuguese>Especifica o período de recarga (em segundos) antes de um jogador poder ressurgir.</Portuguese>
+			<Czech>Určuje dobu obnovení (v sekundách), než se hráč může znovu objevit.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_OPT0">
+			<Original>No respawn cooldown</Original>
+			<Russian>Без восстановления</Russian>
+			<French>Pas de délai de rechargement</French>
+			<Chinesesimp>无重生冷却。</Chinesesimp>
+			<Chinese>無重生冷卻。</Chinese>
+			<Portuguese>Sem tempo de recarga.</Portuguese>
+			<Czech>Bez doby obnovy.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_OPT1">
+			<Original>4‑minute respawn cooldown</Original>
+			<Russian>Время восстановления: 4 минуты</Russian>
+			<French>Délai de rechargement : 4 minutes</French>
+			<Chinesesimp>4分钟重生冷却。</Chinesesimp>
+			<Chinese>4分鐘重生冷卻。</Chinese>
+			<Portuguese>Tempo de recarga de 4 minutos.</Portuguese>
+			<Czech>Doba obnovy: 4 minuty.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_OPT2">
+			<Original>5‑minute respawn cooldown</Original>
+			<Russian>Время восстановления: 5 минут</Russian>
+			<French>Délai de rechargement : 5 minutes</French>
+			<Chinesesimp>5分钟重生冷却。</Chinesesimp>
+			<Chinese>5分鐘重生冷卻。</Chinese>
+			<Portuguese>Tempo de recarga de 5 minutos.</Portuguese>
+			<Czech>Doba obnovy: 5 minut.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_OPT3">
+			<Original>6‑minute respawn cooldown</Original>
+			<Russian>Время восстановления: 6 минут</Russian>
+			<French>Délai de rechargement : 6 minutes</French>
+			<Chinesesimp>6分钟重生冷却。</Chinesesimp>
+			<Chinese>6分鐘重生冷卻。</Chinese>
+			<Portuguese>Tempo de recarga de 6 minutos.</Portuguese>
+			<Czech>Doba obnovy: 6 minut.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_OPT4">
+			<Original>7‑minute respawn cooldown</Original>
+			<Russian>Время восстановления: 7 минут</Russian>
+			<French>Délai de rechargement : 7 minutes</French>
+			<Chinesesimp>7分钟重生冷却。</Chinesesimp>
+			<Chinese>7分鐘重生冷卻。</Chinese>
+			<Portuguese>Tempo de recarga de 7 minutos.</Portuguese>
+			<Czech>Doba obnovy: 7 minut.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_OPT5">
+			<Original>8‑minute respawn cooldown</Original>
+			<Russian>Время восстановления: 8 минут</Russian>
+			<French>Délai de rechargement : 8 minutes</French>
+			<Chinesesimp>8分钟重生冷却。</Chinesesimp>
+			<Chinese>8分鐘重生冷卻。</Chinese>
+			<Portuguese>Tempo de recarga de 8 minutos.</Portuguese>
+			<Czech>Doba obnovy: 8 minut.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_OPT6">
+			<Original>9‑minute respawn cooldown</Original>
+			<Russian>Время восстановления: 9 минут</Russian>
+			<French>Délai de rechargement : 9 minutes</French>
+			<Chinesesimp>9分钟重生冷却。</Chinesesimp>
+			<Chinese>9分鐘重生冷卻。</Chinese>
+			<Portuguese>Tempo de recarga de 9 minutos.</Portuguese>
+			<Czech>Doba obnovy: 9 minut.</Czech>
+		</Key>
+		<Key ID="STR_RESPAWN_CD_OPT7">
+			<Original>10‑minute respawn cooldown</Original>
+			<Russian>Время восстановления: 10 минут</Russian>
+			<French>Délai de rechargement : 10 minutes</French>
+			<Chinesesimp>10分钟重生冷却。</Chinesesimp>
+			<Chinese>10分鐘重生冷卻。</Chinese>
+			<Portuguese>Tempo de recarga de 10 minutos.</Portuguese>
+			<Czech>Doba obnovy: 10 minut.</Czech>
+		</Key>
+		<Key ID="STR_KICK_IDLE_DESC">
+			<Original>Determines the idle time limit (in seconds) before a player is automatically kicked.</Original>
+			<Russian>Определяет лимит времени бездействия (в секундах) перед автоматическим удалением игрока.</Russian>
+			<French>Détermine la durée d’inactivité (en secondes) avant qu’un joueur soit automatiquement expulsé.</French>
+			<Chinesesimp>确定玩家被自动踢出前的空闲时间限制（秒）。</Chinesesimp>
+			<Chinese>确定玩家被自动踢出前的空闲时间限制（秒）。</Chinese>
+			<Portuguese>Determina o limite de tempo ocioso (em segundos) antes de um jogador ser expulso automaticamente.</Portuguese>
+			<Czech>Určuje limit nečinnosti (v sekundách) před automatickým vykopnutím hráče.</Czech>
+		</Key>
+		<Key ID="STR_KICK_IDLE_OPT0">
+			<Original>Do not kick idle players</Original>
+			<Russian>Не удалять бездействующих игроков</Russian>
+			<French>Ne pas expulser les joueurs inactifs</French>
+			<Chinesesimp>不踢出空闲玩家。</Chinesesimp>
+			<Chinese>不踢出空閒玩家。</Chinese>
+			<Portuguese>Não expulsar jogadores inativos.</Portuguese>
+			<Czech>Nevykopávat nečinné hráče.</Czech>
+		</Key>
+		<Key ID="STR_KICK_IDLE_OPT1">
+			<Original>Kick after 15 minutes idle</Original>
+			<Russian>Удалить после 15 минут бездействия</Russian>
+			<French>Expulser après 15 minutes d’inactivité</French>
+			<Chinesesimp>空闲 15 分钟后踢出。</Chinesesimp>
+			<Chinese>閒置 15 分鐘后踢出。</Chinese>
+			<Portuguese>Expulsar após 15 minutos de inatividade.</Portuguese>
+			<Czech>Vykopnout po 15 minutách nečinnosti.</Czech>
+		</Key>
+		<Key ID="STR_KICK_IDLE_OPT2">
+			<Original>Kick after 20 minutes idle</Original>
+			<Russian>Удалить после 20 минут бездействия</Russian>
+			<French>Expulser après 20 minutes d’inactivité</French>
+			<Chinesesimp>空闲 20 分钟后踢出。</Chinesesimp>
+			<Chinese>閒置 20 分鐘后踢出。</Chinese>
+			<Portuguese>Expulsar após 20 minutos de inatividade.</Portuguese>
+			<Czech>Vykopnout po 20 minutách nečinnosti.</Czech>
+		</Key>
+		<Key ID="STR_KICK_IDLE_OPT3">
+			<Original>Kick after 30 minutes idle</Original>
+			<Russian>Удалить после 30 минут бездействия</Russian>
+			<French>Expulser après 30 minutes d’inactivité</French>
+			<Chinesesimp>空闲 30 分钟后踢出。</Chinesesimp>
+			<Chinese>閒置 30 分鐘后踢出。</Chinese>
+			<Portuguese>Expulsar após 30 minutos de inatividade.</Portuguese>
+			<Czech>Vykopnout po 30 minutách nečinnosti.</Czech>
+		</Key>
+		<Key ID="STR_KICK_IDLE_OPT4">
+			<Original>Kick after 1 hour idle</Original>
+			<Russian>Удалить после 1 часа бездействия</Russian>
+			<French>Expulser après 1 heure d’inactivité</French>
+			<Chinesesimp>空闲 1 小时后踢出。</Chinesesimp>
+			<Chinese>閒置 1 小時后踢出。</Chinese>
+			<Portuguese>Expulsar após 1 hora de inatividade.</Portuguese>
+			<Czech>Vykopnout po 1 hodině nečinnosti.</Czech>
+		</Key>
+		<Key ID="STR_KICK_IDLE_OPT5">
+			<Original>Kick after 2 hours idle</Original>
+			<Russian>Удалить после 2 часов бездействия</Russian>
+			<French>Expulser après 2 heures d’inactivité</French>
+			<Chinesesimp>空闲 2 小时后踢出。</Chinesesimp>
+			<Chinese>閒置 2 小時后踢出。</Chinese>
+			<Portuguese>Expulsar após 2 horas de inatividade.</Portuguese>
+			<Czech>Vykopnout po 2 hodinách nečinnosti.</Czech>
+		</Key>
+		<Key ID="STR_TK_MODE_DESC">
+			<Original>Configures the team killing mode.</Original>
+			<Russian>Настраивает режим убийства своих.</Russian>
+			<French>Configure le mode tirs amis (TK).</French>
+			<Chinesesimp>配置队友杀伤模式。</Chinesesimp>
+			<Chinese>配置隊友殺傷模式。</Chinese>
+			<Portuguese>Configura o modo de team kill.</Portuguese>
+			<Czech>Konfiguruje režim zabíjení vlastních.</Czech>
+		</Key>
+		<Key ID="STR_TK_MODE_OPT0">
+			<Original>Disable team‑kill enforcement</Original>
+			<Russian>Отключить принуждение к запрету убийств своих</Russian>
+			<French>Désactiver l’application des tirs amis</French>
+			<Chinesesimp>禁用队友伤害惩罚。</Chinesesimp>
+			<Chinese>禁用隊友傷害懲罰。</Chinese>
+			<Portuguese>Desativar aplicação de team kill.</Portuguese>
+			<Czech>Zakázat vynucování střelby na vlastní.</Czech>
+		</Key>
+		<Key ID="STR_TK_MODE_OPT1">
+			<Original>Relaxed team‑kill enforcement</Original>
+			<Russian>Ослабленное применение правил убийства своих</Russian>
+			<French>Application des tirs amis relâchée</French>
+			<Chinesesimp>宽松的队友伤害惩罚。</Chinesesimp>
+			<Chinese>寬鬆的隊友傷害懲罰。</Chinese>
+			<Portuguese>Aplicação de team kill relaxada.</Portuguese>
+			<Czech>Uvolněné vynucování střelby na vlastní.</Czech>
+		</Key>
+		<Key ID="STR_TK_MODE_OPT2">
+			<Original>Strict team‑kill enforcement</Original>
+			<Russian>Строгое применение правил убийства своих</Russian>
+			<French>Application stricte des tirs amis</French>
+			<Chinesesimp>严格的队友伤害惩罚。</Chinesesimp>
+			<Chinese>嚴格的隊友傷害懲罰。</Chinese>
+			<Portuguese>Aplicação de team kill rigorosa.</Portuguese>
+			<Czech>Přísné vynucování střelby na vlastní.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_DESC">
+			<Original>Sets the allowable team kill count before penalty actions.</Original>
+			<Russian>Устанавливает допустимое количество убийств своих до применения штрафных мер.</Russian>
+			<French>Définit le nombre de tirs amis autorisés avant les sanctions.</French>
+			<Chinesesimp>设置处罚前允许的队友击杀次数。</Chinesesimp>
+			<Chinese>設置處罰前允許的隊友擊殺次數。</Chinese>
+			<Portuguese>Define o número permitido de team kills antes de penalidades.</Portuguese>
+			<Czech>Nastavuje povolený počet střel na vlastní před sankcemi.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_OPT0">
+			<Original>Allow up to 3 TKs</Original>
+			<Russian>Разрешить до 3 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à 3 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 3 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 3 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até 3 team kills.</Portuguese>
+			<Czech>Povolit až 3 zabití vlastních.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_OPT1">
+			<Original>Allow up to 4 TKs</Original>
+			<Russian>Разрешить до 4 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à 4 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 4 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 4 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até 4 team kills.</Portuguese>
+			<Czech>Povolit až 4 zabití vlastních.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_OPT2">
+			<Original>Allow up to 5 TKs</Original>
+			<Russian>Разрешить до 5 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à 5 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 5 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 5 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até 5 team kills.</Portuguese>
+			<Czech>Povolit až 5 zabití vlastních.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_OPT3">
+			<Original>Allow up to 6 TKs</Original>
+			<Russian>Разрешить до 6 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à 6 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 6 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 6 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até 6 team kills.</Portuguese>
+			<Czech>Povolit až 6 zabití vlastních.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_OPT4">
+			<Original>Allow up to 7 TKs</Original>
+			<Russian>Разрешить до 7 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à 7 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 7 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 7 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até 7 team kills.</Portuguese>
+			<Czech>Povolit až 7 zabití vlastních.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_OPT5">
+			<Original>Allow up to 8 TKs</Original>
+			<Russian>Разрешить до 8 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à 8 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 8 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 8 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até 8 team kills.</Portuguese>
+			<Czech>Povolit až 8 zabití vlastních.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_OPT6">
+			<Original>Allow up to 9 TKs</Original>
+			<Russian>Разрешить до 9 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à 9 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 9 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 9 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até 9 team kills.</Portuguese>
+			<Czech>Povolit až 9 zabití vlastních.</Czech>
+		</Key>
+		<Key ID="STR_TK_COUNT_OPT7">
+			<Original>Allow up to 10 TKs</Original>
+			<Russian>Разрешить до 10 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à 10 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 10 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 10 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até 10 team kills.</Portuguese>
+			<Czech>Povolit až 10 zabití vlastních.</Czech>
+		</Key>
+		<Key ID="STR_PERSISTENT_MODE_DESC">
+			<Original>Enables or disables persistent mode, maintaining mission state across sessions.</Original>
+			<Russian>Включает или отключает постоянный режим, сохраняя состояние миссии между сессиями.</Russian>
+			<French>Active ou désactive le mode persistant, maintenant l’état de la mission entre les sessions.</French>
+			<Chinesesimp>启用或禁用持久模式，在会话之间维护任务状态。</Chinesesimp>
+			<Chinese>啟用或禁用持久模式，在會話之間維護任務狀態。</Chinese>
+			<Portuguese>Ativa ou desativa o modo persistente, mantendo o estado da missão entre sessões.</Portuguese>
+			<Czech>Povolit nebo zakázat perzistentní režim, zachovávající stav mise mezi relacemi.</Czech>
+		</Key>
+		<Key ID="STR_PERSISTENT_MODE_OPT0">
+			<Original>Disable persistent mode</Original>
+			<Russian>Отключить постоянный режим</Russian>
+			<French>Désactiver le mode persistant</French>
+			<Chinesesimp>禁用持久模式。</Chinesesimp>
+			<Chinese>禁用持久模式。</Chinese>
+			<Portuguese>Desativar modo persistente.</Portuguese>
+			<Czech>Zakázat perzistentní režim.</Czech>
+		</Key>
+		<Key ID="STR_PERSISTENT_MODE_OPT1">
+			<Original>Enable persistent mode</Original>
+			<Russian>Включить постоянный режим</Russian>
+			<French>Activer le mode persistant</French>
+			<Chinesesimp>启用持久模式。</Chinesesimp>
+			<Chinese>啟用持久模式。</Chinese>
+			<Portuguese>Ativar modo persistente.</Portuguese>
+			<Czech>Povolit perzistentní režim.</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_DESC">
+			<Original>Enables commander mode for sector selection.</Original>
+			<Russian>Включает режим командира для выбора секторов.</Russian>
+			<French>Active le mode commandant pour la sélection des secteurs.</French>
+			<Chinesesimp>启用指挥模式以选择扇区。</Chinesesimp>
+			<Chinese>啟用指揮模式以選擇扇區。</Chinese>
+			<Portuguese>Ativa o modo comandante para seleção de setores.</Portuguese>
+			<Czech>Povolit režim velitele pro výběr sektorů.</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_OPT0">
+			<Original>Disable commander mode</Original>
+			<Russian>Отключить режим командира</Russian>
+			<French>Désactiver le mode commandant</French>
+			<Chinesesimp>禁用指挥模式。</Chinesesimp>
+			<Chinese>禁用指揮模式。</Chinese>
+			<Portuguese>Desativar modo comandante.</Portuguese>
+			<Czech>Zakázat režim velitele.</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_OPT1">
+			<Original>Enable commander mode</Original>
+			<Russian>Включить режим командира</Russian>
+			<French>Activer le mode commandant</French>
+			<Chinesesimp>启用指挥模式。</Chinesesimp>
+			<Chinese>啟用指揮模式。</Chinese>
+			<Portuguese>Ativar modo comandante.</Portuguese>
+			<Czech>Povolit režim velitele.</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_DESC">
+			<Original>When the commander chooses a sector to attack, nearby enemy sectors within this range will defend.</Original>
+			<Russian>Когда командир выбирает сектор для атаки, близлежащие вражеские сектора в этом диапазоне будут защищаться.</Russian>
+			<French>Lorsque le commandant choisit un secteur à attaquer, les secteurs ennemis proches dans cette portée défendront.</French>
+			<Chinesesimp>当指挥官选择要攻击的扇区时，该范围内的附近敌方扇区将进行防御。</Chinesesimp>
+			<Chinese>當指揮官選擇要攻擊的扇區時，該範圍內的附近敵方扇區將進行防禦。</Chinese>
+			<Portuguese>Quando o comandante escolhe um setor para atacar, setores inimigos próximos dentro desse alcance defenderão.</Portuguese>
+			<Czech>Když velitel zvolí sektor k útoku, blízké nepřátelské sektory v tomto rozmezí budou bránit.</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT0">
+			<Original>Defense activation range: 100 m</Original>
+			<Russian>Диапазон активации защиты : 100 м</Russian>
+			<French>Portée d’activation de la défense : 100 m</French>
+			<Chinesesimp>防御激活范围：100 米</Chinesesimp>
+			<Chinese>防禦激活範圍：100 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 100 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 100 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT1">
+			<Original>Defense activation range: 150 m</Original>
+			<Russian>Диапазон активации защиты : 150 м</Russian>
+			<French>Portée d’activation de la défense : 150 m</French>
+			<Chinesesimp>防御激活范围：150 米</Chinesesimp>
+			<Chinese>防禦激活範圍：150 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 150 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 150 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT2">
+			<Original>Defense activation range: 200 m</Original>
+			<Russian>Диапазон активации защиты : 200 м</Russian>
+			<French>Portée d’activation de la défense : 200 m</French>
+			<Chinesesimp>防御激活范围：200 米</Chinesesimp>
+			<Chinese>防禦激活範圍：200 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 200 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 200 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT3">
+			<Original>Defense activation range: 300 m</Original>
+			<Russian>Диапазон активации защиты : 300 м</Russian>
+			<French>Portée d’activation de la défense : 300 m</French>
+			<Chinesesimp>防御激活范围：300 米</Chinesesimp>
+			<Chinese>防禦激活範圍：300 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 300 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 300 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT4">
+			<Original>Defense activation range: 400 m</Original>
+			<Russian>Диапазон активации защиты : 400 м</Russian>
+			<French>Portée d’activation de la défense : 400 m</French>
+			<Chinesesimp>防御激活范围：400 米</Chinesesimp>
+			<Chinese>防禦激活範圍：400 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 400 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 400 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT5">
+			<Original>Defense activation range: 500 m</Original>
+			<Russian>Диапазон активации защиты : 500 м</Russian>
+			<French>Portée d’activation de la défense : 500 m</French>
+			<Chinesesimp>防御激活范围：500 米</Chinesesimp>
+			<Chinese>防禦激活範圍：500 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 500 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 500 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT6">
+			<Original>Defense activation range: 600 m</Original>
+			<Russian>Диапазон активации защиты : 600 м</Russian>
+			<French>Portée d’activation de la défense : 600 m</French>
+			<Chinesesimp>防御激活范围：600 米</Chinesesimp>
+			<Chinese>防禦激活範圍：600 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 600 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 600 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT7">
+			<Original>Defense activation range: 700 m</Original>
+			<Russian>Диапазон активации защиты : 700 м</Russian>
+			<French>Portée d’activation de la défense : 700 m</French>
+			<Chinesesimp>防御激活范围：700 米</Chinesesimp>
+			<Chinese>防禦激活範圍：700 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 700 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 700 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT8">
+			<Original>Defense activation range: 800 m</Original>
+			<Russian>Диапазон активации защиты : 800 м</Russian>
+			<French>Portée d’activation de la défense : 800 m</French>
+			<Chinesesimp>防御激活范围：800 米</Chinesesimp>
+			<Chinese>防禦激活範圍：800 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 800 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 800 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT9">
+			<Original>Defense activation range: 900 m</Original>
+			<Russian>Диапазон активации защиты : 900 м</Russian>
+			<French>Portée d’activation de la défense : 900 m</French>
+			<Chinesesimp>防御激活范围：900 米</Chinesesimp>
+			<Chinese>防禦激活範圍：900 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 900 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 900 m</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT10">
+			<Original>Defense activation range: 1000 m</Original>
+			<Russian>Диапазон активации защиты : 1000 м</Russian>
+			<French>Portée d’activation de la défense : 1000 m</French>
+			<Chinesesimp>防御激活范围：1000 米</Chinesesimp>
+			<Chinese>防禦激活範圍：1000 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 1000 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 1000 m</Czech>
+		</Key>
+		<Key ID="STR_ALARMS">
+			<Original>Alarms</Original>
+			<Russian>Оповещения</Russian>
+			<French>Alarmes</French>
+			<Chinesesimp>警报</Chinesesimp>
+			<Chinese>警報</Chinese>
+			<Portuguese>Alarmes</Portuguese>
+			<Czech>Alarmy</Czech>
+		</Key>
+		<Key ID="STR_MINE_PROBABILITY">
+			<Original>Mine Probability</Original>
+			<Russian>Вероятность мин</Russian>
+			<French>Probabilité de mine</French>
+			<Chinesesimp>地雷概率</Chinesesimp>
+			<Chinese>地雷概率</Chinese>
+			<Portuguese>Probabilidade de mina</Portuguese>
+			<Czech>Pravděpodobnost min</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_WEST">
+			<Original>MOD Preset Friendly</Original>
+			<Russian>Предустановка мода: дружественные</Russian>
+			<French>PRÉRÉGLAGE MOD : alliés</French>
+			<Chinesesimp>模组预设：友军</Chinesesimp>
+			<Chinese>模組預設：友軍</Chinese>
+			<Portuguese>Predefinição MOD: amigável</Portuguese>
+			<Czech>PŘEDVOLBA MOD: přátelské</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_EAST">
+			<Original>MOD Preset Enemy</Original>
+			<Russian>Предустановка мода: враждебные</Russian>
+			<French>PRÉRÉGLAGE MOD : ennemis</French>
+			<Chinesesimp>模组预设：敌军</Chinesesimp>
+			<Chinese>模組預設：敵軍</Chinese>
+			<Portuguese>Predefinição MOD: inimigo</Portuguese>
+			<Czech>PŘEDVOLBA MOD: nepřátelské</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_CIV">
+			<Original>MOD Preset Civilian</Original>
+			<Russian>Предустановка мода: гражданские</Russian>
+			<French>PRÉRÉGLAGE MOD : civils</French>
+			<Chinesesimp>模组预设：平民</Chinesesimp>
+			<Chinese>模組預設：平民</Chinese>
+			<Portuguese>Predefinição MOD: civis</Portuguese>
+			<Czech>PŘEDVOLBA MOD: civilní</Czech>
+		</Key>
+		<Key ID="STR_MOD_PRESET_TAXI">
+			<Original>MOD Preset Taxi</Original>
+			<Russian>Предустановка мода: такси</Russian>
+			<French>PRÉRÉGLAGE MOD : taxi</French>
+			<Chinesesimp>模组预设：出租车</Chinesesimp>
+			<Chinese>模組預設：出租車</Chinese>
+			<Portuguese>Predefinição MOD: táxi</Portuguese>
+			<Czech>PŘEDVOLBA MOD: taxi</Czech>
+		</Key>
+		<Key ID="STR_ADMIN_MENU">
+			<Original>Enable the Admin Menu</Original>
+			<Russian>Включить меню администратора</Russian>
+			<French>Activer le menu administrateur</French>
+			<Chinesesimp>启用管理员菜单</Chinesesimp>
+			<Chinese>啟用管理員菜單</Chinese>
+			<Portuguese>Ativar menu de administrador</Portuguese>
+			<Czech>Povolit administrační nabídku</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE">
+			<Original>Commander Mode</Original>
+			<Russian>Режим командира</Russian>
+			<French>Mode commandant</French>
+			<Chinesesimp>指挥模式</Chinesesimp>
+			<Chinese>指揮模式</Chinese>
+			<Portuguese>Modo comandante</Portuguese>
+			<Czech>Režim velitele</Czech>
+		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS">
+			<Original>Commander Mode: Nearby sector defense activation range</Original>
+			<Russian>Режим командира: диапазон активации защиты соседних секторов</Russian>
+			<French>Mode commandant : portée d’activation de la défense des secteurs voisins</French>
+			<Chinesesimp>指挥模式：附近扇区防御激活范围</Chinesesimp>
+			<Chinese>指揮模式：附近扇區防禦激活範圍</Chinese>
+			<Portuguese>Modo comandante: alcance de ativação de defesa de setores próximos</Portuguese>
+			<Czech>Režim velitele: rozsah aktivace obrany blízkých sektorů</Czech>
+		</Key>
+		<Key ID="STR_ALL">
+			<Original>All</Original>
+			<Russian>Все</Russian>
+			<French>Tout</French>
+			<Chinesesimp>全部</Chinesesimp>
+			<Chinese>全部</Chinese>
+			<Portuguese>Todos</Portuguese>
+			<Czech>Všechno</Czech>
+		</Key>
+		<Key ID="STR_FOG_OF_WAR">
+			<Original>Fog of War</Original>
+			<Russian>Туман войны</Russian>
+			<French>Brouillard de guerre</French>
+			<Chinesesimp>战争迷雾</Chinesesimp>
+			<Chinese>戰爭迷霧</Chinese>
+			<Portuguese>Névoa de guerra</Portuguese>
+			<Czech>Mlha války</Czech>
+		</Key>
+		<Key ID="STR_PLAYER_ONLY">
+			<Original>Player only</Original>
+			<Russian>Только игрок</Russian>
+			<French>Seulement le joueur</French>
+			<Chinesesimp>仅限玩家</Chinesesimp>
+			<Chinese>僅限玩家</Chinese>
+			<Portuguese>Apenas jogador</Portuguese>
+			<Czech>Pouze hráč</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_GAME">
+			<Original>GAME</Original>
+			<Russian>ИГРА</Russian>
+			<French>JEU</French>
+			<Chinesesimp>游戏</Chinesesimp>
+			<Chinese>遊戲</Chinese>
+			<Portuguese>JOGO</Portuguese>
+			<Czech>HRA</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_PLAYER">
+			<Original>PLAYER</Original>
+			<Russian>ИГРОК</Russian>
+			<French>JOUEUR</French>
+			<Chinesesimp>玩家</Chinesesimp>
+			<Chinese>玩家</Chinese>
+			<Portuguese>JOGADOR</Portuguese>
+			<Czech>HRÁČ</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_ARSENAL">
+			<Original>ARSENAL</Original>
+			<Russian>АРСЕНАЛ</Russian>
+			<French>ARSENAL</French>
+			<Chinesesimp>军械库</Chinesesimp>
+			<Chinese>軍械庫</Chinese>
+			<Portuguese>ARSENAL</Portuguese>
+			<Czech>ARZENÁL</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_TEMPLATE">
+			<Original>MOD TEMPLATE</Original>
+			<Russian>ШАБЛОН МОДА</Russian>
+			<French>MOD TEMPLATE</French>
+			<Chinesesimp>模组模板</Chinesesimp>
+			<Chinese>模組模板</Chinese>
+			<Portuguese>MODELO DE MOD</Portuguese>
+			<Czech>ŠABLONA MODU</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_MISC">
+			<Original>MISC</Original>
+			<Russian>РАЗНОЕ</Russian>
+			<French>DIVERS</French>
+			<Chinesesimp>其他</Chinesesimp>
+			<Chinese>其他</Chinese>
+			<Portuguese>DIVERSOS</Portuguese>
+			<Czech>RŮZNÉ</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_RESTART">
+			<Original>RESTART</Original>
+			<Russian>ПЕРЕЗАПУСК</Russian>
+			<French>REDÉMARRAGE</French>
+			<Chinesesimp>重启</Chinesesimp>
+			<Chinese>重啟</Chinese>
+			<Portuguese>REINICIAR</Portuguese>
+			<Czech>RESTART</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_EXPERIMENTAL">
+			<Original>EXPERIMENTAL</Original>
+			<Russian>ЭКСПЕРИМЕНТАЛЬНЫЙ</Russian>
+			<French>EXPÉRIMENTAL</French>
+			<Chinesesimp>实验性</Chinesesimp>
+			<Chinese>實驗性</Chinese>
+			<Portuguese>EXPERIMENTAL</Portuguese>
+			<Czech>EXPERIMENTÁLNÍ</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_SYSTEM">
+			<Original>SYSTEM</Original>
+			<Russian>СИСТЕМА</Russian>
+			<French>SYSTÈME</French>
+			<Chinesesimp>系统</Chinesesimp>
+			<Chinese>系統</Chinese>
+			<Portuguese>SISTEMA</Portuguese>
+			<Czech>SYSTÉM</Czech>
+		</Key>
+		<Key ID="STR_PARAMCAT_FOB">
+			<Original>FOB</Original>
+			<Russian>FOB</Russian>
+			<French>FOB</French>
+			<Chinesesimp>FOB</Chinesesimp>
+			<Chinese>FOB</Chinese>
+			<Portuguese>FOB</Portuguese>
+			<Czech>FOB</Czech>
+		</Key>
 	</Package>
 
 	<!-- LRX Side Missions -->
