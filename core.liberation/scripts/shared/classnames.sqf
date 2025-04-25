@@ -51,10 +51,7 @@ if (isServer) then {
 // All the UAVs must be declared here
 // uavs_west = [];  			// non AI drones (darter, etc) - player can take control
 // static_vehicles_AI = [];  	// AI drones that need a crew  (SAM, etc) - player cannot control
-uavs_vehicles = [
-	"B_UAV_01_F", "B_UAV_06_F",
-	"O_UAV_01_F", "O_UAV_06_F"
-];
+uavs_vehicles = [];
 {
 	private _isUav = (getNumber (configfile >> "CfgVehicles" >> (_x select 0) >> "isUav") == 1);
 	if ([(_x select 0), (uavs_def + uavs_west)] call F_itemIsInClass && _isUav) then {
@@ -62,15 +59,21 @@ uavs_vehicles = [
 	};
 } foreach light_vehicles + heavy_vehicles + air_vehicles;
 
-uavs_light = "";
-if (air_vehicles findIf {_x select 0 == "B_UAV_01_F"} >= 0) then {
-	uavs_light = "B_UAV_01_F";
-};
-if (air_vehicles findIf {_x select 0 == "O_UAV_01_F"} >= 0) then {
-	uavs_light = "O_UAV_01_F";
-};
-if (uavs_light != "") then {
-	air_vehicles insert [1, [[box_uavs_typename,0,80,0,GRLIB_perm_log]]];
+if (count uavs_vehicles > 0) then {
+	uavs_vehicles append [
+		"B_UAV_01_F", "B_UAV_06_F",
+		"O_UAV_01_F", "O_UAV_06_F"
+	];
+	uavs_light = "";
+	if (air_vehicles findIf {_x select 0 == "B_UAV_01_F"} >= 0) then {
+		uavs_light = "B_UAV_01_F";
+	};
+	if (air_vehicles findIf {_x select 0 == "O_UAV_01_F"} >= 0) then {
+		uavs_light = "O_UAV_01_F";
+	};
+	if (uavs_light != "") then {
+		air_vehicles insert [1, [[box_uavs_typename,0,80,0,GRLIB_perm_log]]];
+	};
 };
 
 // *** BADDIES ***

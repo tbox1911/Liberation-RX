@@ -173,7 +173,7 @@ if (_unit == player) then {
 	player addEventHandler ["Killed", { _this spawn PAR_fn_death }];
 
 	// Player respawn EH
-	player addEventHandler ["Respawn", { [] spawn PAR_Player_Init }];
+	player addEventHandler ["Respawn", { _this spawn PAR_Player_Init }];
 
 	// Player Handle Damage EH
 	if (PAR_revive != 0) then {
