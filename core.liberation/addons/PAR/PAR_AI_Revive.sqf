@@ -82,7 +82,6 @@ _marker setMarkerShapeLocal "ICON";
 _marker setMarkerTypeLocal "KIA";
 _marker setMarkerTextlocal format ["%1's Grave.", name player];
 
-//waituntil {sleep 1; GRLIB_player_spawned};
 
 // Init player
 [player] call PAR_Player_Init;

@@ -81,7 +81,15 @@ save_changes = 0;
 			if ( _idx % 2 == 0 ) then {
 				_control ctrlSetBackgroundColor [0.27,0.30,0.23,0.85];
 			};
-			{ _control lbAdd _x } forEach (_hash get GRLIB_PARAM_OptionLabelKey);
+
+			{ 
+				_control lbAdd _x;
+			} forEach (_hash get GRLIB_PARAM_OptionLabelKey);
+			_optionDescription = _hash getOrDefault [GRLIB_PARAM_OptionDescriptionKey, []];
+			{ 
+				
+				_control lbSetTooltip [_forEachIndex, _x];
+			} forEach _optionDescription;
 
 			_default = _hash get GRLIB_PARAM_ValueKey;
 			_selection = (GRLIB_LRX_params getOrDefault [_key, _hash]) getOrDefault [GRLIB_PARAM_ValueKey, _default];
