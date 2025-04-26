@@ -7,10 +7,6 @@ private _hc_missions = [];
 active_sectors_hc = [];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
-	_countblufor = (AllPlayers - (entities "HeadlessClient_F")) select {
-		(alive _x) && !(captive _x) &&
-		(getPosATL _x select 2 < 150) && (speed vehicle _x <= 80)
-	};
 
 	{
 		if (!opforcap_max && count active_sectors < GRLIB_max_active_sectors) then {
@@ -21,8 +17,19 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				sleep 30;
 			};
 		};
-		sleep 0.1;
-	} foreach _countblufor;
+
+		{
+			if (!opforcap_max && count active_sectors < GRLIB_max_active_sectors) then {
+				_unit = _x;
+				_nextsector = [GRLIB_sector_size, _unit, (opfor_sectors - active_sectors)] call F_getNearestSector;
+				if (_nextsector != "") exitWith {
+					[_nextsector] call GRLIB_ActivateSector;
+					sleep 30;
+				};
+			};
+			sleep 0.1;
+		} foreach _countblufor;
+	};
 
 	_hc_missions = active_sectors_hc;
 	{

@@ -378,8 +378,11 @@ GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 
 private ["_sector_ownership"];
-private _stopit = false;
-while { !_stopit } do {
+while { true } do {
+	if (!(_sector in active_sectors)) exitWith { // Aborted
+		[_task,"CANCELED"] call BIS_fnc_taskSetState;
+		diag_log format ["Sector %1 mission aborted.", _sector];
+	};
 	_sector_ownership = [_sector_pos, _local_capture_size] call F_sectorOwnership;
 	if (_sector in sectors_tower) then {
 		private _towers = { (alive _x) && (_x getVariable ['GRLIB_Radio_Tower', false]) } count (nearestObjects [_sector_pos, [Radio_tower], 20]);
@@ -389,10 +392,10 @@ while { !_stopit } do {
 	_percentRemaining = round ((count _enemy_left / count _startEnemies) * 100);
 	_progress = ((_percentRemaining - 100) * -1) max 0;
 	_sector setMarkerText format ["%2 - %1%%", _progress, _sectorName];
-	if (_sector_ownership == GRLIB_side_friendly) then {
+	if (_sector_ownership == GRLIB_side_friendly) exitWith { // Victory
+		diag_log format ["Sector %1 mission succeeded.", _sector];
 		[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 		[_sector] remoteExec ["sector_liberated_remote_call", 2];
-		_stopit = true;
 		{
 			if (_max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance)) then {
 				[_x] spawn prisoner_ai;
@@ -411,32 +414,34 @@ while { !_stopit } do {
 			};
 		};
 		sleep 60;
-	} else {
-		if (!GRLIB_Commander_mode) then {
-			if (([_sector_pos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
-				_sector_despawn_tickets = _sector_despawn_tickets - 1;
-			} else {
-				_sector_despawn_tickets = GRLIB_despawn_tickets;
-			};
+	};
 
-			if (_sector_despawn_tickets <= 1) then {
-				[_task,"FAILED"] call BIS_fnc_taskSetState;
-				_stopit = true;
-				{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
-			};
-		};
-		_nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
-		if (_nearRadioTower && !_stopit) then {
-			{
-				_stage = _forEachIndex + 1;
-				if ((_x#0) >= _percentRemaining && !(_x#1)) then {
-					_x set [1, true];
-					[_stage, _sector_pos] spawn _stageAttack;
-					sleep 5;
-				};
-			} foreach _attackStages;
+	if (!GRLIB_Commander_mode) then { 
+		if (([_sector_pos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
+			_sector_despawn_tickets = _sector_despawn_tickets - 1;
+		} else {
+			_sector_despawn_tickets = GRLIB_despawn_tickets;
 		};
 	};
+
+	if (_sector_despawn_tickets <= 1) exitWith { // Sleep sector
+		diag_log format ["Sector %1 mission failed.", _sector];
+		[_task,"FAILED"] call BIS_fnc_taskSetState;
+		{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	};
+
+	_nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
+	if (_nearRadioTower) then { // Sector Defense
+		{
+			_stage = _forEachIndex + 1;
+			if ((_x#0) >= _percentRemaining && !(_x#1)) then {
+				_x set [1, true];
+				[_stage, _sector_pos] spawn _stageAttack;
+				sleep 5;
+			};
+		} foreach _attackStages;
+	};
+
 	sleep 5;
 };
 
@@ -447,8 +452,11 @@ _sector setMarkerText _sectorName;
 sleep 30;
 
 // Attack finished
-active_sectors = active_sectors - [_sector];
-publicVariable "active_sectors";
+if ((_sector in active_sectors)) then {
+	active_sectors = active_sectors - [_sector];
+	publicVariable "active_sectors";
+};
+
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Check Victory
