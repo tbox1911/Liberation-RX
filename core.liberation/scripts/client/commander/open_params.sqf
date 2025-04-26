@@ -112,13 +112,13 @@ save_changes = 0;
 
 waitUntil { sleep 0.5; !dialog || !(alive player) };
 if (save_changes == 1) then {
-	// Broadcast the variable to the server before
-	publicVariable "GRLIB_LRX_params";
 	[
-		[],
+		[GRLIB_LRX_params],
 		{
-			profileNamespace setVariable [GRLIB_paramsV2_save_key, GRLIB_LRX_params];
+			params ["_params"];
+			profileNamespace setVariable [GRLIB_paramsV2_save_key, _params];
 			saveProfileNamespace;
+			GRLIB_LRX_params = _params;
 			publicVariable "GRLIB_LRX_params";
 			GRLIB_param_open_params = 0;
 			publicVariable "GRLIB_param_open_params";
