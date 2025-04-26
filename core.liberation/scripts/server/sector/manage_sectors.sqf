@@ -17,7 +17,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_unit = _x;
 			_nextsector = [GRLIB_sector_size, _unit, (opfor_sectors - active_sectors)] call F_getNearestSector;
 			if (_nextsector != "") exitWith {
-				[_nextsector] call GRLIB_ActivateSector;
+				[_nextsector] call start_sector;
 				sleep 30;
 			};
 		};

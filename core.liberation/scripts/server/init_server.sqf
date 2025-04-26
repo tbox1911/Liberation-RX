@@ -156,6 +156,7 @@ manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector
 manage_intels = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_intels.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 spawn_defenders = compileFinal preprocessFileLineNumbers "scripts\server\sector\spawn_defenders.sqf";
+start_sector = = compileFinal preprocessFileLineNumbers "scripts\server\sector\start_sector.sqf";
 
 // Ressources
 count_box = compileFinal preprocessFileLineNumbers "scripts\server\resources\count_box.sqf";
