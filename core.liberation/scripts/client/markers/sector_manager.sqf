@@ -31,7 +31,7 @@ private _dist = 0;
 sleep 1;
 
 while { GRLIB_endgame == 0 } do {
-	waitUntil {sleep 1; GRLIB_MapOpen && (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
+	waitUntil {sleep 1; visibleMap && (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
 
 	if (GRLIB_hide_opfor && count opfor_sectors > 3 && !GRLIB_Commander_mode) then {
 		{

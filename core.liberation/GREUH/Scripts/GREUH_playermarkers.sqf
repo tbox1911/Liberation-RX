@@ -9,7 +9,7 @@ while { true } do {
 	disableMapIndicators [true,true,false,false];
 
 	while { show_teammates } do {
-		waitUntil {sleep 1; GRLIB_MapOpen };
+		waitUntil {sleep 1; visibleMap };
 
 		// Players and units
 		private _players_markers_bak = [];

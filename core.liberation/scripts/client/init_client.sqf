@@ -155,13 +155,6 @@ waitUntil {
 };
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
-// Markers
-GRLIB_MapOpen = false;
-addMissionEventHandler ["Map", {
-	params ["_mapIsOpened", "_mapIsForced"];
-	GRLIB_MapOpen = _mapIsOpened;
-}];
-
 // LRX client scripts
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";

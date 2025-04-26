@@ -89,7 +89,6 @@ lbClear 201;
 	lbAdd [201, (_x select 0)];
 } foreach _choiceslist;
 lbSetCurSel [201, 0];
-GRLIB_MapOpen = true;
 
 while { dialog && alive player && deploy == 0} do {
 	if (!alive player) exitWith {};
@@ -139,7 +138,6 @@ while { dialog && alive player && deploy == 0} do {
 	uiSleep 0.2;
 };
 
-GRLIB_MapOpen = false;
 private _idxchoice = lbCurSel 201;
 private _loadoutchoice = lbCurSel 203;
 respawn_camera cameraEffect ["Terminate","back"];
@@ -147,8 +145,8 @@ camDestroy respawn_camera;
 deleteVehicle respawn_object;
 camUseNVG false;
 "spawn_marker" setMarkerPosLocal markers_reset;
-closeDialog 0;
 (findDisplay 5201) displayRemoveEventHandler ["KeyDown", _noesckey];
+closeDialog 0;
 if (!alive player) exitWith {};
 
 private _sleep = 2;
