@@ -1,6 +1,6 @@
 disableSerialization;
 private [
-	"_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string",
+	"_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_fob_sector",
 	"_color_readiness", "_color_reput", "_reput_icon", "_nearest_active_sector",
 	"_server_overloaded", "_zone_size", "_colorzone", "_bar", "_barwidth",
 	"_reputation", "_attacked_timer", "_sector_timer"
@@ -71,6 +71,16 @@ while { true } do {
 
 	if (!isNull _overlay) then {
 		_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;
+		if (_nearest_active_sector == "") then {
+			private _fob_pos = [] call F_getNearestFob;
+			if (player distance2D _fob_pos <= GRLIB_fob_range) then {
+				_nearest_active_sector = format ["fobmarker%1", (GRLIB_all_fobs find _fob_pos)];
+				_fob_sector = true;
+			} else {
+				_fob_sector = false;
+			};
+		};
+
 		if (_nearest_active_sector == "") then {
 			{ (_overlay displayCtrl (_x)) ctrlShow false; } foreach _sectorcontrols;
 			"zone_capture" setmarkerposlocal markers_reset;
@@ -155,6 +165,12 @@ while { true } do {
 
 				if (!GRLIB_Commander_mode) then {
 					if (_nearest_active_sector != "") then {
+						if (_fob_sector) exitWith {
+							(_overlay displayCtrl (205)) ctrlSetTextColor _color_F;
+							(_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
+							{ (_overlay displayCtrl (_x)) ctrlShow true; } foreach _sectorcontrols;
+						};
+
 						_zone_size = GRLIB_capture_size;
 						if (_nearest_active_sector in sectors_bigtown) then {
 							_zone_size = GRLIB_capture_size * 1.4;
