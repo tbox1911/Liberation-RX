@@ -232,6 +232,7 @@ while { true } do {
 			_truedir = 90 - _dir;
 			_truepos = [(_pos#0) + ((_dist + _radius) * (cos _truedir)), (_pos#1) + ((_dist + _radius) * (sin _truedir)), build_altitude];
 			_actualdir = (_dir + build_rotation);
+			if (_classname in GRLIB_build_force_mode) then { build_mode = 1 };
 			switch _classname do {
 				case "Land_Cargo_Patrol_V1_F": {
 					_actualdir = _actualdir + 180;
@@ -241,11 +242,6 @@ while { true } do {
 				};
 				case FOB_box_typename: {
 					_actualdir = _actualdir + 90;
-				};
-				default {
-					if (_classname in GRLIB_build_force_mode) then {
-						build_mode = 1;
-					};
 				};
 			};
 
