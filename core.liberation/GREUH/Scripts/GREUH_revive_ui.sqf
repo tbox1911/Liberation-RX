@@ -27,7 +27,7 @@ if (GRLIB_ACE_enabled) then {
 	{ (_display displayCtrl _x) ctrlShow false } forEach [679, 6699, 6698, 6697];
 };
 
-while { alive player && (player getVariable ["PAR_isUnconscious", false] || player getVariable ["ACE_isUnconscious", false]) } do {
+while { alive player && ([player] call PAR_is_wounded) } do {
 	if ( !isNil "public_bleedout_message" && !isNil "public_bleedout_timer") then {
 		if (_labelwidth == -1) then { _labelwidth = (ctrlPosition (_display displayCtrl 6699)) select 2 };
 		if (public_bleedout_timer > PAR_bleedout) then {public_bleedout_timer = PAR_bleedout};

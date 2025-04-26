@@ -46,7 +46,7 @@ while { true } do {
 			};
 
  			if (isPlayer _nextunit) then {
-				if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
+				if ([_nextunit] call PAR_is_wounded) then {
 					_nextmarker setMarkerAlphaLocal 0;
 				} else {
 					if (player == _nextunit) then {
@@ -61,7 +61,7 @@ while { true } do {
 				} else {
 					_nextmarker setMarkerTextLocal format ["%1. %2", [_nextunit] call F_getUnitPositionId, name _nextunit];
 				};
-				if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
+				if ([_nextunit] call PAR_is_wounded) then {
 					_nextmarker setMarkerTypeLocal "MinefieldAP";
 					if (_groupunit) then {
 						_nextmarker setMarkerColorLocal GRLIB_color_enemy_bright;

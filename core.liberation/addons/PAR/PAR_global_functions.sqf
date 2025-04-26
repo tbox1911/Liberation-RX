@@ -13,6 +13,7 @@ PAR_fn_death = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_death.s
 PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_heal = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_heal.sqf";
+PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";
 
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
@@ -127,10 +128,6 @@ PAR_fn_fixPos = {
 PAR_is_medic = {
 	params ["_unit"];
 	(getNumber (configOf _unit >> "attendant") == 1);
-};
-PAR_is_wounded = {
-	params ["_unit"];
-	(_unit getVariable ["PAR_isUnconscious", false]);
 };
 PAR_has_medikit = {
 	params ["_unit"];

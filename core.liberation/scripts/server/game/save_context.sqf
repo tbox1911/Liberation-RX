@@ -15,13 +15,13 @@ private _bros = (units GRLIB_side_friendly + units GRLIB_side_civilian) select {
 {if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores;
 
 if (_score >= GRLIB_min_score_player) then {
-	if !(_player getVariable ["PAR_isUnconscious", false]) then {
+	if !([_player] call PAR_is_wounded) then {
 		_loadout = getUnitLoadout _player;
 		_squad_loaded = _player getVariable ["GRLIB_squad_context_loaded", false];
 		if (_squad_loaded) then {
 			{
 				_ai_group pushback [typeOf _x, rank _x, getUnitLoadout _x];
-			} forEach (_bros select {!(_x getVariable ["PAR_isUnconscious", false])});
+			} forEach (_bros select {!([_x] call PAR_is_wounded)});
 			diag_log format ["--- LRX Saving %1 unit(s) for %2 Squad.", count _ai_group, name _player];
 		} else {
 			_context = localNamespace getVariable [format ["player_context_%1", _uid], []];

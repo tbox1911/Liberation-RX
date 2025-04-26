@@ -95,7 +95,7 @@ if ( count _loadplayers > 0 ) then {
 
 ((findDisplay 5251) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { exit_on_load = 1; load_loadout = 1; } ];
 
-while { dialog && (alive player) && !(player getVariable ["PAR_isUnconscious", false]) && edit_loadout == 0 } do {
+while { dialog && (alive player) && !([player] call PAR_is_wounded) && edit_loadout == 0 } do {
 	private _cur_sel = (lbCurSel 201);
 	if (_cur_sel != -1) then {
 		private _selected_loadout = _loadouts_data select _cur_sel;

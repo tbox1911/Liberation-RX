@@ -83,7 +83,7 @@ while {alive _unit && _continue} do {
 		case 10: {
 			[_grp] call F_deleteWaypoints;
 			_ret = [_unit, _target] call _moveTo;
-			if (_ret && !(_target getVariable ["PAR_isUnconscious", false])) then {
+			if (_ret && !([_target] call PAR_is_wounded)) then {
 				if (isServer) then {
 					[_unit, _action, _target] spawn speak_manager_remote_call;
 				} else {
@@ -101,7 +101,7 @@ while {alive _unit && _continue} do {
 			if (damage _target == 0) exitWith {};
 			[_grp] call F_deleteWaypoints;
 			_ret = [_unit, _target] call _moveTo;
-			if (_ret  && damage _target <= 0.1 && !(_target getVariable ["PAR_isUnconscious", false])) then {
+			if (_ret  && damage _target <= 0.1 && !([_target] call PAR_is_wounded)) then {
 				if (isServer) then {
 					[_unit, _action, _target] spawn speak_manager_remote_call;
 				} else {
