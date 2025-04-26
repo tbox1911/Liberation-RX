@@ -3,6 +3,7 @@ if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log
 
 disableUserInput true;
 titleText ["","BLACK FADED", 100];
+0 fadeSound 0;
 sleep 5;
 if (!isServer && isMultiplayer && count (entities "HeadlessClient_F") > 0) then {
 	titleText ["Waiting for Headless client....","BLACK FADED", 100];

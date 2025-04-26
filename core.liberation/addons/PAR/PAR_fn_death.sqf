@@ -5,6 +5,7 @@ params ["_unit"];
 removeAllActions _unit;
 if (_unit == player) then {
 	titleText ["" ,"BLACK FADED", 100];
+	1 fadeSound 0;
 	_unit connectTerminalToUAV objNull;
 
 	// Grave + Save Stuff
