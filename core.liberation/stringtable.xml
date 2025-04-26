@@ -1967,15 +1967,6 @@
 		</Key>
 		<Key ID="STR_PARAMS_PAR_REVIVE">
 			<Original>pSiKO AI Revive</Original>
-			<French>pSiKO AI Résurection</French>
-			<German>PAR Revive (Wiederbelebungen)</German>
-			<Spanish>PAR Revive</Spanish>
-			<Russian>PAR Возрождение</Russian>
-			<Chinesesimp>PAR 复活模式</Chinesesimp>
-			<Chinese>PAR 復活模式</Chinese>
-			<Japanese>pSiKO AI 蘇生</Japanese>
-			<Portuguese>pSiKO AI Revive</Portuguese>
-			<Czech>pSiKO oživit AI</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_AI_REVIVE">
 			<Original>PAR: Limit AI Revive</Original>
@@ -6427,7 +6418,7 @@
 			<Chinesesimp>-- 配置任务</Chinesesimp>
 			<Chinese>-- 配寘任務</Chinese>
 		</Key>
-		<Key ID="STR_ADMIN_MENU">
+		<Key ID="STR_ADMIN_MENU_ACTION">
 			<Original>-- ADMIN MENU</Original>
 			<Russian>-- АДМИН МЕНЮ</Russian>
 			<French>-- MENU ADMIN</French>

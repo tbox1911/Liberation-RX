@@ -120,13 +120,13 @@ GRLIB_PARAM_FobCatKey           = localize "STR_PARAMCAT_FOB";
 
 // Categories will be displayed in this order - this can be changed whenever, but any new categories MUST be added to this list
 GRLIB_PARAM_CatOrder = [
+    GRLIB_PARAM_TemplateCatKey,
     GRLIB_PARAM_GameCatKey,
     GRLIB_PARAM_PlayerCatKey,
     GRLIB_PARAM_ArsenalCatKey,
-    GRLIB_PARAM_TemplateCatKey,
-    GRLIB_PARAM_SystemCatKey,
     GRLIB_PARAM_FobCatKey,
     GRLIB_PARAM_MiscCatKey,
+    GRLIB_PARAM_SystemCatKey,
     GRLIB_PARAM_RestartCatKey,
     GRLIB_PARAM_ExperimentalCatKey
 ];
