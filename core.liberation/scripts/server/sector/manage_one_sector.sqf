@@ -253,19 +253,10 @@ if (opforcap_max) then { _vehtospawn = [] };
 if (!(_vehtospawn isEqualTo [])) then {
 	_vehCount = count _vehtospawn;
 	{
-		_spawn_pos = [];
-		_r = 100;
-		while {true} do { // This will 100% guarantee vehicles do not explode on spawn - i have had a lot of experience with this script on other missions and verified it works
-			_spawn_pos = [(_sector_pos#0), (_sector_pos#1)] getPos [_r * sqrt random 1, random 360];
-			if ((!(_spawn_pos isFlatEmpty [10, -1, 0.5, 8, 0, false] isEqualTo []))
-			&& {((_spawn_pos nearEntities 10) isEqualTo [])
-			&& {((nearestTerrainObjects [_spawn_pos, ["Tree", "Building", "House", "ROCK", "WALL", "POWER LINES", "FENCE", "HIDE", "FUELSTATION", "CHURCH", "WATERTOWER", "TRANSMITTER", "SHIPWRECK", "TOURISM", "HIDE"], 10]) isEqualTo [])}}) exitWith {};
-			_r = _r + 1;
-		};
-		private _vehicle = [_spawn_pos, _x] call F_libSpawnVehicle;
+		private _vehicle = [_sector_pos, _x] call F_libSpawnVehicle;
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
-			[group (driver _vehicle), _spawn_pos, (50 + floor random 60)] spawn defence_ai;
+			[group (driver _vehicle), getPosATL _vehicle, (50 + floor random 60)] spawn defence_ai;
 			{ _managed_units pushback _x } foreach (crew _vehicle);
 			sleep 0.2;
 		};

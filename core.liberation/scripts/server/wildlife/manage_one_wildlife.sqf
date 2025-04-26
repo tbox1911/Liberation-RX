@@ -14,7 +14,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 	if (_spawn_life) then {
 		// Create wildlife
-		private _managed_units = ([getPos _unit] call F_spawnWildLife);
+		private _spawn_pos = _unit getPos [100 + floor random 100, floor random 360];
+		private _managed_units = ([_spawn_pos] call F_spawnWildLife);
 
 		// Loop
 		waitUntil {

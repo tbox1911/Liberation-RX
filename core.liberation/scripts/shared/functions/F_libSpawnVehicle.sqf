@@ -32,7 +32,7 @@ if (_classname isKindOf "Air") then {
 	if (_size == 0) then {
 		_spawn_pos = _sectorpos;
 	} else {
-		_spawn_pos = [_sectorpos, _size, true] call F_findSafePlace;
+		_spawn_pos = [_sectorpos, _size] call F_findSafePlace;
 	};
 
 	if (count _spawn_pos == 0) exitWith {
@@ -67,16 +67,13 @@ if (_classname isKindOf "Air") then {
 	};
 
 	if (_classname != "") then {
-		private _obstacle = (nearestObjects [_spawn_pos, ["All"], 4, true]);
-		if (count _obstacle == 0) then {
-			_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
-			_vehicle allowDamage false;
-			_spawn_pos set [2, 0.5];
-			if (surfaceIsWater _spawn_pos) then {
-				_vehicle setPosASL _spawn_pos;
-			} else {
-				_vehicle setPosATL _spawn_pos;
-			};
+		_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
+		_vehicle allowDamage false;
+		_spawn_pos set [2, 0.5];
+		if (surfaceIsWater _spawn_pos) then {
+			_vehicle setPosASL _spawn_pos;
+		} else {
+			_vehicle setPosATL _spawn_pos;
 		};
 	};
 };
