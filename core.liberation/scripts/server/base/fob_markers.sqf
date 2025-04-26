@@ -31,7 +31,7 @@ while { true } do {
 
 		if (GRLIB_Commander_mode) then {
 			GRLIB_fobSects = [] + _markers;
-			[] spawn GRLIB_CommanderSectors;
+			[] spawn manage_sectors_commander;
 		};
 	};
 

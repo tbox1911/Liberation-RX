@@ -79,11 +79,9 @@ blufor_sectors pushBackUnique _liberated_sector;
 publicVariable "blufor_sectors";
 opfor_sectors = (sectors_allSectors - blufor_sectors);
 stats_sectors_liberated = stats_sectors_liberated + 1;
-if (GRLIB_Commander_mode) then {
-	//Recalculate available sectors for commander
-	[] spawn GRLIB_CommanderSectors;
-};
-sleep 45;
+
+//Recalculate available sectors for commander
+[] spawn manage_sectors_commander;
 
 private _nearRadioTower = ([markerPos _liberated_sector, GRLIB_side_enemy] call F_getNearestTower != "");
 if (GRLIB_endgame == 0 && _nearRadioTower) then {

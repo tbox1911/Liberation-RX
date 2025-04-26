@@ -330,7 +330,7 @@ if (GRLIB_Commander_mode) then {
 			} forEach GRLIB_AvailAttackSectors;
 			if (!(_closestSector isEqualTo "")) then {
 				playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
-				[_caller, _closestSector] remoteExec ["GRLIB_ActivateCommanderSector", 2];
+				[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];
 				{
 					deleteMarker _x;
 				} forEach GRLIB_availableMarkers;
