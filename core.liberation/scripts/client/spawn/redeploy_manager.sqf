@@ -65,7 +65,7 @@ if (GRLIB_player_spawned) then {
 };
 
 private _choiceslist = [[_basenamestr, getPosATL lhd]];
-for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
+for "_idx" from 0 to (count GRLIB_all_fobs - 1) do {
 	_fobpos = GRLIB_all_fobs select _idx;
 	_near_outpost = (_fobpos in GRLIB_all_outposts);
 	if (_near_outpost) then {
