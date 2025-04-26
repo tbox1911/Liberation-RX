@@ -20,6 +20,16 @@ if (_type == "para") then {
 	diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawn_pos];
 };
 
+private _max_rank = 1;
+switch (_type) do {
+	case "militia" : { _max_rank = 2 };
+	case "infantry" : { _max_rank = 3 };
+	case "building" : { _max_rank = 3 };
+	case "para" : { _max_rank = 4 };
+	case "guards" : { _max_rank = 4 };
+	case "bandits" : { _max_rank = 4 };
+};
+
 private ["_unit", "_ai_rank", "_pos", "_backpack"];
 {
 	_pos = _spawn_pos getPos [2 + (floor random 25), floor random 360];
@@ -29,7 +39,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit setPitch 1;
-		_ai_rank = selectRandom (GRLIB_rank_level select [0,4]);
+		_ai_rank = selectRandom (GRLIB_rank_level select [0, _max_rank]);
 		_unit setUnitRank _ai_rank;
 		_unit setSkill (0.6 + (GRLIB_rank_level find _ai_rank) * 0.05);
 
