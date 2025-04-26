@@ -134,7 +134,7 @@ switch true do {
         _building_ai_max = 8;
         _building_range = 150;
         _ied_count = (3 + (floor random 3));
-        _uavs_count = 5;
+        _uavs_count = 3;
         _static_count = 3;
         
 		if (GRLIB_AlarmsEnabled) then {
@@ -187,7 +187,7 @@ switch true do {
         _building_ai_max = 6;
         _building_range = 100;
         _ied_count = (3 + (floor random 3));
-        _uavs_count = 7;
+        _uavs_count = 3;
     };
     case (_sector in sectors_tower): {
         _spawncivs = false;
@@ -210,7 +210,7 @@ switch true do {
         };
         [_sector_pos, 50] call createlandmines;
         _static_count = 4;
-        _uavs_count = 6;
+        _uavs_count = 3;
     };
     default {
         diag_log "Sector type did not match any known sector arrays.";
@@ -230,8 +230,7 @@ if ((floor GRLIB_difficulty_modifier) > 1) then {
 
 // Create drones defender
 if (_uavs_count > 0) then {
-	[_sector_pos, true, 2] spawn send_drones;
-	[_sector_pos, false, _uavs_count] spawn send_drones;
+	[_sector_pos, _uavs_count] spawn send_drones;
 };
 _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 // Create units
@@ -319,17 +318,17 @@ if (_nearRadioTower) then {
 };
 
 // Upgraded AI defense - now dynamic and reactive instead of time-based
-_attackStages = [
+private _attackStages = [
 	[75, false],
 	[50, false],
 	[35, false],
 	[25, false]
 ];
 
-_stageAttack = {
+private _stageAttack = {
 	params ["_stage", "_pos"];
 	if (combat_readiness > (70 / ((_stage/2) max 1))) then {
-		_attackFunctions = [
+		private _attackFunctions = [
 			{
 				params ["_pos"];
 				[_pos, true] spawn send_paratroopers;
@@ -344,10 +343,10 @@ _stageAttack = {
 			},
 			{
 				params ["_pos", "_stage"];
-				[_pos, selectRandom[true,false], _stage*2] spawn send_drones;
+				[_pos, _stage*2] spawn send_drones;
 			}
 		];
-		[_pos,_stage] call (selectRandom (_attackFunctions call BIS_fnc_arrayShuffle));
+		[_pos, _stage] call (selectRandom (_attackFunctions call BIS_fnc_arrayShuffle));
 	};
 	if (_stage >= 4) then { 		// Final stage of defense
 		sleep 20;
@@ -355,7 +354,7 @@ _stageAttack = {
 	};
 };
 
-_marker = ("zone_capture" + _sector);
+private _marker = ("zone_capture" + _sector);
 if (GRLIB_Commander_mode) then {
 	_createMarker = createMarker [_marker, _sector_pos];
 	_marker setMarkerBrushLocal "DiagGrid";
@@ -434,7 +433,7 @@ while { true } do {
 	if (_nearRadioTower) then { // Sector Defense
 		{
 			_stage = _forEachIndex + 1;
-			if ((_x#0) >= _percentRemaining && !(_x#1)) then {
+			if ((_x select 0) >= _percentRemaining && !(_x select 1)) then {
 				_x set [1, true];
 				[_stage, _sector_pos] spawn _stageAttack;
 				sleep 5;

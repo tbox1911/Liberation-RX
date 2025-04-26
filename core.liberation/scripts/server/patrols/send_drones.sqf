@@ -1,4 +1,4 @@
-params ["_targetpos", "_kamikaze", "_count"];
+params ["_targetpos", "_count"];
 
 if (combat_readiness <= 50) exitWith {};
 if (count uavs_vehicles == 0) exitWith {};
@@ -6,7 +6,7 @@ if (count uavs_vehicles == 0) exitWith {};
 if (_count == 0) exitWith {};
 if (_count > 1) then {
 	sleep 15;
-	[_targetpos, _kamikaze, _count - 1] spawn send_drones;
+	[_targetpos, _count - 1] spawn send_drones;
 };
 
 private _uav_light = "O_UAV_01_F";
@@ -19,6 +19,8 @@ private _uav_classname = _uav_light;
 
 private _grp = createGroup [GRLIB_side_enemy, true];
 private _radius = round (80 + floor random 100);
+
+private _kamikaze = (floor random 100 >= 80);
 if (_kamikaze) then {
 	_radius = round (1200 + floor random 100);
 	_uav_classname = _uav_bomb;

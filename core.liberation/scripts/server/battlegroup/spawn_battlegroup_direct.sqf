@@ -43,10 +43,9 @@ for "_i" from 0 to _target_size do {
 } foreach _selected_opfor_battlegroup;
 
 if (combat_readiness >= 70) then {
-	[_objective_pos, true, 6] spawn send_drones;
+	[_objective_pos, 3] spawn send_drones;
 	sleep 20;
-	[_objective_pos, false, 4] spawn send_drones;
-	sleep 20;
+	[_objective_pos, 3] spawn send_drones;
 };
 
 stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
