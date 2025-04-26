@@ -17,8 +17,11 @@ private _lrx_get_mod_template = {
 	params ["_mod_list"];
 	private _mod_data = [["---"], ["---"]];
 	{
-		(_mod_data select 0) pushBack ([_x] call _lrx_getParamValue);
-		(_mod_data select 1) pushBack _x;
+        _faction = _x;
+        if ([_faction] call GRLIB_Template_Modloaded) then {
+            (_mod_data select 0) pushBack ([_faction] call _lrx_getParamValue);
+            (_mod_data select 1) pushBack _faction;
+        };
 	} foreach _mod_list;
 	_mod_data;
 };
@@ -101,6 +104,8 @@ GRLIB_PARAM_TK_count = "TK_count";
 GRLIB_PARAM_Persistent = "Persistent";
 GRLIB_PARAM_CommanderModeEnabled = "CommanderMode";
 GRLIB_PARAM_CommanderModeRadius = "CommanderRadius";
+GRLIB_PARAM_Alarms = "Alarms";
+GRLIB_PARAM_MineProbability = "MineProbability";
 
 // Categories - can be localized now
 GRLIB_PARAM_GameCatKey = "GAME";
@@ -134,7 +139,18 @@ GRLIB_PARAM_OptionValuesKey = "OptionValues";
 GRLIB_PARAM_CategoryKey = "Category";
 GRLIB_PARAM_DescriptionKey = "Description";
 
-LRX_Mission_Params = createHashMapFromArray [
+// Params format
+
+// [GRLIB_PARAM_{newKey}, createHashMapFromArray [                                                          // {newKey} Required: String - Replace {newKey} with the key name
+//     [GRLIB_PARAM_ValueKey, {defaultValue} e.g. 1],                                                       // {defaultValue} Required: Any variable type - Replace {defaultValue} with the default value, ABSOLUTELY MUST be contained within the OptionValuesKey array
+//     [GRLIB_PARAM_NameKey, {Name} eg "Name"],                                                             // {Name} Required: String - Replace {Name} with the name of the parameter, this is what will be displayed in the menu                   
+//     [GRLIB_PARAM_OptionLabelKey, {["label", "label1", "label2"]} eg ["label", "label1", "label2"]],      // {["label", "label1", "label2"]} Required: Array - Replace {["label", "label1", "label2"]} with the labels for each value in the OptionValuesKey array, MUST be the same length as the OptionValuesKey array
+//     [GRLIB_PARAM_OptionValuesKey, {[Value, Value1, Value2]} eg [0, 1, 2]],                               // {[Value, Value1, Value2]} Required: Array - Replace {[Value, Value1, Value2]} with the values for each label in the OptionLabelKey array, MUST be the same length as the OptionLabelKey array - types must match the ValueKey type
+//     [GRLIB_PARAM_CategoryKey, {Category} eg GRLIB_PARAM_GameCatKey],                                     // {Category} Required: String - Replace {Category} with the category of the parameter, this is MUST be a category defined above in the GRLIB_PARAM_CatOrder array
+//     [GRLIB_PARAM_DescriptionKey, {Description} eg "Description"]                                         // {Description} Optional: String - Replace {Description} with the description of the parameter, this is what will be displayed in the menu when hovering over the parameter name
+// ]],
+
+_Mission_Params = [
     [GRLIB_PARAM_introductionKey, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 1],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_INTRO"],
@@ -373,6 +389,22 @@ LRX_Mission_Params = createHashMapFromArray [
         [GRLIB_PARAM_OptionValuesKey, [0, 4, 6, 8, 10, 20, 25, 30, 40, 50]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
         [GRLIB_PARAM_DescriptionKey, "Sets penalty values that affect civilian behavior or losses."]
+    ]],
+    [GRLIB_PARAM_Alarms, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, "Alarms"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
+        [GRLIB_PARAM_DescriptionKey, "Enabled/disabled in-game alarms"]
+    ]],
+    [GRLIB_PARAM_MineProbability, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 100],
+        [GRLIB_PARAM_NameKey, "Mine Probability"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "5%", "10%", "15%", "25%", "50%", "75%", "100%"]],
+        [GRLIB_PARAM_OptionValuesKey, [0, 5, 10, 15, 25, 50, 75, 100]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
+        [GRLIB_PARAM_DescriptionKey, "Probability that mines are spawned after a sector is captured."]
     ]],
     [GRLIB_PARAM_ModPresetWest, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, "A3_BLU"],
@@ -810,3 +842,6 @@ LRX_Mission_Params = createHashMapFromArray [
         [GRLIB_PARAM_DescriptionKey, "When the commander chooses a sector to attack, nearby enemy sectors within the defined radius will be activated in defense of the chosen sector"]
     ]]
 ];
+
+LRX_Mission_Params = createHashMapFromArray _Mission_Params;
+LRX_ParamArray = _Mission_Params apply {_x#0};
