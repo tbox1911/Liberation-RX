@@ -23,21 +23,20 @@ if (count _usable_sectors > 0) then {
 	private  _sector_pos = markerPos (selectRandom _usable_sectors);
 	// 50% in vehicles
 	if (floor random 100 > 50 && count militia_vehicles > 0) then {
-		_opfor_veh = [_sector_pos, (selectRandom militia_vehicles), nil, nil, nil, nil, true] call F_libSpawnVehicle;
+		private _veh_type = selectRandom militia_vehicles;
+		_opfor_veh = [_sector_pos, _veh_type, nil, nil, nil, nil, true] call F_libSpawnVehicle;
 		if !(isNull _opfor_veh) then {
 			_opfor_grp = group (driver _opfor_veh);
 			[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
+			diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
 		};
 	} else {
 		_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", true, 200] call createCustomGroup;
+		diag_log format ["--- LRX Enemy Patrol %1", _opfor_grp];
 	};
 
 	sleep 1;
 	if (count units _opfor_grp == 0) exitWith {};
-
-	private _veh_type = "No vehicle";
-	if !(isNull _opfor_veh) then { _veh_type = typeOf _opfor_veh };
-	diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
 
 	// Wait
 	private _unit_ttl = round (time + 1800);
