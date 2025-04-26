@@ -15,7 +15,7 @@ while {alive _static} do {
 
     if !(local _static) exitWith { _static setVariable ["LRX_managed_static", false, true] };
 
-    [_static] call F_vehicleUnflip;
+    [_static, true] call F_vehicleUnflip;
 
     if (_static_class in static_vehicles_AI) then {
         _near_arsenal = ([_static, "REAMMO", 80] call F_check_near);
