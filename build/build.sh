@@ -27,13 +27,10 @@ for dir in $(ls -1 ../maps | grep -E "^Liberation_RX\.*"); do
 		cp -r ../maps/"${dir}" .
 		cp -r ../core.liberation/* ./"${dir}"/
 
-		echo -e "//Liberation_RX was build on :
+		echo -e "// Liberation_RX build info:
 GRLIB_build_date = \"$(date +'%d/%m/%Y')\";
 GRLIB_build_time = \"$(date +'%H:%M:%S')\";
 GRLIB_build_version = \"$(git describe --tags)\";
-diag_log format [\"version: %1 build - date: %2\",GRLIB_build_version, GRLIB_build_date]; 
-" > ./"${dir}"/build_info.sqf
-
 		if [[ -d custom ]]; then
 			cp -r ./custom/* ./"${dir}"/
 		fi

@@ -4,12 +4,11 @@ echo - Liberation_RX PBO build script -
 del /f *.pbo  > nul 2>&1
 
 set GRLIB_file="..\core.liberation\build_info.sqf"
-echo //Liberation_RX was build on : > %GRLIB_file%
-echo GRLIB_build_date = "%DATE%"; >> %GRLIB_file%
-echo GRLIB_build_time = "%TIME:~0,8%"; >> %GRLIB_file%
+echo // Liberation_RX build info:> %GRLIB_file%
+echo GRLIB_build_date = "%DATE%";>> %GRLIB_file%
+echo GRLIB_build_time = "%TIME:~0,8%";>> %GRLIB_file%
 for /f "delims=" %%i in ('git describe --tags') do set GRLIB_version=%%i
-echo GRLIB_build_version = "%GRLIB_version%"; >> %GRLIB_file%
-echo diag_log format ["version: %%1 - build date: %%2",GRLIB_build_version, GRLIB_build_date]; >> %GRLIB_file%
+echo GRLIB_build_version = "%GRLIB_version%";>> %GRLIB_file%
 
 for /f %%i in ('dir /B /A:D ..\maps\liberation_RX*') do (
 	echo.
