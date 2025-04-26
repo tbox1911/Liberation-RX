@@ -41,7 +41,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		_unit setPitch 1;
 		_ai_rank = selectRandom (GRLIB_rank_level select [0, _max_rank]);
 		_unit setUnitRank _ai_rank;
-		_unit setSkill (0.6 + (GRLIB_rank_level find _ai_rank) * 0.05);
+		_unit setSkill (0.5 + (GRLIB_rank_level find _ai_rank) * 0.05);
 
 		if (_type == "divers") then {
 			_pos set [2, -6];
