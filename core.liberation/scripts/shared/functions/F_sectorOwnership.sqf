@@ -1,7 +1,7 @@
 params ["_position", ["_distance", GRLIB_capture_size]];
 
 private _cap_thresold_count = 3;
-private _cap_thresold_ratio = 0.75;
+private _cap_thresold_ratio = 0.85;
 private _sectorside = GRLIB_side_civilian;
 private _countblufor = [_position, _distance, GRLIB_side_friendly] call F_getUnitsCount;
 private _countopfor = [_position, _distance, GRLIB_side_enemy] call F_getUnitsCount;
