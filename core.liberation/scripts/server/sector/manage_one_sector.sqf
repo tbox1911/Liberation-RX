@@ -451,6 +451,15 @@ active_sectors = active_sectors - [_sector];
 publicVariable "active_sectors";
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
+// Check Victory
+if ([] call F_checkVictory) then {
+	if (isServer) then {
+		[] spawn blufor_victory;
+	} else {
+		[] remoteExec ["blufor_victory", 2];
+	};
+};
+
 // Cleanup
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];

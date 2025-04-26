@@ -49,6 +49,5 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	} forEach _hc_missions;
 
 	//diag_log format [ "Full sector scan at %1, active sectors: %2", time, active_sectors ];
-	if ([] call F_checkVictory) then { [] spawn blufor_victory };
 	sleep 2;
 };
