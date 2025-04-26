@@ -96,7 +96,8 @@ private _groupedParams = createHashMap;
 } foreach _groupedParams;
 reverse _diary;
 { player createDiaryRecord ["LRX Info", ["Settings", _x]] } forEach _diary;
-player createDiaryRecord ["LRX Info", ["Settings", format ["Build Version: <font color='#ff8000'>%1</font>", GRLIB_build_version]]];
+player createDiaryRecord ["LRX Info", ["Settings", format ["Build version: <font color='#ff8000'>%1</font>", GRLIB_build_version]]];
+player createDiaryRecord ["LRX Info", ["Settings", format ["Main version: <font color='#ff8000'>%1</font>", localize "STR_MISSION_VERSION"]]];
 player createDiaryRecord ["LRX Info", ["Settings", format ["-= LRX Current Settings =-"]]];
 
 player createDiarySubject ["LRX Info", "Server"];
