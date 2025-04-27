@@ -70,7 +70,7 @@ LRX_mod_list_west = [];
 LRX_mod_list_east = [];
 LRX_mod_list_name = [];
 if (GRLIB_LRX_Template_enabled) then {
-	_version = getNumber (configFile >> "cfgPatches" >> "LRX_Template" >> "version");
+	private _version = getNumber (configFile >> "cfgPatches" >> "LRX_Template" >> "version");
 	if (_version >= 2 ) then {
 		[] call LRX_Template_fnc_loading;
 		GRLIB_mod_list_west append LRX_mod_list_west;

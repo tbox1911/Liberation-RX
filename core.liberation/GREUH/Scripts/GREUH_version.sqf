@@ -15,6 +15,13 @@ private _getkeyName = {
 
 player createDiarySubject ["LRX Info", "LRX Info"];
 
+if (GRLIB_LRX_Template_enabled) then {
+	private _version = getNumber (configFile >> "cfgPatches" >> "LRX_Template" >> "version");
+	if (_version >= 2 ) then {
+		[] call LRX_Template_fnc_playerdiary;
+	};
+};
+
 player createDiarySubject ["LRX Info", "Support LRX !"];
 player createDiaryRecord ["LRX Info", ["Support LRX !", "<br/>  Thank you !"]];
 player createDiaryRecord ["LRX Info", ["Support LRX !", "<img image='res\mail.paa' height='32' width='25'/>  <img image='res\paypal.paa' height='32' width='32'/>     <font color='#0080ff'>https://paypal.me/LiberationRX</font><br/>"]];
