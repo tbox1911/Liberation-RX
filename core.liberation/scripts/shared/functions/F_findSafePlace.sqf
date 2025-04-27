@@ -11,9 +11,9 @@ while { _radius < _max_radius } do {
     _spawn_pos = [(_start_pos select 0), (_start_pos select 1)] getPos [_radius, floor random 360];
     if (
         count (_spawn_pos isFlatEmpty [-1, -1, 0.5, 10, _water_mode, false]) != 0 &&
-        count (nearestObjects [_spawn_pos, ["LandVehicle","CAManBase","House_F"], 10]) == 0 &&
+        count (nearestObjects [_spawn_pos, ["LandVehicle","CAManBase","House_F"], 8]) == 0 &&
         count (nearestObjects [_spawn_pos, ["Land_Communication_F",	"Land_TTowerBig_1_F"], 20]) == 0 &&
-        count (nearestTerrainObjects [_spawn_pos, _object_type, 15]) == 0
+        count (nearestTerrainObjects [_spawn_pos, _object_type, 10]) == 0
     ) exitWith {};
     _radius = _radius + 1;
     sleep 0.01;
