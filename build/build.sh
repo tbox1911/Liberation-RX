@@ -27,10 +27,7 @@ for dir in $(ls -1 ../maps | grep -E "^Liberation_RX\.*"); do
 		cp -r ../maps/"${dir}" .
 		cp -r ../core.liberation/* ./"${dir}"/
 
-		echo -e "// Liberation_RX build info:
-GRLIB_build_date = \"$(date +'%d/%m/%Y')\";
-GRLIB_build_time = \"$(date +'%H:%M:%S')\";
-" > ./"${dir}"/build_info.sqf
+		echo -e "// Liberation_RX build info:\nGRLIB_build_date = \"$(date +'%d/%m/%Y')\";\nGRLIB_build_time = \"$(date +'%H:%M:%S')\";" > ./"${dir}"/build_info.sqf
 
 		if [[ -d custom ]]; then
 			cp -r ./custom/* ./"${dir}"/
