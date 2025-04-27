@@ -1,9 +1,4 @@
-params [ "_sector" ];
-
-private _capture_size = GRLIB_capture_size;
-if ( _sector in sectors_bigtown ) then {
-	_capture_size = GRLIB_capture_size * 1.4;
-};
+params [ "_sector", "_capture_size"];
 
 private _red_forces = [(markerpos _sector), _capture_size, GRLIB_side_enemy] call F_getUnitsCount;
 private _blu_forces = [(markerpos _sector), _capture_size, GRLIB_side_friendly] call F_getUnitsCount;

@@ -3,7 +3,7 @@ private [
 	"_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_fob_sector",
 	"_color_readiness", "_color_reput", "_reput_icon", "_nearest_active_sector",
 	"_server_overloaded", "_zone_size", "_colorzone", "_bar", "_barwidth",
-	"_reputation", "_attacked_timer", "_sector_timer"
+	"_reputation", "_attacked_timer", "_sector_timer", "_capture_size"
 ];
 private _overlayshown = false;
 private _sectorcontrols = [201,202,203,244,205];
@@ -70,14 +70,13 @@ while { true } do {
 	};
 
 	if (!isNull _overlay) then {
+		_fob_sector = false;
 		_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;
 		if (_nearest_active_sector == "") then {
 			private _fob_pos = [] call F_getNearestFob;
 			if (player distance2D _fob_pos <= GRLIB_fob_range) then {
 				_nearest_active_sector = format ["fobmarker%1", (GRLIB_all_fobs find _fob_pos)];
 				_fob_sector = true;
-			} else {
-				_fob_sector = false;
 			};
 		};
 
@@ -175,21 +174,22 @@ while { true } do {
 						if (_nearest_active_sector in sectors_bigtown) then {
 							_zone_size = GRLIB_capture_size * 1.4;
 						};
-
-						"zone_capture" setmarkerposlocal (markerpos _nearest_active_sector);
 						_colorzone = "ColorGrey";
-						_sectorSide = ([markerpos _nearest_active_sector, _zone_size] call F_sectorOwnership);
-						if (_sectorSide == GRLIB_side_friendly) then { _colorzone = GRLIB_color_friendly };
-						if (_sectorSide == GRLIB_side_enemy) then { _colorzone = GRLIB_color_enemy };
-						"zone_capture" setmarkercolorlocal _colorzone;
-
 						if (_nearest_active_sector in blufor_sectors) then {
 							(_overlay displayCtrl (205)) ctrlSetTextColor _color_F;
+							_colorzone = GRLIB_color_friendly
 						} else {
 							(_overlay displayCtrl (205)) ctrlSetTextColor _color_E;
+							_colorzone = GRLIB_color_enemy
 						};
+						"zone_capture" setmarkerposlocal (markerpos _nearest_active_sector);
+						"zone_capture" setmarkercolorlocal _colorzone;
 
-						_ratio = [_nearest_active_sector] call F_getForceRatio;
+						_capture_size = GRLIB_capture_size;
+						if (_nearest_active_sector in sectors_bigtown) then {
+							_capture_size = GRLIB_capture_size * 1.4;
+						};
+						_ratio = [_nearest_active_sector, _capture_size] call F_getForceRatio;
 						_barwidth = 0.084 * safezoneW * _ratio;
 						_bar = _overlay displayCtrl (244);
 						_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];

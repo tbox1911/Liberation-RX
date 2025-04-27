@@ -8,7 +8,7 @@ private _countopfor = [_position, _distance, GRLIB_side_enemy] call F_getUnitsCo
 
 private _blufor_ratio = 0;
 if (_countblufor + _countopfor != 0) then {
-	_blufor_ratio = _countblufor / (_countblufor + _countopfor);
+	_blufor_ratio = (_countblufor / (_countopfor + _countblufor));
 };
 
 if (_countblufor == 0) then {

@@ -372,7 +372,6 @@ _task = "attack" + _sectorName + str time;
 [_task, true] call BIS_fnc_taskSetCurrent;
 _sector setMarkerText format ["%1 - Loaded!", _sectorName];
 sleep 10;
-_startEnemies = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 
@@ -387,14 +386,13 @@ while { true } do {
 		private _towers = { (alive _x) && (_x getVariable ['GRLIB_Radio_Tower', false]) } count (nearestObjects [_sector_pos, [Radio_tower], 20]);
 		if (_towers > 0) then { _sector_ownership = GRLIB_side_enemy };
 	};
-	private _enemy_left = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
-	_percentRemaining = round ((count _enemy_left / count _startEnemies) * 100);
-	_progress = ((_percentRemaining - 100) * -1) max 0;
-	_sector setMarkerText format ["%2 - %1%%", _progress, _sectorName];
+	private _ratio = 100 - round (([_sector, _local_capture_size] call F_getForceRatio) * 100);
+	_sector setMarkerText format ["%2 - %1%%", _ratio, _sectorName];
 	if (_sector_ownership == GRLIB_side_friendly) exitWith { // Victory
 		diag_log format ["Sector %1 mission succeeded.", _sector];
 		[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 		[_sector] remoteExec ["sector_liberated_remote_call", 2];
+		private _enemy_left = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 		{
 			if (_max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance)) then {
 				[_x] spawn prisoner_ai;
@@ -433,7 +431,7 @@ while { true } do {
 	if (_nearRadioTower) then { // Sector Defense
 		{
 			_stage = _forEachIndex + 1;
-			if ((_x select 0) >= _percentRemaining && !(_x select 1)) then {
+			if ((_x select 0) >= _ratio && !(_x select 1)) then {
 				_x set [1, true];
 				[_stage, _sector_pos] spawn _stageAttack;
 				sleep 5;
