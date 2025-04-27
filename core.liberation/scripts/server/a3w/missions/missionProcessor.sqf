@@ -70,6 +70,9 @@ if (isNil "_missionPicture") then { _missionPicture = "" };
 	_missionHintText,
 	sideMissionColor
 ] remoteExec ["remote_call_showinfo", 0];
+_task = _missionHintText + str time;
+[true, _task, [_missionHintText, _missionHintText, _marker], _missionPos, "CREATED", 2, true] call BIS_fnc_taskCreate;
+
 
 diag_log format ["A3W Side Mission %1 waiting to be finished: %2", _controllerSuffix, localize _missionType];
 
@@ -98,7 +101,10 @@ waitUntil {
 		_lastPos = getPosATL _leaderTemp;
 	};
 
-	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
+	if (!isNil "_waitUntilMarkerPos") then { 
+		_marker setMarkerPos (call _waitUntilMarkerPos);
+		[_task, _marker] call BIS_fnc_taskSetDestination;
+	};
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
 	if (!isNil "_waitUntilLastPos") then { _lastPos = call _waitUntilLastPos };
 
@@ -141,7 +147,7 @@ if (_failed) then {
 		failMissionColor
 	] remoteExec ["remote_call_showinfo", 0];
 	["lib_secondary_a3w_mission_fail", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
-
+	[_task,"FAILED"] call BIS_fnc_taskSetState;
 	diag_log format ["A3W Side Mission %1 failed: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
 } else {
@@ -154,7 +160,7 @@ if (_failed) then {
 		_successHintMessage,
 		successMissionColor
 	] remoteExec ["remote_call_showinfo", 0];
-
+	[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 	["lib_secondary_a3w_mission_success", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
 	diag_log format ["A3W Mission%1 complete: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_success = A3W_mission_success + 1;
