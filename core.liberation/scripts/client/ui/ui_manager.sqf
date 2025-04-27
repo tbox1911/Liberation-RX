@@ -164,13 +164,19 @@ while { true } do {
 
 				if (!GRLIB_Commander_mode) then {
 					if (_nearest_active_sector != "") then {
+						_zone_size = GRLIB_capture_size;
 						if (_fob_sector) exitWith {
 							(_overlay displayCtrl (205)) ctrlSetTextColor _color_F;
 							(_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
 							{ (_overlay displayCtrl (_x)) ctrlShow true; } foreach _sectorcontrols;
+							_bar = _overlay displayCtrl (244);
+							_barwidth = 0.084 * safezoneW * 1;
+							_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
+							_bar ctrlCommit 0;
+							"zone_capture" setmarkerposlocal (markerpos _nearest_active_sector);
+							"zone_capture" setmarkercolorlocal GRLIB_color_friendly;
+							"zone_capture" setMarkerSizeLocal [_zone_size,_zone_size];
 						};
-
-						_zone_size = GRLIB_capture_size;
 						if (_nearest_active_sector in sectors_bigtown) then {
 							_zone_size = GRLIB_capture_size * 1.4;
 						};
