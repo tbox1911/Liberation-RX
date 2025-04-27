@@ -53,10 +53,20 @@ if (GRLIB_Commander_mode) then {
 	};
 };
 
+private _color_F = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
+private _color_E = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_enemy >> "color") call BIS_fnc_colorConfigToRGBA;
+
 while { true } do {
 	_hide_HUD = !(shownHUD select 0);
+	_overlay_check = (
+		GRLIB_player_spawned &&
+		isNull (findDisplay 5201) &&
+		!cinematic_camera_started &&
+		!halojumping &&
+		!_hide_HUD &&
+		!([player] call PAR_is_wounded)
+	);
 
-	_overlay_check = (GRLIB_player_spawned && !cinematic_camera_started && !halojumping && !_hide_HUD && isNull (findDisplay 5201) && !([player] call PAR_is_wounded));
 	if (_overlay_check && !_overlayshown) then {
 		"LibUI" cutRsc ["statusoverlay", "PLAIN", 1];
 		_overlay = uiNamespace getVariable ['GUI_OVERLAY', objNull];
@@ -91,7 +101,7 @@ while { true } do {
 			(_overlay displayCtrl (517)) ctrlShow false;
 		};
 
-		if (_overlayshown && _uiticks % 5 == 0) then {
+		if (_overlayshown) then {
 			(_overlay displayCtrl (266)) ctrlSetText format ["%1", GRLIB_ui_notif];
 			(_overlay displayCtrl (267)) ctrlSetText format ["%1", GRLIB_ui_notif];
 
@@ -109,38 +119,40 @@ while { true } do {
 				(_overlay displayCtrl (403)) ctrlSetText "";
 			};
 
-			(_overlay displayCtrl (107)) ctrlSetText format ["%1", (player getVariable ["GREUH_score_count",0])];
-			(_overlay displayCtrl (102)) ctrlSetText format ["%1", (player getVariable ["GREUH_ammo_count",0])];
-			(_overlay displayCtrl (103)) ctrlSetText format ["%1", (player getVariable ["GREUH_fuel_count",0])];
-			(_overlay displayCtrl (101)) ctrlSetText format ["%1/%2", resources_infantry, infantry_cap];
-			_reputation = [player] call F_getReput;
-			(_overlay displayCtrl (104)) ctrlSetText format ["%1", round(_reputation)];
-			(_overlay displayCtrl (105)) ctrlSetText format ["%1%2", round(combat_readiness),"%"];
-			(_overlay displayCtrl (106)) ctrlSetText format ["%1", round(resources_intel)];
+			if (_uiticks % 2 == 0) then {
+				(_overlay displayCtrl (107)) ctrlSetText format ["%1", (player getVariable ["GREUH_score_count",0])];
+				(_overlay displayCtrl (102)) ctrlSetText format ["%1", (player getVariable ["GREUH_ammo_count",0])];
+				(_overlay displayCtrl (103)) ctrlSetText format ["%1", (player getVariable ["GREUH_fuel_count",0])];
+				(_overlay displayCtrl (101)) ctrlSetText format ["%1/%2", resources_infantry, infantry_cap];
+				_reputation = [player] call F_getReput;
+				(_overlay displayCtrl (104)) ctrlSetText format ["%1", round(_reputation)];
+				(_overlay displayCtrl (105)) ctrlSetText format ["%1%2", round(combat_readiness),"%"];
+				(_overlay displayCtrl (106)) ctrlSetText format ["%1", round(resources_intel)];
 
-			_color_readiness = [0.8,0.8,0.8,1];
-			if (combat_readiness >= 25) then { _color_readiness = [0.8,0.8,0,1] };
-			if (combat_readiness >= 50) then { _color_readiness = [0.8,0.6,0,1] };
-			if (combat_readiness >= 75) then { _color_readiness = [0.8,0.3,0,1] };
-			if (combat_readiness >= 95) then { _color_readiness = [0.8,0,0,1] };
+				_color_readiness = [0.8,0.8,0.8,1];
+				if (combat_readiness >= 25) then { _color_readiness = [0.8,0.8,0,1] };
+				if (combat_readiness >= 50) then { _color_readiness = [0.8,0.6,0,1] };
+				if (combat_readiness >= 75) then { _color_readiness = [0.8,0.3,0,1] };
+				if (combat_readiness >= 95) then { _color_readiness = [0.8,0,0,1] };
 
-			(_overlay displayCtrl (105)) ctrlSetTextColor _color_readiness;
-			(_overlay displayCtrl (135)) ctrlSetTextColor _color_readiness;
+				(_overlay displayCtrl (105)) ctrlSetTextColor _color_readiness;
+				(_overlay displayCtrl (135)) ctrlSetTextColor _color_readiness;
 
-			_color_reput = [0.8,0.8,0.8,1];
-			_reput_icon = "res\rep\rep3.paa";
-			if (_reputation >= 25) then { _color_reput = [0.8,0.8,0,1]; _reput_icon = "res\rep\rep4.paa" };
-			if (_reputation >= 50) then { _color_reput = [0.0,0.6,0,1]; _reput_icon = "res\rep\rep5.paa" };
-			if (_reputation >= 75) then { _color_reput = [0.0,0.8,0,1]; _reput_icon = "res\rep\rep6.paa" };
-			if (_reputation >= 100) then { _color_reput = [0,0.8,0.6,1]; _reput_icon = "res\rep\rep6.paa" };
-			if (_reputation <= -25) then { _color_reput = [0.8,0.8,0,1]; _reput_icon = "res\rep\rep2.paa" };
-			if (_reputation <= -50) then { _color_reput = [0.8,0.6,0,1]; _reput_icon = "res\rep\rep1.paa" };
-			if (_reputation <= -75) then { _color_reput = [0.8,0.3,0,1]; _reput_icon = "res\rep\rep0.paa" };
-			if (_reputation <= -100) then { _color_reput = [0.8,0,0,1]; _reput_icon = "res\rep\rep0.paa" };
-			(_overlay displayCtrl (104)) ctrlSetTextColor _color_reput;
-			(_overlay displayCtrl (1041)) ctrlSetText (getMissionPath _reput_icon);
+				_color_reput = [0.8,0.8,0.8,1];
+				_reput_icon = "res\rep\rep3.paa";
+				if (_reputation >= 25) then { _color_reput = [0.8,0.8,0,1]; _reput_icon = "res\rep\rep4.paa" };
+				if (_reputation >= 50) then { _color_reput = [0.0,0.6,0,1]; _reput_icon = "res\rep\rep5.paa" };
+				if (_reputation >= 75) then { _color_reput = [0.0,0.8,0,1]; _reput_icon = "res\rep\rep6.paa" };
+				if (_reputation >= 100) then { _color_reput = [0,0.8,0.6,1]; _reput_icon = "res\rep\rep6.paa" };
+				if (_reputation <= -25) then { _color_reput = [0.8,0.8,0,1]; _reput_icon = "res\rep\rep2.paa" };
+				if (_reputation <= -50) then { _color_reput = [0.8,0.6,0,1]; _reput_icon = "res\rep\rep1.paa" };
+				if (_reputation <= -75) then { _color_reput = [0.8,0.3,0,1]; _reput_icon = "res\rep\rep0.paa" };
+				if (_reputation <= -100) then { _color_reput = [0.8,0,0,1]; _reput_icon = "res\rep\rep0.paa" };
+				(_overlay displayCtrl (104)) ctrlSetTextColor _color_reput;
+				(_overlay displayCtrl (1041)) ctrlSetText (getMissionPath _reput_icon);
+			};
 
-			if (_uiticks % 25 == 0) then {
+			if (_uiticks % 5 == 0) then {
 				if (_server_overloaded) then {
 					(_overlay displayCtrl (517)) ctrlShow true;
 
@@ -157,8 +169,6 @@ while { true } do {
 					(_overlay displayCtrl (516)) ctrlSetStructuredText parseText _active_sectors_string;
 				};
 
-				private _color_F = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
-				private _color_E = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_enemy >> "color") call BIS_fnc_colorConfigToRGBA;
 				(_overlay displayCtrl (244)) ctrlSetBackgroundColor _color_F;
 				(_overlay displayCtrl (203)) ctrlSetBackgroundColor _color_E;
 
@@ -257,5 +267,5 @@ while { true } do {
 
 	_uiticks = _uiticks + 1;
 	if (_uiticks > 1000) then { _uiticks = 0 };
-	uiSleep 0.25;
+	uiSleep 1;
 };
