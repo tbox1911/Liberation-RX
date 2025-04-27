@@ -221,7 +221,6 @@ a3w_follow_player = compileFinal preprocessFileLineNumbers "scripts\server\remot
 // PAR Remote Call - Server Side
 PAR_remote_bounty = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_bounty.sqf";
 PAR_remote_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_sortie.sqf";
-PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";
 
 if (!([] call F_getValid)) exitWith {};
 

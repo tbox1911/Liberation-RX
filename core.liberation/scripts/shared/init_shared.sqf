@@ -4,6 +4,9 @@ manage_one_static = compileFinal preprocessFileLineNumbers "scripts\shared\manag
 // TK Manager
 LRX_tk_server_actions = compileFinal preprocessFileLineNumbers "addons\TKP\tk_server_actions.sqf";
 
+// PAR functions
+PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";
+
 // Remote Call - Client Side
 remote_call_a3w_info = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_a3w_info.sqf";
 remote_call_ammo_bounty = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_ammo_bounty.sqf";

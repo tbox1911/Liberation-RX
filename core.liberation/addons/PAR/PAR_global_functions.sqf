@@ -13,7 +13,7 @@ PAR_fn_death = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_death.s
 PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_heal = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_heal.sqf";
-PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";
+// PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";  // moved to shared
 
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1

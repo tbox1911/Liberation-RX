@@ -54,7 +54,6 @@ showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scrip
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
 cleanMissionVehicles = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_cleanMissionVehicles.sqf";
 createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
-PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";
 
 [] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\show_fps_hc.sqf";
 
