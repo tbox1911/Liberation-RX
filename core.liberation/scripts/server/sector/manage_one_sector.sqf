@@ -317,12 +317,12 @@ if (_nearRadioTower) then {
 	[gamelogic, "Enemies can't call Air support. No radio tower nearby."] remoteExec ["globalChat", 0];
 };
 
-// Upgraded AI defense - now dynamic and reactive instead of time-based
+// Attack stages to work with threshold ratio
 private _attackStages = [
-	[75, false],
-	[50, false],
+	[20, false],
 	[35, false],
-	[25, false]
+	[50, false],
+	[70, false]
 ];
 
 private _stageAttack = {
@@ -431,10 +431,13 @@ while { true } do {
 	if (_nearRadioTower) then { // Sector Defense
 		{
 			_stage = _forEachIndex + 1;
-			if ((_x select 0) >= _ratio && !(_x select 1)) then {
-				_x set [1, true];
-				[_stage, _sector_pos] spawn _stageAttack;
-				sleep 5;
+			if (!(_x select 1)) exitWith {
+				_stageThreshold = _x select 0;
+				if (_ratio >= _stageThreshold) then {
+					_x set [1, true];
+					[_stage, _sector_pos] spawn _stageAttack;
+					sleep 5;
+				};
 			};
 		} foreach _attackStages;
 	};
