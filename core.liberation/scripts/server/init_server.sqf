@@ -88,8 +88,6 @@ GRLIB_fobSects = [];
 
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
-untow_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\untow_vehicle.sqf";
-clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_vehicle.sqf";
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
 
 // Load Objects

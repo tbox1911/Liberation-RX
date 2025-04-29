@@ -1,3 +1,7 @@
+// LRX Mission
+untow_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\untow_vehicle.sqf";
+clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_vehicle.sqf";
+
 // Static manager
 manage_one_static = compileFinal preprocessFileLineNumbers "scripts\shared\manage_one_static.sqf";
 
