@@ -72,7 +72,7 @@ if (isNil "_missionPicture") then { _missionPicture = "" };
 ] remoteExec ["remote_call_showinfo", 0];
 
 private _task = _missionType + str round time;
-[true, _task, [localize _missionType, localize _missionType, _marker], _missionPos, "CREATED", 2, true] call BIS_fnc_taskCreate;
+[true, _task, [localize _missionType, localize _missionType, _marker], markerPos _marker, "CREATED", 2, true] call BIS_fnc_taskCreate;
 
 diag_log format ["A3W Side Mission %1 waiting to be finished: %2", _controllerSuffix, localize _missionType];
 
