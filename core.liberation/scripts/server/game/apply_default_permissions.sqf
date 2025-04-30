@@ -1,5 +1,3 @@
-if ( !GRLIB_permissions_param ) exitWith {};
-
 private [ "_default_permissions", "_all_players_uids", "_old_count" ];
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
