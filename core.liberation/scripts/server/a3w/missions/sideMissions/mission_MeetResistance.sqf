@@ -11,7 +11,7 @@ _setupVars = {
 };
 
 _setupObjects = {
-	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
+	_missionPos = [(markerpos _missionLocation), 5, 0] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
@@ -37,13 +37,13 @@ _setupObjects = {
 	sleep 1;
 
 	// create static weapons
-	private _pos = [_missionPos, 2, false, 80] call F_findSafePlace;
+	private _pos = [_missionPos, 2, 0, 80] call F_findSafePlace;
 	private _veh1 = [_pos, a3w_resistance_static, 2, true, GRLIB_side_friendly, true, true] call F_libSpawnVehicle;
 	_veh1 setVariable ["R3F_LOG_disabled", true, true];
 	_managed_units append (crew _veh1);
 	sleep 1;
 
-	private _pos = [_missionPos, 2, false, 80] call F_findSafePlace;
+	private _pos = [_missionPos, 2, 0, 80] call F_findSafePlace;
 	private _veh2 = [_pos, a3w_resistance_static, 2, true, GRLIB_side_friendly, true, true] call F_libSpawnVehicle;
 	_veh2 setVariable ["R3F_LOG_disabled", true, true];
 	_managed_units append (crew _veh2);

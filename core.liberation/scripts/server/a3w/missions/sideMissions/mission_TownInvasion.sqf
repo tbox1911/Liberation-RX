@@ -11,7 +11,7 @@ _setupVars = {
 
 _setupObjects = {
 	_townName = markerText _missionLocation;
-	_missionPos = [(markerpos _missionLocation), 5, false, 80] call F_findSafePlace;
+	_missionPos = [(markerpos _missionLocation), 5, 0, 80] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;

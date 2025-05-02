@@ -1,6 +1,6 @@
 params ["_pos"];
 
-private _spawnpos = [_pos, 2] call F_findSafePlace;
+private _spawnpos = [_pos, 2, 0] call F_findSafePlace;
 if (count _spawnpos == 0) exitWith {[]};
 
 private _type_random = [

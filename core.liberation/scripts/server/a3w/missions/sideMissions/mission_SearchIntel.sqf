@@ -69,7 +69,7 @@ _setupObjects = {
 	private _build_list  = [];
 	private ["_pos", "_dir"];
 	for "_i" from 1 to 5 do {
-		_pos = [getPosATL _vehicle, 20, false, 150] call F_findSafePlace;
+		_pos = [getPosATL _vehicle, 20, 0, 150] call F_findSafePlace;
 		if (count _pos != 0) then {
 			_dir = random 360;
 			_build = createVehicle [selectRandom _buildings, _pos, [], 1, "None"];
