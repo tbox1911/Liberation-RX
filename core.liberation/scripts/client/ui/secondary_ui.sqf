@@ -19,7 +19,7 @@ waitUntil { dialog };
 	lbAdd [ 101, localize _x ];
 } foreach _mission_list;
 
-private [ "_oldchoice", "_images", "_briefings", "_missioncost" ];
+private ["_oldchoice", "_images", "_briefings", "_missioncost", "_missiontext"];
 
 private _images = [
 	"res\secondary\fob_hunting.jpg",
@@ -35,30 +35,31 @@ private _briefings = [
 	"STR_SECONDARY_BRIEFING3"
 ];
 
+private _display = findDisplay 6842;
 dostartsecondary = 0;
 private _oldchoice = -1;
 lbSetCurSel [ 101, 0 ];
 
 while { dialog && alive player && dostartsecondary == 0 } do {
+	_missioncost = GRLIB_secondary_missions_costs select _oldchoice;
+	_missiontext = format [localize (_briefings select _oldchoice), _missioncost];
 
 	if ( _oldchoice != lbCurSel 101 ) then {
 		_oldchoice = lbCurSel 101;
 		ctrlSetText [ 106, _images select _oldchoice ];
-		((findDisplay 6842) displayCtrl (102)) ctrlSetStructuredText parseText localize (_briefings select _oldchoice);
+		(_display displayCtrl (102)) ctrlSetStructuredText parseText _missiontext;
 	};
-
-	_missioncost = GRLIB_secondary_missions_costs select _oldchoice;
 
 	if ( ( _missioncost <= resources_intel ) && ( !GRLIB_secondary_starting ) )  then {
 		ctrlEnable [ 103, true ];
-		((findDisplay 6842) displayCtrl (103)) ctrlSetTooltip "";
+		(_display displayCtrl (103)) ctrlSetTooltip "";
 	} else {
 		ctrlEnable [ 103, false ];
 		if ( _missioncost > resources_intel ) then {
-			((findDisplay 6842) displayCtrl (103)) ctrlSetTooltip (localize "STR_SECONDARY_NOT_ENOUGH_INTEL");
+			(_display displayCtrl (103)) ctrlSetTooltip (localize "STR_SECONDARY_NOT_ENOUGH_INTEL");
 		};
 		if ( GRLIB_secondary_starting ) then {
-			((findDisplay 6842) displayCtrl (103)) ctrlSetTooltip (localize "STR_SECONDARY_IN_PROGRESS");
+			(_display displayCtrl (103)) ctrlSetTooltip (localize "STR_SECONDARY_IN_PROGRESS");
 		};
 	};
 
