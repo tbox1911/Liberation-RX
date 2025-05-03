@@ -41,11 +41,10 @@ private _oldchoice = -1;
 lbSetCurSel [ 101, 0 ];
 
 while { dialog && alive player && dostartsecondary == 0 } do {
-	_missioncost = GRLIB_secondary_missions_costs select _oldchoice;
-	_missiontext = format [localize (_briefings select _oldchoice), _missioncost];
-
 	if ( _oldchoice != lbCurSel 101 ) then {
 		_oldchoice = lbCurSel 101;
+		_missioncost = GRLIB_secondary_missions_costs select _oldchoice;
+		_missiontext = format [localize (_briefings select _oldchoice), _missioncost];
 		ctrlSetText [ 106, _images select _oldchoice ];
 		(_display displayCtrl (102)) ctrlSetStructuredText parseText _missiontext;
 	};
