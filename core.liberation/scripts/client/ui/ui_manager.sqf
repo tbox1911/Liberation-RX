@@ -230,7 +230,11 @@ while { true } do {
 								(_overlay displayCtrl (205)) ctrlSetTextColor _color_E;
 							};
 
-							_ratio = [_x] call F_getForceRatio;
+							_capture_size = GRLIB_capture_size;
+							if (_x in sectors_bigtown) then {
+								_capture_size = GRLIB_capture_size * 1.4;
+							};
+							_ratio = [_x, _capture_size] call F_getForceRatio;
 							_barwidth = 0.084 * safezoneW * _ratio;
 							_bar = _overlay displayCtrl (244);
 							_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
