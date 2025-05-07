@@ -1,3 +1,5 @@
+GRLIB_LRX_Init = {
+	
 diag_log "--- Liberation RX by pSiKO ---";
 if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
 
@@ -67,3 +69,4 @@ if (!abort_loading) then {
 };
 
 diag_log "--- Init stop ---";
+};

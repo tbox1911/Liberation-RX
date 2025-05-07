@@ -1,0 +1,1 @@
+call GRLIB_LRX_Init;
