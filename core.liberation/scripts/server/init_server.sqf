@@ -212,6 +212,7 @@ vehicle_unflip_remote_call = compileFinal preprocessFileLineNumbers "scripts\ser
 warehouse_init_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\warehouse_init_remote_call.sqf";
 warehouse_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\warehouse_remote_call.sqf";
 activate_sector_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\activate_sector_remote_call.sqf";
+vote_sector_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vote_sector_remote_call.sqf";
 
 // A3W Side Mission - Server Side
 a3w_follow_player = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_follow_player.sqf";
@@ -269,8 +270,12 @@ if (GRLIB_Commander_mode) then {
 	// Commander mode
 	GRLIB_connectMarkers = createHashMap;
 	GRLIB_connCalculating = false;
+	GRLIB_Sector_Votes = createHashMap;
+	GRLIB_IsVoteInProgress = false;
 	manage_sectors_commander = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_sectors_commander.sqf";
 	[] spawn manage_sectors_commander;
+	commander_voteHandler = compileFinal preprocessFileLineNumbers "scripts\server\sector\commander_sector_vote.sqf";
+	[] spawn commander_voteHandler;
 } else {
 	// Classic mode
 	[] execVM "scripts\server\sector\manage_sectors.sqf";

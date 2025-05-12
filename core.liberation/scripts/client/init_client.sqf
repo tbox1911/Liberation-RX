@@ -192,6 +192,7 @@ waitUntil {
 [] execVM "scripts\client\misc\no_thermic.sqf";
 
 // LRX Addons
+[] execVM "addons\RPL\advancedRappellingInit.sqf";
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";
 [] execVM "addons\KEY\shortcut_init.sqf";
 [] execVM "addons\VAM\VAM_GUI_init.sqf";
@@ -203,7 +204,6 @@ waitUntil {
 [] execVM "addons\JKB\JKB_init.sqf";
 [] execVM "addons\WHS\warehouse_init.sqf";
 [] execVM "addons\FOB\officer_init.sqf";
-[] execVM "addons\RPL\advancedRappellingInit.sqf";
 
 // LRX Arsenal
 [] execVM "addons\LARs\liberationArsenal.sqf";
@@ -310,7 +310,8 @@ if (GRLIB_Commander_mode) then {
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos"];
 		private _caller = _thisArgs select 0;
-		if ((time - GRLIB_Com_lastClicked) > 3 && {[_caller] call F_getCommander && active_sectors isEqualTo [] && !(GRLIB_AvailAttackSectors isEqualTo [])}) then {
+		_isCommander = [_caller] call F_getCommander;
+		if ((time - GRLIB_Com_lastClicked) > 3 && {(GRLIB_Commander_VoteEnabled || _isCommander) && active_sectors isEqualTo [] && !(GRLIB_AvailAttackSectors isEqualTo [])}) then {
 			GRLIB_Com_lastClicked = time;
 			_closestSector = "";
 			_closestDistance = 9999;
@@ -323,11 +324,15 @@ if (GRLIB_Commander_mode) then {
 			} forEach GRLIB_AvailAttackSectors;
 			if (!(_closestSector isEqualTo "")) then {
 				playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
-				[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];
-				{
-					deleteMarker _x;
-				} forEach GRLIB_availableMarkers;
-				GRLIB_availableMarkers = [];
+				if (_isCommander) then {
+					[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];
+					{
+						deleteMarker _x;
+					} forEach GRLIB_availableMarkers;
+					GRLIB_availableMarkers = [];
+				} else {
+					[_caller, _closestSector] remoteExec ["vote_sector_remote_call", 2];
+				};
 			};
 		};
 		GRLIB_Com_lastClicked = time;

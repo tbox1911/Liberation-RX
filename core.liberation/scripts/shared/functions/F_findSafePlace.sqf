@@ -22,7 +22,7 @@ while { _radius < _max_radius } do {
 };
 
 if (count _spawn_pos == 0 || _radius >= _max_radius) then {
-    diag_log format ["--- LRX Debug: Cant find suitable position at %1 DGB S%2:R%3:W%4", _start_pos,_size,_max_radius,_water];
+    diag_log format ["--- LRX Debug: Cant find suitable position at %1 DGB S%2:R%3:W%4", _start_pos,_size,_max_radius,_water_mode];
     _spawn_pos = ([_size, _start_pos, _max_radius, 50, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol);
 };
 

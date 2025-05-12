@@ -26,6 +26,8 @@ private _lrx_get_mod_template = {
 	_mod_data;
 };
 
+waitUntil {sleep 0.5; !isNil "GRLIB_mod_list_west"};
+waitUntil {sleep 0.5; !isNil "GRLIB_mod_list_east"};
 private _list_west = ([GRLIB_mod_list_west] call _lrx_get_mod_template);
 private _list_east = ([GRLIB_mod_list_east] call _lrx_get_mod_template);
 
@@ -104,6 +106,9 @@ GRLIB_PARAM_TK_count = "TK_count";
 GRLIB_PARAM_Persistent = "Persistent";
 GRLIB_PARAM_CommanderModeEnabled = "CommanderMode";
 GRLIB_PARAM_CommanderModeRadius = "CommanderRadius";
+GRLIB_PARAM_CommanderVoteTimeout = "CommVoteTimeout";
+GRLIB_PARAM_CommanderAutoStart = "CommAutoStart";
+GRLIB_PARAM_CommPlayerVote = "CommPlayerVote";
 GRLIB_PARAM_Alarms = "Alarms";
 GRLIB_PARAM_MineProbability = "MineProbability";
 
@@ -117,11 +122,13 @@ GRLIB_PARAM_RestartCatKey       = localize "STR_PARAMCAT_RESTART";
 GRLIB_PARAM_ExperimentalCatKey  = localize "STR_PARAMCAT_EXPERIMENTAL";
 GRLIB_PARAM_SystemCatKey        = localize "STR_PARAMCAT_SYSTEM";
 GRLIB_PARAM_FobCatKey           = localize "STR_PARAMCAT_FOB";
+GRLIB_PARAM_CommanderCatKey     = localize "STR_PARAMCAT_COMMANDER";
 
 // Categories will be displayed in this order - this can be changed whenever, but any new categories MUST be added to this list
 GRLIB_PARAM_CatOrder = [
     GRLIB_PARAM_TemplateCatKey,
     GRLIB_PARAM_GameCatKey,
+    GRLIB_PARAM_CommanderCatKey,
     GRLIB_PARAM_PlayerCatKey,
     GRLIB_PARAM_ArsenalCatKey,
     GRLIB_PARAM_FobCatKey,
@@ -1339,7 +1346,7 @@ _Mission_Params = [
         [GRLIB_PARAM_NameKey, localize "STR_COMMANDER_MODE"],
         [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
         [GRLIB_PARAM_OptionValuesKey, [0,1]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ExperimentalCatKey],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_COMMANDER_MODE_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_COMMANDER_MODE_OPT0",
@@ -1351,7 +1358,7 @@ _Mission_Params = [
         [GRLIB_PARAM_NameKey, localize "STR_COMMANDER_MODE_RADIUS"],
         [GRLIB_PARAM_OptionLabelKey, ["100m","150m","200m","300m","400m","500m","600m","700m","800m","900m","1000m"]],
         [GRLIB_PARAM_OptionValuesKey, [100,150,200,300,400,500,600,700,800,900,1000]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ExperimentalCatKey],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_COMMANDER_MODE_RADIUS_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_COMMANDER_MODE_RADIUS_OPT0",
@@ -1365,6 +1372,47 @@ _Mission_Params = [
             localize "STR_COMMANDER_MODE_RADIUS_OPT8",
             localize "STR_COMMANDER_MODE_RADIUS_OPT9",
             localize "STR_COMMANDER_MODE_RADIUS_OPT10"
+        ]]
+    ]],
+    [GRLIB_PARAM_CommanderVoteTimeout, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 60],
+        [GRLIB_PARAM_NameKey, "Commander Mode vote timer duration"],
+        [GRLIB_PARAM_OptionLabelKey, ["20s","30s","60s","120s","180s","240s","300s"]],
+        [GRLIB_PARAM_OptionValuesKey, [20,30,60,120,180,240,300]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
+        [GRLIB_PARAM_DescriptionKey, "Length of the vote timer which determines how long the voting period lasts"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            "20 seconds to vote for the next sector",
+            "30 seconds to vote for the next sector",
+            "60 seconds to vote for the next sector",
+            "120 seconds to vote for the next sector",
+            "180 seconds to vote for the next sector",
+            "240 seconds to vote for the next sector",
+            "300 seconds to vote for the next sector"
+        ]]
+    ]],
+    [GRLIB_PARAM_CommanderAutoStart, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, "Auto-start vote timer"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
+        [GRLIB_PARAM_DescriptionKey, "Determines if the vote timer should start automatically when there are no active sectors, if no votes, a random one is chosen"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            "The first player to vote will start the timer",
+            "The timer will start automatically"
+        ]]
+    ]],
+    [GRLIB_PARAM_CommPlayerVote, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, "Allow players to vote for the next sector"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
+        [GRLIB_PARAM_DescriptionKey, "This option allows players to vote for the next sector, useful if no commander is present"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            "Only the commander can decide the next sector, or if auto-start is enabled, the system will can automatically choose a sector",
+            "Players are allowed to vote for the next sector"
         ]]
     ]]
 ];
