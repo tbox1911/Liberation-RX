@@ -2022,6 +2022,9 @@
 			<Chinesesimp>车辆油耗</Chinesesimp>
 			<Chinese>車輛油耗</Chinese>
 		</Key>
+		<Key ID="STR_PARAMS_ENABLE_DRONES">
+			<Original>Enable enemy Drones/UAVs</Original>
+		</Key>		
 		<Key ID="STR_PARAMS_INTRO">
 			<Original>Introduction</Original>
 			<French>Introduction</French>
@@ -12620,6 +12623,15 @@
 			<Portuguese>Taxa de consumo de combustível normal</Portuguese>
 			<Czech>Normální spotřeba paliva</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_ENABLE_DRONES_DESC">
+			<Original>Enemy can use kamikaze or greande drones (if available in template)</Original>
+		</Key>
+		<Key ID="STR_PARAMS_ENABLE_DRONES_OPT1">
+			<Original>Enemy cannot use drones</Original>
+		</Key>
+		<Key ID="STR_PARAMS_ENABLE_DRONES_OPT2">
+			<Original>Enemy can use drones</Original>
+		</Key>		
 		<Key ID="STR_PARAMCAT_COMMANDER">
 			<Original>COMMANDER MODE</Original>
 			<Russian>РЕЖИМ КОМАНДИРА</Russian>

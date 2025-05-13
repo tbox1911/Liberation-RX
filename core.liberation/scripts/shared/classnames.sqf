@@ -52,12 +52,14 @@ if (isServer) then {
 // uavs_west = [];  			// non AI drones (darter, etc) - player can take control
 // static_vehicles_AI = [];  	// AI drones that need a crew  (SAM, etc) - player cannot control
 uavs_vehicles = [];
-{
-	private _isUav = (getNumber (configfile >> "CfgVehicles" >> (_x select 0) >> "isUav") == 1);
-	if ([(_x select 0), (uavs_def + uavs_west)] call F_itemIsInClass && _isUav) then {
-		uavs_vehicles pushBackUnique (_x select 0);
-	};
-} foreach light_vehicles + heavy_vehicles + air_vehicles;
+if (GRLIB_enable_drones) then {
+	{
+		private _isUav = (getNumber (configfile >> "CfgVehicles" >> (_x select 0) >> "isUav") == 1);
+		if ([(_x select 0), (uavs_def + uavs_west)] call F_itemIsInClass && _isUav) then {
+			uavs_vehicles pushBackUnique (_x select 0);
+		};
+	} foreach light_vehicles + heavy_vehicles + air_vehicles;
+};
 
 if (count uavs_vehicles > 0) then {
 	uavs_vehicles append [

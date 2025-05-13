@@ -88,6 +88,7 @@ GRLIB_PARAM_FancyInfo = "FancyInfo";
 GRLIB_PARAM_EnableLock = "EnableLock";
 GRLIB_PARAM_EnemyLock = "EnemyLock";
 GRLIB_PARAM_FuelConso = "FuelConso";
+GRLIB_PARAM_Drones = "EnableDrones";
 GRLIB_PARAM_MaxGarageSize = "MaxGarageSize";
 GRLIB_PARAM_SectorRadius = "SectorRadius";
 GRLIB_PARAM_SectorDespawn = "SectorDespawn";
@@ -1071,6 +1072,18 @@ _Mission_Params = [
             localize "STR_PARAMS_FUEL_CONSO_OPT4"
         ]]
     ]],
+    [GRLIB_PARAM_Drones, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_ENABLE_DRONES"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_ENABLE_DRONES_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_PARAMS_ENABLE_DRONES_OPT0",
+            localize "STR_PARAMS_ENABLE_DRONES_OPT1"
+        ]]
+    ]],    
     [GRLIB_PARAM_MaxGarageSize, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 6],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_GARAGE_SIZE"],
