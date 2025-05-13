@@ -99,12 +99,11 @@ save_changes = 0;
 				if (_selection == -1) then { _selection = 0 };
 			};
 			_control lbSetCurSel _selection;
-			_control ctrlAddEventHandler ["LBSelChanged", compile ('params ["_control", "_lbCurSel"]; _key = ' + str _key + '; 
-				_parHash = (LRX_Mission_Params get _key);
-				_saveHash = GRLIB_LRX_params getOrDefault [_key, (LRX_Mission_Params get _key)];
+			_control ctrlAddEventHandler ["LBSelChanged", compileFinal ('params ["_control", "_lbCurSel"]; _key = ' + str _key + '; 
+				_parHash = LRX_Mission_Params get _key;
 				_values = _parHash get GRLIB_PARAM_OptionValuesKey;
 				_newValue = _values select _lbCurSel;
-				_saveHash set [GRLIB_PARAM_ValueKey, _newValue];
+				_saveHash = createHashMapFromArray [[GRLIB_PARAM_ValueKey, _newValue]];
 				GRLIB_LRX_params set [_key, _saveHash];')];
 
 			_description = _hash get GRLIB_PARAM_DescriptionKey;

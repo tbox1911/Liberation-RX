@@ -263,6 +263,9 @@ GRLIB_Commander_mode = [GRLIB_PARAM_CommanderModeEnabled] call lrx_getParamValue
 GRLIB_Commander_radius = [GRLIB_PARAM_CommanderModeRadius] call lrx_getParamValue;
 GRLIB_MineProbability = [GRLIB_PARAM_MineProbability] call lrx_getParamValue;
 GRLIB_AlarmsEnabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
+GRLIB_Commander_AutoStart = [GRLIB_PARAM_CommanderAutoStart] call lrx_getParamValue;
+GRLIB_Commander_VoteTime = [GRLIB_PARAM_CommanderVoteTimeout] call lrx_getParamValue;
+GRLIB_Commander_VoteEnabled = [GRLIB_PARAM_CommPlayerVote] call lrx_getParamValue;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
@@ -382,6 +385,8 @@ GRLIB_air_support = (GRLIB_air_support == 1);
 GRLIB_free_loadout = (GRLIB_free_loadout == 1);
 GRLIB_Commander_mode = (GRLIB_Commander_mode == 1);
 GRLIB_AlarmsEnabled = GRLIB_AlarmsEnabled == 1;
+GRLIB_Commander_AutoStart = GRLIB_Commander_AutoStart == 1;
+GRLIB_Commander_VoteEnabled = GRLIB_Commander_VoteEnabled == 1;
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };

@@ -245,8 +245,10 @@ while { true } do {
 							sleep 3;
 						} forEach active_sectors;
 					} else {
-						if ([player] call F_getCommander) then {
-							if (!(GRLIB_AvailAttackSectors isEqualTo [])) then {
+						_text = "";
+						_isCommander = [player] call F_getCommander;
+						if (!(GRLIB_AvailAttackSectors isEqualTo [])) then {
+							if (GRLIB_Commander_VoteEnabled || _isCommander) then {
 								{
 									if (!((_x + "av") in GRLIB_availableMarkers)) then {
 										_markerstr = createMarkerLocal [_x + "av", getMarkerPos _x];
@@ -255,14 +257,23 @@ while { true } do {
 										GRLIB_availableMarkers pushBack _markerstr;
 									};
 								} forEach GRLIB_AvailAttackSectors;
-								//todo: localize
-								(_overlay displayCtrl (205)) ctrlSetText ("Select a sector on the map to attack");
+								if (_isCommander) then {
+									//todo: localize
+									_text = "Select a sector on the map to attack";
+								} else {
+									_text = "Vote for a sector on the map to attack";
+								};
 							} else {
-								(_overlay displayCtrl (205)) ctrlSetText ("Deploy an FOB");
+								_text = "Standby for mission";
 							};
 						} else {
-							(_overlay displayCtrl (205)) ctrlSetText ("Waiting for commander orders");
+							if (_isCommander) then {
+								_text = "Deploy an FOB to start a mission";
+							} else {
+								_text = "Standby for mission";
+							};
 						};
+						(_overlay displayCtrl (205)) ctrlSetText (_text);
 					};
 				};
 			};

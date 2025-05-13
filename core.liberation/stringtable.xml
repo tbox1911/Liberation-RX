@@ -12620,6 +12620,15 @@
 			<Portuguese>Taxa de consumo de combustível normal</Portuguese>
 			<Czech>Normální spotřeba paliva</Czech>
 		</Key>
+		<Key ID="STR_PARAMCAT_COMMANDER">
+			<Original>COMMANDER MODE</Original>
+			<Russian>РЕЖИМ КОМАНДИРА</Russian>
+			<French>MODE COMMANDANT</French>
+			<Chinesesimp>指挥官模式</Chinesesimp>
+			<Chinese>指揮官模式</Chinese>
+			<Portuguese>MODELO DO COMANDANTE</Portuguese>
+			<Czech>REŽIM KOMANDÉRA</Czech>
+		</Key>
 		<Key ID="STR_PARAMS_FUEL_CONSO_OPT3">
 			<Original>Medium fuel consumption rate</Original>
 			<Russian>Средний расход топлива</Russian>
@@ -13584,7 +13593,7 @@
 			<Czech>Povolit perzistentní režim.</Czech>
 		</Key>
 		<Key ID="STR_COMMANDER_MODE_DESC">
-			<Original>Enables commander mode for sector selection.</Original>
+			<Original>Enables commander mode for sector selection instead of the classic proximity based system.</Original>
 			<Russian>Включает режим командира для выбора секторов.</Russian>
 			<French>Active le mode commandant pour la sélection des secteurs.</French>
 			<Chinesesimp>启用指挥模式以选择扇区。</Chinesesimp>
@@ -13593,22 +13602,22 @@
 			<Czech>Povolit režim velitele pro výběr sektorů.</Czech>
 		</Key>
 		<Key ID="STR_COMMANDER_MODE_OPT0">
-			<Original>Disable commander mode</Original>
-			<Russian>Отключить режим командира</Russian>
-			<French>Désactiver le mode commandant</French>
-			<Chinesesimp>禁用指挥模式。</Chinesesimp>
-			<Chinese>禁用指揮模式。</Chinese>
-			<Portuguese>Desativar modo comandante.</Portuguese>
-			<Czech>Zakázat režim velitele.</Czech>
+			<Original>Disable commander mode - sectors will be activated by proximity</Original>
+			<Russian>Отключить режим командира - сектора будут активированы по близости</Russian>
+			<French>Désactiver le mode commandant : les secteurs seront activés par proximité</French>
+			<Chinesesimp>禁用指挥官模式 - 扇区将根据接近度激活</Chinesesimp>
+			<Chinese>禁用指揮官模式 - 扇區將根據接近度激活</Chinese>
+			<Portuguese>Desativar modo comandante - setores serão ativados por proximidade.</Portuguese>
+			<Czech>Zakázat režim velitele - sektory budou aktivovány podle blízkosti.</Czech>
 		</Key>
 		<Key ID="STR_COMMANDER_MODE_OPT1">
-			<Original>Enable commander mode</Original>
-			<Russian>Включить режим командира</Russian>
-			<French>Activer le mode commandant</French>
-			<Chinesesimp>启用指挥模式。</Chinesesimp>
-			<Chinese>啟用指揮模式。</Chinese>
-			<Portuguese>Ativar modo comandante.</Portuguese>
-			<Czech>Povolit režim velitele.</Czech>
+			<Original>Enable commander mode: sectors will be activated by choosing the location on the map either by commander or vote</Original>
+			<Russian>Включить режим командира: сектора будут активированы выбором местоположения на карте либо командиром, либо голосованием</Russian>
+			<French>Activer le mode commandant : les secteurs seront activés en choisissant l’emplacement sur la carte, soit par le commandant, soit par vote</French>
+			<Chinesesimp>启用指挥官模式：扇区将通过指挥官或投票选择地图上的位置来激活。</Chinesesimp>
+			<Chinese>啟用指揮官模式：扇區將通過指揮官或投票選擇地圖上的位置來激活。</Chinese>
+			<Portuguese>Ativar modo comandante: setores serão ativados escolhendo a localização no mapa, seja pelo comandante ou por votação.</Portuguese>
+			<Czech>Povolit režim velitele: sektory budou aktivovány výběrem polohy na mapě buď velitelem, nebo hlasováním.</Czech>
 		</Key>
 		<Key ID="STR_COMMANDER_MODE_RADIUS_DESC">
 			<Original>When the commander chooses a sector to attack, nearby enemy sectors within this range will defend.</Original>
