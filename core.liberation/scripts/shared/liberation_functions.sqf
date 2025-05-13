@@ -66,6 +66,7 @@ F_getUnitsCount = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_getValid = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getValid.sqf";
 F_getVehicleAmmoDef = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getVehicleAmmoDef.sqf";
 F_getVehicleDamage = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getVehicleDamage.sqf";
+F_getVehicleOwner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getVehicleOwner.sqf";
 F_notice_hof = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_notice_hof.sqf";
 F_aceInitVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_aceInitVehicle.sqf";
 F_aceLockVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_aceLockVehicle.sqf";

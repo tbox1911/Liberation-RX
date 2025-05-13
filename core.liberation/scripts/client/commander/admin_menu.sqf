@@ -422,6 +422,20 @@ while { alive player && dialog } do {
 	if (_admin_msg != "") then { [_admin_msg] remoteExec ["diag_log", 2] };
 	if (_msg != "") then { hintSilent _msg;	systemchat _msg };
 	if (GRLIB_force_cleanup) then { ctrlEnable [1629, false] } else { ctrlEnable [1629, true] };
+	if (!isNull cursorObject) then {
+		private _vehicle = cursorObject;
+		private _owner = [_vehicle] call F_getVehicleOwner;
+		private _fuel = round (fuel _vehicle * 100);
+		private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
+		private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
+		private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
+		hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT", _owner, _damage, _fuel, _ammo, _cargo select 0, _cargo select 1];
+	} else {
+		hintSilent "";
+	};
 	sleep 0.5;
 };
 closeDialog 0;
+
+sleep 1;
+hintSilent "";

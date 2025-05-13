@@ -15902,16 +15902,8 @@
 			<Czech>KRITICKÉ: %1 už nebude možné oživit !!</Czech>
 		</Key>
 		<Key ID="STR_PAR_VEHICLE_STATUS_HINT">
-			<Original>Damage: %1%2\nFuel: %3%4\nAmmo: %5%6\nCargo: %7/%8</Original>
-			<French>Dommages : %1%2\nCarburant : %3%4\nMunitions : %5%6\nCharge : %7/%8</French>
-			<German>Schaden: %1%2\nTreibstoff: %3%4\nMunition: %5%6\nLadung: %7/%8</German>
-			<Spanish>Daño: %1%2\nCombustible: %3%4\nMunición: %5%6\nCarga: %7/%8</Spanish>
-			<Russian>Повреждение: %1%2\nТопливо: %3%4\nБоезапас: %5%6\nГруз: %7/%8</Russian>
-			<Chinesesimp>伤害：%1%2\n燃料：%3%4\n弹药：%5%6\n载员：%7/%8</Chinesesimp>
-			<Chinese>傷害：%1%2\n燃料：%3%4\n彈藥：%5%6\n載員：%7/%8</Chinese>
-			<Japanese>損傷：%1%2\n燃料：%3%4\n弾薬：%5%6\n乗員：%7/%8</Japanese>
-			<Portuguese>Danos: %1%2\nCombustível: %3%4\nMunição: %5%6\nCarga: %7/%8</Portuguese>
-			<Czech>Poškození: %1%2\nPalivo: %3%4\nMunice: %5%6\nNáklad: %7/%8</Czech>
+			<Original>Owner: %1\nDamage: %2%%\nFuel: %3%%\nAmmo: %4%%\nCargo: %5/%6</Original>
+			<French>Proprietaire: %1\nDommages: %2%%\nCarburant: %3%%\nMunitions: %4%%\nCargaison: %5/%6</French>
 		</Key>
 		<Key ID="STR_PAR_CM_01">
 			<Original>Bad news %1, your medic (%2) is blocked somewhere... (dist: %3m / try: %4)</Original>

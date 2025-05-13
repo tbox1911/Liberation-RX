@@ -121,7 +121,7 @@ if (_unit == player) then {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
 		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
-		if !(_eject) then {
+		if (!_eject) then {
 			[_vehicle] spawn F_vehicleDefense;
 			1 fadeSound (round desired_vehvolume / 100.0);
 			3 fadeMusic (getAudioOptionVolumes select 1);
@@ -132,11 +132,17 @@ if (_unit == player) then {
 			} else {
 				_vehicle disableTIEquipment false;
 			};
-			private _fuel = round (fuel _vehicle * 100);
-			private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
-			private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
-			private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
-			hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT",_damage, "%", _fuel, "%", _ammo, "%", _cargo select 0, _cargo select 1];
+			[_vehicle] spawn {
+				params ["_vehicle"];
+				private _owner = [_vehicle] call F_getVehicleOwner;
+				private _fuel = round (fuel _vehicle * 100);
+				private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
+				private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
+				private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
+				hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT", _owner, _damage, _fuel, _ammo, _cargo select 0, _cargo select 1];
+				sleep 3;
+				hintSilent "";
+			};
 		};
 	}];
 
@@ -163,6 +169,7 @@ if (_unit == player) then {
 			if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
 			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
 		};
+		hintSilent "";
 	}];
 
 	// Switch seat
