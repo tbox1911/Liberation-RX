@@ -6,7 +6,7 @@ _players_array = [];
 createDialog "liberation_permissions";
 permission_playerid = -1;
 permission_toset = -1;
-save_changes = 0;
+save_changes = false;
 
 color_authorized = [0,0.9,0,1];
 color_denied = [0.9,0,0,1];
@@ -181,12 +181,12 @@ while { dialog && alive player } do {
 
 	} foreach _players_array;
 
-	if ( save_changes == 1 ) then {
+	if ( save_changes) then {
 		GRLIB_permissions = _modify_permissions;
 		publicVariable "GRLIB_permissions";
 		closeDialog 0;
 		[true] remoteExec ["save_game_mp", 2];
 	};
 
-	waitUntil {sleep 0.5; !dialog || !(alive player) || permission_playerid != -1 || permission_toset != -1 || save_changes != 0 };
+	waitUntil {sleep 0.5; !dialog || !(alive player) || permission_playerid != -1 || permission_toset != -1 || save_changes};
 };

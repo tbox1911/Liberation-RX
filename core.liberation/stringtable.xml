@@ -862,16 +862,16 @@
 			<Czech>Recyklovat</Czech>
 		</Key>
 		<Key ID="STR_RECYCLING_CANCEL">
-			<Original>Cancel</Original>
-			<French>Annuler</French>
-			<German>Abbrechen</German>
-			<Spanish>Cancelar</Spanish>
-			<Russian>Отмена</Russian>
-			<Chinesesimp>取消</Chinesesimp>
-			<Chinese>取消</Chinese>
-			<Japanese>キャンセル</Japanese>
-			<Portuguese>Cancelar</Portuguese>
-			<Czech>Zrušit</Czech>
+			<Original>Cancel Changes</Original>
+			<French>Annuler les changements</French>
+			<German>Änderungen abbrechen</German>
+			<Spanish>Cancelar cambios</Spanish>
+			<Russian>Отменить изменения</Russian>
+			<Chinesesimp>取消更改</Chinesesimp>
+			<Chinese>取消更改</Chinese>
+			<Japanese>変更をキャンセル</Japanese>
+			<Portuguese>Cancelar alterações</Portuguese>
+			<Czech>Storno změn</Czech>
 		</Key>
 		<Key ID="STR_NOTIFICATION_ENTER_TERRITORY">
 		&lt;t color='#00e000'&gt;Forgive&lt;/t&gt;
@@ -2954,16 +2954,28 @@
 			<Czech>-- EXPORTOVAT ŠABLONU FOB</Czech>
 		</Key>
 		<Key ID="STR_SAVE_CHANGES">
-			<Original>Save Changes</Original>
-			<French>Sauvegarder</French>
-			<German>Änderungen speichern</German>
-			<Spanish>Guardar cambios</Spanish>
-			<Russian>Сохранить Изменения</Russian>
-			<Chinesesimp>保存更改</Chinesesimp>
-			<Chinese>保存更改</Chinese>
-			<Japanese>変更を保存</Japanese>
-			<Portuguese>Salvar alterações</Portuguese>
-			<Czech>Uložit změny</Czech>
+			<Original>Save and Continue</Original>
+			<French>Enregistrer et continuer</French>
+			<German>Speichern und Fortfahren</German>
+			<Spanish>Guardar y continuar</Spanish>
+			<Russian>Сохранить и продолжить</Russian>
+			<Chinesesimp>保存并继续</Chinesesimp>
+			<Chinese>保存並繼續</Chinese>
+			<Japanese>保存して続行</Japanese>
+			<Portuguese>Salvar e continuar</Portuguese>
+			<Czech>Uložit a pokračovat</Czech>
+		</Key>
+		<Key ID="STR_RESET_CHANGES">
+			<Original>Reset to Default</Original>
+			<French>Réinitialiser par défaut</French>
+			<German>Auf Standard zurücksetzen</German>
+			<Spanish>Restablecer a predeterminado</Spanish>
+			<Russian>Сбросить на стандартные настройки</Russian>
+			<Chinesesimp>重置为默认值</Chinesesimp>
+			<Chinese>重置為默認值</Chinese>
+			<Japanese>デフォルトにリセット</Japanese>
+			<Portuguese>Redefinir para o padrão</Portuguese>
+			<Czech>Obnovit na výchozí hodnoty</Czech>
 		</Key>
 		<Key ID="STR_PERMISSIONS_PARAM">
 			<Original>Permissions Management</Original>
@@ -12624,7 +12636,7 @@
 			<Czech>Normální spotřeba paliva</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_ENABLE_DRONES_DESC">
-			<Original>Enemy can use kamikaze or greande drones (if available in template)</Original>
+			<Original>Enemy can use kamikaze or grenade drones (if available in template)</Original>
 		</Key>
 		<Key ID="STR_PARAMS_ENABLE_DRONES_OPT1">
 			<Original>Enemy cannot use drones</Original>
@@ -13812,7 +13824,7 @@
 			<Czech>Režim velitele</Czech>
 		</Key>
 		<Key ID="STR_COMMANDER_MODE_RADIUS">
-			<Original>Commander Mode: Nearby sector defense activation range</Original>
+			<Original>Nearby sector defense activation range</Original>
 			<Russian>Режим командира: диапазон активации защиты соседних секторов</Russian>
 			<French>Mode commandant : portée d’activation de la défense des secteurs voisins</French>
 			<Chinesesimp>指挥模式：附近扇区防御激活范围</Chinesesimp>

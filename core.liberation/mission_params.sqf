@@ -1080,8 +1080,8 @@ _Mission_Params = [
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_ENABLE_DRONES_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAMS_ENABLE_DRONES_OPT0",
-            localize "STR_PARAMS_ENABLE_DRONES_OPT1"
+            localize "STR_PARAMS_ENABLE_DRONES_OPT1",
+            localize "STR_PARAMS_ENABLE_DRONES_OPT2"
         ]]
     ]],    
     [GRLIB_PARAM_MaxGarageSize, createHashMapFromArray [
@@ -1389,7 +1389,7 @@ _Mission_Params = [
     ]],
     [GRLIB_PARAM_CommanderVoteTimeout, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 60],
-        [GRLIB_PARAM_NameKey, "Commander Mode vote timer duration"],
+        [GRLIB_PARAM_NameKey, "Vote timer duration"],
         [GRLIB_PARAM_OptionLabelKey, ["20s","30s","60s","120s","180s","240s","300s"]],
         [GRLIB_PARAM_OptionValuesKey, [20,30,60,120,180,240,300]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
@@ -1430,19 +1430,201 @@ _Mission_Params = [
     ]]
 ];
 
-// {
-//     _key = _x select 0;
-//     _hash = _x select 1;
-//     _defaultValue = _hash get GRLIB_PARAM_ValueKey;
-//     if (isNil "_defaultValue") then {
-//         _defaultValue = 0;
-//     };
-//     GRLIB_PARAM_ValueKey,
-//     GRLIB_PARAM_NameKey,
-//     GRLIB_PARAM_OptionLabelKey,
-//     GRLIB_PARAM_OptionValuesKey,
-//     GRLIB_PARAM_CategoryKey
-// } forEach _Mission_Params;
+// ParamsValidator
+try {
+    if (isNil "_Mission_Params") then {
+        diag_log "--- LRX: Missing parameters ---";
+        throw "ERROR: Parameters are missing";
+    } else {
+        if (!((typeName _Mission_Params) isEqualTo "ARRAY")) then {
+            diag_log format ["--- LRX: Parameters are not an array ---"];
+            throw "ERROR: Parameters are not an array";
+        } else {
+            if ((_Mission_Params isEqualTo [])) then {
+                diag_log format ["--- LRX: Parameters count is zero ---"];
+                throw "ERROR: Parameters count is zero";
+            };
+        };
+    };
+
+    {
+        _key = _x select 0;
+        if (isNil "_key") then {
+            diag_log format ["--- LRX: Missing parameter key ---"];
+            throw "ERROR: Parameter key is missing";
+        } else {
+            if (!((typeName _key) isEqualTo "STRING")) then {
+                diag_log format ["--- LRX: Parameter key is not a string ---"];
+                throw "ERROR: Parameter key is not a string";
+            } else {
+                if (_key isEqualTo "") then {
+                    diag_log format ["--- LRX: Parameter key is too short ---"];
+                    throw "ERROR: Parameter key is too short";
+                };
+            };
+        };
+        
+        _hash = _x select 1;
+        if (isNil "_hash") then {
+            diag_log format ["--- LRX: Missing hash for parameter %1 ---", str _key];
+            throw "ERROR: Malformed parameters - a parameter is missing the hash";
+        } else {
+            if (!((typeName _hash) isEqualTo "HASHMAP")) then {
+                diag_log format ["--- LRX: Parameter %1 is not a hash ---", str _key];
+                throw "ERROR: Malformed parameters - a parameter is not a hash";
+            };
+        };
+
+        _defaultValue = _hash get GRLIB_PARAM_ValueKey;
+        if (isNil "_defaultValue") then {
+            diag_log format ["--- LRX: Missing default value for parameter %1 ---", str _key];
+            throw "ERROR: Malformed parameters - a parameter is missing the default value";
+        } else {
+            if (!((typeName _defaultValue) isEqualTo "SCALAR") && !((typeName _defaultValue) isEqualTo "STRING")) then { 
+                diag_log format ["--- LRX: Parameter %1 default value is not a number or string ---", str _key];
+                throw "ERROR: Malformed parameters - a parameter default value is not a number or string";
+            } else {
+                if (_defaultValue isEqualTo "") then {
+                    diag_log format ["--- LRX: Parameter %1 default value is too short ---", str _key];
+                    throw "ERROR: Malformed parameters - a parameter default value is too short";
+                };
+            };
+        };
+        _name = _hash get GRLIB_PARAM_NameKey;
+        if (isNil "_name") then {
+            diag_log format ["--- LRX: Missing name for parameter %1 ---", str _key];
+            throw "ERROR: Malformed parameters - a parameter is missing the name";
+        } else {
+            if (!((typeName _name) isEqualTo "STRING")) then {
+                diag_log format ["--- LRX: Parameter %1 name is not a string ---", str _key];
+                throw "ERROR: Malformed parameters - a parameter name is not a string";
+            } else {
+                if (_name isEqualTo "") then {
+                    diag_log format ["--- LRX: Parameter %1 name is too short ---", str _key];
+                    throw "ERROR: Malformed parameters - a parameter name is too short";
+                };
+            };
+        };
+
+        _optionLabel = _hash get GRLIB_PARAM_OptionLabelKey;
+        if (isNil "_optionLabel") then {
+            diag_log format ["--- LRX: Missing option label for parameter %1 ---", str _key];
+            throw "ERROR: Malformed parameters - a parameter is missing the option label";
+        } else {
+            if (!((typeName _optionLabel) isEqualTo "ARRAY")) then {
+                diag_log format ["--- LRX: Parameter %1 option label is not an array ---", str _key];
+                throw "ERROR: Malformed parameters - a parameter option label is not an array";
+            } else {
+                if (((count _optionLabel) <= 0)) then {
+                    diag_log format ["--- LRX: Parameter %1 option label does not match the option values ---", str _key];
+                    throw "ERROR: Malformed parameters - a parameter option label does not match the option values";
+                };
+                {
+                    if (!((typeName _x) isEqualTo "STRING")) then {
+                        diag_log format ["--- LRX: Parameter %1 option label is not a string ---", str _key];
+                        throw "ERROR: Malformed parameters - a parameter option label is not a string";
+                    } else {
+                        if (_x isEqualTo "") then {
+                            diag_log format ["--- LRX: Parameter %1 option label is too short ---", str _key];
+                            throw "ERROR: Malformed parameters - a parameter option label is too short";
+                        };
+                    };
+                } forEach _optionLabel;
+            };
+        };
+
+        _optionValues = _hash get GRLIB_PARAM_OptionValuesKey;
+        if (isNil "_optionValues") then {
+            diag_log format ["--- LRX: Missing option values for parameter %1 ---", str _key];
+            throw "ERROR: Malformed parameters - a parameter is missing the option values";
+        } else {
+            if (!((typeName _optionValues) isEqualTo "ARRAY")) then {
+                diag_log format ["--- LRX: Parameter %1 option values is not an array ---", str _key];
+                throw "ERROR: Malformed parameters - a parameter option values is not an array";
+            } else {
+                if (!((count _optionValues) isEqualTo (count _optionLabel))) then {
+                    diag_log format ["--- LRX: Parameter %1 option values does not match the option label ---", str _key];
+                    throw "ERROR: Malformed parameters - a parameter option values does not match the option label";
+                };
+                {
+                    if (!(_x isEqualType _defaultValue)) then {
+                        diag_log format ["--- LRX: Parameter %1 option values does not match the value type ---", str _key];
+                        throw "ERROR: Malformed parameters - a parameter option values does not match the value type";
+                    };
+                } forEach _optionValues;
+            };
+        };
+
+        _category = _hash get GRLIB_PARAM_CategoryKey;
+        if (isNil "_category") then {
+            diag_log format ["--- LRX: Missing category for parameter %1 ---", str _key];
+            throw "ERROR: Malformed parameters - a parameter is missing the category";
+        } else {
+            if (!((typeName _category) isEqualTo "STRING")) then {
+                diag_log format ["--- LRX: Parameter %1 category is not a string ---", str _key];
+                throw "ERROR: Malformed parameters - a parameter category is not a string";
+            };
+        };
+
+        _description = _hash get GRLIB_PARAM_DescriptionKey;
+        if (isNil "_description") then {
+            diag_log format ["--- LRX: Missing optional description for parameter %1, a description is strongly recommended ---", str _key];
+        } else {
+            if (!((typeName _description) isEqualTo "STRING")) then {
+                diag_log format ["--- LRX: Parameter %1 description is not a string ---", str _key];
+                throw "ERROR: Malformed parameters - a parameter description is not a string";
+            } else {
+                if (_description isEqualTo "") then {
+                    diag_log format ["--- LRX: Parameter %1 description is too short ---", str _key];
+                    throw "ERROR: Malformed parameters - a parameter description is too short";
+                };
+            };
+        };
+
+        _optionDescription = _hash get GRLIB_PARAM_OptionDescriptionKey;
+        if (isNil "_optionDescription") then {
+            diag_log format ["--- LRX: Missing optional option description for parameter %1, a description is strongly recommended ---", str _key];
+        } else {
+            if (!((typeName _optionDescription) isEqualTo "ARRAY")) then {
+                diag_log format ["--- LRX: Parameter %1 option description is not an array ---", str _key];
+                throw "ERROR: Malformed parameters - a parameter option description is not an array";
+            } else {
+                if (!((count _optionDescription) isEqualTo (count _optionLabel))) then {
+                    diag_log format ["--- LRX: Parameter %1 option description does not match the option label ---", str _key];
+                    throw "ERROR: Malformed parameters - a parameter option description does not match the option label";
+                };
+                {
+                    if (!((typeName _x) isEqualTo "STRING")) then {
+                        diag_log format ["--- LRX: Parameter %1 option description is not a string ---", str _key];
+                        throw "ERROR: Malformed parameters - a parameter option description is not a string";
+                    } else {
+                        if (_description isEqualTo "") then {
+                            diag_log format ["--- LRX: Parameter %1 option description is too short ---", str _key];
+                            throw "ERROR: Malformed parameters - a parameter option description is too short";
+                        };
+                    };
+                } forEach _optionDescription;
+            };
+        };
+    } forEach _Mission_Params;
+} catch {
+    diag_log format ["--- LRX: Error in mission parameters ---"];
+    systemChat format ["--- LRX: Error in mission parameters ---"];
+    endMission "END2";
+    forceEnd;
+};
 
 LRX_Mission_Params = compileFinal createHashMapFromArray _Mission_Params;
-LRX_ParamArray = _Mission_Params apply {_x#0};
+
+// Group the parameters by category - respects order of params
+_groupedParams = createHashMap;
+{
+	_key = _x#0;
+	_hash = _x#1;
+	_category = _hash get GRLIB_PARAM_CategoryKey;
+	_groupParams = _groupedParams getOrDefault [_category, []];
+	_groupParams pushBack [_key, _hash];
+	_groupedParams set [_category, _groupParams];
+} forEach _Mission_Params;
+
+GRLIB_groupedParams = compileFinal _groupedParams;
