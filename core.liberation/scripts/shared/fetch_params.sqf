@@ -97,12 +97,11 @@ GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
 GRLIB_use_exclusive = ["Exclusive",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
-GRLIB_param_wipe_params = ["WipeSave3",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_context = ["WipeContext",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
 GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 
-private _trim_Params = {
+GRLIB_trim_Params = {
 	params["_params"];
 	_trimmed = createHashMapFromArray (_params apply {
 		[_x, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _y get GRLIB_PARAM_ValueKey]]]
@@ -113,63 +112,66 @@ private _trim_Params = {
 diag_log "--- LRX: Loading settings ---";
 // Load Mission settings
 if (isServer) then {
-	// Reset LRX Settings
-	if (GRLIB_param_wipe_params == 1) then {
-		diag_log "--- LRX: settings resetting ---";
-		GRLIB_LRX_params = [LRX_Mission_Params] call _trim_Params;
-	} else {
-		_savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
-		if ( isNil "_savedParams" ) then {
-			diag_log "--- LRX: No saved settings found, loading default ---";
-			_savedParams = +LRX_Mission_Params;
-			_v1Params = profileNamespace getVariable [GRLIB_paramsV1_save_key, nil];
-			if (!isNil "_v1Params") then {
-				// Convert V1 to V2
-				diag_log format ["--- LRX: Old settings format detected, converting to new ---"];
-				{
-					_key = _x select 0;
-					if (!(_key isEqualTo GRLIB_PARAM_separatorKey)) then {
-						_value = _x select 1;
-						_newParamHash = LRX_Mission_Params get _key;
-						// Dont add obsolete params
-						if (!isNil "_newParamHash") then {
-							_defaultValue = _newParamHash get GRLIB_PARAM_ValueKey;
-							if ((typeName _value) isEqualTo (typeName _defaultValue) && {_value in (_newParamHash get GRLIB_PARAM_OptionValuesKey)}) then {
-								// Only value needs to be saved
-								_updateHash = createHashMap;
-								_updateHash set [GRLIB_PARAM_ValueKey, _value];
-								_savedParams set [_key, _updateHash];
-							};
+
+	_savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
+	if ( isNil "_savedParams" ) then {
+		diag_log "--- LRX: No saved settings found, loading default ---";
+		_savedParams = +LRX_Mission_Params;
+		_v1Params = profileNamespace getVariable [GRLIB_paramsV1_save_key, nil];
+		if (!isNil "_v1Params") then {
+			// Convert V1 to V2
+			diag_log format ["--- LRX: Old settings format detected, converting to new ---"];
+			{
+				_key = _x select 0;
+				if (!(_key isEqualTo GRLIB_PARAM_separatorKey)) then {
+					_value = _x select 1;
+					_newParamHash = LRX_Mission_Params get _key;
+					// Dont add obsolete params
+					if (!isNil "_newParamHash") then {
+						_defaultValue = _newParamHash get GRLIB_PARAM_ValueKey;
+						if ((_value isEqualType _defaultValue) && {_value in (_newParamHash get GRLIB_PARAM_OptionValuesKey)}) then {
+							_savedParams set [_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _value]]];
 						};
 					};
-				} forEach _v1Params;
-			};
-			// Trim - Only value needs to be saved
-			GRLIB_LRX_params = [_savedParams] call _trim_Params;
-		} else {
-			diag_log "--- LRX: settings found - cleaning ---";
-			_savedParams = [_savedParams] call _trim_Params;
-			{
+				};
+			} forEach _v1Params;
+		};
+		GRLIB_LRX_params = [_savedParams] call GRLIB_trim_Params;
+	} else {
+		diag_log "--- LRX: settings found - cleaning ---";
+		_cleanedParams = createHashMap;
+		{
+			if (!(isNil "_x") && !(isNil "_y") && {(typeName _x) isEqualTo "STRING" && (typeName _y) isEqualTo "HASHMAP"}) then {
 				_key = _x;
 				_hash = _y;
 				_value = _y get GRLIB_PARAM_ValueKey;
 				_defParamHash = LRX_Mission_Params get _key;
 				if (isNil "_defParamHash") then {
 					// Delete outdated params
-					_savedParams deleteAt _key;
 					diag_log format ["--- LRX: removing outdated setting: %1 ---", str _key];
 				} else {
 					_defaultValue = _defParamHash get GRLIB_PARAM_ValueKey;
-					if (!((typeName _value) isEqualTo (typeName _defaultValue)) || {!(_value in (_defParamHash get GRLIB_PARAM_OptionValuesKey))}) then {
+					if (isNil "_value" || {!(_value isEqualType _defaultValue) || {!(_value in (_defParamHash get GRLIB_PARAM_OptionValuesKey))}}) then {
 						// Reset invalid values
 						diag_log format ["--- LRX: resetting invalid setting: %1 - %2 to %3 ---", str _key, str _value, str _defaultValue];
-						_hash set [GRLIB_PARAM_ValueKey, _defaultValue];
-						_savedParams set [_key, _hash];
+						if (!(isNil "_defaultValue")) then {
+							_cleanedParams set [_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _defaultValue]]];
+						} else {
+							// Something is wrong with this parameter
+							diag_log format ["--- LRX: system error, default value not found for setting %1 ---", str _key];
+						};
+					} else {
+						// Valid value
+						_cleanedParams set [_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _value]]];
 					};
 				};
-			} forEach _savedParams;
-			GRLIB_LRX_params = _savedParams;
-		};
+			} else {
+				// Delete invalid params
+				diag_log format ["--- LRX: removing invalid setting ---"];
+			};
+		} forEach _savedParams;
+		
+		GRLIB_LRX_params = _cleanedParams;
 	};
 
 	publicVariable "GRLIB_LRX_params";
@@ -180,15 +182,191 @@ if (isServer) then {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
 };
 
-// Open Mission Parameters
-if (isNil "GRLIB_param_open_params") then {
-	GRLIB_param_open_params = ["OpenParams", 0] call bis_fnc_getParamValue;
+// Group the parameters by category - respects order of params
+GRLIB_groupedParams = createHashMap;
+{
+	_key = _x;
+	_hash = LRX_Mission_Params get _key;
+	_category = _hash get GRLIB_PARAM_CategoryKey;
+	_groupParams = GRLIB_groupedParams getOrDefault [_category, []];
+	_groupParams pushBack [_key, _hash];
+	GRLIB_groupedParams set [_category, _groupParams];
+} forEach LRX_ParamArray;
+
+GRLIB_ParamControls = [];
+
+GRLIB_SetupParamMenu = {
+	private _display = findDisplay 5119;
+	private _idx = 1;
+
+	{
+		_category = _x;
+		_paramArray = GRLIB_groupedParams get _category;
+		if (!isNil "_paramArray") then {
+			_control = _display ctrlCreate [ "RscBackground", -1, _display displayCtrl 9969 ];
+			_control ctrlSetPosition [ 0, (_idx * 0.025) * safezoneH, 0.595 * safeZoneW, 0.025 * safezoneH];
+			_control ctrlSetBackgroundColor [0,0,0.80,0.12];
+			_control ctrlCommit 0;
+			GRLIB_ParamControls pushBack _control;
+
+			_control = _display ctrlCreate [ "RscText", (100 + _idx), _display displayCtrl 9969 ];
+			_control ctrlSetPosition [ 0,  (_idx * 0.025) * safezoneH, 0.5 * safeZoneW, 0.025  * safezoneH];
+			_control ctrlSetText format ["%1 %2 %1", GRLIB_PARAM_separatorKey, _category];
+			_control ctrlCommit 0;
+			GRLIB_ParamControls pushBack _control;
+
+			_idx = _idx + 1;
+
+			{
+				_key = _x select 0;
+				_hash = _x select 1;
+				if ( _idx % 2 == 0 ) then {
+					_control = _display ctrlCreate [ "RscBackground", -1, _display displayCtrl 9969 ];
+					_control ctrlSetPosition [ 0, (_idx * 0.025) * safezoneH, 0.595 * safeZoneW, 0.025 * safezoneH];
+					_control ctrlSetBackgroundColor [0.75,1,0.75,0.12];
+					_control ctrlCommit 0;
+					GRLIB_ParamControls pushBack _control;
+				};	
+				_control = _display ctrlCreate [ "RscText", (100 + _idx), _display displayCtrl 9969 ];
+				_control ctrlSetPosition [ 0,  (_idx * 0.025) * safezoneH, 0.45 * safeZoneW, 0.025  * safezoneH];
+				_control ctrlSetText (_hash get GRLIB_PARAM_NameKey);
+				_description = _hash get GRLIB_PARAM_DescriptionKey;
+				if (!isNil "_description") then {
+					_control ctrlSetTooltip _description;
+				};
+				_control ctrlCommit 0;
+				GRLIB_ParamControls pushBack _control;
+
+				_control = _display ctrlCreate [ "RscCombo", (200 + _idx), _display displayCtrl 9969 ];
+				_control ctrlSetPosition [ ((0.072 * 6.5) - 0.02) * safeZoneW, ((_idx * 0.025) * safezoneH) + 0.0025, ((0.072 * 2) * safeZoneW), 0.022  * safezoneH];
+				_control ctrlSetBackgroundColor [0.2,0.23,0.18,0.85];
+				if ( _idx % 2 == 0 ) then {
+					_control ctrlSetBackgroundColor [0.27,0.30,0.23,0.85];
+				};
+				GRLIB_ParamControls pushBack _control;
+
+				{ 
+					_control lbAdd _x;
+				} forEach (_hash get GRLIB_PARAM_OptionLabelKey);
+				_optionDescription = _hash getOrDefault [GRLIB_PARAM_OptionDescriptionKey, []];
+				{ 
+					
+					_control lbSetTooltip [_forEachIndex, _x];
+				} forEach _optionDescription;
+
+				_default = _hash get GRLIB_PARAM_ValueKey;
+				_selection = (GRLIB_ModParams getOrDefault [_key, _hash]) getOrDefault [GRLIB_PARAM_ValueKey, _default];
+				_values = _hash get GRLIB_PARAM_OptionValuesKey;
+				if (count (_values) > 0) then {
+					_selection = (_values) find _selection;
+					if (_selection == -1) then { _selection = 0 };
+				};
+				_control lbSetCurSel _selection;
+				_control ctrlAddEventHandler ["LBSelChanged", format ["[(_this#1),%1] call GRLIB_SetValue;", str _key]];
+				_control ctrlCommit 0;
+				_idx = _idx + 1;
+			} forEach _paramArray;
+		};
+	} foreach GRLIB_PARAM_CatOrder;
+	
 };
-if (GRLIB_param_open_params == 1) then {
+
+GRLIB_SetValue = {
+	params ["_lbCurSel", "_key"];
+	_parHash = LRX_Mission_Params get _key;
+	_values = _parHash get GRLIB_PARAM_OptionValuesKey;
+	_newValue = _values#_lbCurSel;
+	GRLIB_ModParams set [_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _newValue]]];
+};
+
+GRLIB_CreateParamDialog = {
+	[] call GRLIB_CloseDialog;
+	createDialog "liberation_params";
+	waitUntil { dialog };
+
+	private _display = findDisplay 5119;
+
+	private _control = _display ctrlCreate ["RscText", (100 + 0), _display displayCtrl 9969];
+	_control ctrlSetPosition [0,  (0 * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
+	_control ctrlSetText format ["Parameters Profile name: %1", GRLIB_paramsV2_save_key];
+	_control ctrlSetTextColor [0.5,0.5,0.5,1];
+	_control ctrlCommit 0;
+	[] call GRLIB_SetupParamMenu;
+
+	// Instead of disabling the escape key, lets just reopen the dialog if it somehow gets closed - until the player saves, cancels, or used the game menu to exit the mission - i personally hate disabling players keys it makes them feel trapped
+	GRLIB_DialogOpen = true;
+	0 spawn {
+		while {GRLIB_DialogOpen} do {
+			if (!dialog) exitWith {
+				0 spawn GRLIB_CreateParamDialog;
+			};	
+			sleep 1;
+		};
+	};
+};
+
+GRLIB_refreshDialog = {
+	// Reset the dialog without closing it
+	{
+		ctrlDelete _x;
+	} forEach GRLIB_ParamControls;
+	GRLIB_ParamControls = [];
+	[] call GRLIB_SetupParamMenu;
+};
+
+GRLIB_resetParams = {
+	GRLIB_ModParams = [LRX_Mission_Params] call GRLIB_trim_Params;
+	[] call GRLIB_refreshDialog;
+};
+
+GRLIB_cancelParams = {
+	GRLIB_ModParams = +GRLIB_LRX_params;
+	[] call GRLIB_refreshDialog;
+};
+
+GRLIB_saveParams = {
+	[] call GRLIB_CloseDialog;
+	[
+		[GRLIB_ModParams],
+		{
+			params ["_params"];
+			profileNamespace setVariable [GRLIB_paramsV2_save_key, _params];
+			saveProfileNamespace;
+			GRLIB_LRX_params = _params;
+			publicVariable "GRLIB_LRX_params";
+			GRLIB_InitialParamsSet = true;
+			publicVariable "GRLIB_InitialParamsSet";
+		}
+	] remoteExec ["bis_fnc_call", 2];
+
+	waitUntil { sleep 0.5; GRLIB_InitialParamsSet};
+
+	// If dialog opened mid-game - we may be able to upgrade this to modify variables mid-game
+	if (!(isNil "GRLIB_init_server")) then {
+		[localize "STR_MISSION_RESTART_REQUIRED",localize "STR_LRX_SETTINGS_TITLE",true] call BIS_fnc_guiMessage;
+	};
+};
+
+GRLIB_CloseDialog = {
+	// Close the dialog
+	GRLIB_DialogOpen = false;
+	closeDialog 0;
+	GRLIB_ParamControls = [];
+};
+
+GRLIB_DialogOpen = false;
+GRLIB_ModParams = +GRLIB_LRX_params;
+
+if (isNil "GRLIB_InitialParamsSet") then {
+	GRLIB_InitialParamsSet = (["OpenParams", 1] call bis_fnc_getParamValue) == 0;
+};
+
+if (!GRLIB_InitialParamsSet) then {
+	// Open Mission Parameters - only called by client
 	if (!isDedicated && hasInterface) then {
 		[] execVM "scripts\client\commander\open_params.sqf";
 	};
-	waitUntil { sleep 1; GRLIB_param_open_params == 0 };
+	waitUntil { sleep 1; GRLIB_InitialParamsSet };
 };
 
 // LRX Selectable

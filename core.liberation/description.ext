@@ -72,6 +72,13 @@ class CfgDebriefing {
 		description = $STR_COMMANDER_NOT_AUTHORIZED;
 		pictureBackground = "";
 	};
+	class End2
+	{
+		title =	"Parameter Error";
+		subtitle = "";
+		description = "One of the parameters in or the entirety of _Mission_Params is incorrect, please check the parameters to make sure they are in the correct format. Check the report file for more information";
+		pictureBackground = "";
+	};
 };
 
 #include "GREUH\UI\GREUH_interface.hpp"

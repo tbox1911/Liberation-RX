@@ -2,7 +2,7 @@ class liberation_params {
 	idd = 5119;
 	movingEnable = false;
 	controlsBackground[] = {};
-	controls[] = { "OuterBG1", "OuterBG_F1", "InnerBG1", "InnerBG_F1", "Header", "ButtonSave", "ButtonCancel", "MissionsControlGroup" };
+	controls[] = { "OuterBG1", "OuterBG_F1", "InnerBG1", "InnerBG_F1", "Header", "ButtonReset", "ButtonSave", "ButtonCancel", "MissionsControlGroup" };
 	objects[] = {};
 
 	class OuterBG1 : StdBG{
@@ -73,23 +73,33 @@ class liberation_params {
 	 	class Controls {};
 	 };
 
-	 class ButtonSave : StdButton{
-	 	idc = 751;
-		x = 0.4 * safezoneW + safezoneX;
-		y = 0.77 * safezoneH + safezoneY;
-		w = 0.09 * safezoneW;
-		h = 0.035 * safezoneH;
-		text = $STR_SAVE_CHANGES;
-		action = "save_changes = 1; closeDialog 0";
+	class ButtonCancel : StdButton {
+		idc    = 752;
+		x      = 0.355 * safezoneW + safezoneX;
+		y      = 0.77  * safezoneH + safezoneY;
+		w      = 0.09  * safezoneW;
+		h      = 0.035 * safezoneH;
+		text   = $STR_RECYCLING_CANCEL;
+		action = "[] spawn GRLIB_cancelParams;";
 	};
 
-	class ButtonCancel : StdButton{
-		idc = 752;
-		x = 0.5 * safezoneW + safezoneX;
-		y = 0.77 * safezoneH + safezoneY;
-		w = 0.09 * safezoneW;
-		h = 0.035 * safezoneH;
-		text = $STR_RECYCLING_CANCEL;
-		action = "if (GRLIB_param_open_params == 1) then { endMission 'LOSER' }; closeDialog 0";
+	class ButtonReset : StdButton {
+		idc    = 755;
+		x      = (0.355 + 0.09 + 0.01) * safezoneW + safezoneX;  // 0.455
+		y      = 0.77  * safezoneH + safezoneY;
+		w      = 0.09  * safezoneW;
+		h      = 0.035 * safezoneH;
+		text   = $STR_RESET_CHANGES;
+		action = "[] spawn GRLIB_resetParams;";
+	};
+
+	class ButtonSave : StdButton {
+		idc    = 751;
+		x      = 0.70 * safezoneW + safezoneX;
+		y      = 0.77 * safezoneH + safezoneY;
+		w      = 0.09 * safezoneW;
+		h      = 0.035 * safezoneH;
+		text   = $STR_SAVE_CHANGES;
+		action = "[] spawn GRLIB_saveParams;";
 	};
 };
