@@ -89,6 +89,8 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	*********************************"];
 };
 
+_isClient = !isDedicated && hasInterface;
+
 // Mission Parameter constant
 [] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
 
@@ -97,12 +99,11 @@ GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
 GRLIB_use_exclusive = ["Exclusive",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
-GRLIB_param_wipe_params = ["WipeSave3",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_context = ["WipeContext",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
 GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 
-private _trim_Params = {
+GRLIB_trim_Params = {
 	params["_params"];
 	_trimmed = createHashMapFromArray (_params apply {
 		[_x, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _y get GRLIB_PARAM_ValueKey]]]
@@ -110,65 +111,74 @@ private _trim_Params = {
 	_trimmed;
 };
 
+GRLIB_DefaultParams = {
+	[LRX_Mission_Params] call GRLIB_trim_Params;
+};
+
 diag_log "--- LRX: Loading settings ---";
 // Load Mission settings
 if (isServer) then {
-	// Reset LRX Settings
-	if (GRLIB_param_wipe_params == 1) then {
-		diag_log "--- LRX: settings resetting ---";
-		GRLIB_LRX_params = [LRX_Mission_Params] call _trim_Params;
-	} else {
-		_savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
-		if ( isNil "_savedParams" ) then {
-			diag_log "--- LRX: No saved settings found, loading default ---";
-			_savedParams = +LRX_Mission_Params;
-			_v1Params = profileNamespace getVariable [GRLIB_paramsV1_save_key, nil];
-			if (!isNil "_v1Params") then {
-				// Convert V1 to V2
-				diag_log format ["--- LRX: Old settings format detected, converting to new ---"];
-				{
-					_key = _x select 0;
-					if (!(_key isEqualTo GRLIB_PARAM_separatorKey)) then {
-						_value = _x select 1;
-						_newParamHash = LRX_Mission_Params get _key;
-						// Dont add obsolete params
-						if (!isNil "_newParamHash") then {
-							_defaultValue = _newParamHash get GRLIB_PARAM_ValueKey;
-							if ((typeName _value) isEqualTo (typeName _defaultValue) && {_value in (_newParamHash get GRLIB_PARAM_OptionValuesKey)}) then {
-								// Only value needs to be saved
-								_updateHash = createHashMap;
-								_updateHash set [GRLIB_PARAM_ValueKey, _value];
-								_savedParams set [_key, _updateHash];
-							};
+	_savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
+	if (isNil "_savedParams" ) then {
+		diag_log "--- LRX: No saved settings found, loading default ---";
+		_savedParams = [] call GRLIB_DefaultParams;
+		_v1Params = profileNamespace getVariable [GRLIB_paramsV1_save_key, nil];
+		if (!(isNil "_v1Params") && {(typeName _v1Params) isEqualTo "ARRAY"}) then {
+			// Convert V1 to V2
+			diag_log format ["--- LRX: Old settings format detected, converting to new ---"];
+			{
+				if (!(isNil "_x") && {(typeName _x) isEqualTo "ARRAY" && {!(isNil {_x select 0}) && {!(isNil {_x select 1}) && {!((_x#0) isEqualTo GRLIB_PARAM_separatorKey) && (typeName (_x#0)) isEqualTo "STRING"}}}}) then {
+					_key = (_x#0);
+					_newParamHash = LRX_Mission_Params get _key;
+					if (!(isNil "_newParamHash")) then {
+						_savedValue = (_x#1);
+						_defaultValue = _newParamHash get GRLIB_PARAM_ValueKey;
+						if ((_savedValue isEqualType _defaultValue) && {_savedValue in (_newParamHash get GRLIB_PARAM_OptionValuesKey)}) then {
+							_savedParams set [_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _savedValue]]];
 						};
 					};
-				} forEach _v1Params;
-			};
-			// Trim - Only value needs to be saved
-			GRLIB_LRX_params = [_savedParams] call _trim_Params;
+				};
+			} forEach _v1Params;
+		};
+		GRLIB_LRX_params = _savedParams;
+	} else {
+		if (typeName _savedParams != "HASHMAP") then {
+			diag_log format ["--- LRX: settings found but not a hashMap - resetting ---"];
+			GRLIB_LRX_params = [] call GRLIB_DefaultParams;
 		} else {
 			diag_log "--- LRX: settings found - cleaning ---";
-			_savedParams = [_savedParams] call _trim_Params;
+			_cleanedParams = createHashMap;
 			{
-				_key = _x;
-				_hash = _y;
-				_value = _y get GRLIB_PARAM_ValueKey;
-				_defParamHash = LRX_Mission_Params get _key;
-				if (isNil "_defParamHash") then {
-					// Delete outdated params
-					_savedParams deleteAt _key;
-					diag_log format ["--- LRX: removing outdated setting: %1 ---", str _key];
-				} else {
-					_defaultValue = _defParamHash get GRLIB_PARAM_ValueKey;
-					if (!((typeName _value) isEqualTo (typeName _defaultValue)) || {!(_value in (_defParamHash get GRLIB_PARAM_OptionValuesKey))}) then {
-						// Reset invalid values
-						diag_log format ["--- LRX: resetting invalid setting: %1 - %2 to %3 ---", str _key, str _value, str _defaultValue];
-						_hash set [GRLIB_PARAM_ValueKey, _defaultValue];
-						_savedParams set [_key, _hash];
+				if (!(isNil "_x") && !(isNil "_y") && {(typeName _x) isEqualTo "STRING" && (typeName _y) isEqualTo "HASHMAP"}) then {
+					_key = _x;
+					_hash = _y;
+					_value = _y get GRLIB_PARAM_ValueKey;
+					_defParamHash = LRX_Mission_Params get _key;
+					if (isNil "_defParamHash") then {
+						// Delete outdated params
+						diag_log format ["--- LRX: removing outdated setting: %1 ---", str _key];
+					} else {
+						_defaultValue = _defParamHash get GRLIB_PARAM_ValueKey;
+						if (isNil "_value" || {!(_value isEqualType _defaultValue) || {!(_value in (_defParamHash get GRLIB_PARAM_OptionValuesKey))}}) then {
+							// Reset invalid values
+							diag_log format ["--- LRX: resetting invalid setting: %1 - %2 to %3 ---", str _key, str _value, str _defaultValue];
+							if (!(isNil "_defaultValue")) then {
+								_cleanedParams set [_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _defaultValue]]];
+							} else {
+								// Something is wrong with this parameter
+								diag_log format ["--- LRX: system error, default value not found for setting %1 ---", str _key];
+							};
+						} else {
+							// Valid value
+							_cleanedParams set [_key, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _value]]];
+						};
 					};
+				} else {
+					// Delete invalid params
+					diag_log format ["--- LRX: removing invalid setting ---"];
 				};
 			} forEach _savedParams;
-			GRLIB_LRX_params = _savedParams;
+			GRLIB_LRX_params = _cleanedParams;
 		};
 	};
 
@@ -180,15 +190,20 @@ if (isServer) then {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
 };
 
-// Open Mission Parameters
-if (isNil "GRLIB_param_open_params") then {
-	GRLIB_param_open_params = ["OpenParams", 0] call bis_fnc_getParamValue;
+// Client only
+if (_isClient) then {
+	call compileFinal preprocessFileLineNumbers "scripts\client\ui\settings_menu.sqf";
 };
-if (GRLIB_param_open_params == 1) then {
-	if (!isDedicated && hasInterface) then {
+
+if (isNil "GRLIB_ParamsInitialized") then {
+	GRLIB_ParamsInitialized = (["OpenParams", 1] call bis_fnc_getParamValue) == 0;
+};
+
+if (!GRLIB_ParamsInitialized) then {
+	if (_isClient) then {
 		[] execVM "scripts\client\commander\open_params.sqf";
 	};
-	waitUntil { sleep 1; GRLIB_param_open_params == 0 };
+	waitUntil { sleep 1; GRLIB_ParamsInitialized };
 };
 
 // LRX Selectable

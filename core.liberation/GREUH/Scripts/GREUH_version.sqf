@@ -85,16 +85,6 @@ player createDiarySubject ["LRX Info", "Settings"];
 private _diary = [];
 private ["_name", "_param_value_list", "_param_value", "_param_data", "_param_text"];
 
-private _groupedParams = createHashMap;
-{
-	_key = _x;
-	_hash = _y;
-	_category = _hash get GRLIB_PARAM_CategoryKey;
-	_groupParams = _groupedParams getOrDefault [_category, []];
-	_groupParams pushBack [_key, _hash];
-	_groupedParams set [_category, _groupParams];
-} forEach LRX_Mission_Params;
-
 {
 	_name = _x;
 	_diary pushBack format ["%1 <font color='#0080f0'>%2</font> %1", "---", _name];
@@ -110,7 +100,7 @@ private _groupedParams = createHashMap;
 		_param_text = (_param_data select 1) select _param_value;
 		_diary pushBack format ["%1: <font color='#ff8000'>%2</font>", _paramName, _param_text];
 	} forEach _paramArray;
-} foreach _groupedParams;
+} foreach GRLIB_groupedParams;
 reverse _diary;
 { player createDiaryRecord ["LRX Info", ["Settings", _x]] } forEach _diary;
 player createDiaryRecord ["LRX Info", ["Settings", format ["Build version: <font color='#ff8000'>%1</font>", GRLIB_build_version]]];

@@ -93,7 +93,7 @@ class liberation_permissions {
 		w = 0.09 * safezoneW;
 		h = 0.035 * safezoneH;
 		text = $STR_SAVE_CHANGES;
-		action = "save_changes = 1";
+		action = "save_changes = true";
 	};
 
 	class ButtonCancel : StdButton{
