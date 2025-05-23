@@ -2,7 +2,7 @@ private _cost = support_vehicles select { (_x select 0) == canister_fuel_typenam
 private _result = [format [localize "STR_DO_BUYFUEL", _cost], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 if (!_result) exitWith {};
 
-buildtype = 9;
+buildtype = GRLIB_BuildTypeDirect;
 build_unit = [canister_fuel_typename,[],1,[],[],[],[]];
 dobuild = 1;
 

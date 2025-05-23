@@ -159,7 +159,7 @@ while { dialog && alive player } do {
 			private _result = [_msg, localize "STR_SHOP_BUY", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {
 				_veh_class = _buy_list_dlg select _selected_item select 0;
-				buildtype = 9;
+				buildtype = GRLIB_BuildTypeDirect;
 				build_unit = [_veh_class,[],1,[],[],[],[]];
 				dobuild = 1;
 				closeDialog 0;

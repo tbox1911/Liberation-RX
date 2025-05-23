@@ -13,7 +13,7 @@ if (_nb_unit > 8) then {_taxi_type = selectRandom taxi_type_14};
 if (isNil "_taxi_type") exitWith {hintSilent format ["No Taxi exist for this group size (%1)", _nb_unit]};
 
 // Check dest place
-buildtype = 9;
+buildtype = GRLIB_BuildTypeDirect;
 build_unit = [taxi_helipad_type,[],1,[],[],[],[]];
 dobuild = 1;
 

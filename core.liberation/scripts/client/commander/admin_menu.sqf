@@ -208,7 +208,7 @@ while { alive player && dialog } do {
 		do_spawn = 0;
 		if (isNil "_veh_class") exitWith {};
 		_admin_msg = format ["Admin (%1) build vehicle %2 (%3)", name player, _veh_text, _veh_class];
-		buildtype = 9;
+		buildtype = GRLIB_BuildTypeDirect;
 		build_unit = [_veh_class,[],1,[],[],[],[]];
 		dobuild = 1;
 		last_build = (lbCurSel _build_combo);
