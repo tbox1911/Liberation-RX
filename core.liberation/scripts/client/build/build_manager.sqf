@@ -73,39 +73,39 @@ while { true } do {
 	// Init build properties
 	if ( _buildtype in [GRLIB_BuildingBuildType,GRLIB_TrenchBuildType] ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
 
-    // Configure build properties based on _buildtype using switch-case
-    switch _buildtype do {
-        case 99: {
-            _classname = FOB_typename;
-            _price = 0;
-            _price_fuel = 0;
-            _fob_box = build_vehicle;
-        };
-        case 98: {
-            _classname = FOB_outpost;
-            _price = 0;
-            _price_fuel = 0;
-            _fob_box = build_vehicle;
-        };
-        case 97: {
-            _classname = FOB_carrier;
-            _price = 0;
-            _price_fuel = 0;
-            _fob_box = build_vehicle;
-        };
-        case GRLIB_BuildTypeDirect: {
-            _price = 0;
-            _price_fuel = 0;
-            _classname = build_unit select 0;
-            _color = build_unit select 1;
-            _ammo = build_unit select 2;
-            _compo = build_unit select 3;
-            _lst_a3 = build_unit select 4;
-            _lst_r3f = build_unit select 5;
-            _lst_grl = build_unit select 6;
-            build_altitude = 0.4;
-        };
-        default {
+	// Configure build properties based on _buildtype using switch-case
+	switch _buildtype do {
+		case 99: {
+			_classname = FOB_typename;
+			_price = 0;
+			_price_fuel = 0;
+			_fob_box = build_vehicle;
+		};
+		case 98: {
+			_classname = FOB_outpost;
+			_price = 0;
+			_price_fuel = 0;
+			_fob_box = build_vehicle;
+		};
+		case 97: {
+			_classname = FOB_carrier;
+			_price = 0;
+			_price_fuel = 0;
+			_fob_box = build_vehicle;
+		};
+		case GRLIB_BuildTypeDirect: {
+			_price = 0;
+			_price_fuel = 0;
+			_classname = build_unit select 0;
+			_color = build_unit select 1;
+			_ammo = build_unit select 2;
+			_compo = build_unit select 3;
+			_lst_a3 = build_unit select 4;
+			_lst_r3f = build_unit select 5;
+			_lst_grl = build_unit select 6;
+			build_altitude = 0.4;
+		};
+		default {
 			_score = [player] call F_getScore;
 			_build_list = (build_lists select _buildtype) select { _score >= (_x select 4) };
 			_build = _build_list select _buildindex;
@@ -118,8 +118,8 @@ while { true } do {
 			_lst_a3 = [];
 			_lst_r3f = [];
 			_lst_grl = [];
-        };
-    };
+		};
+	};
 
 	// Build
 	_pos = getPosATL player;
@@ -180,7 +180,7 @@ while { true } do {
 		if (_classname == FOB_carrier) then {
 			_ghost_name = "VR_3DSelector_01_default_F";
 		};
-    	_vehicle = _ghost_name createVehicleLocal _ghost_spot;
+		_vehicle = _ghost_name createVehicleLocal _ghost_spot;
 		_vehicle allowdamage false;
 		_vehicle enableSimulation false;
 		_vehicle setVehicleLock "LOCKED";
@@ -190,44 +190,46 @@ while { true } do {
 		_radius = ((round((sizeOf _classname)/2) max 3.5) min 20);
 		_dist = ((round(_radius / 2) + 1.5) min 5);
 
-        // Customize by classname using switch-case
-        switch _classname do {
-            case FOB_carrier: {
-                _dist = 35;
-                build_rotation = 90;
-            };
-            case "Land_BagBunker_Tower_F": {
-                build_rotation = 90;
-                build_altitude = -0.2;
-            };
-            case "Land_vn_bunker_big_02": {
-                build_rotation = 270;
-            };
-            case "Land_vn_b_trench_bunker_01_02": {
-                build_rotation = 270;
-                build_altitude = -0.2;
-            };
+		// Customize by classname using switch-case
+		switch _classname do {
+			case FOB_carrier: {
+				_dist = 35;
+				build_rotation = 90;
+			};
+			case "Land_BagBunker_Tower_F": {
+				build_rotation = 90;
+				build_altitude = -0.2;
+			};
+			case "Land_vn_bunker_big_02": {
+				build_rotation = 270;
+			};
+			case "Land_vn_b_trench_bunker_01_02": {
+				build_rotation = 270;
+				build_altitude = -0.2;
+			};
 			case "Land_TrenchFrame_01_F";
 			case "Land_Trench_01_grass_F";
-            case "Land_Trench_01_forest_F": {
-                build_rotation = 180;
-                build_altitude = 2;
-            };
-			case "Land_ShellCrater_02_small_F";
+			case "Land_Trench_01_forest_F": {
+				build_rotation = 180;
+				build_altitude = 2;
+			};
+			case "Land_ShellCrater_02_small_F": {
+				build_altitude = 0.5;
+			};
 			case "Land_ShellCrater_02_large_F";
-            case "Land_ShellCrater_02_extralarge_F": {
-                build_altitude = 1;
-            };
-            default {
-                if (_classname isKindOf "Slingload_base_F") then {
+			case "Land_ShellCrater_02_extralarge_F": {
+				build_altitude = 1;
+			};
+			default {
+				if (_classname isKindOf "Slingload_base_F") then {
 					_radius = 5;
 				};
-            };
-        };
-        _dist = 3 max _dist;
+			};
+		};
+		_dist = 3 max _dist;
 
 		// Improved retexture for preview
-        {
+		{
 			_vehicle setObjectMaterial [_forEachIndex, "\a3\data_f\default.rvmat"];
 			_vehicle setObjectTexture [_forEachIndex, '#(rgb,8,8,3)color(0,1,0,0.8)'];
 		} forEach (getObjectTextures _vehicle);
@@ -312,8 +314,9 @@ while { true } do {
 			_withinDistance = ((_truepos distance2D _pos) < _maxdist || _buildtype == GRLIB_BuildTypeDirect);
 			_boatValid = ((_classname in boats_names || build_water == 1) && _isWater);
 			_surfaceIsValid = (!_isWater || _boatValid);
+			//_surfaceIsValid2 = !(_buildtype == GRLIB_TrenchBuildType && isOnRoad _truepos);
 
-			if (_noObjectsClip && _withinDistance &&  _surfaceIsValid) then {
+			if (_noObjectsClip && _withinDistance && _surfaceIsValid) then {
 				if (_boatValid) then {
 					_vehicle setposASL _truepos;
 				} else {
@@ -411,7 +414,7 @@ while { true } do {
 			};
 
 			// Building
-			if (_buildtype in [GRLIB_BuildingBuildType,GRLIB_TrenchBuildType]) exitWith {
+			if (_buildtype == GRLIB_BuildingBuildType) exitWith {
 				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				_vehicle setPosATL _veh_pos;
@@ -420,11 +423,14 @@ while { true } do {
 				if (_classname == land_cutter_typename) then {
 					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
 				};
+			};
 
-				// Trench TTL
-				if (_buildtype == GRLIB_TrenchBuildType) then {
-					_vehicle setVariable ["GRLIB_counter_TTL", 1200, true];
-				};
+			// Trench
+			if (_buildtype == GRLIB_TrenchBuildType) exitWith {
+				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
+				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
+				_vehicle setPosATL _veh_pos;
+				_vehicle setVariable ["GRLIB_counter_TTL", 600, true];
 			};
 
 			private _owner = "";
