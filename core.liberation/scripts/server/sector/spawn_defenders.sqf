@@ -63,7 +63,7 @@ private _ownership = [_sector_pos] call F_sectorOwnership;
 private _defenders_timer = round (time + 180);
 while { time < _defenders_timer && ({alive _x} count (units _grp) > 0) && _ownership == GRLIB_side_enemy } do {
     _ownership = [_sector_pos] call F_sectorOwnership;
-    sleep 5;
+    sleep 10;
 };
 
 [_grp, _vehicle, _arsenal];
