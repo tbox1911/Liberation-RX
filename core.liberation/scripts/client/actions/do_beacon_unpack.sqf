@@ -11,7 +11,7 @@ if ( _tent_cost > (infantry_cap - resources_infantry)) then {
 	sleep 2;
 	removeBackpack player;
 	sleep 6;
-	buildtype = 9;
+	buildtype = GRLIB_BuildTypeDirect;
 	build_unit = [mobile_respawn,[],1,[],[],[],[]];
 	dobuild = 1;
 	disableUserInput false;

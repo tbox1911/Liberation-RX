@@ -116,7 +116,7 @@ while { dialog && alive player } do {
 				closeDialog 0;
 
 				if (count _vehicle < 7) exitWith {};
-				buildtype = 10;
+				buildtype = GRLIB_BuildTypeDirect;
 				build_unit = _vehicle;
 				dobuild = 1;
 

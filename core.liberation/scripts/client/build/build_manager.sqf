@@ -93,8 +93,7 @@ while { true } do {
             _price_fuel = 0;
             _fob_box = build_vehicle;
         };
-        case 9;
-        case 10: {
+        case GRLIB_BuildTypeDirect: {
             _price = 0;
             _price_fuel = 0;
             _classname = build_unit select 0;
@@ -144,7 +143,7 @@ while { true } do {
 		[_classname] call do_build_squad;
 	};
 
-	if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, 9,10,99,98,97] ) then {
+	if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98,97] ) then {
 		if !(_buildtype in [99,98,97]) then {
 			_pos = [] call F_getNearestFob;
 			if (player distance2D _pos < GRLIB_fob_range && surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
@@ -167,7 +166,7 @@ while { true } do {
 				};
 			};
 
-			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, 9,10,99,98] ) then {
+			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98] ) then {
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
@@ -301,7 +300,7 @@ while { true } do {
 			GRLIB_conflicting_objects = _near_objects;
 
 			_noObjectsClip = (_near_objects isEqualTo []);
-			_withinDistance = ((_truepos distance2D _pos) < _maxdist || _buildtype == 9);
+			_withinDistance = ((_truepos distance2D _pos) < _maxdist || _buildtype == GRLIB_BuildTypeDirect);
 			_boatValid = ((_classname in boats_names || build_water == 1) && _isWater);
 			_surfaceIsValid = (!_isWater || _boatValid);
 
@@ -415,7 +414,7 @@ while { true } do {
 			};
 
 			private _owner = "";
-			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_SupportBuildType, 9,10] ) then {
+			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect] ) then {
 				_owner = PAR_Grp_ID;
 			};
 
