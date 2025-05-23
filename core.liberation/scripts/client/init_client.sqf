@@ -100,6 +100,7 @@ GRLIB_max_respawn_reached = false;
 GRLIB_player_configured = false;
 
 // Local Constants
+GRLIB_BuildTypeDirect = 90;
 GRLIB_InfantryBuildType = 1;
 GRLIB_TransportVehicleBuildType = 2;
 GRLIB_CombatVehicleBuildType = 3;
@@ -108,6 +109,7 @@ GRLIB_DefenceBuildType = 5;
 GRLIB_BuildingBuildType = 6;
 GRLIB_SupportBuildType = 7;
 GRLIB_SquadBuildType = 8;
+GRLIB_TrenchBuildType = 9;
 
 // Local functions
 add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
@@ -304,7 +306,7 @@ if (isServer && hasInterface) then {
 	 }];
 };
 
-// Commander mode 
+// Commander mode
 if (GRLIB_Commander_mode) then {
 	GRLIB_Com_lastClicked = time;
 	addMissionEventHandler ["MapSingleClick", {

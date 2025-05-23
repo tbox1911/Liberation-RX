@@ -79,7 +79,7 @@ while { true } do {
 		_overlayshown = false;
 	};
 
-	if (!isNull _overlay) then {
+	if (!isNil "_overlay") then {
 		_fob_sector = false;
 		_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;
 		if (_nearest_active_sector == "") then {

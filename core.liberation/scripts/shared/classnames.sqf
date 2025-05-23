@@ -551,6 +551,9 @@ GRLIB_recycleable_classnames = GRLIB_recycleable_classnames arrayIntersect GRLIB
 GRLIB_recycleable_classnames = GRLIB_recycleable_classnames - GRLIB_recycleable_blacklist;
 GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable);
 
+// TRENCHES
+[] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_trenches_classnames.sqf"];
+
 // AIR DROP
 [] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_airdrop_classnames.sqf"];
 
@@ -562,7 +565,7 @@ air_vehicles = [ air_vehicles ] call F_filterMods;
 support_vehicles = [ support_vehicles ] call F_filterMods;
 static_vehicles = [ static_vehicles ] call F_filterMods;
 buildings = [ buildings ] call F_filterMods;
-build_lists = [[],infantry_units,light_vehicles,heavy_vehicles,air_vehicles,static_vehicles,buildings,support_vehicles,squads];
+build_lists = [[],infantry_units,light_vehicles,heavy_vehicles,air_vehicles,static_vehicles,buildings,support_vehicles,squads,trenches_default];
 militia_squad = militia_squad select { [_x] call F_checkClass };
 militia_vehicles = militia_vehicles select { [_x] call F_checkClass };
 all_hostile_classnames = all_hostile_classnames select { [_x] call F_checkClass };

@@ -94,6 +94,10 @@
 			<Portuguese>-- CONSTRUIR</Portuguese>
 			<Czech>-- STAVĚT</Czech>
 		</Key>
+		<Key ID="STR_BUILD_TRENCH_ACTION">
+			<Original>-- Dig Trench</Original>
+			<French>-- Creuser une tranchée</French>
+		</Key>
 		<Key ID="STR_BUILD_TITLE">
 			<Original>BUILD MENU</Original>
 			<French>MENU CONSTRUCTION</French>
@@ -153,7 +157,7 @@
 			<Japanese>ユニット上限</Japanese>
 			<Portuguese>Limite da unidade</Portuguese>
 			<Czech>Limit Jednotky</Czech>
-		</Key>		
+		</Key>
 		<Key ID="STR_FUEL">
 			<Original>Fuel</Original>
 			<French>Carburant</French>
@@ -2024,7 +2028,7 @@
 		</Key>
 		<Key ID="STR_PARAMS_ENABLE_DRONES">
 			<Original>Enable enemy Drones/UAVs</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_PARAMS_INTRO">
 			<Original>Introduction</Original>
 			<French>Introduction</French>
@@ -2126,13 +2130,13 @@
 			<French>Nombre maximum d'unités ennemies</French>
 			<Chinesesimp>敌方单位的最大数量</Chinesesimp>
 			<Chinese>敵方組織的最大數量</Chinese>
-		</Key>		
+		</Key>
 		<Key ID="STR_PARAMS_UNITCAP">
 			<Original>Maximum unit modifier</Original>
 			<French>Modificateur d'unité maximum</French>
 			<Chinesesimp>最大单位修正器</Chinesesimp>
 			<Chinese>最大組織修正器</Chinese>
-		</Key>		
+		</Key>
 		<Key ID="STR_PARAMS_UNITCAP1">
 			<Original>50% - Recommended for local hosting</Original>
 			<French>50% - Recommandé pour un hébergement local</French>
@@ -2436,6 +2440,10 @@
 			<Japanese>歩兵分隊</Japanese>
 			<Portuguese>Esquadrões de infantaria</Portuguese>
 			<Czech>pěší čety</Czech>
+		</Key>
+		<Key ID="STR_BUILD9">
+			<Original>Trench / Sand Wall</Original>
+			<French>Tranchée / Mur de Sable</French>
 		</Key>
 		<Key ID="STR_ACTIVE_SECTORS">
 			<Original>Active Sectors:</Original>
@@ -6765,7 +6773,7 @@
 			<Portuguese>Ejecção rápida de toda a tripulação do %1.</Portuguese>
 			<Czech>Rychlé vysazení celé posádky z %1.</Czech>
 		</Key>
-	
+
 		<!-- do_repackage.sqf -->
 		<Key ID="STR_NAVAL_FOB_LEAVING">
 			<Original>Naval FOB (%1) Leaves...</Original>
@@ -6934,7 +6942,7 @@
 			<Portuguese>Executar limpeza forçada</Portuguese>
 			<Czech>Vynutit spuštění čištění</Czech>
 		</Key>
-		
+
 		<Key ID="STR_RESTARTING_NOW">
 			<Original>Restarting now...</Original>
 			<French>Redémarrage en cours...</French>
@@ -6947,7 +6955,7 @@
 			<Portuguese>Reiniciando agora...</Portuguese>
 			<Czech>Restartování...</Czech>
 		</Key>
-		
+
 		<Key ID="STR_ADMIN_IMPORT_SAVE">
 			<Original>Admin (%1) import the save game (%2)</Original>
 			<French>L'administrateur (%1) a importé la sauvegarde (%2)</French>
@@ -7064,7 +7072,7 @@
 			<Portuguese>Administrador (%1) tornou-se Zeus</Portuguese>
 			<Czech>Administrátor (%1) se stal Zeusem</Czech>
 		</Key>
-		
+
 		<Key ID="STR_SECTOR_FORCEFULLY_CAPTURED">
 			<Original>Sector %1 Forcefully Captured!</Original>
 			<French>Le secteur %1 a été capturé de force !</French>
@@ -8015,7 +8023,7 @@
 			<Portuguese>Cadê os médicos??</Portuguese>
 			<Czech>Kde jsou doktoři??</Czech>
 		</Key>
-		
+
 		<!-- support_manager.sqf-->
 		<Key ID="STR_DIALOG_REARM_PRIMARY">
 			<Original>Rearming Primary Weapon.</Original>
@@ -8206,7 +8214,7 @@
 			<Portuguese>%1 criou o marcador (%2) no canal %3 na posição %4</Portuguese>
 			<Czech>%1 vytvořil značku (%2) v kanálu %3 na pozici %4</Czech>
 		</Key>
-		
+
 		<Key ID="STR_LOG_MARKER_DELETE">
 			<Original>%1, Delete marker (%2) at position %3.</Original>
 			<French>%1 a supprimé le marqueur (%2) à la position %3.</French>
@@ -8219,7 +8227,7 @@
 			<Portuguese>%1 removeu o marcador (%2) na posição %3.</Portuguese>
 			<Czech>%1 smazal značku (%2) na pozici %3.</Czech>
 		</Key>
-		
+
 		<!--artillery_cooldown.sqf -->
 		<Key ID="STR_HINT_ARTILLERY_COOLDOWN">
 			<Original>Artillery Cooldown!\nYou are overusing artillery fire, slow down!</Original>
@@ -8233,7 +8241,7 @@
 			<Portuguese>Artilharia em recarga!\nVocê está usando demais, vá com calma!</Portuguese>
 			<Czech>Dělostřelectvo je v přebíjení!\nPoužíváš ho příliš často, zpomal!</Czech>
 		</Key>
-		
+
 		<!-- godmode.sqf -->
 		<Key ID="STR_HINT_GODMODE_ON">
 			<Original>GodMode ON !</Original>
@@ -8260,7 +8268,7 @@
 			<Portuguese>Modo Deus DESATIVADO!</Portuguese>
 			<Czech>GodMode VYPNUT!</Czech>
 		</Key>
-		
+
 		<!-- kick_idle.sqf -->
 		<Key ID="STR_MSG_IDLE_TIMEOUT">
 			<Original>You are idle for too long, good bye!</Original>
@@ -8274,7 +8282,7 @@
 			<Portuguese>Você ficou inativo por muito tempo, até mais!</Portuguese>
 			<Czech>Byl jsi příliš dlouho neaktivní. Sbohem!</Czech>
 		</Key>
-		
+
 		<!-- no_thermic.sqf -->
 		<Key ID="STR_UI_THERMAL_OFFLINE">
 			<Original>Thermal OFFLINE...</Original>
@@ -8329,7 +8337,7 @@
 			<Portuguese>Teleporte ATIVADO!</Portuguese>
 			<Czech>Teleport ZAPNUT!</Czech>
 		</Key>
-		
+
 		<!-- vehicle_fuel.sqf -->
 		<Key ID="STR_LOG_RESOURCE_FUEL_USED">
 			<Original>%1 Resource Fuel used...</Original>
@@ -8343,7 +8351,7 @@
 			<Portuguese>%1 de combustível usado...</Portuguese>
 			<Czech>Použito %1 paliva...</Czech>
 		</Key>
-		
+
 		<!-- welcome.sqf -->
 		<Key ID="STR_UI_WELCOME_MSG">
 			<Original>
@@ -8403,7 +8411,7 @@
 				民間人からの評判：&lt;t color='%5'>%6&lt;/t&gt;
 			</Japanese>
 		</Key>
-		
+
 		<!-- remote_call -->
 		<Key ID="STR_UI_ENEMY_DAMAGE_TEXT">
 			<Original>&lt;t size='1' align='center'&gt;Enemy Damage: %1%2&lt;/t&gt;</Original>
@@ -12643,7 +12651,7 @@
 		</Key>
 		<Key ID="STR_PARAMS_ENABLE_DRONES_OPT2">
 			<Original>Enemy can use drones</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_PARAMCAT_COMMANDER">
 			<Original>COMMANDER MODE</Original>
 			<Russian>РЕЖИМ КОМАНДИРА</Russian>
@@ -14910,7 +14918,7 @@
 		</Key>
 
 	</Package>
-	
+
 	<!-- pSiKO Earplugs -->
 	<Package name="NREEarplugs">
 		<Key ID="STR_NREEP_IN_HINT">
@@ -15278,7 +15286,7 @@
 			<Czech>Ukončit</Czech>
 		</Key>
 	</Package>
-	
+
 	<!-- pSiKO LRX JKB -->
 	<Package name="LRX_JKB">
 		<Key ID="STR_JKB_NOW_PLAYING">
@@ -15454,7 +15462,7 @@
 			<Portuguese>Atalho: %1</Portuguese>
 			<Czech>Klávesová zkratka: %1</Czech>
 		</Key>
-		
+
 		<Key ID="STR_MGR_ABOUT_TITLE">
 			<Original>Mag Repack: About</Original>
 			<French>Mag Repack : À propos</French>
@@ -15544,7 +15552,7 @@
 			<Portuguese>Copiar</Portuguese>
 			<Czech>Kopírovat</Czech>
 		</Key>
-		
+
 		<Key ID="STR_MGR_KEYBINDINGS_TITLE">
 			<Original>Mag Repack: Keybindings</Original>
 			<French>Mag Repack : Raccourcis</French>
@@ -15784,7 +15792,7 @@
 		</Key>
 
 	</Package>
-	
+
 	<!-- pSiKO AI Revive -->
 	<Package name="LRX_PAR">
 		<Key ID="STR_PAR_AI_REVIVE_INITIALIZED">
@@ -16076,7 +16084,7 @@
 		</Key>
 
 	</Package>
-	
+
 	<!-- pSiKO LRX Taxi -->
 	<Package name="LRX_TAXI">
 		<Key ID="STR_TAXI_ACTION1">

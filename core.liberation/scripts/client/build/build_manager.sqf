@@ -71,7 +71,7 @@ while { true } do {
 	_buildindex = buildindex;
 
 	// Init build properties
-	if ( _buildtype == GRLIB_BuildingBuildType ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	if ( _buildtype in [GRLIB_BuildingBuildType,GRLIB_TrenchBuildType] ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
 
     // Configure build properties based on _buildtype using switch-case
     switch _buildtype do {
@@ -106,20 +106,18 @@ while { true } do {
             build_altitude = 0.4;
         };
         default {
-            if ( _buildtype in [GRLIB_InfantryBuildType, GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, GRLIB_SquadBuildType] ) then {
-                _score = [player] call F_getScore;
-                _build_list = (build_lists#_buildtype) select { _score >= (_x#4) };
-				_build = _build_list#_buildindex;
-				_classname = _build#0;
-				_price = _build#2;
-				_price_fuel = _build#3;
-                _color = [];
-                _compo = [];
-                _ammo = 0;
-                _lst_a3 = [];
-                _lst_r3f = [];
-                _lst_grl = [];
-            };
+			_score = [player] call F_getScore;
+			_build_list = (build_lists select _buildtype) select { _score >= (_x select 4) };
+			_build = _build_list select _buildindex;
+			_classname = _build select 0;
+			_price = _build select 2;
+			_price_fuel = _build select 3;
+			_color = [];
+			_compo = [];
+			_ammo = 0;
+			_lst_a3 = [];
+			_lst_r3f = [];
+			_lst_grl = [];
         };
     };
 
@@ -143,7 +141,7 @@ while { true } do {
 		[_classname] call do_build_squad;
 	};
 
-	if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98,97] ) then {
+	if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_TrenchBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98,97] ) then {
 		if !(_buildtype in [99,98,97]) then {
 			_pos = [] call F_getNearestFob;
 			if (player distance2D _pos < GRLIB_fob_range && surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
@@ -166,7 +164,7 @@ while { true } do {
 				};
 			};
 
-			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98] ) then {
+			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_TrenchBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98] ) then {
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
@@ -181,14 +179,14 @@ while { true } do {
 		_ghost_name = _classname;
 		if (_classname == FOB_carrier) then {
 			_ghost_name = "VR_3DSelector_01_default_F";
-		};	
+		};
     	_vehicle = _ghost_name createVehicleLocal _ghost_spot;
 		_vehicle allowdamage false;
 		_vehicle enableSimulation false;
 		_vehicle setVehicleLock "LOCKED";
 		_vehicle setVariable ["R3F_LOG_disabled", true];
 		[_vehicle] call F_clearCargo;
-		
+
 		_radius = ((round((sizeOf _classname)/2) max 3.5) min 20);
 		_dist = ((round(_radius / 2) + 1.5) min 5);
 
@@ -208,6 +206,17 @@ while { true } do {
             case "Land_vn_b_trench_bunker_01_02": {
                 build_rotation = 270;
                 build_altitude = -0.2;
+            };
+			case "Land_TrenchFrame_01_F";
+			case "Land_Trench_01_grass_F";
+            case "Land_Trench_01_forest_F": {
+                build_rotation = 180;
+                build_altitude = 2;
+            };
+			case "Land_ShellCrater_02_small_F";
+			case "Land_ShellCrater_02_large_F";
+            case "Land_ShellCrater_02_extralarge_F": {
+                build_altitude = 1;
             };
             default {
                 if (_classname isKindOf "Slingload_base_F") then {
@@ -279,7 +288,7 @@ while { true } do {
 				[medic_heal_typename, 8]
 			];
 
-			if(	_buildtype != GRLIB_BuildingBuildType ) then {
+			if !(_buildtype in [GRLIB_BuildingBuildType, GRLIB_TrenchBuildType]) then {
 				_near_objects append (_truepos nearobjects ["Static", 5]);
 			};
 
@@ -402,7 +411,7 @@ while { true } do {
 			};
 
 			// Building
-			if(_buildtype == GRLIB_BuildingBuildType) exitWith {
+			if (_buildtype in [GRLIB_BuildingBuildType,GRLIB_TrenchBuildType]) exitWith {
 				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				_vehicle setPosATL _veh_pos;
@@ -410,6 +419,11 @@ while { true } do {
 				// Magic ClutterCutter
 				if (_classname == land_cutter_typename) then {
 					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
+				};
+
+				// Trench TTL
+				if (_buildtype == GRLIB_TrenchBuildType) then {
+					_vehicle setVariable ["GRLIB_counter_TTL", 1200, true];
 				};
 			};
 

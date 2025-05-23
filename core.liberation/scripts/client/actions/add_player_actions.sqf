@@ -1,3 +1,4 @@
+waitUntil { sleep 1; !(isNil "resources_infantry") };
 private _icon_dog = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
 private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
@@ -64,7 +65,10 @@ player addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_UNPACK" + "</t> 
 player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","call GRLIB_checkGarage"];
 
 // Build Menu
-player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf","",-501,false,true,"","call GRLIB_checkBuild"];
+player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf",false,-501,false,true,"","call GRLIB_checkBuild"];
+
+// Trench Menu
+player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_TRENCH_ACTION" + "</t> <img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\Obsolete\ui_action_turnin_ca'/>","scripts\client\build\open_build_menu.sqf",true,-501,false,true,"","call GRLIB_checkBuildTrench"];
 
 // Squad Management
 player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","call GRLIB_checkSquadMgmt"];

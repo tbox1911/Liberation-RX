@@ -124,12 +124,12 @@ class liberation_build {
 		x = (0.475 * safezoneW + safezoneX);
 	};
 	class BuildDefenceImage : BuildTypeImage {
-		idc = 11065;
+		idc = 1065;
 		x = (0.502 * safezoneW + safezoneX);
 		text = "\A3\ui_f\data\map\vehicleicons\iconStaticCannon_ca.paa";
 	};
 	class BuildDefenceButton : BuildTypeButton{
-		idc = 1106;
+		idc = 106;
 		text = "";
 		action = "buildtype=5";
 		x = (0.5 * safezoneW + safezoneX);

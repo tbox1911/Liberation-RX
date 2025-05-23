@@ -75,7 +75,26 @@ GRLIB_checkGarage = {
 };
 
 GRLIB_checkBuild = {
-	(GRLIB_player_is_menuok && GRLIB_player_near_fob && !(isNil "resources_infantry") && (([player, 3] call fetch_permission) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && (([player, 3] call fetch_permission) || GRLIB_player_admin))
+};
+
+GRLIB_checkBuildTrench = {
+	(GRLIB_player_is_menuok && !(surfaceIsWater getPos player) && !GRLIB_player_near_fob && !GRLIB_player_near_lhd && (([player, 3] call fetch_permission) || GRLIB_player_admin))
+};
+
+GRLIB_checkBuildFOB = {
+	params ["_target", "_unit"];
+	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && !(_target getVariable ['box_in_use', false]))
+};
+
+GRLIB_checkBuildFOBWater = {
+	if (GRLIB_naval_type == 0) exitWith { false };
+	(alive player && surfaceIsWater getPos player && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (typeOf (vehicle player) == FOB_boat_typename) && driver (vehicle player) == player && round (speed vehicle player) == 0 && !((vehicle player) getVariable ["box_in_use", false]))
+};
+
+GRLIB_checkBuildDef = {
+	params ["_target"];
+	(GRLIB_player_is_menuok && alive _target && (GRLIB_player_owner_fob || _target getVariable ["GRLIB_vehicle_owner", ""] == "lrx") && ([] call F_getFobType) in [0,1])
 };
 
 GRLIB_checkSquadMgmt = {
@@ -88,16 +107,6 @@ GRLIB_checkCommander = {
 
 GRLIB_checkSecObj = {
 	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance <= GRLIB_ActionDist_5) && (!GRLIB_player_near_outpost) && (GRLIB_player_score >= GRLIB_perm_air || GRLIB_player_admin))
-};
-
-GRLIB_checkBuildFOB = {
-	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && !(_target getVariable ['box_in_use', false]))
-};
-
-GRLIB_checkBuildFOBWater = {
-	if (GRLIB_naval_type == 0) exitWith { false };
-	(alive player && surfaceIsWater getPos player && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (typeOf (vehicle player) == FOB_boat_typename) && driver (vehicle player) == player && round (speed vehicle player) == 0 && !((vehicle player) getVariable ["box_in_use", false]))
 };
 
 GRLIB_checkOnboardShip = {
@@ -132,11 +141,6 @@ GRLIB_checkSpeak = {
 GRLIB_checkCapture = {
 	params ["_target"];
 	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_is_prisoner', false])
-};
-
-GRLIB_checkBuildDef = {
-	params ["_target"];
-	(GRLIB_player_is_menuok && alive _target && (GRLIB_player_owner_fob || _target getVariable ["GRLIB_vehicle_owner", ""] == "lrx") && ([] call F_getFobType) in [0,1])
 };
 
 GRLIB_checkRemoveHelipad = {

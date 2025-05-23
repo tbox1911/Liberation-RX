@@ -1,8 +1,12 @@
+params ["_target", "_caller", "_actionId", "_trench"];
 private ["_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
 
-if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
-if ( buildtype > GRLIB_SquadBuildType ) then { buildtype = GRLIB_InfantryBuildType };
-if ( isNil "buildindex" ) then { buildindex = -1 };
+if (_trench) then {
+	buildtype = GRLIB_TrenchBuildType;
+};
+if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4 && !_trench) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
+if (buildtype > GRLIB_SquadBuildType && !_trench) then { buildtype = GRLIB_InfantryBuildType };
+if (isNil "buildindex") then { buildindex = -1 };
 
 dobuild = 0;
 build_refresh = true;
@@ -53,8 +57,15 @@ private _buildpages = [
 	localize "STR_BUILD5",
 	localize "STR_BUILD6",
 	localize "STR_BUILD7",
-	localize "STR_BUILD8"
+	localize "STR_BUILD8",
+	localize "STR_BUILD9"
 ];
+
+if (_trench) then {
+	{ ctrlEnable [_x, false] } forEach [102, 103, 104, 105, 106, 107, 108, 109];
+} else {
+	ctrlSetFocus (_display displayCtrl (101 + buildtype));
+};
 
 private _is_linked = {
 	params ["_classname"];
@@ -72,7 +83,7 @@ private _is_linked = {
 ctrlEnable [120, false];
 ctrlEnable [121, false];
 
-while { dialog && alive player && (dobuild == 0 || buildtype == GRLIB_InfantryBuildType || buildtype == GRLIB_SquadBuildType)} do {
+while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryBuildType, GRLIB_SquadBuildType])} do {
 	if (_old_buildtype != buildtype) then { build_refresh = true };
 
 	if (build_refresh) then {
