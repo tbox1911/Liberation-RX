@@ -32,6 +32,8 @@ private _idactview = -1;
 private _idactsnap = -1;
 private _idactupper = -1;
 private _idactlower = -1;
+private _idactcloser = -1;
+private _idactfarther = -1;
 private _idactrotate = -1;
 private _idactmode = -1;
 private _idactcancel = -1;
@@ -52,12 +54,14 @@ while { count GRLIB_preview_spheres < 36 } do {
 
 { _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } foreach GRLIB_preview_spheres;
 
-if (isNil "manned") then { manned = false };
-if (isNil "gridmode" ) then { gridmode = 0 };
-if (isNil "repeatbuild" ) then { repeatbuild = false };
-if (isNil "build_rotation" ) then { build_rotation = 0 };
-if (isNil "build_altitude" ) then { build_altitude = 0 };
-if (isNil "building_altitude" ) then { building_altitude = 0 };
+manned = false;
+gridmode = 0;
+repeatbuild = false;
+build_rotation = 0;
+build_altitude = 0;
+build_distance = 0;
+building_altitude = 0;
+
 waitUntil { sleep 0.2; !isNil "dobuild" };
 
 while { true } do {
@@ -151,7 +155,7 @@ while { true } do {
 			};
 		};
 
-		if ( !repeatbuild ) then {
+		if (!repeatbuild) then {
 			if (build_water == 0) then {
 				if ( _buildtype == GRLIB_BuildingBuildType && !(_classname in GRLIB_build_force_mode) ) then {
 					_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,true,false,"","build_valid && build_confirmed == 1"];
@@ -165,9 +169,11 @@ while { true } do {
 			};
 
 			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_TrenchBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98] ) then {
-				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
-				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
-				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
+				_idactfarther = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEFAR" + "</t> <img size='1' image='R3F_LOG\icons\r3f_far.paa'/>","scripts\client\build\build_farther.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-756,false,false,"","build_confirmed == 1"];
+				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-757,false,false,"","build_confirmed == 1"];
+				_idactcloser = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVECLOSE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_closer.sqf","",-758,false,false,"","build_confirmed == 1"];
+				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-759,false,false,"","build_confirmed == 1"];
 			};
 
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,false,"","build_valid && build_confirmed == 1"];
@@ -187,8 +193,8 @@ while { true } do {
 		_vehicle setVariable ["R3F_LOG_disabled", true];
 		[_vehicle] call F_clearCargo;
 
-		_radius = ((round((sizeOf _classname)/2) max 3.5) min 20);
-		_dist = ((round(_radius / 2) + 1.5) min 5);
+		_radius = ((round((sizeOf _classname)/2) max 3.5) min 15);
+		_dist = ((round(_radius / 2) + 1.5) min 3);
 
 		// Customize by classname using switch-case
 		switch _classname do {
@@ -206,6 +212,9 @@ while { true } do {
 			case "Land_vn_b_trench_bunker_01_02": {
 				build_rotation = 270;
 				build_altitude = -0.2;
+			};
+			case "Land_BagBunker_Small_F": {
+				build_rotation = 180;
 			};
 			case "Land_TrenchFrame_01_F";
 			case "Land_Trench_01_grass_F";
@@ -226,7 +235,7 @@ while { true } do {
 				};
 			};
 		};
-		_dist = 3 max _dist;
+		if (!repeatbuild) then { build_distance = 3 max _dist };
 
 		// Improved retexture for preview
 		{
@@ -240,7 +249,7 @@ while { true } do {
 			_dir = getdir player;
 			_pos = getPos player;
 			_truedir = 90 - _dir;
-			_truepos = [(_pos#0) + ((_dist + _radius) * (cos _truedir)), (_pos#1) + ((_dist + _radius) * (sin _truedir)), build_altitude];
+			_truepos = [(_pos#0) + ((build_distance + _radius) * (cos _truedir)), (_pos#1) + ((build_distance + _radius) * (sin _truedir)), build_altitude];
 			_actualdir = (_dir + build_rotation);
 			if (_classname in GRLIB_build_force_mode) then { build_mode = 1 };
 			switch _classname do {
@@ -314,7 +323,6 @@ while { true } do {
 			_withinDistance = ((_truepos distance2D _pos) < _maxdist || _buildtype == GRLIB_BuildTypeDirect);
 			_boatValid = ((_classname in boats_names || build_water == 1) && _isWater);
 			_surfaceIsValid = (!_isWater || _boatValid);
-			//_surfaceIsValid2 = !(_buildtype == GRLIB_TrenchBuildType && isOnRoad _truepos);
 
 			if (_noObjectsClip && _withinDistance && _surfaceIsValid) then {
 				if (_boatValid) then {
@@ -427,10 +435,33 @@ while { true } do {
 
 			// Trench
 			if (_buildtype == GRLIB_TrenchBuildType) exitWith {
-				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
+				private _vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
+				_vehicle enableSimulationGlobal false;
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
+				disableUserInput true;
+				player setDir (player getDir _veh_pos);
+				private _zStart = -1;
+				private _zEnd = round (_veh_pos select 2);
+				private _steps = 15;
+				private _stepHeight = (_zEnd - _zStart) / _steps;
+				for "_i" from 0 to _steps do {
+					if (_i % 3 == 0) then {
+						playSound3D [getMissionPath "res\dig02.ogg", player, false, getPosASL player, 5, 1, 250];
+						//player playMoveNow "AinvPknlMstpSlayWrflDnon_medicOther";
+						player playMove "AinvPknlMstpSnonWnonDnon_medicUp0";
+					};
+					_newZ = _zStart + (_stepHeight * _i);
+					_vehicle setPosATL [_veh_pos select 0, _veh_pos select 1, _newZ];
+					sleep 1;
+				};
+				disableUserInput false;
+				disableUserInput true;
+				disableUserInput false;
+				if (lifeState player == 'INCAPACITATED') exitWith { deleteVehicle _vehicle };
 				_vehicle setPosATL _veh_pos;
-				_vehicle setVariable ["GRLIB_counter_TTL", 600, true];
+				_vehicle enableSimulationGlobal true;
+				_vehicle setVariable ["GRLIB_counter_TTL", round(time + 600), true];
+				_vehicle setVariable ["R3F_LOG_disabled", true, true];
 			};
 
 			private _owner = "";
@@ -519,13 +550,14 @@ while { true } do {
 		};
 	};
 
-	if ( repeatbuild ) then {
+	if (repeatbuild) then {
 		dobuild = 1;
 		building_altitude = build_altitude;
 	} else {
 		dobuild = 0;
 		build_rotation = 0;
 		building_altitude = 0;
+		build_distance = 0;
 		build_mode = 0;
 		build_water = 0;
 		build_confirmed = 0;
@@ -534,6 +566,8 @@ while { true } do {
 		player removeAction _idactmode;
 		player removeAction _idactupper;
 		player removeAction _idactlower;
+		player removeAction _idactcloser;
+		player removeAction _idactfarther;
 		player removeAction _idactrotate;
 		player removeAction _idactcancel;
 		player removeAction _idactplace;

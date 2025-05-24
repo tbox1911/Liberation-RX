@@ -95,8 +95,8 @@
 			<Czech>-- STAVĚT</Czech>
 		</Key>
 		<Key ID="STR_BUILD_TRENCH_ACTION">
-			<Original>-- Dig Trench</Original>
-			<French>-- Creuser une tranchée</French>
+			<Original>-- DIG TRENCH</Original>
+			<French>-- CREUSER TRANCHÉE</French>
 		</Key>
 		<Key ID="STR_BUILD_TITLE">
 			<Original>BUILD MENU</Original>
@@ -247,6 +247,14 @@
 			<Japanese>-- 下降 </Japanese>
 			<Portuguese>-- Descer</Portuguese>
 			<Czech>-- Posunout dolů</Czech>
+		</Key>
+		<Key ID="STR_MOVECLOSE">
+			<Original>-- Move closer</Original>
+			<French>-- Raprocher</French>		
+		</Key>
+		<Key ID="STR_MOVEFAR">
+			<Original>-- Move farther</Original>
+			<French>-- Eloigner</French>		
 		</Key>
 		<Key ID="STR_MODE">
 			<Original>-- Follow terrain</Original>
