@@ -28,7 +28,7 @@ private ["_marker","_marker_color","_marker_type","_marker_show"];
 private _vehmarkers = [];
 
 while { true } do {
-	waitUntil {sleep 1; visibleMap };
+	waitUntil {sleep 0.1; visibleMap };
 
 	_veh_list = vehicles select {
 		(getObjectType _x >= 8) &&
