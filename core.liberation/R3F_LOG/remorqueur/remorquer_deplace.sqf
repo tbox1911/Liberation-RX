@@ -30,6 +30,7 @@ else
 
 		_remorqueur setVariable ["R3F_LOG_remorque", _objet, true];
 		_objet setVariable ["R3F_LOG_est_transporte_par", _remorqueur, true];
+		_objet setVariable ["GRLIB_counter_TTL", nil, true];
 
 		// On place le joueur sur le c�t� du v�hicule en fonction qu'il se trouve � sa gauche ou droite
 		if ((_remorqueur worldToModel (player modelToWorld [0,0,0])) select 0 > 0) then

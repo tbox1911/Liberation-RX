@@ -486,7 +486,12 @@ if ([] call F_checkVictory) then {
 // Cleanup
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
-
-{ [_x] call clean_vehicle; sleep 0.1 } forEach _managed_vehicles;
-{ deleteVehicle _x; sleep 0.1 } forEach _managed_units;
+{
+	if (_x isKindOf "CAManBase") then {
+		deleteVehicle _x;
+	} else {
+		[_x] spawn clean_vehicle;
+	};
+	sleep 0.1;
+} forEach (_managed_vehicles + _managed_units);	
 [_sector_pos] call clearlandmines;

@@ -64,6 +64,7 @@ else
 
 			_remorqueur setVariable ["R3F_LOG_remorque", _objet, true];
 			_objet setVariable ["R3F_LOG_est_transporte_par", _remorqueur, true];
+			_objet setVariable ["GRLIB_counter_TTL", nil, true];
 
 			// Quelques corrections visuelles pour des classes sp�cifiques
 			private _offset_attach_y = 0.2;

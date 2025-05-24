@@ -152,7 +152,7 @@ GRLIB_PARAM_OptionDescriptionKey = "OptionDescriptions";
 
 // [GRLIB_PARAM_{newKey}, createHashMapFromArray [                                                          // {newKey} Required: String - Replace {newKey} with the key name
 //     [GRLIB_PARAM_ValueKey, {defaultValue} e.g. 1],                                                       // {defaultValue} Required: Any variable type - Replace {defaultValue} with the default value, ABSOLUTELY MUST be contained within the OptionValuesKey array
-//     [GRLIB_PARAM_NameKey, {Name} eg "Name"],                                                             // {Name} Required: String - Replace {Name} with the name of the parameter, this is what will be displayed in the menu                   
+//     [GRLIB_PARAM_NameKey, {Name} eg "Name"],                                                             // {Name} Required: String - Replace {Name} with the name of the parameter, this is what will be displayed in the menu
 //     [GRLIB_PARAM_OptionLabelKey, {["label", "label1", "label2"]} eg ["label", "label1", "label2"]],      // {["label", "label1", "label2"]} Required: Array - Replace {["label", "label1", "label2"]} with the labels for each value in the OptionValuesKey array, MUST be the same length as the OptionValuesKey array
 //     [GRLIB_PARAM_OptionValuesKey, {[Value, Value1, Value2]} eg [0, 1, 2]],                               // {[Value, Value1, Value2]} Required: Array - Replace {[Value, Value1, Value2]} with the values for each label in the OptionLabelKey array, MUST be the same length as the OptionLabelKey array - types must match the ValueKey type
 //     [GRLIB_PARAM_CategoryKey, {Category} eg GRLIB_PARAM_GameCatKey],                                     // {Category} Required: String - Replace {Category} with the category of the parameter, this is MUST be a category defined above in the GRLIB_PARAM_CatOrder array
@@ -1083,7 +1083,7 @@ _Mission_Params = [
             localize "STR_PARAMS_ENABLE_DRONES_OPT1",
             localize "STR_PARAMS_ENABLE_DRONES_OPT2"
         ]]
-    ]],    
+    ]],
     [GRLIB_PARAM_MaxGarageSize, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 6],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_GARAGE_SIZE"],
@@ -1194,7 +1194,7 @@ _Mission_Params = [
         ]]
     ]],
     [GRLIB_PARAM_CleanupVehicles, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1800],
+        [GRLIB_PARAM_ValueKey, 1200],
         [GRLIB_PARAM_NameKey, localize "STR_CLEANUP_PARAM"],
         [GRLIB_PARAM_OptionLabelKey, [
             localize "STR_PARAMS_DISABLED",
@@ -1463,7 +1463,7 @@ try {
                 };
             };
         };
-        
+
         _hash = _x select 1;
         if (isNil "_hash") then {
             diag_log format ["--- LRX: Missing hash for parameter %1 ---", str _key];
@@ -1480,7 +1480,7 @@ try {
             diag_log format ["--- LRX: Missing default value for parameter %1 ---", str _key];
             throw "ERROR: Malformed parameters - a parameter is missing the default value";
         } else {
-            if (!((typeName _defaultValue) isEqualTo "SCALAR") && !((typeName _defaultValue) isEqualTo "STRING")) then { 
+            if (!((typeName _defaultValue) isEqualTo "SCALAR") && !((typeName _defaultValue) isEqualTo "STRING")) then {
                 diag_log format ["--- LRX: Parameter %1 default value is not a number or string ---", str _key];
                 throw "ERROR: Malformed parameters - a parameter default value is not a number or string";
             } else {
@@ -1583,6 +1583,7 @@ try {
 
         _optionDescription = _hash get GRLIB_PARAM_OptionDescriptionKey;
         if (isNil "_optionDescription") then {
+            if (_key in [GRLIB_PARAM_ModPresetWest, GRLIB_PARAM_ModPresetEast]) exitWith {};
             diag_log format ["--- LRX: Missing optional option description for parameter %1, a description is strongly recommended ---", str _key];
         } else {
             if (!((typeName _optionDescription) isEqualTo "ARRAY")) then {

@@ -49,28 +49,36 @@ private _no_cleanup_classnames = [
 	"Land_Device_assembled_F",
 	"Land_Device_disassembled_F"
 ] + uavs_vehicles + GRLIB_vehicle_blacklist;
-//{ _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
 
 // HIDDEN-FROM-PLAYERS FUNCTION
 private _isHidden = {
 	params ["_unit", "_dist", "_list"];
-	if ( _unit distance2d ([_unit] call F_getNearestFob) <= GRLIB_capture_size) exitWith { true };
-	private _c = false;
-	if ( ({ _unit distance2D _x < _dist } count _list) == 0 ) then { _c = true };
-	_c;
+	(({ _unit distance2D _x < _dist } count _list) == 0);
 };
 
-// Get CounterStrik units
-private  _getTTLunits = {
-	((units GRLIB_side_enemy) + vehicles) select {
-		alive _x &&
-		[_x] call is_abandoned &&
-		!(isNil {_x getVariable "GRLIB_counter_TTL"})
+// DELETE LRX TTL UNITS
+private _delete_LRX_TTL = {
+	private _hidden_from = [] + GRLIB_all_fobs; 	// FOB + players + active sectors
+	{ _hidden_from pushBack (getPosATL _x)} forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ _hidden_from pushBack (markerPos _x)} forEach active_sectors;
+
+	private _units_ttl = (allMissionObjects "All") select { !(isNil {_x getVariable "GRLIB_counter_TTL"}) };
+	if (count _units_ttl > 0) then {
+		{
+			private _ttl = _x getVariable "GRLIB_counter_TTL";
+			if (!isNil "_ttl") then {
+				if ([_x, GRLIB_sector_size, _hidden_from] call _isHidden && time > _ttl) then {
+					deleteVehicle _x;
+					sleep 0.1;
+				};
+			};
+		} count _units_ttl;
 	};
 };
 
 // CONFIG
 GRLIB_run_cleanup = true;							// To terminate script via debug console
+GRLIB_cleanup_active = false;						// To detect script activity
 GRLIB_force_cleanup = false;						// To force script execution via debug console
 publicVariable "GRLIB_force_cleanup";
 
@@ -122,6 +130,7 @@ private _count = 0;
 private _stats = 0;
 private _sleep = _checkFrequencyDefault;
 
+sleep 120;
 while {GRLIB_run_cleanup} do {
 	_stats = 0;
 	_list = [];
@@ -145,7 +154,10 @@ while {GRLIB_run_cleanup} do {
 	waitUntil {
 		if (_sleep % 300 == 0) then {
 			// FORCE DELETE
-			{ deleteVehicle _x } forEach (entities [GRLIB_force_cleanup_classnames, []]);			
+			{ deleteVehicle _x } forEach (entities [GRLIB_force_cleanup_classnames, []]);
+
+			// LRX TTL UNITS DELETE
+			[] call _delete_LRX_TTL;
 		};
 		sleep 60;
 		_sleep = _sleep - 60;
@@ -155,38 +167,19 @@ while {GRLIB_run_cleanup} do {
 	if (GRLIB_force_cleanup) then {
 		GRLIB_force_cleanup = false;
 		publicVariable "GRLIB_force_cleanup";
-	};	
+	};
 
+	GRLIB_cleanup_active = true;
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
 
 	// FORCE DELETE
 	_list = (allMissionObjects "Blood_01_Base_F");
 	_list append (allMissionObjects "MedicalGarbage_01_Base_F");
-	{ deleteVehicle _x } forEach _list;	
+	{ deleteVehicle _x } forEach _list;
 
-	private _hidden_from = []; 	// (playableUnits + switchableUnits)
+	private _hidden_from = [] + GRLIB_all_fobs; 	// FOB + players + active sectors
 	{ _hidden_from pushBack (getPosATL _x)} forEach (AllPlayers - (entities "HeadlessClient_F"));
 	{ _hidden_from pushBack (markerPos _x)} forEach active_sectors;
-
-	// LRX TTL UNITS
-	private _units_ttl = [] call _getTTLunits;
-	if (count _units_ttl > 0) then {
-		{
-			private _ttl = _x getVariable "GRLIB_counter_TTL";
-			if (!isNil "_ttl") then {
-				if ([_x, _deadMenDist, _hidden_from] call _isHidden && time > _ttl) then {
-					if (_x isKindOf "CAManBase") then {
-						deleteVehicle _x;
-					} else {
-						[_x] call clean_vehicle;
-					};
-					_stats = _stats + 1;
-					sleep 0.1;
-				};
-			};
-		} count _units_ttl;
-		sleep 1;
-	};
 
 	// DEAD MEN
 	if (!(_deadMenLimit == -1)) then {
@@ -263,7 +256,7 @@ while {GRLIB_run_cleanup} do {
 				{
 					if ([_x, _vehicleDist, _hidden_from] call _isHidden) then {
 						_deleted pushBack (typeOf _x);
-						[_x] call clean_vehicle;
+						[_x, true, true] spawn clean_vehicle;
 						_stats = _stats + 1;
 					};
 				} count (_nbVehicles);
@@ -273,13 +266,13 @@ while {GRLIB_run_cleanup} do {
 				while {((_count - _vehiclesLimitMax) > 0)} do {
 					private _veh = selectRandom _list;
 					_deleted pushBack (typeOf _veh);
-					[_veh] call clean_vehicle;
+					[_veh, true, true] spawn clean_vehicle;
 					_stats = _stats + 1;
 					_count = _count - 1;
 				};
 			} else {
 				while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
-					[selectRandom _nbVehicles] call clean_vehicle;
+					[selectRandom _nbVehicles, true, true] spawn clean_vehicle;
 					_stats = _stats + 1;
 				};
 			};
@@ -422,6 +415,7 @@ while {GRLIB_run_cleanup} do {
 	};
 
 	sleep 2;
+	GRLIB_cleanup_active = false;
 	diag_log format ["--- LRX Garbage Collector --- End at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
 	// { diag_log format ["  %1", _x] } forEach _deleted;
 };
