@@ -59,7 +59,9 @@ private _isHidden = {
 // DELETE LRX TTL UNITS
 private _delete_LRX_TTL = {
 	private _hidden_from = [] + GRLIB_all_fobs; 	// FOB + players + active sectors
-	{ _hidden_from pushBack (getPosATL _x)} forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{
+		if !(isNil {_x getVariable "PAR_Grp_ID"}) then { _hidden_from pushBack (getPosATL _x) };	
+	} forEach (units GRLIB_side_friendly + units GRLIB_side_civilian);
 	{ _hidden_from pushBack (markerPos _x)} forEach active_sectors;
 
 	private _units_ttl = (allMissionObjects "All") select { !(isNil {_x getVariable "GRLIB_counter_TTL"}) };
@@ -178,7 +180,9 @@ while {GRLIB_run_cleanup} do {
 	{ deleteVehicle _x } forEach _list;
 
 	private _hidden_from = [] + GRLIB_all_fobs; 	// FOB + players + active sectors
-	{ _hidden_from pushBack (getPosATL _x)} forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{
+		if !(isNil {_x getVariable "PAR_Grp_ID"}) then { _hidden_from pushBack (getPosATL _x) };	
+	} forEach (units GRLIB_side_friendly + units GRLIB_side_civilian);
 	{ _hidden_from pushBack (markerPos _x)} forEach active_sectors;
 
 	// DEAD MEN
