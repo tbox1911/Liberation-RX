@@ -70,6 +70,7 @@ private _delete_LRX_TTL = {
 			private _ttl = _x getVariable "GRLIB_counter_TTL";
 			if (!isNil "_ttl") then {
 				if ([_x, GRLIB_sector_size, _hidden_from] call _isHidden && time > _ttl) then {
+					_x setDamage [1, false];
 					deleteVehicle _x;
 					sleep 0.1;
 				};

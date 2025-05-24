@@ -413,6 +413,7 @@ while { alive player && dialog } do {
 		_vehicle = cursorobject;
 		if (isNull _vehicle) exitWith {};
 		_vehicle_name = [typeOf _vehicle] call F_getLRXName;
+		_vehicle setDamage [1, false];
 		deleteVehicle _vehicle;
 		_msg = format [localize "STR_VEHICLE_DELETED_BY_ADMIN", _vehicle_name];
 		_admin_msg = format [localize "STR_ADMIN_DELETE_VEHICLE", name player, _vehicle_name, typeOf _vehicle];
