@@ -5,22 +5,25 @@ diag_log format ["--- LRX Enemy Patrol - trigger alert %1", _level];
 GRLIB_patrol_current = GRLIB_patrol_current + 1;
 publicVariable "GRLIB_patrol_current";
 
-sleep (10 + (floor random 60));
-while { combat_readiness < _level } do { sleep 60 };
+sleep (60 + (floor random 120));
+while { combat_readiness < _level } do { sleep 120 };
 
 private _opfor_veh = objNull;
 private _opfor_grp = grpNull;
 private _usable_sectors = [];
-private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors) call BIS_fnc_arrayShuffle;
+private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors - GRLIB_patrol_sectors) call BIS_fnc_arrayShuffle;
 {
-	_player_max_radius = (count ([markerPos _x, GRLIB_spawn_min] call F_getNearbyPlayers) > 0);
+	_player_max_radius = (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0);
 	_player_min_radius = (count ([markerPos _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0);
 	if (_player_max_radius && _player_min_radius) exitWith { _usable_sectors pushback _x };
 	sleep 0.1;
 } foreach _search_sectors;
 
 if (count _usable_sectors > 0) then {
-	private  _sector_pos = markerPos (selectRandom _usable_sectors);
+	private _sector = selectRandom _usable_sectors;
+	GRLIB_patrol_sectors pushBack _sector;
+	publicVariable "GRLIB_patrol_sectors";
+	private _sector_pos = markerPos _sector;
 	// 50% in vehicles
 	if (floor random 100 > 50 && count militia_vehicles > 0) then {
 		private _veh_type = selectRandom militia_vehicles;
@@ -59,6 +62,10 @@ if (count _usable_sectors > 0) then {
 	[_opfor_veh] spawn cleanMissionVehicles;
 	{ deleteVehicle _x; sleep 0.1 } forEach (units _opfor_grp);
 	deleteGroup _opfor_grp;
+
+	sleep 600;
+	GRLIB_patrol_sectors = GRLIB_patrol_sectors - [_sector];
+	publicVariable "GRLIB_patrol_sectors";
 };
 
 GRLIB_patrol_current = GRLIB_patrol_current - 1;

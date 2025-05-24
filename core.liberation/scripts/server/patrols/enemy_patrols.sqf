@@ -9,6 +9,9 @@ diag_log "--- LRX Starting Patrols Manager";
 GRLIB_patrol_current = 0;
 publicVariable "GRLIB_patrol_current";
 
+GRLIB_patrol_sectors = [];
+publicVariable "GRLIB_patrol_sectors";
+
 while { true } do {
 	if (GRLIB_patrol_current < GRLIB_patrol_amount) then {
 		private _level = round (25 + floor random 70);
@@ -20,5 +23,5 @@ while { true } do {
 			diag_log format ["--- LRX Server: Patrol: %1 spawned on %2", _level, _hc];
 		};
 	};
-	sleep 30;
+	sleep 60;
 };
