@@ -448,12 +448,13 @@ while { true } do {
 					if (_i % 3 == 0) then {
 						playSound3D [getMissionPath "res\dig02.ogg", player, false, getPosASL player, 5, 1, 250];
 						//player playMoveNow "AinvPknlMstpSlayWrflDnon_medicOther";
-						player playMove "AinvPknlMstpSnonWnonDnon_medicUp0";
+						player playMoveNow "AinvPknlMstpSnonWnonDnon_medicUp0";
 					};
 					_newZ = _zStart + (_stepHeight * _i);
 					_vehicle setPosATL [_veh_pos select 0, _veh_pos select 1, _newZ];
 					sleep 1;
 				};
+				sleep 1;
 				disableUserInput false;
 				disableUserInput true;
 				disableUserInput false;
