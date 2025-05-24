@@ -38,11 +38,11 @@ if (isNull _vehicle) exitWith { grpNull };
 private _pilot_group = group driver _vehicle;
 private _spawnpos = getPosATL _vehicle;
 _vehicle flyInHeight 300;
-_vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
-_vehicle setVariable ["GRLIB_battlegroup", true];
+_vehicle setVariable ["GRLIB_counter_TTL", round(time + 900), true];
+_vehicle setVariable ["GRLIB_battlegroup", true, true];
 {
-	_x setVariable ["GRLIB_counter_TTL", round(time + 900)];
-	_x setVariable ["GRLIB_battlegroup", true];
+	_x setVariable ["GRLIB_counter_TTL", round(time + 900), true];
+	_x setVariable ["GRLIB_battlegroup", true, true];
 } foreach (units _pilot_group);
 
 private _cargo_seat_free = _vehicle emptyPositions "Cargo";
@@ -64,8 +64,8 @@ _vehicle lock 0;
 	_x setSkill _unit_skill;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
-	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
-	_x setVariable ["GRLIB_battlegroup", true];
+	_x setVariable ["GRLIB_counter_TTL", round(time + 3600), true];
+	_x setVariable ["GRLIB_battlegroup", true, true];
 	sleep 0.1;
 } foreach (units _para_group);
 (units _para_group) allowGetIn true;
@@ -79,11 +79,11 @@ if (floor random 3 == 0) then {
 		private _escort_veh = [_targetpos, selectRandom opfor_air] call F_libSpawnVehicle;
 		private _escort_group = group driver _escort_veh;
 		{
-			_x setVariable ["GRLIB_counter_TTL", round(time + 900)];
-			_x setVariable ["GRLIB_battlegroup", true];
+			_x setVariable ["GRLIB_counter_TTL", round(time + 900), true];
+			_x setVariable ["GRLIB_battlegroup", true, true];
 		} foreach (units _escort_group);
-		_escort_veh setVariable ["GRLIB_counter_TTL", round(time + 900)];
-		_escort_veh setVariable ["GRLIB_battlegroup", true];
+		_escort_veh setVariable ["GRLIB_counter_TTL", round(time + 900), true];
+		_escort_veh setVariable ["GRLIB_battlegroup", true, true];
 		_escort_veh flyInHeight 350;
 		[_escort_group, _targetpos, _escort_veh] call _go_target;
 	};
