@@ -17,7 +17,7 @@ _vehicle setUnloadInCombat [true, false];
 [_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;
 [_vehicle] call F_vehicleDefense;
-[_vehicle, GRLIB_side_enemy] call F_forceCrew;
+[_vehicle, GRLIB_side_enemy] spawn F_forceCrew;
 
 _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 [_vehicle, 3600] call F_setUnitTTL;

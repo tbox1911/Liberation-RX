@@ -24,8 +24,7 @@ _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 sleep 1;
 
 // Crew
-[_vehicle, GRLIB_side_enemy] call F_forceCrew;
-private _grp = group (gunner _vehicle);
+private _grp = [_vehicle, GRLIB_side_enemy] call F_forceCrew;
 sleep 1;
 
 // Spotters

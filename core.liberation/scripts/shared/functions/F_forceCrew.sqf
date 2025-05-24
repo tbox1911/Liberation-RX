@@ -42,6 +42,7 @@ private _unit = objNull;
 private _grp = createGroup [_side, true];
 {
 	_unit = _grp createUnit [(selectRandom _unit_class), _vehicle, [], 20, "NONE"];
+	_unit allowDamage false;
 	[_unit] joinSilent _grp;
 	if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
 	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
@@ -90,7 +91,7 @@ private _grp = createGroup [_side, true];
 	};
 	sleep 0.1;
 } forEach _vehicle_roles;
-sleep 1;
+sleep 2;
 
 { if (isNull objectParent _x) then {deleteVehicle _x} } forEach (units _grp);
 (units _grp) allowGetIn true;
@@ -105,4 +106,7 @@ if (_side == GRLIB_side_civilian) then {
 	_grp setBehaviourStrong "AWARE";
 };
 
-(crew _vehicle);
+sleep 2;
+{ _x allowDamage true } forEach (units _grp);
+
+_grp;

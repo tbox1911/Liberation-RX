@@ -16,10 +16,7 @@ if (GRLIB_side_enemy == WEST) then {
 	_uav_bomb = "B_UAV_06_F";
 };
 private _uav_classname = _uav_light;
-
-private _grp = createGroup [GRLIB_side_enemy, true];
 private _radius = round (80 + floor random 100);
-
 private _kamikaze = (floor random 100 >= 80);
 if (_kamikaze) then {
 	_radius = round (1200 + floor random 100);
@@ -36,14 +33,13 @@ _vehicle allowDamage false;
 _vehicle setDir (_vehicle getDir _targetpos);
 _vehicle setPos _spawn_pos;
 _vehicle setVelocityModelSpace [0, 80, 0];
-[_vehicle, GRLIB_side_enemy] call F_forceCrew;
+private _grp = [_vehicle, GRLIB_side_enemy] call F_forceCrew;
 _vehicle engineOn true;
 _vehicle flyInHeight _airveh_alt;
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 [_vehicle, 1800] call F_setUnitTTL;
-(crew _vehicle) joinSilent _grp;
 [_grp] call F_deleteWaypoints;
 sleep 0.5;
 _vehicle allowDamage true;

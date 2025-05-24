@@ -36,7 +36,7 @@ if (_owner != "") then {
 
 // Crewed vehicle
 if (_manned) then {
-	[_vehicle] call F_forceCrew;
+	[_vehicle] spawn F_forceCrew;
 	_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 };
 
@@ -54,7 +54,7 @@ if !(_classname in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {
 
 // AI Static Weapon
 if (_classname in static_vehicles_AI) then {
-	[_vehicle] call F_forceCrew;
+	[_vehicle] spawn F_forceCrew;
 	_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 	_vehicle setVehicleLock "LOCKED";
 	_vehicle allowCrewInImmobile [true, false];

@@ -67,7 +67,7 @@ if (R3F_LOG_mutex_local_verrou) then {
 							[_objet_a_decharger , clientOwner] remoteExec ["setGroupOwner", 2];
 						};
 					};
-					[_objet_a_decharger] call F_forceCrew;
+					[_objet_a_decharger] spawn F_forceCrew;
 					player enableUAVConnectability [_objet_a_decharger, true];
 				};
 				[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
@@ -101,7 +101,7 @@ if (R3F_LOG_mutex_local_verrou) then {
 								[_objet_a_decharger , clientOwner] remoteExec ["setGroupOwner", 2];
 							};
 						};
-						[_objet_a_decharger] call F_forceCrew;
+						[_objet_a_decharger] spawn F_forceCrew;
 						player enableUAVConnectability [_objet_a_decharger, true];
 					};
 					_objet_a_decharger setPos _pos_degagee;
