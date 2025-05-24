@@ -17,6 +17,7 @@ if (count (GRLIB_all_fobs select { surfaceIsWater _x }) > 0 && _box_type == FOB_
 private _sea_deep = round ((getPosATL player select 2) - (getPosASL player select 2));
 private _min_deep = 50;
 if (WorldName == "australia") then { _min_deep = 35 };
+if (WorldName == "panthera3") then { _min_deep = 30 };
 
 if (_box_type == FOB_boat_typename && _sea_deep < _min_deep) exitWith {
 	hint format [localize "STR_BUILD_ERROR_WATER_DEEP", _sea_deep, _min_deep];
