@@ -35,6 +35,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 	_pos = _spawn_pos getPos [2 + (floor random 25), floor random 360];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
 	if (!isNil "_unit") then {
+		_unit allowDamage false;
 		[_unit] joinSilent _grp;
 		if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
@@ -49,6 +50,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		} else {
 			_unit setPosATL _pos;
 		};
+		sleep 0.1;
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] spawn F_fixModUnit;
 		if (_type in ["militia", "building"]) then { [_unit] call loadout_militia };
@@ -82,16 +84,18 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		if !(_type in ["divers", "para", "building"]) then {
 			[_unit] spawn {
 				params ["_unit"];
-				sleep 1;
+				sleep 3;
 				[_unit] call F_fixPosUnit;
 				_unit switchMove "AmovPercMwlkSnonWnonDf";
 				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
 		};
+		sleep 0.1;
+		_unit allowDamage true;
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
-	//sleep 0.2;
+	sleep 0.1;
 } foreach _classname;
 
 _grp;
