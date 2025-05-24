@@ -63,8 +63,6 @@ private _buildpages = [
 
 if (_trench) then {
 	{ ctrlEnable [_x, false] } forEach [102, 103, 104, 105, 106, 107, 108, 109];
-} else {
-	ctrlSetFocus (_display displayCtrl (101 + buildtype));
 };
 
 private _is_linked = {
@@ -122,7 +120,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 		};
 
 		_old_buildtype = buildtype;
-		_old_selected_item = 0;
+		_old_selected_item = -1;
 		_row = 0;
 		ctrlSetText [ 151, _buildpages select (buildtype - 1) ];
 		if (count _build_list == 0) exitWith {};
