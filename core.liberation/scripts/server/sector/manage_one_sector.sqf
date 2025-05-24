@@ -408,6 +408,18 @@ while { true } do {
 			};
 			sleep 0.5;
 		} foreach _enemy_left;
+
+		private _civilians = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_civilian) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
+		if (count _civilians > 5) then {
+			for "_i" from 0 to (floor random 4) do {
+				private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
+				private _unit = selectRandom _civilians;
+				[_unit, _anim] spawn F_startAnimMP;
+				_civilians = _civilians - [_unit];
+				sleep 1;
+			};
+		};
+
 		if (!(_sector in (sectors_military + sectors_tower))) then {
 			private _building_destroyed = _building_alive - count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x });
 			if (_building_destroyed > 0) then {

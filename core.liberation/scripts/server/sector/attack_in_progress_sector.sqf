@@ -73,16 +73,27 @@ if (_ownership == GRLIB_side_enemy) then {
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
 		} else {
 			[_sector, 3] remoteExec ["remote_call_sector", 0];
-			private _enemy_left = ((markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
+			private _enemy_left = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
 			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 			{
 				if ( !_sideMission && _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisoner_ai;
 					_max_prisonners = _max_prisonners - 1;
 				} else {
-					if ( ((random 100) <= 50) ) then { [_x] spawn bomber_ai };
+					if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
 				};
 			} foreach _enemy_left;
+
+			private _civilians = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]) select { (side _x == GRLIB_side_civilian) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
+			if (count _civilians > 5) then {
+				for "_i" from 0 to (floor random 4) do {
+					private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
+					private _unit = selectRandom _civilians;
+					[_unit, _anim] spawn F_startAnimMP;
+					_civilians = _civilians - [_unit];
+					sleep 1;
+				};
+			};
 
 			if ((sector_timer - serverTime) <= 300) then {
 				private _rwd_xp = round (15 + random 10);
