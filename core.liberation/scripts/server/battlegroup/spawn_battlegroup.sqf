@@ -65,17 +65,13 @@ private _bg_groups = [];
 for "_i" from 1 to _target_size do {
 	_vehicle_class = selectRandom _vehicle_pool;
 	_vehicle = [markerpos _spawn_marker, _vehicle_class] call F_libSpawnVehicle;
-	_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600), true];  // 60 minutes TTL
-	_vehicle setVariable ["GRLIB_battlegroup", true, true];
+	[_vehicle, 3600] call F_setUnitTTL;
 	_nextgrp = group driver _vehicle;
-	{
-		_x setVariable ["GRLIB_counter_TTL", round(time + 3600), true];
-		_x setVariable ["GRLIB_battlegroup", true, true];
-	} forEach (units _nextgrp);
 	if (typeOf _vehicle in opfor_troup_transports_truck) then {
 		[_vehicle, _objective_pos] spawn troup_transport;
 	} else {
 		[_nextgrp, _objective_pos] spawn battlegroup_ai;
+		[_nextgrp, 3600] call F_setUnitTTL;
 	};
 	_bg_groups pushback _nextgrp;
 	sleep 10;
@@ -88,10 +84,7 @@ for "_i" from 1 to _nb_squad do {
 	if (floor random 2 == 0) then {
 		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 		[_nextgrp, _objective_pos] spawn battlegroup_ai;
-		{
-			_x setVariable ["GRLIB_counter_TTL", round(time + 3600), true];
-			_x setVariable ["GRLIB_battlegroup", true, true];
-		} forEach (units _nextgrp);
+		[_nextgrp, 3600] call F_setUnitTTL;
 	} else {
 		[_objective_pos] spawn send_paratroopers;
 	};

@@ -85,6 +85,7 @@ F_searchGunner = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_secondsToTimer = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_secondsToTimer.sqf";
 F_sectorOwnership = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_sectorOwnership.sqf";
 F_setCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setCargo.sqf";
+F_setUnitTTL = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setUnitTTL.sqf";
 F_spawnBuildingSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnBuildingSquad.sqf";
 F_spawnCivilians = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnCivilians.sqf";
 F_spawnRegularSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnRegularSquad.sqf";

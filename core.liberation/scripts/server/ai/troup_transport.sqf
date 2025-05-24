@@ -21,9 +21,8 @@ private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] ca
 	_x moveInCargo _troup_transport;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
-	_x setVariable ["GRLIB_counter_TTL", round(time + 3600), true];
-	_x setVariable ["GRLIB_battlegroup", true, true];
 } foreach (units _troup_group);
+[_troup_group, 3600] call F_setUnitTTL;
 (units _troup_group) allowGetIn true;
 (units _troup_group) orderGetIn true;
 sleep 1;

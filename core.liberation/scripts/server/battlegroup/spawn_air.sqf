@@ -20,7 +20,7 @@ if (count _planeType == 0) exitWith { diag_log format ["--- LRX Error: Cannot fi
 
 private _grp = createGroup [_side, true];
 private _vehicle = [_targetpos, selectRandom _planeType, 0, false, _side] call F_libSpawnVehicle;
-_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
+[_vehicle, 1800] call F_setUnitTTL;
 (crew _vehicle) joinSilent _grp;
 _grp setBehaviourStrong "COMBAT";
 _grp setCombatMode "YELLOW";

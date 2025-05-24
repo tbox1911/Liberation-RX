@@ -42,7 +42,7 @@ _vehicle flyInHeight _airveh_alt;
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
-_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
+[_vehicle, 1800] call F_setUnitTTL;
 (crew _vehicle) joinSilent _grp;
 [_grp] call F_deleteWaypoints;
 sleep 0.5;

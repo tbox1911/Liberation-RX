@@ -30,14 +30,14 @@ for "_i" from 0 to _target_size do {
 {
 	_nextgrp = createGroup [GRLIB_side_enemy, true];
 	_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
-	_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600), true];  // 60 minutes TTL
+	[_vehicle, 3600] call F_setUnitTTL;
 	(crew _vehicle) joinSilent _nextgrp;
 	if (typeOf _vehicle in opfor_troup_transports_truck) then {
 		[_vehicle, _objectivepos] spawn troup_transport;
 	} else {
 		[_nextgrp, _objectivepos] spawn battlegroup_ai;
+		[_nextgrp, 3600] call F_setUnitTTL;
 	};
-	{ _x setVariable ["GRLIB_counter_TTL", round(time + 3600), true] } forEach (units _nextgrp);
 	_bg_groups pushback _nextgrp;
 	sleep 2;
 } foreach _selected_opfor_battlegroup;

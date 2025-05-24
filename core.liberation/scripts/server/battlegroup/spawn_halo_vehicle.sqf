@@ -20,12 +20,7 @@ _vehicle setUnloadInCombat [true, false];
 [_vehicle, GRLIB_side_enemy] call F_forceCrew;
 
 _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
-_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600), true];  // 60 minutes TTL
-_vehicle setVariable ["GRLIB_battlegroup", true, true];
-{
-	_x setVariable ["GRLIB_counter_TTL", round(time + 3600), true];
-	_x setVariable ["GRLIB_battlegroup", true, true];
-} forEach (crew _vehicle);
+[_vehicle, 3600] call F_setUnitTTL;
 
 [_pos, "parasound"] spawn sound_range_remote_call;
 [_vehicle, objNull, false] spawn F_addParachute;
