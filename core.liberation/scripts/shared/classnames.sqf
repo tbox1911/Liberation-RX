@@ -1,5 +1,6 @@
 // *** GLOBAL DEFINITIOON ***
 if (abort_loading) exitWith {};
+diag_log "--- LRX: Loading Classnames ---";
 
 private ["_ret", "_path"];
 GRLIB_perm_hidden = 99999;
@@ -15,8 +16,14 @@ zeropos = [0,0,10000];
 _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
 _ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
+diag_log "--- LRX: Check West Classnames ---";
+private _blufor_vehicles = [];
+{ _blufor_vehicles pushBackUnique (_x select 0) } forEach (infantry_units_west + light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles_west + buildings_west);
+{ _blufor_vehicles pushBackUnique _x } foreach (blufor_air + static_vehicles_AI + boats_west + blufor_squad_inf_light + blufor_squad_inf + blufor_squad_at + blufor_squad_aa + blufor_squad_mix);
+{ [_x] call F_checkClass } forEach _blufor_vehicles;
 
 // *** Arsenal ****
+diag_log "--- LRX: Build Arsenal Classnames ---";
 [] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
 
 // *** MFR Dogs ****
@@ -558,6 +565,7 @@ GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + stati
 [] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_airdrop_classnames.sqf"];
 
 // Filter Mods
+diag_log "--- LRX: Check Classnames ---";
 infantry_units = [ infantry_units ] call F_filterMods;
 light_vehicles = [ light_vehicles ] call F_filterMods;
 heavy_vehicles = [ heavy_vehicles ] call F_filterMods;
@@ -565,7 +573,7 @@ air_vehicles = [ air_vehicles ] call F_filterMods;
 support_vehicles = [ support_vehicles ] call F_filterMods;
 static_vehicles = [ static_vehicles ] call F_filterMods;
 buildings = [ buildings ] call F_filterMods;
-build_lists = [[],infantry_units,light_vehicles,heavy_vehicles,air_vehicles,static_vehicles,buildings,support_vehicles,squads,trenches_default];
+build_lists = [[],infantry_units,light_vehicles,heavy_vehicles,air_vehicles,static_vehicles,buildings,support_vehicles,squads,blufor_trenches];
 militia_squad = militia_squad select { [_x] call F_checkClass };
 militia_vehicles = militia_vehicles select { [_x] call F_checkClass };
 all_hostile_classnames = all_hostile_classnames select { [_x] call F_checkClass };
@@ -770,3 +778,5 @@ GRLIB_disabled_arsenal = [
 	Box_Launcher_typename,
 	basic_weapon_typename
 ];
+
+diag_log "--- LRX: Classnames Loaded ---";

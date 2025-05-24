@@ -79,6 +79,7 @@ GRLIB_checkBuild = {
 };
 
 GRLIB_checkBuildTrench = {
+	if (count blufor_trenches == 0) exitWith { false };
 	(GRLIB_player_is_menuok && !(surfaceIsWater getPos player) && !GRLIB_player_near_fob && !GRLIB_player_near_lhd && (([player, 3] call fetch_permission) || GRLIB_player_admin))
 };
 

@@ -1,4 +1,5 @@
-trenches_default = [
+if (!isNil "blufor_trenches") exitWith {};
+blufor_trenches = [
 	["Land_BagFence_Round_F",0,5,0,0],
 	["Land_BagFence_Short_F",0,5,0,0],
 	["Land_BagFence_Long_F",0,10,0,GRLIB_perm_inf],
