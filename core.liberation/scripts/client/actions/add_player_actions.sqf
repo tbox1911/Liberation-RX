@@ -1,4 +1,3 @@
-waitUntil { sleep 1; !(isNil "resources_infantry") };
 private _icon_dog = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
 private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
@@ -15,6 +14,8 @@ player addAction ["<t color='#FF8000'>" + localize "STR_DUMP_FOB_TEMPLATE" + "</
 
 // Extended Options
 player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true,"","GRLIB_player_is_menuok"];
+
+waitUntil { sleep 1; !(isNil "resources_infantry") };
 
 // Juke Box
 player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];

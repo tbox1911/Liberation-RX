@@ -98,6 +98,7 @@ GRLIB_ActionDist_10 = 10;
 GRLIB_ActionDist_15 = 15;
 GRLIB_max_respawn_reached = false;
 GRLIB_player_configured = false;
+GRLIB_current_trenches = 0;
 
 // Local Constants
 GRLIB_BuildTypeDirect = 90;
