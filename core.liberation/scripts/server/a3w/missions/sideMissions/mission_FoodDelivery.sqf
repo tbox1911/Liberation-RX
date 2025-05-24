@@ -19,6 +19,7 @@ _setupObjects = {
 	_man1 = createAgent ["C_Marshal_F", _missionPos, [], 5, "NONE"];
 	_man1 allowDamage false;
 	_man1 setVariable ['GRLIB_can_speak', true, true];
+	_man1 setVariable ["GRLIB_mission_AI", true, true];
 	_man1 setVariable ["GRLIB_A3W_Mission_DL3", true, true];
 	doStop _man1;
 	[_man1, "LHD_krajPaluby"] spawn F_startAnimMP;
