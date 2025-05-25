@@ -12,7 +12,7 @@ _setupVars = {
 
 _setupObjects = {
 	_missionPos = markerpos _missionLocation;
-	_vehicle = [_missionPos, selectRandom opfor_boats, 0, nil, nil, nil, true] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, selectRandom opfor_boats, 0, false, GRLIB_side_enemy, true, true] call F_libSpawnVehicle;
 	_aiGroup = [_missionPos, _nbUnits, "divers", true] call createCustomGroup;
 	(crew _vehicle) joinSilent _aiGroup;
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;

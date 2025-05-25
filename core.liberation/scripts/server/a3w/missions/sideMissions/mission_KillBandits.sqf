@@ -51,7 +51,7 @@ _setupObjects = {
 	};
 
 	// veh1
-	_vehicle1 = [_missionPos, _bandits_car, 0, nil, nil, false] call F_libSpawnVehicle;
+	_vehicle1 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false, true] call F_libSpawnVehicle;
 	private _vehicle_seat = (_vehicle1 emptyPositions "") min 4;
 	if (_vehicle_seat < 3) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, vehicle %2, no enough seat!", localize _missionType ,typeOf _vehicle1];
@@ -76,7 +76,7 @@ _setupObjects = {
 	waitUntil {sleep 1; _vehicle1 distance2D _missionPos > 30 || time > _timout};
 
 	// veh2
-	_vehicle2 = [_missionPos, _bandits_car, 0, nil, nil, false] call F_libSpawnVehicle;
+	_vehicle2 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false, true] call F_libSpawnVehicle;
 	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle2, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
@@ -88,7 +88,7 @@ _setupObjects = {
 	waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
 
 	// veh3
-	_vehicle3 = [_missionPos, _bandits_car, 0, nil, nil, false] call F_libSpawnVehicle;
+	_vehicle3 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false, true] call F_libSpawnVehicle;
 	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle3, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
