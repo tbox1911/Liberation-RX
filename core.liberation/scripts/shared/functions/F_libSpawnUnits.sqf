@@ -81,7 +81,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			_unit addBackpack "B_Parachute";
 		};
 
-		if !(_type in ["divers", "para", "building"]) then {
+		if (_type in ["militia", "infantry"]) then {
 			[_unit] spawn {
 				params ["_unit"];
 				sleep 3;

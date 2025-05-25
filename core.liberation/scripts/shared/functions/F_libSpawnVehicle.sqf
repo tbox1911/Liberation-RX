@@ -91,11 +91,8 @@ if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn Vehicle %1 Pos %2 at %3", _classname, getPosATL _vehicle, time ];
 };
 
-if (_crewed) then {	[_vehicle, _side, _mission_ai] spawn F_forceCrew };
+if (_crewed) then {	[_vehicle, _side, _mission_ai] call F_forceCrew };
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-_vehicle allowCrewInImmobile [true, false];
-_vehicle setUnloadInCombat [true, false];
-
 [_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;
 [_vehicle] call F_vehicleDefense;
@@ -120,10 +117,6 @@ if (_side == GRLIB_side_civilian) then {
 	}];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
 	_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
-	_vehicle lockCargo true;
-	_vehicle lockDriver true;
-	{ _vehicle lockTurret [_x, true] } forEach (allTurrets _vehicle);
-	_vehicle setVehicleLock "LOCKED";
 };
 
 if (_side == GRLIB_side_friendly) then {

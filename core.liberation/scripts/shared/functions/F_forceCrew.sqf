@@ -4,15 +4,18 @@ params [
 	["_mission_ai", false]
 ];
 
-if (count crew _vehicle > 0) exitWith {};
+if (count crew _vehicle > 0) exitWith { grpNull };
+
+_vehicle allowCrewInImmobile [true, false];
+_vehicle setUnloadInCombat [true, false];
 
 // Aircraft / Drone
 if (typeOf _vehicle in uavs_vehicles + static_vehicles_AI || (_vehicle isKindOf "Air")) exitWith {
 	private _grp = createGroup [_side, true];
 	_side createVehicleCrew _vehicle;
-	sleep 0.2;
+	sleep 1;
 	(crew _vehicle) joinSilent _grp;
-	(crew _vehicle);
+	_grp;
 };
 
 private _vehicle_roles = [];
@@ -27,7 +30,7 @@ if (count _vehicle_roles == 0) then {
 		if ((_x select 1) in ["driver","commander","gunner"]) then { _vehicle_roles pushBackUnique (_x select 1) };
 	} forEach (fullCrew [_vehicle, "", true]);
 };
-if (count _vehicle_roles == 0) exitWith {[]};
+if (count _vehicle_roles == 0) exitWith { diag_log format ["--- LRX Crew Can't find role for vehicle %1", typeOf _vehicle]; grpNull };
 
 private _unit_class = [opfor_crew];
 if (_side == GRLIB_side_friendly) then {
@@ -91,7 +94,7 @@ private _grp = createGroup [_side, true];
 	};
 	sleep 0.1;
 } forEach _vehicle_roles;
-sleep 2;
+sleep 1;
 
 { if (isNull objectParent _x) then {deleteVehicle _x} } forEach (units _grp);
 (units _grp) allowGetIn true;
@@ -106,7 +109,7 @@ if (_side == GRLIB_side_civilian) then {
 	_grp setBehaviourStrong "AWARE";
 };
 
-sleep 2;
+sleep 1;
 { _x allowDamage true } forEach (units _grp);
 
 _grp;
