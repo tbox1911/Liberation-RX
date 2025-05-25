@@ -1,9 +1,9 @@
-params [ "_sector", "_radius", "_number" ];
+params [ "_sector_pos", "_radius", "_number" ];
 
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
 	sleep 3;
-	[ _sector, _radius, _number - 1 ] spawn ied_manager;
+	[ _sector_pos, _radius, _number - 1 ] spawn ied_manager;
 };
 
 private _activation_radius_infantry = 6.66;
@@ -18,9 +18,7 @@ private _ied_type = selectRandom [
 	"IEDUrbanSmall_F"
 ];
 
-private _sector_pos = markerPos _sector;
 private _roadobj = selectRandom (_sector_pos nearRoads _radius);
-
 if !(isNil "_roadobj" && random 100 < GRLIB_MineProbability) then {
 	private _ied_obj = createMine [_ied_type, (_roadobj getPos [1, random(360)]), [], 0];
 	private _ied_pos = (getPos _ied_obj);

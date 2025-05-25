@@ -225,8 +225,8 @@ if ((floor GRLIB_difficulty_modifier) > 1) then {
 };
 
 // Create mines
-[_sector, _building_range, round (_ied_count)] spawn ied_manager;
-[_sector, _building_range, round (_ied_count)] spawn ied_trap_manager;
+[_sector_pos, _building_range, round (_ied_count)] spawn ied_manager;
+[_sector_pos, _building_range, round (_ied_count)] spawn ied_trap_manager;
 
 // Create drones defender
 if (_uavs_count > 0) then {
