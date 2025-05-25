@@ -1,6 +1,5 @@
-params ["_vehicle"];
+params ["_vehicle", "_grp"];
 if (isNull _vehicle) exitWith {};
-if (!local _vehicle) exitWith { [_vehicle] remoteExec ["civilian_ai_veh", owner _vehicle] };
 
 private _blacklist_class = [
 	"Air",
@@ -9,16 +8,17 @@ private _blacklist_class = [
 	"Motorcycle"
 ];
 if (([_vehicle, _blacklist_class] call F_itemIsInClass)) exitWith {};
-if ((tolower typeOf _vehicle) find "bicycle" > -1) exitWith {};
-
+if (tolower (typeOf _vehicle) find "bicycle" > -1) exitWith {};
 if (count (crew _vehicle) == 0) exitWith {};
+if (count (units _grp) == 0) exitWith {};
+if (!local _vehicle) exitWith { [_vehicle, _grp] remoteExec ["civilian_ai_veh", owner _vehicle] };
 
 // must match speak_manger.sqf (_msg)
 #define _incd_repair 20
 #define _incd_fuel 22
 
 private _driver = driver _vehicle;
-private _grp = group _driver;
+if (isNull _driver) exitWith {};
 private _delay = (150 + floor random 200);
 private _trigger = (time + _delay);
 private _event_stared = false;

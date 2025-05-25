@@ -25,22 +25,20 @@ if (count _usable_sectors > 0) then {
 	// 50% in vehicles
 	if (floor random 100 > 50 && count militia_vehicles > 0) then {
 		private _veh_type = selectRandom militia_vehicles;
-		_opfor_veh = [_sector_pos, _veh_type, nil, nil, nil, nil, true] call F_libSpawnVehicle;
-		if !(isNull _opfor_veh) then {
-			_opfor_grp = group (driver _opfor_veh);
-			[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
-			diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
-		};
+		_opfor_veh = [_sector_pos, _veh_type, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+		_opfor_grp = [_opfor_veh, GRLIB_side_enemy, true] call F_forceCrew;
+		diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
 	} else {
 		_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", true, 200] call createCustomGroup;
 		diag_log format ["--- LRX Enemy Patrol %1", _opfor_grp];
 	};
 
 	sleep 1;
-	if (count units _opfor_grp == 0) exitWith {};
-
+	if (isNull _opfor_grp) exitWith { deleteVehicle _opfor_veh };
+	[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
 	GRLIB_patrol_sectors pushBack _sector;
 	publicVariable "GRLIB_patrol_sectors";
+	sleep 60;
 
 	// Wait
 	private _unit_ttl = round (time + 1800);
@@ -59,7 +57,7 @@ if (count _usable_sectors > 0) then {
 	};
 
 	// Cleanup
-	waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+	waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 	[_opfor_veh] spawn cleanMissionVehicles;
 	{ deleteVehicle _x; sleep 0.1 } forEach (units _opfor_grp);
 	deleteGroup _opfor_grp;

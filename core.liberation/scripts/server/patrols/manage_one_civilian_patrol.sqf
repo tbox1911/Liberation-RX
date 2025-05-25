@@ -21,23 +21,21 @@ if (count _usable_sectors > 0) then {
 	if (floor random 100 >= 60) then {
 		private _spread = 3;
 		private _spawn_pos = [(((_sector_pos select 0) + (75 * _spread)) - (floor random (150 * _spread))),(((_sector_pos select 1) + (75 * _spread)) - (floor random (150 * _spread))), 0.5];
-		_civ_veh = [_spawn_pos, (selectRandom civilian_vehicles), 3, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-		if !(isNull _civ_veh) then {
-			_civ_grp = group (driver _civ_veh);
-			_sector_pos = getPos _civ_veh;
-		};
+		_civ_veh = [_spawn_pos, (selectRandom civilian_vehicles), 3, false, GRLIB_side_civilian, false] call F_libSpawnVehicle;
+		_civ_grp = [_civ_veh, GRLIB_side_civilian, false] call F_forceCrew;
+		[_civ_veh, _civ_grp] spawn civilian_ai_veh;
+		_civ_veh lockCargo true;
+		_civ_veh lockDriver true;
+		{ _civ_veh lockTurret [_x, true] } forEach (allTurrets _civ_veh);
+		_civ_veh setVehicleLock "LOCKED";
+		_sector_pos = getPos _civ_veh;
 	} else {
 		_civ_grp = [_sector_pos] call F_spawnCivilians;
 	};
 
 	sleep 1;
-	if (count units _civ_grp == 0) exitWith {};
-
+	if (isNull _civ_grp) exitWith { deleteVehicle _civ_veh };
 	[_civ_grp, _sector_pos] call add_civ_waypoints;
-	if !(isNull _civ_veh) then {
-		[_civ_veh] spawn civilian_ai_veh;
-	};
-
 	sleep 60;
 
 	// Wait
@@ -63,7 +61,7 @@ if (count _usable_sectors > 0) then {
 	};
 
 	// Cleanup
-	waitUntil { sleep 30; (GRLIB_global_stop == 1 || (diag_fps < 10) || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+	waitUntil { sleep 30; (GRLIB_global_stop == 1 || (diag_fps < 10) || [_unit_pos, GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 	[_civ_veh] call clean_vehicle;
 	{ deleteVehicle _x } forEach (units _civ_grp);
 	deleteGroup _civ_grp;
