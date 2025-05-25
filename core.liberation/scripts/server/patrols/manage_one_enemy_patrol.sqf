@@ -21,8 +21,6 @@ private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission
 
 if (count _usable_sectors > 0) then {
 	private _sector = selectRandom _usable_sectors;
-	GRLIB_patrol_sectors pushBack _sector;
-	publicVariable "GRLIB_patrol_sectors";
 	private _sector_pos = markerPos _sector;
 	// 50% in vehicles
 	if (floor random 100 > 50 && count militia_vehicles > 0) then {
@@ -40,6 +38,9 @@ if (count _usable_sectors > 0) then {
 
 	sleep 1;
 	if (count units _opfor_grp == 0) exitWith {};
+
+	GRLIB_patrol_sectors pushBack _sector;
+	publicVariable "GRLIB_patrol_sectors";
 
 	// Wait
 	private _unit_ttl = round (time + 1800);
