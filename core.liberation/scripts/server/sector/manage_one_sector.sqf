@@ -356,7 +356,7 @@ private _stageAttack = {
 
 private _marker = ("zone_capture" + _sector);
 if (GRLIB_Commander_mode) then {
-	_createMarker = createMarker [_marker, _sector_pos];
+	_createMarker = createMarkerLocal [_marker, _sector_pos];
 	_marker setMarkerBrushLocal "DiagGrid";
 	_marker setMarkerShapeLocal "ELLIPSE";
 	_marker setMarkerAlphaLocal 0.7;

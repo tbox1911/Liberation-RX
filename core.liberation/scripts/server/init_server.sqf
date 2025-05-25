@@ -259,6 +259,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\offloading\show_fps.sqf";
 [] execVM "scripts\server\wildlife\manage_wildlife.sqf";
 [] execVM "scripts\server\sector\static_manager.sqf";
+[] execVM "scripts\server\sector\sector_markers_manager.sqf";
 
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";

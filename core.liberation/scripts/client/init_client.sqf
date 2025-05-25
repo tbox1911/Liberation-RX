@@ -142,7 +142,6 @@ if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
-	[] execVM "scripts\client\markers\sector_manager.sqf";
 	[] execVM "scripts\client\markers\spot_timer.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
@@ -178,7 +177,6 @@ waitUntil {
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";
-[] execVM "scripts\client\markers\sector_manager.sqf";
 //[] execVM "scripts\client\markers\logs_markers.sqf";
 
 // Local Manager

@@ -80,17 +80,17 @@ _connectMarkers = +GRLIB_connectMarkers;
 
 {
     _mpos = _x;
-    _marker = createMarker [format ["line_%1_%2", _mpos#0, _mpos#1], _mpos];
+    _marker = createMarkerLocal [format ["line_%1_%2", _mpos#0, _mpos#1], _mpos];
     _connectMarkers set [_mpos, _marker];
-    _marker setMarkerPos _mpos;
-    _marker setMarkerBrush "Solid";
-    _marker setMarkerShape "RECTANGLE";
+    _marker setMarkerPosLocal _mpos;
+    _marker setMarkerBrushLocal "Solid";
+    _marker setMarkerShapeLocal "RECTANGLE";
     _direction = _y#0;
-    _marker setMarkerDir _direction;
+    _marker setMarkerDirLocal _direction;
     _distance = _y#1;
-    _marker setMarkerSize [8, _distance];
+    _marker setMarkerSizeLocal [8, _distance];
+    _marker setMarkerAlphaLocal 0.5;
     _marker setMarkerColor "ColorBlack";
-    _marker setMarkerAlpha 0.5;
 } forEach _newConnections;
 GRLIB_connectMarkers = _connectMarkers;
 GRLIB_connCalculating = false;
