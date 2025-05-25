@@ -28,10 +28,15 @@ if (!GRLIB_hide_opfor) then {
 
 private _sector_count = -1;
 private _dist = 0;
+private _first_start = true;
 sleep 1;
 
 while { GRLIB_endgame == 0 } do {
-	waitUntil {sleep 0.1; visibleMap && (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
+	if (_first_start) then {
+		_first_start = false;
+	} else {
+		waitUntil {sleep 0.1; visibleMap && (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
+	};
 
 	if (GRLIB_hide_opfor && count opfor_sectors > 3 && !GRLIB_Commander_mode) then {
 		{
