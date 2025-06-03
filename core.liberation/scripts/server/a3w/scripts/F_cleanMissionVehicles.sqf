@@ -10,7 +10,7 @@ if (typeName _vehicles != "ARRAY") then { _vehicles = [_vehicles] };
 
 		if (!alive _vehicle) exitWith {};
 		if (_vehicle isKindOf "CAManBase") then {
-			deleteVehicle _x;
+			deleteVehicle _vehicle;
 		} else {
 			if (_vehicle getVariable ["GRLIB_vehicle_owner", ""] == "server") then { _vehicle setVariable ["GRLIB_vehicle_owner", "", true] };
 			[_vehicle] spawn clean_vehicle;
