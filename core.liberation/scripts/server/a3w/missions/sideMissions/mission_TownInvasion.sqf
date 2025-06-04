@@ -5,12 +5,13 @@ private ["_managed_units", "_grp_civ", "_townName"];
 
 _setupVars = {
 	_missionType = "STR_INVASION";
-	_locationsArray = [LRX_MissionMarkersCap] call checkSpawn;
+	_missionLocation = [sectors_capture] call getMissionLocation;
+	_townName = markerText _missionLocation;
+	_locationsArray = nil;
 	_missionTimeout = (30 * 60);
 };
 
 _setupObjects = {
-	_townName = markerText _missionLocation;
 	_missionPos = [(markerpos _missionLocation), 5, 0, 80] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
