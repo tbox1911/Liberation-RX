@@ -50,7 +50,7 @@ if (_cargo_seat_free > 10) then { _cargo_seat_free = 10 };
 [_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
-private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
+private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para", true] call F_libSpawnUnits;
 private _lock = locked _vehicle;
 _vehicle lock 0;
 {

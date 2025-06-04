@@ -82,7 +82,7 @@ if (_nb_squad > 4) then { _nb_squad = 4 };
 if ( _current_players <= 2 ) then { _nb_squad = round (_nb_squad / 2) };
 for "_i" from 1 to _nb_squad do {
 	if (floor random 2 == 0) then {
-		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
+		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp), true] call F_spawnRegularSquad;
 		[_nextgrp, _objective_pos] spawn battlegroup_ai;
 		[_nextgrp, 3600] call F_setUnitTTL;
 	} else {

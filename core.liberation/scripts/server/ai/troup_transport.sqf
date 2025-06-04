@@ -15,7 +15,7 @@ while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (select
 // Board in
 private _lock = locked _troup_transport;
 _troup_transport lock 0;
-private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 {
 	_x assignAsCargoIndex [_troup_transport, (_forEachIndex + 1)];
 	_x moveInCargo _troup_transport;

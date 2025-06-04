@@ -30,13 +30,13 @@ _pilotUnits joinSilent _pilotsGrp;
 } foreach _pilotUnits;
 sleep 5;
 
-private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 [_grppatrol, _helopos, 50] spawn patrol_ai;
 
 private _nbsentry = 2 + (floor (random 3));
 private _unitclass = [];
 while { (count _unitclass) < _nbsentry } do { _unitclass pushback opfor_sentry };
-_grpsentry = [_pilotsPos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+_grpsentry = [_pilotsPos, _unitclass, GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 
 private _vehicle_pool = opfor_vehicles;
 if ( combat_readiness < 50 ) then {

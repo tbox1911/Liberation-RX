@@ -239,7 +239,7 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 	private _infsquad = _x select 1;
 	private _range = _x select 2;
 	if (!(_squad isEqualTo [])) then {
-		_grp = [_sector, _infsquad, _squad] call F_spawnRegularSquad;
+		_grp = [_sector, _infsquad, _squad, false] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
 		sleep 0.2;
@@ -363,6 +363,7 @@ if (GRLIB_Commander_mode) then {
 	_marker setMarkerColorLocal GRLIB_color_enemy;
 	_marker setMarkerSize [_local_capture_size, _local_capture_size]; // Last global will broadcast all local changes - mp optimization https://community.bistudio.com/wiki/setMarkerText
 };
+
 // Main loop
 private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
 diag_log format ["Sector %1 wait attack to finish", _sector];
@@ -399,35 +400,37 @@ while { true } do {
 		};
 		private _enemy_left = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 		{
-			if (_max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance)) then {
-				[_x] spawn prisoner_ai;
-				_max_prisonners = _max_prisonners - 1;
-				_managed_units = _managed_units - [_x];
-			} else {
-				if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
+			if (_max_prisonners > 0) then {
+				if ((floor random 100) <= GRLIB_surrender_chance) then {
+					[_x] spawn prisoner_ai;
+					_max_prisonners = _max_prisonners - 1;
+					_managed_units = _managed_units - [_x];
+				} else {
+					if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
+				};
+				sleep 0.5;
 			};
-			sleep 0.5;
 		} foreach _enemy_left;
 
-		private _civilians = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_civilian) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
-		if (count _civilians > 5) then {
-			for "_i" from 0 to (floor random 4) do {
-				private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
-				private _unit = selectRandom _civilians;
-				[_unit, _anim] spawn F_startAnimMP;
-				_civilians = _civilians - [_unit];
-				sleep 1;
-			};
-		};
-
-		if (!(_sector in (sectors_military + sectors_tower))) then {
+		if !(_sector in (sectors_military + sectors_tower)) then {
 			private _building_destroyed = _building_alive - count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x });
 			if (_building_destroyed > 0) then {
 				[_sector, 4, _building_destroyed] remoteExec ["remote_call_sector", 0];
 				{ [_x, -(_building_destroyed * 3)] call F_addReput } forEach ([_sector_pos, _local_capture_size] call F_getNearbyPlayers);
 			};
+			sleep 30;
+			private _civilians = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_civilian) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_is_prisoner", false]) };
+			if (count _civilians > 5) then {
+				for "_i" from 0 to (floor random 4) do {
+					private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
+					private _unit = selectRandom _civilians;
+					[_unit, _anim] spawn F_startAnimMP;
+					_civilians = _civilians - [_unit];
+					sleep 1;
+				};
+			};
 		};
-		sleep 60;
+		sleep 30;
 	};
 
 	if (!GRLIB_Commander_mode) then {

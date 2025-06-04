@@ -1,4 +1,4 @@
-params [ "_sector", "_infsquad", "_squadies_to_spawn" ];
+params ["_sector", "_infsquad", "_squadies_to_spawn", "_mission_ai"];
 
 if (opforcap_max) exitWith {grpNull};
 
@@ -10,7 +10,7 @@ while {surfaceIsWater _pos && _max_try > 0 } do {
     _max_try = _max_try - 1;
     sleep 0.1;
 };
-private _grp = [_pos, _squadies_to_spawn, GRLIB_side_enemy, _infsquad] call F_libSpawnUnits;
+private _grp = [_pos, _squadies_to_spawn, GRLIB_side_enemy, _infsquad, _mission_ai] call F_libSpawnUnits;
 diag_log format [ "Done Spawning regular squad. (%1 - %2) at %3", _grp, count (units _grp), time ];
 
 _grp;
