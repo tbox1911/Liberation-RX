@@ -6,11 +6,11 @@ private ["_townName", "_marker_mission"];
 _setupVars = {
 	_missionType = "STR_FOODDELI";
 	_locationsArray = [LRX_MissionMarkersCap] call checkSpawn;
-	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 };
 
 _setupObjects = {
+	_townName = markerText _missionLocation;
 	_missionPos = [(markerpos _missionLocation), 5, 0] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
