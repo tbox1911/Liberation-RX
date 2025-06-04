@@ -169,7 +169,6 @@ if (_unit == player) then {
 			if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
 			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
 		};
-		hintSilent "";
 	}];
 
 	// Switch seat
