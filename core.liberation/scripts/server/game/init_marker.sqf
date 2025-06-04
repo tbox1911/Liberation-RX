@@ -1,4 +1,5 @@
 if (!isServer) exitWith {};
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 // Load fixed positions
 [] call compileFinal preprocessFileLineNumbers "fixed_position.sqf";
@@ -107,7 +108,7 @@ private ["_shop", "_desk_dir", "_desk_pos", "_desk", "_man", "_offset", "_str"];
 			if (_marker in sectors_factory) then {_marker_text = format ["Fuel Depot #%1", _forEachIndex]};
 			diag_log format ["--- LRX World: %1 - Auto-Name failed for marker: %2", worldname, _marker]
 		};
-		_marker setMarkerTextLocal _marker_text;
+		_marker setMarkerText _marker_text;
  };
 } forEach (sectors_capture + sectors_bigtown + sectors_factory + sectors_military);
 

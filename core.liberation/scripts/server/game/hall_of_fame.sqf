@@ -1,5 +1,6 @@
 if (!isServer) exitWith {};
 if (GRLIB_fancy_info == 0) exitWith {};
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 while {true} do {
 	sleep (10 * 60);
