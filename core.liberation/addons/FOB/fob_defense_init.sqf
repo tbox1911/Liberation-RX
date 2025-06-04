@@ -7,11 +7,15 @@ if ([] call is_admin) then {
 GRLIB_FOB_Defense = GRLIB_FOB_Defense + [
     ["Small Defense 1", "scripts\fob_templates\defense1.sqf", 50, "-LRX-"],
     ["Small Defense 2", "scripts\fob_templates\defense2.sqf", 55, "-LRX-"],
-    ["Medium Defense 1", "scripts\fob_templates\defense3.sqf", 80, "pSiKO"],
-    ["Medium Defense 2", "scripts\fob_templates\defense4.sqf", 80, "Max Rocka"],
-    ["(todo) Large Defense 1", "scripts\fob_templates\defense5.sqf", 150, ""],
-    ["(todo) Large Defense 2", "scripts\fob_templates\defense6.sqf", 180, ""],
-    ["Very Large Defense", "scripts\fob_templates\defense7.sqf", 210, "Max Rocka"]
+    ["Medium Defense 1 - Square A", "scripts\fob_templates\defense3.sqf", 80, "pSiKO"],
+    ["Medium Defense 2 - Square B", "scripts\fob_templates\defense4.sqf", 80, "Max Rocka"],
+    ["Medium Defense 3 - type A", "scripts\fob_templates\z-medium3.sqf", 80, "Z@Warrior"],
+    ["Medium Defense 4 - type D", "scripts\fob_templates\z-medium4.sqf", 80, "Z@Warrior"],
+    ["Large Defense 1 - Lockhart", "scripts\fob_templates\z-large-lockhart.sqf", 180, "Z@Warrior"],
+    ["Large Defense 2 - Vauban", "scripts\fob_templates\z-large-vauban.sqf", 180, "Z@Warrior"],    
+    // ["(todo) Large Defense 1", "scripts\fob_templates\defense5.sqf", 150, ""],
+    // ["(todo) Large Defense 2", "scripts\fob_templates\defense6.sqf", 180, ""],
+    ["Very Large Defense 1", "scripts\fob_templates\defense7.sqf", 210, "Max Rocka"]
 ];
 
 if (GRLIB_SOG_enabled) then {
