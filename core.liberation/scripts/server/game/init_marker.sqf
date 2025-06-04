@@ -84,7 +84,32 @@ private ["_shop", "_desk_dir", "_desk_pos", "_desk", "_man", "_offset", "_str"];
 	sleep 0.2;
 } forEach GRLIB_Marker_SHOP;
 
+// LRX Auto Name Sector
+{
+	private _marker = _x;
+	private _marker_dist = 999;
+	private _marker_text = "";
+	if (markerText _marker == "") then {
+		{
+			_loc = nearestLocations [markerPos _marker, [_x], GRLIB_sector_size] select 0;
+			if (!isNil "_loc") then {
+				_dist = round (markerPos _marker distance _loc);
+				if (_dist < _marker_dist ) then {
+					_marker_text = text _loc;
+					_marker_dist = _dist;
+				};
+			};
+		} forEach ["NameCityCapital", "NameCity", "NameVillage", "NameLocal", "Hill"];
 
+		if (_marker_text == "") then {
+			if (_marker in sectors_capture) then {_marker_text = format ["Town #%1", _forEachIndex]};
+			if (_marker in sectors_military) then {_marker_text = format ["Military Base #%1", _forEachIndex]};
+			if (_marker in sectors_factory) then {_marker_text = format ["Fuel Depot #%1", _forEachIndex]};
+			diag_log format ["--- LRX World: %1 - Auto-Name failed for marker: %2", worldname, _marker]
+		};
+		_marker setMarkerTextLocal _marker_text;
+ };
+} forEach (sectors_capture + sectors_bigtown + sectors_factory + sectors_military);
 
 sleep 3;
 GRLIB_marker_init = true;
