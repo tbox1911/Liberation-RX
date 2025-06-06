@@ -77,9 +77,11 @@ for "_i" from 1 to _target_size do {
 	sleep 10;
 };
 
-private _nb_squad = round ((2 * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
-if (_nb_squad > 4) then { _nb_squad = 4 };
+private _nb_squad = round ((3 * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
+if (_nb_squad > 6) then { _nb_squad = 6 };
 if ( _current_players <= 2 ) then { _nb_squad = round (_nb_squad / 2) };
+if ( _nb_squad < 2 ) then { _nb_squad = 2 };
+
 for "_i" from 1 to _nb_squad do {
 	if (floor random 2 == 0) then {
 		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp), true] call F_spawnRegularSquad;
