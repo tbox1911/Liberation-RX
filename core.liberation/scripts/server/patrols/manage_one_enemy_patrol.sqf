@@ -40,26 +40,25 @@ if (count _usable_sectors > 0) then {
 	publicVariable "GRLIB_patrol_sectors";
 	sleep 60;
 
-	// Wait
+	// Waiting
 	private _unit_ttl = round (time + 1800);
 	private _unit_pos = getPosATL (leader _opfor_grp);
-	private _radius = GRLIB_spawn_max * 1.5;
 	waitUntil {
-		if (alive (leader _opfor_grp)) then { _unit_pos = getPosATL (leader _opfor_grp) };
+		_unit_pos = getPosATL (leader _opfor_grp);
 		sleep 60;
-		if (round (speed vehicle leader _opfor_grp) == 0) then {[leader _opfor_grp] spawn F_fixPosUnit };
 		(
-			GRLIB_global_stop == 1 ||
-			({alive _x} count (units _opfor_grp) == 0) ||
-			([_unit_pos, _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
-			(time > _unit_ttl)
-		)
+			GRLIB_global_stop == 1 || (time > _unit_ttl) || ({alive _x} count (units _opfor_grp) == 0) ||
+			([_unit_pos, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0)
+		)		
 	};
 
 	// Cleanup
 	waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-	[_opfor_veh] spawn cleanMissionVehicles;
-	{ deleteVehicle _x; sleep 0.1 } forEach (units _opfor_grp);
+	if (isNull _opfor_veh) then {
+		{ deleteVehicle _x } forEach (units _opfor_grp);
+	} else {
+		[_opfor_veh] call clean_vehicle;
+	};
 	deleteGroup _opfor_grp;
 
 	sleep 600;

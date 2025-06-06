@@ -38,32 +38,25 @@ if (count _usable_sectors > 0) then {
 	[_civ_grp, _sector_pos] call add_civ_waypoints;
 	sleep 60;
 
-	// Wait
+	// Waiting
 	private _unit_ttl = round (time + 1800);
 	private _unit_pos = getPosATL (leader _civ_grp);
-	private _radius = GRLIB_spawn_max * 1.5;
 	waitUntil {
-		if (alive (leader _civ_grp)) then { _unit_pos = getPosATL (leader _civ_grp) };
 		sleep 60;
-		if (isNull _civ_veh && round (speed vehicle leader _civ_grp) == 0) then {
-			[leader _civ_grp] spawn F_fixPosUnit;
-			sleep 1;
-			(leader _civ_grp) switchMove "AmovPercMwlkSrasWrflDf";
-			(leader _civ_grp) playMoveNow "AmovPercMwlkSrasWrflDf";
-		};
+		_unit_pos = getPosATL (leader _civ_grp);
 		(
-			GRLIB_global_stop == 1 ||
-			(diag_fps < 20) ||
-			({alive _x} count (units _civ_grp) == 0) ||
-			([_unit_pos, _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
-			(time > _unit_ttl)
+			GRLIB_global_stop == 1 || (time > _unit_ttl) || ({alive _x} count (units _civ_grp) == 0) ||
+			([_unit_pos, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0)
 		)
 	};
 
 	// Cleanup
-	waitUntil { sleep 30; (GRLIB_global_stop == 1 || (diag_fps < 10) || [_unit_pos, GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-	[_civ_veh] call clean_vehicle;
-	{ deleteVehicle _x } forEach (units _civ_grp);
+	waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+	if (isNull _civ_veh) then {
+		{ deleteVehicle _x } forEach (units _civ_grp);
+	} else {
+		[_civ_veh] call clean_vehicle;
+	};
 	deleteGroup _civ_grp;
 };
 
