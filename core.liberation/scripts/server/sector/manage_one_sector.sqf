@@ -419,12 +419,13 @@ while { true } do {
 				{ [_x, -(_building_destroyed * 3)] call F_addReput } forEach ([_sector_pos, _local_capture_size] call F_getNearbyPlayers);
 			};
 			sleep 30;
-			private _civilians = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_civilian) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_is_prisoner", false]) };
+			private _civilians = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_civilian) && !(isAgent teamMember _x) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_is_prisoner", false]) };
 			if (count _civilians > 5) then {
 				for "_i" from 0 to (floor random 4) do {
 					private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
 					private _unit = selectRandom _civilians;
 					[_unit, _anim] spawn F_startAnimMP;
+					_unit setVariable ["GRLIB_can_speak", false, true];
 					_civilians = _civilians - [_unit];
 					sleep 1;
 				};

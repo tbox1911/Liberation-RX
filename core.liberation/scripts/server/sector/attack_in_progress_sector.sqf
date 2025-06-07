@@ -88,12 +88,13 @@ if (_ownership == GRLIB_side_enemy) then {
 				[_sector_pos] spawn {
 					params ["_sector_pos"];
 					sleep 30;
-					private _civilians = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]) select { (side _x == GRLIB_side_civilian) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_is_prisoner", false]) };
+					private _civilians = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]) select { (side _x == GRLIB_side_civilian) && !(isAgent teamMember _x) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_is_prisoner", false]) };
 					if (count _civilians > 5) then {
 						for "_i" from 0 to (floor random 4) do {
 							private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
 							private _unit = selectRandom _civilians;
 							[_unit, _anim] spawn F_startAnimMP;
+							_unit setVariable ["GRLIB_can_speak", false, true];
 							_civilians = _civilians - [_unit];
 							sleep 1;
 						};
