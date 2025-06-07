@@ -1,7 +1,6 @@
 params ["_mindist", "_maxdist", ["_spawn_target", []], ["_check_water", true]];
 
 private _all_possible_sectors = sectors_opforSpawn;
-{ _all_possible_sectors pushBack (_x select 0) } forEach SpawnMissionMarkers;
 _all_possible_sectors append (sectors_military - blufor_sectors);
 
 private _possible_sectors = [];
