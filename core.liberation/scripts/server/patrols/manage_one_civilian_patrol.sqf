@@ -9,7 +9,7 @@ private _civ_grp = grpNull;
 private _usable_sectors = [];
 private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors) call BIS_fnc_arrayShuffle;
 {
-	if (count ([markerPos _x, GRLIB_spawn_min] call F_getNearbyPlayers) > 0) exitWith {
+	if (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) then {
 		_usable_sectors pushback _x;
 	};
 	sleep 0.1;
@@ -28,14 +28,18 @@ if (count _usable_sectors > 0) then {
 		_civ_veh lockDriver true;
 		{ _civ_veh lockTurret [_x, true] } forEach (allTurrets _civ_veh);
 		_civ_veh setVehicleLock "LOCKED";
-		_sector_pos = getPos _civ_veh;
+		[_civ_grp, _sector_pos, _civ_veh] call add_civ_waypoints_veh;
 	} else {
 		_civ_grp = [_sector_pos] call F_spawnCivilians;
+		if (floor random 4 == 0) then {
+			[_civ_grp, _sector_pos, objNull] call add_civ_waypoints_veh;
+		} else {
+			[_civ_grp, _sector_pos] call add_civ_waypoints;
+		};
 	};
 
 	sleep 1;
 	if (isNull _civ_grp) exitWith { deleteVehicle _civ_veh };
-	[_civ_grp, _sector_pos] call add_civ_waypoints;
 	sleep 60;
 
 	// Waiting

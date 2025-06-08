@@ -15,7 +15,7 @@ private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission
 {
 	_player_max_radius = (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0);
 	_player_min_radius = (count ([markerPos _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0);
-	if (_player_max_radius && _player_min_radius) exitWith { _usable_sectors pushback _x };
+	if (_player_max_radius && _player_min_radius) then { _usable_sectors pushback _x };
 	sleep 0.1;
 } foreach _search_sectors;
 
@@ -27,15 +27,21 @@ if (count _usable_sectors > 0) then {
 		private _veh_type = selectRandom militia_vehicles;
 		_opfor_veh = [_sector_pos, _veh_type, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 		_opfor_grp = [_opfor_veh, GRLIB_side_enemy, true] call F_forceCrew;
+		[_opfor_grp, _sector_pos, _opfor_veh] spawn add_civ_waypoints_veh;
 		diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
 	} else {
-		_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", true, 200] call createCustomGroup;
+		_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", false] call createCustomGroup;
+		if (floor random 4 == 0) then {
+			[_opfor_grp, _sector_pos, objNull] spawn add_civ_waypoints_veh;
+		} else {
+			[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
+		};
 		diag_log format ["--- LRX Enemy Patrol %1", _opfor_grp];
 	};
 
 	sleep 1;
 	if (isNull _opfor_grp) exitWith { deleteVehicle _opfor_veh };
-	[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
+
 	GRLIB_patrol_sectors pushBack _sector;
 	publicVariable "GRLIB_patrol_sectors";
 	sleep 60;
