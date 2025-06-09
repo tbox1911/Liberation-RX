@@ -60,7 +60,7 @@ private _isHidden = {
 private _delete_LRX_TTL = {
 	private _hidden_from = [] + GRLIB_all_fobs; 	// FOB + players + active sectors
 	{
-		if !(isNil {_x getVariable "PAR_Grp_ID"}) then { _hidden_from pushBack (getPosATL _x) };	
+		if !(isNil {_x getVariable "PAR_Grp_ID"}) then { _hidden_from pushBack (getPosATL _x) };
 	} forEach (units GRLIB_side_friendly + units GRLIB_side_civilian);
 	{ _hidden_from pushBack (markerPos _x)} forEach active_sectors;
 
@@ -100,8 +100,8 @@ private _weaponHolderLimitMax = 80;					// Weapon Holders Max.
 private _weaponHolderDistCheck = true;				// TRUE to delete any weapon holders that are far from players.
 private _weaponHolderDist = GRLIB_sector_size;		// Distance (meters) from players that ground garbage is not deleted if below max.
 
-private _vehiclesLimit = 10;						// Vehicles Set -1 to disable.
-private _vehiclesLimitMax = 20;						// Vehicles max.
+private _vehiclesLimit = 15;						// Vehicles Set -1 to disable.
+private _vehiclesLimitMax = 30;						// Vehicles max.
 private _vehicleDistCheck = true;					// TRUE to delete any vehicles that are far from players.
 private _vehicleDist = (GRLIB_sector_size * 2);		// Distance (meters) from players that vehicles are not deleted if below max.
 
@@ -137,7 +137,6 @@ sleep 120;
 while {GRLIB_run_cleanup} do {
 	_stats = 0;
 	_list = [];
-	_deleted = [];
 
 	// SLEEP
 	_sleep = _checkFrequencyDefault;
@@ -148,7 +147,7 @@ while {GRLIB_run_cleanup} do {
 	};
 	if (GRLIB_global_stop == 1) then {
 		_sleep = _checkFrequencyAccelerated/2;
-		_vehiclesLimit = 10;
+		_vehiclesLimit = 15;
 		_vehicleDistCheck = false;
 		_deadVehiclesLimit = 10;
 		_deadVehicleDistCheck = false;
@@ -182,7 +181,7 @@ while {GRLIB_run_cleanup} do {
 
 	private _hidden_from = [] + GRLIB_all_fobs; 	// FOB + players + active sectors
 	{
-		if !(isNil {_x getVariable "PAR_Grp_ID"}) then { _hidden_from pushBack (getPosATL _x) };	
+		if !(isNil {_x getVariable "PAR_Grp_ID"}) then { _hidden_from pushBack (getPosATL _x) };
 	} forEach (units GRLIB_side_friendly + units GRLIB_side_civilian);
 	{ _hidden_from pushBack (markerPos _x)} forEach active_sectors;
 
@@ -260,7 +259,6 @@ while {GRLIB_run_cleanup} do {
 			if (_vehicleDistCheck) then {
 				{
 					if ([_x, _vehicleDist, _hidden_from] call _isHidden) then {
-						_deleted pushBack (typeOf _x);
 						[_x, true, true] spawn clean_vehicle;
 						_stats = _stats + 1;
 					};
@@ -270,13 +268,12 @@ while {GRLIB_run_cleanup} do {
 				_count = count _list;
 				while {((_count - _vehiclesLimitMax) > 0)} do {
 					private _veh = selectRandom _list;
-					_deleted pushBack (typeOf _veh);
 					[_veh, true, true] spawn clean_vehicle;
 					_stats = _stats + 1;
 					_count = _count - 1;
 				};
 			} else {
-				while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
+				while {(((count _nbVehicles) - _vehiclesLimit) > 0)} do {
 					[selectRandom _nbVehicles, true, true] spawn clean_vehicle;
 					_stats = _stats + 1;
 				};
@@ -377,7 +374,6 @@ while {GRLIB_run_cleanup} do {
 			if (_staticsDistCheck) then {
 				{
 					if ([_x, _staticsDist, _hidden_from] call _isHidden) then {
-						_deleted pushBack (typeOf _x);
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
@@ -385,7 +381,6 @@ while {GRLIB_run_cleanup} do {
 				} count _list;
 			} else {
 				while {((_count - _staticsLimit) > 0)} do {
-					_deleted pushBack (typeOf _x);
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
@@ -422,5 +417,4 @@ while {GRLIB_run_cleanup} do {
 	sleep 2;
 	GRLIB_cleanup_active = false;
 	diag_log format ["--- LRX Garbage Collector --- End at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
-	// { diag_log format ["  %1", _x] } forEach _deleted;
 };
