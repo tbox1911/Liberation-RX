@@ -3,6 +3,7 @@ params ["_static"];
 private _static_class = typeOf _static;
 if !(_static_class in list_static_weapons) exitWith {};
 _static setVariable ["LRX_managed_static", true, true];
+_static removeAllEventHandlers "HandleDamage";
 _static addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 
 sleep 1 + (floor random 8);

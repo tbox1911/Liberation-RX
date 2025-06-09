@@ -54,8 +54,6 @@ private _base_output = [_spawnpos, false, true] call createOutpost;
 opfor_target = createVehicle ["Land_Device_disassembled_F", _spawnpos, [], 1, "CAN_COLLIDE"];
 opfor_target addEventHandler ["HandleDamage", {
 	params ["_unit", "_selection", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
-	if (isNull _unit) exitWith {};
-	if (!alive _unit) exitWith {};
 	if (!isNull _instigator) then {
 		if (isNull (getAssignedCuratorLogic _instigator)) then {
 			_killer = _instigator;
@@ -67,11 +65,10 @@ opfor_target addEventHandler ["HandleDamage", {
 	};
 
 	private _ret = damage _unit;
-	if (!isNull _killer && side _killer == GRLIB_side_friendly && _damage >= 1) then {
-		if (_unit getVariable ["GRLIB_isProtected", 0] < time) then {
-			_unit setVariable ["GRLIB_isProtected", round(time + 5), true];
-			_ret = _ret + 0.03;
-		};
+	if (_unit getVariable ["GRLIB_isProtected", 0] > time) exitWith {};
+	if (side _killer == GRLIB_side_friendly && _damage >= 1) then {
+		_unit setVariable ["GRLIB_isProtected", round(time + 10), true];
+		_ret = _ret + 0.03;
 	};
 	_ret;
 }];

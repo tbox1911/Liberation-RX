@@ -1,8 +1,5 @@
 params ["_unit", "_selection", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
 
-if (isNull _unit) exitWith {};
-if (!alive _unit) exitWith {};
-
 if (!isNull _instigator) then {
 	if (isNull (getAssignedCuratorLogic _instigator)) then {
 	   	_killer = _instigator;
@@ -35,8 +32,8 @@ if (count (crew _veh_unit) > 0) then {
 	if (isPlayer _killer && _unit != _killer) then {
 		// OpFor in vehicle
 		if (_veh_unit != _unit && _veh_killer == _killer && round (_killer distance2D _unit) <= 2) then {
-			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
-				_unit setVariable ["GRLIB_isProtected", round(time + 5), true];
+			if (_unit getVariable ["GRLIB_isProtected", 0] < time) then {
+				_unit setVariable ["GRLIB_isProtected", round(time + 10), true];
 				private _msg = format ["%1 Stop Cheating !!", name _killer];
 				[gamelogic, _msg] remoteExec ["globalChat", owner _killer];
 				_unit reveal [_killer, 4];
