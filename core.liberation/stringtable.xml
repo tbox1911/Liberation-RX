@@ -95,8 +95,8 @@
 			<Czech>-- STAVĚT</Czech>
 		</Key>
 		<Key ID="STR_BUILD_TRENCH_ACTION">
-			<Original>-- DIG TRENCH</Original>
-			<French>-- CREUSER TRANCHÉE</French>
+			<Original>-- BUILD FORTIFICATIONS</Original>
+			<French>-- CONSTRUIRE FORTIFICATIONS</French>
 		</Key>
 		<Key ID="STR_BUILD_TITLE">
 			<Original>BUILD MENU</Original>

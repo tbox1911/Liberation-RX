@@ -69,7 +69,7 @@ player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> 
 player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf",false,-501,false,true,"","call GRLIB_checkBuild"];
 
 // Trench Menu
-player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_TRENCH_ACTION" + "</t> <img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\Obsolete\ui_action_turnin_ca'/>","scripts\client\build\open_build_menu.sqf",true,-501,false,true,"","call GRLIB_checkBuildTrench"];
+player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_TRENCH_ACTION" + "</t> <img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\Obsolete\ui_action_turnin_ca'/>","scripts\client\build\open_build_menu.sqf",true,-981,false,true,"","call GRLIB_checkBuildTrench"];
 
 // Squad Management
 player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","call GRLIB_checkSquadMgmt"];
