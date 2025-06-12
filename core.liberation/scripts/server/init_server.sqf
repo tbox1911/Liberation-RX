@@ -43,13 +43,6 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
  ]
 ] call BIS_fnc_EXP_camp_dynamicAISkill;
 
-// Terrain Quality
-// Low = 50 (NoGrass), Normal = 25, High = 12.5, Very High = 6.25, Ultra = 3.125
-if (isDedicated) then {
-	setTerrainGrid 25;
-	setViewDistance 1600;
-};
-
 // Relationship
 civilian setFriend [GRLIB_side_friendly, 1];
 civilian setFriend [GRLIB_side_enemy, 1];
@@ -234,7 +227,6 @@ if (abort_loading) exitWith {
 };
 
 [] execVM "scripts\server\game\synchronise_vars.sqf";
-[] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
 [] execVM "scripts\server\base\huron_manager.sqf";

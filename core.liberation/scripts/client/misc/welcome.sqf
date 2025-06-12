@@ -3,7 +3,7 @@
 */
 
 waitUntil {sleep 0.5; GRLIB_player_spawned};
-waitUntil {sleep 0.5; (player getVariable ["GRLIB_Rank", "init"] != "init")};
+waitUntil {sleep 0.5; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
