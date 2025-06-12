@@ -731,7 +731,7 @@ class GREUH_Menu {
 		idc = 812;
 		x = 0.15 * safezoneW + safezoneX;
 		text = "Low";
-		action = "setTerrainGrid 50; hint 'Terrain details set to Low'";
+		action = "setTerrainGrid 40; hint 'Terrain details set to Low'";
 	};
 	class GREUH_ButtonWorldLow : GREUH_ButtonWorld {
 		idc = 813;
