@@ -77,22 +77,6 @@ _unit addEventHandler ["FiredMan",	{
 
 // for Player only
 if (_unit == player) then {
-	// // try to fix the Reload Mag Bug https://feedback.bistudio.com/T185261
-	// if (isMultiplayer) then {
-	// 	_unit removeAllEventHandlers "Reloaded";
-	// 	_unit addEventHandler ["Reloaded", {
-	// 		params ["_unit", "_weapon", "_muzzle", "_newMagazine", "_oldMagazine"];
-	// 		if (currentWeapon _unit == _weapon) then {
-	// 			if (_oldMagazine select 1 != 0) then {
-	// 				_unit addMagazine [_oldMagazine select 0, _oldMagazine select 1];
-	// 				if (_oldMagazine select 1 == _newMagazine select 1) then {
-	// 					_unit removeAllEventHandlers "Reloaded";
-	// 				};
-	// 			};
-	// 		};
-	// 	}];
-	// };
-
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
 		["ace_arsenal_displayClosed", {
@@ -103,7 +87,7 @@ if (_unit == player) then {
 
 	// Unblock units
 	[player,"LRX_Unstuck",nil,nil,""] call BIS_fnc_addCommMenuItem;
-	[player,"LRX_Taxi",nil,nil,""] call BIS_fnc_addCommMenuItem;
+	//[player,"LRX_Taxi",nil,nil,""] call BIS_fnc_addCommMenuItem;
 
 	// UI actions
 	inGameUISetEventHandler ["Action", "
