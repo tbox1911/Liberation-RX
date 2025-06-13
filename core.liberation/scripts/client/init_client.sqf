@@ -340,6 +340,8 @@ if (GRLIB_Commander_mode) then {
 	}, [player]];
 };
 
+// Game life / details
+setTerrainGrid 25;
 initAmbientLife;
 enableEnvironment [true, true];
 

@@ -43,6 +43,14 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
  ]
 ] call BIS_fnc_EXP_camp_dynamicAISkill;
 
+// Terrain Quality / View Distance
+// Low = 50 (NoGrass), Low = 40 (Grass), Normal = 25, High = 12.5, Very High = 6.25, Ultra = 3.125
+if (isDedicated) then {
+	setTerrainGrid 25;
+	setViewDistance 1600;
+	setObjectViewDistance [1000, 500];	
+};
+
 // Relationship
 civilian setFriend [GRLIB_side_friendly, 1];
 civilian setFriend [GRLIB_side_enemy, 1];
