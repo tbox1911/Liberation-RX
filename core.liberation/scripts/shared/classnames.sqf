@@ -231,6 +231,7 @@ support_vehicles = support_vehicles + [
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
 	[medic_heal_typename,0,100,0,GRLIB_perm_log],
 	[Warehouse_typename,0,0,0,GRLIB_perm_inf],
+	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
 	["Land_RepairDepot_01_civ_F",0,200,0,GRLIB_perm_log],
 	["Land_fs_feed_F",0,200,50,GRLIB_perm_tank],
 	[storage_medium_typename,0,0,50,GRLIB_perm_inf],

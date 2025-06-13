@@ -1,5 +1,4 @@
 buildings_default = [
-	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
 	["Land_CncBarrierMedium4_F",0,0,0,0],
 	["Land_CncWall4_F",0,0,0,0],
 	["Land_BagFence_Round_F",0,0,0,GRLIB_perm_log],

@@ -200,7 +200,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 				if (_build_class == FOB_boat_typename && GRLIB_naval_type == 0) then {
 					_affordable = false;
 				};
-				if (_build_class == Warehouse_typename && _near_warehouse) then {
+				if (_build_class == Warehouse_typename && (_near_warehouse || _water_fob)) then {
 					_affordable = false;
 				};
 			};
