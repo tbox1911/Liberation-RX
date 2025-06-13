@@ -34,8 +34,6 @@ default_taxi_type_6 = [
 ];
 
 default_taxi_type_8 = [
-	"O_Heli_Light_02_unarmed_F",
-	"O_Heli_Light_02_v2_F",
 	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_01_camo_F"
 ];
@@ -43,9 +41,7 @@ default_taxi_type_8 = [
 default_taxi_type_14 = [
 	"I_Heli_Transport_02_F",
 	"B_Heli_Transport_03_unarmed_green_F",
-	"B_Heli_Transport_03_black_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_Heli_Transport_04_covered_F"
+	"B_Heli_Transport_03_black_F"
 ];
 
 if (GRLIB_mod_preset_taxi in [0,1]) then {

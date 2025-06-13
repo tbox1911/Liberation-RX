@@ -5,6 +5,12 @@
 
 // overide_taxi_type_6 = [];
 
-// overide_taxi_type_8 = [];
+overide_taxi_type_8 = [
+	"O_Heli_Light_02_unarmed_F",
+	"O_Heli_Light_02_v2_F"
+];
 
-// overide_taxi_type_14 = [];
+overide_taxi_type_14 = [
+	"O_Heli_Transport_04_bench_F",
+	"O_Heli_Transport_04_covered_F"    
+];
