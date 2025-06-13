@@ -173,12 +173,6 @@ createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\s
 // Warehouse
 warehouse_update = compileFinal preprocessFileLineNumbers "scripts\server\game\warehouse_update.sqf";
 
-// Event Handlers
-damage_manager_civilian = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_civilian.sqf";
-damage_manager_friendly = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_friendly.sqf";
-damage_manager_enemy = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_enemy.sqf";
-damage_manager_static = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_static.sqf";
-
 // Remote Call - Server Side
 mobile_respawn_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\mobile_respawn_remote_call.sqf";
 addel_group_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_group_remote_call.sqf";

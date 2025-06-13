@@ -19,8 +19,6 @@ if (!local _vehicle) exitWith { [_vehicle, _grp] remoteExec ["civilian_ai_veh", 
 
 private _driver = driver _vehicle;
 if (isNull _driver) exitWith {};
-private _delay = (150 + floor random 200);
-private _trigger = (time + _delay);
 private _event_stared = false;
 private _wait_max = 0;
 private _incd = 0;
@@ -33,8 +31,8 @@ _grp setCombatMode "BLUE";
 _grp setBehaviourStrong "CARELESS";
 _grp setSpeedMode "NORMAL";
 
-sleep (60 + floor random 60);
-
+private _delay = (200 + floor random 200);
+private _trigger = (time + _delay);
 while { alive _vehicle && alive _driver } do {
 	// Correct static position
 	if ((vectorUp _vehicle) select 2 < 0.70) then {

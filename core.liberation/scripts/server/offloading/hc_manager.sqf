@@ -5,12 +5,6 @@ diag_log "--- HC Server Init start ---";
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
 
-// Event Handlers
-damage_manager_civilian = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_civilian.sqf";
-damage_manager_friendly = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_friendly.sqf";
-damage_manager_enemy = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_enemy.sqf";
-damage_manager_static = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_static.sqf";
-
 // AI
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
 add_civ_waypoints_veh = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints_veh.sqf";

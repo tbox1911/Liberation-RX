@@ -65,9 +65,9 @@ opfor_target addEventHandler ["HandleDamage", {
 	};
 
 	private _ret = damage _unit;
-	if (_unit getVariable ["GRLIB_isProtected", 0] > time) exitWith {};
+	if (_unit getVariable ["GRLIB_isProtected", 0] > serverTime) exitWith {};
 	if (side _killer == GRLIB_side_friendly && _damage >= 1) then {
-		_unit setVariable ["GRLIB_isProtected", round(time + 10), true];
+		_unit setVariable ["GRLIB_isProtected", round(serverTime + 10), true];
 		_ret = _ret + 0.03;
 	};
 	_ret;
