@@ -10,7 +10,4 @@ if (vectorUp _vehicle select 2 < 0.60) then {
     sleep 1;
 };
 
-if (getPosATL _vehicle select 2 < -0.50) then {
-    _vehicle setpos (getpos _vehicle);
-    sleep 1;
-};
+_vehicle setpos (getpos _vehicle);
