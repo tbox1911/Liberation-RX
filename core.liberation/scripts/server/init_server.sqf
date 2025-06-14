@@ -176,7 +176,6 @@ warehouse_update = compileFinal preprocessFileLineNumbers "scripts\server\game\w
 // Remote Call - Server Side
 mobile_respawn_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\mobile_respawn_remote_call.sqf";
 addel_group_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_group_remote_call.sqf";
-airdrop_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\airdrop_remote_call.sqf";
 ammo_add_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_add_remote_call.sqf";
 ammo_del_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_del_remote_call.sqf";
 build_cutter_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\build_cutter_remote_call.sqf";

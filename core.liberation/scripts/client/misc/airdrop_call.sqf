@@ -1,4 +1,3 @@
-if (!isServer && hasInterface) exitWith {};
 params [ "_unit", "_class", "_forced_pos" ];
 
 private _text = "";

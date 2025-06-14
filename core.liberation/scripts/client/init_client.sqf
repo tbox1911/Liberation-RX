@@ -134,6 +134,7 @@ set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\manager\speak_manager.sqf";
 vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
+airdrop_call = compileFinal preprocessFileLineNumbers "scripts\client\misc\airdrop_call.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 

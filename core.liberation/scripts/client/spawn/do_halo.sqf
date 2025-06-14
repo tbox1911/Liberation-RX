@@ -78,7 +78,7 @@ if ( dojump > 0 ) then {
 			};
 			titleText ["", "PLAIN"];
 			playSound "parasound";
-			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
+			[player, _unit, halo_position] spawn airdrop_call;
 			sleep 2;
 			[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		};
