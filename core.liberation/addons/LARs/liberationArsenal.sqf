@@ -53,9 +53,11 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 		GRLIB_personal_arsenal = player getVariable format ["GRLIB_personal_arsenal_%1", PAR_Grp_ID];
 		!(isNil "GRLIB_personal_arsenal")
 	};
-	GRLIB_personal_box = Arsenal_typename createVehicle (markerPos GRLIB_respawn_marker); // Arsenal_typename
+	GRLIB_personal_box_capacity = 30000;
+	GRLIB_personal_box = Arsenal_typename createVehicle (markerPos GRLIB_respawn_marker);
 	GRLIB_personal_box allowDamage false;
-	[GRLIB_personal_box] remoteExec ["hide_object_remote_call", 2];
+	[GRLIB_personal_box, GRLIB_personal_box_capacity] remoteExec ["setMaxLoad", 2];
+	[GRLIB_personal_box, true] remoteExec ["hideObjectGlobal", 2];
 	GRLIB_personal_box setVariable ["GRLIB_personal_box_pos", getPos GRLIB_personal_box];
 	[GRLIB_personal_box] call F_clearCargo;
 	[GRLIB_personal_box, GRLIB_personal_arsenal] call F_setCargo;
