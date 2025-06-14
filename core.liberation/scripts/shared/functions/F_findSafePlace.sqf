@@ -1,4 +1,4 @@
-params ["_start_pos", ["_size", 5], ["_water_mode", -1], ["_max_radius", 150]];
+params ["_start_pos", ["_size", 5], ["_water_mode", -1], ["_max_radius", 150], ["_on_road", true]];
 // Water mode
 //  0: position cannot be over water
 //  2: position cannot be over land
@@ -12,6 +12,7 @@ private _spawn_pos = [];
 while { _radius < _max_radius } do {
     _spawn_pos = [(_start_pos select 0), (_start_pos select 1)] getPos [_radius, floor random 360];
     if (
+        (_on_road && !(isOnRoad _spawn_pos)) &&
         count (_spawn_pos isFlatEmpty [-1, -1, 0.5, 10, _water_mode, false]) != 0 &&
         count (nearestObjects [_spawn_pos, ["LandVehicle","CAManBase"], 7]) == 0 &&
         count (nearestObjects [_spawn_pos, ["House_F"], 12]) == 0 &&
