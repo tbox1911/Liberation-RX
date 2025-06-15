@@ -56,7 +56,7 @@ if (GRLIB_Commander_mode) then {
 private _color_F = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
 private _color_E = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_enemy >> "color") call BIS_fnc_colorConfigToRGBA;
 
-while { true } do {
+while {true} do {
 	_hide_HUD = !(shownHUD select 0);
 	_overlay_check = (
 		GRLIB_player_spawned &&

@@ -7,7 +7,7 @@ private _objects_to_mark = [];
 private _zeusunits = [];
 private _units_to_remove = [];
 
-while { true } do {
+while {true} do {
 
 	waitUntil { sleep 1; count allCurators > 0 };
 

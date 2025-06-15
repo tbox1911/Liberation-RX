@@ -24,7 +24,7 @@ GRLIB_checkAction_UnloadLastBox = {
 private _searchradius = 20;
 private ["_neartransport", "_nearboxes", "_vehicle"];
 
-while { true } do {
+while {true} do {
     // Transport
     _neartransport = (nearestObjects [player, transport_vehicles, _searchradius]) select {
         alive _x && speed vehicle _x < 5 &&

@@ -14,7 +14,7 @@ if (GRLIB_fob_type == 1) then {
 
 private ["_huron"];
 
-while { true } do {
+while {true} do {
 	if (GRLIB_fob_type in [1,2]) then { waitUntil {sleep 1; count GRLIB_all_fobs == 0}};
 	if (isNull GRLIB_vehicle_huron ) then {
 		_huron = _huron_type createVehicle _huron_pos;

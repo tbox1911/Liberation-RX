@@ -8,7 +8,7 @@ if (isNil "secondary_objective_position_marker") then {
 private _hostile_markers = [];
 private _hostile_group = [];
 
-while { true } do {
+while {true} do {
 	waitUntil {sleep 0.1; visibleMap };
 	{ deleteMarkerLocal _x } foreach _hostile_markers;
 	_hostile_markers = [];

@@ -1,7 +1,7 @@
 count_death = 1;
 private ["_pos", "_destpos", "_cam", "_noesckey"];
 
-while { true } do {
+while {true} do {
 	waitUntil { sleep 0.5; alive player && GRLIB_player_spawned && ([player] call PAR_is_wounded) };
 	openMap false;
 	closeDialog 0;

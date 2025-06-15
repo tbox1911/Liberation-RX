@@ -24,7 +24,7 @@ private _artillery = [
 private _vehicle_support_enabled = true;
 if (GRLIB_ACE_enabled) then { _vehicle_support_enabled = false };
 
-while { true } do {
+while {true} do {
 	waitUntil {sleep 1; GRLIB_player_spawned};
 
 	_unitList = (units group player) select { local _x && lifeState _x != "INCAPACITATED" };

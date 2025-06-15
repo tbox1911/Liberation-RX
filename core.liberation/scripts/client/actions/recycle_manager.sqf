@@ -4,7 +4,7 @@ waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "GRLIB_player_near_fob" };
 
-while { true } do {
+while {true} do {
 	if (GRLIB_player_near_fob) then {
 		private _nearrecycl = (nearestObjects [player, GRLIB_recycleable_classnames + GRLIB_vehicle_whitelist, 30]) select {
 			(_x distance2D lhd > GRLIB_fob_range) &&

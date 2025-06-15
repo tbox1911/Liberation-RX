@@ -13,7 +13,7 @@ GREUH_view_distance_factor = 1.0;
 //waitUntil {sleep 1; !isNil "GREUH_view_distance_factor" };
 //waitUntil {sleep 1; !isNil "GREUH_force_adjust_view_distance" };
 
-while { true } do {
+while {true} do {
 	waitUntil { sleep 0.5;
 		(round _olddistance_inf != round desiredviewdistance_inf)
 		|| (round _olddistance_veh != round desiredviewdistance_veh)

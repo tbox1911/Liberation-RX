@@ -377,7 +377,7 @@ GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 
 private ["_sector_ownership"];
-while { true } do {
+while {true} do {
 	if (!(_sector in active_sectors)) exitWith { // Aborted
 		[_task,"CANCELED"] call BIS_fnc_taskSetState;
 		diag_log format ["Sector %1 mission aborted.", _sector];

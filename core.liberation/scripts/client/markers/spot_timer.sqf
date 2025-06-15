@@ -9,7 +9,7 @@ createMarkerLocal ["opfor_capture_marker", markers_reset];
 waitUntil {sleep 1; !isNil "sector_timer"};
 private _sector_timer = 0;
 
-while { true } do {
+while {true} do {
 	sleep 1;
 	_sector_timer = round (sector_timer - serverTime);
 	if (_sector_timer > 0) then {

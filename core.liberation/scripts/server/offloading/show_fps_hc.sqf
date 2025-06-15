@@ -38,7 +38,7 @@ _myfpsmarker = createMarkerLocal [ format ["fpsmarker%1", _sourcestr ], [ 200, 2
 _myfpsmarker setMarkerTypeLocal "mil_start";
 _myfpsmarker setMarkerSizeLocal [ 0.7, 0.7 ];
 
-while { true } do {
+while {true} do {
 	opfor_sectors = (sectors_allSectors - blufor_sectors);
 	_myfps = diag_fps;
 	_myfpsmarker setMarkerColorLocal "ColorGREEN";

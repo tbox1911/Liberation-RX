@@ -9,7 +9,7 @@ GRLIB_activated_radius = GRLIB_sector_size * 1.4;
 
 private ["_near_spawn", "_near_spawn_tent", "_next_sector"];
 
-while { true } do {
+while {true} do {
 	GRLIB_player_is_menuok = [] call is_menuok;
 	if (GRLIB_player_is_menuok) then {
 		GRLIB_player_score = [player] call F_getScore;

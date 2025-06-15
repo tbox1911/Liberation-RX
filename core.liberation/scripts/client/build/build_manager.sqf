@@ -64,7 +64,7 @@ building_altitude = 0;
 
 waitUntil { sleep 0.2; !isNil "dobuild" };
 
-while { true } do {
+while {true} do {
 	waitUntil { sleep 0.2; dobuild != 0 };
 
 	build_confirmed = 1;

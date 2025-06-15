@@ -121,7 +121,7 @@ GRLIB_nametag_units = [];
 
 // Loop
 private _list = [];
-while { true } do {
+while {true} do {
 	GRLIB_nametag_units = (units GRLIB_side_friendly) select { (_x distance2D player <= nametags_distance) && (_x != player) && (isNull objectParent player) };
 	GRLIB_overlay_groups = (groups GRLIB_side_friendly) select { (isPlayer (leader _x)) && (count units _x > 1) };
 	sleep 5;

@@ -6,7 +6,7 @@ private _markers_def = [];
 GRLIB_redraw_marker_fob = false;
 
 sleep 2;
-while { true } do {
+while {true} do {
 	if (count GRLIB_all_fobs > 0 && (count _markers != count GRLIB_all_fobs || GRLIB_redraw_marker_fob)) then {
 		{ deleteMarker _x } foreach _markers;
 		_markers = [];

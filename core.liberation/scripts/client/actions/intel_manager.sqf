@@ -6,7 +6,7 @@ private _searchradius = 20;
 waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
 
-while { true } do {
+while {true} do {
 
 	// Intel
 	_near_intel = nearestObjects [player, GRLIB_intel_items + GRLIB_ide_traps, _searchradius];

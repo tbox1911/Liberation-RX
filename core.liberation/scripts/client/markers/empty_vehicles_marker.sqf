@@ -27,7 +27,7 @@ private ["_veh_list","_nextvehicle","_nextmarker","_nextvehicle_owner","_nextveh
 private ["_marker","_marker_color","_marker_type","_marker_show"];
 private _vehmarkers = [];
 
-while { true } do {
+while {true} do {
 	waitUntil {sleep 0.1; visibleMap };
 
 	_veh_list = vehicles select {

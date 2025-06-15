@@ -5,7 +5,7 @@ private _searchradius = 50;
 waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
 
-while { true } do {
+while {true} do {
 	// Man
 	private _near_man = (player nearEntities ["CAManBase", _searchradius]) select {
  		isNull objectParent _x &&

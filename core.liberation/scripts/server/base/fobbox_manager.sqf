@@ -16,7 +16,7 @@ sleep 8;
 private _box_pos = getPosATL base_boxspawn;
 private _box_dir = getdir base_boxspawn;
 
-while { true } do {
+while {true} do {
 	_boxlist = {[_x] call is_public} count (entities _box_type);
 	if ( _boxlist == 0 && count GRLIB_all_fobs == 0 ) then {
 		_box = _box_type createVehicle _box_pos;

@@ -6,7 +6,7 @@ _myfpsmarker = createMarkerLocal [format ["fpsmarker%1", _sourcestr ], [200, 200
 _myfpsmarker setMarkerTypeLocal "mil_start";
 _myfpsmarker setMarkerSizeLocal [0.7, 0.7];
 
-while { true } do {
+while {true} do {
 	_myfps = diag_fps;
 	_myfpsmarker setMarkerColorLocal "ColorGREEN";
 	if ( _myfps < 30 ) then { _myfpsmarker setMarkerColorLocal "ColorYELLOW"; };

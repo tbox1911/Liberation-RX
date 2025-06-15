@@ -1,6 +1,6 @@
 waitUntil {sleep 1; GRLIB_player_spawned};
 
-while { true } do {
+while {true} do {
 	waitUntil { sleep 1; alive player && !captive player };
 
 	// Renegade

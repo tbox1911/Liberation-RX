@@ -12,7 +12,7 @@ private _get_mp = {
 };
 
 private ["_manpower_used", "_player_respawn", "_player_vehicles"];
-while { true } do {
+while {true} do {
 	if (GRLIB_player_configured) then {
 		_manpower_used = count ((units player) select { !(isPlayer _x) && alive _x });
 		_player_respawn = [PAR_Grp_ID] call F_getMobileRespawns;

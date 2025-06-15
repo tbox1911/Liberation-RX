@@ -3,7 +3,7 @@ waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 sleep 38;
 private ["_currentgroup", "_group_owner", "_idx_group_owner"];
 
-while { true } do {
+while {true} do {
 	group_owners = [[gamelogic, "Server", owner gamelogic, 0, 0, 0]];
 	{ group_owners pushback [_x, name _x, owner _x, 0, 0, 0] } foreach allPlayers;
 

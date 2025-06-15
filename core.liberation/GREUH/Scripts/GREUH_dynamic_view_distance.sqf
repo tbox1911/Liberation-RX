@@ -8,7 +8,7 @@ private _consecutive_fps_too_low = 0;
 private _consecutive_fps_too_fast = 0;
 private _smoothing_margin = 0.1;
 
-while { true } do {
+while {true} do {
 
 	_corrected_increment = _base_increment * GREUH_view_distance_factor;
 

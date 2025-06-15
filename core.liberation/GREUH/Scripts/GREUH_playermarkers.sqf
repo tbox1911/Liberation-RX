@@ -2,7 +2,7 @@ private _players_markers = [];
 private _vehicles_markers = [];
 private _markertype = "emptyicon";
 
-while { true } do {
+while {true} do {
 
 	disableMapIndicators [false,true,false,false];
 	waitUntil { sleep 1; show_teammates };

@@ -13,7 +13,7 @@ CHG_Perm = {
 
 waitUntil {sleep 1; count (AllPlayers - (entities "HeadlessClient_F")) > 0 };
 
-while { true } do {
+while {true} do {
 	{
 		_rank = _x getVariable ["GRLIB_Rank", ""];
 		if (isPlayer _x && _rank != "") then {

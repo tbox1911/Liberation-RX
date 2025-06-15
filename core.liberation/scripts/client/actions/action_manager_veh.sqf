@@ -32,7 +32,7 @@ waituntil { sleep 1; !isNil "GRLIB_player_near_lhd"};
 waituntil { sleep 1; GRLIB_player_configured};
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
-while { true } do {
+while {true} do {
 	// Vehicles actions
 	_nearveh = (player nearEntities [["LandVehicle","Air","Ship_F"], _searchradius]) select {
 		(_x distance2D lhd > GRLIB_fob_range) &&

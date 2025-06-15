@@ -3,7 +3,7 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 private _cargo_seat_free = 0;
 
-while { true } do {
+while {true} do {
 	// If Squad
 	private _my_squad = player getVariable ["my_squad", nil];
 	if (!isNil "_my_squad") then {

@@ -14,7 +14,7 @@ private _stats_marker = [
 	"STR_WEAPCACHE"
 ];
 
-while { true } do {
+while {true} do {
 	_msg = "";
 	if (count A3W_sectors_in_use > 0) then {
 		_all_sectors = allMapMarkers select {_x select [0,13] == "side_mission_" && (markerPos _x) distance2D player <= GRLIB_capture_size};

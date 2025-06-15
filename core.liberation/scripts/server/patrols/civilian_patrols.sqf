@@ -10,7 +10,7 @@ diag_log "--- LRX Starting Civilian Manager";
 GRLIB_civilians_current = 0;
 publicVariable "GRLIB_civilians_current";
 
-while { true } do {
+while {true} do {
 	if (GRLIB_civilians_current < GRLIB_civilians_amount) then {
 		private _hc = [] call F_lessLoadedHC;
 		if !(isNull _hc) then {

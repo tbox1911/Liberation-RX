@@ -2,7 +2,7 @@ waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
 
 private ["_my_dog","_onfoot","_dog_pos","_man","_dist","_reset","_mines"];
-while { true } do {
+while {true} do {
 	// If player have Dog
 	_my_dog = player getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then {
