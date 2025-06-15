@@ -8,7 +8,7 @@ waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 private ["_vehicle", "_spawn_pos"];
 {
 	// Add repair pickup
-	_spawn_pos = [(markerPos _x), 5, 0, 80, false] call F_findSafePlace;
+	_spawn_pos = [(markerPos _x), 5, 0, 80] call F_findSafePlace;
 	if (count _spawn_pos > 0) then {
 		_vehicle = createVehicle [repair_offroad, _spawn_pos, [], 1, "NONE"];
 		_vehicle allowDamage false;
