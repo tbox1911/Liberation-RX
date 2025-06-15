@@ -22,7 +22,7 @@ diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, 
 sleep (5 + floor random 30);
 
 private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
-while {(count _objective_pos > 0)} do {
+while {true} do {
 	_sleep = 300;
 	{
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300) then { deleteVehicle _x } else { [_x] spawn F_fixPosUnit };
