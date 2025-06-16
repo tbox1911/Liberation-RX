@@ -430,6 +430,7 @@ while {true} do {
 				// Magic ClutterCutter
 				if (_classname == land_cutter_typename) then {
 					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
+					_vehicle allowdamage false;
 				};
 			};
 

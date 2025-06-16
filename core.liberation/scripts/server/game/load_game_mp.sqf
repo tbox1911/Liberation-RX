@@ -416,6 +416,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 			FOB_sign,
 			Warehouse_typename,
 			playerbox_typename,
+			land_cutter_typename,
 			storage_medium_typename,
 			"Land_PortableHelipadLight_01_F"
 		];
