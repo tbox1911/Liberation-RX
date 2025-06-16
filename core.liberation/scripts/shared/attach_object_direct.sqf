@@ -33,7 +33,11 @@ if ( count _truck_load < _maxload ) then {
 
 	// Mobile respawn
 	if (_object_class == mobile_respawn) then {
-		[_object, "add"] call mobile_respawn_remote_call;
+		if (isServer) then {
+			[_object, "add"] call mobile_respawn_remote_call;
+		} else {
+			[_object, "add"] remoteExec ["mobile_respawn_remote_call", 2];
+		};
 	};
 
 	// Owner
