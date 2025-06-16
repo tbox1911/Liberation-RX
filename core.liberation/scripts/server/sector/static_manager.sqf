@@ -15,5 +15,5 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
         };
         sleep 0.1;
     } forEach _all_static;
-    sleep 30;
+    sleep 10;
 };
