@@ -5,6 +5,9 @@ clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_veh
 // Static manager
 manage_one_static = compileFinal preprocessFileLineNumbers "scripts\shared\manage_one_static.sqf";
 
+// Attach objects
+attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\shared\F_attach_object_direct.sqf";
+
 // Event Handlers
 damage_manager_civilian = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_civilian.sqf";
 damage_manager_friendly = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_friendly.sqf";
