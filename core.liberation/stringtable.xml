@@ -13960,6 +13960,9 @@
 
 	<!-- LRX Side Missions -->
 	<Package name="LRX_SIDE_MISSIONS">
+		<Key ID="STR_SIDE_FAILED_REPUT">
+			<Original>You failed to complete the side mission, you lose %1 reputation points!</Original>
+		</Key>
 		<!-- mission_AirWreck.sqf  -->
 		<Key ID="STR_AIRWRECK">
 			<Original>Aircraft Wreck</Original>

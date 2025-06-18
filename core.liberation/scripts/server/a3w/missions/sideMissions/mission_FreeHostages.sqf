@@ -116,7 +116,9 @@ _failedExec = {
 	{ deleteVehicle _x } forEach _hostages;
 	{ deleteVehicle _x } forEach _managed_units;
 	{ deleteVehicle _x } forEach (units _grp_civ);
-	{ [_x, -20] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -15] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -15];
+	[gamelogic, _msg] remoteExec ["globalChat", 0];		
 };
 
 _successExec = {

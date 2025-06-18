@@ -422,7 +422,7 @@ while {true} do {
 			private _civilians = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select {
 				(side _x == GRLIB_side_civilian) && !(captive _x) &&
 				!(isAgent teamMember _x) && (isNull objectParent _x)
-			};			
+			};
 			if (count _civilians > 5) then {
 				for "_i" from 0 to (floor random 4) do {
 					private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
@@ -450,6 +450,8 @@ while {true} do {
 		diag_log format ["Sector %1 mission failed.", _sector];
 		[_task,"FAILED"] call BIS_fnc_taskSetState;
 		{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+		private _msg = format ["You failed to capture sector %1, your reputation drops by %2 points.", [_sector_pos] call F_getLocationName, -5];
+		[gamelogic, _msg] remoteExec ["globalChat", 0];
 	};
 
 	_nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
@@ -500,5 +502,5 @@ diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
 		[_x] spawn clean_vehicle;
 	};
 	sleep 0.1;
-} forEach (_managed_vehicles + _managed_units);	
+} forEach (_managed_vehicles + _managed_units);
 [_sector_pos] call clearlandmines;

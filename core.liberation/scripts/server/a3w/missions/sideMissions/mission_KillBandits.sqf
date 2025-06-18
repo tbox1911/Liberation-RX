@@ -119,6 +119,8 @@ _failedExec = {
 	// Mission failed
 	_failedHintMessage = ["STR_KILL_BANDIT_MESSAGE2", sideMissionColor];
 	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -5];
+	[gamelogic, _msg] remoteExec ["globalChat", 0];
 };
 
 _successExec = {

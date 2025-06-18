@@ -108,6 +108,8 @@ _waitUntilCondition = { {alive _x && _x distance2D _missionPos < GRLIB_sector_si
 _failedExec = {
 	// Mission failed
 	{ [_x, -3] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -3];
+	[gamelogic, _msg] remoteExec ["globalChat", 0];	
 	if (isNil "GRLIB_A3W_Mission_MR_OPFOR") then { GRLIB_A3W_Mission_MR_OPFOR = [] };
 	[_missionPos, GRLIB_A3W_Mission_MR_BLUFOR + GRLIB_A3W_Mission_MR_OPFOR] spawn {
 		params ["_pos", "_list"];
