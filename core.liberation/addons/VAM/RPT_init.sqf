@@ -155,8 +155,7 @@ if (VAM_arsenal_enable_magazines) then {
 	(
 		"
 		getNumber (_x >> 'scope') > 1 &&
-		(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
-		tolower (configName _x) find '_tracer' < 0
+		(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0)
 		"
 		configClasses (configfile >> "CfgMagazines")
 	) apply { _arsenal_enable_magazines pushback (configName _x) };

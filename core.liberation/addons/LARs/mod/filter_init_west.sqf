@@ -94,7 +94,6 @@ if (["UFP_BLU", GRLIB_mod_west, true] call F_startsWith) then {
 	"
 	getNumber (_x >> 'scope') > 1 &&
 	(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
-	tolower (configName _x) find '_tracer' < 0 &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")
