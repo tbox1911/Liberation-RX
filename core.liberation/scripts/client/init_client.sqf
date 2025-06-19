@@ -158,6 +158,9 @@ waitUntil {
 };
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
+// LRX Arsenal
+[] execVM "addons\LARs\liberationArsenal.sqf";
+
 // LRX client scripts
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
@@ -206,9 +209,6 @@ waitUntil {
 [] execVM "addons\JKB\JKB_init.sqf";
 [] execVM "addons\WHS\warehouse_init.sqf";
 [] execVM "addons\FOB\officer_init.sqf";
-
-// LRX Arsenal
-[] execVM "addons\LARs\liberationArsenal.sqf";
 
 // ACE inCompatible addons
 if (!GRLIB_ACE_enabled) then {
