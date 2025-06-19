@@ -30,9 +30,9 @@ while { GRLIB_endgame == 0 } do {
 		if (_chosen_weather >= 0.7) then { _rain = 0.4; _fog = 0.4 }; // Removed heavy rain due to severe fps issues
 		_windx = (floor random 4);
 		_windy = (floor random 4);
-		0 setOvercast _chosen_weather;
-		0 setRain _rain;
-		0 setFog _fog;
+		60 setOvercast _chosen_weather;
+		60 setRain _rain;
+		60 setFog _fog;
 		setWind [_windx, _windy, true];
 		//forceWeatherChange;
 		diag_log format ["--- LRX Weather changed to %1 - rain %2 - fog %3 - wind %4/%5", _chosen_weather, _rain, _fog, _windx, _windy];
