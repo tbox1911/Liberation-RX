@@ -10,7 +10,7 @@ while {true} do {
 		if (isNull _my_dog) exitWith {
 			player setVariable ["my_dog", nil, true];
 			private _id = player getVariable ["my_dog_marker", 0];
-			(findDisplay 12 displayCtrl 51) ctrlRemoveEventHandler ["Draw", _id];			
+			(findDisplay 12 displayCtrl 51) ctrlRemoveEventHandler ["Draw", _id];
 		 };
 
 		// Hide Dog
@@ -74,15 +74,12 @@ while {true} do {
 							_my_dog stop true;
 							_my_dog setDir (_my_dog getDir _man);
 							if (count (attachedObjects _my_dog) > 0 && isPLayer _man) then {
+								private _gun = attachedObjects _my_dog select 0;
+								detach _gun;
 								sleep 0.3;
-								{
-									detach _x;
-									sleep 0.1;
-									// _x attachTo [_my_dog];
-									// detach _x;
-									// sleep 0.1;
-									_x setPos (getPos _x);
-								} forEach (attachedObjects _my_dog);
+								private _gun_pos = getPosATL _gun;
+								_gun_pos set [2, 0];
+								_gun setPosATL _gun_pos;
 								sleep 0.5;
 								_my_dog setVariable ["do_find", nil];
 							};
