@@ -132,6 +132,7 @@ while { dialog && (alive player) && !([player] call PAR_is_wounded) && edit_load
 	if ( load_from_player >= 0 ) then {
 		private _playerselected = ( _loadplayers select load_from_player ) select 1;
 		if ( alive _playerselected ) then {
+			waitUntil {sleep 0.1; !(isSwitchingWeapon player)};
     		player setUnitLoadout (getUnitLoadout _playerselected);
 			hint format [ localize "STR_LOAD_PLAYER_LOADOUT_HINT", name _playerselected ];
 		};
