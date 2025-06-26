@@ -165,8 +165,8 @@ if (_failed) then {
 	diag_log format ["A3W Mission%1 complete: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_success = A3W_mission_success + 1;
 };
-
-sleep 10;
+sleep 30;
+[_task, true, true] call BIS_fnc_deleteTask;
 
 // Cleanup
 if (_count_blu == 0) then {

@@ -379,8 +379,10 @@ publicVariable "GRLIB_sector_spawning";
 private ["_sector_ownership"];
 while {true} do {
 	if (!(_sector in active_sectors)) exitWith { // Aborted
-		[_task,"CANCELED"] call BIS_fnc_taskSetState;
 		diag_log format ["Sector %1 mission aborted.", _sector];
+		[_task,"CANCELED"] call BIS_fnc_taskSetState;
+		sleep 30;
+		[_task, true, true] call BIS_fnc_deleteTask;
 	};
 	_sector_ownership = [_sector_pos, _local_capture_size] call F_sectorOwnership;
 	if (_sector in sectors_tower) then {
@@ -435,6 +437,7 @@ while {true} do {
 			};
 		};
 		sleep 30;
+		[_task, true, true] call BIS_fnc_deleteTask;		
 	};
 
 	if (!GRLIB_Commander_mode) then {
