@@ -95,22 +95,13 @@ GRLIB_CreateParamDialog = {
     waitUntil { dialog };
     GRLIB_DialogOpen = true;
     _display = findDisplay 5119;
+    (findDisplay 5119) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { [] call GRLIB_cancelParams; (findDisplay 5119) displayRemoveEventHandler ['KeyDown', _thisEventHandler];  }"];
     _control = _display ctrlCreate ["RscText", (100 + 0), _display displayCtrl 9969];
     _control ctrlSetPosition [0,  (0 * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
     _control ctrlSetText format ["Parameters Profile name: %1", GRLIB_paramsV2_save_key];
     _control ctrlSetTextColor [0.5,0.5,0.5,1];
     _control ctrlCommit 0;
     [] call GRLIB_SetupParamMenu;
-
-    // Instead of disabling the escape key, lets just reopen the dialog if it somehow gets closed - until the player saves, cancels, or used the game menu to exit the mission - i personally hate disabling players keys it makes them feel trapped
-    0 spawn {
-        while {GRLIB_DialogOpen} do {
-            if (!dialog) exitWith {
-                0 spawn GRLIB_CreateParamDialog;
-            };	
-            sleep 1;
-        };
-    };
 };
 
 GRLIB_refreshDialog = {
@@ -132,7 +123,7 @@ GRLIB_resetParams = {
 GRLIB_cancelParams = {
     if (!dialog || !GRLIB_DialogOpen || !hasInterface) exitWith {};
     GRLIB_ModParams = +GRLIB_LRX_params;
-    [] call GRLIB_refreshDialog;
+    [] call GRLIB_CloseDialog;
 };
 
 GRLIB_saveParams = {
