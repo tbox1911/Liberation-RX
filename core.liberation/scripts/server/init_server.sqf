@@ -132,7 +132,6 @@ load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_
 save_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
 load_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_context.sqf";
 save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
-keep_context = compileFinal preprocessFileLineNumbers "scripts\server\game\keep_context.sqf";
 blufor_victory = compileFinal preprocessFileLineNumbers "scripts\server\game\blufor_victory.sqf";
 
 // Bases

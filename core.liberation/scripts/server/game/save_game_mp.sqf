@@ -11,11 +11,31 @@ diag_log format ["--- LRX Save start at %1", time];
 GRLIB_last_save = round (time + 300);
 
 if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
-	if (GRLIB_param_wipe_keepscore == 0 && GRLIB_param_wipe_keepcontext == 0) exitWith {
-		profileNamespace setVariable [GRLIB_save_key, nil];
-		saveProfileNamespace;
+	if (GRLIB_param_wipe_keepscore == 1) then {
+		private _player_scores = [] + GRLIB_player_scores;
+		GRLIB_player_scores = [];
+		{
+			if (_x select 1 > GRLIB_perm_tank) then {
+				_x set [1, GRLIB_perm_tank];	// score
+			};
+			if (_x select 2 > 3000) then {
+				_x set [2, 3000];		// ammo
+			};
+			if (_x select 3 > 400) then {
+				_x set [3, 400];		// fuel
+			};
+			GRLIB_player_scores pushback _x;
+		} foreach _player_scores;
+	} else {
+		GRLIB_permissions = [];
+		GRLIB_player_scores = [];
 	};
-	[] call keep_context;
+
+	if (GRLIB_param_wipe_keepcontext == 0) then {
+		GRLIB_player_context = [];
+	};
+
+	// Save Restart Blob
 	private _savegame = [
 		[],
 		[],

@@ -46,9 +46,7 @@ sector_attack_in_progress = [];
 fob_attack_in_progress = [];
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_vehicle_huron = objNull;
-GRLIB_permissions = [];
 resources_intel = 0;
-GRLIB_player_scores = [];
 GRLIB_warehouse = [
 	[waterbarrel_typename, 2],
 	[fuelbarrel_typename, 2],
@@ -56,11 +54,24 @@ GRLIB_warehouse = [
 	[basic_weapon_typename, 0]
 ];
 GRLIB_sector_defense = [];
+
+// Savegame file
+private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
+
+// Wipe Player Context
+GRLIB_permissions = [];
 GRLIB_player_context = [];
+GRLIB_player_scores = [];
+if (GRLIB_param_wipe_context == 0) then {
+	if (!isNil "_lrx_liberation_savegame") then {
+		GRLIB_permissions = [_lrx_liberation_savegame select 13, []];
+		GRLIB_player_context = [_lrx_liberation_savegame select 14, []];
+		GRLIB_player_scores = [_lrx_liberation_savegame select 16, []];
+	};
+};
 
 // Wipe Savegame
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
-	[] call keep_context;
 	profileNamespace setVariable [GRLIB_save_key, nil];
 	saveProfileNamespace;
 	diag_log format ["--- LRX Savegame %1 Erased!", GRLIB_save_key];
@@ -68,7 +79,6 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 };
 
 // Load Savegame
-private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
 private _side_west = "";
 private _side_east = "";
 private _warehouse = [];
@@ -132,12 +142,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		armor_weight = _weights select 1;
 		air_weight = _weights select 2;
 	GRLIB_vehicle_to_military_base_links = _lrx_liberation_savegame select 12;
-	GRLIB_permissions = _lrx_liberation_savegame select 13;
-	if (GRLIB_param_wipe_context == 0) then {
-		GRLIB_player_context = _lrx_liberation_savegame select 14;
-	};
 	resources_intel = _lrx_liberation_savegame select 15;
-	GRLIB_player_scores = _lrx_liberation_savegame select 16;
 
 	if ( GRLIB_force_load == 0 && (_side_west != GRLIB_mod_west || _side_east != GRLIB_mod_east) ) exitWith {
 		abort_loading_msg = format [
