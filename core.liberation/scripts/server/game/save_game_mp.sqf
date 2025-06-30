@@ -12,8 +12,7 @@ GRLIB_last_save = round (time + 300);
 
 if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 	if (GRLIB_param_wipe_keepscore == 1) then {
-		private _player_scores = [] + GRLIB_player_scores;
-		GRLIB_player_scores = [];
+		private _player_scores = [];
 		{
 			if (_x select 1 > GRLIB_perm_tank) then {
 				_x set [1, GRLIB_perm_tank];	// score
@@ -24,8 +23,9 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 			if (_x select 3 > 400) then {
 				_x set [3, 400];		// fuel
 			};
-			GRLIB_player_scores pushback _x;
-		} foreach _player_scores;
+			_player_scores pushback _x;
+		} foreach GRLIB_player_scores;
+		GRLIB_player_scores = _player_scores;
 	} else {
 		GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
 		GRLIB_player_scores = [];

@@ -64,9 +64,9 @@ GRLIB_player_context = [];
 GRLIB_player_scores = [];
 if (GRLIB_param_wipe_context == 0) then {
 	if (!isNil "_lrx_liberation_savegame") then {
-		GRLIB_permissions = [_lrx_liberation_savegame select 13, []];
-		GRLIB_player_context = [_lrx_liberation_savegame select 14, []];
-		GRLIB_player_scores = [_lrx_liberation_savegame select 16, []];
+		GRLIB_permissions = _lrx_liberation_savegame select 13;
+		GRLIB_player_context = _lrx_liberation_savegame select 14;
+		GRLIB_player_scores = _lrx_liberation_savegame select 16;
 	};
 };
 
