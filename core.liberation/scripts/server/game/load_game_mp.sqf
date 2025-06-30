@@ -59,7 +59,7 @@ GRLIB_sector_defense = [];
 private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
 
 // Wipe Player Context
-GRLIB_permissions = [];
+GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
 GRLIB_player_context = [];
 GRLIB_player_scores = [];
 if (GRLIB_param_wipe_context == 0) then {
@@ -462,10 +462,6 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
-
-if (count GRLIB_permissions == 0) then {
-	GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
-};
 
 {
 	if ((_x select 0) in blufor_sectors) then { GRLIB_sector_defense pushBack _x };

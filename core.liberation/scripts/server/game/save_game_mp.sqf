@@ -27,7 +27,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 			GRLIB_player_scores pushback _x;
 		} foreach _player_scores;
 	} else {
-		GRLIB_permissions = [];
+		GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
 		GRLIB_player_scores = [];
 	};
 
