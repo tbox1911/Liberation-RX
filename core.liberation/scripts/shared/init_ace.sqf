@@ -41,6 +41,8 @@ GRLIB_ACE_blacklist = [
 // R3F functions
 [] call compile preprocessFileLineNumbers "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
 R3F_LOG_FNCT_objet_deplacer = compile preprocessFileLineNumbers "R3F_LOG\objet_deplacable\deplacer.sqf";
+R3F_LOG_FNCT_calculer_chargement_vehicule = compile preprocessFileLineNumbers "R3F_LOG\transporteur\calculer_chargement_vehicule.sqf";
+R3F_LOG_FNCT_transporteur_charger_auto = compile preprocessFileLineNumbers "R3F_LOG\transporteur\charger_auto.sqf";
 
 // Force Arsenal Filter Strict mode 3
 //if (GRLIB_filter_arsenal == 2) then {GRLIB_filter_arsenal = 3};
