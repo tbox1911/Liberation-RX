@@ -8,7 +8,6 @@ if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 
 diag_log format ["Spawn Attack Sector %1 at %2", _sector, time];
 private _max_prisonners = 4;
-
 private _defenders_cooldown = false;
 if (_sector in attack_in_progress_cooldown) then {
 	_defenders_cooldown = true;
@@ -25,9 +24,7 @@ if (_sector in attack_in_progress_cooldown) then {
 sector_attack_in_progress pushBack _sector;
 publicVariable "sector_attack_in_progress";
 
-private _sideMission = (_sector in A3W_sectors_in_use);
-if (_sideMission) then { _defenders_cooldown = true };
-
+if (_sector in A3W_sectors_in_use) then { _defenders_cooldown = true };
 private _grp = grpNull;
 private _vehicle = objNull;
 private _arsenal = objNull;
@@ -75,24 +72,17 @@ if (_ownership == GRLIB_side_enemy) then {
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
 		} else {
 			[_sector, 3] remoteExec ["remote_call_sector", 0];
-			private _enemy_left = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
-			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
-			{
-				if ( !_sideMission && _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
-					[_x] spawn prisoner_ai;
-					_max_prisonners = _max_prisonners - 1;
-				} else {
-					if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
-				};
-			} foreach _enemy_left;
+
+			if !(_sector in A3W_sectors_in_use) then {
+				[_sector_pos, _max_prisonners] call spawn_prisonners;
+			};
 
 			if !(_sector in (sectors_military + sectors_tower)) then {
 				[_sector_pos] spawn {
 					params ["_sector_pos"];
 					sleep 30;
 					private _civilians = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]) select {
-						(side _x == GRLIB_side_civilian) && !(captive _x) &&
-						!(isAgent teamMember _x) && (isNull objectParent _x)
+						(side _x == GRLIB_side_civilian) && !(captive _x) && !(isAgent teamMember _x)
 					};
 					if (count _civilians > 5) then {
 						for "_i" from 0 to (floor random 4) do {

@@ -7,7 +7,6 @@ if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
 
 diag_log format ["Spawn Attack FOB %1 at %2", _fob_pos, time];
 private _max_prisonners = 4;
-
 private _grp = grpNull;
 private _sector = format ["fobmarker%1", (GRLIB_all_fobs find _fob_pos)];
 private _defense_type = [_sector] call F_getDefenseType;
@@ -64,14 +63,7 @@ if (_ownership == GRLIB_side_enemy) then {
 		} else {
 			diag_log format ["FOB %1 Defended at %2", _fob_pos, time];
 			[_fob_pos, 3] remoteExec ["remote_call_fob", 0];
-			private _enemy_left = (_fob_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
-			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
-			{
-				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
-					[_x] spawn prisoner_ai;
-					_max_prisonners = _max_prisonners - 1;
-				};
-			} foreach _enemy_left;
+			[_fob_pos, _max_prisonners] call spawn_prisonners;
 
 			if ((sector_timer - serverTime) <= 300) then {
 				private _rwd_xp = round (15 + random 10);
