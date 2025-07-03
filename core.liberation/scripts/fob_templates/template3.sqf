@@ -71,9 +71,9 @@ private _defenders_to_build = [
 ];
 
 private _base_corners = [
-    [35,35,0],
-    [35,-35,0],
-    [-35,-35,0],
-    [-35,35,0]
+    [45,45,0],
+    [45,-45,0],
+    [-45,-45,0],
+    [-45,45,0]
 ];
 ["Model 3", _objects_to_build, _objectives_to_build, _defenders_to_build, _base_corners];
