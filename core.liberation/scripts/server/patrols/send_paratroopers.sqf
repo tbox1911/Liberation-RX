@@ -3,12 +3,34 @@ if (count opfor_troup_transports_heli == 0) exitWith { grpNull };
 
 private _name = "";
 private _unit_skill = 0.65;
-private _para_squad = [opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_rpg];
+private _para_squad = [
+	opfor_squad_leader,
+	opfor_paratrooper,
+	opfor_paratrooper,
+	opfor_paratrooper,
+	opfor_paratrooper,
+	opfor_paratrooper,
+	opfor_paratrooper,
+	opfor_paratrooper,
+	opfor_paratrooper,
+	opfor_rpg
+];
 if (_qrf == true) then {
 	_name = "QRF-";
 	_unload_dist = 800;
 	_unit_skill = 0.75;
-	_para_squad = [opfor_squad_leader,opfor_sniper,opfor_marksman,opfor_marksman,opfor_machinegunner,opfor_rpg,opfor_rpg,opfor_at,opfor_grenadier];
+	_para_squad = [
+		opfor_squad_leader,
+		opfor_sniper,
+		opfor_marksman,
+		opfor_marksman,
+		opfor_machinegunner,
+		opfor_rpg,
+		opfor_rpg,
+		opfor_at,
+		opfor_grenadier,
+		opfor_grenadier
+	];
 };
 
 private _go_target = {

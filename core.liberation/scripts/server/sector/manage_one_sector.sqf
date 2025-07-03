@@ -400,7 +400,7 @@ while {true} do {
 		} else {
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 		};
-		private _enemy_left = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) && !(_x getVariable ["GRLIB_mission_AI", false]) };
+		private _enemy_left = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 		{
 			if (_max_prisonners > 0) then {
 				if ((floor random 100) <= GRLIB_surrender_chance) then {
