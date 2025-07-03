@@ -20,7 +20,6 @@ if (count GRLIB_all_fobs == 0) then {
 } else {
 	_sign setVariable ["GRLIB_vehicle_owner", _owner, true];
 };
-sleep 1;
 
 // FOB Officer
 if (_fob_class == FOB_typename) then {
