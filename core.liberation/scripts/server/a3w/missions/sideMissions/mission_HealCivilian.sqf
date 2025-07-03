@@ -78,7 +78,6 @@ _setupObjects = {
 	{
 		_x setVariable ["GRLIB_can_speak", true, true];
 		_x setVariable ["GRLIB_A3W_Mission_HC1", true, true];
-		_x setVariable ["acex_headless_blacklist", true, true];
 	} forEach (units _aiGroup);
 
 	// add wounded
@@ -90,9 +89,7 @@ _setupObjects = {
 			_unit setPos ([_pos, 50] call F_getRandomPos);
 		};
 		_unit setVariable ["GRLIB_can_speak", true, true];
-		_unit setVariable ["GRLIB_is_civilian", true, true];
 		_unit setVariable ["GRLIB_A3W_Mission_HC2", true, true];
-		_unit setVariable ["acex_headless_blacklist", true, true];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		removeAllAssignedItems _unit;
 		_unit addHeadgear "H_HeadBandage_bloody_F";

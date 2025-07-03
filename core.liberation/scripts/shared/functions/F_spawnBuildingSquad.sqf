@@ -1,5 +1,5 @@
 params [
-	"_infsquad", 
+	"_infsquad",
 	"_building_ai_max",
 	"_sectorpos",
 	["_building_range", GRLIB_capture_size],
@@ -57,20 +57,13 @@ while { count _position_indexes < count _unitclass } do {
 };
 private _grp = [_sectorpos, _unitclass, _side, "building", _mission_ai] call F_libSpawnUnits;
 {
-	_x allowDamage false;
 	//_x disableAI "MOVE";
 	_x disableAI "PATH";
-	_x setPos (_buildingpositions select (_position_indexes select _forEachIndex));
 	_x setUnitPos "UP";
-	_x setVariable ["GRLIB_in_building", true, true];
+	_x setPos (_buildingpositions select (_position_indexes select _forEachIndex));
 	[_x, _keep_position] spawn building_defence_ai;
 } foreach (units _grp);
 
-[_grp] spawn {
-	params ["_grp"];
-	sleep 4;	
-	{ _x allowDamage true } foreach (units _grp);
-};
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];
 
 (units _grp);

@@ -32,11 +32,17 @@ _setupObjects = {
 	// spawn some enemies
 	[_missionPos, 30] call createlandmines;
 	[markerPos _missionLocation, 150, floor (random 6)] spawn ied_trap_manager;
-	_managed_units = ["militia", 6, _missionPos] call F_spawnBuildingSquad;
-	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach _managed_units;
 	_aiGroup = [_missionPos, 12, "militia"] call createCustomGroup;
-	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);
 
+	_managed_units = ["militia", 8, _missionPos] call F_spawnBuildingSquad;
+	private _grp1 = [_missionPos, 12, "militia"] call createCustomGroup;
+	_managed_units append (units _grp1);
+	private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
+	if (_nb_player > 2) then {
+		sleep 5;
+		_grp1 = [_missionPos, 12, "militia"] call createCustomGroup;
+		_managed_units append (units _grp1);
+	};
 	// Spawn civvies
 	_grp_civ = [_missionPos, (5 + floor random 5)] call F_spawnCivilians;
 	[_grp_civ, _missionPos] spawn add_civ_waypoints;
@@ -56,6 +62,7 @@ _failedExec = {
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -5];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];		
 	_failedHintMessage = ["STR_INVASION_FAILED", sideMissionColor, _townName];
+	{ deleteVehicle _x } forEach _managed_units;
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	[_missionPos] call clearlandmines;
 };
@@ -74,6 +81,7 @@ _successExec = {
 	} forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
 
 	_successHintMessage = ["STR_INVASION_MESSAGE2", sideMissionColor, _townName];
+	{ deleteVehicle _x } forEach _managed_units;
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	[_missionPos] spawn {
 		params ["_pos"];

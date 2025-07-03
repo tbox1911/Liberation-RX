@@ -37,7 +37,12 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 	if (!isNil "_unit") then {
 		_unit allowDamage false;
 		[_unit] joinSilent _grp;
-		if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
+		if (_mission_ai) then {
+			_unit setVariable ["GRLIB_mission_AI", true, true];
+			_unit setVariable ["acex_headless_blacklist", true, true];
+			_unit setSkill ["courage", 1];
+			_unit allowFleeing 0;
+		};
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit setPitch 1;
 		_ai_rank = selectRandom (GRLIB_rank_level select [0, _max_rank]);
@@ -53,7 +58,8 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		sleep 0.1;
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] spawn F_fixModUnit;
-		if (_type in ["militia", "building"]) then { [_unit] call loadout_militia };
+		if (_type == "militia") then { [_unit] call loadout_militia };
+		if (_type == "building") then { _unit setVariable ["GRLIB_in_building", true, true] };
 		if (_type == "bandits") then {
 			[_unit] call loadout_militia;
 			_unit addMPEventHandler ["MPKilled", {
@@ -90,8 +96,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 			};
 		};
-		sleep 0.1;
-		_unit allowDamage true;
+		[_unit] spawn { sleep 5; (_this select 0) allowDamage true };
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};

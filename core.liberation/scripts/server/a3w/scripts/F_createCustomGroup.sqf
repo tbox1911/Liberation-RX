@@ -42,7 +42,7 @@ private _grp = [_pos, _unitclass, _side, _type, true] call F_libSpawnUnits;
 //  Veteran > 0.65 and <= 0.85
 //  Expert > 0.85
 {
-	_x setSkill 0.70;
+	_x setSkill 0.75;
 	// cosmetic change
 	if (typeOf _x == "C_IDAP_Man_Paramedic_01_F") then {
 		//_unit addVest "V_Plain_medical_F";
@@ -54,12 +54,9 @@ private _grp = [_pos, _unitclass, _side, _type, true] call F_libSpawnUnits;
 		_x addGoggles "G_Respirator_white_F";
 	};
 	if (_type == "bandits") then {
-		_x setSkill 0.86;
+		_x setSkill 0.88;
 		_x addGoggles "G_Balaclava_lowprofile";
 	};
-	_x setSkill ["courage", 1];
-	_x allowFleeing 0;
-	_x setVariable ["acex_headless_blacklist", true, true];
 } forEach (units _grp);
 
 if (_patrol) then {

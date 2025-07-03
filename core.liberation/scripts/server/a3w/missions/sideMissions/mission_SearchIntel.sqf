@@ -119,17 +119,15 @@ _setupObjects = {
 	//----- spawn units ---------------------------------
 	private _managed_units = ["infantry", ([] call getNbUnits), _missionPos] call F_spawnBuildingSquad;
 	_aiGroup = group (_managed_units select 0);
-	{
-		_x setSkill 0.70;
-		_x setSkill ["courage", 1];
-		_x allowFleeing 0;
-	} forEach (units _aiGroup);
+	sleep 0.5;
 
 	//----- spawn civilians ---------------------------------
 	_grp_civ1 = [_missionPos, 3] call F_spawnCivilians;
 	[_grp_civ1, _missionPos] spawn add_civ_waypoints;
+	sleep 0.5;
 	_grp_civ2 = [_missionPos, 3] call F_spawnCivilians;
 	[_grp_civ2, _missionPos] spawn add_civ_waypoints;
+	sleep 0.5;
 
 	//----- spawn mines ---------------------------------
 	[_missionPos, 30] call createlandmines;

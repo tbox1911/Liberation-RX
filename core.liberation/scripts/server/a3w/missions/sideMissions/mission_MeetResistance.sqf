@@ -72,19 +72,19 @@ _setupObjects = {
 		if (_start) then {
 			private _location_name = [_target_pos] call F_getLocationName;
 			private _grp1 = [_target_pos, false, 250] call send_paratroopers;
+			GRLIB_A3W_Mission_MR_OPFOR append (units _grp1);
 			sleep 20;
 			["lib_reinforcements", [_location_name]] remoteExec ["bis_fnc_shownotification", 0];
-			private _grp2 = [_target_pos, false, 300] call send_paratroopers;
+			_grp1 = [_target_pos, false, 300] call send_paratroopers;
+			GRLIB_A3W_Mission_MR_OPFOR append (units _grp1);
 			sleep 20;
 			["lib_reinforcements", [_location_name]] remoteExec ["bis_fnc_shownotification", 0];
-			private _grp3 = grpNull;
-			private _nb_player = count ([_target_pos, GRLIB_sector_size] call F_getNearbyPlayers);
-			if (_nb_player > 1) then {
-				_grp3 = [_target_pos, false, 300] call send_paratroopers;
-				sleep  5;
+			private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
+			if (_nb_player > 2) then {
+				_grp1 = [_target_pos, false, 300] call send_paratroopers;
+				GRLIB_A3W_Mission_MR_OPFOR append (units _grp1);
+				sleep  10;
 			};
-			GRLIB_A3W_Mission_MR_OPFOR = (units _grp1 + units _grp2 + units _grp3);
-			{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach GRLIB_A3W_Mission_MR_OPFOR;
 			publicVariable "GRLIB_A3W_Mission_MR_OPFOR";
 			sleep 3;
 		};
@@ -110,7 +110,7 @@ _failedExec = {
 	// Mission failed
 	{ [_x, -3] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -3];
-	[gamelogic, _msg] remoteExec ["globalChat", 0];	
+	[gamelogic, _msg] remoteExec ["globalChat", 0];
 	if (isNil "GRLIB_A3W_Mission_MR_OPFOR") then { GRLIB_A3W_Mission_MR_OPFOR = [] };
 	[_missionPos, GRLIB_A3W_Mission_MR_BLUFOR + GRLIB_A3W_Mission_MR_OPFOR] spawn {
 		params ["_pos", "_list"];

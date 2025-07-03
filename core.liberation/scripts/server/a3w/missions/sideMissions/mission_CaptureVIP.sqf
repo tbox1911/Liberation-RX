@@ -64,7 +64,7 @@ _setupObjects = {
 	_vip addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vip setVariable ["GRLIB_mission_AI", true, true];
-	_vip setSkill ["courage", 0.8];
+	_vip setSkill ["courage", 0.5];
 	_vip setrank "COLONEL";
 	_vip assignAsCargo _vehicle2;
 	_vip moveInCargo _vehicle2;
