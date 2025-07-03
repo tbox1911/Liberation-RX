@@ -68,6 +68,9 @@ if (GRLIB_param_wipe_context == 0) then {
 		GRLIB_player_context = _lrx_liberation_savegame select 14;
 		GRLIB_player_scores = _lrx_liberation_savegame select 16;
 	};
+} else {
+	diag_log format ["--- LRX Player Context Erased!", GRLIB_save_key];
+	GRLIB_last_save = 0;
 };
 
 // Wipe Savegame

@@ -13,7 +13,7 @@ addMissionEventHandler ["PlayerDisconnected", {
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 	if (_name select [0,14] == "headlessclient") exitWith {};
 	private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
-	if (_player_left == 0 && time > 300) then {
+	if (_player_left == 0) then {
 		diag_log "--- LRX Mission End!";
 		[true] call save_game_mp;
 		if (!GRLIB_server_persistent) then {
