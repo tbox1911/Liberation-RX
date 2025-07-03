@@ -21,7 +21,6 @@ while { _max_try > 0 && count units _grp < _nb_unit } do {
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit setPitch 1;
 		_unit setVariable ['GRLIB_can_speak', true, true];
-		_unit setVariable ["GRLIB_is_civilian", true, true];
 		_unit setVariable ["acex_headless_blacklist", true, true];
 		_unit addEventHandler ["HandleDamage", {_this call damage_manager_civilian}];
 		_unit switchMove "AmovPercMwlkSnonWnonDf";

@@ -72,7 +72,6 @@ private _grp = createGroup [_side, true];
 		case GRLIB_side_civilian: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
 			_unit setVariable ['GRLIB_can_speak', true, true];
-			_unit setVariable ["GRLIB_is_civilian", true, true];
 		};
 	};
 
