@@ -27,8 +27,9 @@ private _building_classname = [
 ];
 
 private _keep_position = false;
-private _buildingpositions = [];
+if (_mission_ai) then { _keep_position = true };
 
+private _buildingpositions = [];
 if (isNull _building) then {
 	private _allbuildings = (nearestObjects [_sectorpos, _building_classname, _building_range]) select {alive _x};
 	{
@@ -36,7 +37,6 @@ if (isNull _building) then {
 	} foreach _allbuildings;
 } else {
 	_buildingpositions = ([_building] call BIS_fnc_buildingPositions);
-	_keep_position = true;
 };
 
 private _position_count = count _buildingpositions;

@@ -91,7 +91,7 @@ if (_enable_defenders) then {
         _unit setUnitPos "UP";
         _unit disableAI "PATH";
         _unit setPos _nextpos;
-        [_unit] spawn building_defence_ai;
+        [_unit, true] spawn building_defence_ai;
         [_unit] spawn reammo_ai;
     } forEach (units _grpdefenders);
 
