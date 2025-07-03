@@ -84,6 +84,7 @@ _setupObjects = {
 				sleep  5;
 			};
 			GRLIB_A3W_Mission_MR_OPFOR = (units _grp1 + units _grp2 + units _grp3);
+			{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach GRLIB_A3W_Mission_MR_OPFOR;
 			publicVariable "GRLIB_A3W_Mission_MR_OPFOR";
 			sleep 3;
 		};
