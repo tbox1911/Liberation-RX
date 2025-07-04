@@ -12,15 +12,15 @@ while { alive _unit && !(captive _unit) } do {
 	if (!isNil "_target") then {
 		_unit doWatch _target;
 		_unit setDir (_unit getDir _target);
-		if (_unit distance2D _target <= 10 && (floor random 3 == 0)) then {
+		if (_unit distance2D _target <= 20 && (floor random 3 == 0)) then {
 			_unit doSuppressiveFire _target;
-			_resume_movement = true 
+			_resume_movement = true;
 		};
 	};
 
-	if (_sector in blufor_sectors && (floor random 5 == 0)) then { _resume_movement = true };
-
-	if (_keep_position) then { _resume_movement = false };
+	if (_keep_position) then { _resume_movement = false } else {
+		if (_sector in blufor_sectors && (floor random 5 == 0)) then { _resume_movement = true };
+	};
 
 	if (_resume_movement) exitWith {
 		_unit enableAI "PATH";
