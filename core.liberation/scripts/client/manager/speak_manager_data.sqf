@@ -251,7 +251,7 @@ speak_mission_resitance = {
 	params ["_unit"];
 	private _leader = leader group _unit;
 	if (_unit == _leader) then {
-		{_x setVariable ["GRLIB_can_speak", false, true]} foreach GRLIB_A3W_Mission_MR_BLUFOR;
+		{ _x setVariable ["GRLIB_can_speak", false, true] } foreach GRLIB_A3W_Mission_MR_BLUFOR;
 		_unit globalChat localize "STR_SPEAKMANAGER8";
 		sleep 3;
 		_unit globalChat localize "STR_SPEAKMANAGER9";

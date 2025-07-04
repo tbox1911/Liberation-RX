@@ -51,6 +51,7 @@ _setupObjects = {
 
 	// enable speak
 	{
+		_x setCaptive true;
 		_x setVariable ["GRLIB_can_speak", true, true];
 		_x setVariable ["GRLIB_A3W_Mission_MR1", true, true];
 	} foreach _managed_units;
@@ -59,8 +60,8 @@ _setupObjects = {
 	publicVariable "GRLIB_A3W_Mission_MR_BLUFOR";
 
 	// manage side
-	[_missionPos] spawn {
-		params ["_target_pos"];
+	[_missionPos, _managed_units] spawn {
+		params ["_target_pos", "_managed_units"];
 		sleep 3;
 		private _start = false;
 		waitUntil {
@@ -85,6 +86,7 @@ _setupObjects = {
 				GRLIB_A3W_Mission_MR_OPFOR append (units _grp1);
 				sleep  10;
 			};
+			{ _x setCaptive false } foreach _managed_units;
 			publicVariable "GRLIB_A3W_Mission_MR_OPFOR";
 			sleep 3;
 		};
