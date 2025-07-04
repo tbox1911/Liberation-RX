@@ -78,8 +78,7 @@ private _grpsentry = grpNull;
 private _defenders = [];
 
 if (_enable_defenders) then {
-    private _classname = [];
-    {_classname pushBack ( _x select 0 )} foreach _defenders_to_build;
+    private _classname = _defenders_to_build apply { _x select 0 };
     _grpdefenders = [_base_position, _classname, GRLIB_side_enemy, "building", true] call F_libSpawnUnits;
     {
         _unit = _x;

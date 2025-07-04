@@ -11,9 +11,7 @@ _vehicle setVariable ["wreck_in_use", true, true];
 // Stop running
 AR_active = false;
 
-private _valuable_veh = [];
-{ _valuable_veh pushBack ( _x select 0 ) } foreach opfor_recyclable;
-
+private _valuable_veh = opfor_recyclable apply { _x select 0 };
 private _bounty = 0;
 private _bonus = 0;
 if (typeOf _vehicle in _valuable_veh) then {

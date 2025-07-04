@@ -77,16 +77,10 @@
 	{R3F_LOG_CFG_can_be_moved_by_player set [_forEachIndex, toLower _x];} forEach R3F_LOG_CFG_can_be_moved_by_player;
 
 	// On construit la liste des classes des transporteurs dans les quantit�s associ�es (pour les nearestObjects, count isKindOf, ...)
-	R3F_LOG_classes_transporteurs = [];
-	{
-		R3F_LOG_classes_transporteurs pushBack (_x select 0);
-	} forEach R3F_LOG_CFG_can_transport_cargo;
+	R3F_LOG_classes_transporteurs = R3F_LOG_CFG_can_transport_cargo apply { _x select 0 };
 
 	// On construit la liste des classes des transportables dans les quantit�s associ�es (pour les nearestObjects, count isKindOf, ...)
-	R3F_LOG_classes_objets_transportables = [];
-	{
-		R3F_LOG_classes_objets_transportables pushBack (_x select 0);
-	} forEach R3F_LOG_CFG_can_be_transported_cargo;
+	R3F_LOG_classes_objets_transportables = R3F_LOG_CFG_can_be_transported_cargo apply { _x select 0 };
 
 	// Union des tableaux de types d'objets servant dans un isKindOf
 	R3F_LOG_objets_depl_heli_remorq_transp = [];

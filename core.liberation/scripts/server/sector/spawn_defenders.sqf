@@ -43,11 +43,7 @@ _grp setBehaviourStrong "COMBAT";
 if (!_fob) then {
     if (_defense_type == 3) then {
         private _vehicles_typename = ["MRAP_01_base_F", "MRAP_02_base_F", "Wheeled_APC_F"];
-        private _vehicles_pool = [];
-        {
-            if ([(_x select 0), _vehicles_typename] call F_itemIsInClass) then { _vehicles_pool pushBack (_x select 0) };
-        } forEach heavy_vehicles;
-
+        private _vehicles_pool = (heavy_vehicles select {[(_x select 0), _vehicles_typename] call F_itemIsInClass}) apply { _x select 0 };
         if (count _vehicles_pool > 0) then {
             private _vehiclePos = _sector_pos findEmptyPosition [5, 120, "B_Heli_Transport_03_unarmed_F"];
             _vehicle = [_vehiclePos, selectRandom _vehicles_pool, 3, false, GRLIB_side_friendly] call F_libSpawnVehicle;

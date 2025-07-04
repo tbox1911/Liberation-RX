@@ -4,9 +4,8 @@ if (!([] call F_getValid)) exitWith {};
 private [ "_nextplayer", "_nextplayer_uid", "_newscores", "_knownplayers", "_playerindex", "_score", "_rank", "_ammo", "_fuel" ];
 
 while {true} do {
-	_knownplayers = [];
 	_newscores = GRLIB_player_scores;
-	{ _knownplayers pushback (_x select 0) } foreach GRLIB_player_scores;
+	_knownplayers = GRLIB_player_scores apply { _x select 0 };
 
 	{
 		_nextplayer = _x;

@@ -110,11 +110,7 @@ while { dialog && alive player } do {
 		if ( _player_uid != "" ) then {
 
 			_player_idx = -1;
-			_player_uids = [];
-			{
-				_player_uids pushback (_x select 0);
-			} foreach _modify_permissions;
-
+			_player_uids = _modify_permissions apply { _x select 0 };
 			_player_idx = _player_uids find _player_uid;
 
 			if ( permission_toset == 666 ) then {

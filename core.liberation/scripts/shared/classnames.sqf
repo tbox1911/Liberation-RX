@@ -47,7 +47,7 @@ if (GRLIB_MFR_enabled) then {
 		["MFR_C_Shepinois_OD",0,0,0,0]
 	];
 	infantry_units_west = MFR_Dogs + infantry_units_west;
-	{ MFR_Dogs_classname pushBack (_x select 0) } forEach MFR_Dogs;
+	MFR_Dogs_classname = MFR_Dogs apply { _x select 0 };
 };
 
 if (isServer) then {
@@ -91,11 +91,10 @@ _ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
 
 // check missing define in opfor_recyclable
-private _opfor_recyclable = [];
-{ _opfor_recyclable pushBackUnique (_x select 0) } foreach opfor_recyclable;
+private _opfor_recyclable = opfor_recyclable apply { _x select 0 };
+_opfor_recyclable = _opfor_recyclable arrayIntersect _opfor_recyclable;
 
-private _opfor_vehicles = [];
-{ _opfor_vehicles pushBackUnique _x } foreach (
+private _opfor_vehicles = (
 	opfor_boats +
 	militia_vehicles +
 	opfor_vehicles +
@@ -105,7 +104,8 @@ private _opfor_vehicles = [];
 	opfor_troup_transports_truck +
 	opfor_troup_transports_heli +
 	opfor_air + opfor_statics
-);
+) apply { _x select 0 };
+_opfor_vehicles = _opfor_vehicles arrayIntersect _opfor_vehicles;
 
 {
 	if !(_x in _opfor_recyclable) then { diag_log format ["--- LRX Config Check (%1) : vehicle %2 is NOT defined in opfor_recyclable !", _forEachIndex, _x]};
@@ -254,9 +254,8 @@ support_vehicles = support_vehicles + [
 	[fuelbarrel_typename,0,120,50,GRLIB_perm_hidden],
 	[foodbarrel_typename,0,130,0,GRLIB_perm_hidden]
 ] + support_vehicles_west;
-
-support_vehicles_classname = [];
-{support_vehicles_classname pushBack ( _x select 0 )} foreach support_vehicles;
+support_vehicles_classname = support_vehicles apply { _x select 0 };
+support_vehicles_classname = support_vehicles_classname arrayIntersect support_vehicles_classname;
 
 // RESPAWN VEHICLES
 if (isNil "respawn_vehicles_west") then { respawn_vehicles_west = [] };
@@ -267,20 +266,20 @@ respawn_vehicles = [
 ] + respawn_vehicles_west;
 
 // *** CLASSNAME LIST ***
-all_hostile_classnames = [];
-{ all_hostile_classnames pushBackUnique (_x select 0) } foreach opfor_recyclable;
+all_hostile_classnames = opfor_recyclable apply { _x select 0 };
+all_hostile_classnames = all_hostile_classnames arrayIntersect all_hostile_classnames;
 
-all_friendly_classnames = [];
-{ all_friendly_classnames pushBackUnique (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
+all_friendly_classnames = (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles) apply { _x select 0 };
+all_friendly_classnames = all_friendly_classnames arrayIntersect all_friendly_classnames;
 
-air_vehicles_classnames = [] + opfor_troup_transports_heli;
-{ air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
+air_vehicles_classnames = air_vehicles apply { _x select 0 };
+air_vehicles_classnames = append opfor_troup_transports_heli;
+air_vehicles_classnames = air_vehicles_classnames arrayIntersect air_vehicles_classnames;
 
 opfor_troup_transports_truck = opfor_troup_transports_truck + [opfor_transport_truck];
 
 // *** ELITES ***
-elite_vehicles = [];
-{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushBackUnique (_x select 0)} } foreach (heavy_vehicles + air_vehicles + static_vehicles);
+elite_vehicles = ((heavy_vehicles + air_vehicles + static_vehicles) select {_x select 4 == GRLIB_perm_max}) apply { _x select 0 };
 
 // *** Boats ***
 if ( isNil "civilian_boats" ) then {
@@ -383,12 +382,9 @@ if ( isNil "a3w_truck_open" ) then {
 // *** SOURCES ***
 
 // Static Weapons
-blufor_statics = [];
-{
-	if !(( _x select 0) in uavs_vehicles) then { blufor_statics pushback ( _x select 0) };
-} foreach static_vehicles;
-
+blufor_statics = (static_vehicles select {!(( _x select 0) in uavs_vehicles)}) apply { _x select 0 };
 list_static_weapons = [a3w_resistance_static] + blufor_statics + opfor_statics;
+list_static_weapons = list_static_weapons arrayIntersect list_static_weapons;
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [
@@ -457,11 +453,11 @@ _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
 _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
 [_path] call F_getTemplateFile;
 
-transport_vehicles = [];
-{transport_vehicles pushBackUnique (_x select 0)} foreach box_transport_config;
+transport_vehicles = box_transport_config apply { _x select 0 };
+transport_vehicles = transport_vehicles arrayIntersect transport_vehicles;
 
-box_transport_loadable = [];
-{box_transport_loadable pushBackUnique (_x select 0)} foreach box_transport_offset;
+box_transport_loadable = box_transport_offset apply { _x select 0 };
+box_transport_loadable = box_transport_loadable arrayIntersect box_transport_loadable;
 
 // Big_units
 vehicle_big_units = [
@@ -539,22 +535,19 @@ private _buildings_to_delete = [];
 } forEach buildings;
 buildings = buildings - _buildings_to_delete;
 
-all_buildings_classnames = [];
-{ all_buildings_classnames pushBackUnique (_x select 0) } foreach buildings;
-
 // FOB Defense buildings
 [] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
 
+private _objects_to_build = [];
 if (GRLIB_naval_type == 3) then {
 	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
-	{ all_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
 };
+all_buildings_classnames = (buildings + _objects_to_build) apply { _x select 0 };
+all_buildings_classnames = all_buildings_classnames arrayIntersect all_buildings_classnames;
 
 // Recyclable
-GRLIB_recycleable_classnames = ["Air","Ship_F","LandVehicle","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
-{
-	GRLIB_recycleable_classnames pushBackUnique (_x select 0);
-} foreach (support_vehicles + buildings + opfor_recyclable);
+GRLIB_recycleable_classnames = (support_vehicles + buildings + opfor_recyclable) apply { _x select 0 };
+GRLIB_recycleable_classnames append ["Air","Ship_F","LandVehicle","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 GRLIB_recycleable_classnames = GRLIB_recycleable_classnames arrayIntersect GRLIB_recycleable_classnames;
 GRLIB_recycleable_classnames = GRLIB_recycleable_classnames - GRLIB_recycleable_blacklist;
 GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable);

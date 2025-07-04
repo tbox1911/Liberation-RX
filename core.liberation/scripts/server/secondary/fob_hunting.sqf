@@ -1,7 +1,6 @@
 params [ ["_mission_cost", 0], "_caller" ];
 
-private _all_possible_sectors = [];
-{ _all_possible_sectors pushBack (_x select 0) } forEach ([SpawnMissionMarkers] call checkSpawn);
+private _all_possible_sectors = ([SpawnMissionMarkers] call checkSpawn) apply { _x select 0 };
 if (count _all_possible_sectors == 0) exitWith { [gamelogic, "Could not find position for fob hunting mission"] remoteExec ["globalChat", 0] };
 
 _spawn_marker = selectRandom _all_possible_sectors;
