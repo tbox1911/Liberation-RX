@@ -1,8 +1,6 @@
 params ["_display"];
 
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
-// Disable random - will disable random button and shortcut keys
-LARs_overrideVA_random = 1;
 
 // VA template button OK
 _ctrlTemplateButtonOK = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_BUTTONOK;
@@ -28,6 +26,8 @@ _ctrlTemplateButtonDelete = _display displayctrl IDC_RSCDISPLAYARSENAL_TEMPLATE_
 _ctrlTemplateButtonDelete ctrlRemoveAllEventHandlers "buttonclick";
 _ctrlTemplateButtonDelete ctrlAddEventHandler ["buttonclick","with uinamespace do {['buttonTemplateDelete',[ctrlparent (_this select 0)]] call bis_fnc_arsenal}"];
 
-if ( LARs_overrideVA_random > 0 ) then {
-	_display displayCtrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONRANDOM ctrlEnable false;
-};
+// Enable/Disable Random  (0/1)- will disable random button and shortcut keys
+LARs_overrideVA_random = 0;
+// if ( LARs_overrideVA_random > 0 ) then {
+// 	_display displayCtrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONRANDOM ctrlEnable false;
+// };
