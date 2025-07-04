@@ -104,7 +104,7 @@ private _opfor_vehicles = (
 	opfor_troup_transports_truck +
 	opfor_troup_transports_heli +
 	opfor_air + opfor_statics
-) apply { _x select 0 };
+);
 _opfor_vehicles = _opfor_vehicles arrayIntersect _opfor_vehicles;
 
 {
@@ -273,7 +273,7 @@ all_friendly_classnames = (light_vehicles + heavy_vehicles + air_vehicles + stat
 all_friendly_classnames = all_friendly_classnames arrayIntersect all_friendly_classnames;
 
 air_vehicles_classnames = air_vehicles apply { _x select 0 };
-air_vehicles_classnames = append opfor_troup_transports_heli;
+air_vehicles_classnames append opfor_troup_transports_heli;
 air_vehicles_classnames = air_vehicles_classnames arrayIntersect air_vehicles_classnames;
 
 opfor_troup_transports_truck = opfor_troup_transports_truck + [opfor_transport_truck];
