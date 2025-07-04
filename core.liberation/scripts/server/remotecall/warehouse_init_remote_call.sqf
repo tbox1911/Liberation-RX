@@ -36,6 +36,13 @@ if (basic_weapon_typename == "CUP_LocalBasicWeaponsBox") then {
 	];
 };
 
+if (basic_weapon_typename == "CUP_BOX_RU_Wps_F") then {
+	_row4 = [
+		[[-2,2.5,0], 90],
+		[[1,0,0],[3,0,0],[0,-2,0],[2,-2,0],[4,-2,0]]
+	];
+};
+
 //SoG
 if (basic_weapon_typename == "Land_vn_pavn_weapons_stack1") then {
 	_row4 = [
@@ -83,6 +90,7 @@ _warehouse_dir = getdir _warehouse;
 		if (_box_dir > 0) then {
 			_box setDir (_box_dir + ((random 60) -30));
 		};
+		_box setPosASL _box_pos_r1;
 	};
 } foreach GRLIB_warehouse;
 
