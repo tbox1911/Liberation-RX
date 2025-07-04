@@ -72,7 +72,6 @@ _setupObjects = {
 		params ["_unit"];
 		waitUntil { sleep 1; (isNull objectParent _unit || !alive _unit) };
 		if (!alive _unit) exitWith {};
-		_unit setVariable ["GRLIB_mission_AI", false, true];
 		[_unit, false, true] spawn prisoner_ai;
 	};
 

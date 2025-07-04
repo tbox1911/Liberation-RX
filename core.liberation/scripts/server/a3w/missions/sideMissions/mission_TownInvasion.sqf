@@ -33,7 +33,6 @@ _setupObjects = {
 	[_missionPos, 30] call createlandmines;
 	[markerPos _missionLocation, 150, floor (random 6)] spawn ied_trap_manager;
 	_aiGroup = [_missionPos, 12, "militia"] call createCustomGroup;
-
 	_managed_units = ["militia", 8, _missionPos] call F_spawnBuildingSquad;
 	private _grp1 = [_missionPos, 12, "militia"] call createCustomGroup;
 	_managed_units append (units _grp1);
@@ -43,6 +42,8 @@ _setupObjects = {
 		_grp1 = [_missionPos, 12, "militia"] call createCustomGroup;
 		_managed_units append (units _grp1);
 	};
+	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup + _managed_units);
+
 	// Spawn civvies
 	_grp_civ = [_missionPos, (5 + floor random 5)] call F_spawnCivilians;
 	[_grp_civ, _missionPos] spawn add_civ_waypoints;

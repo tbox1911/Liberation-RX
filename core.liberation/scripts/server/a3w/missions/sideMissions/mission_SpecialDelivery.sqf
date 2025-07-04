@@ -56,7 +56,6 @@ _setupObjects = {
 
 	{
 		_x setVariable ['GRLIB_can_speak', true, true];
-		_x setVariable ["GRLIB_mission_AI", true, true];
 		doStop _x;
 		[_x, "LHD_krajPaluby"] spawn F_startAnimMP;
 	} forEach [_man1,_man2,_man3,_man4];

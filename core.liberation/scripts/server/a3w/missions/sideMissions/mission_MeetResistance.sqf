@@ -72,7 +72,7 @@ _setupObjects = {
 		if (_start) then {
 			private _location_name = [_target_pos] call F_getLocationName;
 			private _grp1 = [_target_pos, false, 250] call send_paratroopers;
-			GRLIB_A3W_Mission_MR_OPFOR append (units _grp1);
+			GRLIB_A3W_Mission_MR_OPFOR = (units _grp1);
 			sleep 20;
 			["lib_reinforcements", [_location_name]] remoteExec ["bis_fnc_shownotification", 0];
 			_grp1 = [_target_pos, false, 300] call send_paratroopers;
