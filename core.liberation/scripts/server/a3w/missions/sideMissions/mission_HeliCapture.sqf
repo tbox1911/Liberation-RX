@@ -23,7 +23,6 @@ _setupObjects = {
 	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vehicle setPos (getPos _vehicle);
 	[_vehicle, "lock", "server"] call F_vehicleLock;
-	_vehicle enableSimulationGlobal true;
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
 	_vehicle engineOn false;

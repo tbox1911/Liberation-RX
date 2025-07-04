@@ -68,7 +68,6 @@ if (_enable_objectives) then {
         _x allowDamage true;
         _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_x, "lock", "server"] call F_vehicleLock;
-        _x enableSimulationGlobal true;
     };
 } foreach (_base_objectives + _base_objects);
 
