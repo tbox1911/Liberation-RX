@@ -166,14 +166,14 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 
 			if ( buildtype == GRLIB_InfantryBuildType ) then {
 				if (_build_class in MFR_Dogs_classname + ["Alsatian_Random_F","Fin_random_F"] ) then {
-					if (!(isNil {player getVariable ["my_dog", nil]})) then {
+					if !(isNil {player getVariable ["my_dog", nil]}) then {
 						_affordable = false;
 					};
 				} else {
 					if (count PAR_AI_bros >= ([_score] call F_getRank) select 1) then {
 						_affordable = false;
 					};
-					if (!(player getVariable ["GRLIB_squad_context_loaded", false])) then {
+					if !(player getVariable ["GRLIB_squad_context_loaded", false]) then {
 						_affordable = false;
 					};
 				};
@@ -206,13 +206,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 			};
 
 			if ( buildtype == GRLIB_SquadBuildType ) then {
-				if (!(isNil {player getVariable ["my_squad", nil]})) then {
+				if !(isNil {player getVariable ["my_squad", nil]}) then {
 					_affordable = false;
 				};
 			};
 
 			if ( buildtype in [GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_DefenceBuildType] ) then {
-				if (!(([_build_class] call _is_linked) select 1)) then {
+				if !(([_build_class] call _is_linked) select 1) then {
 					_affordable = false;
 				};
 			};

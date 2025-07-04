@@ -22,7 +22,7 @@ private _alt = _pos select 2;
         } else {
             _x setPosATL (_pos getPos [4, random 360]);
         };
-        sleep 0.5;
+        sleep 0.1;
     };
     _x enableIRLasers true;
     _x enableGunLights "Auto";
