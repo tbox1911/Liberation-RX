@@ -12,13 +12,7 @@ while {true} do {
 		waitUntil {sleep 0.1; visibleMap };
 
 		// Players and units
-		private _players_markers_bak = [];
-		private _player_medics = (units GRLIB_side_civilian) select {
-			alive _x && isNull objectParent _x &&
-			(!isNil {_x getVariable "PAR_Grp_ID"})
-		};
-
-		private _players_list = (units GRLIB_side_friendly) select {
+		private _players_list = (units GRLIB_side_friendly + units GRLIB_side_civilian) select {
 			alive _x && isNull objectParent _x &&
 			(_x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_capture_size) &&
 			(!isNil {_x getVariable "PAR_Grp_ID"} || !isNil {_x getVariable "GRLIB_is_prisoner"})
@@ -85,7 +79,7 @@ while {true} do {
 					};
 				};
 			};
-		} foreach (_players_list + _player_medics);
+		} foreach _players_list;
 
 		{ deleteMarkerLocal _x } foreach (_players_markers - _players_markers_bak);
 		_players_markers = _players_markers_bak;
@@ -95,6 +89,7 @@ while {true} do {
 		private _vehicles_list = vehicles select {
 			(alive _x) && !(isObjectHidden _x) &&
 			(count (crew _x) > 0) && (side _x == GRLIB_side_friendly) &&
+			(isNil {_x getVariable "GRLIB_vehicle_init"}) &&
 			(isNil {_x getVariable "GRLIB_mission_AI"}) &&
 			!(typeOf _x in uavs_vehicles + static_vehicles_AI)
 		};
