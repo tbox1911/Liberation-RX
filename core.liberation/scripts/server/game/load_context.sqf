@@ -81,6 +81,7 @@ if (count _context >= 1) then {
     } else {
         _player setVariable ["GRLIB_squad_context_loaded", true, true];
     };
+    _player setVariable ["GRLIB_player_context_loaded", true, true];
 } else {
     _player setVariable ["GRLIB_player_context_loaded", true, true];
     _player setVariable ["GRLIB_squad_context_loaded", true, true];
