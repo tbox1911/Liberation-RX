@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_vehicleName", "_smoke"];
+private ["_targetPos", "_vehicleName", "_smoke"];
 
 _setupVars = {
 	_missionType = "STR_VEHICLEREP";
@@ -19,11 +19,23 @@ _setupObjects = {
 	};
 
 	// find road
-	_missionPos = [(markerpos _missionLocation), 5, 0] call F_findSafePlace;
+	_missionPos = [];
+	_targetPos = markerpos _missionLocation;
+	private	_found = false;
+	private _idx = 200;
+	while {!_found && _idx > 0} do {
+		private _pos_check = ([_targetPos, GRLIB_sector_size] call F_getRandomPos);
+		if (isOnRoad _pos_check) then {
+			_missionPos = _pos_check;
+			_found = true;
+		};
+		_idx = _idx - 1;
+	};
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
+
 	_vehicle = [_missionPos, _opfor_tank, 5, false, GRLIB_side_firendly, false, true] call F_libSpawnVehicle;
 	[_vehicle, "lock", "server"] call F_vehicleLock;
 	_vehicle setFuel 1;
@@ -53,6 +65,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
+	{deleteVehicle _x} forEach (crew _vehicle);
 	[_vehicle, "abandon"] call F_vehicleLock;
 	deleteVehicle _smoke;
 	_successHintMessage = ["STR_VEHICLECAP_MESSAGE2", _vehicleName];
