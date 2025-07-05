@@ -7,6 +7,8 @@ private _vehicle = objNull;
 if (_classname in [FOB_typename, FOB_outpost]) then {
 	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
+	_vehicle enableSimulationGlobal true;
+	_vehicle hideObjectGlobal false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosATL _veh_pos;
 	if (GRLIB_fob_type == 2) then { deleteVehicle GRLIB_vehicle_huron };
@@ -49,9 +51,14 @@ if (_classname in ["fob_water1"]) then {
 	};
 	_vehicle = createVehicle [FOB_typename, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
+	_vehicle enableSimulationGlobal true;
+	_vehicle hideObjectGlobal false;
 	_vehicle setVectorDirAndUp [[0,1,0], [0,0,1]];
 	_vehicle setPosASL _veh_pos;
 };
+
+if (isNull _vehicle) exitWith { diag_log format ["--- LRX Error: Cannot create FOB %1 at %2", _classname, _veh_pos] };
+sleep 1;
 
 [_vehicle, getPlayerUID _owner] call fob_init;
 
