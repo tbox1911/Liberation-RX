@@ -74,8 +74,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Hostile Helicopter
 _mission_name = "mission_HostileHelicopter";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	private _opfor_city = count ([] call cityList);
-	if (_opfor_city < 2 || count opfor_troup_transports_heli == 0) then {
+	if (count ([] call cityList) < 2 || count opfor_troup_transports_heli == 0) then {
 		[_missionsList, _mission_name, true] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, false] call setMissionState;
@@ -85,8 +84,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Capture VIP
 _mission_name = "mission_CaptureVIP";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	private _opfor_city = count ([] call cityList);
-	if (_opfor_city < 3) then {
+	if (count ([] call cityList) < 3) then {
 		[_missionsList, _mission_name, true] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, false] call setMissionState;
@@ -186,8 +184,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Kill Officer
 _mission_name = "mission_KillOfficer";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	private _blufor_city = {(_x in blufor_sectors)} count sectors_bigtown;
-	if (_blufor_city > 1) then {
+	if ({(_x in blufor_sectors)} count sectors_bigtown > 1) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -201,8 +198,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	if (count a3w_br_planes == 0) then {
 		_br_plane = selectRandom (opfor_air select { _x isKindOf "Plane" });
 	};
-	private _opfor_city = {(_x in opfor_sectors)} count sectors_bigtown;
-	if (_opfor_city > 1 && !isNil "_br_plane" && combat_readiness > 80) then {
+	if ({(_x in opfor_sectors)} count sectors_bigtown > 1 && !isNil "_br_plane" && combat_readiness > 80) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -222,8 +218,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Prisoners Convoy
 _mission_name = "mission_PrisonerConvoy";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	private _military = { _x in opfor_sectors } count sectors_military;
-	if (_nb_player > 1 && _military >= 3) then {
+	if (_nb_player > 1 && { _x in opfor_sectors } count sectors_military >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -233,8 +228,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Ressource Convoy
 _mission_name = "mission_RessourceConvoy";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	private _factory = { _x in opfor_sectors } count sectors_factory;
-	if (_factory >= 3) then {
+	if ({ _x in opfor_sectors } count sectors_factory >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -255,6 +249,16 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 _mission_name = "mission_FreeHostages";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	if (count blufor_sectors >= 20) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+// Repair Vehicle
+_mission_name = "mission_RepairVehicle";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (count blufor_sectors >= 10 && {_x in sectors_military} count blufor_sectors >= 2) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;

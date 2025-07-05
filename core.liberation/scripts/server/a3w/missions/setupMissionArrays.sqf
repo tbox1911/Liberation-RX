@@ -27,7 +27,8 @@ SideMissions = [
 	["mission_PrisonerConvoy", 1],
 	["mission_RessourceConvoy", 1],
 	["mission_KillBandits", 1],
-	["mission_FreeHostages", 1]
+	["mission_FreeHostages", 1],
+	["mission_RepairVehicle", 1],
 ];
 
 A3W_mission_sectors = [];

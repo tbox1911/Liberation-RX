@@ -14439,6 +14439,16 @@
 			<Czech>%1 bylo zaháknuto, dobrá práce.</Czech>
 		</Key>
 
+		<!-- mission_RepairVehicle.sqf -->
+		<Key ID="STR_VEHICLEREP">
+			<Original>Protect Captured Vehicle</Original>
+		</Key>
+
+
+
+
+
+
 		<!-- mission_WepCache.sqf -->
 		<Key ID="STR_WEAPCACHE">
 			<Original>Weapon Cache</Original>
