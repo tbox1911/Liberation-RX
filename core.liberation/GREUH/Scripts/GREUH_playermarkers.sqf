@@ -12,6 +12,7 @@ while {true} do {
 		waitUntil {sleep 0.1; visibleMap };
 
 		// Players and units
+		private _players_markers_bak = [];
 		private _players_list = (units GRLIB_side_friendly + units GRLIB_side_civilian) select {
 			alive _x && isNull objectParent _x &&
 			(_x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_capture_size) &&
