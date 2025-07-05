@@ -110,6 +110,7 @@ if (_unit == player) then {
 			1 fadeSound (round desired_vehvolume / 100.0);
 			3 fadeMusic (getAudioOptionVolumes select 1);
 			NRE_EarplugsActive = 1;
+			PAR_weapons_state = weaponState _unit select [0,3];
 			[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 			if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
 				_vehicle disableTIEquipment true;
@@ -150,7 +151,7 @@ if (_unit == player) then {
 		[_unit] spawn {
 			params ["_unit"];
 			waitUntil { sleep 1; (round (getPos _unit select 2) <= 0) };
-			if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
+			if (primaryWeapon _unit != "") then { _unit selectWeapon PAR_weapons_state};
 			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
 		};
 	}];

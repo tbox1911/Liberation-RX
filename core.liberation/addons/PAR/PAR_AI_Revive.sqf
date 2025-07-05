@@ -75,6 +75,7 @@ PAR_grave_box setVariable ["R3F_LOG_disabled", true, true];
 PAR_grave_box setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
 player setvariable ["PAR_grave_box", PAR_grave_box, true];
 PAR_backup_loadout = [];
+PAR_weapons_state = [];
 
 // Grave Marker
 _marker = createMarkerLocal ["PAR_grave_box_marker", markers_reset];
