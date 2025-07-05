@@ -10,11 +10,11 @@ if (!isNull _instigator) then {
 	};
 };
 
-private _ret = damage _unit;
-if (_unit getVariable ["GRLIB_isProtected", 0] > serverTime) exitWith {};
-if (_damage >= 0.80) exitWith {
-	_unit setVariable ["GRLIB_isProtected", round (serverTime + 5), true];
-	_ret = _ret + 0.25;
-	// if (!isDedicated) then {diag_log ["static damage", typeOf _unit, round serverTime, (_unit getVariable ["GRLIB_isProtected", 0]), _damage, _ret]};
-	_ret;
+private _currentDamage = damage _unit;
+private _newDamage = _currentDamage;
+private _now = serverTime;
+if (_damage >= 0.8 && (_now >= (_unit getVariable ["GRLIB_isProtected", 0]))) then {
+    _unit setVariable ["GRLIB_isProtected", round(_now + 5), true];
+    _newDamage = (_currentDamage + 0.25) min 1;
 };
+_newDamage;
