@@ -127,7 +127,7 @@ _failedExec = {
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -5];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 	{ deleteVehicle _x } forEach (units _grp_wnded);
-	_successHintMessage = "STR_HEAL_CIV_MESSAGE3";
+	_failedHintMessage = "STR_HEAL_CIV_MESSAGE3";
 };
 
 _successExec = {

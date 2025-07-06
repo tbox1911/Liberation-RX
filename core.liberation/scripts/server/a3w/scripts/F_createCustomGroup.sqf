@@ -26,6 +26,10 @@ switch (_type) do {
 		_unitTypes = a3w_resistance_squad;
 		_side = GRLIB_side_friendly;
 	};
+	case ("infantry-friendly"): {
+		_unitTypes = blufor_squad_inf;
+		_side = GRLIB_side_friendly;
+	};
 	case ("prisoner"): {
 		_unitTypes = [pilot_classname, crewman_classname, commander_classname];
 	};

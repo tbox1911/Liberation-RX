@@ -17,7 +17,10 @@ private _stats_marker = [
 while {true} do {
 	_msg = "";
 	if (count A3W_sectors_in_use > 0) then {
-		_all_sectors = allMapMarkers select {_x select [0,13] == "side_mission_" && (markerPos _x) distance2D player <= GRLIB_capture_size};
+		_all_sectors = allMapMarkers select {
+			_x select [0,13] == "side_mission_" && _x find "_zone" == -1 &&
+			(markerPos _x) distance2D player <= GRLIB_sector_size
+		};
 		_sector = [_all_sectors, player] call F_nearestPosition;
 		if (_sector != "") then {
 			_mission = _sector select [13];		// strip marker prefix
@@ -29,9 +32,16 @@ while {true} do {
 				if (_opf > 0) then {_msg = format [localize "STR_STATUS_RES_OPF", _res, _opf]};
 			};
 
+			// Defend patrol
+			if (_mission == "STR_DEFPATROL") then {
+				_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size && (_x getVariable ["GRLIB_mission_AI", false])} count (units GRLIB_side_enemy);
+				_res = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size && (_x getVariable ["GRLIB_mission_AI", false])} count (units GRLIB_side_friendly);
+				if (_opf > 0) then {_msg = format [localize "STR_STATUS_RES_OPF", _res, _opf]};
+			};
+
 			// Others
 			if (_mission in _stats_marker) then {
-				_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size && !(isNil {_x getVariable "GRLIB_mission_AI"})} count (units GRLIB_side_enemy);
+				_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size && (_x getVariable ["GRLIB_mission_AI", false])} count (units GRLIB_side_enemy);
 				if (_opf > 0) then {_msg = format [localize "STR_STATUS_OPF_ONLY", _opf]};
 			};
 		};
@@ -41,7 +51,7 @@ while {true} do {
 	if ( !isNil "GRLIB_A3W_Mission_SD" ) then {
 		_res = (GRLIB_A3W_Mission_SD select 1) select 3;
 		if (player distance2D _res < GRLIB_capture_size) then {
-			_opf = { alive _x && _x distance2D _res < GRLIB_sector_size && !(isNil {_x getVariable "GRLIB_mission_AI"})} count (units GRLIB_side_enemy);
+			_opf = { alive _x && _x distance2D _res < GRLIB_sector_size && (_x getVariable ["GRLIB_mission_AI", false])} count (units GRLIB_side_enemy);
 			if (_opf > 0) then {_msg = format [localize "STR_STATUS_OPF_ONLY", _opf]};
 		};
 	};

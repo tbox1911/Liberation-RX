@@ -264,3 +264,13 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 		[_missionsList, _mission_name, true] call setMissionState;
 	};
 };
+
+// Defend Patrol
+_mission_name = "mission_DefendPatrol";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (count blufor_sectors >= 20) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};

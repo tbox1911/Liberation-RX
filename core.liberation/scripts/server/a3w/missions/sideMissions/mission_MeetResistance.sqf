@@ -59,7 +59,7 @@ _setupObjects = {
 	GRLIB_A3W_Mission_MR_BLUFOR = _managed_units;
 	publicVariable "GRLIB_A3W_Mission_MR_BLUFOR";
 
-	// manage side
+	// manage mission
 	[_missionPos, _managed_units] spawn {
 		params ["_target_pos", "_managed_units"];
 		sleep 3;

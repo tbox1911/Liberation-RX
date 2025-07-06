@@ -14443,11 +14443,26 @@
 		<Key ID="STR_VEHICLEREP">
 			<Original>Protect Captured Vehicle</Original>
 		</Key>
+		<Key ID="STR_VEHICLEREP_MESSAGE1">
+			<Original>We have capture a Valuable &lt;t color='%2'&gt;%1&lt;/t&gt;!.&lt;br/&gt;Repair and Escort it to the next Military bases.&lt;br/&gt;&lt;br/&gt;Expect &lt;t color='%2'&gt;Enemy Action&lt;/t&gt; to take it back !!</Original>
+		</Key>
+		<Key ID="STR_VEHICLEREP_MESSAGE2">
+			<Original>The %1 has been secured, it's all yours ! well done.</Original>
+		</Key>		
 
-
-
-
-
+		<!-- mission_DefendPatrol.sqf -->
+		<Key ID="STR_DEFPATROL">
+			<Original>Troops under Attack</Original>
+		</Key>
+		<Key ID="STR_DEFPATROL_MESSAGE1">
+			<Original>One of our Squad Patrol is under &lt;t color='%1'&gt;Enemy Attack&lt;/t&gt;!.&lt;br/&gt;Hury up and go Defend our brothers. Time is critical.&lt;br/&gt;&lt;br/&gt;Expect large &lt;t color='%2'&gt;Enemy&lt;/t&gt; troops!</Original>
+		</Key>
+		<Key ID="STR_DEFPATROL_MESSAGE2">
+			<Original>The Squad Patrol is safe now, well done!</Original>
+		</Key>		
+		<Key ID="STR_DEFPATROL_MESSAGE3">
+			<Original>All members of the Squad Patrol are...&lt;br/&gt;&lt;t color='%1'&gt;DEAD&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The High Command is very unhappy!</Original>
+		</Key>
 
 		<!-- mission_WepCache.sqf -->
 		<Key ID="STR_WEAPCACHE">
