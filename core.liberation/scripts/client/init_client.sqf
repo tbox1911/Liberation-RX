@@ -302,7 +302,7 @@ if (isServer && hasInterface) then {
 		diag_log "--- LRX Local MP support";
 		[player, PAR_Grp_ID, true] call save_context;
 		[player, PAR_Grp_ID] call cleanup_player;
-		[true] call save_game_mp;
+		[] call save_game_mp;
 	 }];
 };
 

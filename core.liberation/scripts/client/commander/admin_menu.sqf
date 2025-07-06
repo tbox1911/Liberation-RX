@@ -268,7 +268,7 @@ while { alive player && dialog } do {
 	if (do_export == 1) then {
 		do_export = 0;
 		if (isServer) then {
-			[true] call save_game_mp;
+			[] call save_game_mp;
 			copyToClipboard str (profileNamespace getVariable [GRLIB_save_key, []]);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
 		} else {
@@ -276,7 +276,7 @@ while { alive player && dialog } do {
 			{ ctrlShow [_x, true] } foreach _output_controls;
 			output_save = [];
 			[player, {
-				[true] call save_game_mp;
+				[] call save_game_mp;
 				[missionNamespace, ["output_save", (profileNamespace getVariable GRLIB_save_key)]] remoteExec ["setVariable", owner _this];
 				["Copy the save game from the text field."] remoteExec ["hintSilent", owner _this];
 			}] remoteExec ["bis_fnc_call", 2];
@@ -383,7 +383,7 @@ while { alive player && dialog } do {
 		do_save = 0;
 		[{
 			{ [_x, getPlayerUID _x] call save_context } foreach (AllPlayers - (entities "HeadlessClient_F"));
-			[true] call save_game_mp;
+			[] call save_game_mp;
 		}] remoteExec ["bis_fnc_call", 2];
 		_msg = format [localize "STR_GAME_FORCEFULLY_SAVED", GRLIB_save_key];
 		_admin_msg = format [localize "STR_ADMIN_FORCE_SAVE_GAME", name player, GRLIB_save_key];

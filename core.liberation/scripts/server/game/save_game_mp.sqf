@@ -1,11 +1,6 @@
 //--- LRX Savegame
-params [["_force", false]];
 if (!isServer) exitWith {};
 if (!isNil "GRLIB_server_stopped") exitWith {};
-
-if (time < GRLIB_last_save && !_force) exitWith {
-	diag_log format ["--- LRX MP cooldown (no save done), %1sec remaining...", round (GRLIB_last_save - time)];
-};
 
 diag_log format ["--- LRX Save start at %1", time];
 GRLIB_last_save = round (time + 300);
