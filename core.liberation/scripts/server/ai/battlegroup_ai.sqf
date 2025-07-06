@@ -52,9 +52,6 @@ while {true} do {
 		_waypoint = _grp addWaypoint [_wp0, 0];
 		_waypoint setWaypointType "CYCLE";
 		sleep 1;
-		_grp setSpeedMode "FULL";
-		_grp setBehaviourStrong "COMBAT";
-		_grp setCombatMode "YELLOW";
 		{ _x doFollow (leader _grp) } foreach units _grp;
 
 		if (_vehicle isKindOf "AllVehicles") then {
