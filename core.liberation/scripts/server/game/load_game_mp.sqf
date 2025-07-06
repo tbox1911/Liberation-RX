@@ -58,7 +58,7 @@ GRLIB_sector_defense = [];
 // Savegame file
 private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
 
-// Wipe Player Context
+// Load Player Context
 GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
 GRLIB_player_context = [];
 GRLIB_player_scores = [];
@@ -69,6 +69,7 @@ if (GRLIB_param_wipe_context == 0) then {
 		GRLIB_player_scores = _lrx_liberation_savegame select 16;
 	};
 } else {
+	// Wipe Context
 	diag_log format ["--- LRX Player Context Erased!", GRLIB_save_key];
 	GRLIB_last_save = 0;
 };
