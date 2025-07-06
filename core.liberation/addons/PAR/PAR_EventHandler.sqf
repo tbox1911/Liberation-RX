@@ -104,13 +104,13 @@ if (_unit == player) then {
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
+		PAR_weapons_state = weaponState _unit select [0,3];
 		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
 		if (!_eject) then {
 			[_vehicle] spawn F_vehicleDefense;
 			1 fadeSound (round desired_vehvolume / 100.0);
 			3 fadeMusic (getAudioOptionVolumes select 1);
 			NRE_EarplugsActive = 1;
-			PAR_weapons_state = weaponState _unit select [0,3];
 			[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 			if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
 				_vehicle disableTIEquipment true;
@@ -135,6 +135,7 @@ if (_unit == player) then {
 	_unit removeAllEventHandlers "GetOutMan";
 	_unit addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
+		if (_vehicle isKindOf "ParachuteBase") exitWith {};
 		if (_vehicle == getConnectedUAV player) then {
 			objNull remoteControl _unit;
 			player switchCamera cameraView;
