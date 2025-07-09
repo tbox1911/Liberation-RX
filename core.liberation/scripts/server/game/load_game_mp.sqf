@@ -71,7 +71,6 @@ if (GRLIB_param_wipe_context == 0) then {
 } else {
 	// Wipe Context
 	diag_log format ["--- LRX Player Context Erased!", GRLIB_save_key];
-	GRLIB_last_save = 0;
 };
 
 // Wipe Savegame

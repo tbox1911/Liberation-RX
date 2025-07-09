@@ -15,8 +15,8 @@ addMissionEventHandler ["PlayerDisconnected", {
 	private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
 	if (_player_left == 0) then {
 		diag_log "--- LRX Mission End!";
-		if (time < GRLIB_last_save) then {
-			diag_log format ["--- LRX MP Saving cooldown (no save done), %1sec remaining...", round (GRLIB_last_save - time)];
+		if (time < 300) then {
+			diag_log format ["--- LRX MP Saving cooldown (no save done), %1sec remaining...", round (300 - time)];
 		} else {
 			[] call save_game_mp;
 		};

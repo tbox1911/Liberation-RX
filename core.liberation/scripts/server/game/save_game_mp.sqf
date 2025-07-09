@@ -1,9 +1,10 @@
 //--- LRX Savegame
 if (!isServer) exitWith {};
 if (!isNil "GRLIB_server_stopped") exitWith {};
+if (!isNil "GRLIB_save_in_progress") exitWith {};
 
 diag_log format ["--- LRX Save start at %1", time];
-GRLIB_last_save = round (time + 300);
+GRLIB_save_in_progress = true;
 
 if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 	if (GRLIB_param_wipe_keepscore == 1) then {
@@ -122,7 +123,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 								buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _loaded_uavs ];
 							};
 							_default = false;
-						};						
+						};
 						if (_default) then {
 							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
 						};
@@ -228,3 +229,5 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 	saveProfileNamespace;
 	diag_log format [ "--- LRX Save %1 in Profile at %2", GRLIB_save_key, time ];
 };
+
+GRLIB_save_in_progress = nil;
