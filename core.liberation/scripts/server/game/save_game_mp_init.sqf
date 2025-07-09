@@ -1,6 +1,5 @@
 if (!isServer) exitWith {};
 
-GRLIB_last_save = 300;
 GRLIB_base_objects = [
 	FOB_typename,
 	FOB_sign,

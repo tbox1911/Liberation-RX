@@ -3,7 +3,6 @@ if (!isServer) exitWith {};
 if (!isNil "GRLIB_server_stopped") exitWith {};
 
 diag_log format ["--- LRX Save start at %1", time];
-GRLIB_last_save = round (time + 300);
 
 if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 	if (GRLIB_param_wipe_keepscore == 1) then {

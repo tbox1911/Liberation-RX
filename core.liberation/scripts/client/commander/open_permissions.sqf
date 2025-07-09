@@ -181,7 +181,7 @@ while { dialog && alive player } do {
 		GRLIB_permissions = _modify_permissions;
 		publicVariable "GRLIB_permissions";
 		closeDialog 0;
-		[true] remoteExec ["save_game_mp", 2];
+		[] remoteExec ["save_game_mp", 2];
 	};
 
 	waitUntil {sleep 0.5; !dialog || !(alive player) || permission_playerid != -1 || permission_toset != -1 || save_changes};
