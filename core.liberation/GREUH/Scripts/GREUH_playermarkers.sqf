@@ -13,7 +13,11 @@ while {true} do {
 
 		// Players and units
 		private _players_markers_bak = [];
-		private _players_list = (units GRLIB_side_friendly + units GRLIB_side_civilian) select {
+		private _player_medics = (units GRLIB_side_civilian) select {
+			alive _x && isNull objectParent _x &&
+			(!isNil {_x getVariable "PAR_Grp_ID"})
+		};
+		private _players_list = (units GRLIB_side_friendly) select {
 			alive _x && isNull objectParent _x &&
 			(_x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_capture_size) &&
 			(!isNil {_x getVariable "PAR_Grp_ID"} || !isNil {_x getVariable "GRLIB_is_prisoner"})
@@ -80,7 +84,7 @@ while {true} do {
 					};
 				};
 			};
-		} foreach _players_list;
+		} foreach (_players_list + _player_medics);
 
 		{ deleteMarkerLocal _x } foreach (_players_markers - _players_markers_bak);
 		_players_markers = _players_markers_bak;
