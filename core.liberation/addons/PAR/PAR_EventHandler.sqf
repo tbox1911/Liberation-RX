@@ -99,12 +99,23 @@ if (_unit == player) then {
 		_ret;
 	"];
 
+	// Backup Weapon state
+	_unit removeAllEventHandlers "WeaponChanged";
+	_unit addEventHandler ["WeaponChanged", {
+		params ["_unit", "_oldWeapon", "_newWeapon", "_oldMode", "_newMode", "_oldMuzzle", "_newMuzzle", "_turretIndex"];
+		if (isNull objectParent _unit) then {
+			if (_newWeapon == primaryWeapon _unit) then {
+				//PAR_weapons_state = _unit weaponState (primaryWeapon _unit) select [0,3];
+				PAR_weapons_state = [_newWeapon, _newMuzzle, _newMode];
+			};
+		};
+	}];
+
 	// Get in Vehicle
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
-		PAR_weapons_state = weaponState _unit select [0,3];
 		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
 		if (!_eject) then {
 			[_vehicle] spawn F_vehicleDefense;
@@ -151,9 +162,12 @@ if (_unit == player) then {
 		};
 		[_unit] spawn {
 			params ["_unit"];
-			waitUntil { sleep 1; (round (getPos _unit select 2) <= 0) };
-			if (primaryWeapon _unit != "") then { _unit selectWeapon PAR_weapons_state};
+			waitUntil { sleep 1; (round (getPos _unit select 2) == 0) };
 			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
+			if (currentWeapon _unit != primaryWeapon _unit) then {
+				if (PAR_weapons_state select 0 != "") exitWith { _unit selectWeapon PAR_weapons_state };
+				if (primaryWeapon _unit != "") exitWith { _unit selectWeapon (primaryWeapon _unit) };
+			};
 		};
 	}];
 

@@ -23,15 +23,16 @@ if (isPlayer _unit) then {
 	_mk1 setMarkerColor "ColorRed";
 	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };
-	PAR_backup_loadout = [player] call F_getCargoUnit;
-	PAR_weapons_state = weaponState _unit select [0,3];
+	PAR_backup_loadout = [_unit] call F_getCargoUnit;
+	//PAR_weapons_state = _unit weaponState (primaryWeapon _unit) select [0,3];
 } else {
 	_unit setVariable ["GRLIB_can_speak", false, true];
 	[_unit] call F_deathSound;
 	sleep 3;
 };
 
-waitUntil { sleep 0.5; isNull objectParent _unit };
+waitUntil { sleep 0.1; isNull objectParent _unit };
+waitUntil { sleep 0.1; !(isSwitchingWeapon _unit) };
 _unit switchMove "AinjPpneMstpSnonWrflDnon_rolltoback";
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
 sleep 5;
@@ -88,7 +89,10 @@ if (time > _unit getVariable ["PAR_BleedOutTimer", 0]) exitWith {
 // Good end
 if (isPlayer _unit) then {
 	(group _unit) selectLeader _unit;
-	if (primaryWeapon _unit != "") then { _unit selectWeapon PAR_weapons_state};
+	if (currentWeapon _unit != primaryWeapon _unit) then {
+		if (PAR_weapons_state select 0 != "") exitWith { _unit selectWeapon PAR_weapons_state };
+		if (primaryWeapon _unit != "") exitWith { _unit selectWeapon (primaryWeapon _unit) };
+	};
 } else {
 	_unit setVariable ["GRLIB_can_speak", true, true];
 	_unit setSpeedMode (speedMode group player);
