@@ -15,21 +15,20 @@ private [
 
 // Variables that can be defined in the mission script :
 private [
-	"_missionType", "_locationsArray", "_aiGroup", "_vehicle", "_vehicles",
-	"_missionPos", "_precise_marker", "_missionPicture", "_missionHintText",
-	"_missionTimeout", "_successHintMessage", "_failedHintMessage"
+	"_missionType", "_locationsArray", "_vehicle", "_vehicles",
+	"_missionPos", "_missionPicture", "_missionHintText",
+	"_successHintMessage", "_failedHintMessage"
 ];
 
 _controllerSuffix = param [0, "", [""]];
-_aiGroup = grpNull;
-_precise_marker = true;
 _continue_mission = true;
+private _aiGroup = grpNull;
+private _precise_marker = true;
+private _missionTimeout = A3W_Mission_timeout;
 
 if (!isNil "_setupVars") then { call _setupVars };
 
-if (isNull "_missionTimeout" || !(isNil "A3W_debug")) then {
-	_missionTimeout = A3W_Mission_timeout;
-};
+if !(isNil "A3W_debug") then { _missionTimeout = A3W_Mission_timeout };
 
 if (!isNil "_locationsArray") then {
 	_availableLocations = _locationsArray select {!(_x select 1) && ((_x select 2) <= time) };
