@@ -58,7 +58,12 @@ while {alive _unit && _continue} do {
 	_nearby_players = ([_unit, GRLIB_capture_size] call F_getNearbyPlayers) select { isNil {_x getVariable "GRLIB_civilian_action"} };
 	if (count _nearby_players > 0) then {
 		_target = selectRandom _nearby_players;
-		_target_veh = vehicles select { (alive _x) && ([_target, _x, true] call is_owner) && (_x distance2D _unit <= GRLIB_capture_size) };
+		_target_veh = vehicles select {
+			(alive _x) &&
+			(_x distance2D _unit <= GRLIB_capture_size)  &&
+			(_x isKindOf "LandVehicle") &&
+			([_target, _x, true] call is_owner)
+		};
 		_reputation = [_target] call F_getReput;
 		_list_actions = [0];
 		if ( _reputation >= 25 ) then { _list_actions = [0,1,1,1,2] };
@@ -196,6 +201,7 @@ while {alive _unit && _continue} do {
 					(group _unit) setCombatMode "YELLOW";
 					sleep 1;
 					[_unit] joinSilent (group _target);
+					_unit setCaptive false;
 					[_unit] spawn {
 						params ["_unit"];
 						waitUntil {sleep 10; (!(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount == 0)) };
