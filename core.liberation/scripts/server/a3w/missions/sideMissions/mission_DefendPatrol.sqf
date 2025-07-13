@@ -23,10 +23,10 @@ _setupObjects = {
 		_x addEventHandler ["HandleDamage", {
 			params ["_unit", "_selection", "_damage"];
             private _newDamage = _unit getVariable ["GRLIB_accumulated", 0];
-            if (_damage > 0.5 && serverTime >= (_unit getVariable ["GRLIB_isProtected", 0])) then {
+            if (_damage > 0.5 && time >= (_unit getVariable ["GRLIB_isProtected", 0])) then {
                 _newDamage = (_newDamage + 0.2) min 1;
                 _unit setVariable ["GRLIB_accumulated", _newDamage];
-                _unit setVariable ["GRLIB_isProtected", round (serverTime + 10), true];
+                _unit setVariable ["GRLIB_isProtected", round (time + 10), true];
             };
             _newDamage;
 		}];

@@ -27,7 +27,7 @@ _continue_mission = true;
 
 if (!isNil "_setupVars") then { call _setupVars };
 
-if (isNil "_missionTimeout" || !(isNil "A3W_debug")) then {
+if (isNull "_missionTimeout" || !(isNil "A3W_debug")) then {
 	_missionTimeout = A3W_Mission_timeout;
 };
 
