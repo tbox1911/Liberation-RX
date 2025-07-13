@@ -6540,8 +6540,8 @@
 		</Key>
 		<Key ID="STR_STICKY_BOMB">
 			<Original>-- STICKY BOMB!</Original>
-			<Russian>Липкая бомба!</Russian>
-			<French>Bombe adhésive!</French>
+			<Russian>--- Липкая бомба!</Russian>
+			<French>--- BOMBE ADHÉSIVE!</French>
 			<Japanese>-- 粘着爆弾！</Japanese>
 			<Chinesesimp>-- 黏性炸弹！</Chinesesimp>
 			<Chinese>-- 黏性炸彈！</Chinese>
