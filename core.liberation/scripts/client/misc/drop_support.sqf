@@ -49,14 +49,16 @@ if (_rank in ["Captain"]) then {_list_perm = [1604,1605,1608]};
 if (_rank in ["Major"]) then {_list_perm = [1605]};
 { ctrlEnable [_x, false] } forEach _list_perm;
 
-if (GRLIB_mod_preset_taxi == 3) then { ctrlEnable [1607, false] };
-if (count blufor_air == 0) then { ctrlEnable [1605, false] };
-if (count GRLIB_AirDrop_1 == 0) then { ctrlEnable [1600, false] };
-if (count GRLIB_AirDrop_2 == 0) then { ctrlEnable [1601, false] };
-if (count GRLIB_AirDrop_3 == 0) then { ctrlEnable [1602, false] };
-if (count GRLIB_AirDrop_4 == 0) then { ctrlEnable [1603, false] };
-if (count GRLIB_AirDrop_5 == 0) then { ctrlEnable [1604, false] };
-if (count GRLIB_AirDrop_6 == 0) then { ctrlEnable [1606, false] };
+private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
+if (GRLIB_mod_preset_taxi == 3 || GRLIB_AirDrop_Taxi_cost > _ammo_collected) then { ctrlEnable [1607, false] };
+if (count blufor_air == 0 || _AirDrop_8_cost > _ammo_collected) then { ctrlEnable [1605, false] };
+if (count GRLIB_AirDrop_1 == 0 || _AirDrop_1_cost > _ammo_collected) then { ctrlEnable [1600, false] };
+if (count GRLIB_AirDrop_2 == 0 || _AirDrop_2_cost > _ammo_collected) then { ctrlEnable [1601, false] };
+if (count GRLIB_AirDrop_3 == 0 || _AirDrop_3_cost > _ammo_collected) then { ctrlEnable [1602, false] };
+if (count GRLIB_AirDrop_4 == 0 || _AirDrop_4_cost > _ammo_collected) then { ctrlEnable [1603, false] };
+if (count GRLIB_AirDrop_5 == 0 || _AirDrop_5_cost > _ammo_collected) then { ctrlEnable [1604, false] };
+if (count GRLIB_AirDrop_6 == 0 || _AirDrop_6_cost > _ammo_collected) then { ctrlEnable [1606, false] };
+if (_AirDrop_7_cost > _ammo_collected) then { ctrlEnable [1608, false] };
 
 while { dialog && (alive player) && do_action == 0 } do {
 	sleep 0.1;
@@ -66,12 +68,12 @@ closeDialog 0;
 if (do_action == 1) then {
 	_cost = 0;
 	switch (air_type) do {
-		case 1 : {_class=selectRandom GRLIB_AirDrop_1;_cost=_AirDrop_1_cost};
-		case 2 : {_class=selectRandom GRLIB_AirDrop_2;_cost=_AirDrop_2_cost};
-		case 3 : {_class=selectRandom GRLIB_AirDrop_3;_cost=_AirDrop_3_cost};
-		case 4 : {_class=selectRandom GRLIB_AirDrop_4;_cost=_AirDrop_4_cost};
-		case 5 : {_class=selectRandom GRLIB_AirDrop_5;_cost=_AirDrop_5_cost};
-		case 6 : {_class=selectRandom GRLIB_AirDrop_6;_cost=_AirDrop_6_cost};
+		case 1 : {_class=selectRandom GRLIB_AirDrop_1; _cost=_AirDrop_1_cost};
+		case 2 : {_class=selectRandom GRLIB_AirDrop_2; _cost=_AirDrop_2_cost};
+		case 3 : {_class=selectRandom GRLIB_AirDrop_3; _cost=_AirDrop_3_cost};
+		case 4 : {_class=selectRandom GRLIB_AirDrop_4; _cost=_AirDrop_4_cost};
+		case 5 : {_class=selectRandom GRLIB_AirDrop_5; _cost=_AirDrop_5_cost};
+		case 6 : {_class=selectRandom GRLIB_AirDrop_6; _cost=_AirDrop_6_cost};
 		case 7 : {_cost=_AirDrop_7_cost};
 		case 8 : {_cost=_AirDrop_8_cost};
 		case 10 : {_cost=0};
