@@ -51,7 +51,7 @@ while {true} do {
 		_vehicle addAction ["<t color='#800000'>" + localize "STR_DE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_defuel.sqf","",-506,false,true,"","[_target, _this] call GRLIB_checkAction_DeFuel", GRLIB_ActionDist_5];
 		_vehicle addAction ["<t color='#009000'>" + localize "STR_RE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-506,false,true,"","[_target, _this] call GRLIB_checkAction_ReFuel", GRLIB_ActionDist_5];
 		_vehicle addAction ["<t color='#009F00'>" + localize "STR_REPAIR_VEH" + "</t> <img size='1' image='res\ui_rotation.paa'/>", "scripts\client\actions\do_repair.sqf","",-508,false,true,"","[_target, _this] call GRLIB_checkAction_Repair", GRLIB_ActionDist_5];
-		_vehicle addAction ["<t color='#A05500'>" + localize "STR_STICKY_BOMB" + "</t> <img size='1' image='res\skull.paa'/>", "scripts\client\actions\do_sticky_bomb.sqf","",-509,false,true,"","[_target, _this] call GRLIB_checkAction_Sticky", GRLIB_ActionDist_3];
+		_vehicle addAction ["<t color='#BC884C'>" + localize "STR_STICKY_BOMB" + "</t> <img size='1' image='res\skull.paa'/>", "scripts\client\actions\do_sticky_bomb.sqf","",-509,false,true,"","[_target, _this] call GRLIB_checkAction_Sticky", GRLIB_ActionDist_3];
 
 		if ([_vehicle, ['LandVehicle','Ship']] call F_itemIsInClass) then {
 			_vehicle addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_10];
