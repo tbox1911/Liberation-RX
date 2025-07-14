@@ -21,7 +21,7 @@ class Params
 	class WipeContext {
 		title = $STR_WIPE_CONTEXT;
 		values[] = { 0, 1 };
-		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
+		texts[] = { $STR_WIPE_NO, $STR_WIPE_YES };
 		default = 0;
 	};
 	class Space1 {
