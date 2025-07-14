@@ -1,7 +1,7 @@
 params ["_pos", ["_debug", false]];
 
 private _intel_range = 150;
-private _nbintel = 2 + (floor (random 4));
+private _nbintel = 3 + (floor random 4);
 private _compatible_classnames = [
 	"Cargo_House_base_F",
 	"Cargo_HQ_base_F",
@@ -28,8 +28,7 @@ private _nearbuildings = (nearestObjects [_pos, _compatible_classnames, _intel_r
 if ( count _nearbuildings > 0 ) then {
 	private _building_positions = [];
 	{ _building_positions append ([_x] call BIS_fnc_buildingPositions) } foreach _nearbuildings;
-	_building_positions = _building_positions select { _x select 2 < 2 };
-	if ( count _building_positions >= 3 ) then {
+	if ( count _building_positions >= 1 ) then {
 		private ["_pos", "_intelclassname", "_intelobject", "_marker"];
 		private _used_positions = [];
 
