@@ -126,6 +126,8 @@ while {true} do {
 	};
 
 	// Build
+	private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
+	if (_near_outpost) then { _price = round (_price * 1.25) };
 	_pos = getPosATL player;
 	if (surfaceIsWater _pos) then { _pos = getPosASL player };
 

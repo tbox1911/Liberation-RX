@@ -1,5 +1,9 @@
 params ["_target", "_caller", "_actionId", "_trench"];
-private ["_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked_state", "_link_color", "_link_str", "_picture" ];
+private [
+	"_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", 
+	"_selected_item", "_linked_state", "_link_color", "_link_str", "_picture",
+	"_veh_man", "_veh_ammo", "_veh_fuel"
+];
 
 if (_trench) then {
 	buildtype = GRLIB_TrenchBuildType;
@@ -134,7 +138,12 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 					_countCargo = ([_build_class, true] call BIS_fnc_crewCount) - _countCrew;
 					_entrytext = _entrytext + format [" (%1|%2)", str _countCrew, str _countCargo];
 				};
-				_row = (_display displayCtrl (110)) lnbAddRow [ _entrytext, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
+
+				_veh_man = format [ "%1", _x select 1];
+				_veh_ammo = format [ "%1", _x select 2];
+				_veh_fuel =  format [ "%1", _x select 3];
+				if (_near_outpost) then { _veh_ammo = format [ "%1", round ((_x select 2) * 1.25)] };
+				_row = (_display displayCtrl (110)) lnbAddRow [ _entrytext, _veh_man, _veh_ammo, _veh_fuel];
 
 				_icon = getText ( _cfg >> _build_class >> "icon");
 				if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {

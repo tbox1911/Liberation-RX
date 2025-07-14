@@ -12,10 +12,12 @@ if (_unit isKindOf "CAManBase") then {
 
 private _result = true;
 private _cost = GRLIB_AirDrop_Vehicle_cost;
+private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
 if (_is_vehicle) then {
-	if ( _unit isKindOf "Truck_F" ) then { _cost = _cost * 1.3 };
-	if ( _unit isKindOf "Wheeled_APC_F" ) then { _cost = _cost * 1.7 };
-	if ( _unit isKindOf "Tank_F" ) then { _cost = _cost * 2 };
+	if (_unit isKindOf "Truck_F") then { _cost = _cost * 1.3 };
+	if (_unit isKindOf "Wheeled_APC_F") then { _cost = _cost * 1.7 };
+	if (_unit isKindOf "Tank_F") then { _cost = _cost * 2 };
+	if (_near_outpost) then { _cost = _cost * 1.25 };
 
 	_result = [format [localize "STR_HALO_VEH_ASK", _cost], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 	if (_result) then {
