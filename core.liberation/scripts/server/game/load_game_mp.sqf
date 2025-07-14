@@ -78,6 +78,7 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 	profileNamespace setVariable [GRLIB_save_key, nil];
 	saveProfileNamespace;
 	diag_log format ["--- LRX Savegame %1 Erased!", GRLIB_save_key];
+	_lrx_liberation_savegame = nil;
 	sleep 1;
 };
 
