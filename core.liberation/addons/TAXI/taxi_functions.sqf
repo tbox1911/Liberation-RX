@@ -72,8 +72,7 @@ taxi_cargo = {
 };
 
 taxi_outboard = {
-	params ["_vehicle"];
-	private _cargo = [_vehicle] call taxi_cargo;
+	params ["_vehicle", "_cargo"];
 	_vehicle setVehicleLock "UNLOCKED";
 	_vehicle lockCargo false;
 	waitUntil {

@@ -129,7 +129,7 @@ if (time < _stop) then {
 
 		// Board Out
 		[_vehicle] call taxi_land;
-		[_vehicle] call taxi_outboard;
+		[_vehicle, _cargo] call taxi_outboard;
 		sleep 2;
 		{ _x allowDamage true } forEach _cargo;
 	};
