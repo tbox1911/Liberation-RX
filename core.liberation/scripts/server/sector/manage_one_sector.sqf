@@ -1,23 +1,19 @@
 params ["_sector"];
 
-if (_sector in active_sectors) exitWith {
-	diag_log format ["Sector %1 already active, aborting.", _sector];
-};
-
 diag_log format ["--- LRX Manage Sector %1 (queued: %2)", _sector, GRLIB_sector_spawning];
-active_sectors pushback _sector;
-publicVariable "active_sectors";
-
+sleep 3;
 if (GRLIB_sector_spawning) then {
 	waitUntil { sleep 10; !GRLIB_sector_spawning };
 };
 
 private _sector_pos = markerPos _sector;
-if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0 && !GRLIB_Commander_mode) exitWith {
-	active_sectors = active_sectors - [_sector];
-	publicVariable "active_sectors";
+if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0 && !GRLIB_Commander_mode) exitWith {};
+if (_sector in active_sectors + blufor_sectors) exitWith {
+	diag_log format ["Sector %1 already active, aborting.", _sector];
 };
 
+active_sectors pushback _sector;
+publicVariable "active_sectors";
 GRLIB_sector_spawning = true;
 publicVariable "GRLIB_sector_spawning";
 _sectorName = markerText _sector;
@@ -437,7 +433,7 @@ while {true} do {
 			};
 		};
 		sleep 30;
-		[_task, true, true] call BIS_fnc_deleteTask;		
+		[_task, true, true] call BIS_fnc_deleteTask;
 	};
 
 	if (!GRLIB_Commander_mode) then {
