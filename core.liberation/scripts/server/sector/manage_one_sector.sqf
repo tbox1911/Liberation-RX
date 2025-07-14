@@ -361,7 +361,7 @@ if (GRLIB_Commander_mode) then {
 };
 
 // Main loop
-private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
+private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && (tolower (typeOf _x) find "ruin" == -1)});
 diag_log format ["Sector %1 wait attack to finish", _sector];
 
 private _task = "attack" + _sectorName + str round time;
@@ -410,8 +410,9 @@ while {true} do {
 			};
 		} foreach _enemy_left;
 
-		if !(_sector in (sectors_military + sectors_tower)) then {
-			private _building_destroyed = _building_alive - count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x });
+		if (_sector in (sectors_capture + sectors_factory + sectors_bigtown)) then {
+			private _building_still_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && (tolower (typeOf _x) find "ruin" == -1)});
+			private _building_destroyed = _building_alive - _building_still_alive;
 			if (_building_destroyed > 0) then {
 				[_sector, 4, _building_destroyed] remoteExec ["remote_call_sector", 0];
 				{ [_x, -(_building_destroyed * 3)] call F_addReput } forEach ([_sector_pos, _local_capture_size] call F_getNearbyPlayers);
