@@ -12,7 +12,7 @@ if (!isNull _instigator) then {
 
 if ((_unit isKindOf "CAManBase") && (isPlayer _killer) && !(isPlayer _unit) && (lifeState _unit != "INCAPACITATED")) then {
 	// Friendly fires penalty
-	if (vehicle _unit != vehicle _killer && _killer distance2D _unit >= 5 && _damage >= 0.15) then {
+	if (vehicle _unit != vehicle _killer && _killer distance2D _unit >= 5 && _damage >= 0.35) then {
 		if (_unit getVariable ["GRLIB_isProtected", 0] < serverTime) then {
 			_unit setVariable ["GRLIB_isProtected", round(serverTime + 10), true];
 			private _msg = format ["%1 (%2)", localize "STR_FRIENDLY_FIRE", name _killer];
