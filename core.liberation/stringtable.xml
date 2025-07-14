@@ -718,8 +718,8 @@
 			<Czech>Vymazat rozehranou hru</Czech>
 		</Key>
 		<Key ID="STR_WIPE_TITLE_2">
-			<Original>Confirm : wipe savegame</Original>
-			<French>Confirmer : effacer la sauvegarde</French>
+			<Original>Confirm : Wipe savegame</Original>
+			<French>Confirmer : Effacer la sauvegarde</French>
 			<German>Bestätige: Spielstand loeschen</German>
 			<Spanish>Confirmar : Borrar partida guardada</Spanish>
 			<Russian>Подтвердить : Удалить сохранённый прогресс</Russian>
@@ -736,8 +736,8 @@
 			<Chinese>重置任务参数</Chinese>
 		</Key>
 		<Key ID="STR_WIPE_CONTEXT">
-			<Original>Reset Players data (loadout,squad,garage,arsenal)</Original>
-			<French>RAZ des données Joueurs (loadout,squad,garage,arsenal)</French>
+			<Original>Wipe Player data (loadout,squad,garage,arsenal)</Original>
+			<French>Effacer les données Joueurs (loadout,squad,garage,arsenal)</French>
 			<Chinesesimp>重置玩家数据（装载、小队、车库、军火库）</Chinesesimp>
 			<Chinese>重置玩家數據（裝載、小隊、車庫、軍火庫）</Chinese>
 		</Key>
@@ -874,16 +874,16 @@
 			<Czech>Recyklovat</Czech>
 		</Key>
 		<Key ID="STR_RECYCLING_CANCEL">
-			<Original>Cancel Changes</Original>
-			<French>Annuler les changements</French>
-			<German>Änderungen abbrechen</German>
-			<Spanish>Cancelar cambios</Spanish>
-			<Russian>Отменить изменения</Russian>
-			<Chinesesimp>取消更改</Chinesesimp>
-			<Chinese>取消更改</Chinese>
-			<Japanese>変更をキャンセル</Japanese>
-			<Portuguese>Cancelar alterações</Portuguese>
-			<Czech>Storno změn</Czech>
+			<Original>Cancel</Original>
+			<French>Annuler</French>
+			<German>Abbrechen</German>
+			<Spanish>Cancelar</Spanish>
+			<Russian>Отмена</Russian>
+			<Chinesesimp>取消</Chinesesimp>
+			<Chinese>取消</Chinese>
+			<Japanese>キャンセル</Japanese>
+			<Portuguese>Cancelar</Portuguese>
+			<Czech>Zrušit</Czech>
 		</Key>
 		<Key ID="STR_NOTIFICATION_ENTER_TERRITORY">
 		&lt;t color='#00e000'&gt;Forgive&lt;/t&gt;

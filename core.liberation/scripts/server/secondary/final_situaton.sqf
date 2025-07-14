@@ -17,7 +17,7 @@ GRLIB_global_stop = 1;
 publicVariable "GRLIB_global_stop";
 
 { deleteVehicle _x } foreach (units GRLIB_side_enemy);
-{ deleteVehicle _x } foreach agents;
+{ deleteVehicle (agent _x) } foreach agents;
 
 // weather cloudy
 [] spawn {

@@ -1,17 +1,17 @@
 if ( GRLIB_endgame == 1 ) exitWith {};
-params ["_objectivepos", "_intensity"];
+params ["_objective_pos", "_intensity"];
 
 private _hc = [] call F_lessLoadedHC;
 if (isDedicated && !isNull _hc) exitWith {
 	diag_log format ["Spawn Direct BattlegGroup on %1 at %2", _hc, time];
-	[_objectivepos,_intensity] remoteExec ["spawn_battlegroup_direct", owner _hc];
+	[_objective_pos, _intensity] remoteExec ["spawn_battlegroup_direct", owner _hc];
 };
 
 private _bg_groups = [];
-private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objectivepos] call F_findOpforSpawnPoint;
+private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
 if (_spawn_marker == "") exitWith {};
 
-diag_log format ["Spawn Direct BattlegGroup level %1 to %2 at %3", _intensity, _objectivepos, time];
+diag_log format ["Spawn Direct BattlegGroup level %1 to %2 at %3", _intensity, _objective_pos, time];
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( _intensity == 1 ) then {
@@ -33,9 +33,9 @@ for "_i" from 0 to _target_size do {
 	[_vehicle, 3600] call F_setUnitTTL;
 	(crew _vehicle) joinSilent _nextgrp;
 	if (typeOf _vehicle in opfor_troup_transports_truck) then {
-		[_vehicle, _objectivepos] spawn troup_transport;
+		[_vehicle, _objective_pos] spawn troup_transport;
 	} else {
-		[_nextgrp, _objectivepos] spawn battlegroup_ai;
+		[_nextgrp, _objective_pos] spawn battlegroup_ai;
 		[_nextgrp, 3600] call F_setUnitTTL;
 	};
 	_bg_groups pushback _nextgrp;
@@ -50,5 +50,5 @@ if (combat_readiness >= 70) then {
 
 stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
 publicVariable "stats_hostile_battlegroups";
-diag_log format ["Done Spawning Direct BattlegGroup (%1) objective %2 at %3", _target_size, _objectivepos, time];
+diag_log format ["Done Spawning Direct BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
 
