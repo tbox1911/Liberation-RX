@@ -6,7 +6,7 @@ if (isNil "_box") exitWith {};
 if (_cmd == 1) then {
     if (isNull _box || !alive _box) exitWith {};
     if (isNull _unit || !alive _unit) exitWith {};
-    private _price = support_vehicles select {(_x select 0) == (typeOf _box)} select 0 select 2;
+    private _price = [typeOf _box, support_vehicles] call F_getObjectPrice;
     [_unit, _price, 0] call ammo_add_remote_call;
     private _r1 = GRLIB_warehouse select {(_x select 0) == (typeOf _box)} select 0;
     _r1 set [1, (_r1 select 1) + 1];

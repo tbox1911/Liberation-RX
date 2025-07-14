@@ -52,6 +52,7 @@ F_getNearestFob = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_getNearestSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestSector.sqf";
 F_getNearestTower = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestTower.sqf";
 F_getNextSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNextSector.sqf";
+F_getObjectPrice = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getObjectPrice.sqf";
 F_getRank = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRank.sqf";
 F_getRND = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRND.sqf";
 F_getRandomPos = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRandomPos.sqf";

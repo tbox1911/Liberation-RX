@@ -104,7 +104,7 @@ while { dialog && alive player } do {
 			if (isNull _box) exitWith {};
 			private _box_class = typeOf _box;
 			private _box_name = [_box_class] call F_getLRXName;
-			private _price = support_vehicles select {(_x select 0) == _box_class} select 0 select 2;
+			private _price = [_box_class, support_vehicles] call F_getObjectPrice;
 			private _msg = format [localize "STR_WAREHOUSE_LOAD_MSG", _box_name, _price];
 			private _result = [_msg, localize "STR_WAREHOUSE_LOAD", true, true] call BIS_fnc_guiMessage;
 
@@ -121,7 +121,7 @@ while { dialog && alive player } do {
 			ctrlEnable [121, false];
 			private _box = GRLIB_warehouse select (lbCurSel 111) select 0;
 			private _box_name = [_box] call F_getLRXName;
-			private _price = support_vehicles select {(_x select 0) == (_box)} select 0 select 2;
+			private _price = [_box, support_vehicles] call F_getObjectPrice;
 			private _price = round (_price / GRLIB_recycling_percentage);
 			private _msg = format [localize "STR_WAREHOUSE_UNLOAD_MSG", _box_name, _price];
 			private _result = [_msg, localize "STR_WAREHOUSE_UNLOAD", true, true] call BIS_fnc_guiMessage;

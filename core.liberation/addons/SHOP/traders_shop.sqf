@@ -14,28 +14,15 @@ private _ratio = (player nearEntities [SHOP_Man, 10] select 0) getvariable ["SHO
 private _sell_list = [];
 private _sell_blacklist = [];
 
-private _getPrice = {
-	params ["_class"];
-	private _ret = SHOP_list select { (_x select 0) == _class } select 0 select 2;
-	if (isNil "_ret") then { _ret = 1 };
-	_ret;
-};
-
 // Init BUY list
-private _buy_list_static = [
-	[Arsenal_typename, 0, 157],
-	[medicalbox_typename, 0, 130],
-	[repairbox_typename, 0, 154]
-];
-private _buy_blacklist = [];
-private _buy_list = opfor_recyclable select { !((_x select 0) isKindOf "Air") && !((_x select 0) in _buy_blacklist)};
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _buy_list_dlg = [];
 {
-	private _price = round (([_x select 0] call _getPrice) * (1 + _ratio));
+	private _price = [_x select 0, SHOP_list] call F_getObjectPrice;
+	_price = round (_price * (1 + _ratio));
 	if (_rank == "Super Colonel") then { _price = round (_price / 2)};
 	_buy_list_dlg pushBack [_x select 0, _price];
-} forEach _buy_list_static + _buy_list;
+} forEach SHOP_list;
 
 lbClear 111;
 {
@@ -91,9 +78,10 @@ while { dialog && alive player } do {
 
 		private _sell_list_dlg = [];
 		{
+			private _price = [_x select 0, SHOP_list] call F_getObjectPrice;
 			_sell_list_dlg pushBack [
 				(typeOf _x),
-				round ((([typeOf _x] call _getPrice) * GRLIB_recycling_percentage) * _ratio * (1 - damage _x))
+				round ((_price * GRLIB_recycling_percentage) * _ratio * (1 - damage _x))
 			];			
 		} forEach _sell_list;
 

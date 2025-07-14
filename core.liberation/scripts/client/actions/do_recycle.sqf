@@ -49,7 +49,7 @@ if (_veh_class in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
 
 if (_veh_class == box_uavs_typename) then {
 	private _drone_count = count (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
-	private _drone_price = (GRLIB_recycleable_info select { _x select 0 == uavs_light }) select 0 select 2;
+	private _drone_price = [uavs_light, air_vehicles] call F_getObjectPrice;
 	_ammount_ammo = (_drone_price * _drone_count);
 };
 ctrlSetText [131, format ["%1", _objectinfo select 1]];
