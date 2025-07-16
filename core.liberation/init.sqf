@@ -1,6 +1,9 @@
 diag_log "--- Liberation RX by pSiKO ---";
 if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
 
+[] call compileFinal preprocessFileLineNumbers "build_info.sqf";
+diag_log format ["LRX version %1 - build version: %2 build date: %3", localize "STR_MISSION_VERSION", GRLIB_build_version, GRLIB_build_date]; 
+
 disableUserInput true;
 titleText ["","BLACK FADED", 100];
 0 fadeSound 0;
@@ -12,9 +15,6 @@ if (!isServer && isMultiplayer && count (entities "HeadlessClient_F") > 0) then 
 
 diag_log "--- Init start ---";
 titleText ["-- Liberation RX --","BLACK FADED", 100];
-
-[] call compileFinal preprocessFileLineNumbers "build_info.sqf";
-diag_log format ["LRX version %1 - build version: %2 build date: %3", localize "STR_MISSION_VERSION", GRLIB_build_version, GRLIB_build_date]; 
 
 profileNamespace setVariable ["BIS_SupportDevelopment", nil];
 enableSaving [false, false];
