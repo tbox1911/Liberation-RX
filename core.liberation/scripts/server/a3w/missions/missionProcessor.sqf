@@ -9,8 +9,7 @@ if (!isServer) exitwith {};
 
 private [
 	"_controllerSuffix", "_availableLocations", "_missionLocation",
-	"_marker", "_marker_zone", "_time_left", "_leaderTemp",
-	"_lastPos"
+	"_marker", "_marker_zone", "_leaderTemp", "_lastPos"
 ];
 
 // Variables that can be defined in the mission script :
@@ -28,7 +27,7 @@ private _missionTimeout = A3W_Mission_timeout;
 
 if (!isNil "_setupVars") then { call _setupVars };
 
-if !(isNil "A3W_debug") then { _missionTimeout = A3W_Mission_timeout };
+if (!isNil "A3W_debug") then { _missionTimeout = A3W_Mission_timeout };
 
 if (!isNil "_locationsArray") then {
 	_availableLocations = _locationsArray select {!(_x select 1) && ((_x select 2) <= time) };
@@ -55,7 +54,7 @@ if (!_continue_mission) exitWith {
 };
 
 ["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
-diag_log format ["A3W Side Mission %1 started: %2", _controllerSuffix, localize _missionType];
+diag_log format ["A3W Side Mission %1 started: %2 timeout: %3", _controllerSuffix, localize _missionType, _missionTimeout];
 
 sleep 5;
 ([_missionType, _missionPos, _precise_marker] call createMissionMarker) params ["_marker", "_marker_zone"];
@@ -107,7 +106,7 @@ waitUntil {
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
 	if (!isNil "_waitUntilLastPos") then { _lastPos = call _waitUntilLastPos };
 
-	_time_left = round ((_missionTimeout - (time - _startTime)) /60);
+	private _time_left = round ((_missionTimeout - (time - _startTime)) /60);
 	if (_time_left > 0) then {
 		_marker setMarkerText format ["%1 - %2 min left", localize _missionType, _time_left];
 	} else {

@@ -97,6 +97,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			};
 		};
 		[_unit] spawn { sleep 5; (_this select 0) allowDamage true };
+		sleep 0.1;
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};

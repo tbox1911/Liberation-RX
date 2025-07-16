@@ -25,6 +25,14 @@ getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\
 createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createOutpost.sqf";
 debugSpawnMarkers = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_debugSpawnMarkers.sqf";
 
+/*	***  Debug A3W missions ***
+	A3W_debug = true;   // enable debug
+	A3W_mission = "mission_SearchIntel";   // load mission
+	A3W_debug_marker = true;  // debug spawn markers
+	A3W_Mission_delay = 1*60;
+	A3W_Mission_timeout = 5*60;
+*/
+
 A3W_delivery_failed = 0;
 A3W_mission_success = 0;
 A3W_mission_failed = 0;
@@ -33,14 +41,6 @@ A3W_Mission_timeout = 60*60;		// Time in seconds that a Side Mission will run fo
 A3W_sectors_in_use = [];
 publicVariable "A3W_sectors_in_use";
 
-/*	***  Debug A3W missions ***
-
-	A3W_debug = true;   // enable debug
-	A3W_mission = "mission_SearchIntel";   // load mission
-	A3W_debug_marker = true;  // debug spawn markers
-	A3W_Mission_delay = 1*60;
-	A3W_Mission_timeout = 5*60;
-*/
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 // moved to init

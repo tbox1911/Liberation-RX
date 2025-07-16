@@ -9,7 +9,7 @@ if (_unit isKindOf "CAManBase") then {
 	[_unit, true] remoteExec ["stop", 0];
 };
 
-if (_unit in (units player)) then {
+if (!isNil {_unit getVariable "PAR_Grp_ID"}) then {
 	[_unit] call speak_squad_AI;
 } else {
 	if (_msg > 0) then {
