@@ -449,9 +449,11 @@ while {true} do {
 		_sector setMarkerText _sectorName;
 		diag_log format ["Sector %1 mission failed.", _sector];
 		[_task,"FAILED"] call BIS_fnc_taskSetState;
-		{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 		private _msg = format ["You failed to capture sector %1, your reputation drops by %2 points.", [_sector_pos] call F_getLocationName, -5];
-		[gamelogic, _msg] remoteExec ["globalChat", 0];
+		{
+			[_x, -5] call F_addReput;
+			[gamelogic, _msg] remoteExec ["globalChat", owner _x];
+		} forEach _active_players;
 	};
 
 	_nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
