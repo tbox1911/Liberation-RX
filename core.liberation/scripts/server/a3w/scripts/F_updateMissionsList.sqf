@@ -228,7 +228,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Ressource Convoy
 _mission_name = "mission_RessourceConvoy";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if ({ _x in opfor_sectors } count sectors_factory >= 3) then {
+	if (_nb_player > 1 && { _x in opfor_sectors } count sectors_factory >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
