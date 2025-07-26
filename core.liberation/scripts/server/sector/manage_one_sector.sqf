@@ -50,8 +50,10 @@ if (GRLIB_Commander_mode) then {
 	_sector setMarkerType "mil_objective";
 	_sector setMarkerColor "ColorYellow";
 };
-private _active_players = count ([_sector_pos, _playerRad] call F_getNearbyPlayers);
-diag_log format ["Spawn Defend Sector %1 - player in combat %2 / readiness %3 at %4", _sector, _active_players, combat_readiness, time];
+
+private _active_players = [_sector_pos, _playerRad] call F_getNearbyPlayers;
+private _count_players = count _active_players;
+diag_log format ["Spawn Defend Sector %1 - player in combat %2 / readiness %3 at %4", _sector, _count_players, combat_readiness, time];
 
 // Sector type refactored using a switch statement
 switch true do {
@@ -61,7 +63,7 @@ switch true do {
         while { count _squad2 < 12 } do { _squad2 pushback (selectRandom militia_squad) };
         if (combat_readiness >= 33) then { _squad3 = ([] call F_getAdaptiveSquadComp) };
         if (combat_readiness >= 66) then { _squad4 = ([] call F_getAdaptiveSquadComp) };
-        if (_active_players > 2) then { _squad5 = ([] call F_getAdaptiveSquadComp) };
+        if (_count_players > 2) then { _squad5 = ([] call F_getAdaptiveSquadComp) };
         _vehtospawn pushback (selectRandom militia_vehicles);
         _vehtospawn pushback ([] call F_getAdaptiveVehicle);
         if (floor random 100 > (33 / GRLIB_difficulty_modifier)) then {
@@ -85,11 +87,11 @@ switch true do {
             while { count _squad3 < 8 } do { _squad3 pushback (selectRandom militia_squad) };
             _infsquad3 = "militia"
         };
-        if (_active_players > 2) then {
+        if (_count_players > 2) then {
             while { count _squad4 < 8 } do { _squad4 pushback (selectRandom militia_squad) };
             _infsquad4 = "militia"
         };
-        if (_active_players > 4) then {
+        if (_count_players > 4) then {
             _squad5 = ([] call F_getAdaptiveSquadComp)
         };
         _vehtospawn pushback (selectRandom militia_vehicles);
@@ -113,10 +115,10 @@ switch true do {
         if (combat_readiness >= 66) then {
             _squad3 = ([] call F_getAdaptiveSquadComp)
         };
-        if (_active_players > 2) then {
+        if (_count_players > 2) then {
             _squad4 = ([] call F_getAdaptiveSquadComp)
         };
-        if (_active_players > 4) then {
+        if (_count_players > 4) then {
             _squad5 = ([] call F_getAdaptiveSquadComp)
         };
         _vehtospawn = [([] call F_getAdaptiveVehicle), ([] call F_getAdaptiveVehicle)];
@@ -165,10 +167,10 @@ switch true do {
         if (combat_readiness >= 66) then {
             _squad3 = ([] call F_getAdaptiveSquadComp)
         };
-        if (_active_players > 2) then {
+        if (_count_players > 2) then {
             _squad4 = ([] call F_getAdaptiveSquadComp)
         };
-        if (_active_players > 4) then {
+        if (_count_players > 4) then {
             _squad5 = ([] call F_getAdaptiveSquadComp)
         };
         _vehtospawn pushback (selectRandom militia_vehicles);
@@ -194,10 +196,10 @@ switch true do {
         if (combat_readiness >= 66) then {
             _squad3 = ([] call F_getAdaptiveSquadComp)
         };
-        if (_active_players > 2) then {
+        if (_count_players > 2) then {
             _squad4 = ([] call F_getAdaptiveSquadComp)
         };
-        if (_active_players > 4) then {
+        if (_count_players > 4) then {
             _squad5 = ([] call F_getAdaptiveSquadComp)
         };
         _building_ai_max = 4;
