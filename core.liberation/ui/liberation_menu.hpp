@@ -29,7 +29,7 @@ class liberation_menu {
 		sizeEx = 0.025 * safezoneH;
 		size = 0.025 * safezoneH;
 		text = "";
-		action = "dostartgame=1;";
+		action = "startgame=1;";
 		textureNoShortcut = "res\btn_join_spl_idl3.paa";
 		animTextureNormal = "res\btn_join_spl_idl3.paa";
 		animTextureDisabled = "res\btn_join_spl_idl3.paa";

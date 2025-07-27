@@ -10,11 +10,36 @@ waitUntil {
 };
 titleText ["", "BLACK FADED", 100];
 
+// Game life / details
+setTerrainGrid 25;
+initAmbientLife;
+enableEnvironment [true, true];
+
+// Local Constants
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 GRLIB_player_is_menuok = false;
 GRLIB_vehicle_lock = true;
 GRLIB_arsenal_open = false;
+
+GRLIB_ActionDist_3 = 3;
+GRLIB_ActionDist_5 = 5;
+GRLIB_ActionDist_10 = 10;
+GRLIB_ActionDist_15 = 15;
+GRLIB_max_respawn_reached = false;
+GRLIB_player_configured = false;
+GRLIB_current_trenches = 0;
+
+GRLIB_BuildTypeDirect = 90;
+GRLIB_InfantryBuildType = 1;
+GRLIB_TransportVehicleBuildType = 2;
+GRLIB_CombatVehicleBuildType = 3;
+GRLIB_AerialBuildType = 4;
+GRLIB_DefenceBuildType = 5;
+GRLIB_BuildingBuildType = 6;
+GRLIB_SupportBuildType = 7;
+GRLIB_SquadBuildType = 8;
+GRLIB_TrenchBuildType = 9;
 
 if (abort_loading) exitWith {
 	private _msg = format [localize "STR_MSG_SERVER_STARTUP_ERROR", abort_loading_msg];
@@ -63,8 +88,6 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 	disableUserInput false;
 };
 
-playMusic GRLIB_music_startup;
-
 waitUntil {sleep 1; !isNil "GRLIB_global_stop"};
 if (GRLIB_global_stop == 1) exitWith {
 	private _msg = localize "STR_MSG_FINAL_MISSION_RUNNING";
@@ -91,26 +114,6 @@ if (GRLIB_respawn_cooldown > 0) then {
 		titleText ["", "BLACK FADED", 100];
 	};
 };
-
-GRLIB_ActionDist_3 = 3;
-GRLIB_ActionDist_5 = 5;
-GRLIB_ActionDist_10 = 10;
-GRLIB_ActionDist_15 = 15;
-GRLIB_max_respawn_reached = false;
-GRLIB_player_configured = false;
-GRLIB_current_trenches = 0;
-
-// Local Constants
-GRLIB_BuildTypeDirect = 90;
-GRLIB_InfantryBuildType = 1;
-GRLIB_TransportVehicleBuildType = 2;
-GRLIB_CombatVehicleBuildType = 3;
-GRLIB_AerialBuildType = 4;
-GRLIB_DefenceBuildType = 5;
-GRLIB_BuildingBuildType = 6;
-GRLIB_SupportBuildType = 7;
-GRLIB_SquadBuildType = 8;
-GRLIB_TrenchBuildType = 9;
 
 // Local functions
 add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
@@ -147,9 +150,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 
-// Start intro
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\ui\intro.sqf";
-
 GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 waitUntil {
 	[player] joinSilent GRLIB_player_group;
@@ -158,14 +158,42 @@ waitUntil {
 };
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
+waituntil {
+	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
+	uIsleep 1;
+	titleText ["... Please Wait ...", "BLACK FADED", 100];
+	uIsleep 1;
+	(player getVariable ["GRLIB_score_set", 0] == 1);
+};
+
 // LRX Arsenal
 [] execVM "addons\LARs\liberationArsenal.sqf";
+waituntil {
+	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
+	uIsleep 1;
+	titleText ["... Please Wait ...", "BLACK FADED", 100];
+	uIsleep 1;
+	(!isNil "LRX_arsenal_init_done");
+};
 
-// LRX client scripts
-[] execVM "GREUH\scripts\GREUH_activate.sqf";
-[] execVM "scripts\client\ui\ui_manager.sqf";
-[] execVM "scripts\client\build\build_manager.sqf";
-[] execVM "scripts\client\build\build_overlay.sqf";
+// Start intro
+startgame = 0;
+playMusic GRLIB_music_startup;
+[] execVM "scripts\client\ui\intro.sqf";
+
+// LRX Addons
+[] execVM "addons\RPL\advancedRappellingInit.sqf";
+[] execVM "addons\PAR\PAR_AI_Revive.sqf";
+[] execVM "addons\KEY\shortcut_init.sqf";
+[] execVM "addons\VAM\VAM_GUI_init.sqf";
+[] execVM "addons\TARU\taru_init.sqf";
+[] execVM "addons\VIRT\virtual_garage_init.sqf";
+[] execVM "addons\SELL\sell_shop_init.sqf";
+[] execVM "addons\SHOP\traders_shop_init.sqf";
+[] execVM "addons\TAXI\taxi_init.sqf";
+[] execVM "addons\JKB\JKB_init.sqf";
+[] execVM "addons\WHS\warehouse_init.sqf";
+[] execVM "addons\FOB\officer_init.sqf";
 
 // Player actions manager
 [] execVM "scripts\client\actions\action_manager_player.sqf";
@@ -175,6 +203,20 @@ waitUntil {
 [] execVM "scripts\client\actions\dog_manager.sqf";
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
+
+waitUntil {sleep 0.5; startgame == 1};
+[] spawn {
+	waituntil {sleep 1; GRLIB_player_configured};
+	10 fadeMusic 0;
+	sleep 10;
+	playMusic "";	
+};
+
+// LRX client scripts
+[] execVM "GREUH\scripts\GREUH_activate.sqf";
+[] execVM "scripts\client\ui\ui_manager.sqf";
+[] execVM "scripts\client\build\build_manager.sqf";
+[] execVM "scripts\client\build\build_overlay.sqf";
 
 // Markers
 [] execVM "scripts\client\markers\init_markers.sqf";
@@ -195,20 +237,6 @@ waitUntil {
 [] execVM "scripts\client\misc\secondary_jip.sqf";
 [] execVM "scripts\client\misc\stop_renegade.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
-
-// LRX Addons
-[] execVM "addons\RPL\advancedRappellingInit.sqf";
-[] execVM "addons\PAR\PAR_AI_Revive.sqf";
-[] execVM "addons\KEY\shortcut_init.sqf";
-[] execVM "addons\VAM\VAM_GUI_init.sqf";
-[] execVM "addons\TARU\taru_init.sqf";
-[] execVM "addons\VIRT\virtual_garage_init.sqf";
-[] execVM "addons\SELL\sell_shop_init.sqf";
-[] execVM "addons\SHOP\traders_shop_init.sqf";
-[] execVM "addons\TAXI\taxi_init.sqf";
-[] execVM "addons\JKB\JKB_init.sqf";
-[] execVM "addons\WHS\warehouse_init.sqf";
-[] execVM "addons\FOB\officer_init.sqf";
 
 // ACE inCompatible addons
 if (!GRLIB_ACE_enabled) then {
@@ -340,10 +368,5 @@ if (GRLIB_Commander_mode) then {
 		GRLIB_Com_lastClicked = time;
 	}, [player]];
 };
-
-// Game life / details
-setTerrainGrid 25;
-initAmbientLife;
-enableEnvironment [true, true];
 
 diag_log "--- Client Init stop ---";

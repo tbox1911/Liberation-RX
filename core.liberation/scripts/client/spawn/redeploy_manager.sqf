@@ -1,5 +1,4 @@
-waitUntil {sleep 0.1; !(isNil "dostartgame")};
-waitUntil {sleep 0.1; dostartgame == 1};
+waituntil {startgame == 1};
 
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 if (count (attachedObjects player) > 0) then {{detach _x} forEach attachedObjects player};

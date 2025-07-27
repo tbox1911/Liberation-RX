@@ -7,7 +7,7 @@ diag_log format ["LRX version %1 - build version: %2 build date: %3", localize "
 disableUserInput true;
 titleText ["","BLACK FADED", 100];
 0 fadeSound 0;
-sleep 5;
+sleep 2;
 if (!isServer && isMultiplayer && count (entities "HeadlessClient_F") > 0) then {
 	titleText ["Waiting for Headless client....","BLACK FADED", 100];
 	sleep 10;
