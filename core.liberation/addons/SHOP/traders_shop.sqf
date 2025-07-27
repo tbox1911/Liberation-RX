@@ -78,7 +78,7 @@ while { dialog && alive player } do {
 
 		private _sell_list_dlg = [];
 		{
-			private _price = [_x select 0, SHOP_list] call F_getObjectPrice;
+			private _price = [typeOf (_x select 0), SHOP_list] call F_getObjectPrice;
 			_sell_list_dlg pushBack [
 				(typeOf _x),
 				round ((_price * GRLIB_recycling_percentage) * _ratio * (1 - damage _x))
