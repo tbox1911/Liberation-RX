@@ -2,7 +2,7 @@ GRLIB_civilians_current = GRLIB_civilians_current + 1;
 publicVariable "GRLIB_civilians_current";
 
 sleep (30 + (floor random 150));
-while { diag_fps <= 20 } do { sleep 60 };
+while { diag_fps <= 25 } do { sleep 60 };
 
 private _civ_veh = objNull;
 private _civ_grp = grpNull;
@@ -46,8 +46,9 @@ if (count _usable_sectors > 0) then {
 	private _unit_ttl = round (time + 1800);
 	private _unit_pos = getPosATL (leader _civ_grp);
 	waitUntil {
-		sleep 60;
+		if (diag_fps <= 25) exitWith {};
 		_unit_pos = getPosATL (leader _civ_grp);
+		sleep 60;
 		(
 			GRLIB_global_stop == 1 || (time > _unit_ttl) || ({alive _x} count (units _civ_grp) == 0) ||
 			([_unit_pos, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0)
@@ -55,7 +56,8 @@ if (count _usable_sectors > 0) then {
 	};
 
 	// Cleanup
-	waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+	waitUntil { sleep 30; (GRLIB_global_stop == 1 || diag_fps <= 25 || [_unit_pos, GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+
 	if (isNull _civ_veh) then {
 		{ deleteVehicle _x } forEach (units _civ_grp);
 	} else {
@@ -64,5 +66,6 @@ if (count _usable_sectors > 0) then {
 	deleteGroup _civ_grp;
 };
 
+sleep 300;
 GRLIB_civilians_current = GRLIB_civilians_current - 1;
 publicVariable "GRLIB_civilians_current";

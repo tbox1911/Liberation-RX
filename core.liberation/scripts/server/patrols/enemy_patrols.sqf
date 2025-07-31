@@ -13,7 +13,7 @@ GRLIB_patrol_sectors = [];
 publicVariable "GRLIB_patrol_sectors";
 
 while {true} do {
-	if (GRLIB_patrol_current < GRLIB_patrol_amount) then {
+	if (GRLIB_patrol_current < GRLIB_patrol_amount && diag_fps > 15) then {
 		private _level = round (25 + floor random 70);
 		private _hc = [] call F_lessLoadedHC;
 		if (isNull _hc) then {

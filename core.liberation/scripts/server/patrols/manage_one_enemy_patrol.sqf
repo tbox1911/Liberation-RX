@@ -50,6 +50,7 @@ if (count _usable_sectors > 0) then {
 	private _unit_ttl = round (time + 1800);
 	private _unit_pos = getPosATL (leader _opfor_grp);
 	waitUntil {
+		if (diag_fps <= 15) exitWith {};
 		_unit_pos = getPosATL (leader _opfor_grp);
 		sleep 60;
 		(
@@ -60,6 +61,7 @@ if (count _usable_sectors > 0) then {
 
 	// Cleanup
 	waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+
 	if (isNull _opfor_veh) then {
 		{ deleteVehicle _x } forEach (units _opfor_grp);
 	} else {

@@ -1,4 +1,4 @@
-sleep (30 + floor(random 30));
+sleep (30 + floor(random 60));
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	while { diag_fps <= 35 } do { sleep 60 };
@@ -21,7 +21,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		waitUntil {
 			sleep 42;
 			(
-				GRLIB_global_stop == 1 || (diag_fps < 25) ||
+				GRLIB_global_stop == 1 || (diag_fps <= 30) ||
 				({alive _x} count _managed_units) == 0 ||
 				({_unit distance2D _x > GRLIB_sector_size} count _managed_units) > 0 
 			)
@@ -31,5 +31,5 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		{ deleteVehicle _x; sleep 0.1 } forEach _managed_units;
 	};
 
-	sleep 30;
+	sleep 200;
 };

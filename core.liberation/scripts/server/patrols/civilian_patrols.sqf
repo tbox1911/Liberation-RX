@@ -11,7 +11,7 @@ GRLIB_civilians_current = 0;
 publicVariable "GRLIB_civilians_current";
 
 while {true} do {
-	if (GRLIB_civilians_current < GRLIB_civilians_amount) then {
+	if (GRLIB_civilians_current < GRLIB_civilians_amount && diag_fps > 25) then {
 		private _hc = [] call F_lessLoadedHC;
 		if !(isNull _hc) then {
 			[] remoteExec ["manage_one_civilian_patrol", owner _hc];
