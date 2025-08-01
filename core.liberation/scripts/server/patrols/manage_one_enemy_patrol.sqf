@@ -50,7 +50,7 @@ if (count _usable_sectors > 0) then {
 	private _unit_ttl = round (time + 1800);
 	private _unit_pos = getPosATL (leader _opfor_grp);
 	waitUntil {
-		if (diag_fps <= 15) exitWith {};
+		if (diag_fps <= 15) exitWith { true };
 		_unit_pos = getPosATL (leader _opfor_grp);
 		sleep 60;
 		(
