@@ -127,7 +127,7 @@ while {true} do {
 				_vehicle = vehicle _unit;
 				_near_lhd = (_unit distance2D lhd < GRLIB_fob_range);
 				if (!(_vehicle isKindOf "ParachuteBase") &&	(_unit in [gunner _vehicle, driver _vehicle, commander _vehicle])) then {
-					if (_vehicle getVariable ["R3F_LOG_disabled", false]) exitWith {};
+					//if (_vehicle getVariable ["R3F_LOG_disabled", false]) exitWith {};
 					_vehicle_class = typeOf _vehicle;
 					_vehicle_name = [_vehicle_class] call F_getLRXName;
 					_reammo_cost = 0;
