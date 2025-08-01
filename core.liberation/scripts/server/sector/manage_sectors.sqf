@@ -1,5 +1,5 @@
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
-sleep 3;
+sleep 13;
 
 private ["_nextsector", "_unit", "_msg"];
 private _countblufor = [];
@@ -20,8 +20,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				[_nextsector] call start_sector;
 				sleep 30;
 			};
-		} else { sleep 120 };
-		sleep 0.1;
+		};
 	} foreach _countblufor;
 
 	_hc_missions = active_sectors_hc;
@@ -49,5 +48,5 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	} forEach _hc_missions;
 
 	//diag_log format [ "Full sector scan at %1, active sectors: %2", time, active_sectors ];
-	sleep 2;
+	sleep 3;
 };
