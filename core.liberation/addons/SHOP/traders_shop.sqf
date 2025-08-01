@@ -67,18 +67,18 @@ while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
 		private _sell_classnames = ["LandVehicle","Air","Ship_F","ReammoBox_F","Items_base_F"];
-		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
+		_sell_list = (player nearEntities [_sell_classnames, 50]) select {
 			alive _x && (count (crew _x) == 0 || (typeOf _x in uavs_vehicles)) &&
 			locked _x != 2 &&
 			!(_x getVariable ["R3F_LOG_disabled", false]) &&
 			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 			[player, _x] call is_owner &&
 			!(typeOf _x in _sell_blacklist)
-		}] call BIS_fnc_conditionalSelect;
+		};
 
 		private _sell_list_dlg = [];
 		{
-			private _price = [typeOf (_x select 0), SHOP_list] call F_getObjectPrice;
+			private _price = [(typeOf _x), SHOP_list] call F_getObjectPrice;
 			_sell_list_dlg pushBack [
 				(typeOf _x),
 				round ((_price * GRLIB_recycling_percentage) * _ratio * (1 - damage _x))
