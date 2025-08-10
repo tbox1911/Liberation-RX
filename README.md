@@ -4,6 +4,10 @@
 
 ![alt text](https://raw.githubusercontent.com/tbox1911/Liberation-RX/master/liberation.png "Liberation RX")
 
+## Discord
+For any questions about settings, game mechanism and suggestion,
+Join our Discord server: https://discord.gg/uCRzJ7wauR
+
 ## Features
 
 + Personal Progression
