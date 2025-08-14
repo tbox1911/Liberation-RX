@@ -6,7 +6,9 @@ private _transport_group = group (driver _troup_transport);
 private _start_pos = getPosATL _troup_transport;
 
 private _cargo_seat_free = _troup_transport emptyPositions "Cargo";
-if (_cargo_seat_free == 0) exitWith { diag_log format ["--- LRX Error bad classname (%1) for troup transport.", typeOf _troup_transport] };
+if (_cargo_seat_free == 0) exitWith {
+	diag_log format ["--- LRX Error bad classname (%1) for troup transport.", typeOf _troup_transport];
+};
 if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
 
 private _unitclass = [];

@@ -64,6 +64,7 @@ _vehicle flyInHeight 350;
 
 private _cargo_seat_free = _vehicle emptyPositions "Cargo";
 if (_cargo_seat_free == 0) exitWith {
+	diag_log format ["--- LRX Error bad classname (%1) for troup transport.", typeOf _vehicle];
 	[_vehicle, true, true] spawn clean_vehicle;
 	grpNull;
 };
