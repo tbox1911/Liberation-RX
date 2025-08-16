@@ -64,7 +64,6 @@ private _grp = createGroup [_side, true];
 			};
 		};
 		case GRLIB_side_friendly: {
-			_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
 			[_path, _unit] call F_getTemplateFile;
 			[_unit] spawn reammo_ai;

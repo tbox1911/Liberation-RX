@@ -120,8 +120,6 @@ if (_side == GRLIB_side_civilian) then {
 };
 
 if (_side == GRLIB_side_friendly) then {
-	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-
 	// LRX textures
 	if (count blufor_texture_overide > 0) then {
 		_texture_name = selectRandom blufor_texture_overide;

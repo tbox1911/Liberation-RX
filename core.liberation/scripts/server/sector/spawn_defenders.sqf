@@ -36,7 +36,6 @@ _grp setBehaviourStrong "COMBAT";
     _x setSkill 0.65;
     _x setSkill ["courage", 1];
     _x allowFleeing 0;
-    _x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 } foreach (units _grp);
 [_grp, _sector_pos, 80] spawn defence_ai;
 
