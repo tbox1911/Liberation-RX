@@ -25,11 +25,6 @@ if (_object_class == box_uavs_typename) then {
 	[_object, _loaded_uavs] call load_object_direct;
 };
 
-// Static Weapons
-if (_object_class in list_static_weapons ) then {
-	_object addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-};
-
 // Set Owner
 if (!(_object_class in GRLIB_vehicle_blacklist)) then {
 	private _vehicle_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];

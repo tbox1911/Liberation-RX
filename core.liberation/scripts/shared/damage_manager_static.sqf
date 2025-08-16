@@ -10,15 +10,16 @@ if (!isNull _instigator) then {
 	};
 };
 
-private _currentDamage = damage _unit;
-private _newDamage = _currentDamage;
-private _now = serverTime;
-if (_damage >= 0.8 && (_now >= (_unit getVariable ["GRLIB_isProtected", 0]))) then {
-    _unit setVariable ["GRLIB_isProtected", round(_now + 5), true];
-    _newDamage = (_currentDamage + 0.25) min 1;
-	if (_damage >= 10) then { _newDamage = 1 };
+private _newDamage = _unit getVariable ["GRLIB_unitDamage", 0];
+if (_damage >= 0.8 && (time >= (_unit getVariable ["GRLIB_isProtected", 0]))) then {
+    _unit setVariable ["GRLIB_isProtected", round(time + 5)];
+    _newDamage = (_newDamage + 0.25) min 1;
+	if (_damage >= 10) then {
+		_newDamage = 1;
+	};
 	if (hasInterface) then {
 		systemchat format ["%1 damaged to %2%%.", [_unit] call F_getLRXName, (_newDamage * 100)];
 	};
+	_unit setVariable ["GRLIB_unitDamage", _newDamage, true];
 };
 _newDamage;

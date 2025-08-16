@@ -370,7 +370,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 			if ( _nextclass in list_static_weapons ) then {
 				_nextbuilding setVehicleLock "DEFAULT";
 				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
-				_nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 				if (_nextclass in static_vehicles_AI) then {
 					_nextbuilding setVehicleLock "LOCKED";
 					_nextbuilding allowCrewInImmobile [true, false];
@@ -431,7 +430,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		];
 		{
 			_allow_damage = true;
-			if ( (typeOf _x) in _no_damage) then { _allow_damage = false };
+			if (typeOf _x in _no_damage) then { _allow_damage = false };
 			_x setVelocity [0, 0, 0];
 			_x setDamage 0;
 			if ( _allow_damage ) then { _x allowDamage true };
