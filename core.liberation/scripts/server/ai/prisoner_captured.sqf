@@ -1,8 +1,8 @@
 params [ "_unit", "_unit_owner", "_friendly" ];
 
 private _yield = 6;
-if ( (typeof _unit) in militia_squad ) then { _yield = 3 };
-if ( (typeof _unit) == pilot_classname ) then { _yield = 30 };
+if (typeof _unit in militia_squad) then { _yield = 3 };
+if (typeof _unit == pilot_classname) then { _yield = 30 };
 _yield = _yield + (round (random _yield));
 if ( rank _unit == "COLONEL") then { _yield = 50 };
 
@@ -15,9 +15,9 @@ publicVariable "stats_prisoners_captured";
 
 if (isPlayer _unit_owner) then {
 	private _bonus = 10;
-	if ( [_unit_owner] call F_getScore > GRLIB_perm_log) then { _bonus = 5 };
-	if ( (typeof _unit) == pilot_classname ) then { _bonus = 20 };
-	if ( rank _unit == "COLONEL") then { _bonus = 50 };
+	if ([_unit_owner] call F_getScore > GRLIB_perm_log) then { _bonus = 5 };
+	if (typeof _unit == pilot_classname) then { _bonus = 20 };
+	if (rank _unit == "COLONEL") then { _bonus = 50 };
 	_bonus = _bonus + (round (random _bonus));
 	[_unit_owner, _bonus] call F_addScore;
 	private _msg = format ["Well done %1!\n\nIntel Stars + %2\nBonus Score + %3 XP", name _unit_owner, _yield, _bonus];

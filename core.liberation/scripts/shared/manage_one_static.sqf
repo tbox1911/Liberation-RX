@@ -1,11 +1,11 @@
 params ["_static"];
 
-private _static_class = typeOf _static;
 _static setVariable ["LRX_managed_static", true, true];
 _static addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 
 private ["_near_arsenal", "_vehicle_need_ammo", "_near_repair", "_vehicle_need_repair", "_gunner"];
 private _timer = 0;
+private _static_class = typeOf _static;
 
 while {alive _static} do {
     waitUntil { sleep 1; (isNull (_static getVariable ["R3F_LOG_est_transporte_par", objNull])) };
@@ -39,7 +39,8 @@ while {alive _static} do {
             _gunner = gunner _static;
             if (isPlayer _gunner) exitWith {};
             if (side group _gunner == GRLIB_side_enemy) then {
-                _static setVehicleAmmo 1;       // OPFor infinite Ammo
+                // OPFor infinite Ammo + Seek
+                _static setVehicleAmmo 1;
                 [_gunner] spawn F_getNearestEnemy;
             };
         } else {
