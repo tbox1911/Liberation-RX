@@ -248,48 +248,6 @@ PAR_Player_Init = {
 	showMap true;
 };
 
-PAR_HandleDamage_EH = {
-	params ["_unit", "_selectionName", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
-
-	if (!isNull _instigator) then {
-		if (isNull (getAssignedCuratorLogic _instigator)) then {
-			_killer = _instigator;
-		};
-	} else {
-		if (!(_killer isKindOf "CAManBase")) then {
-			_killer = effectiveCommander _killer;
-		};
-	};
-
-	private _isNotWounded = !([_unit] call PAR_is_wounded);
-	private _veh_unit = objectParent _unit;
-
-	if (GRLIB_tk_mode > 0) then {
-		// TK Protect
-		private _veh_killer = objectParent _killer;
-		private _veh_tk = true;
-		if (!isNull _veh_killer) then {
-			_veh_tk = (_veh_killer distance2D _veh_unit > 10);
-		};
-		if (_isNotWounded && isPlayer _killer && _killer != _unit && _veh_tk && _damage >= 0.15) then {
-			if (_unit getVariable ["GRLIB_isProtected", 0] < serverTime) then {
-				_unit setVariable ["GRLIB_isProtected", round(serverTime + 10), true];
-				["PAR_tkMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
-				[_unit, _killer] remoteExec ["LRX_tk_check", 0];
-			};
-			_damage = 0;
-		};
-	};
-
-	if (_isNotWounded && _damage >= 0.86) then {
-		if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
-		_unit setVariable ["PAR_isUnconscious", true, true];
-		[_unit, _killer] spawn PAR_Player_Unconscious;
-	};
-
-	_damage min 0.86;
-};
-
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
 

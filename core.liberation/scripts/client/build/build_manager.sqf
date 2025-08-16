@@ -499,9 +499,7 @@ while {true} do {
 			if (!alive _vehicle) exitWith {};
 
 			// HandleDamage EH
-			if (_classname in list_static_weapons) then {
-				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-			} else {
+			if !(_classname in list_static_weapons) then {
 				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 			};
 

@@ -43,7 +43,7 @@ _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	// No mines in the base zone (Chimera + FOB)
-	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") then { deleteVehicle _projectile };
+	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") exitWith { deleteVehicle _projectile };
 
 	// Pay artillery fire
 	// if (_vehicle isKindOf "StaticMortar") then {
@@ -68,10 +68,9 @@ _unit addEventHandler ["FiredMan",	{
 		"vn_mortar_m2_mag_lume_x8",
 		"vn_mortar_m29_mag_lume_x8"
 	];
-	if (isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner")) then {
-		private _res = getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner");
-		private _free_rounds = (_magazine in _free_rounds_typename);
-		if (_res == 1 && !_free_rounds) then { [_unit, _vehicle] spawn artillery_cooldown };
+	private _is_arty = getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner");
+	if (_is_arty == 1 && !(_magazine in _free_rounds_typename)) exitWith {
+		[_unit, _vehicle] spawn artillery_cooldown;
 	};
 }];
 
@@ -118,7 +117,13 @@ if (_unit == player) then {
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
 		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
 		if (!_eject) then {
-			[_vehicle] spawn F_vehicleDefense;
+			if (local _vehicle && !(typeOf _vehicle in list_static_weapons)) then {
+				[_vehicle] spawn F_vehicleDefense;
+				if (isNil {_vehicle getVariable "GREUH_vehicle_damage_he"}) then {
+					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+					_vehicle setVariable ["GREUH_vehicle_damage_he", true];
+				};
+			};
 			1 fadeSound (round desired_vehvolume / 100.0);
 			3 fadeMusic (getAudioOptionVolumes select 1);
 			NRE_EarplugsActive = 1;
@@ -136,7 +141,7 @@ if (_unit == player) then {
 				private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
 				private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
 				hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT", _owner, _damage, _fuel, _ammo, _cargo select 0, _cargo select 1];
-				sleep 3;
+				sleep 5;
 				hintSilent "";
 			};
 		};
@@ -183,7 +188,40 @@ if (_unit == player) then {
 
 	// Player Handle Damage EH
 	if (PAR_revive != 0) then {
-		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
+		player addEventHandler ["HandleDamage", {
+			params ["_unit", "", "_damage", "_killer", "", "", "_instigator"];
+			if (!isNull _instigator) then {
+				if (isNull (getAssignedCuratorLogic _instigator)) then {
+					_killer = _instigator;
+				};
+			} else {
+				if (!(_killer isKindOf "CAManBase")) then {
+					_killer = effectiveCommander _killer;
+				};
+			};
+			private _isNotWounded = !([_unit] call PAR_is_wounded);
+			if (_isNotWounded && isPlayer _killer && _killer != _unit && vehicle _unit != vehicle _killer && _killer distance2D _unit >= 5) then {
+				if (_damage >= 0.35 && (time >= (_unit getVariable ["GRLIB_isProtected", 0]))) then {
+					_unit setVariable ["GRLIB_isProtected", round(time + 10)];
+					private _msg = format ["%1 (%2)", localize "STR_FRIENDLY_FIRE", name _killer];
+					[gamelogic, _msg] remoteExec ["globalChat", 0];
+					[_killer, -5] remoteExec ["F_addScore", 2];
+					// TK Protect
+					if (GRLIB_tk_mode > 0) then {
+						["PAR_tkMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
+						[_unit, _killer] remoteExec ["LRX_tk_check", 0];
+						_damage = 0;
+					};
+				};
+			};
+			private _veh_unit = objectParent _unit;
+			if (_isNotWounded && _damage >= 0.86) then {
+				if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
+				_unit setVariable ["PAR_isUnconscious", true, true];
+				[_unit, _killer] spawn PAR_Player_Unconscious;
+			};
+			_damage min 0.86;
+		}];
 	};
 } else {
 	// AI killed EH
@@ -193,9 +231,16 @@ if (_unit == player) then {
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
+		if (_vehicle isKindOf "ParachuteBase") exitWith {};
 		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
 		if !(_eject) then {
-			[_vehicle] spawn F_vehicleDefense;
+			if (local _vehicle && !(typeOf _vehicle in list_static_weapons)) then {
+				[_vehicle] spawn F_vehicleDefense;
+				if (isNil {_vehicle getVariable "GREUH_vehicle_damage_he"}) then {
+					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+					_vehicle setVariable ["GREUH_vehicle_damage_he", true];
+				};
+			};
 		};
 	}];
 
@@ -213,18 +258,16 @@ if (_unit == player) then {
 	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_permissions }];
 
 	// AI Handle Damage EH
-	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	if (PAR_revive != 0) then {
 		_unit addEventHandler ["HandleDamage", {
-			params ["_unit","","_dam"];
-			_veh = objectParent _unit;
-
-			if (!([_unit] call PAR_is_wounded) && _dam >= 0.86) then {
+			params ["_unit","","_damage"];
+			if (!([_unit] call PAR_is_wounded) && _damage >= 0.86) then {
 				_unit setVariable ["PAR_isUnconscious", true, true];
-				if !(isNull _veh) then {[_unit, _veh] spawn PAR_fn_eject};
+				private _veh_unit = objectParent _unit;
+				if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
 				[_unit] spawn PAR_fn_unconscious;
 			};
-			_dam min 0.86;
+			_damage min 0.86;
 		}];
 	};
 };
