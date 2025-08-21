@@ -66,6 +66,7 @@ GRLIB_PARAM_PAR_AI_Revive = "PAR_AI_Revive";
 GRLIB_PARAM_PAR_BleedOut = "PAR_BleedOut";
 GRLIB_PARAM_PAR_Grave = "PAR_Grave";
 GRLIB_PARAM_DeathChat = "DeathChat";
+GRLIB_PARAM_ForceEnglish = "ForceEnglish";
 GRLIB_PARAM_MaxSpawnPoint = "MaxSpawnPoint";
 GRLIB_PARAM_Redeploy = "Redeploy";
 GRLIB_PARAM_Respawn = "Respawn";
@@ -741,7 +742,6 @@ _Mission_Params = [
             localize "STR_DEATHCHAT_OPT1"
         ]]
     ]],
-GRLIB_PARAM_ForceEnglish
     [GRLIB_PARAM_ForceEnglish, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_FORCE_ENG"],
