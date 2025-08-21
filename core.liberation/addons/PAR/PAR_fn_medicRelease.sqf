@@ -6,6 +6,7 @@ private _release_medic = {
 	_medic setUnitPos "AUTO";
 	{_medic enableAI _x} forEach ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 	[_medic] joinSilent (_medic getVariable "PAR_AIgrp");
+	_medic assignTeam (_medic getVariable "PAR_AIteam");
 
 	if ((_medic getVariable ["isLeader",false]) && (isplayer _medic)) then {
 		[group _medic, _medic] selectLeader groupOwner (_medic getVariable "PAR_AIgrp");
