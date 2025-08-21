@@ -236,7 +236,7 @@ GRLIB_enable_arsenal = [GRLIB_PARAM_EnableArsenal] call lrx_getParamValue;
 GRLIB_filter_arsenal = [GRLIB_PARAM_FilterArsenal] call lrx_getParamValue;
 GRLIB_forced_loadout = [GRLIB_PARAM_ForcedLoadout] call lrx_getParamValue;
 GRLIB_free_loadout = [GRLIB_PARAM_FreeLoadout] call lrx_getParamValue;
-GRLIB_opfor_english = 0; //TODO - add this parameter
+GRLIB_force_english = [GRLIB_PARAM_ForceEnglish] call lrx_getParamValue;
 GRLIB_difficulty_modifier = [GRLIB_PARAM_Difficulty] call lrx_getParamValue;
 GRLIB_csat_aggressivity = [GRLIB_PARAM_Aggressivity] call lrx_getParamValue;
 GRLIB_sector_radius = [GRLIB_PARAM_SectorRadius] call lrx_getParamValue;
@@ -394,7 +394,7 @@ GRLIB_passive_income = (GRLIB_passive_income == 1);
 GRLIB_permissions_param = (GRLIB_permissions_param == 1);
 GRLIB_use_whitelist = (GRLIB_use_whitelist == 1);
 GRLIB_use_exclusive = (GRLIB_use_exclusive == 1);
-GRLIB_opfor_english = (GRLIB_opfor_english == 1);
+GRLIB_force_english = (GRLIB_force_english == 1);
 GRLIB_enable_drones = (GRLIB_enable_drones == 1);
 GRLIB_disable_death_chat = (GRLIB_disable_death_chat == 1);
 GRLIB_server_persistent = (GRLIB_server_persistent == 1);

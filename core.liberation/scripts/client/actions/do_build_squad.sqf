@@ -12,6 +12,7 @@ private ["_unitrank", "_unit"];
 	if(_forEachIndex == 1) then { _unitrank = "CORPORAL" };
 	_unit = _grp createUnit [_x, _pos, [], 15, "NONE"];
 	_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
+	_unit setVariable ["ace_sys_wounds_uncon", false];
 	[_unit] call PAR_fn_AI_Damage_EH;
 	[_unit] call F_fixModUnit;
 	[_unit] joinSilent _grp;
@@ -19,6 +20,7 @@ private ["_unitrank", "_unit"];
 	_unit setSkill 0.6;
 	_unit enableIRLasers true;
 	_unit enableGunLights "Auto";
+	if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
 	if (_x in units_loadout_overide) then {
 		private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _x];
 		[_path, _unit] call F_getTemplateFile;

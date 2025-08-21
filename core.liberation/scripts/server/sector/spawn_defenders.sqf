@@ -36,6 +36,7 @@ _grp setBehaviourStrong "COMBAT";
     _x setSkill 0.65;
     _x setSkill ["courage", 1];
     _x allowFleeing 0;
+    if (GRLIB_force_english) then { _x setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
 } foreach (units _grp);
 [_grp, _sector_pos, 80] spawn defence_ai;
 

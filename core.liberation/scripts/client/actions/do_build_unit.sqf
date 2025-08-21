@@ -5,6 +5,7 @@ private _alt = _pos select 2;
 private _grp = group player;
 private _unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+_unit setVariable ["ace_sys_wounds_uncon", false];
 [_unit] call PAR_fn_AI_Damage_EH;
 [_unit] call F_fixModUnit;
 [_unit] joinSilent _grp;
@@ -23,10 +24,7 @@ if (GRLIB_ACE_medical_enabled && ([_unit] call PAR_is_medic)) then {
 	[_unit] execVM "scripts\shared\ace_medic_heal.sqf";
 };
 
-if (GRLIB_opfor_english) then {
-    //[_unit, _spk] remoteExec ["setSpeaker", 0];
-    _unit setSpeaker (format ["Male0%1ENG",selectRandom [2,3,4,5,6,7,8,9]]);
-};
+if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
 
 [_unit, configOf _unit] call BIS_fnc_loadInventory;
 if (_classname in units_loadout_overide) then {

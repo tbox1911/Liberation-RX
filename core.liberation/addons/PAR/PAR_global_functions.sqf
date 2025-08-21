@@ -227,7 +227,7 @@ PAR_Player_Init = {
 	_unit setVariable ["SOG_player_in_tunnel", nil];
 	_unit setVariable ["ace_sys_wounds_uncon", false];
 	if (!GRLIB_fatigue) then { _unit enableFatigue false; _unit enableStamina false };
-	if (GRLIB_opfor_english) then {_unit setSpeaker "Male01ENG"};
+	if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
 	_unit setCustomAimCoef 0.35;
 	_unit setUnitRecoilCoefficient 0.6;
 	_unit setCaptive false;

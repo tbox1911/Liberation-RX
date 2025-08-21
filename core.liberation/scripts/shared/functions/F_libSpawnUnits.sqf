@@ -39,6 +39,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		[_unit] joinSilent _grp;
 		if (_mission_ai) then {
 			_unit setVariable ["GRLIB_mission_AI", true, true];
+			_unit setVariable ["ace_sys_wounds_uncon", false];
 			_unit setVariable ["acex_headless_blacklist", true, true];
 			_unit setSkill ["courage", 1];
 			_unit allowFleeing 0;

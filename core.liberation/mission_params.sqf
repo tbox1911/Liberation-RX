@@ -741,6 +741,19 @@ _Mission_Params = [
             localize "STR_DEATHCHAT_OPT1"
         ]]
     ]],
+GRLIB_PARAM_ForceEnglish
+    [GRLIB_PARAM_ForceEnglish, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_FORCE_ENG"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_FORCE_ENG_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_FORCE_ENG_OPT0",
+            localize "STR_FORCE_ENG_OPT1"
+        ]]
+    ]],
     [GRLIB_PARAM_MaxSpawnPoint, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 3],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_SPAWN_MAX"],

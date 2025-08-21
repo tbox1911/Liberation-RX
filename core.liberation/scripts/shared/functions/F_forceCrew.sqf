@@ -67,6 +67,7 @@ private _grp = createGroup [_side, true];
 			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
 			[_path, _unit] call F_getTemplateFile;
 			[_unit] spawn reammo_ai;
+			if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
 		};
 		case GRLIB_side_civilian: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];

@@ -250,11 +250,11 @@
 		</Key>
 		<Key ID="STR_MOVECLOSE">
 			<Original>-- Move closer</Original>
-			<French>-- Raprocher</French>		
+			<French>-- Raprocher</French>
 		</Key>
 		<Key ID="STR_MOVEFAR">
 			<Original>-- Move farther</Original>
-			<French>-- Eloigner</French>		
+			<French>-- Eloigner</French>
 		</Key>
 		<Key ID="STR_MODE">
 			<Original>-- Follow terrain</Original>
@@ -6196,6 +6196,10 @@
 			<Portuguese>Desabilitar chat/voz se estiver ferido</Portuguese>
 			<Czech>V případě zranění deaktivujte chat/hlas</Czech>
 		</Key>
+		<Key ID="STR_FORCE_ENG">
+			<Original>Force friendly units to speak English</Original>
+			<French>Forcer les unités amies à parler Anglais</French>
+		</Key>
 
 		<!-- Permissions -->
 		<Key ID="STR_PERMISSION_NO_VIP">
@@ -11535,6 +11539,18 @@
 			<Portuguese>Ativar notificações de morte</Portuguese>
 			<Czech>Povolit oznámení o úmrtích</Czech>
 		</Key>
+		<Key ID="STR_FORCE_ENG_DESC">
+			<Original>Force our units to speak in English</Original>
+			<French>Forcer nos unités à parler en Anglais</French>
+		</Key>
+		<Key ID="STR_FORCE_ENG_OPT0">
+			<Original>Units use their own language</Original>
+			<French>les unités utilisent leur propre langue</French>
+		</Key>
+		<Key ID="STR_FORCE_ENG_OPT1">
+			<Original>Units speak English</Original>
+			<French>Nos unités parle Anglais</French>
+		</Key>
 		<Key ID="STR_PARAM_SPAWN_MAX_DESC">
 			<Original>Sets the maximum number of spawn points available.</Original>
 			<Russian>Устанавливает максимальное число точек возрождения.</Russian>
@@ -14448,7 +14464,7 @@
 		</Key>
 		<Key ID="STR_VEHICLEREP_MESSAGE2">
 			<Original>The %1 has been secured, it's all yours ! well done.</Original>
-		</Key>		
+		</Key>
 
 		<!-- mission_DefendPatrol.sqf -->
 		<Key ID="STR_DEFPATROL">
@@ -14459,7 +14475,7 @@
 		</Key>
 		<Key ID="STR_DEFPATROL_MESSAGE2">
 			<Original>The Squad Patrol is safe now, well done!</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_DEFPATROL_MESSAGE3">
 			<Original>All members of the Squad Patrol are...&lt;br/&gt;&lt;t color='%1'&gt;DEAD&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The High Command is very unhappy!</Original>
 		</Key>
