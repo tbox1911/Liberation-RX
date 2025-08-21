@@ -1,9 +1,8 @@
 if (isDedicated || !hasInterface) exitWith {};
-GRLIB_ParamControls = [];
 
 GRLIB_SetupParamMenu = {
     if (!dialog || !GRLIB_DialogOpen || !hasInterface) exitWith {};
-
+    GRLIB_ParamControls = [];
     _display = findDisplay 5119;
     _idx = 1;
 
@@ -34,7 +33,7 @@ GRLIB_SetupParamMenu = {
                     _control ctrlSetBackgroundColor [0.75,1,0.75,0.12];
                     _control ctrlCommit 0;
                     GRLIB_ParamControls pushBack _control;
-                };	
+                };
                 _control = _display ctrlCreate [ "RscText", (100 + _idx), _display displayCtrl 9969 ];
                 _control ctrlSetPosition [ 0,  (_idx * 0.025) * safezoneH, 0.45 * safeZoneW, 0.025  * safezoneH];
                 _control ctrlSetText (_hash get GRLIB_PARAM_NameKey);
@@ -53,12 +52,11 @@ GRLIB_SetupParamMenu = {
                 };
                 GRLIB_ParamControls pushBack _control;
 
-                { 
+                {
                     _control lbAdd _x;
                 } forEach (_hash get GRLIB_PARAM_OptionLabelKey);
                 _optionDescription = _hash getOrDefault [GRLIB_PARAM_OptionDescriptionKey, []];
-                { 
-                    
+                {
                     _control lbSetTooltip [_forEachIndex, _x];
                 } forEach _optionDescription;
 
@@ -76,7 +74,7 @@ GRLIB_SetupParamMenu = {
             } forEach _paramArray;
         };
     } foreach GRLIB_PARAM_CatOrder;
-    
+
 };
 
 GRLIB_SetValue = {
@@ -90,10 +88,10 @@ GRLIB_SetValue = {
 
 GRLIB_CreateParamDialog = {
     if (!hasInterface) exitWith {};
-    [] call GRLIB_CloseDialog;
+    closeDialog 0;
+    GRLIB_DialogOpen = true;
     createDialog "liberation_params";
     waitUntil { dialog };
-    GRLIB_DialogOpen = true;
     _display = findDisplay 5119;
     (findDisplay 5119) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { [] call GRLIB_cancelParams; (findDisplay 5119) displayRemoveEventHandler ['KeyDown', _thisEventHandler];  }"];
     _control = _display ctrlCreate ["RscText", (100 + 0), _display displayCtrl 9969];
@@ -101,6 +99,7 @@ GRLIB_CreateParamDialog = {
     _control ctrlSetText format ["Parameters Profile name: %1", GRLIB_paramsV2_save_key];
     _control ctrlSetTextColor [0.5,0.5,0.5,1];
     _control ctrlCommit 0;
+    GRLIB_ModParams = +GRLIB_LRX_params;
     [] call GRLIB_SetupParamMenu;
 };
 
@@ -110,20 +109,33 @@ GRLIB_refreshDialog = {
     {
         ctrlDelete _x;
     } forEach GRLIB_ParamControls;
-    GRLIB_ParamControls = [];
     [] call GRLIB_SetupParamMenu;
 };
 
 GRLIB_resetParams = {
     if (!dialog || !GRLIB_DialogOpen || !hasInterface) exitWith {};
-    GRLIB_ModParams = [] call GRLIB_DefaultParams;
+    GRLIB_ModParams = ([] call GRLIB_DefaultParams);
     [] call GRLIB_refreshDialog;
 };
 
 GRLIB_cancelParams = {
     if (!dialog || !GRLIB_DialogOpen || !hasInterface) exitWith {};
-    GRLIB_ModParams = +GRLIB_LRX_params;
     [] call GRLIB_CloseDialog;
+    private _mod_west = [GRLIB_PARAM_ModPresetWest] call lrx_getParamValue;
+    private _mod_east = [GRLIB_PARAM_ModPresetEast] call lrx_getParamValue;
+    private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
+    private _side_west = _lrx_liberation_savegame select 7;
+	private _side_east = _lrx_liberation_savegame select 8;
+    private _prefly_check = (
+		(typeName _mod_west != "STRING" || typeName _mod_east != "STRING") ||
+		(_mod_west == "---" || _mod_east == "---") ||
+		(GRLIB_mod_list_west find _mod_west < 0 || GRLIB_mod_list_east find _mod_east < 0) ||
+		(([_mod_west, _mod_east] findIf {!([_x] call GRLIB_Template_Modloaded)}) != -1) ||
+        (GRLIB_force_load == 0 && (_side_west != _mod_west || _side_east != _mod_east))
+	);
+	if (_prefly_check) then { ["LOSER"] remoteExec ["endMission", 0] };
+    GRLIB_ParamsInitialized = true;
+    publicVariable "GRLIB_ParamsInitialized";
 };
 
 GRLIB_saveParams = {
@@ -152,11 +164,6 @@ GRLIB_saveParams = {
 
 GRLIB_CloseDialog = {
     if (!dialog || !GRLIB_DialogOpen || !hasInterface) exitWith {};
-    // Close the dialog
     GRLIB_DialogOpen = false;
     closeDialog 0;
-    GRLIB_ParamControls = [];
 };
-
-GRLIB_DialogOpen = false;
-GRLIB_ModParams = +GRLIB_LRX_params;

@@ -1,5 +1,4 @@
 if (isDedicated || !hasInterface) exitWith {};
-private ["_selection", "_value", "_value_raw", "_data", "_save_data", "_category", "_groupParams", "_paramArray"];
 
 waitUntil {!(isNull (findDisplay 46))};
 disableUserInput false;
@@ -19,5 +18,7 @@ if ( !([] call is_admin) && !GRLIB_ParamsInitialized) then {
 if !([] call is_admin) exitWith { disableUserInput true };
 
 waitUntil { sleep 0.5; !isNil "GRLIB_LRX_params" };
-
 [] call GRLIB_CreateParamDialog;
+
+waitUntil { sleep 0.1; !GRLIB_DialogOpen };
+disableUserInput true;
