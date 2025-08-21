@@ -741,7 +741,6 @@ _Mission_Params = [
             localize "STR_DEATHCHAT_OPT1"
         ]]
     ]],
-GRLIB_PARAM_ForceEnglish
     [GRLIB_PARAM_ForceEnglish, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_FORCE_ENG"],
