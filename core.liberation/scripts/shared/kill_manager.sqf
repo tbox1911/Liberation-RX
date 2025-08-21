@@ -94,7 +94,7 @@ if ( isServer ) then {
 				_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
 				_isZombie = (_unit_class select [0,10] == "RyanZombie");
 				if ( _isKamikaz ) exitWith {
-					_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer] ;
+					_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer];
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 					[_killer, 11] call F_addScore;
 					[_killer, 1500] remoteExec ["addrating", owner _killer];
@@ -112,6 +112,11 @@ if ( isServer ) then {
 							if (_score > GRLIB_perm_air) then { _penalty = GRLIB_civ_penalties*3 };
 							if (_score > GRLIB_perm_max) then { _penalty = GRLIB_civ_penalties*4 };
 							if (_indirect_kill) then { _penalty = GRLIB_civ_penalties };
+							if (_killer getVariable ["GREUH_reput_count", 0] == -100) then {
+								_penalty = 100;
+								_msg = format ["Player %1, -%2 score penalty! you kill too many civilians!", name _killer, _penalty];
+								[gamelogic, _msg] remoteExec ["globalChat", owner _killer];
+							};
 							[_killer, -_penalty] call F_addScore;
 							[_killer, -5] call F_addReput;
 							[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
@@ -131,7 +136,7 @@ if ( isServer ) then {
 							_owner_player = _owner_id call BIS_fnc_getUnitByUID;
 							[_owner_player, -GRLIB_civ_penalties] call F_addScore;
 							[_owner_player, -1] call F_addReput;
-							_msg = format ["%1, Your AI kill a Civilian !!", name _owner_player] ;
+							_msg = format ["%1, Your AI kill a Civilian !!", name _owner_player];
 							[gamelogic, _msg] remoteExec ["globalChat", 0];
 							[name _unit, GRLIB_civ_penalties, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
 						};
@@ -215,7 +220,7 @@ if ( isServer ) then {
 			_owner_id = getPlayerUID _killer;
 			if ( !(_unit getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server", _owner_id]) ) then {
 				_penalty = 50;
-				_msg = format ["Penalty of %1 to %2 for killing a Friendly vehicle !!", _penalty, name _killer] ;
+				_msg = format ["Penalty of %1 to %2 for killing a Friendly vehicle !!", _penalty, name _killer];
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
 				[_killer, -_penalty] call F_addScore;
 			};
