@@ -46,8 +46,6 @@ if (!isDedicated && hasInterface) then {
 
 if (!abort_loading) then {
 	[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
-	[] spawn compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init.sqf";
-
 	if (GRLIB_ACE_enabled) then {
 		[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
 	} else {

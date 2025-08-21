@@ -1,7 +1,3 @@
-// Wait Arsenal
-waitUntil {sleep 0.1; !isNil "LRX_arsenal_init_done"};
-waitUntil {sleep 0.1; LRX_arsenal_init_done};
-
 // Cleanup
 removeAllWeapons player;
 removeAllAssignedItems player;

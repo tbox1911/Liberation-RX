@@ -89,6 +89,9 @@ GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 //For commander mode: Local to server - client doesnt receive info about these
 GRLIB_fobSects = [];
 
+// Init LRX vehicle paints
+[] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_static.sqf";
+
 // Init Chimera unit look
 [] call compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
 

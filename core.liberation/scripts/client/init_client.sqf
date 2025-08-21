@@ -101,6 +101,7 @@ if (GRLIB_kick_idle > 0) then {
 	[] execVM "scripts\client\misc\kick_idle.sqf";
 };
 
+waitUntil {sleep 1; alive player};
 if (GRLIB_respawn_cooldown > 0) then {
 	if (isServer) exitWith {};
 	waitUntil {sleep 1; !isNil "BTC_logic"};
@@ -168,13 +169,17 @@ waituntil {
 
 // LRX Arsenal
 [] execVM "addons\LARs\liberationArsenal.sqf";
+sleep 1;
 waituntil {
 	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
 	uIsleep 1;
 	titleText ["... Please Wait ...", "BLACK FADED", 100];
 	uIsleep 1;
-	(!isNil "LRX_arsenal_init_done");
+	(LRX_arsenal_init_done);
 };
+titleText ["", "BLACK FADED", 100];
+[] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_client.sqf";
+sleep 1;
 
 // Start intro
 startgame = 0;

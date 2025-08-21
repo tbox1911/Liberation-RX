@@ -1,5 +1,5 @@
-// A custom Arsenal for Liberation RX by pSiKO
-// from: https://github.com/LarrowZurb/BlacklistArsenal
+// A custom Arsenal Filter for Liberation RX by pSiKO
+// from a script of LarrowZurb ()https://github.com/LarrowZurb/BlacklistArsenal)
 
 // How it's supposed to work:
 //
@@ -18,9 +18,9 @@
 // - FilterArsenal = 3    Strict Mode + MOD: The player can ONLY use items present in the Arsenal.
 //                        plus items from the current MOD.
 //
-// - FilterArsenal = 4    Personal Arsenal - no autofill
+// - FilterArsenal = 4    Personal Arsenal - you have what you've put in, no access to the Virtual Arsenal
 //
-// - FilterArsenal = 5    Whitelist/Blacklist Only - no autofill
+// - FilterArsenal = 5    Whitelist/Blacklist Only - no autofill the Virtual Arsenal
 //
 // The Whitelist and Blacklist apply from FilterArsenal = 1 and up
 //
@@ -35,6 +35,7 @@
 
 if (isDedicated) exitWith {};
 
+LRX_arsenal_init_done = false;
 waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
 
 // Filters disabled
@@ -47,7 +48,6 @@ if (GRLIB_filter_arsenal == 0) exitWith {
 
 // Personal Arsenal
 if (GRLIB_filter_arsenal == 4) exitWith {
-	LRX_arsenal_init_done = false;
 	waitUntil {
 		sleep 1;
 		GRLIB_personal_arsenal = player getVariable format ["GRLIB_personal_arsenal_%1", PAR_Grp_ID];
