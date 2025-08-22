@@ -17,6 +17,7 @@ do_score = 0;
 do_spawn = 0;
 do_ammo = 0;
 do_fuel = 0;
+do_reput = 0;
 do_rejoin = 0;
 do_export = 0;
 do_import = 0;
@@ -112,27 +113,8 @@ private _output_controls = [531,532,533,534,535,536];
 { ctrlShow [_x, false] } foreach _output_controls;
 
 // Action buttons
-private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619,1623,1624,1625,1626];
+private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619,1623,1624,1631,1625,1626];
 private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620,1626];
-
-(_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
-(_display displayCtrl 1603) ctrlSetToolTip localize "STR_ADD_XP_TOOLTIP";
-(_display displayCtrl 1615) ctrlSetText getMissionPath "res\ui_arsenal.paa";
-(_display displayCtrl 1615) ctrlSetToolTip localize "STR_ADD_AMMO_TOOLTIP";
-(_display displayCtrl 1624) ctrlSetText getMissionPath "res\ui_wfuel.paa";
-(_display displayCtrl 1624) ctrlSetToolTip localize "STR_ADD_FUEL_TOOLTIP";
-(_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
-(_display displayCtrl 1616) ctrlSetToolTip localize "STR_REJOIN_PLAYER_TOOLTIP";
-(_display displayCtrl 1612) ctrlSetToolTip localize "STR_SELECTED_PLAYER_TOOLTIP";
-(_display displayCtrl 1619) ctrlSetToolTip localize "STR_ADD_AMOUNT_TOOLTIP";
-(_display displayCtrl 1621) ctrlSetText getMissionPath "res\ui_redeploy.paa";
-(_display displayCtrl 1621) ctrlSetToolTip localize "STR_KICK_PLAYER_TOOLTIP";
-(_display displayCtrl 1622) ctrlSetText getMissionPath "res\skull.paa";
-(_display displayCtrl 1622) ctrlSetToolTip localize "STR_BAN_PLAYER_TOOLTIP";
-(_display displayCtrl 1610) ctrlSetToolTip localize "STR_DELETE_OBJECT_TOOLTIP";
-(_display displayCtrl 1626) ctrlSetToolTip localize "STR_CALL_MAGIC_MOWER_TOOLTIP";
-(_display displayCtrl 1628) ctrlSetToolTip localize "STR_FORCE_SAVE_TOOLTIP";
-(_display displayCtrl 1629) ctrlSetToolTip localize "STR_FORCE_CLEANUP_TOOLTIP";
 
 // Build Banned
 [_ban_combo] call _getBannedUID;
@@ -244,6 +226,17 @@ while { alive player && dialog } do {
 		[_player, 0, _amount] remoteExec ["ammo_add_remote_call", 2];
 		_msg = format ["Add %1 Fuel to player: %2.", _amount, _name];
 		_admin_msg = format ["Admin (%1) add %2 Fuel to player %3", name player, _amount, _name];
+	};
+
+	if (do_reput == 1) then {
+		do_reput = 0;
+		_name = _score_combo lbText (lbCurSel _score_combo);
+		_uid = _score_combo lbData (lbCurSel _score_combo);
+		_amount = parseNumber (ctrlText _ammount_edit);
+		_player = _uid call BIS_fnc_getUnitByUID;
+		[_player, _amount] remoteExec ["F_addReput", 2];
+		_msg = format ["Add %1 Reputation to player: %2.", _amount, _name];
+		_admin_msg = format ["Admin (%1) add %2 Reputation to player %3", name player, _amount, _name];
 	};
 
 	if (do_rejoin == 1) then {

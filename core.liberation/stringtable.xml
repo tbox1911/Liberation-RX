@@ -561,7 +561,7 @@
 			<Chinesesimp>FOB船只</Chinesesimp>
 			<Chinese>FOB船隻</Chinese>
 		</Key>
-		<Key ID="STR_RESPAWN_TRUCK">
+		<Key ID="STR_RESPAWN">
 			<Original>Respawn</Original>
 			<French>Respawn</French>
 			<German>Respawn</German>
@@ -6027,7 +6027,7 @@
 			<Chinesesimp>地图重启时保留玩家数据（小队、武器库、虚拟车库）</Chinesesimp>
 			<Chinese>地圖重啓時保留玩家數據（小隊、武器庫、虛擬車庫）</Chinese>
 		</Key>
-		<Key ID="STR_RESPAWN">
+		<Key ID="STR_PARAM_RESPAWN">
 			<Original>PAR: Respawn button Timer (sec)</Original>
 			<French>PAR: Attente Bouton Respawn (sec)</French>
 			<Chinesesimp>PAR：重生按钮计时器（秒）</Chinesesimp>
@@ -6801,6 +6801,19 @@
 		</Key>
 
 		<!-- admin_menu.sqf -->
+		<Key ID="STR_ADMIN_ARSENAL_TOOLTIP">
+			<Original>Spawn an Arsenal Box</Original>	
+			<French>Construire caisse d'Arsenal</French>
+		</Key>
+		<Key ID="STR_ADMIN_AMMOBOX_TOOLTIP">
+			<Original>Spawn an Vehicle Ammo Box</Original>	
+			<French>Construire caisse Munition pour vehicles</French>
+		</Key>
+		<Key ID="STR_ADMIN_RESPAWN_TOOLTIP">
+			<Original>Spawn a Mobile Respawn Tent</Original>	
+			<French>Construire tente de Redeploiement</French>
+		</Key>
+
 		<Key ID="STR_ADD_XP_TOOLTIP">
 			<Original>Add XP Score</Original>
 			<French>Ajouter des points d'XP</French>
@@ -6813,6 +6826,7 @@
 			<Portuguese>Adicionar XP</Portuguese>
 			<Czech>Přidat XP body</Czech>
 		</Key>
+
 		<Key ID="STR_ADD_AMMO_TOOLTIP">
 			<Original>Add Ammo credit</Original>
 			<French>Ajouter des crédits de munitions</French>
@@ -6825,6 +6839,7 @@
 			<Portuguese>Adicionar crédito de munição</Portuguese>
 			<Czech>Přidat munici (kredity)</Czech>
 		</Key>
+
 		<Key ID="STR_ADD_FUEL_TOOLTIP">
 			<Original>Add Fuel</Original>
 			<French>Ajouter du carburant</French>
@@ -6836,6 +6851,11 @@
 			<Japanese>燃料を追加</Japanese>
 			<Portuguese>Adicionar combustível</Portuguese>
 			<Czech>Přidat palivo</Czech>
+		</Key>
+
+		<Key ID="STR_ADD_REPUT_TOOLTIP">
+			<Original>Add Reputation points</Original>
+			<French>Ajouter des points de Reputation</French>
 		</Key>
 
 		<Key ID="STR_REJOIN_PLAYER_TOOLTIP">
@@ -11650,7 +11670,7 @@
 			<Portuguese>Permitir reimplantação apenas em FOBs</Portuguese>
 			<Czech>Povolit redeploy pouze na FOBy</Czech>
 		</Key>
-		<Key ID="STR_RESPAWN_DESC">
+		<Key ID="STR_PARAM_RESPAWN_DESC">
 			<Original>Sets the respawn delay (in seconds) after a player dies.</Original>
 			<Russian>Устанавливает задержку возрождения (в секундах) после смерти игрока.</Russian>
 			<French>Définit le délai de réapparition (en secondes) après la mort d'un joueur.</French>

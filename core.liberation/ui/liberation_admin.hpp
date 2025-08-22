@@ -45,6 +45,7 @@ class liberation_admin {
     "Item05Input",
     "Item06Button",
     "Item07Button",
+    "Item08Button",
 	  "CancelButton",
     "teleport_cb_text",
     "godmod_cb_text",
@@ -79,6 +80,7 @@ class liberation_admin {
     idc = 1600;
     action = "do_spawn=1";
     text = $STR_ADMIN_ARSENAL;
+    tooltip = $STR_ADMIN_ARSENAL_TOOLTIP;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
     w = 0.042 * safezoneW;
@@ -88,6 +90,7 @@ class liberation_admin {
     idc = 1601;
     action = "do_spawn=2";
     text = $STR_ADMIN_AMMOBOX;
+    tooltip = $STR_ADMIN_AMMOBOX_TOOLTIP;
     x = 0.2725 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
     w = 0.042 * safezoneW;
@@ -96,7 +99,8 @@ class liberation_admin {
   class RespawnButton: StdButton {
     idc = 1623;
     action = "do_spawn=3";
-    text = $STR_RESPAWN_TRUCK;
+    text = $STR_RESPAWN;
+    tooltip = $STR_ADMIN_RESPAWN_TOOLTIP;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
     w = 0.042 * safezoneW;
@@ -190,34 +194,48 @@ class liberation_admin {
   class Item02Button: RscActiveText {
     idc = 1603;
     action = "do_score=1";
-    text = "";
+    text = "res\ui_confirm.paa";
+    tooltip = $STR_ADD_XP_TOOLTIP;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.416 * safezoneH + safezoneY;
-    w = 0.0290 * safezoneW;
+    w = 0.020 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class Item03Button: RscActiveText {
     idc = 1615;
     action = "do_ammo=1";
-    text = "";
-    x = 0.2567 * safezoneW + safezoneX;
+    text = "res\ui_arsenal.paa";
+    tooltip = $STR_ADD_AMMO_TOOLTIP;
+    x = 0.2507 * safezoneW + safezoneX;
     y = 0.416 * safezoneH + safezoneY;
-    w = 0.0290 * safezoneW;
+    w = 0.020 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class Item04Button: RscActiveText {
     idc = 1624;
     action = "do_fuel=1";
-    text = "";
-    x = 0.2859 * safezoneW + safezoneX;
+    text = "res\ui_wfuel.paa";
+    tooltip = $STR_ADD_FUEL_TOOLTIP;
+    x = 0.2740 * safezoneW + safezoneX;
     y = 0.416 * safezoneH + safezoneY;
-    w = 0.0290 * safezoneW;
+    w = 0.022 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class Item08Button: RscActiveText {
+    idc = 1631;
+    action = "do_reput=1";
+    text = "res\rep\rep5.paa";
+    tooltip = $STR_ADD_REPUT_TOOLTIP;
+    x = 0.2942 * safezoneW + safezoneX;
+    y = 0.416 * safezoneH + safezoneY;
+    w = 0.020 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class Item05Button: RscActiveText {
     idc = 1616;
     action = "do_rejoin=1";
-    text = "";
+    text = "res\ui_rotation.paa";
+    tooltip = $STR_REJOIN_PLAYER_TOOLTIP;
     x = 0.2859 * safezoneW + safezoneX;
     y = 0.466 * safezoneH + safezoneY;
     w = 0.0290 * safezoneW;
@@ -233,6 +251,7 @@ class liberation_admin {
     h = 0.04 * safezoneH;
 		text = "";
 		action = "";
+    tooltip = $STR_ADD_AMOUNT_TOOLTIP;
 		colorText[] = COLOR_WHITE;
 		colorSelection[] = COLOR_BRIGHTGREEN;
 		autocomplete = "";
@@ -240,7 +259,8 @@ class liberation_admin {
   class Item06Button: RscActiveText {
     idc = 1621;
     action = "do_kick=1";
-    text = "";
+    text = "res\ui_redeploy.paa";
+    tooltip = $STR_KICK_PLAYER_TOOLTIP;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.466 * safezoneH + safezoneY;
     w = 0.0290 * safezoneW;
@@ -249,7 +269,8 @@ class liberation_admin {
   class Item07Button: RscActiveText {
     idc = 1622;
     action = "do_ban=1";
-    text = "";
+    text = "res\skull.paa";
+    tooltip = $STR_BAN_PLAYER_TOOLTIP;
     x = 0.2567 * safezoneW + safezoneX;
     y = 0.466 * safezoneH + safezoneY;
     w = 0.0290 * safezoneW;
@@ -257,6 +278,7 @@ class liberation_admin {
   };
   class PlayerList: StdCombo {
     idc = 1612;
+    tooltip = $STR_SELECTED_PLAYER_TOOLTIP;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.416 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
@@ -293,6 +315,7 @@ class liberation_admin {
     idc = 1610;
     action = "do_delete=1";
     text = $STR_ADMIN_DELETE;
+    tooltip = $STR_DELETE_OBJECT_TOOLTIP;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
     w = 0.042 * safezoneW;
@@ -302,6 +325,7 @@ class liberation_admin {
     idc = 1626;
     action = "closeDialog 0;buildtype=9;build_unit=[land_cutter_typename,[],1,[],[],[],[]];dobuild=1";
     text = $STR_ADMIN_MOWER;
+    tooltip = $STR_CALL_MAGIC_MOWER_TOOLTIP;
     x = 0.2725 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
     w = 0.042 * safezoneW;
@@ -329,6 +353,7 @@ class liberation_admin {
     idc = 1628;
     action = "do_save=1";
     text = $STR_ADMIN_SAVE;
+    tooltip = $STR_FORCE_SAVE_TOOLTIP;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
     w = 0.042 * safezoneW;
@@ -338,6 +363,7 @@ class liberation_admin {
     idc = 1629;
     action = "GRLIB_force_cleanup = true; publicVariable 'GRLIB_force_cleanup'";
     text = $STR_ADMIN_CLEAN;
+    tooltip = $STR_FORCE_CLEANUP_TOOLTIP;
     x = 0.3725 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
     w = 0.042 * safezoneW;
