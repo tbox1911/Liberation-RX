@@ -516,18 +516,6 @@ _Mission_Params = [
             localize "STR_PARAMS_PATROLS_OPT3"
         ]]
     ]],
-    [GRLIB_PARAM_Wildlife, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1],
-        [GRLIB_PARAM_NameKey, localize "STR_PARAM_WILDLIFE"],
-        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
-        [GRLIB_PARAM_OptionValuesKey, [0,1]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_WILDLIFE_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAM_WILDLIFE_OPT0",
-            localize "STR_PARAM_WILDLIFE_OPT1"
-        ]]
-    ]],
     [GRLIB_PARAM_Civilians, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 1],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_CIVILIANS"],
@@ -545,6 +533,18 @@ _Mission_Params = [
             localize "STR_PARAMS_CIVILIANS_OPT1",
             localize "STR_PARAMS_CIVILIANS_OPT2",
             localize "STR_PARAMS_CIVILIANS_OPT3"
+        ]]
+    ]],
+    [GRLIB_PARAM_Wildlife, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_WILDLIFE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_WILDLIFE_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_PARAM_WILDLIFE_OPT0",
+            localize "STR_PARAM_WILDLIFE_OPT1"
         ]]
     ]],
     [GRLIB_PARAM_AirSupport, createHashMapFromArray [
