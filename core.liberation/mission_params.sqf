@@ -785,11 +785,11 @@ _Mission_Params = [
     ]],
     [GRLIB_PARAM_Respawn, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 20],
-        [GRLIB_PARAM_NameKey, localize "STR_RESPAWN"],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAM_RESPAWN"],
         [GRLIB_PARAM_OptionLabelKey, ["5","10","20","25","30","60"]],
         [GRLIB_PARAM_OptionValuesKey, [5,10,20,25,30,60]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_PlayerCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_RESPAWN_DESC"],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_RESPAWN_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_RESPAWN_OPT0",
             localize "STR_RESPAWN_OPT1",

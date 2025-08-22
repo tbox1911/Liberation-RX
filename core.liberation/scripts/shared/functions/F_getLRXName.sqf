@@ -36,13 +36,13 @@ if ( _class == FOB_boat_typename ) then {
 	_text = localize "STR_FOBBOAT";
 };
 if ( _class == Respawn_truck_typename ) then {
-	_text = format ["%1 %2", localize "STR_RESPAWN_TRUCK", "(Truck)"];
+	_text = format ["%1 %2", localize "STR_RESPAWN", "(Truck)"];
 };
 if ( _class == mobile_respawn ) then {
-	_text = format ["%1 %2", localize "STR_RESPAWN_TRUCK", "(Tent)"];
+	_text = format ["%1 %2", localize "STR_RESPAWN", "(Tent)"];
 };
 if ( _class == huron_typename ) then {
-	_text = format ["%1 %2", localize "STR_RESPAWN_TRUCK", "(Heli)"];
+	_text = format ["%1 %2", localize "STR_RESPAWN", "(Heli)"];
 };
 if ( _class == canister_fuel_typename ) then {
 	_text = "Fuel Jerican";
