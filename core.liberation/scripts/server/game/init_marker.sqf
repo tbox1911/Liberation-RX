@@ -37,6 +37,7 @@ private ["_man", "_manPos"];
 
 // SHOP
 private ["_shop", "_desk_dir", "_desk_pos", "_desk", "_man", "_offset", "_str"];
+private _getRatio = { parseNumber(0.70 min (0.45 + random 0.25) toFixed 2) };
 {
 	_shop = nearestObjects [_x, ["House"], 10] select 0;
 	if (isNil "_shop") then { diag_log format ["--- LRX Error: no building found at pos %1", _x]; _shop = objNull };
@@ -74,6 +75,7 @@ private ["_shop", "_desk_dir", "_desk_pos", "_desk", "_man", "_offset", "_str"];
 	_manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_desk_dir] call BIS_fnc_rotateVector2D);
 	_man = createAgent [SHOP_Man, zeropos, [], 5, "CAN_COLLIDE"];
 	_man setVariable ["GRLIB_SHOP_group", true, true];
+	_man setVariable ["SHOP_ratio", ([] call _getRatio), true];
 	_man allowDamage false;
 	_man disableCollisionWith _desk;
 
