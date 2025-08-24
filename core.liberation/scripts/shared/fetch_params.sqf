@@ -298,6 +298,7 @@ GRLIB_min_score_player = 20;				// Minimal player score to be saved
 GRLIB_opfor_cap = GRLIB_opforcap * GRLIB_unitcap;		// Maximal number of enemies units
 GRLIB_blufor_cap = 50;						// Maximal number of friendly units
 GRLIB_max_active_sectors = 4;				// Maximal active sectors at the same time
+GRLIB_recycling_percentage = 0.75;			// Factor for recycling cost
 GRLIB_battlegroup_size = 4;
 GRLIB_battlegroup_size = GRLIB_battlegroup_size * GRLIB_unitcap;
 GRLIB_civilians_amount = 12;
