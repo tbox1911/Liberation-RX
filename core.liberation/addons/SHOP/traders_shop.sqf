@@ -9,7 +9,7 @@ private _ctrl_sell = _display displayCtrl (110);
 private _ctrl_buy = _display displayCtrl (111);
 private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
 private _cfg = configFile >> "cfgVehicles";
-private _ratio = (player nearEntities [SHOP_Man, 10] select 0) getvariable ["SHOP_ratio", 0.75];
+private _ratio = (player nearEntities [SHOP_Man, 10] select 0) getvariable ["SHOP_ratio", 0.45];
 
 private _sell_list = [];
 private _sell_blacklist = [];
@@ -78,10 +78,10 @@ while { dialog && alive player } do {
 
 		private _sell_list_dlg = [];
 		{
-			private _price = [(typeOf _x), SHOP_list] call F_getObjectPrice;
+			private _price = 1 max ([(typeOf _x)] call F_getObjectPrice);
 			_sell_list_dlg pushBack [
 				(typeOf _x),
-				round ((_price * GRLIB_recycling_percentage) * _ratio * (1 - damage _x))
+				round ((_price * _ratio) * (1 - damage _x))
 			];			
 		} forEach _sell_list;
 

@@ -5,5 +5,5 @@ if (count _list == 0) then {
 };
 
 private _ret = _list select { (_x select 0) == _class } select 0 select 2;
-if (isNil "_ret") then { _ret = 1 };
+if (isNil "_ret") then { _ret = 0 };
 _ret;
