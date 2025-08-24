@@ -1,6 +1,6 @@
 params ["_target", "_caller", "_actionId", "_trench"];
 private [
-	"_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", 
+	"_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew",
 	"_selected_item", "_linked_state", "_link_color", "_link_str", "_picture",
 	"_veh_man", "_veh_ammo", "_veh_fuel"
 ];
@@ -44,9 +44,11 @@ if (count squads == 0) then {
 	ctrlShow [ 1085, false ];
 };
 
-private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
+private _nearest_fob = [] call F_getNearestFob;
+private _fob_type = [_nearest_fob] call F_getFobType;
+private _near_outpost = (_fob_type == 1);
+private _water_fob = (_fob_type == 2);
 private _near_warehouse = ([player, "WAREHOUSE", GRLIB_fob_range, false] call F_check_near);
-private _water_fob = surfaceIsWater ([] call F_getNearestFob);
 private _squad_leader = (player == leader group player);
 private _has_box = false;
 { if ((_x select 0) == playerbox_typename) exitWith { _has_box = true } } foreach GRLIB_virtual_garage;
@@ -142,7 +144,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 				_veh_man = format [ "%1", _x select 1];
 				_veh_ammo = format [ "%1", _x select 2];
 				_veh_fuel =  format [ "%1", _x select 3];
-				if (_near_outpost) then { _veh_ammo = format [ "%1", round ((_x select 2) * 1.25)] };
+				if (_near_outpost) then { _veh_ammo = format [ "%1", round ((_x select 2) * 1.5)] };
 				_row = (_display displayCtrl (110)) lnbAddRow [ _entrytext, _veh_man, _veh_ammo, _veh_fuel];
 
 				_icon = getText ( _cfg >> _build_class >> "icon");

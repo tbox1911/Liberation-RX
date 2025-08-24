@@ -508,16 +508,16 @@
 			<Chinese>深度不够！ \n實際：%1米\n需要：%2米</Chinese>
 		</Key>
 		<Key ID="STR_BUILD_ERROR_DISTANCE">
-			<Original>Can't build further than %1 meters away from the FOB.</Original>
-			<French>Impossible de construire à plus de %1 mètres de la FOB.</French>
-			<German>Kann nicht weiter als %1 Meter von der FOB entfernt sein.</German>
-			<Spanish>Imposible construir más lejos de %1 metros de la FOB</Spanish>
-			<Russian>Нельзя построить дальше чем  в %1 метрах от FOB.</Russian>
+			<Original>Can't build further than %1 meters away.</Original>
+			<French>Impossible de construire à plus de %1 mètres.</French>
+			<German>Kann nicht weiter als %1 Meter entfernt sein.</German>
+			<Spanish>Imposible construir más lejos de %1 metros.</Spanish>
+			<Russian>Нельзя построить дальше чем  в %1 метрах.</Russian>
 			<Chinesesimp>不能远离FOB %1 米的距离进行建造。</Chinesesimp>
-			<Chinese>不能遠離FOB %1 米的距離進行建造。</Chinese>
-			<Japanese>FOBより %1 メートル離れているためビルド出来ません。</Japanese>
-			<Portuguese>Não é possível construir além de %1 metros de distância do FOB.</Portuguese>
-			<Czech>Nelze stavět dále než %1 metrů od FOB.</Czech>
+			<Chinese>%1 米的距離進行建造。</Chinese>
+			<Japanese>%1 メートル離れているためビルド出来ません。</Japanese>
+			<Portuguese>Não é possível construir além de %1 metros de distância.</Portuguese>
+			<Czech>Nelze stavět dále než %1 metrů.</Czech>
 		</Key>
 		<Key ID="STR_FOBBOX">
 			<Original>FOB Container</Original>

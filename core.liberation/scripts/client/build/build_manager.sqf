@@ -1,6 +1,6 @@
 private [
-	"_unit", "_pos", "_grp", "_classname", "_fob_box",
-	"_idx", "_unitrank", "_ghost_spot", "_ghost_name", "_vehicle",
+	"_unit", "_pos", "_pos_origin", "_grp", "_classname", "_fob_box",
+	"_idx", "_unitrank", "_ghost_pos", "_ghost_spot", "_ghost_name", "_vehicle",
 	"_dist", "_radius", "_actualdir", "_near_objects"
 ];
 
@@ -15,7 +15,7 @@ buildtypeSel = 0;
 
 private _buildtype = 0;
 private _buildindex = 0;
-private _maxdist = GRLIB_fob_range;
+private _maxdist = 50;
 private _truepos = [];
 private _debug_colisions = false;
 private _price = 0;
@@ -49,7 +49,7 @@ GRLIB_build_force_mode = [
 
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
-	GRLIB_preview_spheres pushback ( "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ] );
+	GRLIB_preview_spheres pushback ("Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ]);
 };
 
 { _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } foreach GRLIB_preview_spheres;
@@ -75,7 +75,10 @@ while {true} do {
 	_buildindex = buildindex;
 
 	// Init build properties
-	if ( _buildtype in [GRLIB_BuildingBuildType,GRLIB_TrenchBuildType] ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	if (_buildtype in [GRLIB_BuildingBuildType,GRLIB_TrenchBuildType]) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	_maxdist = GRLIB_fob_range;
+	_pos_origin = getPosATL player;
+	if (surfaceIsWater _pos_origin) then { _pos_origin = getPosASL player };
 
 	// Configure build properties based on _buildtype using switch-case
 	switch _buildtype do {
@@ -98,6 +101,7 @@ while {true} do {
 			_fob_box = build_vehicle;
 		};
 		case GRLIB_BuildTypeDirect: {
+			_maxdist = 30;
 			_price = 0;
 			_price_fuel = 0;
 			_classname = build_unit select 0;
@@ -126,14 +130,18 @@ while {true} do {
 	};
 
 	// Build
-	private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
-	if (_near_outpost) then { _price = round (_price * 1.25) };
-	_pos = getPosATL player;
-	if (surfaceIsWater _pos) then { _pos = getPosASL player };
+	if !(_buildtype in [GRLIB_BuildTypeDirect,99,98,97]) then {
+		_pos_origin = [] call F_getNearestFob;
+		if ([_pos_origin] call F_getFobType == 1) then {
+			// Outpost
+			_maxdist = GRLIB_outpost_range;
+			_price = round(_price * 1.5)
+		};
+	};
 
-	//diag_log format ["--- LRX: Build Called: %1 bt:%2 bi:%3 pos:%4", _classname, _buildtype, _buildindex, _pos];
+	//diag_log format ["--- LRX: Build Called: %1 bt:%2 bi:%3 pos:%4", _classname, _buildtype, _buildindex, _pos_origin];
 
-	if ( _buildtype == GRLIB_InfantryBuildType ) then {
+	if (_buildtype == GRLIB_InfantryBuildType) then {
 		if (_classname isKindOf "Dog_Base_F" || _classname in MFR_Dogs_classname) then {
 			[0,0,0, "add", _classname] call do_dog;
 		} else {
@@ -142,35 +150,33 @@ while {true} do {
 		};
 	};
 
-	if ( _buildtype == GRLIB_SquadBuildType ) then {
+	if (_buildtype == GRLIB_SquadBuildType) then {
 		if (!([_price] call F_pay)) exitWith {};
 		[_classname] call do_build_squad;
 	};
 
-	if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_TrenchBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98,97] ) then {
-		if !(_buildtype in [99,98,97]) then {
-			_pos = [] call F_getNearestFob;
-			if (player distance2D _pos < GRLIB_fob_range && surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
-				build_altitude = (getPosASL player select 2) + 0.5;
-				build_mode = 1;
-				build_water = 1;
-			};
+	// GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_TrenchBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98,97
+	if !(_buildtype in [GRLIB_InfantryBuildType, GRLIB_SquadBuildType]) then {
+		if (surfaceIsWater _pos_origin && (getPosASL player select 2) > 2) then {
+			build_altitude = (getPosASL player select 2) + 0.5;
+			build_mode = 1;
+			build_water = 1;
 		};
 
 		if (!repeatbuild) then {
 			if (build_water == 0) then {
-				if ( _buildtype == GRLIB_BuildingBuildType && !(_classname in GRLIB_build_force_mode) ) then {
+				if (_buildtype == GRLIB_BuildingBuildType && !(_classname in GRLIB_build_force_mode)) then {
 					_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,true,false,"","build_valid && build_confirmed == 1"];
 					_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
 				};
 
-				if ( _buildtype in [GRLIB_BuildingBuildType, 99, 98] ) then {
+				if (_buildtype in [GRLIB_BuildingBuildType, 99, 98]) then {
 					_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
 					_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 				};
 			};
 
-			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_TrenchBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98] ) then {
+			if (_buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_BuildingBuildType, GRLIB_TrenchBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect,99,98]) then {
 				_idactfarther = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEFAR" + "</t> <img size='1' image='R3F_LOG\icons\r3f_far.paa'/>","scripts\client\build\build_farther.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-756,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-757,false,false,"","build_confirmed == 1"];
@@ -251,7 +257,7 @@ while {true} do {
 			_dir = getdir player;
 			_pos = getPos player;
 			_truedir = 90 - _dir;
-			_truepos = [(_pos#0) + ((build_distance + _radius) * (cos _truedir)), (_pos#1) + ((build_distance + _radius) * (sin _truedir)), build_altitude];
+			_truepos = [(_pos select 0) + ((build_distance + _radius) * (cos _truedir)), (_pos select 1) + ((build_distance + _radius) * (sin _truedir)), build_altitude];
 			_actualdir = (_dir + build_rotation);
 			if (_classname in GRLIB_build_force_mode) then { build_mode = 1 };
 			switch _classname do {
@@ -267,7 +273,7 @@ while {true} do {
 			};
 
 			_actualdir = _actualdir - (floor(_actualdir / 360)) * 360;
-			if ( (_buildtype in [GRLIB_BuildingBuildType,99,98]) && ((gridmode % 2) == 1) ) then {
+			if ((_buildtype in [GRLIB_BuildingBuildType,99,98]) && ((gridmode % 2) == 1)) then {
 				switch true do {
 					case (_actualdir >= 22.5 && _actualdir <= 67.5): { _actualdir = 45 };
 					case (_actualdir >= 67.5 && _actualdir <= 112.5): { _actualdir = 90 };
@@ -322,7 +328,7 @@ while {true} do {
 			GRLIB_conflicting_objects = _near_objects;
 
 			_noObjectsClip = (_near_objects isEqualTo []);
-			_withinDistance = ((_truepos distance2D _pos) < _maxdist || _buildtype == GRLIB_BuildTypeDirect);
+			_withinDistance = ((_truepos distance2D _pos_origin) < _maxdist);
 			_boatValid = ((_classname in boats_names || build_water == 1) && _isWater);
 			_surfaceIsValid = (!_isWater || _boatValid);
 
@@ -373,20 +379,20 @@ while {true} do {
 			sleep 0.05;
 		};
 
-		if ( !alive player ) then { build_confirmed = 3 };
+		if (!alive player) then { build_confirmed = 3 };
 		GRLIB_ui_notif = "";
 
 		{ _x setpos [ 0,0,0 ] } foreach GRLIB_preview_spheres;
 
 		// Cancel build
-		if ( build_confirmed == 3 ) then {
+		if (build_confirmed == 3) then {
 			deleteVehicle _vehicle;
 			dobuild = 0;
 			sleep 2;	// time to trap build canceled
 		};
 
 		// Build done
-		if ( build_confirmed == 2 ) then {
+		if (build_confirmed == 2) then {
 			if (!([_price, _price_fuel] call F_pay)) exitWith {deleteVehicle _vehicle};
 			private _veh_dir = vectorDir _vehicle;
 			private _veh_vup = vectorUp _vehicle;
@@ -444,7 +450,7 @@ while {true} do {
 				disableUserInput true;
 				player setDir (player getDir _veh_pos);
 				private _zStart = -1;
-				private _zEnd = round (_veh_pos select 2);
+				private _zEnd = round(_veh_pos select 2);
 				private _steps = 15;
 				private _stepHeight = (_zEnd - _zStart) / _steps;
 				for "_i" from 0 to _steps do {
@@ -471,7 +477,7 @@ while {true} do {
 			};
 
 			private _owner = "";
-			if ( _buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect] ) then {
+			if (_buildtype in [GRLIB_TransportVehicleBuildType, GRLIB_CombatVehicleBuildType, GRLIB_AerialBuildType, GRLIB_DefenceBuildType, GRLIB_SupportBuildType, GRLIB_BuildTypeDirect]) then {
 				_owner = PAR_Grp_ID;
 			};
 
@@ -538,7 +544,7 @@ while {true} do {
 					[_vehicle, _compo] call RPT_fnc_CompoVehicle;
 				};
 				// Remaining Ammo
-				if ( _ammo > 0) then {
+				if (_ammo > 0) then {
 					_vehicle setVehicleAmmo _ammo;
 				};
 			};
