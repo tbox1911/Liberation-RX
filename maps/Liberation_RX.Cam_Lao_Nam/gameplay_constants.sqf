@@ -9,7 +9,6 @@ GRLIB_recycling_percentage = 0.75;
 GRLIB_vulnerability_timer = 900;
 GRLIB_defended_buildingpos_part = 0.4;
 GRLIB_secondary_objective_impact = 0.7;
-GRLIB_fob_range = 125;
 GRLIB_surrender_chance = 80;
 GRLIB_halo_altitude = 2000;
 GRLIB_perm_ban = -30;

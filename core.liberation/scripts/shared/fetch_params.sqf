@@ -292,6 +292,8 @@ PAR_grave = ["PAR_Grave"] call lrx_getParamValue;
 // Hardcoded
 GRLIB_endgame = 0;
 if (isNil "GRLIB_global_stop") then { GRLIB_global_stop = 0 };
+GRLIB_fob_range = 125;						// FOB build range max
+GRLIB_outpost_range = 80;					// Outpost build range max
 GRLIB_min_score_player = 20;				// Minimal player score to be saved
 GRLIB_opfor_cap = GRLIB_opforcap * GRLIB_unitcap;		// Maximal number of enemies units
 GRLIB_blufor_cap = 50;						// Maximal number of friendly units
