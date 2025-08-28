@@ -9,6 +9,7 @@ if (speed vehicle _unit >= 3) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
 if (_unit getVariable ["GRLIB_action_inuse", false]) exitWith {};
 if (round (getPosATL _unit select 2) > 2) exitWith {};
+if (underwater vehicle _unit) exitWith { deleteVehicle _unit };
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
 
 // Exit if forest / tree
@@ -37,7 +38,7 @@ while { (lineIntersects [_spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 
 if (lineIntersects [_spawnpos, (_spawnpos vectorAdd [0,0,_maxalt]), _unit]) then {
 	diag_log format ["--- LRX Error: unit %1 is still blocked at %2...", name _unit, getpos _unit];
-	// deleteVehicle _unit;
+	deleteVehicle _unit;
 };
 
 _unit allowDamage false;
