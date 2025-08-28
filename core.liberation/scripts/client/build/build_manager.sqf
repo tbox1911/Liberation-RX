@@ -76,7 +76,7 @@ while {true} do {
 
 	// Init build properties
 	if (_buildtype in [GRLIB_BuildingBuildType,GRLIB_TrenchBuildType]) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
-	_maxdist = GRLIB_fob_range;
+	_maxdist = 30;
 	_pos_origin = getPosATL player;
 	if (surfaceIsWater _pos_origin) then { _pos_origin = getPosASL player };
 
@@ -101,7 +101,6 @@ while {true} do {
 			_fob_box = build_vehicle;
 		};
 		case GRLIB_BuildTypeDirect: {
-			_maxdist = 30;
 			_price = 0;
 			_price_fuel = 0;
 			_classname = build_unit select 0;
@@ -132,6 +131,9 @@ while {true} do {
 	// Build
 	if !(_buildtype in [GRLIB_BuildTypeDirect,99,98,97]) then {
 		_pos_origin = [] call F_getNearestFob;
+		if ([_pos_origin] call F_getFobType == 0) then {
+			_maxdist = GRLIB_fob_range;
+		};
 		if ([_pos_origin] call F_getFobType == 1) then {
 			// Outpost
 			_maxdist = GRLIB_outpost_range;
