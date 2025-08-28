@@ -8,7 +8,7 @@ if (count (crew _unit) > 0) then {
 	if (_vehicle_damage >= 0.45 && _damage > 0.1) then {
 		private _evac_in_progress = (_unit getVariable ["GRLIB_vehicle_evac", false]);
 		if (!_evac_in_progress) then {
-			_unit setVariable ["GRLIB_vehicle_evac"];
+			_unit setVariable ["GRLIB_vehicle_evac", true, true];
 			{ [_x, false] spawn F_ejectUnit } forEach (crew _unit);
 		};
 	};

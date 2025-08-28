@@ -62,15 +62,17 @@ while {true} do {
 	};
 
 	if (time > _timer) then {
+		_objective_pos = [];
+		_next_objective = [];
 		_last_pos = getPosATL (leader _grp);
 		if (GRLIB_global_stop == 1) then {
 			_target = [_last_pos, GRLIB_spawn_min] call F_getNearestBlufor;
+			if (isNil "_target") exitWith {};
 			_next_objective = [getPosATL _target, round (_last_pos distance2D _target)];
 		} else {
 			_next_objective = [_last_pos] call F_getNearestBluforObjective;
 		};
-
-		_objective_pos = [];
+		if (count _next_objective == 0) exitWith {};
 		if ((_next_objective select 1) <= GRLIB_spawn_min) then {
 			_objective_pos = (_next_objective select 0);
 			_attack = true;
