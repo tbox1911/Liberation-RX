@@ -16,7 +16,6 @@ while { alive _objective } do {
 	if ({alive _x} count (units _grp) == 0) exitWith {};
 
 	_objective_pos = getPosATL _objective;
-	diag_log format ["Group %1 - Attack Direct: %2", _grp, _objective_pos];
 
 	[_grp] call F_deleteWaypoints;
 	_waypoint = _grp addWaypoint [_objective_pos, 10];
