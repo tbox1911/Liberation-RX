@@ -2,7 +2,6 @@ GRLIB_map_modder = "pSiKO";
 GRLIB_save_key = "LRX_MORTAIN_SAVEGAME_PSK"; // change this value if you want different savegames on different map
 GRLIB_sector_size = 500;
 GRLIB_capture_size = 175;
-GRLIB_radiotower_size = 2500;
 GRLIB_spawn_min = 600;
 GRLIB_spawn_max = 1500;
 GRLIB_defended_buildingpos_part = 0.4;
