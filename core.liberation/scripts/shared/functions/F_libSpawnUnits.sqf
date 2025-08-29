@@ -23,6 +23,7 @@ if (_type == "para") then {
 private _max_rank = 1;
 switch (_type) do {
 	case "militia" : { _max_rank = 2 };
+	case "cargo" : { _max_rank = 3 };
 	case "infantry" : { _max_rank = 3 };
 	case "building" : { _max_rank = 3 };
 	case "para" : { _max_rank = 4 };

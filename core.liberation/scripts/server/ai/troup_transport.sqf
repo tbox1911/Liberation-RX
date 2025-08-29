@@ -17,7 +17,7 @@ while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (select
 // Board in
 private _lock = locked _troup_transport;
 _troup_transport lock 0;
-private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "cargo"] call F_libSpawnUnits;
 {
 	_x assignAsCargoIndex [_troup_transport, (_forEachIndex + 1)];
 	_x moveInCargo _troup_transport;
@@ -46,21 +46,18 @@ waitUntil { sleep 1;
 
 // Board out
 doStop (driver _troup_transport);
-sleep 1;
-if ({alive _x} count (units _troup_transport) == 0) exitWith {};
-{
-	if ("cargo" in (assignedVehicleRole _x)) then {
+sleep 2;
+if (alive _troup_transport) then {
+	{
 		[_x, false] spawn F_ejectUnit;
 		sleep 0.5;
-	};
-} forEach (crew _troup_transport);
-[_troup_group, _objective_pos] spawn battlegroup_ai;
-
-if ({alive _x} count (units _transport_group) == 0) exitWith {};
-[_transport_group, getPosATL _troup_transport, 30] spawn defence_ai;
+	} forEach (units _troup_group);
+	[_troup_group, _objective_pos] spawn battlegroup_ai;
+	sleep 30;
+};
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_troup_transport, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+//waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_troup_transport, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 [_troup_transport] call clean_vehicle;
 { deleteVehicle _x; sleep 0.1 } forEach (units _transport_group);
 deleteGroup _transport_group;
