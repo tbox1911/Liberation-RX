@@ -39,7 +39,7 @@ while {true} do {
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "FULL";
-		_waypoint setWaypointBehaviour "COMBAT";
+		_waypoint setWaypointBehaviour "AWARE";
 		_waypoint setWaypointCombatMode "YELLOW";
 		_waypoint setWaypointCompletionRadius 50;
 		_waypoint = _grp addWaypoint [_objective_pos, 100];

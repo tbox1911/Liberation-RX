@@ -39,7 +39,7 @@ _setupObjects = {
     _waypoint = _aiGroup addWaypoint [_objective_pos, 10];
     _waypoint setWaypointType "MOVE";
     _waypoint setWaypointSpeed "FULL";
-    _waypoint setWaypointBehaviour "COMBAT";
+    _waypoint setWaypointBehaviour "AWARE";
     _waypoint setWaypointCombatMode "YELLOW";
     _waypoint setWaypointCompletionRadius 20;
     _waypoint = _aiGroup addWaypoint [_objective_pos, 50];
