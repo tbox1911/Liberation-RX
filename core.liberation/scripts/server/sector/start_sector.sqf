@@ -1,4 +1,9 @@
 params ["_sector"];
+if (GRLIB_Commander_mode) then {
+    GRLIB_AvailAttackSectors = [];
+    publicVariable "GRLIB_AvailAttackSectors";
+    sleep 1;
+};
 
 private _hc = [] call F_lessLoadedHC;
 if (isNull _hc) then {
