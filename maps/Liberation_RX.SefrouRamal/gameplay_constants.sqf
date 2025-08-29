@@ -5,7 +5,6 @@ GRLIB_capture_size = 175;
 GRLIB_radiotower_size = 2000;
 GRLIB_spawn_min = 1500;
 GRLIB_spawn_max = 3000;
-GRLIB_vulnerability_timer = 900;
 GRLIB_defended_buildingpos_part = 0.4;
 GRLIB_secondary_objective_impact = 0.7;
 GRLIB_surrender_chance = 80;
