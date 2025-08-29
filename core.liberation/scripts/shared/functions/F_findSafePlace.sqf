@@ -14,11 +14,11 @@ private _spawn_pos = [];
 while { _radius < _max_radius } do {
     _spawn_pos = [(_start_pos select 0), (_start_pos select 1)] getPos [_radius, floor random 360];
     if (
-        count (_spawn_pos isFlatEmpty [-1, -1, 0.5, 10, _water_mode, false]) != 0 &&
-        count (nearestObjects [_spawn_pos, ["LandVehicle", "CAManBase"], 7]) == 0 &&
-        count (nearestObjects [_spawn_pos, ["House_F"], 12]) == 0 &&
-        count (nearestObjects [_spawn_pos, _big_building, 30]) == 0 &&
-        count (nearestTerrainObjects [_spawn_pos, _object_type, 7]) == 0
+        count (_spawn_pos isFlatEmpty [-1, -1, 0.5, (_size + 5), _water_mode, false]) != 0 &&
+        count (nearestObjects [_spawn_pos, ["LandVehicle", "CAManBase"], (_size + 3)]) == 0 &&
+        count (nearestObjects [_spawn_pos, ["House_F"], (_size + 7)]) == 0 &&
+        count (nearestObjects [_spawn_pos, _big_building, (_size + 25)]) == 0 &&
+        count (nearestTerrainObjects [_spawn_pos, _object_type, (_size + 2)]) == 0
     ) exitWith {};
     _radius = _radius + 0.5;
     sleep 0.01;

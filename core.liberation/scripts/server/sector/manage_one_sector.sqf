@@ -250,13 +250,13 @@ if (opforcap_max) then { _vehtospawn = [] };
 if (!(_vehtospawn isEqualTo [])) then {
 	_vehCount = count _vehtospawn;
 	{
-		private _vehicle = [_sector_pos, _x] call F_libSpawnVehicle;
+		private _vehicle = [_sector_pos, _x, 10] call F_libSpawnVehicle;
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
 			[group (driver _vehicle), getPosATL _vehicle, (50 + floor random 60)] spawn defence_ai;
 			{ _managed_units pushback _x } foreach (crew _vehicle);
-			sleep 0.2;
 		};
+		sleep 1;
 		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _vehCount, _foreachIndex, 40, 60], _sectorName];
 	} foreach _vehtospawn;
 };

@@ -55,7 +55,7 @@ _setupObjects = {
 	};
 
 	private _dir = random 360;
-	_vehicle = createVehicle [a3w_heal_tent, _pos, [], 1, "None"];
+	_vehicle = createVehicle [a3w_heal_tent, _pos, [], 0, "None"];
 	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
 	_missionPos = _pos;
