@@ -40,24 +40,10 @@ _waypoint setWaypointCombatMode "WHITE";
 _waypoint setWaypointCompletionRadius 100;
 {_x doFollow (leader _transport_group)} foreach units _transport_group;
 
-waitUntil { sleep 1;
-	!(alive _troup_transport) || (damage _troup_transport > 0.2) || (_troup_transport distance2D _objective_pos < 250)
-};
-
-// Board out
-doStop (driver _troup_transport);
-sleep 2;
-if (alive _troup_transport) then {
-	{
-		[_x, false] spawn F_ejectUnit;
-		sleep 0.5;
-	} forEach (units _troup_group);
-	[_troup_group, _objective_pos] spawn battlegroup_ai;
-	sleep 30;
-};
+// Manage convoy
+[_transport_group, [_troup_transport], _objective_pos] call convoy_ai;
 
 // Cleanup
-//waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_troup_transport, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-[_troup_transport] call clean_vehicle;
+[_troup_transport, true, true] call clean_vehicle;
 { deleteVehicle _x; sleep 0.1 } forEach (units _transport_group);
 deleteGroup _transport_group;

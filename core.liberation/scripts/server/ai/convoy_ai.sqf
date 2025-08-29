@@ -1,4 +1,4 @@
-params ["_grp", "_vehicles"];
+params ["_grp", "_vehicles", ["_objective_pos", []]];
 
 if (count _vehicles == 0) exitWith {};
 
@@ -7,13 +7,13 @@ _grp setFormation "COLUMN";
 _grp setBehaviourStrong "AWARE";
 _grp setCombatMode "GREEN";
 _grp setSpeedMode "LIMITED";
-
 { _x setConvoySeparation 50 } forEach _vehicles;
+sleep 20;
 
 private _convoy_attacked = false;
 private _disembark_troops = false;
+private _timeout = time + 600;	// 10 min tiemout
 
-sleep 20;
 while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
 	// Attacked ?
 	if (!_convoy_attacked) then {
@@ -21,12 +21,22 @@ while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
 			_veh_cur = _x;
             if (!isNull _veh_cur) then {
                 _killed = ({ !alive _x } count (units _grp) > 0);
-                if ( !(alive _veh_cur) || (damage _veh_cur > 0.2) || _killed && (count ([_veh_cur, GRLIB_sector_size] call F_getNearbyPlayers) > 0) ) then {
+                if ( !(alive _veh_cur) || (damage _veh_cur >= 0.2) || _killed && (count ([_veh_cur, GRLIB_sector_size] call F_getNearbyPlayers) > 0) ) then {
                     _convoy_attacked = true;
                 };
             };
 		} foreach _vehicles;
 	};
+
+	// Destination ?
+	if (count _objective_pos > 0) then {
+		{
+			if (_x distance2D _objective_pos <= 250) then { _convoy_attacked = true };
+		} foreach _vehicles;
+	};
+
+	// Timeout
+	if (time >= _timeout) then { _convoy_attacked = true };
 
 	// Drivers Follow
 	if (!_convoy_attacked && !_disembark_troops) then {
@@ -64,7 +74,11 @@ while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
             };
 		} foreach _vehicles;
 		sleep 5;
-		[_grp, getPosATL (_vehicles select 1)] spawn defence_ai;
+		if (count _objective_pos > 0) then {
+			[_grp, _objective_pos] spawn battlegroup_ai;
+		} else {
+			[_grp, getPosATL (_vehicles select 1)] spawn defence_ai;
+		};
 	};
 
     sleep 2;
