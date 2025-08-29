@@ -52,7 +52,7 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
 if (isDedicated) then {
 	setTerrainGrid 25;
 	setViewDistance 1600;
-	setObjectViewDistance [1000, 500];	
+	setObjectViewDistance [1000, 500];
 };
 
 // Relationship
@@ -85,9 +85,6 @@ GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 		};
 	};
 } forEach (allMissionObjects "");
-
-//For commander mode: Local to server - client doesnt receive info about these
-GRLIB_fobSects = [];
 
 // Init LRX vehicle paints
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_static.sqf";
@@ -270,14 +267,14 @@ if (abort_loading) exitWith {
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 if (GRLIB_Commander_mode) then {
+	// Commander functions
+	manage_sectors_commander = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_sectors_commander.sqf";
+	commander_voteHandler = compileFinal preprocessFileLineNumbers "scripts\server\sector\commander_sector_vote.sqf";
 	// Commander mode
 	GRLIB_connectMarkers = createHashMap;
-	GRLIB_connCalculating = false;
 	GRLIB_Sector_Votes = createHashMap;
 	GRLIB_IsVoteInProgress = false;
-	manage_sectors_commander = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_sectors_commander.sqf";
 	[] spawn manage_sectors_commander;
-	commander_voteHandler = compileFinal preprocessFileLineNumbers "scripts\server\sector\commander_sector_vote.sqf";
 	[] spawn commander_voteHandler;
 } else {
 	// Classic mode

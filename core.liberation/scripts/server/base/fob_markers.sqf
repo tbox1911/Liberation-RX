@@ -28,11 +28,6 @@ while {true} do {
 			_marker setMarkerPos _fobpos;
 			_markers pushback _marker;
 		} forEach GRLIB_all_fobs;
-
-		if (GRLIB_Commander_mode) then {
-			GRLIB_fobSects = [] + _markers;
-			[] spawn manage_sectors_commander;
-		};
 	};
 
 	// Def marker

@@ -11,9 +11,6 @@ private _active_sectors_hint = false;
 private _uiticks = 0;
 GRLIB_ui_notif = "";
 
-//Local to client only
-GRLIB_availableMarkers = [];
-
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil "resources_infantry"};
 waituntil {sleep 1; !isNil "infantry_cap"};
@@ -23,38 +20,12 @@ if (isNil "cinematic_camera_started") then { cinematic_camera_started = false };
 if (isNil "halojumping") then { halojumping = false };
 
 if (GRLIB_Commander_mode) then {
-	0 spawn {
-		_currentCircleMark = "";
-		while {true} do {
-			if (visibleMap) then {
-				_array = ctrlMapMouseOver (findDisplay 12 displayCtrl 51);
-				_circleMark = "";
-				if (!(_array isEqualTo []) && {_array#0 == "marker" && {(_array#1) in GRLIB_AvailAttackSectors} && {((_array#1) + "av") in GRLIB_availableMarkers}}) then {
-					_marker = _array#1;
-					_circleMark = _marker + "av";
-					if (_currentCircleMark != _circleMark) then {
-						[_circleMark,[1.2,1.2],0.009] spawn BIS_fnc_resizeMarker;
-						playSoundUI ["a3\ui_f\data\sound\rsccombo\soundexpand.wss", 0.5, 1.2];
-						if (_currentCircleMark != "") then {
-							[_currentCircleMark,[1,1],0.009] spawn BIS_fnc_resizeMarker;
-							playSoundUI ["a3\ui_f\data\sound\rsccombo\soundcollapse.wss", 0.5, 1.2];
-						};
-					};
-				} else {
-					if (_currentCircleMark != "") then {
-						[_currentCircleMark,[1,1],0.009] spawn BIS_fnc_resizeMarker;
-						playSoundUI ["a3\ui_f\data\sound\rsccombo\soundcollapse.wss", 0.5, 1.2];
-					};
-				};
-				_currentCircleMark = _circleMark;
-			};
-			sleep 0.1;
-		};
-	};
+	[] execVM "scripts\client\ui\ui_manager_commander.sqf";
 };
 
 private _color_F = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
 private _color_E = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_enemy >> "color") call BIS_fnc_colorConfigToRGBA;
+private _color_U = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_unknown >> "color") call BIS_fnc_colorConfigToRGBA;
 
 while {true} do {
 	_hide_HUD = !(shownHUD select 0);
@@ -80,21 +51,6 @@ while {true} do {
 	};
 
 	if (!isNil "_overlay") then {
-		_fob_sector = false;
-		_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;
-		if (_nearest_active_sector == "") then {
-			private _fob_pos = [] call F_getNearestFob;
-			if (player distance2D _fob_pos <= GRLIB_fob_range) then {
-				_nearest_active_sector = format ["fobmarker%1", (GRLIB_all_fobs find _fob_pos)];
-				_fob_sector = true;
-			};
-		};
-
-		if (_nearest_active_sector == "") then {
-			{ (_overlay displayCtrl (_x)) ctrlShow false; } foreach _sectorcontrols;
-			"zone_capture" setmarkerposlocal markers_reset;
-		};
-
 		_server_overloaded = (opforcap_max || count active_sectors >= GRLIB_max_active_sectors);
 		if (!_server_overloaded) then {
 			(_overlay displayCtrl (516)) ctrlSetStructuredText parseText " ";
@@ -153,6 +109,33 @@ while {true} do {
 			};
 
 			if (_uiticks % 5 == 0) then {
+				_bar = _overlay displayCtrl (244);
+				_fob_sector = false;
+				_fob_pos = [] call F_getNearestFob;
+				_nearest_active_sector = "";
+
+				if (player distance2D _fob_pos <= GRLIB_fob_range) then {
+					_nearest_active_sector = format ["fobmarker%1", (GRLIB_all_fobs find _fob_pos)];
+					_fob_sector = true;
+				} else {
+					_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;
+				};
+
+				if (_nearest_active_sector == "") then {
+					{ (_overlay displayCtrl (_x)) ctrlShow false } foreach _sectorcontrols;
+					"zone_capture" setmarkerposlocal markers_reset;
+				} else {
+					{ (_overlay displayCtrl (_x)) ctrlShow true } foreach _sectorcontrols;
+					"zone_capture" setmarkerposlocal (markerpos _nearest_active_sector);
+					(_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
+				};
+
+				_zone_size = GRLIB_capture_size;
+				if (_nearest_active_sector in sectors_bigtown) then {
+					_zone_size = GRLIB_capture_size * 1.4;
+				};
+				"zone_capture" setMarkerSizeLocal [_zone_size,_zone_size];
+
 				if (_server_overloaded) then {
 					(_overlay displayCtrl (517)) ctrlShow true;
 
@@ -169,94 +152,61 @@ while {true} do {
 					(_overlay displayCtrl (516)) ctrlSetStructuredText parseText _active_sectors_string;
 				};
 
+				_colorzone = "ColorGrey";
+				_colortext = _color_U;
+				if (_nearest_active_sector != "") then {
+					if (_nearest_active_sector in blufor_sectors || _fob_sector) then {
+						_colorzone = GRLIB_color_friendly;
+						_colortext = _color_F;
+					} else {
+						_colorzone = GRLIB_color_enemy;
+						_colortext = _color_E;
+					};
+				};
+
+				"zone_capture" setmarkercolorlocal _colorzone;
+				(_overlay displayCtrl (205)) ctrlSetTextColor _colortext;
 				(_overlay displayCtrl (244)) ctrlSetBackgroundColor _color_F;
 				(_overlay displayCtrl (203)) ctrlSetBackgroundColor _color_E;
 
 				if (!GRLIB_Commander_mode) then {
 					if (_nearest_active_sector != "") then {
-						_zone_size = GRLIB_capture_size;
 						if (_fob_sector) exitWith {
-							(_overlay displayCtrl (205)) ctrlSetTextColor _color_F;
-							(_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
-							{ (_overlay displayCtrl (_x)) ctrlShow true; } foreach _sectorcontrols;
-							_bar = _overlay displayCtrl (244);
 							_barwidth = 0.084 * safezoneW * 1;
 							_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
 							_bar ctrlCommit 0;
-							"zone_capture" setmarkerposlocal (markerpos _nearest_active_sector);
-							"zone_capture" setmarkercolorlocal GRLIB_color_friendly;
-							"zone_capture" setMarkerSizeLocal [_zone_size,_zone_size];
 						};
-						if (_nearest_active_sector in sectors_bigtown) then {
-							_zone_size = GRLIB_capture_size * 1.4;
-						};
-						_colorzone = "ColorGrey";
-						if (_nearest_active_sector in blufor_sectors) then {
-							(_overlay displayCtrl (205)) ctrlSetTextColor _color_F;
-							_colorzone = GRLIB_color_friendly
-						} else {
-							(_overlay displayCtrl (205)) ctrlSetTextColor _color_E;
-							_colorzone = GRLIB_color_enemy
-						};
-						"zone_capture" setmarkerposlocal (markerpos _nearest_active_sector);
-						"zone_capture" setmarkercolorlocal _colorzone;
-
 						_capture_size = GRLIB_capture_size;
 						if (_nearest_active_sector in sectors_bigtown) then {
 							_capture_size = GRLIB_capture_size * 1.4;
 						};
 						_ratio = [_nearest_active_sector, _capture_size] call F_getForceRatio;
 						_barwidth = 0.084 * safezoneW * _ratio;
-						_bar = _overlay displayCtrl (244);
 						_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
 						_bar ctrlCommit 1;
-
-						(_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
-						{ (_overlay displayCtrl (_x)) ctrlShow true; } foreach _sectorcontrols;
-
-						"zone_capture" setMarkerSizeLocal [_zone_size,_zone_size];
 					};
 				} else {
-					if (!(active_sectors isEqualTo [])) then {
-						{
-							{
-								deleteMarker _x;
-							} forEach GRLIB_availableMarkers;
-							GRLIB_availableMarkers = [];
-
-							if ( _x in blufor_sectors ) then {
-								(_overlay displayCtrl (205)) ctrlSetTextColor _color_F;
-							} else {
-								(_overlay displayCtrl (205)) ctrlSetTextColor _color_E;
-							};
-
-							_capture_size = GRLIB_capture_size;
-							if (_x in sectors_bigtown) then {
-								_capture_size = GRLIB_capture_size * 1.4;
-							};
-							_ratio = [_x, _capture_size] call F_getForceRatio;
+					if (count active_sectors > 0) then {
+						_nearest_active_sector = active_sectors select 0;
+						if (player distance2D (markerPos _nearest_active_sector) <= _zone_size) then {
+							_ratio = [_nearest_active_sector, _zone_size] call F_getForceRatio;
 							_barwidth = 0.084 * safezoneW * _ratio;
-							_bar = _overlay displayCtrl (244);
 							_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
 							_bar ctrlCommit 1;
+						};
 
-							(_overlay displayCtrl (205)) ctrlSetText (markerText _x);
-							{ (_overlay displayCtrl (_x)) ctrlShow true; } foreach _sectorcontrols;
-							sleep 3;
-						} forEach active_sectors;
+						if (_nearest_active_sector in blufor_sectors) then {
+							(_overlay displayCtrl (206)) ctrlSetText "";
+							(_overlay displayCtrl (206)) ctrlSetTextColor _color_F;
+						} else {
+							(_overlay displayCtrl (206)) ctrlSetText format ["Attack %1!", (markerText _nearest_active_sector)];
+							(_overlay displayCtrl (206)) ctrlSetTextColor _color_E;
+						};
 					} else {
 						_text = "";
 						_isCommander = [player] call F_getCommander;
-						if (!(GRLIB_AvailAttackSectors isEqualTo [])) then {
+						if (count GRLIB_AvailAttackSectors > 0) then {
 							if (GRLIB_Commander_VoteEnabled || _isCommander) then {
-								{
-									if (!((_x + "av") in GRLIB_availableMarkers)) then {
-										_markerstr = createMarkerLocal [_x + "av", getMarkerPos _x];
-										_markerstr setMarkerTypeLocal "Select";
-										_markerstr setMarkerColorLocal "ColorYellow";
-										GRLIB_availableMarkers pushBack _markerstr;
-									};
-								} forEach GRLIB_AvailAttackSectors;
 								if (_isCommander) then {
 									//todo: localize
 									_text = "Select a sector on the map to attack";
@@ -273,7 +223,17 @@ while {true} do {
 								_text = "Standby for mission";
 							};
 						};
-						(_overlay displayCtrl (205)) ctrlSetText (_text);
+						(_overlay displayCtrl (206)) ctrlSetTextColor _color_U;
+						(_overlay displayCtrl (206)) ctrlShow true;
+						(_overlay displayCtrl (206)) ctrlSetText _text;
+
+						_barwidth = 0.084 * safezoneW * 1;
+						if (_nearest_active_sector in opfor_sectors) then {
+							_barwidth = 0.084 * safezoneW * 0;
+						};
+
+						_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
+						_bar ctrlCommit 0;
 					};
 				};
 			};

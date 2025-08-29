@@ -1,7 +1,6 @@
 params ["_sector"];
 
 diag_log format ["--- LRX Manage Sector %1 (queued: %2)", _sector, GRLIB_sector_spawning];
-sleep 3;
 if (GRLIB_sector_spawning) then {
 	waitUntil { sleep 10; !GRLIB_sector_spawning };
 };
@@ -22,6 +21,7 @@ private _spawncivs = false;
 private _building_ai_max = 0;
 private _building_range = 200;
 private _local_capture_size = GRLIB_capture_size;
+private _marker = "";
 private _ied_count = 0;
 private _uavs_count = 0;
 private _static_count = 0;
@@ -352,14 +352,13 @@ private _stageAttack = {
 	};
 };
 
-private _marker = ("zone_capture" + _sector);
 if (GRLIB_Commander_mode) then {
-	_createMarker = createMarkerLocal [_marker, _sector_pos];
+	_marker = createMarkerLocal [("zone_capture" + _sector), _sector_pos];
 	_marker setMarkerBrushLocal "DiagGrid";
 	_marker setMarkerShapeLocal "ELLIPSE";
 	_marker setMarkerAlphaLocal 0.7;
-	_marker setMarkerColorLocal GRLIB_color_enemy;
-	_marker setMarkerSize [_local_capture_size, _local_capture_size]; // Last global will broadcast all local changes - mp optimization https://community.bistudio.com/wiki/setMarkerText
+	_marker setMarkerSizeLocal [_local_capture_size, _local_capture_size];
+	_marker setMarkerColor GRLIB_color_enemy_bright;
 };
 
 // Main loop
@@ -369,7 +368,7 @@ private _building_alive = (nearestObjects [_sector_pos, ["House"], _local_captur
 	(
 		(tolower (typeOf _x) find "land_house" != -1) ||
 		(tolower (typeOf _x) find "land_shop" != -1) ||
-		(tolower (typeOf _x) find "land_fuelstation" != -1) 
+		(tolower (typeOf _x) find "land_fuelstation" != -1)
 	)
 };
 
@@ -402,8 +401,9 @@ while {true} do {
 		_sector setMarkerText _sectorName;
 		diag_log format ["Sector %1 mission succeeded.", _sector];
 		[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
+		if (GRLIB_Commander_mode) then { deleteMarker _marker };
 		if (isServer) then {
-			[_sector] call sector_liberated_remote_call;
+			[_sector] spawn sector_liberated_remote_call;
 		} else {
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 		};
@@ -422,7 +422,7 @@ while {true} do {
 		} foreach _enemy_left;
 
 		if (_sector in (sectors_capture + sectors_factory + sectors_bigtown)) then {
-			private _building_destroyed = count (_building_alive select { !(alive _x) || (tolower (typeOf _x) find "ruin" != -1) }); 
+			private _building_destroyed = count (_building_alive select { !(alive _x) || (tolower (typeOf _x) find "ruin" != -1) });
 			if (_building_destroyed > 0) then {
 				[_sector, 4, _building_destroyed] remoteExec ["remote_call_sector", 0];
 				{ [_x, -(_building_destroyed * 3)] call F_addReput } forEach ([_sector_pos, _local_capture_size] call F_getNearbyPlayers);
@@ -443,8 +443,11 @@ while {true} do {
 				};
 			};
 		};
-		sleep 30;
-		[_task, true, true] call BIS_fnc_deleteTask;
+		[_task] spawn {
+			params ["_task"];
+			sleep 30;
+			[_task, true, true] call BIS_fnc_deleteTask;
+		};
 	};
 
 	if (!GRLIB_Commander_mode) then {
@@ -481,14 +484,11 @@ while {true} do {
 	sleep 5;
 };
 
-if (GRLIB_Commander_mode) then {
-	deleteMarker _marker;
-};
 _sector setMarkerText _sectorName;
-sleep 30;
+sleep 15;
 
 // Attack finished
-if ((_sector in active_sectors)) then {
+if (_sector in active_sectors) then {
 	active_sectors = active_sectors - [_sector];
 	publicVariable "active_sectors";
 };

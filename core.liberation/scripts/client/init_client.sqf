@@ -228,6 +228,7 @@ waitUntil {sleep 0.5; startgame == 1};
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";
+[] execVM "scripts\client\markers\commander_mode.sqf";
 //[] execVM "scripts\client\markers\logs_markers.sqf";
 
 // Local Manager
@@ -341,12 +342,13 @@ if (isServer && hasInterface) then {
 
 // Commander mode
 if (GRLIB_Commander_mode) then {
+	waitUntil {sleep 1; !isNil "GRLIB_AvailAttackSectors"};
 	GRLIB_Com_lastClicked = time;
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos"];
 		private _caller = _thisArgs select 0;
 		_isCommander = [_caller] call F_getCommander;
-		if ((time - GRLIB_Com_lastClicked) > 3 && {(GRLIB_Commander_VoteEnabled || _isCommander) && active_sectors isEqualTo [] && !(GRLIB_AvailAttackSectors isEqualTo [])}) then {
+		if ((time - GRLIB_Com_lastClicked) > 3 && {(GRLIB_Commander_VoteEnabled || _isCommander) && count active_sectors == 0 && (count GRLIB_AvailAttackSectors > 0)}) then {
 			GRLIB_Com_lastClicked = time;
 			_closestSector = "";
 			_closestDistance = 9999;
@@ -361,10 +363,6 @@ if (GRLIB_Commander_mode) then {
 				playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
 				if (_isCommander) then {
 					[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];
-					{
-						deleteMarker _x;
-					} forEach GRLIB_availableMarkers;
-					GRLIB_availableMarkers = [];
 				} else {
 					[_caller, _closestSector] remoteExec ["vote_sector_remote_call", 2];
 				};

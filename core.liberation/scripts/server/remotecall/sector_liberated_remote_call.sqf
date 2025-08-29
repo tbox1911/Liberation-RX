@@ -80,10 +80,7 @@ publicVariable "blufor_sectors";
 opfor_sectors = (sectors_allSectors - blufor_sectors);
 stats_sectors_liberated = stats_sectors_liberated + 1;
 
-if (GRLIB_Commander_mode) then {
-	//Recalculate available sectors for commander
-	[] spawn manage_sectors_commander;
-};
+if (GRLIB_Commander_mode) then {[] call manage_sectors_commander };
 
 private _nearRadioTower = ([markerPos _liberated_sector, GRLIB_side_enemy] call F_getNearestTower != "");
 if (GRLIB_endgame == 0 && _nearRadioTower) then {
@@ -91,9 +88,12 @@ if (GRLIB_endgame == 0 && _nearRadioTower) then {
 	   !(_liberated_sector in sectors_tower) &&
 	   ((combat_readiness > 70 && floor random 3 > 0) || (_liberated_sector in sectors_bigtown))
 	) then {
-		sleep (floor random 300);
-		diag_log format ["Spawn Revenge BattlegGroup at %1", time];
-		[_liberated_sector] spawn spawn_battlegroup;
+		[_liberated_sector] spawn {
+			params ["_liberated_sector"];
+			sleep 60 + (floor random 300);
+			diag_log format ["Spawn Revenge BattlegGroup at %1", time];
+			[_liberated_sector] spawn spawn_battlegroup;
+		};
 	};
 };
 

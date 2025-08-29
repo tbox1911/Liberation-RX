@@ -10,12 +10,15 @@ waitUntil {sleep 1; !isNil "sector_timer"};
 private _sector_timer = 0;
 
 while {true} do {
-	sleep 1;
-	_sector_timer = round (sector_timer - serverTime);
+	waitUntil{
+		sleep 1;
+		_sector_timer = round (sector_timer - serverTime);
+		(_sector_timer >= 0)
+	};
+	_sector = [10, markerPos "opfor_capture_marker"] call F_getNearestSector;
 	if (_sector_timer > 0) then {
-		"opfor_capture_marker" setMarkerTextLocal format ["%1",([_sector_timer] call F_secondsToTimer)];
+		"opfor_capture_marker" setMarkerTextLocal format ["%1 - %2", (markerText _sector), ([_sector_timer] call F_secondsToTimer)];
 	} else {
-		"opfor_capture_marker" setMarkerTextLocal "VULNERABLE";
-		waitUntil{ sleep 1;	(sector_timer - serverTime) > 0 };
+		"opfor_capture_marker" setMarkerTextLocal format ["%1 - VULNERABLE!", (markerText _sector)];
 	};
 };

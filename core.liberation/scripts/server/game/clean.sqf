@@ -41,6 +41,15 @@ _________________________________________________________________________*/
 
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
+// CONFIG
+GRLIB_run_cleanup = true;							// To terminate script via debug console
+GRLIB_cleanup_active = false;						// To detect script activity
+GRLIB_force_cleanup = false;						// To force script execution via debug console
+publicVariable "GRLIB_force_cleanup";
+
+waitUntil {sleep 30; !isNil "GRLIB_init_server"};
+sleep 30;
+
 // IGNORE VEHICLES
 private _no_cleanup_classnames = [
 	Arsenal_typename,
@@ -78,12 +87,6 @@ private _delete_LRX_TTL = {
 		} count _units_ttl;
 	};
 };
-
-// CONFIG
-GRLIB_run_cleanup = true;							// To terminate script via debug console
-GRLIB_cleanup_active = false;						// To detect script activity
-GRLIB_force_cleanup = false;						// To force script execution via debug console
-publicVariable "GRLIB_force_cleanup";
 
 private _checkPlayerCount = true;					// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
 private _playerThreshold = 4;						// How many players before accelerated cycle kicks in?
@@ -133,7 +136,7 @@ private _count = 0;
 private _stats = 0;
 private _sleep = _checkFrequencyDefault;
 
-sleep 120;
+sleep 30;
 while {GRLIB_run_cleanup} do {
 	_stats = 0;
 	_list = [];

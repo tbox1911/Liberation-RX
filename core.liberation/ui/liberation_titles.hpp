@@ -204,7 +204,8 @@ class RscTitles
 	  onLoad = "uiNamespace setVariable ['GUI_OVERLAY', _this select 0];";
 	  controls[] = { BGPicture,LabelScore,LabelAmmo,LabelManpower,LabelFuel,LabelCap,PictureAmmoShadow,PictureScoreShadow,PictureManpowerShadow,
 		BGPictureActiveSectors,PictureFuelShadow,PictureScore,PictureAmmo,PictureManpower,PictureFuel,PictureCap,PictureCombatReadinessShadow,
-		PictureCombatReadiness,PictureIntelShadow,PictureIntel,LabelIntel,BGPictureSector,CaptureFrame_OPFOR,CaptureFrame_BLUFOR,CaptureFrame,LabelPoint,
+		PictureCombatReadiness,PictureIntelShadow,PictureIntel,LabelIntel,BGPictureSector,CaptureFrame_OPFOR,CaptureFrame_BLUFOR,CaptureFrame,
+		LabelPoint,CommanderInfo,
 	  LabelCombatReadiness,CentralShadow,CentralLabel,ActiveSectors,AlertBGPicture,AlertLabel,AlertTimer };
 	  class BGPicture {
 	  idc = -1;
@@ -288,7 +289,7 @@ class RscTitles
 	  };
 	  class PictureCap : GenericPicture69 {
 		idc = 1041;
-		y = (0.4 + ( ICONE_SPACY * 4 ) ) * safezoneH + safezoneY;	
+		y = (0.4 + ( ICONE_SPACY * 4 ) ) * safezoneH + safezoneY;
 		text = "res\rep\rep3.paa";
 	  };
 	  class PictureCombatReadiness : GenericPicture69 {
@@ -414,6 +415,18 @@ class RscTitles
 		y = 0.358 * safezoneH + safezoneY;
 		h = 0.011 * safezoneH;
 	};
+	class CommanderInfo : GenericLabel69 {
+	  	idc = 206;
+		text = "";
+		style = ST_RIGHT;
+		font = "PuristaBold";
+		sizeEx = 0.024 * safezoneH;
+		x = 0.8 * safezoneW + safezoneX;
+		w = 0.2 * safezoneW;
+		y = 0.24 * safezoneH + safezoneY;
+		h = 0.03 * safezoneH;
+		colorText[] = {0.7, 0, 0, 1};
+	};
 	class LabelPoint : GenericLabel69 {
 	  	idc = 205;
 		text = "";
@@ -425,26 +438,26 @@ class RscTitles
 		y = 0.33 * safezoneH + safezoneY;
 		h = 0.03 * safezoneH;
 		colorText[] = {0.7, 0, 0, 1};
-	  };
-	  class ActiveSectors
- 		{
- 			idc = 516;
- 			type = CT_STRUCTURED_TEXT;
- 			colorBackground[] = COLOR_NOALPHA;
- 			style = ST_RIGHT;
-			x = 0.7 * safezoneW + safezoneX;
-			w = 0.295 * safezoneW;
-			y = 0.8 * safezoneH + safezoneY;
-			h = 0.2 * safezoneH;
- 			text= "";
- 			size = 0.02 * safezoneH;
- 			sizeEx = 0.02 * safezoneH;
- 			shadow = 2;
-				font = FONTM;
-				color = "#e0e000";
-				align = "right";
-				valign = "top";
- 		};
+	};
+	class ActiveSectors
+	{
+		idc = 516;
+		type = CT_STRUCTURED_TEXT;
+		colorBackground[] = COLOR_NOALPHA;
+		style = ST_RIGHT;
+		x = 0.7 * safezoneW + safezoneX;
+		w = 0.295 * safezoneW;
+		y = 0.8 * safezoneH + safezoneY;
+		h = 0.2 * safezoneH;
+		text= "";
+		size = 0.02 * safezoneH;
+		sizeEx = 0.02 * safezoneH;
+		shadow = 2;
+			font = FONTM;
+			color = "#e0e000";
+			align = "right";
+			valign = "top";
+	};
  	class BGPictureActiveSectors : BGPicture {
 	  	idc = 517;
 		x = 0.93 * safezoneW + safezoneX;

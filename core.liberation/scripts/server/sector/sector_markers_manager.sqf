@@ -1,4 +1,4 @@
-private ["_marker", "_nextbase", "_nextvehicle", "_nextmarker", "_sector_pos", "_close_sectors"];
+private ["_marker", "_nextbase", "_nextvehicle", "_nextmarker", "_sector_pos", "_close_sectors", "_opfor_sectors"];
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
@@ -50,10 +50,11 @@ while { GRLIB_endgame == 0 } do {
 			_x setMarkerColor GRLIB_color_friendly;
 		} foreach blufor_sectors;
 	} else {
+		_opfor_sectors = (sectors_allSectors - blufor_sectors);
 		{
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);
 			_x setMarkerColor GRLIB_color_enemy;
-		} foreach opfor_sectors;
+		} foreach _opfor_sectors;
 		{
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);
 			_x setMarkerColor GRLIB_color_friendly;

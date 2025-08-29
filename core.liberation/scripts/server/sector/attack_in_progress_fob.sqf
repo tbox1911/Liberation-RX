@@ -60,6 +60,7 @@ if (_ownership == GRLIB_side_enemy) then {
 			[_fob_pos, 2] remoteExec ["remote_call_fob", 0];
 			sleep 1;
 			[_fob_pos] call destroy_fob;
+			if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 		} else {
 			diag_log format ["FOB %1 Defended at %2", _fob_pos, time];
 			[_fob_pos, 3] remoteExec ["remote_call_fob", 0];

@@ -126,6 +126,9 @@ GRLIB_color_friendly_bright = "ColorBlue";
 GRLIB_color_enemy = "ColorOPFOR";
 GRLIB_color_enemy_bright = "ColorRED";
 
+// Side Unknown 
+GRLIB_color_unknown = "ColorUNKNOWN";
+
 // *** CIVILIAN ***
 civilians = [];
 civilian_vehicles = [];
