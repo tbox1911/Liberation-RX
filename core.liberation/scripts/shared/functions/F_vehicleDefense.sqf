@@ -7,6 +7,7 @@ if (isNil {_vehicle getVariable "GREUH_vehicle_defense"}) then {
 	_vehicle removeAllEventHandlers "IncomingMissile";
 	_vehicle addEventHandler ["IncomingMissile", {
 		params ["_target", "_ammo", "_vehicle", "_instigator"];
+		if (count crew _vehicle == 0) exitWith {};
 		if (objectParent player == _vehicle) then {
 			gamelogic globalChat format ["Warning! Incoming Missile (%1)!!", _ammo];
 		};

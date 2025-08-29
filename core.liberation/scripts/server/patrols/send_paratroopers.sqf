@@ -50,7 +50,7 @@ private _go_target = {
 	_waypoint setWaypointBehaviour "AWARE";
 	_waypoint setWaypointCombatMode "YELLOW";
 	_waypoint setWaypointCompletionRadius 400;
-	_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
+	_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn clean_vehicle"];
 	{_x doFollow (leader _grp)} foreach units _grp;
 };
 
