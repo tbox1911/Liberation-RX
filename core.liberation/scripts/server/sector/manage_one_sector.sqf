@@ -485,7 +485,7 @@ while {true} do {
 };
 
 _sector setMarkerText _sectorName;
-sleep 15;
+sleep 5;
 
 // Attack finished
 if (_sector in active_sectors) then {
