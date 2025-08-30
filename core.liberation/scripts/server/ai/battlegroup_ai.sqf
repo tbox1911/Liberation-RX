@@ -23,7 +23,7 @@ sleep (3 + floor random 5);
 
 private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
 while {true} do {
-	_sleep = 300;
+	_sleep = 60;
 	{
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300) then { deleteVehicle _x } else { [_x] spawn F_fixPosUnit };
 		sleep 1;

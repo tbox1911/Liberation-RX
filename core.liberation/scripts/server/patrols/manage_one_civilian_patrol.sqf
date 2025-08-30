@@ -66,6 +66,6 @@ if (count _usable_sectors > 0) then {
 	deleteGroup _civ_grp;
 };
 
-sleep 300;
+sleep 120;
 GRLIB_civilians_current = GRLIB_civilians_current - 1;
 publicVariable "GRLIB_civilians_current";
