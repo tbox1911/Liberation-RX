@@ -16,8 +16,11 @@ if (GRLIB_difficulty_modifier > 1.5) then {
 };
 
 private _sectors = [];
+private _passive_delay = (15 * 60);
+if (GRLIB_passive_income > 0) then { _passive_delay = GRLIB_passive_income };
+
 while { GRLIB_endgame == 0 } do {
-	sleep GRLIB_passive_delay;
+	sleep _passive_delay;
 
 	_active_players = count (AllPlayers - (entities "HeadlessClient_F"));
 	if (_active_players > 0) then {
@@ -28,7 +31,7 @@ while { GRLIB_endgame == 0 } do {
 		private _FoodBarrel_cap = (_active_players * 4) min GRLIB_FoodBarrel_cap;
 
 		// AmmoBox
-		if (GRLIB_passive_income) then {
+		if (GRLIB_passive_income > 0) then {
 			private _captured_military = { _x in sectors_military } count blufor_sectors;
 			if (_captured_military > 0) then {
 				private _income = round (GRLIB_passive_ammount * (_captured_military min GRLIB_AmmoBox_cap) * GRLIB_resources_multiplier);
@@ -41,7 +44,7 @@ while { GRLIB_endgame == 0 } do {
 			};
 		};
 
-		if (!GRLIB_passive_income && ([ammobox_b_typename] call count_box) < _AmmoBox_cap) then {
+		if (GRLIB_passive_income == 0 && ([ammobox_b_typename] call count_box) < _AmmoBox_cap) then {
 			_sectors = [];
 			{
 				if (_x in sectors_military && (([ammobox_b_typename, _x] call count_box) < 3)) then { _sectors pushback _x };

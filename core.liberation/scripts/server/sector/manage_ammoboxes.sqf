@@ -7,7 +7,7 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 
 	GRLIB_military_sectors_already_activated pushBackUnique _sector;
 
-	if ( !GRLIB_passive_income ) then {
+	if (GRLIB_passive_income == 0) then {
 		_crates_amount = round ((1 + floor random 4) * GRLIB_resources_multiplier) min 6;
 		if (GRLIB_difficulty_modifier > 1.5) then {
 			_crates_amount = (1 + floor random 3);

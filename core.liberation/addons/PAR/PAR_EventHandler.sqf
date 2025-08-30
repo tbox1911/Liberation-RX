@@ -118,7 +118,11 @@ if (_unit == player) then {
 		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
 		if (!_eject) then {
 			if (local _vehicle && !(typeOf _vehicle in list_static_weapons)) then {
-				[_vehicle] spawn F_vehicleDefense;
+				if (GRLIB_vehicle_defense) then {
+					[_vehicle] spawn F_vehicleDefense;
+				} else {
+					_vehicle removeAllEventHandlers "IncomingMissile";
+				};
 				if (isNil {_vehicle getVariable "GREUH_vehicle_damage_he"}) then {
 					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 					_vehicle setVariable ["GREUH_vehicle_damage_he", true];
@@ -233,9 +237,13 @@ if (_unit == player) then {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
 		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
-		if !(_eject) then {
+		if (!_eject) then {
 			if (local _vehicle && !(typeOf _vehicle in list_static_weapons)) then {
-				[_vehicle] spawn F_vehicleDefense;
+				if (GRLIB_vehicle_defense) then {
+					[_vehicle] spawn F_vehicleDefense;
+				} else {
+					_vehicle removeAllEventHandlers "IncomingMissile";
+				};
 				if (isNil {_vehicle getVariable "GREUH_vehicle_damage_he"}) then {
 					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 					_vehicle setVariable ["GREUH_vehicle_damage_he", true];

@@ -95,7 +95,6 @@ if (_crewed) then {	[_vehicle, _side, _mission_ai] call F_forceCrew };
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 [_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;
-[_vehicle] call F_vehicleDefense;
 if (GRLIB_ACE_enabled) then { [_vehicle] call F_aceInitVehicle };
 
 if (_vehicle isKindOf "Air") then {
@@ -135,6 +134,8 @@ if (_side == GRLIB_side_enemy) then {
 	}];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 	_vehicle setVariable ["GRLIB_vehicle_reward", true, true];
+
+	[_vehicle] call F_vehicleDefense;
 
 	// LRX textures
 	if (count opfor_texture_overide > 0) then {

@@ -40,6 +40,7 @@ GRLIB_PARAM_Opforcap = "Opforcap";
 GRLIB_PARAM_Unitcap = "Unitcap";
 GRLIB_PARAM_Difficulty = "Difficulty";
 GRLIB_PARAM_Aggressivity = "Aggressivity";
+GRLIB_PARAM_VulnerabilityTimer = "VulnerabilityTimer";
 GRLIB_PARAM_VictoryCondition = "VictoryCondition";
 GRLIB_PARAM_HideOpfor = "HideOpfor";
 GRLIB_PARAM_ShowBlufor = "ShowBlufor";
@@ -47,7 +48,6 @@ GRLIB_PARAM_Weather = "Weather";
 GRLIB_PARAM_DayDuration = "DayDuration";
 GRLIB_PARAM_NightDuration = "NightDuration";
 GRLIB_PARAM_PassiveIncome = "PassiveIncome";
-GRLIB_PARAM_PassiveIncomeDelay = "PassiveIncomeDelay";
 GRLIB_PARAM_PassiveIncomeAmmount = "PassiveIncomeAmmount";
 GRLIB_PARAM_ResourcesMultiplier = "ResourcesMultiplier";
 GRLIB_PARAM_HaloJump = "HaloJump";
@@ -90,6 +90,7 @@ GRLIB_PARAM_EnableLock = "EnableLock";
 GRLIB_PARAM_EnemyLock = "EnemyLock";
 GRLIB_PARAM_FuelConso = "FuelConso";
 GRLIB_PARAM_Drones = "EnableDrones";
+GRLIB_PARAM_VehicleDefense = "VehicleDefense";
 GRLIB_PARAM_MaxGarageSize = "MaxGarageSize";
 GRLIB_PARAM_SectorRadius = "SectorRadius";
 GRLIB_PARAM_SectorDespawn = "SectorDespawn";
@@ -271,6 +272,25 @@ _Mission_Params = [
             localize "STR_AGGRESSIVITY_PARAM_OPT4"
         ]]
     ]],
+    [GRLIB_PARAM_VulnerabilityTimer, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 900],
+        [GRLIB_PARAM_NameKey, localize "STR_VULN_TIMER"],
+        [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_CLEANUP_PARAM0",
+            localize "STR_CLEANUP_PARAM1",
+            localize "STR_CLEANUP_PARAM2",
+            localize "STR_CLEANUP_PARAM3"
+        ]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
+        [GRLIB_PARAM_OptionValuesKey, [600,900,1200,1800]],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_VULN_TIMER_PARAM_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_CLEANUP_PARAM0",
+            localize "STR_CLEANUP_PARAM1",
+            localize "STR_CLEANUP_PARAM2",
+            localize "STR_CLEANUP_PARAM3"
+        ]]
+    ]],
     [GRLIB_PARAM_VictoryCondition, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_VICTORY_CONDITION"],
@@ -405,28 +425,18 @@ _Mission_Params = [
     [GRLIB_PARAM_PassiveIncome, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_PASSIVE_INCOME"],
-        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
-        [GRLIB_PARAM_OptionValuesKey, [0,1]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_PASSIVE_INCOME_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAM_PASSIVE_INCOME_OPT0",
-            localize "STR_PARAM_PASSIVE_INCOME_OPT1"
-        ]]
-    ]],
-    [GRLIB_PARAM_PassiveIncomeDelay, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1200],
-        [GRLIB_PARAM_NameKey, localize "STR_PARAM_PASSIVE_INCOME_DELAY"],
         [GRLIB_PARAM_OptionLabelKey, [
+            localize "STR_PARAMS_DISABLED",
             localize "STR_CLEANUP_PARAM2",
             localize "STR_CLEANUP_PARAM3",
             localize "STR_CLEANUP_PARAM4",
             localize "STR_CLEANUP_PARAM5"
         ]],
-        [GRLIB_PARAM_OptionValuesKey, [1200,1800,3600,7200]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1200,1800,3600,7200]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_PASSIVE_INCOME_DELAY_DESC"],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAM_PASSIVE_INCOME_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_PARAM_PASSIVE_INCOME_OPT0",
             localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT0",
             localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT1",
             localize "STR_PARAM_PASSIVE_INCOME_DELAY_OPT2",
@@ -1095,6 +1105,18 @@ _Mission_Params = [
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_PARAMS_ENABLE_DRONES_OPT1",
             localize "STR_PARAMS_ENABLE_DRONES_OPT2"
+        ]]
+    ]],
+    [GRLIB_PARAM_VehicleDefense, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_ENABLE_DEFENSE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_ENABLE_DEFENSE_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_PARAMS_ENABLE_DEFENSE_OPT1",
+            localize "STR_PARAMS_ENABLE_DEFENSE_OPT2"
         ]]
     ]],
     [GRLIB_PARAM_MaxGarageSize, createHashMapFromArray [

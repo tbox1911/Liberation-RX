@@ -224,7 +224,6 @@ GRLIB_naval_type = [GRLIB_PARAM_NavalFobType] call lrx_getParamValue;
 GRLIB_max_fobs = [GRLIB_PARAM_MaxFobs] call lrx_getParamValue;
 GRLIB_max_outpost = [GRLIB_PARAM_MaxOutpost] call lrx_getParamValue;
 GRLIB_passive_income = [GRLIB_PARAM_PassiveIncome] call lrx_getParamValue;
-GRLIB_passive_delay = [GRLIB_PARAM_PassiveIncomeDelay] call lrx_getParamValue;
 GRLIB_passive_ammount = [GRLIB_PARAM_PassiveIncomeAmmount] call lrx_getParamValue;
 GRLIB_resources_multiplier = [GRLIB_PARAM_ResourcesMultiplier] call lrx_getParamValue;
 GRLIB_disable_death_chat = [GRLIB_PARAM_DeathChat] call lrx_getParamValue;
@@ -282,6 +281,8 @@ GRLIB_AlarmsEnabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
 GRLIB_Commander_AutoStart = [GRLIB_PARAM_CommanderAutoStart] call lrx_getParamValue;
 GRLIB_Commander_VoteTime = [GRLIB_PARAM_CommanderVoteTimeout] call lrx_getParamValue;
 GRLIB_Commander_VoteEnabled = [GRLIB_PARAM_CommPlayerVote] call lrx_getParamValue;
+GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
+GRLIB_vehicle_defense = [GRLIB_PARAM_VehicleDefense] call lrx_getParamValue;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
@@ -299,7 +300,7 @@ GRLIB_opfor_cap = GRLIB_opforcap * GRLIB_unitcap;	// Maximal number of enemies u
 GRLIB_blufor_cap = 50;								// Maximal number of friendly units
 GRLIB_max_active_sectors = 4;						// Maximal active sectors at the same time
 GRLIB_recycling_percentage = 0.75;					// Factor for recycling cost
-GRLIB_vulnerability_timer = 900;					// Sector attacked timer
+
 GRLIB_radiotower_size = GRLIB_sector_size * 3;
 GRLIB_battlegroup_size = 4;
 GRLIB_battlegroup_size = GRLIB_battlegroup_size * GRLIB_unitcap;
@@ -395,7 +396,7 @@ GRLIB_admin_menu = (GRLIB_admin_menu == 1);
 GRLIB_hide_opfor = (GRLIB_hide_opfor == 1);
 GRLIB_permission_vehicles = (GRLIB_permission_vehicles == 1);
 GRLIB_permission_enemy = (GRLIB_permission_enemy == 1);
-GRLIB_passive_income = (GRLIB_passive_income == 1);
+GRLIB_vehicle_defense = (GRLIB_vehicle_defense == 1);
 GRLIB_permissions_param = (GRLIB_permissions_param == 1);
 GRLIB_use_whitelist = (GRLIB_use_whitelist == 1);
 GRLIB_use_exclusive = (GRLIB_use_exclusive == 1);

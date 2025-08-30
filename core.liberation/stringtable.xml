@@ -1729,6 +1729,10 @@
 			<Chinesesimp>建筑中的AI（倍数）</Chinesesimp>
 			<Chinese>建築中的AI（倍數）</Chinese>
 		</Key>
+		<Key ID="STR_VULN_TIMER">
+			<Original>Enemy capture sector duration </Original>
+			<French>Durée de capture du secteur par l'ennemi </French>
+		</Key>
 		<Key ID="STR_VICTORY_CONDITION">
 			<Original>Victory Condition</Original>
 			<French>Condition de Victoire</French>
@@ -2036,6 +2040,9 @@
 		</Key>
 		<Key ID="STR_PARAMS_ENABLE_DRONES">
 			<Original>Enable enemy Drones/UAVs</Original>
+		</Key>
+		<Key ID="STR_PARAMS_ENABLE_DEFENSE">
+			<Original>Enable automatic Counter Measures</Original>
 		</Key>
 		<Key ID="STR_PARAMS_INTRO">
 			<Original>Introduction</Original>
@@ -3320,6 +3327,14 @@
 			<Original>AutoSave Timer</Original>
 			<Chinesesimp>自动保存定时器</Chinesesimp>
 			<Chinese>自動保存計时器</Chinese>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM0">
+			<Original>10 minutes delay</Original>
+			<French> 10 minutes de délai</French>
+			<Chinesesimp>10分钟间隔</Chinesesimp>
+			<Chinese>10分鐘間隔</Chinese>
+			<Portuguese>10 minutos de atraso</Portuguese>
+			<Czech>za 10 minut Vymazat</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM1">
 			<Original>15 minutes delay</Original>
@@ -6802,15 +6817,15 @@
 
 		<!-- admin_menu.sqf -->
 		<Key ID="STR_ADMIN_ARSENAL_TOOLTIP">
-			<Original>Spawn an Arsenal Box</Original>	
+			<Original>Spawn an Arsenal Box</Original>
 			<French>Construire caisse d'Arsenal</French>
 		</Key>
 		<Key ID="STR_ADMIN_AMMOBOX_TOOLTIP">
-			<Original>Spawn an Vehicle Ammo Box</Original>	
+			<Original>Spawn an Vehicle Ammo Box</Original>
 			<French>Construire caisse Munition pour vehicles</French>
 		</Key>
 		<Key ID="STR_ADMIN_RESPAWN_TOOLTIP">
-			<Original>Spawn a Mobile Respawn Tent</Original>	
+			<Original>Spawn a Mobile Respawn Tent</Original>
 			<French>Construire tente de Redeploiement</French>
 		</Key>
 
@@ -10020,6 +10035,10 @@
 			<Portuguese>Agressividade extrema (400%)</Portuguese>
 			<Czech>Extrémní agresivita (400%)</Czech>
 		</Key>
+		<Key ID="STR_VULN_TIMER_PARAM_DESC">
+			<Original>Selects the duration of sector capture by the enemy..</Original>
+			<French>Sélectionne la durée de capture d'un secteur par l'ennemi.</French>
+		</Key>
 		<Key ID="STR_VICTORY_CONDITION_DESC">
 			<Original>Selects the victory condition for the game scenario.</Original>
 			<Russian>Выбирает условие победы для игрового сценария.</Russian>
@@ -10532,24 +10551,6 @@
 			<Chinese>停用被動收入</Chinese>
 			<Portuguese>Desativar renda passiva</Portuguese>
 			<Czech>Zakázat pasivní příjem</Czech>
-		</Key>
-		<Key ID="STR_PARAM_PASSIVE_INCOME_OPT1">
-			<Original>Enable passive income</Original>
-			<Russian>Включить пассивный доход</Russian>
-			<French>Activer le revenu passif</French>
-			<Chinesesimp>启用被动收入</Chinesesimp>
-			<Chinese>啟用被動收入</Chinese>
-			<Portuguese>Ativar renda passiva</Portuguese>
-			<Czech>Povolit pasivní příjem</Czech>
-		</Key>
-		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_DESC">
-			<Original>Sets the delay (in seconds) between passive income payouts.</Original>
-			<Russian>Устанавливает задержку (в секундах) между выплатами пассивного дохода.</Russian>
-			<French>Définit le délai (en secondes) entre les paiements de revenus passifs.</French>
-			<Chinesesimp>设置被动收入支付之间的延迟（以秒为单位）。</Chinesesimp>
-			<Chinese>設置被動收入支付之間的延遲（以秒為單位）。</Chinese>
-			<Portuguese>Define o atraso (em segundos) entre os pagamentos de renda passiva.</Portuguese>
-			<Czech>Nastaví zpoždění (v sekundách) mezi výplatami pasivního příjmu.</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT0">
 			<Original>Delay between payouts: 20 minutes</Original>
@@ -12695,6 +12696,18 @@
 		</Key>
 		<Key ID="STR_PARAMS_ENABLE_DRONES_OPT2">
 			<Original>Enemy can use drones</Original>
+		</Key>
+		<Key ID="STR_PARAMS_ENABLE_DEFENSE_DESC">
+			<Original>Vehciles (Land/Air) will use countermeasures if targeted by missile.</Original>
+			<French>Les véhicule (Terre/Air) utiliseront des contre-mesures si ciblé par un missile.</French>
+		</Key>
+		<Key ID="STR_PARAMS_ENABLE_DEFENSE_OPT1">
+			<Original>Countermeasures Disabled</Original>
+			<French>Contre-mesures Désactivé</French>
+		</Key>
+		<Key ID="STR_PARAMS_ENABLE_DEFENSE_OPT2">
+			<Original>Countermeasures Enabled</Original>
+			<French>Contre-mesures Activé</French>
 		</Key>
 		<Key ID="STR_PARAMCAT_COMMANDER">
 			<Original>COMMANDER MODE</Original>
