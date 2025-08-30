@@ -1,16 +1,21 @@
 if (!GRLIB_Commander_mode || !isServer) exitWith {};
 sleep 60;
+
+private _msg = "";
 while {true} do {
     waitUntil {sleep 3; ((GRLIB_IsVoteInProgress && GRLIB_Commander_VoteEnabled) || GRLIB_Commander_AutoStart) && GRLIB_LRX_params_loaded && count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0};
     if (GRLIB_Commander_VoteEnabled) then {
-        [GRLIB_side_friendly, "HQ"] sideChat format ["Voting for the next sector has begun, you have %1 seconds to vote!", GRLIB_Commander_VoteTime];
+        _msg = format ["Voting for the next sector has begun, you have %1 seconds to vote!", GRLIB_Commander_VoteTime];
+        [[GRLIB_side_friendly, "HQ"], _msg] remoteExec ["sideChat", 0];
     } else {
-        [GRLIB_side_friendly, "HQ"] sideChat format ["The next sector will be selected automatically, you have %1 seconds to prepare!", GRLIB_Commander_VoteTime];
+        _msg = format ["The next sector will be selected automatically, you have %1 seconds to prepare!", GRLIB_Commander_VoteTime];
+        [[GRLIB_side_friendly, "HQ"], _msg] remoteExec ["sideChat", 0];
     };
     sleep GRLIB_Commander_VoteTime;
     if (count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0) then {
         if (GRLIB_Commander_VoteEnabled) then {
-            [GRLIB_side_friendly, "HQ"] sideChat format ["Voting has ended!"];
+            _msg = format ["Voting has ended!"];
+            [[GRLIB_side_friendly, "HQ"], _msg] remoteExec ["sideChat", 0];
         };
         _votes = (GRLIB_Sector_Votes apply { _y }) select { _x in GRLIB_AvailAttackSectors };
         _tiedSectors = [];
@@ -35,10 +40,11 @@ while {true} do {
                 };
             } forEach _uniqueSectors;
         } else {
-            _tiedSectors = +GRLIB_AvailAttackSectors;
+            _tiedSectors = [] + GRLIB_AvailAttackSectors;
         };
         _winningSector = selectRandom _tiedSectors;
-        [GRLIB_side_friendly, "HQ"] sideChat format ["The invasion will proceed to %1!", markerText _winningSector];
+        _msg = format ["The invasion will proceed to %1!", markerText _winningSector];
+        [[GRLIB_side_friendly, "HQ"], _msg] remoteExec ["sideChat", 0];
         [_winningSector] call start_sector;
     };
     GRLIB_IsVoteInProgress = false;
