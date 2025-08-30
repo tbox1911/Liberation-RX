@@ -58,7 +58,7 @@ while {true} do {
 			(driver _vehicle) doMove _objective_pos;
 		};
 
-		_timer = round (time + (15 * 60));
+		_timer = round (time + 300);
 	};
 
 	if (time > _timer) then {
@@ -73,11 +73,13 @@ while {true} do {
 			_next_objective = [_last_pos] call F_getNearestBluforObjective;
 		};
 		if (count _next_objective == 0) exitWith {};
+
 		if ((_next_objective select 1) <= GRLIB_spawn_min) then {
 			_objective_pos = (_next_objective select 0);
 			_attack = true;
 		};
-		_timer = round (time + (10 * 60));
+
+		_timer = round (time + 300);
 		_sleep = 5;
 	};
 	if (count _objective_pos == 0) exitWith {};
