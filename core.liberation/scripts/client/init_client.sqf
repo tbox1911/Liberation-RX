@@ -348,18 +348,10 @@ if (GRLIB_Commander_mode) then {
 		params ["_units", "_pos"];
 		private _caller = _thisArgs select 0;
 		_isCommander = [_caller] call F_getCommander;
-		if ((time - GRLIB_Com_lastClicked) > 3 && {(GRLIB_Commander_VoteEnabled || _isCommander) && (count GRLIB_AvailAttackSectors > 0)}) then {
+		if ((time - GRLIB_Com_lastClicked) > 3 && {(GRLIB_Commander_VoteEnabled || _isCommander) && count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0}) then {
 			GRLIB_Com_lastClicked = time;
-			_closestSector = "";
-			_closestDistance = 9999;
-			{
-				_distance = (getMarkerPos _x) distance2D _pos;
-				if ((_distance < _closestDistance) && (_distance < 100)) then {
-					_closestSector = _x;
-					_closestDistance = _distance;
-				};
-			} forEach GRLIB_AvailAttackSectors;
-			if (!(_closestSector isEqualTo "")) then {
+			_closestSector = [100, _pos, GRLIB_AvailAttackSectors] call F_getNearestSector;
+			if (_closestSector != "") then {
 				playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
 				if (_isCommander) then {
 					[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];

@@ -192,19 +192,12 @@ while {true} do {
 					};
 				} else {
 					if (count active_sectors > 0) then {
-						_nearest_active_sector = active_sectors select 0;
-						if (player distance2D (markerPos _nearest_active_sector) <= _zone_size) then {
-							_ratio = [_nearest_active_sector, _zone_size] call F_getForceRatio;
-							_barwidth = 0.084 * safezoneW * _ratio;
-							_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
-							_bar ctrlCommit 1;
-						};
-
-						if (_nearest_active_sector in blufor_sectors) then {
+						_active_sector = active_sectors select 0;
+						if (_active_sector in blufor_sectors) then {
 							(_overlay displayCtrl (206)) ctrlSetText "Standby for mission";
 							(_overlay displayCtrl (206)) ctrlSetTextColor _color_F;
 						} else {
-							(_overlay displayCtrl (206)) ctrlSetText format ["Attack %1", (markerText _nearest_active_sector)];
+							(_overlay displayCtrl (206)) ctrlSetText format ["Attack %1", (markerText _active_sector)];
 							(_overlay displayCtrl (206)) ctrlSetTextColor _color_E;
 						};
 					} else {
@@ -231,14 +224,20 @@ while {true} do {
 						(_overlay displayCtrl (206)) ctrlSetTextColor _color_U;
 						(_overlay displayCtrl (206)) ctrlShow true;
 						(_overlay displayCtrl (206)) ctrlSetText _text;
-
-						_barwidth = 0.084 * safezoneW * 1;
-						if (_nearest_active_sector in opfor_sectors) then {
-							_barwidth = 0.084 * safezoneW * 0;
-						};
-						_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
-						_bar ctrlCommit 0;
 					};
+
+					_barwidth = 0.084 * safezoneW * 1;
+					if (_nearest_active_sector in opfor_sectors) then {
+						_barwidth = 0.084 * safezoneW * 0;
+					};
+					//if (player distance2D (markerPos _nearest_active_sector) <= _zone_size) then {
+					if (_nearest_active_sector in active_sectors) then {
+						_ratio = [_nearest_active_sector, _zone_size] call F_getForceRatio;
+						_barwidth = 0.084 * safezoneW * _ratio;
+					};
+
+					_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
+					_bar ctrlCommit 0;
 				};
 			};
 		};

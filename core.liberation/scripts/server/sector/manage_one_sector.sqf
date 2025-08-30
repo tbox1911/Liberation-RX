@@ -42,16 +42,15 @@ private _infsquad5 = "infantry";
 private _max_prisonners = 5;
 private _sector_despawn_tickets = GRLIB_despawn_tickets;
 private _nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
-private _playerRad = (GRLIB_sector_size * 2);
+private _active_players = [_sector_pos, (GRLIB_sector_size * 2)] call F_getNearbyPlayers;
 
 if (GRLIB_Commander_mode) then {
-	_playerRad = 99999;
+	_active_players = (AllPlayers - (entities "HeadlessClient_F"));
 	_local_capture_size = 500;
-	_sector setMarkerType "mil_objective";
+	_sector setMarkerTypeLocal "mil_objective";
 	_sector setMarkerColor "ColorYellow";
 };
 
-private _active_players = [_sector_pos, _playerRad] call F_getNearbyPlayers;
 private _count_players = count _active_players;
 diag_log format ["Spawn Defend Sector %1 - player in combat %2 / readiness %3 at %4", _sector, _count_players, combat_readiness, time];
 
@@ -214,6 +213,7 @@ switch true do {
         diag_log "Sector type did not match any known sector arrays.";
     };
 };
+
 _sector setMarkerText format ["%2 - Loading %1%%", 10, _sectorName];
 // Extra veh based on difficulty
 if ((floor GRLIB_difficulty_modifier) > 1) then {
@@ -230,6 +230,7 @@ if ((floor GRLIB_difficulty_modifier) > 1) then {
 if (_uavs_count > 0) then {
 	[_sector_pos, _uavs_count] spawn send_drones;
 };
+
 _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 // Create units
 {
