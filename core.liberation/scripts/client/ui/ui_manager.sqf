@@ -108,17 +108,22 @@ while {true} do {
 				(_overlay displayCtrl (1041)) ctrlSetText (getMissionPath _reput_icon);
 			};
 
-			if (_uiticks % 5 == 0) then {
+			if (_uiticks % 4 == 0) then {
 				_bar = _overlay displayCtrl (244);
 				_fob_sector = false;
 				_fob_pos = [] call F_getNearestFob;
 				_nearest_active_sector = "";
 
-				if (player distance2D _fob_pos <= GRLIB_fob_range) then {
-					_nearest_active_sector = format ["fobmarker%1", (GRLIB_all_fobs find _fob_pos)];
+				if (player distance2D lhd <= GRLIB_fob_range) then {
+					_nearest_active_sector = "base_chimera";
 					_fob_sector = true;
 				} else {
-					_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;
+					if (player distance2D _fob_pos <= GRLIB_fob_range) then {
+						_nearest_active_sector = format ["fobmarker%1", (GRLIB_all_fobs find _fob_pos)];
+						_fob_sector = true;
+					} else {
+						_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;
+					};
 				};
 
 				if (_nearest_active_sector == "") then {
@@ -231,7 +236,6 @@ while {true} do {
 						if (_nearest_active_sector in opfor_sectors) then {
 							_barwidth = 0.084 * safezoneW * 0;
 						};
-
 						_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
 						_bar ctrlCommit 0;
 					};

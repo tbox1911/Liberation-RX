@@ -7,7 +7,7 @@ R3F_LOG_joueur_deplace_objet = objNull;
 private _standard_map_pos = [];
 private _frame_pos = [];
 private _spawn_str = "";
-private _basenamestr = "BASE CHIMERA";
+private _basenamestr = markerText "base_chimera";
 
 fullmap = 0;
 private _old_fullmap = 0;

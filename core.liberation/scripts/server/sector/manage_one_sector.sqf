@@ -377,8 +377,8 @@ diag_log format ["Sector %1 wait attack to finish", _sector];
 private _task = "attack" + _sectorName + str round time;
 [true, _task, [format ["Attack %1", _sectorName], format ["Attack %1", _sectorName], _sector], _sector_pos, "ASSIGNED", 2, true] call BIS_fnc_taskCreate;
 [_task, true] call BIS_fnc_taskSetCurrent;
-_sector setMarkerText format ["%1 - Loaded!", _sectorName];
-sleep 10;
+_sector setMarkerText format ["%1 - Loaded", _sectorName];
+sleep 5;
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 
@@ -398,7 +398,6 @@ while {true} do {
 	private _ratio = 100 - round (([_sector, _local_capture_size] call F_getForceRatio) * 100);
 	_sector setMarkerText format ["%2 - %1%%", _ratio, _sectorName];
 	if (_sector_ownership == GRLIB_side_friendly) exitWith { // Victory
-		_sector setMarkerText _sectorName;
 		diag_log format ["Sector %1 mission succeeded.", _sector];
 		[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 		if (GRLIB_Commander_mode) then { deleteMarker _marker };
@@ -459,7 +458,6 @@ while {true} do {
 	};
 
 	if (_sector_despawn_tickets <= 1) exitWith { // Sleep sector
-		_sector setMarkerText _sectorName;
 		diag_log format ["Sector %1 mission failed.", _sector];
 		[_task,"FAILED"] call BIS_fnc_taskSetState;
 		private _msg = format ["You failed to capture sector %1, your reputation drops by %2 points.", [_sector_pos] call F_getLocationName, -5];
