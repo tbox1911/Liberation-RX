@@ -7,6 +7,7 @@ private _availableMarkers = [];
 private _availAttackSectors = [];
 
 while {true} do {
+    waitUntil { sleep 0.1; visibleMap };
     if (count GRLIB_AvailAttackSectors == 0 && count _availableMarkers > 0) then {
         { deleteMarkerLocal _x } forEach _availableMarkers;
         _availableMarkers = [];
@@ -26,5 +27,5 @@ while {true} do {
         _availAttackSectors = [] + GRLIB_AvailAttackSectors;
     };
 
-    sleep 0.5;
+    sleep 1;
 };

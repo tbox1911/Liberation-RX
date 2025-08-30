@@ -1,7 +1,7 @@
 private ["_array", "_marker", "_sector"];
 private _currentCircleMark = "";
 while {true} do {
-    waitUntil {sleep 0.1; visibleMap};
+    waitUntil { sleep 0.1; visibleMap };
     _array = ctrlMapMouseOver (findDisplay 12 displayCtrl 51);
     _circleMark = "";
     _delete = true;
