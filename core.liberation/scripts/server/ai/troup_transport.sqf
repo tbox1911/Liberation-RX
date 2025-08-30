@@ -42,6 +42,7 @@ _waypoint setWaypointCompletionRadius 100;
 
 // Manage convoy
 [_transport_group, [_troup_transport], _objective_pos] call convoy_ai;
+sleep 20;
 
 // Cleanup
 [_troup_transport, true, true] call clean_vehicle;

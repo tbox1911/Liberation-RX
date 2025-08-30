@@ -11,10 +11,9 @@ _grp setSpeedMode "LIMITED";
 sleep 20;
 
 private _convoy_attacked = false;
-private _disembark_troops = false;
 private _timeout = time + 600;	// 10 min tiemout
 
-while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
+while { !_convoy_attacked && (({ alive _x } count _vehicles) > 0) } do {
 	// Attacked ?
 	if (!_convoy_attacked) then {
 		{
@@ -39,7 +38,7 @@ while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
 	if (time >= _timeout) then { _convoy_attacked = true };
 
 	// Drivers Follow
-	if (!_convoy_attacked && !_disembark_troops) then {
+	if (!_convoy_attacked) then {
 		{
 			_veh_cur = _x;
 			_veh_leader = vehicle (leader _grp);
@@ -58,27 +57,27 @@ while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
 	};
 
 	// Eject Troop
-	if (_convoy_attacked && !_disembark_troops) then {
-		_disembark_troops = true;
+	if (_convoy_attacked) exitWith {
 		{
-            [_x] spawn {
-                params ["_vehicle"];
-                if (!isNull _vehicle) then {
-                    doStop (driver _vehicle);
-                    sleep 2;
-                    {
-                        [_x, false] spawn F_ejectUnit;
-                        sleep 0.2
-                    } forEach (crew _vehicle);
-                };
+            [_x, _objective_pos] spawn {
+                params ["_vehicle", "_objective_pos"];
+				if (isNull _vehicle || !alive _vehicle) exitWith {};
+				private _cargo_troops = (crew _vehicle) select { ("cargo" in (assignedVehicleRole _x)) };
+				if (count _cargo_troops > 0) then {
+					doStop (driver _vehicle);
+					sleep 2;
+					{ [_x, false] spawn F_ejectUnit; sleep 0.2 } forEach _cargo_troops;
+					sleep 5;
+					private _grp = group (_cargo_troops select 0);
+					if (count _objective_pos > 0) then {
+						[_grp, _objective_pos] spawn battlegroup_ai;
+					} else {
+						[_grp, getPosATL _vehicle] spawn defence_ai;
+					};
+				};
             };
+			sleep 1;
 		} foreach _vehicles;
-		sleep 5;
-		if (count _objective_pos > 0) then {
-			[_grp, _objective_pos] spawn battlegroup_ai;
-		} else {
-			[_grp, getPosATL (_vehicles select 1)] spawn defence_ai;
-		};
 	};
 
     sleep 2;
