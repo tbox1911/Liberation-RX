@@ -37,17 +37,17 @@ _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 { deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 _vehicle setVariable ["GRLIB_ammo_truck_load", [], true];
 
-// Deep Water
-private _sea_deep = round ((getPosATL _vehicle select 2) - (getPosASL _vehicle select 2));
-if (_sea_deep >= 15) then { 
-	sleep 30;
-	_delete = true;
-};
-
 // Delete Vehicle and Crew
 if (_delete) then {
 	{ deleteVehicle _x } forEach (crew _vehicle);
 	deleteVehicle _vehicle;
+} else {
+	// Deep Water
+	private _sea_deep = round ((getPosATL _vehicle select 2) - (getPosASL _vehicle select 2));
+	if (_sea_deep >= 15) then {
+		sleep 30;
+		deleteVehicle _vehicle;
+	};
 };
 
 true;

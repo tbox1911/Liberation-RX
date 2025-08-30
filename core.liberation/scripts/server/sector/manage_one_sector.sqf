@@ -386,9 +386,13 @@ private ["_sector_ownership"];
 while {true} do {
 	if (!(_sector in active_sectors)) exitWith { // Aborted
 		diag_log format ["Sector %1 mission aborted.", _sector];
+		_sector setMarkerText _sectorName;
 		[_task,"CANCELED"] call BIS_fnc_taskSetState;
-		sleep 30;
-		[_task, true, true] call BIS_fnc_deleteTask;
+		[_task] spawn {
+			params ["_task"];
+			sleep 30;
+			[_task, true, true] call BIS_fnc_deleteTask;
+		};
 	};
 	_sector_ownership = [_sector_pos, _local_capture_size] call F_sectorOwnership;
 	if (_sector in sectors_tower) then {
@@ -399,6 +403,7 @@ while {true} do {
 	_sector setMarkerText format ["%2 - %1%%", _ratio, _sectorName];
 	if (_sector_ownership == GRLIB_side_friendly) exitWith { // Victory
 		diag_log format ["Sector %1 mission succeeded.", _sector];
+		_sector setMarkerText _sectorName;
 		[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 		if (GRLIB_Commander_mode) then { deleteMarker _marker };
 		if (isServer) then {
@@ -416,7 +421,7 @@ while {true} do {
 				} else {
 					if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
 				};
-				sleep 0.5;
+				sleep 0.1;
 			};
 		} foreach _enemy_left;
 
@@ -426,19 +431,22 @@ while {true} do {
 				[_sector, 4, _building_destroyed] remoteExec ["remote_call_sector", 0];
 				{ [_x, -(_building_destroyed * 3)] call F_addReput } forEach ([_sector_pos, _local_capture_size] call F_getNearbyPlayers);
 			};
-			sleep 30;
-			private _civilians = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select {
-				(side _x == GRLIB_side_civilian) && !(captive _x) &&
-				!(isAgent teamMember _x) && (isNull objectParent _x)
-			};
-			if (count _civilians > 5) then {
-				for "_i" from 0 to (floor random 4) do {
-					private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
-					private _unit = selectRandom _civilians;
-					[_unit, _anim] spawn F_startAnimMP;
-					_unit setVariable ["GRLIB_can_speak", false, true];
-					_civilians = _civilians - [_unit];
-					sleep 1;
+			[_sector_pos] spawn {
+				params ["_sector_pos"];
+				sleep 30;
+				private _civilians = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 1.2]) select {
+					(side _x == GRLIB_side_civilian) && !(captive _x) &&
+					!(isAgent teamMember _x) && (isNull objectParent _x)
+				};
+				if (count _civilians > 5) then {
+					for "_i" from 0 to (floor random 4) do {
+						private _anim = selectRandom ["Acts_Dance_01", "Acts_Dance_02"];
+						private _unit = selectRandom _civilians;
+						[_unit, _anim] spawn F_startAnimMP;
+						_unit setVariable ["GRLIB_can_speak", false, true];
+						_civilians = _civilians - [_unit];
+						sleep 1;
+					};
 				};
 			};
 		};
@@ -459,6 +467,7 @@ while {true} do {
 
 	if (_sector_despawn_tickets <= 1) exitWith { // Sleep sector
 		diag_log format ["Sector %1 mission failed.", _sector];
+		_sector setMarkerText _sectorName;
 		[_task,"FAILED"] call BIS_fnc_taskSetState;
 		private _msg = format ["You failed to capture sector %1, your reputation drops by %2 points.", [_sector_pos] call F_getLocationName, -5];
 		{
@@ -483,16 +492,6 @@ while {true} do {
 };
 
 _sector setMarkerText _sectorName;
-sleep 5;
-
-// Attack finished
-if (_sector in active_sectors) then {
-	active_sectors = active_sectors - [_sector];
-	publicVariable "active_sectors";
-};
-
-diag_log format ["End Defend Sector %1 at %2", _sector, time];
-
 // Check Victory
 if ([] call F_checkVictory) then {
 	if (isServer) then {
@@ -501,6 +500,16 @@ if ([] call F_checkVictory) then {
 		[] remoteExec ["blufor_victory", 2];
 	};
 };
+
+sleep 10;
+
+// Attack finished
+if (_sector in active_sectors) then {
+	active_sectors = active_sectors - [_sector];
+	publicVariable "active_sectors";
+};
+
+diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
