@@ -24,6 +24,11 @@ if (_sector in attack_in_progress_cooldown) then {
 sector_attack_in_progress pushBack _sector;
 publicVariable "sector_attack_in_progress";
 
+if (GRLIB_Commander_mode) then {
+    GRLIB_AvailAttackSectors = [];
+    publicVariable "GRLIB_AvailAttackSectors";
+};
+
 if (_sector in A3W_sectors_in_use) then { _defenders_cooldown = true };
 private _grp = grpNull;
 private _vehicle = objNull;
@@ -115,9 +120,11 @@ if (_ownership == GRLIB_side_enemy) then {
 	};
 };
 
+sleep 10;
 sector_attack_in_progress = sector_attack_in_progress - [_sector];
 publicVariable "sector_attack_in_progress";
 
+if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 if (!isNull _arsenal) then {_arsenal spawn {sleep 120; deleteVehicle _this}};
 if (!isNull _vehicle) then {_vehicle spawn {sleep 60; [_this, true, true] call clean_vehicle}};
 if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
