@@ -75,3 +75,5 @@ publicVariable "GRLIB_all_outposts";
 
 [_fob_pos, 0] remoteExec ["remote_call_fob", 0];
 stats_fobs_built = stats_fobs_built + 1;
+
+if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };

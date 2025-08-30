@@ -201,10 +201,10 @@ while {true} do {
 						};
 
 						if (_nearest_active_sector in blufor_sectors) then {
-							(_overlay displayCtrl (206)) ctrlSetText "";
+							(_overlay displayCtrl (206)) ctrlSetText "Standby for mission";
 							(_overlay displayCtrl (206)) ctrlSetTextColor _color_F;
 						} else {
-							(_overlay displayCtrl (206)) ctrlSetText format ["Attack %1!", (markerText _nearest_active_sector)];
+							(_overlay displayCtrl (206)) ctrlSetText format ["Attack %1", (markerText _nearest_active_sector)];
 							(_overlay displayCtrl (206)) ctrlSetTextColor _color_E;
 						};
 					} else {
@@ -222,7 +222,7 @@ while {true} do {
 								_text = "Standby for mission";
 							};
 						} else {
-							if (_isCommander) then {
+							if (_isCommander && count GRLIB_all_fobs == 0) then {
 								_text = "Deploy an FOB to start a mission";
 							} else {
 								_text = "Standby for mission";

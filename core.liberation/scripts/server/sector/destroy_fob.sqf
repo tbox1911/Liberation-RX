@@ -59,3 +59,5 @@ GRLIB_all_outposts = GRLIB_all_outposts - [_fob_pos];
 publicVariable "GRLIB_all_outposts";
 
 stats_fobs_lost = stats_fobs_lost + 1;
+
+if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };

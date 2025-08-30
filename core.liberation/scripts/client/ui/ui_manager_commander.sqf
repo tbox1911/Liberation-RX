@@ -5,6 +5,7 @@ while {true} do {
     _array = ctrlMapMouseOver (findDisplay 12 displayCtrl 51);
     _circleMark = "";
     if (count _array > 0) then {
+        //todo: check close from GRLIB_AvailAttackSectors not exact marker
         if ((_array select 0) == "marker" && (_array select 1) in GRLIB_AvailAttackSectors) then {
             _marker = _array select 1;
             _circleMark = _marker + "av";
