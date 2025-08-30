@@ -32,6 +32,7 @@ sleep 5;
 
 while { GRLIB_endgame == 0 } do {
 	waitUntil {sleep 1; (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
+	opfor_sectors = (sectors_allSectors - blufor_sectors);
 
 	if (GRLIB_hide_opfor && count opfor_sectors > 3 && !GRLIB_Commander_mode) then {
 		{
