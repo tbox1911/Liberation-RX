@@ -1402,24 +1402,20 @@ _Mission_Params = [
         ]]
     ]],
     [GRLIB_PARAM_CommanderModeRadius, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 100],
+        [GRLIB_PARAM_ValueKey, GRLIB_sector_size],
         [GRLIB_PARAM_NameKey, localize "STR_COMMANDER_MODE_RADIUS"],
-        [GRLIB_PARAM_OptionLabelKey, ["100m","150m","200m","300m","400m","500m","600m","700m","800m","900m","1000m"]],
-        [GRLIB_PARAM_OptionValuesKey, [100,150,200,300,400,500,600,700,800,900,1000]],
+        [GRLIB_PARAM_OptionLabelKey, ["500m","600m","700m","800m","900m","1000m","1500m"]],
+        [GRLIB_PARAM_OptionValuesKey, [500,600,700,800,900,1000,1500]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_CommanderCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_COMMANDER_MODE_RADIUS_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_COMMANDER_MODE_RADIUS_OPT0",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT1",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT2",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT3",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT4",
             localize "STR_COMMANDER_MODE_RADIUS_OPT5",
             localize "STR_COMMANDER_MODE_RADIUS_OPT6",
             localize "STR_COMMANDER_MODE_RADIUS_OPT7",
             localize "STR_COMMANDER_MODE_RADIUS_OPT8",
             localize "STR_COMMANDER_MODE_RADIUS_OPT9",
-            localize "STR_COMMANDER_MODE_RADIUS_OPT10"
+            localize "STR_COMMANDER_MODE_RADIUS_OPT10",
+            localize "STR_COMMANDER_MODE_RADIUS_OPT15"
         ]]
     ]],
     [GRLIB_PARAM_CommanderVoteTimeout, createHashMapFromArray [

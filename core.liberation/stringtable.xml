@@ -13717,51 +13717,6 @@
 			<Portuguese>Quando o comandante escolhe um setor para atacar, setores inimigos próximos dentro desse alcance defenderão.</Portuguese>
 			<Czech>Když velitel zvolí sektor k útoku, blízké nepřátelské sektory v tomto rozmezí budou bránit.</Czech>
 		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT0">
-			<Original>Defense activation range: 100 m</Original>
-			<Russian>Диапазон активации защиты : 100 м</Russian>
-			<French>Portée d’activation de la défense : 100 m</French>
-			<Chinesesimp>防御激活范围：100 米</Chinesesimp>
-			<Chinese>防禦激活範圍：100 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 100 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 100 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT1">
-			<Original>Defense activation range: 150 m</Original>
-			<Russian>Диапазон активации защиты : 150 м</Russian>
-			<French>Portée d’activation de la défense : 150 m</French>
-			<Chinesesimp>防御激活范围：150 米</Chinesesimp>
-			<Chinese>防禦激活範圍：150 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 150 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 150 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT2">
-			<Original>Defense activation range: 200 m</Original>
-			<Russian>Диапазон активации защиты : 200 м</Russian>
-			<French>Portée d’activation de la défense : 200 m</French>
-			<Chinesesimp>防御激活范围：200 米</Chinesesimp>
-			<Chinese>防禦激活範圍：200 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 200 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 200 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT3">
-			<Original>Defense activation range: 300 m</Original>
-			<Russian>Диапазон активации защиты : 300 м</Russian>
-			<French>Portée d’activation de la défense : 300 m</French>
-			<Chinesesimp>防御激活范围：300 米</Chinesesimp>
-			<Chinese>防禦激活範圍：300 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 300 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 300 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT4">
-			<Original>Defense activation range: 400 m</Original>
-			<Russian>Диапазон активации защиты : 400 м</Russian>
-			<French>Portée d’activation de la défense : 400 m</French>
-			<Chinesesimp>防御激活范围：400 米</Chinesesimp>
-			<Chinese>防禦激活範圍：400 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 400 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 400 m</Czech>
-		</Key>
 		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT5">
 			<Original>Defense activation range: 500 m</Original>
 			<Russian>Диапазон активации защиты : 500 м</Russian>
@@ -13816,6 +13771,15 @@
 			<Portuguese>Alcance de ativação de defesa: 1000 m</Portuguese>
 			<Czech>Rozsah aktivace obrany: 1000 m</Czech>
 		</Key>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT15">
+			<Original>Defense activation range: 1500 m</Original>
+			<Russian>Диапазон активации защиты : 1500 м</Russian>
+			<French>Portée d’activation de la défense : 1500 m</French>
+			<Chinesesimp>防御激活范围：1500 米</Chinesesimp>
+			<Chinese>防禦激活範圍：1500 米</Chinese>
+			<Portuguese>Alcance de ativação de defesa: 1500 m</Portuguese>
+			<Czech>Rozsah aktivace obrany: 1500 m</Czech>
+		</Key>		
 		<Key ID="STR_ALARMS">
 			<Original>Alarms</Original>
 			<Russian>Оповещения</Russian>
