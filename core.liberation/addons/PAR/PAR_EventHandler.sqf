@@ -89,6 +89,8 @@ if (_unit == player) then {
 	//[player,"LRX_Taxi",nil,nil,""] call BIS_fnc_addCommMenuItem;
 
 	// UI actions
+	// inGameUISetEventHandler ["PrevAction", "systemchat str _this; false"];
+	// inGameUISetEventHandler ["NextAction", "systemchat str _this; false"];
 	inGameUISetEventHandler ["Action", "
 		private _ret = false;
 		if (_this select 3 == 'DisAssemble') then { _ret = true };
