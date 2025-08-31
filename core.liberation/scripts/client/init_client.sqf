@@ -214,7 +214,7 @@ waitUntil {sleep 0.5; startgame == 1};
 	waituntil {sleep 1; GRLIB_player_configured};
 	10 fadeMusic 0;
 	sleep 10;
-	playMusic "";	
+	playMusic "";
 };
 
 // LRX client scripts
@@ -347,20 +347,22 @@ if (GRLIB_Commander_mode) then {
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos"];
 		private _caller = _thisArgs select 0;
-		_isCommander = [_caller] call F_getCommander;
-		if ((time - GRLIB_Com_lastClicked) > 3 && {(GRLIB_Commander_VoteEnabled || _isCommander) && count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0}) then {
-			GRLIB_Com_lastClicked = time;
-			_closestSector = [100, _pos, GRLIB_AvailAttackSectors] call F_getNearestSector;
-			if (_closestSector != "") then {
-				playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
-				if (_isCommander) then {
-					[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];
-				} else {
-					[_caller, _closestSector] remoteExec ["vote_sector_remote_call", 2];
+
+		if (count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0) then {
+			_isCommander = [_caller] call F_getCommander;
+			if ((time - GRLIB_Com_lastClicked) > 3 && (GRLIB_Commander_VoteEnabled || _isCommander)) then {
+				_closestSector = [100, _pos, GRLIB_AvailAttackSectors] call F_getNearestSector;
+				if (_closestSector != "") then {
+					playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
+					if (_isCommander) then {
+						[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];
+					} else {
+						[_caller, _closestSector] remoteExec ["vote_sector_remote_call", 2];
+					};
+					GRLIB_Com_lastClicked = time;
 				};
 			};
 		};
-		GRLIB_Com_lastClicked = time;
 	}, [player]];
 };
 
