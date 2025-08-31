@@ -44,6 +44,7 @@ private _go_target = {
 	_waypoint setWaypointBehaviour "AWARE";
 	_waypoint setWaypointCombatMode "WHITE";
 	_waypoint setWaypointCompletionRadius 300;
+	sleep 3;
 	_waypoint = _grp addWaypoint [_spawnpos, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
@@ -71,9 +72,11 @@ if (_cargo_seat_free == 0) exitWith {
 if (_cargo_seat_free > 10) then { _cargo_seat_free = 10 };
 
 [_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
+sleep 3;
+
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
-private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
+private _para_group = [_spawnpos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
 private _lock = locked _vehicle;
 _vehicle lock 0;
 {
@@ -82,8 +85,8 @@ _vehicle lock 0;
 	_x setSkill _unit_skill;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
-	sleep 0.1;
 } foreach (units _para_group);
+
 [_para_group, 3600] call F_setUnitTTL;
 (units _para_group) allowGetIn true;
 (units _para_group) orderGetIn true;

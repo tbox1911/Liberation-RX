@@ -37,7 +37,7 @@ if (_spawn_marker == "") exitWith {
 		[_para_pos, 4] spawn send_drones;
 		sleep 20;
 		[_para_pos] spawn send_paratroopers;
-		sleep 20;
+		sleep 30;
 		[_para_pos] spawn send_paratroopers;
 		sleep 30;
 		[_para_pos] spawn spawn_halo_vehicle;
@@ -92,10 +92,9 @@ for "_i" from 1 to _nb_squad do {
 	};
 	_target_size = _target_size + 1;
 	_bg_groups pushback _nextgrp;
-	sleep 10;
+	sleep 30;
 };
 
-sleep 15;
 if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 && _current_players >= 3 ) then {
 	if (floor random 2 == 0) then {
 		[_objective_pos, GRLIB_side_enemy, 4] spawn spawn_air;
@@ -107,6 +106,7 @@ if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 && _current_players >=
 		[_objective_pos] spawn send_paratroopers;
 	};
 	_target_size = _target_size + 3;
+	sleep 30;
 };
 
 if (combat_readiness >= 50) then {

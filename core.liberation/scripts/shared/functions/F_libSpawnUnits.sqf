@@ -33,7 +33,7 @@ switch (_type) do {
 
 private ["_unit", "_ai_rank", "_pos", "_backpack"];
 {
-	_pos = _spawn_pos getPos [2 + (floor random 25), floor random 360];
+	_pos = _spawn_pos getPos [(2 + floor random 20), floor random 360];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
 	if (!isNil "_unit") then {
 		_unit allowDamage false;
@@ -54,12 +54,10 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		if (_type == "divers") then {
 			_pos set [2, -6];
 			_unit setPosASL _pos;
-		} else {
-			_unit setPosATL _pos;
 		};
 		sleep 0.1;
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
-		[_unit] spawn F_fixModUnit;
+		[_unit] call F_fixModUnit;
 		if (_type == "militia") then { [_unit] call loadout_militia };
 		if (_type == "building") then { _unit setVariable ["GRLIB_in_building", true, true] };
 		if (_type == "bandits") then {
@@ -99,7 +97,6 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			};
 		};
 		[_unit] spawn { sleep 5; (_this select 0) allowDamage true };
-		sleep 0.1;
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
