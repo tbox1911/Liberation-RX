@@ -248,17 +248,17 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 
 // Create vehicles
 if (opforcap_max) then { _vehtospawn = [] };
-if (!(_vehtospawn isEqualTo [])) then {
-	_vehCount = count _vehtospawn;
+if (count _vehtospawn > 0) then {
 	{
-		private _vehicle = [_sector_pos, _x, 10] call F_libSpawnVehicle;
+		private _pos = _sector_pos getPos [(80 + floor random 80), floor random 360];
+		private _vehicle = [_pos, _x, 10] call F_libSpawnVehicle;
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
-			[group (driver _vehicle), getPosATL _vehicle, (50 + floor random 60)] spawn defence_ai;
+			[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
 			{ _managed_units pushback _x } foreach (crew _vehicle);
 		};
 		sleep 1;
-		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _vehCount, _foreachIndex, 40, 60], _sectorName];
+		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, count _vehtospawn, _foreachIndex, 40, 60], _sectorName];
 	} foreach _vehtospawn;
 };
 
