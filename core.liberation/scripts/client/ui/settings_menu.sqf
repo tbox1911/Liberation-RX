@@ -121,19 +121,6 @@ GRLIB_resetParams = {
 GRLIB_cancelParams = {
     if (!dialog || !GRLIB_DialogOpen || !hasInterface) exitWith {};
     [] call GRLIB_CloseDialog;
-    private _mod_west = [GRLIB_PARAM_ModPresetWest] call lrx_getParamValue;
-    private _mod_east = [GRLIB_PARAM_ModPresetEast] call lrx_getParamValue;
-    private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
-    private _side_west = _lrx_liberation_savegame select 7;
-	private _side_east = _lrx_liberation_savegame select 8;
-    private _prefly_check = (
-		(typeName _mod_west != "STRING" || typeName _mod_east != "STRING") ||
-		(_mod_west == "---" || _mod_east == "---") ||
-		(GRLIB_mod_list_west find _mod_west < 0 || GRLIB_mod_list_east find _mod_east < 0) ||
-		(([_mod_west, _mod_east] findIf {!([_x] call GRLIB_Template_Modloaded)}) != -1) ||
-        (GRLIB_force_load == 0 && (_side_west != _mod_west || _side_east != _mod_east))
-	);
-	if (_prefly_check) then { ["LOSER"] remoteExec ["endMission", 0] };
     GRLIB_ParamsInitialized = true;
     publicVariable "GRLIB_ParamsInitialized";
 };
