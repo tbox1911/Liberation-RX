@@ -114,6 +114,9 @@ GRLIB_PARAM_CommanderAutoStart = "CommAutoStart";
 GRLIB_PARAM_CommPlayerVote = "CommPlayerVote";
 GRLIB_PARAM_Alarms = "Alarms";
 GRLIB_PARAM_MineProbability = "MineProbability";
+GRLIB_PARAM_ArtyMaxShot = "ArtyMaxShot";
+GRLIB_PARAM_A3WCount = "A3WCount";
+GRLIB_PARAM_A3WDelay = "A3WDelay";
 
 // Categories
 GRLIB_PARAM_GameCatKey          = localize "STR_PARAMCAT_GAME";
@@ -1190,6 +1193,43 @@ _Mission_Params = [
             localize "STR_PARAMS_BUILDING_RATIO_OPT4",
             localize "STR_PARAMS_BUILDING_RATIO_OPT5",
             localize "STR_PARAMS_BUILDING_RATIO_OPT6"
+        ]]
+    ]],
+    [GRLIB_PARAM_ArtyMaxShot, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 10],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_MAX_SHOT"],
+        [GRLIB_PARAM_OptionLabelKey, ["10","15","20","25","30"]],
+        [GRLIB_PARAM_OptionValuesKey, [10,15,20,25,30]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_MAX_SHOT_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            "10 round","15 round","20 round","25 round","30 round"
+        ]]
+    ]],
+    [GRLIB_PARAM_A3WCount, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 4],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_A3W_COUNT"],
+        [GRLIB_PARAM_OptionLabelKey, ["0","1","2","3","4","5","6"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1,2,3,4,5,6]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_A3W_COUNT"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            "0","1","2","3","4","5","6"
+        ]]
+    ]],
+    [GRLIB_PARAM_A3WDelay, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 15],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_A3W_DELAY"],
+        [GRLIB_PARAM_OptionLabelKey, ["10","15","20","30","60"]],
+        [GRLIB_PARAM_OptionValuesKey, [600,900,1200,1800,3600]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_A3W_DELAY"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_CLEANUP_PARAM0",
+            localize "STR_CLEANUP_PARAM1",
+            localize "STR_CLEANUP_PARAM2",
+            localize "STR_CLEANUP_PARAM3",
+            localize "STR_CLEANUP_PARAM4"
         ]]
     ]],
     [GRLIB_PARAM_KeepScore, createHashMapFromArray [

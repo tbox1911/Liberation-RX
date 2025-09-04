@@ -26,27 +26,27 @@ createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scrip
 debugSpawnMarkers = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_debugSpawnMarkers.sqf";
 
 /*	***  Debug A3W missions ***
-	A3W_debug = true;   // enable debug
+	A3W_debug = true;            // Enable debug mode
 	A3W_mission = "mission_SearchIntel";   // load mission
-	A3W_debug_marker = true;  // debug spawn markers
-	A3W_Mission_delay = 1*60;
-	A3W_Mission_timeout = 5*60;
+	A3W_debug_marker = true;     // debug spawn markers
+	A3W_Mission_delay = 1*60;    // Time in seconds between Side Missions
+	A3W_Mission_timeout = 5*60;  // Time in seconds that a Side Mission will run for, unless completed
 */
 
 A3W_delivery_failed = 0;
 A3W_mission_success = 0;
 A3W_mission_failed = 0;
-A3W_Mission_delay = 15*60;			// Time in seconds between Side Missions
-A3W_Mission_timeout = 60*60;		// Time in seconds that a Side Mission will run for, unless completed
+A3W_Mission_timeout = 60*60;
 A3W_sectors_in_use = [];
 publicVariable "A3W_sectors_in_use";
 
+if (A3W_Mission_count == 0) exitWith {};
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 // moved to init
 //[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 
-for "_i" from 1 to 4 do {
+for "_i" from 1 to A3W_Mission_count do {
 	// Start Permanent controller
 	private _init_sleep = ((2 + floor random 10) * 60);
 	while {_init_sleep > 0 && isNil "A3W_debug"} do { sleep 1; _init_sleep = _init_sleep - 1 };

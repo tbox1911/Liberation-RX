@@ -54,7 +54,12 @@ R3F_LOG_FNCT_calculer_chargement_vehicule = {
 // Add missing objects
 support_vehicles append [
     ["ACE_Wheel",0,0,1,0],
-    ["ACE_Track",0,0,1,0]
+    ["ACE_Track",0,0,1,0],
+    ["ACE_Box_82mm_Mo_Combo",0,250,0,0]
+];
+
+GRLIB_Ammobox_keep append [
+    "ACE_Box_82mm_Mo_Combo"
 ];
 
 // ACE Items price

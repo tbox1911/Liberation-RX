@@ -283,6 +283,9 @@ GRLIB_Commander_VoteTime = [GRLIB_PARAM_CommanderVoteTimeout] call lrx_getParamV
 GRLIB_Commander_VoteEnabled = [GRLIB_PARAM_CommPlayerVote] call lrx_getParamValue;
 GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
 GRLIB_vehicle_defense = [GRLIB_PARAM_VehicleDefense] call lrx_getParamValue;
+GRLIB_artillery_maxshot = [GRLIB_PARAM_ArtyMaxShot] call lrx_getParamValue;
+A3W_Mission_count = [GRLIB_PARAM_A3WCount] call lrx_getParamValue;
+A3W_Mission_delay = [GRLIB_PARAM_A3WDelay] call lrx_getParamValue;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;

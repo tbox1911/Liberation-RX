@@ -1729,6 +1729,22 @@
 			<Chinesesimp>建筑中的AI（倍数）</Chinesesimp>
 			<Chinese>建築中的AI（倍數）</Chinese>
 		</Key>
+		<Key ID="STR_PARAMS_MAX_SHOT">
+			<Original>Artillery cooldown</Original>
+			<French>Temps de recharge de l'artillerie</French>
+		</Key>
+		<Key ID="STR_PARAMS_MAX_SHOT_DESC">
+			<Original>Maximum number of artillery shots per 30 minutes</Original>
+			<French>Nombre maximal de tirs d'artillerie par 30 minutes</French>
+		</Key>
+		<Key ID="STR_PARAMS_A3W_COUNT">
+			<Original>LRX maximum concurrent Side Missions</Original>
+			<French>LRX Missions Secondaires Maximum</French>
+		</Key>
+		<Key ID="STR_PARAMS_A3W_DELAY">
+			<Original>Delay between Side Missions (min)</Original>
+			<French>Delais entre les Missions Secondaires (min)</French>
+		</Key>
 		<Key ID="STR_VULN_TIMER">
 			<Original>Enemy capture sector duration </Original>
 			<French>Durée de capture du secteur par l'ennemi </French>
@@ -13779,7 +13795,7 @@
 			<Chinese>防禦激活範圍：1500 米</Chinese>
 			<Portuguese>Alcance de ativação de defesa: 1500 m</Portuguese>
 			<Czech>Rozsah aktivace obrany: 1500 m</Czech>
-		</Key>		
+		</Key>
 		<Key ID="STR_ALARMS">
 			<Original>Alarms</Original>
 			<Russian>Оповещения</Russian>
