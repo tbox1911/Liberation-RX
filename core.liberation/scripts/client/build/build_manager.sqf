@@ -129,7 +129,7 @@ while {true} do {
 	};
 
 	// Build
-	if !(_buildtype in [GRLIB_BuildTypeDirect,99,98,97]) then {
+	if !(_buildtype in [GRLIB_BuildTypeDirect,GRLIB_TrenchBuildType,99,98,97]) then {
 		_pos_origin = [] call F_getNearestFob;
 		if ([_pos_origin] call F_getFobType == 0) then {
 			_maxdist = GRLIB_fob_range;
@@ -453,10 +453,10 @@ while {true} do {
 				player setDir (player getDir _veh_pos);
 				private _zStart = -1;
 				private _zEnd = round(_veh_pos select 2);
-				private _steps = 15;
+				private _steps = 12;
 				private _stepHeight = (_zEnd - _zStart) / _steps;
 				for "_i" from 0 to _steps do {
-					if (_i % 3 == 0) then {
+					if (_i % 4 == 0) then {
 						playSound3D [getMissionPath "res\dig02.ogg", player, false, getPosASL player, 5, 1, 250];
 						//player playMoveNow "AinvPknlMstpSlayWrflDnon_medicOther";
 						player playMoveNow "AinvPknlMstpSnonWnonDnon_medicUp0";
