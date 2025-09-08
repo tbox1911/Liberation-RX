@@ -125,19 +125,18 @@ while {true} do {
 			_lst_a3 = [];
 			_lst_r3f = [];
 			_lst_grl = [];
-		};
-	};
-
-	// Build
-	if !(_buildtype in [GRLIB_BuildTypeDirect,GRLIB_TrenchBuildType,99,98,97]) then {
-		_pos_origin = [] call F_getNearestFob;
-		if ([_pos_origin] call F_getFobType == 0) then {
-			_maxdist = GRLIB_fob_range;
-		};
-		if ([_pos_origin] call F_getFobType == 1) then {
-			// Outpost
-			_maxdist = GRLIB_outpost_range;
-			_price = round(_price * 1.5)
+			if (_buildtype != GRLIB_TrenchBuildType) then {
+				_pos_origin = [] call F_getNearestFob;
+				if ([_pos_origin] call F_getFobType == 0) then {
+					// FOB
+					_maxdist = GRLIB_fob_range;
+				};
+				if ([_pos_origin] call F_getFobType == 1) then {
+					// Outpost
+					_maxdist = GRLIB_outpost_range;
+					_price = round(_price * 1.5)
+				};
+			};
 		};
 	};
 
@@ -330,7 +329,7 @@ while {true} do {
 			GRLIB_conflicting_objects = _near_objects;
 
 			_noObjectsClip = (_near_objects isEqualTo []);
-			_withinDistance = ((_truepos distance2D _pos_origin) < _maxdist);
+			_withinDistance = ((_truepos distance2D _pos_origin) < _maxdist || _buildtype == 97);
 			_boatValid = ((_classname in boats_names || build_water == 1) && _isWater);
 			_surfaceIsValid = (!_isWater || _boatValid);
 
