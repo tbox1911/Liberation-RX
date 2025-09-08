@@ -1033,7 +1033,7 @@ _Mission_Params = [
         ]]
     ]],
     [GRLIB_PARAM_NavalFobType, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_ValueKey, 2],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_NAVAL_TYPE"],
         [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED","USS Liberty","USS Freedom","Offshore Platform"]],
         [GRLIB_PARAM_OptionValuesKey, [0,1,2,3]],
@@ -1218,10 +1218,10 @@ _Mission_Params = [
         ]]
     ]],
     [GRLIB_PARAM_A3WDelay, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 15],
+        [GRLIB_PARAM_ValueKey, 1800],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_A3W_DELAY"],
-        [GRLIB_PARAM_OptionLabelKey, ["10","15","20","30","60"]],
-        [GRLIB_PARAM_OptionValuesKey, [600,900,1200,1800,3600]],
+        [GRLIB_PARAM_OptionLabelKey, ["10 min","15 min","20 min","30 min","1h","2h"]],
+        [GRLIB_PARAM_OptionValuesKey, [600,900,1200,1800,3600,7200]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_A3W_DELAY"],
         [GRLIB_PARAM_OptionDescriptionKey, [
@@ -1229,7 +1229,8 @@ _Mission_Params = [
             localize "STR_CLEANUP_PARAM1",
             localize "STR_CLEANUP_PARAM2",
             localize "STR_CLEANUP_PARAM3",
-            localize "STR_CLEANUP_PARAM4"
+            localize "STR_CLEANUP_PARAM4",
+            localize "STR_CLEANUP_PARAM5"
         ]]
     ]],
     [GRLIB_PARAM_KeepScore, createHashMapFromArray [
