@@ -8,10 +8,9 @@ if (!isNull _killer) then {
 
 private _msg = format ["<t align='center'>" + localize "STR_TK_ASK1" + "</t>", _killer_name];
 private _result = [_msg, localize "STR_TK_COUNT", localize "STR_TK_PUNISH", localize "STR_TK_FORGIVE"] call BIS_fnc_guiMessage;
-private _kill = 0;
 if (_result) then {
-	_kill = BTC_logic getVariable [_killer_uid, 0];
-	BTC_logic setVariable [_killer_uid, (_kill + 1), true];
+	private _kill = 1 + (BTC_logic getVariable [_killer_uid, 0]);
+	BTC_logic setVariable [_killer_uid, _kill, true];
 	_msg = format [localize "STR_TK_MSG1", name _target, _killer_name];
 	[_killer, _target] remoteExec ["LRX_tk_server_actions", 2];
 } else {

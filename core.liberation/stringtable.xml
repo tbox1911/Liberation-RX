@@ -13599,76 +13599,13 @@
 			<Czech>Nastavuje povolený počet střel na vlastní před sankcemi.</Czech>
 		</Key>
 		<Key ID="STR_TK_COUNT_OPT0">
-			<Original>Allow up to 3 TKs</Original>
-			<Russian>Разрешить до 3 дружеских убийств</Russian>
-			<French>Autoriser jusqu’à 3 tir(s) ami(s)</French>
-			<Chinesesimp>允许最多 3 次队友击杀。</Chinesesimp>
-			<Chinese>允許最多 3 次隊友擊殺。</Chinese>
-			<Portuguese>Permitir até 3 team kills.</Portuguese>
-			<Czech>Povolit až 3 zabití vlastních.</Czech>
-		</Key>
-		<Key ID="STR_TK_COUNT_OPT1">
-			<Original>Allow up to 4 TKs</Original>
-			<Russian>Разрешить до 4 дружеских убийств</Russian>
-			<French>Autoriser jusqu’à 4 tir(s) ami(s)</French>
-			<Chinesesimp>允许最多 4 次队友击杀。</Chinesesimp>
-			<Chinese>允許最多 4 次隊友擊殺。</Chinese>
-			<Portuguese>Permitir até 4 team kills.</Portuguese>
-			<Czech>Povolit až 4 zabití vlastních.</Czech>
-		</Key>
-		<Key ID="STR_TK_COUNT_OPT2">
-			<Original>Allow up to 5 TKs</Original>
-			<Russian>Разрешить до 5 дружеских убийств</Russian>
-			<French>Autoriser jusqu’à 5 tir(s) ami(s)</French>
-			<Chinesesimp>允许最多 5 次队友击杀。</Chinesesimp>
-			<Chinese>允許最多 5 次隊友擊殺。</Chinese>
-			<Portuguese>Permitir até 5 team kills.</Portuguese>
-			<Czech>Povolit až 5 zabití vlastních.</Czech>
-		</Key>
-		<Key ID="STR_TK_COUNT_OPT3">
-			<Original>Allow up to 6 TKs</Original>
-			<Russian>Разрешить до 6 дружеских убийств</Russian>
-			<French>Autoriser jusqu’à 6 tir(s) ami(s)</French>
-			<Chinesesimp>允许最多 6 次队友击杀。</Chinesesimp>
-			<Chinese>允許最多 6 次隊友擊殺。</Chinese>
-			<Portuguese>Permitir até 6 team kills.</Portuguese>
-			<Czech>Povolit až 6 zabití vlastních.</Czech>
-		</Key>
-		<Key ID="STR_TK_COUNT_OPT4">
-			<Original>Allow up to 7 TKs</Original>
-			<Russian>Разрешить до 7 дружеских убийств</Russian>
-			<French>Autoriser jusqu’à 7 tir(s) ami(s)</French>
-			<Chinesesimp>允许最多 7 次队友击杀。</Chinesesimp>
-			<Chinese>允許最多 7 次隊友擊殺。</Chinese>
-			<Portuguese>Permitir até 7 team kills.</Portuguese>
-			<Czech>Povolit až 7 zabití vlastních.</Czech>
-		</Key>
-		<Key ID="STR_TK_COUNT_OPT5">
-			<Original>Allow up to 8 TKs</Original>
-			<Russian>Разрешить до 8 дружеских убийств</Russian>
-			<French>Autoriser jusqu’à 8 tir(s) ami(s)</French>
-			<Chinesesimp>允许最多 8 次队友击杀。</Chinesesimp>
-			<Chinese>允許最多 8 次隊友擊殺。</Chinese>
-			<Portuguese>Permitir até 8 team kills.</Portuguese>
-			<Czech>Povolit až 8 zabití vlastních.</Czech>
-		</Key>
-		<Key ID="STR_TK_COUNT_OPT6">
-			<Original>Allow up to 9 TKs</Original>
-			<Russian>Разрешить до 9 дружеских убийств</Russian>
-			<French>Autoriser jusqu’à 9 tir(s) ami(s)</French>
-			<Chinesesimp>允许最多 9 次队友击杀。</Chinesesimp>
-			<Chinese>允許最多 9 次隊友擊殺。</Chinese>
-			<Portuguese>Permitir até 9 team kills.</Portuguese>
-			<Czech>Povolit až 9 zabití vlastních.</Czech>
-		</Key>
-		<Key ID="STR_TK_COUNT_OPT7">
-			<Original>Allow up to 10 TKs</Original>
-			<Russian>Разрешить до 10 дружеских убийств</Russian>
-			<French>Autoriser jusqu’à 10 tir(s) ami(s)</French>
-			<Chinesesimp>允许最多 10 次队友击杀。</Chinesesimp>
-			<Chinese>允許最多 10 次隊友擊殺。</Chinese>
-			<Portuguese>Permitir até 10 team kills.</Portuguese>
-			<Czech>Povolit až 10 zabití vlastních.</Czech>
+			<Original>Allow up to %1 TKs</Original>
+			<Russian>Разрешить до %1 дружеских убийств</Russian>
+			<French>Autoriser jusqu’à %1 tir(s) ami(s)</French>
+			<Chinesesimp>允许最多 %1 次队友击杀。</Chinesesimp>
+			<Chinese>允許最多 %1 次隊友擊殺。</Chinese>
+			<Portuguese>Permitir até %1 team kills.</Portuguese>
+			<Czech>Povolit až %1 zabití vlastních.</Czech>
 		</Key>
 		<Key ID="STR_PERSISTENT_MODE_DESC">
 			<Original>Enables or disables persistent mode, maintaining mission state across sessions.</Original>
@@ -15862,15 +15799,6 @@
 	<Package name="LRX_PAR">
 		<Key ID="STR_PAR_AI_REVIVE_INITIALIZED">
 			<Original>-------- pSiKo AI Revive Initialized --------</Original>
-			<French>-------- pSiKo Réanimation IA initialisée --------</French>
-			<German>-------- pSiKo KI-Wiederbelebung initialisiert --------</German>
-			<Spanish>-------- pSiKo Reanimación de IA iniciada --------</Spanish>
-			<Russian>-------- pSiKo AI Возрождение инициализировано --------</Russian>
-			<Chinesesimp>-------- pSiKo AI 复活系统已初始化 --------</Chinesesimp>
-			<Chinese>-------- pSiKo AI 復活系統已初始化 --------</Chinese>
-			<Japanese>-------- pSiKo AI 蘇生システムを初期化しました --------</Japanese>
-			<Portuguese>-------- pSiKo Reanimação de IA iniciada --------</Portuguese>
-			<Czech>-------- pSiKo AI oživení inicializováno --------</Czech>
 		</Key>
 		<Key ID="STR_PAR_Need_Medic1">
 			<Original>I need a medic!</Original>

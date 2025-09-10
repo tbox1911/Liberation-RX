@@ -13,19 +13,19 @@ if (!isNil "_unit") exitWith {
 };
 
 private _kill = BTC_logic getVariable [PAR_Grp_ID, 0];
-if (_kill < GRLIB_tk_count) then {
+if (_kill < GRLIB_tk_count - 1) then {
 	waitUntil {!(isNull (findDisplay 46))};
 	private _msg = format ["STOP TEAMKILLING !!<br/><br/>%1 Warning left..", (GRLIB_tk_count - _kill)];
 	[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 };
 
-if (_kill == GRLIB_tk_count) then {
+if (_kill == GRLIB_tk_count - 1) then {
 	waitUntil {!(isNull (findDisplay 46))};
 	private _msg = format ["STOP TEAMKILLING, <t color='#ff0000'>LAST WARNING...</t>"];
 	[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 };
 
-if (_kill > GRLIB_tk_count) exitWith {
+if (_kill == GRLIB_tk_count) exitWith {
 	disableUserInput true;
 	closeDialog 0;
 	closeDialog 0;
@@ -39,14 +39,11 @@ if (_kill > GRLIB_tk_count) exitWith {
 	waitUntil { dialog };
 	player setpos [0,0,0];
 	private _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
-	ctrlSetText [4867, "YOU HAVE BEEN BANNED"];
-	sleep 3;
-	ctrlSetText [4867, "FOR BAD GAMING..."];
-	sleep 3;
-	ctrlSetText [4867, "...YOU ARE NOT"];
-	sleep 3;
-	ctrlSetText [4867, "WELCOME ANYMORE."];
-	sleep 3;
+	private _text = ["YOU","HAVE","BEEN","BANNED!","","YOU","ARE","NOT","WELCOME","ANYMORE...",""];
+	{
+		if (_x != "") then { ctrlSetText [4867, _x] };
+		sleep 1;
+	} forEach _text;
 	ctrlSetText [4867, ""];
 	sleep 3;
 	disableUserInput false;

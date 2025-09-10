@@ -1403,19 +1403,15 @@ _Mission_Params = [
     [GRLIB_PARAM_TK_count, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 4],
         [GRLIB_PARAM_NameKey, localize "STR_TK_COUNT"],
-        [GRLIB_PARAM_OptionLabelKey, ["3","4","5","6","7","8","9","10"]],
-        [GRLIB_PARAM_OptionValuesKey, [3,4,5,6,7,8,9,10]],
+        [GRLIB_PARAM_OptionLabelKey, ["3","4","5","6"]],
+        [GRLIB_PARAM_OptionValuesKey, [3,4,5,6]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_TK_COUNT_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_TK_COUNT_OPT0",
-            localize "STR_TK_COUNT_OPT1",
-            localize "STR_TK_COUNT_OPT2",
-            localize "STR_TK_COUNT_OPT3",
-            localize "STR_TK_COUNT_OPT4",
-            localize "STR_TK_COUNT_OPT5",
-            localize "STR_TK_COUNT_OPT6",
-            localize "STR_TK_COUNT_OPT7"
+            format [localize "STR_TK_COUNT_OPT0", 3],
+            format [localize "STR_TK_COUNT_OPT0", 4],
+            format [localize "STR_TK_COUNT_OPT0", 5],
+            format [localize "STR_TK_COUNT_OPT0", 6]
         ]]
     ]],
     [GRLIB_PARAM_Persistent, createHashMapFromArray [
