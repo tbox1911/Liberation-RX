@@ -46,8 +46,15 @@ while {true} do {
 	};
 
 	if (GRLIB_allow_redeploy > 0) then {
-		_veh_list = _veh_list + ([] call F_getMobileRespawns);
+		private _mobile_respawn_list = GRLIB_mobile_respawn select {
+			(alive _x) && !(isObjectHidden _x) &&
+			!(_x getVariable ['R3F_LOG_disabled', false]) &&
+			!([_x, "LHD", GRLIB_fob_range] call F_check_near) &&
+			!surfaceIsWater (getPos _x) && ((getPosATL _x) select 2) < 5 && speed vehicle _x < 5
+		};
+		_veh_list = _veh_list + _mobile_respawn_list;
 	};
+	private _mobile_respawn = ([] call F_getMobileRespawns);
 	private _vehmarkers_bak = [];
 	{
 		_nextvehicle = _x;
@@ -126,7 +133,7 @@ while {true} do {
 			};
 		};
 
-		if (_nextvehicle in GRLIB_mobile_respawn) then {
+		if (_nextvehicle in _mobile_respawn) then {
 			_marker_color = "ColorYellow";
 			_marker_type = "mil_end";
 			_nextmarker setMarkerTextLocal format ["%1 - %2", [_nextvehicle] call F_getLRXName, mapGridPosition _nextvehicle];

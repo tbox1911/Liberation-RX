@@ -12,12 +12,10 @@ if (GRLIB_fob_type == 1) then {
 	_huron_type = FOB_truck_typename;
 };
 
-private ["_huron"];
-
 while {true} do {
 	if (GRLIB_fob_type in [1,2]) then { waitUntil {sleep 1; count GRLIB_all_fobs == 0}};
 	if (isNull GRLIB_vehicle_huron ) then {
-		_huron = _huron_type createVehicle _huron_pos;
+		private _huron = _huron_type createVehicle _huron_pos;
 		_huron allowdamage false;
 		_huron addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_huron setVariable ["GRLIB_vehicle_owner", "lrx", true];

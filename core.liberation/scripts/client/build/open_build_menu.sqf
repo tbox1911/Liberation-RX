@@ -194,8 +194,16 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 			};
 
 			if ( buildtype == GRLIB_SupportBuildType ) then {
-				if (_build_class == mobile_respawn) then {
-					if (GRLIB_max_respawn_reached) then {
+				if (_build_class in respawn_vehicles) then {
+					private _count_respawn = {
+						(alive _x) && !(isObjectHidden _x) &&
+						(_x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID) &&
+						!(_x getVariable ['R3F_LOG_disabled', false]) &&
+						!([_x, "LHD", GRLIB_fob_range] call F_check_near) &&
+						!surfaceIsWater (getpos _x) && ((getPosATL _x) select 2) < 5 && speed vehicle _x < 5
+					} count GRLIB_mobile_respawn;
+					if (_count_respawn >= GRLIB_max_spawn_point) then {
+						hintSilent localize "STR_TOO_MANY_SPAWN";
 						_affordable = false;
 					};
 					if (GRLIB_allow_redeploy == 0) then {
@@ -203,9 +211,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 					};
 				};
 				if (_build_class == playerbox_typename && _has_box) then {
-					_affordable = false;
-				};
-				if (_build_class in respawn_vehicles && GRLIB_allow_redeploy == 0) then {
 					_affordable = false;
 				};
 				if (_build_class == FOB_boat_typename && GRLIB_naval_type == 0) then {

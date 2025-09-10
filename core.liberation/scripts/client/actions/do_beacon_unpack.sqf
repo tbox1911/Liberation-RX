@@ -1,5 +1,3 @@
-if (GRLIB_max_respawn_reached) exitWith {};
-
 private _tent_cost = support_vehicles select {(_x select 0) == mobile_respawn} select 0 select 1;
 
 if ( _tent_cost > (infantry_cap - resources_infantry)) then {

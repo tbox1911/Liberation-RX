@@ -26,7 +26,6 @@ GRLIB_ActionDist_3 = 3;
 GRLIB_ActionDist_5 = 5;
 GRLIB_ActionDist_10 = 10;
 GRLIB_ActionDist_15 = 15;
-GRLIB_max_respawn_reached = false;
 GRLIB_player_configured = false;
 GRLIB_current_trenches = 0;
 

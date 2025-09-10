@@ -22,8 +22,8 @@ switch ( _list ) do {
 	case "ATM" : { _classlist = GRLIB_Marker_ATM };
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL };
 	case "SHOP" : { _classlist = GRLIB_Marker_SHOP };
-	case "SPAWN" : { _classlist = GRLIB_mobile_respawn select {typeOf _x != mobile_respawn} };
-	case "SPAWNT" : { _classlist = GRLIB_mobile_respawn select {typeOf _x == mobile_respawn} };
+	case "SPAWN" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x != mobile_respawn} };
+	case "SPAWNT" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x == mobile_respawn} };
 	case "MEDIC" : { _classlist = ai_healing_sources };
 	case "ARSENAL" : { _classlist = [Arsenal_typename] };
 	case "REFUEL" : { _classlist = vehicle_refuel_sources };

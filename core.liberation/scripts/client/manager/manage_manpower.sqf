@@ -11,20 +11,20 @@ private _get_mp = {
 	_ret;
 };
 
-private ["_manpower_used", "_player_respawn", "_player_vehicles"];
+private ["_manpower_used", "_mobile_respawn", "_player_mobile_respawn", "_player_vehicles"];
 while {true} do {
 	if (GRLIB_player_configured) then {
 		_manpower_used = count ((units player) select { !(isPlayer _x) && alive _x });
-		_player_respawn = [PAR_Grp_ID] call F_getMobileRespawns;
+		_mobile_respawn = ([] call F_getMobileRespawns) select { _x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID };
 		_player_vehicles = [];
 		if (GRLIB_permission_vehicles) then {
-			_player_vehicles = (vehicles - _player_respawn) select {
+			_player_vehicles = (vehicles - _mobile_respawn) select {
 				(alive _x) && ([player, _x, true] call is_owner) &&
 				!(_x getVariable ['R3F_LOG_disabled', false]) &&
 				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
 			};
 		};
-		{ _manpower_used = _manpower_used + ([_x] call _get_mp) } foreach (_player_vehicles + _player_respawn);
+		{ _manpower_used = _manpower_used + ([_x] call _get_mp) } foreach (_player_vehicles + _mobile_respawn);
 		resources_infantry = _manpower_used;
 	};
 	opfor_sectors = (sectors_allSectors - blufor_sectors);
