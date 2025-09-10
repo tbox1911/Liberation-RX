@@ -155,7 +155,7 @@ GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 waitUntil {
 	[player] joinSilent GRLIB_player_group;
 	sleep 0.5;
-	(side group player == GRLIB_side_friendly);
+	(player in (units GRLIB_player_group));
 };
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
@@ -241,7 +241,7 @@ waitUntil {sleep 0.5; startgame == 1};
 
 // Misc
 [] execVM "scripts\client\misc\secondary_jip.sqf";
-[] execVM "scripts\client\misc\stop_renegade.sqf";
+[] execVM "scripts\client\misc\player_behavior.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
 
 // ACE inCompatible addons

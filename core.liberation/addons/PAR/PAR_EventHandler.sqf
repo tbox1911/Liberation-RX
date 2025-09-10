@@ -43,7 +43,7 @@ _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	// No mines in the base zone (Chimera + FOB)
-	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") exitWith { deleteVehicle _projectile };
+	if (side _unit != GRLIB_side_friendly && ([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") exitWith { deleteVehicle _projectile };
 
 	// Pay artillery fire
 	// if (_vehicle isKindOf "StaticMortar") then {
@@ -106,7 +106,6 @@ if (_unit == player) then {
 		params ["_unit", "_oldWeapon", "_newWeapon", "_oldMode", "_newMode", "_oldMuzzle", "_newMuzzle", "_turretIndex"];
 		if (isNull objectParent _unit) then {
 			if (_newWeapon == primaryWeapon _unit) then {
-				//PAR_weapons_state = _unit weaponState (primaryWeapon _unit) select [0,3];
 				PAR_weapons_state = [_newWeapon, _newMuzzle, _newMode];
 			};
 		};
