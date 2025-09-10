@@ -27,10 +27,8 @@ if (_box_type == FOB_truck_typename && count (crew _box) > 0) exitWith {
 };
 
 private _min_fob_dist = 1000;
-private _fob_pos = [] call F_getNearestFob;
-private _fob_dist = round (player distance2D _fob_pos);
-if (_fob_dist < _min_fob_dist) exitWith {
-	hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE",floor _min_fob_dist, _fob_dist];
+if (GRLIB_player_fobdistance < _min_fob_dist) exitWith {
+	hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE",floor _min_fob_dist, GRLIB_player_fobdistance];
 };
 
 private _min_sector_dist = round ((GRLIB_capture_size + GRLIB_fob_range) * 1.5);

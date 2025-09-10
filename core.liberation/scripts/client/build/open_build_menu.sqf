@@ -44,13 +44,13 @@ if (count squads == 0) then {
 	ctrlShow [ 1085, false ];
 };
 
-private _nearest_fob = [] call F_getNearestFob;
-private _fob_type = [_nearest_fob] call F_getFobType;
+private _fob_type = [GRLIB_player_nearest_fob] call F_getFobType;
 private _near_outpost = (_fob_type == 1);
 private _water_fob = (_fob_type == 2);
 private _near_warehouse = ([player, "WAREHOUSE", GRLIB_fob_range, false] call F_check_near);
 private _squad_leader = (player == leader group player);
 private _has_box = false;
+
 { if ((_x select 0) == playerbox_typename) exitWith { _has_box = true } } foreach GRLIB_virtual_garage;
 if (count ((entities playerbox_typename) select {[player, _x] call is_owner}) > 0) then { _has_box = true };
 

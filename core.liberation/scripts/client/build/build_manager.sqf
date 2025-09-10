@@ -126,7 +126,7 @@ while {true} do {
 			_lst_r3f = [];
 			_lst_grl = [];
 			if (_buildtype != GRLIB_TrenchBuildType) then {
-				_pos_origin = [] call F_getNearestFob;
+				_pos_origin = GRLIB_player_nearest_fob;
 				if ([_pos_origin] call F_getFobType == 0) then {
 					// FOB
 					_maxdist = GRLIB_fob_range;

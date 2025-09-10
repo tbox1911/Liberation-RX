@@ -1,4 +1,4 @@
-private _fob_pos = [] call F_getNearestFob;
+private _fob_pos = GRLIB_player_nearest_fob;
 private _fob_owner = [_fob_pos] call F_getFobOwner;
 private _fob_name = [_fob_pos] call F_getFobName;
 if (PAR_Grp_ID != _fob_owner) exitWith { hintSilent "Error!\nYour are NOT the owner of the Outpost!" };

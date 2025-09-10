@@ -111,15 +111,14 @@ while {true} do {
 			if (_uiticks % 4 == 0) then {
 				_bar = _overlay displayCtrl (244);
 				_fob_sector = false;
-				_fob_pos = [] call F_getNearestFob;
 				_nearest_active_sector = "";
 
 				if (player distance2D lhd <= GRLIB_fob_range) then {
 					_nearest_active_sector = "base_chimera";
 					_fob_sector = true;
 				} else {
-					if (player distance2D _fob_pos <= GRLIB_fob_range) then {
-						_nearest_active_sector = format ["fobmarker%1", (GRLIB_all_fobs find _fob_pos)];
+					if (GRLIB_player_near_fob) then {
+						_nearest_active_sector = format ["fobmarker%1", (GRLIB_all_fobs find GRLIB_player_nearest_fob)];
 						_fob_sector = true;
 					} else {
 						_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;
