@@ -166,6 +166,7 @@ GRLIB_checkOnboardCrew = {
 	params ["_target"];
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };
+	if (getPos _vehicle select 2 >= 5) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
 	(alive player && count units player > 0)
 }
