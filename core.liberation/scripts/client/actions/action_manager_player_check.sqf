@@ -154,5 +154,9 @@ GRLIB_checkRemoveHelipad = {
 
 GRLIB_check_EjectCrew = {
 	params ["_target"];
-	((!isNull objectParent _target) && ([_target, objectParent _target] call is_owner) && (getPosATL _target select 2 < 10) && (abs (speed vehicle _target) <= 5) && (count crew (vehicle _target) > 1))
+	private _vehicle = objectParent _target;
+	if (isNull _vehicle) exitWith { false };
+	if (_vehicle isKindOf "Air") exitWith { true };
+	if !([_target, _vehicle] call is_owner) exitWith { false };
+	((getPosATL _vehicle select 2 <= 10) && (abs (speed vehicle _vehicle) <= 5))
 };

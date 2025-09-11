@@ -74,7 +74,6 @@ _air_grp setSpeedMode "FULL";
 GRLIB_taxi_cooldown = 0;
 private _idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,false,true,"","vehicle _this == _target && _target distance2D GRLIB_taxi_helipad > 300"];
 private _idact_cancel = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], "addons\TAXI\taxi_cancel.sqf","",998,false,true,"","vehicle _this == _target && !(isNil {player getVariable ['GRLIB_taxi_called', nil]})"];
-private _idact_eject = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION3"], "addons\TAXI\taxi_eject.sqf","",997,false,true,"","vehicle _this == _target && !GRLIB_taxi_eject && (getPos _target select 2) > 50 && time < GRLIB_taxi_cooldown"];
 player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
 // Pickup Marker
@@ -125,7 +124,6 @@ if (time < _stop) then {
 		_dest = getPos GRLIB_taxi_helipad;
 		[_vehicle, _dest, "STR_TAXI_PROGRESS"] call taxi_dest;
 		_vehicle removeAction _idact_dest;
-		_vehicle removeAction _idact_eject;
 
 		// Board Out
 		[_vehicle] call taxi_land;
@@ -140,13 +138,17 @@ _vehicle lockCargo true;
 sleep 1;
 
 // Eject cargo
-[_vehicle] call compileFinal preprocessFileLineNumbers "addons\TAXI\taxi_eject.sqf";
-sleep 1;
+if (count _cargo > 0) then {
+	[_cargo select 0] execVM "scripts\client\actions\do_eject.sqf";
+	sleep 3;
+};
+_vehicle setVehicleLock "LOCKED";
+_vehicle lockCargo true;
 
 // Go back
 deleteMarkerLocal "taxi_lz";
 if (GRLIB_taxi_helipad_created) then { deleteVehicle GRLIB_taxi_helipad };
-GRLIB_taxi_eject = nil;
+
 GRLIB_taxi_helipad = nil;
 hintSilent localize "STR_TAXI_RETURN";
 [_vehicle, _spawn_pos, ""] call taxi_dest;
