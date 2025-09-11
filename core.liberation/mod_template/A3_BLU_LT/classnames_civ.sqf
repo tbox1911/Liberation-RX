@@ -56,6 +56,8 @@ civilian_vehicles = [
 	"C_Quadbike_01_F",
 	"SUV_01_base_black_F",
 	"C_SUV_01_F",
+	"C_SUV_01_F",
+	"C_SUV_01_F",
 	"C_Van_01_transport_F",
 	"C_Van_01_box_F",
 	"C_Van_01_fuel_F",

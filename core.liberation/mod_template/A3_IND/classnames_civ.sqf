@@ -37,6 +37,8 @@ civilians = [
 civilian_vehicles = [
 	"C_Quadbike_01_F",
 	"C_Plane_Civil_01_F",
+	"C_Plane_Civil_01_F",
+	"C_Plane_Civil_01_racing_F",
 	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
@@ -54,6 +56,8 @@ civilian_vehicles = [
 	"C_Quadbike_01_F",
 	"SUV_01_base_black_F",
 	"C_SUV_01_F",
+	"C_SUV_01_F",
+	"C_SUV_01_F",
 	"C_Van_01_transport_F",
 	"C_Van_01_box_F",
 	"C_Van_01_fuel_F",
@@ -64,5 +68,6 @@ civilian_vehicles = [
 	"B_GEN_Van_02_transport_F",
 	"C_Truck_02_covered_F",
 	"C_Truck_02_transport_F",
+	"C_Tractor_01_F",
 	"C_Tractor_01_F"
 ];
