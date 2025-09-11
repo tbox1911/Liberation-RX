@@ -36,6 +36,7 @@ taxi_dest = {
 	(driver _vehicle) doMove _dest;
 	sleep 30;
 
+	private _have_cargo = (count ([_vehicle] call taxi_cargo) > 0);
 	private _landing_range = 150;
 	private _stop = time + (5 * 60); // wait 5min max
 	private _alt_old = 999;
@@ -62,7 +63,8 @@ taxi_dest = {
 			_vehicle setPos ((getPosATL _vehicle) vectorAdd [0, 0, 3]);
 			sleep 1;
 		};
-		(((_vehicle distance2D _dest <= _landing_range || time > _stop) && unitReady (driver _vehicle)) || count ([_vehicle] call taxi_cargo) == 0)
+		if (_have_cargo && count ([_vehicle] call taxi_cargo) == 0) exitWith { true };
+		((_vehicle distance2D _dest <= _landing_range || time > _stop) && unitReady (driver _vehicle))
 	};
 };
 

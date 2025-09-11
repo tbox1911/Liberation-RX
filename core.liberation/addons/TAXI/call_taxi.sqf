@@ -126,9 +126,12 @@ if (time < _stop) then {
 		_vehicle removeAction _idact_dest;
 
 		// Board Out
-		[_vehicle] call taxi_land;
-		[_vehicle, _cargo] call taxi_outboard;
-		sleep 2;
+		_cargo = [_vehicle] call taxi_cargo;
+		if (_cargo > 0) then {
+			[_vehicle] call taxi_land;
+			[_vehicle, _cargo] call taxi_outboard;
+			sleep 2;
+		};
 		{ _x allowDamage true } forEach _cargo;
 	};
 };
@@ -141,9 +144,9 @@ sleep 1;
 if (count _cargo > 0) then {
 	[_cargo select 0] execVM "scripts\client\actions\do_eject.sqf";
 	sleep 3;
+	_vehicle setVehicleLock "LOCKED";
+	_vehicle lockCargo true;
 };
-_vehicle setVehicleLock "LOCKED";
-_vehicle lockCargo true;
 
 // Go back
 deleteMarkerLocal "taxi_lz";
