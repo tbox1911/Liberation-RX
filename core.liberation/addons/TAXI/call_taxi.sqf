@@ -127,7 +127,7 @@ if (time < _stop) then {
 
 		// Board Out
 		_cargo = [_vehicle] call taxi_cargo;
-		if (_cargo > 0) then {
+		if (count _cargo > 0) then {
 			[_vehicle] call taxi_land;
 			[_vehicle, _cargo] call taxi_outboard;
 			sleep 2;

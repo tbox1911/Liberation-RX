@@ -11,12 +11,13 @@ private _checkCiv = {
 		secondaryWeapon player == "" &&
 		(vest player) == "" &&
 		((uniform player) == "" || (uniform player) select [0,4] == "U_C_") &&
-		((backpack player) == "" || (backpack player) select [0,5] == "B_Civ")
+		((backpack player) == "" || (backpack player) select [0,5] == "B_Civ") &&
+		(isNull objectParent player || typeOf (objectParent player) in civilian_vehicles)
 	)
 };
 
 while {true} do {
-	waitUntil {sleep 1; alive player && !([player] call PAR_is_wounded)};
+	waitUntil {sleep 1; alive player && !(captive player)};
 
 	// Renegade
 	private _side = side player;
@@ -71,5 +72,5 @@ while {true} do {
 		_timer = time + 300;
 	};
 
-	sleep 5;
+	sleep 3;
 };

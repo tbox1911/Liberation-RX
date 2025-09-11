@@ -154,6 +154,7 @@ GRLIB_checkRemoveHelipad = {
 
 GRLIB_check_EjectCrew = {
 	params ["_target"];
+	if (!alive _target || captive _target) exitWith { false };
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
@@ -164,9 +165,12 @@ GRLIB_check_EjectCrew = {
 
 GRLIB_checkOnboardCrew = {
 	params ["_target"];
+	if (!alive _target || captive _target) exitWith { false };
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };
 	if (getPos _vehicle select 2 >= 5) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
-	(alive player && count units player > 0)
+	private _onboard_list = { !isPlayer _x && isNull objectParent _x && _x distance2D player <= 30 } count (units player);
+	if (_onboard_list == 0) exitWith { false };
+	true;
 }
