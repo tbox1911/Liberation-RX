@@ -6673,6 +6673,10 @@
 			<Portuguese>-- EJETAR TRIPULAÇÃO</Portuguese>
 			<Czech>-- VYHODIT POSÁDKU</Czech>
 		</Key>
+		<Key ID="STR_ONBOARD_CREW">
+			<Original>-- ON BOARD CREW</Original>
+			<French>-- EMBARQUER EQUIPAGE</French>
+		</Key>			
 		<Key ID="STR_REMOVE_BODY">
 			<Original>-- REMOVE BODY</Original>
 			<Russian>-- УНИЧТОЖИТЬ ТЕЛО</Russian>
@@ -6801,6 +6805,12 @@
 			<Japanese>捕虜 %1 を拘束中…</Japanese>
 			<Portuguese>Capturando o prisioneiro %1...</Portuguese>
 			<Czech>Zajímání zajatce %1...</Czech>
+		</Key>
+
+		<!-- do_onboard_crew.sqf -->
+		<Key ID="STR_ONBOARD_ALL_CREW">
+			<Original>Fast Onboarding in %1.</Original>
+			<French>Embarquement rapide dans %1.</French>
 		</Key>
 
 		<!-- do_eject.sqf -->

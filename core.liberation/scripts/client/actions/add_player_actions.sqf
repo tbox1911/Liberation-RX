@@ -23,6 +23,9 @@ player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","ad
 // Fast Eject Crew
 player addAction ["<t color='#0080F0'>" + localize "STR_EJECT_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",999,false,true,"","call GRLIB_check_EjectCrew"];
 
+// Fast Onboard Crew
+player addAction ["<t color='#0080F0'>" + localize "STR_ONBOARD_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_onboard_crew.sqf","",998,false,true,"","call GRLIB_checkOnboardCrew"];
+
 // Dog - Actions
 player addAction ["<t color='#FF8000'>" + localize "STR_DOG_FIND" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
 player addAction ["<t color='#FF8000'>" + localize "STR_DOG_FIND_GUN" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find_gun",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
