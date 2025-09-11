@@ -28,7 +28,7 @@ if ( dorepackage > 0 ) then {
 	closeDialog 0;
 	waitUntil { !dialog };
 
-	private _unit_list_redep = (units player - [player]) select { (isNull objectParent _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' };
+	private _unit_list_redep = (units player - [player]) select { (isNull objectParent _x) && (_x distance2D player < 40) && !(captive _x) };
 	if (dorepackage == 3) then {
 		private _fob_text = ((["NavalFobType"] call lrx_getParamData) select 1) select (["NavalFobType"] call lrx_getParamValue);
 		titleText [format [localize "STR_NAVAL_FOB_LEAVING", _fob_text], "BLACK FADED", 30];

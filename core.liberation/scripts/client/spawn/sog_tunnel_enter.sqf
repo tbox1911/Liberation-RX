@@ -16,7 +16,7 @@ if (_ai_follow) then {
         _unit_list_redep = ((units group player) select {
             !(isPlayer _x) && vehicle _x == _x &&
             (_x distance2D (getPosATL _tunnel)) < 40 &&
-            lifestate _x != 'INCAPACITATED' }) select [0, _ai_follow_max];
+            !(captive _x) }) select [0, _ai_follow_max];
         [_unit_list_redep] spawn {
             sleep 1;
             params ["_list"];

@@ -101,8 +101,7 @@ if ( dojump > 0 ) then {
 		// Jump!
 		private _unit_list_halo = _units select {
 			!(isPlayer _x) && (isNull objectParent _x) &&
-			(_x distance2D player < 30) &&
-			lifestate _x != 'INCAPACITATED'
+			(_x distance2D player < 30) && !(captive _x)
 		};
 
 		[player, halo_position] spawn paraDrop;
