@@ -334,6 +334,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
 	"Land_Suitcase_F",
+	"Land_CncWall4_F",
 	"Land_CncBarrierMedium4_F",
 	"Land_CncWall1_F",
 	"Land_CncShelter_F",
@@ -371,6 +372,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	["Land_Suitcase_F", 1],
+	["Land_CncWall4_F", 8],
 	["Land_CncBarrierMedium4_F", 5],
 	["Land_CncWall1_F", 5],
 	["Land_CncShelter_F", 5],
