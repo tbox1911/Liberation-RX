@@ -15,14 +15,39 @@ private _sell_list = [];
 private _sell_blacklist = [];
 
 // Init BUY list
+private _civ_blacklist = ["fuel", "service", "medevac"];
+private _reputation = [player] call F_getReput;
+private _civ_vehicle = [];
+private _find_multiple = {
+    params ["_item", "_list"]; 
+    private _ret = false; 
+    { if (_item find _x > 0) exitWith { _ret = true } } foreach _list;
+    _ret;
+};
+
+if (_reputation >= 0) then {
+	private _price = 35;
+	if (_reputation >= 70) then { _price = round (_price / 2) };
+	{
+		if (count _civ_vehicle == 5) exitWith {};
+		if (_x isKindOf "LandVehicle" && !([_x, _civ_blacklist] call _find_multiple)) then {
+			_civ_vehicle pushBackUnique [_x, 5, _price];
+		};
+	} forEach (civilian_vehicles call BIS_fnc_arrayShuffle);
+};
+
+private _opfor_blacklist = [];
+private _opfor_vehicle = opfor_recyclable select { !((_x select 0) isKindOf "Air") && !([_x, _opfor_blacklist] call _find_multiple)};
+
+private _buy_list_veh = SHOP_list + _civ_vehicle + _opfor_vehicle;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _buy_list_dlg = [];
 {
-	private _price = [_x select 0, SHOP_list] call F_getObjectPrice;
+	private _price = [_x select 0, _buy_list_veh] call F_getObjectPrice;
 	_price = round (_price * (1 + _ratio));
 	if (_rank == "Super Colonel") then { _price = round (_price / 2)};
 	_buy_list_dlg pushBack [_x select 0, _price];
-} forEach SHOP_list;
+} forEach _buy_list_veh;
 
 lbClear 111;
 {
