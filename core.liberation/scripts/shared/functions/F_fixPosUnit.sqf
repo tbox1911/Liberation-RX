@@ -36,7 +36,7 @@ while { (lineIntersects [_spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 	_spawnpos = (_spawnpos vectorAdd [0,0,_curalt]);
 };
 
-if (lineIntersects [_spawnpos, (_spawnpos vectorAdd [0,0,_maxalt]), _unit]) then {
+if (lineIntersects [_spawnpos, (_spawnpos vectorAdd [0,0,_maxalt]), _unit]) exitWith {
 	diag_log format ["--- LRX Error: unit %1 is still blocked at %2...", name _unit, getpos _unit];
 	deleteVehicle _unit;
 };
