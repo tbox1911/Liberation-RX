@@ -4,15 +4,16 @@ sleep 60;
 
 private _timer = 0;
 private _checkCiv = {
+	params ["_unit"];
 	(
 		!GRLIB_player_near_fob &&
-		handgunWeapon player == "" &&
-		primaryWeapon player == "" &&
-		secondaryWeapon player == "" &&
-		(vest player) == "" &&
-		((uniform player) == "" || (uniform player) select [0,4] == "U_C_") &&
-		((backpack player) == "" || (backpack player) select [0,5] == "B_Civ") &&
-		(isNull objectParent player || typeOf (objectParent player) in civilian_vehicles)
+		handgunWeapon _unit == "" &&
+		primaryWeapon _unit == "" &&
+		secondaryWeapon _unit == "" &&
+		(vest _unit) == "" &&
+		((uniform _unit) == "" || (uniform _unit) select [0,4] == "U_C_") &&
+		((backpack _unit) == "" || (backpack _unit) select [0,5] == "B_Civ") &&
+		(isNull objectParent _unit || typeOf (objectParent _unit) in civilian_vehicles)
 	)
 };
 
@@ -38,7 +39,7 @@ while {true} do {
 	};
 
 	// Civilian
-	if (_side == GRLIB_side_friendly && count units GRLIB_player_group == 1 && ([] call _checkCiv)) then {
+	if (_side == GRLIB_side_friendly && count units GRLIB_player_group == 1 && ([player] call _checkCiv)) then {
 		if (_timer < time) then {
 			if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) == 0) then {
 				[GRLIB_player_group, "del"] remoteExec ["addel_group_remote_call", 2];
@@ -58,7 +59,7 @@ while {true} do {
 		_timer = time + 60;
 	};
 
-	if (_side == GRLIB_side_civilian && !([] call _checkCiv)) then {
+	if (_side == GRLIB_side_civilian && !([player] call _checkCiv)) then {
 		GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 		waitUntil {
 			[player] joinSilent GRLIB_player_group;
