@@ -1,7 +1,9 @@
 if (!GRLIB_Commander_mode || !isServer) exitWith {};
-sleep 60;
+sleep 20;
 
+GRLIB_IsVoteInProgress = false;
 private _msg = "";
+
 while {true} do {
     waitUntil {sleep 3; ((GRLIB_IsVoteInProgress && GRLIB_Commander_VoteEnabled) || GRLIB_Commander_AutoStart) && count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0};
     if (GRLIB_Commander_VoteEnabled) then {
@@ -17,14 +19,14 @@ while {true} do {
     waitUntil {
         _time_left = round(_timer - time);
         if (_time_left % 10 == 0) then {
-            _msg = format ["Selection in %1 seconds...", _time_left];
+            _msg = format ["Selection in %1 seconds...", 1 max _time_left];
             [[GRLIB_side_friendly, "HQ"], _msg] remoteExec ["sideChat", 0];
         };
         sleep 1;
-        (time >= _timer);
+        (time >= _timer || !GRLIB_IsVoteInProgress);
     };
 
-    if (count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0) then {
+    if (GRLIB_IsVoteInProgress && count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0) then {
         if (GRLIB_Commander_VoteEnabled) then {
             _msg = format ["Voting has ended!"];
             [[GRLIB_side_friendly, "HQ"], _msg] remoteExec ["sideChat", 0];
@@ -59,6 +61,7 @@ while {true} do {
         [[GRLIB_side_friendly, "HQ"], _msg] remoteExec ["sideChat", 0];
         [_winningSector] call start_sector;
     };
+
     GRLIB_IsVoteInProgress = false;
     GRLIB_Sector_Votes = createHashMap;
 };

@@ -18,7 +18,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_nextsector = [GRLIB_sector_size, _unit, (opfor_sectors - active_sectors)] call F_getNearestSector;
 			if (_nextsector != "") then {
 				[_nextsector] call start_sector;
-				sleep 30;
 			};
 		};
 	} foreach _countblufor;

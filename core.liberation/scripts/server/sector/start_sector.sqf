@@ -16,3 +16,5 @@ if (isNull _hc) then {
 if (_sector in sectors_military) then {
     [_sector] spawn manage_ammoboxes;
 };
+
+sleep 10;
