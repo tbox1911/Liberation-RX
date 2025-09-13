@@ -35,7 +35,7 @@ publicVariable "GRLIB_active_commander";
 
 addMissionEventHandler ["OnUserAdminStateChanged", {
 	params ["_networkId", "_loggedIn", "_votedIn"];
-	if (!_loggedIn) then {
+	if (_loggedIn) then {
 		GRLIB_active_commander = (_networkId getUserInfo 10);
 		publicVariable "GRLIB_active_commander";
 	} else {
@@ -286,7 +286,6 @@ if (GRLIB_Commander_mode) then {
 	// Commander mode
 	GRLIB_connectMarkers = createHashMap;
 	GRLIB_Sector_Votes = createHashMap;
-	GRLIB_IsVoteInProgress = false;
 	[] spawn manage_sectors_commander;
 	[] spawn commander_voteHandler;
 } else {
