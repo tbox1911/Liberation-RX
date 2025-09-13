@@ -54,6 +54,6 @@ sleep 3;
 _vehicle allowDamage true;
 
 sleep 20;
-if (underwater _vehicle) then {
+if (underwater _vehicle && !(_vehicle isKindOf "Ship")) then {
 	[_vehicle, true, true] call clean_vehicle;
 };
