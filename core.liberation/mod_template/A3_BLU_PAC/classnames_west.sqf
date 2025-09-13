@@ -65,7 +65,7 @@ resistance_squad = [
 
 light_vehicles = [
 	["B_T_Quadbike_01_F",1,5,1,0],
-	["B_T_Boat_Transport_01_F",1,25,1,0],
+	["B_T_Boat_Transport_01_F",1,5,1,0],
 	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
 	["B_T_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
 	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
