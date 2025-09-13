@@ -1679,7 +1679,7 @@ try {
 } catch {
     diag_log format ["--- LRX: Error in mission parameters ---"];
     systemChat format ["--- LRX: Error in mission parameters ---"];
-    endMission "END2";
+    endMission "LRXEND1";
     forceEnd;
 };
 
