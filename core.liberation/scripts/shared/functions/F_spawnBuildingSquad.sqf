@@ -7,7 +7,7 @@ params [
 	["_mission_ai", true]
 ];
 
-if (_building_ai_max == 0) exitWith  {[]};
+if (_building_ai_max == 0) exitWith {[]};
 
 private _side = GRLIB_side_enemy;
 private _squad_comp = [];

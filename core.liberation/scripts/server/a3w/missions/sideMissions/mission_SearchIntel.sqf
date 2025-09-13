@@ -1,11 +1,12 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_intels", "_grp_civ1", "_grp_civ2"];
+private ["_intels", "_managed_units", "_grp_civ1", "_grp_civ2"];
 
 _setupVars = {
 	_missionType = "STR_SEARCH_INTEL";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
+	_ignoreAiDeaths = true;
 };
 
 _setupObjects = {
@@ -117,8 +118,7 @@ _setupObjects = {
 	sleep 0.5;
 
 	//----- spawn units ---------------------------------
-	private _managed_units = ["infantry", ([] call getNbUnits), _missionPos] call F_spawnBuildingSquad;
-	_aiGroup = group (_managed_units select 0);
+	_managed_units = ["infantry", ([] call getNbUnits), _missionPos] call F_spawnBuildingSquad;
 	sleep 0.5;
 
 	//----- spawn civilians ---------------------------------
@@ -143,8 +143,9 @@ _waitUntilSuccessCondition = { (count (_intels select { alive _x }) == 0) };
 
 _waitUntilCondition = {
 	private _ret = false;
+	private _grp = group (_managed_units select 0);
 	{
-		if (_aiGroup knowsAbout _x == 4 ) then { _ret = true };
+		if (_grp knowsAbout _x == 4) then { _ret = true };
 	} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
 
 	if (_ret) then {
@@ -169,6 +170,7 @@ _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach _intels;
 	{ deleteVehicle _x } forEach (units _grp_civ1) + (units _grp_civ2);
+	{ deleteVehicle _x } forEach _managed_units;
 	[_missionPos] call clearlandmines;
 };
 
@@ -183,6 +185,7 @@ _successExec = {
 
 	_successHintMessage = "STR_SEARCH_INTEL_MESSAGE2";
 	{ deleteVehicle _x } forEach (units _grp_civ1) + (units _grp_civ2);
+	{ deleteVehicle _x } forEach _managed_units;
 	[_missionPos] spawn {
 		params ["_pos"];
 		[_pos] call showlandmines;
