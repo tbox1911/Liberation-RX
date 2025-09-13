@@ -201,10 +201,9 @@ while {true} do {
 						};
 					} else {
 						_text = "";
-						_isCommander = [player] call F_getCommander;
 						if (count GRLIB_AvailAttackSectors > 0) then {
-							if (GRLIB_Commander_VoteEnabled || _isCommander) then {
-								if (_isCommander) then {
+							if (GRLIB_Commander_VoteEnabled || GRLIB_player_commander) then {
+								if (GRLIB_player_commander) then {
 									//todo: localize
 									_text = "Select a sector on the map to attack";
 								} else {
@@ -214,7 +213,7 @@ while {true} do {
 								_text = "Standby for mission";
 							};
 						} else {
-							if (_isCommander && count GRLIB_all_fobs == 0) then {
+							if (GRLIB_player_commander && count GRLIB_all_fobs == 0) then {
 								_text = "Deploy an FOB to start a mission";
 							} else {
 								_text = "Standby for mission";

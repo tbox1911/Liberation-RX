@@ -33,9 +33,6 @@ private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _iscommandant = false;
 if ( _rank in ["Colonel", "Super Colonel"] ) then {	_iscommandant = true };
 
-private _iscommander = false;
-if ([player] call F_getCommander) then { _iscommander = true };
-
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];
 ctrlShow [ 1085, _iscommandant ];
@@ -324,7 +321,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 
 	buildindex = _selected_item;
 	ctrlEnable [ 120, _affordable && _linked_unlocked && dobuild == 0];
-	ctrlShow [ 121, _iscommander && buildtype in [GRLIB_TransportVehicleBuildType,GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_DefenceBuildType]];
+	ctrlShow [ 121, GRLIB_player_commander && buildtype in [GRLIB_TransportVehicleBuildType,GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_DefenceBuildType]];
 	ctrlEnable [ 121, _affordable_crew && _linked_unlocked && dobuild == 0];
 	sleep 0.2;
 };

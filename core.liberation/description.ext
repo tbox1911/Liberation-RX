@@ -66,14 +66,7 @@ class cfgSounds {
 };
 
 class CfgDebriefing {
-	class End1
-	{
-		title =	$STR_SORRY;
-		subtitle = "";
-		description = $STR_COMMANDER_NOT_AUTHORIZED;
-		pictureBackground = "";
-	};
-	class End2
+	class LRXEND1
 	{
 		title =	"Parameter Error";
 		subtitle = "";

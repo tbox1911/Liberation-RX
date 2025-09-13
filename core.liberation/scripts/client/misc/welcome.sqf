@@ -2,8 +2,7 @@
  Say hello, and set Rank/Insigna
 */
 
-waitUntil {sleep 0.5; GRLIB_player_spawned};
-waitUntil {sleep 0.5; (player getVariable ["GRLIB_score_set", 0] == 1)};
+waitUntil {sleep 0.5; GRLIB_player_spawned && (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
@@ -43,5 +42,4 @@ private _text = _reput select 1;
 private _msg = format [localize "STR_UI_WELCOME_MSG", name player, _rank, _score, _ammo_collected, _color, _text];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
-sleep 3;
 GRLIB_player_configured = true;

@@ -81,7 +81,7 @@ if (do_admin == 1) then { (_display displayCtrl 1607) ctrlSetChecked true };
 if (do_teleport == 1) then { (_display displayCtrl 1620) ctrlSetChecked true };
 
 // Zeus mode ?
-if (!isNil "GRLIB_active_commander") then {
+if (!isNull GRLIB_active_commander) then {
 	if (GRLIB_active_commander in (call BIS_fnc_listCuratorPlayers)) then { ctrlEnable [1625, false] };
 };
 

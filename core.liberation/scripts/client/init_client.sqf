@@ -66,17 +66,8 @@ if (!isMultiplayer) exitWith {
 	disableUserInput false;
 };
 
-GRLIB_Player_VIP = (PAR_Grp_ID in GRLIB_whitelisted_steamids);
-if (GRLIB_use_exclusive && !([] call is_admin || GRLIB_Player_VIP)) exitWith {
-	private _msg = localize "STR_MSG_INVALID_STEAMID";
-	titleText [_msg, "BLACK FADED", 100];
-	uisleep 10;
-	endMission "LOSER";
-	disableUserInput false;
-};
-
-private _commander_check = [] call compileFinal preprocessFileLineNumbers "scripts\client\commander\enforce_whitelist.sqf";
-if (!_commander_check) exitWith { endMission "END1" };
+// Enforce White list
+[] call compileFinal preprocessFileLineNumbers "scripts\client\commander\enforce_whitelist.sqf";
 
 private _name = name player;
 if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name) || (count trim _name <= 2)) exitWith {
@@ -343,18 +334,19 @@ if (isServer && hasInterface) then {
 // Commander mode
 if (GRLIB_Commander_mode) then {
 	waitUntil {sleep 1; !isNil "GRLIB_AvailAttackSectors"};
+	waitUntil {sleep 1; !isNil "GRLIB_player_commander"};
+
 	GRLIB_Com_lastClicked = time;
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos"];
 		private _caller = _thisArgs select 0;
 
 		if (count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0) then {
-			_isCommander = [_caller] call F_getCommander;
-			if ((time - GRLIB_Com_lastClicked) > 3 && (GRLIB_Commander_VoteEnabled || _isCommander)) then {
+			if ((time - GRLIB_Com_lastClicked) > 3 && (GRLIB_Commander_VoteEnabled || GRLIB_player_commander)) then {
 				_closestSector = [100, _pos, GRLIB_AvailAttackSectors] call F_getNearestSector;
 				if (_closestSector != "") then {
 					playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
-					if (_isCommander) then {
+					if (GRLIB_player_commander) then {
 						[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];
 					} else {
 						[_caller, _closestSector] remoteExec ["vote_sector_remote_call", 2];

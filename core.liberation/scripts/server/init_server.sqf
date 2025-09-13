@@ -30,9 +30,22 @@ addMissionEventHandler ["PlayerDisconnected", {
 	};
 }];
 
+GRLIB_active_commander = objNull;
+publicVariable "GRLIB_active_commander";
+
 addMissionEventHandler ["OnUserAdminStateChanged", {
 	params ["_networkId", "_loggedIn", "_votedIn"];
 	if (!_loggedIn) then {
+		GRLIB_active_commander = (_networkId getUserInfo 10);
+		publicVariable "GRLIB_active_commander";
+	} else {
+		private _commander = (allPlayers select {(typeOf _x == commander_classname)});
+		if (count _commander > 0) then {
+			GRLIB_active_commander = _commander select 0;
+		} else {
+			GRLIB_active_commander = objNull;
+		};
+		publicVariable "GRLIB_active_commander";
 		{unassignCurator _x} forEach allCurators;
 	};
 }];

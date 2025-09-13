@@ -55,7 +55,7 @@ while {true} do {
 	} foreach allCurators;
 
 
-	if (!isNil "GRLIB_active_commander") then {
+	if (!isNull GRLIB_active_commander) then {
 		if !(GRLIB_active_commander in (call BIS_fnc_listCuratorPlayers)) then {
 			GRLIB_active_commander assignCurator (allCurators select 0);
 		};

@@ -1,9 +1,9 @@
 GRLIB_checkAdmin = {
-	(GRLIB_player_is_menuok && [] call is_admin && GRLIB_admin_menu)
+	(GRLIB_player_is_menuok && GRLIB_admin_menu && GRLIB_player_admin)
 };
 
 GRLIB_checkOperator = {
-	(GRLIB_player_is_menuok && ([] call is_admin || PAR_Grp_ID in GRLIB_whitelisted_moderators) && GRLIB_admin_menu)
+	(GRLIB_player_is_menuok && GRLIB_admin_menu && (GRLIB_player_admin || PAR_Grp_ID in GRLIB_whitelisted_moderators))
 };
 
 GRLIB_checkSquad = {
@@ -101,10 +101,6 @@ GRLIB_checkBuildDef = {
 
 GRLIB_checkSquadMgmt = {
 	(GRLIB_player_is_menuok && (leader group player == player) && (count units group player > 1) && (GRLIB_player_near_fob || GRLIB_player_near_lhd))
-};
-
-GRLIB_checkCommander = {
-	(GRLIB_player_is_menuok && GRLIB_player_admin && GRLIB_permissions_param)
 };
 
 GRLIB_checkSecObj = {
