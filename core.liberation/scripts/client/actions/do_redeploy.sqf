@@ -20,7 +20,7 @@ private _my_squad = player getVariable ["my_squad", nil];
 if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
 private _list_redep = _unit_list select {
     !(isPlayer _x) && (isNull objectParent _x) &&
-    (_x distance2D player <= 30) && !(captive _x)
+    (_x distance2D player <= 30) && lifestate _x != 'INCAPACITATED'
 };
 
 player setDir _destdir;
