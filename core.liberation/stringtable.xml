@@ -13149,33 +13149,6 @@
 			<Portuguese>Manter o contexto entre reinícios.</Portuguese>
 			<Czech>Zachovat kontext mezi restarty.</Czech>
 		</Key>
-		<Key ID="STR_PERMISSIONS_PARAM_DESC">
-			<Original>Enforces permission levels for certain player actions and commands.</Original>
-			<Russian>Применяет уровни разрешений для определённых действий и команд игроков.</Russian>
-			<French>Applique des niveaux d’autorisation pour certaines actions et commandes des joueurs.</French>
-			<Chinesesimp>强制执行某些玩家操作和命令的权限级别。</Chinesesimp>
-			<Chinese>強制執行某些玩家操作和命令的權限級別。</Chinese>
-			<Portuguese>Aplica níveis de permissão para certas ações e comandos do jogador.</Portuguese>
-			<Czech>Vynucuje úrovně oprávnění pro určité hráčovy akce a příkazy.</Czech>
-		</Key>
-		<Key ID="STR_PERMISSIONS_PARAM_OPT0">
-			<Original>Disable permission enforcement</Original>
-			<Russian>Отключить проверку разрешений</Russian>
-			<French>Désactiver la vérification des autorisations</French>
-			<Chinesesimp>禁用权限检查。</Chinesesimp>
-			<Chinese>禁用權限檢查。</Chinese>
-			<Portuguese>Desativar aplicação de permissões.</Portuguese>
-			<Czech>Zakázat vynucování oprávnění.</Czech>
-		</Key>
-		<Key ID="STR_PERMISSIONS_PARAM_OPT1">
-			<Original>Enable permission enforcement</Original>
-			<Russian>Включить проверку разрешений</Russian>
-			<French>Activer la vérification des autorisations</French>
-			<Chinesesimp>启用权限检查。</Chinesesimp>
-			<Chinese>啟用權限檢查。</Chinese>
-			<Portuguese>Ativar aplicação de permissões.</Portuguese>
-			<Czech>Povolit vynucování oprávnění.</Czech>
-		</Key>
 		<Key ID="STR_CLEANUP_PARAM_DESC">
 			<Original>Sets the delay (in seconds) before unused vehicles are removed from the mission.</Original>
 			<Russian>Устанавливает задержку (в секундах) до удаления неиспользуемых транспортных средств из миссии.</Russian>
