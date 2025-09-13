@@ -5,6 +5,7 @@ private _searchradius = 20;
 
 waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
+sleep 15;
 
 while {true} do {
 

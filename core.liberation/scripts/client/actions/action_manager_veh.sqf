@@ -28,8 +28,8 @@ private _wreck_class = [
 
 [] call compile preprocessFileLineNumbers "scripts\client\actions\action_manager_veh_check.sqf";
 
-waituntil { sleep 1; !isNil "GRLIB_player_near_lhd"};
-waituntil { sleep 1; GRLIB_player_configured};
+waituntil {sleep 1; GRLIB_player_configured};
+sleep 3;
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 while {true} do {

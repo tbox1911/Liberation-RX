@@ -3,6 +3,7 @@ private  ["_vehicle", "_distvehclose"];
 waituntil {sleep 1; GRLIB_player_configured};
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "GRLIB_player_near_fob" };
+sleep 10;
 
 while {true} do {
 	if (GRLIB_player_near_fob) then {
