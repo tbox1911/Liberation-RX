@@ -19,11 +19,11 @@ private ["_wnded_hit", "_medic_hit", "_medic_busy", "_wnded_healed", "_in_vehicl
 private _timer = time + 60;
 private _exit = false;
 
-private _dist = (_medic distance2D _wnded);
+private _dist = round(_medic distance2D _wnded);
 if (_dist > 6) then {
 	waitUntil {
 		_wnded stop true;
-		_dist = (_medic distance2D _wnded);
+		_dist = round(_medic distance2D _wnded);
 		if (_dist < 25) then {
 			_medic doMove (getPosATL _wnded);
 		} else {
@@ -41,7 +41,7 @@ if (_dist > 6) then {
 		_medic_hit = ([_medic] call PAR_is_wounded);
 		_medic_busy = _medic getVariable ["PAR_busy", false];
 		_exit = (time > _timer || _medic_busy || _medic_hit || _wnded_hit || _wnded_healed || _in_vehicle);
-		(_exit || _medic distance2D _wnded <= 6)
+		(_exit || round(_medic distance2D _wnded) <= 6)
 	};
 };
 
@@ -58,7 +58,7 @@ if (stance _medic == 'PRONE') then {
 	_medic playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 };
 sleep 7;
-if (!([_medic] call PAR_is_wounded) && !([_wnded] call PAR_is_wounded) && (_medic distance2D _wnded) <= 3) then {
+if (!([_medic] call PAR_is_wounded) && !([_wnded] call PAR_is_wounded) && round(_medic distance2D _wnded) <= 6) then {
 	_wnded setDamage 0;
 };
 [_medic, _wnded] call PAR_fn_fixPos;
