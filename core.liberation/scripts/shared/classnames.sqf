@@ -442,7 +442,6 @@ vehicle_refuel_sources = [
 	fuel_truck_typename,
 	opfor_fuel_truck,
 	opfor_fuel_container,
-	"Land_fs_feed_F",
 	"C_Van_01_fuel_F"
 ] + vehicle_refuel_sources_west;
 

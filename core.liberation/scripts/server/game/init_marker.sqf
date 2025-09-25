@@ -5,6 +5,7 @@ waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 [] call compileFinal preprocessFileLineNumbers "fixed_position.sqf";
 
 // REPAIR
+GRLIB_Marker_REP = [];
 private ["_vehicle", "_spawn_pos"];
 {
 	// Add repair pickup
@@ -15,12 +16,20 @@ private ["_vehicle", "_spawn_pos"];
 		_vehicle setPos _spawn_pos;
 		[_vehicle, "lock", "server"] call F_vehicleLock;
 		[_vehicle] call F_clearCargo;
-		_vehicle enableSimulationGlobal true; // enable to keep facility
+		_vehicle enableSimulationGlobal false;
+		GRLIB_Marker_REP pushBack (getPosATL _vehicle);
 	} else {
 		diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
 	};
 	sleep 0.2;
 } forEach sectors_factory;
+publicVariable "GRLIB_Marker_REP";
+
+// FUEL
+{
+	_fuel_pump = (nearestObjects [_x, ["House"], 30]) select { (tolower(typeOf _x) find "fuelstation" != -1 && tolower(typeOf _x) find "feed" != -1) };
+	{ _x enableSimulationGlobal false } forEach _fuel_pump;
+} forEach GRLIB_Marker_FUEL;
 
 // SELL
 private ["_man", "_manPos"];
@@ -45,7 +54,7 @@ private _getRatio = { parseNumber(0.70 min (0.45 + random 0.25) toFixed 2) };
 	// Specific position
 	_desk_dir = getDir _shop;
 	_offset = [-0.7, 1, 0.25];      // Default shop_01_v1_f
-	_str =  toLower str _shop;
+	_str = toLower str _shop;
 	if (_str find "warehouse_03" > 0) then { _offset = [-2, 0, 0] };             // Tanoa
 	if (_str find "metalshelter_02" > 0) then { _desk_dir = (180 + _desk_dir); _offset = [2, 0, 0] };  // Tanoa
 	if (_str find "villagestore" > 0) then { _offset = [4, 2, 0.70] };           // Enoch

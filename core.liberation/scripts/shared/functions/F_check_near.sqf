@@ -22,6 +22,7 @@ switch ( _list ) do {
 	case "ATM" : { _classlist = GRLIB_Marker_ATM };
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL };
 	case "SHOP" : { _classlist = GRLIB_Marker_SHOP };
+	case "REP" : { _classlist = GRLIB_Marker_REP };
 	case "SPAWN" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x != mobile_respawn} };
 	case "SPAWNT" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x == mobile_respawn} };
 	case "MEDIC" : { _classlist = ai_healing_sources };
@@ -29,7 +30,6 @@ switch ( _list ) do {
 	case "REFUEL" : { _classlist = vehicle_refuel_sources };
 	case "REAMMO" : { _classlist = vehicle_rearm_sources };
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources };
-	case "REPAIR_AI" : { _classlist = vehicle_repair_sources };
 	case "REPAIR" : { _classlist = vehicle_repair_sources };
 	case "REPAIR_BOX" : { _classlist = vehicle_repair_box };
 	case "REPAINT" : { _classlist = vehicle_repaint_sources };
