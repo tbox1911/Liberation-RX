@@ -23,19 +23,22 @@ if (isNil {_vehicle getVariable "GREUH_vehicle_defense"}) then {
 		};
 
 		if (typeOf _vehicle in opfor_troup_transports_heli) then {
-			private _grp = grpNull;
-			{
-				if (assignedVehicleRole _x select 0 == "cargo") then {
-					_grp = group _x;
-					[_x, false] spawn F_ejectUnit;
-				};
-				sleep 0.2;
-			} forEach (crew _vehicle);
+			private _cargo = (crew _vehicle) select { assignedVehicleRole _x select 0 == "cargo" };
+			if (count _cargo > 0) then {
+				[_cargo] spawn {
+					params ["_cargo"];
+					private _leader = _cargo select 0;
+					{
+						[_x, false] spawn F_ejectUnit;
+						sleep 0.2;
+					} forEach _cargo;
 
-			if !(isNull _grp) then {
-				private _next_objective = [getPos _vehicle, GRLIB_spawn_min] call F_getNearestBlufor;
-				if (!isNil "_next_objective") then {
-					[_grp, _next_objective] spawn battlegroup_ai;
+					private _next_objective = [getPos _leader, GRLIB_spawn_min] call F_getNearestBlufor;
+					if (isNil "_next_objective") then {
+						{ deleteVehicle _x } forEach _cargo;
+					} else {
+						[group _leader, _next_objective] spawn battlegroup_ai;
+					};
 				};
 			};
 		};
