@@ -29,7 +29,7 @@ forceRotorLibSimulation = 2;
 saving = 0;
 briefing = 0;
 skipLobby  = 0;
-joinUnassigned = 1;
+joinUnassigned = 0;
 LARs_calculateSideGear = 1;
 cba_settings_hasSettingsFile = 1;
 
