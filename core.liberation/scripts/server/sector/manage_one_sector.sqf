@@ -397,8 +397,8 @@ while {true} do {
 	};
 	_sector_ownership = [_sector_pos, _local_capture_size] call F_sectorOwnership;
 	if (_sector in sectors_tower) then {
-		private _towers = { (alive _x) && (_x getVariable ['GRLIB_Radio_Tower', false]) } count (nearestObjects [_sector_pos, [Radio_tower], 20]);
-		if (_towers > 0) then { _sector_ownership = GRLIB_side_enemy };
+		private _tower = [_sector_pos] call F_getNearestRadioTower;
+		if (!isNil "_tower") then { _sector_ownership = GRLIB_side_enemy };
 	};
 	private _ratio = 100 - round (([_sector, _local_capture_size] call F_getForceRatio) * 100);
 	_sector setMarkerText format ["%2 - %1%%", _ratio, _sectorName];

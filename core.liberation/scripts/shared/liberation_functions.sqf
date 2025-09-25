@@ -49,6 +49,7 @@ F_getNearestBlufor = compileFinal preprocessFileLineNumbers "scripts\shared\func
 F_getNearestBluforObjective = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestBluforObjective.sqf";
 F_getNearestEnemy = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestEnemy.sqf";
 F_getNearestFob = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestFob.sqf";
+F_getNearestRadioTower = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestRadioTower.sqf";
 F_getNearestSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestSector.sqf";
 F_getNearestTower = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestTower.sqf";
 F_getNextSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNextSector.sqf";

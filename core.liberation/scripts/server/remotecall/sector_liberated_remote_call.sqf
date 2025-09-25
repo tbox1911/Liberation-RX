@@ -99,7 +99,7 @@ if (GRLIB_endgame == 0 && _nearRadioTower) then {
 
 sleep 45;
 
-if ( _liberated_sector in sectors_tower ) then {
+if (_liberated_sector in sectors_tower) then {
 	_pos = markerPos _liberated_sector;
 	_nextower = Radio_tower createVehicle _pos;
 	_nextower setpos _pos;

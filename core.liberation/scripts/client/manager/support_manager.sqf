@@ -221,10 +221,12 @@ while {true} do {
 	};
 
 	// Show Hint
-	private _neartower = ((sectors_tower select {(_x in opfor_sectors) && player distance2D (markerPos  _x) <= 20})) select 0;
-	if (!isNil "_neartower") then {
-		_msg = localize "STR_DESTROY_TOWER";
-		[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
+	private _tower = [player] call F_getNearestRadioTower;
+	if (!isNil "_tower") then {
+		if ([GRLIB_capture_size, _tower, opfor_sectors] call F_getNearestSector != "") then {
+			_msg = localize "STR_DESTROY_TOWER";
+			[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
+		};
 	};
 
 	sleep 30;
