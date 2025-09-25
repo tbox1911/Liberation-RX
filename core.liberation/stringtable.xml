@@ -8137,6 +8137,19 @@
 			<Czech>Nemohu se přezbrojit! Inventář je plný!</Czech>
 		</Key>
 
+		<Key ID="STR_REARM_NOAMMO">
+			<Original>You don't have enough Ammo to rearm %1!!</Original>
+			<French>Vous n'avez pas assez d'Ammo pour rearmer %1!!</French>
+		</Key>
+		<Key ID="STR_REFUEL_NOAMMO">
+			<Original>You don't have enough Ammo to refuel %1!!</Original>
+			<French>Vous n'avez pas assez d'Ammo pour refuel %1!!</French>
+		</Key>
+		<Key ID="STR_REPAIR_NOAMMO">
+			<Original>You don't have enough Ammo to repair %1!!</Original>
+			<French>Vous n'avez pas assez d'Ammo pour reparer %1!!</French>
+		</Key>
+
 		<Key ID="STR_REARM_COST_LINE">
 			<Original>%1\n%2 - %3\nCost %4 Ammo</Original>
 			<French>%1\n%2 - %3\nCoût : %4 munitions</French>
@@ -8190,36 +8203,16 @@
 		</Key>
 
 		<Key ID="STR_DESTROY_TOWER">
-			<Original>
-				Use &lt;t color='#FF0000'&gt;Explosives&lt;/t&gt; to destroy&lt;br/&gt;the &lt;t color='#0000FF'&gt;Radio Tower&lt;/t&gt;.
-			</Original>
-			<French>
-				Utilisez des &lt;t color='#FF0000'&gt;explosifs&lt;/t&gt; pour détruire&lt;br/&gt;la &lt;t color='#0000FF'&gt;tour radio&lt;/t&gt;.
-			</French>
-			<German>
-				Verwende &lt;t color='#FF0000'&gt;Sprengstoff&lt;/t&gt;, um&lt;br/&gt;den &lt;t color='#0000FF'&gt;Funkturm&lt;/t&gt; zu zerstören.
-			</German>
-			<Spanish>
-				Usa &lt;t color='#FF0000'&gt;explosivos&lt;/t&gt; para destruir&lt;br/&gt;la &lt;t color='#0000FF'&gt;torre de radio&lt;/t&gt;.
-			</Spanish>
-			<Russian>
-				Используйте &lt;t color='#FF0000'&gt;взрывчатку&lt;/t&gt;, чтобы уничтожить&lt;br/&gt;&lt;t color='#0000FF'&gt;радиовышку&lt;/t&gt;.
-			</Russian>
-			<Chinesesimp>
-				使用 &lt;t color='#FF0000'&gt;炸药&lt;/t&gt; 摧毁&lt;br/&gt;&lt;t color='#0000FF'&gt;电台塔&lt;/t&gt;。
-			</Chinesesimp>
-			<Chinese>
-				使用 &lt;t color='#FF0000'&gt;炸藥&lt;/t&gt; 摧毀&lt;br/&gt;&lt;t color='#0000FF'&gt;電台塔&lt;/t&gt;。
-			</Chinese>
-			<Japanese>
-				&lt;t color='#FF0000'&gt;爆薬&lt;/t&gt;を使って&lt;br/&gt;&lt;t color='#0000FF'&gt;ラジオタワー&lt;/t&gt;を破壊せよ。
-			</Japanese>
-			<Portuguese>
-				Use &lt;t color='#FF0000'&gt;explosivos&lt;/t&gt; para destruir&lt;br/&gt;a &lt;t color='#0000FF'&gt;torre de rádio&lt;/t&gt;.
-			</Portuguese>
-			<Czech>
-				Použij &lt;t color='#FF0000'&gt;výbušniny&lt;/t&gt; k likvidaci&lt;br/&gt;&lt;t color='#0000FF'&gt;radiové věže&lt;/t&gt;.
-			</Czech>
+			<Original>Use &lt;t color='#FF0000'&gt;Explosives&lt;/t&gt; to destroy&lt;br/&gt;the &lt;t color='#0000FF'&gt;Radio Tower&lt;/t&gt;.</Original>
+			<French>Utilisez des &lt;t color='#FF0000'&gt;explosifs&lt;/t&gt; pour détruire&lt;br/&gt;la &lt;t color='#0000FF'&gt;tour radio&lt;/t&gt;.</French>
+			<German>Verwende &lt;t color='#FF0000'&gt;Sprengstoff&lt;/t&gt;, um&lt;br/&gt;den &lt;t color='#0000FF'&gt;Funkturm&lt;/t&gt; zu zerstören.</German>
+			<Spanish>Usa &lt;t color='#FF0000'&gt;explosivos&lt;/t&gt; para destruir&lt;br/&gt;la &lt;t color='#0000FF'&gt;torre de radio&lt;/t&gt;.</Spanish>
+			<Russian>Используйте &lt;t color='#FF0000'&gt;взрывчатку&lt;/t&gt;, чтобы уничтожить&lt;br/&gt;&lt;t color='#0000FF'&gt;радиовышку&lt;/t&gt;.</Russian>
+			<Chinesesimp>使用 &lt;t color='#FF0000'&gt;炸药&lt;/t&gt; 摧毁&lt;br/&gt;&lt;t color='#0000FF'&gt;电台塔&lt;/t&gt;。</Chinesesimp>
+			<Chinese>使用 &lt;t color='#FF0000'&gt;炸藥&lt;/t&gt; 摧毀&lt;br/&gt;&lt;t color='#0000FF'&gt;電台塔&lt;/t&gt;。</Chinese>
+			<Japanese>&lt;t color='#FF0000'&gt;爆薬&lt;/t&gt;を使って&lt;br/&gt;&lt;t color='#0000FF'&gt;ラジオタワー&lt;/t&gt;を破壊せよ。</Japanese>
+			<Portuguese>Use &lt;t color='#FF0000'&gt;explosivos&lt;/t&gt; para destruir&lt;br/&gt;a &lt;t color='#0000FF'&gt;torre de rádio&lt;/t&gt;.</Portuguese>
+			<Czech>Použij &lt;t color='#FF0000'&gt;výbušniny&lt;/t&gt; k likvidaci&lt;br/&gt;&lt;t color='#0000FF'&gt;radiové věže&lt;/t&gt;.</Czech>
 		</Key>
 
 		<!-- init_markers.sqf-->
