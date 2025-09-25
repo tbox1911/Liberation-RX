@@ -88,6 +88,10 @@ if (["SPE_", GRLIB_mod_west, true] call F_startsWith) then {
 if (["UFP_BLU", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_UFP.sqf";
 };
+// Add DLC: CSLA Iron Curtain  Z@Warrior
+if (["IC_", GRLIB_mod_west, true] call F_startsWith) then {
+	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_IC.sqf";
+};
 
 // Magazines (common to All)
 (

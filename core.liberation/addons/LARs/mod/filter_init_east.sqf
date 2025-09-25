@@ -89,3 +89,7 @@ if (["SPE_", GRLIB_mod_east, true] call F_startsWith) then {
 if (["RHS_UFP", GRLIB_mod_east, true] call F_startsWith) then {
 	GRLIB_MOD_signature = GRLIB_MOD_signature + ["afou_weap_","U_B_afou_","vest_afou_","bp_afougf_","H_B_afou_"];
 };
+// Add DLC: CSLA Iron Curtain Z@Warrior
+if (["IC_", GRLIB_mod_east, true] call F_startsWith) then {
+	GRLIB_MOD_signature = GRLIB_MOD_signature + ["US85_","CSLA_","AFMC_","FIA_"];
+};
