@@ -6,7 +6,7 @@ while {true} do {
     _circleMark = "";
     _delete = true;
     if (count _array > 0) then {
-        if ((_array select 0) == "marker") then {
+        if ((_array select 0) == "marker" && !isNil {(_array select 1)}) then {
             _marker = _array select 1;
             _sector = [100, markerPos _marker, GRLIB_AvailAttackSectors] call F_getNearestSector;
             if (_sector != "") then {
