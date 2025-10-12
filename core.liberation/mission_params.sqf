@@ -794,8 +794,7 @@ _Mission_Params = [
             localize "STR_PARAM_SQUAD_SIZE_OPT7",
             localize "STR_PARAM_SQUAD_SIZE_OPT8",
             localize "STR_PARAM_SQUAD_SIZE_OPT9",
-            localize "STR_PARAM_SQUAD_SIZE_OPT10",
-            localize "STR_PARAM_SQUAD_SIZE_OPT11"
+            localize "STR_PARAM_SQUAD_SIZE_OPT10"
         ]]
     ]],
     [GRLIB_PARAM_DeathChat, createHashMapFromArray [
