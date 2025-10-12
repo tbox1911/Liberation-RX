@@ -132,6 +132,7 @@ GRLIB_color_unknown = "ColorUNKNOWN";
 // *** CIVILIAN ***
 civilians = [];
 civilian_vehicles = [];
+GRLIB_color_civilian = "ColorCIV";
 
 if (GRLIB_mod_preset_civ in [0,1]) then {
 	_path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];

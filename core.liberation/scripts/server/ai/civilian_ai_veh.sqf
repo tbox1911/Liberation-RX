@@ -70,7 +70,7 @@ while { alive _vehicle && alive _driver } do {
 		_marker = createMarkerLocal [format ["civ_ai_veh_%1", (_vehicle call BIS_fnc_netId)], getPosATL _vehicle];
 		_marker setMarkerTypeLocal "loc_car";
 		_marker setMarkerTextLocal "Civilian need help.";
-		_marker setMarkerColor "ColorCIV";
+		_marker setMarkerColor GRLIB_color_civilian;
 
 		switch (_incd) do {
 			// breakdown
