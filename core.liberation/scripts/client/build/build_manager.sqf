@@ -389,8 +389,7 @@ while {true} do {
 		if (build_confirmed == 3) then {
 			deleteVehicle _vehicle;
 			dobuild = 0;
-			sleep 2;	// time to trap build canceled
-			repeatbuild = false;
+			sleep 3;	// time to trap build canceled
 		};
 
 		// Build done
@@ -402,6 +401,21 @@ while {true} do {
 			deleteVehicle _vehicle;
 			player setVariable ["GRLIB_player_vehicle_build", objNull, true];
 			sleep 0.1;
+
+			// Building
+			if (_buildtype == GRLIB_BuildingBuildType) exitWith {
+				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
+				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
+				_vehicle setPosATL _veh_pos;
+
+				// Magic ClutterCutter
+				if (_classname == land_cutter_typename) then {
+					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
+					_vehicle allowdamage false;
+				};
+			};
+
+			repeatbuild = false;
 
 			// FOB
 			if(_buildtype in [99,98,97]) exitWith {
@@ -420,19 +434,6 @@ while {true} do {
 				] remoteExec ["build_fob_remote_call", 2];
 				waitUntil { sleep 0.5; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
-			};
-
-			// Building
-			if (_buildtype == GRLIB_BuildingBuildType) exitWith {
-				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
-				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-				_vehicle setPosATL _veh_pos;
-
-				// Magic ClutterCutter
-				if (_classname == land_cutter_typename) then {
-					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
-					_vehicle allowdamage false;
-				};
 			};
 
 			// Trench
@@ -556,13 +557,12 @@ while {true} do {
 		dobuild = 1;
 		building_altitude = build_altitude;
 	} else {
-		dobuild = 0;
+		build_confirmed = 0;
 		build_rotation = 0;
 		building_altitude = 0;
 		build_distance = 0;
 		build_mode = 0;
 		build_water = 0;
-		build_confirmed = 0;
 		player removeAction _idactsnap;
 		player removeAction _idactview;
 		player removeAction _idactmode;
@@ -574,6 +574,7 @@ while {true} do {
 		player removeAction _idactcancel;
 		player removeAction _idactplace;
 		player removeAction _idactplacebis;
+		dobuild = 0;
 	};
 	manned = false;
 };

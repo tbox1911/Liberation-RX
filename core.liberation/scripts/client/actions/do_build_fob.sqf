@@ -46,7 +46,7 @@ if (_box_type == FOB_box_outpost) then { buildtype = 98 };
 if (_box_type == FOB_boat_typename) then { buildtype = 97 };
 
 dobuild = 1;
-waitUntil { sleep 1; dobuild == 0 };
+waitUntil { sleep 0.5; dobuild == 0 };
 if (build_confirmed == 0) then {
 	deleteVehicle _box;
 	if (_box_type == FOB_boat_typename) then {
@@ -59,6 +59,6 @@ if (build_confirmed == 0) then {
 	};
 } else {
 	[_box, false] remoteExec ["hideObjectGlobal", 2];
-	sleep 1;
+	sleep 3;
 	_box setVariable ["box_in_use", false, true];
 };
