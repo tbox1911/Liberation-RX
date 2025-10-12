@@ -113,7 +113,7 @@ while {true} do {
 				_fob_sector = false;
 				_nearest_active_sector = "";
 
-				if (player distance2D lhd <= GRLIB_fob_range) then {
+				if (GRLIB_player_near_lhd) then {
 					_nearest_active_sector = "base_chimera";
 					_fob_sector = true;
 				} else {
