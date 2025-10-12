@@ -120,7 +120,6 @@ fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\f
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
 is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
-is_menuok_veh = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok_veh.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
 save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\save_personal_arsenal.sqf";
@@ -135,7 +134,7 @@ write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\wr
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
-	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
+	[] execVM "scripts\client\markers\vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
 	[] execVM "scripts\client\markers\spot_timer.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
@@ -216,7 +215,7 @@ waitUntil {sleep 0.5; startgame == 1};
 
 // Markers
 [] execVM "scripts\client\markers\init_markers.sqf";
-[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
+[] execVM "scripts\client\markers\vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\markers\commander_mode.sqf";

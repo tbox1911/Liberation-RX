@@ -23,27 +23,29 @@ if (GRLIB_allow_redeploy > 0) then {
 _no_marker_classnames = _no_marker_classnames arrayIntersect _no_marker_classnames;
 _no_marker_classnames = _no_marker_classnames - ai_resupply_sources;
 
-private ["_veh_list","_nextvehicle","_nextmarker","_nextvehicle_owner","_nextvehicle_disabled"];
+private ["_veh_list","_veh_list_all","_veh_list_blu","_veh_list_civ"];
+private ["_nextvehicle","_nextmarker","_nextvehicle_owner","_nextvehicle_disabled"];
 private ["_marker","_marker_color","_marker_type","_marker_show"];
 private _vehmarkers = [];
 
 while {true} do {
 	waitUntil {sleep 0.1; visibleMap };
 
-	_veh_list = vehicles select {
+	_veh_list = [];
+	_veh_list_all = vehicles select {
 		(getObjectType _x >= 8) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
-		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
-		(count (crew _x) == 0 || (typeOf _x in uavs_vehicles + static_vehicles_AI)) &&
+		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
+		!(_x getVariable ['R3F_LOG_disabled', false]) &&
 		(isNil {_x getVariable "GRLIB_vehicle_init"}) &&
 		(isNil {_x getVariable "GRLIB_mission_AI"}) &&
-		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
-		(
-			(side _x == GRLIB_side_friendly) ||
-			(side _x == GRLIB_side_civilian && count (crew _x) == 0)
-		)
+		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]))
 	};
+
+	_veh_list_blu = _veh_list_all select { (side _x == GRLIB_side_friendly) };
+	_veh_list_civ = _veh_list_all select { (side _x == GRLIB_side_civilian && count (crew _x) == 0) };
+	_veh_list = _veh_list_blu + _veh_list_civ;
 
 	if (GRLIB_allow_redeploy > 0) then {
 		private _mobile_respawn_list = GRLIB_mobile_respawn select {
@@ -79,38 +81,39 @@ while {true} do {
 		_marker_show = 1;
 
 		_nextvehicle_owner = _nextvehicle getVariable ["GRLIB_vehicle_owner", ""];
-		_nextvehicle_disabled = _nextvehicle getVariable ['R3F_LOG_disabled', false];
+		if (_nextvehicle_owner == "server") exitWith { _nextmarker setMarkerAlphaLocal 0 };
 
 		if (typeOf _nextvehicle in ai_resupply_sources) then {
 			_marker_color = "ColorOrange";
 			_marker_type = "loc_Rifle";
 		};
+
 		if (typeOf _nextvehicle in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
 			_marker_color = "ColorGUER";
 			_marker_type = "mil_box";
 		};
+
 		if (typeOf _nextvehicle in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 			_marker_color = "ColorGrey";
 			_marker_type = "mil_triangle";
 		};
+
 		if (typeOf _nextvehicle == money_typename) then {
 			_marker_color = "ColorGreen";
 			_marker_type = "EmptyIcon";
 			_nextmarker setMarkerTextLocal "$";
 		};
+
 		if (typeOf _nextvehicle == repairbox_typename) then {
 			_marker_color = "ColorWEST";
 			_marker_type = "loc_repair";
 			_nextmarker setMarkerSizeLocal [1.4, 1.4];
 		};
+
 		if (typeOf _nextvehicle == canister_fuel_typename) then {
 			_marker_color = "Color1_FD_F";
 			_marker_type = "loc_refuel";
 			_nextmarker setMarkerSizeLocal [1.4, 1.4];
-		};
-
-		if (_nextvehicle_disabled || _nextvehicle_owner == "server") then {
-			_marker_show = 0;
 		};
 
 		if (_nextvehicle isKindOf repair_offroad) then {
@@ -119,16 +122,36 @@ while {true} do {
 			_marker_show = 1;
 		};
 
-		if (_nextvehicle isKindOf "AllVehicles" && !_nextvehicle_disabled) then {
+		if (_nextvehicle isKindOf "AllVehicles") then {
 			if (_nextvehicle_owner in ["server","public",""]) then {
 				_marker_color = "ColorKhaki";
 			} else {
 				_marker_show = 0;
-				if (GRLIB_show_blufor > 0) then {
-					if ((GRLIB_show_blufor == 1 && [player, _nextvehicle] call is_owner) || GRLIB_show_blufor == 2) then {
-						_marker_color = GRLIB_color_friendly;
-						_marker_show = 1;
+				if ((GRLIB_show_blufor == 1 && [player, _nextvehicle] call is_owner) || GRLIB_show_blufor == 2) then {
+					private _datcrew = crew _nextvehicle;
+					private _vehiclename = ([(typeOf _nextvehicle)] call F_getLRXName);
+					if (count _datcrew > 0) then {
+						_marker_type ="mil_arrow2";
+						_nextmarker setMarkerDirLocal (getDir _nextvehicle);
+						_vehiclename = "";
+						{
+							if (isPlayer _x) then {
+								_vehiclename = _vehiclename + (name _x);
+							} else {
+								_vehiclename = _vehiclename + (format [ "%1", [_x] call F_getUnitPositionId]);
+							};
+
+							if( (_datcrew find _x) != ((count _datcrew) - 1) ) then {
+								_vehiclename = _vehiclename + ",";
+							};
+							_vehiclename = _vehiclename + " ";
+						} foreach  _datcrew;
+						_vehiclename = _vehiclename + (format ["(%1)", [_nextvehicle] call F_getLRXName]);
 					};
+					_nextmarker setMarkerTextLocal _vehiclename;
+					_marker_color = GRLIB_color_friendly;
+					if (_vehiclename in _veh_list_civ) then { _marker_color = GRLIB_color_civilian };
+					_marker_show = 1;
 				};
 			};
 		};
@@ -146,5 +169,6 @@ while {true} do {
 
 	{ deleteMarkerLocal _x } foreach (_vehmarkers - _vehmarkers_bak);
 	_vehmarkers = _vehmarkers_bak;
+
 	sleep 2;
 };
