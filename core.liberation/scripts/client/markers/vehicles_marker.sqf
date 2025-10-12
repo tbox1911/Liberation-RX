@@ -23,16 +23,14 @@ if (GRLIB_allow_redeploy > 0) then {
 _no_marker_classnames = _no_marker_classnames arrayIntersect _no_marker_classnames;
 _no_marker_classnames = _no_marker_classnames - ai_resupply_sources;
 
-private ["_veh_list","_veh_list_all","_veh_list_blu","_veh_list_civ"];
-private ["_nextvehicle","_nextmarker","_nextvehicle_owner","_nextvehicle_disabled"];
+private ["_veh_list","_nextvehicle","_nextmarker","_nextvehicle_owner","_nextvehicle_disabled"];
 private ["_marker","_marker_color","_marker_type","_marker_show"];
 private _vehmarkers = [];
 
 while {true} do {
 	waitUntil {sleep 0.1; visibleMap };
 
-	_veh_list = [];
-	_veh_list_all = vehicles select {
+	_veh_list = vehicles select {
 		(getObjectType _x >= 8) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
@@ -42,10 +40,6 @@ while {true} do {
 		(isNil {_x getVariable "GRLIB_mission_AI"}) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]))
 	};
-
-	_veh_list_blu = _veh_list_all select { (side _x == GRLIB_side_friendly) };
-	_veh_list_civ = _veh_list_all select { (side _x == GRLIB_side_civilian && count (crew _x) == 0) };
-	_veh_list = _veh_list_blu + _veh_list_civ;
 
 	if (GRLIB_allow_redeploy > 0) then {
 		private _mobile_respawn_list = GRLIB_mobile_respawn select {
@@ -75,7 +69,7 @@ while {true} do {
 			_vehmarkers_bak pushback _nextmarker;
 		};
 
-		// decoration
+		// marker decoration
 		_marker_color = "ColorKhaki";
 		_marker_type = "mil_dot";
 		_marker_show = 1;
@@ -122,35 +116,36 @@ while {true} do {
 			_marker_show = 1;
 		};
 
+		// all vehicles
 		if (_nextvehicle isKindOf "AllVehicles") then {
 			if (_nextvehicle_owner in ["server","public",""]) then {
 				_marker_color = "ColorKhaki";
 			} else {
 				_marker_show = 0;
+				_marker_color = GRLIB_color_friendly;
 				if ((GRLIB_show_blufor == 1 && [player, _nextvehicle] call is_owner) || GRLIB_show_blufor == 2) then {
-					private _datcrew = crew _nextvehicle;
-					private _vehiclename = ([(typeOf _nextvehicle)] call F_getLRXName);
-					if (count _datcrew > 0) then {
+					private _vehicle_crew = crew _nextvehicle;
+					private _vehicle_name = ([(typeOf _nextvehicle)] call F_getLRXName);
+					if (count _vehicle_crew > 0) then {
 						_marker_type ="mil_arrow2";
 						_nextmarker setMarkerDirLocal (getDir _nextvehicle);
-						_vehiclename = "";
+						_vehicle_name = "";
 						{
 							if (isPlayer _x) then {
-								_vehiclename = _vehiclename + (name _x);
+								_vehicle_name = _vehicle_name + (name _x);
 							} else {
-								_vehiclename = _vehiclename + (format [ "%1", [_x] call F_getUnitPositionId]);
+								_vehicle_name = _vehicle_name + (format [ "%1", [_x] call F_getUnitPositionId]);
 							};
 
-							if( (_datcrew find _x) != ((count _datcrew) - 1) ) then {
-								_vehiclename = _vehiclename + ",";
+							if( (_vehicle_crew find _x) != ((count _vehicle_crew) - 1) ) then {
+								_vehicle_name = _vehicle_name + ",";
 							};
-							_vehiclename = _vehiclename + " ";
-						} foreach  _datcrew;
-						_vehiclename = _vehiclename + (format ["(%1)", [_nextvehicle] call F_getLRXName]);
+							_vehicle_name = _vehicle_name + " ";
+						} foreach  _vehicle_crew;
+						_vehicle_name = _vehicle_name + (format ["(%1)", [_nextvehicle] call F_getLRXName]);
+						if (side _nextvehicle == GRLIB_side_civilian) then { _marker_color = GRLIB_color_civilian };
 					};
-					_nextmarker setMarkerTextLocal _vehiclename;
-					_marker_color = GRLIB_color_friendly;
-					if (_vehiclename in _veh_list_civ) then { _marker_color = GRLIB_color_civilian };
+					_nextmarker setMarkerTextLocal _vehicle_name;
 					_marker_show = 1;
 				};
 			};

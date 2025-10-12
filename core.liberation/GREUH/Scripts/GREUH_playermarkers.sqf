@@ -49,10 +49,11 @@ while {true} do {
 					if (player == _nextunit) then {
 						_nextmarker setMarkerColorLocal GRLIB_color_friendly_bright;
 					};
+					if (side group _nextunit == GRLIB_side_civilian) then { _nextmarker setMarkerColorLocal GRLIB_color_civilian };
 					_nextmarker setMarkerDirLocal (getDir _nextunit);
 					_nextmarker setMarkerAlphaLocal 1;
 				};
- 			} else {			
+ 			} else {
 				if (_nextunit getVariable ["PAR_busy", false]) then {
 					_nextmarker setMarkerTextLocal format ["Medic. %1", name _nextunit];
 				} else {
