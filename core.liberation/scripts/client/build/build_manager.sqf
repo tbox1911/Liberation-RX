@@ -390,6 +390,7 @@ while {true} do {
 			deleteVehicle _vehicle;
 			dobuild = 0;
 			sleep 2;	// time to trap build canceled
+			repeatbuild = false;
 		};
 
 		// Build done
@@ -399,16 +400,15 @@ while {true} do {
 			private _veh_vup = vectorUp _vehicle;
 			private _veh_pos = getPosATL _vehicle;
 			deleteVehicle _vehicle;
+			player setVariable ["GRLIB_player_vehicle_build", objNull, true];
 			sleep 0.1;
 
 			// FOB
 			if(_buildtype in [99,98,97]) exitWith {
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
-				private _unit_list_redep = (units player - [player]) select { (_x distance2D player < 40) && !(captive _x) };
 				if (_classname == FOB_carrier) then {
 					private _fob_text = ((["NavalFobType"] call lrx_getParamData) select 1) select (["NavalFobType"] call lrx_getParamValue);
 					titleText [format ["Naval FOB (%1) Incoming...", _fob_text] ,"BLACK FADED", 30];
-					{ _x allowDamage false } forEach _unit_list_redep;
 					disableUserInput true;
 				};
 				[
@@ -418,15 +418,7 @@ while {true} do {
 					_veh_dir,
 					_veh_vup
 				] remoteExec ["build_fob_remote_call", 2];
-				sleep 3;
-				if (_classname == FOB_carrier) then {
-					[] spawn do_onboard;
-					titleText ["" ,"BLACK IN", 3];
-					{ _x allowDamage true } forEach _unit_list_redep;
-					disableUserInput false;
-					disableUserInput true;
-					disableUserInput false;
-				};
+				waitUntil { sleep 0.5; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 			};
 
@@ -483,7 +475,6 @@ while {true} do {
 			};
 
 			// Server creation
-			player setVariable ["GRLIB_player_vehicle_build", objNull, true];
 			[
 				player,
 				_classname,
@@ -496,7 +487,7 @@ while {true} do {
 			waitUntil { sleep 0.5; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
 
 			_vehicle = player getVariable "GRLIB_player_vehicle_build";
-			if (isNil "_vehicle") exitWith {
+			if (typeName _vehicle == "SCALAR") exitWith {
 				private _msg = format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _veh_pos];
 				systemchat _msg;
 				diag_log _msg;

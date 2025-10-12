@@ -1,5 +1,5 @@
 if (!isServer && hasInterface) exitWith {};
-params ["_owner", "_classname", "_veh_pos", "_veh_dir", "_veh_vup"];
+params ["_player", "_classname", "_veh_pos", "_veh_dir", "_veh_vup"];
 
 private _vehicle = objNull;
 
@@ -57,12 +57,13 @@ if (_classname in ["fob_water1"]) then {
 	_vehicle setPosASL _veh_pos;
 };
 
-if (isNull _vehicle) exitWith { diag_log format ["--- LRX Error: Cannot create FOB %1 at %2", _classname, _veh_pos] };
+if (isNull _vehicle) exitWith {
+	diag_log format ["--- LRX Error: Cannot create FOB %1 at %2", _classname, _veh_pos];
+	_player setVariable ["GRLIB_player_vehicle_build", -1, true];
+};
+[_vehicle, getPlayerUID _player] call fob_init;
 sleep 1;
 
-[_vehicle, getPlayerUID _owner] call fob_init;
-
-sleep 1;
 private _fob_pos = getPosATL _vehicle;
 if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
 	_fob_pos = getPosATL (nearestObjects [_fob_pos, [FOB_sign], 200] select 0);
@@ -77,3 +78,5 @@ publicVariable "GRLIB_all_outposts";
 stats_fobs_built = stats_fobs_built + 1;
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
+
+_player setVariable ["GRLIB_player_vehicle_build", _vehicle, true];

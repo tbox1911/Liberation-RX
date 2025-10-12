@@ -11,7 +11,10 @@ params [
 
 private _allow_damage = true;
 private _vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
-if (isNull _vehicle) exitWith { _player setVariable ["GRLIB_player_vehicle_build", nil, true] };
+if (isNull _vehicle) exitWith {
+	diag_log format ["--- LRX Error: Cannot create vehicle %1 at %2", _classname, _veh_pos];
+	_player setVariable ["GRLIB_player_vehicle_build", -1, true];
+};
 
 _vehicle allowDamage false;
 _vehicle hideobjectglobal true;

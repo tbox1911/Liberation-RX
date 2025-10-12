@@ -44,11 +44,21 @@ build_vehicle = _box;
 [_box, true] remoteExec ["hideObjectGlobal", 2];
 if (_box_type == FOB_box_outpost) then { buildtype = 98 };
 if (_box_type == FOB_boat_typename) then { buildtype = 97 };
+
 dobuild = 1;
 waitUntil { sleep 1; dobuild == 0 };
 if (build_confirmed == 0) then {
-	[_box] remoteExec ["deleteVehicle", 2];
+	deleteVehicle _box;
+	if (_box_type == FOB_boat_typename) then {
+		sleep 1;
+		[] spawn do_onboard;
+		titleText ["" ,"BLACK IN", 3];
+		disableUserInput false;
+		disableUserInput true;
+		disableUserInput false;
+	};
 } else {
 	[_box, false] remoteExec ["hideObjectGlobal", 2];
+	sleep 1;
+	_box setVariable ["box_in_use", false, true];
 };
-_box setVariable ["box_in_use", false, true];
