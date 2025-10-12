@@ -66,6 +66,7 @@ diag_log "------------------- LRX Diag End ----------------------";
 // 	"grlib_"
 // ];
 // {
+//  diag_log  format ["current profile: %1", _x];
 // 	if (_force) then {
 // 		diag_log  format ["%1 deleted", _x];
 // 		profileNamespace setVariable [_x, nil];
