@@ -6676,7 +6676,7 @@
 		<Key ID="STR_ONBOARD_CREW">
 			<Original>-- ON BOARD CREW</Original>
 			<French>-- EMBARQUER EQUIPAGE</French>
-		</Key>			
+		</Key>
 		<Key ID="STR_REMOVE_BODY">
 			<Original>-- REMOVE BODY</Original>
 			<Russian>-- УНИЧТОЖИТЬ ТЕЛО</Russian>
@@ -8095,6 +8095,11 @@
 			<Japanese>医者はどこだ！？</Japanese>
 			<Portuguese>Cadê os médicos??</Portuguese>
 			<Czech>Kde jsou doktoři??</Czech>
+		</Key>
+
+		<Key ID="STR_CHANGE_CIV">
+			<French>&lt;t align='center'&gt;Do you want to become Civilians?&lt;br/&gt;Next request in 10 minutes.&lt;br/&gt;</French>
+			<French>&lt;t align='center'&gt;Voulez vous devenir Civils ?&lt;br/&gt;Prochaine demande dans 10min.&lt;br/&gt;</French>
 		</Key>
 
 		<!-- support_manager.sqf-->
@@ -13168,7 +13173,7 @@
 			<Chinese>啟用權限檢查。</Chinese>
 			<Portuguese>Ativar aplicação de permissões.</Portuguese>
 			<Czech>Povolit vynucování oprávnění.</Czech>
-		</Key>		
+		</Key>
 		<Key ID="STR_CLEANUP_PARAM_DESC">
 			<Original>Sets the delay (in seconds) before unused vehicles are removed from the mission.</Original>
 			<Russian>Устанавливает задержку (в секундах) до удаления неиспользуемых транспортных средств из миссии.</Russian>

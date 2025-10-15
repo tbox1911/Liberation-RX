@@ -144,6 +144,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			if ([_cost] call F_pay) then {
 				waitUntil {sleep 0.1; !(isSwitchingWeapon _selectedmember)};
 				_selectedmember setUnitLoadout (getUnitLoadout player);
+				[_selectedmember] call F_filterLoadout;
 				hintSilent format [localize "STR_HINT_LOADOUT_COPIED", _cost];
 				lbSetCurSel [101, _selection];
 			};

@@ -49,6 +49,7 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 cleanMissionVehicles = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_cleanMissionVehicles.sqf";
 createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
 
-[] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\show_fps_hc.sqf";
+[] execVM "scripts\server\offloading\show_fps_hc.sqf";
+[] execVM "scripts\server\game\manage_undercover.sqf";
 
 diag_log "--- HC Server Init stop ---";

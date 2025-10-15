@@ -58,6 +58,19 @@ if (_unit == player) then {
 	if (GRLIB_respawn_cooldown > 0) then {
 		player setVariable ["GRLIB_last_respawn", round (time + GRLIB_respawn_cooldown)];
 	};
+
+	// Reset group
+	if (side player == GRLIB_side_civilian) then {
+		private _player_units = (units GRLIB_player_group);
+		GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
+		waitUntil {
+			[player] joinSilent GRLIB_player_group;
+			sleep 0.5;
+			(player in (units GRLIB_player_group));
+		};
+		[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
+		_player_units joinSilent GRLIB_player_group;
+	};
 	titleText ["" ,"BLACK FADED", 100];
 } else {
 	PAR_AI_bros = PAR_AI_bros - [_unit];

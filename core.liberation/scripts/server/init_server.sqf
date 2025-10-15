@@ -261,6 +261,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
 [] execVM "scripts\server\game\init_marker.sqf";
+[] execVM "scripts\server\game\manage_undercover.sqf";
 [] execVM "scripts\server\base\fob_markers.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
 [] execVM "scripts\server\game\zeus_synchro.sqf";
