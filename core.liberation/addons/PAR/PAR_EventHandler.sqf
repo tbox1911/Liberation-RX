@@ -42,8 +42,8 @@ _unit addEventHandler ["Take", {
 _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
-	// Civilian limit
-	if (side _unit == GRLIB_side_civilian && _weapon in ["Put","Throw"]) exitWith { deleteVehicle _projectile };
+	// Civilian limit (["Put","Throw"])
+	if (side _unit == GRLIB_side_civilian && _weapon == "Put") exitWith { deleteVehicle _projectile };
 
 	// No mines in the base zone (Chimera + FOB)
 	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") exitWith { deleteVehicle _projectile };

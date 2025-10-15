@@ -31,6 +31,9 @@ while {true} do {
 				};
 			};
 
+			// AI Rating
+			if (rating _unit <= 3000) then { _unit addRating 7500 };
+
 			// AI stop doing shit !
 			private _not_leader = !(leader (group player) == player);
 			if (([player] call PAR_is_wounded) && _not_leader) then {

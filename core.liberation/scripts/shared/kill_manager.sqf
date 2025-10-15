@@ -3,7 +3,7 @@ params [ "_unit", "_killer", "_instigator"];
 if (isNull _unit) exitWith {};
 private ["_msg", "_owner_id", "_player"];
 
-if ( isServer ) then {
+if (isServer) then {
 	if (_unit getVariable ["GRLIB_mp_kill", false]) exitWith {};
 	_unit setVariable ["GRLIB_mp_kill", true];
 
@@ -51,59 +51,60 @@ if ( isServer ) then {
 		stats_player_deaths = stats_player_deaths + 1
 	};
 
-	if ( _killer_side == GRLIB_side_friendly && isNil {_unit getVariable "GRLIB_mission_AI"} && isNil {_unit getVariable "GRLIB_battlegroup"} ) then {
+	if (_killer_side == GRLIB_side_friendly && isNil {_unit getVariable "GRLIB_mission_AI"} && isNil {_unit getVariable "GRLIB_battlegroup"}) then {
 		private _readiness = (0.1 * GRLIB_difficulty_modifier);
 		if (_unit isKindOf "AllVehicles") then { _readiness = (0.3 * GRLIB_difficulty_modifier) };
 		if (_unit isKindOf "Air") then { _readiness = (0.4 * GRLIB_difficulty_modifier) };
 
 		combat_readiness = combat_readiness + _readiness;
 		stats_readiness_earned = stats_readiness_earned + _readiness;
-		if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
+		if (combat_readiness > 100 && GRLIB_difficulty_modifier < 2) then { combat_readiness = 100 };
 
-		if ( (vehicle _killer) isKindOf "CAManBase" ) then {
+		if ((vehicle _killer) isKindOf "CAManBase") then {
 			infantry_weight = infantry_weight + 1;
 			armor_weight = armor_weight - 0.2;
 			air_weight = air_weight - 0.2;
 		};
-		if ( (vehicle _killer) isKindOf "LandVehicle" ) then {
+		if ((vehicle _killer) isKindOf "LandVehicle") then {
 			infantry_weight = infantry_weight - 10;
 			armor_weight = armor_weight + 10;
 			air_weight = air_weight - 1;
 		};
-		if ( (vehicle _killer) isKindOf "Air" ) then {
+		if ((vehicle _killer) isKindOf "Air") then {
 			infantry_weight = infantry_weight - 10;
 			armor_weight = armor_weight - 1;
 			air_weight = air_weight + 10;
 		};
 
-		if ( infantry_weight > 100 ) then { infantry_weight = 100 };
-		if ( infantry_weight < 0 ) then { infantry_weight = 0 };
-		if ( armor_weight > 100 ) then { armor_weight = 100 };
-		if ( armor_weight < 0 ) then { armor_weight = 0 };
-		if ( air_weight > 100 ) then { air_weight = 100 };
-		if ( air_weight < 0 ) then { air_weight = 0 };
+		if (infantry_weight > 100) then { infantry_weight = 100 };
+		if (infantry_weight < 0) then { infantry_weight = 0 };
+		if (armor_weight > 100) then { armor_weight = 100 };
+		if (armor_weight < 0) then { armor_weight = 0 };
+		if (air_weight > 100) then { air_weight = 100 };
+		if (air_weight < 0) then { air_weight = 0 };
 	};
 
 	if (_unit_class isKindOf "CAManBase") then {
-		if ( !isNull objectParent _unit ) then { [_unit, false] spawn F_ejectUnit };
+		if (!isNull objectParent _unit) then { [_unit, false] spawn F_ejectUnit };
 
 		if (isNull _killer) exitWith {};
-		if ( _unit != _killer ) then {
-			if ( _killer_side == GRLIB_side_friendly ) then {
+		if (_unit != _killer) then {
+			if (_killer_side in [GRLIB_side_friendly, GRLIB_side_civilian]) then {
 				_isPrisonner = _unit getVariable ["GRLIB_is_prisoner", false];
 				_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
 				_isZombie = (_unit_class select [0,10] == "RyanZombie");
-				if ( _isKamikaz ) exitWith {
+				if (_isKamikaz) exitWith {
 					_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer];
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 					[_killer, 11] call F_addScore;
-					[_killer, 1500] remoteExec ["addrating", owner _killer];
+					[_killer, 3500] remoteExec ["addrating", owner _killer];
 				};
-				if ( _isZombie ) exitWith { [_killer, 5] call F_addScore };
-				if ( !_isKamikaz && !_isZombie && _unit_side == GRLIB_side_civilian || _isPrisonner ) exitWith {
+
+				if (_isZombie) exitWith { [_killer, 5] call F_addScore };
+				if (!_isKamikaz && !_isZombie && _unit_side == GRLIB_side_civilian || _isPrisonner) exitWith {
 					stats_civilians_killed = stats_civilians_killed + 1;
-					if ( isPlayer _killer ) then {
-						if ( GRLIB_civ_penalties > 0 ) then {
+					if (isPlayer _killer) then {
+						if (GRLIB_civ_penalties > 0) then {
 							private _penalty = GRLIB_civ_penalties;
 							private _score = [_killer] call F_getScore;
 							if (_score < GRLIB_perm_inf) then { _penalty = GRLIB_civ_penalties/2};
@@ -122,12 +123,12 @@ if ( isServer ) then {
 							[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
 							combat_readiness = combat_readiness + (0.5 * GRLIB_difficulty_modifier);
 							stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
-							if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
+							if (combat_readiness > 100 && GRLIB_difficulty_modifier < 2) then { combat_readiness = 100 };
 						};
 						stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 					};
 
-					if ( _killer_side == GRLIB_side_friendly && !isPlayer _killer ) then {
+					if (_killer_side == GRLIB_side_friendly && !isPlayer _killer) then {
 						_owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
 						if (_owner_id in ["", "server"]) then {
 							_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
@@ -144,14 +145,13 @@ if ( isServer ) then {
 					};
 				};
 
-				if ( _unit_side == GRLIB_side_enemy ) exitWith {
+				if (_unit_side == GRLIB_side_enemy) exitWith {
 					stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
-					if ( isplayer _killer ) then {
+					if (isplayer _killer) then {
 						stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
 						_killer = (getPlayerUID _killer) call BIS_fnc_getUnitByUID;
 						[_killer, 1] call F_addScore;
 					};
-
 					private _ai_score = _killer getVariable ["PAR_AI_score", nil];
 					if (!isNil "_ai_score") then {
 						_killer setVariable ["PAR_AI_score", (_ai_score - 1), true];
@@ -165,17 +165,19 @@ if ( isServer ) then {
 						private _deathsound = format ["A3\sounds_f\characters\human-sfx\P%1\hit_max_%2.wss", selectRandom ["03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18"], selectRandom [1,2,3]];
 						playSound3D [_deathsound, _unit, false, getPosASL _unit, 5, 1, 300];
 					};
+					if (_killer_side == GRLIB_side_civilian) then {
+						[_killer, 3500] remoteExec ["addrating", owner _killer];
+					};
 				};
-				if ( _unit_side == GRLIB_side_friendly ) exitWith {
+				if (_unit_side == GRLIB_side_friendly) exitWith {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
-					[_killer, -20] call F_addScore;
+					[_killer, -50] call F_addScore;
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 				};
-			} else {
-				if ( _unit_side == GRLIB_side_friendly ) then {
-					stats_blufor_soldiers_killed = stats_blufor_soldiers_killed + 1;
-				};
+			};
+			if (_unit_side == GRLIB_side_friendly) then {
+				stats_blufor_soldiers_killed = stats_blufor_soldiers_killed + 1;
 			};
 		};
 
@@ -197,7 +199,7 @@ if ( isServer ) then {
 		if (_unit_class in ["B_UAV_01_F","B_UAV_06_F","O_UAV_01_F","O_UAV_06_F"]) exitWith {
 			if (_unit_side == GRLIB_side_enemy) exitWith {
 				private _explo = "DemoCharge_Remote_Ammo" createVehicle (getPosATL _unit);
-				_explo setDamage 1;				
+				_explo setDamage 1;
 				deleteVehicle _unit;
 			};
 			_unit spawn { sleep 5; deleteVehicle _this };
@@ -218,7 +220,7 @@ if ( isServer ) then {
 
 		if (isPlayer _killer) then {
 			_owner_id = getPlayerUID _killer;
-			if ( !(_unit getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server", _owner_id]) ) then {
+			if (!(_unit getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server", _owner_id])) then {
 				_penalty = 50;
 				_msg = format ["Penalty of %1 to %2 for killing a Friendly vehicle !!", _penalty, name _killer];
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
