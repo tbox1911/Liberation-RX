@@ -9,7 +9,7 @@ private _hostile_markers = [];
 private _hostile_group = [];
 
 while {true} do {
-	waitUntil {sleep 0.1; visibleMap };
+	waitUntil {sleep 0.1; (visibleMap || dialog) };
 	{ deleteMarkerLocal _x } foreach _hostile_markers;
 	_hostile_markers = [];
 

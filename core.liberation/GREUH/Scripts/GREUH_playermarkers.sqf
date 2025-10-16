@@ -7,7 +7,7 @@ while {true} do {
 	disableMapIndicators [true,true,false,false];
 
 	while { show_teammates } do {
-		waitUntil {sleep 0.1; visibleMap };
+		waitUntil {sleep 0.1; (visibleMap || dialog)};
 
 		// Players and units
 		private _players_markers_bak = [];
