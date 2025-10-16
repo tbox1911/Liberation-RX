@@ -127,11 +127,11 @@ if (_side == GRLIB_side_friendly) then {
 };
 
 if (_side == GRLIB_side_enemy) then {
-	_vehicle addEventHandler ["Fuel", {
-		params ["_vehicle", "_hasFuel"];
-		if (count (crew _vehicle) == 0) exitWith {};
-		if (!_hasFuel) then { _vehicle setFuel 1 };
-	}];
+	// _vehicle addEventHandler ["Fuel", {
+	// 	params ["_vehicle", "_hasFuel"];
+	// 	if (count (crew _vehicle) == 0) exitWith {};
+	// 	if (!_hasFuel) then { _vehicle setFuel 1 };
+	// }];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 	_vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 
@@ -160,7 +160,9 @@ if (_side == GRLIB_side_enemy) then {
 
 	// Search Gunner
 	if (_classname in (militia_vehicles + light_vehicles + heavy_vehicles)) then {
-		[_vehicle] spawn F_getEmptyArmored;
+		if (_vehicle isKindOf "LandVehicle") then {
+			[_vehicle] spawn F_getEmptyArmored;
+		};
 	};
 };
 
