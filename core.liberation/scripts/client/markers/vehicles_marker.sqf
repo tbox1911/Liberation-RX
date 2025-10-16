@@ -119,37 +119,41 @@ while {true} do {
 
 		// all vehicles
 		if (_nextvehicle isKindOf "AllVehicles") then {
-			if (_nextvehicle_owner in ["server","public",""]) then {
+			_marker_show = 0;
+			private _vehicle_crew = crew _nextvehicle;
+			if (_nextvehicle_owner in ["server","public",""]) then {			
 				_marker_color = "ColorKhaki";
-			} else {
-				_marker_show = 0;
-				_marker_color = GRLIB_color_friendly;
-				if ((GRLIB_show_blufor == 1 && [player, _nextvehicle] call is_owner) || GRLIB_show_blufor == 2) then {
-					private _vehicle_crew = crew _nextvehicle;
-					private _vehicle_name = ([(typeOf _nextvehicle)] call F_getLRXName);
-					if (count _vehicle_crew > 0) then {
-						_marker_type ="mil_arrow2";
-						_nextmarker setMarkerDirLocal (getDir _nextvehicle);
-						_vehicle_name = "";
-						{
-							if (isPlayer _x) then {
-								_vehicle_name = _vehicle_name + (name _x);
-							} else {
-								_vehicle_name = _vehicle_name + (format [ "%1", [_x] call F_getUnitPositionId]);
-							};
-
-							if( (_vehicle_crew find _x) != ((count _vehicle_crew) - 1) ) then {
-								_vehicle_name = _vehicle_name + ",";
-							};
-							_vehicle_name = _vehicle_name + " ";
-						} foreach  _vehicle_crew;
-						_vehicle_name = _vehicle_name + (format ["(%1)", [_nextvehicle] call F_getLRXName]);
-						if (side _nextvehicle == GRLIB_side_civilian) then { _marker_color = GRLIB_color_civilian };
-					};
-					_nextmarker setMarkerTextLocal _vehicle_name;
+				if (count _vehicle_crew == 0) then {
 					_marker_show = 1;
 				};
 			};
+			
+			if ((GRLIB_show_blufor == 1 && [player, _nextvehicle] call is_owner) || GRLIB_show_blufor == 2) then {
+				_marker_color = GRLIB_color_friendly;
+				private _vehicle_name = ([(typeOf _nextvehicle)] call F_getLRXName);
+				if (count _vehicle_crew > 0) then {
+					_marker_type ="mil_arrow2";
+					_nextmarker setMarkerDirLocal (getDir _nextvehicle);
+					_vehicle_name = "";
+					{
+						if (isPlayer _x) then {
+							_vehicle_name = _vehicle_name + (name _x);
+						} else {
+							_vehicle_name = _vehicle_name + (format [ "%1", [_x] call F_getUnitPositionId]);
+						};
+
+						if( (_vehicle_crew find _x) != ((count _vehicle_crew) - 1) ) then {
+							_vehicle_name = _vehicle_name + ",";
+						};
+						_vehicle_name = _vehicle_name + " ";
+					} foreach  _vehicle_crew;
+					_vehicle_name = _vehicle_name + (format ["(%1)", [_nextvehicle] call F_getLRXName]);
+					if (side _nextvehicle == GRLIB_side_civilian) then { _marker_color = GRLIB_color_civilian };
+				};
+				_nextmarker setMarkerTextLocal _vehicle_name;
+				_marker_show = 1;
+			};
+			
 		};
 
 		if (_nextvehicle in _mobile_respawn) then {
