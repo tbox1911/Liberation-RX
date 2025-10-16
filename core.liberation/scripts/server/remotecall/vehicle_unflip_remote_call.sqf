@@ -1,14 +1,11 @@
 if (!isServer && hasInterface) exitWith {};
-params [ "_vehicle"];
+params ["_vehicle", ["_force", false]];
 
 if (isNil "_vehicle") exitWith {};
+if (isNull _vehicle) exitWith {};
 
 if (local _vehicle) then {
-	_vehicle allowDamage false;
-	sleep 1;
-	[_vehicle, true] call F_vehicleUnflip;
-	sleep 1;
-	_vehicle allowDamage true;
+	[_vehicle, _force] call F_vehicleUnflip;
 } else {
-	[_vehicle, true] remoteExec ["F_vehicleUnflip", owner _vehicle];
+	[_vehicle, _force] remoteExec ["F_vehicleUnflip", owner _vehicle];
 };

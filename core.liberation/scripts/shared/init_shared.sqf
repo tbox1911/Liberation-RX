@@ -38,7 +38,6 @@ remote_call_sector = compileFinal preprocessFileLineNumbers "scripts\client\remo
 remote_call_showinfo = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_showinfo.sqf";
 remote_call_showtext = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_showtext.sqf";
 remote_call_tunnel_success = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_tunnel_success.sqf";
-remote_call_vehicle_unflip = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_vehicle_unflip.sqf";
 
 // Vehicle Color
 RPT_fnc_ResetVehicle = compileFinal preprocessFileLineNumbers "addons\VAM\fn_resetVehicle.sqf";

@@ -1,7 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_truck", "_mode"];
 
+if (isNil "_truck") exitWith {};
 if (isNull _truck) exitWith {};
+
 private _all_objects = [] + (_truck getVariable ["GRLIB_ammo_truck_load", []]);
 if (count _all_objects == 0) exitWith {};
 

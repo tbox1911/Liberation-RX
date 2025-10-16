@@ -1,6 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_unit"];
 
+if (isNil "_unit") exitWith {};
+if (isNull _unit) exitWith {};
+
 private _plane_count = 6;
 if (count blufor_air <= 3) then { _plane_count = 3 };
 private _target = [sectors_allSectors, _unit] call F_nearestPosition;

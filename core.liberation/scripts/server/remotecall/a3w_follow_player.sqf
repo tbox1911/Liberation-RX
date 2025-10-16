@@ -1,6 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_unit", "_follow", "_second"];
 
+if (isNil "_unit") exitWith {};
+if (isNull _unit) exitWith {};
+
 private _near_tent = {
     params ["_unit"];
     (count (_unit nearobjects [a3w_heal_tent, 12]) > 0);

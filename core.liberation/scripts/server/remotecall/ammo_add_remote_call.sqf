@@ -1,6 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_unit", "_ammo", "_fuel"];
 
+if (isNil "_unit") exitWith {};
+if (isNull _unit) exitWith {};
+
 waitUntil { _unit getVariable ["GRLIB_score_set", 0] == 1};
 waitUntil { _unit getVariable ["trx_complete", 0] != 1 };
 

@@ -5,7 +5,7 @@ if ( GRLIB_secondary_starting ) exitWith { diag_log "-- LRX Error: Multiple call
 
 GRLIB_secondary_starting = true; publicVariable "GRLIB_secondary_starting";
 
-_mission_cost = GRLIB_secondary_missions_costs select _mission_index;
+private _mission_cost = GRLIB_secondary_missions_costs select _mission_index;
 if (_mission_free) then { _mission_cost = 0 };
 
 private _caller = "LRX Server";

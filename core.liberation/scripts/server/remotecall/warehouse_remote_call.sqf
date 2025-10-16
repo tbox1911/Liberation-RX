@@ -2,6 +2,7 @@ if (!isServer && hasInterface) exitWith {};
 params ["_box", "_cmd", "_unit"];
 
 if (isNil "_box") exitWith {};
+if (isNull _box) exitWith {};
 
 if (_cmd == 1) then {
     if (isNull _box || !alive _box) exitWith {};

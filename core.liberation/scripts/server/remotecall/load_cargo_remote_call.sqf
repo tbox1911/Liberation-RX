@@ -1,6 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_vehicle", "_lst_a3", "_lst_r3f", "_lst_grl"];
 
+if (isNil "_vehicle") exitWith {};
+if (isNull _vehicle) exitWith {};
+
 if ( count _lst_a3 > 0 ) then {
     [_vehicle, _lst_a3] call F_setCargo;
 };

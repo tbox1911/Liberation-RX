@@ -1,6 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_unit", "_ammo", "_fuel"];
 
+if (isNil "_unit") exitWith {};
+if (isNull _unit) exitWith {};
+
 private _ammo_collected = _unit getVariable ["GREUH_ammo_count", 0];
 private _fuel_collected = _unit getVariable ["GREUH_fuel_count", 0];
 

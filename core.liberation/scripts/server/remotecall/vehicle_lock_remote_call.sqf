@@ -2,6 +2,7 @@ if (!isServer && hasInterface) exitWith {};
 params [ "_vehicle", "_cmd", ["_uid",""]];
 
 if (isNil "_vehicle") exitWith {};
+if (isNull _vehicle) exitWith {};
 
 if (local _vehicle) then {
 	[_vehicle, _cmd, _uid] call F_vehicleLock;

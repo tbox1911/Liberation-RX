@@ -1,6 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_unit", "_position"];
 
+if (isNil "_unit") exitWith {};
+if (isNull _unit) exitWith {};
+
 _targetsector = [300, _position ] call F_getNearestSector;
 _msg = format ["Commander <t color='#00008f'>%1</t>, ask for<br/><br/>
 <t color='#0000F0'>Artillery</t> <t color='#F00000'>Destruction</t><br/><br/>
