@@ -241,7 +241,7 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 		_grp = [_sector, _infsquad, _squad, false] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 0.2;
+		sleep 1;
 	};
 	_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, 4, _foreachIndex, 20, 40], _sectorName];
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
@@ -276,7 +276,7 @@ if (_building_ai_max > 0) then {
 		_managed_units = _managed_units + _building_ai_created;
 		_building_ai_max = _building_ai_max - _max_units;
 		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _bld, _bld - _building_ai_max, 60, 80], _sectorName];
-		sleep 0.1;
+		sleep 1;
 	};
 };
 _sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
@@ -293,7 +293,7 @@ if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 		_managed_units = _managed_units + (units _grp);
 		_nbcivs = _nbcivs - _max_units;
 		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _civ, _civ - _nbcivs, 80, 99], _sectorName];
-		sleep 0.1;
+		sleep 1;
 	};
 };
 
@@ -348,7 +348,7 @@ private _stageAttack = {
 		[_pos, _stage] call (selectRandom (_attackFunctions call BIS_fnc_arrayShuffle));
 	};
 	if (_stage >= 4) then { 		// Final stage of defense
-		sleep 20;
+		sleep 30;
 		[_pos] spawn spawn_halo_vehicle;
 	};
 };
@@ -380,6 +380,7 @@ private _task = "attack" + _sectorName + str round time;
 [_task, true] call BIS_fnc_taskSetCurrent;
 _sector setMarkerText format ["%1 - Loaded", _sectorName];
 sleep 5;
+_sector setMarkerText format ["%1", _sectorName];
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
 
