@@ -33,7 +33,7 @@ _setupObjects = {
 	[_missionPos, 30] call createlandmines;
 	[markerPos _missionLocation, 150, floor (random 6)] spawn ied_trap_manager;
 	_aiGroup = [_missionPos, 12, "militia"] call createCustomGroup;
-	_managed_units = ["militia", 8, _missionPos] call F_spawnBuildingSquad;
+	_managed_units = (["militia", 10, _missionPos] call F_buildingSquad);
 	private _grp1 = [_missionPos, 12, "militia"] call createCustomGroup;
 	_managed_units append (units _grp1);
 	private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));

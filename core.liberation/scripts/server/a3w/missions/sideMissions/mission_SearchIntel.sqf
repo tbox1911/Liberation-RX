@@ -118,7 +118,7 @@ _setupObjects = {
 	sleep 0.5;
 
 	//----- spawn units ---------------------------------
-	_managed_units = ["infantry", ([] call getNbUnits), _missionPos] call F_spawnBuildingSquad;
+	_managed_units = (["infantry", ([] call getNbUnits), _missionPos] call F_buildingSquad);
 	sleep 0.5;
 
 	//----- spawn civilians ---------------------------------

@@ -267,22 +267,8 @@ if (opforcap_max) then { _building_ai_max = 0 };
 if (_building_ai_max > 0) then {
 	_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
 	if (_sector in sectors_bigtown) then { _building_ai_max = _building_ai_max + 12 };
-	private _rnd = [1,1,2,2,2,2,3,3,3,4];
-	private _bld = _building_ai_max;
-	private _max_try = 25;
-	while { _building_ai_max > 0 && _max_try > 0} do {
-		_max_units = (selectRandom _rnd) min _building_ai_max;
-		private _building_ai_created = ([_infsquad1, _max_units, _sector_pos, _building_range, objNull, false] call F_spawnBuildingSquad);
-		if (count _building_ai_created != 0) then {
-			_managed_units = _managed_units + _building_ai_created;
-			_building_ai_max = _building_ai_max - _max_units;
-			_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _bld, _bld - _building_ai_max, 60, 80], _sectorName];
-			sleep 1;
-		} else {
-			_max_try = _max_try -1;
-			if (_max_units == 1) then { _max_try = 0 };
-		};
-	};
+	_sector setMarkerText format ["%2 - Loading %1%%", 70, _sectorName];
+	_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_buildingSquad);
 };
 _sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
 // Create civilians

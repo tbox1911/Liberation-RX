@@ -5,6 +5,7 @@ F_addPlayerAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_addPlayerScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addPlayerScore.sqf";
 F_addScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addScore.sqf";
 F_addReput = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addReput.sqf";
+F_buildingSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_buildingSquad.sqf";
 F_calcUnitsCost = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_calcUnitsCost.sqf";
 F_check_near = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_check_near.sqf";
 F_getAirSpawn = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAirSpawn.sqf";
