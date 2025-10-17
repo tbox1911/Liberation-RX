@@ -31,10 +31,11 @@ if (_mission_ai) then { _keep_position = true };
 
 private _buildingpositions = [];
 if (isNull _building) then {
-	private _allbuildings = (nearestObjects [_sectorpos, _building_classname, _building_range]) select {alive _x};
+	private _allbuildings = (nearestObjects [_sectorpos, _building_classname, _building_range]) select { alive _x };
 	{
-		_buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
-	} foreach _allbuildings;
+		_buildingpositions = ([_x] call BIS_fnc_buildingPositions);
+		if (count _buildingpositions >= _building_ai_max) exitWith { };
+	} foreach (_allbuildings call BIS_fnc_arrayShuffle);
 } else {
 	_buildingpositions = ([_building] call BIS_fnc_buildingPositions);
 };
@@ -45,15 +46,12 @@ if (_position_count == 0) exitWith {[]};
 diag_log format ["Spawn building squad type %1 at %2", _infsquad, time];
 
 private _unitclass = [];
-_building_ai_max = _position_count min _building_ai_max;
 while { count _unitclass < _building_ai_max } do { _unitclass pushback (selectRandom _squad_comp) };
 
 private _position_indexes = [];
 while { count _position_indexes < count _unitclass } do {
 	_nextposit = floor random _position_count;
-	if !(_nextposit in _position_indexes) then {
-		_position_indexes pushback _nextposit;
-	};
+	_position_indexes pushbackUnique _nextposit;
 };
 private _grp = [_sectorpos, _unitclass, _side, "building", _mission_ai] call F_libSpawnUnits;
 {
