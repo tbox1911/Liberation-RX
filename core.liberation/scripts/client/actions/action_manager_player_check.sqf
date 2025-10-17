@@ -75,7 +75,7 @@ GRLIB_checkGarage = {
 };
 
 GRLIB_checkBuild = {
-	(GRLIB_player_is_menuok && GRLIB_player_near_fob && ([player, 3] call fetch_permission))
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && ([player, 3] call fetch_permission) && side group player == GRLIB_side_friendly)
 };
 
 GRLIB_checkBuildTrench = {

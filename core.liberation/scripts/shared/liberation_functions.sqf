@@ -17,7 +17,6 @@ F_correctUAVT = compileFinal preprocessFileLineNumbers "scripts\shared\functions
 F_correctLaserBatteries = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_correctLaserBatteries.sqf";
 F_deathSound = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_deathSound.sqf";
 F_deleteWaypoints = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_deleteWaypoints.sqf";
-F_detectedUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_detectedUnit.sqf";
 F_ejectGroup = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_ejectGroup.sqf";
 F_ejectUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_ejectUnit.sqf";
 F_filterLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_filterLoadout.sqf";

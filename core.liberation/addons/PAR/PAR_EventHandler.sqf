@@ -43,10 +43,16 @@ _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	// Civilian limit (["Put","Throw"])
-	if (side _unit == GRLIB_side_civilian && _weapon == "Put") exitWith { deleteVehicle _projectile };
+	if (side _unit == GRLIB_side_civilian && _weapon in ["Put","Throw"]) exitWith {
+		gamelogic globalChat "No grenades/mines allowed when Civilian.";
+		deleteVehicle _projectile;
+	};
 
 	// No mines in the base zone (Chimera + FOB)
-	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") exitWith { deleteVehicle _projectile };
+	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") exitWith {
+		gamelogic globalChat "No mines allowed around the FOB.";
+		deleteVehicle _projectile;
+	};
 
 	// Pay artillery fire
 	// if (_vehicle isKindOf "StaticMortar") then {

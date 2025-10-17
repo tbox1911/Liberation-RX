@@ -1,27 +1,23 @@
 sleep 60;
 
-private _is_armed = {
-    params ["_unit"];
-    (handgunWeapon _unit != "" || primaryWeapon _unit != "" || secondaryWeapon _unit != "");
-};
-
-private ["_opfor_grp", "_undercover_units", "_awareness"];
-private _knowledge = 1.5;  // 1.105, 1.5, 1.7, 4
+private ["_opfor_grp", "_unit", "_undercover_units", "_awareness"];
 
 while {true} do {
-    _undercover_units = (units GRLIB_side_civilian) select { (!isNil {_x getVariable "PAR_Grp_ID"}) };
-
+    _undercover_units = (units GRLIB_side_civilian) select { !(captive _x) && !(isNil {_x getVariable "PAR_Grp_ID"}) };
     {
         _opfor_grp = _x;
         if (local _opfor_grp) then {
             {
-                if !(_x getVariable ["GRLIB_unit_detected", false]) then {
-                    _awareness = _opfor_grp knowsAbout _x;
-                    if (_awareness >= _knowledge && [_x] call _is_armed) then {
-                        // private _msg = format ["DBG: player detected by group %1 (%2)", _opfor_grp, _awareness];
-                        // systemchat _msg;
-                        // diag_log _msg;
-                        _x setVariable ["GRLIB_unit_detected", true, true];
+                _unit = _x;
+                _current = _unit getVariable ["GRLIB_unit_detected", 0];
+                if (_current < 1.5) then {
+                    _awareness = _opfor_grp knowsAbout _unit;
+                    if (_awareness > 0) then {
+                        _unit setVariable ["GRLIB_unit_detected", (_current max _awareness), true];
+                        if (_awareness >= 1.5) then {
+                            private _msg = format ["%1 has been detected by group %2 (%3)", name _unit, _opfor_grp, _awareness];
+                            [gamelogic, _msg] remoteExec ["globalChat", owner _unit];
+                        };
                     };
                 };
                 sleep 0.1;
