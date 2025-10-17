@@ -3,11 +3,10 @@
 
 params ["_unit"];
 
-if (!alive _unit) exitWith {};
+if (!local _unit || !alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit >= 3) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
-if (_unit getVariable ["GRLIB_action_inuse", false]) exitWith {};
 if (round (getPosATL _unit select 2) > 2) exitWith {};
 if (underwater vehicle _unit) exitWith { deleteVehicle _unit };
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
@@ -29,7 +28,6 @@ private _spawnpos = (getPosASL _unit) vectorAdd [0,0,0.5];
 private _maxpos = _spawnpos vectorAdd [0,0,_maxalt];
 
 if !(lineIntersects [_spawnpos, _maxpos, _unit]) exitWith {};
-_unit setVariable ["GRLIB_action_inuse", true];
 
 while { (lineIntersects [_spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 	_curalt = _curalt + 0.5;
@@ -41,9 +39,11 @@ if (lineIntersects [_spawnpos, (_spawnpos vectorAdd [0,0,_maxalt]), _unit]) exit
 	deleteVehicle _unit;
 };
 
+
+private _state = isDamageAllowed _unit;
 _unit allowDamage false;
+sleep 0.5;
 _unit setPosASL _spawnpos;
 _unit setHitPointDamage ["hitLegs", 0];
-sleep 5;
-_unit allowDamage true;
-_unit setVariable ["GRLIB_action_inuse", false];
+sleep 0.5;
+_unit allowDamage _state;

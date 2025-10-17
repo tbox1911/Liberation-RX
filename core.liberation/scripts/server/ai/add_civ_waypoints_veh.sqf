@@ -3,7 +3,7 @@ if (isNil "_grp" || isNil "_basepos") exitWith {};
 if (isNull _grp) exitWith {};
 if (!local _grp) exitWith { [_grp, _basepos, _vehicle] remoteExec ["add_civ_waypoints_veh", groupOwner _grp] };
 
-if (_vehicle isKindOf "Ship_F") exitWith { [_grp, getPosATL _vehicle, 220] spawn patrol_ai };
+if (_vehicle isKindOf "Ship_F") exitWith { [_grp, getPosATL _vehicle, 220] call patrol_ai };
 
 [_grp] call F_deleteWaypoints;
 

@@ -13,7 +13,7 @@ if (_blufor_nearby > 0 && count _gunner_nearby > 0) then {
     private _gunner_sorted = _gunner_nearby apply {[_x distance2D _static, _x]};
     _gunner_sorted sort true;
     _gunner = (_gunner_sorted select 0 select 1);
-    [_gunner] spawn F_fixPosUnit;
+    [_gunner] call F_fixPosUnit;
     _gunner assignAsGunner _static;
     [_gunner] orderGetIn true;
     //_gunner moveInGunner _static;

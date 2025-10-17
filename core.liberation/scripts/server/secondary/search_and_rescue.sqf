@@ -31,7 +31,7 @@ _pilotUnits joinSilent _pilotsGrp;
 sleep 5;
 
 private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
-[_grppatrol, _helopos, 50] spawn patrol_ai;
+[_grppatrol, _helopos, 50] call patrol_ai;
 
 private _nbsentry = 2 + (floor (random 3));
 private _unitclass = [];

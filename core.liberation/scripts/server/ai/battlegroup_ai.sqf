@@ -25,8 +25,8 @@ private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
 while {true} do {
 	_sleep = 60;
 	{
-		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300) then { deleteVehicle _x } else { [_x] spawn F_fixPosUnit };
-		sleep 1;
+		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
+		sleep 0.5;
 	} forEach (units _grp);
 	if ({alive _x} count (units _grp) == 0) exitWith {};
 

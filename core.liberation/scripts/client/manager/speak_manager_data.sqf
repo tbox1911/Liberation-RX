@@ -322,8 +322,7 @@ speak_mission_heal_doctor = {
 speak_mission_heal_wounded = {
 	params ["_unit"];
 	_unit globalChat localize "STR_DIALOG_HEAL_REQUEST";
-	[_unit] spawn F_fixPosUnit;
-	sleep 3;
+	[_unit] call F_fixPosUnit;
 	_unit globalChat localize "STR_DIALOG_HEAL_WEAK_FOLLOW";
 	[_unit, player, 20] remoteExec ["a3w_follow_player", 2];
 	sleep 4;

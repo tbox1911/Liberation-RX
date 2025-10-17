@@ -55,7 +55,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			_pos set [2, -6];
 			_unit setPosASL _pos;
 		};
-		sleep 0.1;
+
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] call F_fixModUnit;
 		if (_type == "militia") then { [_unit] call loadout_militia };

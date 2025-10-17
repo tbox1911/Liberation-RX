@@ -10,8 +10,8 @@ sleep (5 + floor random 10);
 private ["_waypoint", "_wp0", "_objective_pos"];
 while { alive _objective } do {
 	{
-		if (surfaceIsWater (getPos _x) && _x distance2D _objective > 300) then { deleteVehicle _x } else { [_x] spawn F_fixPosUnit };
-		sleep 1;
+		if (surfaceIsWater (getPos _x) && _x distance2D _objective > 300) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
+		sleep 0.5;
 	} forEach (units _grp);
 	if ({alive _x} count (units _grp) == 0) exitWith {};
 

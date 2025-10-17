@@ -38,7 +38,7 @@ _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 diag_log format [ "Spawn Static Weapon (%1) on sector %2 at %3", typeOf _vehicle, _sector, time ];
 
 _spawn_pos = getPos _vehicle;
-[_grp, _spawn_pos, 20] spawn patrol_ai;
+[_grp, _spawn_pos, 20] call patrol_ai;
 
 private _hc = [] call F_lessLoadedHC;
 if (isDedicated && !isNull _hc) then {
