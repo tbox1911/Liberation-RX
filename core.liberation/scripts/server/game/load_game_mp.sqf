@@ -311,6 +311,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		if ( _nextclass == mobile_respawn ) then {
 			GRLIB_mobile_respawn pushback _nextbuilding;
 		};
+		sleep 0.1;
 	} foreach _s2;
 
 	// Vehicles
@@ -334,6 +335,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
+		_nextbuilding setPos (getPos _nextbuilding);
 		_buildings_created pushback _nextbuilding;
 
 		if (GRLIB_ACE_enabled) then {
@@ -413,6 +415,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				};
 			};
 		};
+		sleep 0.1;
 	} foreach _s3;
 
 	[_buildings_created] spawn {
@@ -431,9 +434,9 @@ if (!isNil "_lrx_liberation_savegame") then {
 		{
 			_allow_damage = true;
 			if (typeOf _x in _no_damage) then { _allow_damage = false };
-			_x setVelocity [0, 0, 0];
 			_x setDamage 0;
 			if ( _allow_damage ) then { _x allowDamage true };
+			sleep 0.1;
 		} foreach _list;
 	};
 
