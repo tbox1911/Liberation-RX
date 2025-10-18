@@ -17,6 +17,7 @@ private _offset = 0;
 } foreach box_transport_config;
 
 _truck allowDamage false;
+_truck enableSimulationGlobal false;
 sleep 1;
 
 if (_mode == "one") then {
@@ -76,6 +77,7 @@ private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 } foreach _all_objects;
 sleep 2;
 
+_truck enableSimulationGlobal true;
 _truck allowDamage true;
 
 GRLIB_load_box = nil;

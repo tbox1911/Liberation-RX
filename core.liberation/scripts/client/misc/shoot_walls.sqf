@@ -1,7 +1,7 @@
 waitUntil {sleep 1; GRLIB_player_spawned};
 
 while {true} do {
-    waitUntil { sleep 0.01; !visibleMap && !dialog && (alive player && isNull objectParent player && currentWeapon player != "")};
+    waitUntil { sleep 0.01; !visibleMap && !dialog && alive player && isNull objectParent player && currentWeapon player != ""};
 
     if (inputAction "defaultAction" > 0) then {
         private _tree = count (nearestTerrainObjects [player, ["Tree","Small Tree"], 10]);

@@ -9,8 +9,8 @@ params [
 
 waitUntil { sleep 1; isNil "GRLIB_building_used" };
 private _managed_units = [];
-private _rnd = [1,1,1,2,2,2,3,3,3,4,4];
-private _max_try = 25;
+private _rnd = [1,1,2,2,2,3,3,3,4,4,5];
+private _max_try = 30;
 GRLIB_building_used = [];
 
 while { _ai_max > 0 && _max_try > 0} do {
