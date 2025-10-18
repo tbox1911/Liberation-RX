@@ -8,13 +8,14 @@ if (PAR_AI_reviveMax > 0 && !isPlayer _unit && local _unit) then {
 };
 if (_cur_revive <= 0) exitWith {_unit setDamage 1};
 
+_unit allowDamage false;
 _unit setUnconscious true;
 _unit setCaptive true;
-_unit allowDamage false;
 _unit setVariable ["PAR_busy", nil];
 _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 _unit setVariable ["PAR_isDragged", 0, true];
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
+sleep 1;
 
 if (isPlayer _unit) then {
 	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL player];

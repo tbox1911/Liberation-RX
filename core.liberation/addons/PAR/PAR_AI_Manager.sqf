@@ -35,17 +35,8 @@ while {true} do {
 			if (rating _unit <= 3000) then { _unit addRating 7500 };
 
 			// AI stop doing shit !
-			private _not_leader = !(leader (group player) == player);
-			if (([player] call PAR_is_wounded) && _not_leader) then {
-				if (_unit distance2D player <= 500) then {
-					unassignVehicle _unit;
-					[_unit] orderGetIn false;
-					if !(isNull objectParent _unit) then {
-						if !("turret" in (assignedVehicleRole _unit)) then {
-							[_unit, false] spawn F_ejectUnit;
-						};
-					};
-				};
+			if (([player] call PAR_is_wounded) && (leader (group player) != player) && isNil {_unit getVariable "PAR_busy"}) then {
+				doStop _unit;
 			};
 
 			// AI revive
@@ -117,7 +108,7 @@ while {true} do {
 					_unit setVariable ["PAR_revive_msg_timer", round (time + (3 * 60))];
 				};
 			};
-			sleep 0.3;
+			sleep 0.2;
 		} forEach PAR_AI_bros;
 	};
 
@@ -133,5 +124,5 @@ while {true} do {
 		};
 	};
 
-	sleep 10;
+	sleep 5;
 };
