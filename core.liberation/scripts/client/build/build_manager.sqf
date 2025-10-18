@@ -1,5 +1,5 @@
 private [
-	"_unit", "_pos", "_pos_origin", "_grp", "_classname", "_fob_box",
+	"_unit", "_pos", "_pos_origin", "_classname", "_fob_box",
 	"_idx", "_unitrank", "_ghost_pos", "_ghost_spot", "_ghost_name", "_vehicle",
 	"_dist", "_radius", "_actualdir", "_near_objects"
 ];
@@ -547,6 +547,8 @@ while {true} do {
 				[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
 			};
 
+			// Inform units
+			GRLIB_player_group reveal [_vehicle, 4];
 			build_vehicle = _vehicle;
 			stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
 			publicVariable "stats_blufor_vehicles_built";

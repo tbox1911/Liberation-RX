@@ -339,17 +339,15 @@ if (GRLIB_Commander_mode) then {
 	GRLIB_Com_lastClicked = time;
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos"];
-		private _caller = _thisArgs select 0;
-
 		if (count active_sectors == 0 && count GRLIB_AvailAttackSectors > 0) then {
 			if ((time - GRLIB_Com_lastClicked) > 3 && (GRLIB_Commander_VoteEnabled || GRLIB_player_commander)) then {
 				_closestSector = [100, _pos, GRLIB_AvailAttackSectors] call F_getNearestSector;
 				if (_closestSector in opfor_sectors) then {
 					playSoundUI ["a3\ui_f\data\sound\cfgnotifications\tacticalping3.wss", 0.5, 1.2];
 					if (GRLIB_player_commander) then {
-						[_caller, _closestSector] remoteExec ["activate_sector_remote_call", 2];
+						[player, _closestSector] remoteExec ["activate_sector_remote_call", 2];
 					} else {
-						[_caller, _closestSector] remoteExec ["vote_sector_remote_call", 2];
+						[player, _closestSector] remoteExec ["vote_sector_remote_call", 2];
 					};
 					GRLIB_Com_lastClicked = time;
 				};

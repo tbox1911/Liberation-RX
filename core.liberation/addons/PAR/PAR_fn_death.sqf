@@ -26,6 +26,7 @@ if (_unit == player) then {
 		_grave allowDamage false;
 		_grave setDir _dir;
 		_grave setPosATL _pos;
+		_grave setVectorUp surfaceNormal position _grave;
 		_grave setvariable ["PAR_grave_message", format ["- R.I.P - %1", name player], true];
 
 		// remove old grave (max: 3)
