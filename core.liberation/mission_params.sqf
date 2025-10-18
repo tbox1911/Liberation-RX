@@ -107,6 +107,7 @@ GRLIB_PARAM_KickIdle = "KickIdle";
 GRLIB_PARAM_TK_mode = "TK_mode";
 GRLIB_PARAM_TK_count = "TK_count";
 GRLIB_PARAM_Persistent = "Persistent";
+GRLIB_PARAM_UndercoverModeEnabled = "UndercoverMode";
 GRLIB_PARAM_CommanderModeEnabled = "CommanderMode";
 GRLIB_PARAM_CommanderModeRadius = "CommanderRadius";
 GRLIB_PARAM_CommanderVoteTimeout = "CommVoteTimeout";
@@ -1232,6 +1233,18 @@ _Mission_Params = [
             localize "STR_CLEANUP_PARAM5"
         ]]
     ]],
+    [GRLIB_PARAM_UndercoverModeEnabled, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_UNDERCOVER_MODE"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_UNDERCOVER_MODE_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_PARAMS_DISABLED",
+            localize "STR_PARAMS_ENABLED"
+        ]]
+    ]],    
     [GRLIB_PARAM_KeepScore, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_KEEP_SCORE"],

@@ -13642,6 +13642,10 @@
 			<Portuguese>Ativar modo persistente.</Portuguese>
 			<Czech>Povolit perzistentní režim.</Czech>
 		</Key>
+		<Key ID="STR_UNDERCOVER_MODE_DESC">
+			<Original>Enables the Civilian undercover mode.</Original>
+			<French>Active le mode civil sous couverture (undercover).</French>
+		</Key>
 		<Key ID="STR_COMMANDER_MODE_DESC">
 			<Original>Enables commander mode for sector selection instead of the classic proximity based system.</Original>
 			<Russian>Включает режим командира для выбора секторов.</Russian>
@@ -13813,6 +13817,10 @@
 			<Portuguese>Modo comandante</Portuguese>
 			<Czech>Režim velitele</Czech>
 		</Key>
+		<Key ID="STR_UNDERCOVER_MODE">
+			<Original>Civilian Undercover Mode</Original>
+			<French>Mode Civil Undercover</French>
+		</Key>		
 		<Key ID="STR_COMMANDER_MODE_RADIUS">
 			<Original>Nearby sector defense activation range</Original>
 			<Russian>Режим командира: диапазон активации защиты соседних секторов</Russian>

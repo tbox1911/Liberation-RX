@@ -274,6 +274,7 @@ GRLIB_air_support = [GRLIB_PARAM_AirSupport] call lrx_getParamValue;
 GRLIB_despawn_tickets = [GRLIB_PARAM_SectorDespawn] call lrx_getParamValue;
 GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
 GRLIB_victory_condition = [GRLIB_PARAM_VictoryCondition] call lrx_getParamValue;
+GRLIB_Undercover_mode = [GRLIB_PARAM_UndercoverModeEnabled] call lrx_getParamValue;
 GRLIB_Commander_mode = [GRLIB_PARAM_CommanderModeEnabled] call lrx_getParamValue;
 GRLIB_Commander_radius = [GRLIB_PARAM_CommanderModeRadius] call lrx_getParamValue;
 GRLIB_MineProbability = [GRLIB_PARAM_MineProbability] call lrx_getParamValue;
