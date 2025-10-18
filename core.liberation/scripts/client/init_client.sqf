@@ -197,7 +197,7 @@ playMusic GRLIB_music_startup;
 [] execVM "scripts\client\actions\dog_manager.sqf";
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
-[] execVM "scripts\client\misc\shoot_walls.sqf";
+//[] execVM "scripts\client\misc\shoot_walls.sqf";
 
 waitUntil {sleep 0.5; startgame == 1};
 [] spawn {
