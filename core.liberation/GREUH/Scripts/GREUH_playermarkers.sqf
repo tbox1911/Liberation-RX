@@ -46,10 +46,10 @@ while {true} do {
 				if ([_nextunit] call PAR_is_wounded) then {
 					_nextmarker setMarkerAlphaLocal 0;
 				} else {
-					if (player == _nextunit) then {
-						_nextmarker setMarkerColorLocal GRLIB_color_friendly_bright;
-					};
-					if (side group _nextunit == GRLIB_side_civilian) then { _nextmarker setMarkerColorLocal GRLIB_color_civilian };
+					private _color = GRLIB_color_friendly;
+					if (player == _nextunit) then { _color = GRLIB_color_friendly_bright };
+					if (side group _nextunit == GRLIB_side_civilian) then { _color = GRLIB_color_civilian };
+					_nextmarker setMarkerColorLocal _color;
 					_nextmarker setMarkerDirLocal (getDir _nextunit);
 					_nextmarker setMarkerAlphaLocal 1;
 				};
@@ -61,30 +61,23 @@ while {true} do {
 				};
 				if ([_nextunit] call PAR_is_wounded) then {
 					_nextmarker setMarkerTypeLocal "MinefieldAP";
-					if (_groupunit) then {
-						_nextmarker setMarkerColorLocal GRLIB_color_enemy_bright;
-					} else {
-						_nextmarker setMarkerColorLocal GRLIB_color_enemy;
-					};
+					private _color = GRLIB_color_enemy;
+					if (_groupunit) then { _color = GRLIB_color_enemy_bright };
+					_nextmarker setMarkerColorLocal _color;
 				} else {
 					_nextmarker setMarkerTypeLocal "mil_triangle";
-					if !(_nextunit getVariable ["GRLIB_is_prisoner", true]) then {
-						_nextmarker setMarkerColorLocal GRLIB_color_civilian;
-					} else {
+					private _color = GRLIB_color_friendly;
+					if !(_nextunit getVariable ["GRLIB_is_prisoner", true]) then { _color = GRLIB_color_civilian }
+					else {
 						if (_groupunit) then {
-							if (side group _nextunit == GRLIB_side_civilian) then {
-								_nextmarker setMarkerColorLocal GRLIB_color_civilian;
-							} else {
-								_nextmarker setMarkerColorLocal GRLIB_color_friendly_bright;
-							};
+							_color = GRLIB_color_friendly_bright;
+							if (side group _nextunit == GRLIB_side_civilian) then { _color = GRLIB_color_civilian };
 						} else {
-							if (side group _nextunit == GRLIB_side_civilian) then {
-								_nextmarker setMarkerColorLocal "ColorGUER";
-							} else {
-								_nextmarker setMarkerColorLocal GRLIB_color_friendly;
-							};
+							_color = GRLIB_color_friendly;
+							if (side group _nextunit == GRLIB_side_civilian) then { _color = "ColorGUER" };
 						};
 					};
+					_nextmarker setMarkerColorLocal _color;
 				};
 			};
 		} foreach (_players_list + _player_medics);

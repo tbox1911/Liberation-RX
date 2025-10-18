@@ -172,5 +172,5 @@ while {true} do {
 	{ deleteMarkerLocal _x } foreach (_vehmarkers - _vehmarkers_bak);
 	_vehmarkers = _vehmarkers_bak;
 
-	sleep 2;
+	sleep 1;
 };
