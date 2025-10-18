@@ -71,24 +71,26 @@ _setupObjects = {
 			false;
 		};
 		if (_start) then {
+			private _troops = [];
 			private _location_name = [_target_pos] call F_getLocationName;
 			private _grp1 = [_target_pos, false, 250] call send_paratroopers;
-			GRLIB_A3W_Mission_MR_OPFOR = (units _grp1);
-			sleep 20;
+			_troops = (units _grp1);
+			sleep 10;
 			["lib_reinforcements", [_location_name]] remoteExec ["bis_fnc_shownotification", 0];
 			_grp1 = [_target_pos, false, 300] call send_paratroopers;
-			GRLIB_A3W_Mission_MR_OPFOR append (units _grp1);
-			sleep 20;
+			_troops append (units _grp1);
+			sleep 10;
 			["lib_reinforcements", [_location_name]] remoteExec ["bis_fnc_shownotification", 0];
 			private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 			if (_nb_player > 2) then {
 				_grp1 = [_target_pos, false, 300] call send_paratroopers;
-				GRLIB_A3W_Mission_MR_OPFOR append (units _grp1);
+				_troops append (units _grp1);
 				sleep  10;
 			};
 			{ _x setCaptive false } foreach _managed_units;
+
+			GRLIB_A3W_Mission_MR_OPFOR = _troops;
 			publicVariable "GRLIB_A3W_Mission_MR_OPFOR";
-			sleep 3;
 		};
 	};
 

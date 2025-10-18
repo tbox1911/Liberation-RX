@@ -21,7 +21,7 @@ speak_squad_AI = {
 speak_civil_AI = {
 	params ["_unit"];
 
-	if (_unit getVariable ["GRLIB_A3W_Mission_MR1", false]) exitWith {[_unit] call speak_mission_resitance};
+	if (_unit getVariable ["GRLIB_A3W_Mission_MR1", false]) exitWith {[_unit] call speak_mission_resistance};
 	if (_unit getVariable ["GRLIB_A3W_Mission_SD1", false]) exitWith {[_unit] call speak_mission_sdelivery1};
 	if (_unit getVariable ["GRLIB_A3W_Mission_SD2", false]) exitWith {[_unit] call speak_mission_sdelivery2};
 	if (_unit getVariable ["GRLIB_A3W_Mission_SD3", false]) exitWith {[_unit] call speak_mission_sdelivery3};
@@ -247,7 +247,7 @@ speak_mission_sdelivery4 = {
 };
 
 // Resistance
-speak_mission_resitance = {
+speak_mission_resistance = {
 	params ["_unit"];
 	private _leader = leader group _unit;
 	if (_unit == _leader) then {
