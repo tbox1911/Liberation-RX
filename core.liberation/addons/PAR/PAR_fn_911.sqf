@@ -4,6 +4,7 @@ _medic allowDamage false;
 _medic setCaptive true;
 _medic setHitPointDamage ["hitLegs",0];
 _medic setVariable ["PAR_AIteam", assignedTeam _medic];
+sleep 1;
 
 private _grpmedic = createGroup [GRLIB_side_civilian, true];
 [_medic] joinSilent _grpmedic;

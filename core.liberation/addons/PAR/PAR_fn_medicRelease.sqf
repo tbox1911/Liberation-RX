@@ -22,8 +22,6 @@ private _release_medic = {
 
 [_medic] call _release_medic;
 private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
-if (!isNull _my_medic && _my_medic != _medic) then {
-	[_my_medic] call _release_medic;
-};
+if (!isNull _my_medic && _my_medic != _medic) then { [_my_medic] call _release_medic };
 
 _wnded setVariable ["PAR_myMedic", nil];

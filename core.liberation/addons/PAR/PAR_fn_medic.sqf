@@ -29,4 +29,5 @@ if (count (units _medic) > 1) then {
 	_medic setVariable ["PAR_AIgrp", group _medic];
 	_medic setVariable ["isLeader", (leader _medic == _medic)];
 };
-_medic
+
+[_wnded, _medic] call PAR_fn_911;
