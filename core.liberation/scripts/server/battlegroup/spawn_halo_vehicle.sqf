@@ -25,5 +25,6 @@ _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 [_pos, "parasound"] spawn sound_range_remote_call;
 [_vehicle, objNull, false] spawn F_addParachute;
 
+sleep 30;
 private _grp = group (driver _vehicle);
 [_grp, _pos] spawn battlegroup_ai;
