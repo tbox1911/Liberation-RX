@@ -36,8 +36,7 @@ waitUntil { sleep 0.1; isNull objectParent _unit };
 waitUntil { sleep 0.1; !(isSwitchingWeapon _unit) };
 _unit switchMove "AinjPpneMstpSnonWrflDnon_rolltoback";
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
-sleep 5;
-
+sleep 10;
 if (!alive _unit) exitWith {};
 
 private _bld = [_unit] call PAR_spawn_blood;
