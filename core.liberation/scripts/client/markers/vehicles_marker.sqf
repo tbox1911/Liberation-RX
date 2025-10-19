@@ -111,12 +111,6 @@ while {true} do {
 			_nextmarker setMarkerSizeLocal [1.4, 1.4];
 		};
 
-		if (_nextvehicle isKindOf repair_offroad) then {
-			_marker_color = "ColorOrange";
-			_nextmarker setMarkerTextLocal "Repair";
-			_marker_show = 1;
-		};
-
 		// all vehicles
 		if (_nextvehicle isKindOf "AllVehicles") then {
 			_marker_show = 0;

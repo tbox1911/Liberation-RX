@@ -8273,6 +8273,11 @@
 			<Czech>OBCHOD</Czech>
 		</Key>
 
+		<Key ID="STR_MARKER_REP">
+			<Original>Repair</Original>
+			<French>Reparation</French>
+		</Key>
+
 		<Key ID="STR_LOG_MARKER_CREATE">
 			<Original>%1, Create marker (%2) in channel %3 at position %4</Original>
 			<French>%1 a créé le marqueur (%2) sur le canal %3 à la position %4</French>

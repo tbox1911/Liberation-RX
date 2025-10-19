@@ -88,3 +88,16 @@ if (_full) then {
 	};
 	_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 } forEach GRLIB_Marker_SHOP;
+
+// REP Marker
+{
+	_marker = createMarkerLocal [format ["marked_rep%1", _forEachIndex], _x];
+	_marker setMarkerColorLocal "ColorOrange";
+	_marker setMarkerTypeLocal "mil_dot";
+	if (_marker_debug) then {
+		_marker setMarkerTextLocal format ["%1 %2", localize "STR_MARKER_REP", _x];
+	} else {
+		_marker setMarkerTextLocal localize "STR_MARKER_REP";
+	};
+	_marker setMarkerSizeLocal [ 0.75, 0.75 ];
+} forEach GRLIB_Marker_REP;

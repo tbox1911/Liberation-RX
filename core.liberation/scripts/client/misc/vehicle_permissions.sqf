@@ -2,6 +2,7 @@ params ["_unit1", "_unit2", "_vehicle"];
 
 private _doeject = false;
 if (_vehicle iskindof "ParachuteBase") exitWith { _doeject };
+if !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith { true };
 
 // Allowed at start
 private _vehicle_class = typeOf _vehicle;
