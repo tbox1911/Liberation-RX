@@ -12,7 +12,7 @@ VAM_arsenal_cargo_class_names = [
 	medicalbox_typename,
 	"Land_CncBarrierMedium4_F",
 	"Land_BagFence_Short_F"
-];
+] + blufor_statics;
 
 // Default source for Shop
 VAM_enable_weapons = false;
