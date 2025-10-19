@@ -4,7 +4,7 @@ private _id = VAM_arsenal_item select 1;
 private _item = VAM_arsenal_class_names select _id;
 private _cost = 0;
 if (_item in VAM_arsenal_cargo_class_names) then {
-	{ if (_x select 0 == _item) exitWith {_cost = _x select 2} } forEach support_vehicles;
+	{ if (_x select 0 == _item) exitWith {_cost = _x select 2} } forEach (support_vehicles + static_vehicles);
 } else {
 	_cost = [_item] call F_loadoutPrice;
 };
