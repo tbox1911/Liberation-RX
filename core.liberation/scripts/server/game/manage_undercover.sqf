@@ -1,9 +1,10 @@
+if (GRLIB_Undercover_mode == 0) exitWith {};
 sleep 60;
 
 private ["_opfor_grp","_unit","_undercover_units","_current","_awareness","_msg"];
 
 while {true} do {
-    _undercover_units = (units GRLIB_side_civilian) select { !(captive _x) && !(isNil {_x getVariable "PAR_Grp_ID"}) };
+    _undercover_units = (units GRLIB_side_civilian) select { !(captive _x) && !(isNil {_x getVariable "GRLIB_unit_detected"}) };
     {
         _msg = "";
         _unit = _x;
