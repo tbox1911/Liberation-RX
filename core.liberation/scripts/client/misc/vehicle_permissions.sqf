@@ -2,7 +2,6 @@ params ["_unit1", "_unit2", "_vehicle"];
 
 private _doeject = false;
 if (_vehicle iskindof "ParachuteBase") exitWith { _doeject };
-if !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith { true };
 
 // Allowed at start
 private _vehicle_class = typeOf _vehicle;
@@ -61,6 +60,11 @@ if (!(_role == "cargo" || _vehicle_class in list_static_weapons)) then {
 			_msg = localize "STR_PERMISSION_NO_SUP";
 		};
 	};
+};
+
+if !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) then {
+	_msg = "Vehicle is in use...";
+	_doeject = true;
 };
 
 if (_doeject) then {

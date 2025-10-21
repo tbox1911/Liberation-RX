@@ -21,7 +21,6 @@ if (R3F_LOG_mutex_local_verrou) then
 else
 {
 	R3F_LOG_mutex_local_verrou = true;
-
 	R3F_LOG_objet_selectionne = objNull;
 
 	private ["_objet", "_decharger", "_joueur", "_dir_joueur", "_arme_courante", "_muzzle_courant", "_mode_muzzle_courant", "_restaurer_arme"];
@@ -45,11 +44,8 @@ else
 			if (count crew _objet == 0 || getNumber (configOf _objet >> "isUav") == 1 || typeOf _objet in static_vehicles_AI) then
 			{
 				[_objet, _joueur] call R3F_LOG_FNCT_definir_proprietaire_verrou;
-
 				_objet setVariable ["R3F_LOG_est_deplace_par", _joueur, true];
-
 				_joueur forceWalk true;
-
 				R3F_LOG_joueur_deplace_objet = _objet;
 
 				if (_decharger) then
@@ -77,13 +73,11 @@ else
 					];
 
 					_elev_cam_initial = acos ((ATLtoASL positionCameraToWorld [0, 0, 1] select 2) - (ATLtoASL positionCameraToWorld [0, 0, 0] select 2));
-
 					_pos_rel_objet_initial set [2, 0.1 + (_joueur selectionPosition "head" select 2) + (_pos_rel_objet_initial select 1) * tan (89 min (-89 max (90-_elev_cam_initial)))];
 				}
 				else
 				{
 					R3F_LOG_deplace_dir_rel_objet = (getDir _objet) - _dir_joueur;
-
 					_pos_rel_objet_initial = _joueur worldToModel (_objet modelToWorld [0,0,0]);
 
 					// Calcul de la position relative de l'objet, bas�e sur la position initiale, et s�curis�e pour ne pas que l'objet rentre dans le joueur lors de la rotation
@@ -106,7 +100,7 @@ else
 				// D�termination du mode d'alignement initial en fonction du type d'objet, de ses dimensions, ...
 				R3F_LOG_deplace_mode_alignement = switch (true) do
 				{
-					case (surfaceIsWater getPos _objet): {"horizon"};							
+					case (surfaceIsWater getPos _objet): {"horizon"};
 					case !(_objet isKindOf "Static"): {"sol"};
 					// Objet statique allong�
 					case (
@@ -471,7 +465,8 @@ else
 					};
 				};
 
-				sleep 5; // D�lai de 5 secondes pour attendre la chute/stabilisation
+				sleep 5;
+				// D�lai de 5 secondes pour attendre la chute/stabilisation
 				// if (!isNull _objet) then
 				// {
 				// 	if (isNull (_objet getVariable ["R3F_LOG_est_deplace_par", objNull]) ||

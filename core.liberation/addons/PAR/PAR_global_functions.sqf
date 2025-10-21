@@ -252,7 +252,10 @@ PAR_Player_Init = {
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
 
-	R3F_LOG_joueur_deplace_objet = objNull;
+	if !(isNull R3F_LOG_joueur_deplace_objet) then {
+		R3F_LOG_joueur_deplace_objet = objNull;
+		sleep 3;
+	};
 
 	// Death message
 	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
