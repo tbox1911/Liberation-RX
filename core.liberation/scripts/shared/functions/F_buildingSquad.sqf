@@ -15,7 +15,7 @@ GRLIB_building_used = [];
 
 while { _ai_max > 0 && _max_try > 0} do {
     private _max_units = (selectRandom _rnd) min _ai_max;
-    private _building_ai_created = ([_infsquad1, _max_units, _sector_pos, _building_range, _building, _mission_ai] call F_spawnBuildingSquad);
+    private _building_ai_created = ([_infsquad, _max_units, _sector_pos, _building_range, _building, _mission_ai] call F_spawnBuildingSquad);
     if (count _building_ai_created != 0) then {
         _managed_units = _managed_units + _building_ai_created;
         _ai_max = _ai_max - _max_units;
