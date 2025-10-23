@@ -43,7 +43,7 @@ _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	// Civilian limit (["Put","Throw"])
-	if (side _unit == GRLIB_side_civilian && _weapon in ["Put","Throw"]) exitWith {
+	if (side _unit == GRLIB_side_civilian && !(isNil {_unit getVariable "GRLIB_unit_detected"}) && _weapon in ["Put","Throw"]) exitWith {
 		gamelogic globalChat "No grenades/mines allowed when Civilian.";
 		deleteVehicle _projectile;
 	};
