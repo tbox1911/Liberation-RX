@@ -5403,7 +5403,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cost: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Reward: 20 intel points (10 for each crew alive).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: 25 intel points for each crew alive.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Original>
@@ -5418,7 +5418,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Требуется: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Награда: 20 разведданных (10 за каждого спасенного).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Награда: 25 разведданных каждого спасенного.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Russian>
@@ -5433,7 +5433,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cout: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Récompense: 20 points d'intel (10 pour chaque équipage vivant).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Récompense: 25 points d'intel pour chaque équipage vivant.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</French>
@@ -5448,7 +5448,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cost: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Reward: 20 intel points (10 for each crew alive).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: 25 intel points for each crew alive.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</German>
@@ -5463,7 +5463,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花费: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;奖励: 20 情报点 (每名活着的机组乘员10情报点).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: 25 intel points for each crew alive.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Chinesesimp>
@@ -5478,7 +5478,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花費: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;獎勵: 20 情報點 (每名活著的機組乘員10情報點).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: 25 intel points for each crew alive.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Chinese>
@@ -5493,7 +5493,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;コスト: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;報酬: 20 情報 (乗員一人につき10).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: 25 intel points for each crew alive.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Japanese>
@@ -5508,7 +5508,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Custo: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: 20 pontos de inteligência (10 para cada tripulação viva).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: 25 pontos de inteligência para cada tripulação viva.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Portuguese>
@@ -5523,7 +5523,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Náklady: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Odměna: 20 intel pointů (10 za každou živou posádku).&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Odměna: 25 intel pointů za každou živou posádku.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Czech>
@@ -5774,9 +5774,9 @@
 			<Czech>Havaroval vrtulník poblíž %1.</Czech>
 		</Key>
 		<Key ID="STR_NOTIFICATION_SAR_FAILED">
-			<Original>SAR mission failed, both crew are KIA.</Original>
+			<Original>SAR mission failed, all crew is KIA.</Original>
 			<Russian>Миссия SAR не удалась, оба экипажа погибли.</Russian>
-			<French>Mission SAR échouée, les deux équipages sont morts.</French>
+			<French>Mission SAR échouée, tout l'équipages est morts.</French>
 			<Chinesesimp>搜救任务失败，机组乘员均阵亡。</Chinesesimp>
 			<Chinese>搜救任務失敗，機組乘員均陣亡。</Chinese>
 			<Japanese>捜索救助ミッションが失敗しました。乗員は死亡。</Japanese>

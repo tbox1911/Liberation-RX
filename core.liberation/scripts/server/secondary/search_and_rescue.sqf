@@ -22,13 +22,17 @@ private _pilotsGrp = createGroup [GRLIB_side_civilian, true];
 private _pilotsPos = ([_helowreck, 25] call F_getRandomPos);
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
+pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
+sleep 1;
+
 private _pilotUnits = units _pilotsGrp;
 _pilotUnits joinSilent _pilotsGrp;
 {
-	[_x, true] spawn prisoner_ai;
 	_x setDir (random 360);
+	[_x, true] spawn prisoner_ai;
+	sleep 1;
 } foreach _pilotUnits;
-sleep 5;
+sleep 3;
 
 private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 [_grppatrol, _helopos, 50] call patrol_ai;
