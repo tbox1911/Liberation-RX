@@ -6,7 +6,6 @@ private ["_unit", "_is_medic", "_has_medikit", "_wnded_list", "_wnded", "_have_p
 while {true} do {
 	waitUntil { sleep 1; count (units player) > 1 };
 	//PAR_AI_bros = ((units player) + (units GRLIB_side_civilian)) select {!isPlayer _x && alive _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", PAR_Grp_ID]};
-	PAR_AI_bros = PAR_AI_bros select { alive _x };
 	if (count PAR_AI_bros > 0) then {
 		{
 			_unit = _x;

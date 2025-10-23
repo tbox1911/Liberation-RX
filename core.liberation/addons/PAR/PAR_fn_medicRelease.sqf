@@ -3,16 +3,13 @@ params ["_medic", "_wnded"];
 private _release_medic = {
 	params ["_medic"];
 	if (!local _medic || isNull _medic) exitWith {};
-	_medic setUnitPos "AUTO";
-	{_medic enableAI _x} forEach ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
-	[_medic] joinSilent (_medic getVariable "PAR_AIgrp");
-	_medic assignTeam (_medic getVariable "PAR_AIteam");
-
-	if ((_medic getVariable ["isLeader",false]) && (isplayer _medic)) then {
-		[group _medic, _medic] selectLeader groupOwner (_medic getVariable "PAR_AIgrp");
-	};
+	if (isPlayer _medic) exitWith {};
 
 	if !([_medic] call PAR_is_wounded) then {
+		_medic setUnitPos "AUTO";
+		{_medic enableAI _x} forEach ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
+		[_medic] joinSilent (_medic getVariable "PAR_AIgrp");
+		_medic assignTeam (_medic getVariable "PAR_AIteam");
 		_medic doFollow leader _medic;
 		_medic setSpeedMode (speedMode group player);
 		_medic setCaptive false;

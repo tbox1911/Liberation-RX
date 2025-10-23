@@ -61,16 +61,19 @@ if (_unit == player) then {
 	};
 
 	// Reset group
-	if (side player == GRLIB_side_civilian) then {
-		private _player_units = (units GRLIB_player_group);
-		GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
-		waitUntil {
-			[player] joinSilent GRLIB_player_group;
-			sleep 0.5;
-			(player in (units GRLIB_player_group));
+	if (GRLIB_Undercover_mode == 1) then {
+		if (side GRLIB_player_group == GRLIB_side_civilian && !(isNil {player getVariable "GRLIB_unit_detected"})) then {
+			private _player_units = (units GRLIB_player_group);
+			GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
+			waitUntil {
+				[player] joinSilent GRLIB_player_group;
+				sleep 0.5;
+				(player in (units GRLIB_player_group));
+			};
+			[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
+			_player_units joinSilent GRLIB_player_group;
+			{ _x setVariable ["PAR_AIgrp", GRLIB_player_group] } forEach PAR_AI_bros;
 		};
-		[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
-		_player_units joinSilent GRLIB_player_group;
 	};
 	titleText ["" ,"BLACK FADED", 100];
 } else {

@@ -64,7 +64,10 @@ while {true} do {
 						(player in (units GRLIB_player_group));
 					};
 					_player_units joinSilent GRLIB_player_group;
-					{ _x setVariable ["GRLIB_unit_detected", 0, true] } forEach (units GRLIB_player_group);
+					{
+						_x setVariable ["GRLIB_unit_detected", 0, true];
+						_x setVariable ["PAR_AIgrp", GRLIB_player_group];
+					} forEach PAR_AI_bros;
 					private _msg = format ["<t color='#0000FF'>%1</t> you are a <t color='#660080'>Civilian</t> now...", name player];
 					[_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 					gamelogic globalChat format ["%1 and his squad goes to the Civilian side...", name player];
@@ -101,7 +104,10 @@ while {true} do {
 				};
 				[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 				_player_units joinSilent GRLIB_player_group;
-				{ _x setVariable ["GRLIB_unit_detected", nil, true] } forEach (units GRLIB_player_group);
+				{
+					_x setVariable ["GRLIB_unit_detected", nil, true];
+					_x setVariable ["PAR_AIgrp", GRLIB_player_group];
+				} forEach PAR_AI_bros;
 				gamelogic globalChat format ["%1 and his squad go back to the Blufor side...", name player];
 				hintSilent "";
 				_timer = time + 600;

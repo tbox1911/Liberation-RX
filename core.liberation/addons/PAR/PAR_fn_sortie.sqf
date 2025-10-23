@@ -65,8 +65,8 @@ if (_wnded == player) then {
 		[_medic, _wnded, _bonus] remoteExec ["PAR_remote_bounty", 2];
 	};
 } else {
-	_wnded setSpeedMode (speedMode group player);
-	_wnded doFollow player;
+	_wnded setSpeedMode (speedMode group _wnded);
+	_wnded doFollow _wnded;
 };
 
 _wnded setVariable ["PAR_isUnconscious", false, true];
