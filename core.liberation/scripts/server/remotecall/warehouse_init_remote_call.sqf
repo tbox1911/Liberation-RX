@@ -65,6 +65,7 @@ _desk setVariable ["R3F_LOG_disabled", true, true];
 _warehouse_dir = (180 + _warehouse_dir);
 private _manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_warehouse_dir] call BIS_fnc_rotateVector2D);
 _man = createAgent [WRHS_Man, zeropos, [], 5, "NONE"];
+_man setCaptive true;
 _man setVariable ["GRLIB_WHS_Group", true, true];
 _man allowDamage false;
 _man disableCollisionWith _desk;
