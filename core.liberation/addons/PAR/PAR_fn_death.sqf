@@ -72,7 +72,7 @@ if (_unit == player) then {
 			};
 			[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 			_player_units joinSilent GRLIB_player_group;
-			{ _x setVariable ["PAR_AIgrp", GRLIB_player_group] } forEach PAR_AI_bros;
+			{ _x setVariable ["PAR_Grp_AI", GRLIB_player_group] } forEach PAR_AI_bros;
 		};
 	};
 	titleText ["" ,"BLACK FADED", 100];

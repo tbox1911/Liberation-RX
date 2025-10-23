@@ -14,13 +14,17 @@ _unit setCaptive true;
 _unit setVariable ["PAR_busy", nil];
 _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 _unit setVariable ["PAR_isDragged", 0, true];
-[(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
+[_unit, _unit] call PAR_fn_medicRelease;
 sleep 1;
 
-if (isPlayer _unit) then {
-	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL player];
+if (_unit == player) then {
+	if !(isNull R3F_LOG_joueur_deplace_objet) then {
+		R3F_LOG_joueur_deplace_objet = objNull;
+		sleep 3;
+	};	
+	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL _unit];
 	_mk1 setMarkerTypeLocal "loc_Hospital";
-	_mk1 setMarkerTextLocal format ["%1 Injured", name player];
+	_mk1 setMarkerTextLocal format ["%1 Injured", name _unit];
 	_mk1 setMarkerColor "ColorRed";
 	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };

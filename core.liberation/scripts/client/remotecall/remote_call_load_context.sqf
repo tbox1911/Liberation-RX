@@ -10,12 +10,11 @@ private _alt = _pos select 2;
 
 {
     PAR_AI_bros = PAR_AI_bros + [_x];
+    [_x] joinSilent GRLIB_player_group;
     _x setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
-    _x setVariable ["ace_sys_wounds_uncon", false];
     if (GRLIB_force_english) then { _x setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };    
     [_x] call PAR_fn_AI_Damage_EH;
     [_x] call F_fixModUnit;
-    [_x] joinSilent (group player);
     while { _x distance2D _pos > 100 } do {
         if (surfaceIsWater _pos) then {
             _destpos = ([_pos, 3] call F_getRandomPos);

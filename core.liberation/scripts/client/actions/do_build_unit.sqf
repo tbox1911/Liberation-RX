@@ -4,11 +4,11 @@ private _pos = getPosATL player;
 private _alt = _pos select 2;
 private _grp = group player;
 private _unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
+[_unit] joinSilent _grp;
 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
-_unit setVariable ["ace_sys_wounds_uncon", false];
 [_unit] call PAR_fn_AI_Damage_EH;
 [_unit] call F_fixModUnit;
-[_unit] joinSilent _grp;
+
 if (surfaceIsWater _pos) then {
     _pos = ([_pos, 3] call F_getRandomPos);
     _pos set [2, _alt];

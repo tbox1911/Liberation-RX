@@ -5,11 +5,12 @@ private _release_medic = {
 	if (!local _medic || isNull _medic) exitWith {};
 	if (isPlayer _medic) exitWith {};
 
+	[_medic] joinSilent (_medic getVariable "PAR_Grp_AI");
+	_medic assignTeam (_medic getVariable "PAR_AIteam");
+
 	if !([_medic] call PAR_is_wounded) then {
 		_medic setUnitPos "AUTO";
 		{_medic enableAI _x} forEach ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
-		[_medic] joinSilent (_medic getVariable "PAR_AIgrp");
-		_medic assignTeam (_medic getVariable "PAR_AIteam");
 		_medic doFollow leader _medic;
 		_medic setSpeedMode (speedMode group player);
 		_medic setCaptive false;

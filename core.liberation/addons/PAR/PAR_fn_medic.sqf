@@ -25,6 +25,4 @@ _msg = format [localize "STR_PAR_MD_03", name _wnded, name _medic, round (_medic
 _medic setVariable ["PAR_busy", true];
 _wnded setVariable ["PAR_myMedic", _medic];
 
-if (count (units _medic) > 1) then { _medic setVariable ["PAR_AIgrp", group _medic] };
-
 [_wnded, _medic] call PAR_fn_911;

@@ -35,6 +35,7 @@ while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 		if ((_new_medic distance2D _wnded) + 6 < (_medic distance2D _wnded)) then { _wnded setVariable ["PAR_myMedic", nil] };
 	};
 	if (isNil {_wnded getVariable "PAR_myMedic"}) exitWith {};
+	if ([_medic] call PAR_is_wounded) exitWith {};
 
 	if ([_wnded, _medic] call _check_sortie) exitWith { _healed = true };
 

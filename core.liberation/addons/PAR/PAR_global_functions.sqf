@@ -200,6 +200,8 @@ PAR_fn_AI_Damage_EH = {
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ["PAR_isUnconscious", false, true];
 	_unit setVariable ["PAR_isDragged", 0, true];
+	_unit setVariable ["PAR_Grp_AI", group _unit];
+	_unit setVariable ["ace_sys_wounds_uncon", false];	
 	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
 	_unit setVariable ["PAR_revive_history", []];
 	_unit setVariable ["GRLIB_can_speak", true, true];
@@ -251,11 +253,6 @@ PAR_Player_Init = {
 
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
-
-	if !(isNull R3F_LOG_joueur_deplace_objet) then {
-		R3F_LOG_joueur_deplace_objet = objNull;
-		sleep 3;
-	};
 
 	// Death message
 	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
