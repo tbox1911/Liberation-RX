@@ -141,7 +141,6 @@ if (isServer) then {
 							[gamelogic, _msg] remoteExec ["globalChat", 0];
 							[name _unit, GRLIB_civ_penalties, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
 						};
-						stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 					};
 				};
 

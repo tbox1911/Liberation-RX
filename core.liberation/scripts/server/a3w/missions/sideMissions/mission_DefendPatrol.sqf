@@ -61,21 +61,21 @@ _setupObjects = {
 
         waitUntil { sleep 1; {alive _x} count (units _enemy_grp) <= 3 };
         if ({alive _x} count (units _patrol_grp) == 0) exitWith {};
-        _spawn_pos = ([_objective_pos, 150] call F_getRandomPos);
+        _spawn_pos = ([_objective_pos, 200] call F_getRandomPos);
         _grp = [_spawn_pos, ([] call getNbUnits), "militia", false] call createCustomGroup;
         (units _grp) joinSilent _enemy_grp;
 
         waitUntil { sleep 1; {alive _x} count (units _enemy_grp) <= 3 };
         if ({alive _x} count (units _patrol_grp) == 0) exitWith {};
-        _spawn_pos = ([_objective_pos, 150] call F_getRandomPos);
+        _spawn_pos = ([_objective_pos, 200] call F_getRandomPos);
         _grp = [_spawn_pos, ([] call getNbUnits), "militia", false] call createCustomGroup;
         (units _grp) joinSilent _enemy_grp;
 
-        waitUntil { sleep 1; {alive _x} count (units _enemy_grp) <= 3 };
-        if ({alive _x} count (units _patrol_grp) == 0) exitWith {};
-        _spawn_pos = ([_objective_pos, 150] call F_getRandomPos);
-        _grp = [_spawn_pos, ([] call getNbUnits), "militia", false] call createCustomGroup;
-        (units _grp) joinSilent _enemy_grp;
+        // waitUntil { sleep 1; {alive _x} count (units _enemy_grp) <= 3 };
+        // if ({alive _x} count (units _patrol_grp) == 0) exitWith {};
+        // _spawn_pos = ([_objective_pos, 250] call F_getRandomPos);
+        // _grp = [_spawn_pos, ([] call getNbUnits), "militia", false] call createCustomGroup;
+        // (units _grp) joinSilent _enemy_grp;
 	};
 
     _missionPicture = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
