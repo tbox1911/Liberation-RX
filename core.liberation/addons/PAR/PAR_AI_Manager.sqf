@@ -39,7 +39,7 @@ while {true} do {
 			};
 
 			// AI revive
-			if (PAR_AI_reviveMax > 0) then {
+			if (PAR_ai_revive_max > 0) then {
 				// Auto heal units
 				if (PAR_revive != 0 && behaviour player in ["SAFE", "AWARE"] && isNull objectParent _unit) then {
 					if ([_unit] call PAR_is_wounded) exitWith {};

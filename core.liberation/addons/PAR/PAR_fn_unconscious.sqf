@@ -3,7 +3,7 @@ params ["_unit"];
 if (rating _unit < -2000) exitWith {_unit setDamage 1};
 if (!([] call F_getValid)) exitWith {_unit setDamage 1};
 private _cur_revive = 1;
-if (PAR_AI_reviveMax > 0 && !isPlayer _unit && local _unit) then {
+if (PAR_ai_revive_max > 0 && !isPlayer _unit && local _unit) then {
 	_cur_revive = ([_unit] call PAR_revive_cur);
 };
 if (_cur_revive <= 0) exitWith {_unit setDamage 1};
@@ -32,7 +32,6 @@ if (_unit == player) then {
 	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };
 	PAR_backup_loadout = [_unit] call F_getCargoUnit;
-	//PAR_weapons_state = _unit weaponState (primaryWeapon _unit) select [0,3];
 } else {
 	_unit setVariable ["GRLIB_can_speak", false, true];
 	[_unit] call F_deathSound;

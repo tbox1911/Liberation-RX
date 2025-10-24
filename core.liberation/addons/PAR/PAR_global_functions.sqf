@@ -158,7 +158,7 @@ PAR_public_EH = {
 };
 PAR_revive_max = {
 	params ["_unit"];
-	(PAR_AI_reviveMax + (GRLIB_rank_level find (rank _unit)));
+	(PAR_ai_revive_max + (GRLIB_rank_level find (rank _unit)));
 };
 PAR_revive_cur = {
 	params ["_unit"];

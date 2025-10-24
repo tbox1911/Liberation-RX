@@ -3,16 +3,13 @@
   aka: PAR Revive
 
 Author:
-
 	[AKH] pSiKO
 
 Description:
-
 	give ablitty to ai to revive player or other ai
   unit sharing the same PAR_Grp_ID revive each others
 
 Instructions:
-
 	ExecVM from init.sqf in your mission directory.
   [] execVM "addons\PAR\PAR_AI_Revive.sqf";
 
@@ -39,7 +36,7 @@ PAR_EnableDeathMessages = true;
 
 // player AI brothers
 PAR_AI_bros = [];
-// PAR_AI_reviveMax = 7;    // from settings
+// PAR_ai_revive_max = 7;    // from settings
 PAR_AI_recover_revive = (20*60);
 
 //------------------------------------------//

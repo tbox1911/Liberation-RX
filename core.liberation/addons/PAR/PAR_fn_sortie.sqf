@@ -34,7 +34,7 @@ if (PAR_revive == 2) then {
 	_medic removeItem "FirstAidKit";
 };
 
-if (PAR_AI_reviveMax > 0 && !isPlayer _wnded && local _wnded) then {
+if (PAR_ai_revive_max > 0 && !isPlayer _wnded && local _wnded) then {
 	[_wnded] spawn PAR_revive_dec;
 };
 
