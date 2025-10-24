@@ -175,6 +175,13 @@ startgame = 0;
 playMusic GRLIB_music_startup;
 [] execVM "scripts\client\ui\intro.sqf";
 
+// Load Player Context
+if !(player getVariable ["GRLIB_player_context_loaded", false]) then {
+	[player] remoteExec ["load_context_remote_call", 2];
+	// Allow time for load_context
+	waitUntil {sleep 2; (player getVariable ["GRLIB_player_context_loaded", false])};
+};
+
 // LRX Addons
 [] execVM "addons\RPL\advancedRappellingInit.sqf";
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";

@@ -11,13 +11,6 @@ player setVariable ["GREUH_stuff_price", nil, true];
 // Fix player traits
 [player] call F_fixModUnit;
 
-// Load Player Context
-if !(player getVariable ["GRLIB_player_context_loaded", false]) then {
-	[player] remoteExec ["load_context_remote_call", 2];
-	// Allow time for load_context
-	waitUntil {sleep 2; (player getVariable ["GRLIB_player_context_loaded", false])};
-};
-
 // Default Loadout
 if (isNil {player getVariable "GREUH_stuff_price"}) then {
 	// Backup Loadout

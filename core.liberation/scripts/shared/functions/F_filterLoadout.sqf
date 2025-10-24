@@ -20,6 +20,8 @@ if !([hmd _unit] call is_allowed_item) then {_unit unlinkItem (hmd _unit)};
 [_unit] call F_correctHEGL;
 [_unit] call F_correctUAVT;
 
-if ([_unit] call F_checkCivUnit && side _unit != GRLIB_side_civilian) then {
-    gamelogic globalChat format ["%1 loadout is compatible with the Civilian undercover role.", name _unit];
+if (GRLIB_player_spawned) then {
+    if ([_unit] call F_checkCivUnit && side _unit != GRLIB_side_civilian) then {
+        gamelogic globalChat format ["%1 loadout is compatible with the Civilian undercover role.", name _unit];
+    };
 };
