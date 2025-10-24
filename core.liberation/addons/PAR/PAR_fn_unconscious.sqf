@@ -18,10 +18,13 @@ _unit setVariable ["PAR_isDragged", 0, true];
 sleep 1;
 
 if (_unit == player) then {
-	if !(isNull R3F_LOG_joueur_deplace_objet) then {
+	private _carry = (attachedObjects _unit) select 0;
+	if !(isNil "_carry") then {
 		R3F_LOG_joueur_deplace_objet = objNull;
+		_carry setVariable ["R3F_LOG_est_transporte_par", objNull, true];
+		detach _carry;
 		sleep 3;
-	};	
+	};
 	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL _unit];
 	_mk1 setMarkerTypeLocal "loc_Hospital";
 	_mk1 setMarkerTextLocal format ["%1 Injured", name _unit];
@@ -37,7 +40,6 @@ if (_unit == player) then {
 };
 
 waitUntil { sleep 0.1; isNull objectParent _unit };
-waitUntil { sleep 0.1; !(isSwitchingWeapon _unit) };
 _unit switchMove "AinjPpneMstpSnonWrflDnon_rolltoback";
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
 sleep 10;
