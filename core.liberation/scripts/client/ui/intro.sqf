@@ -3,7 +3,7 @@ waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
 waitUntil { sleep 1; !isNil "active_sectors" };
 [] spawn cinematic_camera;
 
-if ( GRLIB_introduction ) then {
+if (GRLIB_introduction) then {
 	uisleep 2;
 	cutRsc ["intro1","PLAIN",1,true];
 	uisleep 2.5;

@@ -1,5 +1,3 @@
-waituntil {startgame == 1};
-
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 if (count (attachedObjects player) > 0) then {{detach _x} forEach attachedObjects player};
 R3F_LOG_joueur_deplace_objet = objNull;

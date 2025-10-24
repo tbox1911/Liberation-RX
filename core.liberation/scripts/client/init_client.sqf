@@ -148,12 +148,14 @@ waitUntil {
 };
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
+// Load Player Context
+[player] remoteExec ["load_context_remote_call", 2];
 waituntil {
 	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
 	uIsleep 1;
 	titleText ["... Please Wait ...", "BLACK FADED", 100];
 	uIsleep 1;
-	(player getVariable ["GRLIB_score_set", 0] == 1);
+	((player getVariable ["GRLIB_score_set", 0] == 1) && (player getVariable ["GRLIB_player_context_loaded", false]));
 };
 
 // LRX Arsenal
@@ -174,17 +176,19 @@ sleep 1;
 startgame = 0;
 playMusic GRLIB_music_startup;
 [] execVM "scripts\client\ui\intro.sqf";
+sleep 2;
 
-// Load Player Context
-if !(player getVariable ["GRLIB_player_context_loaded", false]) then {
-	[player] remoteExec ["load_context_remote_call", 2];
-	// Allow time for load_context
-	waitUntil {sleep 2; (player getVariable ["GRLIB_player_context_loaded", false])};
+waitUntil {sleep 0.5; startgame == 1};
+[] spawn {
+	waituntil {sleep 1; GRLIB_player_configured};
+	10 fadeMusic 0;
+	sleep 10;
+	playMusic "";
 };
 
 // LRX Addons
-[] execVM "addons\RPL\advancedRappellingInit.sqf";
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";
+[] execVM "addons\RPL\advancedRappellingInit.sqf";
 [] execVM "addons\KEY\shortcut_init.sqf";
 [] execVM "addons\VAM\VAM_GUI_init.sqf";
 [] execVM "addons\TARU\taru_init.sqf";
@@ -205,14 +209,6 @@ if !(player getVariable ["GRLIB_player_context_loaded", false]) then {
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
 //[] execVM "scripts\client\misc\shoot_walls.sqf";
-
-waitUntil {sleep 0.5; startgame == 1};
-[] spawn {
-	waituntil {sleep 1; GRLIB_player_configured};
-	10 fadeMusic 0;
-	sleep 10;
-	playMusic "";
-};
 
 // LRX client scripts
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
