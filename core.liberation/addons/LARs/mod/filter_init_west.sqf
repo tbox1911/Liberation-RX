@@ -92,6 +92,11 @@ if (["UFP_BLU", GRLIB_mod_west, true] call F_startsWith) then {
 if (["IC_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_IC.sqf";
 };
+// Add USP Weapons
+if (["USP_", GRLIB_mod_west, true] call F_startsWith) then {
+    [] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_RHS.sqf";
+    [] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_USP.sqf";
+};
 
 // Magazines (common to All)
 (

@@ -93,3 +93,7 @@ if (["RHS_UFP", GRLIB_mod_east, true] call F_startsWith) then {
 if (["IC_", GRLIB_mod_east, true] call F_startsWith) then {
 	GRLIB_MOD_signature = GRLIB_MOD_signature + ["US85_","CSLA_","AFMC_","FIA_"];
 };
+// Add USP Weapons
+if (["USP_", GRLIB_mod_east, true] call F_startsWith) then {
+    GRLIB_MOD_signature = GRLIB_MOD_signature + ["RHS_","USP_"];
+};
