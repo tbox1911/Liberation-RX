@@ -86,21 +86,26 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			};
 			_unit addBackpack "B_Parachute";
 		};
-
-		if (_type in ["militia", "infantry"]) then {
-			[_unit] spawn {
-				params ["_unit"];
-				sleep 3;
-				[_unit] call F_fixPosUnit;
-				_unit switchMove "AmovPercMwlkSnonWnonDf";
-				_unit playMoveNow "AmovPercMwlkSnonWnonDf";
-			};
-		};
-		[_unit] spawn { sleep 5; (_this select 0) allowDamage true };
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
 	sleep 0.1;
 } foreach _classname;
+
+[units _grp, _type] spawn {
+	params ["_units", "_type"];
+	if (count _units == 0) exitWith {};
+	sleep 5;
+	{
+		_unit = _x;
+		if (_type in ["militia", "infantry"]) then {
+			[_unit] call F_fixPosUnit;
+			_unit switchMove "AmovPercMwlkSnonWnonDf";
+			_unit playMoveNow "AmovPercMwlkSnonWnonDf";
+		};
+		_unit allowDamage true;
+		sleep 0.1;
+	} forEach _units;
+};
 
 _grp;
