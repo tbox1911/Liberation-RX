@@ -178,6 +178,9 @@ titleText ["", "BLACK FADED", 100];
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_client.sqf";
 sleep 1;
 
+// Load Player Context
+[player] remoteExec ["load_context_remote_call", 2];
+
 // Start intro
 startgame = 0;
 playMusic GRLIB_music_startup;

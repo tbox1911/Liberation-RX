@@ -1,18 +1,18 @@
-// Cleanup
-removeAllWeapons player;
-removeAllAssignedItems player;
-removeUniform player;
-removeVest player;
-removeBackpack player;
-removeHeadgear player;
-removeGoggles player;
-player setVariable ["GREUH_stuff_price", nil, true];
-
 // Fix player traits
 [player] call F_fixModUnit;
 
 // Default Loadout
 if (isNil {player getVariable "GREUH_stuff_price"}) then {
+	// Cleanup
+	removeAllWeapons player;
+	removeAllAssignedItems player;
+	removeUniform player;
+	removeVest player;
+	removeBackpack player;
+	removeHeadgear player;
+	removeGoggles player;
+	player setVariable ["GREUH_stuff_price", 0, true];
+
 	// Backup Loadout
 	if (!isNil "GRLIB_respawn_loadout") then {
 		waitUntil {sleep 0.1; !(isSwitchingWeapon player)};
@@ -37,8 +37,6 @@ if (isNil {player getVariable "GREUH_stuff_price"}) then {
 
 	[player] call F_filterLoadout;
 	[player] call F_payLoadout;
-
-	//player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice), true];
 };
 
 sleep 1;

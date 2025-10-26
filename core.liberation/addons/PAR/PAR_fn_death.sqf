@@ -75,6 +75,10 @@ if (_unit == player) then {
 			{ _x setVariable ["PAR_Grp_AI", GRLIB_player_group] } forEach PAR_AI_bros;
 		};
 	};
+
+	// No stuff
+	_unit setVariable ["GREUH_stuff_price", nil, true];
+
 	titleText ["" ,"BLACK FADED", 100];
 } else {
 	PAR_AI_bros = PAR_AI_bros - [_unit];
