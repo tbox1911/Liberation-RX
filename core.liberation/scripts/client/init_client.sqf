@@ -49,6 +49,13 @@ if (abort_loading) exitWith {
 	disableUserInput false;
 };
 
+waitUntil {
+	sleep 1;
+    (!isNull player && player == player &&
+    getClientState == "BRIEFING READ" &&
+    !isNull (findDisplay 46))
+};
+
 PAR_Grp_ID = getPlayerUID player;
 if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	private _msg = localize "STR_MSG_SERVER_INIT_ERROR";
@@ -148,14 +155,13 @@ waitUntil {
 };
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
-// Load Player Context
-[player] remoteExec ["load_context_remote_call", 2];
+// Load Player
 waituntil {
 	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
 	uIsleep 1;
 	titleText ["... Please Wait ...", "BLACK FADED", 100];
 	uIsleep 1;
-	((player getVariable ["GRLIB_score_set", 0] == 1) && (player getVariable ["GRLIB_player_context_loaded", false]));
+	(player getVariable ["GRLIB_score_set", 0] == 1);
 };
 
 // LRX Arsenal
@@ -221,7 +227,7 @@ waitUntil {sleep 0.5; startgame == 1};
 [] execVM "scripts\client\markers\vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";
-[] execVM "scripts\client\markers\commander_mode.sqf";
+[] execVM "scripts\client\commander\commander_marker.sqf";
 //[] execVM "scripts\client\markers\logs_markers.sqf";
 
 // Local Manager
@@ -231,7 +237,7 @@ waitUntil {sleep 0.5; startgame == 1};
 [] execVM "scripts\client\manager\vehicle_fuel_manager.sqf";
 [] execVM "scripts\client\manager\sides_stats_manager.sqf";
 [] execVM "scripts\client\manager\speak_manager_data.sqf";
-[] execVM "scripts\client\markers\commander_manager.sqf";
+[] execVM "scripts\client\commander\commander_manager.sqf";
 
 // Misc
 [] execVM "scripts\client\misc\secondary_jip.sqf";
