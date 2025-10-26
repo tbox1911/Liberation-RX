@@ -29,7 +29,7 @@ if (count _context >= 1) then {
     waitUntil {sleep 0.1; !(isSwitchingWeapon _player)};
     _player setUnitLoadout (_context select 1);
     _player setVariable ["GREUH_stuff_price", ([_player] call F_loadoutPrice), true];
-    _player setVariable ["GRLIB_player_context_loaded", true, true];
+    _player setVariable ["GRLIB_player_context_loaded", true];
     diag_log format ["--- LRX Loaded player %1 profile.", name _player];
     sleep 1;
 
@@ -37,11 +37,11 @@ if (count _context >= 1) then {
     if (count (_context select 2) >= 1) then {
         private _score = [_player] call F_getScore;
         private _squad_size = ([_score] call F_getRank) select 1;
-        private _wait = true;
         while { !(_player getVariable ["GRLIB_squad_context_loaded", false]) } do {
             _player = _uid call BIS_fnc_getUnitByUID;
             _owner = owner _player;
             if (alive _player && [_player, "FOB", GRLIB_fob_range] call F_check_near && (round (getPos _player select 2) <= 0)) then {
+                diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
                 _pos = markerPos GRLIB_respawn_marker;
                 _grp = createGroup [GRLIB_side_friendly, true];
                 {
@@ -61,13 +61,11 @@ if (count _context >= 1) then {
                     _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
                     sleep 0.2;
                 } foreach (_context select 2);
+                _grp setGroupOwner _owner;                
                 sleep 0.5;
                 [_grp] remoteExec ["remote_call_load_context", _owner];
-                sleep 0.5;
-                _grp setGroupOwner _owner;
-                _wait = false;
-                _player setVariable ["GRLIB_squad_context_loaded", true, true];
-                diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
+                waitUntil {sleep 1; (_player getVariable ["GRLIB_squad_context_loaded", false])};
+                diag_log format ["--- LRX unit(s) loaded for %1 Squad.", name _player];
             } else {
                 if (_player distance2D (markerPos GRLIB_respawn_marker) > 100) then {
                     [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", _owner];
@@ -79,5 +77,5 @@ if (count _context >= 1) then {
     };
 };
 
-_player setVariable ["GRLIB_player_context_loaded", true, true];
+_player setVariable ["GRLIB_player_context_loaded", true];
 _player setVariable ["GRLIB_squad_context_loaded", true, true];
