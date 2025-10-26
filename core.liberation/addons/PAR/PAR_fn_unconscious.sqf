@@ -40,7 +40,7 @@ waitUntil { sleep 0.1; isNull objectParent _unit };
 sleep 3;
 _unit switchMove "AinjPpneMstpSnonWrflDnon_rolltoback";
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
-sleep 10;
+sleep 8;
 
 if (_unit == player) then {
 	disableUserInput false;
