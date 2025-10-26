@@ -21,7 +21,7 @@ private _timer = time + 60;
 private _timer_bonus = 120;
 
 while {true} do {
-	waitUntil {sleep 1; alive player && !(captive player)};
+	waitUntil {sleep 1; alive player && !(captive player) && GRLIB_player_spawned};
 
 	// Renegade
 	private _side = side player;

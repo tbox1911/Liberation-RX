@@ -29,7 +29,6 @@ GRLIB_ActionDist_15 = 15;
 GRLIB_player_configured = false;
 GRLIB_current_trenches = 0;
 
-GRLIB_BuildTypeDirect = 90;
 GRLIB_InfantryBuildType = 1;
 GRLIB_TransportVehicleBuildType = 2;
 GRLIB_CombatVehicleBuildType = 3;
@@ -39,6 +38,7 @@ GRLIB_BuildingBuildType = 6;
 GRLIB_SupportBuildType = 7;
 GRLIB_SquadBuildType = 8;
 GRLIB_TrenchBuildType = 9;
+GRLIB_BuildTypeDirect = 90;
 
 if (abort_loading) exitWith {
 	private _msg = format [localize "STR_MSG_SERVER_STARTUP_ERROR", abort_loading_msg];

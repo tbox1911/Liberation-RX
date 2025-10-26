@@ -214,7 +214,6 @@ PAR_Player_Init = {
 	1 fadeSound 0;
 	_unit allowDamage false;
 	_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
-	GRLIB_player_spawned = false;
 	if (PAR_grave == 1 && !isNull _oldUnit) then { deleteVehicle _oldUnit };
 	if (GRLIB_ACE_medical_enabled) then {
 		[_unit] call ACE_medical_treatment_fnc_fullHealLocal;

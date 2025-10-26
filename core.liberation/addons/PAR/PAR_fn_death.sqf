@@ -78,6 +78,7 @@ if (_unit == player) then {
 
 	// No stuff
 	_unit setVariable ["GREUH_stuff_price", nil, true];
+	GRLIB_player_spawned = false;
 
 	titleText ["" ,"BLACK FADED", 100];
 } else {
