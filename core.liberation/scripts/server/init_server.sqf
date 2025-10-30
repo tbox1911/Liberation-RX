@@ -148,7 +148,8 @@ manage_one_enemy_patrol = compileFinal preprocessFileLineNumbers "scripts\server
 [] call compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp_init.sqf";
 load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_game_mp.sqf";
 save_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
-load_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_context.sqf";
+load_player_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_player_context.sqf";
+load_squad_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_squad_context.sqf";
 save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
 blufor_victory = compileFinal preprocessFileLineNumbers "scripts\server\game\blufor_victory.sqf";
 
@@ -205,7 +206,8 @@ destroy_static_remote_call = compileFinal preprocessFileLineNumbers "scripts\ser
 dog_action_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\dog_action_remote_call.sqf";
 ied_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ied_remote_call.sqf";
 intel_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\intel_remote_call.sqf";
-load_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_context_remote_call.sqf";
+load_player_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_player_context_remote_call.sqf";
+load_squad_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_squad_context_remote_call.sqf";
 load_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_truck_remote_call.sqf";
 load_cargo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_cargo_remote_call.sqf";
 prisoner_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\prisoner_remote_call.sqf";

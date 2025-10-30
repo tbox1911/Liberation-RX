@@ -179,7 +179,7 @@ titleText ["", "BLACK FADED", 100];
 sleep 1;
 
 // Load Player Context
-[player] remoteExec ["load_context_remote_call", 2];
+[player] remoteExec ["load_player_context_remote_call", 2];
 
 // Start intro
 startgame = 0;
