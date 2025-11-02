@@ -358,9 +358,9 @@ private _building_alive = (nearestObjects [_sector_pos, ["House"], _local_captur
 	alive _x &&
 	(tolower (typeOf _x) find "ruin" == -1) &&
 	(
-		(tolower (typeOf _x) find "land_house" != -1) ||
-		(tolower (typeOf _x) find "land_shop" != -1) ||
-		(tolower (typeOf _x) find "land_fuelstation" != -1)
+		(tolower (typeOf _x) find "house" != -1) ||
+		(tolower (typeOf _x) find "shop" != -1) ||
+		(tolower (typeOf _x) find "fuelstation" != -1)
 	)
 };
 
