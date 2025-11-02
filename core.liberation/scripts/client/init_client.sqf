@@ -227,6 +227,7 @@ waitUntil {sleep 0.5; startgame == 1};
 
 // Markers
 [] execVM "scripts\client\markers\init_markers.sqf";
+[] execVM "scripts\client\markers\players_marker.sqf";
 [] execVM "scripts\client\markers\vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";

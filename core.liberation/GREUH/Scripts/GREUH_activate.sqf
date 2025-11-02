@@ -44,7 +44,6 @@ if (_group_name != "") then {
 [] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_camera.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_platoonoverlay.sqf";
-[] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_playermarkers.sqf";
 
 if ( GREUH_allow_viewdistance ) then {
 	[] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_view_distance_management.sqf";

@@ -6,7 +6,6 @@ private _no_marker_classnames = [
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
 	Warehouse_desk_typename,
-	"ParachuteBase",
 	"NVTarget",
 	"LaserTarget",
 	"Land_Campfire_F",
@@ -33,7 +32,6 @@ while {true} do {
 	_veh_list = vehicles select {
 		(getObjectType _x >= 8) &&
 		(side _x != GRLIB_side_enemy) &&
-		(_x distance2D lhd > GRLIB_fob_range) &&
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
 		!(_x getVariable ['R3F_LOG_disabled', false]) &&
