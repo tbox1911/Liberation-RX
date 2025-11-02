@@ -2,6 +2,8 @@ params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
 private _cargo = [_vehicle, true] call F_getCargo;
+if (count _cargo == 0) exitWith {};
+
 private _arsenal = [];
 private _count = 0;
 {
