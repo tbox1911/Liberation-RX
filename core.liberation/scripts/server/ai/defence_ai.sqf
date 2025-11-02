@@ -5,9 +5,9 @@ if (isNull _grp) exitWith {};
 private _grp_veh = objectParent (leader _grp);
 if (_grp_veh isKindOf "Ship_F") exitWith { [_grp, getPosATL _grp_veh, 200] call patrol_ai };
 
+sleep 30;
 _flagpos = ([_flagpos, 5] call F_getRandomPos);
 diag_log format ["Group %1 - Defend: %2", _grp, _flagpos];
-sleep (5 + floor random 30);
 
 private _timer = 0;
 private _patrol = false;

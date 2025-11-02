@@ -2,6 +2,7 @@ params ["_grp", "_objective_pos"];
 if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
+sleep 30;
 private _vehicle = objectParent leader _grp;
 if (_vehicle isKindOf "Ship_F") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
@@ -19,7 +20,6 @@ private _attack = true;
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
 diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
-sleep (3 + floor random 5);
 
 private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
 while {true} do {

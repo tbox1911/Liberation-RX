@@ -5,7 +5,7 @@ if !(isNull objectParent _unit) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
 
-sleep 3;
+sleep 30;
 if (!alive _unit) exitWith {};
 
 // Check locality
