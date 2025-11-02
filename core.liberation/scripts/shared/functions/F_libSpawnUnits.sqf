@@ -92,9 +92,10 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 	sleep 0.1;
 } foreach _classname;
 
+private _units = units _grp;
 if (count _units == 0) exitWith { diag_log "--- LRX Error: created group is empty."; grpNull };
 
-[units _grp, _type] spawn {
+[_units, _type] spawn {
 	params ["_units", "_type"];
 	sleep 1;
 	{

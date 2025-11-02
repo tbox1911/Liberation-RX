@@ -11,6 +11,7 @@ if (count _context == 0) then {
 };
 
 // AIs loadout
+if (count _context < 3) exitWith { _player setVariable ["GRLIB_squad_context_loaded", true, true] };
 if (count (_context select 2) >= 1) then {
     private _score = [_player] call F_getScore;
     private _squad_size = ([_score] call F_getRank) select 1;
