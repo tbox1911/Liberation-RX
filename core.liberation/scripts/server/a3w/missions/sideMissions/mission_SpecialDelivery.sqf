@@ -18,33 +18,33 @@ _setupObjects = {
 	};
 
 	private _max_waypoints = 4;
-	private _convoy_destinations = [];
+	private _waypoints = [];
 	private _sector_list = (blufor_sectors - sectors_tower - active_sectors) select { (markerPos _x) distance2D _missionEnd < 6000 };
 	if (count _sector_list < _max_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
 	};
 
-	private _convoy_destinations = [5000, _sector_list, _max_waypoints, 10, false] call F_getSectorPath;
-	if (count _convoy_destinations < _max_waypoints) exitWith {
+	private _waypoints = [5000, _sector_list, _max_waypoints, 10, false] call F_getSectorPath;
+	if (count _waypoints < _max_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", localize _missionType];
 		false;
 	};
 
 	//man 1
-	private _missionPos1 = markerPos (_convoy_destinations select 0) getPos [100, floor random 360];
+	private _missionPos1 = markerPos (_waypoints select 0) getPos [100, floor random 360];
 	private _man1 = createAgent ["C_Nikos", _missionPos1, [], 5, "NONE"];
 	_man1 allowDamage false;
 	_man1 setVariable ["GRLIB_A3W_Mission_SD1", true, true];
 
 	// man2
-	private _missionPos2 = markerPos (_convoy_destinations select 1) getPos [100, floor random 360];
+	private _missionPos2 = markerPos (_waypoints select 1) getPos [100, floor random 360];
 	private _man2 = createAgent ["C_Orestes", _missionPos2, [], 5, "NONE"];
 	_man2 allowDamage false;
 	_man2 setVariable ["GRLIB_A3W_Mission_SD2", true, true];
 
 	// man3
-	private _missionPos3 = markerPos (_convoy_destinations select 2) getPos [100, floor random 360];
+	private _missionPos3 = markerPos (_waypoints select 2) getPos [100, floor random 360];
 	private _man3 = createAgent ["C_Orestes", _missionPos3, [], 5, "NONE"];
 	_man3 allowDamage false;
 	_man3 setVariable ["GRLIB_A3W_Mission_SD3", true, true];
@@ -88,7 +88,7 @@ _setupObjects = {
 	GRLIB_A3W_Mission_SD = [0, [_man1, _man2, _man3, _man4], _quest_item];  // progression
 	publicVariable "GRLIB_A3W_Mission_SD";
 
-	// manage side
+	// manage mission
 	[_quest_item] spawn {
 		params ["_item"];
 		sleep 3;
@@ -106,17 +106,26 @@ _setupObjects = {
 	};
 
 	_vehicles = [_house, _quest_item] + (GRLIB_A3W_Mission_SD select 1);
-	_missionPos = markerPos (_convoy_destinations select 0);
+	_missionPos = markerPos (_waypoints select 0);
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
 	_missionHintText = ["STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _missionLocation];
 	true;
 };
 
-_waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
+
+_waitUntilMarkerPos = {
+	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
+	"GRLIB_A3W_Mission_SD_Marker" setMarkerTextLocal (name _next_unit);
+	"GRLIB_A3W_Mission_SD_Marker" setMarkerPosLocal (getPosATL _next_unit);
+	"GRLIB_A3W_Mission_SD_Marker" setMarkerAlpha 1;	
+	(getPosATL _next_unit) vectorAdd [0,2,0]; 
+};
+
 _waitUntilLastPos = {
 	(getPosATL ((GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0)));
 };
+
 _waitUntilCondition = {
 	if (alive _quest_item && (isNull (_quest_item getVariable ["R3F_LOG_est_transporte_par", objNull]))) then {
 		"GRLIB_A3W_Mission_SD_Item" setMarkerPosLocal (getPos _quest_item);
@@ -125,13 +134,9 @@ _waitUntilCondition = {
 		"GRLIB_A3W_Mission_SD_Item" setMarkerAlpha 0;
 	};
 
-	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerTextLocal (name _next_unit);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerPosLocal (getPosATL _next_unit);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerAlpha 1;
-
 	(!alive _quest_item)
 };
+
 _waitUntilSuccessCondition = { ((GRLIB_A3W_Mission_SD select 0) == -1) };
 
 _failedExec = {
