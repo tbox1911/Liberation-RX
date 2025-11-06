@@ -121,7 +121,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["O_Static_Designator_01_F",3],
+	["O_Static_Designator_02_F",3],
 	["O_HMG_01_F",5],
 	["O_HMG_01_high_F",5],
 	["O_GMG_01_F",5],

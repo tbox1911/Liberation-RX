@@ -317,7 +317,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["B_static_AA_F",10],
 	["B_static_AT_F",10],
 	["B_Mortar_01_F",10],
-	["O_Static_Designator_01_F",3],
+	["O_Static_Designator_02_F",3],
 	["O_HMG_01_F",5],
 	["O_HMG_01_high_F",5],
 	["O_GMG_01_F",5],

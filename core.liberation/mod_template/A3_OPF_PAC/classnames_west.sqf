@@ -152,7 +152,7 @@ buildings_west = [
 // Boats
 boats_west = [
 	"O_Boat_Transport_01_F",
-	"O_Boat_Armed_01_minigun_F"
+	"O_T_Boat_Armed_01_hmg_F"
 ];
 
 blufor_squad_inf_light = [
