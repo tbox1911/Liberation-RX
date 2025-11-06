@@ -4,6 +4,9 @@ if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log
 [] call compileFinal preprocessFileLineNumbers "build_info.sqf";
 diag_log format ["LRX version %1 - build version: %2 build date: %3", localize "STR_MISSION_VERSION", GRLIB_build_version, GRLIB_build_date]; 
 
+clean_unit = compileFinal preprocessFileLineNumbers "scripts\client\misc\clean_unit.sqf";
+player_loadout = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_loadout.sqf";
+
 disableUserInput true;
 titleText ["","BLACK FADED", 100];
 0 fadeSound 0;

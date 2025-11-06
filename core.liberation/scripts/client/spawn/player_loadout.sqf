@@ -3,14 +3,7 @@
 
 // Default Loadout
 if (isNil {player getVariable "GREUH_stuff_price"}) then {
-	// Cleanup
-	removeAllWeapons player;
-	removeAllAssignedItems player;
-	removeUniform player;
-	removeVest player;
-	removeBackpack player;
-	removeHeadgear player;
-	removeGoggles player;
+	[player] call clean_unit;
 	player setVariable ["GREUH_stuff_price", 0, true];
 
 	// Backup Loadout

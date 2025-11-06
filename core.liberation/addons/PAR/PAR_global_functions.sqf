@@ -238,7 +238,6 @@ PAR_Player_Init = {
 	[_unit] spawn add_player_actions;
 	PAR_backup_loadout = [];
 	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
-	[] execVM "scripts\client\spawn\player_loadout.sqf";
 	[] execVM "scripts\client\spawn\redeploy_manager.sqf";
 	[] execVM "scripts\client\misc\welcome.sqf";
 	waituntil {sleep 1; GRLIB_player_spawned};

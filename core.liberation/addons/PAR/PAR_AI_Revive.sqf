@@ -81,10 +81,10 @@ _marker setMarkerTypeLocal "KIA";
 _marker setMarkerTextlocal format ["%1's Grave.", name player];
 
 // Init player
-[player] call PAR_Player_Init;
+// [player] call PAR_Player_Init;
 
 // Init player EH
-[player] call PAR_EventHandler;
+// [player] call PAR_EventHandler;
 
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 

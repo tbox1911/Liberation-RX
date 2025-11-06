@@ -147,23 +147,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 
-GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
-waitUntil {
-	[player] joinSilent GRLIB_player_group;
-	sleep 0.5;
-	(player in (units GRLIB_player_group));
-};
-[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
-
-// Load Player
-waituntil {
-	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
-	uIsleep 1;
-	titleText ["... Please Wait ...", "BLACK FADED", 100];
-	uIsleep 1;
-	(player getVariable ["GRLIB_score_set", 0] == 1);
-};
-
 // LRX Arsenal
 [] execVM "addons\LARs\liberationArsenal.sqf";
 sleep 1;
@@ -174,26 +157,22 @@ waituntil {
 	uIsleep 1;
 	(LRX_arsenal_init_done);
 };
-titleText ["", "BLACK FADED", 100];
+
+// Player group
+startgame = 0;
+GRLIB_player_group = createGroup [GRLIB_side_friendly, false];
+[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
+
+waituntil {
+	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
+	uIsleep 1;
+	titleText ["... Please Wait ...", "BLACK FADED", 100];
+	uIsleep 1;
+	(player getVariable ["GRLIB_score_set", 0] == 1 && player in (units GRLIB_player_group));
+};
+
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_client.sqf";
 sleep 1;
-
-// Load Player Context
-[player] remoteExec ["load_player_context_remote_call", 2];
-
-// Start intro
-startgame = 0;
-playMusic GRLIB_music_startup;
-[] execVM "scripts\client\ui\intro.sqf";
-sleep 2;
-
-waitUntil {sleep 0.5; startgame == 1};
-[] spawn {
-	waituntil {sleep 1; GRLIB_player_configured};
-	10 fadeMusic 0;
-	sleep 10;
-	playMusic "";
-};
 
 // LRX Addons
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";
@@ -208,6 +187,19 @@ waitUntil {sleep 0.5; startgame == 1};
 [] execVM "addons\JKB\JKB_init.sqf";
 [] execVM "addons\WHS\warehouse_init.sqf";
 [] execVM "addons\FOB\officer_init.sqf";
+
+// Start intro
+playMusic GRLIB_music_startup;
+[] execVM "scripts\client\ui\intro.sqf";
+sleep 2;
+
+waitUntil {sleep 0.5; startgame == 1};
+[] spawn {
+	waituntil {sleep 1; GRLIB_player_configured};
+	10 fadeMusic 0;
+	sleep 10;
+	playMusic "";
+};
 
 // Player actions manager
 [] execVM "scripts\client\actions\action_manager_player.sqf";

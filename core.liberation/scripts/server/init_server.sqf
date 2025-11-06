@@ -299,7 +299,7 @@ if (GRLIB_Commander_mode) then {
 global_locked_group = [];
 publicVariable "global_locked_group";
 
-sleep 1;
+sleep 2;
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";
