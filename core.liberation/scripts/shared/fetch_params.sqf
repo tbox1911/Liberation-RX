@@ -339,6 +339,20 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
+// SIDES
+GRLIB_side_civilian = CIVILIAN;
+GRLIB_side_friendly = ({if (_x select 0 == GRLIB_mod_west) exitWith {_x select 2}} forEach GRLIB_mod_list_name);
+GRLIB_side_enemy = ({if (_x select 0 == GRLIB_mod_east) exitWith {_x select 2}} forEach GRLIB_mod_list_name);
+if (GRLIB_side_friendly == GRLIB_side_enemy) then { abort_loading = true };
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid Template Selection !\n\n
+	Same Side for both selection is not allowed! - Side West (%1) / Side East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Change the Side of one selection.\n
+	*********************************", GRLIB_side_friendly, GRLIB_side_enemy];
+};
+
 if (GRLIB_mod_list_west find GRLIB_mod_west < 0 || GRLIB_mod_list_east find GRLIB_mod_east < 0) then { abort_loading = true };
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n

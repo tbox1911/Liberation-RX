@@ -111,12 +111,6 @@ _opfor_vehicles = _opfor_vehicles arrayIntersect _opfor_vehicles;
 	if !(_x in _opfor_recyclable) then { diag_log format ["--- LRX Config Check (%1) : vehicle %2 is NOT defined in opfor_recyclable !", _forEachIndex, _x]};
 } forEach _opfor_vehicles;
 
-// *** SIDES ***
-GRLIB_side_civilian = CIVILIAN;
-if (GRLIB_side_enemy == GRLIB_side_friendly) then {
-	GRLIB_side_enemy = ([WEST, EAST, INDEPENDENT] - [GRLIB_side_friendly]) select 0;
-};
-
 // *** COLORS ***
 // Default WEST
 GRLIB_color_friendly = "ColorBLUFOR";

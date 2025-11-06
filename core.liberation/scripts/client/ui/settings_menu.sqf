@@ -3,8 +3,13 @@ if (isDedicated || !hasInterface) exitWith {};
 GRLIB_SetupParamMenu = {
     if (!dialog || !GRLIB_DialogOpen || !hasInterface) exitWith {};
     GRLIB_ParamControls = [];
-    _display = findDisplay 5119;
-    _idx = 1;
+    private _color_green = getArray (configFile >> "CfgMarkerColors" >> "ColorGreen" >> "color") call BIS_fnc_colorConfigToRGBA;
+    private _color_red = getArray (configFile >> "CfgMarkerColors" >> "ColorRed" >> "color") call BIS_fnc_colorConfigToRGBA;
+    private _color_west = getArray (configFile >> "CfgMarkerColors" >> "ColorWEST" >> "color") call BIS_fnc_colorConfigToRGBA;
+    private _color_east = getArray (configFile >> "CfgMarkerColors" >> "ColorEAST" >> "color") call BIS_fnc_colorConfigToRGBA;
+    private _color_indep = getArray (configFile >> "CfgMarkerColors" >> "ColorGUER" >> "color") call BIS_fnc_colorConfigToRGBA;    
+    private _display = findDisplay 5119;
+    private _idx = 1;
 
     {
         _category = _x;
@@ -53,8 +58,21 @@ GRLIB_SetupParamMenu = {
                 GRLIB_ParamControls pushBack _control;
 
                 {
-                    _control lbAdd _x;
+                    _value = _x;
+                    _control lbAdd _value;
+                    if (_value == localize "STR_PARAMS_ENABLED") then { _control lbSetColor [_forEachIndex, _color_green] };                    
+                    if (_value == localize "STR_PARAMS_DISABLED") then { _control lbSetColor [_forEachIndex, _color_red] };
+                    if (_key in [GRLIB_PARAM_ModPresetWest, GRLIB_PARAM_ModPresetEast]) then {
+                        if (_value != "---") then {
+                            private _color = _color_west;
+                            private _side = ({if (_x select 1 == _value) exitWith {_x select 2}} forEach GRLIB_mod_list_name);
+                            if (_side == EAST) then { _color = _color_east };
+                            if (_side == INDEPENDENT) then { _color = _color_indep };
+                            _control lbSetColor [_forEachIndex, _color];
+                        };
+                    };
                 } forEach (_hash get GRLIB_PARAM_OptionLabelKey);
+
                 _optionDescription = _hash getOrDefault [GRLIB_PARAM_OptionDescriptionKey, []];
                 {
                     _control lbSetTooltip [_forEachIndex, _x];
