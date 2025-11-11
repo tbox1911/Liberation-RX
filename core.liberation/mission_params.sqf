@@ -58,6 +58,7 @@ GRLIB_PARAM_AirSupport = "AirSupport";
 GRLIB_PARAM_CivPenalties = "CivPenalties";
 GRLIB_PARAM_ModPresetWest = "ModPresetWest";
 GRLIB_PARAM_ModPresetEast = "ModPresetEast";
+GRLIB_PARAM_SideVerification = "SideVerification";
 GRLIB_PARAM_ModPresetCiv = "ModPresetCiv";
 GRLIB_PARAM_ModPresetTaxi = "ModPresetTaxi";
 GRLIB_PARAM_Fatigue = "Fatigue";
@@ -666,6 +667,18 @@ _Mission_Params = [
             localize "STR_MOD_PRESET_TAXI_OPT1",
             localize "STR_MOD_PRESET_TAXI_OPT2",
             localize "STR_MOD_PRESET_TAXI_OPT3"
+        ]]
+    ]],
+    [GRLIB_PARAM_SideVerification, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 0],
+        [GRLIB_PARAM_NameKey, localize "STR_SIDE_VERIF"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_ENABLED", localize "STR_PARAMS_DISABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_TemplateCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_SIDE_VERIF_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_SIDE_VERIF_OPT0",
+            localize "STR_SIDE_VERIF_OPT1"
         ]]
     ]],
     [GRLIB_PARAM_Fatigue, createHashMapFromArray [

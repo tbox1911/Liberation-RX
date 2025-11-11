@@ -229,6 +229,7 @@ GRLIB_resources_multiplier = [GRLIB_PARAM_ResourcesMultiplier] call lrx_getParam
 GRLIB_disable_death_chat = [GRLIB_PARAM_DeathChat] call lrx_getParamValue;
 GRLIB_mod_west = [GRLIB_PARAM_ModPresetWest] call lrx_getParamValue;
 GRLIB_mod_east = [GRLIB_PARAM_ModPresetEast] call lrx_getParamValue;
+GRLIB_side_verif = [GRLIB_PARAM_SideVerification] call lrx_getParamValue;
 GRLIB_mod_preset_civ = [GRLIB_PARAM_ModPresetCiv] call lrx_getParamValue;
 GRLIB_mod_preset_taxi = [GRLIB_PARAM_ModPresetTaxi] call lrx_getParamValue;
 GRLIB_enable_arsenal = [GRLIB_PARAM_EnableArsenal] call lrx_getParamValue;
@@ -343,13 +344,17 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 GRLIB_side_civilian = CIVILIAN;
 GRLIB_side_friendly = ({if (_x select 0 == GRLIB_mod_west) exitWith {_x select 2}} forEach GRLIB_mod_list_name);
 GRLIB_side_enemy = ({if (_x select 0 == GRLIB_mod_east) exitWith {_x select 2}} forEach GRLIB_mod_list_name);
+if (GRLIB_side_verif == 1 && GRLIB_side_friendly == GRLIB_side_enemy) then {
+	GRLIB_side_enemy = ([WEST, EAST, INDEPENDENT] - [GRLIB_side_friendly]) select 0;
+};
+
 if (GRLIB_side_friendly == GRLIB_side_enemy) then { abort_loading = true };
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
-	FATAL! - Invalid Template Selection !\n\n
-	Same Side for both selection is not allowed! - Side West (%1) / Side East (%2)\n\n
+	FATAL! - Side Faction Verification Failed !\n\n
+	Same Side for both selection is disabled by settings! - Side West (%1) / Side East (%2)\n\n
 	Loading Aborted to protect data integrity.\n
-	Change the Side of one selection.\n
+	Change the Side of one selection or change verification settings.\n
 	*********************************", GRLIB_side_friendly, GRLIB_side_enemy];
 };
 

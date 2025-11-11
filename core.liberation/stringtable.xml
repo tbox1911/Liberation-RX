@@ -11283,6 +11283,42 @@
 			<Portuguese>Aplicar mod apenas aos civis inimigos</Portuguese>
 			<Czech>Použít mod pouze na nepřátelské civilisty</Czech>
 		</Key>
+		<Key ID="STR_SIDE_VERIF">
+			<Original>Team sides verification</Original>
+			<Russian>Проверка сторон команды</Russian>
+			<French>Vérification du camp des équipes</French>
+			<Chinesesimp>团队阵营验证</Chinesesimp>
+			<Chinese>團隊陣營驗證</Chinese>
+			<Portuguese>Verificação dos lados das equipes</Portuguese>
+			<Czech>Ověřování stran týmů</Czech>
+		</Key>
+		<Key ID="STR_SIDE_VERIF_DESC">
+			<Original>Verification of team sides (East/West).</Original>
+			<Russian>Проверка сторон команды (Восток/Запад).</Russian>
+			<French>Vérification du camp des équipes (Est/Ouest).</French>
+			<Chinesesimp>验证团队阵营（东/西）。</Chinesesimp>
+			<Chinese>驗證團隊陣營（東/西）。</Chinese>
+			<Portuguese>Verificação dos lados das equipes (Leste/Oeste).</Portuguese>
+			<Czech>Ověřování stran týmů (Východ/Západ).</Czech>
+		</Key>
+		<Key ID="STR_SIDE_VERIF_OPT0">
+			<Original>Enable side verification</Original>
+			<Russian>Включить проверку стороны</Russian>
+			<French>Activer la vérification du camp</French>
+			<Chinesesimp>启用阵营验证</Chinesesimp>
+			<Chinese>啟用陣營驗證</Chinese>
+			<Portuguese>Ativar verificação de lado</Portuguese>
+			<Czech>Povolit ověřování strany</Czech>
+		</Key>
+		<Key ID="STR_SIDE_VERIF_OPT1">
+			<Original>Disable side verification (can impact AI behavior)</Original>
+			<Russian>Отключить проверку стороны (может повлиять на поведение ИИ)</Russian>
+			<French>Désactiver la vérification du camp (peut impacter le comportement des IA)</French>
+			<Chinesesimp>禁用阵营验证（可能影响AI行为）</Chinesesimp>
+			<Chinese>禁用陣營驗證（可能影響AI行為）</Chinese>
+			<Portuguese>Desativar verificação de lado (pode impactar o comportamento da IA)</Portuguese>
+			<Czech>Zakázat ověřování strany (může ovlivnit chování AI)</Czech>
+		</Key>
 		<Key ID="STR_MOD_PRESET_TAXI_DESC">
 			<Original>Configures the mod preset for taxi units.</Original>
 			<Russian>Настраивает пресет мода для такси-подразделений.</Russian>
