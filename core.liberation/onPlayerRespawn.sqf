@@ -13,14 +13,10 @@ if (GRLIB_side_friendly == WEST) then {
     private _class = typeOf player;
     if (GRLIB_side_friendly == EAST) then { _class = "O" + (_class select [1]) };
     if (GRLIB_side_friendly == INDEPENDENT) then { _class = "I" + (_class select [1]) };
-
-    _unit = GRLIB_player_group createUnit [_class, position player, [], 0, "NONE"];
-    [_unit] call clean_unit;
+    _unit = GRLIB_player_group createUnit [_class, position player, [], 1, "NONE"];
     [_unit] joinSilent GRLIB_player_group;
+    [_unit] call clean_unit;
     selectPlayer _unit;
-    sleep 0.2;
-
-    GRLIB_player_group selectLeader player;
     _unit setVariable ["my_dog", (_newUnit getVariable ["my_dog", nil])];
     _unit setVariable ["my_squad", (_newUnit getVariable ["my_squad", nil])];
     _unit setVariable ["GRLIB_player_context_loaded", (_newUnit getVariable ["GRLIB_player_context_loaded", false]), true];

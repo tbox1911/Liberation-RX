@@ -98,7 +98,7 @@ if (GRLIB_kick_idle > 0) then {
 	[] execVM "scripts\client\misc\kick_idle.sqf";
 };
 
-waitUntil {sleep 1; alive player};
+waitUntil { sleep 1; !isNull player && alive player };
 if (GRLIB_respawn_cooldown > 0) then {
 	if (isServer) exitWith {};
 	waitUntil {sleep 1; !isNil "BTC_logic"};
@@ -161,8 +161,6 @@ waituntil {
 // Player group
 startgame = 0;
 GRLIB_player_group = createGroup [GRLIB_side_friendly, false];
-[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
-
 waituntil {
 	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
 	uIsleep 1;
@@ -171,8 +169,8 @@ waituntil {
 	(player getVariable ["GRLIB_score_set", 0] == 1 && player in (units GRLIB_player_group));
 };
 
+[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_client.sqf";
-sleep 1;
 
 // LRX Addons
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";

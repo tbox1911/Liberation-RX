@@ -47,4 +47,12 @@ if !(player getVariable ["GRLIB_squad_context_loaded", false]) then {
 	[player] remoteExec ["load_squad_context_remote_call", 2];
 };
 
+// Keep player first
+if (count (units GRLIB_player_group) > 1) then {
+	[player] joinSilent grpNull;
+	[player] joinSilent GRLIB_player_group;
+	GRLIB_player_group selectLeader player;
+};
+
 GRLIB_player_configured = true;
+diag_log format ["--- LRX Player %1 initialized ---", name player];
