@@ -6,8 +6,9 @@ private _no_marker_classnames = [
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
 	Warehouse_desk_typename,
-	"NVTarget",
+	"StaticWeapon",
 	"LaserTarget",
+	"NVTarget",
 	"Land_Campfire_F",
 	"Kart_01_Base_F",
 	"Land_CashDesk_F",
@@ -29,6 +30,7 @@ private _vehmarkers = [];
 while {true} do {
 	waitUntil {sleep 0.1; (visibleMap || dialog) };
 
+	// Vehicles
 	_veh_list = vehicles select {
 		(getObjectType _x >= 8) &&
 		(side _x != GRLIB_side_enemy) &&
@@ -36,10 +38,22 @@ while {true} do {
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
 		!(_x getVariable ['R3F_LOG_disabled', false]) &&
+		(_x getVariable ["GRLIB_vehicle_owner", ""] != "server") &&
 		(isNil {_x getVariable "GRLIB_vehicle_init"}) &&
 		(isNil {_x getVariable "GRLIB_mission_AI"}) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]))
 	};
+
+	// Static Weapons
+	_veh_list = _veh_list + (allMissionObjects "StaticWeapon" select {
+		(_x distance2D lhd > GRLIB_fob_range) &&
+		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
+		(typeOf _x in list_static_weapons) &&
+		(
+			!(_x getVariable ['R3F_LOG_disabled', false]) || 
+			(side _x == GRLIB_side_friendly)
+		)
+	});
 
 	if (GRLIB_allow_redeploy > 0) then {
 		private _mobile_respawn_list = GRLIB_mobile_respawn select {
@@ -75,7 +89,6 @@ while {true} do {
 		_marker_show = 1;
 
 		_nextvehicle_owner = _nextvehicle getVariable ["GRLIB_vehicle_owner", ""];
-		if (_nextvehicle_owner == "server") exitWith { _nextmarker setMarkerAlphaLocal 0 };
 
 		if (typeOf _nextvehicle in ai_resupply_sources) then {
 			_marker_color = "ColorOrange";
