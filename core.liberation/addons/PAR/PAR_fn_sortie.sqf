@@ -9,19 +9,22 @@ if (!isPlayer _medic) then {
 	private _bleedOut = _wnded getVariable ["PAR_BleedOutTimer", 0];
 	_wnded setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_bleedout_extra, true];
 	_medic setDir (_medic getDir _wnded);
-	if (stance _medic == "PRONE") then {
-		_medic switchMove "AinvPpneMstpSlayWrflDnon_medicOther";
-		_medic playMoveNow "AinvPpneMstpSlayWrflDnon_medicOther";
-	} else {
-		_medic switchMove "AinvPknlMstpSlayWrflDnon_medicOther";
-		_medic playMoveNow "AinvPknlMstpSlayWrflDnon_medicOther";
+	private _stance = stance _medic;
+	private _anim = "AinvPknlMstpSlayWrflDnon_medicOther";
+	if (currentWeapon _medic == "") then { _anim = "AinvPknlMstpSlayWnonDnon_medicOther" };
+	if (_stance == "PRONE") then {
+		_anim = "AinvPpneMstpSlayWrflDnon_medicOther";
+		if (currentWeapon _medic == "") then { _anim = "AinvPpneMstpSlayWnonDnon_medicOther" };
 	};
+	_medic switchMove _anim;
+	_medic playMoveNow _anim;
 	[_wnded] call PAR_spawn_gargbage;
-	_cnt = 6;
+	_cnt = 7;
 	while { _cnt > 0 && (_wnded getVariable ["PAR_myMedic", objNull]) == _medic } do {
 		sleep 1;
 		_cnt = _cnt -1
 	};
+	if (_stance == "STAND") then { _medic playAction "PlayerStand" };
 };
 
 // Medic can't continue
@@ -53,7 +56,7 @@ if (isPlayer _wnded || isPlayer _medic) then {
 _wnded switchMove "AinjPpneMstpSnonWrflDnon_rolltofront";
 _wnded playMoveNow "AinjPpneMstpSnonWrflDnon_rolltofront";
 sleep 2;
-_wnded switchmove "AidlPpneMstpSrasWrflDnon_G01";
+_wnded switchmove "AidlPpneMstpSnonWnonDnon_AI";
 
 [_medic, _wnded] call PAR_fn_fixPos;
 

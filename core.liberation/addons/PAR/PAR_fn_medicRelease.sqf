@@ -9,7 +9,6 @@ private _release_medic = {
 	_medic assignTeam (_medic getVariable "PAR_AIteam");
 
 	if !([_medic] call PAR_is_wounded) then {
-		_medic setUnitPos "AUTO";
 		{_medic enableAI _x} forEach ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 		_medic doFollow leader _medic;
 		_medic setSpeedMode (speedMode group player);
