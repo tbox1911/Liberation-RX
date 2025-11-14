@@ -21,7 +21,7 @@ private _timer = time + 60;
 private _timer_bonus = 120;
 
 while {true} do {
-	waitUntil {sleep 1; alive player && !(captive player) && GRLIB_player_spawned};
+	waitUntil {sleep 1; alive player && !(captive player) && GRLIB_player_configured};
 
 	// Renegade
 	private _side = side player;
@@ -89,7 +89,7 @@ while {true} do {
 				hintSilent _msg;
 				_timer_bonus = _timer_bonus - 3;
 				if (_timer_bonus <= 0) then {
-					[_winner, 1] call F_addReput;
+					[player, 1] call F_addReput;
 					_timer_bonus = 60;
 				};
 			} else {

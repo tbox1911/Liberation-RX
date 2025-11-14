@@ -26,7 +26,6 @@ GRLIB_ActionDist_3 = 3;
 GRLIB_ActionDist_5 = 5;
 GRLIB_ActionDist_10 = 10;
 GRLIB_ActionDist_15 = 15;
-GRLIB_player_configured = false;
 GRLIB_current_trenches = 0;
 
 GRLIB_InfantryBuildType = 1;
@@ -160,7 +159,7 @@ waituntil {
 
 // Player group
 startgame = 0;
-GRLIB_player_group = createGroup [GRLIB_side_friendly, false];
+GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 waituntil {
 	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
 	uIsleep 1;

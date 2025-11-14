@@ -60,22 +60,6 @@ if (_unit == player) then {
 		player setVariable ["GRLIB_last_respawn", round (time + GRLIB_respawn_cooldown)];
 	};
 
-	// Reset group
-	if (GRLIB_Undercover_mode == 1) then {
-		if (side GRLIB_player_group == GRLIB_side_civilian && !(isNil {player getVariable "GRLIB_unit_detected"})) then {
-			private _player_units = (units GRLIB_player_group);
-			GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
-			waitUntil {
-				[player] joinSilent GRLIB_player_group;
-				sleep 0.5;
-				(player in (units GRLIB_player_group));
-			};
-			[GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
-			_player_units joinSilent GRLIB_player_group;
-			{ _x setVariable ["PAR_Grp_AI", GRLIB_player_group] } forEach PAR_AI_bros;
-		};
-	};
-
 	// No stuff
 	_unit setVariable ["GREUH_stuff_price", nil, true];
 	GRLIB_player_spawned = false;

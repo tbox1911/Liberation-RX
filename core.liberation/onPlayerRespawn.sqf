@@ -1,5 +1,6 @@
 params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 
+GRLIB_player_configured = false;
 [_newUnit] call clean_unit;
 waitUntil { sleep 0.1; !isNil "GRLIB_player_group" };
 
@@ -38,3 +39,19 @@ waitUntil { sleep 0.5; startgame == 1 };
 [_unit] call PAR_EventHandler;
 [_unit] call PAR_Player_Init;
 _unit setvariable ["PAR_grave_box", PAR_grave_box, true];
+
+// // Reset group
+// if (GRLIB_Undercover_mode == 1) then {
+//     if (side GRLIB_player_group == GRLIB_side_civilian && !(isNil {player getVariable "GRLIB_unit_detected"})) then {
+//         private _player_units = (units GRLIB_player_group);
+//         GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
+//         waitUntil {
+//             [player] joinSilent GRLIB_player_group;
+//             sleep 0.5;
+//             (player in (units GRLIB_player_group));
+//         };
+//         [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
+//         _player_units joinSilent GRLIB_player_group;
+//         { _x setVariable ["PAR_Grp_AI", GRLIB_player_group] } forEach PAR_AI_bros;
+//     };
+// };

@@ -2,7 +2,16 @@
  Say hello, and set Rank/Insigna
 */
 
-waitUntil {sleep 0.5; GRLIB_player_spawned && (player getVariable ["GRLIB_score_set", 0] == 1)};
+waitUntil {sleep 0.1; GRLIB_player_spawned && (player getVariable ["GRLIB_score_set", 0] == 1)};
+
+// Keep player first / Reset group
+if (count (units GRLIB_player_group) > 1) then {
+	[player] joinSilent grpNull;
+	[player] joinSilent GRLIB_player_group;
+	GRLIB_player_group selectLeader player;
+	PAR_AI_bros joinSilent GRLIB_player_group;
+	{ _x setVariable ["PAR_Grp_AI", GRLIB_player_group] } forEach PAR_AI_bros;
+};
 
 private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
@@ -45,13 +54,6 @@ private _msg = format [localize "STR_UI_WELCOME_MSG", name player, _rank, _score
 // Load Player Suad Context
 if !(player getVariable ["GRLIB_squad_context_loaded", false]) then {
 	[player] remoteExec ["load_squad_context_remote_call", 2];
-};
-
-// Keep player first
-if (count (units GRLIB_player_group) > 1) then {
-	[player] joinSilent grpNull;
-	[player] joinSilent GRLIB_player_group;
-	GRLIB_player_group selectLeader player;
 };
 
 GRLIB_player_configured = true;
