@@ -222,7 +222,7 @@ support_vehicles = support_vehicles + [
 	[canister_fuel_typename,0,25,0,0],
 	[repairbox_typename,0,50,0,0],
 	[playerbox_typename,0,0,0,20],
-	[Respawn_truck_typename,10,750,15,GRLIB_perm_log],
+	[respawn_truck_typename,10,750,15,GRLIB_perm_log],
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
 	[medic_heal_typename,0,100,0,GRLIB_perm_log],
 	[Warehouse_typename,0,0,0,GRLIB_perm_inf],
@@ -257,7 +257,7 @@ support_vehicles_classname = support_vehicles_classname arrayIntersect support_v
 if (isNil "respawn_vehicles_west") then { respawn_vehicles_west = [] };
 respawn_vehicles = [
 	mobile_respawn,
-	Respawn_truck_typename,
+	respawn_truck_typename,
 	huron_typename
 ] + respawn_vehicles_west;
 
