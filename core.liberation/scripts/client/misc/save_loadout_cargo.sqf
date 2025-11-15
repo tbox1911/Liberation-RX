@@ -47,4 +47,4 @@ removeGoggles _unit;
 
 private _msg = format [localize "STR_LOADOUT_CARGO_STORED", name _unit, ([_box] call F_getLRXName)];
 hintSilent _msg;
-systemchat _msg;
+gamelogic globalChat _msg;

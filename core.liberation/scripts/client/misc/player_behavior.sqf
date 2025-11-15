@@ -87,6 +87,7 @@ while {true} do {
 				private _level = linearConversion [0, 1.5, _awareness, 0, 100, true];
 				private _msg = format ["%1 detection level: %2%%", name player, round _level];
 				hintSilent _msg;
+				gamelogic globalChat _msg;
 				_timer_bonus = _timer_bonus - 3;
 				if (_timer_bonus <= 0) then {
 					[player, 1] call F_addReput;

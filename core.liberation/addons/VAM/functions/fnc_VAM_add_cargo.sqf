@@ -28,5 +28,5 @@ if (_item in VAM_arsenal_cargo_class_names) then {
 
 if (_msg != "") then {
 	hintSilent _msg;
-	systemchat _msg;
+	gamelogic globalChat _msg;
 };

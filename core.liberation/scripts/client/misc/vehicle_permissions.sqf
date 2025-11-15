@@ -83,6 +83,7 @@ if (_doeject) then {
 		};
 	};
 	hintSilent _msg;
+	gamelogic globalChat _msg;
 } else {
 	_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 	_vehicle setVariable ["GRLIB_last_killer", nil, true];
