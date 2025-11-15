@@ -4,6 +4,7 @@ private _searchradius = 20;
 private _nearveh = [];
 private _nearruins = [];
 private _nearwreck = [];
+private _neargrave = [];
 private _nearboxes = [];
 private _nearcargo = [];
 private _neardead = [];
@@ -75,11 +76,12 @@ while {true} do {
 	// Salvage Wreck & Ruins
 	_nearruins = (nearestObjects [player, ["Ruins_F"], _searchradius]) select {(getObjectType _x >= 8) && ([_x, "FOB", GRLIB_sector_size] call F_check_near) && isNil {_x getVariable "GRLIB_salvage_action"}};
 	_nearwreck = (nearestObjects [player, _wreck_class, _searchradius]) select {(getObjectType _x >= 8) && !([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}};
+	_neargrave = (nearestObjects [player, PAR_graves, _searchradius]) select { (getObjectType _x >= 8) && (_x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID) && count (attachedObjects _x) == 0 && isNil {_x getVariable "GRLIB_salvage_action"} };
 	{
 		_vehicle = _x;
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_SALVAGE" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[_target, _this] call GRLIB_checkAction_Wreck", (GRLIB_ActionDist_10 + 5)];
 		_vehicle setVariable ["GRLIB_salvage_action", true];
-	} forEach _nearwreck + _nearruins;
+	} forEach _nearwreck + _nearruins + _neargrave;
 
 	// Dead Men
 	_neardead = allDeadMen select {!([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}};

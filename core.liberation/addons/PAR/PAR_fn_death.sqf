@@ -21,6 +21,10 @@ if (_unit == player) then {
 		[PAR_grave_box] call F_clearCargo;
 		[PAR_grave_box, PAR_backup_loadout] call F_setCargo;
 
+		// remove old grave (max: 3)
+		private _old_graves = (allMissionObjects "Cemetery_base_F" select { _x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID });
+		if (count _old_graves >= 3) then { deleteVehicle (selectRandom _old_graves) };
+
 		// create grave
 		private _grave = createVehicle [(selectRandom PAR_graves), zeropos, [], 0, "CAN_COLLIDE"];
 		_grave allowDamage false;
@@ -28,15 +32,7 @@ if (_unit == player) then {
 		_grave setPosATL _pos;
 		_grave setVectorUp surfaceNormal position _grave;
 		_grave setvariable ["PAR_grave_message", format ["- R.I.P - %1", name player], true];
-
-		// remove old grave (max: 3)
-		private _old_graves = _unit getVariable ["PAR_player_graves", []];
-		_old_graves pushback _grave;
-		if (count _old_graves > 3) then {
-			deleteVehicle (_old_graves select 0);
-			_old_graves deleteAt 0;
-		};
-		_unit setvariable ["PAR_player_graves", _old_graves];
+		_grave setvariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
 
 		// attach grave box
 		private _grave_box_pos = (getposATL _grave) vectorAdd ([[-1.75, 0, 0], -(getDir _grave)] call BIS_fnc_rotateVector2D);
