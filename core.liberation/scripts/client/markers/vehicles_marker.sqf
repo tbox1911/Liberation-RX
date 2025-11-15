@@ -55,15 +55,9 @@ while {true} do {
 	});
 
 	if (GRLIB_allow_redeploy > 0) then {
-		private _mobile_respawn_list = GRLIB_mobile_respawn select {
-			(alive _x) && !(isObjectHidden _x) &&
-			!(_x getVariable ['R3F_LOG_disabled', false]) &&
-			!([_x, "LHD", GRLIB_fob_range] call F_check_near) &&
-			!surfaceIsWater (getPos _x) && ((getPosATL _x) select 2) < 5 && speed vehicle _x < 5
-		};
-		_veh_list = _veh_list + _mobile_respawn_list;
+		_veh_list = _veh_list + ([] call F_getMobileRespawns);
 	};
-	private _mobile_respawn = ([] call F_getMobileRespawns);
+
 	private _vehmarkers_bak = [];
 	{
 		_nextvehicle = _x;
@@ -86,56 +80,18 @@ while {true} do {
 		_marker_color = "ColorKhaki";
 		_marker_type = "mil_dot";
 		_marker_show = 1;
-
 		_nextvehicle_owner = _nextvehicle getVariable ["GRLIB_vehicle_owner", ""];
 
-		if (typeOf _nextvehicle in ai_resupply_sources) then {
-			_marker_color = "ColorOrange";
-			_marker_type = "loc_Rifle";
-		};
-
-		if (typeOf _nextvehicle in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
-			_marker_color = "ColorGUER";
-			_marker_type = "mil_box";
-		};
-
-		if (typeOf _nextvehicle in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
-			_marker_color = "ColorGrey";
-			_marker_type = "mil_triangle";
-		};
-
-		if (typeOf _nextvehicle == money_typename) then {
-			_marker_color = "ColorGreen";
-			_marker_type = "EmptyIcon";
-			_nextmarker setMarkerTextLocal "$";
-		};
-
-		if (typeOf _nextvehicle == repairbox_typename) then {
-			_marker_color = "ColorWEST";
-			_marker_type = "loc_repair";
-			_nextmarker setMarkerSizeLocal [1.4, 1.4];
-		};
-
-		if (typeOf _nextvehicle == canister_fuel_typename) then {
-			_marker_color = "Color1_FD_F";
-			_marker_type = "loc_refuel";
-			_nextmarker setMarkerSizeLocal [1.4, 1.4];
-		};
-
-		if (_nextvehicle isKindOf "PlasticCase_01_base_F") then {
-			_marker_color = "ColorKhaki";
-			_marker_type = "loc_rearm";
-			_nextmarker setMarkerSizeLocal [1.4, 1.4];
-			if (typeOf _nextvehicle == playerbox_typename) then {
-				_marker_color = "ColorCIV";
-			};
-		};
-
 		// all vehicles
+		diag_log format ["DBG-1: %1 (%2-%3-%4) - %5", typeOf _nextvehicle, _marker_color, _marker_type, _marker_show, _nextvehicle_owner];
 		if (_nextvehicle isKindOf "AllVehicles") then {
+			if (typeOf _nextvehicle in (uavs_vehicles + static_vehicles_AI)) exitWith {
+				_marker_color = GRLIB_color_friendly;
+				_marker_type = "EmptyIcon";
+			};
 			_marker_show = 0;
 			private _vehicle_crew = crew _nextvehicle;
-			private _blufor_crew = (count (_vehicle_crew select {!(isNil {_x getVariable "PAR_Grp_ID"})}) > 0);
+			private _blufor_crew = (count (_vehicle_crew select { !(isNil {_x getVariable "PAR_Grp_ID"}) || side _x == GRLIB_side_friendly}) > 0);
 			if (_nextvehicle_owner in ["public", ""] && !_blufor_crew) then {
 				_marker_color = "ColorKhaki";
 				if (count _vehicle_crew == 0) then {
@@ -170,14 +126,61 @@ while {true} do {
 				};
 				_nextmarker setMarkerTextLocal _vehicle_name;
 			};
+		} else {
+			if (typeOf _nextvehicle in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
+				_marker_color = "ColorGUER";
+				_marker_type = "mil_box";
+			};
+
+			if (typeOf _nextvehicle in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
+				_marker_color = "ColorGrey";
+				_marker_type = "mil_triangle";
+			};
+
+			if (typeOf _nextvehicle == money_typename) then {
+				_marker_color = "ColorGreen";
+				_marker_type = "EmptyIcon";
+				_nextmarker setMarkerTextLocal "$";
+			};
+
+			if (typeOf _nextvehicle == repairbox_typename) then {
+				_marker_color = "ColorWEST";
+				_marker_type = "loc_repair";
+				_nextmarker setMarkerSizeLocal [1.4, 1.4];
+			};
+
+			if (typeOf _nextvehicle == canister_fuel_typename) then {
+				_marker_color = "Color1_FD_F";
+				_marker_type = "loc_refuel";
+				_nextmarker setMarkerSizeLocal [1.4, 1.4];
+			};
+
+			if (_nextvehicle isKindOf "PlasticCase_01_base_F") then {
+				_marker_color = "ColorKhaki";
+				_marker_type = "loc_rearm";
+				_nextmarker setMarkerSizeLocal [1.4, 1.4];
+				if (typeOf _nextvehicle == playerbox_typename) then {
+					_marker_color = "ColorCIV";
+				};
+			};
 		};
 
-		if (_nextvehicle in _mobile_respawn) then {
+		// specific vehicles
+		if (typeOf _nextvehicle in ai_resupply_sources) then {
+			_marker_color = "ColorOrange";
+			_marker_type = "loc_Rifle";
+			_marker_show = 1;
+			_nextmarker setMarkerSizeLocal [1.4, 1.4];
+		};
+
+		if (_nextvehicle in GRLIB_mobile_respawn) then {
 			_marker_color = "ColorYellow";
 			_marker_type = "mil_end";
+			_marker_show = 1;
 			_nextmarker setMarkerTextLocal format ["%1 - %2", [_nextvehicle] call F_getLRXName, mapGridPosition _nextvehicle];
 		};
 
+		diag_log format ["DBG-2: %1 (%2-%3-%4) - %5", typeOf _nextvehicle, _marker_color, _marker_type, _marker_show, _nextvehicle_owner];
 		_nextmarker setMarkerColorLocal _marker_color;
 		_nextmarker setMarkerTypeLocal _marker_type;
 		_nextmarker setMarkerAlphaLocal _marker_show;

@@ -351,7 +351,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_hascrew) then {
-			[_nextbuilding] spawn F_forceCrew;
+			[_nextbuilding] call F_forceCrew;
 			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
 		};
 
