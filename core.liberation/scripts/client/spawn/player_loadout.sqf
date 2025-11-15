@@ -1,14 +1,14 @@
 // Fix player traits
 [player] call F_fixModUnit;
 
+waitUntil {sleep 0.2; !(isSwitchingWeapon player)};
+
 // Default Loadout
 if (isNil {player getVariable "GREUH_stuff_price"}) then {
-	[player] call clean_unit;
-	player setVariable ["GREUH_stuff_price", 0, true];
-
 	// Backup Loadout
 	if (!isNil "GRLIB_respawn_loadout") then {
-		waitUntil {sleep 0.1; !(isSwitchingWeapon player)};
+		GRLIB_backup_loadout = getUnitLoadout player;
+		player setVariable ["GREUH_stuff_price", 0, true];
 		player setUnitLoadout GRLIB_respawn_loadout;
 	} else {
 		// Forced init loadout

@@ -29,7 +29,6 @@ if (count _context >= 1) then {
     _player setUnitLoadout (_context select 1);
     _player setVariable ["GREUH_stuff_price", ([_player] call F_loadoutPrice), true];
     diag_log format ["--- LRX Loaded player %1 profile.", name _player];
-    sleep 1;
 };
 
 _player setVariable ["GRLIB_player_context_loaded", true, true];

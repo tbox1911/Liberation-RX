@@ -18,10 +18,10 @@ if (GRLIB_side_friendly == WEST) then {
     [_unit] joinSilent GRLIB_player_group;
     [_unit] call clean_unit;
     selectPlayer _unit;
-    _unit setVariable ["my_dog", (_newUnit getVariable ["my_dog", nil])];
-    _unit setVariable ["my_squad", (_newUnit getVariable ["my_squad", nil])];
-    _unit setVariable ["GRLIB_player_context_loaded", (_newUnit getVariable ["GRLIB_player_context_loaded", false]), true];
-    _unit setVariable ["GRLIB_squad_context_loaded", (_newUnit getVariable ["GRLIB_squad_context_loaded", false]), true];
+    _unit setVariable ["my_dog", (_oldUnit getVariable ["my_dog", nil])];
+    _unit setVariable ["my_squad", (_oldUnit getVariable ["my_squad", nil])];
+    _unit setVariable ["GRLIB_player_context_loaded", (_oldUnit getVariable ["GRLIB_player_context_loaded", false]), true];
+    _unit setVariable ["GRLIB_squad_context_loaded", (_oldUnit getVariable ["GRLIB_squad_context_loaded", false]), true];
     [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
     sleep 0.2;
     deleteVehicle _newUnit;
@@ -30,15 +30,31 @@ if (GRLIB_side_friendly == WEST) then {
 // Player Loadout
 if !(_unit getVariable ["GRLIB_player_context_loaded", false]) then {
     [_unit] remoteExec ["load_player_context_remote_call", 2];
-    sleep 3;
+    sleep 1;
 };
+waitUntil { sleep 0.5; (_unit getVariable ["GRLIB_player_context_loaded", false]) };
 
-[_unit] call player_loadout;
+[_unit] spawn player_loadout;
 waitUntil { sleep 0.5; startgame == 1 };
 
-[_unit] call PAR_EventHandler;
-[_unit] call PAR_Player_Init;
+[_unit] spawn PAR_EventHandler;
+[_unit] spawn PAR_Player_Init;
 _unit setvariable ["PAR_grave_box", PAR_grave_box, true];
+
+// Keep player first / Reset group
+if (count (units GRLIB_player_group) > 1) then {
+	[player] joinSilent grpNull;
+	[player] joinSilent GRLIB_player_group;
+	GRLIB_player_group selectLeader player;
+	{ 
+        if (side _x != GRLIB_side_civilian) then { [_x] joinSilent GRLIB_player_group };
+        _x setVariable ["PAR_Grp_AI", GRLIB_player_group];
+    } forEach PAR_AI_bros;
+};
+
+// Remove old unit
+removeAllWeapons _oldUnit;
+deleteVehicle _oldUnit;
 
 // // Reset group
 // if (GRLIB_Undercover_mode == 1) then {

@@ -155,7 +155,7 @@ if (deploy == 1) then {
 	player setVariable ["GRLIB_action_inuse", true, true];
 
 	// choosen loadout
-	if ( _loadoutchoice > 0 ) then {
+	if (GRLIB_player_spawned && _loadoutchoice > 0) then {
 		GRLIB_backup_loadout = getUnitLoadout player;
 		[player, [profileNamespace, _loadouts_data select (_loadoutchoice - 1)]] call bis_fnc_loadInventory;
 		[player] call F_filterLoadout;

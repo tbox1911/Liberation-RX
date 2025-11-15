@@ -4,15 +4,6 @@
 
 waitUntil {sleep 0.1; GRLIB_player_spawned && (player getVariable ["GRLIB_score_set", 0] == 1)};
 
-// Keep player first / Reset group
-if (count (units GRLIB_player_group) > 1) then {
-	[player] joinSilent grpNull;
-	[player] joinSilent GRLIB_player_group;
-	GRLIB_player_group selectLeader player;
-	PAR_AI_bros joinSilent GRLIB_player_group;
-	{ _x setVariable ["PAR_Grp_AI", GRLIB_player_group] } forEach PAR_AI_bros;
-};
-
 private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
@@ -21,9 +12,7 @@ private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 [_score] call set_rank;
 
 // first time notice
-if (_score == 0) then {
-	createDialog "liberation_notice";
-};
+if (_score == 0) then {	createDialog "liberation_notice" };
 
 // disable UAVs
 [player] call F_correctUAVT;

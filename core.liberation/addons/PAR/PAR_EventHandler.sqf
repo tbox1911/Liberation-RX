@@ -138,9 +138,6 @@ if (_unit == player) then {
 					_vehicle setVariable ["GREUH_vehicle_damage_he", true];
 				};
 			};
-			1 fadeSound (round desired_vehvolume / 100.0);
-			3 fadeMusic (getAudioOptionVolumes select 1);
-			NRE_EarplugsActive = 1;
 			[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 			if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
 				_vehicle disableTIEquipment true;
@@ -155,7 +152,10 @@ if (_unit == player) then {
 				private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
 				private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
 				hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT", _owner, _damage, _fuel, _ammo, _cargo select 0, _cargo select 1];
-				sleep 5;
+				1 fadeSound (round desired_vehvolume / 100.0);
+				3 fadeMusic (getAudioOptionVolumes select 1);
+				NRE_EarplugsActive = 1;
+				sleep 2;
 				hintSilent "";
 			};
 		};
@@ -170,9 +170,6 @@ if (_unit == player) then {
 			objNull remoteControl _unit;
 			player switchCamera cameraView;
 		};
-		1 fadeSound 1;
-		3 fadeMusic 0;
-		NRE_EarplugsActive = 0;
 		if (!GRLIB_ACE_enabled) then {
 			if ( (getPos _unit) select 2 >= 50 && !(_unit getVariable ["AR_Is_Rappelling",false]) && (backpack _unit != "B_Parachute")) then {
 				private _para = createVehicle ["Steerable_Parachute_F",(getPos _unit),[],0,'none'];
@@ -187,6 +184,9 @@ if (_unit == player) then {
 				if (PAR_weapons_state select 0 != "") exitWith { _unit selectWeapon PAR_weapons_state };
 				if (primaryWeapon _unit != "") exitWith { _unit selectWeapon (primaryWeapon _unit) };
 			};
+			1 fadeSound 1;
+			3 fadeMusic 0;
+			NRE_EarplugsActive = 0;			
 		};
 	}];
 
