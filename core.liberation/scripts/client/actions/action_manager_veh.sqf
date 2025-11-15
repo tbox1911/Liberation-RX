@@ -137,7 +137,7 @@ while {true} do {
 	_nearmoney = (nearestObjects [player, [money_typename], _searchradius]) select { isNil {_x getVariable "GRLIB_money_action"} };
 	{
 		_unit = _x;
-		_unit addAction ["<t color='#00CC00'>" + localize "STR_TAKE_MONEY" + "</t>","scripts\client\actions\do_recycle.sqf","",102,true,true,"","[] call is_menuok", 3];
+		_unit addAction ["<t color='#00CC00'>" + localize "STR_TAKE_MONEY" + "</t>","scripts\client\actions\do_recycle.sqf","",102,true,true,"","GRLIB_player_is_menuok", 3];
 		_unit setVariable ["GRLIB_money_action", true];
 	} foreach _nearmoney;
 
@@ -158,5 +158,5 @@ while {true} do {
 		};
 		_unit setVariable ["GRLIB_fobbox_action", true];
 	} foreach _nearfobbox;
-	sleep 3;
+	sleep 2;
 };

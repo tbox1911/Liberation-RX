@@ -16,12 +16,12 @@ GRLIB_check_Dog = {
 
 GRLIB_check_DogOnDuty = {
 	private _my_dog = player getVariable ["my_dog", nil];
-	(!isNil {_my_dog getVariable ["do_find", nil]} || stopped _my_dog);
+	(GRLIB_player_is_menuok && !isNil {_my_dog getVariable ["do_find", nil]} || stopped _my_dog);
 };
 
 GRLIB_check_DogRelax = {
 	private _my_dog = player getVariable ["my_dog", nil];
-	(isNil {_my_dog getVariable ["do_find", nil]} && !(stopped _my_dog));
+	(GRLIB_player_is_menuok && isNil {_my_dog getVariable ["do_find", nil]} && !(stopped _my_dog));
 };
 
 GRLIB_checkHalo = {
@@ -58,11 +58,11 @@ GRLIB_checkAirDrop = {
 };
 
 GRLIB_checkArsenal = {
-	if (!GRLIB_player_is_menuok || GRLIB_filter_arsenal == 4 || GRLIB_arsenal_open) exitWith { false };
+	if (GRLIB_filter_arsenal == 4 || GRLIB_arsenal_open) exitWith { false };
 	private _near_arsenal = [player, "ARSENAL", GRLIB_ActionDist_5, false] call F_check_near;
 	private _mode1 = (GRLIB_enable_arsenal == 1 && (_near_arsenal || GRLIB_player_near_base));
 	private _mode2 = (GRLIB_enable_arsenal == 2 && GRLIB_player_near_base);
-	(_mode1 || _mode2)
+	(GRLIB_player_is_menuok && (_mode1 || _mode2))
 };
 
 GRLIB_checkArsenalPerso = {

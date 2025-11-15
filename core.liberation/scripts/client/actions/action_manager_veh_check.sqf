@@ -55,7 +55,7 @@ GRLIB_checkAction_Wreck = {
 
 GRLIB_checkAction_SendArsenal = {
 	params ["_target", "_unit"];
-	(GRLIB_filter_arsenal == 4 && alive _target && [_unit, _target] call is_owner && loadAbs _target > 0 && [_unit, "ARSENAL", GRLIB_ActionDist_10, false] call F_check_near)
+	(GRLIB_player_is_menuok && GRLIB_filter_arsenal == 4 && alive _target && [_unit, _target] call is_owner && loadAbs _target > 0 && [_unit, "ARSENAL", GRLIB_ActionDist_10, false] call F_check_near)
 };
 
 GRLIB_checkAction_Pickup_Weapons = {
@@ -70,7 +70,7 @@ GRLIB_checkAction_UnpackInventory = {
 
 GRLIB_checkAction_Speak = {
 	params ["_target", "_unit"];
-	(alive _target && _target getVariable ["GRLIB_civ_incd", 0] > 0)
+	(GRLIB_player_is_menuok && alive _target && _target getVariable ["GRLIB_civ_incd", 0] > 0)
 };
 
 GRLIB_checkAction_Sticky = {
