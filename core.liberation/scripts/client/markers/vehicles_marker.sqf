@@ -83,11 +83,11 @@ while {true} do {
 		_nextvehicle_owner = _nextvehicle getVariable ["GRLIB_vehicle_owner", ""];
 
 		// all vehicles
-		diag_log format ["DBG-1: %1 (%2-%3-%4) - %5", typeOf _nextvehicle, _marker_color, _marker_type, _marker_show, _nextvehicle_owner];
 		if (_nextvehicle isKindOf "AllVehicles") then {
 			if (typeOf _nextvehicle in (uavs_vehicles + static_vehicles_AI)) exitWith {
+				// as 3.20, unit in uav/static show a marker on the map regardless of setGroupIconsVisible
 				_marker_color = GRLIB_color_friendly;
-				_marker_type = "EmptyIcon";
+				//_marker_type = "EmptyIcon";
 			};
 			_marker_show = 0;
 			private _vehicle_crew = crew _nextvehicle;
@@ -180,7 +180,7 @@ while {true} do {
 			_nextmarker setMarkerTextLocal format ["%1 - %2", [_nextvehicle] call F_getLRXName, mapGridPosition _nextvehicle];
 		};
 
-		diag_log format ["DBG-2: %1 (%2-%3-%4) - %5", typeOf _nextvehicle, _marker_color, _marker_type, _marker_show, _nextvehicle_owner];
+		// diag_log format ["DBG-2: %1 (%2-%3-%4) - %5", typeOf _nextvehicle, _marker_color, _marker_type, _marker_show, _nextvehicle_owner];
 		_nextmarker setMarkerColorLocal _marker_color;
 		_nextmarker setMarkerTypeLocal _marker_type;
 		_nextmarker setMarkerAlphaLocal _marker_show;

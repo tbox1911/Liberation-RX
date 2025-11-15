@@ -1,5 +1,5 @@
 private _players_markers = [];
-private _markertype = "emptyicon";
+private _markertype = "EmptyIcon";
 
 while {true} do {
 	disableMapIndicators [false,true,false,false];

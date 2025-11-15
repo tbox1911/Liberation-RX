@@ -8,7 +8,7 @@ if (_precise) then {
 } else {
 	_pos = ([_pos, 250] call F_getRandomPos);
 	_marker setMarkerPosLocal (_pos getPos [200, 270]);
-	_marker setMarkerTypeLocal "emptyicon";
+	_marker setMarkerTypeLocal "EmptyIcon";
 	_marker_zone = createMarkerLocal [format ["side_mission_%1_zone", _text], _pos];
 	_marker_zone setMarkerShapeLocal "ELLIPSE";
 	_marker_zone setMarkerBrushLocal "FDiagonal";
