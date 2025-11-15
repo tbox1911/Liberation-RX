@@ -112,22 +112,9 @@ _opfor_vehicles = _opfor_vehicles arrayIntersect _opfor_vehicles;
 if (isNil "opfor_crew") then { opfor_crew = "O_Crew_F" };
 if (isNil "opfor_pilot") then { opfor_pilot = opfor_crew };
 
-// *** COLORS ***
-// Default WEST
-GRLIB_color_friendly = "ColorBLUFOR";
-GRLIB_color_friendly_bright = "ColorBlue";
-
-// Default EAST
-GRLIB_color_enemy = "ColorOPFOR";
-GRLIB_color_enemy_bright = "ColorRED";
-
-// Side Unknown 
-GRLIB_color_unknown = "ColorUNKNOWN";
-
 // *** CIVILIAN ***
 civilians = [];
 civilian_vehicles = [];
-GRLIB_color_civilian = "ColorCIV";
 
 if (GRLIB_mod_preset_civ in [0,1]) then {
 	_path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];

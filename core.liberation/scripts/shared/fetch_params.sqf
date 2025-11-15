@@ -381,7 +381,6 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 };
 
 abort_loading = ([GRLIB_mod_west, GRLIB_mod_east] findIf {!([_x] call GRLIB_Template_Modloaded)}) != -1;
-
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
 	FATAL! - Invalid Side selection !\n\n
@@ -392,6 +391,48 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 };
 
 diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
+
+// Faction Colors
+GRLIB_color_unknown = "ColorUNKNOWN";
+GRLIB_color_civilian = "ColorCIV";
+
+switch (GRLIB_side_friendly) do {
+	case WEST: {
+		GRLIB_color_friendly = "ColorBLUFOR";
+		GRLIB_color_friendly_bright = "ColorBlue";
+	};
+	case EAST: {
+		GRLIB_color_friendly = "ColorOPFOR";
+		GRLIB_color_friendly_bright = "ColorRED";
+	};
+	case INDEPENDENT: {
+		GRLIB_color_friendly = "ColorGUER";
+		GRLIB_color_friendly_bright = "ColorGreen";
+	};
+	default {
+		GRLIB_color_friendly = "ColorUNKNOWN";
+		GRLIB_color_friendly_bright = "ColorUNKNOWN";
+	};
+};
+
+switch (GRLIB_side_enemy) do {
+	case WEST: {
+		GRLIB_color_enemy = "ColorBLUFOR";
+		GRLIB_color_enemy_bright = "ColorBlue";
+	};
+	case EAST: {
+		GRLIB_color_enemy = "ColorOPFOR";
+		GRLIB_color_enemy_bright = "ColorRED";
+	};
+	case INDEPENDENT: {
+		GRLIB_color_enemy = "ColorGUER";
+		GRLIB_color_enemy_bright = "ColorGreen";
+	};
+	default {
+		GRLIB_color_enemy = "ColorUNKNOWN";
+		GRLIB_color_enemy_bright = "ColorUNKNOWN";
+	};
+};
 
 // Disable TFAR Relay
 if (GRLIB_TFR_radius == 0) then { GRLIB_TFR_enabled = false };
