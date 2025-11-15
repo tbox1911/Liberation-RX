@@ -44,7 +44,7 @@ while {true} do {
 	};
 
 	// Static Weapons
-	_veh_list = _veh_list + (allMissionObjects "StaticWeapon" select {
+	_veh_list = _veh_list + ((entities [["StaticWeapon"],[]]) select {
 		(_x distance2D lhd > GRLIB_fob_range) &&
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		(typeOf _x in list_static_weapons) &&
@@ -125,6 +125,7 @@ while {true} do {
 		if (_nextvehicle isKindOf "PlasticCase_01_base_F") then {
 			_marker_color = "ColorKhaki";
 			_marker_type = "loc_rearm";
+			_nextmarker setMarkerSizeLocal [1.4, 1.4];
 			if (typeOf _nextvehicle == playerbox_typename) then {
 				_marker_color = "ColorCIV";
 			};
