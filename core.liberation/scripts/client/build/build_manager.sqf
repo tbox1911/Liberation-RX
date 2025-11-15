@@ -242,6 +242,9 @@ while {true} do {
 				if (_classname isKindOf "Slingload_base_F") then {
 					_radius = 5;
 				};
+				if (_classname isKindOf "Truck_02_base_F") then {
+					_radius = 6;
+				};				
 			};
 		};
 		if (!repeatbuild) then { build_distance = 3 max _dist };
