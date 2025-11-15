@@ -71,7 +71,8 @@ if (GRLIB_enable_drones) then {
 if (count uavs_vehicles > 0) then {
 	uavs_vehicles append [
 		"B_UAV_01_F", "B_UAV_06_F",
-		"O_UAV_01_F", "O_UAV_06_F"
+		"O_UAV_01_F", "O_UAV_06_F",
+		"I_UAV_01_F", "I_UAV_06_F"
 	];
 	uavs_light = "";
 	if (air_vehicles findIf {_x select 0 == "B_UAV_01_F"} >= 0) then { uavs_light = "B_UAV_01_F" };
