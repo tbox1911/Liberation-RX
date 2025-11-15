@@ -348,6 +348,16 @@ if (GRLIB_side_verif == 1 && GRLIB_side_friendly == GRLIB_side_enemy) then {
 	GRLIB_side_enemy = ([WEST, EAST, INDEPENDENT] - [GRLIB_side_friendly]) select 0;
 };
 
+if (GRLIB_side_civilian in [GRLIB_side_friendly, GRLIB_side_enemy]) then { abort_loading = true };
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Side Faction Verification Failed !\n\n
+	Civilian Side is forbiden - Side West (%1) / Side East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Change faction or Edit the template.\n
+	*********************************", GRLIB_side_friendly, GRLIB_side_enemy];
+};
+
 if (GRLIB_side_friendly == GRLIB_side_enemy) then { abort_loading = true };
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
