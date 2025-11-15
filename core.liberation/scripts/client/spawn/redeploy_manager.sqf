@@ -37,26 +37,33 @@ respawn_camera camcommit 0;
 private _standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
 private _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
 private _mobile = false;
-private _loadouts_data = [];
 private _loadout_controls = [101,203,205];
 
+lbClear 203;
 if (GRLIB_player_spawned) then {
-	_saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
-	_counter = 0;
-
-	if ( GRLIB_enable_arsenal > 0 && !isNil "_saved_loadouts" ) then {
+	// Load saved loadouts
+	lbAdd [203, "---"];
+	lbSetData [203, 0, "0"];
+	private _saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
+	if (GRLIB_enable_arsenal > 0 && !isNil "_saved_loadouts") then {
+		private _counter = 1;
+		private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
+		_unit allowDamage false;
 		{
-			if ( _counter % 2 == 0 && _counter < 40) then {
-				_loadouts_data pushback _x;
+			if (_forEachIndex % 2 == 0 && _forEachIndex < 40) then {
+				lbAdd [203, _x];
+				[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
+				_price = [_unit] call F_loadoutPrice;
+				lbSetValue [203, _counter, _price];
+				_counter = _counter + 1;
 			};
-			_counter = _counter + 1;
 		} foreach _saved_loadouts;
+		deleteVehicle _unit;
+
 		{ ctrlShow [_x, true] } foreach _loadout_controls;
 	};
 
-	lbAdd [ 203, "--"] ;
-	{ lbAdd [ 203, _x ]; } foreach _loadouts_data;
-	lbSetCurSel [ 203, 0 ];
+	if (lbSize 203 > 0) then { lbSetCurSel [203, 0] };
 } else {
 	{ ctrlShow [_x, false] } foreach _loadout_controls;
 };
@@ -90,16 +97,16 @@ lbSetCurSel [201, 0];
 while { dialog && alive player && deploy == 0} do {
 	if (!alive player) exitWith {};
 
-	if ( lbCurSel 201 != _oldsel ) then {
+	if (lbCurSel 201 != _oldsel) then {
 		_oldsel = lbCurSel 201;
 		_objectpos = (_choiceslist select _oldsel) select 1;
 		_startdist = 120;
 		_enddist = 120;
 		_alti = 35;
 
-		if ( isNil "_objectpos" ) then { _objectpos = zeropos };
+		if (isNil "_objectpos") then { _objectpos = zeropos };
 
-		if ( surfaceIsWater _objectpos ) then {
+		if (surfaceIsWater _objectpos) then {
 			respawn_object setposasl [_objectpos select 0, _objectpos select 1, _alti];
 		} else {
 			respawn_object setpos ((_choiceslist select _oldsel) select 1);
@@ -122,10 +129,10 @@ while { dialog && alive player && deploy == 0} do {
 		respawn_camera camcommit 90;
 	};
 
-	if ( _old_fullmap != fullmap ) then {
+	if (_old_fullmap != fullmap) then {
 		_old_fullmap = fullmap;
-		if ( fullmap % 2 == 1 ) then {
-			((findDisplay 5201) displayCtrl 251) ctrlSetPosition [ (_frame_pos select 0) + (_frame_pos select 2), (_frame_pos select 1), (0.6 * safezoneW), (_frame_pos select 3)];
+		if (fullmap % 2 == 1) then {
+			((findDisplay 5201) displayCtrl 251) ctrlSetPosition [(_frame_pos select 0) + (_frame_pos select 2), (_frame_pos select 1), (0.6 * safezoneW), (_frame_pos select 3)];
 		} else {
 			((findDisplay 5201) displayCtrl 251) ctrlSetPosition _standard_map_pos;
 		};
@@ -156,15 +163,23 @@ if (deploy == 1) then {
 
 	// choosen loadout
 	if (GRLIB_player_spawned && _loadoutchoice > 0) then {
-		GRLIB_backup_loadout = getUnitLoadout player;
-		[player, [profileNamespace, _loadouts_data select (_loadoutchoice - 1)]] call bis_fnc_loadInventory;
-		[player] call F_filterLoadout;
-		[player] call F_payLoadout;
+		private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
+		private _loadout = lbText [203, _loadoutchoice];
+		private _loadout_price = lbValue [203, _loadoutchoice];
+		if (_ammo_collected >= _loadout_price) then {
+			[player, [profileNamespace, _loadout]] call bis_fnc_loadInventory;
+			[player] call F_filterLoadout;
+			[player] call F_payLoadout;
+		} else {
+			private _msg = format ["Can't load Redeploy loadout: %1", localize "STR_GRLIB_NOAMMO"];
+			hintSilent _msg;
+			gamelogic globalChat _msg;
+		};
 	};
 
 	// Redeploy
 	_spawn_str = (_choiceslist select _idxchoice) select 0;
-	if ( _spawn_str == _basenamestr) then {
+	if (_spawn_str == _basenamestr) then {
 		// LHD (Chimera)
 		player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
 		[_spawn_str, false] spawn spawn_camera;

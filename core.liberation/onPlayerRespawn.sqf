@@ -2,6 +2,7 @@ params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 
 GRLIB_player_configured = false;
 [_newUnit] call clean_unit;
+_newUnit switchMove "";
 waitUntil { sleep 0.1; !isNil "GRLIB_player_group" };
 
 private _unit = objNull;
@@ -17,11 +18,20 @@ if (GRLIB_side_friendly == WEST) then {
     _unit = GRLIB_player_group createUnit [_class, position player, [], 1, "NONE"];
     [_unit] joinSilent GRLIB_player_group;
     [_unit] call clean_unit;
+    _unit switchMove "";
     selectPlayer _unit;
-    _unit setVariable ["my_dog", (_oldUnit getVariable ["my_dog", nil])];
-    _unit setVariable ["my_squad", (_oldUnit getVariable ["my_squad", nil])];
-    _unit setVariable ["GRLIB_player_context_loaded", (_oldUnit getVariable ["GRLIB_player_context_loaded", false]), true];
-    _unit setVariable ["GRLIB_squad_context_loaded", (_oldUnit getVariable ["GRLIB_squad_context_loaded", false]), true];
+    if (!isNull _oldUnit) then {
+        // Set player variables
+        _unit setVariable ["my_dog", (_oldUnit getVariable ["my_dog", nil])];
+        _unit setVariable ["my_squad", (_oldUnit getVariable ["my_squad", nil])];
+        _unit setVariable ["GRLIB_player_context_loaded", (_oldUnit getVariable ["GRLIB_player_context_loaded", false]), true];
+        _unit setVariable ["GRLIB_squad_context_loaded", (_oldUnit getVariable ["GRLIB_squad_context_loaded", false]), true];
+        _unit setVariable ["GREUH_score_count", (_oldUnit getVariable ["GREUH_score_count", 0]), true];
+        _unit setVariable ["GREUH_score_last", (_oldUnit getVariable ["GREUH_score_last", 0]), true];
+        _unit setVariable ["GREUH_ammo_count", (_oldUnit getVariable ["GREUH_ammo_count", 0]), true];
+        _unit setVariable ["GREUH_fuel_count", (_oldUnit getVariable ["GREUH_fuel_count", 0]), true];
+        _unit setVariable ["GREUH_reput_count", (_oldUnit getVariable ["GREUH_reput_count", 0]), true];
+    };
     [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
     sleep 0.2;
     deleteVehicle _newUnit;
@@ -46,7 +56,7 @@ if (count (units GRLIB_player_group) > 1) then {
 	[player] joinSilent grpNull;
 	[player] joinSilent GRLIB_player_group;
 	GRLIB_player_group selectLeader player;
-	{ 
+	{
         if (side _x != GRLIB_side_civilian) then { [_x] joinSilent GRLIB_player_group };
         _x setVariable ["PAR_Grp_AI", GRLIB_player_group];
     } forEach PAR_AI_bros;
@@ -55,19 +65,3 @@ if (count (units GRLIB_player_group) > 1) then {
 // Remove old unit
 removeAllWeapons _oldUnit;
 deleteVehicle _oldUnit;
-
-// // Reset group
-// if (GRLIB_Undercover_mode == 1) then {
-//     if (side GRLIB_player_group == GRLIB_side_civilian && !(isNil {player getVariable "GRLIB_unit_detected"})) then {
-//         private _player_units = (units GRLIB_player_group);
-//         GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
-//         waitUntil {
-//             [player] joinSilent GRLIB_player_group;
-//             sleep 0.5;
-//             (player in (units GRLIB_player_group));
-//         };
-//         [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
-//         _player_units joinSilent GRLIB_player_group;
-//         { _x setVariable ["PAR_Grp_AI", GRLIB_player_group] } forEach PAR_AI_bros;
-//     };
-// };
