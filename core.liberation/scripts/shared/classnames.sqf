@@ -74,12 +74,9 @@ if (count uavs_vehicles > 0) then {
 		"O_UAV_01_F", "O_UAV_06_F"
 	];
 	uavs_light = "";
-	if (air_vehicles findIf {_x select 0 == "B_UAV_01_F"} >= 0) then {
-		uavs_light = "B_UAV_01_F";
-	};
-	if (air_vehicles findIf {_x select 0 == "O_UAV_01_F"} >= 0) then {
-		uavs_light = "O_UAV_01_F";
-	};
+	if (air_vehicles findIf {_x select 0 == "B_UAV_01_F"} >= 0) then { uavs_light = "B_UAV_01_F" };
+	if (air_vehicles findIf {_x select 0 == "O_UAV_01_F"} >= 0) then { uavs_light = "O_UAV_01_F" };
+	if (air_vehicles findIf {_x select 0 == "I_UAV_01_F"} >= 0) then { uavs_light = "I_UAV_01_F" };
 	if (uavs_light != "") then {
 		air_vehicles insert [1, [[box_uavs_typename,0,80,0,GRLIB_perm_log]]];
 	};
@@ -248,6 +245,7 @@ support_vehicles = support_vehicles + [
 	[ammobox_o_typename,0,round(300/GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[ammobox_i_typename,0,round(300/GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[basic_weapon_typename,0,round(150 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
+	[box_uavs_typename,0,80,0,GRLIB_perm_hidden],
 	[waterbarrel_typename,0,110,0,GRLIB_perm_hidden],
 	[fuelbarrel_typename,0,120,50,GRLIB_perm_hidden],
 	[foodbarrel_typename,0,130,0,GRLIB_perm_hidden]

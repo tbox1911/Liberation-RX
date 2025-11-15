@@ -45,6 +45,7 @@ if (_manned) then {
 
 // UAVs box
 if (_classname == box_uavs_typename) then {
+	_vehicle setMaxLoad 0;
 	private _loaded_uavs = [];
 	for "_n" from 1 to box_uavs_max do { _loaded_uavs pushBack uavs_light };
 	[_vehicle, _loaded_uavs] call load_object_direct;

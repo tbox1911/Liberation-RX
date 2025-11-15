@@ -1,7 +1,6 @@
 waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
 private _no_marker_classnames = [
-	playerbox_typename,
 	PAR_grave_box_typename,
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
@@ -50,7 +49,7 @@ while {true} do {
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		(typeOf _x in list_static_weapons) &&
 		(
-			!(_x getVariable ['R3F_LOG_disabled', false]) || 
+			!(_x getVariable ['R3F_LOG_disabled', false]) ||
 			(side _x == GRLIB_side_friendly)
 		)
 	});
@@ -121,6 +120,14 @@ while {true} do {
 			_marker_color = "Color1_FD_F";
 			_marker_type = "loc_refuel";
 			_nextmarker setMarkerSizeLocal [1.4, 1.4];
+		};
+
+		if (_nextvehicle isKindOf "PlasticCase_01_base_F") then {
+			_marker_color = "ColorKhaki";
+			_marker_type = "loc_rearm";
+			if (typeOf _nextvehicle == playerbox_typename) then {
+				_marker_color = "ColorCIV";
+			};
 		};
 
 		// all vehicles

@@ -139,14 +139,6 @@ while {true} do {
 		_unit setVariable ["GRLIB_money_action", true];
 	} foreach _nearmoney;
 
-	// Drone Box
-	_neardronebox = (nearestObjects [player, [box_uavs_typename], _searchradius]) select { isNil {_x getVariable "GRLIB_dronebox_action"} };
-	{
-		_unit = _x;
-		_unit addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-505,true,true,"","[] call is_menuok", 3];
-		_unit setVariable ["GRLIB_dronebox_action", true];
-	} foreach _neardronebox;
-
 	// FOB Box
 	_nearfobbox = (nearestObjects [player, [FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _searchradius]) select { isNil {_x getVariable "GRLIB_fobbox_action"} };
 	{

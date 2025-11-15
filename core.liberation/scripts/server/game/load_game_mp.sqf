@@ -286,6 +286,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_nextclass == box_uavs_typename) then {
+			_nextbuilding setMaxLoad 0;
 			[_nextbuilding, (_x select 5)] call load_object_direct;
 		};
 
