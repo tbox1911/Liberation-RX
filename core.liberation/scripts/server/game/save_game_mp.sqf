@@ -6,7 +6,7 @@ if (!isNil "GRLIB_save_in_progress") exitWith {};
 diag_log format ["--- LRX Save start at %1", time];
 GRLIB_save_in_progress = true;
 
-if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
+if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 	if (GRLIB_param_wipe_keepscore == 1) then {
 		private _player_scores = [];
 		{
