@@ -44,7 +44,6 @@ storage_medium_typename = "ContainmentArea_02_black_F";
 blufor_texture_overide = [];
 blufor_flag = "Flag_NATO_F";
 opfor_flag = "Flag_CSAT_F";
-opfor_crew = "O_Crew_F";
 opfor_fuel_truck = "O_Truck_03_fuel_F";
 opfor_transport_truck = "O_Truck_03_covered_F";
 opfor_transport_helo = "O_Heli_Transport_04_covered_F";

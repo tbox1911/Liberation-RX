@@ -109,6 +109,9 @@ _opfor_vehicles = _opfor_vehicles arrayIntersect _opfor_vehicles;
 	if !(_x in _opfor_recyclable) then { diag_log format ["--- LRX Config Check (%1) : vehicle %2 is NOT defined in opfor_recyclable !", _forEachIndex, _x]};
 } forEach _opfor_vehicles;
 
+if (isNil "opfor_crew") then { opfor_crew = "O_Crew_F" };
+if (isNil "opfor_pilot") then { opfor_pilot = opfor_crew };
+
 // *** COLORS ***
 // Default WEST
 GRLIB_color_friendly = "ColorBLUFOR";
