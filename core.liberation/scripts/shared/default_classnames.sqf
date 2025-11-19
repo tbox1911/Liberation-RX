@@ -72,6 +72,7 @@ WRHS_Man = "C_Man_Fisherman_01_F";
 uavs_terminal_typename = "B_UavTerminal";
 box_uavs_typename = "Land_PlasticCase_01_medium_F";
 box_uavs_max = 6;
+uavs_light = "B_UAV_01_F";
 uavs_def = ["UAV_01_base_F","UAV_02_base_F","UAV_03_base_F","UAV_04_base_F","UAV_05_Base_F","UAV_06_base_F","UGV_01_base_F"];
 uavs_west = [];
 boats_west = [];

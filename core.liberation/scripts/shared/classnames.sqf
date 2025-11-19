@@ -74,7 +74,7 @@ if (count uavs_vehicles > 0) then {
 		"O_UAV_01_F", "O_UAV_06_F",
 		"I_UAV_01_F", "I_UAV_06_F"
 	];
-	uavs_light = "";
+
 	if (air_vehicles findIf {_x select 0 == "B_UAV_01_F"} >= 0) then { uavs_light = "B_UAV_01_F" };
 	if (air_vehicles findIf {_x select 0 == "O_UAV_01_F"} >= 0) then { uavs_light = "O_UAV_01_F" };
 	if (air_vehicles findIf {_x select 0 == "I_UAV_01_F"} >= 0) then { uavs_light = "I_UAV_01_F" };
@@ -369,7 +369,7 @@ if ( isNil "a3w_truck_open" ) then {
 // *** SOURCES ***
 
 // Static Weapons
-blufor_statics = (static_vehicles select {!(( _x select 0) in uavs_vehicles)}) apply { _x select 0 };
+blufor_statics = (static_vehicles select {!(( _x select 0) in (uavs_vehicles + static_vehicles_AI))}) apply { _x select 0 };
 list_static_weapons = [a3w_resistance_static] + blufor_statics + opfor_statics;
 list_static_weapons = list_static_weapons arrayIntersect list_static_weapons;
 
