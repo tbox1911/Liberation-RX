@@ -146,17 +146,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 
-// LRX Arsenal
-[] execVM "addons\LARs\liberationArsenal.sqf";
-sleep 1;
-waituntil {
-	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
-	uIsleep 1;
-	titleText ["... Please Wait ...", "BLACK FADED", 100];
-	uIsleep 1;
-	(LRX_arsenal_init_done);
-};
-
 // Player group
 startgame = 0;
 GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
@@ -169,6 +158,17 @@ waituntil {
 };
 
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
+
+// LRX Arsenal
+[] execVM "addons\LARs\liberationArsenal.sqf";
+sleep 1;
+waituntil {
+	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
+	uIsleep 1;
+	titleText ["... Please Wait ...", "BLACK FADED", 100];
+	uIsleep 1;
+	(LRX_arsenal_init_done);
+};
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_client.sqf";
 
 // LRX Addons
