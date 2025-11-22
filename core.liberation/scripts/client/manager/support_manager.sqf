@@ -15,6 +15,7 @@ private _maxsec_def = 3;             // maximum magazines unit can take (seconda
 private _minsec_def = 1;             // minimal magazines before unit need to reload
 private _added_pri = 0;
 private _added_sec = 0;
+private _uiticks = 0;
 
 private _artillery = [
 	"MBT_01_base_F",
@@ -54,9 +55,12 @@ while {true} do {
 				if (_near_arsenal && (_primary_weapon != "" || _secondary_weapon != "")) then {
 					_maxpri = _maxpri_def;
 					_minpri = _minpri_def;
+					if ( _primary_weapon find "LMG" >= 0 || _primary_weapon find "MMG" >= 0 || _primary_weapon find "RPK12" >= 0 ) then {
+						_minpri = 1;
+						_maxpri = 3
+					};
 
 					// check primary Weapon
-					if ( _primary_weapon find "LMG" >= 0 || _primary_weapon find "MMG" >= 0 || _primary_weapon find "RPK12" >= 0 ) then { _minpri = 1; _maxpri = 3 };
 					_needammo1 = [_unit, _primary_weapon, _minpri] call F_UnitNeedAmmo;
 					if (_needammo1) then {
 						_unit groupchat localize "STR_DIALOG_REARM_PRIMARY";
@@ -91,7 +95,7 @@ while {true} do {
 				// Medic
 				_near_medic = [_unit, "MEDIC", _distarsenal] call F_check_near;
 				if (_near_medic) then {
-					if (damage _unit > 0.1 && (behaviour _unit) != "COMBAT") then {
+					if (damage _unit > 0.1 && (behaviour _unit) != "COMBAT" && isNil {_unit getVariable "PAR_heal"}) then {
 						_needmedic = true;
 					};
 				};
@@ -99,7 +103,9 @@ while {true} do {
 				// Animation
 				if (_needammo1 || _needammo2) then {
 					if ((_added_pri + _added_sec) == 0) then {
-						_unit groupchat localize "STR_DIALOG_REARM_FAILED_FULL";
+						if (_uiticks % 6 == 0) then {
+							_unit groupchat localize "STR_DIALOG_REARM_FAILED_FULL";
+						};
 					} else {
 						_unit switchMove 'WeaponMagazineReloadStand';
 						_unit playMoveNow 'WeaponMagazineReloadStand';
@@ -173,8 +179,10 @@ while {true} do {
 							hintSilent _screenmsg;
 						} else {
 							if (_unit distance2D player <= 30) then {
-								_screenmsg = format [localize "STR_REARM_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
-								titleText [_screenmsg, "PLAIN DOWN"];
+								if (_uiticks % 6 == 0) then {
+									_screenmsg = format [localize "STR_REARM_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
+									titleText [_screenmsg, "PLAIN DOWN"];
+								};
 							};
 						};
 					};
@@ -198,8 +206,10 @@ while {true} do {
 							hintSilent _screenmsg;
 						} else {
 							if (_unit distance2D player <= 30) then {
-								_screenmsg = format [localize "STR_REPAIR_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
-								titleText [_screenmsg, "PLAIN DOWN"];
+								if (_uiticks % 6 == 0) then {
+									_screenmsg = format [localize "STR_REPAIR_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
+									titleText [_screenmsg, "PLAIN DOWN"];
+								};
 							};
 						};
 					};
@@ -223,8 +233,10 @@ while {true} do {
 							hintSilent _screenmsg;
 						} else {
 							if (_unit distance2D player <= 30) then {
-								_screenmsg = format [localize "STR_REFUEL_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
-								titleText [_screenmsg, "PLAIN DOWN"];
+								if (_uiticks % 6 == 0) then {
+									_screenmsg = format [localize "STR_REFUEL_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
+									titleText [_screenmsg, "PLAIN DOWN"];
+								};
 							};
 						};
 					};
@@ -240,13 +252,17 @@ while {true} do {
 	};
 
 	// Show Hint
-	private _tower = [player] call F_getNearestRadioTower;
-	if (!isNil "_tower") then {
-		if ([GRLIB_capture_size, _tower, opfor_sectors] call F_getNearestSector != "") then {
-			_msg = localize "STR_DESTROY_TOWER";
-			[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
+	if (_uiticks % 6 == 0) then {
+		private _tower = [player] call F_getNearestRadioTower;
+		if (!isNil "_tower") then {
+			if ([GRLIB_capture_size, _tower, opfor_sectors] call F_getNearestSector != "") then {
+				_msg = localize "STR_DESTROY_TOWER";
+				[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
+			};
 		};
 	};
 
-	sleep 30;
+	_uiticks = _uiticks + 1;
+	if (_uiticks > 1000) then { _uiticks = 0 };
+	sleep 5;
 };
