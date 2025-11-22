@@ -3,7 +3,7 @@ __EXEC(GRLIB_Player_variables = allVariables profileNamespace)
 class Header {
 	gameType = CTI;
 	minPlayers = 1;
-	maxPlayers = 10;
+	maxPlayers = 22;
 };
 
 author = $STR_MISSION_AUTHOR;
