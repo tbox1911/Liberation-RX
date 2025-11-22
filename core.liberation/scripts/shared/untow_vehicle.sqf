@@ -9,7 +9,6 @@ if (!isNull _tractor) exitWith {
 	_tractor setVariable ["R3F_LOG_remorque", objNull, true];
 	detach _vehicle;
 	_vehicle setVelocity [0, 0, 0.1];
-	sleep 1;
 	[_vehicle] spawn F_vehicleUnflip;
 };
 
@@ -20,6 +19,5 @@ if (!isNull _tracted) exitWith {
 	_vehicle setVariable ["R3F_LOG_remorque", objNull, true];
 	detach _tracted;
 	_tracted setVelocity [0, 0, 0.1];
-	sleep 1;
 	[_tracted] spawn F_vehicleUnflip;	
 };
