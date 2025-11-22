@@ -81,11 +81,17 @@ for "_idx" from 0 to (count GRLIB_all_fobs - 1) do {
 
 private _mobile_respawn = ([] call F_getMobileRespawns);
 _mobile_respawn = ([_mobile_respawn, [player], {_input0 distance2D _x}, 'ASCEND'] call BIS_fnc_sortBy);
-private ["_vehicle", "_player"];
+private ["_vehicle", "_player", "_name"];
 for "_idx" from 0 to ((count _mobile_respawn) -1) do {
 	_vehicle = _mobile_respawn select _idx;
-	_player = (_vehicle getVariable ["GRLIB_vehicle_owner", ""]) call BIS_fnc_getUnitByUID;
-	_choiceslist append [[format ["%1 - %2 #%3", [_vehicle] call F_getLRXName, [_player] call get_player_name, _idx], getPos _vehicle, _vehicle]];
+	_uid = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
+	if (_uid in ["lrx", "server"]) then {
+		_name = "LRX Server";
+	} else {
+		_player = _uid call BIS_fnc_getUnitByUID;
+		_name = [_player] call get_player_name;
+	};
+	_choiceslist append [[format ["%1 - %2 #%3", [_vehicle] call F_getLRXName, _name, _idx], getPos _vehicle, _vehicle]];
 };
 
 lbClear 201;
