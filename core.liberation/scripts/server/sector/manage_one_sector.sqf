@@ -39,7 +39,7 @@ private _squad4 = [];
 private _infsquad4 = "infantry";
 private _squad5 = [];
 private _infsquad5 = "infantry";
-private _max_prisonners = 5;
+private _max_prisonners = 4;
 private _sector_despawn_tickets = GRLIB_despawn_tickets;
 private _nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
 private _active_players = [_sector_pos, (GRLIB_sector_size * 2)] call F_getNearbyPlayers;
@@ -255,7 +255,7 @@ if (count _vehtospawn > 0) then {
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
 			[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
-			{ _managed_units pushback _x } foreach (crew _vehicle);
+			//{ _managed_units pushback _x } foreach (crew _vehicle);
 		};
 		sleep 1;
 		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, count _vehtospawn, _foreachIndex, 40, 60], _sectorName];
@@ -404,7 +404,7 @@ while {true} do {
 		} else {
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 		};
-		private _enemy_left = (_sector_pos nearEntities ["CAManBase", _local_capture_size * 1.2]) select { (side _x == GRLIB_side_enemy) && !(_x getVariable ["GRLIB_mission_AI", false]) };
+		private _enemy_left = (_sector_pos nearEntities ["CAManBase", (_local_capture_size * 1.2)]) select { (side _x == GRLIB_side_enemy) && !(_x getVariable ["GRLIB_mission_AI", false]) };
 		{
 			if (_max_prisonners > 0) then {
 				if ((floor random 100) <= GRLIB_surrender_chance) then {
@@ -451,7 +451,7 @@ while {true} do {
 	};
 
 	if (!GRLIB_Commander_mode) then {
-		if (([_sector_pos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
+		if (([_sector_pos, (_local_capture_size * 1.2), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
 			_sector_despawn_tickets = _sector_despawn_tickets - 1;
 		} else {
 			_sector_despawn_tickets = GRLIB_despawn_tickets;
@@ -505,14 +505,8 @@ if (_sector in active_sectors) then {
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, _local_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
-{
-	if (_x isKindOf "CAManBase") then {
-		deleteVehicle _x;
-	} else {
-		[_x] spawn clean_vehicle;
-	};
-	sleep 0.1;
-} forEach (_managed_vehicles + _managed_units);
+{ deleteVehicle _x; sleep 0.05 } forEach _managed_units;
+{ [_x] spawn clean_vehicle; sleep 0.05 } forEach _managed_vehicles;
 [_sector_pos] call clearlandmines;
