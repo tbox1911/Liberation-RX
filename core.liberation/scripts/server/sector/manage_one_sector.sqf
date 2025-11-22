@@ -255,7 +255,6 @@ if (count _vehtospawn > 0) then {
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
 			[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
-			//{ _managed_units pushback _x } foreach (crew _vehicle);
 		};
 		sleep 1;
 		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, count _vehtospawn, _foreachIndex, 40, 60], _sectorName];
