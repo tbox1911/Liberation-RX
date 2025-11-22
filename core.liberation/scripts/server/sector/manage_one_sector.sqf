@@ -451,7 +451,7 @@ while {true} do {
 	};
 
 	if (!GRLIB_Commander_mode) then {
-		if (([_sector_pos, (_local_capture_size * 1.2), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
+		if (([_sector_pos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
 			_sector_despawn_tickets = _sector_despawn_tickets - 1;
 		} else {
 			_sector_despawn_tickets = GRLIB_despawn_tickets;
@@ -505,7 +505,7 @@ if (_sector in active_sectors) then {
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, _local_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
 { deleteVehicle _x; sleep 0.05 } forEach _managed_units;
 { [_x] spawn clean_vehicle; sleep 0.05 } forEach _managed_vehicles;
