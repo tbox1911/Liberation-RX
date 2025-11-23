@@ -31,8 +31,8 @@ if (_score >= GRLIB_min_score_player) then {
 			_ai_group = _context select 2;
 		};
 	};
-	private _personal_arsenal = _player getVariable [format ["GRLIB_personal_arsenal_%1", _uid], []];
-	private _virtual_garage = _player getVariable [format ["GRLIB_virtual_garage_%1", _uid], []];
+	private _personal_arsenal = _player getVariable ["GRLIB_personal_arsenal", []];
+	private _virtual_garage = _player getVariable ["GRLIB_virtual_garage", []];
 	localNamespace setVariable [format ["player_context_%1", _uid], [_uid, _loadout, _ai_group, _personal_arsenal, _virtual_garage]];
 	diag_log format ["--- LRX player %1 profile Saved.", name _player];
 };

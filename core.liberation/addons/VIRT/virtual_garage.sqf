@@ -1,6 +1,8 @@
 // LRX Virtual Garage
 // by pSiKO v2.0
 
+if (isNil "GRLIB_virtual_garage") exitWith {};
+
 createDialog "VIRT_vehicle_garage";
 waitUntil { dialog };
 
@@ -105,7 +107,7 @@ while { dialog && alive player } do {
 				{_lst_grl pushback (typeOf _x)} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 				GRLIB_virtual_garage append [[typeOf _vehicle,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_grl]];
 				[_vehicle, true, true] call clean_vehicle;
-				player setVariable [format ["GRLIB_virtual_garage_%1", PAR_Grp_ID], GRLIB_virtual_garage, true];
+				player setVariable ["GRLIB_virtual_garage", GRLIB_virtual_garage, true];
 				hintSilent (format [localize "STR_LOADED", _vehicle_name]);
 			};
 
@@ -124,7 +126,7 @@ while { dialog && alive player } do {
 				if (build_confirmed == 0) then {
 					hintSilent (format ["Vehicle %1\nUnloaded from Garage.", [(_vehicle select 0)] call F_getLRXName]);
 					GRLIB_virtual_garage deleteAt _selected_item;
-					player setVariable [format ["GRLIB_virtual_garage_%1", PAR_Grp_ID], GRLIB_virtual_garage, true];
+					player setVariable ["GRLIB_virtual_garage", GRLIB_virtual_garage, true];
 				};
 			};
 

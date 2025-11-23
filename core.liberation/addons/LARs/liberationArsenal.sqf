@@ -50,7 +50,7 @@ if (GRLIB_filter_arsenal == 0) exitWith {
 if (GRLIB_filter_arsenal == 4) exitWith {
 	waitUntil {
 		sleep 1;
-		GRLIB_personal_arsenal = player getVariable format ["GRLIB_personal_arsenal_%1", PAR_Grp_ID];
+		GRLIB_personal_arsenal = player getVariable "GRLIB_personal_arsenal";
 		!(isNil "GRLIB_personal_arsenal")
 	};
 	GRLIB_personal_box_capacity = 30000;
