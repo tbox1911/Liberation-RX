@@ -48,6 +48,7 @@ else
 		if (alive player) then
 		{
 			systemChat STR_R3F_LOG_action_detacher_fait;
+			[_objet] spawn F_vehicleUnflip;	
 		};
 	}
 	else
