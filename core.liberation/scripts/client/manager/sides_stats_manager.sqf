@@ -39,6 +39,11 @@ while {true} do {
 				if (_opf > 0) then {_msg = format [localize "STR_STATUS_RES_OPF", _res, _opf]};
 			};
 
+			if (_mission == "STR_VEHICLEREP") then {
+				_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size && (_x getVariable ["GRLIB_mission_AI", false])} count (units GRLIB_side_enemy);		
+				if (_opf > 0) then {_msg = format [localize "STR_STATUS_OPF_ONLY", _opf]} else {_msg = "Repair the vehicle !!"};
+			};
+
 			// Others
 			if (_mission in _stats_marker) then {
 				_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size && (_x getVariable ["GRLIB_mission_AI", false])} count (units GRLIB_side_enemy);
@@ -48,7 +53,7 @@ while {true} do {
 	};
 
 	// Special Delivery
-	if ( !isNil "GRLIB_A3W_Mission_SD" ) then {
+	if !(isNil "GRLIB_A3W_Mission_SD") then {
 		_res = (GRLIB_A3W_Mission_SD select 1) select 3;
 		if (player distance2D _res < GRLIB_capture_size) then {
 			_opf = { alive _x && _x distance2D _res < GRLIB_sector_size && (_x getVariable ["GRLIB_mission_AI", false])} count (units GRLIB_side_enemy);
