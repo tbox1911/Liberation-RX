@@ -14,6 +14,17 @@ VAM_arsenal_cargo_class_names = [
 	"Land_BagFence_Short_F"
 ] + blufor_statics;
 
+VAM_arsenal_inventory_class_names = [
+	PAR_Medikit,
+	PAR_AidKit,
+	"ToolKit",
+	"SatchelCharge_Remote_Mag",
+	"DemoCharge_Remote_Mag",
+	"O_NVGoggles_urb_F",
+	"HandGrenade",
+	"FlareWhite_F"		
+];
+
 // Default source for Shop
 VAM_enable_weapons = false;
 VAM_enable_magazines = false;
@@ -102,6 +113,6 @@ if (VAM_enable_magazines) then {
 	_arsenal_magazines sort true;
 };
 
-private _arsenal_class_names = [] + whitelisted_from_arsenal + (_arsenal_weapons + _arsenal_uniforms + _arsenal_backpacks + _arsenal_glasses + _arsenal_magazines);
+private _arsenal_class_names = [] + (_arsenal_weapons + _arsenal_uniforms + _arsenal_backpacks + _arsenal_glasses + _arsenal_magazines);
 _arsenal_class_names = _arsenal_class_names arrayIntersect _arsenal_class_names;
-VAM_arsenal_class_names = VAM_arsenal_cargo_class_names + _arsenal_class_names;
+VAM_arsenal_class_names = VAM_arsenal_cargo_class_names + _arsenal_class_names + VAM_arsenal_inventory_class_names;

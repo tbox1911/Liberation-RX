@@ -90,12 +90,7 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 	// S'assurer que le type d'objet � charger est transportable
 	if !(_fonctionnalites select R3F_LOG_IDX_can_be_transported_cargo) then
 	{
-		diag_log format ["[Auto-load ""%1"" in ""%2""] : %3",
-			[_classe] call F_getLRXName,
-			[_transporteur] call F_getLRXName,
-			"The object is not a transporable class."];
-
-		systemChat format ["[Auto-load ""%1"" in ""%2""] : %3",
+		gamelogic globalChat format ["[Auto-load ""%1"" in ""%2""] : %3",
 			[_classe] call F_getLRXName,
 			[_transporteur] call F_getLRXName,
 			"The object is not a transporable class."];
