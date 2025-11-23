@@ -29,7 +29,7 @@ if (!isNil "GRLIB_LRX_debug") then {
 };
 if (_towed || _maned || (_owned && !_opfed) || _fobed || _blued) exitWith { false };
 
-diag_log format ["Cleanup vehicle %1 at %2", typeOf _vehicle, time];
+// diag_log format ["Cleanup vehicle %1 at %2", typeOf _vehicle, time];
 
 // unTow
 [_vehicle] call untow_vehicle;
