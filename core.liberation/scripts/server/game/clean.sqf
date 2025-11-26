@@ -166,7 +166,7 @@ while {GRLIB_run_cleanup} do {
 
 			// DELETE AROUND FOB
 			{
-				if (([_x] call F_getNearestFob) < GRLIB_capture_size) then { deleteVehicle _x };
+				if (_x distance2D ([_x] call F_getNearestFob) < GRLIB_capture_size) then { deleteVehicle _x };
 			} forEach allDeadMen;
 		};
 		sleep 60;
