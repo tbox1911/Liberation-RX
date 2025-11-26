@@ -163,6 +163,11 @@ while {GRLIB_run_cleanup} do {
 
 			// LRX TTL UNITS DELETE
 			[] call _delete_LRX_TTL;
+
+			// DELETE AROUND FOB
+			{
+				if (([_x] call F_getNearestFob) < GRLIB_capture_size) then { deleteVehicle _x };
+			} forEach allDeadMen;
 		};
 		sleep 60;
 		_sleep = _sleep - 60;
