@@ -444,7 +444,7 @@ while {true} do {
 		};
 		[_task] spawn {
 			params ["_task"];
-			sleep 30;
+			sleep 120;
 			[_task, true, true] call BIS_fnc_deleteTask;
 		};
 	};
