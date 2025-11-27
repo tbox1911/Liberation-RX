@@ -76,6 +76,7 @@ while { dialog && alive player && _membercount > 0 } do {
 					_selectedmember setVariable ["PAR_AI_score", 0];
 					hint localize 'STR_PROMOTE_OK';
 					waitUntil {sleep 0.3; _selectedmember getVariable ["PAR_AI_score", 0] !=0 };
+					_update = true;
 				};
 			} else {
 				hint localize 'STR_PROMOTE_KO';
@@ -147,6 +148,7 @@ while { dialog && alive player && _membercount > 0 } do {
 				[_selectedmember] call F_filterLoadout;
 				hintSilent format [localize "STR_HINT_LOADOUT_COPIED", _cost];
 				lbSetCurSel [101, _selection];
+				_update = true;
 			};
 		} else {
 			hintSilent localize "STR_HINT_UNIT_TOO_FAR";
