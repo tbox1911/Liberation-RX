@@ -8,7 +8,7 @@ private _mission_list = [
 	"STR_SECONDARY_MISSION3"
 ];
 
-if (GRLIB_secondary_in_progress >= 0 ) exitWith {
+if (GRLIB_secondary_in_progress >= 0) exitWith {
 	gamelogic globalChat format [localize "STR_SECONDARY_MISSION_IN_PROGRESS", localize (_mission_list select GRLIB_secondary_in_progress)];
 };
 
@@ -19,7 +19,7 @@ waitUntil { dialog };
 	lbAdd [ 101, localize _x ];
 } foreach _mission_list;
 
-private ["_oldchoice", "_images", "_briefings", "_missioncost", "_missiontext"];
+private ["_oldchoice", "_images", "_briefings", "_missioncost", "_missiontext", "_secondary_ok"];
 
 private _images = [
 	"res\secondary\fob_hunting.jpg",
@@ -41,7 +41,7 @@ private _oldchoice = -1;
 lbSetCurSel [ 101, 0 ];
 
 while { dialog && alive player && dostartsecondary == 0 } do {
-	if ( _oldchoice != lbCurSel 101 ) then {
+	if (_oldchoice != lbCurSel 101) then {
 		_oldchoice = lbCurSel 101;
 		_missioncost = GRLIB_secondary_missions_costs select _oldchoice;
 		_missiontext = format [localize (_briefings select _oldchoice), _missioncost];
@@ -49,20 +49,24 @@ while { dialog && alive player && dostartsecondary == 0 } do {
 		(_display displayCtrl (102)) ctrlSetStructuredText parseText _missiontext;
 	};
 
-	if ( ( _missioncost <= resources_intel ) && ( !GRLIB_secondary_starting ) )  then {
+	_secondary_ok = !(_oldchoice == 3 && !([] call is_admin));
+	if ((_missioncost <= resources_intel) && !GRLIB_secondary_starting && _secondary_ok)  then {
 		ctrlEnable [ 103, true ];
 		(_display displayCtrl (103)) ctrlSetTooltip "";
 	} else {
 		ctrlEnable [ 103, false ];
-		if ( _missioncost > resources_intel ) then {
+		if (_missioncost > resources_intel) then {
 			(_display displayCtrl (103)) ctrlSetTooltip (localize "STR_SECONDARY_NOT_ENOUGH_INTEL");
 		};
-		if ( GRLIB_secondary_starting ) then {
+		if (GRLIB_secondary_starting) then {
 			(_display displayCtrl (103)) ctrlSetTooltip (localize "STR_SECONDARY_IN_PROGRESS");
+		};
+		if (!_secondary_ok) then {
+			(_display displayCtrl (103)) ctrlSetTooltip (localize "STR_SECONDARY_ADMIN_ONLY");
 		};
 	};
 
-	if ( GRLIB_secondary_in_progress >= 0 ) then {
+	if (GRLIB_secondary_in_progress >= 0) then {
 		lbSetCurSel [ 101, GRLIB_secondary_in_progress ];
 		ctrlEnable [ 101, false ];
 	} else {
@@ -73,12 +77,12 @@ while { dialog && alive player && dostartsecondary == 0 } do {
 	uiSleep 0.1;
 };
 
-if ( dostartsecondary == 1 ) then {
+if (dostartsecondary == 1) then {
 	[lbCurSel 101, false, PAR_Grp_ID] remoteExec ["start_secondary_remote_call", 2];
 	private _msg = format [localize "STR_LOG_SECONDARY_MISSION_STARTED",name player,localize (_mission_list select (lbCurSel 101))];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 };
 
-if ( dialog ) then {
+if (dialog) then {
 	closeDialog 0;
 };

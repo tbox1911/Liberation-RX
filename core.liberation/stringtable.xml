@@ -3777,6 +3777,18 @@
 			<Portuguese>Missão secundária já em andamento</Portuguese>
 			<Czech>Sekundární mise již probíhá</Czech>
 		</Key>
+		<Key ID="STR_SECONDARY_ADMIN_ONLY">
+			<Original>Only an Admin can start this Secondary missions.</Original>
+			<French>Seul un Admin peut démarrer cette mission secondaire.</French>
+			<German>Nur ein Admin kann diese sekundäre Mission starten.</German>
+			<Spanish>Solo un Admin puede iniciar esta misión secundaria.</Spanish>
+			<Russian>Только администратор может запустить эту дополнительную задачу.</Russian>
+			<Chinesesimp>只有管理员可以开始这个次要任务。</Chinesesimp>
+			<Chinese>只有管理員可以開始這個次要任務。</Chinese>
+			<Japanese>このセカンダリーミッションを開始できるのは管理者のみです。</Japanese>
+			<Portuguese>Somente um Admin pode iniciar esta missão secundária.</Portuguese>
+			<Czech>Tuto sekundární misi může spustit pouze administrátor.</Czech>
+		</Key>
 		<Key ID="STR_NOTIFICATION_INCOMING_TEXT">
 			<Original>Hostile forces are heading towards %1.</Original>
 			<French>Les forces hostiles se dirigent vers %1.</French>
@@ -13871,7 +13883,7 @@
 		<Key ID="STR_UNDERCOVER_MODE">
 			<Original>Civilian Undercover Mode</Original>
 			<French>Mode Civil Undercover</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_COMMANDER_MODE_RADIUS">
 			<Original>Nearby sector defense activation range</Original>
 			<Russian>Режим командира: диапазон активации защиты соседних секторов</Russian>
