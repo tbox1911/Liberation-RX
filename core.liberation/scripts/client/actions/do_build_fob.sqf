@@ -28,14 +28,14 @@ if (_box_type == FOB_truck_typename && count (crew _box) > 0) exitWith {
 
 private _min_fob_dist = 1000;
 if (GRLIB_player_fobdistance < _min_fob_dist) exitWith {
-	hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE",floor _min_fob_dist, GRLIB_player_fobdistance];
+	hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE", floor _min_fob_dist, round GRLIB_player_fobdistance];
 };
 
 private _min_sector_dist = round ((GRLIB_capture_size + GRLIB_fob_range) * 1.5);
 if (_box_type == FOB_box_outpost) then { _min_sector_dist = (GRLIB_capture_size + GRLIB_fob_range) };
 private _next_sector = [_min_sector_dist] call F_getNearestSector;
 if (_next_sector != "") exitWith {
-	hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE_SECTOR", _min_sector_dist, round (player distance2D markerPos _next_sector)];
+	hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE_SECTOR", _min_sector_dist, round (player distance2D (markerPos _next_sector))];
 };
 
 _box setVariable ["box_in_use", true, true];

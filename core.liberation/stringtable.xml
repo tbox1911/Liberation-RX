@@ -15115,16 +15115,16 @@
 			<Czech>Obranná šablona: %1 - Zamítnutý objekt: %2</Czech>
 		</Key>
 		<Key ID="STR_FOB_CONSTRUCTION_COMPLETED">
-			<Original>Construction completed.</Original>
-			<French>Construction terminée.</French>
-			<German>Bau abgeschlossen.</German>
-			<Spanish>Construcción completada.</Spanish>
-			<Russian>Строительство завершено.</Russian>
-			<Chinesesimp>建造完成。</Chinesesimp>
-			<Chinese>建造完成。</Chinese>
-			<Japanese>建設完了。</Japanese>
-			<Portuguese>Construção concluída.</Portuguese>
-			<Czech>Stavba dokončena.</Czech>
+			<Original>Construction completed (%1/%2).</Original>
+			<French>Construction terminée (%1/%2).</French>
+			<German>Bau abgeschlossen (%1/%2).</German>
+			<Spanish>Construcción completada (%1/%2).</Spanish>
+			<Russian>Строительство завершено (%1/%2).</Russian>
+			<Chinesesimp>建造完成（%1/%2）。</Chinesesimp>
+			<Chinese>建造完成（%1/%2）。</Chinese>
+			<Japanese>建設完了（%1/%2）。</Japanese>
+			<Portuguese>Construção concluída (%1/%2).</Portuguese>
+			<Czech>Stavba dokončena (%1/%2).</Czech>
 		</Key>
 		<Key ID="STR_FOB_REMOVE_GARRISON_TOOLTIP">
 			<Original>Remove Defenses.</Original>

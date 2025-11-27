@@ -1,6 +1,5 @@
 [
     ["Land_HelipadSquare_F", [18.1, -24.03, 0], 45],
-    ["B_Slingload_01_Fuel_F", [29.74, -18.32, 0], 45],
     ["Land_CncWall4_F", [1.15, -36.2, 0], 0],
     ["Land_CncWall4_F", [-4.06, -36.2, 0], 0],
     ["Land_CncWall4_F", [6.39, -36.2, 0], 0],
@@ -21,7 +20,6 @@
     ["Land_CncWall4_F", [38.63, 7.57, 0], 275],
     ["Land_CncWall4_F", [16.87, -36.23, 0], 0],
     ["Land_CncWall4_F", [-8.21, 39.15, 0], 9],
-    ["B_Slingload_01_Repair_F", [30.08, -26.62, 0], 45],
     ["Land_CncWall4_F", [-37.14, 15.43, 0], 276],
     ["Land_CncWall4_F", [36.54, -18.5, 0], 274],
     ["Land_CncWall4_F", [22.77, 34.11, 0], 10],
