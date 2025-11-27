@@ -17,15 +17,6 @@ if (_full) then {
 	_marker setMarkerColorLocal "ColorGreen";
 	_marker setMarkerTypeLocal "Select";
 
-	// Base markers color
-	if (GRLIB_fob_type == 0) then {
-		"huronmarker" setMarkerColorLocal GRLIB_color_friendly;
-		"huronmarker" setMarkerTextLocal "Huron";
-	} else {
-		deleteMarkerLocal "huronmarker";
-	};
-	"base_chimera" setMarkerColorLocal GRLIB_color_friendly;
-
 	// LRX Markers
 	GRLIB_Marker_SRV = [];
 	GRLIB_Marker_ATM = [];

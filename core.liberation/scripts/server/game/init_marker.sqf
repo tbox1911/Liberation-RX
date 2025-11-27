@@ -89,7 +89,6 @@ private _getRatio = { parseNumber(0.70 min (0.45 + random 0.25) toFixed 2) };
 	_man setVariable ["SHOP_ratio", ([] call _getRatio), true];
 	_man allowDamage false;
 	_man disableCollisionWith _desk;
-
 	_man setDir _desk_dir;
 	_man setPosATL _manPos;
 	doStop _man;
@@ -124,6 +123,15 @@ private _getRatio = { parseNumber(0.70 min (0.45 + random 0.25) toFixed 2) };
 		_marker setMarkerText _marker_text;
  };
 } forEach (sectors_capture + sectors_bigtown + sectors_factory + sectors_military);
+
+// Base markers color
+if (GRLIB_fob_type == 0) then {
+	"huronmarker" setMarkerTextLocal "Huron";
+	"huronmarker" setMarkerColor GRLIB_color_friendly;	
+} else {
+	deleteMarkerLocal "huronmarker";
+};
+"base_chimera" setMarkerColor GRLIB_color_friendly;
 
 sleep 3;
 GRLIB_marker_init = true;
