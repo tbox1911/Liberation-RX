@@ -6298,6 +6298,16 @@
 
 		<!-- nnt360 -->
 		<!-- action_manager.sqf -->
+		<Key ID="STR_DOG_PET">
+			<Original>-- PET DOG</Original>
+			<French>-- CALINER CHIEN</French>
+			<Russian>-- СОБАКА, ЛАСКИ</Russian>
+			<Japanese>-- 犬をなでる</Japanese>
+			<Chinesesimp>-- 抚摸狗狗 --</Chinesesimp>
+			<Chinese>-- 撫摸狗狗 --</Chinese>
+			<Portuguese>-- FAZER CARINHO NO CÃO</Portuguese>
+			<Czech>-- MAZLIT SE PSEM</Czech>
+		</Key>
 		<Key ID="STR_DOG_FIND">
 			<Original>-- DOG FIND</Original>
 			<Russian>-- СОБАКА, ИСКАТЬ</Russian>

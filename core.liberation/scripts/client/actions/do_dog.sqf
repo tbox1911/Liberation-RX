@@ -105,6 +105,22 @@ if (!isNil "_my_dog") then {
 		_my_dog stop false;
 	};
 
+	if (_cmd == "pet") then {
+		player playMove 'AinvPknlMstpSlayWrflDnon_medicOther';
+		_my_dog = player getVariable ["my_dog", nil];
+		_my_dog stop true;
+		_my_dog setDir (_my_dog getDir player);
+		_my_dog switchmove "Dog_Idle_10";
+		sleep 2;
+		_my_dog switchmove "Dog_Die";
+		sleep 3;
+		_my_dog switchmove "Dog_Idle_10";
+		sleep 2;
+		_my_dog stop false;
+		_tone = _my_dog getVariable "my_dog_tone";
+		[_my_dog, _tone] spawn dog_bark;
+	};
+
 	if (_cmd == "stop") then {
 		_my_dog setVariable ["do_find", nil];
 		_my_dog setVariable ["do_find_wp", nil];
