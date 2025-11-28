@@ -92,7 +92,8 @@ if ( dojump > 0 ) then {
 		playSound "parasound";
 		cutRsc ["fasttravel", "PLAIN", 1];
 		sleep 2;
-		[_unit, "hide"] remoteExec ["dog_action_remote_call", 2];
+		private _my_dog = _unit getVariable ["my_dog", nil];
+		if (!isNil "_my_dog") then { [_my_dog, true] remoteExec ["hideObjectGlobal", 2] };
 
 		private _units = units group _unit;
 		private _my_squad = _unit getVariable ["my_squad", nil];

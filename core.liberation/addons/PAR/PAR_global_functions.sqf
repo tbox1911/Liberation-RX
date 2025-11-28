@@ -201,7 +201,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_isUnconscious", false, true];
 	_unit setVariable ["PAR_isDragged", 0, true];
 	_unit setVariable ["PAR_Grp_AI", group _unit];
-	_unit setVariable ["ace_sys_wounds_uncon", false];	
+	_unit setVariable ["ace_sys_wounds_uncon", false];
 	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
 	_unit setVariable ["PAR_revive_history", []];
 	_unit setVariable ["GRLIB_can_speak", true, true];
@@ -251,6 +251,9 @@ PAR_Player_Init = {
 
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
+	// Show Dog
+	private _my_dog = _unit getVariable ["my_dog", nil];
+	if (!isNil "_my_dog") then { [_my_dog, false] remoteExec ["hideObjectGlobal", 2] };
 
 	// Death message
 	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
@@ -269,7 +272,6 @@ PAR_Player_Unconscious = {
 	5 fadeRadio 0;
 
 	// Dog barf
-	_my_dog = player getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", player] };
 
 	// PAR AI Revive Call

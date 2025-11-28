@@ -203,7 +203,6 @@ build_vehicle_remote_call = compileFinal preprocessFileLineNumbers "scripts\serv
 call_artillery_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\call_artillery_remote_call.sqf";
 destroy_fob_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\destroy_fob_remote_call.sqf";
 destroy_static_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\destroy_static_remote_call.sqf";
-dog_action_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\dog_action_remote_call.sqf";
 ied_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ied_remote_call.sqf";
 intel_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\intel_remote_call.sqf";
 load_player_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_player_context_remote_call.sqf";

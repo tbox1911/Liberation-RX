@@ -124,39 +124,49 @@ if (_unit == player) then {
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
-		if (_vehicle isKindOf "ParachuteBase") exitWith {};
-		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
-		if (!_eject) then {
-			if (local _vehicle && !(typeOf _vehicle in list_static_weapons)) then {
-				if (GRLIB_vehicle_defense) then {
-					[_vehicle] spawn F_vehicleDefense;
+		private _my_dog = _unit getVariable ["my_dog", nil];
+		if (_vehicle isKindOf "ParachuteBase") then {
+			if (!isNil "_my_dog") then {
+				_my_dog stop true;
+				_my_dog switchMove "Dog_Sit";
+				_my_dog attachTo [_unit, [0.6, 0.2, -0.5], "Pelvis"];
+				_my_dog setVectorDirAndUp [[1, 0, 0], [0, 0, 1]];
+				[_my_dog, false] remoteExec ["hideObjectGlobal", 2]
+			};
+		} else {
+			private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
+			if (!_eject) then {
+				if (local _vehicle && !(typeOf _vehicle in list_static_weapons)) then {
+					if (GRLIB_vehicle_defense) then {
+						[_vehicle] spawn F_vehicleDefense;
+					} else {
+						_vehicle removeAllEventHandlers "IncomingMissile";
+					};
+					if (isNil {_vehicle getVariable "GREUH_vehicle_damage_he"}) then {
+						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+						_vehicle setVariable ["GREUH_vehicle_damage_he", true];
+					};
+				};
+				if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
+					_vehicle disableTIEquipment true;
 				} else {
-					_vehicle removeAllEventHandlers "IncomingMissile";
+					_vehicle disableTIEquipment false;
 				};
-				if (isNil {_vehicle getVariable "GREUH_vehicle_damage_he"}) then {
-					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-					_vehicle setVariable ["GREUH_vehicle_damage_he", true];
+				if (!isNil "_my_dog") then { [_my_dog, true] remoteExec ["hideObjectGlobal", 2] };
+				[_vehicle] spawn {
+					params ["_vehicle"];
+					private _owner = [_vehicle] call F_getVehicleOwner;
+					private _fuel = round (fuel _vehicle * 100);
+					private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
+					private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
+					private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
+					hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT", _owner, _damage, _fuel, _ammo, _cargo select 0, _cargo select 1];
+					1 fadeSound (round desired_vehvolume / 100.0);
+					3 fadeMusic (getAudioOptionVolumes select 1);
+					NRE_EarplugsActive = 1;
+					sleep 2;
+					hintSilent "";
 				};
-			};
-			[player, "hide"] remoteExec ["dog_action_remote_call", 2];
-			if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
-				_vehicle disableTIEquipment true;
-			} else {
-				_vehicle disableTIEquipment false;
-			};
-			[_vehicle] spawn {
-				params ["_vehicle"];
-				private _owner = [_vehicle] call F_getVehicleOwner;
-				private _fuel = round (fuel _vehicle * 100);
-				private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
-				private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
-				private _cargo = [_vehicle] call R3F_LOG_FNCT_calculer_chargement_vehicule;
-				hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT", _owner, _damage, _fuel, _ammo, _cargo select 0, _cargo select 1];
-				1 fadeSound (round desired_vehvolume / 100.0);
-				3 fadeMusic (getAudioOptionVolumes select 1);
-				NRE_EarplugsActive = 1;
-				sleep 2;
-				hintSilent "";
 			};
 		};
 	}];
@@ -165,28 +175,35 @@ if (_unit == player) then {
 	_unit removeAllEventHandlers "GetOutMan";
 	_unit addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
-		if (_vehicle isKindOf "ParachuteBase") exitWith {};
-		if (_vehicle == getConnectedUAV player) then {
-			objNull remoteControl _unit;
-			player switchCamera cameraView;
-		};
-		if (!GRLIB_ACE_enabled) then {
-			if ( (getPos _unit) select 2 >= 50 && !(_unit getVariable ["AR_Is_Rappelling",false]) && (backpack _unit != "B_Parachute")) then {
-				private _para = createVehicle ["Steerable_Parachute_F",(getPos _unit),[],0,'none'];
-				_unit moveInDriver _para;
+		private _my_dog = _unit getVariable ["my_dog", nil];
+		if (_vehicle isKindOf "ParachuteBase") then {
+			if (!isNil "_my_dog") then {
+				detach _my_dog;
+				_my_dog stop false;
 			};
-		};
-		[_unit] spawn {
-			params ["_unit"];
-			waitUntil { sleep 1; (round (getPos _unit select 2) == 0) };
-			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
-			if (currentWeapon _unit != primaryWeapon _unit) then {
-				if (PAR_weapons_state select 0 != "") exitWith { _unit selectWeapon PAR_weapons_state };
-				if (primaryWeapon _unit != "") exitWith { _unit selectWeapon (primaryWeapon _unit) };
+		} else {
+			if (_vehicle == getConnectedUAV player) then {
+				objNull remoteControl _unit;
+				player switchCamera cameraView;
 			};
-			1 fadeSound 1;
-			3 fadeMusic 0;
-			NRE_EarplugsActive = 0;			
+			if (!GRLIB_ACE_enabled) then {
+				if ( (getPos _unit) select 2 >= 50 && !(_unit getVariable ["AR_Is_Rappelling",false]) && (backpack _unit != "B_Parachute")) then {
+					private _para = createVehicle ["Steerable_Parachute_F",(getPos _unit),[],0,'none'];
+					_unit moveInDriver _para;
+				};
+			};
+			if (!isNil "_my_dog") then { [_my_dog, false] remoteExec ["hideObjectGlobal", 2] };
+			[_unit] spawn {
+				params ["_unit"];
+				waitUntil { sleep 1; (round (getPos _unit select 2) == 0) };
+				if (currentWeapon _unit != primaryWeapon _unit) then {
+					if (PAR_weapons_state select 0 != "") exitWith { _unit selectWeapon PAR_weapons_state };
+					if (primaryWeapon _unit != "") exitWith { _unit selectWeapon (primaryWeapon _unit) };
+				};
+				1 fadeSound 1;
+				3 fadeMusic 0;
+				NRE_EarplugsActive = 0;
+			};
 		};
 	}];
 

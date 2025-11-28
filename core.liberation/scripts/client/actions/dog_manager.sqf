@@ -1,21 +1,38 @@
-waituntil {sleep 1; GRLIB_player_configured};
-waitUntil {sleep 1; !isNil "build_confirmed" };
-sleep 3;
+waituntil {sleep 1; GRLIB_player_spawned};
+sleep 5;
 
+do_dog_cleanup = {
+	params ["_my_dog"];
+	deleteVehicle _my_dog;
+	player setVariable ["my_dog", nil, true];
+};
+
+// Dog Marker Event Handler
+(findDisplay 12 displayCtrl 51) ctrlAddEventHandler [
+	"Draw",
+	"
+		private _map = _this select 0;
+		private _icon = 'a3\animals_f\data\ui\map_animals_ca.paa';
+		private _size = 16;
+		private _my_dog = player getVariable ['my_dog', nil];
+		if (!isNil '_my_dog') then {
+			if (!isObjectHidden _my_dog) then {
+				_map drawIcon [_icon, [0.85,0.4,0,1], (getPosATL _my_dog), _size, _size, 0];
+			};
+		};
+	"
+];
+
+// Dog AI Loop
 private ["_my_dog","_onfoot","_dog_pos","_man","_dist","_reset","_mines"];
 while {true} do {
 	// If player have Dog
 	_my_dog = player getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then {
-		// check
-		if (isNull _my_dog) exitWith {
-			player setVariable ["my_dog", nil, true];
-			private _id = player getVariable ["my_dog_marker", 0];
-			(findDisplay 12 displayCtrl 51) ctrlRemoveEventHandler ["Draw", _id];
-		 };
+		// check dog still alive
+		if (isNull _my_dog) exitWith { [_my_dog] call do_dog_cleanup };
 
-		// Hide Dog
-		// go to ..\addons\PAR\PAR_EventHandler.sqf
+		waitUntil { sleep 0.5; GRLIB_player_spawned && typeOf (objectParent player) != "ParachuteBase" && (vectorMagnitude velocity player) <= 7 };
 		_onfoot = isNull objectParent player;
 
 		// Reset Dog
@@ -137,7 +154,7 @@ while {true} do {
 			private _dist = round (_dog_pos distance2D player);
 
 			// Stop
-			if (stopped _my_dog) then {
+			if (_onfoot && stopped _my_dog) then {
 				_my_dog setDir (_my_dog getDir player);
 				_my_dog playMove "Dog_Sit";
 			};
