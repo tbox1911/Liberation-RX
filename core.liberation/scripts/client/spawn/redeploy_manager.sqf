@@ -22,6 +22,8 @@ private _noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((
 disableUserInput false;
 disableUserInput true;
 disableUserInput false;
+disableUserInput false;
+
 deploy = 0;
 private _oldsel = -1;
 
