@@ -73,5 +73,6 @@ if (count _ide_pos > 0 && floor random 100 < GRLIB_MineProbability) then {
 			_goes_boom = true;
 		};
 	};
+
 	deleteVehicle _ied_obj;
 };

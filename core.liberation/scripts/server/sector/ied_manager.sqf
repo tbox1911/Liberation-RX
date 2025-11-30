@@ -38,14 +38,14 @@ if !(isNil "_roadobj" && random 100 < GRLIB_MineProbability) then {
 		sleep 1;
 	};
 
-	sleep 1;
-
 	// Disarmed
-	if (time <= _timeout) then {
+	if (!mineActive _ied_obj) then {
 		if (isServer) then {
 			[_ied_pos] spawn ied_remote_call;
 		} else {
 			[_ied_pos] remoteExec ["ied_remote_call", 2];
 		};
 	};
+
+	deleteVehicle _ied_obj;
 };
