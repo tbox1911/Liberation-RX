@@ -29,7 +29,7 @@ GRLIB_check_DogRelax = {
 GRLIB_check_DogClose = {
 	private _my_dog = player getVariable ["my_dog", nil];
 	if (isNil "_my_dog") exitWith { false };
-	(GRLIB_player_is_menuok && player distance2D _my_dog < 5);
+	(GRLIB_player_is_menuok && player distance2D _my_dog < 3);
 };
 
 GRLIB_checkHalo = {
