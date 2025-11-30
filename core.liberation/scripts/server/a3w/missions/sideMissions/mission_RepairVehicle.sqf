@@ -124,7 +124,7 @@ _failedExec = {
 	// Mission failed
 	deleteVehicle _smoke;
 	{deleteVehicle _x} forEach _managed_units;
-	deleteVehicle _tank;	
+	if (alive _tank) then { deleteVehicle _tank };
 };
 
 _successExec = {

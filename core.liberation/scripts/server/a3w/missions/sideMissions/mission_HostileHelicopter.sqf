@@ -67,16 +67,14 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	if (!isNull (_vehicle getVariable ["GRLIB_last_killer", objNull])) then {
-		[_vehicle] spawn {
-			params ["_veh"];
-			waitUntil {	sleep 1; (round (getPos _veh select 2) <= 0) };
-			sleep 2;
-			private _sea_deep = round ((getPosATL _veh select 2) - (getPosASL _veh select 2));
-			if (_sea_deep <= 20) then {
-				[ammobox_o_typename, getPos _veh, false] call boxSetup;
-				[ammobox_o_typename, getPos _veh, false] call boxSetup;
-			};
+	[_vehicle] spawn {
+		params ["_veh"];
+		waitUntil {	sleep 1; (round (getPos _veh select 2) <= 0) };
+		sleep 2;
+		private _sea_deep = round ((getPosATL _veh select 2) - (getPosASL _veh select 2));
+		if (_sea_deep <= 20) then {
+			[ammobox_o_typename, getPos _veh, false] call boxSetup;
+			[ammobox_o_typename, getPos _veh, false] call boxSetup;
 		};
 	};
 	_successHintMessage = "STR_HOSTILE_HELI_MESSAGE2";
