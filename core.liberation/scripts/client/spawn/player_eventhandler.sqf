@@ -136,7 +136,7 @@ if (_unit == player) then {
 				[_my_dog, false] remoteExec ["hideObjectGlobal", 2]
 			};
 		} else {
-			private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
+			private _eject = [_unit, _role, _vehicle] call vehicle_perm;
 			if (!_eject) then {
 				if (local _vehicle && !(typeOf _vehicle in list_static_weapons)) then {
 					if (GRLIB_vehicle_defense) then {
@@ -211,7 +211,7 @@ if (_unit == player) then {
 
 	// Switch seat
 	_unit removeAllEventHandlers "SeatSwitchedMan";
-	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_permissions }];
+	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];
 
 	// Player killed EH
 	player addEventHandler ["Killed", { _this spawn PAR_fn_death }];
@@ -265,7 +265,7 @@ if (_unit == player) then {
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle isKindOf "ParachuteBase") exitWith {};
-		private _eject = [_unit, _role, _vehicle] call vehicle_permissions;
+		private _eject = [_unit, _role, _vehicle] call vehicle_perm;
 		if (!_eject) then {
 			if (local _vehicle && !(typeOf _vehicle in list_static_weapons)) then {
 				if (GRLIB_vehicle_defense) then {
@@ -292,7 +292,7 @@ if (_unit == player) then {
 
 	// Switch seat
 	_unit removeAllEventHandlers "SeatSwitchedMan";
-	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_permissions }];
+	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];
 
 	// AI Handle Damage EH
 	if (PAR_revive != 0) then {

@@ -105,10 +105,7 @@ if (GRLIB_respawn_cooldown > 0) then {
 };
 
 // Local functions
-player_init = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_init.sqf";
-player_respawn = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_respawn.sqf";
-player_eventhandler = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_eventhandler.sqf";
-player_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_actions.sqf";
+airdrop_call = compileFinal preprocessFileLineNumbers "scripts\client\misc\airdrop_call.sqf";
 artillery_cooldown = compileFinal preprocessFileLineNumbers "scripts\client\misc\artillery_cooldown.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
 do_build_squad = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_squad.sqf";
@@ -122,14 +119,18 @@ get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\ge
 is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
+player_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_actions.sqf";
+player_eventhandler = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_eventhandler.sqf";
+player_init = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_init.sqf";
+player_respawn = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_respawn.sqf";
 save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
 save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\save_personal_arsenal.sqf";
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\manager\speak_manager.sqf";
 vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
-airdrop_call = compileFinal preprocessFileLineNumbers "scripts\client\misc\airdrop_call.sqf";
-vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
+vehicle_perm = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_perm.sqf";
+vehicle_preset = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_preset.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
