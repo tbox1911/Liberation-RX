@@ -1,5 +1,4 @@
 // PAR Global Functions - Client side
-PAR_EventHandler = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 PAR_AI_Manager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_AI_Manager.sqf";
 PAR_ActionManager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_ActionManager.sqf";
 PAR_fn_nearestMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_nearestMedic.sqf";
@@ -196,7 +195,7 @@ PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
 	if (_unit getVariable ["PAR_EH_Installed", false]) exitWith {};
 	_unit setVariable ["PAR_EH_Installed", true];
-	[_unit] call PAR_EventHandler;
+	[_unit] call player_eventhandler;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ["PAR_isUnconscious", false, true];
 	_unit setVariable ["PAR_isDragged", 0, true];
@@ -208,47 +207,6 @@ PAR_fn_AI_Damage_EH = {
 };
 
 // Player Section
-PAR_Player_Init = {
-	params ["_unit", ["_oldUnit", objNull]];
-	titleText ["" ,"BLACK FADED", 100];
-	1 fadeSound 0;
-	_unit allowDamage false;
-	_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
-	if (PAR_grave == 1 && !isNull _oldUnit) then { deleteVehicle _oldUnit };
-	if (GRLIB_ACE_medical_enabled) then {
-		[_unit] call ACE_medical_treatment_fnc_fullHealLocal;
-		[_unit] call ACE_medical_statemachine_fnc_resetStateDefault;
-		_unit setvariable ["ace_medical_causeofdeath", nil];
-	};
-	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	_unit setVariable ["PAR_isUnconscious", false, true];
-	_unit setVariable ["PAR_isDragged", 0, true];
-	_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
-	_unit setVariable ["GRLIB_action_inuse", false, true];
-	_unit setVariable ["SOG_player_in_tunnel", nil];
-	_unit setVariable ["ace_sys_wounds_uncon", false];
-	_unit setVariable ["GRLIB_unit_detected", 0, true];
-	if (!GRLIB_fatigue) then { _unit enableFatigue false; _unit enableStamina false };
-	if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
-	_unit setCustomAimCoef 0.35;
-	_unit setUnitRecoilCoefficient 0.6;
-	_unit setCaptive false;
-	PAR_isDragging = false;
-	[_unit] spawn AR_Add_Player_Actions;
-	[_unit] spawn add_player_actions;
-	PAR_backup_loadout = [];
-	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
-	[] execVM "scripts\client\spawn\redeploy_manager.sqf";
-	[] execVM "scripts\client\misc\welcome.sqf";
-	waituntil {sleep 1; GRLIB_player_spawned};
-	_unit allowDamage true;
-	1 fadeSound 1;
-	1 fadeRadio 1;
-	NRE_EarplugsActive = 0;
-	hintSilent "";
-	showMap true;
-};
-
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
 	// Show Dog

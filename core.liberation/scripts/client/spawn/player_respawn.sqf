@@ -1,4 +1,4 @@
-params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
+params ["_newUnit", "_oldUnit"];
 
 GRLIB_player_configured = false;
 [_newUnit] call clean_unit;
@@ -39,6 +39,8 @@ if (GRLIB_side_friendly == WEST) then {
     deleteVehicle _newUnit;
 };
 
+gamelogic globalChat format ["player %1 loading...", name _unit];
+
 // Player Loadout
 if !(_unit getVariable ["GRLIB_player_context_loaded", false]) then {
     [_unit] remoteExec ["load_player_context_remote_call", 2];
@@ -49,8 +51,8 @@ waitUntil { sleep 0.5; (_unit getVariable ["GRLIB_player_context_loaded", false]
 [_unit] spawn player_loadout;
 waitUntil { sleep 0.5; startgame == 1 };
 
-[_unit] spawn PAR_EventHandler;
-[_unit] spawn PAR_Player_Init;
+[_unit] spawn player_eventhandler;
+[_unit] spawn player_init;
 _unit setvariable ["PAR_grave_box", PAR_grave_box, true];
 
 // Keep player first / Reset group

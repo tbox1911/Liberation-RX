@@ -635,7 +635,7 @@ AR_Is_Supported_Vehicle = {
 	_isSupported;
 };
 
-AR_Add_Player_Actions = {
+AR_Player_Actions = {
 	params ["_player"];
 
 	_player addAction ["Rappel Self", {

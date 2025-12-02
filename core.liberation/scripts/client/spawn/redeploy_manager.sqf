@@ -23,6 +23,7 @@ disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 disableUserInput false;
+disableUserInput false;
 
 deploy = 0;
 private _oldsel = -1;

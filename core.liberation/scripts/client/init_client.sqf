@@ -48,13 +48,6 @@ if (abort_loading) exitWith {
 	disableUserInput false;
 };
 
-waitUntil {
-	sleep 1;
-    (!isNull player && player == player &&
-    getClientState == "BRIEFING READ" &&
-    !isNull (findDisplay 46))
-};
-
 PAR_Grp_ID = getPlayerUID player;
 if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	private _msg = localize "STR_MSG_SERVER_INIT_ERROR";
@@ -97,7 +90,6 @@ if (GRLIB_kick_idle > 0) then {
 	[] execVM "scripts\client\misc\kick_idle.sqf";
 };
 
-waitUntil { sleep 1; !isNull player && alive player };
 if (GRLIB_respawn_cooldown > 0) then {
 	if (isServer) exitWith {};
 	waitUntil {sleep 1; !isNil "BTC_logic"};
@@ -113,7 +105,10 @@ if (GRLIB_respawn_cooldown > 0) then {
 };
 
 // Local functions
-add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
+player_init = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_init.sqf";
+player_respawn = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_respawn.sqf";
+player_eventhandler = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_eventhandler.sqf";
+player_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_actions.sqf";
 artillery_cooldown = compileFinal preprocessFileLineNumbers "scripts\client\misc\artillery_cooldown.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
 do_build_squad = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_squad.sqf";
@@ -137,8 +132,9 @@ airdrop_call = compileFinal preprocessFileLineNumbers "scripts\client\misc\airdr
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 
-
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
+[player, objNull] spawn player_respawn;
+
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";

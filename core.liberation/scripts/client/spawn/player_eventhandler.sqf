@@ -1,9 +1,8 @@
 params ["_unit"];
 
-// for All units
-// Cannot DisAssemble
-_unit enableWeaponDisassembly false;
+// LRX unit Event Handlers
 
+// General Event Handlers
 _unit addEventHandler ["InventoryClosed", {
 	params ["_unit", "_container"];
 	[_unit] call F_filterLoadout;
@@ -83,7 +82,10 @@ _unit addEventHandler ["FiredMan",	{
 	};
 }];
 
-// for Player only
+// Cannot DisAssemble
+_unit enableWeaponDisassembly false;
+
+// Player Event Handlers
 if (_unit == player) then {
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
@@ -215,7 +217,7 @@ if (_unit == player) then {
 	player addEventHandler ["Killed", { _this spawn PAR_fn_death }];
 
 	// Player respawn EH
-	// player addEventHandler ["Respawn", { _this spawn PAR_Player_Init }];
+	player addEventHandler ["Respawn", { _this spawn player_respawn }];
 
 	// Player Handle Damage EH
 	if (PAR_revive != 0) then {
