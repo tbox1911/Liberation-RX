@@ -39,8 +39,6 @@ if (GRLIB_side_friendly == WEST) then {
     deleteVehicle _newUnit;
 };
 
-gamelogic globalChat format ["player %1 loading...", name _unit];
-
 // Player Loadout
 if !(_unit getVariable ["GRLIB_player_context_loaded", false]) then {
     [_unit] remoteExec ["load_player_context_remote_call", 2];
