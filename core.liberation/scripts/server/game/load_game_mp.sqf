@@ -345,6 +345,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 
 		[_nextbuilding] call F_clearCargo;
 		[_nextbuilding] call F_fixModVehicle;
+		[_nextbuilding] call F_vehiclePreset;
 
 		if (_nextclass in vehicle_rearm_sources) then {
 			_nextbuilding setAmmoCargo 0;
