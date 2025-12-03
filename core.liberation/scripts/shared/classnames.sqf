@@ -449,6 +449,8 @@ if (isNil "vehicle_preset_inventory_east") then {
 	// format : [CLASSNAME, [list of list of items]]
 	opfor_vehicle_preset_weapons = [
 		"","",
+		"SatchelCharge_Remote_Mag",
+		"DemoCharge_Remote_Mag",		
 		"HandGrenade",
 		"HandGrenade"
 	];

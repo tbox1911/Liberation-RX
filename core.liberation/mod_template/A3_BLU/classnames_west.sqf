@@ -154,15 +154,15 @@ buildings_west = [
 ];
 
 // Vehicle preset inventory
-// vehicle_preset_inventory_west = [
-// 	["LandVehicle", [PAR_AidKit]],
-// 	["Air", ["O_NVGoggles_urb_F"]],
-// 	["Ship_F", []],
-// 	["B_Quadbike_01_F", ["HandGrenade",PAR_AidKit,PAR_AidKit]],
-// 	["Offroad_01_repair_base_F", ["ToolKit","B_Carryall_blk"]],
-// 	["C_Van_01_transport_F", ["B_BergenC_Base","V_CarrierRigKBT_01_Olive_F","arifle_AKM_F","30Rnd_762x39_Mag_F","30Rnd_762x39_Mag_F"]],
-// 	[medic_truck_typename, [PAR_Medikit,PAR_AidKit,PAR_AidKit,PAR_AidKit,PAR_AidKit]]
-// ];
+vehicle_preset_inventory_west = [
+	["LandVehicle", [PAR_AidKit]],
+	["Air", []],
+	["Ship_F", []],
+	["B_Quadbike_01_F", ["HandGrenade",PAR_AidKit,PAR_AidKit]],
+	["Offroad_01_repair_base_F", ["ToolKit",PAR_AidKit]],
+	//["C_Van_01_transport_F", ["B_BergenC_Base","V_CarrierRigKBT_01_Olive_F","arifle_AKM_F","30Rnd_762x39_Mag_F","30Rnd_762x39_Mag_F"]],
+	[medic_truck_typename, [PAR_Medikit,PAR_AidKit,PAR_AidKit,PAR_AidKit,PAR_AidKit]]
+];
 
 // Boats
 boats_west = [

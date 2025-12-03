@@ -107,7 +107,7 @@ opfor_battlegroup_vehicles = [
 	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_Truck_03_covered_F",
 	"O_MBT_02_cannon_F",
-	"O_MBT_02_cannon_F",	
+	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
 	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_T_VTOL_02_infantry_F",
@@ -157,7 +157,7 @@ opfor_statics = [
 	"O_HMG_01_high_F",
 	"O_GMG_01_high_F",
 	"O_HMG_01_high_F",
-	"O_GMG_01_high_F",	
+	"O_GMG_01_high_F",
 	"O_static_AA_F",
 	"O_static_AT_F",
 	"O_Mortar_01_F"
@@ -189,7 +189,7 @@ opfor_recyclable = [
 	["O_MBT_04_command_F",15,round (2300 / GRLIB_recycling_percentage),15],
 	["O_Heli_Attack_02_dynamicLoadout_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
-	["O_Heli_Light_02_unarmed_F",10,round (1100 / GRLIB_recycling_percentage),20],	
+	["O_Heli_Light_02_unarmed_F",10,round (1100 / GRLIB_recycling_percentage),20],
 	["O_Heli_Light_02_dynamicLoadout_F",10,round (1600 / GRLIB_recycling_percentage),20],
 	["O_Heli_Transport_04_covered_F",10,round (1400 / GRLIB_recycling_percentage),20],
 	["O_Plane_CAS_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
@@ -206,27 +206,64 @@ opfor_vehicle_preset_launchers = [
 	"launch_O_Titan_F",
 	"launch_O_Vorona_brown_F",
 	"launch_RPG32_F",
-	"launch_RPG32_F"		
+	"launch_RPG32_F"
 ];
 opfor_vehicle_preset_weapons = [
 	"","",
 	"arifle_AKM_F",
 	"arifle_Katiba_ARCO_pointer_F",
+	"SatchelCharge_Remote_Mag",
+	"DemoCharge_Remote_Mag",
 	"HandGrenade",
 	"HandGrenade"
 ];
+opfor_vehicle_preset_magazine = [
+	"30Rnd_762x39_Mag_F",
+	"30Rnd_65x39_caseless_green",
+	"HandGrenade",
+	"HandGrenade"
+];
+
 opfor_vehicle_preset_items = [
-	"","",		
+	"","",
 	"ToolKit",
 	PAR_Medikit,
 	PAR_AidKit,
 	PAR_AidKit
 ];
 vehicle_preset_inventory_east = [
-	["LandVehicle", [opfor_vehicle_preset_weapons,opfor_vehicle_preset_items,opfor_vehicle_preset_items]],
+	["LandVehicle", [
+		opfor_vehicle_preset_weapons,
+		opfor_vehicle_preset_magazine,
+		opfor_vehicle_preset_magazine,
+		opfor_vehicle_preset_items,
+		opfor_vehicle_preset_items
+		]
+	],
 	["Air", []],
 	["Ship_F", []],
-	["MBT_02_base_F", [opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons,opfor_vehicle_preset_items]],
-	["MBT_04_base_F", [opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons,opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons]],
-	["APC_Tracked_02_base_F", [opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons]]
+	["MBT_02_base_F", [
+		opfor_vehicle_preset_launchers,
+		opfor_vehicle_preset_weapons,
+		opfor_vehicle_preset_magazine,
+		opfor_vehicle_preset_magazine,
+		opfor_vehicle_preset_items
+		]
+	],
+	["MBT_04_base_F", [
+		opfor_vehicle_preset_launchers,
+		opfor_vehicle_preset_weapons,
+		opfor_vehicle_preset_launchers,
+		opfor_vehicle_preset_weapons,
+		opfor_vehicle_preset_magazine,
+		opfor_vehicle_preset_magazine
+		]
+	],
+	["APC_Tracked_02_base_F", [
+		opfor_vehicle_preset_launchers,
+		opfor_vehicle_preset_weapons,
+		opfor_vehicle_preset_magazine,
+		opfor_vehicle_preset_magazine
+		]
+	]
 ];
