@@ -153,6 +153,17 @@ buildings_west = [
 	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log]
 ];
 
+// Vehicle preset inventory
+vehicle_preset_inventory_west = [
+	["LandVehicle", ["ToolKit"]],
+	["Air", ["O_NVGoggles_urb_F"]],
+	["Ship_F", []],
+	["B_Quadbike_01_F", ["HandGrenade",PAR_AidKit,PAR_AidKit]],
+	["Offroad_01_repair_base_F", ["ToolKit","B_Carryall_blk"]],
+	["C_Van_01_transport_F", ["B_BergenC_Base","V_CarrierRigKBT_01_Olive_F","arifle_AKM_F","30Rnd_762x39_Mag_F","30Rnd_762x39_Mag_F"]],
+	[medic_truck_typename, [PAR_Medikit,PAR_AidKit,PAR_AidKit,PAR_AidKit,PAR_AidKit]]
+];
+
 // Boats
 boats_west = [
 	"B_Boat_Transport_01_F",

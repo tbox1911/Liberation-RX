@@ -244,7 +244,7 @@ while {true} do {
 				};
 				if (_classname isKindOf "Truck_02_base_F") then {
 					_radius = 6;
-				};				
+				};
 			};
 		};
 		if (!repeatbuild) then { build_distance = 3 max _dist };
@@ -543,6 +543,8 @@ while {true} do {
 				if (_ammo > 0) then {
 					_vehicle setVehicleAmmo _ammo;
 				};
+				// Preset Inventory
+				[_vehicle] call vehicle_preset;
 			};
 
 			// A3 / R3F Inventory

@@ -426,6 +426,21 @@ vehicle_refuel_sources = [
 	"C_Van_01_fuel_F"
 ] + vehicle_refuel_sources_west;
 
+// *** VEHICLE PRESET INVENTORY ***
+if (isNil "vehicle_preset_inventory_west") then {
+	vehicle_preset_inventory = [
+		// ["LandVehicle", ["ToolKit"]],
+		// ["Air", ["O_NVGoggles_urb_F"]],
+		// ["Ship_F", []],
+		// ["B_Quadbike_01_F", [PAR_AidKit,PAR_AidKit]],
+		// ["Offroad_01_repair_base_F", ["ToolKit","B_Carryall_blk"]],
+		// ["C_Van_01_transport_F", ["B_BergenC_Base","V_CarrierRigKBT_01_Olive_F","arifle_AKM_F","30Rnd_762x39_Mag_F","30Rnd_762x39_Mag_F"]],
+		// [medic_truck_typename, [PAR_Medikit,PAR_AidKit,PAR_AidKit,PAR_AidKit,PAR_AidKit]]
+	];	
+} else {
+	vehicle_preset_inventory = vehicle_preset_inventory_west;
+};
+
 // *** TRANSPORT CONFIG ***
 box_transport_config = [];
 box_transport_offset = [];
