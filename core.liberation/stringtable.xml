@@ -8054,6 +8054,19 @@
 			<Czech>Pomoz nám ošetřit %1 nemocných vesničanů.</Czech>
 		</Key>
 
+		<Key ID="STR_DIALOG_DOCTOR_REQUEST_FINISH">
+			<Original>There is no one left to treat here!</Original>
+			<French>Il n'y a plus personne à soigner ici !</French>
+			<German>Es gibt hier niemanden mehr zu behandeln!</German>
+			<Spanish>¡No queda nadie por tratar aquí!</Spanish>
+			<Russian>Здесь больше некого лечить!</Russian>
+			<Chinesesimp>这里没有人需要治疗了！</Chinesesimp>
+			<Chinese>這裡沒有人需要治療了！</Chinese>
+			<Japanese>ここにはもう治療が必要な人はいません！</Japanese>
+			<Portuguese>Não há mais ninguém para tratar aqui!</Portuguese>
+			<Czech>Už tu není nikdo, koho by bylo třeba ošetřit!</Czech>
+		</Key>
+
 		<Key ID="STR_DIALOG_DOCTOR_INSTRUCT">
 			<Original>Bring them all to the nearby Medical tent.</Original>
 			<French>Amenez-les tous à la tente médicale voisine.</French>

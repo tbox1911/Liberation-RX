@@ -309,6 +309,7 @@ speak_mission_delivery = {
 speak_mission_heal_doctor = {
 	params ["_unit"];
 	private _wnded = ({alive _x && !isNil {_x getVariable "GRLIB_A3W_Mission_HC2"}} count (units GRLIB_side_civilian));
+	if (_wnded == 0) exitWith { _unit globalChat localize "STR_DIALOG_DOCTOR_REQUEST_FINISH" };
 	_unit globalChat localize "STR_DIALOG_DOCTOR_INTRO";
 	sleep 3;
 	_unit globalChat format [localize "STR_DIALOG_DOCTOR_REQUEST_COUNT", _wnded];
