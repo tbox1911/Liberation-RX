@@ -22,7 +22,7 @@ if (_score >= GRLIB_min_score_player) then {
 			{
 				_ai_group pushback [typeOf _x, rank _x, getUnitLoadout _x];
 			} forEach (_bros select {!([_x] call PAR_is_wounded)});
-			diag_log format ["--- LRX Saving %1 unit(s) for %2 Squad.", count _ai_group, name _player];
+			diag_log format ["--- LRX Info: %1 Squad saving %2 unit(s).", name _player, count _ai_group];
 		} else {
 			_context = localNamespace getVariable [format ["player_context_%1", _uid], []];
 			if (count _context == 0) then {
@@ -34,7 +34,7 @@ if (_score >= GRLIB_min_score_player) then {
 	private _personal_arsenal = _player getVariable ["GRLIB_personal_arsenal", []];
 	private _virtual_garage = _player getVariable ["GRLIB_virtual_garage", []];
 	localNamespace setVariable [format ["player_context_%1", _uid], [_uid, _loadout, _ai_group, _personal_arsenal, _virtual_garage]];
-	diag_log format ["--- LRX player %1 profile Saved.", name _player];
+	diag_log format ["--- LRX Info: player %1 profile Saved.", name _player, count _ai_group];
 };
 
 // Delete units
