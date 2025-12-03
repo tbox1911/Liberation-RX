@@ -67,7 +67,7 @@ if (_classname isKindOf "Air") then {
 	};
 
 	if (_classname != "") then {
-		_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
+		_vehicle = createVehicle [_classname, _spawn_pos, [], 5, "NONE"];
 		_vehicle allowDamage false;
 		_spawn_pos set [2, 0.5];
 		if (surfaceIsWater _spawn_pos) then {
@@ -164,6 +164,9 @@ if (_side == GRLIB_side_enemy) then {
 			[_vehicle] spawn F_getEmptyArmored;
 		};
 	};
+
+	// Preset Inventory
+	[_vehicle, opfor_vehicle_preset_inventory] call F_vehiclePreset;
 };
 
 [_vehicle] spawn {

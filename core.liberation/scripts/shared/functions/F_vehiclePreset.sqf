@@ -12,19 +12,22 @@ if (count _items == 0) exitWith {};
 private ["_item"];
 {
 	_item = _x;
-    if (_vehicle canAdd _item) then {
-		switch (true) do {
-			case (_item isKindOf "Bag_Base"): {
-				_vehicle addBackpackCargoGlobal [_item, 1];
-			};
-			case (_item isKindOf "Weapon_Base_F"): {
-				_vehicle addWeaponCargoGlobal [_item, 1];
-			};
-			case (_item isKindOf "Magazine"): {
-				_vehicle addMagazineCargoGlobal [_item, 1];
-			};
-			default {
-				_vehicle addItemCargoGlobal [_item, 1];
+	if (typeName _item == "ARRAY") then { _item = selectRandom _item };
+	if (_item != "") then {
+		if (_vehicle canAdd _item) then {
+			switch (true) do {
+				case (_item isKindOf "Bag_Base"): {
+					_vehicle addBackpackCargoGlobal [_item, 1];
+				};
+				case (_item isKindOf "Weapon_Base_F"): {
+					_vehicle addWeaponCargoGlobal [_item, 1];
+				};
+				case (_item isKindOf "Magazine"): {
+					_vehicle addMagazineCargoGlobal [_item, 1];
+				};
+				default {
+					_vehicle addItemCargoGlobal [_item, 1];
+				};
 			};
 		};
 	};

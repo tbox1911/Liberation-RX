@@ -198,3 +198,35 @@ opfor_recyclable = [
 	["O_T_VTOL_02_vehicle_F",20,round (2500 / GRLIB_recycling_percentage),20],
 	["O_T_VTOL_02_infantry_F",20,round (2500 / GRLIB_recycling_percentage),20]
 ];
+
+// format : [CLASSNAME, [list of list of items]]
+opfor_vehicle_preset_launchers = [
+	"","","","",
+	"launch_O_Titan_short_F",
+	"launch_O_Titan_F",
+	"launch_O_Vorona_brown_F",
+	"launch_RPG32_F",
+	"launch_RPG32_F"		
+];
+opfor_vehicle_preset_weapons = [
+	"","",
+	"arifle_AKM_F",
+	"arifle_Katiba_ARCO_pointer_F",
+	"HandGrenade",
+	"HandGrenade"
+];
+opfor_vehicle_preset_items = [
+	"","",		
+	"ToolKit",
+	PAR_Medikit,
+	PAR_AidKit,
+	PAR_AidKit
+];
+vehicle_preset_inventory_east = [
+	["LandVehicle", [opfor_vehicle_preset_weapons,opfor_vehicle_preset_items,opfor_vehicle_preset_items]],
+	["Air", []],
+	["Ship_F", []],
+	["MBT_02_base_F", [opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons,opfor_vehicle_preset_items]],
+	["MBT_04_base_F", [opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons,opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons]],
+	["APC_Tracked_02_base_F", [opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons]]
+];

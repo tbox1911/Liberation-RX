@@ -216,3 +216,35 @@ a3w_br_planes = [
 	"B_Plane_CAS_01_dynamicLoadout_F",
 	"B_Plane_Fighter_01_F"
 ];
+
+// used by vehicle preset inventory
+opfor_vehicle_preset_launchers = [
+	"","","","",
+	"launch_B_Titan_short_F",
+	"launch_B_Titan_F",
+	"launch_B_Vorona_brown_F",
+	"launch_RPG32_F",
+	"launch_RPG32_F"		
+];
+opfor_vehicle_preset_weapons = [
+	"","",
+	"arifle_SPAR_01_blk_ERCO_Pointer_F",
+	"arifle_MX_ACO_pointer_snds_F",
+	"HandGrenade",
+	"HandGrenade"
+];
+opfor_vehicle_preset_items = [
+	"","",		
+	"ToolKit",
+	PAR_Medikit,
+	PAR_AidKit,
+	PAR_AidKit
+];
+
+vehicle_preset_inventory_east = [
+	["LandVehicle", [opfor_vehicle_preset_weapons,opfor_vehicle_preset_items,opfor_vehicle_preset_items]],
+	["Air", []],
+	["Ship_F", []],
+	["MBT_01_base_F", [opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons,opfor_vehicle_preset_items]],
+	["APC_Tracked_01_base_F", [opfor_vehicle_preset_launchers,opfor_vehicle_preset_weapons]]
+];

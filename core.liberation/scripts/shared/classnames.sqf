@@ -206,7 +206,7 @@ if (GRLIB_enable_arsenal == 1) then {
 	];
 };
 
-// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
+// global LRX format [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 support_vehicles = support_vehicles + [
 	[medicalbox_typename,5,25,0,0],
 	[mobile_respawn,10,50,0,0],
@@ -427,19 +427,47 @@ vehicle_refuel_sources = [
 ] + vehicle_refuel_sources_west;
 
 // *** VEHICLE PRESET INVENTORY ***
+// Friendly Preset
 if (isNil "vehicle_preset_inventory_west") then {
+	// format : [CLASSNAME, [list of items]]
 	vehicle_preset_inventory = [
-		["LandVehicle", [PAR_AidKit]],
-		["Air", ["O_NVGoggles_urb_F"]],
+		["LandVehicle", [PAR_AidKit,PAR_AidKit]],
+		["Air", []],
 		["Ship_F", []],
 		["Tank_F", ["ToolKit",PAR_AidKit,PAR_AidKit]],
-		["B_Quadbike_01_F", [PAR_AidKit,PAR_AidKit]],
-		["Offroad_01_repair_base_F", ["ToolKit"]],
+		["Offroad_01_repair_base_F", ["ToolKit",PAR_AidKit,PAR_AidKit]],
+		//["B_Quadbike_01_F", [PAR_AidKit,PAR_AidKit]],
 		//["C_Van_01_transport_F", ["B_BergenC_Base","V_CarrierRigKBT_01_Olive_F","arifle_AKM_F","30Rnd_762x39_Mag_F","30Rnd_762x39_Mag_F"]],
 		[medic_truck_typename, [PAR_Medikit,PAR_AidKit,PAR_AidKit,PAR_AidKit,PAR_AidKit]]
-	];	
+	];
 } else {
 	vehicle_preset_inventory = vehicle_preset_inventory_west;
+};
+
+// Enemy Preset
+if (isNil "vehicle_preset_inventory_east") then {
+	// format : [CLASSNAME, [list of list of items]]
+	opfor_vehicle_preset_weapons = [
+		"","",
+		"HandGrenade",
+		"HandGrenade"
+	];
+	opfor_vehicle_preset_items = [
+		"","","",
+		"ToolKit",
+		PAR_Medikit,
+		PAR_AidKit,
+		PAR_AidKit,
+		PAR_AidKit,
+		PAR_AidKit
+	];
+	opfor_vehicle_preset_inventory = [
+		["LandVehicle", [opfor_vehicle_preset_weapons,opfor_vehicle_preset_items,opfor_vehicle_preset_items]],
+		["Air", []],
+		["Ship_F", []]
+	];
+} else {
+	opfor_vehicle_preset_inventory = vehicle_preset_inventory_east;
 };
 
 // *** TRANSPORT CONFIG ***
