@@ -27,7 +27,8 @@ _grp setCombatMode "YELLOW";
 _grp setSpeedMode "FULL";
 
 private _spawnpos = getPosATL _vehicle;
-private _radius = 350;
+private _radius = 600;
+if (_vehicle isKindOf "Plane") then { _radius = 1200 };
 
 [_grp] call F_deleteWaypoints;
 private _waypoint = _grp addWaypoint [ _targetpos, _radius];
@@ -50,59 +51,57 @@ if (_side == GRLIB_side_friendly) exitWith {
 };
 diag_log format ["Spawn Air Squad %1 objective %2 at %3", typeOf _vehicle, _targetpos, time];
 
-if (_vehicle isKindOf "Plane") then {
-	if (GRLIB_SOG_enabled || GRLIB_SPE_enabled) then {
-		// Bombers AI (for slow aircraft)
-		[_vehicle] spawn {
-			params ["_plane"];
-			private _bombs = ["Bomb_03_F","Bomb_04_F","Bo_GBU12_LGB","Bo_GBU12_LGB_MI10","Bo_Mk82","Bo_Mk82_MI08"];
-			sleep 30;
-			while { alive _plane } do {
-				private _plane_dir = getDir _plane;
-				private _spot = _plane getPos [1000, _plane_dir];
-				if ([_spot, 80, GRLIB_side_friendly] call F_getUnitsCount > 0) then {
-					_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
-					_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
-					_bomb setDir _plane_dir;
-					_bomb setVelocity (velocity _plane);
-					sleep 0.5;
-					_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
-					_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
-					_bomb setDir _plane_dir;
-					_bomb setVelocity (velocity _plane);
-					sleep 0.5;
-					_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
-					_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
-					_bomb setDir _plane_dir;
-					_bomb setVelocity (velocity _plane);
-					_plane setVehicleAmmo 1;
-					sleep 60;
-				};
-				sleep 3;
+if (_vehicle isKindOf "Plane" && (GRLIB_SOG_enabled || GRLIB_SPE_enabled)) then {
+	// Bombers AI (for slow aircraft)
+	[_vehicle] spawn {
+		params ["_plane"];
+		private _bombs = ["Bomb_03_F","Bomb_04_F","Bo_GBU12_LGB","Bo_GBU12_LGB_MI10","Bo_Mk82","Bo_Mk82_MI08"];
+		sleep 30;
+		while { alive _plane } do {
+			private _plane_dir = getDir _plane;
+			private _spot = _plane getPos [1000, _plane_dir];
+			if ([_spot, 80, GRLIB_side_friendly] call F_getUnitsCount > 0) then {
+				_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
+				_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
+				_bomb setDir _plane_dir;
+				_bomb setVelocity (velocity _plane);
+				sleep 0.5;
+				_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
+				_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
+				_bomb setDir _plane_dir;
+				_bomb setVelocity (velocity _plane);
+				sleep 0.5;
+				_plane action ["useWeapon", _plane, driver _plane, selectRandom [10, 11]];
+				_bomb = createVehicle [(selectRandom _bombs), ((getPos _plane) vectorAdd [0, 0, -40]), [], 5, "FLY"];
+				_bomb setDir _plane_dir;
+				_bomb setVelocity (velocity _plane);
+				_plane setVehicleAmmo 1;
+				sleep 60;
 			};
+			sleep 3;
 		};
-	} else {
-		// Modern plane AI
-		[_vehicle] spawn {
-			params ["_plane"];
-			sleep 30;
-			while { alive _plane } do {
-				private _blu_target = (units GRLIB_side_friendly) select { _x distance2D _plane <= GRLIB_spawn_max };
-				if (count _blu_target > 0) then {
-					(gunner _plane) reveal [(_blu_target select 0), 4];
-					(gunner _plane) doTarget (_blu_target select 0);
-					sleep 120;
-				};
-				// private _plane_dir = getDir _plane;
-				// private _spot = _plane getPos [1500, _plane_dir];
-				// if ([_spot, 150, GRLIB_side_friendly] call F_getUnitsCount > 2) then {
-				// 	_round = "Cluster_155mm_AMOS" createVehicle (getPos _plane);
-				// 	[_round, -80, 0] call BIS_fnc_setPitchBank;
-				// 	_round setVelocity [0,0,-100];
-				// 	sleep 60;
-				// };
-				sleep 3;
+	};
+} else {
+	// Modern aircraft AI
+	[_vehicle] spawn {
+		params ["_plane"];
+		sleep 30;
+		while { alive _plane } do {
+			private _blu_target = (units GRLIB_side_friendly) select { _x distance2D _plane <= GRLIB_spawn_max };
+			if (count _blu_target > 0) then {
+				(gunner _plane) reveal [(_blu_target select 0), 4];
+				(gunner _plane) doTarget (_blu_target select 0);
+				sleep 120;
 			};
+			// private _plane_dir = getDir _plane;
+			// private _spot = _plane getPos [1500, _plane_dir];
+			// if ([_spot, 150, GRLIB_side_friendly] call F_getUnitsCount > 2) then {
+			// 	_round = "Cluster_155mm_AMOS" createVehicle (getPos _plane);
+			// 	[_round, -80, 0] call BIS_fnc_setPitchBank;
+			// 	_round setVelocity [0,0,-100];
+			// 	sleep 60;
+			// };
+			sleep 3;
 		};
 	};
 };
