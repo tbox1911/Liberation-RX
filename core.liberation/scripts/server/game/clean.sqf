@@ -267,7 +267,7 @@ while {GRLIB_run_cleanup} do {
 			if (_vehicleDistCheck) then {
 				{
 					if ([_x, _vehicleDist, _hidden_from] call _isHidden) then {
-						[_x, true, true] spawn clean_vehicle;
+						[_x, true, true] spawn F_vehicleClean;
 						_stats = _stats + 1;
 					};
 				} count (_nbVehicles);
@@ -276,13 +276,13 @@ while {GRLIB_run_cleanup} do {
 				_count = count _list;
 				while {((_count - _vehiclesLimitMax) > 0)} do {
 					private _veh = selectRandom _list;
-					[_veh, true, true] spawn clean_vehicle;
+					[_veh, true, true] spawn F_vehicleClean;
 					_stats = _stats + 1;
 					_count = _count - 1;
 				};
 			} else {
 				while {(((count _nbVehicles) - _vehiclesLimit) > 0)} do {
-					[selectRandom _nbVehicles, true, true] spawn clean_vehicle;
+					[selectRandom _nbVehicles, true, true] spawn F_vehicleClean;
 					_stats = _stats + 1;
 				};
 			};

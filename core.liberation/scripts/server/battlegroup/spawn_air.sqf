@@ -155,5 +155,5 @@ _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "COMBAT";
 _waypoint setWaypointCombatMode "YELLOW";
 _waypoint setWaypointCompletionRadius 400;
-_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn clean_vehicle"];
+_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn F_vehicleClean"];
 {_x doFollow (leader _grp)} foreach units _grp;

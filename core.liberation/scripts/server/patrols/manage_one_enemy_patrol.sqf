@@ -65,7 +65,7 @@ if (count _usable_sectors > 0) then {
 	if (isNull _opfor_veh) then {
 		{ deleteVehicle _x } forEach (units _opfor_grp);
 	} else {
-		[_opfor_veh] call clean_vehicle;
+		[_opfor_veh] call F_vehicleClean;
 	};
 	deleteGroup _opfor_grp;
 

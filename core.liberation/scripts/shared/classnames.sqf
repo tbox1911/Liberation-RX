@@ -429,7 +429,7 @@ vehicle_refuel_sources = [
 // *** VEHICLE PRESET INVENTORY ***
 if (isNil "vehicle_preset_inventory_west") then {
 	vehicle_preset_inventory = [
-		// ["LandVehicle", ["ToolKit"]],
+		// ["LandVehicle", [PAR_AidKit]],
 		// ["Air", ["O_NVGoggles_urb_F"]],
 		// ["Ship_F", []],
 		// ["B_Quadbike_01_F", [PAR_AidKit,PAR_AidKit]],

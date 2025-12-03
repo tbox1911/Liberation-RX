@@ -155,7 +155,7 @@ buildings_west = [
 
 // Vehicle preset inventory
 vehicle_preset_inventory_west = [
-	["LandVehicle", ["ToolKit"]],
+	["LandVehicle", ["ToolKit",PAR_AidKit]],
 	["Air", ["O_NVGoggles_urb_F"]],
 	["Ship_F", []],
 	["B_Quadbike_01_F", ["HandGrenade",PAR_AidKit,PAR_AidKit]],

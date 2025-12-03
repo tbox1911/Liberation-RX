@@ -507,5 +507,5 @@ diag_log format ["End Defend Sector %1 at %2", _sector, time];
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
 { deleteVehicle _x; sleep 0.05 } forEach _managed_units;
-{ [_x] spawn clean_vehicle; sleep 0.05 } forEach _managed_vehicles;
+{ [_x] spawn F_vehicleClean; sleep 0.05 } forEach _managed_vehicles;
 [_sector_pos] call clearlandmines;

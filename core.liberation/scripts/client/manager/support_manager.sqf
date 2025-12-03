@@ -189,7 +189,7 @@ while {true} do {
 
 					// REPAIR
 					_near_repair = ([_vehicle, "REPAIR", _distarsenal] call F_check_near || _near_lhd);
-					_vehicle_need_repair = [_vehicle] call F_VehicleNeedRepair;
+					_vehicle_need_repair = [_vehicle] call F_vehicleNeedRepair;
 					if (!isNil "GRLIB_LRX_debug") then {
 						diag_log format ["DBG: %1: need Repair:%2 - near Repair source:%3", _vehicle_class, _vehicle_need_repair, _near_repair];
 					};

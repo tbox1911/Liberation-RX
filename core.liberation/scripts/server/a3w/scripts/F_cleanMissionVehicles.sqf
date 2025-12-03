@@ -13,7 +13,7 @@ if (typeName _vehicles != "ARRAY") then { _vehicles = [_vehicles] };
 			deleteVehicle _vehicle;
 		} else {
 			if (_vehicle getVariable ["GRLIB_vehicle_owner", ""] == "server") then { _vehicle setVariable ["GRLIB_vehicle_owner", "", true] };
-			[_vehicle] spawn clean_vehicle;
+			[_vehicle] spawn F_vehicleClean;
 		};
 	};
 	sleep 0.1;

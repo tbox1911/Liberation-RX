@@ -26,7 +26,7 @@ while {alive _static} do {
         };
 
         _near_repair = ([_static, "REPAIR", 80] call F_check_near);
-        _vehicle_need_repair = [_static] call F_VehicleNeedRepair;
+        _vehicle_need_repair = [_static] call F_vehicleNeedRepair;
         if (_near_repair && _vehicle_need_repair) then {
             _timer = _static getVariable ["GREUH_repair_timer", 0];
             if (_timer <= time) then {

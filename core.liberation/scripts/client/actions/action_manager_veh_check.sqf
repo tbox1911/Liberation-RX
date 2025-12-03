@@ -38,7 +38,7 @@ GRLIB_checkAction_ReFuel = {
 GRLIB_checkAction_Repair = {
 	params ["_target", "_unit"];
 	private _near_repairbox = [_target, "REPAIR_BOX", GRLIB_ActionDist_15, false] call F_check_near;
-	(GRLIB_player_is_menuok && alive _target && ([_target] call F_VehicleNeedRepair) && _near_repairbox)
+	(GRLIB_player_is_menuok && alive _target && ([_target] call F_vehicleNeedRepair) && _near_repairbox)
 };
 
 GRLIB_checkAction_Halo = {

@@ -243,6 +243,6 @@ if (isServer) then {
 			stats_blufor_vehicles_killed = stats_blufor_vehicles_killed + 1;
 		};
 
-		[_unit, false, true, true] spawn clean_vehicle;
+		[_unit, false, true, true] spawn F_vehicleClean;
 	};
 };

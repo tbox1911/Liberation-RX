@@ -126,7 +126,7 @@ publicVariable "sector_attack_in_progress";
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 if (!isNull _arsenal) then {_arsenal spawn {sleep 120; deleteVehicle _this}};
-if (!isNull _vehicle) then {_vehicle spawn {sleep 60; [_this, true, true] call clean_vehicle}};
+if (!isNull _vehicle) then {_vehicle spawn {sleep 60; [_this, true, true] call F_vehicleClean}};
 if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
 
 diag_log format ["End Attack Sector %1 at %2", _sector, time];

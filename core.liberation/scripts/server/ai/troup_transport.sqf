@@ -45,6 +45,6 @@ _waypoint setWaypointCompletionRadius 100;
 sleep 20;
 
 // Cleanup
-[_troup_transport, true, true] call clean_vehicle;
+[_troup_transport, true, true] call F_vehicleClean;
 { deleteVehicle _x; sleep 0.1 } forEach (units _transport_group);
 deleteGroup _transport_group;

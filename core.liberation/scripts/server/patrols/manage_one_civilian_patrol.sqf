@@ -61,7 +61,7 @@ if (count _usable_sectors > 0) then {
 	if (isNull _civ_veh) then {
 		{ deleteVehicle _x } forEach (units _civ_grp);
 	} else {
-		[_civ_veh] call clean_vehicle;
+		[_civ_veh] call F_vehicleClean;
 	};
 	deleteGroup _civ_grp;
 };

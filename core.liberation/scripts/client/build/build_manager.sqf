@@ -544,7 +544,7 @@ while {true} do {
 					_vehicle setVehicleAmmo _ammo;
 				};
 				// Preset Inventory
-				[_vehicle] call vehicle_preset;
+				[_vehicle] call F_vehiclePreset;
 			};
 
 			// A3 / R3F Inventory

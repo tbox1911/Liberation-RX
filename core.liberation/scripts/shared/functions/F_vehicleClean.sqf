@@ -32,7 +32,7 @@ if (_towed || _maned || (_owned && !_opfed) || _fobed || _blued) exitWith { fals
 // diag_log format ["Cleanup vehicle %1 at %2", typeOf _vehicle, time];
 
 // unTow
-[_vehicle] call untow_vehicle;
+[_vehicle] call F_vehicleUntow;
 
 //Delete A3 Cargo
 [_vehicle] call F_clearCargo;

@@ -55,5 +55,5 @@ _vehicle allowDamage true;
 
 sleep 20;
 if (underwater _vehicle && !(_vehicle isKindOf "Ship")) then {
-	[_vehicle, true, true] call clean_vehicle;
+	[_vehicle, true, true] call F_vehicleClean;
 };

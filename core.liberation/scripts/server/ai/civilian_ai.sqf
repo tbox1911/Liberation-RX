@@ -126,7 +126,7 @@ while {alive _unit && _continue} do {
 
 		//--- Repair
 		case 3: {
-			_target_veh = _target_veh select { ([_x] call F_VehicleNeedRepair) };
+			_target_veh = _target_veh select { ([_x] call F_vehicleNeedRepair) };
 			if (count _target_veh == 0) exitWith {};
 			_target = selectRandom _target_veh;
 			[_grp] call F_deleteWaypoints;

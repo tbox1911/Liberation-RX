@@ -130,7 +130,6 @@ spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spaw
 speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\manager\speak_manager.sqf";
 vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
 vehicle_perm = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_perm.sqf";
-vehicle_preset = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_preset.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};

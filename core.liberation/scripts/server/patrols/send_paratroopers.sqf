@@ -51,7 +51,7 @@ private _go_target = {
 	_waypoint setWaypointBehaviour "AWARE";
 	_waypoint setWaypointCombatMode "YELLOW";
 	_waypoint setWaypointCompletionRadius 400;
-	_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn clean_vehicle"];
+	_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn F_vehicleClean"];
 	{_x doFollow (leader _grp)} foreach units _grp;
 };
 
@@ -66,7 +66,7 @@ _vehicle flyInHeight 350;
 private _cargo_seat_free = _vehicle emptyPositions "Cargo";
 if (_cargo_seat_free == 0) exitWith {
 	diag_log format ["--- LRX Error bad classname (%1) for troup transport.", typeOf _vehicle];
-	[_vehicle, true, true] spawn clean_vehicle;
+	[_vehicle, true, true] spawn F_vehicleClean;
 	grpNull;
 };
 if (_cargo_seat_free > 10) then { _cargo_seat_free = 10 };

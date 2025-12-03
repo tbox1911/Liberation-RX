@@ -92,7 +92,7 @@ while { dialog && alive player } do {
 				private _msg = format [ "%1\nRearming Cooldown (%2 sec)\nPlease Wait...", _vehicle_name, round (_timer - time) ];
 				if (_timer >= time) exitWith { hintSilent _msg; sleep 2 };
 				if (count GRLIB_virtual_garage >= GRLIB_garage_size) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", GRLIB_garage_size]); sleep 2 };
-				if ([_vehicle] call F_VehicleNeedRepair) exitWith { hintSilent "Damaged Vehicles cannot be Parked !"; sleep 2 };
+				if ([_vehicle] call F_vehicleNeedRepair) exitWith { hintSilent "Damaged Vehicles cannot be Parked !"; sleep 2 };
 				if (count (crew _vehicle) > 0 && !(typeOf _vehicle in uavs_vehicles)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
 
 				ctrlEnable [ 120, false ];
@@ -106,7 +106,7 @@ while { dialog && alive player } do {
 				private _lst_grl = [];
 				{_lst_grl pushback (typeOf _x)} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 				GRLIB_virtual_garage append [[typeOf _vehicle,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_grl]];
-				[_vehicle, true, true] call clean_vehicle;
+				[_vehicle, true, true] call F_vehicleClean;
 				player setVariable ["GRLIB_virtual_garage", GRLIB_virtual_garage, true];
 				hintSilent (format [localize "STR_LOADED", _vehicle_name]);
 			};
