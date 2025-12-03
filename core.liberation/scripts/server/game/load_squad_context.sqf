@@ -19,7 +19,7 @@ if (count (_context select 2) >= 1) then {
         _player = _uid call BIS_fnc_getUnitByUID;
         _owner = owner _player;
         if (alive _player && [_player, "FOB", GRLIB_fob_range] call F_check_near && (round (getPos _player select 2) <= 0)) then {
-            diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
+            diag_log format ["--- LRX Info: %1 Squad loading %2 unit(s).", name _player, count (_context select 2)];
             _pos = markerPos GRLIB_respawn_marker;
             _grp = createGroup [GRLIB_side_friendly, true];
             {
@@ -43,7 +43,7 @@ if (count (_context select 2) >= 1) then {
             sleep 0.5;
             [_grp] remoteExec ["remote_call_load_context", _owner];
             waitUntil {sleep 1; (_player getVariable ["GRLIB_squad_context_loaded", false])};
-            diag_log format ["--- LRX unit(s) loaded for %1 Squad.", name _player];
+            diag_log format ["--- LRX Info: %1 Squad %2 unit(s) loaded.", name _player, count (units _grp)];
         } else {
             if (_player distance2D (markerPos GRLIB_respawn_marker) > 100) then {
                 [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", _owner];
