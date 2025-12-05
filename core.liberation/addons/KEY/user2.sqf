@@ -16,6 +16,8 @@ AR_animation = switch (true) do {
 	default {"AmovPercMevaSnonWnonDf"};
 };
 
+waitUntil {sleep 0.2; !(isSwitchingWeapon player)};
+player playMoveNow AR_animation;
 player addEventHandler ["AnimDone", {
 	if ((!AR_active) || dialog || {!((currentWeapon player) isEqualTo AR_weapon)} ||
 		{!isNull objectParent player} || {surfaceIsWater (getPos player)} ||
@@ -28,6 +30,3 @@ player addEventHandler ["AnimDone", {
 	};
 	player playMoveNow AR_animation;
 }];
-
-waitUntil {sleep 0.2; !(isSwitchingWeapon player)};
-player playMoveNow AR_animation;
