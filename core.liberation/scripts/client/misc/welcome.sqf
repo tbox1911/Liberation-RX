@@ -31,7 +31,12 @@ if ([player] call F_getCommander) then {
 };
 
 private _my_squad = player getVariable ["my_squad", nil];
-if (!isNil "_my_squad") then { player hcSetGroup [_my_squad] };
+if (!isNil "_my_squad") then {
+	if (player != hcLeader _my_squad) then {
+		(hcLeader _my_squad) hcRemoveGroup _my_squad;
+		player hcSetGroup [_my_squad];
+	};
+};
 
 private _reput = [player] call F_getReputText;
 private _color = _reput select 0;
