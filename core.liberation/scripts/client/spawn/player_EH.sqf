@@ -61,5 +61,4 @@ if (_unit == player) then {
 			};
 		};
 	}];
-
 };
