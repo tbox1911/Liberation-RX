@@ -34,6 +34,7 @@ if (GRLIB_side_friendly == WEST) then {
         _unit setVariable ["GREUH_fuel_count", (_oldUnit getVariable ["GREUH_fuel_count", 0]), true];
         _unit setVariable ["GREUH_reput_count", (_oldUnit getVariable ["GREUH_reput_count", 0]), true];
     };
+    [_unit] call player_EHP;
     [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
     sleep 0.2;
     deleteVehicle _newUnit;
@@ -49,7 +50,7 @@ waitUntil { sleep 0.5; (_unit getVariable ["GRLIB_player_context_loaded", false]
 [_unit] spawn player_loadout;
 waitUntil { sleep 0.5; startgame == 1 };
 
-[_unit] spawn player_eventhandler;
+[_unit] call player_EH;
 [_unit] spawn player_init;
 _unit setvariable ["PAR_grave_box", PAR_grave_box, true];
 

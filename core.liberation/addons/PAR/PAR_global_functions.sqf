@@ -195,7 +195,8 @@ PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
 	if (_unit getVariable ["PAR_EH_Installed", false]) exitWith {};
 	_unit setVariable ["PAR_EH_Installed", true];
-	[_unit] call player_eventhandler;
+	[_unit] call player_EHP;
+	[_unit] call player_EH;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ["PAR_isUnconscious", false, true];
 	_unit setVariable ["PAR_isDragged", 0, true];

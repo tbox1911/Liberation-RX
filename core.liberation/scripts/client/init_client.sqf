@@ -120,9 +120,10 @@ is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 player_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_actions.sqf";
-player_eventhandler = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_eventhandler.sqf";
 player_init = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_init.sqf";
 player_respawn = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_respawn.sqf";
+player_EH = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_EH.sqf";
+player_EHP = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_EHP.sqf";
 save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
 save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\save_personal_arsenal.sqf";
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
@@ -133,6 +134,8 @@ vehicle_perm = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehic
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
+
+[player] call player_EHP;
 [player, objNull] spawn player_respawn;
 
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {

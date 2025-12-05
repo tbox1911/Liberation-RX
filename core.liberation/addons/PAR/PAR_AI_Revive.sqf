@@ -84,7 +84,7 @@ _marker setMarkerTextlocal format ["%1's Grave.", name player];
 // [player] call player_init;
 
 // Init player EH
-// [player] call player_eventhandler;
+// [player] call player_EH;
 
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 

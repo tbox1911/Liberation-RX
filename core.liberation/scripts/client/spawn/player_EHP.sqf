@@ -1,44 +1,8 @@
 params ["_unit"];
 
-// LRX unit Event Handlers
+// LRX unit Persistent Event Handlers
 
-// General Event Handlers
-_unit addEventHandler ["InventoryClosed", {
-	params ["_unit", "_container"];
-	[_unit] call F_filterLoadout;
-	if (_unit == player) then {
-		hintSilent format ["Inventory value:\n%1 AMMO.", ([_unit] call F_loadoutPrice)];
-		if (GRLIB_filter_arsenal == 4 && _container == GRLIB_personal_box) then { [] spawn save_personal_arsenal };
-	};
-}];
-
-_unit addEventHandler ["InventoryOpened", {
-	params ["_unit", "_container"];
-	_ret = false;
-	playsound "ZoomIn";
-	if (!alive _container) exitWith { _ret };
-	if (!([_unit, _container] call is_owner) || locked _container > 1) then {
-		closeDialog 106;
-		_ret = true;
-	};
-	_ret;
-}];
-
-_unit addEventHandler ["WeaponAssembled", {
-	params ["_unit", "_weapon"];
-	if (typeOf _weapon in uavs_vehicles) then { [_weapon] spawn F_forceCrew };
-}];
-
-_unit addEventHandler ["Take", {
-	params ["_unit", "_container", "_item"];
-	if !([_item] call is_allowed_item) then {
-		_unit removeWeapon _item;
-		_unit removeItem _item;
-		_unit unlinkItem _item;
-	};
-}];
-
-_unit addEventHandler ["FiredMan",	{
+_unit addEventHandler ["FiredMan", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	// Civilian limit (["Put","Throw"])
@@ -82,9 +46,6 @@ _unit addEventHandler ["FiredMan",	{
 	};
 }];
 
-// Cannot DisAssemble
-_unit enableWeaponDisassembly false;
-
 // Player Event Handlers
 if (_unit == player) then {
 	// ACE specific
@@ -111,16 +72,51 @@ if (_unit == player) then {
 		_ret;
 	"];
 
-	// Backup Weapon state
-	_unit removeAllEventHandlers "WeaponChanged";
-	_unit addEventHandler ["WeaponChanged", {
-		params ["_unit", "_oldWeapon", "_newWeapon", "_oldMode", "_newMode", "_oldMuzzle", "_newMuzzle", "_turretIndex"];
-		if (isNull objectParent _unit) then {
-			if (_newWeapon == primaryWeapon _unit) then {
-				PAR_weapons_state = [_newWeapon, _newMuzzle, _newMode];
+	// Player killed EH
+	_unit removeAllEventHandlers "Killed";
+	_unit addEventHandler ["Killed", { _this spawn PAR_fn_death }];
+
+	// Player respawn EH
+	_unit removeAllEventHandlers "Respawn";
+	_unit addEventHandler ["Respawn", { _this spawn player_respawn }];
+
+	// Player Handle Damage EH
+	if (PAR_revive != 0) then {
+		player addEventHandler ["HandleDamage", {
+			params ["_unit", "", "_damage", "_killer", "", "", "_instigator"];
+			if (!isNull _instigator) then {
+				if (isNull (getAssignedCuratorLogic _instigator)) then {
+					_killer = _instigator;
+				};
+			} else {
+				if (!(_killer isKindOf "CAManBase")) then {
+					_killer = effectiveCommander _killer;
+				};
 			};
-		};
-	}];
+			private _isNotWounded = !([_unit] call PAR_is_wounded);
+			if (_isNotWounded && isPlayer _killer && _killer != _unit && vehicle _unit != vehicle _killer && _killer distance2D _unit >= 5) then {
+				if (_damage >= 0.35 && (time >= (_unit getVariable ["GRLIB_isProtected", 0]))) then {
+					_unit setVariable ["GRLIB_isProtected", round(time + 10)];
+					private _msg = format ["%1 (%2)", localize "STR_FRIENDLY_FIRE", name _killer];
+					[gamelogic, _msg] remoteExec ["globalChat", 0];
+					[_killer, -5] remoteExec ["F_addScore", 2];
+					// TK Protect
+					if (GRLIB_tk_mode > 0) then {
+						["PAR_tkMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
+						[_unit, _killer] remoteExec ["LRX_tk_check", 0];
+						_damage = 0;
+					};
+				};
+			};
+			private _veh_unit = objectParent _unit;
+			if (_isNotWounded && _damage >= 0.86) then {
+				if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
+				_unit setVariable ["PAR_isUnconscious", true, true];
+				[_unit, _killer] spawn PAR_Player_Unconscious;
+			};
+			_damage min 0.86;
+		}];
+	};
 
 	// Get in Vehicle
 	_unit removeAllEventHandlers "GetInMan";
@@ -211,54 +207,25 @@ if (_unit == player) then {
 
 	// Switch seat
 	_unit removeAllEventHandlers "SeatSwitchedMan";
-	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];
+	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];	
+} else {
+	// AI killed EH
+	_unit removeAllEventHandlers "Killed";
+	_unit addEventHandler ["Killed", { _this spawn PAR_fn_death }];
 
-	// Player killed EH
-	player addEventHandler ["Killed", { _this spawn PAR_fn_death }];
-
-	// Player respawn EH
-	player addEventHandler ["Respawn", { _this spawn player_respawn }];
-
-	// Player Handle Damage EH
+	// AI Handle Damage EH
 	if (PAR_revive != 0) then {
-		player addEventHandler ["HandleDamage", {
-			params ["_unit", "", "_damage", "_killer", "", "", "_instigator"];
-			if (!isNull _instigator) then {
-				if (isNull (getAssignedCuratorLogic _instigator)) then {
-					_killer = _instigator;
-				};
-			} else {
-				if (!(_killer isKindOf "CAManBase")) then {
-					_killer = effectiveCommander _killer;
-				};
-			};
-			private _isNotWounded = !([_unit] call PAR_is_wounded);
-			if (_isNotWounded && isPlayer _killer && _killer != _unit && vehicle _unit != vehicle _killer && _killer distance2D _unit >= 5) then {
-				if (_damage >= 0.35 && (time >= (_unit getVariable ["GRLIB_isProtected", 0]))) then {
-					_unit setVariable ["GRLIB_isProtected", round(time + 10)];
-					private _msg = format ["%1 (%2)", localize "STR_FRIENDLY_FIRE", name _killer];
-					[gamelogic, _msg] remoteExec ["globalChat", 0];
-					[_killer, -5] remoteExec ["F_addScore", 2];
-					// TK Protect
-					if (GRLIB_tk_mode > 0) then {
-						["PAR_tkMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
-						[_unit, _killer] remoteExec ["LRX_tk_check", 0];
-						_damage = 0;
-					};
-				};
-			};
-			private _veh_unit = objectParent _unit;
-			if (_isNotWounded && _damage >= 0.86) then {
-				if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
+		_unit addEventHandler ["HandleDamage", {
+			params ["_unit","","_damage"];
+			if (!([_unit] call PAR_is_wounded) && _damage >= 0.86) then {
 				_unit setVariable ["PAR_isUnconscious", true, true];
-				[_unit, _killer] spawn PAR_Player_Unconscious;
+				private _veh_unit = objectParent _unit;
+				if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
+				[_unit] spawn PAR_fn_unconscious;
 			};
 			_damage min 0.86;
 		}];
 	};
-} else {
-	// AI killed EH
-	_unit addEventHandler ["Killed", { _this spawn PAR_fn_death }];
 
 	// Get in Vehicle
 	_unit removeAllEventHandlers "GetInMan";
@@ -292,19 +259,5 @@ if (_unit == player) then {
 
 	// Switch seat
 	_unit removeAllEventHandlers "SeatSwitchedMan";
-	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];
-
-	// AI Handle Damage EH
-	if (PAR_revive != 0) then {
-		_unit addEventHandler ["HandleDamage", {
-			params ["_unit","","_damage"];
-			if (!([_unit] call PAR_is_wounded) && _damage >= 0.86) then {
-				_unit setVariable ["PAR_isUnconscious", true, true];
-				private _veh_unit = objectParent _unit;
-				if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
-				[_unit] spawn PAR_fn_unconscious;
-			};
-			_damage min 0.86;
-		}];
-	};
+	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];	
 };
