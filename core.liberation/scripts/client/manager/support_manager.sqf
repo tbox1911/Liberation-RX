@@ -134,112 +134,26 @@ while {true} do {
 				_vehicle = vehicle _unit;
 				_near_lhd = (_unit distance2D lhd < GRLIB_fob_range);
 				if (!(_vehicle isKindOf "ParachuteBase") &&	(_unit in [gunner _vehicle, driver _vehicle, commander _vehicle])) then {
-					//if (_vehicle getVariable ["R3F_LOG_disabled", false]) exitWith {};
-					_ammo_collected = player getVariable ["GREUH_ammo_count", 0];
-					_vehicle_class = typeOf _vehicle;
-					_vehicle_name = [_vehicle_class] call F_getLRXName;
-					_is_arty = ([_vehicle_class, _artillery] call F_itemIsInClass);
-					if (_is_arty) then { _distarsenal = 80 };
-
-					// Cost
-					_reammo_cost = 0;
-					_repair_cost = 0;
-					_refuel_cost = 0;
-					if ([_unit, "FOB", _distarsenal, true] call F_check_near) then {
-						_reammo_cost = 100;
-						_repair_cost = 50;
-						_refuel_cost = 50;
-					};
-					if ([_unit, "FUEL", _distarsenal, false] call F_check_near) then {
-						_refuel_cost = 150;
-					};
-					if ([_unit, "REP", _distarsenal, false] call F_check_near) then {
-						_repair_cost = 150;
-					};
-
-					// REAMMO
-					_near_arsenal = ([_vehicle, "REAMMO", _distarsenal] call F_check_near || _near_lhd);
-					_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
-					if (!isNil "GRLIB_LRX_debug") then {
-						diag_log format ["DBG: %1: need Ammo:%2 - near Ammo source:%3", _vehicle_class, _vehicle_need_ammo, _near_arsenal];
-					};
-
-					if (_near_arsenal && _vehicle_need_ammo) then {
-						_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
-						if (_timer <= time) then {
-							_max_ammo = 3;
-							_cooldown = 5 * 60;
-							if (_ammo_collected < _reammo_cost) exitWith { gamelogic globalChat format [localize "STR_REARM_NOAMMO", _vehicle_name] };
-							[_reammo_cost] call F_pay;
-							_vehicle setVehicleAmmo 1;
-							if (_is_arty) then { _cooldown = _cooldown * 1.5 };
-							_vehicle setVariable ["GREUH_rearm_timer", round (time + _cooldown)];  // min cooldown
-							_screenmsg = format [localize "STR_REARM_COST_LINE", _vehicle_name, localize "STR_REARMING", "100%", _reammo_cost];
-							titleText [_screenmsg, "PLAIN DOWN"];
-							hintSilent _screenmsg;
-						} else {
-							if (_unit distance2D player <= 30) then {
-								if (_uiticks % 6 == 0) then {
-									_screenmsg = format [localize "STR_REARM_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
-									titleText [_screenmsg, "PLAIN DOWN"];
-								};
-							};
-						};
-					};
+					_vehicle setVariable ["GRLIB_vehicle_need_support", nil];
+					private _task = [];
 
 					// REPAIR
 					_near_repair = ([_vehicle, "REPAIR", _distarsenal] call F_check_near || _near_lhd);
 					_vehicle_need_repair = [_vehicle] call F_vehicleNeedRepair;
-					if (!isNil "GRLIB_LRX_debug") then {
-						diag_log format ["DBG: %1: need Repair:%2 - near Repair source:%3", _vehicle_class, _vehicle_need_repair, _near_repair];
-					};
+					if (_near_repair && _vehicle_need_repair) then { _task pushBack 1 };
 
-					if (_near_repair && _vehicle_need_repair) then {
-						_timer = _vehicle getVariable ["GREUH_repair_timer", 0];
-						if (_timer <= time) then {
-							if (_ammo_collected < _repair_cost) exitWith { gamelogic globalChat format [localize "STR_REPAIR_NOAMMO", _vehicle_name] };
-							[_repair_cost] call F_pay;
-							_vehicle setDamage 0;
-							_vehicle setVariable ["GREUH_repair_timer", round (time + (5*60))];  // min cooldown
-							_screenmsg = format ["%1\n%2 - %3", _vehicle_name, localize "STR_REPAIRING", "100%"];
-							titleText [_screenmsg, "PLAIN DOWN"];
-							hintSilent _screenmsg;
-						} else {
-							if (_unit distance2D player <= 30) then {
-								if (_uiticks % 6 == 0) then {
-									_screenmsg = format [localize "STR_REPAIR_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
-									titleText [_screenmsg, "PLAIN DOWN"];
-								};
-							};
-						};
-					};
+					// REAMMO
+					_near_arsenal = ([_vehicle, "REAMMO", _distarsenal] call F_check_near || _near_lhd);
+					_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
+					if (_near_arsenal && _vehicle_need_ammo) then { _task pushBack 2 };
 
 					// REFUEL
 					_near_refuel = ([_vehicle, "REFUEL", _distarsenal] call F_check_near || [_unit, "FUEL", _distarsenal, false] call F_check_near || _near_lhd);
 					_vehicle_need_refuel = (fuel _vehicle < 0.5);
-					if (!isNil "GRLIB_LRX_debug") then {
-						diag_log format ["DBG: %1: need Fuel:%2 - near refuel source:%3", _vehicle_class, _vehicle_need_refuel, _near_refuel];
-					};
+					if (_near_refuel && _vehicle_need_refuel) then { _task pushBack 3 };
 
-					if (_near_refuel && _vehicle_need_refuel) then {
-						_timer = _vehicle getVariable ["GREUH_refuel_timer", 0];
-						if (_timer <= time) then {
-							if (_ammo_collected < _refuel_cost) exitWith { gamelogic globalChat format [localize "STR_REFUEL_NOAMMO", _vehicle_name] };
-							[_refuel_cost] call F_pay;
-							_vehicle setFuel 1;
-							_vehicle setVariable ["GREUH_refuel_timer", round (time + (5*60))];  // min cooldown
-							_screenmsg = format ["%1\n%2 - %3", _vehicle_name, localize "STR_REFUELING", "100%"];
-							titleText [_screenmsg, "PLAIN DOWN"];
-							hintSilent _screenmsg;
-						} else {
-							if (_unit distance2D player <= 30) then {
-								if (_uiticks % 6 == 0) then {
-									_screenmsg = format [localize "STR_REFUEL_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
-									titleText [_screenmsg, "PLAIN DOWN"];
-								};
-							};
-						};
-					};
+					// Set Task
+					if (count _task > 0) then { _vehicle setVariable ["GRLIB_vehicle_need_support", _task] };
 
 					// UNFLIP
 					if (_unit == driver _vehicle) then {

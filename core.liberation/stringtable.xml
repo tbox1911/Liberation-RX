@@ -6685,6 +6685,16 @@
 			<Portuguese>-- PINTAR</Portuguese>
 			<Czech>-- PŘEMALOVAT</Czech>
 		</Key>
+		<Key ID="STR_VEH_SUPPORT">
+			<Original>-- VEHICLE SUPPORT</Original>
+			<Russian>-- ПОДДЕРЖКА ТРАНСПОРТНЫХ СРЕДСТВ</Russian>
+			<French>-- SUPPORT VÉHICULE</French>
+			<Japanese>-- ビークルサポート</Japanese>
+			<Chinesesimp>-- 车辆支援 --</Chinesesimp>
+			<Chinese>-- 車輛支援 --</Chinese>
+			<Portuguese>-- SUPORTE DE VEÍCULO</Portuguese>
+			<Czech>-- PODPORA VOZIDEL</Czech>
+		</Key>		
 		<Key ID="STR_EJECT_CREW">
 			<Original>-- EJECT CREW</Original>
 			<Russian>-- ВЫСАДИТЬ ЭКИПАЖ</Russian>

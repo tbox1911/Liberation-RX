@@ -103,6 +103,7 @@ F_UnitNeedAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_UpdateSquadInfo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UpdateSquadInfo.sqf";
 F_vehicleDefense = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleDefense.sqf";
 F_vehicleNeedRepair = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleNeedRepair.sqf";
+F_vehicleSupport = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleSupport.sqf";
 F_vehicleUnflip = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleUnflip.sqf";
 F_vehicleLock = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleLock.sqf";
 F_vehicleUntow = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleUntow.sqf";

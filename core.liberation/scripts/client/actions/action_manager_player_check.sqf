@@ -156,6 +156,12 @@ GRLIB_checkRemoveHelipad = {
 	);
 };
 
+GRLIB_check_VehicleSupport = {
+	private _unitList = (units group player) select { local _x && lifeState _x != "INCAPACITATED" };
+	GRLIB_vehicle_need_support = _unitList select { !isNil { (objectParent _x) getVariable "GRLIB_vehicle_need_support"} };
+	(count GRLIB_vehicle_need_support > 0)
+};
+
 GRLIB_check_EjectCrew = {
 	params ["_target"];
 	if (!alive _target || captive _target) exitWith { false };

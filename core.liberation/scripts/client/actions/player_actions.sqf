@@ -20,6 +20,10 @@ waitUntil { sleep 1; !(isNil "resources_infantry") };
 // Juke Box
 player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
 
+// Repair/Refuel/Reammo vehicle
+player addAction ["<t color='#0080F0'>" + localize "STR_VEH_SUPPORT" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_support.sqf","",-490,false,true,"","call GRLIB_check_VehicleSupport"];
+
+
 // Fast Eject Crew
 player addAction ["<t color='#0080F0'>" + localize "STR_EJECT_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",999,false,true,"","call GRLIB_check_EjectCrew"];
 
