@@ -19,6 +19,7 @@ ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "O_Helipilot_F";
 crewman_classname = "O_crew_F";
+repair_offroad = "O_G_Offroad_01_repair_F";
 uavs_terminal_typename = "O_UavTerminal";
 blufor_flag = "Flag_CSAT_F";
 
@@ -118,7 +119,7 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["O_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
+	[repair_offroad,5,15,5,GRLIB_perm_inf],
 	["O_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	["Land_Pod_Heli_Transport_04_bench_F",0,50,0,GRLIB_perm_log],
 	["Land_Pod_Heli_Transport_04_covered_F",0,50,0,GRLIB_perm_log]
