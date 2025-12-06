@@ -45,12 +45,11 @@ player addAction ["<t color='#FFFF00'>" + localize "STR_UNPACK_BEACON" + "</t> <
 // Air Drop
 player addAction ["<t color='#00F0F0'>" + localize "STR_AIR_SUPPORT" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true,"","call GRLIB_checkAirDrop"];
 
-// Arsenal
-player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenal"];
-
 // Personal Arsenal
 if (GRLIB_filter_arsenal == 4) then {
     player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_personal_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenalPerso"];
     player addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_UNPACK" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_personal_arsenal.sqf","",-501,false,true,"","call GRLIB_checkArsenalPerso"];
+} else {
+    // Classic Arsenal
+    player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenal"];
 };
-
