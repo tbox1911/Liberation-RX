@@ -37,4 +37,5 @@ if (player != hcLeader _grp) then {
 	player hcSetGroup [_grp];
 };
 
+[true] call player_squad_actions;
 build_refresh = true;

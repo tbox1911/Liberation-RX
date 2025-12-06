@@ -13,6 +13,7 @@ while {true} do {
 	GRLIB_player_fobdistance = (player distance2D GRLIB_player_nearest_fob);
 	GRLIB_player_near_fob = (GRLIB_player_fobdistance <= GRLIB_fob_range);
 	GRLIB_player_near_lhd = (player distance2D lhd <= GRLIB_fob_range);
+	[GRLIB_player_near_fob] call player_fob_actions;
 
 	GRLIB_player_is_menuok = [] call is_menuok;
 	if (GRLIB_player_is_menuok) then {

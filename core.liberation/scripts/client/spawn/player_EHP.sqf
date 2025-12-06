@@ -162,9 +162,10 @@ if (_unit == player) then {
 					1 fadeSound (round desired_vehvolume / 100.0);
 					3 fadeMusic (getAudioOptionVolumes select 1);
 					NRE_EarplugsActive = 1;
-					sleep 2;
+					sleep 3;
 					hintSilent "";
 				};
+				[true] call player_vehicle_actions;
 			};
 		};
 	}];
@@ -202,12 +203,13 @@ if (_unit == player) then {
 				3 fadeMusic 0;
 				NRE_EarplugsActive = 0;
 			};
+			[false] call player_vehicle_actions;
 		};
 	}];
 
 	// Switch seat
 	_unit removeAllEventHandlers "SeatSwitchedMan";
-	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];	
+	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];
 } else {
 	// AI killed EH
 	_unit removeAllEventHandlers "Killed";
@@ -259,5 +261,5 @@ if (_unit == player) then {
 
 	// Switch seat
 	_unit removeAllEventHandlers "SeatSwitchedMan";
-	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];	
+	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];
 };

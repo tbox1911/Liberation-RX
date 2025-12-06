@@ -82,3 +82,8 @@ GRLIB_checkAction_Sticky = {
 	} forEach (vestItems _unit + backpackItems _unit);
 	(GRLIB_player_is_menuok && !GRLIB_player_near_fob && alive _target && _explosive && [_unit, _target] call is_owner )
 };
+
+GRLIB_checkPackBeacon = {
+	params ["_target", "_unit"];	
+	(GRLIB_player_is_menuok && [_unit, _target] call is_owner && !(_target getVariable ['tent_in_use', false]))
+};

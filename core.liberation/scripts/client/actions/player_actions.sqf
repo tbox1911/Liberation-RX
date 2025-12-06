@@ -1,49 +1,25 @@
-private _icon_dog = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
-private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
+waitUntil { sleep 1; !(isNil "resources_infantry") };
 
 // Tuto
+private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
 player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t> <img size='1' image='" + _icon_tuto + "'/>","[] execVM 'scripts\client\ui\tutorial_manager.sqf'","",-740,false,true,"","(_target distance2D lhd < GRLIB_fob_range)"];
 
 // Admin Menu
-player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU_ACTION" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa'/>","scripts\client\commander\admin_menu.sqf","",999,false,true,"","call GRLIB_checkOperator"];
-player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU_MISSION" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa'/>","scripts\client\commander\admin_menu_a3w.sqf","",998,false,true,"","call GRLIB_checkOperator"];
-player addAction ["<t color='#008080'>" + localize "STR_ADMIN_CONFIGURE" + "</t> <img size='1' image='\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa'/>",{[] spawn GRLIB_CreateParamDialog;},"",997,false,true,"","call GRLIB_checkAdmin"];
-player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\commander\open_permissions.sqf","",996,false,true,"","call GRLIB_checkAdmin"];
-player addAction ["<t color='#FF8000'>" + localize "STR_DUMP_FOB_TEMPLATE" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\fob_templates\export_template.sqf","",995,false,true,"","call GRLIB_checkAdmin && GRLIB_player_near_fob"];
+if ([] call is_admin) then { [true] call player_admin_actions };
 
 // Extended Options
 player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true];
 
-waitUntil { sleep 1; !(isNil "resources_infantry") };
-
-// Juke Box
-player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
-
-// Repair/Refuel/Reammo vehicle
-player addAction ["<t color='#0080F0'>" + localize "STR_VEH_SUPPORT" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_support.sqf","",-490,false,true,"","call GRLIB_check_VehicleSupport"];
-
-
-// Fast Eject Crew
-player addAction ["<t color='#0080F0'>" + localize "STR_EJECT_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",999,false,true,"","call GRLIB_check_EjectCrew"];
-
-// Fast Onboard Crew
-player addAction ["<t color='#0080F0'>" + localize "STR_ONBOARD_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_onboard_crew.sqf","",998,false,true,"","call GRLIB_checkOnboardCrew"];
-
 // Dog - Actions
-player addAction ["<t color='#00AA00'>" + localize "STR_DOG_PET" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","pet",-639,true,true,"","call GRLIB_check_DogClose"];
-player addAction ["<t color='#FF8000'>" + localize "STR_DOG_FIND" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","call GRLIB_check_DogRelax"];
-player addAction ["<t color='#FF8000'>" + localize "STR_DOG_FIND_GUN" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find_gun",-640,false,true,"","call GRLIB_check_DogRelax"];
-player addAction ["<t color='#FF8000'>" + localize "STR_DOG_PATROL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","patrol",-640,false,true,"","call GRLIB_check_DogRelax"];
-player addAction ["<t color='#FF8000'>" + localize "STR_DOG_RECALL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call GRLIB_check_DogOnDuty"];
-player addAction ["<t color='#FF8000'>" + localize "STR_DOG_STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","call GRLIB_check_DogRelax"];
-player addAction ["<t color='#F02000'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-642,false,true,"","call GRLIB_check_Dog && GRLIB_player_near_fob"];
+private _my_dog = player getVariable ["my_dog", nil];
+if (!isNil "_my_dog") then { [true] call player_dog_actions };
 
 // Squad - Actions
-player addAction ["<t color='#8080FF'>" + localize "STR_SQUAD_MOVE" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","move",-935,false,true,"","call GRLIB_checkSquad"];
-player addAction ["<t color='#8080FF'>" + localize "STR_SQUAD_FOLLOW" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","follow",-935,false,true,"","call GRLIB_checkSquad"];
-player addAction ["<t color='#8080FF'>" + localize "STR_SQUAD_STOP" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","stop",-935,false,true,"","call GRLIB_checkSquad"];
-player addAction ["<t color='#F02000'>" + localize "STR_SQUAD_DISMISS" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","del",-935,false,true,"","call GRLIB_checkSquad"];
+private _my_squad = player getVariable ["my_squad", nil];
+if (!isNil "_my_squad") then { [true] call player_squad_actions };
+
+// Support vehicle
+player addAction ["<t color='#0080F0'>" + localize "STR_VEH_SUPPORT" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_support.sqf","",-490,false,true,"","call GRLIB_check_VehicleSupport"];
 
 // Redeploy
 player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-502,false,true,"","call GRLIB_checkRedeploy"];
@@ -58,7 +34,13 @@ player addAction ["<t color='#80FF00'>" + localize "STR_SEND_RSC" + "</t> <img s
 player addAction ["<t color='#00F080'>" + localize "STR_BUY_FUEL" + "</t> <img size='1' image='\A3\ui_f\data\map\mapcontrol\Fuelstation_CA.paa'/>", "scripts\client\actions\do_buy_fuel.sqf","",-900,true,true,"","call GRLIB_checkBuyFuel"];
 
 // Heal Self
-player addAction ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Heal_ca.paa'/>" + localize "STR_HEAL_SELF_ACTION", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", "call GRLIB_checkHeal"];
+//player addAction ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Heal_ca.paa'/>" + localize "STR_HEAL_SELF_ACTION", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", "call GRLIB_checkHeal"];
+
+// Trench Menu
+player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_TRENCH_ACTION" + "</t> <img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\Obsolete\ui_action_turnin_ca'/>","scripts\client\build\open_build_menu.sqf",true,-981,false,true,"","call GRLIB_checkBuildTrench"];
+
+// UnPack Beacon
+player addAction ["<t color='#FFFF00'>" + localize "STR_UNPACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,false,true,"","call GRLIB_checkUnpackBeacon"];
 
 // Air Drop
 player addAction ["<t color='#00F0F0'>" + localize "STR_AIR_SUPPORT" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true,"","call GRLIB_checkAirDrop"];
@@ -67,41 +49,8 @@ player addAction ["<t color='#00F0F0'>" + localize "STR_AIR_SUPPORT" + "</t> <im
 player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenal"];
 
 // Personal Arsenal
-player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_personal_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenalPerso"];
-player addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_UNPACK" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_personal_arsenal.sqf","",-501,false,true,"","call GRLIB_checkArsenalPerso"];
+if (GRLIB_filter_arsenal == 4) then {
+    player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_personal_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenalPerso"];
+    player addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_UNPACK" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_personal_arsenal.sqf","",-501,false,true,"","call GRLIB_checkArsenalPerso"];
+};
 
-// Virtual Garage
-player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","call GRLIB_checkGarage"];
-
-// Build Menu
-player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf",false,-501,false,true,"","call GRLIB_checkBuild"];
-
-// Trench Menu
-player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_TRENCH_ACTION" + "</t> <img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\Obsolete\ui_action_turnin_ca'/>","scripts\client\build\open_build_menu.sqf",true,-981,false,true,"","call GRLIB_checkBuildTrench"];
-
-// Squad Management
-player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","call GRLIB_checkSquadMgmt"];
-
-// Pack Beacon
-player addAction ["<t color='#FFFF00'>" + localize "STR_PACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf","",-950,false,true,"","call GRLIB_checkPackBeacon"];
-
-// UnPack Beacon
-player addAction ["<t color='#FFFF00'>" + localize "STR_UNPACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,false,true,"","call GRLIB_checkUnpackBeacon"];
-
-// Build Water FOB
-player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","call GRLIB_checkBuildFOBWater"];
-
-// Pack FOB
-player addAction ["<t color='#F02000'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf","",-981,false,true,"","call GRLIB_checkPackFOB"];
-
-// Upgrade Outpost
-player addAction ["<t color='#00FF8F'>" + localize "STR_UPGRADE_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_upgrade_outpost.sqf","",-983,false,true,"","call GRLIB_checkUpgradeOutpost"];
-
-// Destroy Outpost
-player addAction ["<t color='#F02000'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_outpost.sqf","",-984,false,true,"","call GRLIB_checkDelOutpost"];
-
-// Onboard Ship
-player addAction ["<t color='#00206F'>" + localize "STR_ONBOARD_SHIP" + "</t> <img size='1' image='res\ui_deployfob.paa'/>",{ [] spawn do_onboard },"",-981,false,true,"","call GRLIB_checkOnboardShip"];
-
-// Remove Helipad
-player addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>",{ deleteVehicle (nearestObjects [player, ["Helipad_base_F"], GRLIB_ActionDist_3] select 0) },"",-505,false,true,"","call GRLIB_checkRemoveHelipad"];

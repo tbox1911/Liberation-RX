@@ -38,15 +38,17 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
 	if (_loggedIn) then {
 		GRLIB_active_commander = (_networkId getUserInfo 10);
 		publicVariable "GRLIB_active_commander";
+		[true] remoteExec ["player_admin_actions", owner GRLIB_active_commander];
 	} else {
+		[false] remoteExec ["player_admin_actions", owner GRLIB_active_commander];
 		private _commander = (allPlayers select {(typeOf _x == commander_classname)});
 		if (count _commander > 0) then {
 			GRLIB_active_commander = _commander select 0;
 		} else {
 			GRLIB_active_commander = objNull;
+			{unassignCurator _x} forEach allCurators;
 		};
 		publicVariable "GRLIB_active_commander";
-		{unassignCurator _x} forEach allCurators;
 	};
 }];
 

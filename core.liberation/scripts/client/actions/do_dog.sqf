@@ -11,6 +11,7 @@ if (_cmd == "add" && _classname != "") exitWith {
 	_my_dog setVariable ["my_dog_tone", _tone];
 	_my_dog setDir (_my_dog getDir player);
 	[_my_dog, _tone] spawn dog_bark;
+	[true] call player_dog_actions;
 	build_refresh = true;
 };
 

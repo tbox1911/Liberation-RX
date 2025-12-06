@@ -123,10 +123,6 @@ GRLIB_checkPackFOB = {
 	(GRLIB_player_is_menuok && GRLIB_player_fobdistance <= GRLIB_ActionDist_10 && (!GRLIB_player_near_outpost) && (GRLIB_player_owner_fob || GRLIB_player_admin))
 };
 
-GRLIB_checkPackBeacon = {
-	(GRLIB_player_is_menuok && !GRLIB_player_near_lhd && (player distance2D cursorObject <= GRLIB_ActionDist_3) && (typeOf cursorObject == mobile_respawn) && ([player, cursorObject] call is_owner) && !(cursorObject getVariable ['tent_in_use', false]))
-};
-
 GRLIB_checkUnpackBeacon = {
 	(GRLIB_player_is_menuok && !GRLIB_player_near_lhd && (backpackContainer player) getVariable ["GRLIB_mobile_respawn_bag", false])
 };

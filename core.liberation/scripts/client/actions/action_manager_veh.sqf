@@ -1,6 +1,6 @@
 private	["_vehicle", "_unit"];
 
-private _searchradius = 20;
+private _searchradius = 25;
 private _nearveh = [];
 private _nearruins = [];
 private _nearwreck = [];
@@ -13,6 +13,7 @@ private _nearsign = [];
 private _nearmoney = [];
 private _nearfobbox = [];
 private _neardronebox = [];
+private _neartent = [];
 
 private _wreck_class = [
 	"Air",
@@ -158,5 +159,15 @@ while {true} do {
 		};
 		_unit setVariable ["GRLIB_fobbox_action", true];
 	} foreach _nearfobbox;
+
+	// Tent Respawn
+	_neartent = (GRLIB_mobile_respawn) select { typeOf _x == mobile_respawn && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_tent_action"} };
+	{
+		_unit = _x;
+		// Pack Beacon
+		_unit addAction ["<t color='#FFFF00'>" + localize "STR_PACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkPackBeacon", GRLIB_ActionDist_3];
+		_unit setVariable ["GRLIB_tent_action", true];
+	} forEach _neartent;
+
 	sleep 2;
 };

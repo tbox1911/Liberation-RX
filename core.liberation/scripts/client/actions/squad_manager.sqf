@@ -77,6 +77,7 @@ while {true} do {
 		if (count (units _my_squad) == 0) then {
 			player setVariable ["my_squad", nil, true];
 			player setVariable ["my_squad_order", nil, true];
+			[false] call player_squad_actions;
 		};
 	};
 	sleep 5;

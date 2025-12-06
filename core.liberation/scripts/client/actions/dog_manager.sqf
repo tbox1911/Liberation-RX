@@ -5,6 +5,7 @@ do_dog_cleanup = {
 	params ["_my_dog"];
 	deleteVehicle _my_dog;
 	player setVariable ["my_dog", nil, true];
+	[false] call player_dog_actions;
 };
 
 // Dog Marker Event Handler

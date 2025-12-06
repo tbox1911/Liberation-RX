@@ -39,6 +39,12 @@ GRLIB_SquadBuildType = 8;
 GRLIB_TrenchBuildType = 9;
 GRLIB_BuildTypeDirect = 90;
 
+GRLIB_player_admin_actions = [];
+GRLIB_player_vehicle_actions = [];
+GRLIB_player_dog_actions = [];
+GRLIB_player_squad_actions = [];
+GRLIB_player_fob_actions = [];
+
 if (abort_loading) exitWith {
 	private _msg = format [localize "STR_MSG_SERVER_STARTUP_ERROR", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];
@@ -120,6 +126,11 @@ is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 player_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_actions.sqf";
+player_admin_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_admin_actions.sqf";
+player_dog_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_dog_actions.sqf";
+player_fob_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_fob_actions.sqf";
+player_squad_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_squad_actions.sqf";
+player_vehicle_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_vehicle_actions.sqf";
 player_init = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_init.sqf";
 player_respawn = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_respawn.sqf";
 player_EH = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_EH.sqf";
