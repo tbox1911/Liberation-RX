@@ -153,7 +153,12 @@ while {true} do {
 					if (_near_refuel && _vehicle_need_refuel) then { _task pushBack 3 };
 
 					// Set Task
-					if (count _task > 0) then { _vehicle setVariable ["GRLIB_vehicle_need_support", _task] };
+					if (count _task > 0) then {
+						_vehicle setVariable ["GRLIB_vehicle_need_support", _task];
+						if (_uiticks % 4 == 0) then {
+							gamelogic globalChat format [localize "STR_VEH_NEED_SUPPORT", ([_vehicle] call F_getLRXName)];
+						};
+					};
 
 					// UNFLIP
 					if (_unit == driver _vehicle) then {

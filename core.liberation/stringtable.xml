@@ -6694,7 +6694,19 @@
 			<Chinese>-- 車輛支援 --</Chinese>
 			<Portuguese>-- SUPORTE DE VEÍCULO</Portuguese>
 			<Czech>-- PODPORA VOZIDEL</Czech>
-		</Key>		
+		</Key>
+		<Key ID="STR_VEH_NEED_SUPPORT">
+			<Original>Vehicle %1 needs support!</Original>
+			<French>Le véhicule %1 a besoin de soutien !</French>
+			<German>Fahrzeug %1 benötigt Unterstützung!</German>
+			<Spanish>¡El vehículo %1 necesita apoyo!</Spanish>
+			<Russian>Транспорт %1 нуждается в поддержке!</Russian>
+			<Chinesesimp>车辆 %1 需要支援！</Chinesesimp>
+			<Chinese>車輛 %1 需要支援！</Chinese>
+			<Japanese>車両 %1 が支援を必要としています！</Japanese>
+			<Portuguese>O veículo %1 precisa de suporte!</Portuguese>
+			<Czech>Vozidlo %1 potřebuje podporu!</Czech>
+		</Key>
 		<Key ID="STR_EJECT_CREW">
 			<Original>-- EJECT CREW</Original>
 			<Russian>-- ВЫСАДИТЬ ЭКИПАЖ</Russian>
