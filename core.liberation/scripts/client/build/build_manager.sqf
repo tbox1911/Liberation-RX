@@ -212,7 +212,7 @@ while {true} do {
 				build_rotation = 90;
 			};
 			case mobile_respawn: {
-				_dist = 5;
+				_dist = 2;
 			};
 			case "Land_BagBunker_Tower_F": {
 				build_rotation = 90;
