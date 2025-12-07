@@ -39,12 +39,6 @@ GRLIB_SquadBuildType = 8;
 GRLIB_TrenchBuildType = 9;
 GRLIB_BuildTypeDirect = 90;
 
-GRLIB_player_admin_actions = [];
-GRLIB_player_vehicle_actions = [];
-GRLIB_player_dog_actions = [];
-GRLIB_player_squad_actions = [];
-GRLIB_player_fob_actions = [];
-
 if (abort_loading) exitWith {
 	private _msg = format [localize "STR_MSG_SERVER_STARTUP_ERROR", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];

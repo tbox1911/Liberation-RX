@@ -1,5 +1,10 @@
 waitUntil { sleep 1; !(isNil "resources_infantry") };
 
+GRLIB_player_admin_actions = [];
+GRLIB_player_vehicle_actions = [];
+GRLIB_player_dog_actions = [];
+GRLIB_player_squad_actions = [];
+
 // Tuto
 private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
 player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t> <img size='1' image='" + _icon_tuto + "'/>","[] execVM 'scripts\client\ui\tutorial_manager.sqf'","",-740,false,true,"","(_target distance2D lhd < GRLIB_fob_range)"];

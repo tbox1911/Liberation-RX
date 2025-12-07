@@ -1,5 +1,6 @@
 [] call compile preprocessFileLineNumbers "scripts\client\actions\action_manager_player_check.sqf";
 
+GRLIB_player_fob_actions = [];
 GRLIB_activated_sectors = [];
 GRLIB_activated_radius = GRLIB_sector_size * 1.4;
 
