@@ -16,7 +16,7 @@ private ["_vehicle", "_spawn_pos"];
 		_vehicle setPos _spawn_pos;
 		[_vehicle, "lock", "server"] call F_vehicleLock;
 		[_vehicle] call F_clearCargo;
-		_vehicle enableSimulationGlobal false;
+		_vehicle enableSimulationGlobal true; // enable to keep facility
 		GRLIB_Marker_REP pushBack (getPosATL _vehicle);
 	} else {
 		diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
