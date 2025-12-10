@@ -5,7 +5,7 @@ private _display = findDisplay 5566;
 private _noesckey = _display displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 private _labelwidth = -1;
 private _labelpos = [];
-private _tick = 0;
+private _ticks = 0;
 private _respawn_delay = (GRLIB_respawn_timer * 4);
 
 // Respawn Cooldown
@@ -49,23 +49,23 @@ while { alive player && ([player] call PAR_is_wounded) } do {
 		(_display displayCtrl 6698) ctrlCommit 0.5;
 
 	};
-	if ( _tick % 4 == 0 && _tick < _respawn_delay) then {
-		ctrlSetText [677, format ["Wait %1 sec", (_respawn_delay - round(_tick))/4 ]];
+	if ( _ticks % 4 == 0 && _ticks < _respawn_delay) then {
+		ctrlSetText [677, format ["Wait %1 sec", (_respawn_delay - round(_ticks))/4 ]];
 	};
-	if (_tick == _respawn_delay && GRLIB_endgame == 0) then {
+	if (_ticks == _respawn_delay && GRLIB_endgame == 0) then {
 		ctrlSetText [677, "Respawn"];
 		(_display displayCtrl 677) ctrlEnable true;
 	};
-	if (_tick == _respawn_delay * 2) then {
+	if (_ticks == _respawn_delay * 2) then {
 		(_display displayCtrl 679) ctrlEnable true;
 	};
-	if ( _tick % 10 == 0 ) then {
+	if ( _ticks % 10 == 0 ) then {
 		[ 10000 ] call BIS_fnc_bloodEffect;
 	};
-	if ( _tick % 50 == 0 ) then {
+	if ( _ticks % 50 == 0 ) then {
 		(_display displayCtrl 678) ctrlSetStructuredText parseText format["<t size='0.8' align='center'>Tips:<br/>%1</t>", selectRandom GRLIB_TipsText];
 	};
-	_tick = _tick + 1;
+	_ticks = _ticks + 1;
 	uiSleep 0.25;
 };
 _display displayRemoveEventHandler ["KeyDown", _noesckey];

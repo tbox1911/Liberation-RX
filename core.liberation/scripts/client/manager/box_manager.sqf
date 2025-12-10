@@ -2,7 +2,7 @@ waitUntil {sleep 1; !isNil "build_confirmed" };
 
 GRLIB_checkAction_LoadBox = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && !GRLIB_player_near_lhd && alive _target && isNil "GRLIB_load_box" && !(_target getVariable ['R3F_LOG_disabled', false]) && [_unit, _target] call is_owner && [_target, 'TRANSPORT', 20, false] call F_check_near)
+	(GRLIB_player_is_menuok && alive _target && isNil "GRLIB_load_box" && !(_target getVariable ['R3F_LOG_disabled', false]) && [_unit, _target] call is_owner && [_target, 'TRANSPORT', 20, false] call F_check_near)
 };
 
 GRLIB_checkAction_UnloadBox = {
