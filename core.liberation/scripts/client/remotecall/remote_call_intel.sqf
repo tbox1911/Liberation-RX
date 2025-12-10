@@ -3,7 +3,7 @@ params ["_notiftype", ["_obj_position", getpos player]];
 
 if ( _notiftype == 0 ) then {
 	if (_obj_position) then {
-		["lib_intel_prisoner_friendly"] call BIS_fnc_showNotification;
+		["lib_intel_hostage"] call BIS_fnc_showNotification;
 	} else {
 		["lib_intel_prisoner"] call BIS_fnc_showNotification;
 	};

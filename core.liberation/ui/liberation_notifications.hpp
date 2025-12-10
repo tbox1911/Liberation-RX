@@ -130,9 +130,9 @@ class CfgNotifications
 	{
 		description = $STR_NOTIFICATION_PRISONER_TEXT;
 	};
-	class lib_intel_prisoner_friendly : lib_intel
+	class lib_intel_hostage : lib_intel
 	{
-		description = $STR_NOTIFICATION_PRISONER_FRIENDLY_TEXT;
+		description = $STR_NOTIFICATION_HOSTAGE_TEXT;
 	};
     class lib_intel_document : lib_intel
     {

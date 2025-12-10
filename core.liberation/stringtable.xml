@@ -1183,11 +1183,14 @@
 			<Portuguese>Interrogamos um prisioneiro.</Portuguese>
 			<Czech>Vyslechli jsme vězně.</Czech>
 		</Key>
-		<Key ID="STR_NOTIFICATION_PRISONER_FRIENDLY_TEXT">
-			<Original>We freed an Allied prisoner.</Original>
-			<French>Nous avons liberé un prisonnier Allié.</French>
-			<Chinesesimp>我们释放了一名友军战俘</Chinesesimp>
-			<Chinese>我們釋放了一名友軍戰俘</Chinese>
+		<Key ID="STR_NOTIFICATION_HOSTAGE_TEXT">
+			<Original>We freed a hostage.</Original>
+			<French>Nous avons libéré un otage.</French>
+			<Chinesesimp>我们释放了一名友军战俘。</Chinesesimp>
+			<Chinese>我們釋放了一名友軍戰俘。</Chinese>
+			<Japanese>人質を解放しました。</Japanese>
+			<Portuguese>Libertamos um refém.</Portuguese>
+			<Czech>Osvobodili jsme rukojmí.</Czech>
 		</Key>
 		<Key ID="STR_NOTIFICATION_DOCUMENT_TEXT">
 			<Original>We have found secret documents.</Original>
