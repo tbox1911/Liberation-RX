@@ -24,7 +24,7 @@ private _my_squad = player getVariable ["my_squad", nil];
 if (!isNil "_my_squad") then { [true] call player_squad_actions };
 
 // Support vehicle
-player addAction ["<t color='#0080F0'>" + localize "STR_VEH_SUPPORT" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_support.sqf","",-490,false,true,"","call GRLIB_check_VehicleSupport"];
+player addAction ["<t color='#0080F0'>" + localize "STR_VEH_SUPPORT" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_support.sqf","",997,false,true,"","call GRLIB_check_VehicleSupport"];
 
 // Redeploy
 player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-502,false,true,"","call GRLIB_checkRedeploy"];
