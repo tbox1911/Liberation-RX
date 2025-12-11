@@ -21,7 +21,7 @@ if (_type == 1) then {
     	titleText [_screenmsg, "PLAIN DOWN"];
     	hintSilent _screenmsg;
     } else {
-    	if (_unit distance2D player <= 30) then {
+    	if (_vehicle distance2D player <= 30) then {
    			_screenmsg = format [localize "STR_REPAIR_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
     		titleText [_screenmsg, "PLAIN DOWN"];
     	};
@@ -40,7 +40,7 @@ if (_type == 2) then {
         titleText [_screenmsg, "PLAIN DOWN"];
         hintSilent _screenmsg;
     } else {
-        if (_unit distance2D player <= 30) then {
+        if (_vehicle distance2D player <= 30) then {
             _screenmsg = format [localize "STR_REARM_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
             titleText [_screenmsg, "PLAIN DOWN"];
         };
@@ -59,7 +59,7 @@ if (_type == 3) then {
         titleText [_screenmsg, "PLAIN DOWN"];
         hintSilent _screenmsg;
     } else {
-        if (_unit distance2D player <= 30) then {
+        if (_vehicle distance2D player <= 30) then {
             _screenmsg = format [localize "STR_REFUEL_COOLDOWN_LINE", _vehicle_name, round (_timer - time)];
             titleText [_screenmsg, "PLAIN DOWN"];
         };
