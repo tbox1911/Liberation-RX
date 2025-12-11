@@ -21,6 +21,7 @@ if (count GRLIB_all_fobs > 0 || count blufor_sectors > 0) then {
 	_refdistance = 99999;
 	{
 		_sector_pos = _x;
+		_sector_pos set [2, 0];
 		_sector_dist = _startpos distance2D _sector_pos;
 		_is_water = false;
 		if (_check_water) then {
@@ -36,6 +37,7 @@ if (count GRLIB_all_fobs > 0 || count blufor_sectors > 0) then {
 	_refdistance = 99999;
 	{
 		_sector_pos = markerPos _x;
+		_sector_pos set [2, 0];
 		_sector_dist = _startpos distance2D _sector_pos;
 		_is_water = false;
 		if (_check_water) then {
@@ -47,7 +49,7 @@ if (count GRLIB_all_fobs > 0 || count blufor_sectors > 0) then {
 		};
 	} foreach blufor_sectors;
 
-	if ( 0 max ((_currentnearest_fob select 1) - 400) < (_currentnearest_sect select 1)) then {
+	if (((_currentnearest_fob select 1) - 300) < (_currentnearest_sect select 1)) then {
 		_currentnearest = _currentnearest_fob;
 	} else {
 		_currentnearest = _currentnearest_sect;
