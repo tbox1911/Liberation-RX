@@ -92,7 +92,7 @@ while {true} do {
 						if (_dist <= 3) then {
 							_my_dog stop true;
 							_my_dog setDir (_my_dog getDir _man);
-							if (count (attachedObjects _my_dog) > 0 && isPLayer _man) then {
+							if (count (attachedObjects _my_dog) > 0 && _man == player) then {
 								private _gun = attachedObjects _my_dog select 0;
 								detach _gun;
 								sleep 0.3;
