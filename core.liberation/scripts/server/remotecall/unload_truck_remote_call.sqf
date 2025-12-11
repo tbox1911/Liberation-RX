@@ -75,8 +75,8 @@ private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 		};
 	};
 } foreach _all_objects;
-sleep 2;
 
+sleep 2;
 _truck enableSimulationGlobal true;
 _truck allowDamage true;
 
