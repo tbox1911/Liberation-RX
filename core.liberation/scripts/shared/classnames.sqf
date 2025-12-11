@@ -400,10 +400,10 @@ vehicle_repair_sources = [
 	repair_offroad,
 	repair_sling_typename,
 	repair_truck_typename,
+	repair_station_typename,
 	"B_APC_Tracked_01_CRV_F",
 	"C_Offroad_01_repair_F",
-	"B_G_Offroad_01_repair_F",
-	"Land_RepairDepot_01_civ_F"
+	"B_G_Offroad_01_repair_F"
 ] + vehicle_repair_sources_west;
 
 // Everything the player can use as a Repair box
@@ -413,8 +413,7 @@ vehicle_repair_box = [
 
 // Everything the AI vehicle should be able to repaint from
 vehicle_repaint_sources = [
-	repair_offroad,
-	"Land_RepairDepot_01_civ_F"
+	repair_station_typename
 ] + vehicle_repaint_sources_west;
 
 // Everything the AI vehicle should be able to refuel from

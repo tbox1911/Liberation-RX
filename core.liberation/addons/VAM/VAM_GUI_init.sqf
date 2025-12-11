@@ -4,7 +4,7 @@ if (!hasInterface) exitWith {};
 //1 : Activate when player is near LRX Liberation FOB
 //2 : Activate when player is near vehicles those are in list.
 VAM_repair_vehicle_list = [
-	"Land_RepairDepot_01_civ_F"
+	repair_station_typename
 ];
 
 //Function preload

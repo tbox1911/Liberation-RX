@@ -7,7 +7,7 @@ private _classnames_to_destroy = [
 	FOB_sign,
 	Warehouse_typename,
 	Warehouse_desk_typename,
-	"Land_RepairDepot_01_civ_F",
+	repair_station_typename,
 	"Land_MedicalTent_01_base_F",
 	"Helipad_base_F",
 	"Land_fs_feed_F"
