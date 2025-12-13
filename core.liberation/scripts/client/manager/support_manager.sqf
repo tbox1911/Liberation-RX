@@ -1,4 +1,5 @@
-waitUntil { sleep 1; !isNil "blufor_sectors" };
+GRLIB_vehicle_need_support = [];
+
 private [
 	"_unitList", "_my_squad",
 	"_near_arsenal", "_primary_weapon", "_needammo1", "_needammo2", "_maxpri", "_minpri",
@@ -23,8 +24,11 @@ private _artillery = [
 	"MBT_03_base_F"
 ];
 
+private _blacklist_vehicle = [
+	"ParachuteBase"
+];
+
 private _vehicle_support_enabled = true;
-if (GRLIB_ACE_enabled) then { _vehicle_support_enabled = false };
 
 while {true} do {
 	waitUntil {sleep 1; GRLIB_player_spawned};
@@ -38,10 +42,16 @@ while {true} do {
 		_needammo1 = false;
 		_needammo2 = false;
 		_needmedic = false;
-
+		GRLIB_vehicle_need_support = [];
 		{
 			_unit = _x;
-			_in_vehicle = !(isNull objectParent _unit);
+			_vehicle = objectParent _unit;
+			_in_vehicle = !(isNull _vehicle);
+			_vehicle_support_enabled = true;
+			if ([_vehicle, _blacklist_vehicle] call F_itemIsInClass) then { _vehicle_support_enabled = false };
+			if !(_unit in [gunner _vehicle, driver _vehicle, commander _vehicle]) then { _vehicle_support_enabled = false };
+			if (_vehicle in GRLIB_vehicle_need_support) then { _vehicle_support_enabled = false };
+			if (GRLIB_ACE_enabled) then { _vehicle_support_enabled = false };
 			_distarsenal = 30;
 
 			// Out vehicle
@@ -130,40 +140,38 @@ while {true} do {
 			};
 
 			// In vehicle
-			if (_vehicle_support_enabled && _in_vehicle) then {
-				_vehicle = vehicle _unit;
+			if (_in_vehicle && _vehicle_support_enabled) then {
 				_near_lhd = (_unit distance2D lhd < GRLIB_fob_range);
-				if (!(_vehicle isKindOf "ParachuteBase") &&	(_unit in [gunner _vehicle, driver _vehicle, commander _vehicle])) then {
-					_vehicle setVariable ["GRLIB_vehicle_need_support", nil];
-					private _task = [];
+				_vehicle setVariable ["GRLIB_vehicle_need_support", nil];
+				private _task = [];
 
-					// REPAIR
-					_near_repair = ([_vehicle, "REPAIR", _distarsenal] call F_check_near || _near_lhd);
-					_vehicle_need_repair = [_vehicle] call F_vehicleNeedRepair;
-					if (_near_repair && _vehicle_need_repair) then { _task pushBack 1 };
+				// REPAIR
+				_near_repair = ([_vehicle, "REPAIR", _distarsenal] call F_check_near || _near_lhd);
+				_vehicle_need_repair = [_vehicle] call F_vehicleNeedRepair;
+				if (_near_repair && _vehicle_need_repair) then { _task pushBack 1 };
 
-					// REAMMO
-					_near_arsenal = ([_vehicle, "REAMMO", _distarsenal] call F_check_near || _near_lhd);
-					_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
-					if (_near_arsenal && _vehicle_need_ammo) then { _task pushBack 2 };
+				// REAMMO
+				_near_arsenal = ([_vehicle, "REAMMO", _distarsenal] call F_check_near || _near_lhd);
+				_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
+				if (_near_arsenal && _vehicle_need_ammo) then { _task pushBack 2 };
 
-					// REFUEL
-					_near_refuel = ([_vehicle, "REFUEL", _distarsenal] call F_check_near || [_unit, "FUEL", _distarsenal, false] call F_check_near || _near_lhd);
-					_vehicle_need_refuel = (fuel _vehicle < 0.5);
-					if (_near_refuel && _vehicle_need_refuel) then { _task pushBack 3 };
+				// REFUEL
+				_near_refuel = ([_vehicle, "REFUEL", _distarsenal] call F_check_near || [_unit, "FUEL", _distarsenal, false] call F_check_near || _near_lhd);
+				_vehicle_need_refuel = (fuel _vehicle < 0.5);
+				if (_near_refuel && _vehicle_need_refuel) then { _task pushBack 3 };
 
-					// Set Task
-					if (count _task > 0) then {
-						_vehicle setVariable ["GRLIB_vehicle_need_support", _task];
-						if (_uiticks % 4 == 0) then {
-							gamelogic globalChat format [localize "STR_VEH_NEED_SUPPORT", ([_vehicle] call F_getLRXName)];
-						};
+				// Set Task
+				if (count _task > 0) then {
+					_vehicle setVariable ["GRLIB_vehicle_need_support", _task];
+					GRLIB_vehicle_need_support pushBackUnique _vehicle;
+					if (_uiticks % 4 == 0) then {
+						gamelogic globalChat format [localize "STR_VEH_NEED_SUPPORT", ([_vehicle] call F_getLRXName)];
 					};
+				};
 
-					// UNFLIP
-					if (_unit == driver _vehicle) then {
-						[_vehicle] call F_vehicleUnflip;
-					};
+				// UNFLIP
+				if (_unit == driver _vehicle) then {
+					[_vehicle] call F_vehicleUnflip;
 				};
 			};
 			sleep 0.2;

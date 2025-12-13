@@ -6,7 +6,7 @@ private ["_vehicle", "_task", "_type", "_name", "_verb", "_cost", "_result"];
 
 private _distarsenal = 30;
 {
-    _vehicle = objectParent _x;
+    _vehicle = _x;
     if (!isNull _vehicle) then {
         _task = _vehicle getVariable "GRLIB_vehicle_need_support";
         if (!isNil "_task") then {
