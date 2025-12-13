@@ -43,7 +43,6 @@ if (count (_context select 2) >= 1) then {
             sleep 0.5;
             [_grp] remoteExec ["remote_call_load_context", _owner];
             waitUntil {sleep 1; (_player getVariable ["GRLIB_squad_context_loaded", false])};
-            diag_log format ["--- LRX Info: %1 Squad %2 unit(s) loaded.", name _player, count (units _grp)];
         } else {
             if (_player distance2D (markerPos GRLIB_respawn_marker) > 100) then {
                 [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", _owner];
