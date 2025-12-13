@@ -1,14 +1,27 @@
 _unit = _this select 0;
 
-private _militia_uniforms = [ 
-    "U_OG_Guerilla1_1",
-    "U_OG_Guerilla2_1",
-    "U_OG_Guerilla2_2",
-    "U_OG_Guerilla2_3",
-    "U_OG_Guerilla3_1"
-];
-
+removeAllWeapons _unit;
+removeAllItems _unit;
+removeAllAssignedItems _unit;
 removeUniform _unit;
-_unit forceAddUniform (selectRandom _militia_uniforms);
-_unit addHeadgear "H_Booniehat_oli";
-_unit addGoggles "G_Balaclava_lowprofile";
+removeVest _unit;
+removeBackpack _unit;
+removeHeadgear _unit;
+removeGoggles _unit;
+
+#include "loadout_init.sqf"
+
+_unit addGoggles (selectRandom _pmc_goggles);
+_unit addWeapon (selectRandom _pmc_weapon);
+_unit addPrimaryWeaponItem (selectRandom _pmc_optic);
+_unit addPrimaryWeaponItem "acc_flashlight";
+_unit addWeapon "launch_O_Titan_F";
+_unit forceAddUniform (selectRandom _pmc_uniforms);
+_unit addVest (selectRandom _pmc_vest);
+_unit addBackpack (selectRandom _pmc_backpack);
+_unit addHeadgear (selectRandom _pmc_headgear);
+_unit linkItem "ItemMap";
+_unit linkItem "ItemCompass";
+_unit linkItem "ItemWatch";
+_unit linkItem "ItemRadio";
+
