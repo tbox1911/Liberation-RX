@@ -20,10 +20,11 @@ _unit addVest (selectRandom _pmc_vest);
 _unit addBackpack (selectRandom _pmc_backpack);
 _unit addHeadgear (selectRandom _pmc_headgear);
 
-_unit addItemToBackpack "Medikit";
+_unit addItemToBackpack "MineDetector";
+_unit addItemToBackpack "ToolKit";
+_unit addItemToBackpack "SatchelCharge_Remote_Mag";
 
 _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
-

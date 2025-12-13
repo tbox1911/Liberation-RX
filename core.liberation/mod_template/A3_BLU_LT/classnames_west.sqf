@@ -1,6 +1,12 @@
 // *** FRIENDLIES ***
 GRLIB_west_modder = "pSiKO";
 
+GRLIB_color_friendly = "ColorGUER";
+GRLIB_color_friendly_bright = "ColorGreen";
+
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
+
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
@@ -38,12 +44,10 @@ infantry_units_west = [
 	["B_soldier_LAT_F",1,0,0,0],
 	["B_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
 	["B_diver_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AT_F",1,0,0,GRLIB_perm_log]
+	["B_soldier_AA_F",1,0,0,GRLIB_perm_air],
+	["B_soldier_AT_F",1,0,0,GRLIB_perm_tank]
 	// ["B_sniper_F",1,0,0,GRLIB_perm_log],
 	// ["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
-	// [crewman_classname,1,0,0,GRLIB_perm_inf],
-	// [pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
 units_loadout_overide = [

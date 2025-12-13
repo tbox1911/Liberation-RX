@@ -19,11 +19,7 @@ _unit forceAddUniform (selectRandom _pmc_uniforms);
 _unit addVest (selectRandom _pmc_vest);
 _unit addBackpack (selectRandom _pmc_backpack);
 _unit addHeadgear (selectRandom _pmc_headgear);
-
-_unit addItemToBackpack "Medikit";
-
 _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
-

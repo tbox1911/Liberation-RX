@@ -1,6 +1,9 @@
 // *** FRIENDLIES ***
 GRLIB_west_modder = "pSiKO";
 
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
+
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
