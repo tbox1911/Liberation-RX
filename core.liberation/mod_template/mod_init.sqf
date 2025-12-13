@@ -24,8 +24,8 @@ GRLIB_mod_list_name = [
 	["A3_OPF", "ArmA3 CSAT", EAST],
 	["A3_IND", "ArmA3 AAF", INDEPENDENT],
 	["A3_BLU_PAC", "ArmA3 NATO Pacific", WEST],
-	["A3_BLU_LT", "ArmA3 NATO Light", WEST],	
+	["A3_BLU_LT", "ArmA3 NATO PMC", WEST],	
 	["A3_OPF_PAC", "ArmA3 CSAT Pacific", EAST],
-	["A3_OPF_LT", "ArmA3 CSAT Light", EAST],
+	["A3_OPF_LT", "ArmA3 CSAT PMC", EAST],
 	["A3_OPF_UB", "ArmA3 CSAT Urban", EAST]
 ];
