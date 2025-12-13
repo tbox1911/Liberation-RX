@@ -5,7 +5,7 @@ GRLIB_west_modder = "pSiKO";
 // Advanced definition: scripts\shared\classnames.sqf
 // Pacific NATO
 
-//huron_typename = "B_Heli_Transport_03_unarmed_F";  // comment to use value from lobby/server.cfg
+//huron_typename = "B_Heli_Transport_03_unarmed_F";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "B_T_Truck_01_box_F";
