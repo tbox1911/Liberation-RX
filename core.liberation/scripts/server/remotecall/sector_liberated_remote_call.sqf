@@ -86,7 +86,7 @@ private _nearRadioTower = ([markerPos _liberated_sector, GRLIB_side_enemy] call 
 if (GRLIB_endgame == 0 && _nearRadioTower) then {
 	if (
 	   !(_liberated_sector in sectors_tower) &&
-	   ((combat_readiness > 70 && floor random 3 > 0) || (_liberated_sector in sectors_bigtown))
+	   ((combat_readiness >= 70 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 100)
 	) then {
 		[_liberated_sector] spawn {
 			params ["_liberated_sector"];
@@ -94,6 +94,8 @@ if (GRLIB_endgame == 0 && _nearRadioTower) then {
 			diag_log format ["Spawn Revenge BattlegGroup at %1", time];
 			[_liberated_sector] spawn spawn_battlegroup;
 		};
+	} else {
+		[gamelogic, "A lucky day..."] remoteExec ["globalChat", 0];
 	};
 };
 

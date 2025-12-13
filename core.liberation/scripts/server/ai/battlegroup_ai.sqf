@@ -17,6 +17,7 @@ if (_vehicle isKindOf "ParachuteBase") then {
 private _veh_type = "No vehicle";
 if !(isNull _vehicle) then { _veh_type = typeOf _vehicle };
 private _attack = true;
+private _patrol = true;
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
 diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
@@ -28,7 +29,7 @@ while {true} do {
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
 		sleep 0.5;
 	} forEach (units _grp);
-	if ({alive _x} count (units _grp) == 0) exitWith {};
+	if (!_patrol || {alive _x} count (units _grp) == 0) exitWith {};
 
 	if (_attack) then {
 		_attack = false;
@@ -72,11 +73,12 @@ while {true} do {
 		} else {
 			_next_objective = [_last_pos] call F_getNearestBluforObjective;
 		};
-		if (count _next_objective == 0) exitWith {};
 
-		if ((_next_objective select 1) <= GRLIB_spawn_min) then {
+		if ((_next_objective select 1) <= GRLIB_spawn_max) then {
 			_objective_pos = (_next_objective select 0);
 			_attack = true;
+		} else {
+			_patrol = false;
 		};
 
 		_timer = round (time + 300);
