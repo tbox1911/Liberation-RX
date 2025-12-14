@@ -10,21 +10,17 @@ removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
+#include "loadout_init.sqf"
+
 //  "Add weapons";
 _unit addWeapon "hgun_Pistol_heavy_01_green_F";
 _unit addHandgunItem "optic_MRD_black";
 _unit addHandgunItem "11Rnd_45ACP_Mag";
 
-//  "Add containers";
-_unit forceAddUniform "U_B_CombatUniform_mcam";
-_unit addVest "V_Rangemaster_belt";
-
-//  "Add items to containers";
-_unit addItemToUniform "FirstAidKit";
-for "_i" from 1 to 2 do {_unit addItemToUniform "SmokeShell";};
-for "_i" from 1 to 2 do {_unit addItemToUniform "11Rnd_45ACP_Mag";};
-for "_i" from 1 to 2 do {_unit addItemToVest "11Rnd_45ACP_Mag";};
-_unit addHeadgear "H_Booniehat_mcamo";
+_unit forceAddUniform (selectRandom _pmc_uniforms);
+_unit addVest (selectRandom _pmc_vest);
+_unit addHeadgear (selectRandom _pmc_headgear);
+_unit addGoggles (selectRandom _pmc_goggles);
 
 //  "Add items";
 _unit linkItem "ItemMap";
@@ -33,5 +29,8 @@ _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
 _unit linkItem "ItemGPS";
 
-// "Set identity";
-//[_unit,"GreekHead_A3_02","male01eng"] call BIS_fnc_setIdentity;
+//  "Add items to containers";
+_unit addItemToUniform "FirstAidKit";
+for "_i" from 1 to 2 do {_unit addItemToUniform "SmokeShell";};
+for "_i" from 1 to 2 do {_unit addItemToUniform "11Rnd_45ACP_Mag";};
+for "_i" from 1 to 2 do {_unit addItemToVest "11Rnd_45ACP_Mag";};
