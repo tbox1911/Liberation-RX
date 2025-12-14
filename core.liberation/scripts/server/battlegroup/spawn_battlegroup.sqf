@@ -50,7 +50,7 @@ diag_log format ["Spawn BattlegGroup target %1 from %2 at %3", _objective_pos, m
 
 GRLIB_last_battlegroup_time = time;
 private _vehicle_pool = opfor_battlegroup_vehicles;
-if ( combat_readiness < 50 ) then {	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
+if ( combat_readiness <= 80 ) then { _vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
 private _target_size = round ((GRLIB_battlegroup_size * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
 private _current_players = count (AllPlayers - (entities "HeadlessClient_F"));
 if ( _current_players <= 2 ) then { _target_size = round (_target_size / 2) };

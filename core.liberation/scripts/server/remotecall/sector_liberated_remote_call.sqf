@@ -92,7 +92,12 @@ if (GRLIB_endgame == 0 && _nearRadioTower) then {
 			params ["_liberated_sector"];
 			sleep 60 + (floor random 300);
 			diag_log format ["Spawn Revenge BattlegGroup at %1", time];
-			[_liberated_sector] spawn spawn_battlegroup;
+			if (floor random 3 == 0) then {
+				private _all_fobs = (allMapMarkers select { _x select [0,9] == "fobmarker" });
+				[selectRandom _all_fobs] spawn spawn_battlegroup;
+			} else {	
+				[_liberated_sector] spawn spawn_battlegroup;
+			};
 		};
 	} else {
 		[gamelogic, "A lucky day..."] remoteExec ["globalChat", 0];
