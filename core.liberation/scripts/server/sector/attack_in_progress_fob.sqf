@@ -49,8 +49,8 @@ if (_ownership == GRLIB_side_enemy) then {
 
 	while { (serverTime < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [_fob_pos, GRLIB_capture_size] call F_sectorOwnership;
-		_activeplayers = count (allPlayers select { alive _x && (_x distance2D (_fob_pos)) < GRLIB_sector_size });
-		if (sector_timer mod 60 == 0 && !_near_outpost) then {
+		_activeplayers = count (allPlayers select { alive _x && (_x distance2D _fob_pos) < GRLIB_sector_size });
+		if (round serverTime % 60 == 0 && !_near_outpost && _activeplayers == 0) then {
 			[_fob_pos, 4] remoteExec ["remote_call_fob", 0];
 		};
 		sleep 3;
@@ -72,7 +72,7 @@ if (_ownership == GRLIB_side_enemy) then {
 			[_fob_pos, 3] remoteExec ["remote_call_fob", 0];
 			[_fob_pos, _max_prisonners] call spawn_prisonners;
 
-			if ((sector_timer - serverTime) <= 300) then {
+			if (round(sector_timer - serverTime) <= 300) then {
 				private _rwd_xp = round (15 + random 10);
 				private _text = format ["Glory to the Defenders! +%1 XP", _rwd_xp];
 				{
