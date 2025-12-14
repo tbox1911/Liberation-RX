@@ -53,6 +53,7 @@ sleep 30;
 // IGNORE VEHICLES
 private _no_cleanup_classnames = [
 	Arsenal_typename,
+	mobile_respawn,
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
 	"Land_Device_assembled_F",
