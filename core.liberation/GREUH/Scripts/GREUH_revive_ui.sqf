@@ -28,7 +28,7 @@ if (GRLIB_ACE_enabled) then {
 };
 
 while { alive player && ([player] call PAR_is_wounded) } do {
-	if ( !isNil "public_bleedout_message" && !isNil "public_bleedout_timer") then {
+	if (!isNil "public_bleedout_message" && !isNil "public_bleedout_timer") then {
 		if (_labelwidth == -1) then { _labelwidth = (ctrlPosition (_display displayCtrl 6699)) select 2 };
 		if (public_bleedout_timer > PAR_bleedout) then {public_bleedout_timer = PAR_bleedout};
 		_labelpos = [ctrlPosition (_display displayCtrl 6699) select 0, ctrlPosition (_display displayCtrl 6699) select 1,_labelwidth * (public_bleedout_timer / PAR_bleedout), ctrlPosition (_display displayCtrl 6699) select 3];
@@ -37,7 +37,7 @@ while { alive player && ([player] call PAR_is_wounded) } do {
 
 		if (public_bleedout_timer <= 30) then {
 			(_display displayCtrl 5567) ctrlSetTextColor [1, 0, 0, 1];
-			if ( public_bleedout_timer % 2 == 0 ) then {
+			if (public_bleedout_timer % 2 == 0) then {
 				(_display displayCtrl 6698) ctrlSetTextColor [1, 0, 0, 1];
 			} else {
 				(_display displayCtrl 6698) ctrlSetTextColor [1, 1, 1, 1];
@@ -49,7 +49,7 @@ while { alive player && ([player] call PAR_is_wounded) } do {
 		(_display displayCtrl 6698) ctrlCommit 0.5;
 
 	};
-	if ( _ticks % 4 == 0 && _ticks < _respawn_delay) then {
+	if (_ticks % 4 == 0 && _ticks < _respawn_delay) then {
 		ctrlSetText [677, format ["Wait %1 sec", (_respawn_delay - round(_ticks))/4 ]];
 	};
 	if (_ticks == _respawn_delay && GRLIB_endgame == 0) then {
@@ -59,13 +59,14 @@ while { alive player && ([player] call PAR_is_wounded) } do {
 	if (_ticks == _respawn_delay * 2) then {
 		(_display displayCtrl 679) ctrlEnable true;
 	};
-	if ( _ticks % 10 == 0 ) then {
+	if (_ticks % 10 == 0) then {
 		[ 10000 ] call BIS_fnc_bloodEffect;
 	};
-	if ( _ticks % 50 == 0 ) then {
+	if (_ticks % 50 == 0) then {
 		(_display displayCtrl 678) ctrlSetStructuredText parseText format["<t size='0.8' align='center'>Tips:<br/>%1</t>", selectRandom GRLIB_TipsText];
 	};
 	_ticks = _ticks + 1;
+	if (_ticks >= 65535) then { _ticks = 0 };
 	uiSleep 0.25;
 };
 _display displayRemoveEventHandler ["KeyDown", _noesckey];
