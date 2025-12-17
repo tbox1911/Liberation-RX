@@ -49,6 +49,9 @@ while {true} do {
 		};
 	};
 
+	// Exit
+	if (count AllPlayers == 0) exitWith {};
+
 	// Mission start + lock
 	[SideMissions, _nextMission, true] call setMissionState;
 
