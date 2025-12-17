@@ -36,7 +36,6 @@ while {true} do {
 			// AI stop doing shit !
 			if (([player] call PAR_is_wounded) && (leader (group player) != player) && isNil {_unit getVariable "PAR_busy"}) then {
 				doStop _unit;
-				unassignVehicle _unit;
 			};
 
 			// AI revive

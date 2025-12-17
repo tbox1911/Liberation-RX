@@ -4,19 +4,23 @@ _medic allowDamage false;
 _medic setCaptive true;
 _medic setHitPointDamage ["hitLegs",0];
 _medic setVariable ["PAR_AIteam", assignedTeam _medic];
-sleep 1;
 
 private _grpmedic = createGroup [GRLIB_side_civilian, true];
 [_medic] joinSilent _grpmedic;
+sleep 0.5;
 _grpmedic setBehaviourStrong "AWARE";
 
-unassignVehicle _medic;
 if (!isnull objectParent _medic) then {
+	unassignVehicle _medic;
 	doGetOut _medic;
 	sleep 3;
 };
 _medic stop true;
+unassignVehicle _medic;
+[_medic] orderGetIn false;
+[_medic] allowGetIn false;
 sleep 1;
+
 {_medic disableAI _x} forEach ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 _medic setUnitPos "UP";
 _medic setSpeedMode "FULL";
