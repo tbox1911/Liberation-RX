@@ -6,9 +6,10 @@ _medic setHitPointDamage ["hitLegs",0];
 _medic setVariable ["PAR_AIteam", assignedTeam _medic];
 
 private _grpmedic = createGroup [GRLIB_side_civilian, true];
+sleep 0.2;
 [_medic] joinSilent _grpmedic;
-sleep 0.5;
 _grpmedic setBehaviourStrong "AWARE";
+_grpmedic selectLeader _medic;
 
 if (!isnull objectParent _medic) then {
 	unassignVehicle _medic;
