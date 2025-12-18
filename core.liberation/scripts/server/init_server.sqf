@@ -3,31 +3,15 @@ diag_log "--- Server Init start ---";
 // EventHandler
 addMissionEventHandler ['HandleDisconnect', {
 	params ["_unit", "_id", "_uid", "_name"];
-	if (_name select [0,3] in ["HC1", "HC2"]) exitWith {};
+	if (_name select [0,3] in ["HC1","HC2","HC3"]) exitWith {
+		deleteMarker "fpsmarkerHC1";
+		deleteMarker "fpsmarkerHC2";
+		deleteMarker "fpsmarkerHC3";
+		false;
+	};	
 	[_unit, _uid, true] call save_context;
 	[_unit, _uid] call cleanup_player;
 	false;
-}];
-
-addMissionEventHandler ["PlayerDisconnected", {
-	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
-	if (_name select [0,14] == "headlessclient") exitWith {};
-	private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
-	if (_player_left == 0) then {
-		diag_log "--- LRX Mission End!";
-		if (time < 300) then {
-			diag_log format ["--- LRX MP Saving cooldown (no save done), %1sec remaining...", round (300 - time)];
-		} else {
-			[] call save_game_mp;
-		};
-		if (!GRLIB_server_persistent) then {
-			{ deleteMarker _x } forEach allMapMarkers;
-			{ deleteVehicle _x } forEach allUnits;
-			{ deleteVehicle _x } forEach vehicles;
-			endMission "END";
-			forceEnd;
-		};
-	};
 }];
 
 GRLIB_active_commander = objNull;
@@ -109,6 +93,7 @@ GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
+cleanup_uid = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_uid.sqf";
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
 
 // Load Objects
@@ -247,6 +232,7 @@ if (abort_loading) exitWith {
 	publicVariable "abort_loading_msg";
 };
 
+[] execVM "scripts\server\game\manage_savegame.sqf";
 [] execVM "scripts\server\game\synchronise_vars.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";

@@ -326,9 +326,10 @@ addMissionEventHandler ["Draw3D",{
 	};
 } foreach vehicles;
 
+// Local Save Game support
 if (isServer && hasInterface) then {
 	(findDisplay 46) displayAddEventHandler ["Unload",{
-		diag_log "--- LRX Local MP support";
+		diag_log "--- LRX Local Save Game ---";
 		[player, PAR_Grp_ID, true] call save_context;
 		[player, PAR_Grp_ID] call cleanup_player;
 		[] call save_game_mp;

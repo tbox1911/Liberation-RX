@@ -42,6 +42,7 @@ hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicle
 [_vehicle] call F_fixModVehicle;
 
 _vehicle flyInHeight 70;
+_vehicle setVariable ["GRLIB_taxi_owner", PAR_Grp_ID, true];
 _vehicle setVariable ["GRLIB_taxi_helipad", GRLIB_taxi_helipad, true];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
@@ -56,7 +57,6 @@ _vehicle lockTurret [[0,0], true];
 
 private _air_grp = GRLIB_side_civilian createVehicleCrew _vehicle;
 sleep 0.2;
-if (count (crew _vehicle) == 0) exitWith { diag_log format ["--- LRX Error: Taxi %1 create crew failed!", _taxi_type]};
 (crew _vehicle) joinSilent _air_grp;
 {
 	_x allowDamage false;
