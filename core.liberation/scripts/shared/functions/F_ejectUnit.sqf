@@ -2,9 +2,7 @@ params ["_unit", ["_slow", true]];
 if (isNull objectParent _unit || isNull _unit) exitWith {};
 if ((vehicle _unit) isKindOf "ParachuteBase") exitWith {};
 
-private _unit_side = side group _unit;
-if (_unit_side == GRLIB_side_enemy) then { _unit allowDamage false };
-
+_unit allowDamage false;
 unAssignVehicle _unit;
 [_unit] orderGetIn false;
 [_unit] allowGetIn false;
@@ -43,4 +41,5 @@ if (_unit_alt >= 50) then {
 	};
 };
 
-if (_unit_side == GRLIB_side_enemy) then { sleep 3; _unit allowDamage true };
+sleep 1;
+_unit allowDamage true;
