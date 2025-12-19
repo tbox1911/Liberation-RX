@@ -33,6 +33,8 @@ if (GRLIB_side_friendly == WEST) then {
         _unit setVariable ["GREUH_ammo_count", (_oldUnit getVariable ["GREUH_ammo_count", 0]), true];
         _unit setVariable ["GREUH_fuel_count", (_oldUnit getVariable ["GREUH_fuel_count", 0]), true];
         _unit setVariable ["GREUH_reput_count", (_oldUnit getVariable ["GREUH_reput_count", 0]), true];
+        _unit setVariable ["GRLIB_TFAR_SW_config", (_oldUnit getVariable ["GRLIB_TFAR_SW_config", []]), true];
+        _unit setVariable ["GRLIB_TFAR_LR_config", (_oldUnit getVariable ["GRLIB_TFAR_LR_config", []]), true];
     };
     [_unit] call player_EHP;
     [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";

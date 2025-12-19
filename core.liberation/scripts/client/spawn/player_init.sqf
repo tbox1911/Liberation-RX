@@ -26,6 +26,12 @@ _unit setVariable ["GRLIB_unit_detected", 0, true];
 
 if (!GRLIB_fatigue) then { _unit enableFatigue false; _unit enableStamina false };
 if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
+if (GRLIB_TFR_enabled) then {
+    private _settings = player getVariable ["GRLIB_TFAR_SW_config", []];
+    if (count _settings > 0) then { [call TFAR_fnc_activeSwRadio, _settings] call TFAR_fnc_setSwSettings };
+    private _settings = player getVariable ["GRLIB_TFAR_LR_config", []];
+    if (count _settings > 0) then { [call TFAR_fnc_activeLrRadio, _settings] call TFAR_fnc_setLrSettings };
+};
 
 _unit setCustomAimCoef 0.35;
 _unit setUnitRecoilCoefficient 0.6;
