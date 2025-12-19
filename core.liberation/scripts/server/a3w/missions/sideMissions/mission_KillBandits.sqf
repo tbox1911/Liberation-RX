@@ -1,8 +1,6 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_convoy_attacked", "_disembark_troops"];
-
 _setupVars = {
 	_missionType = "STR_KILL_BANDIT";
 	_locationsArray = nil; // locations are generated on the fly from towns
@@ -101,8 +99,6 @@ _setupObjects = {
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_bandits_car param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_bandits_car param [0,""]) >> "displayName");
 	_missionHintText = ["STR_KILL_BANDIT_MESSAGE1", sideMissionColor];
-	_convoy_attacked = false;
-	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
 
 	// Manage convoy
@@ -125,6 +121,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
+	{ [_x, 15] call F_addReput } forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
 	_successHintMessage = ["STR_KILL_BANDIT_MESSAGE3", sideMissionColor];
 };
 
