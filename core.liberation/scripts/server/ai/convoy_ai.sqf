@@ -10,20 +10,21 @@ _grp setSpeedMode "LIMITED";
 { _x setConvoySeparation 50 } forEach _vehicles;
 sleep 20;
 
+private _units = units _grp;
 private _convoy_attacked = false;
-private _timeout = time + 600;	// 10 min tiemout
+private _timeout = time + 800;
+private ["_veh_cur", "_killed", "_player_nearby"];
 
-while { !_convoy_attacked && (({ alive _x } count _vehicles) > 0) } do {
+while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) > 0) } do {
 	// Attacked ?
 	if (!_convoy_attacked) then {
+		_killed = ({!alive _x} count _units > 0);
 		{
 			_veh_cur = _x;
-            if (!isNull _veh_cur) then {
-                _killed = ({ !alive _x } count (units _grp) > 0);
-                if ( !(alive _veh_cur) || (damage _veh_cur >= 0.2) || _killed && (count ([_veh_cur, GRLIB_sector_size] call F_getNearbyPlayers) > 0) ) then {
-                    _convoy_attacked = true;
-                };
-            };
+			_player_nearby = (count ([_veh_cur, GRLIB_sector_size] call F_getNearbyPlayers) > 0);
+			if (_player_nearby && (damage _veh_cur >= 0.2 || _killed)) exitWith {
+				_convoy_attacked = true;
+			};
 		} foreach _vehicles;
 	};
 
@@ -33,9 +34,6 @@ while { !_convoy_attacked && (({ alive _x } count _vehicles) > 0) } do {
 			if (_x distance2D _objective_pos <= 250) then { _convoy_attacked = true };
 		} foreach _vehicles;
 	};
-
-	// Timeout
-	if (time >= _timeout) then { _convoy_attacked = true };
 
 	// Drivers Follow
 	if (!_convoy_attacked) then {
@@ -56,29 +54,26 @@ while { !_convoy_attacked && (({ alive _x } count _vehicles) > 0) } do {
 		} foreach _vehicles;
 	};
 
-	// Eject Troop
-	if (_convoy_attacked) exitWith {
-		{
-            [_x, _objective_pos] spawn {
-                params ["_vehicle", "_objective_pos"];
-				if (isNull _vehicle || !alive _vehicle) exitWith {};
-				private _cargo_troops = (crew _vehicle) select { ("cargo" in (assignedVehicleRole _x)) };
-				if (count _cargo_troops > 0) then {
-					doStop (driver _vehicle);
-					sleep 2;
-					{ [_x, false] spawn F_ejectUnit; sleep 0.2 } forEach _cargo_troops;
-					sleep 5;
-					private _grp = group (_cargo_troops select 0);
-					if (count _objective_pos > 0) then {
-						[_grp, _objective_pos] spawn battlegroup_ai;
-					} else {
-						[_grp, getPosATL _vehicle] spawn defence_ai;
-					};
-				};
-            };
-			sleep 1;
-		} foreach _vehicles;
-	};
-
     sleep 2;
+};
+
+if (_convoy_attacked) then {
+	// Eject Troop
+	{ doStop (driver _x) } foreach _vehicles;
+	sleep 2;
+	{
+		{
+			if (alive _x) then {
+				[_x, false] spawn F_ejectUnit;
+				sleep 0.2;
+			};
+		} forEach (crew _x);
+	} foreach _vehicles;
+
+	if (count _objective_pos > 0) then {
+		[_grp, _objective_pos] spawn battlegroup_ai;
+	} else {
+		_objective_pos = getPosATL (leader _grp);
+		[_grp, _objective_pos] spawn defence_ai;
+	};
 };
