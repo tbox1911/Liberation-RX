@@ -18,3 +18,4 @@ removeVest _unit;
 removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
+deleteVehicle _unit;
