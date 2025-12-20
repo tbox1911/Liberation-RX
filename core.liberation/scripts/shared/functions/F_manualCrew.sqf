@@ -1,7 +1,7 @@
 params ["_vehicle", "_units", ["_delete", true]];
 
 private _vehicle_roles = [];
-{ _vehicle_roles pushBack (_x select 1)} forEach (fullCrew [_vehicle, "", true]);
+{ _vehicle_roles pushBack (_x select 1)} forEach (fullCrew [_vehicle, "", true] - fullCrew _vehicle);
 if (count _units > count _vehicle_roles) then { diag_log format ["--- LRX Error: group too large for vehicle %1", typeOf _vehicle]};
 
 {
@@ -33,7 +33,7 @@ if (count _units > count _vehicle_roles) then { diag_log format ["--- LRX Error:
             _x assignAsCargo _vehicle;
             _x moveInCargo _vehicle;
         };
-        sleep 0.1;
+        sleep 0.2;
     };
 } forEach _units;
 
