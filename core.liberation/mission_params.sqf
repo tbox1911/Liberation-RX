@@ -79,7 +79,6 @@ GRLIB_PARAM_MapMarkers = "MapMarkers";
 GRLIB_PARAM_EnableArsenal = "EnableArsenal";
 GRLIB_PARAM_FilterArsenal = "FilterArsenal";
 GRLIB_PARAM_ForcedLoadout = "ForcedLoadout";
-GRLIB_PARAM_FreeLoadout = "FreeLoadout";
 GRLIB_PARAM_Thermic = "Thermic";
 GRLIB_PARAM_MaxFobs = "MaxFobs";
 GRLIB_PARAM_MaxOutpost = "MaxOutpost";
@@ -950,18 +949,6 @@ _Mission_Params = [
             localize "STR_FORCE_LOADOUT_OPT0",
             localize "STR_FORCE_LOADOUT_OPT1",
             localize "STR_FORCE_LOADOUT_OPT2"
-        ]]
-    ]],
-    [GRLIB_PARAM_FreeLoadout, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 0],
-        [GRLIB_PARAM_NameKey, localize "STR_FREE_LOADOUT"],
-        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
-        [GRLIB_PARAM_OptionValuesKey, [0,1]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ArsenalCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_FREE_LOADOUT_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_FREE_LOADOUT_OPT0",
-            localize "STR_FREE_LOADOUT_OPT1"
         ]]
     ]],
     [GRLIB_PARAM_Thermic, createHashMapFromArray [
