@@ -1,5 +1,10 @@
 params ["_uid"];
 
+// Player name
+private _name = "Unknown";
+{ if ((_x select 0) == _uid) exitWith {_name = (_x select 5)} } forEach GRLIB_player_scores;
+diag_log format ["--- LRX Cleanup player %1 (%2)", _name, _uid];
+
 // Remove PAR Marker
 deletemarker format ["PAR_marker_%1", _uid];
 
@@ -46,3 +51,6 @@ if (count _my_units > 0) then {
 		deleteVehicle _x 
 	} forEach _my_units;
 };
+
+private _text = format ["Bye bye %1, see you soon...", _name];
+[gamelogic, _text] remoteExec ["globalChat", -2];
