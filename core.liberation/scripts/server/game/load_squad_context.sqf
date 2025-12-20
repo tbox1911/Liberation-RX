@@ -13,12 +13,12 @@ if (count _context == 0) then {
 // AIs loadout
 if (count _context < 3) exitWith { _player setVariable ["GRLIB_squad_context_loaded", true, true] };
 if (count (_context select 2) >= 1) then {
-    private _score = [_player] call F_getScore;
-    private _squad_size = ([_score] call F_getRank) select 1;
     while {alive _player && !(_player getVariable ["GRLIB_squad_context_loaded", false])} do {
         _player = _uid call BIS_fnc_getUnitByUID;
         _owner = owner _player;
         if (alive _player && [_player, "FOB", GRLIB_fob_range] call F_check_near && (round (getPos _player select 2) <= 0)) then {
+            private _score = [_player] call F_getScore;
+            private _squad_size = ([_score] call F_getRank) select 1;
             diag_log format ["--- LRX Info: %1 Squad loading %2 unit(s).", name _player, count (_context select 2)];
             _pos = markerPos GRLIB_respawn_marker;
             _grp = createGroup [GRLIB_side_friendly, true];
@@ -46,7 +46,7 @@ if (count (_context select 2) >= 1) then {
         } else {
             if (_player distance2D (markerPos GRLIB_respawn_marker) > 100) then {
                 [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", _owner];
-                sleep 5;
+                sleep 3;
             };
         };
         sleep 1;
