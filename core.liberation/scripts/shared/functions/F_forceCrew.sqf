@@ -98,7 +98,7 @@ sleep 1;
 { if (isNull objectParent _x) then {deleteVehicle _x} } forEach (units _grp);
 (units _grp) allowGetIn true;
 (units _grp) orderGetIn true;
-(_grp) addVehicle _vehicle;
+_grp addVehicle _vehicle;
 
 if (_side == GRLIB_side_civilian) then {
 	_grp setCombatMode "BLUE";

@@ -91,7 +91,7 @@ _setupObjects = {
 		_tank_driver doMove _targetPos;
 
 		// loop
-		private ["_spawn_pos","_grp"];
+		private ["_spawn_pos", "_last_tank_pos", "_grp"];
 		while {alive _tank && (_tank distance2D _targetPos > 50)} do {
 			_last_tank_pos = getPosATL _tank;
 			waitUntil {sleep 1; (_tank distance2D _last_tank_pos > 150)};

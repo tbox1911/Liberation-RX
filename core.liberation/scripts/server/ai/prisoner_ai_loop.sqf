@@ -44,6 +44,8 @@ while { alive _unit && !_captured } do {
 };
 
 if (alive _unit && _captured) then {
+	[_unit] spawn F_ejectUnit;
+	unAssignVehicle _unit;
 	[_unit] orderGetIn false;
 	[_unit] allowGetIn false;
 	sleep (3 + floor random 4);

@@ -58,7 +58,8 @@ _setupObjects = {
 	};
 
 	private _grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
-	[_vehicle1, _grp] call F_manualCrew;
+	[_vehicle1, units _grp] call F_manualCrew;
+	_grp addVehicle _vehicle1;
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
 	_aiGroup selectLeader (driver _vehicle1);
@@ -76,7 +77,8 @@ _setupObjects = {
 	// veh2
 	_vehicle2 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false, true] call F_libSpawnVehicle;
 	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
-	[_vehicle2, _grp] call F_manualCrew;
+	[_vehicle2, units _grp] call F_manualCrew;
+	_grp addVehicle _vehicle2;
 	(units _grp) joinSilent _aiGroup;
 	_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
 
@@ -88,7 +90,8 @@ _setupObjects = {
 	// veh3
 	_vehicle3 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false, true] call F_libSpawnVehicle;
 	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
-	[_vehicle3, _grp] call F_manualCrew;
+	[_vehicle3, units _grp] call F_manualCrew;
+	_grp addVehicle _vehicle3;
 	(units _grp) joinSilent _aiGroup;
 	_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
 	(driver _vehicle3) MoveTo (_convoy_destinations select 1);

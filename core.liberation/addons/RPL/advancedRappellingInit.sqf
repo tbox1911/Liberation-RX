@@ -289,7 +289,6 @@ AR_Rappel_From_Heli = {
 AR_Client_Rappel_From_Heli = {
 	params ["_player","_heli","_rappelPoint"];
 
-	[_player] orderGetIn false;
 	moveOut _player;
 	waitUntil { isNull objectParent vehicle _player };
 	_playerStartPosition = AGLtoASL (_heli modelToWorldVisual _rappelPoint);

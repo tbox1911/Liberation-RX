@@ -10,10 +10,4 @@ private _list_board = (units _target) select {
     (_x distance2D player <= 30) && !(captive _x)
 };
 
-_list_board allowGetIn true;
-_list_board orderGetIn true;
-(group _vehicle) addVehicle _vehicle;
-{
-    _x moveInAny _vehicle;
-    sleep 0.2;
-} forEach _list_board;
+[_vehicle, _list_board, false] call F_manualCrew;

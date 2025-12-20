@@ -11,6 +11,9 @@ if (count GRLIB_all_fobs == 0 && _vehicle_class in [FOB_truck_typename,FOB_boat_
 private _info = (assignedVehicleRole _unit1);
 if (count _info == 0) exitWith { [_unit1, false] spawn F_ejectUnit; true };
 
+// Vehicle towed
+if !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith { [_unit1, false] spawn F_ejectUnit; true };
+
 private _role = _info select 0;
 private _turret = [0];
 if (count _info == 2) then { _turret = _info select 1 };
@@ -62,11 +65,6 @@ if (!(_role == "cargo" || _vehicle_class in list_static_weapons)) then {
 	};
 };
 
-if !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) then {
-	_msg = "Vehicle is in use...";
-	_doeject = true;
-};
-
 if (_doeject) then {
 	if (isPlayer _unit1) then {
 		playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 300];
@@ -87,6 +85,7 @@ if (_doeject) then {
 } else {
 	_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 	_vehicle setVariable ["GRLIB_last_killer", nil, true];
+	_vehicle setVariable ["GRLIB_mission_AI", nil, true];
 };
 
 _doeject;
