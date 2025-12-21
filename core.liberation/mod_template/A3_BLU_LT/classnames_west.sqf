@@ -217,9 +217,6 @@ vehicle_rearm_sources_west = [
 	"B_APC_Tracked_01_CRV_F"
 ];
 
-vehicle_big_units_west = [
-];
-
 GRLIB_vehicle_whitelist_west = [
 ];
 

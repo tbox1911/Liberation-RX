@@ -213,10 +213,6 @@ ai_healing_sources_west = [
 vehicle_rearm_sources_west = [
 ];
 
-vehicle_big_units_west = [
-
-];
-
 GRLIB_vehicle_whitelist_west = [
 
 ];
