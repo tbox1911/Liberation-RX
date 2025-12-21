@@ -17,6 +17,12 @@ if (!local _vehicle) then {
 };
 
 VAM_targetvehicle = _vehicle;
+VAM_arsenal_class_names = VAM_arsenal_cargo_class_names + VAM_arsenal_inventory_class_names;
+private _score = player getVariable ["GREUH_score_count", 0];
+if (_score >= GRLIB_perm_log) then {
+	VAM_arsenal_class_names append blufor_statics;
+};
+
 createDialog "VAM_GUI";
 waitUntil { dialog };
 [] spawn fnc_VAM_GUI_check;
