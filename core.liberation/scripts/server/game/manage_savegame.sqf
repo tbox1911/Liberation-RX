@@ -6,7 +6,7 @@ private ["_current_uid", "_uid"];
 private _known_uid = [];
 
 while {true} do {
-    _current_uid = (allPlayers select {isPlayer _x && !(_x isKindOf "HeadlessClient_F")}) apply { getPlayerUID _x };
+    _current_uid = (allPlayers select {!(_x isKindOf "HeadlessClient_F")}) apply { getPlayerUID _x };
     {
         _uid = _x;
         if (_uid != "") then {
@@ -33,5 +33,5 @@ while {true} do {
         [] call save_game_mp;
         waitUntil { sleep 30; count (allPlayers select {isPlayer _x && !(_x isKindOf "HeadlessClient_F")}) > 0 };
     };
-    sleep 0.5;
+    sleep 1;
 };
