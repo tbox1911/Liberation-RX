@@ -9,7 +9,7 @@ while {true} do {
     _current_uid = (allPlayers select {isPlayer _x && !(_x isKindOf "HeadlessClient_F")}) apply { getPlayerUID _x };
     {
         _uid = _x;
-        if (!isNull _uid) then {
+        if (_uid != "") then {
             [_uid] call cleanup_uid;
             diag_log format ["--- LRX Player (%1) left the mission.", _uid];
         };

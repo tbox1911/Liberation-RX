@@ -165,7 +165,6 @@ waituntil {
 
 // LRX Arsenal
 [] execVM "addons\LARs\liberationArsenal.sqf";
-sleep 1;
 waituntil {
 	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
 	uIsleep 1;
