@@ -16,7 +16,7 @@ while { _radius < _max_radius } do {
     if (
         count (_spawn_pos isFlatEmpty [-1, -1, 0.5, (_size + 5), _water_mode, false]) != 0 &&
         count (nearestObjects [_spawn_pos, ["LandVehicle", "CAManBase"], (_size + 3)]) == 0 &&
-        count (nearestObjects [_spawn_pos, ["House_F"], (_size + 7)]) == 0 &&
+        count (nearestObjects [_spawn_pos, ["House","House_F"], (_size + 7)]) == 0 &&
         count (nearestObjects [_spawn_pos, _big_building, (_size + 25)]) == 0 &&
         count (nearestTerrainObjects [_spawn_pos, _object_type, (_size + 2)]) == 0
     ) exitWith {};

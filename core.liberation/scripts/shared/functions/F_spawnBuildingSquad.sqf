@@ -19,6 +19,7 @@ switch (_infsquad) do {
 };
 
 private _building_classname = [
+	"House",
 	"House_F",
 	"Cargo_HQ_base_F",
 	"Cargo_Patrol_base_F",

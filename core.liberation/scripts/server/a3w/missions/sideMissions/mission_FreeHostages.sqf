@@ -9,6 +9,8 @@ _setupVars = {
 	_ignoreAiDeaths = true;
 	_detected = false;
 	private _building_classname = [
+		"House",
+		"House_F",
 		"Land_i_Shed_Ind_F",
 		"Land_i_House_Big_01_V2_F",
 		"Land_i_House_Big_01_V3_F",
