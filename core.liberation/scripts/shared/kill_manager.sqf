@@ -48,7 +48,26 @@ if (isServer) then {
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
 	if (isPlayer _unit) then {
-		stats_player_deaths = stats_player_deaths + 1
+		_killer setVariable ["GREUH_killed", (_killer getVariable ["GREUH_killed", 0]) + 1];
+		stats_player_deaths = stats_player_deaths + 1;
+	};
+
+	if (isPlayer _killer) then {
+		switch (true) do {
+			case (_unit isKindOf "CAManBase"): {
+				_killer setVariable ["GREUH_kills_inf", (_killer getVariable ["GREUH_kills_inf", 0]) + 1];
+			};			
+			case (_unit isKindOf "Car"): {
+				_killer setVariable ["GREUH_kills_soft", (_killer getVariable ["GREUH_kills_soft", 0]) + 1];
+			};
+			case (_unit isKindOf "Tank_F"): {
+				_killer setVariable ["GREUH_kills_armor", (_killer getVariable ["GREUH_kills_armor", 0]) + 1];
+			};
+			case (_unit isKindOf "Air"): {
+				_killer setVariable ["GREUH_kills_air", (_killer getVariable ["GREUH_kills_air", 0]) + 1];
+			};
+			default {};
+		};
 	};
 
 	if (_killer_side == GRLIB_side_friendly && isNil {_unit getVariable "GRLIB_mission_AI"} && isNil {_unit getVariable "GRLIB_battlegroup"}) then {
