@@ -7,9 +7,10 @@ private _known_uid = [];
 
 while {true} do {
     _current_uid = (allPlayers select {!(_x isKindOf "HeadlessClient_F")}) apply { getPlayerUID _x };
+    sleep 0.5;
     {
         _uid = _x;
-        if (_uid != "") then {
+        if (_uid != "" && isNull (_uid call BIS_fnc_getUnitByUID)) then {
             [_uid] call cleanup_uid;
             diag_log format ["--- LRX Player (%1) left the mission.", _uid];
         };
@@ -29,9 +30,9 @@ while {true} do {
         { deleteVehicle _x } forEach vehicles;
     };
 
-    if (count _current_uid == 0) then {
+    if (count _current_uid == 0 && GRLIB_server_persistent) then {
         [] call save_game_mp;
-        waitUntil { sleep 30; count (allPlayers select {isPlayer _x && !(_x isKindOf "HeadlessClient_F")}) > 0 };
+        waitUntil { sleep 30; count (allPlayers select {!(_x isKindOf "HeadlessClient_F")}) > 0 };
     };
-    sleep 1;
+    sleep 0.5;
 };
