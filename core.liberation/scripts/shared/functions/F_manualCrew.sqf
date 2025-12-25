@@ -6,7 +6,7 @@ if (count _units > count _vehicle_roles) then { diag_log format ["--- LRX Error:
 
 private _indx = 0;
 {
-    if (_indx > count _vehicle_roles) then {
+    if (_indx >= count _vehicle_roles) then {
         if (_delete) then {
             diag_log format ["--- LRX crew overload: unit %1 deleted!", name _x];
             deleteVehicle _x;

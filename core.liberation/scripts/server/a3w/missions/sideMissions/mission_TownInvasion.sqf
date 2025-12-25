@@ -59,9 +59,6 @@ _waitUntilSuccessCondition = { ({ alive _x } count (units _aiGroup + _managed_un
 
 _failedExec = {
 	// Mission failed
-	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
-	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -5];
-	[gamelogic, _msg] remoteExec ["globalChat", 0];		
 	_failedHintMessage = ["STR_INVASION_FAILED", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach _managed_units;
 	{ deleteVehicle _x } forEach (units _grp_civ);

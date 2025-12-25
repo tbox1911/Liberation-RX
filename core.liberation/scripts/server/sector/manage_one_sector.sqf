@@ -461,10 +461,10 @@ while {true} do {
 		diag_log format ["Sector %1 mission failed.", _sector];
 		_sector setMarkerText _sectorName;
 		[_task,"FAILED"] call BIS_fnc_taskSetState;
-		private _msg = format ["%1, You failed to capture %2, your reputation drops by %3 points...", name _x, [_sector_pos] call F_getLocationName, -5];
 		{
 			if (alive _x) then {
 				[_x, -5] call F_addReput;
+				private _msg = format ["%1, You failed to capture %2, your reputation drops by %3 points...", name _x, [_sector_pos] call F_getLocationName, -5];
 				[gamelogic, _msg] remoteExec ["globalChat", owner _x];
 			};
 		} forEach _active_players;

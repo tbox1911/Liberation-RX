@@ -22,7 +22,6 @@ _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 _unit setVariable ["GRLIB_action_inuse", false, true];
 _unit setVariable ["SOG_player_in_tunnel", nil];
 _unit setVariable ["ace_sys_wounds_uncon", false];
-_unit setVariable ["GRLIB_unit_detected", 0, true];
 
 if (!GRLIB_fatigue) then { _unit enableFatigue false; _unit enableStamina false };
 if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
