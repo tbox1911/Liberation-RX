@@ -105,6 +105,14 @@ _setupObjects = {
 			waitUntil {sleep 1; (_tank getHitPointDamage "HitEngine" < 1)};
 			_tank setFuel 1;
 			_tank engineOn true;
+			private _tank_grp = group (driver _tank);
+			[_tank_grp] call F_deleteWaypoints;
+			private _waypoint = _tank_grp addWaypoint [_targetPos, 10];
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointSpeed "LIMITED";
+			_waypoint setWaypointBehaviour "CARELESS";
+			_waypoint setWaypointCombatMode "BLUE";
+			_waypoint setWaypointCompletionRadius 30;
 			_tank_driver doMove _targetPos;
 		};
 	};
