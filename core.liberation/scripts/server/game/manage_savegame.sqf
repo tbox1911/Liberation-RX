@@ -7,7 +7,6 @@ private _known_uid = [];
 
 while {true} do {
     _current_uid = (allPlayers select {!(_x isKindOf "HeadlessClient_F")}) apply { getPlayerUID _x };
-    sleep 0.5;
     {
         _uid = _x;
         if (_uid != "" && isNull (_uid call BIS_fnc_getUnitByUID)) then {
@@ -34,5 +33,5 @@ while {true} do {
         [] call save_game_mp;
         waitUntil { sleep 30; count (allPlayers select {!(_x isKindOf "HeadlessClient_F")}) > 0 };
     };
-    sleep 0.5;
+    sleep 0.3;
 };

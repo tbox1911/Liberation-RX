@@ -57,14 +57,16 @@ if (isServer) then {
 			case (_unit isKindOf "CAManBase"): {
 				_killer setVariable ["GREUH_kills_inf", (_killer getVariable ["GREUH_kills_inf", 0]) + 1];
 			};			
-			case (_unit isKindOf "Car"): {
-				_killer setVariable ["GREUH_kills_soft", (_killer getVariable ["GREUH_kills_soft", 0]) + 1];
-			};
+			case "Wheeled_APC_F";
+			case "APC_Tracked_02_base_F";
 			case (_unit isKindOf "Tank_F"): {
 				_killer setVariable ["GREUH_kills_armor", (_killer getVariable ["GREUH_kills_armor", 0]) + 1];
 			};
 			case (_unit isKindOf "Air"): {
 				_killer setVariable ["GREUH_kills_air", (_killer getVariable ["GREUH_kills_air", 0]) + 1];
+			};
+			case (_unit isKindOf "Car"): {
+				_killer setVariable ["GREUH_kills_soft", (_killer getVariable ["GREUH_kills_soft", 0]) + 1];
 			};
 			default {};
 		};
