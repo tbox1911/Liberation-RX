@@ -34,7 +34,7 @@ private ["_objet_ou_classe", "_quantite", "_objet", "_classe", "_bbox", "_bbox_d
 _transporteur = _this select 0;
 _liste_a_charger = _this select 1;
 
-_chargement = [_transporteur] call R3F_LOG_FNCT_calculer_chargement_vehicule;
+_chargement = [_transporteur] call R3F_calculer_chargement_vehicule;
 _chargement_actuel = _chargement select 0;
 _chargement_maxi = _chargement select 1;
 _objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];

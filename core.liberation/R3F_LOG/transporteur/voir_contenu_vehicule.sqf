@@ -41,7 +41,7 @@ _chargement_precedent = [];
 
 while {!isNull _dlg_contenu_vehicule} do
 {
-	_chargement = [_transporteur] call R3F_LOG_FNCT_calculer_chargement_vehicule;
+	_chargement = [_transporteur] call R3F_calculer_chargement_vehicule;
 
 	// Si le contenu a chang�, on rafraichit l'interface
 	if !([_chargement, _chargement_precedent] call BIS_fnc_areEqual) then

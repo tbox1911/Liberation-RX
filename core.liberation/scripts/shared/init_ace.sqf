@@ -41,7 +41,7 @@ GRLIB_ACE_blacklist = [
 // R3F functions
 [] call compile preprocessFileLineNumbers "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
 R3F_LOG_FNCT_objet_deplacer = compile preprocessFileLineNumbers "R3F_LOG\objet_deplacable\deplacer.sqf";
-R3F_LOG_FNCT_calculer_chargement_vehicule = {
+R3F_calculer_chargement_vehicule = {
     params ["_vehicle"];
     private _cargo_full = [_vehicle, GRLIB_ACE_cargoSpace] call ACE_getSize;
     private _cargo_left = _vehicle getVariable ["ace_cargo_space", 0];

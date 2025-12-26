@@ -31,7 +31,7 @@ else
 		{
 			private ["_objets_charges", "_chargement", "_cout_chargement_objet"];
 
-			_chargement = [_transporteur] call R3F_LOG_FNCT_calculer_chargement_vehicule;
+			_chargement = [_transporteur] call R3F_calculer_chargement_vehicule;
 			_cout_chargement_objet = _objet getVariable "R3F_LOG_fonctionnalites" select R3F_LOG_IDX_can_be_transported_cargo_cout;
 			if (isNil "_cout_chargement_objet") exitWith {};
 
