@@ -24,9 +24,9 @@ while {true} do {
         } else {
             [] call save_game_mp;
         };
-        { deleteMarker _x } forEach allMapMarkers;
-        { deleteVehicle _x } forEach allUnits;
-        { deleteVehicle _x } forEach vehicles;
+        // { deleteMarker _x } forEach allMapMarkers;
+        // { deleteVehicle _x } forEach allUnits;
+        // { deleteVehicle _x } forEach vehicles;
     };
 
     if (count _current_uid == 0 && GRLIB_server_persistent) then {

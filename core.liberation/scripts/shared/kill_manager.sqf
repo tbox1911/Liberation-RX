@@ -68,7 +68,11 @@ if (isServer) then {
 			case (_unit isKindOf "Car"): {
 				_killer setVariable ["GREUH_kills_soft", (_killer getVariable ["GREUH_kills_soft", 0]) + 1];
 			};
-			default {};
+			default {
+				if (_unit isKindOf "AllVehicles") then {
+					diag_log format ["--- LRX Warning: kill_manager.sqf unknown vehicle class %1", _unit_class];
+				};
+			};
 		};
 	};
 
