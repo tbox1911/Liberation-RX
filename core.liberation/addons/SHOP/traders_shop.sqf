@@ -155,7 +155,9 @@ while { dialog && alive player } do {
 			if (_result && !(isNull _vehicle) && alive _vehicle) then {
 				deleteVehicle _vehicle;
 				[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
-				hintSilent format ["%1 Sold for %2 AMMO !", _vehicle_name, _price];
+				_msg = format ["%1 Sold for %2 AMMO !", _vehicle_name, _price];
+				hintSilent _msg;
+				gamelogic globalChat _msg;
 				ctrlEnable [120, false];
 				playSound "taskSucceeded";
 				sleep 1;
