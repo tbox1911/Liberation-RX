@@ -17,11 +17,15 @@ if (!local _vehicle) then {
 };
 
 VAM_targetvehicle = _vehicle;
-VAM_arsenal_class_names = VAM_arsenal_cargo_class_names + VAM_arsenal_inventory_class_names;
+VAM_cargo_class_names = [] + VAM_cargo_class_names_def; 
 private _score = player getVariable ["GREUH_score_count", 0];
-if (_score >= GRLIB_perm_log) then {
-	VAM_arsenal_class_names append blufor_statics;
-};
+{
+	if (!(( _x select 0) in (uavs_vehicles + static_vehicles_AI)) && (_x select 4) <= _score) then {
+		VAM_cargo_class_names pushBackUnique (_x select 0);
+	};
+} forEach static_vehicles;
+
+VAM_arsenal_class_names = VAM_cargo_class_names + VAM_inventory_class_names;
 
 createDialog "VAM_GUI";
 waitUntil { dialog };

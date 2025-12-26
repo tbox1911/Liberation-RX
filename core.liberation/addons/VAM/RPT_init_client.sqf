@@ -4,7 +4,8 @@
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_static.sqf";
 
 VAM_arsenal_class_names = [];
-VAM_arsenal_cargo_class_names = [
+
+VAM_cargo_class_names_def = [
 	Arsenal_typename,
 	mobile_respawn,
 	repairbox_typename,
@@ -14,7 +15,7 @@ VAM_arsenal_cargo_class_names = [
 	"Land_BagFence_Short_F"
 ];
 
-VAM_arsenal_inventory_class_names = [
+VAM_inventory_class_names = [
 	PAR_Medikit,
 	PAR_AidKit,
 	"ToolKit",
@@ -27,7 +28,7 @@ VAM_arsenal_inventory_class_names = [
 
 // ACE use only whitelist
 if (GRLIB_ACE_enabled) then {
-	VAM_arsenal_cargo_class_names append  [
+	VAM_cargo_class_names append  [
 		"ACE_Wheel",
 		"ACE_Track"
 	];
