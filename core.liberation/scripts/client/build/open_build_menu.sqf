@@ -4,6 +4,7 @@ private [
 	"_selected_item", "_linked_state", "_link_color", "_link_str", "_picture",
 	"_veh_man", "_veh_ammo", "_veh_fuel"
 ];
+if (isNil "resources_infantry") exitWith {};
 
 if (_trench) then {
 	buildtype = GRLIB_TrenchBuildType;
