@@ -1,6 +1,7 @@
 params ["_sector", "_type"];
 
-private _spawn_pos = [(markerPos _sector), 5, 0, 80, false] call F_findSafePlace;
+private _sector_pos = (markerPos _sector) getPos [floor random 80, floor random 360];
+private _spawn_pos = [_sector_pos, 5, 0, 80, false] call F_findSafePlace;
 if (count _spawn_pos == 0) exitWith {};
 
 private _box = [_type, _spawn_pos, false] call boxSetup;
