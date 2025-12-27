@@ -14,7 +14,7 @@ if (_item in VAM_cargo_class_names) then {
 	private _veh_load = [_vehicle] call R3F_calculer_chargement_vehicule;
 	private _load_cur = _veh_load select 0;
 	private _load_max = _veh_load select 1;
-	private _fonct = [typeOf _vehicle] call R3F_LOG_FNCT_determiner_fonctionnalites_logistique;
+	private _fonct = [_item] call R3F_LOG_FNCT_determiner_fonctionnalites_logistique;
 	private _item_load = _fonct select R3F_LOG_IDX_can_be_transported_cargo_cout;
 	if (_load_cur + _item_load <= _load_max) then {
 		{ if (_x select 0 == _item) exitWith {_cost = _x select 2} } forEach (support_vehicles + static_vehicles);
