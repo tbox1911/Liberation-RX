@@ -1,6 +1,15 @@
 diag_log "--- Server Init start ---";
 
+GRLIB_players_known_uid = [];
+
 // EventHandler
+addMissionEventHandler ["PlayerConnected", {
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idStr"];
+	if (_id != 2 && !(_uid in GRLIB_players_known_uid)) then {
+		GRLIB_players_known_uid pushBackUnique _uid;
+	};
+}];
+
 addMissionEventHandler ['HandleDisconnect', {
 	params ["_unit", "_id", "_uid", "_name"];
 	if (_name select [0,3] in ["HC1","HC2","HC3"]) exitWith {
@@ -8,9 +17,13 @@ addMissionEventHandler ['HandleDisconnect', {
 		deleteMarker "fpsmarkerHC2";
 		deleteMarker "fpsmarkerHC3";
 		false;
-	};	
-	[_unit, _uid, true] call save_context;
-	[_unit, _uid] call cleanup_player;
+	};
+	if (_uid in GRLIB_players_known_uid) then {
+		[_unit, _uid, true] call save_context;
+		[_unit, _uid] call cleanup_player;
+		[_uid] call cleanup_uid;
+		GRLIB_players_known_uid = GRLIB_players_known_uid - [_uid];
+	};
 	false;
 }];
 
