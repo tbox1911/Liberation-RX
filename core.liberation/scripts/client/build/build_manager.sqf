@@ -471,7 +471,11 @@ while {true} do {
 				_vehicle setPosATL _veh_pos;
 				_vehicle enableSimulationGlobal true;
 				_vehicle setVariable ["GRLIB_counter_TTL", round(time + 600), true];
-				_vehicle setVariable ["R3F_LOG_disabled", true, true];
+				if (_classname == "Land_PierLadder_F") then {
+					_vehicle setVariable ["R3F_LOG_disabled", false, true];
+				} else {
+					_vehicle setVariable ["R3F_LOG_disabled", true, true];
+				};				
 				GRLIB_current_trenches = GRLIB_current_trenches + 1;
 				_vehicle addEventHandler ["Killed", { GRLIB_current_trenches = GRLIB_current_trenches - 1 }];
 			};

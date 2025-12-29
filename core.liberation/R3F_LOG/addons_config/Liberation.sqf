@@ -236,6 +236,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["ReammoBox_F", 10],
 	["Box_NATO_Wps_F", 5],
 	["Box_NATO_Ammo_F", 5],
+	["Land_PierLadder_F", 1],
 	["Box_NATO_Support_F", 6],
 	[canister_fuel_typename, 1],
 	["Land_TentLamp_01_suspended_F", 1],
