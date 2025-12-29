@@ -1,6 +1,10 @@
 // LRX Trader Shop
 // by pSiKO
 
+if (([] call F_getNearestSector) in active_sectors) exitWith {
+	gamelogic globalChat "You cannot access the Trader shop in enemy territory.";
+};
+
 createDialog "Traders_Shop";
 waitUntil { dialog };
 

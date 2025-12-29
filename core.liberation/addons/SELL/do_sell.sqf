@@ -1,6 +1,10 @@
 // LRX SELL Shop
 // by pSiKO
 
+if (([] call F_getNearestSector) in active_sectors) exitWith {
+	gamelogic globalChat "You cannot access the Sell shop in enemy territory.";
+};
+
 createDialog "Sell_Shop";
 waitUntil { dialog };
 
