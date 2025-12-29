@@ -31,3 +31,9 @@ stats_fobs_lost = publicstats select 26;
 stats_readiness_earned = publicstats select 27;
 
 [] execVM "scripts\client\ui\end_screen.sqf";
+
+sleep 20;
+waitUntil {sleep 1; !dialog };
+cinematic_camera_started = false;
+endMission "END";
+forceEnd;
