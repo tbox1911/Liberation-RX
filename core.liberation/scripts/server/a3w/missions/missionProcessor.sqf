@@ -139,15 +139,17 @@ deleteMarker _marker_zone;
 
 if (_failed) then {
 	// Mission failed
-	if (!isNil "_failedExec") then { call _failedExec };
-	[
-		"Objective Failed",
-		_missionType,
-		_missionPicture,
-		if (!isNil "_failedHintMessage") then { _failedHintMessage } else { "Better luck next time!" },
-		failMissionColor
-	] remoteExec ["remote_call_showinfo", 0];
-	["lib_secondary_a3w_mission_fail", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
+	if (GRLIB_endgame != 1 && GRLIB_global_stop != 1) then {
+		if (!isNil "_failedExec") then { call _failedExec };
+		[
+			"Objective Failed",
+			_missionType,
+			_missionPicture,
+			if (!isNil "_failedHintMessage") then { _failedHintMessage } else { "Better luck next time!" },
+			failMissionColor
+		] remoteExec ["remote_call_showinfo", 0];
+		["lib_secondary_a3w_mission_fail", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
+	};
 	[_task, "FAILED"] call BIS_fnc_taskSetState;
 	diag_log format ["A3W Side Mission %1 failed: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;

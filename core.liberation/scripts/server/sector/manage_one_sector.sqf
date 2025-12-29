@@ -486,15 +486,6 @@ while {true} do {
 };
 
 _sector setMarkerText _sectorName;
-// Check Victory
-if ([] call F_checkVictory) then {
-	if (isServer) then {
-		[] spawn blufor_victory;
-	} else {
-		[] remoteExec ["blufor_victory", 2];
-	};
-};
-
 sleep 10;
 
 // Attack finished
