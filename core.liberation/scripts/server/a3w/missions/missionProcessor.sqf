@@ -100,11 +100,8 @@ waitUntil {
 	};
 
 	if (!isNil "_waitUntilMarkerPos") then {
-		_marker_pos_new = call _waitUntilMarkerPos;
-		if (_marker_pos_new distance2D (markerPos _marker) > 50) then {
-			_marker setMarkerPosLocal _marker_pos_new;
-			[_task, _marker_pos_new] call BIS_fnc_taskSetDestination;
-		};
+		_marker setMarkerPos (call _waitUntilMarkerPos);
+		// [_task, _marker] call BIS_fnc_taskSetDestination;
 	};
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
 	if (!isNil "_waitUntilLastPos") then { _lastPos = call _waitUntilLastPos };

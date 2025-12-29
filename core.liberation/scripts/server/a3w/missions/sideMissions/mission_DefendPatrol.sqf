@@ -103,7 +103,7 @@ _successExec = {
 	{
         [_x, _bonus] call F_addScore;
 		[_x, 10] call F_addReput;
-	} forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
+	} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
 
 	[_missionPos, (units _patrol_grp)] spawn {
 		params ["_pos", "_list"];

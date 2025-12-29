@@ -181,7 +181,7 @@ _successExec = {
 	{
 		[_x, _rwd_xp] call F_addScore;
 		[gamelogic, _text] remoteExec ["globalChat", owner _x];
-	} forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
+	} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
 
 	_successHintMessage = "STR_SEARCH_INTEL_MESSAGE2";
 	{ deleteVehicle _x } forEach (units _grp_civ1) + (units _grp_civ2);

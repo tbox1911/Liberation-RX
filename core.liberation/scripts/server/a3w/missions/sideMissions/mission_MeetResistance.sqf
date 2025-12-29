@@ -132,7 +132,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	{ [_x, 25] call F_addReput } forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
+	{ [_x, 25] call F_addReput } forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
 	[_missionPos, GRLIB_A3W_Mission_MR_BLUFOR + GRLIB_A3W_Mission_MR_OPFOR] spawn {
 		params ["_pos", "_list"];
 		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
