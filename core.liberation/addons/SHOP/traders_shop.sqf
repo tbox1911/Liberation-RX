@@ -2,7 +2,7 @@
 // by pSiKO
 
 if (([GRLIB_sector_size] call F_getNearestSector) in active_sectors) exitWith {
-	gamelogic globalChat "You cannot access the Trader shop in enemy territory.";
+	gamelogic globalChat "You cannot access the Trader shop during combat.";
 };
 
 createDialog "Traders_Shop";
