@@ -142,6 +142,7 @@ if (edit_loadout > 0) then {
 	if (GRLIB_ACE_enabled) then {
 		// Open ACE Arsenal
 		[myLARsBox, player] call ace_arsenal_fnc_openBox;
+		GRLIB_arsenal_open = false;
 	} else {
 		if (GRLIB_filter_arsenal == 0) then {
 			// Filters disabled
@@ -155,7 +156,6 @@ if (edit_loadout > 0) then {
 	// Filter and Pay loadout
 	[player] call F_filterLoadout;
 	[player] call F_payLoadout;
+	sleep 1;
+	GRLIB_arsenal_open = false;
 };
-
-sleep 1;
-GRLIB_arsenal_open = false;

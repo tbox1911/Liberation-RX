@@ -46,10 +46,9 @@ while {true} do {
 		if (!GRLIB_player_near_lhd) then {
 			// go CIV
 			private _no_enemy = (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) == 0);
-			if (_side == GRLIB_side_friendly && _no_enemy) then {
+			if (_side == GRLIB_side_friendly && _no_enemy && !dialog && !GRLIB_arsenal_open) then {
 				private _can_change = ({ [_x] call F_checkCivUnit && !([objectParent _x] call _detectedVehicle)} count (units GRLIB_player_group) == count units GRLIB_player_group);
 				if (_timer < time && _can_change) then {
-					closeDialog 0;
 					private _msg = format [localize "STR_CHANGE_CIV"];
 					private _result = [_msg, localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 					if !(_result) exitWith { _timer = time + 600 };

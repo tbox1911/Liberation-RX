@@ -65,5 +65,6 @@ if ( hasInterface ) then {
 	[ missionNamespace, "arsenalClosed", {
 		[player] call F_filterLoadout;
 		[player] spawn F_payLoadout;
+		GRLIB_arsenal_open = false;	
 	} ] call BIS_fnc_addScriptedEventHandler;
 };
