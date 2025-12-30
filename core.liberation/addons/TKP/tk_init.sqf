@@ -25,6 +25,9 @@ if (GRLIB_tk_mode == 0) exitWith {};
 LRX_tk_vip = [];
 LRX_tk_player_action = 0;
 
+// TK Check Handler
+LRX_tk_ban_player = false;
+
 LRX_tk_check = {
 	params ["_unit", "_killer"];
 	if (LRX_tk_vip find (name _killer) > -1) exitWith {};

@@ -22,7 +22,6 @@ while {true} do {
 			_last = _x getVariable["GREUH_score_last", _cur];
 			if (_cur != _last) then {
 				// score has changed for player _x
-
 				_uid = getPlayerUID _x;
 				_new_rank = ([_cur] call F_getRank) select 0;
 
@@ -32,16 +31,15 @@ while {true} do {
 					diag_log format ["--- LRX TK: BAN for player %1 - UID: %2", name _x,  _uid];
 				};
 
-				if (_new_rank == "None" && _cur < _last) exitWith {
-					_msg = format ["Warning <t color='#00ff00'>%1</t> !!<br />You Play Wrong !! <t color='#ff0000'>Read the Manual</t>.<br /><br />%2", name _x, localize "STR_RANK_LVL0"];
+				if (_new_rank == "Private" && _cur < _last) exitWith {
+					_msg = format ["Warning: player <t color='#00ff00'>%1</t>,<br />You play Wrong !! <t color='#ff0000'>Read the Manual</t>.<br /><br />%2", name _x, localize "STR_RANK_LVL0"];
 					[_msg, 0, 0, 5, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", owner _x];
 					[_uid, [false,false,false,false,false,false]] call CHG_Perm;
-					_x setVariable ["GRLIB_Rank", "None", true];
+					_x setVariable ["GRLIB_Rank", _new_rank, true];
 				};
 
 				if (_cur >= 0 && _new_rank != _rank) then {
 					// new rank for player _x
-
 					_firework = true;
 					_rounds = 1;
 					switch (_new_rank) do {

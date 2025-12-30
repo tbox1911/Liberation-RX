@@ -1,6 +1,7 @@
 params ["_killer", "_unit"];
 if (isDedicated) exitWith {};
-if (player != _killer || ([] call is_admin)) exitWith {};
+if (player != _killer) exitWith {};
+if (LRX_tk_ban_player) exitWith {};
 
 if (!isNil "_unit") exitWith {
 	disableUserInput true;
@@ -25,7 +26,8 @@ if (_kill == GRLIB_tk_count - 1) then {
 	[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 };
 
-if (_kill == GRLIB_tk_count) exitWith {
+if (_kill >= GRLIB_tk_count) exitWith {
+	LRX_tk_ban_player = true;
 	disableUserInput true;
 	closeDialog 0;
 	closeDialog 0;
