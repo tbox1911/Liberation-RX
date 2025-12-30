@@ -21,7 +21,7 @@ if (_forest > 0 && _obstacle_rock == 0) exitWith {};
 
 // Default
 private _curalt = 0;
-private _maxalt = 100;
+private _maxalt = 80;
 private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 15]);
 if (_obstacle > 0) then { _maxalt = 2.0 };
 private _spawnpos = (getPosASL _unit) vectorAdd [0,0,0.5];
