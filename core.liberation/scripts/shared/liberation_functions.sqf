@@ -11,6 +11,7 @@ F_check_near = compileFinal preprocessFileLineNumbers "scripts\shared\functions\
 F_getAirSpawn = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAirSpawn.sqf";
 F_checkClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_checkClass.sqf";
 F_checkCivUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_checkCivUnit.sqf";
+F_checkCivItem = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_checkCivItem.sqf";
 F_checkVictory = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_checkVictory.sqf";
 F_clearCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_clearCargo.sqf";
 F_correctHEGL = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_correctHEGL.sqf";
