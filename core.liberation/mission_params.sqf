@@ -386,20 +386,20 @@ _Mission_Params = [
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_DAYDURATION_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAMS_DAYDURATION_OPT0",
-            localize "STR_PARAMS_DAYDURATION_OPT1",
-            localize "STR_PARAMS_DAYDURATION_OPT2",
-            localize "STR_PARAMS_DAYDURATION_OPT3",
-            localize "STR_PARAMS_DAYDURATION_OPT4",
-            localize "STR_PARAMS_DAYDURATION_OPT5",
-            localize "STR_PARAMS_DAYDURATION_OPT6",
-            localize "STR_PARAMS_DAYDURATION_OPT7",
-            localize "STR_PARAMS_DAYDURATION_OPT8",
-            localize "STR_PARAMS_DAYDURATION_OPT9",
-            localize "STR_PARAMS_DAYDURATION_OPT10",
-            localize "STR_PARAMS_DAYDURATION_OPT11",
-            localize "STR_PARAMS_DAYDURATION_OPT12",
-            localize "STR_PARAMS_DAYDURATION_OPT13"
+            format [localize "STR_PARAMS_DAYDURATION_OPT0", 0.25],
+            format [localize "STR_PARAMS_DAYDURATION_OPT0", 0.5],
+            format [localize "STR_PARAMS_DAYDURATION_OPT1", 1],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 1.5],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 2],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 2.5],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 3],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 5],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 7],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 10],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 20],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 30],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 40],
+            format [localize "STR_PARAMS_DAYDURATION_OPT2", 50]
         ]]
     ]],
     [GRLIB_PARAM_NightDuration, createHashMapFromArray [
@@ -410,20 +410,20 @@ _Mission_Params = [
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_NIGHTDURATION_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAMS_NIGHTDURATION_OPT0",
-            localize "STR_PARAMS_NIGHTDURATION_OPT1",
-            localize "STR_PARAMS_NIGHTDURATION_OPT2",
-            localize "STR_PARAMS_NIGHTDURATION_OPT3",
-            localize "STR_PARAMS_NIGHTDURATION_OPT4",
-            localize "STR_PARAMS_NIGHTDURATION_OPT5",
-            localize "STR_PARAMS_NIGHTDURATION_OPT6",
-            localize "STR_PARAMS_NIGHTDURATION_OPT7",
-            localize "STR_PARAMS_NIGHTDURATION_OPT8",
-            localize "STR_PARAMS_NIGHTDURATION_OPT9",
-            localize "STR_PARAMS_NIGHTDURATION_OPT10",
-            localize "STR_PARAMS_NIGHTDURATION_OPT11",
-            localize "STR_PARAMS_NIGHTDURATION_OPT12",
-            localize "STR_PARAMS_NIGHTDURATION_OPT13"
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT0", 0.25],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT0", 0.5],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT1", 1],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 1.5],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 2],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 2.5],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 3],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 5],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 7],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 10],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 20],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 30],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 40],
+            format [localize "STR_PARAMS_NIGHTDURATION_OPT2", 50]
         ]]
     ]],
     [GRLIB_PARAM_PassiveIncome, createHashMapFromArray [
@@ -1244,7 +1244,7 @@ _Mission_Params = [
             localize "STR_PARAMS_DISABLED",
             localize "STR_PARAMS_ENABLED"
         ]]
-    ]],    
+    ]],
     [GRLIB_PARAM_KeepScore, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 0],
         [GRLIB_PARAM_NameKey, localize "STR_KEEP_SCORE"],
