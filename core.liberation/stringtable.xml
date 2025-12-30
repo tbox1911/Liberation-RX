@@ -10357,130 +10357,31 @@
 			<Czech>Upravuje délku denního času v misích.</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_DAYDURATION_OPT0">
-			<Original>Day lasts 0.25x real time – shorter</Original>
-			<Russian>День длится 0,25× реального времени — короче</Russian>
-			<French>La journée dure 0,25× le temps réel – plus courte</French>
-			<Chinesesimp>白天持续0.25倍真实时间——更短</Chinesesimp>
-			<Chinese>白天持續0.25倍真實時間——更短</Chinese>
-			<Portuguese>O dia dura 0,25× do tempo real – mais curto</Portuguese>
-			<Czech>Den trvá 0,25× reálného času – kratší</Czech>
+			<Original>Day lasts x%1 real time – longer</Original>
+			<Russian>День длится x%1 реального времени – дольше</Russian>
+			<French>Le jour dure x%1 du temps réel – plus long</French>
+			<Chinesesimp>白天持续 x%1 的真实时间 – 更长</Chinesesimp>
+			<Chinese>白天持續 x%1 的真實時間 – 更長</Chinese>
+			<Portuguese>O dia dura x%1 do tempo real – mais longo</Portuguese>
+			<Czech>Den trvá x%1 reálného času – déle</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_DAYDURATION_OPT1">
-			<Original>Day lasts 0.5x real time</Original>
-			<Russian>День длится 0,5× реального времени</Russian>
-			<French>La journée dure 0,5× le temps réel</French>
-			<Chinesesimp>白天持续0.5倍真实时间</Chinesesimp>
-			<Chinese>白天持續0.5倍真實時間</Chinese>
-			<Portuguese>O dia dura 0,5× do tempo real</Portuguese>
-			<Czech>Den trvá 0,5× reálného času</Czech>
+			<Original>Day lasts real time</Original>
+			<Russian>День длится реальное время</Russian>
+			<French>Le jour dure le temps réel</French>
+			<Chinesesimp>白天持续真实时间</Chinesesimp>
+			<Chinese>白天持續真實時間</Chinese>
+			<Portuguese>O dia dura o tempo real</Portuguese>
+			<Czech>Den trvá reálný čas</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_DAYDURATION_OPT2">
-			<Original>Day lasts 1x real time</Original>
-			<Russian>День длится 1× реального времени</Russian>
-			<French>La journée dure 1× le temps réel</French>
-			<Chinesesimp>白天持续1倍真实时间</Chinesesimp>
-			<Chinese>白天持續1倍真實時間</Chinese>
-			<Portuguese>O dia dura o tempo real (1×)</Portuguese>
-			<Czech>Den trvá 1× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT3">
-			<Original>Day lasts 1.5x real time</Original>
-			<Russian>День длится 1,5× реального времени</Russian>
-			<French>La journée dure 1,5× le temps réel</French>
-			<Chinesesimp>白天持续1.5倍真实时间</Chinesesimp>
-			<Chinese>白天持續1.5倍真實時間</Chinese>
-			<Portuguese>O dia dura 1,5× do tempo real</Portuguese>
-			<Czech>Den trvá 1,5× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT4">
-			<Original>Day lasts 2x real time</Original>
-			<Russian>День длится 2× реального времени</Russian>
-			<French>La journée dure 2× le temps réel</French>
-			<Chinesesimp>白天持续2倍真实时间</Chinesesimp>
-			<Chinese>白天持續2倍真實時間</Chinese>
-			<Portuguese>O dia dura 2× do tempo real</Portuguese>
-			<Czech>Den trvá 2× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT5">
-			<Original>Day lasts 2.5x real time</Original>
-			<Russian>День длится 2,5× реального времени</Russian>
-			<French>La journée dure 2,5× le temps réel</French>
-			<Chinesesimp>白天持续2.5倍真实时间</Chinesesimp>
-			<Chinese>白天持續2.5倍真實時間</Chinese>
-			<Portuguese>O dia dura 2,5× do tempo real</Portuguese>
-			<Czech>Den trvá 2,5× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT6">
-			<Original>Day lasts 3x real time</Original>
-			<Russian>День длится 3× реального времени</Russian>
-			<French>La journée dure 3× le temps réel</French>
-			<Chinesesimp>白天持续3倍真实时间</Chinesesimp>
-			<Chinese>白天持續3倍真實時間</Chinese>
-			<Portuguese>O dia dura 3× do tempo real</Portuguese>
-			<Czech>Den trvá 3× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT7">
-			<Original>Day lasts 5x real time</Original>
-			<Russian>День длится 5× реального времени</Russian>
-			<French>La journée dure 5× le temps réel</French>
-			<Chinesesimp>白天持续5倍真实时间</Chinesesimp>
-			<Chinese>白天持續5倍真實時間</Chinese>
-			<Portuguese>O dia dura 5× do tempo real</Portuguese>
-			<Czech>Den trvá 5× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT8">
-			<Original>Day lasts 7x real time</Original>
-			<Russian>День длится 7× реального времени</Russian>
-			<French>La journée dure 7× le temps réel</French>
-			<Chinesesimp>白天持续7倍真实时间</Chinesesimp>
-			<Chinese>白天持續7倍真實時間</Chinese>
-			<Portuguese>O dia dura 7× do tempo real</Portuguese>
-			<Czech>Den trvá 7× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT9">
-			<Original>Day lasts 10x real time</Original>
-			<Russian>День длится 10× реального времени</Russian>
-			<French>La journée dure 10× le temps réel</French>
-			<Chinesesimp>白天持续10倍真实时间</Chinesesimp>
-			<Chinese>白天持續10倍真實時間</Chinese>
-			<Portuguese>O dia dura 10× do tempo real</Portuguese>
-			<Czech>Den trvá 10× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT10">
-			<Original>Day lasts 20x real time</Original>
-			<Russian>День длится 20× реального времени</Russian>
-			<French>La journée dure 20× le temps réel</French>
-			<Chinesesimp>白天持续20倍真实时间</Chinesesimp>
-			<Chinese>白天持續20倍真實時間</Chinese>
-			<Portuguese>O dia dura 20× do tempo real</Portuguese>
-			<Czech>Den trvá 20× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT11">
-			<Original>Day lasts 30x real time</Original>
-			<Russian>День длится 30× реального времени</Russian>
-			<French>La journée dure 30× le temps réel</French>
-			<Chinesesimp>白天持续30倍真实时间</Chinesesimp>
-			<Chinese>白天持續30倍真實時間</Chinese>
-			<Portuguese>O dia dura 30× do tempo real</Portuguese>
-			<Czech>Den trvá 30× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT12">
-			<Original>Day lasts 40x real time</Original>
-			<Russian>День длится 40× реального времени</Russian>
-			<French>La journée dure 40× le temps réel</French>
-			<Chinesesimp>白天持续40倍真实时间</Chinesesimp>
-			<Chinese>白天持續40倍真實時間</Chinese>
-			<Portuguese>O dia dura 40× do tempo real</Portuguese>
-			<Czech>Den trvá 40× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DAYDURATION_OPT13">
-			<Original>Day lasts 50x real time – longer</Original>
-			<Russian>День длится 50× реального времени — дольше</Russian>
-			<French>La journée dure 50× le temps réel – plus longue</French>
-			<Chinesesimp>白天持续50倍真实时间——更长</Chinesesimp>
-			<Chinese>白天持續50倍真實時間——更長</Chinese>
-			<Portuguese>O dia dura 50× do tempo real – mais longo</Portuguese>
-			<Czech>Den trvá 50× reálného času – delší</Czech>
+			<Original>Day lasts x%1 real time - shorter</Original>
+			<Russian>День длится x%1 реального времени – короче</Russian>
+			<French>Le jour dure x%1 du temps réel – plus court</French>
+			<Chinesesimp>白天持续 x%1 的真实时间 – 更短</Chinesesimp>
+			<Chinese>白天持續 x%1 的真實時間 – 更短</Chinese>
+			<Portuguese>O dia dura x%1 do tempo real – mais curto</Portuguese>
+			<Czech>Den trvá x%1 reálného času – kratší</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_NIGHTDURATION_DESC">
 			<Original>Adjusts the duration of nighttime within the mission.</Original>
@@ -10492,130 +10393,32 @@
 			<Czech>Upravuje délku nočního času v misích.</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_NIGHTDURATION_OPT0">
-			<Original>Night lasts 0.25x real time – shorter</Original>
-			<Russian>Ночь длится 0,25× реального времени — короче</Russian>
-			<French>La nuit dure 0,25× le temps réel – plus courte</French>
-			<Chinesesimp>夜晚持续0.25倍真实时间——更短</Chinesesimp>
-			<Chinese>夜晚持續0.25倍真實時間——更短</Chinese>
-			<Portuguese>A noite dura 0,25× do tempo real – mais curta</Portuguese>
-			<Czech>Noc trvá 0,25× reálného času – kratší</Czech>
+			<Original>Night lasts x%1 real time – longer</Original>
+			<Russian>Ночь длится x%1 реального времени – дольше</Russian>
+			<French>La nuit dure x%1 du temps réel – plus longue</French>
+			<Chinesesimp>夜晚持续 x%1 的真实时间 – 更长</Chinesesimp>
+			<Chinese>夜晚持續 x%1 的真實時間 – 更長</Chinese>
+			<Portuguese>A noite dura x%1 do tempo real – mais longa</Portuguese>
+			<Czech>Noc trvá x%1 reálného času – déle</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_NIGHTDURATION_OPT1">
-			<Original>Night lasts 0.5x real time</Original>
-			<Russian>Ночь длится 0,5× реального времени</Russian>
-			<French>La nuit dure 0,5× le temps réel</French>
-			<Chinesesimp>夜晚持续0.5倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續0.5倍真實時間</Chinese>
-			<Portuguese>A noite dura 0,5× do tempo real</Portuguese>
-			<Czech>Noc trvá 0,5× reálného času</Czech>
+			<Original>Night lasts real time</Original>
+			<Russian>Ночь длится реальное время</Russian>
+			<French>La nuit dure le temps réel</French>
+			<Japanese>夜間はリアルタイムで続きます</Japanese>
+			<Chinesesimp>夜晚持续真实时间</Chinesesimp>
+			<Chinese>夜晚持續真實時間</Chinese>
+			<Portuguese>A noite dura o tempo real</Portuguese>
+			<Czech>Noc trvá reálný čas</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_NIGHTDURATION_OPT2">
-			<Original>Night lasts 1x real time</Original>
-			<Russian>Ночь длится 1× реального времени</Russian>
-			<French>La nuit dure 1× le temps réel</French>
-			<Chinesesimp>夜晚持续1倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續1倍真實時間</Chinese>
-			<Portuguese>A noite dura o tempo real (1×)</Portuguese>
-			<Czech>Noc trvá 1× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT3">
-			<Original>Night lasts 1.5x real time</Original>
-			<Russian>Ночь длится 1,5× реального времени</Russian>
-			<French>La nuit dure 1,5× le temps réel</French>
-			<Chinesesimp>夜晚持续1.5倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續1.5倍真實時間</Chinese>
-			<Portuguese>A noite dura 1,5× do tempo real</Portuguese>
-			<Czech>Noc trvá 1,5× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT4">
-			<Original>Night lasts 2x real time</Original>
-			<Russian>Ночь длится 2× реального времени</Russian>
-			<French>La nuit dure 2× le temps réel</French>
-			<Chinesesimp>夜晚持续2倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續2倍真實時間</Chinese>
-			<Portuguese>A noite dura 2× do tempo real</Portuguese>
-			<Czech>Noc trvá 2× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT5">
-			<Original>Night lasts 2.5x real time</Original>
-			<Russian>Ночь длится 2,5× реального времени</Russian>
-			<French>La nuit dure 2,5× le temps réel</French>
-			<Chinesesimp>夜晚持续2.5倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續2.5倍真實時間</Chinese>
-			<Portuguese>A noite dura 2,5× do tempo real</Portuguese>
-			<Czech>Noc trvá 2,5× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT6">
-			<Original>Night lasts 3x real time</Original>
-			<Russian>Ночь длится 3× реального времени</Russian>
-			<French>La nuit dure 3× le temps réel</French>
-			<Chinesesimp>夜晚持续3倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續3倍真實時間</Chinese>
-			<Portuguese>A noite dura 3× do tempo real</Portuguese>
-			<Czech>Noc trvá 3× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT7">
-			<Original>Night lasts 5x real time</Original>
-			<Russian>Ночь длится 5× реального времени</Russian>
-			<French>La nuit dure 5× le temps réel</French>
-			<Chinesesimp>夜晚持续5倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續5倍真實時間</Chinese>
-			<Portuguese>A noite dura 5× do tempo real</Portuguese>
-			<Czech>Noc trvá 5× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT8">
-			<Original>Night lasts 7x real time</Original>
-			<Russian>Ночь длится 7× реального времени</Russian>
-			<French>La nuit dure 7× le temps réel</French>
-			<Chinesesimp>夜晚持续7倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續7倍真實時間</Chinese>
-			<Portuguese>A noite dura 7× do tempo real</Portuguese>
-			<Czech>Noc trvá 7× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT9">
-			<Original>Night lasts 10x real time</Original>
-			<Russian>Ночь длится 10× реального времени</Russian>
-			<French>La nuit dure 10× le temps réel</French>
-			<Chinesesimp>夜晚持续10倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續10倍真實時間</Chinese>
-			<Portuguese>A noite dura 10× do tempo real</Portuguese>
-			<Czech>Noc trvá 10× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT10">
-			<Original>Night lasts 20x real time</Original>
-			<Russian>Ночь длится 20× реального времени</Russian>
-			<French>La nuit dure 20× le temps réel</French>
-			<Chinesesimp>夜晚持续20倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續20倍真實時間</Chinese>
-			<Portuguese>A noite dura 20× do tempo real</Portuguese>
-			<Czech>Noc trvá 20× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT11">
-			<Original>Night lasts 30x real time</Original>
-			<Russian>Ночь длится 30× реального времени</Russian>
-			<French>La nuit dure 30× le temps réel</French>
-			<Chinesesimp>夜晚持续30倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續30倍真實時間</Chinese>
-			<Portuguese>A noite dura 30× do tempo real</Portuguese>
-			<Czech>Noc trvá 30× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT12">
-			<Original>Night lasts 40x real time</Original>
-			<Russian>Ночь длится 40× реального времени</Russian>
-			<French>La nuit dure 40× le temps réel</French>
-			<Chinesesimp>夜晚持续40倍真实时间</Chinesesimp>
-			<Chinese>夜晚持續40倍真實時間</Chinese>
-			<Portuguese>A noite dura 40× do tempo real</Portuguese>
-			<Czech>Noc trvá 40× reálného času</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_NIGHTDURATION_OPT13">
-			<Original>Night lasts 50x real time – longer</Original>
-			<Russian>Ночь длится 50× реального времени — дольше</Russian>
-			<French>La nuit dure 50× le temps réel – plus longue</French>
-			<Chinesesimp>夜晚持续50倍真实时间——更长</Chinesesimp>
-			<Chinese>夜晚持續50倍真實時間——更長</Chinese>
-			<Portuguese>A noite dura 50× do tempo real – mais longa</Portuguese>
-			<Czech>Noc trvá 50× reálného času – delší</Czech>
+			<Original>Night lasts x%1 real time - shorter</Original>
+			<Russian>Ночь длится x%1 реального времени – короче</Russian>
+			<French>La nuit dure x%1 du temps réel – plus courte</French>
+			<Chinesesimp>夜晚持续 x%1 的真实时间 – 更短</Chinesesimp>
+			<Chinese>夜晚持續 x%1 的真實時間 – 更短</Chinese>
+			<Portuguese>A noite dura x%1 do tempo real – mais curta</Portuguese>
+			<Czech>Noc trvá x%1 reálného času – kratší</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_DESC">
 			<Original>Enables or disables automatic passive income generation.</Original>
