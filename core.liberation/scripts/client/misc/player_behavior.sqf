@@ -3,8 +3,7 @@ waitUntil {sleep 1; !isNil "GRLIB_player_near_lhd"};
 
 private _detectedUnit = {
     params ["_unit"];
-	(_unit getVariable ["GRLIB_unit_detected", 0] >= 1.5) &&
-    !([_unit] call F_checkCivUnit);
+	((_unit getVariable ["GRLIB_unit_detected", 0] >= 1.5) && !([_unit] call F_checkCivUnit));
 };
 
 private _detectedVehicle = {
@@ -19,12 +18,13 @@ private _detectedVehicle = {
 
 private _timer = time + 60;
 private _timer_bonus = 120;
+private ["_msg", "_side", "_result", "_player_units"];
 
 while {true} do {
 	waitUntil {sleep 1; alive player && !(captive player) && GRLIB_player_configured};
 
 	// Renegade
-	private _side = side player;
+	_side = side player;
 	if (_side == sideEnemy) then {
 		player addrating ((abs rating player) + 500);
 		private _kill = 1 + (BTC_logic getVariable [PAR_Grp_ID, 0]);
@@ -49,11 +49,11 @@ while {true} do {
 			if (_side == GRLIB_side_friendly && _no_enemy && !dialog && !GRLIB_arsenal_open) then {
 				private _can_change = ({ [_x] call F_checkCivUnit && !([objectParent _x] call _detectedVehicle)} count (units GRLIB_player_group) == count units GRLIB_player_group);
 				if (_timer < time && _can_change) then {
-					private _msg = format [localize "STR_CHANGE_CIV"];
-					private _result = [_msg, localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
+					_msg = format [localize "STR_CHANGE_CIV"];
+					_result = [_msg, localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 					if !(_result) exitWith { _timer = time + 600 };
 
-					private _player_units = (units GRLIB_player_group);
+					_player_units = (units GRLIB_player_group);
 					[GRLIB_player_group, "del"] remoteExec ["addel_group_remote_call", 2];
 					sleep 2;
 					GRLIB_player_group = createGroup [GRLIB_side_civilian, true];
@@ -66,10 +66,11 @@ while {true} do {
 					{
 						_x setVariable ["GRLIB_unit_detected", 0, true];
 						_x setVariable ["PAR_Grp_AI", GRLIB_player_group];
-					} forEach PAR_AI_bros;
-					private _msg = format ["<t color='#0000FF'>%1</t> you are a <t color='#660080'>Civilian</t> now...", name player];
+					} forEach _player_units;
+					_msg = format ["<t color='#0000FF'>%1</t> you are a <t color='#660080'>Civilian</t> now...", name player];
 					[_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
-					gamelogic globalChat format ["%1 and his squad goes to the Civilian side...", name player];
+					_msg = format ["%1 and his squad goes to the Civilian side...", name player];
+					[gamelogic, _msg] remoteExec ["globalChat", 0];
 					_timer = time + 600;
 					_timer_bonus = 120;
 				};
@@ -82,20 +83,15 @@ while {true} do {
 		if (_side == GRLIB_side_civilian) then {
 			private _undetected = ({ [_x] call _detectedUnit || [objectParent _x] call _detectedVehicle } count (units GRLIB_player_group) == 0);
 			if (_undetected) then {
-				private _awareness = player getVariable ["GRLIB_unit_detected", 0];
-				private _level = linearConversion [0, 1.5, _awareness, 0, 100, true];
-				private _msg = format ["%1 detection level: %2%%", name player, round _level];
-				hintSilent _msg;
-				gamelogic globalChat _msg;
 				_timer_bonus = _timer_bonus - 3;
 				if (_timer_bonus <= 0) then {
 					[player, 1] call F_addReput;
 					_timer_bonus = 60;
 				};
 			} else {
-				private _msg = format ["<t color='#0000FF'>%1</t> you are back to the <t color='#004C99'>BLUFOR</t> side...", name player];
+				_msg = format ["DETECTED!!<br/><t color='#0000FF'>%1</t> you go back to <t color='#004C99'>BLUFOR</t> side...", name player];
 				[_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
-				private _player_units = (units GRLIB_player_group);
+				_player_units = (units GRLIB_player_group);
 				GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 				waitUntil {
 					[player] joinSilent GRLIB_player_group;
@@ -107,9 +103,9 @@ while {true} do {
 				{
 					_x setVariable ["GRLIB_unit_detected", nil, true];
 					_x setVariable ["PAR_Grp_AI", GRLIB_player_group];
-				} forEach PAR_AI_bros;
-				gamelogic globalChat format ["%1 and his squad go back to the Blufor side...", name player];
-				hintSilent "";
+				} forEach _player_units;
+				_msg = format ["%1 and his squad go back to the Blufor side...", name player];
+				[gamelogic, _msg] remoteExec ["globalChat", 0];
 				_timer = time + 600;
 			};
 		};

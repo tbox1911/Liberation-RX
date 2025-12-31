@@ -6,7 +6,8 @@ private [
 	"_reputation", "_attacked_timer", "_sector_timer", "_capture_size"
 ];
 private _overlayshown = false;
-private _sectorcontrols = [201,202,203,244,205];
+private _sectorcontrols = [201,202,203,204,205];
+private _indicator = [245,246,247];
 private _active_sectors_hint = false;
 private _uiticks = 0;
 GRLIB_ui_notif = "";
@@ -26,6 +27,7 @@ if (GRLIB_Commander_mode) then {
 private _color_F = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
 private _color_E = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_enemy >> "color") call BIS_fnc_colorConfigToRGBA;
 private _color_U = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_unknown >> "color") call BIS_fnc_colorConfigToRGBA;
+private _color_Red = getArray (configFile >> "CfgMarkerColors" >> "ColorRed" >> "color") call BIS_fnc_colorConfigToRGBA;
 
 while {true} do {
 	_hide_HUD = !(shownHUD select 0);
@@ -106,10 +108,18 @@ while {true} do {
 				if (_reputation <= -100) then { _color_reput = [0.8,0,0,1]; _reput_icon = "res\rep\rep0.paa" };
 				(_overlay displayCtrl (104)) ctrlSetTextColor _color_reput;
 				(_overlay displayCtrl (1041)) ctrlSetText (getMissionPath _reput_icon);
+
+				_bar = _overlay displayCtrl (246);
+				_bar ctrlSetBackgroundColor _color_Red;
+				_awareness = player getVariable ["GRLIB_unit_detected", 1.5];
+				_ratio = linearConversion [0, 1.5, _awareness, 0, 1, true];
+				_barwidth = 0.084 * safezoneW * _ratio;
+				_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
+				_bar ctrlCommit 1;				
 			};
 
 			if (_uiticks % 4 == 0) then {
-				_bar = _overlay displayCtrl (244);
+				_bar = _overlay displayCtrl (204);
 				_fob_sector = false;
 				_nearest_active_sector = "";
 
@@ -126,12 +136,18 @@ while {true} do {
 				};
 
 				if (_nearest_active_sector == "") then {
-					{ (_overlay displayCtrl (_x)) ctrlShow false } foreach _sectorcontrols;
+					{ (_overlay displayCtrl _x) ctrlShow false } foreach _sectorcontrols;
 					"zone_capture" setmarkerposlocal markers_reset;
 				} else {
-					{ (_overlay displayCtrl (_x)) ctrlShow true } foreach _sectorcontrols;
+					{ (_overlay displayCtrl _x) ctrlShow true } foreach _sectorcontrols;
 					"zone_capture" setmarkerposlocal (markerpos _nearest_active_sector);
 					(_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
+				};
+
+				if (side player == GRLIB_side_civilian && !(isNil {player getVariable "GRLIB_unit_detected"})) then {
+					{ (_overlay displayCtrl _x) ctrlShow true } foreach _indicator;
+				} else {
+					{ (_overlay displayCtrl _x) ctrlShow false } foreach _indicator;
 				};
 
 				_zone_size = GRLIB_capture_size;
@@ -170,7 +186,7 @@ while {true} do {
 
 				"zone_capture" setmarkercolorlocal _colorzone;
 				(_overlay displayCtrl (205)) ctrlSetTextColor _colortext;
-				(_overlay displayCtrl (244)) ctrlSetBackgroundColor _color_F;
+				(_overlay displayCtrl (204)) ctrlSetBackgroundColor _color_F;
 				(_overlay displayCtrl (203)) ctrlSetBackgroundColor _color_E;
 
 				if (!GRLIB_Commander_mode) then {
