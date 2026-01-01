@@ -50,7 +50,9 @@ if (!isDedicated && hasInterface) then {
 		if (GRLIB_ACE_enabled) then {
 			[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
 		} else {
-			[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
+			if (!isServer) then {
+				[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
+			};
 		};
 		[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
 	};
