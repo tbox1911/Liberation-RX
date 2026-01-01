@@ -14793,6 +14793,19 @@
 			<Czech>Finální mise probíhá...\nNová připojení jsou až do konce zakázána!</Czech>
 		</Key>
 
+		<Key ID="STR_MSG_END_GAME">
+			<Original>You come too late...\nThe mission is ending, reconnect when the mission is restarted</Original>
+			<French>Vous arrivez trop tard...\nLa mission se termine, reconnectez-vous lorsque la mission redémarre</French>
+			<German>Du kommst zu spät...\nDie Mission endet, verbinde dich erneut, wenn die Mission neu gestartet wird</German>
+			<Spanish>Llegas demasiado tarde...\nLa misión está terminando, reconéctate cuando la misión se reinicie</Spanish>
+			<Russian>Вы пришли слишком поздно...\nМиссия заканчивается, переподключитесь, когда миссия будет перезапущена</Russian>
+			<Chinesesimp>你来得太晚了……\n任务即将结束，请在任务重启后重新连接</Chinesesimp>
+			<Chinese>你來得太晚了……\n任務即將結束，請在任務重啟後重新連線</Chinese>
+			<Japanese>遅すぎました...\nミッションは終了中です。ミッションが再開されたら再接続してください</Japanese>
+			<Portuguese>Você chegou tarde demais...\nA missão está terminando, reconecte-se quando a missão for reiniciada</Portuguese>
+			<Czech>Přišli jste příliš pozdě...\nMise končí, připojte se znovu, až bude mise restartována</Czech>
+		</Key>
+
 		<Key ID="STR_MSG_RESPAWN_COOLDOWN">
 			<Original>You Reconnect or Respawn too fast!\nPlease Wait %1 sec.</Original>
 			<French>Vous vous reconnectez ou réapparaissez trop rapidement !\nVeuillez attendre %1 secondes.</French>

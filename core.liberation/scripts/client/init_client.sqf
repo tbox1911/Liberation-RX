@@ -39,6 +39,7 @@ GRLIB_SquadBuildType = 8;
 GRLIB_TrenchBuildType = 9;
 GRLIB_BuildTypeDirect = 90;
 
+// Server Init Error
 if (abort_loading) exitWith {
 	private _msg = format [localize "STR_MSG_SERVER_STARTUP_ERROR", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];
@@ -48,6 +49,7 @@ if (abort_loading) exitWith {
 	disableUserInput false;
 };
 
+// Player Validations
 PAR_Grp_ID = getPlayerUID player;
 if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	private _msg = localize "STR_MSG_SERVER_INIT_ERROR";
@@ -57,6 +59,7 @@ if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	disableUserInput false;
 };
 
+// Multiplayer only
 if (!isMultiplayer) exitWith {
 	private _msg = localize "STR_MSG_MP_ONLY";
 	titleText [_msg, "BLACK FADED", 100];
@@ -86,6 +89,15 @@ if (GRLIB_global_stop == 1) exitWith {
 	disableUserInput false;
 };
 
+waitUntil {sleep 1; !isNil "GRLIB_endgame"};
+if (GRLIB_endgame == 1) exitWith {
+	private _msg = localize "STR_MSG_END_GAME";
+	titleText [_msg, "BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER";
+	disableUserInput false;
+};
+
 if (GRLIB_kick_idle > 0) then {
 	[] execVM "scripts\client\misc\kick_idle.sqf";
 };
@@ -104,45 +116,6 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
-// Local functions
-airdrop_call = compileFinal preprocessFileLineNumbers "scripts\client\misc\airdrop_call.sqf";
-artillery_cooldown = compileFinal preprocessFileLineNumbers "scripts\client\misc\artillery_cooldown.sqf";
-cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
-do_build_squad = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_squad.sqf";
-do_build_unit = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_unit.sqf";
-do_dog = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_dog.sqf";
-do_onboard = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_onboard.sqf";
-do_redeploy = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_redeploy.sqf";
-dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
-fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
-get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
-is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
-is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
-paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
-player_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_actions.sqf";
-player_admin_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_admin_actions.sqf";
-player_dog_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_dog_actions.sqf";
-player_fob_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_fob_actions.sqf";
-player_squad_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_squad_actions.sqf";
-player_vehicle_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_vehicle_actions.sqf";
-player_init = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_init.sqf";
-player_respawn = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_respawn.sqf";
-player_EH = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_EH.sqf";
-player_EHP = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_EHP.sqf";
-save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
-save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\save_personal_arsenal.sqf";
-set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
-spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
-speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\manager\speak_manager.sqf";
-vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
-vehicle_perm = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_perm.sqf";
-write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
-
-if (!([] call F_getValid)) exitWith {endMission "LOSER"};
-
-[player] call player_EHP;
-[player, objNull] spawn player_respawn;
-
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
@@ -150,7 +123,12 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 
-// Player group
+// Player Setup
+if (!([] call F_getValid)) exitWith {endMission "LOSER"};
+[player] call player_EHP;
+[player, objNull] spawn player_respawn;
+
+// Create Player Group
 startgame = 0;
 GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 waituntil {
