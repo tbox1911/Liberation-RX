@@ -8,51 +8,15 @@ if (GRLIB_arsenal_open) exitWith {};
 GRLIB_arsenal_open = true;
 GRLIB_backup_loadout = getUnitLoadout player;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice), true];
-
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-private _saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
-private _saved_loadouts_ace = profileNamespace getVariable ["ace_arsenal_saved_loadouts", []];
-private _loadouts_data = [];
-private _loadout_loaded = [];
-private _price = 0;
-private _name = "";
 
-if (GRLIB_ACE_enabled) then {
-	if (!isNil "_saved_loadouts_ace") then {
-		private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
-		_unit allowDamage false;
-		{
-			if (_forEachIndex % 1 == 0 && _forEachIndex < 40) then {
-				_name = _x select 0;
-				_loadout_loaded = _x select 1; 			// Pushes _loadouts_data for CBA_fnc_setLoadout
-				[_unit, _loadout_loaded] call CBA_fnc_setLoadout;
-				_price = [_unit] call F_loadoutPrice;
-				_loadouts_data pushback [_name, _price, _loadout_loaded];
-			};
-		} foreach _saved_loadouts_ace;
-		deleteVehicle _unit;
-	};
-} else {
-	if (!isNil "_saved_loadouts") then {
-		private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
-		_unit allowDamage false;
-		{
-			if (_forEachIndex % 2 == 0 && _forEachIndex < 40) then {
-				[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
-				_price = [_unit] call F_loadoutPrice;
-				_loadouts_data pushback [_x, _price];
-			};
-		} foreach _saved_loadouts;
-		deleteVehicle _unit;
-	};
-};
 createDialog "liberation_arsenal";
 waitUntil { dialog };
 ctrlEnable [202, false];
 ctrlEnable [203, false];
 ctrlEnable [204, false];
 
-if (count _loadouts_data > 0) then {
+if (count GRLIB_saved_loadouts > 0) then {
 	lbClear 201;
 	{
 		((findDisplay 5251) displayCtrl (201)) lnbAddRow [format ["%1" ,_x select 0], format ["%1" ,_x select 1]];
@@ -65,7 +29,7 @@ if (count _loadouts_data > 0) then {
 			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 1], [0.4,0.4,0.4,1]];
 		};
 
-	} foreach _loadouts_data ;
+	} foreach GRLIB_saved_loadouts;
 	if (lbSize 201 > 0) then { lbSetCurSel [201, 0] };
 };
 
@@ -92,7 +56,7 @@ if (count _loadplayers > 0) then {
 while { dialog && (alive player) && !([player] call PAR_is_wounded) && edit_loadout == 0 } do {
 	private _cur_sel = (lbCurSel 201);
 	if (_cur_sel != -1) then {
-		private _selected_loadout = _loadouts_data select _cur_sel;
+		private _selected_loadout = GRLIB_saved_loadouts select _cur_sel;
 		if ((_selected_loadout select 1) <= _ammo_collected) then {
 			ctrlEnable [202, true];
 		} else {
@@ -101,19 +65,17 @@ while { dialog && (alive player) && !([player] call PAR_is_wounded) && edit_load
 	};
 
 	if (load_loadout > 0) then {
-		private _selected_loadout = _loadouts_data select _cur_sel;
+		private _selected_loadout = GRLIB_saved_loadouts select _cur_sel;
 		private _loaded_loadout = (_selected_loadout select 0);
-		private _ace_loaded_loadout = (_selected_loadout select 2);
 		if (GRLIB_ACE_enabled) then {
+			private _ace_loaded_loadout = (_selected_loadout select 2);
 			[player, _ace_loaded_loadout] call CBA_fnc_setLoadout;
 		} else {
 			[player, [profileNamespace, _loaded_loadout]] call bis_fnc_loadInventory;
 		};
 		[player] call F_filterLoadout;
 		hint format [localize "STR_HINT_LOADOUT_LOADED", _loaded_loadout];
-		if (exit_on_load == 1) then {
-			closeDialog 0;
-		};
+		if (exit_on_load == 1) then { closeDialog 0 };
 		load_loadout = 0;
 	};
 

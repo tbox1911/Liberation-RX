@@ -17,6 +17,7 @@ if (ctrlEnabled _ctrlTemplateName) then {
 			_center call BIS_fnc_getUnitInsignia
 		]
 	] call BIS_fnc_saveInventory;
+	[] spawn loadout_price;
 } else {
 	//--- Load
 	//diag_log "Override OK: Load";

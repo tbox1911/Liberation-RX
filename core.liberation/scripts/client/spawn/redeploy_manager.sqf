@@ -49,19 +49,10 @@ if (GRLIB_player_spawned) then {
 	lbSetData [203, 0, "0"];
 	private _saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
 	if (GRLIB_enable_arsenal > 0 && !isNil "_saved_loadouts") then {
-		private _counter = 1;
-		private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
-		_unit allowDamage false;
 		{
-			if (_forEachIndex % 2 == 0 && _forEachIndex < 40) then {
-				lbAdd [203, _x];
-				[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
-				_price = [_unit] call F_loadoutPrice;
-				lbSetValue [203, _counter, _price];
-				_counter = _counter + 1;
-			};
-		} foreach _saved_loadouts;
-		deleteVehicle _unit;
+			lbAdd [203, format ["%1 - (%2)",(_x select 0), (_x select 1)]];
+			lbSetValue [203, (_forEachIndex + 1), (_x select 1)];
+		} foreach GRLIB_saved_loadouts;
 
 		{ ctrlShow [_x, true] } foreach _loadout_controls;
 	};

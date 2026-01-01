@@ -1,5 +1,6 @@
 // Fix player traits
 [player] call F_fixModUnit;
+[] spawn loadout_price;
 
 waitUntil {sleep 0.2; !(isSwitchingWeapon player)};
 

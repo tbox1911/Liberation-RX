@@ -12,6 +12,7 @@ fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\f
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
 is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
+loadout_price = compileFinal preprocessFileLineNumbers "scripts\client\misc\loadout_price.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 player_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_actions.sqf";
 player_admin_actions = compile preprocessFileLineNumbers "scripts\client\actions\player_admin_actions.sqf";
