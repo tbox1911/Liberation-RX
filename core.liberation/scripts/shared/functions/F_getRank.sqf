@@ -1,16 +1,18 @@
 params ["_score"];
 
-private _rank = "Private";
+private _rank = "None";
 private _squad_bonus = 0;
 private _infantry_cap = 0;
 private _rating = 0;
 
-if (_score < 0) then {
+if (_score < 5) then {
+	_rank = "None";
 	_squad_bonus = 0;
 	_infantry_cap = 5 * GRLIB_resources_multiplier;
 };
 
 if (_score >= 0 && _score < GRLIB_perm_inf) then {
+	_rank = "Private";
 	_squad_bonus = 0;
 	_infantry_cap = 15 * GRLIB_resources_multiplier;
 	_rating = 500;
