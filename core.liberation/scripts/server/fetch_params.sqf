@@ -120,6 +120,37 @@ if (!GRLIB_ParamsInitialized) then {
 // LRX Selectable
 [] call F_readParamsLRX;
 
+A3W_Mission_count = [GRLIB_PARAM_A3WCount] call lrx_getParamValue;
+A3W_Mission_delay = [GRLIB_PARAM_A3WDelay] call lrx_getParamValue;
+GRLIB_AlarmsEnabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
+GRLIB_autosave_timer = [GRLIB_PARAM_AutoSave] call lrx_getParamValue;
+GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
+GRLIB_cleanup_vehicles = [GRLIB_PARAM_CleanupVehicles] call lrx_getParamValue;
+GRLIB_Commander_AutoStart = [GRLIB_PARAM_CommanderAutoStart] call lrx_getParamValue;
+GRLIB_Commander_VoteTime = [GRLIB_PARAM_CommanderVoteTimeout] call lrx_getParamValue;
+GRLIB_csat_aggressivity = [GRLIB_PARAM_Aggressivity] call lrx_getParamValue;
+GRLIB_day_factor = [GRLIB_PARAM_DayDuration] call lrx_getParamValue;
+GRLIB_despawn_tickets = [GRLIB_PARAM_SectorDespawn] call lrx_getParamValue;
+GRLIB_difficulty_modifier = [GRLIB_PARAM_Difficulty] call lrx_getParamValue;
+GRLIB_hide_opfor = [GRLIB_PARAM_HideOpfor] call lrx_getParamValue;
+GRLIB_MineProbability = [GRLIB_PARAM_MineProbability] call lrx_getParamValue;
+GRLIB_night_factor = [GRLIB_PARAM_NightDuration] call lrx_getParamValue;
+GRLIB_param_wipe_keepcontext = [GRLIB_PARAM_KeepContext] call lrx_getParamValue;
+GRLIB_param_wipe_keepscore = [GRLIB_PARAM_KeepScore] call lrx_getParamValue;
+GRLIB_passive_ammount = [GRLIB_PARAM_PassiveIncomeAmmount] call lrx_getParamValue;
+GRLIB_passive_income = [GRLIB_PARAM_PassiveIncome] call lrx_getParamValue;
+GRLIB_server_persistent = [GRLIB_PARAM_Persistent] call lrx_getParamValue;
+GRLIB_side_verif = [GRLIB_PARAM_SideVerification] call lrx_getParamValue;
+GRLIB_victory_condition = [GRLIB_PARAM_VictoryCondition] call lrx_getParamValue;
+GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
+GRLIB_weather_param = [GRLIB_PARAM_Weather] call lrx_getParamValue;
+
+// Transfom true/false Param
+GRLIB_server_persistent = (GRLIB_server_persistent == 1);
+GRLIB_AlarmsEnabled = (GRLIB_AlarmsEnabled == 1);
+GRLIB_Commander_AutoStart = (GRLIB_Commander_AutoStart == 1);
+GRLIB_hide_opfor = (GRLIB_hide_opfor == 1);
+
 GRLIB_civilians_amount = GRLIB_civilians_amount * GRLIB_civilian_activity; // Maximal Number of civilians
 GRLIB_opfor_cap = GRLIB_opforcap * GRLIB_unitcap;	// Maximal number of enemies units
 GRLIB_battlegroup_size = GRLIB_battlegroup_size * GRLIB_unitcap; // Maximal size of enemy battlegroups

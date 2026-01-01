@@ -105,3 +105,5 @@ GRLIB_param_wipe_context = ["WipeContext",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
 GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 GRLIB_ParamsInitialized = (["OpenParams", 1] call bis_fnc_getParamValue) == 0;
+GRLIB_use_whitelist = (GRLIB_use_whitelist == 1);
+GRLIB_use_exclusive = (GRLIB_use_exclusive == 1);
