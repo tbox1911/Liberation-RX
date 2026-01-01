@@ -1,14 +1,15 @@
 //--- LRX Shared Misson Parameters ----------------------------------------
 
-GRLIB_param_version = 1;
-GRLIB_paramsV1_save_key = format ["%1-config", GRLIB_save_key];
-GRLIB_paramsV2_save_key = format ["%1-%2", GRLIB_paramsV1_save_key, str (GRLIB_param_version)];
-
 // Map constant
 GRLIB_map_modder = "Unknow";
 GRLIB_west_modder = "Unknow";
 GRLIB_east_modder = "Unknow";
 [] call compileFinal preprocessFileLineNumbers "gameplay_constants.sqf";
+
+// Save Key
+GRLIB_param_version = 1;
+GRLIB_paramsV1_save_key = format ["%1-config", GRLIB_save_key];
+GRLIB_paramsV2_save_key = format ["%1-%2", GRLIB_paramsV1_save_key, str (GRLIB_param_version)];
 
 // Detect Addons
 GRLIB_3CB_enabled = isClass(configFile >> "CfgPatches" >> "UK3CB_Factions_Common"); // Returns true if 3CB is enabled
@@ -95,5 +96,12 @@ GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
 
-// From lobby
+// Parameters from Lobby
+GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
+GRLIB_use_exclusive = ["Exclusive",0] call bis_fnc_getParamValue;
+GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
+GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
+GRLIB_param_wipe_context = ["WipeContext",0] call bis_fnc_getParamValue;
+GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
+GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 GRLIB_ParamsInitialized = (["OpenParams", 1] call bis_fnc_getParamValue) == 0;
