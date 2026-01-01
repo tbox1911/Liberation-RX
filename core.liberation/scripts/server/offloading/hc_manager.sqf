@@ -1,5 +1,71 @@
 diag_log "--- HC Server Init start ---";
-[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
+
+// Faction Colors
+GRLIB_color_unknown = "ColorUNKNOWN";
+GRLIB_color_civilian = "ColorCIV";
+
+switch (GRLIB_side_friendly) do {
+	if (isNil "GRLIB_color_friendly") then {
+		case WEST: {
+			GRLIB_color_friendly = "ColorBLUFOR";
+			GRLIB_color_friendly_bright = "ColorBlue";
+		};
+		case EAST: {
+			GRLIB_color_friendly = "ColorOPFOR";
+			GRLIB_color_friendly_bright = "ColorRED";
+		};
+		case INDEPENDENT: {
+			GRLIB_color_friendly = "ColorGUER";
+			GRLIB_color_friendly_bright = "ColorGreen";
+		};
+		default {
+			GRLIB_color_friendly = "ColorUNKNOWN";
+			GRLIB_color_friendly_bright = "ColorUNKNOWN";
+		};
+	};
+};
+
+switch (GRLIB_side_enemy) do {
+	if (isNil "GRLIB_color_enemy") then {
+		case WEST: {
+			GRLIB_color_enemy = "ColorBLUFOR";
+			GRLIB_color_enemy_bright = "ColorBlue";
+		};
+		case EAST: {
+			GRLIB_color_enemy = "ColorOPFOR";
+			GRLIB_color_enemy_bright = "ColorRED";
+		};
+		case INDEPENDENT: {
+			GRLIB_color_enemy = "ColorGUER";
+			GRLIB_color_enemy_bright = "ColorGreen";
+		};
+		default {
+			GRLIB_color_enemy = "ColorUNKNOWN";
+			GRLIB_color_enemy_bright = "ColorUNKNOWN";
+		};
+	};
+};
+
+// Mission Parameter constant
+[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
+
+// LRX Selectable
+[] call F_readParamsLRX;
+
+GRLIB_AlarmsEnabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
+GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
+GRLIB_cleanup_vehicles = [GRLIB_PARAM_CleanupVehicles] call lrx_getParamValue;
+GRLIB_Commander_AutoStart = [GRLIB_PARAM_CommanderAutoStart] call lrx_getParamValue;
+GRLIB_Commander_VoteTime = [GRLIB_PARAM_CommanderVoteTimeout] call lrx_getParamValue;
+GRLIB_csat_aggressivity = [GRLIB_PARAM_Aggressivity] call lrx_getParamValue;
+GRLIB_day_factor = [GRLIB_PARAM_DayDuration] call lrx_getParamValue;
+GRLIB_despawn_tickets = [GRLIB_PARAM_SectorDespawn] call lrx_getParamValue;
+GRLIB_difficulty_modifier = [GRLIB_PARAM_Difficulty] call lrx_getParamValue;
+GRLIB_hide_opfor = [GRLIB_PARAM_HideOpfor] call lrx_getParamValue;
+GRLIB_MineProbability = [GRLIB_PARAM_MineProbability] call lrx_getParamValue;
+GRLIB_night_factor = [GRLIB_PARAM_NightDuration] call lrx_getParamValue;
+GRLIB_victory_condition = [GRLIB_PARAM_VictoryCondition] call lrx_getParamValue;
+GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
 
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
@@ -50,6 +116,5 @@ cleanMissionVehicles = compileFinal preprocessFileLineNumbers "scripts\server\a3
 createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
 
 [] execVM "scripts\server\offloading\show_fps_hc.sqf";
-[] execVM "scripts\server\game\manage_undercover.sqf";
 
 diag_log "--- HC Server Init stop ---";

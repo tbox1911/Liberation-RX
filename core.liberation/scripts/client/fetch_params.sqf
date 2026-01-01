@@ -61,4 +61,51 @@ PAR_grave = ["PAR_Grave"] call lrx_getParamValue;
 if (GRLIB_ACE_medical_enabled) then { PAR_revive = 0; GRLIB_fatigue = 1 };
 
 waitUntil { sleep 1; !isNil "GRLIB_LRX_server_params_loaded" };
+
+// Faction Colors
+GRLIB_color_unknown = "ColorUNKNOWN";
+GRLIB_color_civilian = "ColorCIV";
+
+switch (GRLIB_side_friendly) do {
+	if (isNil "GRLIB_color_friendly") then {
+		case WEST: {
+			GRLIB_color_friendly = "ColorBLUFOR";
+			GRLIB_color_friendly_bright = "ColorBlue";
+		};
+		case EAST: {
+			GRLIB_color_friendly = "ColorOPFOR";
+			GRLIB_color_friendly_bright = "ColorRED";
+		};
+		case INDEPENDENT: {
+			GRLIB_color_friendly = "ColorGUER";
+			GRLIB_color_friendly_bright = "ColorGreen";
+		};
+		default {
+			GRLIB_color_friendly = "ColorUNKNOWN";
+			GRLIB_color_friendly_bright = "ColorUNKNOWN";
+		};
+	};
+};
+
+switch (GRLIB_side_enemy) do {
+	if (isNil "GRLIB_color_enemy") then {
+		case WEST: {
+			GRLIB_color_enemy = "ColorBLUFOR";
+			GRLIB_color_enemy_bright = "ColorBlue";
+		};
+		case EAST: {
+			GRLIB_color_enemy = "ColorOPFOR";
+			GRLIB_color_enemy_bright = "ColorRED";
+		};
+		case INDEPENDENT: {
+			GRLIB_color_enemy = "ColorGUER";
+			GRLIB_color_enemy_bright = "ColorGreen";
+		};
+		default {
+			GRLIB_color_enemy = "ColorUNKNOWN";
+			GRLIB_color_enemy_bright = "ColorUNKNOWN";
+		};
+	};
+};
+
 diag_log "--- LRX: Client settings loaded ---";
