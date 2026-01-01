@@ -1,5 +1,9 @@
 //--- LRX Shared Misson Parameters ----------------------------------------
 
+GRLIB_param_version = 1;
+GRLIB_paramsV1_save_key = format ["%1-config", GRLIB_save_key];
+GRLIB_paramsV2_save_key = format ["%1-%2", GRLIB_paramsV1_save_key, str (GRLIB_param_version)];
+
 // Map constant
 GRLIB_map_modder = "Unknow";
 GRLIB_west_modder = "Unknow";
@@ -56,8 +60,22 @@ GRLIB_enabledPrefix = [
 	["WS_", GRLIB_WS_enabled]
 ];
 
-// Mission Parameter constant
-//[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
+GRLIB_Template_Modloaded = {
+	params ["_faction"];
+	GRLIB_enabledPrefix findIf {!(_x#1) && {([(_x#0), _faction] call F_startsWith)}} == -1;
+};
+
+GRLIB_trim_Params = {
+	params["_params"];
+	_trimmed = createHashMapFromArray (_params apply {
+		[_x, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _y get GRLIB_PARAM_ValueKey]]]
+	});
+	_trimmed;
+};
+
+GRLIB_DefaultParams = {
+	[LRX_Mission_Params] call GRLIB_trim_Params;
+};
 
 // Hardcoded
 GRLIB_fob_range = 125;								// FOB build range max
@@ -76,3 +94,6 @@ GRLIB_defense_costs = [0, 100, 200, 300];
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
+
+// From lobby
+GRLIB_ParamsInitialized = (["OpenParams", 1] call bis_fnc_getParamValue) == 0;

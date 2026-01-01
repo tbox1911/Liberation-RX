@@ -4,15 +4,6 @@ diag_log "--- LRX: Loading Server settings ---";
 GRLIB_endgame = 0;
 GRLIB_global_stop = 0;
 
-GRLIB_param_version = 1;
-GRLIB_paramsV1_save_key = format ["%1-config", GRLIB_save_key];
-GRLIB_paramsV2_save_key = format ["%1-%2", GRLIB_paramsV1_save_key, str (GRLIB_param_version)];
-
-GRLIB_Template_Modloaded = {
-	params ["_faction"];
-	GRLIB_enabledPrefix findIf {!(_x#1) && {([(_x#0), _faction] call F_startsWith)}} == -1;
-};
-
 // Classename MOD source
 [] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";
 LRX_mod_list_west = [];
@@ -37,6 +28,9 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	Upgrade your LRX Mod Template.\n
 	*********************************"];
 };
+LRX_mod_list = (LRX_mod_list_west + LRX_mod_list_east);
+LRX_mod_list = LRX_mod_list arrayIntersect LRX_mod_list;
+publicVariable "LRX_mod_list";
 
 // Mission Parameter constant
 [] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
@@ -49,18 +43,6 @@ GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_context = ["WipeContext",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
 GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
-
-GRLIB_trim_Params = {
-	params["_params"];
-	_trimmed = createHashMapFromArray (_params apply {
-		[_x, createHashMapFromArray [[GRLIB_PARAM_ValueKey, _y get GRLIB_PARAM_ValueKey]]]
-	});
-	_trimmed;
-};
-
-GRLIB_DefaultParams = {
-	[LRX_Mission_Params] call GRLIB_trim_Params;
-};
 
 // Load Mission settings
 _savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];
@@ -126,13 +108,17 @@ if (isNil "_savedParams" ) then {
 		GRLIB_LRX_params = _cleanedParams;
 	};
 };
-profileNamespace setVariable [GRLIB_paramsV2_save_key, GRLIB_LRX_params];
 
-GRLIB_ParamsInitialized = (["OpenParams", 1] call bis_fnc_getParamValue) == 0;
-publicVariable "GRLIB_ParamsInitialized";
+// Save back cleaned params
+profileNamespace setVariable [GRLIB_paramsV2_save_key, GRLIB_LRX_params];
+publicVariable "GRLIB_mod_list_west";
+publicVariable "GRLIB_mod_list_east";
+publicVariable "GRLIB_mod_list_name";
+publicVariable "GRLIB_LRX_params";
+sleep 0.5;
 
 if (!GRLIB_ParamsInitialized) then {
-	publicVariable "GRLIB_LRX_params";
+	diag_log "--- LRX: Waiting for Admin configure parameters ---";
 	waitUntil { sleep 1; GRLIB_ParamsInitialized };
 };
 
@@ -339,7 +325,7 @@ switch (GRLIB_side_friendly) do {
 };
 
 switch (GRLIB_side_enemy) do {
-	if (isNil "GRLIB_color_enemy") then {	
+	if (isNil "GRLIB_color_enemy") then {
 		case WEST: {
 			GRLIB_color_enemy = "ColorBLUFOR";
 			GRLIB_color_enemy_bright = "ColorBlue";
@@ -403,75 +389,82 @@ GRLIB_Commander_VoteEnabled = GRLIB_Commander_VoteEnabled == 1;
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 
 // Publish variables
-publicVariable "GRLIB_endgame";
-publicVariable "GRLIB_global_stop";
-publicVariable "GRLIB_introduction";
-publicVariable "GRLIB_deployment_cinematic";
+//publicVariable "GRLIB_Commander_radius";
 publicVariable "GREUH_allow_mapmarkers";
-publicVariable "GREUH_allow_platoonview";
 publicVariable "GREUH_allow_nametags";
+publicVariable "GREUH_allow_platoonview";
+publicVariable "GRLIB_admin_menu";
+publicVariable "GRLIB_air_support";
+publicVariable "GRLIB_allow_redeploy";
+publicVariable "GRLIB_artillery_maxshot";
+publicVariable "GRLIB_color_civilian";
+publicVariable "GRLIB_color_enemy_bright";
+publicVariable "GRLIB_color_enemy";
+publicVariable "GRLIB_color_friendly_bright";
+publicVariable "GRLIB_color_friendly";
+publicVariable "GRLIB_color_unknown";
+publicVariable "GRLIB_Commander_mode";
+publicVariable "GRLIB_Commander_VoteEnabled";
+publicVariable "GRLIB_deployment_cinematic";
+publicVariable "GRLIB_disable_death_chat";
+publicVariable "GRLIB_enable_arsenal";
+publicVariable "GRLIB_enable_drones";
+publicVariable "GRLIB_endgame";
 publicVariable "GRLIB_fancy_info";
-publicVariable "GRLIB_hide_opfor";
-publicVariable "GRLIB_show_blufor";
-publicVariable "GRLIB_thermic";
+publicVariable "GRLIB_fatigue";
+publicVariable "GRLIB_filter_arsenal";
 publicVariable "GRLIB_fob_type";
+publicVariable "GRLIB_force_english";
+publicVariable "GRLIB_forced_loadout";
+publicVariable "GRLIB_garage_size";
+publicVariable "GRLIB_global_stop";
+publicVariable "GRLIB_groupedParams";
+publicVariable "GRLIB_halo_param";
+publicVariable "GRLIB_hide_opfor";
 publicVariable "GRLIB_huron_type";
-publicVariable "GRLIB_naval_type";
+publicVariable "GRLIB_introduction";
+publicVariable "GRLIB_kick_idle";
 publicVariable "GRLIB_max_fobs";
 publicVariable "GRLIB_max_outpost";
-publicVariable "GRLIB_passive_income";
-publicVariable "GRLIB_passive_ammount";
-publicVariable "GRLIB_resources_multiplier";
-publicVariable "GRLIB_disable_death_chat";
-publicVariable "GRLIB_mod_west";
-publicVariable "GRLIB_mod_east";
-publicVariable "GRLIB_mod_civ";
-publicVariable "GRLIB_mod_taxi";
-publicVariable "GRLIB_enable_arsenal";
-publicVariable "GRLIB_filter_arsenal";
-publicVariable "GRLIB_forced_loadout";
-publicVariable "GRLIB_force_english";
-publicVariable "GRLIB_sector_radius";
-publicVariable "GRLIB_fatigue";
-publicVariable "GRLIB_tk_mode";
-publicVariable "GRLIB_tk_count";
-publicVariable "GRLIB_garage_size";
-publicVariable "GRLIB_squad_size";
-publicVariable "GRLIB_max_squad_size";
 publicVariable "GRLIB_max_spawn_point";
-publicVariable "GRLIB_allow_redeploy";
-publicVariable "GRLIB_permissions_param";
+publicVariable "GRLIB_max_squad_size";
+publicVariable "GRLIB_mod_civ";
+publicVariable "GRLIB_mod_east";
+publicVariable "GRLIB_mod_taxi";
+publicVariable "GRLIB_mod_west";
+publicVariable "GRLIB_naval_type";
+publicVariable "GRLIB_passive_ammount";
+publicVariable "GRLIB_passive_income";
 publicVariable "GRLIB_permission_vehicles";
-publicVariable "GRLIB_halo_param";
-publicVariable "GRLIB_admin_menu";
-publicVariable "GRLIB_vehicles_fuel";
-publicVariable "GRLIB_enable_drones";
-publicVariable "GRLIB_respawn_timer";
+publicVariable "GRLIB_permissions_param";
+publicVariable "GRLIB_resources_multiplier";
 publicVariable "GRLIB_respawn_cooldown";
-publicVariable "GRLIB_kick_idle";
-publicVariable "GRLIB_air_support";
+publicVariable "GRLIB_respawn_timer";
+publicVariable "GRLIB_sector_radius";
+publicVariable "GRLIB_show_blufor";
+publicVariable "GRLIB_side_civilian";
+publicVariable "GRLIB_side_enemy";
+publicVariable "GRLIB_side_friendly";
+publicVariable "GRLIB_squad_size";
+publicVariable "GRLIB_thermic";
+publicVariable "GRLIB_tk_count";
+publicVariable "GRLIB_tk_mode";
 publicVariable "GRLIB_Undercover_mode";
-publicVariable "GRLIB_Commander_mode";
-//publicVariable "GRLIB_Commander_radius";
-publicVariable "GRLIB_Commander_VoteEnabled";
+publicVariable "GRLIB_use_whitelist";
+publicVariable "GRLIB_use_exclusive";
 publicVariable "GRLIB_vehicle_defense";
-publicVariable "GRLIB_artillery_maxshot";
+publicVariable "GRLIB_vehicles_fuel";
 publicVariable "PAR_revive";
 publicVariable "PAR_ai_revive_max";
 publicVariable "PAR_bleedout";
 publicVariable "PAR_grave";
-publicVariable "GRLIB_side_civilian";
-publicVariable "GRLIB_side_friendly";
-publicVariable "GRLIB_side_enemy";
-publicVariable "GRLIB_color_friendly";
-publicVariable "GRLIB_color_friendly_bright";
-publicVariable "GRLIB_color_enemy";
-publicVariable "GRLIB_color_enemy_bright";
-publicVariable "GRLIB_color_unknown";
-publicVariable "GRLIB_color_civilian";
 publicVariable "FOB_boat_typename";
 publicVariable "FOB_carrier";
+publicVariable "huron_typename";
+sleep 1;
 
 // Params loaded
 GRLIB_LRX_server_params_loaded = true;
+publicVariable "GRLIB_LRX_server_params_loaded";
+
 diag_log "--- LRX: Server settings loaded ---";

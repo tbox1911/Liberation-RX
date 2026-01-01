@@ -5,7 +5,7 @@ private _ret = true;
 private _template_name = _path splitString "\" select 1;
 private _file_name = _path splitString "\" select 2;
 
-if (_template_name in (LRX_mod_list_west + LRX_mod_list_east)) then {
+if (_template_name in LRX_mod_list) then {
 	_ret = [_path, _args] call LRX_Template_fnc_readfile;
 } else {
 	if (fileExists _path) then {

@@ -191,8 +191,7 @@
 	R3F_transporteur_charger_auto = compile preprocessFileLineNumbers "R3F_LOG\transporteur\charger_auto.sqf";
 
 	// Un serveur d�di� n'en a pas besoin
-	if (!isDedicated && hasInterface) then
-	{
+	if (!isDedicated && hasInterface) then {
 		// Le client attend que le serveur ai cr�� et publi� la r�f�rence de l'objet servant de point d'attache
 		waitUntil {sleep 0.5;!isNil "R3F_LOG_PUBVAR_point_attache"};
 
@@ -323,13 +322,12 @@
 		 * Les IA n'�tant pas command�es par un joueur ne seront pas prot�g�es, ce qui est un moindre mal.
 		 */
 		//[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\systeme_protection_blessures.sqf";
-	};
 
-	R3F_LOG_active = true;
-	if ( hasInterface ) then {
 		waitUntil {!(isNull (findDisplay 46))};
     	systemChat "-------- R3F Logistics Initialized --------";
 	};
+
+	R3F_LOG_active = true;
 
 #else
 	// Pour les actions du PC d'arti

@@ -4,12 +4,12 @@ diag_log "--- LRX: Loading client settings ---";
 // Edit Mission settings
 call compileFinal preprocessFileLineNumbers "scripts\client\ui\settings_menu.sqf";
 
-waitUntil { sleep 1; !isNil "GRLIB_ParamsInitialized" };
+// Mission Parameter constant
+[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
+
 if (!GRLIB_ParamsInitialized) then {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
 
-	// Mission Parameter constant
-	[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
 	[] execVM "scripts\client\commander\open_params.sqf";
 	waitUntil { sleep 1; GRLIB_ParamsInitialized };
 };
