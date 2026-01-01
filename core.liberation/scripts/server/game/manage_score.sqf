@@ -31,7 +31,7 @@ while {true} do {
 					diag_log format ["--- LRX TK: BAN for player %1 - UID: %2", name _x,  _uid];
 				};
 
-				if (_new_rank == "Private" && _cur < _last) exitWith {
+				if (_new_rank == "None" && _cur < _last) exitWith {
 					_msg = format ["Warning: player <t color='#00ff00'>%1</t>,<br />You play Wrong !! <t color='#ff0000'>Read the Manual</t>.<br /><br />%2", name _x, localize "STR_RANK_LVL0"];
 					[_msg, 0, 0, 5, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", owner _x];
 					[_uid, [false,false,false,false,false,false]] call CHG_Perm;
