@@ -81,13 +81,7 @@ opfor_sectors = (sectors_allSectors - blufor_sectors);
 stats_sectors_liberated = stats_sectors_liberated + 1;
 
 // Check Victory
-if ([] call F_checkVictory) exitWith {
-	if (isServer) then {
-		[] spawn blufor_victory;
-	} else {
-		[] remoteExec ["blufor_victory", 2];
-	};
-};
+if ([] call F_checkVictory) exitWith { [] spawn blufor_victory };
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 

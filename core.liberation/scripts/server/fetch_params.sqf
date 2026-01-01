@@ -277,16 +277,9 @@ switch (GRLIB_side_enemy) do {
 };
 
 // Publish variables
-publicVariable "GRLIB_color_civilian";
-publicVariable "GRLIB_color_enemy_bright";
-publicVariable "GRLIB_color_enemy";
-publicVariable "GRLIB_color_friendly_bright";
-publicVariable "GRLIB_color_friendly";
-publicVariable "GRLIB_color_unknown";
-publicVariable "GRLIB_side_civilian";
-publicVariable "GRLIB_side_enemy";
 publicVariable "GRLIB_side_friendly";
-
+publicVariable "GRLIB_side_enemy";
+publicVariable "GRLIB_side_civilian";
 sleep 1;
 
 // Params loaded
