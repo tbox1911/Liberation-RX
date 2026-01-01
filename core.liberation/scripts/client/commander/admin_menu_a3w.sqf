@@ -1,6 +1,7 @@
 // the LRX Admin Tool by pSiKO
 //
 // debug side missions
+[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 
 createDialog "liberation_admin_a3w";
 waitUntil { dialog };

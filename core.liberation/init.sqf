@@ -7,7 +7,7 @@ diag_log format ["LRX version %1 - build version: %2 build date: %3", localize "
 clean_unit = compileFinal preprocessFileLineNumbers "scripts\client\misc\clean_unit.sqf";
 player_loadout = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_loadout.sqf";
 
-disableUserInput true;
+//disableUserInput true;
 titleText ["","BLACK FADED", 100];
 0 fadeSound 0;
 sleep 2;
@@ -38,39 +38,48 @@ if (fileExists _path) then {
 
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\server\sector\init_sectors.sqf";
-[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
-sleep 2;
+[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
 
+// Client init
 if (!isDedicated && hasInterface) then {
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
+	[] spawn {
+		[] call compileFinal preprocessFileLineNumbers "scripts\client\fetch_params.sqf";
+		[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+		[] call compileFinal preprocessFileLineNumbers "scripts\client\client_functions.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
+	};
 };
 
-if (!abort_loading) then {
-	[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
-	if (GRLIB_ACE_enabled) then {
-		[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
-	} else {
-		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
-	};
-
-	if (isServer) then {
-		[] spawn compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
-	};
-
-	if (!isDedicated && !hasInterface && isMultiplayer) then {
-		[] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\hc_manager.sqf";
-	};
-} else {
-	if (isServer) then {
+// Server init
+if (isServer) then {
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\fetch_params.sqf";
+	[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\server_functions.sqf";
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
+	if (abort_loading) then {
 		GRLIB_init_server = false;
 		publicVariable "GRLIB_init_server";
 		publicVariable "abort_loading";
 		publicVariable "abort_loading_msg";
 		diag_log "--- LRX Startup Error ---";
 		diag_log abort_loading_msg;
-	};
+	};		
+};
+
+// Headless Client init
+if (!isDedicated && !hasInterface && isMultiplayer) then {
+	waitUntil { sleep 1; !isNil "GRLIB_LRX_server_params_loaded" };
+	[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\server_functions.sqf";		
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\hc_manager.sqf";
+};
+
+if (GRLIB_ACE_enabled) then {
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
+} else {
+	[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 };
 
 diag_log "--- Init stop ---";

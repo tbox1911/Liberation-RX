@@ -116,13 +116,13 @@ if (isNil "opfor_pilot") then { opfor_pilot = opfor_crew };
 civilians = [];
 civilian_vehicles = [];
 
-if (GRLIB_mod_preset_civ in [0,1]) then {
+if (GRLIB_mod_civ in [0,1]) then {
 	_path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
 	_ret = [_path] call F_getTemplateFile;
 };
 if (!_ret) exitWith { abort_loading = true };
 
-if (GRLIB_mod_preset_civ in [0,2]) then {
+if (GRLIB_mod_civ in [0,2]) then {
 	private _civilians_bak = civilians;
 	private _civilian_vehicles_bak = civilian_vehicles;
 	_path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_east];

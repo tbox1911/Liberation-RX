@@ -50,7 +50,7 @@ if (_rank in ["Major"]) then {_list_perm = [1605]};
 { ctrlEnable [_x, false] } forEach _list_perm;
 
 private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
-if (GRLIB_mod_preset_taxi == 3 || GRLIB_AirDrop_Taxi_cost > _ammo_collected) then { ctrlEnable [1607, false] };
+if (GRLIB_mod_taxi == 3 || GRLIB_AirDrop_Taxi_cost > _ammo_collected) then { ctrlEnable [1607, false] };
 if (count blufor_air == 0 || _AirDrop_8_cost > _ammo_collected) then { ctrlEnable [1605, false] };
 if (count GRLIB_AirDrop_1 == 0 || _AirDrop_1_cost > _ammo_collected) then { ctrlEnable [1600, false] };
 if (count GRLIB_AirDrop_2 == 0 || _AirDrop_2_cost > _ammo_collected) then { ctrlEnable [1601, false] };

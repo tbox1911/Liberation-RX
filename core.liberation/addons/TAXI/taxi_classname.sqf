@@ -44,7 +44,7 @@ default_taxi_type_14 = [
 	"B_Heli_Transport_03_black_F"
 ];
 
-if (GRLIB_mod_preset_taxi in [0,1]) then {
+if (GRLIB_mod_taxi in [0,1]) then {
 	// *** FRIENDLIES ***
 	private _path = format ["mod_template\%1\classnames_taxi.sqf", GRLIB_mod_west];
 	[_path] call F_getTemplateFile;
@@ -58,7 +58,7 @@ if (GRLIB_mod_preset_taxi in [0,1]) then {
 	taxi_type_14 append overide_taxi_type_14;
 };
 
-if (GRLIB_mod_preset_taxi in [0,2]) then {
+if (GRLIB_mod_taxi in [0,2]) then {
 	// *** BADDIES ***
 	private _path = format ["mod_template\%1\classnames_taxi.sqf", GRLIB_mod_east];
 	[_path] call F_getTemplateFile;
