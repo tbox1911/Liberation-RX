@@ -46,7 +46,6 @@ if (!isDedicated && hasInterface) then {
 	[] spawn {
 		[] call compileFinal preprocessFileLineNumbers "scripts\client\fetch_params.sqf";
 		[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
-		[] call compileFinal preprocessFileLineNumbers "scripts\client\client_functions.sqf";
 		if (GRLIB_ACE_enabled) then {
 			[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
 		} else {
@@ -54,6 +53,7 @@ if (!isDedicated && hasInterface) then {
 				[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 			};
 		};
+		[] call compileFinal preprocessFileLineNumbers "scripts\client\client_functions.sqf";
 		[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
 	};
 };
@@ -62,6 +62,11 @@ if (!isDedicated && hasInterface) then {
 if (isServer) then {
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\fetch_params.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+	if (GRLIB_ACE_enabled) then {
+		[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
+	} else {
+		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
+	};	
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\server_functions.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
@@ -72,11 +77,6 @@ if (isServer) then {
 		publicVariable "abort_loading_msg";
 		diag_log "--- LRX Startup Error ---";
 		diag_log abort_loading_msg;
-	};
-	if (GRLIB_ACE_enabled) then {
-		[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
-	} else {
-		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 	};
 };
 
