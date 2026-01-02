@@ -65,6 +65,9 @@ if (_unit == player) then {
 
 	// No stuff
 	_unit setVariable ["GREUH_stuff_price", nil, true];
+
+	// Death count
+	_unit setVariable ["GREUH_killed", (_unit getVariable ["GREUH_killed", 0]) + 1, true];
 	GRLIB_player_spawned = false;
 
 	titleText ["" ,"BLACK FADED", 100];

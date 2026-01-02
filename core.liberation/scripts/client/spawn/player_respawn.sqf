@@ -33,6 +33,11 @@ if (GRLIB_side_friendly == WEST) then {
         _unit setVariable ["GREUH_ammo_count", (_oldUnit getVariable ["GREUH_ammo_count", 0]), true];
         _unit setVariable ["GREUH_fuel_count", (_oldUnit getVariable ["GREUH_fuel_count", 0]), true];
         _unit setVariable ["GREUH_reput_count", (_oldUnit getVariable ["GREUH_reput_count", 0]), true];
+        _unit setVariable ["GREUH_kills_inf", (_oldUnit getVariable ["GREUH_kills_inf", 0]), true];
+        _unit setVariable ["GREUH_kills_soft", (_oldUnit getVariable ["GREUH_kills_soft", 0]), true];
+        _unit setVariable ["GREUH_kills_armor", (_oldUnit getVariable ["GREUH_kills_armor", 0]), true];
+        _unit setVariable ["GREUH_kills_air", (_oldUnit getVariable ["GREUH_kills_air", 0]), true];
+        _unit setVariable ["GREUH_killed", (_oldUnit getVariable ["GREUH_killed", 0]), true];
         _unit setVariable ["GRLIB_TFAR_SW_config", (_oldUnit getVariable ["GRLIB_TFAR_SW_config", []]), true];
         _unit setVariable ["GRLIB_TFAR_LR_config", (_oldUnit getVariable ["GRLIB_TFAR_LR_config", []]), true];
     };

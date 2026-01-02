@@ -30,11 +30,11 @@ while {true} do {
 						_nextplayer setVariable ["GREUH_fuel_count", (_x select 3), true];
 						_nextplayer setVariable ["GREUH_reput_count", (_x select 4), true];
 						if (count _x > 6) then {
-							_nextplayer setVariable ["GREUH_kills_inf", (_x select 6)];
-							_nextplayer setVariable ["GREUH_kills_soft", (_x select 7)];
-							_nextplayer setVariable ["GREUH_kills_armor", (_x select 8)];
-							_nextplayer setVariable ["GREUH_kills_air", (_x select 9)];
-							_nextplayer setVariable ["GREUH_killed", (_x select 10)];
+							_nextplayer setVariable ["GREUH_kills_inf", (_x select 6), true];
+							_nextplayer setVariable ["GREUH_kills_soft", (_x select 7), true];
+							_nextplayer setVariable ["GREUH_kills_armor", (_x select 8), true];
+							_nextplayer setVariable ["GREUH_kills_air", (_x select 9), true];
+							_nextplayer setVariable ["GREUH_killed", (_x select 10), true];
 						};
 					};
 				} foreach GRLIB_player_scores;
@@ -46,11 +46,11 @@ while {true} do {
 					_nextplayer setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
 					_nextplayer setVariable ["GREUH_fuel_count", GREUH_start_fuel, true];
 					_nextplayer setVariable ["GREUH_reput_count", 0, true];
-					_nextplayer setVariable ["GREUH_kills_inf", 0];
-					_nextplayer setVariable ["GREUH_kills_soft", 0];
-					_nextplayer setVariable ["GREUH_kills_armor", 0];
-					_nextplayer setVariable ["GREUH_kills_air", 0];
-					_nextplayer setVariable ["GREUH_killed", 0];
+					_nextplayer setVariable ["GREUH_kills_inf", 0, true];
+					_nextplayer setVariable ["GREUH_kills_soft", 0, true];
+					_nextplayer setVariable ["GREUH_kills_armor", 0, true];
+					_nextplayer setVariable ["GREUH_kills_air", 0, true];
+					_nextplayer setVariable ["GREUH_killed", 0, true];
 					GRLIB_permissions pushback [_nextplayer_uid, (GRLIB_permissions select 0 select 1)];
 					publicVariable "GRLIB_permissions";
 				};

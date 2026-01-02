@@ -48,25 +48,25 @@ if (isServer) then {
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
 	if (isPlayer _unit) then {
-		_killer setVariable ["GREUH_killed", (_killer getVariable ["GREUH_killed", 0]) + 1];
 		stats_player_deaths = stats_player_deaths + 1;
 	};
 
 	if (isPlayer _killer) then {
 		switch (true) do {
 			case (_unit isKindOf "CAManBase"): {
-				_killer setVariable ["GREUH_kills_inf", (_killer getVariable ["GREUH_kills_inf", 0]) + 1];
+				_killer setVariable ["GREUH_kills_inf", (_killer getVariable ["GREUH_kills_inf", 0]) + 1, true];
 			};			
-			case "Wheeled_APC_F";
-			case "APC_Tracked_02_base_F";
+			case (_unit isKindOf "Wheeled_APC_F");
+			case (_unit isKindOf "APC_Tracked_02_base_F");
 			case (_unit isKindOf "Tank_F"): {
-				_killer setVariable ["GREUH_kills_armor", (_killer getVariable ["GREUH_kills_armor", 0]) + 1];
+				_killer setVariable ["GREUH_kills_armor", (_killer getVariable ["GREUH_kills_armor", 0]) + 1, true];
 			};
 			case (_unit isKindOf "Air"): {
-				_killer setVariable ["GREUH_kills_air", (_killer getVariable ["GREUH_kills_air", 0]) + 1];
+				_killer setVariable ["GREUH_kills_air", (_killer getVariable ["GREUH_kills_air", 0]) + 1, true];
 			};
+			case (_unit isKindOf "StaticWeapon");
 			case (_unit isKindOf "Car"): {
-				_killer setVariable ["GREUH_kills_soft", (_killer getVariable ["GREUH_kills_soft", 0]) + 1];
+				_killer setVariable ["GREUH_kills_soft", (_killer getVariable ["GREUH_kills_soft", 0]) + 1, true];
 			};
 			default {
 				if (_unit isKindOf "AllVehicles") then {
