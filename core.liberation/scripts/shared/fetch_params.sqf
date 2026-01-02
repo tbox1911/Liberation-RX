@@ -107,3 +107,31 @@ GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 GRLIB_ParamsInitialized = (["OpenParams", 1] call bis_fnc_getParamValue) == 0;
 GRLIB_use_whitelist = (GRLIB_use_whitelist == 1);
 GRLIB_use_exclusive = (GRLIB_use_exclusive == 1);
+
+// Classename MOD source
+[] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";
+LRX_mod_list_west = [];
+LRX_mod_list_east = [];
+LRX_mod_list_name = [];
+if (GRLIB_LRX_Template_enabled) then {
+	private _version = getNumber (configFile >> "cfgPatches" >> "LRX_Template" >> "version");
+	if (_version >= 2 ) then {
+		[] call LRX_Template_fnc_loading;
+		GRLIB_mod_list_west append LRX_mod_list_west;
+		GRLIB_mod_list_east append LRX_mod_list_east;
+		GRLIB_mod_list_name append LRX_mod_list_name;
+	} else { abort_loading = true };
+};
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid LRX MOD Template version !\n\n
+	This version of LRX_Template is incompatible with this Mission.\n
+	Please update your version of LRX_Template Mod at:\n
+	see: https://steamcommunity.com/sharedfiles/filedetails/?id=3014195090\n\n
+	Loading Aborted to protect data integrity.\n
+	Upgrade your LRX Mod Template.\n
+	*********************************"];
+};
+LRX_mod_list = (LRX_mod_list_west + LRX_mod_list_east);
+LRX_mod_list = LRX_mod_list arrayIntersect LRX_mod_list;
+//publicVariable "LRX_mod_list";

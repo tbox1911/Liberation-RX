@@ -58,6 +58,15 @@ if (!isDedicated && hasInterface) then {
 	};
 };
 
+if (abort_loading) exitWith {
+	GRLIB_init_server = false;
+	publicVariable "GRLIB_init_server";
+	publicVariable "abort_loading";
+	publicVariable "abort_loading_msg";
+	diag_log "--- LRX Startup Error ---";
+	diag_log abort_loading_msg;
+};
+
 // Server init
 if (isServer) then {
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\fetch_params.sqf";
@@ -70,14 +79,15 @@ if (isServer) then {
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\server_functions.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
-	if (abort_loading) exitWith {
-		GRLIB_init_server = false;
-		publicVariable "GRLIB_init_server";
-		publicVariable "abort_loading";
-		publicVariable "abort_loading_msg";
-		diag_log "--- LRX Startup Error ---";
-		diag_log abort_loading_msg;
-	};
+};
+
+if (abort_loading) exitWith {
+	GRLIB_init_server = false;
+	publicVariable "GRLIB_init_server";
+	publicVariable "abort_loading";
+	publicVariable "abort_loading_msg";
+	diag_log "--- LRX Startup Error ---";
+	diag_log abort_loading_msg;
 };
 
 // Headless Client init
