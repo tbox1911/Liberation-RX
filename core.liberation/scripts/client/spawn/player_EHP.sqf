@@ -116,7 +116,7 @@ if (_unit == player) then {
 				};
 			};
 			private _isNotWounded = !([_unit] call PAR_is_wounded);
-			if (_isNotWounded && isPlayer _killer && _killer != _unit && vehicle _unit != vehicle _killer && _killer distance2D _unit >= 5) then {
+			if (_isNotWounded && isPlayer _killer && _killer != _unit && vehicle _unit != vehicle _killer && _killer distance2D _unit >= 3) then {
 				if (_damage >= 0.35 && (time >= (_unit getVariable ["GRLIB_isProtected", 0]))) then {
 					_unit setVariable ["GRLIB_isProtected", round(time + 10)];
 					private _msg = format ["%1 (%2)", localize "STR_FRIENDLY_FIRE", name _killer];
