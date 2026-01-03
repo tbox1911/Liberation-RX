@@ -1,10 +1,16 @@
 //--- LRX Server Misson Parameters ----------------------------------------
 
 diag_log "--- LRX: Loading Server settings ---";
+
 GRLIB_endgame = 0;
 publicVariable "GRLIB_endgame";
+
 GRLIB_global_stop = 0;
 publicVariable "GRLIB_global_stop";
+
+GRLIB_LRX_Template_version = 0;
+if (GRLIB_LRX_Template_enabled) then {GRLIB_LRX_Template_version = LRX_Template_version };
+publicVariable "GRLIB_LRX_Template_version";
 
 // Mission Parameter constant
 [] call compileFinal preprocessFileLineNumbers "mission_params.sqf";

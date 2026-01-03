@@ -14793,6 +14793,10 @@
 			<Czech>Finální mise probíhá...\nNová připojení jsou až do konce zakázána!</Czech>
 		</Key>
 
+		<Key ID="STR_MSG_INVALID_LRXMOD_VERSION">
+			<Original>Invalid version for LRX_Template mod detected...\nAll client/server must use the same version of this mod, Please update LRX_Template!</Original>
+		</Key>
+		
 		<Key ID="STR_MSG_END_GAME">
 			<Original>You come too late...\nThe mission is ending, reconnect when the mission is restarted</Original>
 			<French>Vous arrivez trop tard...\nLa mission se termine, reconnectez-vous lorsque la mission redémarre</French>

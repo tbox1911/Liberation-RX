@@ -113,9 +113,11 @@ GRLIB_use_exclusive = (GRLIB_use_exclusive == 1);
 LRX_mod_list_west = [];
 LRX_mod_list_east = [];
 LRX_mod_list_name = [];
+LRX_Template_version = 0;
+
 if (GRLIB_LRX_Template_enabled) then {
-	private _version = getNumber (configFile >> "cfgPatches" >> "LRX_Template" >> "version");
-	if (_version >= 2 ) then {
+	LRX_Template_version = getNumber (configFile >> "cfgPatches" >> "LRX_Template" >> "version");
+	if (LRX_Template_version >= 2 ) then {
 		[] call LRX_Template_fnc_loading;
 		GRLIB_mod_list_west append LRX_mod_list_west;
 		GRLIB_mod_list_east append LRX_mod_list_east;

@@ -80,6 +80,15 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 	disableUserInput false;
 };
 
+waitUntil {sleep 1; !isNil "GRLIB_LRX_Template_version"};
+if (GRLIB_LRX_Template_version != LRX_Template_version) exitWith {
+	private _msg = localize "STR_MSG_INVALID_LRXMOD_VERSION";
+	titleText [_msg, "BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER";
+	disableUserInput false;
+};
+
 waitUntil {sleep 1; !isNil "GRLIB_global_stop"};
 if (GRLIB_global_stop == 1) exitWith {
 	private _msg = localize "STR_MSG_FINAL_MISSION_RUNNING";
