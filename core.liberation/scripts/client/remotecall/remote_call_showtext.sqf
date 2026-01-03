@@ -1,4 +1,6 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+if (!GRLIB_player_spawned) exitWith {};
+
 params ["_type"];
 
 private _enemy_nearby = [player, GRLIB_sector_size, GRLIB_side_enemy] call F_getUnitsCount;
