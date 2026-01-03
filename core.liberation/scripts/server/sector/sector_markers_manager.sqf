@@ -28,47 +28,53 @@ if (!GRLIB_hide_opfor) then {
 
 private _sector_count = -1;
 private _dist = 0;
+private _ticks = 0;
 sleep 5;
 
 while { GRLIB_endgame == 0 } do {
-	waitUntil {sleep 1; (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
-	opfor_sectors = (sectors_allSectors - blufor_sectors);
+	if ((count blufor_sectors + count GRLIB_all_fobs) != _sector_count || _ticks % 60 == 0) then {
+		opfor_sectors = (sectors_allSectors - blufor_sectors);
 
-	if (GRLIB_hide_opfor && count opfor_sectors > 3 && !GRLIB_Commander_mode) then {
-		{
-			_sector_pos = markerPos _x;
-			_close_sectors = (blufor_sectors select { (markerPos _x) distance2D _sector_pos < GRLIB_radiotower_size });
-			_close_sectors append (GRLIB_all_fobs select { _x distance2D _sector_pos < GRLIB_radiotower_size });
-			if (count _close_sectors > 0) then {
+		if (GRLIB_hide_opfor && count opfor_sectors > 3 && !GRLIB_Commander_mode) then {
+			{
+				_sector_pos = markerPos _x;
+				_close_sectors = (blufor_sectors select { (markerPos _x) distance2D _sector_pos < GRLIB_radiotower_size });
+				_close_sectors append (GRLIB_all_fobs select { _x distance2D _sector_pos < GRLIB_radiotower_size });
+				if (count _close_sectors > 0) then {
+					_x setMarkerTypeLocal ([_x] call _getMarkerType);
+					_x setMarkerColor GRLIB_color_enemy;
+				} else {
+					_x setMarkerType "Empty";
+				};
+			} foreach opfor_sectors;
+			{
+				_x setMarkerTypeLocal ([_x] call _getMarkerType);
+				_x setMarkerColor GRLIB_color_friendly;
+			} foreach blufor_sectors;
+		} else {
+			{
 				_x setMarkerTypeLocal ([_x] call _getMarkerType);
 				_x setMarkerColor GRLIB_color_enemy;
-			} else {
-				_x setMarkerType "Empty";
-			};
-		} foreach opfor_sectors;
-		{
-			_x setMarkerTypeLocal ([_x] call _getMarkerType);
-			_x setMarkerColor GRLIB_color_friendly;
-		} foreach blufor_sectors;
-	} else {
-		{
-			_x setMarkerTypeLocal ([_x] call _getMarkerType);
-			_x setMarkerColor GRLIB_color_enemy;
-		} foreach opfor_sectors;
-		{
-			_x setMarkerTypeLocal ([_x] call _getMarkerType);
-			_x setMarkerColor GRLIB_color_friendly;
-		} foreach blufor_sectors;
+			} foreach opfor_sectors;
+			{
+				_x setMarkerTypeLocal ([_x] call _getMarkerType);
+				_x setMarkerColor GRLIB_color_friendly;
+			} foreach blufor_sectors;
+		};
+
+		if (count _vehicle_unlock_markers > 0) then {
+			{
+				if ((_x select 1) in blufor_sectors) then {
+					(_x select 0) setMarkerColor GRLIB_color_friendly;
+				} else {
+					(_x select 0) setMarkerColor GRLIB_color_enemy;
+				};
+			} foreach _vehicle_unlock_markers;
+		};
+		_sector_count = (count blufor_sectors + count GRLIB_all_fobs);
 	};
 
-	if (count _vehicle_unlock_markers > 0) then {
-		{
-			if ((_x select 1) in blufor_sectors) then {
-				(_x select 0) setMarkerColor GRLIB_color_friendly;
-			} else {
-				(_x select 0) setMarkerColor GRLIB_color_enemy;
-			};
-		} foreach _vehicle_unlock_markers;
-	};
-	_sector_count = (count blufor_sectors + count GRLIB_all_fobs);
+	_ticks = _ticks + 1;
+	if (_ticks >= 65535) then { _ticks = 0 };
+	sleep 1;
 };
