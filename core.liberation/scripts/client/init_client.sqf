@@ -80,7 +80,7 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 	disableUserInput false;
 };
 
-waitUntil {sleep 1; !isNil "GRLIB_LRX_Template_version"};
+waitUntil {sleep 0.5; !isNil "GRLIB_LRX_Template_version"};
 if (GRLIB_LRX_Template_version != LRX_Template_version) exitWith {
 	private _msg = localize "STR_MSG_INVALID_LRXMOD_VERSION";
 	titleText [_msg, "BLACK FADED", 100];
@@ -89,7 +89,7 @@ if (GRLIB_LRX_Template_version != LRX_Template_version) exitWith {
 	disableUserInput false;
 };
 
-waitUntil {sleep 1; !isNil "GRLIB_global_stop"};
+waitUntil {sleep 0.5; !isNil "GRLIB_global_stop"};
 if (GRLIB_global_stop == 1) exitWith {
 	private _msg = localize "STR_MSG_FINAL_MISSION_RUNNING";
 	titleText [_msg, "BLACK FADED", 100];
@@ -98,7 +98,7 @@ if (GRLIB_global_stop == 1) exitWith {
 	disableUserInput false;
 };
 
-waitUntil {sleep 1; !isNil "GRLIB_endgame"};
+waitUntil {sleep 0.5; !isNil "GRLIB_endgame"};
 if (GRLIB_endgame == 1) exitWith {
 	private _msg = localize "STR_MSG_END_GAME";
 	titleText [_msg, "BLACK FADED", 100];
