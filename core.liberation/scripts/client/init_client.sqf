@@ -80,8 +80,17 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 	disableUserInput false;
 };
 
+// LRX_Template mod version check
 waitUntil {sleep 0.5; !isNil "GRLIB_LRX_Template_version"};
-if (GRLIB_LRX_Template_version != LRX_Template_version) exitWith {
+private _version_checked = true;
+if (!isNil "LRX_Template_version") then {
+	if (typeName LRX_Template_version == "SCALAR") then {
+		if (GRLIB_LRX_Template_version != LRX_Template_version) then {
+			_version_checked = false;
+		};
+	};
+};
+if (!_version_checked) exitWith {
 	private _msg = localize "STR_MSG_INVALID_LRXMOD_VERSION";
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;

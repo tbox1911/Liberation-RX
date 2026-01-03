@@ -113,7 +113,6 @@ GRLIB_use_exclusive = (GRLIB_use_exclusive == 1);
 LRX_mod_list_west = [];
 LRX_mod_list_east = [];
 LRX_mod_list_name = [];
-LRX_Template_version = 0;
 
 if (GRLIB_LRX_Template_enabled) then {
 	LRX_Template_version = getNumber (configFile >> "cfgPatches" >> "LRX_Template" >> "version");
