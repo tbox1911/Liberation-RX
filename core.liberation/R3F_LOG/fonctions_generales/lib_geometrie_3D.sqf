@@ -572,13 +572,8 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol = {
 							boundingBoxReal _x select 1
 						] call R3F_LOG_FNCT_3D_bounding_sphere_intersect_bounding_box
 					) exitWith {_intersect = true;};
-				} forEach ([_position_degagee, _rayon_degage] call R3F_LOG_FNCT_3D_get_objets_genants_rayon);
+				} forEach ([_position_degagee, _rayon_degage+15] call R3F_LOG_FNCT_3D_get_objets_genants_rayon);
 
-				// Verifier intersec avec building / rocks
-				private _minpos = ATLtoASL (_position_degagee vectorAdd [0,0,0.5]);
-				private _maxpos = (_minpos vectorAdd [0,0,30]);
-				if (lineIntersects [_minpos, _maxpos]) then { _intersect = true };
-				if (count (nearestTerrainObjects [_position_degagee, ["ROCK", "TREE"], 20]) > 0) then { _intersect = true };
 				(_intersect && _nb_tirages < _nb_tirages_max)
 			}
 		},
@@ -599,12 +594,7 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol = {
 	] do {};
 
 	// Echec, position introuvée
-	if (_nb_tirages >= _nb_tirages_max) then {
-		if (!isNil "GRLIB_LRX_debug") then {
-			diag_log format ["--- LRX Info: No place found for object of size %1 at position %2", _rayon_degage, _pos_centre];
-		};
-		_position_degagee = [];
-	};
+	if (_nb_tirages >= _nb_tirages_max) then {_position_degagee = [];};
 
 	_position_degagee;
 };
