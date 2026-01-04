@@ -6,11 +6,12 @@ params [
 
 if (count crew _vehicle > 0) exitWith { grpNull };
 
+private _vehicle_class = typeOf _vehicle;
 _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
 
 // // Drone / UAV / Aircraft
-if (typeOf _vehicle in uavs_vehicles + static_vehicles_AI || (_vehicle isKindOf "Air")) exitWith {
+if (_vehicle_class in uavs_vehicles + static_vehicles_AI || (_vehicle isKindOf "Air")) exitWith {
 	private _grp = createGroup [_side, true];
 	_side createVehicleCrew _vehicle;
 	sleep 1;
@@ -30,14 +31,19 @@ if (count _vehicle_roles == 0) then {
 		if ((_x select 1) in ["driver","commander","gunner"]) then { _vehicle_roles pushBackUnique (_x select 1) };
 	} forEach (fullCrew [_vehicle, "", true]);
 };
-if (count _vehicle_roles == 0) exitWith { diag_log format ["--- LRX Crew Can't find role for vehicle %1", typeOf _vehicle]; grpNull };
+if (count _vehicle_roles == 0) exitWith { diag_log format ["--- LRX Crew Can't find role for vehicle %1", _vehicle_class]; grpNull };
 
-private _unit_class = [opfor_crew];
-if (_side == GRLIB_side_friendly) then {
-	_unit_class = [crewman_classname];
-};
-if (_side == GRLIB_side_civilian) then {
-	_unit_class = civilians;
+private _cfg = configFile >> "CfgVehicles" >> _vehicle_class;
+private _pilot = getText (_cfg >> "crew");
+private _cargo  = getArray (_cfg >> "typicalCargo");
+private _others = getArray (_cfg >> "typicalTransportSoldier");
+private _unit_class = [_pilot] + _cargo + _others;
+_unit_class = _unit_class arrayIntersect _unit_class;
+
+if (_side == GRLIB_side_civilian) then { _unit_class = civilians };
+if (count _unit_class == 0) then {
+	if (_side == GRLIB_side_enemy) then { _unit_class = [opfor_crew] };
+	if (_side == GRLIB_side_friendly) then { _unit_class = [crewman_classname] };
 };
 
 private _path = "";
@@ -57,16 +63,13 @@ private _grp = createGroup [_side, true];
 	switch (_side) do {
 		case GRLIB_side_enemy: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-			if (typeOf _vehicle in militia_vehicles) then {
+			if (_vehicle_class in militia_vehicles) then {
 				_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
 				[_path, _unit] call F_getTemplateFile;
 				[_unit] spawn reammo_ai;
 			};
 		};
 		case GRLIB_side_friendly: {
-			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
-			[_path, _unit] call F_getTemplateFile;
-			[_unit] spawn reammo_ai;
 			if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
 		};
 		case GRLIB_side_civilian: {
