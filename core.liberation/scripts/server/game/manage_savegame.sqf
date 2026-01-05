@@ -4,6 +4,7 @@ sleep 60;
 private _current_uid = 0;
 
 while {true} do {
+    sleep 0.1;
     _current_uid = count (allPlayers select {!(_x isKindOf "HeadlessClient_F")});
     if (_current_uid == 0 && !GRLIB_server_persistent) exitWith {
         diag_log "--- LRX Mission End ---";
@@ -21,5 +22,4 @@ while {true} do {
         [] call save_game_mp;
         waitUntil { sleep 30; count (allPlayers select {!(_x isKindOf "HeadlessClient_F")}) > 0 };
     };
-    sleep 0.2;
 };
