@@ -17,12 +17,10 @@ if (_status == 1) then {
 
 if (_status == 2) then {
 	["lib_fob_lost", [_fob_type, _fob_name]] call BIS_fnc_showNotification;
-	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 };
 
 if (_status == 3) then {
 	["lib_fob_safe", [_fob_type, _fob_name]] call BIS_fnc_showNotification;
-	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 };
 
 if (_status == 4) then {

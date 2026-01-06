@@ -23,12 +23,10 @@ if (_status == 1) then {
 
 if (_status == 2) then {
 	["lib_sector_lost", [_location_name]] call BIS_fnc_showNotification;
-	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 };
 
 if (_status == 3) then {
 	["lib_sector_safe", [_location_name]] call BIS_fnc_showNotification;
-	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 };
 
 if (_status == 4) then {

@@ -56,8 +56,8 @@ if (_ownership == GRLIB_side_enemy) then {
 		sleep 3;
 	};
 
-	if ( GRLIB_endgame == 0 ) then {
-		if ( _ownership == GRLIB_side_enemy ) then {
+	if (GRLIB_endgame == 0) then {
+		if (_ownership == GRLIB_side_enemy) then {
 			diag_log format ["FOB %1 Lost at %2", _fob_pos, time];
 			if (!_near_outpost) then {
 				[_fob_pos, 250] remoteExec ["remote_call_penalty", 0];
@@ -82,12 +82,14 @@ if (_ownership == GRLIB_side_enemy) then {
 					};
 				} forEach (AllPlayers - (entities "HeadlessClient_F"));
 			};
-			sector_timer = 0;
-			publicVariable "sector_timer";
 		};
+		sector_timer = 0;
+		publicVariable "sector_timer";
+		sleep 5;
 	};
 };
 
+sleep 10;
 fob_attack_in_progress = fob_attack_in_progress - [_fob_pos];
 publicVariable "fob_attack_in_progress";
 

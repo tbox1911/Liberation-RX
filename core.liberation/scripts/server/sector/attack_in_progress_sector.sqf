@@ -61,6 +61,7 @@ if (_ownership == GRLIB_side_enemy) then {
 
 	if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 		if (_ownership == GRLIB_side_enemy) then {
+			diag_log format ["Sector %1 Lost at %2", _sector, time];
 			blufor_sectors = blufor_sectors - [_sector];
 			publicVariable "blufor_sectors";
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
@@ -75,10 +76,9 @@ if (_ownership == GRLIB_side_enemy) then {
 			private _msg = format ["You have lost control of the %1 sector, your reputation drops by %2 points.", [_sector_pos] call F_getLocationName, -15];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
-			diag_log format ["Sector %1 Lost at %2", _sector, time];
 		} else {
+			diag_log format ["Sector %1 Defended at %2", _sector, time];
 			[_sector, 3] remoteExec ["remote_call_sector", 0];
-
 			if !(_sector in A3W_sectors_in_use) then {
 				[_sector_pos, _max_prisonners] call spawn_prisonners;
 			};
@@ -114,9 +114,10 @@ if (_ownership == GRLIB_side_enemy) then {
 					};
 				} forEach (AllPlayers - (entities "HeadlessClient_F"));
 			};
-			sector_timer = 0;
-			publicVariable "sector_timer";
 		};
+		sector_timer = 0;
+		publicVariable "sector_timer";
+		sleep 5;
 	};
 };
 
