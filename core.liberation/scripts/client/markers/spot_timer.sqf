@@ -11,6 +11,7 @@ private _sector_timer = 0;
 
 while {true} do {
 	waitUntil{
+		if (sector_timer == 0) then { "opfor_capture_marker" setMarkerPosLocal markers_reset };	
 		sleep 1;
 		_sector_timer = round (sector_timer - serverTime);
 		(_sector_timer >= 0)
@@ -20,7 +21,5 @@ while {true} do {
 		"opfor_capture_marker" setMarkerTextLocal format ["%1 - %2", (markerText _sector), ([_sector_timer] call F_secondsToTimer)];
 	} else {
 		"opfor_capture_marker" setMarkerTextLocal format ["%1 - VULNERABLE!", (markerText _sector)];
-		waitUntil { sleep 1; sector_timer == 0 };
-		"opfor_capture_marker" setMarkerPosLocal markers_reset;
 	};
 };

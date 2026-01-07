@@ -56,7 +56,7 @@ if (_ownership == GRLIB_side_enemy) then {
 		sleep 3;
 	};
 
-	if (GRLIB_endgame == 0) then {
+	if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 		if (_ownership == GRLIB_side_enemy) then {
 			diag_log format ["FOB %1 Lost at %2", _fob_pos, time];
 			if (!_near_outpost) then {
@@ -83,10 +83,11 @@ if (_ownership == GRLIB_side_enemy) then {
 				} forEach (AllPlayers - (entities "HeadlessClient_F"));
 			};
 		};
-		sector_timer = 0;
-		publicVariable "sector_timer";
-		sleep 5;
 	};
+
+	sleep 5;
+	sector_timer = 0;
+	publicVariable "sector_timer";
 };
 
 sleep 10;

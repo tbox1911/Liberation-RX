@@ -115,10 +115,11 @@ if (_ownership == GRLIB_side_enemy) then {
 				} forEach (AllPlayers - (entities "HeadlessClient_F"));
 			};
 		};
-		sector_timer = 0;
-		publicVariable "sector_timer";
-		sleep 5;
 	};
+
+	sleep 5;
+	sector_timer = 0;
+	publicVariable "sector_timer";
 };
 
 sleep 10;
