@@ -2,7 +2,7 @@ diag_log "--- Server Init start ---";
 
 GRLIB_players_known_uid = [];
 
-// EventHandler
+// Server EventHandler
 addMissionEventHandler ["PlayerConnected", {
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idStr"];
 	if (_id != 2 && !(_uid in GRLIB_players_known_uid)) then {
@@ -10,21 +10,45 @@ addMissionEventHandler ["PlayerConnected", {
 	};
 }];
 
-addMissionEventHandler ['HandleDisconnect', {
-	params ["_unit", "_id", "_uid", "_name"];
+addMissionEventHandler ["PlayerDisconnected", {
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 	if (_name select [0,3] in ["HC1","HC2","HC3"]) exitWith {
 		deleteMarker "fpsmarkerHC1";
 		deleteMarker "fpsmarkerHC2";
 		deleteMarker "fpsmarkerHC3";
-		false;
 	};
+	[_uid, _name] spawn {
+		params ["_uid", "_name"];
+		sleep 0.1; // Wait for HandleDisconnect to finish
+		// diag_log format ["--- LRX EH-PD: player %1 (%2) disconnected...", _name, _uid];
+		if (_uid in GRLIB_players_known_uid) then {
+			[_uid] call cleanup_uid;
+			GRLIB_players_known_uid = GRLIB_players_known_uid - [_uid];
+		};
+	};
+	false;
+}];
+
+addMissionEventHandler ['HandleDisconnect', {
+	params ["_unit", "_id", "_uid", "_name"];
+	diag_log format ["--- LRX EH-HD: player %1 (%2) disconnected...", _name, _uid];
 	if (_uid in GRLIB_players_known_uid) then {
 		[_unit, _uid, true] call save_context;
 		[_unit, _uid] call cleanup_player;
-		[_uid] call cleanup_uid;
-		GRLIB_players_known_uid = GRLIB_players_known_uid - [_uid];
 	};
 	false;
+}];
+
+addMissionEventHandler ["MPEnded",{
+	if (!isDedicated) exitWith {};
+	if (count GRLIB_players_known_uid == 0) then {
+		diag_log "--- LRX Mission End ---";
+		if (time < 300) then {
+			diag_log format ["--- LRX Saving cooldown (no save done), %1sec remaining...", round (300 - time)];
+		} else {
+			[] call save_game_mp;
+		};
+	};
 }];
 
 GRLIB_active_commander = objNull;
@@ -109,7 +133,6 @@ if (abort_loading) exitWith {
 };
 
 // Execute server Managers
-[] execVM "scripts\server\game\manage_savegame.sqf";
 [] execVM "scripts\server\game\synchronise_vars.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
