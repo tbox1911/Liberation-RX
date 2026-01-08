@@ -39,7 +39,7 @@ addMissionEventHandler ['HandleDisconnect', {
 	false;
 }];
 
-addMissionEventHandler ["MPEnded",{
+addMissionEventHandler ["MPEnded", {
 	if (!isDedicated) exitWith {};
 	if (count GRLIB_players_known_uid == 0) then {
 		diag_log "--- LRX Mission End ---";
