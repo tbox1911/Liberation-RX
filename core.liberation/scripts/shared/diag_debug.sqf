@@ -3,7 +3,7 @@
 //
 // [0] : Dump process
 // [1] : Dump Game Save
-// [2] : Dump Server Variables
+// [2] : Dump Server Variables + EventHandlers
 
 params [["_save", 0]];
 diag_log "--------------------- LRX Diag -----------------------";
@@ -52,6 +52,9 @@ if (_save == 2) then {
 	{
 		diag_log  format ["  %1", _x];
 	} foreach (parsingNamespace getVariable "GRLIB_Player_variables");
+
+	diag_log "--- LRX Mission Event Handlers ---------------------";
+	diag_allMissionEventHandlers;
 
 	diag_log "-----------------------------------------------------";
 };

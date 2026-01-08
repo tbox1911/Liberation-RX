@@ -10,6 +10,7 @@ params [
 
 if (isNil "_sectorpos" || isNil "_classname") exitWith { objNull };
 
+private _classname_bak = _classname;
 private _vehicle = objNull;
 private _spawn_pos = [];
 private _airveh_alt = 300;
@@ -23,6 +24,7 @@ if (_classname isKindOf "Air") then {
 		_spawn_pos = _spawn_pos getPos [floor random 300, floor random 360];
 		_spawn_pos set [2, _airveh_alt];
 		_vehicle = createVehicle [_classname, _spawn_pos, [], 50, "FLY"];
+		_vehicle setVariable ["GRLIB_vehicle_init", true, true];
 		_vehicle allowDamage false;
 		_vehicle setDir (_vehicle getDir _sectorpos);
 		_vehicle setPosATL _spawn_pos;
@@ -40,7 +42,7 @@ if (_classname isKindOf "Air") then {
 		objNull;
 	};
 
-	private _sea_deep = (ATLtoASL (_spawn_pos) select 2);
+	private _sea_deep = round (ATLtoASL (_spawn_pos) select 2);
 	if (_classname isKindOf "LandVehicle") then {
 		if (_sea_deep < -1.5) then {
 			_classname = "";
@@ -68,6 +70,7 @@ if (_classname isKindOf "Air") then {
 
 	if (_classname != "") then {
 		_vehicle = createVehicle [_classname, _spawn_pos, [], 5, "NONE"];
+		_vehicle setVariable ["GRLIB_vehicle_init", true, true];
 		_vehicle allowDamage false;
 		_spawn_pos set [2, 0.5];
 		if (surfaceIsWater _spawn_pos) then {
@@ -78,14 +81,12 @@ if (_classname isKindOf "Air") then {
 	};
 };
 
-_vehicle setVariable ["GRLIB_vehicle_init", true, true];
-if (_mission_ai) then { _vehicle setVariable ["GRLIB_mission_AI", true, true] };
-
-if (_classname == "") exitWith { objNull };
-if (isNull _vehicle) exitWith {
-	diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos];
+if (_classname == "" || isNull _vehicle) exitWith {
+	diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname_bak, _sectorpos];
 	objNull;
 };
+
+if (_mission_ai) then { _vehicle setVariable ["GRLIB_mission_AI", true, true] };
 
 if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn Vehicle %1 Pos %2 at %3", _classname, getPosATL _vehicle, time ];
