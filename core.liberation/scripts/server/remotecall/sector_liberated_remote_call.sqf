@@ -81,7 +81,7 @@ opfor_sectors = (sectors_allSectors - blufor_sectors);
 stats_sectors_liberated = stats_sectors_liberated + 1;
 
 // Check Victory
-if ([] call F_checkVictory) exitWith { [] spawn blufor_victory };
+if ([] call F_checkVictory) exitWith { sleep 15; [] spawn blufor_victory };
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 
