@@ -45,11 +45,15 @@ if (fileExists _path) then {
 if (!isDedicated && hasInterface) then {
 	[] spawn {
 		[] call compileFinal preprocessFileLineNumbers "scripts\client\fetch_params.sqf";
-		[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
-		if (GRLIB_ACE_enabled) then {
-			[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
+		if (isServer) then {
+			if (GRLIB_ACE_enabled) then {
+				[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
+			};
 		} else {
-			if (!isServer) then {
+			[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+			if (GRLIB_ACE_enabled) then {
+				[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
+			} else {
 				[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 			};
 		};
