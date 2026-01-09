@@ -5,7 +5,9 @@ diag_log "--- LRX: Loading client settings ---";
 call compileFinal preprocessFileLineNumbers "scripts\client\ui\settings_menu.sqf";
 
 // Mission Parameter constant
-[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
+if (!isServer) then {
+	[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
+};
 
 waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
 if (!GRLIB_ParamsInitialized) then {
@@ -41,6 +43,9 @@ GRLIB_tk_mode = [GRLIB_PARAM_TK_mode] call lrx_getParamValue;
 GRLIB_vehicle_defense = [GRLIB_PARAM_VehicleDefense] call lrx_getParamValue;
 GRLIB_vehicles_fuel = [GRLIB_PARAM_FuelConso] call lrx_getParamValue;
 
+// Disable PAR/Fatigue if ACE Medical is present
+if (GRLIB_ACE_medical_enabled) then { PAR_revive = 0; GRLIB_fatigue = 1 };
+
 // Transfom true/false Param
 GRLIB_introduction = (GRLIB_introduction == 1);
 GRLIB_deployment_cinematic = (GRLIB_deployment_cinematic == 1);
@@ -56,9 +61,6 @@ PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
 PAR_ai_revive_max = ["PAR_AI_Revive"] call lrx_getParamValue;
 PAR_bleedout = ["PAR_BleedOut"] call lrx_getParamValue;
 PAR_grave = ["PAR_Grave"] call lrx_getParamValue;
-
-// Disable PAR/Fatigue if ACE Medical is present
-if (GRLIB_ACE_medical_enabled) then { PAR_revive = 0; GRLIB_fatigue = 1 };
 
 waitUntil { sleep 1; !isNil "GRLIB_LRX_server_params_loaded" };
 

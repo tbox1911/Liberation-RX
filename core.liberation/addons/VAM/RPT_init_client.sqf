@@ -28,7 +28,7 @@ VAM_inventory_class_names = [
 
 // ACE use only whitelist
 if (GRLIB_ACE_enabled) then {
-	VAM_cargo_class_names append  [
+	VAM_cargo_class_names_def append  [
 		"ACE_Wheel",
 		"ACE_Track"
 	];

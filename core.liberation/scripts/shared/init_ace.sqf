@@ -1,4 +1,5 @@
 // Initialize ACE
+diag_log "--- LRX: loading ACE support ---";
 
 R3F_LOG_CFG_can_tow = [];
 R3F_LOG_CFG_can_be_towed = [];

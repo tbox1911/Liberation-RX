@@ -41,13 +41,11 @@ addMissionEventHandler ['HandleDisconnect', {
 
 addMissionEventHandler ["MPEnded", {
 	if (!isDedicated) exitWith {};
-	if (count GRLIB_players_known_uid == 0) then {
-		diag_log "--- LRX Mission End ---";
-		if (time < 300) then {
-			diag_log format ["--- LRX Saving cooldown (no save done), %1sec remaining...", round (300 - time)];
-		} else {
-			[] call save_game_mp;
-		};
+	diag_log "--- LRX Mission End ---";
+	if (time < 300) then {
+		diag_log format ["--- LRX Saving cooldown (no save done), %1sec remaining...", round (300 - time)];
+	} else {
+		[] call save_game_mp;
 	};
 }];
 
