@@ -115,6 +115,7 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 
 	waitUntil {
 		sleep 0.2;
+		if (_vehicle distance2D _targetpos <= _unload_dist * 2) then { _vehicle flyInHeight 150 };
 		!(alive _vehicle) || (damage _vehicle > 0.2 ) || (_vehicle distance2D _targetpos <= _unload_dist)
 	};
 
