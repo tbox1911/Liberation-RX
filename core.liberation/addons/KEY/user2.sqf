@@ -5,10 +5,15 @@ if (isNil "AR_active") then {AR_active = false};
 if (AR_active) exitWith {AR_active = false};
 if ((!isNull objectParent player) || (surfaceIsWater (getPos player)) || (lifeState player == 'INCAPACITATED') || PAR_isDragging ) exitWith {};
 
+// player carring 
+private _carry = false;
+if (!isNull R3F_LOG_joueur_deplace_objet) then { _carry = true };
+if (!isNull ((player getVariable ["ace_dragging_carriedObject", objNull]))) then { _carry = true };
+
 AR_active = true;
 AR_weapon = currentWeapon player;
 AR_animation = switch (true) do {
-	case (!isNull R3F_LOG_joueur_deplace_objet): {"AmovPercMwlkSnonWnonDf"};
+	case (_carry): {"AmovPercMwlkSnonWnonDf"};
 	case (AR_weapon isEqualTo ""): {"AmovPercMevaSnonWnonDf"};
 	case (AR_weapon isEqualTo (handgunWeapon player)): {"AmovPercMevaSlowWpstDf"};
 	case (AR_weapon isEqualTo (primaryWeapon player)): {"AmovPercMevaSlowWrflDf"};
