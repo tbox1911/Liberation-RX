@@ -85,7 +85,7 @@ waitUntil {sleep 0.5; !isNil "GRLIB_LRX_Template_version"};
 private _version_checked = true;
 if (!isNil "LRX_Template_version") then {
 	if (typeName LRX_Template_version == "SCALAR") then {
-		if (GRLIB_LRX_Template_version != LRX_Template_version) then {
+		if (GRLIB_LRX_Template_version != 0 && GRLIB_LRX_Template_version != LRX_Template_version) then {
 			_version_checked = false;
 		};
 	};
