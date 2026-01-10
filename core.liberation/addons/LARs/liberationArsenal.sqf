@@ -66,19 +66,7 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 	LRX_arsenal_init_done = true;
 };
 
-// Init functions
-LARs_fnc_createList = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_createList.sqf";
-LARs_fnc_removeBlack = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_removeBlack.sqf";
-LARs_fnc_updateArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_updateArsenal.sqf";
-LARs_fnc_blacklistArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_blacklistArsenal.sqf";
-LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_initOverride.sqf";
-LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
-LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";
-
 if (GRLIB_filter_arsenal in [1,2,3,5]) then {
-	// LARs Init
-	[] call LARs_fnc_initOverride;
-
 	if (GRLIB_filter_arsenal != 5) then {
 		// Add Mod Items (Weapons,Uniform,etc.)
 		[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";
@@ -92,12 +80,22 @@ if (GRLIB_filter_arsenal in [1,2,3,5]) then {
 
 	// Initialize Arsenal
 	if (GRLIB_ACE_enabled) then {
-		// Ace compat.
+		// ACE Arsenal
 		[myLARsBox, false, false] call ace_arsenal_fnc_initBox;
 		[myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_addVirtualItems;
 		[myLARsBox, GRLIB_blacklisted_from_arsenal, false] call ace_arsenal_fnc_removeVirtualItems;
 	} else {
-		// Arma VA
+		// LARS Arsenal Override
+		LARs_fnc_createList = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_createList.sqf";
+		LARs_fnc_removeBlack = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_removeBlack.sqf";
+		LARs_fnc_updateArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_updateArsenal.sqf";
+		LARs_fnc_blacklistArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_blacklistArsenal.sqf";
+		LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_initOverride.sqf";
+		LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
+		LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";		
+		[] call LARs_fnc_initOverride;
+
+		// Arma3 Virtual Arsenal 
 		[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 		waitUntil {sleep 1; !isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"}};
 		private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];

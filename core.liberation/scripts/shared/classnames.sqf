@@ -22,10 +22,6 @@ private _blufor_vehicles = [];
 { _blufor_vehicles pushBackUnique _x } foreach (blufor_air + static_vehicles_AI + boats_west + blufor_squad_inf_light + blufor_squad_inf + blufor_squad_at + blufor_squad_aa + blufor_squad_mix);
 { [_x] call F_checkClass } forEach _blufor_vehicles;
 
-// *** Arsenal ****
-diag_log "--- LRX: Build Arsenal Classnames ---";
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
-
 // *** MFR Dogs ****
 MFR_Dogs_classname = [];
 if (GRLIB_MFR_enabled) then {

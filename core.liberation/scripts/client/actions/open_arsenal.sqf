@@ -10,6 +10,8 @@ GRLIB_backup_loadout = getUnitLoadout player;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice), true];
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 
+if (GRLIB_ACE_enabled) then { [] call loadout_price };
+
 createDialog "liberation_arsenal";
 waitUntil { dialog };
 ctrlEnable [202, false];

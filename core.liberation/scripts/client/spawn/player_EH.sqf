@@ -22,14 +22,6 @@ _unit enableWeaponDisassembly false;
 
 // Player Event Handlers
 if (_unit == player) then {
-	// ACE specific
-	if (GRLIB_ACE_enabled) then {
-		["ace_arsenal_displayClosed", {
-			[player] call F_filterLoadout;
-			[player] spawn F_payLoadout;
-		}] call CBA_fnc_addEventHandler;
-	};
-
 	// Backup Weapon state
 	_unit removeAllEventHandlers "WeaponChanged";
 	_unit addEventHandler ["WeaponChanged", {
