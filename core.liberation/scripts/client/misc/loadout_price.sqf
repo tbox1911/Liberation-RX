@@ -6,7 +6,7 @@ private ["_unit", "_name", "_price", "_loadout_loaded"];
 
 if (GRLIB_ACE_enabled) then {
 	if (!isNil "_saved_loadouts_ace") then {
-		_unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
+		_unit = "B_Soldier_VR_F" createVehicle zeropos;
 		_unit allowDamage false;
 		{
 			if (_forEachIndex % 1 == 0 && _forEachIndex < 40) then {
@@ -21,7 +21,7 @@ if (GRLIB_ACE_enabled) then {
     };
 } else {
     if (!isNil "_saved_loadouts") then {
-        _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
+        _unit = "B_Soldier_VR_F" createVehicle zeropos;
         _unit allowDamage false;
         {
             if (_forEachIndex % 2 == 0 && _forEachIndex < 40) then {

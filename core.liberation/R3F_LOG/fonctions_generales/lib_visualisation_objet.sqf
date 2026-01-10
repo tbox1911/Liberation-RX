@@ -98,7 +98,7 @@ R3F_LOG_VIS_FNCT_voir_objet =
 		{
 			// Cr�er et placer l'objet dans le ciel
 			_position_attache = [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel;
-			_objet = _classe_a_visualiser createVehicleLocal _position_attache;
+			_objet = _classe_a_visualiser createVehicle _position_attache;
 			_objet attachTo [R3F_LOG_PUBVAR_point_attache, _position_attache];
 
 			if (!isNull R3F_LOG_VIS_objet) then {detach R3F_LOG_VIS_objet; deleteVehicle R3F_LOG_VIS_objet;};

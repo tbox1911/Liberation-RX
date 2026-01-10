@@ -475,13 +475,13 @@ R3F_LOG_FNCT_3D_mesh_collision_objs =
 
 	_pos_test = ATLtoASL (player modelToWorld [0,16,20]);// TODO remplacer par R3F_LOG_FNCT_3D_tirer_position_degagee_ciel
 
-	_objet_test1 = (typeOf _objet1) createVehicleLocal ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel);
+	_objet_test1 = (typeOf _objet1) createVehicle ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel);
 	_objet_test1 setVectorDirAndUp [vectorDir _objet1, vectorUp _objet1];
 	_objet_test1 allowDamage false;
 	_objet_test1 addEventHandler ["EpeContactStart", {if (!isNull (_this select 1)) then {(_this select 0) setVariable ["R3F_LOG_3D_collision", true, false];};}];
 	_objet_test1 setVariable ["R3F_LOG_3D_collision", false, false];
 
-	_objet_test2 = (typeOf _objet2) createVehicleLocal ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel);
+	_objet_test2 = (typeOf _objet2) createVehicle ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel);
 	_objet_test2 setVectorDirAndUp [vectorDir _objet2, vectorUp _objet2];
 	_objet_test2 allowDamage false;
 	_objet_test2 addEventHandler ["EpeContactStart", {if (!isNull (_this select 1)) then {(_this select 0) setVariable ["R3F_LOG_3D_collision", true, false];};}];
@@ -799,7 +799,7 @@ R3F_LOG_FNCT_3D_get_bounding_box_depuis_classname =
 	_classe = _this select 0;
 
 	// Création du véhicule local temporaire dans le ciel pour connaître la bounding box de l'objet
-	_objet_tmp = _classe createVehicleLocal ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel);
+	_objet_tmp = _classe createVehicle ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel);
 	sleep 0.01;
 	_bbox = boundingBoxReal _objet_tmp;
 	deleteVehicle _objet_tmp;
