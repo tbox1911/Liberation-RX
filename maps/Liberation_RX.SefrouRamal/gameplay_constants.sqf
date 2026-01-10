@@ -23,8 +23,3 @@ GREUH_start_ammo = 200;
 GREUH_start_fuel = 25;
 //NRE_Key = 199;
 MGR_Key = 19;
-
-//GRLIB_mod_west = "RHS_AFRF";
-//GRLIB_mod_east = "RHS_USAF";
-//GRLIB_mod_west = "A3_OPF";
-//GRLIB_mod_east = "A3_BLU";
