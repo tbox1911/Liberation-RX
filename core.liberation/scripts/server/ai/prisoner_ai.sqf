@@ -12,9 +12,6 @@ if (!alive _unit) exitWith {};
 if (!local _unit) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_remote_call", 2] };
 
 // Init priso
-private _grp = createGroup [GRLIB_side_civilian, true];
-[_unit] joinSilent _grp;
-
 doStop _unit;
 removeAllWeapons _unit;
 //removeHeadgear _unit;
@@ -34,13 +31,14 @@ _unit addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
 _unit setCaptive true;
 [_unit] call F_fixPosUnit;
 
-if (!_canmove) then {
-	// Halt
-	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
-	sleep 7;
-};
+// Halt
+if (!_canmove) then { [_unit, "init"] remoteExec ["remote_call_prisoner", 0] };
 
+sleep 7;
 if (!alive _unit) exitWith {};
+
+private _grp = createGroup [GRLIB_side_civilian, true];
+[_unit] joinSilent _grp;
 _unit setVariable ["GRLIB_is_prisoner", true, true];
 
 // Wait
