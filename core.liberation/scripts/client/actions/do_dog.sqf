@@ -85,6 +85,7 @@ if (!isNil "_my_dog") then {
 	};
 
 	if (_cmd == "recall") then {
+		[_my_dog, false] remoteExec ["hideObjectGlobal", 2];
 		_my_dog setVariable ["do_find", nil];
 		_my_dog setVariable ["do_find_wp", nil];
 		_my_dog stop false;

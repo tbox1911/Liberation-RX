@@ -67,6 +67,8 @@ while {true} do {
 	};
 
 	if (underwater vehicle player) then {
+		private _my_dog = player getVariable ["my_dog", nil];
+		if (!isNil "_my_dog") then { [_my_dog, true] remoteExec ["hideObjectGlobal", 2] };
 		hintSilent format [localize "STR_OXYGEN_REMAINING", round(100 * getOxygenRemaining player), "%"];
 		_cleanup_counter = 2;
 	};
