@@ -85,11 +85,10 @@ if ([] call F_checkVictory) exitWith { sleep 15; [] spawn blufor_victory };
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 
-private _nearRadioTower = ([markerPos _liberated_sector, GRLIB_side_enemy] call F_getNearestTower != "");
-if (GRLIB_endgame == 0 && _nearRadioTower) then {
+if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 	if (
 	   !(_liberated_sector in sectors_tower) &&
-	   ((combat_readiness >= 70 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 100)
+	   ((combat_readiness >= 70 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 99)
 	) then {
 		[_liberated_sector] spawn {
 			params ["_liberated_sector"];
