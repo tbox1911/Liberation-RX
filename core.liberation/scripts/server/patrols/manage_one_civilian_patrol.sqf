@@ -40,15 +40,14 @@ if (count _usable_sectors > 0) then {
 
 	sleep 1;
 	if (isNull _civ_grp) exitWith { deleteVehicle _civ_veh };
-	sleep 60;
 
 	// Waiting
 	private _unit_ttl = round (time + 1800);
 	private _unit_pos = getPosATL (leader _civ_grp);
 	waitUntil {
-		if (diag_fps <= 25) exitWith { true };
-		_unit_pos = getPosATL (leader _civ_grp);
 		sleep 60;
+		if (diag_fps <= 25) exitWith { true };
+		if (alive (leader _civ_grp)) then { _unit_pos = getPosATL (leader _civ_grp) };
 		(
 			GRLIB_global_stop == 1 || (time > _unit_ttl) || ({alive _x} count (units _civ_grp) == 0) ||
 			([_unit_pos, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0)
