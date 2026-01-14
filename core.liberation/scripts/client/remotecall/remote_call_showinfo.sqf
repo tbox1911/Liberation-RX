@@ -6,14 +6,11 @@ params ["_title", "_sub", "_picture", "_text", "_titleColor"];
 
 private _subtitle = _sub call BIS_fnc_localize;
 private _formated_text = "";
-private _safe_display = true;
 
-private _sector = [GRLIB_sector_size, player] call F_getNearestSector;
-if (_sector in opfor_sectors + active_sectors) then { _safe_display = false };
-if ((behaviour player) in ["COMBAT", "STEALTH"]) then { _safe_display = false };
-if (_sector in A3W_sectors_in_use) then { _safe_display = true };
+private _enemy_nearby = [player, GRLIB_sector_size, GRLIB_side_enemy] call F_getUnitsCount;
+if (_enemy_nearby > 0 || (behaviour player) in [ "COMBAT", "STEALTH"] || !(isNull objectParent player)) exitWith {};
 
-if (GRLIB_fancy_info == 2 && _safe_display) then {
+if (GRLIB_fancy_info == 2) then {
 	if (typeName _text == "ARRAY") then {
 		_formated_text = format [(_text select 0) call BIS_fnc_localize, _text select 1, _text select 2];
 	} else {
