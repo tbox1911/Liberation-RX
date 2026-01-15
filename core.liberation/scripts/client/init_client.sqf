@@ -162,7 +162,7 @@ waituntil {
 // LRX Arsenal
 diag_log "--- LRX: Build Arsenal Classnames ---";
 [] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
-[] execVM "addons\LARs\liberationArsenal.sqf";
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
 waituntil {
 	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
 	uIsleep 1;
