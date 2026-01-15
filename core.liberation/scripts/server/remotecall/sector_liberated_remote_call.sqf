@@ -88,7 +88,7 @@ if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 	if (
 	   !(_liberated_sector in sectors_tower) &&
-	   ((combat_readiness >= 70 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 99)
+	   ((combat_readiness >= 70 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 95)
 	) then {
 		[_liberated_sector] spawn {
 			params ["_liberated_sector"];
