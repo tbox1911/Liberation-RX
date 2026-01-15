@@ -111,6 +111,7 @@ if (edit_loadout > 0) then {
 		if (GRLIB_filter_arsenal == 0) then {
 			// Filters disabled
 			["Open", [true]] call BIS_fnc_arsenal;
+			GRLIB_arsenal_open = false;
 		} else {
 			// Filters enabled
 			["Open", [false, myLARsBox]] call BIS_fnc_arsenal;
