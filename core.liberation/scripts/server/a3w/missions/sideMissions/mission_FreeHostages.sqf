@@ -29,6 +29,10 @@ _setupObjects = {
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_missionPos = getPosATL (_hostages select 0);
 	_managed_units = (["militia", 12, _missionPos] call F_buildingSquad);
+	if (count _managed_units <= 5) then {
+		private _grp = [_missionPos, 6, "militia"] call createCustomGroup;
+		_managed_units append (units _grp);
+	};
 	_managed_units joinSilent _aiGroup;
 
 	private _grp_bomber = [_missionPos, 5, "militia", false] call createCustomGroup;
