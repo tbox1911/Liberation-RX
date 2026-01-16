@@ -9,9 +9,8 @@ if (_count > 1) then {
 private _radius = GRLIB_capture_size - 20;
 if (_sector in sectors_bigtown) then { _radius = _radius * 1.4 };
 
-private _spawn_pos = (markerPos _sector) getPos [_radius, floor random 360];
+private _spawn_pos = ([markerPos _sector, _radius] call F_getRandomPos);
 if (surfaceIsWater _spawn_pos) exitWith {};
-_spawn_pos set [2, 0.5];
 
 // Create Static
 private _vehicle = createVehicle [selectRandom opfor_statics, _spawn_pos, [], 0, "None"];
@@ -37,8 +36,7 @@ _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
 diag_log format [ "Spawn Static Weapon (%1) on sector %2 at %3", typeOf _vehicle, _sector, time ];
 
-_spawn_pos = getPos _vehicle;
-[_grp, _spawn_pos, 20] call patrol_ai;
+[_grp, getPos _vehicle, 20] call patrol_ai;
 
 private _hc = [] call F_lessLoadedHC;
 if (isDedicated && !isNull _hc) then {
