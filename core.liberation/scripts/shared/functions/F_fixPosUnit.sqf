@@ -1,15 +1,14 @@
-// Fix unit position when blocked in rock/ruins/object
-// by pSiKO - (thanks Larrow)
+// Fix unit position when blocked
+// by pSiKO (corrected)
 
 params ["_unit"];
 
 if (!local _unit || !alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit >= 3) exitWith {};
-if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
-if (round (getPosATL _unit select 2) > 2) exitWith {};
-if (underwater vehicle _unit) exitWith { deleteVehicle _unit };
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
+if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
+if (_unit getVariable ["LRX_unblock_running", false]) exitWith {};
 
 // Exit if forest / tree
 private _forest_type = ["forest", "wood"];
@@ -20,30 +19,43 @@ private _obstacle_rock = count (nearestTerrainObjects [_unit, ["ROCK"], 20]);
 if (_forest > 0 && _obstacle_rock == 0) exitWith {};
 
 // Default
-private _curalt = 0;
-private _maxalt = 80;
+private _basepos = (getPosASL _unit) vectorAdd [0,0,0.5];
+private _foundPos = nil;
+private _step = 0.25;
+private _maxalt = 120;
+
 private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 15]);
-if (_obstacle > 0) then { _maxalt = 2.0 };
-private _spawnpos = (getPosASL _unit) vectorAdd [0,0,0.5];
-private _maxpos = _spawnpos vectorAdd [0,0,_maxalt];
+if (_obstacle > 0) then { _maxalt = 1.8 };
 
-if !(lineIntersects [_spawnpos, _maxpos, _unit]) exitWith {};
+private _maxpos = _basepos vectorAdd [0,0,_maxalt];
+if !(lineIntersects [_basepos, _maxpos, _unit]) exitWith {};
 
-while { (lineIntersects [_spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
-	_curalt = _curalt + 0.5;
-	_spawnpos = (_spawnpos vectorAdd [0,0,_curalt]);
+_unit setVariable ["LRX_unblock_running", true];
+
+for "_i" from 0 to (_maxalt / _step) do {
+    private _z = _maxalt - (_i * _step);
+    private _testPos = _basepos vectorAdd [0,0,_z];
+    if (lineIntersects [
+        _testPos,
+        _testPos vectorAdd [0,0,-0.05],
+        _unit
+    ]) exitWith {
+        _foundPos = _testPos vectorAdd [0,0,0.5];
+    };
+};
+if (isNil "_foundPos") exitWith {
+    diag_log format ["--- LRX Error: unit %1 no free position %2", name _unit, _basePos];
+	_unit setVariable ["LRX_unblock_running", false];
 };
 
-if (lineIntersects [_spawnpos, (_spawnpos vectorAdd [0,0,_maxalt]), _unit]) exitWith {
-	diag_log format ["--- LRX Error: unit %1 is still blocked at %2...", name _unit, getpos _unit];
-	deleteVehicle _unit;
-};
-
-
+diag_log format ["--- LRX Info: unblock unit %1 position %2", name _unit, _foundPos];
 private _state = isDamageAllowed _unit;
 _unit allowDamage false;
-sleep 0.5;
-_unit setPosASL _spawnpos;
+_unit enableSimulation false;
+_unit setPosASL _foundPos;
+_unit enableSimulation true;
+waitUntil {sleep 0.1; round (getPos _unit select 2) == 0 };
 _unit setHitPointDamage ["hitLegs", 0];
-sleep 0.5;
 _unit allowDamage _state;
+
+_unit setVariable ["LRX_unblock_running", false];
