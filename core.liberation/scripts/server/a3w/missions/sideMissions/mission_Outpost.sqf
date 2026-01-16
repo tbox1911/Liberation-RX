@@ -27,14 +27,13 @@ _setupObjects = {
 
 	private _grp_prisonners = createGroup [GRLIB_side_civilian, true];
 	for "_i" from 0 to 3 do {
-		private _pilotsPos = ([_missionPos, 10] call F_getRandomPos);
-		private _unit = _grp_prisonners createUnit [pilot_classname, _pilotsPos, [], 0, "NONE"];
-		[_unit] joinSilent _grp_prisonners;
+		private _unit = _grp_prisonners createUnit [pilot_classname, _missionPos, [], 20, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		[_unit, true, false] spawn prisoner_ai;
 		sleep 0.3;
 	};
 	_prisonners = (units _grp_prisonners);
+	_prisonners joinSilent _grp_prisonners;
 	[_missionLocation, 3] spawn spawn_static;
 	true;
 };
