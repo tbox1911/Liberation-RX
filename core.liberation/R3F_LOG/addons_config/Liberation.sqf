@@ -239,6 +239,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_PierLadder_F", 1],
 	["Box_NATO_Support_F", 6],
 	[canister_fuel_typename, 1],
+	["Land_RampConcreteHigh_F", 10],
 	["Land_TentLamp_01_suspended_F", 1],
     ["Land_TentLamp_01_suspended_red_F", 1]
 ];
@@ -278,6 +279,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	//"Cargo_Tower_base_F",
 	"Land_BagBunker_Large_F",
 	"Land_BagBunker_Small_F",
+	"Land_RampConcreteHigh_F",
 	//"Land_BagBunker_Tower_F",
 	"CamoNet_BLUFOR_open_F",
 	"CamoNet_BLUFOR_big_F"
