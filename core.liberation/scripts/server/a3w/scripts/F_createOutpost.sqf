@@ -57,6 +57,7 @@ if (_enable_objectives) then {
         _nextobject setDir _nextdir;
 
         _base_objectives pushBack _nextobject;
+        sleep 0.1;
     } foreach _objectives_to_build;
     sleep 4;
 };
@@ -69,6 +70,7 @@ if (_enable_objectives) then {
         _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_x, "lock", "server"] call F_vehicleLock;
     };
+    sleep 0.1;
 } foreach (_base_objectives + _base_objects);
 
 // Add Defenders
@@ -90,7 +92,7 @@ if (_enable_defenders) then {
         _unit disableAI "PATH";
         _unit setPos _nextpos;
         [_unit, true] spawn building_defence_ai;
-        [_unit] spawn reammo_ai;
+        sleep 0.1;
     } forEach (units _grpdefenders);
 
     private _sentry = ceil ((5 + (floor (random 4))) * (sqrt (GRLIB_unitcap)) );

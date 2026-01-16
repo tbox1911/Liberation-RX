@@ -8,6 +8,7 @@ params [
 ];
 
 if (_building_ai_max == 0) exitWith {[]};
+if (isNil "GRLIB_building_used") then { GRLIB_building_used = [] };
 
 private _side = GRLIB_side_enemy;
 private _squad_comp = [];
@@ -15,6 +16,7 @@ switch (_infsquad) do {
 	case ("infantry"): { _squad_comp = opfor_infantry };
 	case ("militia"): { _squad_comp = militia_squad };
 	case ("resistance"): { _squad_comp = a3w_resistance_squad; _side = GRLIB_side_friendly};
+	case ("hostages"): { _squad_comp = civilians; _side = GRLIB_side_civilian};
 	default { _squad_comp = [] call F_getAdaptiveSquadComp; _infsquad = "auto" };
 };
 
@@ -24,7 +26,22 @@ private _building_classname = [
 	"Cargo_HQ_base_F",
 	"Cargo_Patrol_base_F",
 	"Cargo_Tower_base_F",
-	"Cargo_House_base_F"
+	"Cargo_House_base_F",
+	"Land_i_Shed_Ind_F",
+	"Land_i_House_Big_01_V2_F",
+	"Land_i_House_Big_01_V3_F",
+	"Land_i_House_Big_02_V2_F",
+	"Land_Unfinished_Building_01_F"
+];
+
+private _building_blacklist = [
+	"Land_Pier_F",
+	"Land_Pier_addon",
+	"Land_Communication_F",
+	"Land_spp_Transformer_F",
+	"Land_TTowerBig_1_F",
+	"Land_Radar_01_HQ_F",
+	"Land_Radar_F"	
 ];
 
 private _keep_position = false;
@@ -32,7 +49,7 @@ if (_mission_ai) then { _keep_position = true };
 
 private _building_pos = [];
 if (isNull _building) then {
-	private _allbuildings = (nearestObjects [_sector_pos, _building_classname, _building_range]) select { alive _x };
+	private _allbuildings = (nearestObjects [_sector_pos, _building_classname, _building_range]) select { alive _x  && !(typeOf _x in _building_blacklist) };
 	_allbuildings = (_allbuildings - GRLIB_building_used);
 	{
 		_building = _x;
@@ -44,7 +61,10 @@ if (isNull _building) then {
 };
 
 private _position_count = count _building_pos min _building_ai_max;
-if (_position_count == 0) exitWith {[]};
+if (_position_count == 0) exitWith {
+	diag_log format ["---LRX Error: Can't build squad(%1) type %2 in building %3", _position_count, _infsquad, typeOf _building];
+	[]
+};
 
 diag_log format ["Spawn building squad(%1) type %2 in building %3 at %4", _position_count, _infsquad, typeOf _building, time];
 

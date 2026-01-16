@@ -28,8 +28,11 @@ sleep 3;
 _unit setUnitPos "UP";
 sleep 1;
 
-private _grp = createGroup [GRLIB_side_civilian, true];
-[_unit] joinSilent _grp;
+if (side group _unit != GRLIB_side_civilian) then {
+	private _grp = createGroup [GRLIB_side_civilian, true];
+	[_unit] joinSilent _grp;
+};
+
 [_grp] call F_deleteWaypoints;
 _unit setVariable ["GRLIB_is_kamikaze", true, true];
 _grp setCombatMode "BLUE";

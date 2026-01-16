@@ -37,8 +37,10 @@ if (!_canmove) then { [_unit, "init"] remoteExec ["remote_call_prisoner", 0] };
 sleep 7;
 if (!alive _unit) exitWith {};
 
-private _grp = createGroup [GRLIB_side_civilian, true];
-[_unit] joinSilent _grp;
+if (side group _unit != GRLIB_side_civilian) then {
+	private _grp = createGroup [GRLIB_side_civilian, true];
+	[_unit] joinSilent _grp;
+};
 _unit setVariable ["GRLIB_is_prisoner", true, true];
 
 // Wait
