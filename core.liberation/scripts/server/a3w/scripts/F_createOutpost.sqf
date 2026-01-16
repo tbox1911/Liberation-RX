@@ -77,9 +77,13 @@ if (_enable_objectives) then {
 private _grpdefenders = grpNull;
 private _grpsentry = grpNull;
 private _defenders = [];
+private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 
 if (_enable_defenders) then {
     private _classname = _defenders_to_build apply { _x select 0 };
+    if (_nb_player <= 2) then {
+        _classname = (_classname call BIS_fnc_arrayShuffle) select [0, 12 min (count _classname)];
+    };
     _grpdefenders = [_base_position, _classname, GRLIB_side_enemy, "building", true] call F_libSpawnUnits;
     {
         _unit = _x;
