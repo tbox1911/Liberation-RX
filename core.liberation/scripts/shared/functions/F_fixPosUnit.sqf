@@ -13,10 +13,9 @@ if (_unit getVariable ["LRX_unblock_running", false]) exitWith {};
 // Exit if forest / tree
 private _forest_type = ["forest", "wood"];
 private _typepos = tolower (surfaceType getPosWorld _unit);
-private _forest = count (_forest_type select { (_typepos find _x) > -1 });
-_forest = _forest + count (nearestTerrainObjects [_unit, ["Tree","Small Tree"], 10]);
-private _obstacle_rock = count (nearestTerrainObjects [_unit, ["ROCK"], 20]);
-if (_forest > 0 && _obstacle_rock == 0) exitWith {};
+private _forest = count (_forest_type select { (_typepos find _x) > -1 }) + count (nearestTerrainObjects [_unit, ["Tree","Small Tree"], 10]);
+private _rocks = count (nearestTerrainObjects [_unit, ["ROCK"], 20]);
+if (_forest > 0 && _rocks == 0) exitWith {};
 
 // Default
 private _basepos = (getPosASL _unit) vectorAdd [0,0,0.5];
