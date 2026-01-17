@@ -111,6 +111,7 @@ F_vehicleLock = compileFinal preprocessFileLineNumbers "scripts\shared\functions
 F_vehicleUntow = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleUntow.sqf";
 F_vehicleClean = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleClean.sqf";
 F_vehiclePreset = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehiclePreset.sqf";
+F_vehicleSafeZone = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleSafeZone.sqf";
 F_notice_news = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_notice_news.sqf";
 F_notice_weather = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_notice_weather.sqf";
 F_notice_good = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_notice_good.sqf";

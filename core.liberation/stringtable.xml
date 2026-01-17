@@ -8274,6 +8274,10 @@
 			<Czech>Použij &lt;t color='#FF0000'&gt;výbušniny&lt;/t&gt; k likvidaci&lt;br/&gt;&lt;t color='#0000FF'&gt;radiové věže&lt;/t&gt;.</Czech>
 		</Key>
 
+		<Key ID="STR_FOB_SAFE_ZONE">
+			<Original>Your vehicle is in the &lt;t color='#008000'&gt;Safe Zone&lt;/t&gt; !!&lt;br/&gt;Please move it or it will be &lt;t color='#F00000'&gt;Unlocked&lt;/t&gt; on next restart.</Original>
+		</Key>
+
 		<!-- init_markers.sqf-->
 		<Key ID="STR_MARKER_FUEL">
 			<Original>FUEL</Original>
