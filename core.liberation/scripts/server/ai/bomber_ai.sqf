@@ -28,8 +28,9 @@ sleep 3;
 _unit setUnitPos "UP";
 sleep 1;
 
-if (side group _unit != GRLIB_side_civilian) then {
-	private _grp = createGroup [GRLIB_side_civilian, true];
+private _grp = side group _unit;
+if (_grp != GRLIB_side_civilian) then {
+	_grp = createGroup [GRLIB_side_civilian, true];
 	[_unit] joinSilent _grp;
 };
 

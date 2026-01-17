@@ -40,12 +40,10 @@ private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_ene
 private _nbsentry = 2 + (floor (random 3));
 private _unitclass = [];
 while { (count _unitclass) < _nbsentry } do { _unitclass pushback opfor_sentry };
-_grpsentry = [_pilotsPos, _unitclass, GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
+private _grpsentry = [_helowreck, _unitclass, GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 
 private _vehicle_pool = opfor_vehicles;
-if ( combat_readiness < 50 ) then {
-	_vehicle_pool = opfor_vehicles_low_intensity;
-};
+if ( combat_readiness < 50 ) then { _vehicle_pool = opfor_vehicles_low_intensity };
 
 private _vehtospawn = [];
 private _spawnchances = [75,50,15];

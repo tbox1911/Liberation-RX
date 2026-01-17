@@ -237,12 +237,12 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 	private _squad = _x select 0;
 	private _infsquad = _x select 1;
 	private _range = _x select 2;
-	if (!(_squad isEqualTo [])) then {
+	if (count _squad > 0) then {
 		_grp = [_sector, _infsquad, _squad, false] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 1;
 	};
+	sleep 1;
 	_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, 4, _foreachIndex, 20, 40], _sectorName];
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
 
