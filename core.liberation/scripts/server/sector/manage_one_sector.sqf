@@ -268,6 +268,7 @@ if (_building_ai_max > 0) then {
 	if (_sector in sectors_bigtown) then { _building_ai_max = _building_ai_max + 12 };
 	_sector setMarkerText format ["%2 - Loading %1%%", 70, _sectorName];
 	_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_buildingSquad);
+	sleep 1;
 };
 _sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
 // Create civilians
