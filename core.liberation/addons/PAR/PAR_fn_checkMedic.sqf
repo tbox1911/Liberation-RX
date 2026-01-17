@@ -1,5 +1,4 @@
 params ["_wnded", "_medic"];
-private _cnt = 3;
 private _fail = 0;
 private _dist = 0;
 private _msg = "";
@@ -76,14 +75,11 @@ while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 
 	if ([_wnded, _medic] call _check_sortie) exitWith { _healed = true };
 
-	if (_cnt == 0 && !isNull _wnded) then {
+	if (!isNull _wnded) then {
 		if (_fail == 0) then {
 			_msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _dist, round (speed vehicle _medic)];
 		};
 		[_wnded, _msg] call PAR_fn_globalchat;
-		_cnt = 3;
-	} else {
-		_cnt = _cnt - 1;
 	};
 
 	sleep 3;

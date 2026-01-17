@@ -25,7 +25,7 @@ while {true} do {
 					_unit setSkill (_ai_skill + 0.05);
 					_unit setUnitRank _ai_rank;
 					_msg = format [localize "STR_PAR_PROMOTION_MESSAGE", name _unit, _ai_rank];
-					[_unit, _msg] call PAR_fn_globalchat;
+					[_unit, _msg, true] call PAR_fn_globalchat;
 					_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
 				};
 			};

@@ -100,10 +100,16 @@ PAR_abandon_priso = {
 	};
 };
 PAR_fn_globalchat = {
-	params ["_speaker", "_msg"];
+	params ["_speaker", "_msg", ["_force", false]];
 	if (isDedicated || !(local _speaker) || _msg == "") exitWith {};
 	if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format ["Bros_%1", PAR_Grp_ID] || isPlayer _speaker) then {
-		gamelogic globalChat _msg;
+		private _last_msg = _speaker getVariable ["PAR_last_message", 0];
+		private _delay = 30;
+		if (isPlayer _speaker) then { _delay = 15 };
+		if (_last_msg < time || _force) then {
+			gamelogic globalChat _msg;
+			_speaker setVariable ["PAR_last_message", round (time + _delay)];
+		};
 	};
 };
 PAR_fn_fixPos = {
@@ -168,7 +174,7 @@ PAR_revive_dec = {
 	private _cur_revive = ([_unit] call PAR_revive_cur);
 	private _msg = format ["%1, %2 Revive left.", name _unit, _cur_revive];
 	if (_cur_revive == 0) then { _msg = format ["CRITICAL! %1 LAST Revive !!", name _unit] };
-	[_unit, _msg] call PAR_fn_globalchat;
+	[_unit, _msg, true] call PAR_fn_globalchat;
 	private _history = _unit getVariable ["PAR_revive_history", []];
 	_history pushBack round (time + PAR_AI_recover_revive);
 	_unit setVariable ["PAR_revive_history", _history];
@@ -219,13 +225,7 @@ PAR_Player_Unconscious = {
 		["PAR_deathMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 	};
 
-	private _medic_message = "";
-	switch (floor random 3) do {
-		case 0 : { _medic_message = localize "STR_PAR_Need_Medic1"; };
-		case 1 : { _medic_message = localize "STR_PAR_Need_Medic2"; };
-		case 2 : { _medic_message = localize "STR_PAR_Need_Medic3"; };
-	};
-	_unit globalChat _medic_message;
+	_unit globalChat (localize selectRandom ["STR_PAR_Need_Medic1", "STR_PAR_Need_Medic2", "STR_PAR_Need_Medic3"]);
 
 	// Mute Radio
 	5 fadeRadio 0;
