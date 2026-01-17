@@ -67,9 +67,6 @@ _air_grp setBehaviourStrong "CARELESS";
 _air_grp setCombatMode "GREEN";
 _air_grp setSpeedMode "FULL";
 
-// Marker
-[_vehicle] spawn taxi_marker;
-
 // Actions
 GRLIB_taxi_cooldown = 0;
 private _idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,false,true,"","vehicle _this == _target && _target distance2D GRLIB_taxi_helipad > 300"];

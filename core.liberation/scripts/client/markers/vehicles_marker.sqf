@@ -36,11 +36,18 @@ while {true} do {
 		(_x distance2D lhd > GRLIB_fob_range) &&
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
-		!(_x getVariable ['R3F_LOG_disabled', false]) &&
-		(_x getVariable ["GRLIB_vehicle_owner", ""] != "server") &&
 		(isNil {_x getVariable "GRLIB_vehicle_init"}) &&
 		(isNil {_x getVariable "GRLIB_mission_AI"}) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]))
+	};
+
+	// Filter
+	_veh_list = _veh_list select {
+		(_x getVariable ["GRLIB_taxi_owner", ""] != "") ||
+		(
+			!(_x getVariable ['R3F_LOG_disabled', false]) &&
+			(_x getVariable ["GRLIB_vehicle_owner", ""] != "server")
+		)
 	};
 
 	// Static Weapons
@@ -89,6 +96,15 @@ while {true} do {
 				_marker_color = GRLIB_color_friendly;
 				//_marker_type = "EmptyIcon";
 			};
+
+			private _taxi_id = _nextvehicle getVariable ["GRLIB_taxi_owner", ""];
+			if (_taxi_id != "") exitWith {
+				_marker_type = "loc_heli";
+				_marker_color = "ColorGUER";
+				_nextmarker setMarkerTextLocal format ["Taxi - %1", [_taxi_id call BIS_fnc_getUnitByUID] call get_player_name];
+				_nextmarker setMarkerSizeLocal [ 0.85, 0.85 ];
+			};
+
 			_marker_show = 0;
 			private _vehicle_crew = crew _nextvehicle;
 			private _blufor_crew = (count (_vehicle_crew select { !(isNil {_x getVariable "PAR_Grp_ID"}) || side _x == GRLIB_side_friendly}) > 0);

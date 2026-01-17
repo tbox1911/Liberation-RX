@@ -94,23 +94,6 @@ taxi_outboard = {
 	_vehicle lockCargo true;
 };
 
-taxi_marker = {
-	params ["_vehicle"];
-	private _nextmarker = format ["taximarker_%1", (_vehicle call BIS_fnc_netId)];
-	private _marker = createMarkerLocal [_nextmarker, getPosATL _vehicle];
-	_marker setMarkerSizeLocal [ 0.85, 0.85 ];
-	_marker setMarkerTypeLocal "loc_heli";
-	_marker setMarkerColorLocal "ColorGUER";
-	_marker setMarkerTextLocal format ["Taxi - %1", [player] call get_player_name];
-
-	while {alive _vehicle} do {
-		_marker setMarkerPosLocal (getPosATL _vehicle);
-		_marker setMarkerDirLocal ((getPosATL _vehicle) getDir (_vehicle getVariable "GRLIB_taxi_destination"));
-		sleep 1;
-	};
-	deleteMarkerLocal _marker;
-};
-
 taxi_check_dest = {
 	params ["_vehicle", "_freepos"];
 	if (GRLIB_taxi_helipad_created) then {
