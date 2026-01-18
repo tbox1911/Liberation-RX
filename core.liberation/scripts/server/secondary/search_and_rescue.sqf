@@ -37,21 +37,22 @@ sleep 3;
 private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 [_grppatrol, _helopos, 50] call patrol_ai;
 
-private _nbsentry = 2 + (floor (random 3));
+private _nbsentry = 3 + (floor random 3);
 private _unitclass = [];
 while { (count _unitclass) < _nbsentry } do { _unitclass pushback opfor_sentry };
-private _grpsentry = [_helowreck, _unitclass, GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
+private _grpsentry = [_helopos, _unitclass, GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 
 private _vehicle_pool = opfor_vehicles;
 if ( combat_readiness < 50 ) then { _vehicle_pool = opfor_vehicles_low_intensity };
 
 private _vehtospawn = [];
 private _spawnchances = [75,50,15];
-{ if (random 100 < _x ) then { _vehtospawn pushBack (selectRandom _vehicle_pool); }; } foreach _spawnchances;
+{ if (floor random 100 < _x ) then { _vehtospawn pushBack (selectRandom _vehicle_pool); }; } foreach _spawnchances;
 
 private _vehicle_list = [];
 {
-	_vehicle = [(_helowreck getPos [30 + (random 30), random 360]), _x, 0] call F_libSpawnVehicle;
+	private _vehicle_pos = ([_helopos, 70] call F_getRandomPos);
+	_vehicle = [_vehicle_pos, _x, 0] call F_libSpawnVehicle;
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 	_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 	_vehicle_list pushBack _vehicle;
