@@ -44,8 +44,7 @@ for "_i" from 0 to (_maxalt / _step) do {
 };
 if (isNil "_foundPos") exitWith {
     diag_log format ["--- LRX Error: unit %1 no free position %2", name _unit, _basePos];
-    // deleteVehicle _unit;
-	_unit setVariable ["LRX_unblock_running", false];
+    deleteVehicle _unit;
 };
 
 diag_log format ["--- LRX Info: unblock unit %1 position %2", name _unit, _foundPos];
@@ -54,7 +53,8 @@ _unit allowDamage false;
 _unit enableSimulation false;
 _unit setPosASL _foundPos;
 _unit enableSimulation true;
-waitUntil {sleep 0.1; round (getPos _unit select 2) == 0 };
+//waitUntil {sleep 0.1; round (getPos _unit select 2) == 0 };
+sleep 3;
 _unit setHitPointDamage ["hitLegs", 0];
 _unit allowDamage _state;
 
