@@ -2,14 +2,24 @@ params ["_grp", "_objective"];
 if (isNil "_grp" || isNil "_objective") exitWith {};
 if (isNull _grp) exitWith {};
 
-sleep 30;
+private _vehicle = objectParent leader _grp;
+if (_vehicle isKindOf "Ship_F") exitWith {
+	[_grp, getPosATL _vehicle] spawn defence_ai;
+};
+
+if (_vehicle isKindOf "ParachuteBase") then {
+	_vehicle = objNull;
+	waitUntil { sleep 1; ({getPos _x select 2 > 2} count (units _grp) == 0) };
+};
+
+sleep 15;
 private _last_pos = getPosATL (leader _grp);
 diag_log format ["Group %1 - Attack Direct: %2 - Distance: %3m", _grp, typeOf _objective, round (_last_pos distance2D _objective)];
 
 private ["_waypoint", "_wp0", "_objective_pos"];
 while { alive _objective } do {
 	{
-		if (surfaceIsWater (getPos _x) && _x distance2D _objective > 300) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
+		if (surfaceIsWater (getPos _x) && _x distance2D _objective > (GRLIB_sector_size * 1.5)) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
 		sleep 0.5;
 	} forEach (units _grp);
 	if ({alive _x} count (units _grp) == 0) exitWith {};

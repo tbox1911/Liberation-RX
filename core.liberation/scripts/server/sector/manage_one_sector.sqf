@@ -225,6 +225,7 @@ if ((floor GRLIB_difficulty_modifier) > 1) then {
 // Create mines
 [_sector_pos, _building_range, round (_ied_count)] spawn ied_manager;
 [_sector_pos, _building_range, round (_ied_count)] spawn ied_trap_manager;
+sleep 2;
 
 // Create drones defender
 if (_uavs_count > 0) then {
@@ -232,6 +233,7 @@ if (_uavs_count > 0) then {
 };
 
 _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
+sleep 2;
 // Create units
 {
 	private _squad = _x select 0;
@@ -241,11 +243,12 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 		_grp = [_sector, _infsquad, _squad, false] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
+		sleep 1;
 	};
-	sleep 1;
 	_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, 4, _foreachIndex, 20, 40], _sectorName];
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
 
+sleep 2;
 // Create vehicles
 if (opforcap_max) then { _vehtospawn = [] };
 if (count _vehtospawn > 0) then {
@@ -255,12 +258,13 @@ if (count _vehtospawn > 0) then {
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
 			[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
+			sleep 1;
 		};
-		sleep 1;
 		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, count _vehtospawn, _foreachIndex, 40, 60], _sectorName];
 	} foreach _vehtospawn;
 };
 
+sleep 2;
 // Create garrison
 if (opforcap_max) then { _building_ai_max = 0 };
 if (_building_ai_max > 0) then {
@@ -271,6 +275,8 @@ if (_building_ai_max > 0) then {
 	sleep 1;
 };
 _sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
+
+sleep 2;
 // Create civilians
 if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 	private _nbcivs = round ((5 + (floor random 6)) * GRLIB_civilian_activity);
@@ -290,6 +296,7 @@ if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 
 // Create static weapons
 [_sector, _static_count] spawn spawn_static;
+sleep 2;
 
 // Radio send renforcement
 if (_nearRadioTower) then {

@@ -2,7 +2,7 @@ params [ "_sector_pos", "_radius", "_number" ];
 
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
-	sleep 3;
+	sleep 0.5;
 	[ _sector_pos, _radius, _number - 1 ] spawn ied_manager;
 };
 
@@ -21,6 +21,8 @@ private _ied_type = selectRandom [
 private _roadobj = selectRandom (_sector_pos nearRoads _radius);
 if !(isNil "_roadobj" && random 100 < GRLIB_MineProbability) then {
 	private _ied_obj = createMine [_ied_type, (_roadobj getPos [1, random(360)]), [], 0];
+	GRLIB_side_enemy revealMine _ied_obj;
+	GRLIB_side_civilian revealMine _ied_obj;
 	private _ied_pos = (getPos _ied_obj);
 	_ied_obj setPos _ied_pos;
 

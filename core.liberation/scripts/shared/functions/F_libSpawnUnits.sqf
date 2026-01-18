@@ -35,6 +35,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 {
 	_pos = _spawn_pos getPos [(2 + floor random 20), floor random 360];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
+	sleep 0.1;
 	if (!isNil "_unit") then {
 		_unit allowDamage false;
 		[_unit] joinSilent _grp;
@@ -89,7 +90,6 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
-	sleep 0.1;
 } foreach _classname;
 
 private _units = units _grp;

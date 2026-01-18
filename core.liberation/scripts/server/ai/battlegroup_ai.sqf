@@ -2,7 +2,6 @@ params ["_grp", "_objective_pos"];
 if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
-sleep 30;
 private _vehicle = objectParent leader _grp;
 if (_vehicle isKindOf "Ship_F") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
@@ -11,9 +10,9 @@ if (_vehicle isKindOf "Ship_F") exitWith {
 if (_vehicle isKindOf "ParachuteBase") then {
 	_vehicle = objNull;
 	waitUntil { sleep 1; ({getPos _x select 2 > 2} count (units _grp) == 0) };
-	sleep 5;
 };
 
+sleep 15;
 private _veh_type = "No vehicle";
 if !(isNull _vehicle) then { _veh_type = typeOf _vehicle };
 private _attack = true;
@@ -26,7 +25,7 @@ private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
 while {true} do {
 	_sleep = 60;
 	{
-		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
+		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > (GRLIB_sector_size * 1.5)) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
 		sleep 0.5;
 	} forEach (units _grp);
 	if (!_patrol || {alive _x} count (units _grp) == 0) exitWith {};
@@ -68,7 +67,7 @@ while {true} do {
 		_last_pos = getPosATL (leader _grp);
 		if (GRLIB_global_stop == 1) then {
 			_target = [_last_pos, GRLIB_spawn_min] call F_getNearestBlufor;
-			if (isNil "_target") exitWith {};
+			if (isNull _target) exitWith {};
 			_next_objective = [getPosATL _target, round (_last_pos distance2D _target)];
 		} else {
 			_next_objective = [_last_pos] call F_getNearestBluforObjective;

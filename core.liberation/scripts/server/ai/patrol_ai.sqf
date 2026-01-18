@@ -1,6 +1,8 @@
 params ["_grp", "_targetpos", ["_radius", 80]];
 if (isNil "_grp") exitWith {};
 if (isNull _grp) exitWith {};
+
+sleep 10;
 if (isNil "_targetpos") then { _targetpos = getPos (leader _grp) };
 
 private ["_waypoint"];
