@@ -5,12 +5,12 @@ GRLIB_checkAction_Lock = {
 
 GRLIB_checkAction_Unlock = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && (!GRLIB_permission_vehicles || [_unit, _target] call is_owner) && locked _target == 2 && GRLIB_vehicle_lock)
+	(GRLIB_player_is_menuok && alive _target && (!GRLIB_permission_vehicles || [_unit, _target] call is_owner) && locked _target == 2 && isNull (attachedTo _target) && GRLIB_vehicle_lock)
 };
 
 GRLIB_checkAction_Abandon = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && (GRLIB_permission_vehicles && [_unit, _target] call is_owner) && locked _target == 2 && GRLIB_vehicle_lock)
+	(GRLIB_player_is_menuok && alive _target && (GRLIB_permission_vehicles && [_unit, _target] call is_owner) && locked _target == 2 && isNull (attachedTo _target) && GRLIB_vehicle_lock)
 };
 
 GRLIB_checkAction_Paint = {

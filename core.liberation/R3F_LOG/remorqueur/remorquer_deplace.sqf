@@ -8,18 +8,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (R3F_LOG_mutex_local_verrou) then
-{
+if (R3F_LOG_mutex_local_verrou) then {
 	hintC STR_R3F_LOG_mutex_action_en_cours;
-}
-else
-{
+} else {
 	R3F_LOG_mutex_local_verrou = true;
 
-	private ["_objet", "_remorqueur", "_offset_attach_x", "_offset_attach_y", "_offset_attach_z", "_pos_x", "_pos_y", "_pos_z"];
-
-	_objet = R3F_LOG_joueur_deplace_objet;
-	_remorqueur = [_objet, 5] call R3F_LOG_FNCT_3D_cursorTarget_virtuel;
+	private _objet = R3F_LOG_joueur_deplace_objet;
+	private _remorqueur = [_objet, 5] call R3F_LOG_FNCT_3D_cursorTarget_virtuel;
 
 	if (!isNull _remorqueur && {
 		_remorqueur getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select R3F_LOG_IDX_can_tow &&
@@ -68,31 +63,30 @@ else
 		sleep 2;
 
 		// Quelques corrections visuelles pour des classes sp�cifiques
-		_offset_attach_x = 0;
-		_offset_attach_y = 0.2;
-		_offset_attach_z = 0.1;
-		if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0};
-
-		if (typeOf _remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = 2.6};
-		if (typeOf _objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
-
-		if (typeOf _remorqueur isKindOf "rhs_btr_base") then {_offset_attach_z = 1.6};
-		if (typeOf _objet isKindOf "rhs_btr_base") then {_offset_attach_z = _offset_attach_z - 1.1};
-
-		if (typeOf _remorqueur isKindOf "rhs_bmp_base") then {_offset_attach_z = 1.0};
-		if (typeOf _objet isKindOf "rhs_bmp_base") then {_offset_attach_z = _offset_attach_z - 1.0};
+		private _offset_data = [_objet, _remorqueur] call R3F_LOG_FNCT_remorqueur_fix;
+		private _offset_attach_x = _offset_data select 0;
+		private _offset_attach_y = _offset_data select 1;
+		private _offset_attach_z = _offset_data select 2;
 
 		// Attacher � l'arri�re du v�hicule au ras du sol
-		_pos_x = (boundingCenter _objet select 0) + _offset_attach_x;
-		_pos_y = (boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y;
-		_pos_z = (boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2) + _offset_attach_z;
+		private _pos_x = (boundingCenter _objet select 0) + _offset_attach_x;
+		private _pos_y = (boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y;
+		private _pos_z = (boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2) + _offset_attach_z;
 		_objet attachTo [_remorqueur, [_pos_x, _pos_y, _pos_z]];
+
+		// Lock Vehicles
+		if (_objet isKindOf "AllVehicles") then {
+			_objet lockCargo true;
+			_objet lockDriver true;
+			for "_i" from 0 to (_objet emptyPositions "Cargo") do { _objet lockCargo [_i, true] };
+			{ _objet lockTurret [_x, true] } forEach (allTurrets _objet);
+			_objet setVehicleLock "LOCKED";
+		};
 
 		detach player;
 
 		// Si l'objet est une arme statique, on corrige l'orientation en fonction de la direction du canon
-		if (_objet isKindOf "StaticWeapon") then
-		{
+		if (_objet isKindOf "StaticWeapon") then {
 			private ["_azimut_canon"];
 
 			_azimut_canon = ((_objet weaponDirection (weapons _objet select 0)) select 0) atan2 ((_objet weaponDirection (weapons _objet select 0)) select 1);

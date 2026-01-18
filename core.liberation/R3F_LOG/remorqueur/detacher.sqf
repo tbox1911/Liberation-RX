@@ -10,12 +10,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (R3F_LOG_mutex_local_verrou) then
-{
+if (R3F_LOG_mutex_local_verrou) then {
 	hintC STR_R3F_LOG_mutex_action_en_cours;
-}
-else
-{
+} else {
 	R3F_LOG_mutex_local_verrou = true;
 
 	private ["_remorqueur", "_objet"];
@@ -35,8 +32,7 @@ else
 		detach _objet;
 		_objet setVelocity [0, 0, 0.1];
 
-		player playMove format ["AinvPknlMstpSlay%1Dnon_medic", switch (currentWeapon player) do
-		{
+		player playMove format ["AinvPknlMstpSlay%1Dnon_medic", switch (currentWeapon player) do {
 			case "": {"Wnon"};
 			case primaryWeapon player: {"Wrfl"};
 			case secondaryWeapon player: {"Wlnr"};
@@ -45,10 +41,18 @@ else
 		}];
 		sleep 7;
 
-		if (alive player) then
-		{
-			systemChat STR_R3F_LOG_action_detacher_fait;
+		// Unlock Vehicles
+		if (_objet isKindOf "AllVehicles") then {
+			_objet lockCargo false;
+			_objet lockDriver false;
+			for "_i" from 0 to (_objet emptyPositions "Cargo") do { _objet lockCargo [_i, false] };
+			{ _objet lockTurret [_x, false] } forEach (allTurrets _objet);
+			_objet setVehicleLock "UNLOCKED";
 			[_objet] spawn F_vehicleUnflip;	
+		};
+		
+		if (alive player) then {
+			systemChat STR_R3F_LOG_action_detacher_fait;
 		};
 	}
 	else

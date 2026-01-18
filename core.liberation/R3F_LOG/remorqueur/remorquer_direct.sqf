@@ -10,20 +10,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (R3F_LOG_mutex_local_verrou) then
-{
+if (R3F_LOG_mutex_local_verrou) then {
 	hintC STR_R3F_LOG_mutex_action_en_cours;
-}
-else
-{
+} else {
 	R3F_LOG_mutex_local_verrou = true;
 
-	private ["_objet", "_remorqueur"];
+	private _objet = _this select 0;
+	private _remorqueur = objNull;
 
-	_objet = _this select 0;
-
-	// Recherche du remorqueur valide le plus proche
-	_remorqueur = objNull;
 	{
 		if (
 			_x != _objet && (_x getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select R3F_LOG_IDX_can_tow) &&
@@ -67,25 +61,10 @@ else
 			_objet setVariable ["GRLIB_counter_TTL", nil, true];
 
 			// Quelques corrections visuelles pour des classes sp�cifiques
-			private _offset_attach_y = 0.2;
-			private _offset_attach_z = 0.2;
-
-			if !(_objet isKindOf (typeOf _remorqueur)) then {
-				//A3
-				if (_remorqueur isKindOf "B_Truck_01_mover_F") then {_offset_attach_y = 1 };
-
-				// CUP
-				if (_remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z + 2.4};
-				if (_objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
-
-				// RHS
-				if (_remorqueur isKindOf "RHS_Ural_Base") then { _offset_attach_z = _offset_attach_z + 2.0 };
-				if (_objet isKindOf "RHS_Ural_Base") then { _offset_attach_z = _offset_attach_z - 2.0 };	
-				if (_remorqueur isKindOf "RHS_Ural_Zu23_Base") then { _offset_attach_z = _offset_attach_z + 2.0 };
-				if (_objet isKindOf "RHS_Ural_Zu23_Base") then { _offset_attach_z = _offset_attach_z - 2.0 };
-				if (_remorqueur isKindOf "rhs_a3t72tank_base") then { _offset_attach_z = _offset_attach_z + 1.2 };
-				if (_objet isKindOf "rhs_a3t72tank_base") then { _offset_attach_z = _offset_attach_z - 0.8 };				
-			};
+			private _offset_data = [_objet, _remorqueur] call R3F_LOG_FNCT_remorqueur_fix;
+			private _offset_attach_x = _offset_data select 0;
+			private _offset_attach_y = _offset_data select 1;
+			private _offset_attach_z = _offset_data select 2;
 
 			// On place le joueur sur le c�t� du v�hicule en fonction qu'il se trouve � sa gauche ou droite
 			if ((_remorqueur worldToModel (player modelToWorld [0,0,0])) select 0 > 0) then	{
@@ -119,13 +98,21 @@ else
 			private _pos_z = ((boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2)) + _offset_attach_z;
 			_objet attachTo [_remorqueur, [_pos_x, _pos_y, _pos_z]];
 
+			// Lock Vehicles
+			if (_objet isKindOf "AllVehicles") then {
+				_objet lockCargo true;
+				_objet lockDriver true;
+				for "_i" from 0 to (_objet emptyPositions "Cargo") do { _objet lockCargo [_i, true] };
+				{ _objet lockTurret [_x, true] } forEach (allTurrets _objet);
+				_objet setVehicleLock "LOCKED";
+			};
+			
 			R3F_LOG_objet_selectionne = objNull;
 
 			detach player;
 
 			// Si l'objet est une arme statique, on corrige l'orientation en fonction de la direction du canon
-			if (_objet isKindOf "StaticWeapon") then
-			{
+			if (_objet isKindOf "StaticWeapon") then {
 				private ["_azimut_canon"];
 
 				_azimut_canon = ((_objet weaponDirection (weapons _objet select 0)) select 0) atan2 ((_objet weaponDirection (weapons _objet select 0)) select 1);
@@ -138,11 +125,8 @@ else
 
 				_objet setDir ((getDir _objet)-_azimut_canon);
 			};
-
 			sleep 7;
-		}
-		else
-		{
+		} else {
 			hintC format [STR_R3F_LOG_objet_en_cours_transport, [_objet] call F_getLRXName];
 		};
 	};

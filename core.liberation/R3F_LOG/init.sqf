@@ -218,6 +218,7 @@
 		R3F_LOG_FNCT_heliporteur_init = compile preprocessFileLineNumbers "R3F_LOG\heliporteur\heliporteur_init.sqf";
 
 		R3F_LOG_FNCT_remorqueur_detacher = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\detacher.sqf";
+		R3F_LOG_FNCT_remorqueur_fix = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\remorqueur_fix.sqf";
 		R3F_LOG_FNCT_remorqueur_remorquer_deplace = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\remorquer_deplace.sqf";
 		R3F_LOG_FNCT_remorqueur_remorquer_direct = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\remorquer_direct.sqf";
 		R3F_LOG_FNCT_remorqueur_init = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\remorqueur_init.sqf";
