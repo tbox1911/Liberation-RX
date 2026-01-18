@@ -7,8 +7,8 @@ private _nearest = [];
 
 // search BLUFOR Units
 private _target = [_startpos, GRLIB_sector_size] call F_getNearestBlufor;
-if (!isNil "_target") exitWith {
-	_sector_pos = getPosATL _target;
+if (!isNull _target) exitWith {
+	_sector_pos = getPos _target;
 	_refdistance = round (_target distance2D _startpos);
 	[_sector_pos, _refdistance];
 };

@@ -33,11 +33,11 @@ if (isNil {_vehicle getVariable "GREUH_vehicle_defense"}) then {
 						sleep 0.2;
 					} forEach _cargo;
 
-					private _next_objective = [getPos _leader, GRLIB_spawn_min] call F_getNearestBlufor;
-					if (isNil "_next_objective") then {
+					private _target = [getPos _leader, GRLIB_spawn_min] call F_getNearestBlufor;
+					if (isNull _target) then {
 						{ deleteVehicle _x } forEach _cargo;
 					} else {
-						[group _leader, _next_objective] spawn battlegroup_ai;
+						[group _leader, _target] spawn battlegroup_ai;
 					};
 				};
 			};

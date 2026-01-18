@@ -64,7 +64,10 @@ while {alive _vehicle} do {
 	// kamikaze + bomb
 	if (_uav_role == 0) then {
 		_target = [_targetpos, 300] call F_getNearestBlufor;
-		if (!isNil "_target") then {
+		if (isNull _target) then {
+			{deleteVehicle _x} forEach (crew _vehicle);
+			deleteVehicle _vehicle;
+		} else {
 			deleteWaypoint [_grp, 0];
 			_waypoint = _grp addWaypoint [(getPosATL _target), 10];
 			_waypoint setWaypointType "MOVE";
@@ -91,16 +94,13 @@ while {alive _vehicle} do {
 				_vehicle setVelocity [0,0,-100];
 				sleep 20;
 			};
-		} else {
-			{deleteVehicle _x} forEach (crew _vehicle);
-			deleteVehicle _vehicle;
 		};
 	};
 
 	// lanch grenades
 	if (_uav_role == 1) then {
 		_target = [_vehicle, 200] call F_getNearestBlufor;
-		if (!isNil "_target") then {
+		if (!isNull _target) then {
 			[_grp] call F_deleteWaypoints;
 			waitUntil {
 				private _dist = _vehicle distance2D _target;
