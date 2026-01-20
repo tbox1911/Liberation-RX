@@ -35,6 +35,9 @@ private _building_classname = [
 ];
 
 private _building_blacklist = [
+	"Land_Communication_anchor_F",
+ 	"Land_LampHarbour_F",
+ 	"Land_LampHalogen_F",
 	"Land_Pier_F",
 	"Land_Pier_addon",
 	"Land_Communication_F",

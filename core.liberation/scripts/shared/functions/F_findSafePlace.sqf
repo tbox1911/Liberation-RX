@@ -33,7 +33,7 @@ while { _radius < _max_radius } do {
 if (_radius >= _max_radius) then { _spawn_pos = [] };
 
 if (count _spawn_pos == 0) then {
-    diag_log format ["--- LRX Debug: Cant find suitable position at %1 DGB S%2:R%3:W%4", _start_pos,_size,_max_radius,_water_mode];
+    diag_log format ["--- LRX Debug: Cant find suitable position at %1 - DGB: S%2:R%3:W%4", _start_pos,_size,_max_radius,_water_mode];
 };
 
 _spawn_pos;
