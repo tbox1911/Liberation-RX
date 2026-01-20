@@ -9,18 +9,24 @@ if (count _start_pos == 0) exitWith {[]};
 private _big_building = ["Land_Communication_F", "Land_TTowerBig_1_F", "Land_Factory_Main_F", "Land_dp_mainFactory_F"];
 private _object_type = ["TREE", "BUILDING", "HOUSE", "ROCK", "WALL", "FENCE", "HIDE", "FUELSTATION", "CHURCH", "WATERTOWER", "TRANSMITTER", "SHIPWRECK"];
 if (!_on_road) then { _object_type append ["ROAD", "MAIN ROAD", "TRACK", "TRAIL"] };
-private _radius = 0;
+private _radius = 1;
+private _maxalt = 120;
 private _spawn_pos = [];
+private _maxpos = [];
+
 while { _radius < _max_radius } do {
-    _spawn_pos = [(_start_pos select 0), (_start_pos select 1)] getPos [_radius, floor random 360];
+    _spawn_pos = ([_start_pos, _radius] call F_getRandomPos);
+    _spawn_pos set [2, 0.5];
+    _maxpos = _spawn_pos vectorAdd [0,0,_maxalt];
     if (
+        !(lineIntersects [_spawn_pos, _maxpos]) &&
         count (_spawn_pos isFlatEmpty [-1, -1, 0.5, (_size + 5), _water_mode, false]) != 0 &&
         count (nearestObjects [_spawn_pos, ["LandVehicle", "CAManBase"], (_size + 3)]) == 0 &&
         count (nearestObjects [_spawn_pos, ["House","House_F"], (_size + 7)]) == 0 &&
         count (nearestObjects [_spawn_pos, _big_building, (_size + 25)]) == 0 &&
         count (nearestTerrainObjects [_spawn_pos, _object_type, (_size + 2)]) == 0
     ) exitWith {};
-    _radius = _radius + 0.5;
+    _radius = _radius + 0.2;
     sleep 0.01;
 };
 

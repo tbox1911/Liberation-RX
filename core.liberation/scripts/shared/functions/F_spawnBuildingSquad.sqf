@@ -1,5 +1,5 @@
 params [
-	"_infsquad",
+	"_type",
 	"_building_ai_max",
 	"_sector_pos",
 	["_building_range", GRLIB_capture_size],
@@ -12,12 +12,12 @@ if (isNil "GRLIB_building_used") then { GRLIB_building_used = [] };
 
 private _side = GRLIB_side_enemy;
 private _squad_comp = [];
-switch (_infsquad) do {
+switch (_type) do {
 	case ("infantry"): { _squad_comp = opfor_infantry };
 	case ("militia"): { _squad_comp = militia_squad };
 	case ("resistance"): { _squad_comp = a3w_resistance_squad; _side = GRLIB_side_friendly};
 	case ("hostages"): { _squad_comp = civilians; _side = GRLIB_side_civilian};
-	default { _squad_comp = [] call F_getAdaptiveSquadComp; _infsquad = "auto" };
+	default { _squad_comp = [] call F_getAdaptiveSquadComp; _type = "auto" };
 };
 
 private _building_classname = [
@@ -62,11 +62,11 @@ if (isNull _building) then {
 
 private _position_count = count _building_pos min _building_ai_max;
 if (_position_count == 0) exitWith {
-	diag_log format ["---LRX Error: Can't build squad(%1) type %2 in building %3", _position_count, _infsquad, typeOf _building];
+	diag_log format ["---LRX Error: Can't build squad(%1) type %2 in building %3", _position_count, _type, typeOf _building];
 	[]
 };
 
-diag_log format ["Spawn building squad(%1) type %2 in building %3 at %4", _position_count, _infsquad, typeOf _building, time];
+diag_log format ["Spawn building squad(%1) type %2 in building %3 at %4", _position_count, _type, typeOf _building, time];
 
 private _unitclass = [];
 while { count _unitclass < _position_count } do { _unitclass pushback (selectRandom _squad_comp) };
@@ -79,6 +79,7 @@ private _grp = [_sector_pos, _unitclass, _side, "building", _mission_ai] call F_
 	_x setUnitPos "UP";
 	_x setPos (_building_pos select _forEachIndex);
 	[_x, _keep_position] spawn building_defence_ai;
+	if (_type == "militia") then { [_x] call loadout_militia };
 } foreach (units _grp);
 
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];

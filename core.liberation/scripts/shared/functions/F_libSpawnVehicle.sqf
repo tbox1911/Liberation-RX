@@ -61,7 +61,7 @@ if (_classname isKindOf "Air") then {
 	};
 
 	if (_classname isKindOf "Ship_F") then {
-		if (_sea_deep >= -2) then {
+		if (_sea_deep > -2) then {
 			diag_log format ["--- LRX Error: No enough depth (%1) to build boat %2", _sea_deep, _classname];
 			_classname = "";
 		};

@@ -1,4 +1,4 @@
-_unit = _this select 0;
+params ["_unit"];
 
 private _class_overide = toLower (typeOf _unit);
 if (_class_overide in militia_loadout_overide) then {
