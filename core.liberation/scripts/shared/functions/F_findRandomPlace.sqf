@@ -4,7 +4,8 @@ private _spawn_pos = [];
 private _max_try = 25;
 
 while { count _spawn_pos == 0 && _max_try > 0} do {
-    private _rnd_pos = [(_start_pos select 0), (_start_pos select 1)] getPos [floor random GRLIB_sector_size, floor random 360];
+    private _radius = 10 + (floor random GRLIB_sector_size);
+    private _rnd_pos = ([_start_pos, _radius] call F_getRandomPos);
     private _keep_pos = true;
 
     // position in Water

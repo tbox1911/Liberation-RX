@@ -7,6 +7,8 @@ params [
 ];
 
 if (count _classname == 0) exitWith { diag_log ["--- LRX Error: no unit to create.", _this]; grpNull };
+if (isNil "_spawn_pos") exitWith { diag_log ["--- LRX Error: no position to create unit.", _this]; grpNull };
+if (count _spawn_pos == 0) exitWith { diag_log ["--- LRX Error: no position to create unit.", _this]; grpNull };
 
 private _grp = createGroup [_side, true];
 if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpNull };
@@ -33,8 +35,7 @@ switch (_type) do {
 
 private ["_unit", "_ai_rank", "_pos", "_backpack"];
 {
-	_pos = _spawn_pos getPos [(2 + floor random 20), floor random 360];
-	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
+	_unit = _grp createUnit [_x, _spawn_pos, [], 10, "NONE"];
 	sleep 0.1;
 	if (!isNil "_unit") then {
 		_unit allowDamage false;
@@ -52,6 +53,7 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		_unit setUnitRank _ai_rank;
 		_unit setSkill (0.5 + (GRLIB_rank_level find _ai_rank) * 0.05);
 
+		_pos = getPos _unit;
 		if (_type == "divers") then {
 			_pos set [2, -6];
 			_unit setPosASL _pos;

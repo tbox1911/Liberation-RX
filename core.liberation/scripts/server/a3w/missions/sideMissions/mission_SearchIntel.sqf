@@ -71,7 +71,7 @@ _setupObjects = {
 	private ["_pos", "_dir"];
 	for "_i" from 1 to 5 do {
 		_pos = [getPosATL _vehicle, 20, 0, 150] call F_findSafePlace;
-		if (count _pos != 0) then {
+		if (count _pos > 0) then {
 			_dir = random 360;
 			_build = createVehicle [selectRandom _buildings, _pos, [], 1, "None"];
 			_build setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];

@@ -38,16 +38,20 @@ _setupObjects = {
 
 	// create static weapons
 	private _pos = [_missionPos, 3, 0, 80] call F_findSafePlace;
-	private _veh1 = [_pos, a3w_resistance_static, 2, true, GRLIB_side_friendly, true, true] call F_libSpawnVehicle;
-	_veh1 setVariable ["R3F_LOG_disabled", true, true];
-	_managed_units append (crew _veh1);
-	sleep 1;
-
+	if (count _pos > 0) then {
+		private _veh1 = [_pos, a3w_resistance_static, 2, true, GRLIB_side_friendly, true, true] call F_libSpawnVehicle;
+		_veh1 setVariable ["R3F_LOG_disabled", true, true];
+		_managed_units append (crew _veh1);
+		sleep 1;
+	};
+	
 	private _pos = [_missionPos, 3, 0, 80] call F_findSafePlace;
-	private _veh2 = [_pos, a3w_resistance_static, 2, true, GRLIB_side_friendly, true, true] call F_libSpawnVehicle;
-	_veh2 setVariable ["R3F_LOG_disabled", true, true];
-	_managed_units append (crew _veh2);
-	sleep 1;
+	if (count _pos > 0) then {
+		private _veh2 = [_pos, a3w_resistance_static, 2, true, GRLIB_side_friendly, true, true] call F_libSpawnVehicle;
+		_veh2 setVariable ["R3F_LOG_disabled", true, true];
+		_managed_units append (crew _veh2);
+		sleep 1;
+	};
 
 	// enable speak
 	{
