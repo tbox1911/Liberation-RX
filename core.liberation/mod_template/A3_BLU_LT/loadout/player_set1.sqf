@@ -10,13 +10,12 @@ removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
-#include "loadout_init.sqf"
-
 //  "Add weapons";
 _unit addWeapon "hgun_Pistol_heavy_01_green_F";
 _unit addHandgunItem "optic_MRD_black";
 _unit addHandgunItem "11Rnd_45ACP_Mag";
 
+#include "loadout_init.sqf"
 _unit forceAddUniform (selectRandom _pmc_uniforms);
 _unit addVest (selectRandom _pmc_vest);
 _unit addHeadgear (selectRandom _pmc_headgear);

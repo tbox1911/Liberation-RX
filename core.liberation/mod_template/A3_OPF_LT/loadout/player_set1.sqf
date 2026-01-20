@@ -15,9 +15,9 @@ _unit addWeapon "hgun_Pistol_heavy_01_green_F";
 _unit addHandgunItem "optic_MRD_black";
 _unit addHandgunItem "11Rnd_45ACP_Mag";
 
-//  "Add containers";
-_unit forceAddUniform "U_O_CombatUniform_ocamo";
-_unit addVest "V_Rangemaster_belt";
+#include "loadout_init.sqf"
+_unit forceAddUniform (selectRandom _pmc_uniforms);
+_unit addVest (selectRandom _pmc_vest);
 
 //  "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
