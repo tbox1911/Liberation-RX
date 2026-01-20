@@ -16,7 +16,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		if (!opforcap_max && count active_sectors < GRLIB_max_active_sectors) then {
 			_unit = _x;
 			_nextsector = [GRLIB_sector_size, _unit, (opfor_sectors - active_sectors)] call F_getNearestSector;
-			if (_nextsector != "") then {
+			if (_nextsector != "" && !GRLIB_sector_spawning) then {
 				[_nextsector] call start_sector;
 			};
 		};
@@ -47,5 +47,5 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	} forEach _hc_missions;
 
 	//diag_log format [ "Full sector scan at %1, active sectors: %2", time, active_sectors ];
-	sleep 3;
+	sleep 5;
 };

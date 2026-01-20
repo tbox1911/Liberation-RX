@@ -1,14 +1,17 @@
 params ["_sector"];
 
-diag_log format ["--- LRX Manage Sector %1 (queued: %2)", _sector, GRLIB_sector_spawning];
-if (GRLIB_sector_spawning) then {
-	waitUntil { sleep 10; !GRLIB_sector_spawning };
+if (GRLIB_sector_spawning) exitWith {
+	diag_log format ["--- LRX Manage Sector: Another Sector %1 is already spawning, aborting.", _sector];
 };
 
-private _sector_pos = markerPos _sector;
-if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0 && !GRLIB_Commander_mode) exitWith {};
 if (_sector in active_sectors + blufor_sectors) exitWith {
-	diag_log format ["Sector %1 already active, aborting.", _sector];
+	diag_log format ["--- LRX Manage Sector: Sector %1 already active, aborting.", _sector];
+};
+
+sleep 5;
+private _sector_pos = markerPos _sector;
+if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0 && !GRLIB_Commander_mode) exitWith {
+	diag_log format ["--- LRX Manage Sector: Sector %1 have no more enemy, aborting.", _sector];
 };
 
 active_sectors pushback _sector;
