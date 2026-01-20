@@ -147,11 +147,10 @@ if (isNil "militia_squad") exitWith {
 { militia_squad set [_forEachIndex, toLower _x] } forEach militia_squad;
 { militia_loadout_overide set [_forEachIndex, toLower _x] } forEach militia_loadout_overide;
 
-if (isNil "militia_vehicles") exitWith {
+if (isNil "militia_vehicles") then {
 	diag_log format ["--- LRX Template Error: in template (%1), ""%2"" definition is NOT present in classnames_east.sqf !", GRLIB_mod_east, "militia_vehicles"];
-	abort_loading = true;
+	militia_vehicles = [opfor_mrap_hmg, opfor_mrap_gmg];
 };	
-{ militia_vehicles set [_forEachIndex, toLower _x] } forEach militia_vehicles;
 
 // *** TFAR RADIO ***
 if (GRLIB_TFR_enabled) then {
