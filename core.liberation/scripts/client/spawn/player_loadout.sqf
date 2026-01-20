@@ -29,8 +29,9 @@ if (isNil {player getVariable "GREUH_stuff_price"}) then {
 		[_path, player] call F_getTemplateFile;
 	} else {
 		// Overide
-		if (typeOf player in units_loadout_overide) then {
-			private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
+		private _class_overide = toLower (typeOf player);
+		if (_class_overide in units_loadout_overide) then {
+			private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, _class_overide];
 			[_path, player] call F_getTemplateFile;
 		} else {
 			// Default

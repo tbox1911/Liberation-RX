@@ -5,7 +5,7 @@ private _grp = createGroup [GRLIB_side_friendly, true];
 player setVariable ["my_squad", _grp, true];
 _grp setGroupIdGlobal [format ["%1 %2", squads_names select buildindex, groupId _grp]];
 
-private ["_unitrank", "_unit"];
+private ["_unitrank", "_unit", "_class_overide"];
 {
 	_unitrank = "PRIVATE";
 	if(_forEachIndex == 0) then { _unitrank = "SERGEANT" };
@@ -20,8 +20,9 @@ private ["_unitrank", "_unit"];
 	_unit enableIRLasers true;
 	_unit enableGunLights "Auto";
 	if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
-	if (_x in units_loadout_overide) then {
-		private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _x];
+	_class_overide = toLower _x;
+	if (_class_overide in units_loadout_overide) then {
+		private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, _class_overide];
 		[_path, _unit] call F_getTemplateFile;
 	};
 	sleep 0.2;

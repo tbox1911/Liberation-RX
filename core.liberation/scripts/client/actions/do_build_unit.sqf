@@ -27,8 +27,9 @@ if (GRLIB_ACE_medical_enabled && ([_unit] call PAR_is_medic)) then {
 if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
 
 [_unit, configOf _unit] call BIS_fnc_loadInventory;
-if (_classname in units_loadout_overide) then {
-    private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
+private _class_overide = toLower _classname;
+if (_class_overide in units_loadout_overide) then {
+    private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, _class_overide];
     [_path, _unit] call F_getTemplateFile;
 };
 

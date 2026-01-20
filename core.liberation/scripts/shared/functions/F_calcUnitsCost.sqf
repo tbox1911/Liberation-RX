@@ -10,8 +10,9 @@ infantry_units = [];
 		_unit = _unit_class createVehicle zeropos;
 		_unit allowDamage false;
 		[_unit, configOf _unit] call BIS_fnc_loadInventory;
-		if (_unit_class in units_loadout_overide) then {
-			private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _unit_class];
+		private _class_overide = toLower _unit_class;
+		if (_class_overide in units_loadout_overide) then {
+			private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, _class_overide];
 			[_path, _unit] call F_getTemplateFile;  
 		};
 		_unit_cost = [_unit] call F_loadoutPrice;

@@ -94,6 +94,7 @@ GRLIB_vehicle_whitelist = [];
 GRLIB_vehicle_blacklist = [];
 static_vehicles_AI = [];
 units_loadout_overide = [];
+militia_loadout_overide = [];
 sticky_bombs_typename = [
 	// need Magzine and Ammo typename
 	"DemoCharge_Remote_Mag", "DemoCharge_Remote_Ammo",

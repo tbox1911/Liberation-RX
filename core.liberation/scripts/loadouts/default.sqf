@@ -1,7 +1,8 @@
 _unit = _this select 0;
 
-if (typeOf _unit in militia_loadout_overide) then {
-    private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_east, toLower (typeOf _unit)];
+private _class_overide = toLower (typeOf _unit);
+if (_class_overide in militia_loadout_overide) then {
+    private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_east, _class_overide];
 	[_path, _unit] call F_getTemplateFile;    
 } else {
     // Global overide militia default loadout

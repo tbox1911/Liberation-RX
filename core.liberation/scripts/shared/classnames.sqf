@@ -16,11 +16,13 @@ zeropos = [0,0,10000];
 _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
 _ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
+
 diag_log "--- LRX: Check West Classnames ---";
 private _blufor_vehicles = [];
 { _blufor_vehicles pushBackUnique (_x select 0) } forEach (infantry_units_west + light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles_west + buildings_west);
 { _blufor_vehicles pushBackUnique _x } foreach (blufor_air + static_vehicles_AI + boats_west + blufor_squad_inf_light + blufor_squad_inf + blufor_squad_at + blufor_squad_aa + blufor_squad_mix);
 { [_x] call F_checkClass } forEach _blufor_vehicles;
+{ units_loadout_overide set [_forEachIndex, toLower _x] } forEach units_loadout_overide;
 
 // *** MFR Dogs ****
 MFR_Dogs_classname = [];
@@ -138,45 +140,18 @@ if (count civilian_vehicles == 0) then { civilian_vehicles = "C_SUV_01_F" };
 
 // *** MILITIA ***
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
-if ( isNil "militia_squad" ) then {
-	militia_squad = [
-		"O_G_Soldier_SL_F",
-		"O_G_Soldier_A_F",
-		"O_G_Soldier_AR_F",
-		"O_G_Soldier_AR_F",
-		"O_G_medic_F",
-		"O_G_engineer_F",
-		"O_G_Soldier_exp_F",
-		"O_G_Soldier_GL_F",
-		"O_G_Soldier_M_F",
-		"O_G_Soldier_F",
-		"O_G_Soldier_LAT_F",
-		"O_G_Soldier_LAT_F",
-		"O_G_Soldier_lite_F",
-		"O_G_Sharpshooter_F",
-		"O_G_Soldier_TL_F",
-		"O_Soldier_AA_F",
-		"O_Soldier_AT_F"
-	];
+if (isNil "militia_squad") exitWith {
+	diag_log format ["--- LRX Template Error: in template (%1), ""%2"" definition is NOT present in classnames_east.sqf !", GRLIB_mod_east, "militia_squad"];
+	abort_loading = true;
 };
+{ militia_squad set [_forEachIndex, toLower _x] } forEach militia_squad;
+{ militia_loadout_overide set [_forEachIndex, toLower _x] } forEach militia_loadout_overide;
 
-if ( isNil "militia_loadout_overide" ) then {
-	militia_loadout_overide = [
-		"O_Soldier_AA_F",
-		"O_Soldier_AT_F"
-	];
-};
-
-if ( isNil "militia_vehicles" ) then {
-	militia_vehicles = [
-		"O_G_Offroad_01_armed_F",
-		"O_G_Offroad_01_armed_F",
-		"O_G_Offroad_01_AT_F",
-		"I_C_Offroad_02_LMG_F",
-		"O_LSV_02_armed_F",
-		"O_LSV_02_AT_F"
-	];
-};
+if (isNil "militia_vehicles") exitWith {
+	diag_log format ["--- LRX Template Error: in template (%1), ""%2"" definition is NOT present in classnames_east.sqf !", GRLIB_mod_east, "militia_vehicles"];
+	abort_loading = true;
+};	
+{ militia_vehicles set [_forEachIndex, toLower _x] } forEach militia_vehicles;
 
 // *** TFAR RADIO ***
 if (GRLIB_TFR_enabled) then {
@@ -262,7 +237,7 @@ opfor_troup_transports_truck = opfor_troup_transports_truck + [opfor_transport_t
 elite_vehicles = ((heavy_vehicles + air_vehicles + static_vehicles) select {_x select 4 == GRLIB_perm_max}) apply { _x select 0 };
 
 // *** Boats ***
-if ( isNil "civilian_boats" ) then {
+if (isNil "civilian_boats") then {
 	civilian_boats = [
 		"C_Scooter_Transport_01_F",
 		"C_Boat_Civil_01_F",
@@ -275,7 +250,7 @@ if ( isNil "civilian_boats" ) then {
 boats_names = [FOB_boat_typename, FOB_carrier] + civilian_boats + opfor_boats + boats_west;
 
 // *** LRX - A3W Side Mission ***
-if ( isNil "a3w_guard_squad" ) then {
+if (isNil "a3w_guard_squad") then {
 	a3w_guard_squad = [
 		"O_GEN_Commander_F",
 		"O_GEN_Soldier_F",
@@ -285,7 +260,7 @@ if ( isNil "a3w_guard_squad" ) then {
 	];
 };
 
-if ( isNil "a3w_divers_squad" ) then {
+if (isNil "a3w_divers_squad") then {
 	a3w_divers_squad = [
 		"O_diver_TL_F",
 		"O_diver_TL_F",
@@ -300,7 +275,7 @@ if ( isNil "a3w_divers_squad" ) then {
 	];
 };
 
-if ( isNil "a3w_resistance_squad" ) then {
+if (isNil "a3w_resistance_squad") then {
 	a3w_resistance_squad = [
 		"B_G_Soldier_SL_F",
 		"B_G_Soldier_A_F",
@@ -317,52 +292,52 @@ if ( isNil "a3w_resistance_squad" ) then {
 	];
 };
 
-if ( isNil "a3w_resistance_static" ) then {
+if (isNil "a3w_resistance_static") then {
 	a3w_resistance_static = "B_static_AA_F";
 };
 
-if ( isNil "a3w_enemy_static" ) then {
+if (isNil "a3w_enemy_static") then {
 	a3w_enemy_static = ["O_HMG_01_high_F", "O_GMG_01_high_F"];
 };
 
-if ( isNil "a3w_vip_vehicle" ) then {
+if (isNil "a3w_vip_vehicle") then {
 	a3w_vip_vehicle = "C_Offroad_01_covered_F";
 };
 
-if ( isNil "a3w_sd_item" ) then {
+if (isNil "a3w_sd_item") then {
 	a3w_sd_item = "Land_Suitcase_F";
 };
 
-if ( isNil "a3w_br_planes" ) then {
+if (isNil "a3w_br_planes") then {
 	a3w_br_planes = [
 		"O_Plane_CAS_02_dynamicLoadout_F",
 		"O_Plane_Fighter_02_Stealth_F"
 	];
 };
 
-if ( isNil "a3w_heal_medics" ) then {
+if (isNil "a3w_heal_medics") then {
 	a3w_heal_medics = [
 		"C_IDAP_Man_Paramedic_01_F",
 		"C_scientist_F"
 	];
 };
 
-if ( isNil "a3w_heal_tent" ) then {
+if (isNil "a3w_heal_tent") then {
 	a3w_heal_tent = "Land_MedicalTent_01_white_IDAP_open_F";
 };
 
-if ( isNil "a3w_truck_covered" ) then {
+if (isNil "a3w_truck_covered") then {
 	a3w_truck_covered = "C_Truck_02_covered_F";
 };
 
-if ( isNil "a3w_truck_open" ) then {
+if (isNil "a3w_truck_open") then {
 	a3w_truck_open = "C_Truck_02_transport_F";
 };
 
 // *** SOURCES ***
 
 // Static Weapons
-blufor_statics = (static_vehicles select {!(( _x select 0) in (uavs_vehicles + static_vehicles_AI))}) apply { _x select 0 };
+blufor_statics = (static_vehicles select {!((_x select 0) in (uavs_vehicles + static_vehicles_AI))}) apply { _x select 0 };
 list_static_weapons = [a3w_resistance_static] + blufor_statics + opfor_statics;
 list_static_weapons = list_static_weapons arrayIntersect list_static_weapons;
 
@@ -557,7 +532,7 @@ buildings append [
 
 private _buildings_to_delete = [];
 {
-	if (( _x select 0) in (all_friendly_classnames + all_hostile_classnames)) then { _buildings_to_delete pushBack _x };
+	if ((_x select 0) in (all_friendly_classnames + all_hostile_classnames)) then { _buildings_to_delete pushBack _x };
 } forEach buildings;
 buildings = buildings - _buildings_to_delete;
 
