@@ -6218,10 +6218,8 @@
 			<Czech>Vynutit výchozí vybavení</Czech>
 		</Key>
 		<Key ID="STR_FREE_LOADOUT">
-			<Original>Equipment is worthless</Original>
-			<French>L'équipement ne vaut rien</French>
-			<Chinesesimp>装备毫无价值</Chinesesimp>
-			<Chinese>裝備毫無價值</Chinese>
+			<Original>Gears and Weapons cost nothing</Original>
+			<French>L'équipement et les Armes ne coute rien</French>
 		</Key>
 		<Key ID="STR_THERMAL">
 			<Original>Enable Thermal equipments</Original>
@@ -12099,13 +12097,7 @@
 			<Czech>Vynutit vybavení Předvolba 2</Czech>
 		</Key>
 		<Key ID="STR_FREE_LOADOUT_DESC">
-			<Original>Allows players to select their own loadout when enabled.</Original>
-			<Russian>Позволяет игрокам выбирать собственный комплект экипировки при включении.</Russian>
-			<French>Permet aux joueurs de sélectionner leur propre équipement lorsqu’il est activé.</French>
-			<Chinesesimp>启用时允许玩家选择自己的配置。</Chinesesimp>
-			<Chinese>啟用時允許玩家選擇自己的配置。</Chinese>
-			<Portuguese>Permite aos jogadores selecionar seu próprio loadout quando ativado.</Portuguese>
-			<Czech>Umožňuje hráčům vybrat si vlastní vybavení, když je povoleno.</Czech>
+			<Original>All Gears and Weapons cost nothing.</Original>
 		</Key>
 		<Key ID="STR_FREE_LOADOUT_OPT0">
 			<Original>Disable free loadout</Original>

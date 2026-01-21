@@ -137,4 +137,6 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 };
 LRX_mod_list = (LRX_mod_list_west + LRX_mod_list_east);
 LRX_mod_list = LRX_mod_list arrayIntersect LRX_mod_list;
-//publicVariable "LRX_mod_list";
+
+GRLIB_free_loadout = [GRLIB_PARAM_FreeLoadout] call lrx_getParamValue;
+GRLIB_free_loadout = (GRLIB_free_loadout == 1);
