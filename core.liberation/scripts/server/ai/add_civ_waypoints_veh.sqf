@@ -45,6 +45,14 @@ if (count _convoy_destinations < _min_waypoints) exitWith {
 	false;
 };
 
+if (_vehicle isKindOf "LandVehicle") then {
+	_vehicle allowDamage false;
+	_vehicle setPos (_convoy_destinations select 0);
+	sleep 1;
+	_vehicle allowDamage true;
+	//(driver _vehicle) MoveTo (_convoy_destinations select 1)
+};
+
 {
 	_waypoint = _grp addWaypoint [_x, 0];
 	_waypoint setWaypointType "MOVE";
@@ -53,8 +61,6 @@ if (count _convoy_destinations < _min_waypoints) exitWith {
 	_waypoint setWaypointCombatMode _combatMode;
 	_waypoint setWaypointCompletionRadius 200;
 } foreach _convoy_destinations;
-
-if !(isNull _vehicle) then { (driver _vehicle) MoveTo (_convoy_destinations select 1) };
 
 if (count (waypoints _grp) > 1) then {
 	_wp0 = waypointPosition [_grp, 0];
