@@ -204,6 +204,8 @@ if (!isNil "_lrx_liberation_savegame") then {
 		_nextclass = _x select 0;
 		_nextpos = _x select 1;
 		_nextdir = _x select 2;
+		_nextr3f = false;
+		if (!isNil {_x select 3}) then { _nextr3f = true };
 
 		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
 		_nextbuilding allowDamage false;
@@ -237,6 +239,10 @@ if (!isNil "_lrx_liberation_savegame") then {
 		if (_nextclass == FOB_carrier) then {
 			[_nextbuilding] call BIS_fnc_carrier01Init;
 			[_nextbuilding] call BIS_fnc_Carrier01PosUpdate;
+		};
+
+		if (_nextr3f) then {
+			_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 		};
 	} foreach _s1;
 

@@ -89,6 +89,7 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 		private _nextdir = [vectorDir _x, vectorUp _x];
 		private _hascrew = false;
 		private _owner = "";
+		private _r3f_state = _x getVariable ["R3F_LOG_disabled", false];
 
 		if (_nextclass in GRLIB_classnames_to_save_blu) then {
 			if (side group _x != GRLIB_side_enemy) then {
@@ -142,7 +143,11 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 				};
 			};
 		} else {
-			buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
+			if (_r3f_state) then {
+				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _r3f_state ];
+			} else {
+				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
+			};
 		};
 	} foreach _all_buildings;
 

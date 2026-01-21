@@ -93,6 +93,7 @@ _fob_pos set [2, 0];
         if (!surfaceIsWater _nextpos && !isOnRoad _nextpos) then {
             _building_count = _building_count + 1;
             _nextobject = _nextclass createVehicle _nextpos;
+            _nextobject setVariable ["R3F_LOG_disabled", true, true];
             _nextobject allowDamage false;
             _nextobject setPosATL _nextpos;
             if (_nextobject in GRLIB_FOB_Defense_Sea_level) then {

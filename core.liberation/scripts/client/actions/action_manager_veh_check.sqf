@@ -87,3 +87,8 @@ GRLIB_checkPackBeacon = {
 	params ["_target", "_unit"];	
 	(GRLIB_player_is_menuok && [_unit, _target] call is_owner && !(_target getVariable ['tent_in_use', false]))
 };
+
+GRLIB_checkAction_LockWall = {
+	params ["_target", "_unit"];
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && PAR_Grp_ID == [GRLIB_player_nearest_fob] call F_getFobOwner && !(_target getVariable ['R3F_LOG_disabled', false]) && (typeOf _target) in all_buildings_classnames) 
+};
