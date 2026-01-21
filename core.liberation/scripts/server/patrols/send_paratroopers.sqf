@@ -12,7 +12,7 @@ private _para_squad = [
 	opfor_paratrooper,
 	opfor_paratrooper,
 	opfor_paratrooper,
-	opfor_paratrooper,
+	opfor_rpg,
 	opfor_rpg
 ];
 if (_qrf == true) then {
