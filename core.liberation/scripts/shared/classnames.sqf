@@ -148,9 +148,9 @@ if (isNil "militia_squad") exitWith {
 { militia_loadout_overide set [_forEachIndex, toLower _x] } forEach militia_loadout_overide;
 
 if (isNil "militia_vehicles") then {
-	diag_log format ["--- LRX Template Error: in template (%1), ""%2"" definition is NOT present in classnames_east.sqf !", GRLIB_mod_east, "militia_vehicles"];
-	militia_vehicles = [opfor_mrap_hmg, opfor_mrap_gmg];
-};	
+	diag_log format ["--- LRX Template Warning: in template (%1), ""%2"" definition is NOT present in classnames_east.sqf !", GRLIB_mod_east, "militia_vehicles"];
+	militia_vehicles = [];
+};
 
 // *** TFAR RADIO ***
 if (GRLIB_TFR_enabled) then {
@@ -420,7 +420,7 @@ if (isNil "vehicle_preset_inventory_east") then {
 	opfor_vehicle_preset_weapons = [
 		"","",
 		"SatchelCharge_Remote_Mag",
-		"DemoCharge_Remote_Mag",		
+		"DemoCharge_Remote_Mag",
 		"HandGrenade",
 		"HandGrenade"
 	];
