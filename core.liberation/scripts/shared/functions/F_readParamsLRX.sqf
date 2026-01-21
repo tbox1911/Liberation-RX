@@ -13,6 +13,7 @@ GRLIB_mod_civ = [GRLIB_PARAM_ModPresetCiv] call lrx_getParamValue;
 GRLIB_mod_taxi = [GRLIB_PARAM_ModPresetTaxi] call lrx_getParamValue;
 GRLIB_enable_arsenal = [GRLIB_PARAM_EnableArsenal] call lrx_getParamValue;
 GRLIB_filter_arsenal = [GRLIB_PARAM_FilterArsenal] call lrx_getParamValue;
+GRLIB_free_loadout = [GRLIB_PARAM_FreeLoadout] call lrx_getParamValue;
 GRLIB_force_english = [GRLIB_PARAM_ForceEnglish] call lrx_getParamValue;
 GRLIB_sector_radius = [GRLIB_PARAM_SectorRadius] call lrx_getParamValue;
 GRLIB_TFR_radius = [GRLIB_PARAM_TFRadioRange] call lrx_getParamValue;
@@ -64,6 +65,7 @@ if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE
 
 GRLIB_permission_vehicles = (GRLIB_permission_vehicles == 1);
 GRLIB_permission_enemy = (GRLIB_permission_enemy == 1);
+GRLIB_free_loadout = (GRLIB_free_loadout == 1);
 GRLIB_force_english = (GRLIB_force_english == 1);
 GRLIB_enable_drones = (GRLIB_enable_drones == 1);
 GRLIB_Commander_mode = (GRLIB_Commander_mode == 1);
