@@ -2,8 +2,8 @@ params [
 	"_sectorpos",
 	"_classname",
 	["_size", 5],
-	["_random_rotate", false],
 	["_side", GRLIB_side_enemy],
+	["_type", "infantry"],
 	["_crewed", true],
 	["_mission_ai", false]
 ];
@@ -91,7 +91,7 @@ if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn Vehicle %1 Pos %2 at %3", _classname, getPosATL _vehicle, time ];
 };
 
-if (_crewed) then {	[_vehicle, _side, _mission_ai] call F_forceCrew };
+if (_crewed) then {	[_vehicle, _side, _mission_ai, _type] call F_forceCrew };
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 [_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;
@@ -101,10 +101,6 @@ if (_vehicle isKindOf "Air") then {
 	_vehicle engineOn true;
 	_vehicle flyInHeight _airveh_alt;
 	_vehicle flyInHeightASL [_airveh_alt, _airveh_alt, _airveh_alt];
-};
-
-if (_random_rotate) then {
-	_vehicle setdir (random 360);
 };
 
 if (_side == GRLIB_side_civilian) then {

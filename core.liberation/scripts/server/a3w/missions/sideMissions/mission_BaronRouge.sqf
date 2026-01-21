@@ -27,7 +27,7 @@ _setupObjects = {
 	};
 
 	private _airveh_alt = 2000;
-	_vehicle = [_missionPos, _vehicleClass, 0, false, GRLIB_side_enemy, true, true] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, _vehicleClass, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
 	_vehicle addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
 	_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];

@@ -16,7 +16,7 @@ _setupObjects = {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
-	_vehicle = [_missionPos, selectRandom opfor_vehicles, 5, false, GRLIB_side_enemy, false, true] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, selectRandom opfor_vehicles, 5, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
 	[_vehicle, "lock", "server"] call F_vehicleLock;
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;

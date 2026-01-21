@@ -27,7 +27,8 @@ private _convoy_group = createGroup [GRLIB_side_enemy, true];
 
 //-----------------------------------------
 // Scout Vehicles
-private _scout_vehicle = [_spawnpos, selectRandom (opfor_vehicles_low_intensity - opfor_troup_transports_truck), 0, nil, nil, nil, true] call F_libSpawnVehicle;
+private _scout_class = selectRandom (opfor_vehicles_low_intensity - opfor_troup_transports_truck);
+private _scout_vehicle = [_spawnpos, _scout_class, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
 (crew _scout_vehicle) joinSilent _convoy_group;
 (driver _scout_vehicle) limitSpeed 40;
 
@@ -49,7 +50,7 @@ private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _scout_vehicle distance2D _spawnpos > 30 || time > _timout};
 
 // ammo transport
-private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0, nil, nil, nil, true] call F_libSpawnVehicle;
+private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
 (crew _transport_vehicle) joinSilent _convoy_group;
 
 _transport_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
@@ -63,7 +64,7 @@ private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _transport_vehicle distance2D _spawnpos > 30 || time > _timout};
 
 // troop transport
-private _troop_vehicle = [_spawnpos, opfor_transport_truck, 0, nil, nil, nil, true] call F_libSpawnVehicle;
+private _troop_vehicle = [_spawnpos, opfor_transport_truck, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
 (crew _troop_vehicle) joinSilent _convoy_group;
 
 _troop_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];

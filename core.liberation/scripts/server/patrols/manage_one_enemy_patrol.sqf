@@ -25,7 +25,7 @@ if (count _usable_sectors > 0) then {
 	// 50% in vehicles
 	if (floor random 100 > 50 && count militia_vehicles > 0) then {
 		private _veh_type = selectRandom militia_vehicles;
-		_opfor_veh = [_sector_pos, _veh_type, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+		_opfor_veh = [_sector_pos, _veh_type, 3, GRLIB_side_enemy, "militia", false] call F_libSpawnVehicle;
 		_opfor_grp = [_opfor_veh, GRLIB_side_enemy, true] call F_forceCrew;
 		[_opfor_grp, _sector_pos, _opfor_veh] spawn add_civ_waypoints_veh;
 		diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];

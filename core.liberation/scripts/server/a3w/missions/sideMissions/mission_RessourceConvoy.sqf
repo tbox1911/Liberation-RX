@@ -39,7 +39,7 @@ _setupObjects = {
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 
 	// veh1
-	_vehicle1 = [_missionPos, opfor_mrap_hmg, 0, false, GRLIB_side_enemy, true, true] call F_libSpawnVehicle;
+	_vehicle1 = [_missionPos, opfor_mrap_hmg, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
 	(crew _vehicle1) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
 	_aiGroup selectLeader (driver _vehicle1);
@@ -55,7 +55,7 @@ _setupObjects = {
 	waitUntil {sleep 1; _vehicle1 distance2D _missionPos > 30 || time > _timout};
 
 	// veh2 + ressources
-	_vehicle2 = [_missionPos, a3w_truck_open, 0, false, GRLIB_side_enemy, true, true] call F_libSpawnVehicle;
+	_vehicle2 = [_missionPos, a3w_truck_open, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
 	(crew _vehicle2) joinSilent _aiGroup;
 	_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
 
@@ -75,7 +75,7 @@ _setupObjects = {
 	};
 
 	// veh3
-	_vehicle3 = [_missionPos, a3w_truck_covered, 0, false, GRLIB_side_enemy, true, true] call F_libSpawnVehicle;
+	_vehicle3 = [_missionPos, a3w_truck_covered, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
 	(crew _vehicle3) joinSilent _aiGroup;
 	_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
 

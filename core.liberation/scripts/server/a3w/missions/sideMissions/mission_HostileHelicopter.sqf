@@ -18,7 +18,7 @@ _setupObjects = {
     	false;
 	};
 	_vehicleClass = selectRandom opfor_troup_transports_heli;
-	_vehicle = [_missionPos, _vehicleClass, 0, false, GRLIB_side_enemy, true, true] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, _vehicleClass, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
 	_leader = driver _vehicle;
 	_aiGroup = group _leader;
 	_leader setSkill 0.70;

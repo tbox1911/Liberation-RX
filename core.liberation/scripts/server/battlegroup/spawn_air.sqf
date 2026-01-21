@@ -19,7 +19,7 @@ if (_side == GRLIB_side_enemy) then {
 if (count _planeType == 0) exitWith { diag_log format ["--- LRX Error: Cannot find Air classname in template %1", _side]; };
 
 private _grp = createGroup [_side, true];
-private _vehicle = [_targetpos, selectRandom _planeType, 0, false, _side] call F_libSpawnVehicle;
+private _vehicle = [_targetpos, selectRandom _planeType, 0, _side] call F_libSpawnVehicle;
 [_vehicle, 1800] call F_setUnitTTL;
 (crew _vehicle) joinSilent _grp;
 _grp setBehaviourStrong "COMBAT";

@@ -1,7 +1,8 @@
 params [
 	"_vehicle",
 	["_side", GRLIB_side_friendly],
-	["_mission_ai", false]
+	["_mission_ai", false],
+	["_type", "infantry"]
 ];
 
 if (count crew _vehicle > 0) exitWith { grpNull };
@@ -30,7 +31,7 @@ if (_vehicle_class in (uavs_vehicles + static_vehicles_AI)) exitWith { _grp };
 	switch (_side) do {
 		case GRLIB_side_enemy: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-			if (_vehicle_class in militia_vehicles) then {
+			if (_type == "militia") then {
 				private _path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
 				[_path, _unit] call F_getTemplateFile;
 				[_unit] spawn reammo_ai;
