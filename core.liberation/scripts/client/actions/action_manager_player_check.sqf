@@ -159,6 +159,7 @@ GRLIB_check_EjectCrew = {
 	if (!alive _target || captive _target) exitWith { false };
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };
+	if (count crew _vehicle == 1) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
 	if (_vehicle isKindOf "Air") exitWith { true };
 	if !([_target, _vehicle] call is_owner) exitWith { false };

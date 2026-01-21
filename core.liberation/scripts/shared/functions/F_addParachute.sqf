@@ -18,13 +18,24 @@ if (_info) then {
 _vehicle allowDamage false;
 
 private	_lst_grl = [];
+private ["_object", "_offset"];
 {
-	_lst_grl pushback (typeOf _x);
-	deleteVehicle _x;
+	_object = _x;
+	_offset = _vehicle worldToModel (_object modelToWorld [0,0,0]);
+	_offset = [
+		round ((_offset select 0) * 100) / 100,
+		round ((_offset select 1) * 100) / 100,
+		round ((_offset select 2) * 100) / 100
+	];
+	_lst_grl pushBack [_object, _offset];
 } forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
-_vehicle setVariable ["GRLIB_ammo_truck_load", [], true];
 
 waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
+{
+	_object = _x select 0;
+	detach _object;
+	_object hideObjectGlobal true;
+} forEach _lst_grl;
 
 private _pos = getPos _vehicle;
 private _parachute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "NONE"];
@@ -33,12 +44,20 @@ _parachute disableCollisionWith _source;
 _parachute setVelocity (velocity _vehicle);
 _vehicle attachTo [_parachute, [0,0,0.6]];
 
+sleep 0.5;
+{
+	_object = _x select 0;
+	_offset = _x select 1;
+	_object attachTo [_vehicle, _offset];
+	_object hideObjectGlobal false;
+} forEach _lst_grl;
+
 private _timeout = time + 150;
 waitUntil {sleep 0.1;((getPos _vehicle select 2) < _start_smoke || time > _timeout)};
 private _smoke1 = (_shell_smoke select _one) createVehicle _pos;
-_smoke1 attachTo [_vehicle,[0,0,0.6]];
+_smoke1 attachTo [_vehicle, [0,0,0.6]];
 private _smoke2 = (_shell_smoke select _two) createVehicle _pos;
-_smoke2 attachTo [_vehicle,[0,0,0.6]];
+_smoke2 attachTo [_vehicle, [0,0,0.6]];
 
 waitUntil {sleep 0.1; ((getPos _vehicle select 2) < 7 || time > _timeout)};
 detach _smoke1;
@@ -46,8 +65,6 @@ detach _smoke2;
 detach _vehicle;
 sleep 3;
 deleteVehicle _parachute;
-sleep 1;
-{ [_vehicle, _x] call attach_object_direct } forEach _lst_grl;
 sleep 1;
 [_vehicle] call F_vehicleUnflip;
 sleep 3;
