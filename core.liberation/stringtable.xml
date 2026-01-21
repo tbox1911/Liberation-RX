@@ -6217,6 +6217,12 @@
 			<Portuguese>Forçar equipamento padrão</Portuguese>
 			<Czech>Vynutit výchozí vybavení</Czech>
 		</Key>
+		<Key ID="STR_FREE_LOADOUT">
+			<Original>Equipment is worthless</Original>
+			<French>L'équipement ne vaut rien</French>
+			<Chinesesimp>装备毫无价值</Chinesesimp>
+			<Chinese>裝備毫無價值</Chinese>
+		</Key>
 		<Key ID="STR_THERMAL">
 			<Original>Enable Thermal equipments</Original>
 			<Russian>Использовать Термальное снаряжение</Russian>
@@ -12091,6 +12097,33 @@
 			<Chinese>強制使用預設2的配置</Chinese>
 			<Portuguese>Forçar loadout Predefinição 2</Portuguese>
 			<Czech>Vynutit vybavení Předvolba 2</Czech>
+		</Key>
+		<Key ID="STR_FREE_LOADOUT_DESC">
+			<Original>Allows players to select their own loadout when enabled.</Original>
+			<Russian>Позволяет игрокам выбирать собственный комплект экипировки при включении.</Russian>
+			<French>Permet aux joueurs de sélectionner leur propre équipement lorsqu’il est activé.</French>
+			<Chinesesimp>启用时允许玩家选择自己的配置。</Chinesesimp>
+			<Chinese>啟用時允許玩家選擇自己的配置。</Chinese>
+			<Portuguese>Permite aos jogadores selecionar seu próprio loadout quando ativado.</Portuguese>
+			<Czech>Umožňuje hráčům vybrat si vlastní vybavení, když je povoleno.</Czech>
+		</Key>
+		<Key ID="STR_FREE_LOADOUT_OPT0">
+			<Original>Disable free loadout</Original>
+			<Russian>Отключить свободный выбор экипировки</Russian>
+			<French>Désactiver le loadout libre</French>
+			<Chinesesimp>禁用自由加载配置</Chinesesimp>
+			<Chinese>禁用自由加載配置</Chinese>
+			<Portuguese>Desativar loadout livre</Portuguese>
+			<Czech>Zakázat volné vybavení</Czech>
+		</Key>
+		<Key ID="STR_FREE_LOADOUT_OPT1">
+			<Original>Enable free loadout</Original>
+			<Russian>Включить свободный выбор экипировки</Russian>
+			<French>Activer le loadout libre</French>
+			<Chinesesimp>启用自由加载配置</Chinesesimp>
+			<Chinese>啟用自由加載配置</Chinese>
+			<Portuguese>Ativar loadout livre</Portuguese>
+			<Czech>Povolit volné vybavení</Czech>
 		</Key>
 		<Key ID="STR_THERMAL_DESC">
 			<Original>Enables thermal vision with an option for night‑only activation.</Original>
