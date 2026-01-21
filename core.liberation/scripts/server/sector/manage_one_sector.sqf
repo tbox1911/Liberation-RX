@@ -245,9 +245,10 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 		_grp = [_sector, _infsquad, _squad, false] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
-		sleep 1;
 	};
-	_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, 4, _foreachIndex, 20, 40], _sectorName];
+	_ratio = round linearConversion [0, 4, _foreachIndex, 20, 40];
+	_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
+	sleep 0.5;
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
 
 // Create vehicles
@@ -259,9 +260,10 @@ if (count _vehtospawn > 0) then {
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
 			[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
-			sleep 1;
 		};
-		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, count _vehtospawn, _foreachIndex, 40, 60], _sectorName];
+		_ratio = round linearConversion [0, (count _vehtospawn) - 1, _foreachIndex, 50, 70];
+		_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
+		sleep 0.5;
 	} foreach _vehtospawn;
 };
 
@@ -270,9 +272,8 @@ if (opforcap_max) then { _building_ai_max = 0 };
 if (_building_ai_max > 0) then {
 	_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
 	if (_sector in sectors_bigtown) then { _building_ai_max = _building_ai_max + 12 };
-	_sector setMarkerText format ["%2 - Loading %1%%", 70, _sectorName];
+	_sector setMarkerText format ["%2 - Loading %1%%", 75, _sectorName];
 	_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_buildingSquad);
-	sleep 1;
 };
 _sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
 
@@ -288,8 +289,8 @@ if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 		[_grp, _sector_pos] spawn civilian_ai;
 		_managed_units = _managed_units + (units _grp);
 		_nbcivs = _nbcivs - _max_units;
-		_sector setMarkerText format ["%2 - Loading %1%%", round linearConversion [0, _civ, _civ - _nbcivs, 80, 99], _sectorName];
-		sleep 1;
+		_ratio = round linearConversion [0, _civ, _civ - _nbcivs, 85, 99];
+		_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
 	};
 };
 
