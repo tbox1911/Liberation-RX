@@ -24,6 +24,7 @@ _no_marker_classnames = _no_marker_classnames - ai_resupply_sources;
 
 private ["_veh_list","_nextvehicle","_nextmarker","_nextvehicle_owner","_nextvehicle_disabled"];
 private ["_marker","_marker_color","_marker_type","_marker_show"];
+private ["_taxi_ower", "_taxi_helipad"];
 private _vehmarkers = [];
 
 while {true} do {
@@ -101,7 +102,10 @@ while {true} do {
 			if (_taxi_id != "") exitWith {
 				_marker_type = "loc_heli";
 				_marker_color = "ColorGUER";
-				_nextmarker setMarkerTextLocal format ["Taxi - %1", [_taxi_id call BIS_fnc_getUnitByUID] call get_player_name];
+				_taxi_ower = _taxi_id call BIS_fnc_getUnitByUID;
+				_taxi_helipad = _nextvehicle getVariable ["GRLIB_taxi_helipad", objNull];
+				_nextmarker setMarkerDirLocal (getDir _taxi_helipad);
+				_nextmarker setMarkerTextLocal format ["Taxi - %1", [_taxi_ower] call get_player_name];
 				_nextmarker setMarkerSizeLocal [ 0.85, 0.85 ];
 			};
 
