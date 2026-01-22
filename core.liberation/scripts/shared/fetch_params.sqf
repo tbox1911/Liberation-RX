@@ -81,11 +81,12 @@ GRLIB_DefaultParams = {
 // Hardcoded
 GRLIB_fob_range = 125;								// FOB build range max
 GRLIB_outpost_range = 80;							// Outpost build range max
+GRLIB_capture_size = 175;							// Capture sector radius
 GRLIB_min_score_player = 20;						// Minimal player score to be saved
 GRLIB_blufor_cap = 50;								// Maximal number of friendly units
 GRLIB_max_active_sectors = 4;						// Maximal active sectors at the same time
 GRLIB_recycling_percentage = 0.75;					// Factor for recycling cost
-GRLIB_radiotower_size = GRLIB_sector_size * 3;
+GRLIB_radiotower_size = GRLIB_sector_size * 3;		// Radio detection radius
 GRLIB_battlegroup_size = 4;
 GRLIB_civilians_amount = 12;
 GRLIB_patrol_amount = 8;
