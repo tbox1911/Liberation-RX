@@ -8227,42 +8227,15 @@
 		</Key>
 
 		<Key ID="STR_REARM_COOLDOWN_LINE">
-			<Original>%1\nRearming Cooldown (%2 sec), Please Wait...</Original>
-			<French>%1\nRecharge en cours (%2 sec), veuillez patienter...</French>
-			<German>%1\nNachladezeit (%2 Sekunden), bitte warten...</German>
-			<Spanish>%1\nEn enfriamiento (%2 seg), por favor espera...</Spanish>
-			<Russian>%1\nПерезарядка (%2 сек), пожалуйста, подождите...</Russian>
-			<Chinesesimp>%1\n补给冷却中（%2 秒），请稍候……</Chinesesimp>
-			<Chinese>%1\n補給冷卻中（%2 秒），請稍候……</Chinese>
-			<Japanese>%1\n再装填のクールダウン中（%2 秒）…お待ちください</Japanese>
-			<Portuguese>%1\nReabastecimento em espera (%2 seg), aguarde...</Portuguese>
-			<Czech>%1\nPřezbrojení za %2 sek, čekejte...</Czech>
+			<Original>PLEASE WAIT!\n%1\nRearming Cooldown (%2 sec)...</Original>
 		</Key>
 
 		<Key ID="STR_REPAIR_COOLDOWN_LINE">
-			<Original>%1\nRepairing Cooldown (%2 sec), Please Wait...</Original>
-			<French>%1\nTemps de recharge réparation (%2 sec), veuillez patienter...</French>
-			<German>%1\nReparatur-Cooldown (%2 Sekunden), bitte warten...</German>
-			<Spanish>%1\nReparación en enfriamiento (%2 seg), por favor espera...</Spanish>
-			<Russian>%1\nРемонт в откате (%2 сек), пожалуйста, подождите...</Russian>
-			<Chinesesimp>%1\n维修冷却中（%2 秒），请稍候……</Chinesesimp>
-			<Chinese>%1\n維修冷卻中（%2 秒），請稍候……</Chinese>
-			<Japanese>%1\n修理クールダウン中（%2 秒）、お待ちください…</Japanese>
-			<Portuguese>%1\nReparo em espera (%2 seg), aguarde...</Portuguese>
-			<Czech>%1\nOprava za %2 sek, čekejte prosím...</Czech>
+			<Original>PLEASE WAIT!\n%1\nRepairing Cooldown (%2 sec)...</Original>
 		</Key>
 
 		<Key ID="STR_REFUEL_COOLDOWN_LINE">
-			<Original>%1\nRefueling Cooldown (%2 sec), Please Wait...</Original>
-			<French>%1\nTemps de recharge ravitaillement (%2 sec), veuillez patienter...</French>
-			<German>%1\nAuftank-Zeit (%2 Sekunden), bitte warten...</German>
-			<Spanish>%1\nRepostaje en enfriamiento (%2 seg), por favor espera...</Spanish>
-			<Russian>%1\nЗаправка в откате (%2 сек), пожалуйста, подождите...</Russian>
-			<Chinesesimp>%1\n加油冷却中（%2 秒），请稍候……</Chinesesimp>
-			<Chinese>%1\n加油冷卻中（%2 秒），請稍候……</Chinese>
-			<Japanese>%1\n燃料補給クールダウン中（%2 秒）、お待ちください…</Japanese>
-			<Portuguese>%1\nReabastecimento em espera (%2 seg), aguarde...</Portuguese>
-			<Czech>%1\nTankování za %2 sek, čekejte prosím...</Czech>
+			<Original>PLEASE WAIT!\n%1\nRefueling Cooldown (%2 sec)...</Original>
 		</Key>
 
 		<Key ID="STR_DESTROY_TOWER">
