@@ -152,16 +152,15 @@ GRLIB_checkRemoveHelipad = {
 	);
 };
 
-GRLIB_check_VehicleSupport = { (count GRLIB_vehicle_need_support > 0) };
+GRLIB_checkVehicleSupport = { (count GRLIB_vehicle_need_support > 0) };
 
-GRLIB_check_EjectCrew = {
+GRLIB_checkEjectCrew = {
 	params ["_target"];
 	if (!alive _target || captive _target) exitWith { false };
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };
 	if (count crew _vehicle == 1) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
-	if (_vehicle isKindOf "Air") exitWith { true };
 	if !([_target, _vehicle] call is_owner) exitWith { false };
 	((getPosATL _vehicle select 2 <= 10) && (abs (speed vehicle _vehicle) <= 5))
 };
@@ -173,6 +172,7 @@ GRLIB_checkOnboardCrew = {
 	if (isNull _vehicle) exitWith { false };
 	if (getPos _vehicle select 2 >= 5) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
+	if !([_target, _vehicle] call is_owner) exitWith { false };
 	private _onboard_list = { !isPlayer _x && isNull objectParent _x && _x distance2D player <= 30 } count (units player);
 	if (_onboard_list == 0) exitWith { false };
 	true;
