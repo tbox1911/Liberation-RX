@@ -114,7 +114,7 @@ if (do_action == 1) then {
 		"spawn_marker" setMarkerPosLocal markers_reset;
 		"spawn_marker" setMarkerTextLocal "";
 
-		if ( dojump > 0) then {
+		if (dojump > 0) then {
 			private _count_blu = { _x distance2D halo_position < GRLIB_capture_size } count (units GRLIB_side_friendly);
 			private _near_fob = ([halo_position, "FOB", GRLIB_sector_size, true] call F_check_near);
 			if (_count_blu > 0 || _near_fob) then {

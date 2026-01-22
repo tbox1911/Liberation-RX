@@ -62,12 +62,10 @@ closeDialog 0;
 "spawn_marker" setMarkerPosLocal markers_reset;
 "spawn_marker" setMarkerTextLocal "";
 
-if (player distance2D halo_position < 200) exitWith { hintSilent "Wrong place.\ntoo close from player!" };
-
-diag_log format ["Airdrop %1 on %2 at %3", (typeOf _unit), halo_position, time];
-
-if ( dojump > 0 ) then {
-	halo_position = halo_position getPos [floor(random 100), floor(random 360)];
+if (dojump > 0) then {
+	if (player distance2D halo_position < 300) exitWith { hintSilent "Wrong place.\ntoo close from player!" };
+	diag_log format ["Airdrop %1 on %2 at %3", (typeOf _unit), halo_position, time];
+	halo_position = halo_position getPos [floor random 100, floor random 360];
 	player setVariable ["GRLIB_action_inuse", true, true];
 	if (_is_vehicle) then {
 		// Vehicle HALO
