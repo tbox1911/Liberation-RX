@@ -75,21 +75,7 @@ taxi_cargo = {
 
 taxi_outboard = {
 	params ["_vehicle", "_cargo"];
-	_vehicle setVehicleLock "UNLOCKED";
-	_vehicle lockCargo false;
-	waitUntil {
-		_bailout = true;
-		{
-			if !(isNull objectParent _x) then {
-				_bailout = false;
-				unassignVehicle _x;
-				moveOut _x;
-				sleep 0.3;
-			};
-		} forEach _cargo;
-		sleep 1;
-		(_bailout);
-	};
+	if (count _cargo > 0) then { [player] call do_eject };
 	_vehicle setVehicleLock "LOCKED";
 	_vehicle lockCargo true;
 };

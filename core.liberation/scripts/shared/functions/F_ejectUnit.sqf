@@ -2,7 +2,9 @@ params ["_unit", ["_slow", true]];
 if (isNull objectParent _unit || isNull _unit) exitWith {};
 if ((vehicle _unit) isKindOf "ParachuteBase") exitWith {};
 
+private _state = isDamageAllowed _unit;
 _unit allowDamage false;
+
 unAssignVehicle _unit;
 [_unit] orderGetIn false;
 [_unit] allowGetIn false;
@@ -42,4 +44,4 @@ if (_unit_alt >= 50) then {
 };
 
 sleep 1;
-_unit allowDamage true;
+_unit allowDamage _state;

@@ -26,7 +26,7 @@ waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 
 // Quick Eject
 (findDisplay 46) displayAddEventHandler ["KeyDown", {
-	if (_this select 1 == (actionKeys 'User13') select 0) then { [player] execVM "scripts\client\actions\do_eject.sqf" };
+	if (_this select 1 == (actionKeys 'User13') select 0) then { [player] spawn do_eject };
 }];
 
 // Toggle HUD
