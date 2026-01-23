@@ -7,13 +7,8 @@ while { diag_fps <= 25 } do { sleep 60 };
 private _civ_veh = objNull;
 private _civ_grp = grpNull;
 private _usable_sectors = [];
-private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors) call BIS_fnc_arrayShuffle;
-{
-	if (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) then {
-		_usable_sectors pushback _x;
-	};
-	sleep 0.1;
-} foreach _search_sectors;
+private _search_sectors_all = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors);
+private _search_sectors = _search_sectors_all select { count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0 };
 
 if (count _usable_sectors > 0) then {
 	private _sector_pos = markerPos (selectRandom _usable_sectors);

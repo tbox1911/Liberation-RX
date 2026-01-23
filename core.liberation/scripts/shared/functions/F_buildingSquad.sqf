@@ -13,6 +13,7 @@ private _rnd = [1,1,2,2,2,3,3,3,4,4,5];
 private _max_try = 30;
 GRLIB_building_used = [];
 
+diag_log format ["Spawn building squad: pos %1 max %2 type %3 at %4", _sector_pos, _ai_max, count _infsquad, time];
 while { _ai_max > 0 && _max_try > 0} do {
     private _max_units = (selectRandom _rnd) min _ai_max;
     private _building_ai_created = ([_infsquad, _max_units, _sector_pos, _building_range, _building, _mission_ai] call F_spawnBuildingSquad);

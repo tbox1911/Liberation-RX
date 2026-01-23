@@ -10,17 +10,14 @@ while { combat_readiness < _level } do { sleep 120 };
 
 private _opfor_veh = objNull;
 private _opfor_grp = grpNull;
-private _usable_sectors = [];
-private _search_sectors = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors - GRLIB_patrol_sectors) call BIS_fnc_arrayShuffle;
-{
-	_player_max_radius = (count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0);
-	_player_min_radius = (count ([markerPos _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0);
-	if (_player_max_radius && _player_min_radius) then { _usable_sectors pushback _x };
-	sleep 0.1;
-} foreach _search_sectors;
+private _search_sectors_all = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors - GRLIB_patrol_sectors);
+private _search_sectors = _search_sectors_all select {
+	(count ([markerPos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) &&
+	(count ([markerPos _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0)
+};
 
-if (count _usable_sectors > 0) then {
-	private _sector = selectRandom _usable_sectors;
+if (count _search_sectors > 0) then {
+	private _sector = selectRandom _search_sectors;
 	private _sector_pos = markerPos _sector;
 	// 50% in vehicles
 	if (floor random 100 > 50 && count militia_vehicles > 0) then {
@@ -42,7 +39,7 @@ if (count _usable_sectors > 0) then {
 	sleep 1;
 	if (isNull _opfor_grp) exitWith { deleteVehicle _opfor_veh };
 
-	GRLIB_patrol_sectors pushBack _sector;
+	GRLIB_patrol_sectors pushBackUnique _sector;
 	publicVariable "GRLIB_patrol_sectors";
 
 	// Waiting

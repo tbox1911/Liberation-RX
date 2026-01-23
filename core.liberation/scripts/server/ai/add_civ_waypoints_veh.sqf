@@ -19,7 +19,6 @@ _grp setCombatMode _combatMode;
 _grp setBehaviourStrong  _behaviour;
 _grp setSpeedMode _speed;
 
-private ["_pos", "_waypoint", "_wp0", "_radius"];
 private _pos = _basepos;
 private _radius = GRLIB_spawn_max * 2;
 private _check_water = true;
@@ -53,6 +52,7 @@ if (_vehicle isKindOf "LandVehicle") then {
 	//(driver _vehicle) MoveTo (_convoy_destinations select 1)
 };
 
+private ["_waypoint", "_wp0"];
 {
 	_waypoint = _grp addWaypoint [_x, 0];
 	_waypoint setWaypointType "MOVE";

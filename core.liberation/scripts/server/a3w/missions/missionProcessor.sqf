@@ -25,6 +25,7 @@ private _aiGroup = grpNull;
 private _precise_marker = true;
 private _missionTimeout = A3W_Mission_timeout;
 
+diag_log format ["A3W Side Mission %1 setup: %2", _controllerSuffix, localize _missionType];
 if (!isNil "_setupVars") then { call _setupVars };
 
 if (!isNil "A3W_debug") then { _missionTimeout = A3W_Mission_timeout };
