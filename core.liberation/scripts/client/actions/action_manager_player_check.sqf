@@ -162,7 +162,7 @@ GRLIB_checkEjectCrew = {
 	if (count crew _vehicle == 1) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
 	if !([_target, _vehicle] call is_owner) exitWith { false };
-	((getPosATL _vehicle select 2 <= 10) && (abs (speed vehicle _vehicle) <= 5))
+	((getPosATL _vehicle select 2 <= 10) && (abs (speed vehicle _vehicle) < 5))
 };
 
 GRLIB_checkOnboardCrew = {
@@ -171,6 +171,7 @@ GRLIB_checkOnboardCrew = {
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };
 	if (getPos _vehicle select 2 >= 5) exitWith { false };
+	if (abs (speed vehicle _vehicle) >= 5) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
 	if !([_target, _vehicle] call is_owner) exitWith { false };
 	private _onboard_list = { !isPlayer _x && isNull objectParent _x && _x distance2D player <= 30 } count (units player);

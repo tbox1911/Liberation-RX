@@ -31,7 +31,7 @@ addMissionEventHandler ["PlayerDisconnected", {
 
 addMissionEventHandler ['HandleDisconnect', {
 	params ["_unit", "_id", "_uid", "_name"];
-	diag_log format ["--- LRX EH-HD: player %1 (%2) disconnected...", _name, _uid];
+	diag_log format ["--- LRX Info: player %1 (%2) disconnected...", _name, _uid];
 	if (_uid in GRLIB_players_known_uid) then {
 		[_unit, _uid, true] call save_context;
 		[_unit, _uid] call cleanup_player;
