@@ -27,7 +27,7 @@ switch ( _list ) do {
 	case "SPAWNT" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x == mobile_respawn} };
 	case "MEDIC" : { _classlist = ai_healing_sources };
 	case "ARSENAL" : { _classlist = [Arsenal_typename] };
-	case "REFUEL" : { _classlist = vehicle_refuel_sources };
+	case "REFUEL" : { _classlist = vehicle_refuel_sources; _use_fast = false };
 	case "REAMMO" : { _classlist = vehicle_rearm_sources };
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources };
 	case "REPAIR" : { _classlist = vehicle_repair_sources };
