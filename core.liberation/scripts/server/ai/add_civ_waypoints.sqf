@@ -31,6 +31,7 @@ while { (count (waypoints _grp) <= 5) && _max_try > 0} do {
 		_waypoint setWaypointCompletionRadius 20;
 	};
 	_max_try = _max_try - 1;
+	sleep 0.1;
 };
 
 if (count (waypoints _grp) > 1) then {

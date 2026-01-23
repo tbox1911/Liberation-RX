@@ -44,7 +44,9 @@ private _building_blacklist = [
 	"Land_spp_Transformer_F",
 	"Land_TTowerBig_1_F",
 	"Land_Radar_01_HQ_F",
-	"Land_Radar_F"	
+	"Land_i_Stone_HouseSmall_V1_dam_F",
+	"Land_Shop_City_03_F",
+	"Land_Radar_F"
 ];
 
 private _keep_position = false;
