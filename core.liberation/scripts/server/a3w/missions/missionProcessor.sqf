@@ -25,8 +25,9 @@ private _aiGroup = grpNull;
 private _precise_marker = true;
 private _missionTimeout = A3W_Mission_timeout;
 
-diag_log format ["A3W Side Mission %1 setup: %2", _controllerSuffix, localize _missionType];
-if (!isNil "_setupVars") then { call _setupVars };
+if (!isNil "_setupVars") exitWith { diag_log format ["--- LRX Error: A3W Side Mission %1 - failed to setup", _controllerSuffix]};
+call _setupVars;
+diag_log format ["A3W Side Mission %1 - setup %2", _controllerSuffix, localize _missionType];
 
 if (!isNil "A3W_debug") then { _missionTimeout = A3W_Mission_timeout };
 
@@ -45,7 +46,7 @@ if (!isNil "_missionlocation") then {
 
 if (!isNil "_setupObjects" && _continue_mission) then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
-	diag_log format ["--- LRX Error: A3W Side Mission %1 failed to setup: %2", _controllerSuffix, localize _missionType];
+	diag_log format ["--- LRX Error: A3W Side Mission %1 - failed to setup %2", _controllerSuffix, localize _missionType];
 	if (!isNil "_vehicle") then {
 		[_vehicle] spawn cleanMissionVehicles;
 	};
@@ -55,7 +56,7 @@ if (!_continue_mission) exitWith {
 };
 
 ["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
-diag_log format ["A3W Side Mission %1 started: %2 timeout: %3", _controllerSuffix, localize _missionType, _missionTimeout];
+diag_log format ["A3W Side Mission %1 - started %2 timeout %3", _controllerSuffix, localize _missionType, _missionTimeout];
 
 sleep 5;
 ([_missionType, _missionPos, _precise_marker] call createMissionMarker) params ["_marker", "_marker_zone"];
@@ -77,7 +78,7 @@ if (isNil "_waitUntilMarkerPos") then {
 	[true, _task, [localize _missionType, localize _missionType, _marker], objNull, "CREATED", 2, true] call BIS_fnc_taskCreate;
 };
 
-diag_log format ["A3W Side Mission %1 waiting to be finished: %2", _controllerSuffix, localize _missionType];
+diag_log format ["A3W Side Mission %1 - waiting to finish %2", _controllerSuffix, localize _missionType];
 
 private _failed = false;
 private _complete = false;
@@ -153,7 +154,7 @@ if (_failed) then {
 		["lib_secondary_a3w_mission_fail", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
 	};
 	[_task, "FAILED"] call BIS_fnc_taskSetState;
-	diag_log format ["A3W Side Mission %1 failed: %2", _controllerSuffix, localize _missionType];
+	diag_log format ["A3W Side Mission %1 - failed %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
 } else {
 	// Mission completed
@@ -167,7 +168,7 @@ if (_failed) then {
 	] remoteExec ["remote_call_showinfo", 0];
 	[_task, "SUCCEEDED"] call BIS_fnc_taskSetState;
 	["lib_secondary_a3w_mission_success", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
-	diag_log format ["A3W Mission%1 complete: %2", _controllerSuffix, localize _missionType];
+	diag_log format ["A3W Mission %1 - success %2", _controllerSuffix, localize _missionType];
 	A3W_mission_success = A3W_mission_success + 1;
 };
 
