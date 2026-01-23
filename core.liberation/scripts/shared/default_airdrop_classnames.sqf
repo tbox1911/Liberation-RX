@@ -36,8 +36,10 @@ if ( isNil "GRLIB_AirDrop_2_cost" ) then {
 if ( isNil "GRLIB_AirDrop_3" ) then {
 	GRLIB_AirDrop_3 = [
 		"I_MRAP_03_hmg_F",
+		"I_MRAP_03_hmg_F",		
 		"I_MRAP_03_gmg_F",
 		"B_T_MRAP_01_hmg_F",
+		"B_T_MRAP_01_hmg_F",		
 		"B_T_MRAP_01_gmg_F"
 	];
 };
