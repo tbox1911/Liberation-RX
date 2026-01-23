@@ -70,7 +70,7 @@ if (isServer) then {
 			};
 			default {
 				if (_unit isKindOf "AllVehicles") then {
-					diag_log format ["--- LRX Warning: kill_manager.sqf unknown vehicle class %1", _unit_class];
+					diag_log format ["--- LRX Warning: kill_manager unknown vehicle class %1", _unit_class];
 				};
 			};
 		};

@@ -5,10 +5,10 @@ manage_one_static = compileFinal preprocessFileLineNumbers "scripts\shared\manag
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\shared\attach_object_direct.sqf";
 
 // Event Handlers
-damage_manager_civilian = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_civilian.sqf";
-damage_manager_friendly = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_friendly.sqf";
-damage_manager_enemy = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_enemy.sqf";
-damage_manager_static = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager_static.sqf";
+damage_manager_civilian = compileFinal preprocessFileLineNumbers "scripts\shared\events\damage_manager_civilian.sqf";
+damage_manager_friendly = compileFinal preprocessFileLineNumbers "scripts\shared\events\damage_manager_friendly.sqf";
+damage_manager_enemy = compileFinal preprocessFileLineNumbers "scripts\shared\events\damage_manager_enemy.sqf";
+damage_manager_static = compileFinal preprocessFileLineNumbers "scripts\shared\events\damage_manager_static.sqf";
 
 // TK Manager
 LRX_tk_server_actions = compileFinal preprocessFileLineNumbers "addons\TKP\tk_server_actions.sqf";

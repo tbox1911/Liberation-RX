@@ -47,7 +47,7 @@ switch (GRLIB_side_enemy) do {
 };
 
 // Mission Parameter constant
-[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
+[] call compileFinal preprocessFileLineNumbers "script\shared\mission_params.sqf";
 
 // LRX Selectable
 [] call F_readParamsLRX;
@@ -67,7 +67,7 @@ GRLIB_night_factor = [GRLIB_PARAM_NightDuration] call lrx_getParamValue;
 GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
 
 // Cleanup
-kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
+kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\events\kill_manager.sqf";
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
 
 // AI

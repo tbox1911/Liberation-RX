@@ -5,7 +5,7 @@
 [] call compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
 
 // Cleanup
-kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
+kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\events\kill_manager.sqf";
 cleanup_uid = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_uid.sqf";
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
 

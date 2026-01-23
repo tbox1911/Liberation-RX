@@ -13,7 +13,7 @@ if (GRLIB_LRX_Template_enabled) then {GRLIB_LRX_Template_version = LRX_Template_
 publicVariable "GRLIB_LRX_Template_version";
 
 // Mission Parameter constant
-[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
+[] call compileFinal preprocessFileLineNumbers "script\shared\mission_params.sqf";
 
 // Load Mission settings
 _savedParams = profileNamespace getVariable [GRLIB_paramsV2_save_key, nil];

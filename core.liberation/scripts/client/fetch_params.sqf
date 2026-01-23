@@ -6,7 +6,7 @@ call compileFinal preprocessFileLineNumbers "scripts\client\ui\settings_menu.sqf
 
 // Mission Parameter constant
 if (!isServer) then {
-	[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
+	[] call compileFinal preprocessFileLineNumbers "script\shared\mission_params.sqf";
 };
 
 waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };

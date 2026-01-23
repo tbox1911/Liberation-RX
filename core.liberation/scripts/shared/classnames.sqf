@@ -10,7 +10,7 @@ zeropos = [0,0,10000];
 // All Object classname used in LRX must be declared here
 
 // *** DEFAULT ***
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\default_classnames.sqf";
+[] call compileFinal preprocessFileLineNumbers "default\default_classnames.sqf";
 
 // *** FRIENDLIES ***
 _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
@@ -553,10 +553,10 @@ GRLIB_recycleable_classnames = GRLIB_recycleable_classnames - GRLIB_recycleable_
 GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable);
 
 // TRENCHES
-[] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_trenches_classnames.sqf"];
+[] call compileFinal preprocessFileLineNumbers format ["default\default_trenches_classnames.sqf"];
 
 // AIR DROP
-[] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_airdrop_classnames.sqf"];
+[] call compileFinal preprocessFileLineNumbers format ["default\default_airdrop_classnames.sqf"];
 
 // Filter Mods
 diag_log "--- LRX: Check Classnames ---";

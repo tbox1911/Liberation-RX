@@ -108,4 +108,4 @@ LOADOUT_free_items = [];
 GRLIB_clutter_cutter = ["TREE","SMALL TREE","BUSH","HIDE","HOUSE","FENCE","RUINS","ROCK","ROCKS","BUILDING","WALL"];
 
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\default_building_classnames.sqf";
+[] call compileFinal preprocessFileLineNumbers "default\default_building_classnames.sqf";
