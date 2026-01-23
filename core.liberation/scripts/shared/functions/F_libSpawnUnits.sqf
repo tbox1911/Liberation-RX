@@ -97,20 +97,12 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 private _units = units _grp;
 if (count _units == 0) exitWith { diag_log "--- LRX Error: created group is empty."; grpNull };
 
-[_units, _type] spawn {
-	params ["_units", "_type"];
-	sleep 1;
-	{
-		_unit = _x;
-		if (_type in ["militia", "infantry"]) then {
-			[_unit] call F_fixPosUnit;
-			_unit switchMove "AmovPercMwlkSnonWnonDf";
-			_unit playMoveNow "AmovPercMwlkSnonWnonDf";
-		};
-		sleep 0.1;
-	} forEach _units;
-	sleep 3;
-	{ _x allowDamage true } forEach _units;
-};
+sleep 1;
+{
+	if (_type in ["militia", "infantry"]) then { [_x] call F_fixPosUnit };
+	sleep 0.1;
+} forEach _units;
+
+{ _x allowDamage true } forEach _units;
 
 _grp;

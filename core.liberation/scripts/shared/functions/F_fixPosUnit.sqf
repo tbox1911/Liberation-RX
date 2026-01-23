@@ -53,8 +53,11 @@ _unit allowDamage false;
 _unit enableSimulation false;
 _unit setPosASL _foundPos;
 _unit enableSimulation true;
+sleep 1;
 //waitUntil {sleep 0.1; round (getPos _unit select 2) == 0 };
-sleep 3;
+_unit switchMove "AmovPercMwlkSnonWnonDf";
+_unit playMoveNow "AmovPercMwlkSnonWnonDf";
+sleep 2;
 _unit setHitPointDamage ["hitLegs", 0];
 _unit allowDamage _state;
 

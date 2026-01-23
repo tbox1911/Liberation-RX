@@ -10,30 +10,36 @@ for "_i" from 1 to _nb_unit do {
 };
 
 private _spawn_pos = [];
-private _max_try = 10;
+private _max_try = 30;
 private _grp = createGroup [GRLIB_side_civilian, true];
 while { _max_try > 0 && count units _grp < _nb_unit } do {
 	_spawn_pos = [(((_sector_pos select 0) + (75 * _spread)) - (floor random (150 * _spread))),(((_sector_pos select 1) + (75 * _spread)) - (floor random (150 * _spread))), 0.5];
 	if !(surfaceIsWater _spawn_pos) then {
 		private _unit = _grp createUnit [selectRandom _class_civ, _spawn_pos, [], 20, "NONE"];
-		[_unit] joinSilent _grp;
-		_unit allowDamage false;
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_unit setPitch 1;
-		_unit setVariable ['GRLIB_can_speak', true, true];
-		_unit setVariable ["acex_headless_blacklist", true, true];
-		_unit addEventHandler ["HandleDamage", {_this call damage_manager_civilian}];
-		_unit switchMove "AmovPercMwlkSnonWnonDf";
-		_unit playMoveNow "AmovPercMwlkSnonWnonDf";
-		sleep 1;
-		_unit allowDamage true;
-		if (floor random 4 == 0) then { _unit setDamage 0.45 };
-		_max_try = 10;
+		sleep 0.1;
+		if (!isNil "_unit") then {
+			_unit allowDamage false;
+			[_unit] joinSilent _grp;
+			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			_unit setPitch 1;
+			_unit setVariable ['GRLIB_can_speak', true, true];
+			_unit setVariable ["acex_headless_blacklist", true, true];
+			_unit addEventHandler ["HandleDamage", {_this call damage_manager_civilian}];
+			if (floor random 4 == 0) then { _unit setDamage 0.45 };
+			_max_try = 30;
+		};
 	} else {
 		_max_try = _max_try - 1;
 	};
 	sleep 0.1;
 };
+
+sleep 1;
+{
+	_unit allowDamage true;
+	[_x] call F_fixPosUnit;
+	sleep 0.1;
+} forEach (units _grp);
 
 _grp setCombatMode "BLUE";
 _grp setBehaviourStrong "SAFE";
