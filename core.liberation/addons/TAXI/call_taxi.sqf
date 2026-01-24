@@ -37,7 +37,7 @@ deleteMarkerLocal "taxi_lz";
 private _spawn_pos = [_dest] call F_getAirSpawn;
 if (count _spawn_pos == 0) then { _spawn_pos = selectRandom (GRLIB_all_fobs + lhd) };
 private _vehicle = createVehicle [_taxi_type, _spawn_pos, [], 0, "FLY"];
-if (isNil "_vehicle") exitWith { diag_log format ["--- LRX Error: Taxi %1 create failed!", _taxi_type]};
+if (isNil "_vehicle") exitWith { diag_log format ["--- LRX Error: Taxi %1 creation failed!", _taxi_type]};
 hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicles" >> _taxi_type >> "DisplayName")];
 [_vehicle] call F_fixModVehicle;
 
@@ -80,7 +80,16 @@ GRLIB_taxi_marker setMarkerTypeLocal "mil_pickup";
 GRLIB_taxi_marker setMarkerTextlocal "Taxi PickUp";
 
 // Goto Pickup Point
-[_vehicle, _dest, "STR_TAXI_MOVE"] call taxi_dest;
+private _timeout = [_vehicle, _dest, "STR_TAXI_MOVE"] call taxi_dest;
+if (_timeout) exitWith {
+	deleteMarkerLocal "taxi_lz";
+	{deletevehicle _x} forEach (crew _vehicle);
+	deleteVehicle _vehicle;
+	deleteGroup _air_grp;
+	player setVariable ["GRLIB_taxi_called", nil, true];
+	hintSilent localize "STR_TAXI_RETURN"
+};
+
 [_vehicle] call taxi_land;
 deleteVehicle GRLIB_taxi_helipad;
 _vehicle setVehicleLock "UNLOCKED";
@@ -94,6 +103,7 @@ waitUntil {
 };
 hintSilent "";
 
+// Board In
 private _cargo = [];
 if (time < _stop) then {
 	_stop = time + (5 * 60); // wait 5min max

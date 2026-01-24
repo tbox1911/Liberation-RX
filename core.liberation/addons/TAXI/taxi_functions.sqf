@@ -36,7 +36,6 @@ taxi_dest = {
 	(driver _vehicle) doMove _dest;
 	sleep 30;
 
-	private _have_cargo = (count ([_vehicle] call taxi_cargo) > 0);
 	private _landing_range = 150;
 	private _stop = time + (5 * 60); // wait 5min max
 	private _alt_old = 999;
@@ -47,6 +46,7 @@ taxi_dest = {
 			if (_dest distance2D (getPosATL GRLIB_taxi_helipad) > 100) then {
 				_dest = getPosATL GRLIB_taxi_helipad;
 				(driver _vehicle) doMove _dest;
+				sleep 5;
 			};
 		};
 
@@ -61,11 +61,13 @@ taxi_dest = {
 		if (_speed == 0 && _vspeed == 0) then {
 			[_vehicle] call F_vehicleUnflip;
 			_vehicle setPos ((getPosATL _vehicle) vectorAdd [0, 0, 3]);
-			sleep 1;
+			(driver _vehicle) doMove _dest;
+			sleep 5;
 		};
-		if (_have_cargo && count ([_vehicle] call taxi_cargo) == 0) exitWith { true };
-		((_vehicle distance2D _dest <= _landing_range || time > _stop) && unitReady (driver _vehicle))
+		((_vehicle distance2D _dest <= _landing_range && unitReady driver _vehicle) || time >= _stop)
 	};
+
+	(time >= _stop);
 };
 
 taxi_cargo = {

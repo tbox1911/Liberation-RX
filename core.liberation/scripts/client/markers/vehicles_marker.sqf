@@ -103,8 +103,8 @@ while {true} do {
 				_marker_type = "loc_heli";
 				_marker_color = "ColorGUER";
 				_taxi_ower = _taxi_id call BIS_fnc_getUnitByUID;
-				_taxi_helipad = _nextvehicle getVariable ["GRLIB_taxi_helipad", objNull];
-				_nextmarker setMarkerDirLocal (getDir _taxi_helipad);
+				_heli_dest = _nextvehicle getVariable ["GRLIB_taxi_destination", objNull];
+				_nextmarker setMarkerDirLocal (_nextvehicle getDir _heli_dest);
 				_nextmarker setMarkerTextLocal format ["Taxi - %1", [_taxi_ower] call get_player_name];
 				_nextmarker setMarkerSizeLocal [ 0.85, 0.85 ];
 			};
