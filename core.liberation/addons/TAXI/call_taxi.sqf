@@ -34,7 +34,7 @@ if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle GRLIB_taxi_
 deleteMarkerLocal "taxi_lz";
 
 // Create Taxi
-private _spawn_pos = [_dest] call F_getAirSpawn;
+private _spawn_pos = [_dest, GRLIB_side_friendly] call F_getAirSpawn;
 if (count _spawn_pos == 0) then { _spawn_pos = selectRandom (GRLIB_all_fobs + lhd) };
 private _vehicle = createVehicle [_taxi_type, _spawn_pos, [], 0, "FLY"];
 if (isNil "_vehicle") exitWith { diag_log format ["--- LRX Error: Taxi %1 creation failed!", _taxi_type]};

@@ -16,7 +16,7 @@ private _spawn_pos = [];
 private _airveh_alt = 300;
 
 if (_classname isKindOf "Air") then {
-	_spawn_pos = [_sectorpos] call F_getAirSpawn;
+	_spawn_pos = [_sectorpos, _side] call F_getAirSpawn;
 	if (count _spawn_pos > 0) then {
 		if (_classname isKindOf "Plane") then { _airveh_alt = 500 };
 		if (GRLIB_SOG_enabled || GRLIB_SPE_enabled) then { _airveh_alt = 350 };
@@ -28,6 +28,9 @@ if (_classname isKindOf "Air") then {
 		_vehicle setDir (_vehicle getDir _sectorpos);
 		_vehicle setPosATL _spawn_pos;
 		_vehicle setVelocityModelSpace [0, 80, 0];
+	} else {
+		diag_log format ["--- LRX Error: Cannot find Air spawn for position %2", _sectorpos];
+		_vehicle = objNull;	
 	};
 } else {
 	if (_size == 0) then {
