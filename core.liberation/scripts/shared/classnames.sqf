@@ -446,7 +446,7 @@ if (isNil "vehicle_preset_inventory_east") then {
 box_transport_config = [];
 box_transport_offset = [];
 
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames_transport.sqf";
+[] call compileFinal preprocessFileLineNumbers "default\default_classnames_transport.sqf";
 _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
 [_path] call F_getTemplateFile;
 _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];

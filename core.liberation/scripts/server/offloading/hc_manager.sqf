@@ -47,7 +47,7 @@ switch (GRLIB_side_enemy) do {
 };
 
 // Mission Parameter constant
-[] call compileFinal preprocessFileLineNumbers "script\shared\mission_params.sqf";
+[] call compileFinal preprocessFileLineNumbers "scripts\shared\mission_params.sqf";
 
 // LRX Selectable
 [] call F_readParamsLRX;
