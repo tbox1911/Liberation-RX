@@ -109,6 +109,7 @@ _failedExec = {
 _successExec = {
 	// Mission completed
 	_successHintMessage = "STR_FREE_HOSTAGES_MESSAGE2";
+	{ deleteVehicle _x } forEach _hostages;
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	if (combat_readiness > 50) then { combat_readiness = combat_readiness - 7 };
 	{ [_x, 10] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));

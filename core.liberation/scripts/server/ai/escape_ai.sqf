@@ -1,7 +1,10 @@
 params [ "_unit"];
 
-private _grp = createGroup [GRLIB_side_civilian, true];
-[_unit] joinSilent _grp;
+private _grp = side group _unit;
+if (_grp != GRLIB_side_civilian) then {
+	_grp = createGroup [GRLIB_side_civilian, true];
+	[_unit] joinSilent _grp;
+};
 
 _unit removeAllEventHandlers "GetInMan";
 _unit removeAllEventHandlers "SeatSwitchedMan";
