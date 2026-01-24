@@ -25,8 +25,8 @@ private _aiGroup = grpNull;
 private _precise_marker = true;
 private _missionTimeout = A3W_Mission_timeout;
 
-if (!isNil "_setupVars") exitWith { diag_log format ["--- LRX Error: A3W Side Mission %1 - failed to setup", _controllerSuffix]};
-call _setupVars;
+if (isNil "_setupVars") exitWith { diag_log format ["--- LRX Error: A3W Side Mission %1 - no setup found", _controllerSuffix]};
+[] call _setupVars;
 diag_log format ["A3W Side Mission %1 - setup %2", _controllerSuffix, localize _missionType];
 
 if (!isNil "A3W_debug") then { _missionTimeout = A3W_Mission_timeout };
