@@ -162,6 +162,7 @@ GRLIB_checkEjectCrew = {
 	if (count crew _vehicle == 1) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
 	if !([_target, _vehicle] call is_owner) exitWith { false };
+	if (_vehicle isKindOf "Air") exitWith { true };
 	((getPosATL _vehicle select 2 <= 10) && (abs (speed vehicle _vehicle) < 5))
 };
 
