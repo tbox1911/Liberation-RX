@@ -7,7 +7,12 @@ _unit addEventHandler ["InventoryClosed", {
 	params ["_unit", "_container"];
 	[_unit] call F_filterLoadout;
 	if (_unit == player) then {
-		hintSilent format ["Inventory value:\n%1 AMMO.", ([_unit] call F_loadoutPrice)];
+		private _vehicle = objectParent _unit;
+		if (isNull _vehicle) then {
+			hintSilent format ["Inventory value:\n%1 AMMO.", ([_unit] call F_loadoutPrice)];
+		} else {
+			[_vehicle] spawn vehicle_info;
+		};
 		if (GRLIB_filter_arsenal == 4 && _container == GRLIB_personal_box) then { [] spawn save_personal_arsenal };
 	};
 }];
@@ -173,20 +178,10 @@ if (_unit == player) then {
 					_vehicle disableTIEquipment false;
 				};
 				if (!isNil "_my_dog") then { [_my_dog, true] remoteExec ["hideObjectGlobal", 2] };
-				[_vehicle] spawn {
-					params ["_vehicle"];
-					private _owner = [_vehicle] call F_getVehicleOwner;
-					private _fuel = round (fuel _vehicle * 100);
-					private _ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
-					private _damage = round (([_vehicle] call F_getVehicleDamage) * 100);
-					private _cargo = [_vehicle] call R3F_calculer_chargement_vehicule;
-					hintSilent format [localize "STR_PAR_VEHICLE_STATUS_HINT", _owner, _damage, _fuel, _ammo, _cargo select 0, _cargo select 1];
-					1 fadeSound (round desired_vehvolume / 100.0);
-					3 fadeMusic (getAudioOptionVolumes select 1);
-					NRE_EarplugsActive = 1;
-					sleep 3;
-					hintSilent "";
-				};
+				[_vehicle] spawn vehicle_info;
+				1 fadeSound (round desired_vehvolume / 100.0);
+				3 fadeMusic (getAudioOptionVolumes select 1);
+				NRE_EarplugsActive = 1;
 				[true] call player_vehicle_actions;
 			};
 		};
