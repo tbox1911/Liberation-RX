@@ -410,19 +410,9 @@ while {true} do {
 		} else {
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 		};
-		private _enemy_left = (_sector_pos nearEntities ["CAManBase", (_local_capture_size * 1.2)]) select { (side _x == GRLIB_side_enemy) && !(_x getVariable ["GRLIB_mission_AI", false]) };
-		{
-			if (_max_prisonners > 0) then {
-				if ((floor random 100) <= GRLIB_surrender_chance) then {
-					[_x] spawn prisoner_ai;
-					_max_prisonners = _max_prisonners - 1;
-					_managed_units = _managed_units - [_x];
-				} else {
-					if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
-				};
-				sleep 0.1;
-			};
-		} foreach _enemy_left;
+
+		private _prisonners = [_sector_pos, _max_prisonners] call spawn_prisonners;
+		_managed_units = _managed_units - _prisonners;
 
 		if (_sector in (sectors_capture + sectors_factory + sectors_bigtown)) then {
 			private _building_destroyed = count (_building_alive select { !(alive _x) || (tolower (typeOf _x) find "ruin" != -1) });

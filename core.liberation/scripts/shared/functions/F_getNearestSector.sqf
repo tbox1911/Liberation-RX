@@ -8,6 +8,6 @@ if (_check_water) then {
     _close_sectors = _sector_list select { (markerPos _x) distance2D _postosearch <= _radius};
 };
 private _close_sectors_sorted = [_close_sectors, [_postosearch] , { (markerPos _x) distance2D _input0 }, 'ASCEND'] call BIS_fnc_sortBy;
-if (count _close_sectors_sorted > 0) then { _sector_to_return = _close_sectors_sorted select 0; };
 
-_sector_to_return;
+if (count _close_sectors_sorted == 0) exitWith { "" };
+(_close_sectors_sorted select 0;)

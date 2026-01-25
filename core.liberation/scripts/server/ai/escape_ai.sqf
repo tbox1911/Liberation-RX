@@ -1,10 +1,7 @@
-params [ "_unit"];
+params [ "_unit", "_friendly"];
 
-private _grp = side group _unit;
-if (_grp != GRLIB_side_civilian) then {
-	_grp = createGroup [GRLIB_side_civilian, true];
-	[_unit] joinSilent _grp;
-};
+private _grp = createGroup [GRLIB_side_civilian, true];
+[_unit] joinSilent _grp;
 
 _unit removeAllEventHandlers "GetInMan";
 _unit removeAllEventHandlers "SeatSwitchedMan";
@@ -15,7 +12,9 @@ _unit addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
 [_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
 sleep 3;
 
-private _nearest_sector = [sectors_allSectors, _unit] call F_nearestPosition;
+if (_friendly) exitWith { [_grp, getPos _unit, 80] call BIS_fnc_taskPatrol};
+
+private _nearest_sector = [GRLIB_sector_size, _unit, opfor_sectors] call F_getNearestSector;
 if (_nearest_sector != "") then {
     private _dist = _unit distance2D (markerPos _nearest_sector);
     if (_dist <= GRLIB_spawn_min) then {
@@ -26,7 +25,10 @@ if (_nearest_sector != "") then {
         _waypoint setWaypointBehaviour "SAFE";
         _waypoint setWaypointCombatMode "BLUE";
         _waypoint setWaypointCompletionRadius 50;
-        //_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+        _waypoint setWaypointStatements ["true", "deleteVehicle this"];
         { _x doFollow (leader _grp) } foreach (units _grp);
     };
+} else {
+    sleep 60;
+    deleteVehicle _unit;
 };

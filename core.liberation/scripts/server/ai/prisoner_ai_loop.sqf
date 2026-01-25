@@ -30,7 +30,7 @@ while { alive _unit && !_captured } do {
 				private _text = format ["Alert! %1 prisoner %2 is escaping!", name _player, name _unit];
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			};
-			[_unit] spawn escape_ai;
+			[_unit, _friendly] spawn escape_ai;
 			_timeout = time + (15 * 60);
 		};
 	};

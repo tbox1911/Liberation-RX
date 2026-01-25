@@ -1,12 +1,9 @@
 params ["_unit", ["_friendly", false], ["_canmove", false]];
 
-if (isNull _unit) exitWith {};
+if (!alive _unit) exitWith {};
 if !(isNull objectParent _unit) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
-
-sleep 3;
-if (!alive _unit) exitWith {};
 
 // Check locality
 if (!local _unit) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_remote_call", 2] };
@@ -17,9 +14,8 @@ removeAllWeapons _unit;
 //removeHeadgear _unit;
 removeBackpack _unit;
 removeVest _unit;
-private _hmd = (hmd _unit);
-_unit unassignItem _hmd;
-_unit removeItem _hmd;
+{ _unit unlinkItem _x } forEach (assignedItems _unit);
+
 _unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
 _unit removeAllEventHandlers "GetInMan";
@@ -37,10 +33,8 @@ if (!_canmove) then { [_unit, "init"] remoteExec ["remote_call_prisoner", 0] };
 sleep 7;
 if (!alive _unit) exitWith {};
 
-if (side group _unit != GRLIB_side_civilian) then {
-	private _grp = createGroup [GRLIB_side_civilian, true];
-	[_unit] joinSilent _grp;
-};
+private _grp = createGroup [GRLIB_side_civilian, true];
+[_unit] joinSilent _grp;
 _unit setVariable ["GRLIB_is_prisoner", true, true];
 
 // Wait

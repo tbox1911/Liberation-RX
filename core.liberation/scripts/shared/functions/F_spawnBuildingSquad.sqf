@@ -16,7 +16,6 @@ switch (_type) do {
 	case ("infantry"): { _squad_comp = opfor_infantry };
 	case ("militia"): { _squad_comp = militia_squad };
 	case ("resistance"): { _squad_comp = a3w_resistance_squad; _side = GRLIB_side_friendly};
-	case ("hostages"): { _squad_comp = civilians; _side = GRLIB_side_civilian};
 	default { _squad_comp = [] call F_getAdaptiveSquadComp; _type = "auto" };
 };
 
@@ -27,7 +26,6 @@ private _building_classname = [
 	"Cargo_Patrol_base_F",
 	"Cargo_Tower_base_F",
 	"Cargo_House_base_F",
-	"Land_i_Shed_Ind_F",
 	"Land_i_House_Big_01_V2_F",
 	"Land_i_House_Big_01_V3_F",
 	"Land_i_House_Big_02_V2_F",
@@ -35,6 +33,7 @@ private _building_classname = [
 ];
 
 private _building_blacklist = [
+	"Land_SCF_01_heap_bagasse_F",
 	"Land_Communication_anchor_F",
  	"Land_LampHarbour_F",
  	"Land_LampHalogen_F",
