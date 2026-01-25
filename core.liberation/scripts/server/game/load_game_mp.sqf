@@ -53,7 +53,6 @@ GRLIB_warehouse = [
 	[foodbarrel_typename, 1],
 	[basic_weapon_typename, 0]
 ];
-GRLIB_sector_defense = [];
 
 // Savegame file
 private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
@@ -477,8 +476,9 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
 
+GRLIB_sector_defense = [];
 {
-	if ((_x select 0) in blufor_sectors) then { GRLIB_sector_defense pushBack _x };
+	if ((_x select 0) in blufor_sectors && (_x select 1) != 0) then { GRLIB_sector_defense pushBack _x };
 } forEach _sector_defense;
 
 publicVariable "stats_blufor_soldiers_recruited";

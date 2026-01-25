@@ -210,6 +210,9 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 	private _warehouse = [];
 	{_warehouse pushBack (_x select 1)} forEach GRLIB_warehouse;
 
+	// Sectors
+	{ [_x, 0] call sector_defenses_remote_call } forEach sector_attack_in_progress;
+
 	// Save Blob
 	private _lrx_liberation_savegame = [
 		(blufor_sectors - sector_attack_in_progress),
