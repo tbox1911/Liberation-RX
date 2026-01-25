@@ -18,11 +18,11 @@ diag_log format ["Group %1 - Attack Direct: %2 - Distance: %3m", _grp, typeOf _o
 
 private ["_waypoint", "_wp0", "_objective_pos"];
 while { alive _objective } do {
+	if ({alive _x} count (units _grp) == 0) exitWith {};
 	{
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective > (GRLIB_sector_size * 1.5)) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
 		sleep 0.5;
 	} forEach (units _grp);
-	if ({alive _x} count (units _grp) == 0) exitWith {};
 
 	_objective_pos = getPosATL _objective;
 
@@ -44,8 +44,8 @@ while { alive _objective } do {
 	_waypoint setWaypointType "CYCLE";
 	sleep 1;
 	{ _x doFollow (leader _grp) } foreach units _grp;
-	_last_pos = getPosATL (leader _grp);
-	sleep 60;
+	if (alive (leader _grp)) then { _last_pos = getPosATL (leader _grp) };
+	sleep 300;
 };
 
 // Cleanup

@@ -23,12 +23,12 @@ diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, 
 
 private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
 while {true} do {
+	if (!_patrol || {alive _x} count (units _grp) == 0) exitWith {};
 	_sleep = 60;
 	{
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > (GRLIB_sector_size * 1.5)) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
 		sleep 0.5;
 	} forEach (units _grp);
-	if (!_patrol || {alive _x} count (units _grp) == 0) exitWith {};
 
 	if (_attack) then {
 		_attack = false;
@@ -64,7 +64,7 @@ while {true} do {
 	if (time > _timer) then {
 		_objective_pos = [];
 		_next_objective = [];
-		_last_pos = getPosATL (leader _grp);
+		if (alive (leader _grp)) then { _last_pos = getPosATL (leader _grp) };
 		if (GRLIB_global_stop == 1) then {
 			_target = [_last_pos, GRLIB_spawn_min] call F_getNearestBlufor;
 			if (isNull _target) exitWith {};
@@ -89,7 +89,7 @@ while {true} do {
 		[_vehicle] call F_vehicleUnflip;
 		_vehicle setFuel 1;
 		_vehicle setVehicleAmmo 1;
-		_last_pos = getPosATL _vehicle;
+		if (alive _vehicle) then { _last_pos = getPosATL _vehicle };
 	};
 
 	sleep _sleep;
