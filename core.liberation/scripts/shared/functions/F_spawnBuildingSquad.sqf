@@ -33,7 +33,9 @@ private _building_classname = [
 ];
 
 private _building_blacklist = [
+	"Land_SM_01_shed_F",
 	"Land_SCF_01_heap_bagasse_F",
+	"Land_Slum_02_F",
 	"Land_Communication_anchor_F",
  	"Land_LampHarbour_F",
  	"Land_LampHalogen_F",
