@@ -1,4 +1,14 @@
 diag_log "--- Liberation RX by pSiKO ---";
+
+// Multiplayer only
+if (!isMultiplayer) exitWith {
+	private _msg = localize "STR_MSG_MP_ONLY";
+	titleText [_msg, "BLACK FADED", 100];
+	sleep 10;
+	systemChat _msg;
+	endMission "LOSER";
+};
+
 if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
 
 [] call compileFinal preprocessFileLineNumbers "build_info.sqf";

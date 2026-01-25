@@ -59,15 +59,6 @@ if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	disableUserInput false;
 };
 
-// Multiplayer only
-if (!isMultiplayer) exitWith {
-	private _msg = localize "STR_MSG_MP_ONLY";
-	titleText [_msg, "BLACK FADED", 100];
-	uisleep 10;
-	endMission "LOSER";
-	disableUserInput false;
-};
-
 // Enforce White list
 [] call compileFinal preprocessFileLineNumbers "scripts\client\commander\enforce_whitelist.sqf";
 
