@@ -4,8 +4,8 @@ diag_log "--- Liberation RX by pSiKO ---";
 if (!isMultiplayer) exitWith {
 	private _msg = localize "STR_MSG_MP_ONLY";
 	titleText [_msg, "BLACK FADED", 100];
-	sleep 10;
 	systemChat _msg;
+	diag_log _msg;
 	endMission "LOSER";
 };
 
