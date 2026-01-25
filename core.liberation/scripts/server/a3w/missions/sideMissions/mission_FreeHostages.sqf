@@ -43,16 +43,14 @@ _setupObjects = {
 	// Spawn Enemy
 	_missionPos = getPosATL (_hostages select 0);
 	_managed_units append (["militia", 6, _missionPos] call F_buildingSquad);
-	private _grp = [_missionPos, 6, "militia"] call createCustomGroup;
-	_managed_units append (units _grp);
 
 	// Spawn bombers
 	private _grp_bomber = [_missionPos, (3 + floor random 5), "militia", false] call createCustomGroup;
+	_managed_units append (units _grp_bomber);
 	{
 		[_x, 40] spawn bomber_ai;
 		sleep 0.5;
 	} forEach (units _grp_bomber);
-	_managed_units append (units _grp_bomber);
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_managed_units joinSilent _aiGroup;
