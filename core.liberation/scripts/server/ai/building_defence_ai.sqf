@@ -24,7 +24,7 @@ while { alive _unit && !(captive _unit) } do {
 
 	if (_resume_movement) exitWith {
 		_unit enableAI "PATH";
-		_unit setUnitPos "AUTO";
+		_unit setUnitPos "UP";
 		_unit switchMove "AmovPercMwlkSrasWrflDf";
 		_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 		(group _unit) setCombatMode "YELLOW";

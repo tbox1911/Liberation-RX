@@ -99,8 +99,10 @@ if (count _units == 0) exitWith { diag_log "--- LRX Error: created group is empt
 
 sleep 1;
 {
-	if (_type in ["militia", "infantry"]) then { [_x] call F_fixPosUnit };
-	sleep 0.1;
+	if (_type in ["militia", "infantry"]) then {
+		[_x] call F_fixPosUnit;
+		sleep 0.5;
+	};
 } forEach _units;
 
 { _x allowDamage true } forEach _units;

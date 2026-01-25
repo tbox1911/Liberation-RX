@@ -35,11 +35,7 @@ while { _max_try > 0 && count units _grp < _nb_unit } do {
 };
 
 sleep 1;
-{
-	_x allowDamage true;
-	[_x] call F_fixPosUnit;
-	sleep 0.1;
-} forEach (units _grp);
+{ _x allowDamage true } forEach (units _grp);
 
 _grp setCombatMode "BLUE";
 _grp setBehaviourStrong "SAFE";

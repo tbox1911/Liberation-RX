@@ -85,6 +85,7 @@ private _grp = [_sector_pos, _unitclass, _side, "building", _mission_ai] call F_
 	_x setPos (_building_pos select _forEachIndex);
 	[_x, _keep_position] spawn building_defence_ai;
 	if (_type == "militia") then { [_x] call loadout_militia };
+	sleep 0.1;
 } foreach (units _grp);
 
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];
