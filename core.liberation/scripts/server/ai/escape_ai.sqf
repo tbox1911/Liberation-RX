@@ -1,10 +1,7 @@
 params [ "_unit"];
 
-private _grp = side group _unit;
-if (_grp != GRLIB_side_civilian) then {
-	_grp = createGroup [GRLIB_side_civilian, true];
-	[_unit] joinSilent _grp;
-};
+private _grp = createGroup [GRLIB_side_civilian, true];
+[_unit] joinSilent _grp;
 
 _unit removeAllEventHandlers "GetInMan";
 _unit removeAllEventHandlers "SeatSwitchedMan";
@@ -29,4 +26,6 @@ if (_nearest_sector != "") then {
         //_waypoint setWaypointStatements ["true", "deleteVehicle this"];
         { _x doFollow (leader _grp) } foreach (units _grp);
     };
+} else {
+    [_grp, getPos _unit, 80] call BIS_fnc_taskPatrol;
 };

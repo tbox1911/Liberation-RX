@@ -1,38 +1,24 @@
 params ["_unit", ["_range", 150]];
 
-if (isNull _unit) exitWith {};
+if (!alive _unit) exitWith {};
 if !(isNull objectParent _unit) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
-
-sleep 30;
-if (!alive _unit) exitWith {};
 
 // Check locality
 if (!local _unit) exitWith { [_unit, _range] remoteExec ["bomber_remote_call", 2] };
 
 // Init bomber
-removeAllWeapons _unit;
-removeHeadgear _unit;
-removeBackpack _unit;
-removeVest _unit;
-removeGoggles _unit;
-{ _unit unlinkItem _x } forEach (assignedItems _unit);
+private _loadout = getUnitLoadout (selectRandom civilians);
+_unit setUnitLoadout _loadout;
 
-private _cloth = getText(configfile >> "CfgVehicles" >> selectRandom civilians >> "uniformClass");
-_unit forceAddUniform _cloth;
 [_unit] call F_fixPosUnit;
-sleep 3;
 
 {_unit disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 _unit setUnitPos "UP";
-sleep 1;
 
-private _grp = side group _unit;
-if (_grp != GRLIB_side_civilian) then {
-	_grp = createGroup [GRLIB_side_civilian, true];
-	[_unit] joinSilent _grp;
-};
+private _grp = createGroup [GRLIB_side_civilian, true];
+[_unit] joinSilent _grp;
 
 [_grp] call F_deleteWaypoints;
 _unit setVariable ["GRLIB_is_kamikaze", true, true];

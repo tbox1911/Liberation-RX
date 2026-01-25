@@ -1,7 +1,8 @@
 params ["_sector_pos", "_max_prisonners"];
 
+if (_max_prisonners == 0) exitWith {};
 private _enemy_left = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]) select {
-    (side _x == GRLIB_side_enemy) && (_x skill "courage" < 0.8) &&
+    (side _x == GRLIB_side_enemy) && (_x skill "courage" <= 0.8) &&
     !(_x getVariable ["GRLIB_mission_AI", false])
 };
 {
@@ -11,4 +12,5 @@ private _enemy_left = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size
     } else {
         if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
     };
+    sleep 0.1;
 } foreach _enemy_left;

@@ -16,7 +16,6 @@ switch (_type) do {
 	case ("infantry"): { _squad_comp = opfor_infantry };
 	case ("militia"): { _squad_comp = militia_squad };
 	case ("resistance"): { _squad_comp = a3w_resistance_squad; _side = GRLIB_side_friendly};
-	case ("hostages"): { _squad_comp = civilians; _side = GRLIB_side_civilian};
 	default { _squad_comp = [] call F_getAdaptiveSquadComp; _type = "auto" };
 };
 
