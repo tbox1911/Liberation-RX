@@ -26,10 +26,7 @@ if (_nearest_sector != "") then {
         _waypoint setWaypointBehaviour "SAFE";
         _waypoint setWaypointCombatMode "BLUE";
         _waypoint setWaypointCompletionRadius 50;
-        _waypoint setWaypointStatements ["true", "deleteVehicle this"];
+        //_waypoint setWaypointStatements ["true", "deleteVehicle this"];
         { _x doFollow (leader _grp) } foreach (units _grp);
     };
-} else {
-    sleep 60;
-    deleteVehicle _unit;
 };

@@ -3,7 +3,7 @@ params ["_unit", "_friendly"];
 private _fleeing = false;
 private _captured = false;
 private _blufor_near = 0;
-private _timeout = time + (30 * 60);
+private _timeout = time + (15 * 60);
 
 while { alive _unit && !_captured } do {
 	// Captured
@@ -31,7 +31,7 @@ while { alive _unit && !_captured } do {
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			};
 			[_unit] spawn escape_ai;
-			_timeout = time + (30 * 60);
+			_timeout = time + (15 * 60);
 		};
 	};
 

@@ -6,8 +6,8 @@ if (goggles _unit == "G_Blindfold_01_black_F") exitWith {
     removeGoggles _unit;
     _unit globalChat format ["I'm free!!, Thanks you %1...", name player];
     _unit setVariable ["GRLIB_is_prisoner", false, true];
+    [_unit] remoteExec ["escape_ai", 2];
     [player, 5] remoteExec ["F_addReput", 2];
-    [group _unit, getPos _unit, 150] call BIS_fnc_taskPatrol;
 };
 
 waitUntil {

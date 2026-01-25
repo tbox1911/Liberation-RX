@@ -39,7 +39,7 @@ if (_cmd == "flee") exitWith {
     _unit enableAI "ANIM";
     _unit enableAI "MOVE";
     if !(isNull objectParent _unit) then { [_unit] call F_ejectUnit };
-    _unit setUnitPos "AUTO";
+    _unit setUnitPos "UP";
     _anim = "AmovPercMwlkSnonWnonDf";  // "AmovPercMwlkSrasWrflDf"; // "AmovPercMwlkSnonWnonDf"
     _unit switchMove _anim;
     _unit playMoveNow _anim;
