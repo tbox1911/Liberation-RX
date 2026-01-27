@@ -14,7 +14,7 @@ private _patrol = false;
 private ["_target", "_target_list", "_basepos", "_waypoint", "_wp0"];
 
 while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
-	if (time > _timer) then {
+	if (time >= _timer) then {
 		_target = objNull;
 		if (side _grp == GRLIB_side_enemy) then {
 			_target = [_flagpos] call F_getNearestBlufor;
@@ -55,7 +55,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 			_waypoint setWaypointType "MOVE";
 			_waypoint = _grp addWaypoint [_basepos, _radius];
 			_waypoint setWaypointType "CYCLE";
-			{ _x doFollow leader _grp } foreach units _grp;			
+			{ _x doFollow leader _grp } foreach units _grp;
 			_timer = round (time + 600);
 		};
 	};

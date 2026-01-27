@@ -14,7 +14,7 @@ sleep 3;
 
 if (_friendly) exitWith { [_grp, getPos _unit, 80] call BIS_fnc_taskPatrol};
 
-private _nearest_sector = [GRLIB_sector_size, _unit, opfor_sectors] call F_getNearestSector;
+private _nearest_sector = [GRLIB_spawn_min, _unit, opfor_sectors] call F_getNearestSector;
 if (_nearest_sector != "") then {
     private _dist = _unit distance2D (markerPos _nearest_sector);
     if (_dist <= GRLIB_spawn_min) then {
@@ -24,11 +24,10 @@ if (_nearest_sector != "") then {
         _waypoint setWaypointSpeed "FULL";
         _waypoint setWaypointBehaviour "SAFE";
         _waypoint setWaypointCombatMode "BLUE";
-        _waypoint setWaypointCompletionRadius 50;
+        _waypoint setWaypointCompletionRadius 100;
         _waypoint setWaypointStatements ["true", "deleteVehicle this"];
         { _x doFollow (leader _grp) } foreach (units _grp);
     };
 } else {
-    sleep 60;
     deleteVehicle _unit;
 };
