@@ -241,7 +241,7 @@ PAR_Player_Unconscious = {
 		private _bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
-		sleep 0.5;
+		sleep 1;
 	};
 
 	// Player got revived

@@ -1,5 +1,5 @@
 /*
-  pSiKO AI Revive - v3.05 - SP/MP - AI
+  name: pSiKO AI Revive - SP/MP - AI
   aka: PAR Revive
 
 Author:
@@ -22,6 +22,10 @@ Based on:
 _________________________________________________________________________*/
 
 if (!hasInterface) exitWith {};
+
+PAR_version = "4.5";
+diag_log format ["--- LRX PAR Addon v%1 Loading...", PAR_version];
+//player globalChat format ["PAR - pSiKO Ai Revive v%1 loading...", PAR_version];
 
 // Init functions
 [] call compile preprocessFileLineNumbers "addons\TKP\tk_init.sqf";
@@ -106,3 +110,4 @@ addMissionEventHandler ["Draw3D",{
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat localize "STR_PAR_AI_REVIVE_INITIALIZED";
+diag_log "---LRX PAR Addon loaded.";
