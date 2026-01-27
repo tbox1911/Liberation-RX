@@ -476,10 +476,16 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
 
-GRLIB_sector_defense = [];
+// Sector Defense
+if (typeName _sector_defense != "HASHMAP") then {
+	GRLIB_sector_defense = createHashMapFromArray _sector_defense;
+} else {
+	GRLIB_sector_defense = _sector_defense;
+};
 {
-	if ((_x select 0) in blufor_sectors && (_x select 1) != 0) then { GRLIB_sector_defense pushBack _x };
-} forEach _sector_defense;
+    private _def = GRLIB_sector_defense get _x;
+    if (_def == 0 || !(_x in blufor_sectors)) then { GRLIB_sector_defense deleteAt _x };
+} forEach (keys GRLIB_sector_defense);
 
 publicVariable "stats_blufor_soldiers_recruited";
 publicVariable "stats_blufor_vehicles_built";

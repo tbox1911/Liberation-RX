@@ -35,22 +35,23 @@ while {true} do {
 		{ deleteMarker _x } foreach _markers_def;
 		_markers_def = [];
 		{
-			private _sector = (_x select 0);
+			private _sector = _x;
 			if (_sector in blufor_sectors) then {
+				private _def = GRLIB_sector_defense get _sector;
 				private _marker = createMarkerLocal [format ["defense_%1", _sector], markers_reset];
 				_marker setMarkerShapeLocal "ICON";
 				_marker setMarkerTypeLocal "loc_defend";
 				private _color = "ColorGrey";
-				switch (_x select 1) do {
-					case 1:	{ _color = "#(0.25, 0.25, 0.25, 1.00)" };	// "ColorWhite"
+				switch (_def) do {
+					case 1:	{ _color = "#(0.75, 0.75, 0.75, 1.00)" };	// "ColorWhite"
 					case 2:	{ _color = "#(0.50, 0.50, 0.50, 1.00)" };	// "ColorGrey"
-					case 3:	{ _color = "#(0.75, 0.75, 0.75, 1.00)" };	// "ColorBlack"
+					case 3:	{ _color = "#(0.25, 0.25, 0.25, 1.00)" };	// "ColorBlack"
 				};
 				_marker setMarkerColorLocal _color;
 				_marker setMarkerPos (markerPos _sector);
 				_markers_def pushback _marker;
 			};
-		} forEach GRLIB_sector_defense;
+		} forEach (keys GRLIB_sector_defense);
 	};
 
 	if !(isNull GRLIB_vehicle_huron) then {

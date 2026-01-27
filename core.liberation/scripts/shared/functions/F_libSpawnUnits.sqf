@@ -31,6 +31,7 @@ switch (_type) do {
 	case "para" : { _max_rank = 4 };
 	case "guards" : { _max_rank = 4 };
 	case "bandits" : { _max_rank = 4 };
+	case "defender" : { _max_rank = 4 };
 };
 
 private ["_unit", "_ai_rank", "_pos", "_backpack"];
