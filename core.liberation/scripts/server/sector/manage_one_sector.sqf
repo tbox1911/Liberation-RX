@@ -411,7 +411,7 @@ while {true} do {
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 		};
 
-		private _prisonners = [_sector_pos, _max_prisonners] call spawn_prisonners;
+		private _prisonners = [_sector_pos, _max_prisonners, _managed_units] call spawn_prisonners;
 		_managed_units = _managed_units - _prisonners;
 
 		if (_sector in (sectors_capture + sectors_factory + sectors_bigtown)) then {
