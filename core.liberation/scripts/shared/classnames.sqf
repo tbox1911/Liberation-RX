@@ -499,7 +499,7 @@ GRLIB_vehicle_blacklist = [
 	storage_medium_typename
 ] + GRLIB_vehicle_blacklist_west;
 
-// Recycleable objects
+// Recycleable objects blacklist
 GRLIB_recycleable_blacklist = [
 	FOB_typename,
 	FOB_outpost,
@@ -755,12 +755,13 @@ GRLIB_force_cleanup_classnames = [
 
 // Ammobox you want keep contents
 GRLIB_Ammobox_keep = [
+	Arsenal_typename,
 	playerbox_typename,
 	medicalbox_typename,
-	Box_Ammo_typename
+	basic_weapon_typename
 ];
 
-// Ammobox when Arsenal is disabled (not saved)
+// Ammobox when Arsenal is disabled
 GRLIB_disabled_arsenal = [
 	Box_Weapon_typename,
 	Box_Ammo_typename,
@@ -769,8 +770,7 @@ GRLIB_disabled_arsenal = [
 	Box_Equipment_typename,
 	Box_Support_typename,
 	Box_Special_typename,
-	Box_Launcher_typename,
-	basic_weapon_typename
+	Box_Launcher_typename
 ];
 
 diag_log "--- LRX: Classnames Loaded ---";

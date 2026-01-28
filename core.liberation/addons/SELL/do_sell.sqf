@@ -85,7 +85,7 @@ while { dialog && alive player } do {
 					[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 					hintSilent format [localize "STR_CARGO_SOLD", _vehicle_name, name player, _price];
 					playSound "taskSucceeded";
-					if (typeOf _vehicle in GRLIB_disabled_arsenal) then {deleteVehicle _vehicle};
+					if (typeOf _vehicle in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {deleteVehicle _vehicle};
 				};
 			_refresh = true;
 			};

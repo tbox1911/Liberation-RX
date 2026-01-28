@@ -43,7 +43,7 @@ waitUntil { dialog };
 private _ammount_ammo = round (((_objectinfo select 2) * GRLIB_recycling_percentage) * (1 - damage _vehicle));
 private _ammount_fuel = _objectinfo select 3;
 if (_veh_class == fuelbarrel_typename) then { _ammount_ammo = 0 };
-if (_veh_class in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
+if (_veh_class in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {
 	_ammount_ammo = round (([_vehicle] call F_loadoutPrice) * GRLIB_recycling_percentage);
 };
 
