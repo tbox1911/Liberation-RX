@@ -110,7 +110,7 @@ if (_classname isKindOf "Land_PortableHelipadLight_01_F") then {
 
 // WareHouse
 if (_classname == Warehouse_typename) then {
-	[_vehicle] call warehouse_init_remote_call;
+	[_vehicle] call warehouse_init;
 	_allow_damage = false;
 };
 

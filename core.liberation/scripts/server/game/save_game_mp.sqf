@@ -208,7 +208,7 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 	_stats pushback stats_readiness_earned;
 
 	private _warehouse = [];
-	{_warehouse pushBack (_x select 1)} forEach GRLIB_warehouse;
+	{_warehouse pushBack (GRLIB_warehouse get _x)} forEach (keys GRLIB_warehouse);
 
 	// Save Blob
 	private _lrx_liberation_savegame = [

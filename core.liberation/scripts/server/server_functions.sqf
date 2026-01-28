@@ -90,6 +90,7 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
 
 // Warehouse
+warehouse_init = compileFinal preprocessFileLineNumbers "scripts\server\game\warehouse_init.sqf";
 warehouse_update = compileFinal preprocessFileLineNumbers "scripts\server\game\warehouse_update.sqf";
 
 // Remote Call - Server Side
@@ -123,7 +124,6 @@ unload_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\serve
 upgrade_fob_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\upgrade_fob_remote_call.sqf";
 vehicle_lock_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_lock_remote_call.sqf";
 vehicle_unflip_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_unflip_remote_call.sqf";
-warehouse_init_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\warehouse_init_remote_call.sqf";
 warehouse_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\warehouse_remote_call.sqf";
 activate_sector_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\activate_sector_remote_call.sqf";
 vote_sector_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vote_sector_remote_call.sqf";

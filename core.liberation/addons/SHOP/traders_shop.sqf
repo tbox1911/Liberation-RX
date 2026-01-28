@@ -164,9 +164,8 @@ while { dialog && alive player } do {
 				gamelogic globalChat _msg;
 				ctrlEnable [120, false];
 				playSound "taskSucceeded";
-				sleep 1;
+				_refresh = true;
 			};
-			_refresh = true;
 		};
 
 		if (shop_action == 2) then {

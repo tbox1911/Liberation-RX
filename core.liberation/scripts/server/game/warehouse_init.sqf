@@ -78,7 +78,7 @@ _warehouse setVariable ["GRLIB_WarehouseOwner", _man];
 // build box
 _warehouse_dir = getdir _warehouse;
 {
-	_typename = _x select 0;
+	_typename = _x;
 	_offset_conf = _warehouse_offset select _foreachIndex;
 	_spawn_offset = _offset_conf select 0 select 0;
 	_box_dir = _offset_conf select 0 select 1;
@@ -93,9 +93,7 @@ _warehouse_dir = getdir _warehouse;
 		};
 		_box setPosASL _box_pos_r1;
 	};
-} foreach GRLIB_warehouse;
+} foreach (keys GRLIB_warehouse);
 
 // update warehouse
 [getPosATL _warehouse] call warehouse_update;
-
-publicVariable "GRLIB_warehouse";

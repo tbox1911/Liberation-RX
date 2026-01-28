@@ -47,6 +47,7 @@ fob_attack_in_progress = [];
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_vehicle_huron = objNull;
 resources_intel = 0;
+GRLIB_sector_defense = [];
 GRLIB_warehouse = [
 	[waterbarrel_typename, 2],
 	[fuelbarrel_typename, 2],
@@ -84,8 +85,6 @@ if (GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1) then {
 // Load Savegame
 private _side_west = "";
 private _side_east = "";
-private _warehouse = [];
-private _sector_defense = [];
 private _buildings_created = [];
 
 if (!isNil "_lrx_liberation_savegame") then {
@@ -168,12 +167,30 @@ if (!isNil "_lrx_liberation_savegame") then {
 		abort_loading = true;
 	};
 
-	GRLIB_warehouse = [
+	// Warehouse
+	private _warehouse_storage = [
 		[waterbarrel_typename, (_warehouse select 0)],
 		[fuelbarrel_typename, (_warehouse select 1)],
 		[foodbarrel_typename, (_warehouse select 2)],
 		[basic_weapon_typename, (_warehouse select 3)]
 	];
+
+	if (typeName _warehouse_storage != "HASHMAP") then {
+		GRLIB_warehouse = createHashMapFromArray _warehouse_storage;
+	} else {
+		GRLIB_warehouse = _warehouse_storage;
+	};
+
+	// Sector Defense
+	if (typeName _sector_defense != "HASHMAP") then {
+		GRLIB_sector_defense = createHashMapFromArray _sector_defense;
+	} else {
+		GRLIB_sector_defense = _sector_defense;
+	};
+	{
+		private _def = GRLIB_sector_defense get _x;
+		if (_def == 0 || !(_x in blufor_sectors)) then { GRLIB_sector_defense deleteAt _x };
+	} forEach (keys GRLIB_sector_defense);
 
 	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
@@ -228,7 +245,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_nextclass == Warehouse_typename) then {
-			[_nextbuilding] call warehouse_init_remote_call;
+			[_nextbuilding] call warehouse_init;
 		};
 
 		if (_nextclass == FOB_typename) then {
@@ -475,17 +492,6 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
-
-// Sector Defense
-if (typeName _sector_defense != "HASHMAP") then {
-	GRLIB_sector_defense = createHashMapFromArray _sector_defense;
-} else {
-	GRLIB_sector_defense = _sector_defense;
-};
-{
-    private _def = GRLIB_sector_defense get _x;
-    if (_def == 0 || !(_x in blufor_sectors)) then { GRLIB_sector_defense deleteAt _x };
-} forEach (keys GRLIB_sector_defense);
 
 publicVariable "stats_blufor_soldiers_recruited";
 publicVariable "stats_blufor_vehicles_built";
