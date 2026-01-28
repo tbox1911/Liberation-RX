@@ -1,6 +1,7 @@
 // LRX Warehouse - init
 
 waituntil { sleep 1; !isNil "GRLIB_marker_init" };
+GRLIB_WHS_Selected = 0;
 
 [] spawn {
 	while {true} do {

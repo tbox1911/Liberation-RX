@@ -87,7 +87,7 @@ while { dialog && alive player } do {
 			};
 		} foreach (keys GRLIB_warehouse);
 
-		lbSetCurSel [111, 0];
+		lbSetCurSel [111, GRLIB_WHS_Selected];
 	};
 
 	// load action
@@ -132,7 +132,8 @@ while { dialog && alive player } do {
 		// unload
 		if (load_box == 2) then {
 			ctrlEnable [121, false];
-			_typename = (lnbData [111, [(lbCurSel 111), 0]]);
+			GRLIB_WHS_Selected = lbCurSel 111;
+			_typename = (lnbData [111, [GRLIB_WHS_Selected, 0]]);
 			_box_name = [_typename] call F_getLRXName;
 			_price = [_typename, support_vehicles] call F_getObjectPrice;
 			_price = round (_price / GRLIB_recycling_percentage);
