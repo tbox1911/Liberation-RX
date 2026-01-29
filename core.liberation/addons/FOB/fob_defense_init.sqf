@@ -33,6 +33,9 @@ if (GRLIB_GM_enabled) then {
 
 GRLIB_FOB_Defense_Sea_level = [
     "PortableHelipadLight_01_green_F",
+    "Land_ControlTower_01_F",
+    "Land_Cargo_Patrol_V1_F",
+    "Land_Cargo_House_V1_F",
     "Land_Cargo_Tower_V1_F"
 ];
 

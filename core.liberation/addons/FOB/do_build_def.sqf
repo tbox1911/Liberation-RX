@@ -96,8 +96,8 @@ _fob_pos set [2, 0];
             _nextobject setVariable ["R3F_LOG_disabled", true, true];
             _nextobject allowDamage false;
             _nextobject setPosATL _nextpos;
-            if (_nextobject in GRLIB_FOB_Defense_Sea_level) then {
-                _nextobject setVectorDirAndUp [[_nextdir, _nextdir, 0], [0,0,1]];
+            if (_nextclass in GRLIB_FOB_Defense_Sea_level) then {
+                _nextobject setVectorDirAndUp [[sin _nextdir, cos _nextdir, 0], [0, 0, 1]];
             } else {
                 _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
             };
