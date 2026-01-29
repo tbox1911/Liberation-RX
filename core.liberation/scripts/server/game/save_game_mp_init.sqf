@@ -9,13 +9,15 @@ GRLIB_base_objects = [
 	land_cutter_typename,
 	helipad_typename
 ];
+
 GRLIB_classnames_to_save = [] + all_buildings_classnames + fob_defenses_classnames;
 GRLIB_classnames_to_save_blu = [
 	huron_typename
 ] + GRLIB_base_objects + all_friendly_classnames + all_hostile_classnames;
 GRLIB_classnames_to_save_blu = GRLIB_classnames_to_save_blu arrayIntersect GRLIB_classnames_to_save_blu;
 
-GRLIB_vehicles_light = [mobile_respawn, box_uavs_typename] + support_vehicles_classname + list_static_weapons + uavs_vehicles;
+private _support_vehicles_light = support_vehicles_classname select {!( _x isKindof "AllVehicles")};
+GRLIB_vehicles_light = _support_vehicles_light + list_static_weapons + uavs_vehicles;
 GRLIB_vehicles_light = GRLIB_vehicles_light arrayIntersect GRLIB_vehicles_light;
 
 GRLIB_classnames_to_save = GRLIB_classnames_to_save + GRLIB_classnames_to_save_blu + GRLIB_vehicles_light - GRLIB_disabled_arsenal;
