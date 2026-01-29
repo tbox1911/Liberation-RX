@@ -6,13 +6,13 @@ if (_max_prisonners == 0) exitWith {[]};
 private _enemy_left = [];
 
 if (isNil "_managed_units") then {
-    _enemy_left = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]) select {
-        (alive _x && isNull objectParent _x && !captive _x) &&
-        (side _x == GRLIB_side_enemy) && (_x skill "courage" <= 0.8) &&
-        !(_x getVariable ["GRLIB_mission_AI", false])
-    };
-} else {
-    _enemy_left = _managed_units select { (alive _x && isNull objectParent _x && !captive _x && _x skill "courage" <= 0.8) };
+    _managed_units = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
+};
+
+private _enemy_left = _managed_units select {
+    (alive _x && isNull objectParent _x && !captive _x) &&
+    (side _x == GRLIB_side_enemy) && (_x skill "courage" <= 0.8) &&
+    !(_x getVariable ["GRLIB_mission_AI", false])
 };
 
 private _prisonners = [];
