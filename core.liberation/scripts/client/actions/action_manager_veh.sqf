@@ -68,8 +68,8 @@ while {true} do {
 
 		if (maxLoad _vehicle > 1500) then {
 			_vehicle addAction ["<t color='#0080F0'>" + localize "STR_SEND_ARSENAL" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\add_personal_arsenal.sqf","",-508,false,true,"","[_target, _this] call GRLIB_checkAction_SendArsenal", GRLIB_ActionDist_5];
-			_vehicle addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_PICKUP" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_loot_veh.sqf","",-502,false,true,"","[_target, _this] call GRLIB_checkAction_Pickup_Weapons", GRLIB_ActionDist_5];
-			_vehicle addAction ["<t color='#00FFFF'>" + localize "STR_INVENTORY_UNPACK" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_inventory.sqf","",-503,false,true,"","[_target, _this] call GRLIB_checkAction_UnpackInventory", GRLIB_ActionDist_5];
+			_vehicle addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_PICKUP" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_loot_veh.sqf","",-504,false,true,"","[_target, _this] call GRLIB_checkAction_Pickup_Weapons", GRLIB_ActionDist_5];
+			_vehicle addAction ["<t color='#00FFFF'>" + localize "STR_INVENTORY_UNPACK" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_inventory.sqf","",-505,false,true,"","[_target, _this] call GRLIB_checkAction_UnpackInventory", GRLIB_ActionDist_5];
 		};
 		_vehicle setVariable ["GRLIB_vehicle_action", true];
 	} forEach _nearveh;
