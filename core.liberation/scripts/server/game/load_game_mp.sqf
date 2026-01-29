@@ -159,7 +159,13 @@ if (!isNil "_lrx_liberation_savegame") then {
 
 	// Warehouse
 	if (typeName _warehouse != "HASHMAP") then {
-		GRLIB_warehouse = createHashMapFromArray _warehouse;
+		private _warehouse_storage = [
+			[waterbarrel_typename, (_warehouse select 0)],
+			[fuelbarrel_typename, (_warehouse select 1)],
+			[foodbarrel_typename, (_warehouse select 2)],
+			[basic_weapon_typename, (_warehouse select 3)]
+		];
+		GRLIB_warehouse = createHashMapFromArray _warehouse_storage;
 	} else {
 		GRLIB_warehouse = _warehouse;
 	};
