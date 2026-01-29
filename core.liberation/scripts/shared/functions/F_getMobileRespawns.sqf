@@ -6,7 +6,6 @@ private _mobile_respawn_list = GRLIB_mobile_respawn select {
 	(_x != GRLIB_vehicle_huron) &&
 	(alive _x) && !(isObjectHidden _x) &&
 	!(_x getVariable ['R3F_LOG_disabled', false]) &&
-	!(([_x, "LHD", GRLIB_fob_range] call F_check_near) && typeOf _x == mobile_respawn) &&
 	!surfaceIsWater (getpos _x) && ((getPosATL _x) select 2) < 5 && speed vehicle _x < 5
 };
 

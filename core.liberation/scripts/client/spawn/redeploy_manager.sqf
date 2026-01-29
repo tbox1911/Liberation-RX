@@ -74,6 +74,7 @@ for "_idx" from 0 to (count GRLIB_all_fobs - 1) do {
 };
 
 private _mobile_respawn = ([] call F_getMobileRespawns);
+_mobile_respawn = _mobile_respawn select {!([_x, "LHD", GRLIB_fob_range] call F_check_near)};
 _mobile_respawn = ([_mobile_respawn, [player], {_input0 distance2D _x}, 'ASCEND'] call BIS_fnc_sortBy);
 private ["_vehicle", "_player", "_name"];
 for "_idx" from 0 to ((count _mobile_respawn) -1) do {
