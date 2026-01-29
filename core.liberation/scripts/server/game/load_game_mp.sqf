@@ -47,8 +47,8 @@ fob_attack_in_progress = [];
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_vehicle_huron = objNull;
 resources_intel = 0;
-GRLIB_sector_defense = [];
-GRLIB_warehouse = [
+GRLIB_sector_defense = createHashMapFromArray [];
+GRLIB_warehouse = createHashMapFromArray [
 	[waterbarrel_typename, 2],
 	[fuelbarrel_typename, 2],
 	[foodbarrel_typename, 1],
@@ -157,24 +157,12 @@ if (!isNil "_lrx_liberation_savegame") then {
 		abort_loading = true;
 	};
 
-	if (typeName _warehouse != "ARRAY") exitWith {
-		abort_loading_msg = format [
-		"********************************\n
-		FATAL! - The savegame is incompatible with this version of LRX\n\n
-		Loading Aborted to protect data integrity.\n
-		Wipe the savegame...\n
-		*********************************"];
-		abort_loading = true;
-	};
-
 	// Warehouse
-	private _warehouse_storage = [
-		[waterbarrel_typename, (_warehouse select 0)],
-		[fuelbarrel_typename, (_warehouse select 1)],
-		[foodbarrel_typename, (_warehouse select 2)],
-		[basic_weapon_typename, (_warehouse select 3)]
-	];
-	GRLIB_warehouse = createHashMapFromArray _warehouse_storage;
+	if (typeName _warehouse != "HASHMAP") then {
+		GRLIB_warehouse = createHashMapFromArray _warehouse;
+	} else {
+		GRLIB_warehouse = _warehouse;
+	};
 
 	// Sector Defense
 	if (typeName _sector_defense != "HASHMAP") then {
@@ -492,7 +480,7 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 private _path = format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
 [_path] call F_getTemplateFile;
 if (isNil "default_personal_arsenal") then {
-	default_personal_arsenal = [] call compileFinal preprocessFileLineNumbers "addons\LARs\default_personal_arsenal.sqf"; 
+	default_personal_arsenal = [] call compileFinal preprocessFileLineNumbers "addons\LARs\default_personal_arsenal.sqf";
 };
 
 publicVariable "stats_blufor_soldiers_recruited";

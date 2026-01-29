@@ -207,9 +207,6 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 	_stats pushback stats_fobs_lost;
 	_stats pushback stats_readiness_earned;
 
-	private _warehouse = [];
-	{_warehouse pushBack (GRLIB_warehouse get _x)} forEach (keys GRLIB_warehouse);
-
 	// Save Blob
 	private _lrx_liberation_savegame = [
 		(blufor_sectors - sector_attack_in_progress),
@@ -221,7 +218,7 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 		[],
 		GRLIB_mod_west,
 		GRLIB_mod_east,
-		_warehouse,
+		GRLIB_warehouse,
 		_stats,
 		[ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
 		GRLIB_vehicle_to_military_base_links,
