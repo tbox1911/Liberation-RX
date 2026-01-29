@@ -53,6 +53,8 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 		GRLIB_personal_arsenal = player getVariable "GRLIB_personal_arsenal";
 		!(isNil "GRLIB_personal_arsenal")
 	};
+
+	// Create Personal Arsenal Box
 	GRLIB_personal_box_capacity = 30000;
 	GRLIB_personal_box = Arsenal_typename createVehicle (markerPos GRLIB_respawn_marker);
 	GRLIB_personal_box allowDamage false;

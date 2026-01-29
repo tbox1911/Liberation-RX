@@ -28,6 +28,7 @@ if (GRLIB_side_friendly == WEST) then {
         _unit setVariable ["GRLIB_player_context_loaded", (_oldUnit getVariable ["GRLIB_player_context_loaded", false]), true];
         _unit setVariable ["GRLIB_squad_context_loaded", (_oldUnit getVariable ["GRLIB_squad_context_loaded", false]), true];
         _unit setVariable ["GRLIB_virtual_garage", (_oldUnit getVariable ["GRLIB_virtual_garage", []]), true];
+        _unit setVariable ["GRLIB_personal_arsenal", (_oldUnit getVariable ["GRLIB_personal_arsenal", []]), true];
         _unit setVariable ["GREUH_score_count", (_oldUnit getVariable ["GREUH_score_count", 0]), true];
         _unit setVariable ["GREUH_score_last", (_oldUnit getVariable ["GREUH_score_last", 0]), true];
         _unit setVariable ["GREUH_ammo_count", (_oldUnit getVariable ["GREUH_ammo_count", 0]), true];

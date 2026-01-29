@@ -1,11 +1,12 @@
 // Mod signature
-GRLIB_MOD_signature = [];						// Used to filter several MOD items
+GRLIB_MOD_signature = [];				// Used to filter several MOD items
+blacklisted_bag = [];					// Additional blacklisted bags
+blacklisted_weapon = [];				// Additional blacklisted weapons
+whitelisted_from_arsenal = [];			// Additional whitelisted items
 
-// Default Personal Arsenal
+// Default Arsenal
 private _path = format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
 [_path] call F_getTemplateFile;
-private _ret = [] call compileFinal preprocessFileLineNumbers "addons\LARs\default_personal_arsenal.sqf";
-if (isNil "default_personal_arsenal") then { default_personal_arsenal = _ret };
 
 // Default LRX blacklist
 GRLIB_blacklisted_bag = [
