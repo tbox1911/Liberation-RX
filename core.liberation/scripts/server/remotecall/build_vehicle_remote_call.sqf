@@ -9,6 +9,20 @@ params [
 		"_veh_vup"
 ];
 
+private _need_cutter = [
+	Warehouse_typename,
+	medic_heal_typename,
+	storage_medium_typename,
+	"Land_PortableHelipadLight_01_F"
+];
+
+// Magic cutter
+if ([_classname, _need_cutter] call F_itemIsInClass) then {
+	private _vehicle = createVehicle [land_cutter_typename, _veh_pos, [], 0, "CAN_COLLIDE"];
+	_vehicle setPosATL _veh_pos;
+	[_veh_pos] call build_cutter_remote_call;
+};
+
 private _allow_damage = true;
 private _vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 if (isNull _vehicle) exitWith {

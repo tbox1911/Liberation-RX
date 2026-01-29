@@ -5,6 +5,9 @@ private _vehicle = objNull;
 
 // Ground FOB
 if (_classname in [FOB_typename, FOB_outpost]) then {
+	_vehicle = createVehicle [land_cutter_typename, _veh_pos, [], 0, "CAN_COLLIDE"];
+	_vehicle setPosATL _veh_pos;
+	[_veh_pos] call build_cutter_remote_call;
 	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
 	_vehicle enableSimulationGlobal true;
