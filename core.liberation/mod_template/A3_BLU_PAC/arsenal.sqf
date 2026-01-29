@@ -1,9 +1,4 @@
 //Blacklist Items
-blacklisted_bag = [
-];
-
-blacklisted_weapon = [
-];
 
 whitelisted_from_arsenal = [
 	"MineDetector",

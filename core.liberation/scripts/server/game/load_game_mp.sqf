@@ -174,12 +174,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		[foodbarrel_typename, (_warehouse select 2)],
 		[basic_weapon_typename, (_warehouse select 3)]
 	];
-
-	if (typeName _warehouse_storage != "HASHMAP") then {
-		GRLIB_warehouse = createHashMapFromArray _warehouse_storage;
-	} else {
-		GRLIB_warehouse = _warehouse_storage;
-	};
+	GRLIB_warehouse = createHashMapFromArray _warehouse_storage;
 
 	// Sector Defense
 	if (typeName _sector_defense != "HASHMAP") then {
@@ -492,6 +487,13 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
+
+// Default Personal Arsenal
+private _path = format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
+[_path] call F_getTemplateFile;
+if (isNil "default_personal_arsenal") then {
+	default_personal_arsenal = [] call compileFinal preprocessFileLineNumbers "addons\LARs\default_personal_arsenal.sqf"; 
+};
 
 publicVariable "stats_blufor_soldiers_recruited";
 publicVariable "stats_blufor_vehicles_built";

@@ -18,7 +18,7 @@ GRLIB_classnames_to_save_blu = GRLIB_classnames_to_save_blu arrayIntersect GRLIB
 GRLIB_vehicles_light = [mobile_respawn, box_uavs_typename] + support_vehicles_classname + list_static_weapons + uavs_vehicles;
 GRLIB_vehicles_light = GRLIB_vehicles_light arrayIntersect GRLIB_vehicles_light;
 
-GRLIB_classnames_to_save = GRLIB_classnames_to_save + GRLIB_classnames_to_save_blu + GRLIB_vehicles_light;
+GRLIB_classnames_to_save = GRLIB_classnames_to_save + GRLIB_classnames_to_save_blu + GRLIB_vehicles_light - GRLIB_disabled_arsenal;
 GRLIB_classnames_to_save = GRLIB_classnames_to_save arrayIntersect GRLIB_classnames_to_save;
 
 GRLIB_quick_delete = [

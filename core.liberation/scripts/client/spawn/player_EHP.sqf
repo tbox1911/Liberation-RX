@@ -22,7 +22,13 @@ _unit addEventHandler ["InventoryOpened", {
 	_ret = false;
 	playsound "ZoomIn";
 	if (!alive _container) exitWith { _ret };
-	if (!([_unit, _container] call is_owner) || locked _container > 1) then {
+
+	private _locked = (locked _container > 1);
+	if (typeOf _container == Arsenal_typename && GRLIB_filter_arsenal == 4) then {
+		_locked = true;
+	};
+
+	if (!([_unit, _container] call is_owner) || _locked) then {
 		closeDialog 106;
 		_ret = true;
 	};

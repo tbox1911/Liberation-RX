@@ -160,24 +160,27 @@ if (GRLIB_TFR_enabled) then {
 // *** SUPPORT ***
 support_vehicles = [];
 if (GRLIB_enable_arsenal == 1) then {
-	support_vehicles append [
-		[Arsenal_typename,0,35,0,0]
-	];
-} else {
-	support_vehicles append [
-		[Box_Weapon_typename,0,180,0,0],
-		[Box_Ammo_typename,0,0,0,0],
-		[Box_Grenades_typename,0,100,0,0],
-		[Box_Explosives_typename,0,180,0,0],
-		[Box_Equipment_typename,0,250,0,GRLIB_perm_inf],
-		[Box_Support_typename,0,270,0,GRLIB_perm_inf],
-		[Box_Special_typename,0,365,0,GRLIB_perm_log],
-		[Box_Launcher_typename,0,370,0,GRLIB_perm_tank]
-	];
+	if (GRLIB_filter_arsenal == 4) then {
+		support_vehicles = [
+			[Arsenal_typename,0,35,0,0],
+			[Box_Weapon_typename,0,180,0,0],
+			[Box_Ammo_typename,0,0,0,0],
+			[Box_Grenades_typename,0,100,0,0],
+			[Box_Explosives_typename,0,180,0,0],
+			[Box_Equipment_typename,0,250,0,GRLIB_perm_inf],
+			[Box_Support_typename,0,270,0,GRLIB_perm_inf],
+			[Box_Special_typename,0,365,0,GRLIB_perm_log],
+			[Box_Launcher_typename,0,370,0,GRLIB_perm_tank]
+		];
+	} else {
+		support_vehicles = [
+			[Arsenal_typename,0,35,0,0]
+		];
+	};
 };
 
 // global LRX format [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
-support_vehicles = support_vehicles + [
+support_vehicles append [
 	[medicalbox_typename,5,25,0,0],
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,0,0],
@@ -755,13 +758,12 @@ GRLIB_force_cleanup_classnames = [
 
 // Ammobox you want keep contents
 GRLIB_Ammobox_keep = [
-	Arsenal_typename,
 	playerbox_typename,
 	medicalbox_typename,
 	basic_weapon_typename
 ];
 
-// Ammobox when Arsenal is disabled
+// Ammobox when Arsenal is disabled (not saved)
 GRLIB_disabled_arsenal = [
 	Box_Weapon_typename,
 	Box_Ammo_typename,

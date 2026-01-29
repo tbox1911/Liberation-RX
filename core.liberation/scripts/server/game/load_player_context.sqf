@@ -11,12 +11,13 @@ if (count _context == 0) then {
 };
 
 // Load Personal Arsenal
-private _personal_arsenal = [];
 if (GRLIB_filter_arsenal == 4) then {
-    _personal_arsenal = default_personal_arsenal;
-    if (count _context >= 4) then { _personal_arsenal = (_context select 3) };
+    if (count _context >= 4) then {
+        _player setVariable ["GRLIB_personal_arsenal", (_context select 3), true];
+    } else {
+        _player setVariable ["GRLIB_personal_arsenal", default_personal_arsenal, true];
+    };
 };
-_player setVariable ["GRLIB_personal_arsenal", _personal_arsenal, true];
 
 // Load Virtual Garage
 private _virtual_garage = [];
