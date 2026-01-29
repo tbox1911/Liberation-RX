@@ -24,7 +24,7 @@ _unit addEventHandler ["InventoryOpened", {
 	if (!alive _container) exitWith { _ret };
 
 	private _locked = (locked _container > 1);
-	if (typeOf _container == Arsenal_typename && GRLIB_filter_arsenal == 4) then {
+	if (typeOf _container == Arsenal_typename && GRLIB_filter_arsenal == 4 && !(isObjectHidden _container)) then {
 		_locked = true;
 	};
 
