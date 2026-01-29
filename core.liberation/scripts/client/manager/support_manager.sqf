@@ -157,7 +157,7 @@ while {true} do {
 
 				// REFUEL
 				_near_refuel = ([_vehicle, "REFUEL", _distarsenal] call F_check_near || [_unit, "FUEL", _distarsenal, false] call F_check_near || _near_lhd);
-				_vehicle_need_refuel = (fuel _vehicle < 0.5);
+				_vehicle_need_refuel = (fuel _vehicle <= 0.7);
 				if (_near_refuel && _vehicle_need_refuel) then { _task pushBack 3 };
 
 				// Set Task
