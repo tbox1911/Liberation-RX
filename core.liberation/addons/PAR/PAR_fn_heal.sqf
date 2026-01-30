@@ -1,70 +1,39 @@
-params ["_medic", "_wnded"];
+params ["_unit"];
 
-_wnded setVariable ["PAR_heal", true];
-
-if (_wnded == _medic) exitWith {
-	_wnded playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
-	sleep 7;
-	if !([_wnded] call PAR_is_wounded) then {
-		_wnded setDamage 0;
-	};
-	sleep 2;
-	_wnded setVariable ["PAR_heal", nil];
-};
-
-_medic groupchat format [localize "STR_PAR_CW_01", name _wnded];
-_medic setVariable ["PAR_heal", true];
-
-private ["_wnded_hit", "_medic_hit", "_medic_busy", "_wnded_healed", "_in_vehicle"];
-private _timer = time + 60;
-private _exit = false;
-
-private _dist = round(_medic distance2D _wnded);
-if (_dist > 6) then {
-	waitUntil {
-		_wnded stop true;
-		_dist = round(_medic distance2D _wnded);
-		if (_dist < 25) then {
-			_medic doMove (getPosATL _wnded);
+if (isNull objectParent _unit && !([_unit] call PAR_is_wounded)) then {
+	_is_medic = [_unit] call PAR_is_medic;
+	_has_medikit = [_unit] call PAR_has_medikit;
+	if (_is_medic && _has_medikit) then {
+		if (damage _unit >= 0.1) then {
+			if (isNull objectParent _unit && !(surfaceIsWater (getPos _unit))) then {
+				[_unit] spawn {
+					params ["_unit"];
+					_unit setVariable ["PAR_healing", _unit];
+					_unit action ["HealSoldierSelf", _unit];
+					sleep 5;
+					_unit setVariable ["PAR_healing", nil];
+				};
+			};
 		} else {
-			_medic doMove (getPos _wnded);
+			_wnded_list = (PAR_AI_bros + [player]) select {
+				(_x distance2D _unit) < 30 &&
+				!(surfaceIsWater (getPos _x)) &&
+				isNull objectParent _x &&
+				damage _x >= 0.1 &&
+				!([_x] call PAR_is_wounded) &&
+				isNil {_x getVariable "PAR_busy"} &&
+				isNil {_x getVariable "PAR_healing"}
+			};
+			if (count _wnded_list > 0) then {
+				[_unit, _wnded_list] spawn {
+					params ["_unit", "_wnded_list"];
+					private _wnded = (_wnded_list select 0);
+					_wnded setVariable ["PAR_healing", _unit];
+					_unit action ["HealSoldier", _wnded];
+					sleep 20;  // or wnded damage == 0
+					_wnded setVariable ["PAR_healing", nil];
+				};
+			};
 		};
-		sleep 3;
-		if (round (speed vehicle _medic) == 0) then {
-			_medic setDir (_medic getDir _wnded);
-			_medic switchMove "AmovPercMwlkSrasWrflDf";
-			_medic playMoveNow "AmovPercMwlkSrasWrflDf";
-		};	
-		_wnded_healed = damage _wnded == 0;
-		_in_vehicle = !(isNull objectParent _wnded && isNull objectParent _medic);
-		_wnded_hit = ([_wnded] call PAR_is_wounded);
-		_medic_hit = ([_medic] call PAR_is_wounded);
-		_medic_busy = _medic getVariable ["PAR_busy", false];
-		_exit = (time > _timer || _medic_busy || _medic_hit || _wnded_hit || _wnded_healed || _in_vehicle);
-		(_exit || round(_medic distance2D _wnded) <= 6)
 	};
 };
-
-if (_exit) exitWith {
-	_wnded stop false;
-	_wnded setVariable ["PAR_heal", nil];
-	_medic setVariable ["PAR_heal", nil];
-};
-
-_medic setDir (_medic getDir _wnded);
-if (stance _medic == 'PRONE') then {
-	_medic playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
-} else {
-	_medic playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
-};
-sleep 7;
-if (!([_medic] call PAR_is_wounded) && !([_wnded] call PAR_is_wounded) && round(_medic distance2D _wnded) <= 6) then {
-	_wnded setDamage 0;
-};
-[_medic, _wnded] call PAR_fn_fixPos;
-
-sleep 2;
-_wnded stop false;
-_wnded setVariable ["PAR_heal", nil];
-_medic setVariable ["PAR_heal", nil];
-[_medic, _wnded] doFollow (leader group player);

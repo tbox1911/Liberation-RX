@@ -1,17 +1,18 @@
 // PAR Global Functions - Client side
 PAR_AI_Manager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_AI_Manager.sqf";
 PAR_ActionManager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_ActionManager.sqf";
-PAR_fn_nearestMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_nearestMedic.sqf";
-PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
-PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
-PAR_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRecall.sqf";
-PAR_fn_checkMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkMedic.sqf";
 PAR_fn_911 = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_911.sqf";
-PAR_fn_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_sortie.sqf";
+PAR_fn_checkMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkMedic.sqf";
 PAR_fn_death = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_death.sqf";
-PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_heal = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_heal.sqf";
+PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
+PAR_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRecall.sqf";
+PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
+PAR_fn_nearestMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_nearestMedic.sqf";
+PAR_fn_revive_ui = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_revive_ui.sqf";
+PAR_fn_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_sortie.sqf";
+PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 // PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";  // moved to shared
 
 PAR_unblock_AI = {
@@ -216,6 +217,15 @@ PAR_fn_AI_Damage_EH = {
 // Player Section
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
+	openMap false;
+	closeDialog 0;
+	(uiNamespace getVariable ["RscDisplayArsenal", displayNull]) closeDisplay 1;
+	{
+		_x setVariable ["R3F_LOG_est_transporte_par", objNull, true];
+		detach _x;
+	} forEach (attachedObjects _unit);
+	R3F_LOG_joueur_deplace_objet = objNull;
+
 	// Show Dog
 	private _my_dog = _unit getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then { [_my_dog, false] remoteExec ["hideObjectGlobal", 2] };
@@ -235,14 +245,7 @@ PAR_Player_Unconscious = {
 
 	// PAR AI Revive Call
 	[_unit] spawn PAR_fn_unconscious;
-	sleep 1;
-
-	while { alive _unit && ([_unit] call PAR_is_wounded) } do {
-		private _bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
-		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
-		public_bleedout_timer = round (_bleedOut - time);
-		sleep 1;
-	};
+	[_unit] call PAR_fn_revive_ui;
 
 	// Player got revived
 	if !([_unit] call PAR_is_wounded) then {

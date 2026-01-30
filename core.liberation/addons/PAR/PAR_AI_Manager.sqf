@@ -40,31 +40,9 @@ while {true} do {
 
 			// AI revive
 			if (PAR_ai_revive_max > 0) then {
-				// Auto heal units
-				if (PAR_revive != 0 && behaviour player in ["SAFE", "AWARE"] && isNull objectParent _unit) then {
-					if ([_unit] call PAR_is_wounded) exitWith {};
-					_is_medic = [_unit] call PAR_is_medic;
-					_has_medikit = [_unit] call PAR_has_medikit;
-					_not_busy = _unit getVariable "PAR_busy";
-					_not_healing = _unit getVariable "PAR_heal";
-					if (isNil "_not_busy" && isNil "_not_healing" && _is_medic && _has_medikit) then {
-						_wnded_list = PAR_AI_bros + [player] select {
-							(_x distance2D _unit) < 30 &&
-							!(surfaceIsWater (getPos _x)) &&
-							isNull objectParent _x &&
-							damage _x >= 0.1 &&
-							!([_x] call PAR_is_wounded) &&
-							isNil {_x getVariable "PAR_busy"} &&
-							isNil {_x getVariable "PAR_heal"}
-						};
-
-						// go heal
-						if (count _wnded_list > 0) then {
-							_wnded = _wnded_list select 0;
-							[_unit, _wnded] spawn PAR_fn_heal;
-							sleep 2;
-						};
-					};
+				// Medic Auto Heal units
+				if (PAR_revive != 0 && behaviour player in ["SAFE", "AWARE"]) then {
+					[_unit] call PAR_fn_heal;
 				};
 
 				// AI medical status
