@@ -14,15 +14,17 @@ GRLIB_paramsV2_save_key = format ["%1-%2", GRLIB_paramsV1_save_key, str (GRLIB_p
 // Detect Addons
 GRLIB_3CB_units_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Units"); // Returns true if 3CB Vehicle is enabled
 GRLIB_3CB_vehicles_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Vehicles"); // Returns true if 3CB Vehicle is enabled
-GRLIB_3CB_enabled = (GRLIB_3CB_units_enabled || GRLIB_3CB_vehicles_enabled);
+GRLIB_3CB_factions_enabled = isClass(configFile >> "CfgPatches" >> "UK3CB_Factions_AAF"); // Returns true if 3CB Factions is enabled
+GRLIB_3CB_enabled = (GRLIB_3CB_units_enabled || GRLIB_3CB_vehicles_enabled || GRLIB_3CB_factions_enabled);
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
 GRLIB_AMF_enabled = isClass(configFile >> "cfgPatches" >> "AMF_weapon_F"); // Returns true if GlobMob is enabled
-GRLIB_CUPU_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Creatures_Extra"); // Returns true if CUP Units is enabled
-GRLIB_CUPV_enabled = isClass(configFile >> "CfgPatches" >> "CUP_AirVehciles_AH1Z"); // Returns true if CUP Vehicles is enabled
-GRLIB_CUP_enabled = (GRLIB_CUPU_enabled || GRLIB_CUPV_enabled); // Returns true if CUP is enabled
-GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
+GRLIB_CFP_enabled = isClass(configFile >> "CfgMods" >> "cfp"); // Returns true if CFP is enabled
+GRLIB_CUPU_enabled = isClass(configFile >> "CfgMods" >> "CUP_Units"); // Returns true if CUP Units is enabled
+GRLIB_CUPV_enabled = isClass(configFile >> "CfgMods" >> "CUP_Vehicles"); // Returns true if CUP Vehicles is enabled
+GRLIB_CUPW_enabled = isClass(configFile >> "CfgMods" >> "CUP_Weapons"); // Returns true if CUP Weapons is enabled
+GRLIB_CUP_enabled = (GRLIB_CUPU_enabled || GRLIB_CUPV_enabled || GRLIB_CUPW_enabled); // Returns true if CUP is enabled
 GRLIB_CWR_enabled = isClass(configFile >> "CfgMods" >> "cwr3_dlc"); // Returns true if CWR3 is enabled
 GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
@@ -34,9 +36,11 @@ GRLIB_LRX_Texture_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Texture")
 GRLIB_MFR_enabled = isClass(configfile >> "CfgPatches" >> "MFR_Dogs"); // Returns true if MFR Dogs is enabled
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
 GRLIB_R3F_enabled = isClass(configFile >> "CfgPatches" >> "r3f_armes"); // Returns true if R3F is enabled
-GRLIB_RHSAF_enabled = isClass(configFile >> "CfgMods" >> "RHS_AFRF"); // Returns true if RHS AF is enabled
-GRLIB_RHSUS_enabled = isClass(configFile >> "CfgMods" >> "RHS_USAF"); // Returns true if RHS US is enabled
-GRLIB_RHS_enabled = (GRLIB_RHSUS_enabled || GRLIB_RHSAF_enabled);  // Returns true if RHS is enabled
+GRLIB_RHSAFRF_enabled = isClass(configFile >> "CfgMods" >> "RHS_AFRF"); // Returns true if RHS AFRF is enabled
+GRLIB_RHSGREF_enabled = isClass(configFile >> "CfgMods" >> "RHS_GREF"); // Returns true if RHS GREF is enabled
+GRLIB_RHSUSAF_enabled = isClass(configFile >> "CfgMods" >> "RHS_USAF"); // Returns true if RHS USAF is enabled
+GRLIB_RHSSAF_enabled = isClass(configFile >> "CfgMods" >> "RHS_SAS"); // Returns true if RHS SAS is enabled
+GRLIB_RHS_enabled = (GRLIB_RHSAFRF_enabled || GRLIB_RHSGREF_enabled || GRLIB_RHSUSAF_enabled || GRLIB_RHSSAF_enabled);  // Returns true if RHS is enabled
 GRLIB_SOG_enabled = isClass(configFile >> "CfgPatches" >> "vn_misc"); // Returns true if SOG is enabled
 GRLIB_SPE_enabled = isClass(configFile >> "CfgPatches" >> "WW2_SPE_Mortain"); // Returns true if SPE is enabled
 GRLIB_TFR_enabled = isClass(configfile >> "CfgPatches" >> "task_force_radio"); // Returns true if TFAR is enabled
@@ -49,6 +53,7 @@ GRLIB_enabledPrefix = [
 	["3CB", GRLIB_3CB_enabled],
 	["AMF_", GRLIB_AMF_enabled],
 	["ASZ_", GRLIB_ASZ_enabled],
+	["CFP_", GRLIB_CFP_enabled],
 	["CP_", GRLIB_CUP_enabled],
 	["CWR3_", GRLIB_CWR_enabled],
 	["EJW_", GRLIB_EJW_enabled],
@@ -56,9 +61,9 @@ GRLIB_enabledPrefix = [
 	["IFA_", GRLIB_IFA_enabled],
 	["OPTRE", GRLIB_OPTRE_enabled],
 	["R3F_", GRLIB_R3F_enabled],
-	["RHS_AFRF", GRLIB_RHSAF_enabled],
-	["RHS_USAF", GRLIB_RHSUS_enabled],
+	["RHS_", GRLIB_RHS_enabled],
 	["SOG_", GRLIB_SOG_enabled],
+	["SPE_", GRLIB_SPE_enabled],	
 	["UNS_", GRLIB_UNS_enabled],
 	["WS_", GRLIB_WS_enabled]
 ];
