@@ -123,7 +123,7 @@ switch true do {
         if (_count_players > 4) then {
             _squad5 = ([] call F_getAdaptiveSquadComp)
         };
-        _vehtospawn = [([] call F_getAdaptiveVehicle), ([] call F_getAdaptiveVehicle)];
+        _vehtospawn = [([] call F_getAdaptiveVehicle), ([] call F_getAdaptiveVehicle), ([] call F_getAdaptiveVehicle)];
         if (floor random 100 > (33 / GRLIB_difficulty_modifier)) then {
             _vehtospawn pushback ([] call F_getAdaptiveVehicle)
         };
@@ -248,14 +248,13 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 	};
 	_ratio = round linearConversion [0, 4, _foreachIndex, 20, 40];
 	_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
-	sleep 0.5;
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
 
 // Create vehicles
 if (opforcap_max) then { _vehtospawn = [] };
 if (count _vehtospawn > 0) then {
 	{
-		private _pos = ([_sector_pos, (80 + floor random 100)] call F_getRandomPos);
+		private _pos = [_sector_pos, (80 + floor random 100)] call F_getRandomPos;
 		private _vehicle = [_pos, _x, 6, GRLIB_side_enemy, _infsquad1] call F_libSpawnVehicle;
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
@@ -263,7 +262,6 @@ if (count _vehtospawn > 0) then {
 		};
 		_ratio = round linearConversion [0, (count _vehtospawn) - 1, _foreachIndex, 50, 70];
 		_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
-		sleep 0.5;
 	} foreach _vehtospawn;
 };
 
