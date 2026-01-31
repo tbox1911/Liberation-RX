@@ -27,10 +27,10 @@ switch (_type) do {
 	case "militia" : { _max_rank = 2 };
 	case "cargo" : { _max_rank = 3 };
 	case "infantry" : { _max_rank = 3 };
-	case "building" : { _max_rank = 3 };
-	case "para" : { _max_rank = 4 };
-	case "guards" : { _max_rank = 4 };
-	case "bandits" : { _max_rank = 4 };
+	case "building" : { _max_rank = 4 };
+	case "para" : { _max_rank = 5 };
+	case "guards" : { _max_rank = 5 };
+	case "bandits" : { _max_rank = 5 };
 	case "defender" : { _max_rank = 4 };
 };
 
@@ -50,9 +50,6 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		};
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit setPitch 1;
-		_ai_rank = selectRandom (GRLIB_rank_level select [0, _max_rank]);
-		_unit setUnitRank _ai_rank;
-		_unit setSkill (0.5 + (GRLIB_rank_level find _ai_rank) * 0.05);
 
 		_pos = getPos _unit;
 		if (_type == "divers") then {
@@ -79,6 +76,9 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		};
 
 		[_unit] spawn reammo_ai;
+		_ai_rank = selectRandom (GRLIB_rank_level select [0, _max_rank]);
+		_unit setUnitRank _ai_rank;
+		[_unit, _ai_rank] spawn F_setUnitSkill;
 
 		if (_type == "para") then {
 			_backpack = backpack _unit;
