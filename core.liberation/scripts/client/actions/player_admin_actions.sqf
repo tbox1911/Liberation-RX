@@ -1,5 +1,6 @@
 params ["_add"];
 
+waitUntil {sleep 0.1; !isNil "GRLIB_player_admin_actions" };
 if (_add) then {
     if (count GRLIB_player_admin_actions == 0) then {
         private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
