@@ -1,4 +1,6 @@
 params ["_unit"];
+
+sleep 3;
 if (isNull _unit) exitWith {};
 
 private _hand_weapon = handgunWeapon _unit;

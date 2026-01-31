@@ -24,9 +24,9 @@ if (_type == "para") then {
 
 private _max_rank = 1;
 switch (_type) do {
-	case "militia" : { _max_rank = 2 };
+	case "militia" : { _max_rank = 3 };
 	case "cargo" : { _max_rank = 3 };
-	case "infantry" : { _max_rank = 3 };
+	case "infantry" : { _max_rank = 5 };
 	case "building" : { _max_rank = 4 };
 	case "para" : { _max_rank = 5 };
 	case "guards" : { _max_rank = 5 };
@@ -36,8 +36,7 @@ switch (_type) do {
 
 private ["_unit", "_ai_rank", "_pos", "_backpack"];
 {
-	_unit = _grp createUnit [_x, _spawn_pos, [], 10, "NONE"];
-	sleep 0.1;
+	_unit = _grp createUnit [_x, _spawn_pos, [], 15, "NONE"];
 	if (!isNil "_unit") then {
 		_unit allowDamage false;
 		[_unit] joinSilent _grp;
@@ -49,7 +48,6 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			_unit allowFleeing 0;
 		};
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_unit setPitch 1;
 
 		_pos = getPos _unit;
 		if (_type == "divers") then {
@@ -74,6 +72,9 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			_unit addBackpack "B_AssaultPack_blk";
 			_unit addWeapon "launch_MRAWS_green_F";
 		};
+		if (_type in ["militia", "infantry"]) then {
+			[_unit] spawn { sleep 5; _this call F_fixPosUnit };
+		};
 
 		[_unit] spawn reammo_ai;
 		_ai_rank = selectRandom (GRLIB_rank_level select [0, _max_rank]);
@@ -93,18 +94,13 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
+	sleep 0.1;
 } foreach _classname;
 
 private _units = units _grp;
 if (count _units == 0) exitWith { diag_log "--- LRX Error: created group is empty."; grpNull };
 
 sleep 1;
-{
-	if (_type in ["militia", "infantry"]) then {
-		[_x] call F_fixPosUnit;
-		sleep 0.5;
-	};
-} forEach _units;
 
 { _x allowDamage true } forEach _units;
 

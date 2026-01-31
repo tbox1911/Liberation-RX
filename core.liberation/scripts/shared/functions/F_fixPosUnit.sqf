@@ -18,7 +18,7 @@ private _rocks = count (nearestTerrainObjects [_unit, ["ROCK"], 20]);
 if (_forest > 0 && _rocks == 0) exitWith {};
 
 // Default
-private _basepos = (getPosASL _unit) vectorAdd [0,0,0.5];
+private _basepos = (getPosATL _unit) vectorAdd [0,0,0.5];
 private _foundPos = nil;
 private _step = 0.25;
 private _maxalt = 120;
@@ -27,7 +27,7 @@ private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 1
 if (_obstacle > 0) then { _maxalt = 1.8 };
 
 private _maxpos = _basepos vectorAdd [0,0,_maxalt];
-if !(lineIntersects [_basepos, _maxpos, _unit]) exitWith {};
+if !(lineIntersects [ATLtoASL _basepos, ATLtoASL _maxpos, _unit]) exitWith {};
 
 _unit setVariable ["LRX_unblock_running", true];
 
@@ -35,8 +35,8 @@ for "_i" from 0 to (_maxalt / _step) do {
     private _z = _maxalt - (_i * _step);
     private _testPos = _basepos vectorAdd [0,0,_z];
     if (lineIntersects [
-        _testPos,
-        _testPos vectorAdd [0,0,-0.05],
+        ATLtoASL _testPos,
+        ATLtoASL _testPos vectorAdd [0,0,-0.05],
         _unit
     ]) exitWith {
         _foundPos = _testPos vectorAdd [0,0,0.5];
@@ -51,7 +51,7 @@ diag_log format ["--- LRX Info: unblock unit %1 position %2", name _unit, _found
 private _state = isDamageAllowed _unit;
 _unit allowDamage false;
 _unit enableSimulation false;
-_unit setPosASL _foundPos;
+_unit setPosATL _foundPos;
 _unit enableSimulation true;
 sleep 1;
 _unit switchMove "AmovPercMwlkSrasWrflDf";
