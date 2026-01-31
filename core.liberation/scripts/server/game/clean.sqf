@@ -39,14 +39,13 @@ Instructions:
 
 _________________________________________________________________________*/
 
-if (GRLIB_cleanup_vehicles == 0) exitWith {};
-
 // CONFIG
 GRLIB_run_cleanup = true;							// To terminate script via debug console
 GRLIB_cleanup_active = false;						// To detect script activity
 GRLIB_force_cleanup = false;						// To force script execution via debug console
 publicVariable "GRLIB_force_cleanup";
 
+if (GRLIB_cleanup_vehicles == 0) exitWith {};
 waitUntil {sleep 30; !isNil "GRLIB_init_server"};
 sleep 30;
 
