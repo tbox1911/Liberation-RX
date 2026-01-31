@@ -12,8 +12,10 @@ if (isNil "_sectorpos" || isNil "_classname") exitWith { objNull };
 
 private _classname_bak = _classname;
 private _vehicle = objNull;
-private _spawn_pos = [];
+private _spawn_pos = _sectorpos;
 private _airveh_alt = 300;
+private _water_mode = 0;
+private _sea_deep = 0;
 
 if (_classname isKindOf "Air") then {
 	_spawn_pos = [_sectorpos, _side] call F_getAirSpawn;
@@ -33,20 +35,9 @@ if (_classname isKindOf "Air") then {
 		_vehicle = objNull;	
 	};
 } else {
-	if (_size == 0) then {
-		_spawn_pos = _sectorpos;
-	} else {
-		_spawn_pos = [_sectorpos, _size] call F_findSafePlace;
-	};
-
-	if (count _spawn_pos == 0) exitWith {
-		diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos];
-		objNull;
-	};
-
-	private _sea_deep = round (ATLtoASL (_spawn_pos) select 2);
-	if (_classname isKindOf "LandVehicle") then {
-		if (_sea_deep < -1.5) then {
+	_sea_deep = round (ATLtoASL (_spawn_pos) select 2);
+	if (surfaceIsWater _spawn_pos) then {
+		if (_sea_deep < -1.7) then {
 			_classname = "";
 			if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
 				_classname = selectRandom opfor_boats;
@@ -60,17 +51,25 @@ if (_classname isKindOf "Air") then {
 			if (_classname == "") then {
 				diag_log format ["--- LRX Error: Cannot find Boats classname in template %1", _side];
 			};
-		};
+		} else {
+			diag_log format ["--- LRX Error: No enough depth (%1) to build boat %2", _sea_deep, _classname];
+			_classname = "";
+		}
 	};
 
 	if (_classname isKindOf "Ship_F") then {
-		if (_sea_deep > -2) then {
-			diag_log format ["--- LRX Error: No enough depth (%1) to build boat %2", _sea_deep, _classname];
-			_classname = "";
-		};
+		_water_mode = 2;
 	};
 
 	if (_classname != "") then {
+		if (_size != 0) then {
+			_spawn_pos = [_sectorpos, _size, _water_mode] call F_findSafePlace;
+		};
+
+		if (count _spawn_pos == 0) exitWith {
+			diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos];
+		};		
+
 		_vehicle = createVehicle [_classname, _spawn_pos, [], 5, "NONE"];
 		_vehicle setVariable ["GRLIB_vehicle_init", true, true];
 		_vehicle allowDamage false;

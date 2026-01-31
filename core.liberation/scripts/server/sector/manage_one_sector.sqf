@@ -255,8 +255,8 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 if (opforcap_max) then { _vehtospawn = [] };
 if (count _vehtospawn > 0) then {
 	{
-		private _pos = ([_sector_pos, (80 + floor random 80)] call F_getRandomPos);
-		private _vehicle = [_pos, _x, 5, GRLIB_side_enemy, _infsquad1] call F_libSpawnVehicle;
+		private _pos = ([_sector_pos, (80 + floor random 100)] call F_getRandomPos);
+		private _vehicle = [_pos, _x, 6, GRLIB_side_enemy, _infsquad1] call F_libSpawnVehicle;
 		if (!isNull _vehicle) then {
 			_managed_vehicles pushback _vehicle;
 			[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
