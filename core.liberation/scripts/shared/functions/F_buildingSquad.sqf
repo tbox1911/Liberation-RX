@@ -9,7 +9,7 @@ params [
 
 waitUntil { sleep 1; isNil "GRLIB_building_used" };
 private _managed_units = [];
-private _rnd = [1,1,2,2,2,3];
+private _rnd = [1,1,1,2,2,2,3];
 private _max_try = 30;
 GRLIB_building_used = [];
 

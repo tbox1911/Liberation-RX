@@ -57,10 +57,10 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] call F_fixModUnit;
-		if (_type == "militia") then { [_unit] call loadout_militia };
+		if (_type == "militia") then { [_unit] spawn loadout_militia };
 		if (_type == "building") then { _unit setVariable ["GRLIB_in_building", true, true] };
 		if (_type == "bandits") then {
-			[_unit] call loadout_militia;
+			[_unit] spawn loadout_militia;
 			_unit addMPEventHandler ["MPKilled", {
 				params ["_unit", "_killer", "_instigator", "_useEffects"];
 				if (side group _killer != GRLIB_side_friendly || !(isNull objectParent _killer)) exitWith {};
@@ -71,9 +71,6 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 			removeBackpack _unit;
 			_unit addBackpack "B_AssaultPack_blk";
 			_unit addWeapon "launch_MRAWS_green_F";
-		};
-		if (_type in ["militia", "infantry"]) then {
-			[_unit] spawn { sleep 5; _this call F_fixPosUnit };
 		};
 
 		[_unit] spawn reammo_ai;
@@ -100,8 +97,14 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 private _units = units _grp;
 if (count _units == 0) exitWith { diag_log "--- LRX Error: created group is empty."; grpNull };
 
-sleep 1;
-
-{ _x allowDamage true } forEach _units;
+[_type, _units] spawn {
+	params ["_type", "_units"];
+	sleep 5;
+	{
+		_x allowDamage true;
+		if (_type in ["militia", "infantry"]) then { [_x] spawn F_fixPosUnit };
+		sleep 0.1;
+	} forEach _units;
+};
 
 _grp;

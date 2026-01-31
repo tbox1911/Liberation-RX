@@ -78,14 +78,14 @@ private _unitclass = [];
 while { count _unitclass < _position_count } do { _unitclass pushback (selectRandom _squad_comp) };
 
 _building_pos = (_building_pos call BIS_fnc_arrayShuffle);
-private _grp = [_sector_pos, _unitclass, _side, "building", _mission_ai] call F_libSpawnUnits;
+private _grp = [_building_pos select 0, _unitclass, _side, "building", _mission_ai] call F_libSpawnUnits;
 {
 	//_x disableAI "MOVE";
 	_x disableAI "PATH";
 	_x setUnitPos "UP";
 	_x setPos (_building_pos select _forEachIndex);
 	[_x, _keep_position] spawn building_defence_ai;
-	if (_type == "militia") then { [_x] call loadout_militia };
+	if (_type == "militia") then { [_x] spawn loadout_militia };
 } foreach (units _grp);
 
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];
