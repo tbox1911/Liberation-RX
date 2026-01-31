@@ -12,7 +12,9 @@ GRLIB_paramsV1_save_key = format ["%1-config", GRLIB_save_key];
 GRLIB_paramsV2_save_key = format ["%1-%2", GRLIB_paramsV1_save_key, str (GRLIB_param_version)];
 
 // Detect Addons
-GRLIB_3CB_enabled = isClass(configFile >> "CfgPatches" >> "UK3CB_Factions_Common"); // Returns true if 3CB is enabled
+GRLIB_3CB_units_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Units"); // Returns true if 3CB Vehicle is enabled
+GRLIB_3CB_vehicles_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Vehicles"); // Returns true if 3CB Vehicle is enabled
+GRLIB_3CB_enabled = (GRLIB_3CB_units_enabled || GRLIB_3CB_vehicles_enabled);
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
