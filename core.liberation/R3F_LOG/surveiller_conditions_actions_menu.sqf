@@ -229,7 +229,7 @@ while {true} do
 
 	// Si le joueur est pilote dans un h�liporteur
 	if (call compile R3F_LOG_CFG_string_condition_allow_logistics_on_this_client &&
-		!R3F_LOG_mutex_local_verrou && _vehicule_joueur != _joueur && driver _vehicule_joueur == _joueur && {_vehicule_joueur getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_lift}
+		!R3F_LOG_mutex_local_verrou && _vehicule_joueur != _joueur && (currentPilot _vehicule_joueur) == _joueur && {_vehicule_joueur getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_lift}
 	) then
 	{
 		R3F_LOG_objet_addAction = _vehicule_joueur;
