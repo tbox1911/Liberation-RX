@@ -68,7 +68,7 @@ if (isNull _building) then {
 
 private _position_count = count _building_pos min _building_ai_max;
 if (_position_count == 0) exitWith {
-	diag_log format ["---LRX Error: Can't build squad(%1) type %2 in building %3", _position_count, _type, typeOf _building];
+	diag_log format ["--- LRX Error: Can't build squad(%1) type %2 in building %3", _position_count, _type, typeOf _building];
 	[]
 };
 
@@ -86,7 +86,6 @@ private _grp = [_sector_pos, _unitclass, _side, "building", _mission_ai] call F_
 	_x setPos (_building_pos select _forEachIndex);
 	[_x, _keep_position] spawn building_defence_ai;
 	if (_type == "militia") then { [_x] call loadout_militia };
-	sleep 0.1;
 } foreach (units _grp);
 
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];

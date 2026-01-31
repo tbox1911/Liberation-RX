@@ -110,4 +110,4 @@ addMissionEventHandler ["Draw3D",{
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat localize "STR_PAR_AI_REVIVE_INITIALIZED";
-diag_log "---LRX PAR Addon loaded.";
+diag_log "--- LRX PAR Addon loaded.";
