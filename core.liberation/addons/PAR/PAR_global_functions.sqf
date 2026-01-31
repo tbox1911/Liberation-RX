@@ -217,6 +217,8 @@ PAR_fn_AI_Damage_EH = {
 // Player Section
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
+
+	disableUserInput true;
 	openMap false;
 	closeDialog 0;
 	(uiNamespace getVariable ["RscDisplayArsenal", displayNull]) closeDisplay 1;

@@ -1,7 +1,5 @@
 params ["_unit"];
 
-disableUserInput true;
-
 // Respawn Cooldown
 if (GRLIB_respawn_cooldown > 0) then {
 	private _cooldown = player getVariable ["GRLIB_last_respawn", 0];
