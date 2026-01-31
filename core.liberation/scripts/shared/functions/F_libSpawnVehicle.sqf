@@ -35,29 +35,28 @@ if (_classname isKindOf "Air") then {
 		_vehicle = objNull;	
 	};
 } else {
-	_sea_deep = round (ATLtoASL (_spawn_pos) select 2);
-	if (surfaceIsWater _spawn_pos) then {
-		if (_sea_deep < -1.7) then {
-			_classname = "";
-			if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
-				_classname = selectRandom opfor_boats;
-			};
-			if (count boats_west >= 1 && _side == GRLIB_side_friendly) then {
-				_classname = selectRandom boats_west;
-			};
-			if (count civilian_boats >= 1 && _side == GRLIB_side_civilian) then {
-				_classname = selectRandom civilian_boats;
-			};
-			if (_classname == "") then {
-				diag_log format ["--- LRX Error: Cannot find Boats classname in template %1", _side];
-			};
-		} else {
-			diag_log format ["--- LRX Error: No enough depth (%1) to build boat %2", _sea_deep, _classname];
-			_classname = "";
-		}
+	if (surfaceIsWater _spawn_pos && !(_classname isKindOf "Ship_F")) then {
+		_classname = "";
+		if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
+			_classname = selectRandom opfor_boats;
+		};
+		if (count boats_west >= 1 && _side == GRLIB_side_friendly) then {
+			_classname = selectRandom boats_west;
+		};
+		if (count civilian_boats >= 1 && _side == GRLIB_side_civilian) then {
+			_classname = selectRandom civilian_boats;
+		};
+		if (_classname == "") then {
+			diag_log format ["--- LRX Error: Cannot find Boats classname in template %1", _side];
+		};
 	};
 
 	if (_classname isKindOf "Ship_F") then {
+		_sea_deep = round (ATLtoASL (_spawn_pos) select 2);
+		if (_sea_deep > -1.7) then {
+			diag_log format ["--- LRX Error: No enough depth (%1) to build boat %2", _sea_deep, _classname];
+			_classname = "";
+		};
 		_water_mode = 2;
 	};
 
