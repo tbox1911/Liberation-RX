@@ -24,10 +24,13 @@ private _patrolcorners = [
 ];
 
 [_grp] call F_deleteWaypoints;
+
+private _prev = _patrolcorners select 0;
 {
+	_pos = _x;
 	if (_patrol_in_water) then {
-		if (surfaceIsWater _x) then {
-			_waypoint = _grp addWaypoint [_x, 0];
+		if (surfaceIsWater _pos) then {
+			_waypoint = _grp addWaypoint [_pos, 0];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "WHITE";
@@ -35,13 +38,14 @@ private _patrolcorners = [
 			_waypoint setWaypointCompletionRadius _completion_radius;
 		};
 	} else {
-		if (!surfaceIsWater _x) then {
-			_waypoint = _grp addWaypoint [_x, 30];
+		if (!surfaceIsWater _pos && !([_pos, _prev] call F_isWaterBetween)) then {
+			_waypoint = _grp addWaypoint [_pos, 30];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "WHITE";
 			_waypoint setWaypointSpeed "LIMITED";
 			_waypoint setWaypointCompletionRadius _completion_radius;
+			_prev = _pos;
 		};
 	};
 } foreach _patrolcorners;
