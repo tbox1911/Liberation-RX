@@ -115,7 +115,7 @@ if (isServer) then {
 		if (isNull _killer) exitWith {};
 		if (_unit != _killer) then {
 			if (_killer_side in [GRLIB_side_friendly, GRLIB_side_civilian]) then {
-				_isPrisonner = _unit getVariable ["GRLIB_is_prisoner", false];
+				_isPrisoner = _unit getVariable ["GRLIB_is_prisoner", false];
 				_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
 				_isZombie = (_unit_class select [0,10] == "RyanZombie");
 				if (_isKamikaz) exitWith {
@@ -126,7 +126,7 @@ if (isServer) then {
 				};
 
 				if (_isZombie) exitWith { [_killer, 5] call F_addScore };
-				if (!_isKamikaz && !_isZombie && _unit_side == GRLIB_side_civilian || _isPrisonner) exitWith {
+				if (!_isKamikaz && !_isZombie && _unit_side == GRLIB_side_civilian || _isPrisoner) exitWith {
 					stats_civilians_killed = stats_civilians_killed + 1;
 					if (isPlayer _killer) then {
 						if (GRLIB_civ_penalties > 0) then {

@@ -42,7 +42,7 @@ private _squad4 = [];
 private _infsquad4 = "infantry";
 private _squad5 = [];
 private _infsquad5 = "infantry";
-private _max_prisonners = 4;
+private _max_prisoners = 4;
 private _sector_despawn_tickets = GRLIB_despawn_tickets;
 private _nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
 private _active_players = [_sector_pos, (GRLIB_sector_size * 2)] call F_getNearbyPlayers;
@@ -409,8 +409,8 @@ while {true} do {
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 		};
 
-		private _prisonners = [_sector_pos, _max_prisonners, _managed_units] call spawn_prisonners;
-		_managed_units = _managed_units - _prisonners;
+		private _prisoners = [_sector_pos, _max_prisoners, _managed_units] call spawn_prisoners;
+		_managed_units = _managed_units - _prisoners;
 
 		if (_sector in (sectors_capture + sectors_factory + sectors_bigtown)) then {
 			private _building_destroyed = count (_building_alive select { !(alive _x) || (tolower (typeOf _x) find "ruin" != -1) });

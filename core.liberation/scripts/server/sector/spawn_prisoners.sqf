@@ -1,6 +1,6 @@
-params ["_sector_pos", "_max_prisonners", "_managed_units"];
+params ["_sector_pos", "_max_prisoners", "_managed_units"];
 
-if (_max_prisonners == 0) exitWith {[]};
+if (_max_prisoners == 0) exitWith {[]};
 
 
 private _enemy_left = [];
@@ -15,16 +15,16 @@ private _enemy_left = _managed_units select {
     !(_x getVariable ["GRLIB_mission_AI", false])
 };
 
-private _prisonners = [];
+private _prisoners = [];
 {
-    if (_max_prisonners > 0 && ((floor random 100) <= GRLIB_surrender_chance)) then {
-        _max_prisonners = _max_prisonners - 1;
+    if (_max_prisoners > 0 && ((floor random 100) <= GRLIB_surrender_chance)) then {
+        _max_prisoners = _max_prisoners - 1;
         [_x] spawn prisoner_ai;
-        _prisonners pushBack _x;
+        _prisoners pushBack _x;
     } else {
         if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
     };
     sleep 0.1;
 } foreach _enemy_left;
 
-_prisonners;
+_prisoners;

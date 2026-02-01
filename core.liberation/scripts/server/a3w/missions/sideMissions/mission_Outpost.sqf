@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_grp_defenders", "_grp_sentry", "_prisonners"];
+private ["_grp_defenders", "_grp_sentry", "_prisoners"];
 
 _setupVars = {
 	_missionType = "STR_OUTPOST";
@@ -25,15 +25,15 @@ _setupObjects = {
 	[_missionPos, 30] call createlandmines;
 	_missionHintText = ["STR_OUTPOST_MESSAGE1", sideMissionColor];
 
-	private _grp_prisonners = createGroup [GRLIB_side_civilian, true];
+	private _grp_prisoners = createGroup [GRLIB_side_civilian, true];
 	for "_i" from 0 to 3 do {
-		private _unit = _grp_prisonners createUnit [pilot_classname, _missionPos, [], 20, "NONE"];
+		private _unit = _grp_prisoners createUnit [pilot_classname, _missionPos, [], 20, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		[_unit, true, false] spawn prisoner_ai;
 		sleep 0.3;
 	};
-	_prisonners = (units _grp_prisonners);
-	_prisonners joinSilent _grp_prisonners;
+	_prisoners = (units _grp_prisoners);
+	_prisoners joinSilent _grp_prisoners;
 	[_missionLocation, 3] spawn spawn_static;
 	true;
 };
@@ -42,16 +42,16 @@ _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
 _waitUntilCondition = {
 	private _ret = false;
-	if ({alive _x} count _prisonners == 0) then {
+	if ({alive _x} count _prisoners == 0) then {
 		_failedHintMessage = ["STR_OUTPOST_MESSAGE_FAIL", sideMissionColor];
 		_ret = true;
 	};
 	_ret;
 };
-_waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count _prisonners) == ({alive _x} count _prisonners) };
+_waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count _prisoners) == ({alive _x} count _prisoners) };
 
 _failedExec = {
-	{ deleteVehicle _x } forEach _prisonners + (units _grp_defenders) + (units _grp_sentry);
+	{ deleteVehicle _x } forEach _prisoners + (units _grp_defenders) + (units _grp_sentry);
 	[_missionPos] call clearlandmines;
 };
 
