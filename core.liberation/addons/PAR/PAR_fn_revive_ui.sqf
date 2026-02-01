@@ -60,7 +60,6 @@ disableUserInput true;
 disableUserInput false;
 
 private ["_bleedOut", "_bleedout_timer", "_bleedout_message"];
-private _color_Red = getArray (configFile >> "CfgMarkerColors" >> "ColorRed" >> "color") call BIS_fnc_colorConfigToRGBA;
 private _respawn_button_delay = 20;
 private _ticks = 0;
 private _labelwidth = -1;
@@ -74,7 +73,6 @@ while {alive _unit && (_unit getVariable ["PAR_isUnconscious", false])} do {
     ctrlSetText [678, _bleedout_message];
 
     _bar = (_display displayCtrl 680);
-    _bar ctrlSetBackgroundColor _color_Red;
     _ratio = linearConversion [0, PAR_bleedout, _bleedout_timer, 0, 1, true];
     _barwidth = 0.200 * safezoneW * _ratio;
     _bar ctrlSetPosition [(ctrlPosition _bar) select 0, (ctrlPosition _bar) select 1, _barwidth,(ctrlPosition _bar) select 3];

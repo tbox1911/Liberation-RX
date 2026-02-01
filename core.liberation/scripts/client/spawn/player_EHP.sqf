@@ -227,7 +227,7 @@ if (_unit == player) then {
 				NRE_EarplugsActive = 0;
 			};
 			[false] call player_vehicle_actions;
-			if ([_vehicle] call F_vehicleSafeZone) then {
+			if ([_unit, _vehicle, true] call is_owner && [_vehicle] call F_vehicleSafeZone) then {
 				private _msg = localize "STR_FOB_SAFE_ZONE";
 				[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 			};
