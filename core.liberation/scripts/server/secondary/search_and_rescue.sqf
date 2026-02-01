@@ -30,9 +30,8 @@ _pilotUnits joinSilent _pilotsGrp;
 {
 	_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_x, true] spawn prisoner_ai;
-	sleep 1;
 } foreach _pilotUnits;
-sleep 3;
+sleep 1;
 
 private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 [_grppatrol, _helopos, 50] call patrol_ai;

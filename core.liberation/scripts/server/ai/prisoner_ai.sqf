@@ -16,7 +16,7 @@ removeBackpack _unit;
 removeVest _unit;
 { _unit unlinkItem _x } forEach (assignedItems _unit);
 
-_unit setVariable ["GRLIB_can_speak", true, true];
+//_unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
 _unit removeAllEventHandlers "GetInMan";
 _unit removeAllEventHandlers "SeatSwitchedMan";
