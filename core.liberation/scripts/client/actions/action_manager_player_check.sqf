@@ -137,7 +137,7 @@ GRLIB_checkUpgradeOutpost = {
 
 GRLIB_checkSpeak = {
 	params ["_target"];
-	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_can_speak', false] && _target getVariable ['GRLIB_is_prisoner', true] && side group _target != GRLIB_side_enemy)
+	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_can_speak', false] && side group _target != GRLIB_side_enemy)
 };
 
 GRLIB_checkCapture = {

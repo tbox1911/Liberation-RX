@@ -10,7 +10,7 @@ while {true} do {
 	// Man
 	private _near_man = (player nearEntities ["CAManBase", _searchradius]) select {
  		isNull objectParent _x &&
-		(_x getVariable ["GRLIB_can_speak", false]) &&
+		(_x getVariable ["GRLIB_can_speak", false] || _x getVariable ['GRLIB_is_prisoner', false]) &&
 		isNil {_x getVariable "GRLIB_speak_action"}
 	};
 
