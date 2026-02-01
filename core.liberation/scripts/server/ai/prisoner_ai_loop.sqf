@@ -21,9 +21,14 @@ while { alive _unit && !_captured } do {
 	_target = [_unit] call F_getNearestBlufor;
 	if (isNull _target && !_friendly && !_fleeing) then {
 		private _player = _unit getVariable ["GRLIB_prisoner_owner", objNull];
-		private _player_in_action = _player getVariable ["GRLIB_action_inuse", false];
+		private _in_action = _player getVariable ["GRLIB_action_inuse", false];
+		private _blufor_near = ({
+			(alive _x) && !(captive _x) &&
+			(_x distance2D _unit) <= 100  &&
+			!isNil {_x getVariable "PAR_Grp_ID"}
+		} count (units GRLIB_side_friendly) > 0);
 
-		if (!_player_in_action) then {
+		if (!_blufor_near && !_in_action) then {
 			_unit setVariable ["GRLIB_is_prisoner", true, true];
 			_fleeing = true;
 			if (side group _unit == GRLIB_side_friendly) then {
