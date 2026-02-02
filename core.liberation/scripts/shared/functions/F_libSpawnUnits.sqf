@@ -22,19 +22,20 @@ if (_type == "para") then {
 	diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawn_pos];
 };
 
-private _max_rank = 1;
+// ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
+private _rank_range = [0, 6];
 switch (_type) do {
-	case "militia" : { _max_rank = 3 };
-	case "cargo" : { _max_rank = 3 };
-	case "infantry" : { _max_rank = 5 };
-	case "building" : { _max_rank = 4 };
-	case "para" : { _max_rank = 5 };
-	case "guards" : { _max_rank = 5 };
-	case "bandits" : { _max_rank = 5 };
-	case "defender" : { _max_rank = 4 };
+	case "militia"  : { _rank_range = [0, 3] };
+	case "cargo"    : { _rank_range = [1, 4] };
+	case "infantry" : { _rank_range = [4, 6] };
+	case "building" : { _rank_range = [3, 5] };
+	case "para"     : { _rank_range = [4, 6] };
+	case "guards"   : { _rank_range = [4, 5] };
+	case "bandits"  : { _rank_range = [5, 5] };
+	case "defender" : { _rank_range = [4, 5] };
 };
 
-private ["_unit", "_ai_rank", "_pos", "_backpack"];
+private ["_unit", "_rank_unit", "_pos", "_backpack"];
 {
 	_unit = _grp createUnit [_x, _spawn_pos, [], 15, "NONE"];
 	if (!isNil "_unit") then {
@@ -74,9 +75,10 @@ private ["_unit", "_ai_rank", "_pos", "_backpack"];
 		};
 
 		[_unit] spawn reammo_ai;
-		_ai_rank = selectRandom (GRLIB_rank_level select [0, _max_rank]);
-		_unit setUnitRank _ai_rank;
-		[_unit, _ai_rank] spawn F_setUnitSkill;
+		_rank_range params ["_rank_min, _rank_max"];
+		_rank_unit = GRLIB_rank_level select (_rank_min + floor random (_rank_max - _rank_min + 1));
+		_unit setUnitRank _rank_unit;
+		[_unit, _rank_unit] spawn F_setUnitSkill;
 
 		if (_type == "para") then {
 			_backpack = backpack _unit;
