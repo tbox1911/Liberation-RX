@@ -36,6 +36,7 @@ waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
 	detach _object;
 	_object hideObjectGlobal true;
 } forEach _lst_grl;
+sleep 1;
 
 private _pos = getPos _vehicle;
 private _parachute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "NONE"];
@@ -44,7 +45,7 @@ _parachute disableCollisionWith _source;
 _parachute setVelocity (velocity _vehicle);
 _vehicle attachTo [_parachute, [0,0,0.6]];
 
-sleep 0.5;
+sleep 1;
 {
 	_object = _x select 0;
 	_offset = _x select 1;
