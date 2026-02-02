@@ -33,5 +33,5 @@ _unit setSkill ["spotDistance",   ([_rank, 0.0] call _calc_skill)];
 _unit setSkill ["aimingAccuracy", ([_rank, 0.0] call _calc_skill)];
 _unit setSkill ["aimingShake",    ([_rank, 0.0] call _calc_skill)];
 _unit setSkill ["spotTime",       ([_rank, 0.0] call _calc_skill)];
-_unit setSkill ["commanding",     ([_rank, 0.1] call _calc_skill)];
-_unit setSkill ["general",        ([_rank, 0.1] call _calc_skill)];
+_unit setSkill ["commanding",     1];
+_unit setSkill ["general",        1];

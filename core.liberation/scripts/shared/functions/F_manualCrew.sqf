@@ -34,6 +34,7 @@ private _indx = 0;
             _x assignAsCargo _vehicle;
             _x moveInCargo _vehicle;
         };
+        doStop _x,
         sleep 0.2;
         _indx = _indx + 1;
     };
