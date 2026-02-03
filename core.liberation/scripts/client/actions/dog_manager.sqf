@@ -93,9 +93,10 @@ while {true} do {
 							_my_dog stop true;
 							_my_dog setDir (_my_dog getDir _man);
 							if (count (attachedObjects _my_dog) > 0 && _man == player) then {
+								sleep 0.5;
 								private _gun = attachedObjects _my_dog select 0;
 								detach _gun;
-								sleep 0.3;
+								sleep 0.5;
 								private _gun_pos = getPosATL _gun;
 								_gun_pos set [2, 0];
 								_gun setPosATL _gun_pos;
@@ -186,5 +187,5 @@ while {true} do {
 			{ GRLIB_side_friendly revealMine _x } forEach _mines;
 		};
 	};
-	sleep 3;
+	sleep 1;
 };
