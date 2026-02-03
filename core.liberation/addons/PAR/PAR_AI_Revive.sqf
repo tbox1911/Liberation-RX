@@ -45,16 +45,16 @@ PAR_AI_recover_revive = (20*60);
 
 //------------------------------------------//
 PAR_BloodSplat = [
-  "BloodPool_01_Large_New_F",
-  "BloodPool_01_Medium_New_F",
-  "BloodSplatter_01_Large_New_F",
-  "BloodSplatter_01_Medium_New_F",
-  "BloodSplatter_01_Small_New_F"
+    "BloodPool_01_Large_New_F",
+    "BloodPool_01_Medium_New_F",
+    "BloodSplatter_01_Large_New_F",
+    "BloodSplatter_01_Medium_New_F",
+    "BloodSplatter_01_Small_New_F"
 ];
 
 PAR_MedGarbage = [
-  "MedicalGarbage_01_3x3_v1_F",
-  "MedicalGarbage_01_3x3_v2_F"
+    "MedicalGarbage_01_3x3_v1_F",
+    "MedicalGarbage_01_3x3_v2_F"
 ];
 
 PAR_graves = [
@@ -96,7 +96,19 @@ waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 [] spawn PAR_AI_Manager;
 
 // Action Manager
-[] spawn PAR_ActionManager;
+if (PAR_revive != 0) then { [] spawn PAR_ActionManager };
+
+// ACE specific
+if (GRLIB_ACE_medical_enabled) then {
+    [] spawn {
+        while {true} do {
+            waitUntil { sleep 0.1; ([player] call PAR_is_wounded)};
+            player setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
+            [] call PAR_fn_revive_ui;
+            waitUntil { sleep 0.1; !([player] call PAR_is_wounded)};
+        };
+    };
+};
 
 // Grave Name
 addMissionEventHandler ["Draw3D",{
@@ -109,5 +121,9 @@ addMissionEventHandler ["Draw3D",{
 }];
 
 waitUntil {!(isNull (findDisplay 46))};
-systemChat localize "STR_PAR_AI_REVIVE_INITIALIZED";
+if (GRLIB_ACE_medical_enabled) then {
+    systemChat localize "STR_PAR_AI_REVIVE_ACE_INITIALIZED";
+} else {
+    systemChat localize "STR_PAR_AI_REVIVE_INITIALIZED";
+};
 diag_log "--- LRX PAR Addon loaded.";

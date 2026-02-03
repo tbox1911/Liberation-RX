@@ -3,11 +3,12 @@ params ["_medic"];
 
 private _injured = objNull;
 private _deads = [];
-private _units = units _medic;
+private _units = [];
 
 while {alive _medic} do {
 	sleep 5;
-	// waaiting for wounded
+	// waiting for wounded
+	_units = units _medic;
 	while {(isNull _injured) && (alive _medic)} do {
 		if (_medic getvariable ["ACE_isUnconscious", false]) then {
 			//hintSilent "AI medic[ACE]: I am injured...wait a sec!";

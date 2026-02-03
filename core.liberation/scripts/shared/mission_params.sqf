@@ -66,11 +66,11 @@ GRLIB_PARAM_PAR_Revive = "PAR_Revive";
 GRLIB_PARAM_PAR_AI_Revive = "PAR_AI_Revive";
 GRLIB_PARAM_PAR_BleedOut = "PAR_BleedOut";
 GRLIB_PARAM_PAR_Grave = "PAR_Grave";
+GRLIB_PARAM_PAR_RespawnBtn = "PAR_Respawn";
 GRLIB_PARAM_DeathChat = "DeathChat";
 GRLIB_PARAM_ForceEnglish = "ForceEnglish";
 GRLIB_PARAM_MaxSpawnPoint = "MaxSpawnPoint";
 GRLIB_PARAM_Redeploy = "Redeploy";
-GRLIB_PARAM_Respawn = "Respawn";
 GRLIB_PARAM_SquadSize = "SquadSize";
 GRLIB_PARAM_MaxSquadSize = "MaxSquadSize";
 GRLIB_PARAM_PlatoonView = "PlatoonView";
@@ -757,7 +757,7 @@ _Mission_Params = [
             localize "STR_PARAMS_PAR_GRAVE_OPT1"
         ]]
     ]],
-    [GRLIB_PARAM_Respawn, createHashMapFromArray [
+    [GRLIB_PARAM_PAR_RespawnBtn, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 20],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_RESPAWN"],
         [GRLIB_PARAM_OptionLabelKey, ["5","10","20","25","30","60"]],

@@ -145,7 +145,7 @@ if (_unit == player) then {
 			if (_isNotWounded && _damage >= 0.86) then {
 				if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
 				_unit setVariable ["PAR_isUnconscious", true, true];
-				[_unit, _killer] spawn PAR_Player_Unconscious;
+				[_unit, _killer] spawn PAR_fn_playerWounded;
 			};
 			_damage min 0.86;
 		}];
@@ -289,4 +289,9 @@ if (_unit == player) then {
 	// Switch seat
 	_unit removeAllEventHandlers "SeatSwitchedMan";
 	_unit addEventHandler ["SeatSwitchedMan", { _this call vehicle_perm }];
+
+	// Add heal capabilities to player's group's medic when ACE is present
+	if (GRLIB_ACE_medical_enabled && ([_unit] call PAR_is_medic)) then {
+		[_unit] spawn F_aceMedicHeal;
+	};
 };

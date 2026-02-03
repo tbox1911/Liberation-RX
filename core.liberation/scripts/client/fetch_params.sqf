@@ -35,7 +35,6 @@ GRLIB_max_fobs = [GRLIB_PARAM_MaxFobs] call lrx_getParamValue;
 GRLIB_max_outpost = [GRLIB_PARAM_MaxOutpost] call lrx_getParamValue;
 GRLIB_permissions_param = [GRLIB_PARAM_Permissions] call lrx_getParamValue;
 GRLIB_respawn_cooldown = [GRLIB_PARAM_RespawnCD] call lrx_getParamValue;
-GRLIB_respawn_timer = [GRLIB_PARAM_Respawn] call lrx_getParamValue;
 GRLIB_show_blufor = [GRLIB_PARAM_ShowBlufor] call lrx_getParamValue;
 GRLIB_thermic = [GRLIB_PARAM_Thermic] call lrx_getParamValue;
 GRLIB_tk_count = [GRLIB_PARAM_TK_count] call lrx_getParamValue;
@@ -43,8 +42,15 @@ GRLIB_tk_mode = [GRLIB_PARAM_TK_mode] call lrx_getParamValue;
 GRLIB_vehicle_defense = [GRLIB_PARAM_VehicleDefense] call lrx_getParamValue;
 GRLIB_vehicles_fuel = [GRLIB_PARAM_FuelConso] call lrx_getParamValue;
 
+// PAR Revive
+PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
+PAR_ai_revive_max = ["PAR_AI_Revive"] call lrx_getParamValue;
+PAR_bleedout = ["PAR_BleedOut"] call lrx_getParamValue;
+PAR_respawn_btn = ["PAR_Respawn"] call lrx_getParamValue;
+
+PAR_grave = ["PAR_Grave"] call lrx_getParamValue;
 // Disable PAR/Fatigue if ACE Medical is present
-if (GRLIB_ACE_medical_enabled) then { PAR_revive = 0; GRLIB_fatigue = 1 };
+if (GRLIB_ACE_medical_enabled) then { PAR_revive = 0; PAR_grave = 0; GRLIB_fatigue = 1 };
 
 // Transfom true/false Param
 GRLIB_introduction = (GRLIB_introduction == 1);
@@ -55,12 +61,6 @@ GRLIB_fatigue = (GRLIB_fatigue == 1);
 GRLIB_permissions_param = (GRLIB_permissions_param == 1);
 GRLIB_air_support = (GRLIB_air_support == 1);
 GRLIB_admin_menu = (GRLIB_admin_menu == 1);
-
-// PAR Revive
-PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
-PAR_ai_revive_max = ["PAR_AI_Revive"] call lrx_getParamValue;
-PAR_bleedout = ["PAR_BleedOut"] call lrx_getParamValue;
-PAR_grave = ["PAR_Grave"] call lrx_getParamValue;
 
 waitUntil { sleep 1; !isNil "GRLIB_LRX_server_params_loaded" };
 

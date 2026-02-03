@@ -53,7 +53,7 @@ while { alive _unit && ([_unit] call PAR_is_wounded) && time <= (_unit getVariab
 		[_unit, _msg, true] call PAR_fn_globalchat;
 	};
 	//systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
-	sleep 10;
+	sleep 5;
 };
 
 if (!isNull _bld) then { _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this} };

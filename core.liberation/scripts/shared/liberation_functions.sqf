@@ -1,5 +1,6 @@
 F_aceInitVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_aceInitVehicle.sqf";
 F_aceLockVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_aceLockVehicle.sqf";
+F_aceMedicHeal = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_aceMedicHeal.sqf";
 F_adaptiveOpforFactor = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_adaptiveOpforFactor.sqf";
 F_addContainerCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addContainerCargo.sqf";
 F_addParachute = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addParachute.sqf";

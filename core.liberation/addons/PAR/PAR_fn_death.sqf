@@ -43,12 +43,12 @@ if (_unit == player) then {
 
 		// Marker
 		"PAR_grave_box_marker" setMarkerPosLocal PAR_grave_box;
+	};
 
-		// TFAR
-		if (GRLIB_TFR_enabled) then {
-			player setVariable ["GRLIB_TFAR_SW_config", (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings];
-			player setVariable ["GRLIB_TFAR_LR_config", (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings];
-		};
+	// TFAR
+	if (GRLIB_TFR_enabled) then {
+		player setVariable ["GRLIB_TFAR_SW_config", (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings];
+		player setVariable ["GRLIB_TFAR_LR_config", (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings];
 	};
 
 	// Marker

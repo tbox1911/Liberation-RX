@@ -75,7 +75,7 @@ private ["_unit", "_rank_unit", "_pos", "_backpack"];
 		};
 
 		[_unit] spawn reammo_ai;
-		_rank_range params ["_rank_min, _rank_max"];
+		_rank_range params ["_rank_min", "_rank_max"];
 		_rank_unit = GRLIB_rank_level select (_rank_min + floor random (_rank_max - _rank_min + 1));
 		_unit setUnitRank _rank_unit;
 		[_unit, _rank_unit] spawn F_setUnitSkill;

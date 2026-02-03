@@ -10,6 +10,7 @@ PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.s
 PAR_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRecall.sqf";
 PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
 PAR_fn_nearestMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_nearestMedic.sqf";
+PAR_fn_playerWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_playerWounded.sqf";
 PAR_fn_revive_ui = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_revive_ui.sqf";
 PAR_fn_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_sortie.sqf";
 PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
@@ -108,7 +109,7 @@ PAR_fn_globalchat = {
 		private _delay = 30;
 		if (isPlayer _speaker) then { _delay = 15 };
 		if (_last_msg < time || _force) then {
-			gamelogic globalChat _msg;
+			_speaker globalChat _msg;
 			_speaker setVariable ["PAR_last_message", round (time + _delay)];
 		};
 	};
@@ -206,58 +207,11 @@ PAR_fn_AI_Damage_EH = {
 	[_unit] call player_EH;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ["PAR_isUnconscious", false, true];
+	_unit setVariable ["ACE_isUnconscious", false, true];
 	_unit setVariable ["PAR_isDragged", 0, true];
 	_unit setVariable ["PAR_Grp_AI", group _unit];
 	_unit setVariable ["ace_sys_wounds_uncon", false];
 	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
 	_unit setVariable ["PAR_revive_history", []];
 	_unit setVariable ["GRLIB_can_speak", true, true];
-};
-
-// Player Section
-PAR_Player_Unconscious = {
-	params [ "_unit", "_killer" ];
-
-	disableUserInput true;
-	openMap false;
-	closeDialog 0;
-	(uiNamespace getVariable ["RscDisplayArsenal", displayNull]) closeDisplay 1;
-	{
-		_x setVariable ["R3F_LOG_est_transporte_par", objNull, true];
-		detach _x;
-	} forEach (attachedObjects _unit);
-	R3F_LOG_joueur_deplace_objet = objNull;
-
-	// Show Dog
-	private _my_dog = _unit getVariable ["my_dog", nil];
-	if (!isNil "_my_dog") then { [_my_dog, false] remoteExec ["hideObjectGlobal", 2] };
-
-	// Death message
-	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
-		["PAR_deathMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
-	};
-
-	_unit globalChat (localize selectRandom ["STR_PAR_Need_Medic1", "STR_PAR_Need_Medic2", "STR_PAR_Need_Medic3"]);
-
-	// Mute Radio
-	5 fadeRadio 0;
-
-	// Dog barf
-	if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", player] };
-
-	// PAR AI Revive Call
-	[_unit] spawn PAR_fn_unconscious;
-	[_unit] call PAR_fn_revive_ui;
-
-	// Player got revived
-	if !([_unit] call PAR_is_wounded) then {
-		// Unmute Radio
-		5 fadeRadio 1;
-
-		// Unmute ACRE
-		_unit setVariable ["ace_sys_wounds_uncon", false];
-
-		// Dog stop
-		if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", nil] };
-	};
 };

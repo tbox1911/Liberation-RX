@@ -1,3 +1,5 @@
+if (GRLIB_ACE_enabled) exitWith {};
+
 waitUntil {sleep 1; GRLIB_player_spawned};
 waitUntil {sleep 1; !isNil "GRLIB_player_near_lhd"};
 

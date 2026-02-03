@@ -15706,6 +15706,9 @@
 		<Key ID="STR_PAR_AI_REVIVE_INITIALIZED">
 			<Original>-------- pSiKo AI Revive Initialized --------</Original>
 		</Key>
+		<Key ID="STR_PAR_AI_REVIVE_ACE8INITIALIZED">
+			<Original>-------- pSiKo AI Revive (ACE version) Initialized --------</Original>
+		</Key>		
 		<Key ID="STR_PAR_Need_Medic1">
 			<Original>I need a medic!</Original>
 			<French>J'ai besoin d'un médecin!</French>
