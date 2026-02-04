@@ -3,22 +3,28 @@ params ["_grp", "_vehicles", ["_objective_pos", []]];
 if (count _vehicles == 0) exitWith {};
 
 // Group Behaviour
-_grp setFormation "COLUMN";
 _grp setBehaviourStrong "AWARE";
 _grp setCombatMode "GREEN";
-_grp setSpeedMode "LIMITED";
-{ _x setConvoySeparation 50 } forEach _vehicles;
+
+if (count _vehicles == 1) then {
+	_grp setSpeedMode "NORMAL";
+} else {
+	_grp setFormation "COLUMN";
+	_grp setSpeedMode "LIMITED";
+	{ _x setConvoySeparation 50 } forEach _vehicles;
+};
+
 sleep 20;
 
-private _units = units _grp;
 private _convoy_attacked = false;
 private _timeout = time + 800;
-private ["_veh_cur", "_killed", "_player_nearby"];
+private _slow = 1;
 
+private ["_veh_cur", "_killed", "_player_nearby", "_unload_range"];
 while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) > 0) } do {
 	// Attacked ?
 	if (!_convoy_attacked) then {
-		_killed = ({!alive _x} count _units > 0);
+		_killed = ({!alive _x} count (units _grp) > 0);
 		{
 			_veh_cur = _x;
 			_player_nearby = (count ([_veh_cur, GRLIB_sector_size] call F_getNearbyPlayers) > 0);
@@ -31,7 +37,18 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 	// Destination ?
 	if (count _objective_pos > 0) then {
 		{
-			if (_x distance2D _objective_pos <= 250) then { _convoy_attacked = true };
+			_unload_range = 250;
+			if (_x isKindOf "Air") then {
+				_unload_range = 800;
+				if (_x distance2D _objective_pos <= (_unload_range * 2) && _slow == 1) then {
+					_slow = 0;
+					_x flyInHeight [60, true];
+					_x flyInHeightASL [60, 60, 60];
+					(group driver _x) setSpeedMode "LIMITED";
+				};
+			};
+
+			if (_x distance2D _objective_pos <= _unload_range) then { _convoy_attacked = true };
 		} foreach _vehicles;
 	};
 
@@ -59,21 +76,41 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 
 if (_convoy_attacked) then {
 	// Eject Troop
-	{ doStop (driver _x) } foreach _vehicles;
-	sleep 2;
 	{
-		{
-			if (alive _x) then {
+		[_x] spawn {
+			params ["_vehicle"];
+			if (!alive _vehicle) exitWith {};
+			if (_vehicle isKindOf "Air") then {
+				_vehicle land "LAND";
+				waitUntil { sleep 0.1; round (getPos _vehicle select 2) <= 4 };
+			} else {
+				doStop (driver _vehicle);
+				sleep 2;
+			};
+			if (!alive _vehicle) exitWith {};
+			sleep 1;
+			{
 				[_x, false] spawn F_ejectUnit;
 				sleep 0.2;
-			};
-		} forEach (crew _x);
+			} forEach (crew _vehicle);
+		};
+		sleep 1;
 	} foreach _vehicles;
 
-	if (count _objective_pos > 0) then {
-		[_grp, _objective_pos] spawn battlegroup_ai;
-	} else {
-		_objective_pos = getPosATL (leader _grp);
-		[_grp, _objective_pos] spawn defence_ai;
+	(units _grp) allowGetIn false;
+	(units _grp) orderGetIn false;
+
+	waitUntil { sleep 1; ({ !(isNull objectParent _x) } count (units _grp) == 0) };
+
+	_grp setFormation "WEDGE";
+	_grp setSpeedMode "NORMAL";
+
+	if ({alive _x} count (units _grp) > 0) then {
+		if (count _objective_pos > 0) then {
+			[_grp, _objective_pos] spawn battlegroup_ai;
+		} else {
+			_objective_pos = getPosATL (leader _grp);
+			[_grp, _objective_pos] spawn defence_ai;
+		};
 	};
 };

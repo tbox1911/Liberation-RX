@@ -41,7 +41,8 @@ if (isNil "_vehicle") exitWith { diag_log format ["--- LRX Error: Taxi %1 creati
 hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicles" >> _taxi_type >> "DisplayName")];
 [_vehicle] call F_fixModVehicle;
 
-_vehicle flyInHeight 70;
+_vehicle flyInHeight [100, true];
+_vehicle flyInHeightASL [100, 100, 100];
 _vehicle setVariable ["GRLIB_taxi_owner", PAR_Grp_ID, true];
 _vehicle setVariable ["GRLIB_taxi_helipad", GRLIB_taxi_helipad, true];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];

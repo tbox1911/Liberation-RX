@@ -100,7 +100,7 @@ if (GRLIB_ACE_enabled) then { [_vehicle] call F_aceInitVehicle };
 
 if (_vehicle isKindOf "Air") then {
 	_vehicle engineOn true;
-	_vehicle flyInHeight _airveh_alt;
+	_vehicle flyInHeight [_airveh_alt, true];
 	_vehicle flyInHeightASL [_airveh_alt, _airveh_alt, _airveh_alt];
 };
 

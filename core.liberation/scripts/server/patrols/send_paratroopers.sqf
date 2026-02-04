@@ -1,4 +1,4 @@
-params ["_targetpos", ["_qrf", false], ["_unload_dist", 400]];
+params ["_targetpos", ["_qrf", false], ["_unload_dist", 500]];
 if (count opfor_troup_transports_heli == 0) exitWith { grpNull };
 
 private _name = "";
@@ -7,13 +7,13 @@ private _para_squad = [
 	opfor_squad_leader,
 	opfor_paratrooper,
 	opfor_paratrooper,
-	opfor_paratrooper,
-	opfor_paratrooper,
-	opfor_paratrooper,
+	opfor_rpg,
 	opfor_paratrooper,
 	opfor_paratrooper,
 	opfor_rpg,
-	opfor_rpg
+	opfor_paratrooper,
+	opfor_paratrooper,
+	opfor_paratrooper
 ];
 if (_qrf == true) then {
 	_name = "QRF-";
@@ -23,12 +23,12 @@ if (_qrf == true) then {
 		opfor_squad_leader,
 		opfor_sniper,
 		opfor_marksman,
+		opfor_rpg,
 		opfor_marksman,
 		opfor_machinegunner,
 		opfor_rpg,
-		opfor_rpg,
-		opfor_at,
 		opfor_grenadier,
+		opfor_at,
 		opfor_grenadier
 	];
 };
@@ -69,13 +69,8 @@ if (_cargo_seat_free == 0) exitWith {
 	[_vehicle, true, true] spawn F_vehicleClean;
 	grpNull;
 };
-if (_cargo_seat_free > 10) then { _cargo_seat_free = 10 };
 
-[_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
-sleep 3;
-
-private _unitclass = [];
-while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
+private _unitclass = _para_squad select [0, (_cargo_seat_free min 10)];
 private _para_group = [_spawnpos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
 private _lock = locked _vehicle;
 _vehicle lock 0;
@@ -92,6 +87,8 @@ _vehicle lock 0;
 (units _para_group) orderGetIn true;
 sleep 1;
 _vehicle lock _lock;
+
+[_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
 
 if (floor random 3 == 0) then {
 	if (count opfor_air > 0) then {
@@ -115,7 +112,10 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 
 	waitUntil {
 		sleep 0.2;
-		if (_vehicle distance2D _targetpos <= _unload_dist * 2) then { _vehicle flyInHeight 150 };
+		if (_vehicle distance2D _targetpos <= _unload_dist * 3) then {
+			_vehicle flyInHeight [200, true];
+			_vehicle flyInHeightASL [200, 200, 200];
+		};
 		!(alive _vehicle) || (damage _vehicle > 0.2 ) || (_vehicle distance2D _targetpos <= _unload_dist)
 	};
 
