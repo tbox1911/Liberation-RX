@@ -153,15 +153,18 @@ if (_unit == player) then {
 
 	// ACE specific
 	if (GRLIB_ACE_medical_enabled) then {
-		["ace_unconscious", {
-			private _ace_not_uncon = !(player getVariable ["PAR_ACE_isUnconscious", false]);
-			if (_ace_not_uncon && alive player) then {
-				player setVariable ["PAR_ACE_isUnconscious", true, true];
-				player setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
-				private _killer = player getVariable ["ace_medical_lastDamageSource", objNull];
-            	[player, _killer] spawn PAR_fn_playerWounded;
-			};
-		}] call CBA_fnc_addEventHandler;
+		private _enabled = ((["PAR_Revive"] call lrx_getParamValue) != 0);
+		if (_enabled) then {
+			["ace_unconscious", {
+				private _ace_not_uncon = !(player getVariable ["PAR_ACE_isUnconscious", false]);
+				if (_ace_not_uncon && alive player) then {
+					player setVariable ["PAR_ACE_isUnconscious", true, true];
+					player setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
+					private _killer = player getVariable ["ace_medical_lastDamageSource", objNull];
+					[player, _killer] spawn PAR_fn_playerWounded;
+				};
+			}] call CBA_fnc_addEventHandler;
+		};
 	};
 
 	// Get in Vehicle
@@ -305,6 +308,7 @@ if (_unit == player) then {
 
 	// Add heal capabilities to player's group's medic when ACE is present
 	if (GRLIB_ACE_medical_enabled && ([_unit] call PAR_is_medic)) then {
-		[_unit] spawn F_aceMedicHeal;
+		// need upgrade
+		// [_unit] spawn F_aceMedicHeal;
 	};
 };

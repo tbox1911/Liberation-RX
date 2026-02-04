@@ -96,7 +96,7 @@ waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 [] spawn PAR_AI_Manager;
 
 // Action Manager
-if (PAR_revive != 0) then { [] spawn PAR_ActionManager };
+[] spawn PAR_ActionManager;
 
 // Grave Name
 addMissionEventHandler ["Draw3D",{
