@@ -17,6 +17,7 @@ if (GRLIB_ACE_medical_enabled) then {
 
 _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 _unit setVariable ["PAR_isUnconscious", false, true];
+_unit setVariable ["PAR_ACE_isUnconscious", false, true];
 _unit setVariable ["PAR_isDragged", 0, true];
 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 _unit setVariable ["GRLIB_action_inuse", false, true];

@@ -44,6 +44,10 @@ uiSleep 2;
 closeDialog 0;
 
 //--- Countdown
+private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL player];
+_mk1 setMarkerTypeLocal "loc_Hospital";
+_mk1 setMarkerTextLocal format ["%1 Injured", name player];
+_mk1 setMarkerColor "ColorRed";
 
 createDialog "par_respawn";
 waitUntil { sleep 0.1; dialog };
@@ -64,7 +68,7 @@ private _ticks = 0;
 private _labelwidth = -1;
 private _labelpos = [];
 
-while {alive player && ([player] call PAR_is_wounded) && _bleedout_timer > 0 } do {
+while { alive player && ([player] call PAR_is_wounded) && _bleedout_timer > 0 } do {
 	_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 	_bleedout_timer = round (_bleedOut - time);
 	_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", _bleedout_timer];
@@ -75,6 +79,8 @@ while {alive player && ([player] call PAR_is_wounded) && _bleedout_timer > 0 } d
 	_barwidth = 0.200 * safezoneW * _ratio;
 	_bar ctrlSetPosition [(ctrlPosition _bar) select 0, (ctrlPosition _bar) select 1, _barwidth,(ctrlPosition _bar) select 3];
 	_bar ctrlCommit 1;
+
+	if (GRLIB_ACE_medical_enabled && _bleedout_timer == 0) exitWith { player setDamage 1 };
 
 	if (_bleedout_timer <= 30) then {
 		(_display displayCtrl 678) ctrlSetTextColor [1, 0, 0, 1];
@@ -113,6 +119,8 @@ while {alive player && ([player] call PAR_is_wounded) && _bleedout_timer > 0 } d
 	uiSleep 1;
 };
 
+deletemarker _mk1;
+
 "colorCorrections" ppEffectEnable false;
 "filmGrain" ppEffectEnable false;
 _cam cameraEffect ["Terminate", "BACK"];
@@ -122,6 +130,7 @@ closeDialog 0;
 
 if (alive player) then {
 	titleText ["", "PLAIN DOWN"];
+	player setVariable ["PAR_ACE_isUnconscious", false, true];
 } else {
 	titleText ["" ,"BLACK FADED", 100];
 };

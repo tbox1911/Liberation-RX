@@ -151,6 +151,19 @@ if (_unit == player) then {
 		}];
 	};
 
+	// ACE specific
+	if (GRLIB_ACE_medical_enabled) then {
+		["ace_unconscious", {
+			private _ace_not_uncon = !(player getVariable ["PAR_ACE_isUnconscious", false]);
+			if (_ace_not_uncon && alive player) then {
+				player setVariable ["PAR_ACE_isUnconscious", true, true];
+				player setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
+				private _killer = player getVariable ["ace_medical_lastDamageSource", objNull];
+            	[player, _killer] spawn PAR_fn_playerWounded;
+			};
+		}] call CBA_fnc_addEventHandler;
+	};
+
 	// Get in Vehicle
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {

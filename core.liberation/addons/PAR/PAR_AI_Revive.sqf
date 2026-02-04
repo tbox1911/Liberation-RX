@@ -98,18 +98,6 @@ waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 // Action Manager
 if (PAR_revive != 0) then { [] spawn PAR_ActionManager };
 
-// ACE specific
-if (GRLIB_ACE_medical_enabled) then {
-    [] spawn {
-        while {true} do {
-            waitUntil { sleep 0.1; ([player] call PAR_is_wounded)};
-            player setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
-            [] call PAR_fn_revive_ui;
-            waitUntil { sleep 0.1; !([player] call PAR_is_wounded)};
-        };
-    };
-};
-
 // Grave Name
 addMissionEventHandler ["Draw3D",{
 	private _near_grave = nearestObjects [player, PAR_graves, 2];

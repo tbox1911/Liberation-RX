@@ -52,7 +52,6 @@ if (_unit == player) then {
 	};
 
 	// Marker
-	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
 	if (PAR_grave == 0) then { "PAR_grave_box_marker" setMarkerPosLocal _pos };
 
 	// Respawn Penalty

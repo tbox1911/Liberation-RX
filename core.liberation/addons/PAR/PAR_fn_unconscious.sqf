@@ -1,5 +1,6 @@
 params ["_unit"];
 
+if (GRLIB_ACE_medical_enabled) exitWith {};
 if (rating _unit < -2000) exitWith {_unit setDamage 1};
 if (!([] call F_getValid)) exitWith {_unit setDamage 1};
 private _cur_revive = 1;
@@ -14,20 +15,16 @@ _unit setCaptive true;
 _unit setVariable ["PAR_busy", nil];
 _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 _unit setVariable ["PAR_isDragged", 0, true];
-[_unit, _unit] call PAR_fn_medicRelease;
 
 if (_unit == player) then {
-	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL _unit];
-	_mk1 setMarkerTypeLocal "loc_Hospital";
-	_mk1 setMarkerTextLocal format ["%1 Injured", name _unit];
-	_mk1 setMarkerColor "ColorRed";
 	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };
 	PAR_backup_loadout = [_unit] call F_getCargoUnit;
 } else {
 	_unit setVariable ["GRLIB_can_speak", false, true];
-	[_unit] call F_deathSound;
+	[_unit] spawn F_deathSound;
 };
+[_unit, _unit] call PAR_fn_medicRelease;
 
 waitUntil { sleep 0.1; isNull objectParent _unit };
 sleep 3;
@@ -59,7 +56,6 @@ while { alive _unit && ([_unit] call PAR_is_wounded) && time <= (_unit getVariab
 if (!isNull _bld) then { _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this} };
 
 if (_unit == player) then {
-	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };
 };
 
