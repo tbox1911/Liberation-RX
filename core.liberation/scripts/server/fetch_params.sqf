@@ -91,7 +91,7 @@ publicVariable "GRLIB_LRX_params";
 sleep 0.5;
 
 if (!GRLIB_ParamsInitialized) then {
-	diag_log "--- LRX: Waiting for Admin configure parameters ---";
+	diag_log "--- LRX: Waiting for Admin to configure Mission ---";
 	waitUntil { sleep 1; GRLIB_ParamsInitialized };
 };
 
