@@ -97,7 +97,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		*********************************"];
 		abort_loading = true;
 	};
-	diag_log format [ "--- LRX Load Game start at %1", time ];
+	diag_log format ["--- LRX Load Game start at %1", time];
 
 	blufor_sectors = _lrx_liberation_savegame select 0;
 	if (isNil "blufor_sectors") then { blufor_sectors = [] };
@@ -187,7 +187,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		if (_def == 0 || !(_x in blufor_sectors)) then { GRLIB_sector_defense deleteAt _x };
 	} forEach (keys GRLIB_sector_defense);
 
-	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
+	setDate [GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
 	stats_saves_loaded = stats_saves_loaded + 1;
 
@@ -281,9 +281,9 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_nextclass == playerbox_typename) then {
+			[_nextbuilding] call F_clearCargo;
 			_nextbuilding setMaxLoad playerbox_cargospace;
 			_nextbuilding setVehicleLock "DEFAULT";
-			[_nextbuilding, (_x select 5)] call F_setCargo;
 		};
 
 		if (_nextclass == Box_Ammo_typename) then {
@@ -459,12 +459,12 @@ if (!isNil "_lrx_liberation_savegame") then {
 		} foreach _list;
 	};
 
-	diag_log format [ "--- LRX Load Game finish at %1", time ];
+	diag_log format ["--- LRX Load Game finish at %1", time];
 };
 
 if (abort_loading) exitWith {};
 if (count GRLIB_vehicle_to_military_base_links == 0) then {
-	private [ "_assigned_bases", "_assigned_vehicles", "_nextbase", "_nextvehicle" ];
+	private ["_assigned_bases", "_assigned_vehicles", "_nextbase", "_nextvehicle"];
 	_assigned_bases = [];
 	_assigned_vehicles = [];
 
@@ -478,7 +478,7 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 } else {
 	_classnames_to_check = GRLIB_vehicle_to_military_base_links;
 	{
-		if (! ([ _x select 0 ] call F_checkClass)) then {
+		if (! ([_x select 0] call F_checkClass)) then {
 			GRLIB_vehicle_to_military_base_links = GRLIB_vehicle_to_military_base_links - [_x];
 		};
 	} foreach _classnames_to_check;

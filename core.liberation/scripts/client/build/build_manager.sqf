@@ -212,7 +212,11 @@ while {true} do {
 				build_rotation = 90;
 			};
 			case mobile_respawn: {
-				_dist = 3;
+				_dist = 1;
+			};
+			case playerbox_typename: {
+				build_rotation = 90;
+				_dist = 1;
 			};
 			case "Land_BagBunker_Tower_F": {
 				build_rotation = 90;
@@ -250,7 +254,7 @@ while {true} do {
 				};
 			};
 		};
-		if (!repeatbuild) then { build_distance = 3 max _dist };
+		if (!repeatbuild) then { build_distance = 1 max _dist };
 
 		// Improved retexture for preview
 		{
@@ -276,7 +280,7 @@ while {true} do {
 				};
 				case FOB_box_typename: {
 					_actualdir = _actualdir + 90;
-				};
+				};		
 			};
 
 			_actualdir = _actualdir - (floor(_actualdir / 360)) * 360;
@@ -504,7 +508,7 @@ while {true} do {
 				diag_log _msg;
 			};
 
-			waitUntil { sleep 0.5; (!alive _vehicle || local _vehicle) };
+			waitUntil { sleep 0.1; (!alive _vehicle || local _vehicle) };
 			if (!alive _vehicle) exitWith {};
 
 			// HandleDamage EH

@@ -10,6 +10,14 @@ if (count _context == 0) then {
     {if (_x select 0 == _uid) exitWith {_context = _x}} foreach GRLIB_player_context;
 };
 
+// Player loadout
+if (count _context >= 1) then {
+    waitUntil {sleep 0.1; !(isSwitchingWeapon _player)};
+    _player setUnitLoadout (_context select 1);
+    _player setVariable ["GREUH_stuff_price", ([_player] call F_loadoutPrice), true];
+    diag_log format ["--- LRX Loaded player %1 profile.", name _player];
+};
+
 // Load Personal Arsenal
 if (GRLIB_filter_arsenal == 4) then {
     if (count _context >= 4) then {
@@ -24,12 +32,9 @@ private _virtual_garage = [];
 if (count _context >= 5) then { _virtual_garage = (_context select 4) };
 _player setVariable ["GRLIB_virtual_garage", _virtual_garage, true];
 
-// Player loadout
-if (count _context >= 1) then {
-    waitUntil {sleep 0.1; !(isSwitchingWeapon _player)};
-    _player setUnitLoadout (_context select 1);
-    _player setVariable ["GREUH_stuff_price", ([_player] call F_loadoutPrice), true];
-    diag_log format ["--- LRX Loaded player %1 profile.", name _player];
+// Load Personal Player Box
+if (count _context >= 6) then {
+    _player setVariable ["GRLIB_player_box_content", (_context select 5), true];
 };
 
 _player setVariable ["GRLIB_player_context_loaded", true, true];

@@ -97,36 +97,32 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 				_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
 				if (_nextclass == FOB_sign) exitWith {
 					_hascrew = _x getVariable ["GRLIB_fob_type", FOB_typename];
-					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
+					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 				};
 				if (_owner == "") exitWith {
-					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
+					buildings_to_save pushback [_nextclass, _savedpos, _nextdir];
 				};
 				if (_owner == "lrx") exitWith {
-					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
+					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 				};
 				if (_owner in _keep_score_id) then {
 					if (_nextclass in GRLIB_vehicles_light) then {
 						private _default = true;
-						if (_nextclass == playerbox_typename) then {
-							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, [_x, true] call F_getCargo ];
-							_default = false;
-						};
 						if (_nextclass == storage_medium_typename) then {
 							private	_lst_grl = [];
 							{_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
-							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_grl ];
+							buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_grl];
 							_default = false;
 						};
 						if (_nextclass == box_uavs_typename) then {
 							private _loaded_uavs = [_x] call save_object_direct;
 							if (count _loaded_uavs > 0) then {
-								buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _loaded_uavs ];
+								buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _loaded_uavs];
 							};
 							_default = false;
 						};
 						if (_default) then {
-							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
+							buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 						};
 					} else {
 						//_color = _x getVariable ["GRLIB_vehicle_color", ""];
@@ -138,15 +134,15 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 						private	_lst_grl = [];
 						if ([_x] call F_vehicleSafeZone) then { _owner = "" };
 						{ if !(isNull _x) then { _lst_grl pushback (typeOf _x) } } forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
-						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl, _compo];
+						buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl, _compo];
 					};
 				};
 			};
 		} else {
 			if (_r3f_state) then {
-				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _r3f_state ];
+				buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _r3f_state];
 			} else {
-				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
+				buildings_to_save pushback [_nextclass, _savedpos, _nextdir];
 			};
 		};
 	} foreach _all_buildings;
@@ -220,7 +216,7 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 		GRLIB_mod_east,
 		GRLIB_warehouse,
 		_stats,
-		[ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
+		[round infantry_weight max 33, round armor_weight max 33, round air_weight max 33],
 		GRLIB_vehicle_to_military_base_links,
 		_permissions,
 		GRLIB_player_context,
@@ -230,7 +226,7 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 
 	profileNamespace setVariable [GRLIB_save_key, _lrx_liberation_savegame];
 	saveProfileNamespace;
-	diag_log format [ "--- LRX Save %1 in Profile at %2", GRLIB_save_key, time ];
+	diag_log format ["--- LRX Save %1 in Profile at %2", GRLIB_save_key, time];
 };
 
 GRLIB_save_in_progress = nil;

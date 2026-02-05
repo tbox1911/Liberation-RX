@@ -26,7 +26,7 @@ while { dialog && alive player } do {
 		// list outside
 		_vehicles_out = (player nearEntities [["LandVehicle","Air","Ship_F",playerbox_typename], 150]) select {
 			alive _x && (count (crew _x) == 0 || (typeOf _x in uavs_vehicles)) &&
-			(_x distance2D lhd > GRLIB_fob_range) &&
+			(_x distance2D lhd > GRLIB_fob_range) && isNull (attachedTo _x) &&
 			(_x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID) &&
 			(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 			!(typeOf _x in list_static_weapons)
@@ -99,12 +99,25 @@ while { dialog && alive player } do {
 				private _color = _vehicle getVariable ["GRLIB_vehicle_color", ""];
 				private _compo = _vehicle getVariable ["GRLIB_vehicle_composant", []];
 				private _ammo = [_vehicle] call F_getVehicleAmmoDef;
-				//private _lst_a3 = [_vehicle, true] call F_getCargo;
 				private _lst_a3 = [];
 				private _lst_r3f = [];
-				{ _lst_r3f pushback (typeOf _x)} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 				private _lst_grl = [];
-				{_lst_grl pushback (typeOf _x)} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+				//_lst_a3 = [_vehicle, true] call F_getCargo;
+				if (typeOf _vehicle == playerbox_typename) then {
+					player setVariable ["GRLIB_player_box_content", ([_vehicle, true] call F_getCargo), true];
+				};
+				{
+					_lst_r3f pushback (typeOf _x);
+					if (typeOf _x == playerbox_typename) then {
+						player setVariable ["GRLIB_player_box_content", ([_x, true] call F_getCargo), true];
+					};
+				} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+				{
+					_lst_grl pushback (typeOf _x);
+					if (typeOf _x == playerbox_typename) then {
+						player setVariable ["GRLIB_player_box_content", ([_x, true] call F_getCargo), true];
+					};
+				} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 				GRLIB_virtual_garage append [[typeOf _vehicle,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_grl]];
 				[_vehicle, true, true] call F_vehicleClean;
 				player setVariable ["GRLIB_virtual_garage", GRLIB_virtual_garage, true];

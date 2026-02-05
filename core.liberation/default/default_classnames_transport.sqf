@@ -34,6 +34,7 @@ box_transport_offset = box_transport_offset + [
 	["Box_IND_AmmoVeh_F", [0, 0, 0] ],
 	["Land_BarrelWater_F", [0, 0, -0.4] ],
 	["Land_MetalBarrel_F", [0, 0, -0.4] ],
+	["Land_MetalCase_01_large_F", [0, 0, -0.45] ],
 	["Land_ToolTrolley_02_F", [0, 0, -0.4]],
 	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.4] ]
 ];

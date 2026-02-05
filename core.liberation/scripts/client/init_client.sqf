@@ -269,13 +269,26 @@ addMissionEventHandler ["Draw3D",{
 		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- %1 %2 -", _type, _name], 2, 0.07, "RobotoCondensed", "center"];
 	};
 
-	private _near_box = nearestObjects [player, [playerbox_typename], 2];
+	private _near_box = nearestObjects [player, [playerbox_typename], 3];
 	if (count (_near_box) > 0) then {
 		private _box = _near_box select 0;
 		private _box_pos = ASLToAGL getPosASL _box;
 		private _gid = _box getVariable ["GRLIB_vehicle_owner", ""];
 		private _name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 5;
 		drawIcon3D ["", [1,1,1,1], _box_pos vectorAdd [0, 0, 1], 2, 2, 0, format ["- %1 Personal Box -", _name], 2, 0.05, "RobotoCondensed", "center"];
+		if (_gid == PAR_Grp_ID) then {
+			if (isNull (player getVariable ["GRLIB_player_box", objNull])) then {
+				player setVariable ["GRLIB_player_box", _box, true];
+				private _box_content = player getVariable ["GRLIB_player_box_content", []];
+				if (count _box_content > 0) then {
+					[_box] call F_clearCargo;
+					_box setMaxLoad playerbox_cargospace;
+					_box setVariable ["GRLIB_player_box_loaded", PAR_Grp_ID, true];
+					[_box, _box_content] call F_setCargo;
+					player setVariable ["GRLIB_player_box_content", [], true];
+				};
+			};
+		};
 	};
 
 	private _near_storage = nearestObjects [player, ["VR_Area_01_square_2x2_yellow_F"], 2];

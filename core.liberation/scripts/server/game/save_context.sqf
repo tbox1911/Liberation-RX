@@ -33,7 +33,14 @@ if (_score >= GRLIB_min_score_player) then {
 	};
 	private _personal_arsenal = _player getVariable ["GRLIB_personal_arsenal", []];
 	private _virtual_garage = _player getVariable ["GRLIB_virtual_garage", []];
-	localNamespace setVariable [format ["player_context_%1", _uid], [_uid, _loadout, _ai_group, _personal_arsenal, _virtual_garage]];
+	private _player_box_content = [];
+	private _player_box = _player getVariable ["GRLIB_player_box", objNull];
+	if (isNull _player_box) then {
+		_player_box_content = _player getVariable ["GRLIB_player_box_content", []];
+	} else {
+		_player_box_content = [_player_box, true] call F_getCargo;
+	};
+	localNamespace setVariable [format ["player_context_%1", _uid], [_uid, _loadout, _ai_group, _personal_arsenal, _virtual_garage, _player_box_content]];
 	diag_log format ["--- LRX Info: player %1 profile Saved.", name _player, count _ai_group];
 };
 

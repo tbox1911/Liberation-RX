@@ -104,6 +104,7 @@ if (_classname in respawn_vehicles) then {
 // Personal Box
 if (_classname == playerbox_typename) then {
 	_vehicle setMaxLoad playerbox_cargospace;
+	[_vehicle] call F_clearCargo;
 	_allow_damage = false;
 };
 
@@ -141,7 +142,6 @@ if (_classname == storage_medium_typename) then {
 	_allow_damage = false;
 };
 
-sleep 1;
 if (_allow_damage) then { _vehicle allowDamage true };
 _vehicle setDamage 0;
 

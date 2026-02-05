@@ -47,10 +47,10 @@ private _near_outpost = (_fob_type == 1);
 private _water_fob = (_fob_type == 2);
 private _near_warehouse = ([player, "WAREHOUSE", GRLIB_fob_range, false] call F_check_near);
 private _squad_leader = (player == leader group player);
-private _has_box = false;
-
-{ if ((_x select 0) == playerbox_typename) exitWith { _has_box = true } } foreach GRLIB_virtual_garage;
-if (count ((entities playerbox_typename) select {[player, _x] call is_owner}) > 0) then { _has_box = true };
+private _player_box = !isNull(player getVariable ["GRLIB_player_box", objNull]);
+private _player_box_in_garage = ({ (_x select 0) == playerbox_typename || playerbox_typename in (_x select 5) || playerbox_typename in (_x select 6) } count GRLIB_virtual_garage > 0);
+private _player_box_on_ground = ({[player, _x, true] call is_owner} count (entities playerbox_typename) > 0);
+private _has_box = (_player_box || _player_box_in_garage || _player_box_on_ground);
 
 private _squadname = "";
 private _buildpages = [
