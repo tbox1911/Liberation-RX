@@ -20,6 +20,7 @@ private _sea_deep = 0;
 if (_classname isKindOf "Air") then {
 	_spawn_pos = [_sectorpos, _side] call F_getAirSpawn;
 	if (count _spawn_pos > 0) then {
+		_spawn_pos = _spawn_pos getPos [120, floor random 360];
 		if (_classname isKindOf "Plane") then { _airveh_alt = 500 };
 		if (GRLIB_SOG_enabled || GRLIB_SPE_enabled) then { _airveh_alt = 350 };
 		if (_side == GRLIB_side_civilian) then { _airveh_alt = 150 };
