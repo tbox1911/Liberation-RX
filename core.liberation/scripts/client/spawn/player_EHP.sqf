@@ -156,12 +156,12 @@ if (_unit == player) then {
 		private _enabled = ((["PAR_Revive"] call lrx_getParamValue) != 0);
 		if (_enabled) then {
 			["ace_unconscious", {
-				private _ace_not_uncon = !(player getVariable ["PAR_ACE_isUnconscious", false]);
-				if (_ace_not_uncon && alive player) then {
-					player setVariable ["PAR_ACE_isUnconscious", true, true];
-					player setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
-					private _killer = player getVariable ["ace_medical_lastDamageSource", objNull];
-					[player, _killer] spawn PAR_fn_playerWounded;
+				params ["_unit", "_isUnconsious"];
+				if (_isUnconsious && _unit == player) then {
+					_unit setVariable ["PAR_ACE_isUnconscious", true, true];
+					_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
+					private _killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
+					[_unit, _killer] spawn PAR_fn_playerWounded;
 				};
 			}] call CBA_fnc_addEventHandler;
 		};
