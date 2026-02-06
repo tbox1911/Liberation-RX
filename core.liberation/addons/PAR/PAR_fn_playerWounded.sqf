@@ -1,4 +1,6 @@
-params [ "_unit", "_killer" ];
+params ["_unit", "_killer"];
+
+if !(isPlayer _unit) exitWith {};
 
 disableUserInput true;
 openMap false;
