@@ -36,7 +36,7 @@ private _bld = [_unit] call PAR_spawn_blood;
 
 while { alive _unit && ([_unit] call PAR_is_wounded) && time <= (_unit getVariable ["PAR_BleedOutTimer", 0])} do {
 	_unit setOxygenRemaining 1;
-	if ( {alive _x} count PAR_AI_bros > 0 ) then {
+	if ( {!([_x] call PAR_is_wounded)} count PAR_AI_bros > 0 ) then {
 		if (isNil {_unit getVariable "PAR_myMedic"}) then {
 			_msg = localize "STR_PAR_UC_01";
 			[_unit, _msg] call PAR_fn_globalchat;
@@ -44,10 +44,12 @@ while { alive _unit && ([_unit] call PAR_is_wounded) && time <= (_unit getVariab
 		};
 	} else {
 		private _msg = format [localize "STR_PAR_UC_03", name player];
+		private _force = false;
 		if ([player] call PAR_is_wounded) then {
 			_msg = format [localize "STR_PAR_UC_02", name player];
+			_force = true;
 		};
-		[_unit, _msg, true] call PAR_fn_globalchat;
+		[_unit, _msg, _force] call PAR_fn_globalchat;
 	};
 	//systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
 	sleep 5;

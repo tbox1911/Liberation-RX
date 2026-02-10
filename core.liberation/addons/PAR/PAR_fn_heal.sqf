@@ -12,6 +12,7 @@ if (isNull objectParent _unit && !([_unit] call PAR_is_wounded)) then {
 					_unit action ["HealSoldierSelf", _unit];
 					sleep 5;
 					_unit setVariable ["PAR_healing", nil];
+					_unit setDamage 0;
 				};
 			};
 		} else {
@@ -31,6 +32,7 @@ if (isNull objectParent _unit && !([_unit] call PAR_is_wounded)) then {
 					_wnded setVariable ["PAR_healing", _unit];
 					_unit action ["HealSoldier", _wnded];
 					sleep 20;  // or wnded damage == 0
+					if (_unit distance2D _wnded <= 6) then { _wnded setDamage 0 };
 					_wnded setVariable ["PAR_healing", nil];
 				};
 			};
