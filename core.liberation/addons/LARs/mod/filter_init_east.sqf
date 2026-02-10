@@ -24,6 +24,10 @@ if (["WS_", GRLIB_mod_east, true] call F_startsWith) then {
 if (["CP_", GRLIB_mod_east, true] call F_startsWith) then {
 	GRLIB_MOD_signature = GRLIB_MOD_signature + ["CUP_"];
 };
+// Add CFP Weapons
+if (["CFP_", GRLIB_mod_east, true] call F_startsWith) then {
+	GRLIB_MOD_signature = GRLIB_MOD_signature + ["CUP_"];
+};
 // Add GM Weapons
 if (["GM_", GRLIB_mod_east, true] call F_startsWith) then {
 	GRLIB_MOD_signature = GRLIB_MOD_signature + ["gm_"];

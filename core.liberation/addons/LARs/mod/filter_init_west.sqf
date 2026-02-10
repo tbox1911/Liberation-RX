@@ -26,6 +26,10 @@ if (["WS_", GRLIB_mod_west, true] call F_startsWith) then {
 if (["CP_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_CUP.sqf";
 };
+// Add CFP Weapons
+if (["CFP_", GRLIB_mod_west, true] call F_startsWith) then {
+	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_CUP.sqf";
+};
 // Add GM Weapons
 if (["GM_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_GM.sqf";
