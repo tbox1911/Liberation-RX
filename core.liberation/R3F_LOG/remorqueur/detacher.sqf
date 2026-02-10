@@ -30,6 +30,7 @@ if (R3F_LOG_mutex_local_verrou) then {
 
 		// Le l�ger setVelocity vers le haut sert � defreezer les objets qui pourraient flotter.
 		detach _objet;
+		_objet setVehicleLock "UNLOCKED";
 		_objet setVelocity [0, 0, 0.1];
 
 		player playMove format ["AinvPknlMstpSlay%1Dnon_medic", switch (currentWeapon player) do {
@@ -47,7 +48,6 @@ if (R3F_LOG_mutex_local_verrou) then {
 			_objet lockDriver false;
 			for "_i" from 0 to (_objet emptyPositions "Cargo") do { _objet lockCargo [_i, false] };
 			{ _objet lockTurret [_x, false] } forEach (allTurrets _objet);
-			_objet setVehicleLock "UNLOCKED";
 			[_objet] spawn F_vehicleUnflip;	
 		};
 		
