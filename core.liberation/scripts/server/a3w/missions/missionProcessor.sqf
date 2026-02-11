@@ -35,7 +35,6 @@ if (!isNil "_locationsArray") then {
 	_availableLocations = _locationsArray select {!(_x select 1) && ((_x select 2) <= time) };
 	if (count _availableLocations == 0) exitWith { _continue_mission = false };
 	_missionLocation = (selectRandom _availableLocations) select 0;
-	if (isNil "_missionLocation") exitWith { _continue_mission = false };
 	[_locationsArray, _missionLocation, true] call setLocationState;
 };
 
