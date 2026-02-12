@@ -100,7 +100,6 @@ if (!GRLIB_ParamsInitialized) then {
 
 A3W_Mission_count = [GRLIB_PARAM_A3WCount] call lrx_getParamValue;
 A3W_Mission_delay = [GRLIB_PARAM_A3WDelay] call lrx_getParamValue;
-GRLIB_AlarmsEnabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
 GRLIB_autosave_timer = [GRLIB_PARAM_AutoSave] call lrx_getParamValue;
 GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
 GRLIB_cleanup_vehicles = [GRLIB_PARAM_CleanupVehicles] call lrx_getParamValue;
@@ -125,7 +124,6 @@ GRLIB_weather_param = [GRLIB_PARAM_Weather] call lrx_getParamValue;
 
 // Transfom true/false Param
 GRLIB_server_persistent = (GRLIB_server_persistent == 1);
-GRLIB_AlarmsEnabled = (GRLIB_AlarmsEnabled == 1);
 GRLIB_Commander_AutoStart = (GRLIB_Commander_AutoStart == 1);
 GRLIB_hide_opfor = (GRLIB_hide_opfor == 1);
 

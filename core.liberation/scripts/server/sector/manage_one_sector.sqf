@@ -137,7 +137,7 @@ switch true do {
         _uavs_count = 3;
         _static_count = 3;
 
-		if (GRLIB_AlarmsEnabled) then {
+		if (GRLIB_alarms_enabled) then {
 			// Alarm!
 			[_sector] spawn {
 				params ["_sector"];

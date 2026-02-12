@@ -29,6 +29,7 @@ GRLIB_wildlife_manager = [GRLIB_PARAM_Wildlife] call lrx_getParamValue;
 GRLIB_civ_penalties = [GRLIB_PARAM_CivPenalties] call lrx_getParamValue;
 GRLIB_halo_param = [GRLIB_PARAM_HaloJump] call lrx_getParamValue;
 GRLIB_enable_drones = [GRLIB_PARAM_Drones] call lrx_getParamValue;
+GRLIB_alarms_enabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
 GRLIB_Undercover_mode = [GRLIB_PARAM_UndercoverModeEnabled] call lrx_getParamValue;
 GRLIB_Commander_mode = [GRLIB_PARAM_CommanderModeEnabled] call lrx_getParamValue;
 GRLIB_Commander_radius = [GRLIB_PARAM_CommanderModeRadius] call lrx_getParamValue;
@@ -69,6 +70,7 @@ GRLIB_free_loadout = (GRLIB_free_loadout == 1);
 GRLIB_force_english = (GRLIB_force_english == 1);
 GRLIB_enable_drones = (GRLIB_enable_drones == 1);
 GRLIB_Commander_mode = (GRLIB_Commander_mode == 1);
+GRLIB_alarms_enabled = (GRLIB_alarms_enabled == 1);
 GRLIB_Commander_VoteEnabled = GRLIB_Commander_VoteEnabled == 1;
 
 // Overide sector radius

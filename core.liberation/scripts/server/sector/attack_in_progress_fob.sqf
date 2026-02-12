@@ -30,7 +30,7 @@ if (_ownership == GRLIB_side_enemy) then {
 	publicVariable "sector_timer";
 
 	[_fob_pos, 1] remoteExec ["remote_call_fob", 0];
-	if (GRLIB_AlarmsEnabled) then {
+	if (GRLIB_alarms_enabled) then {
 		[_fob_pos] spawn {
 			params ["_pos"];
 			sleep 60;

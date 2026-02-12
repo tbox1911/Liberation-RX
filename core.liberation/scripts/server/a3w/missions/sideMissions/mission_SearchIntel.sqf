@@ -150,7 +150,7 @@ _waitUntilCondition = {
 
 	if (_ret) then {
 		private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
-		if (GRLIB_AlarmsEnabled) then {
+		if (GRLIB_alarms_enabled) then {
 			playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
 		};
 		sleep 5;
@@ -159,7 +159,7 @@ _waitUntilCondition = {
 			[_msg] remoteExec ["titleText", owner _x];
 		} forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
 		sleep 5;
-		if (GRLIB_AlarmsEnabled) then {
+		if (GRLIB_alarms_enabled) then {
 			playSound3D [_sound, _missionPos, false, ATLToASL _missionPos, 5, 1, 1000];
 		};
 	};
