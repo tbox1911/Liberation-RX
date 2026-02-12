@@ -206,52 +206,6 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 
 diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
 
-// Faction Colors
-GRLIB_color_unknown = "ColorUNKNOWN";
-GRLIB_color_civilian = "ColorCIV";
-
-switch (GRLIB_side_friendly) do {
-	if (isNil "GRLIB_color_friendly") then {
-		case WEST: {
-			GRLIB_color_friendly = "ColorBLUFOR";
-			GRLIB_color_friendly_bright = "ColorBlue";
-		};
-		case EAST: {
-			GRLIB_color_friendly = "ColorOPFOR";
-			GRLIB_color_friendly_bright = "ColorRED";
-		};
-		case INDEPENDENT: {
-			GRLIB_color_friendly = "ColorGUER";
-			GRLIB_color_friendly_bright = "ColorGreen";
-		};
-		default {
-			GRLIB_color_friendly = "ColorUNKNOWN";
-			GRLIB_color_friendly_bright = "ColorUNKNOWN";
-		};
-	};
-};
-
-switch (GRLIB_side_enemy) do {
-	if (isNil "GRLIB_color_enemy") then {
-		case WEST: {
-			GRLIB_color_enemy = "ColorBLUFOR";
-			GRLIB_color_enemy_bright = "ColorBlue";
-		};
-		case EAST: {
-			GRLIB_color_enemy = "ColorOPFOR";
-			GRLIB_color_enemy_bright = "ColorRED";
-		};
-		case INDEPENDENT: {
-			GRLIB_color_enemy = "ColorGUER";
-			GRLIB_color_enemy_bright = "ColorGreen";
-		};
-		default {
-			GRLIB_color_enemy = "ColorUNKNOWN";
-			GRLIB_color_enemy_bright = "ColorUNKNOWN";
-		};
-	};
-};
-
 // Publish variables
 publicVariable "GRLIB_side_friendly";
 publicVariable "GRLIB_side_enemy";

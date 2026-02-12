@@ -136,7 +136,51 @@ if (count civilian_vehicles == 0) then { civilian_vehicles = "C_SUV_01_F" };
 
 // *** INDEPENDENT ***
 
+// *** SIDE COLOR ***
+GRLIB_color_unknown = "ColorUNKNOWN";
+GRLIB_color_civilian = "ColorCIV";
 
+if (isNil "GRLIB_color_friendly") then {
+	switch (GRLIB_side_friendly) do {
+		case WEST: {
+			GRLIB_color_friendly = "ColorBLUFOR";
+			GRLIB_color_friendly_bright = "ColorBlue";
+		};
+		case EAST: {
+			GRLIB_color_friendly = "ColorOPFOR";
+			GRLIB_color_friendly_bright = "ColorRED";
+		};
+		case INDEPENDENT: {
+			GRLIB_color_friendly = "ColorGUER";
+			GRLIB_color_friendly_bright = "ColorGreen";
+		};
+		default {
+			GRLIB_color_friendly = "ColorUNKNOWN";
+			GRLIB_color_friendly_bright = "ColorUNKNOWN";
+		};
+	};
+};
+
+if (isNil "GRLIB_color_enemy") then {
+	switch (GRLIB_side_enemy) do {
+		case WEST: {
+			GRLIB_color_enemy = "ColorBLUFOR";
+			GRLIB_color_enemy_bright = "ColorBlue";
+		};
+		case EAST: {
+			GRLIB_color_enemy = "ColorOPFOR";
+			GRLIB_color_enemy_bright = "ColorRED";
+		};
+		case INDEPENDENT: {
+			GRLIB_color_enemy = "ColorGUER";
+			GRLIB_color_enemy_bright = "ColorGreen";
+		};
+		default {
+			GRLIB_color_enemy = "ColorUNKNOWN";
+			GRLIB_color_enemy_bright = "ColorUNKNOWN";
+		};
+	};
+};
 
 // *** MILITIA ***
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
