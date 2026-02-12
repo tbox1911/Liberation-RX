@@ -43,8 +43,8 @@ publicVariable "A3W_sectors_in_use";
 if (A3W_Mission_count == 0) exitWith {};
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
-// moved to init
-//[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionMarker.sqf";
+[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 
 for "_i" from 1 to A3W_Mission_count do {
 	// Start Permanent controller

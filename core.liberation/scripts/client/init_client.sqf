@@ -1,13 +1,15 @@
-diag_log "--- Client Init start ---";
+diag_log "--- Client wait for Server init ---";
 
 titleText ["-- Liberation RX --","BLACK FADED", 100];
 waitUntil {
-	sleep 2;
+	sleep 1;
 	titleText [localize "STR_TITLE_LOADING", "BLACK FADED", 100];
-	sleep 2;
+	sleep 1;
 	titleText [localize "STR_TITLE_PLEASE_WAIT", "BLACK FADED", 100];
 	(!isNil "GRLIB_init_server")
 };
+
+diag_log "--- Client Init start ---";
 titleText ["", "BLACK FADED", 100];
 
 // Game life / details
@@ -72,7 +74,7 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 };
 
 // LRX_Template mod version check
-waitUntil {sleep 0.5; !isNil "GRLIB_LRX_Template_version"};
+waitUntil {sleep 0.1; !isNil "GRLIB_LRX_Template_version"};
 private _version_checked = true;
 if (!isNil "LRX_Template_version") then {
 	if (typeName LRX_Template_version == "SCALAR") then {
@@ -89,7 +91,7 @@ if (!_version_checked) exitWith {
 	disableUserInput false;
 };
 
-waitUntil {sleep 0.5; !isNil "GRLIB_global_stop"};
+waitUntil {sleep 0.1; !isNil "GRLIB_global_stop"};
 if (GRLIB_global_stop == 1) exitWith {
 	private _msg = localize "STR_MSG_FINAL_MISSION_RUNNING";
 	titleText [_msg, "BLACK FADED", 100];
@@ -98,7 +100,7 @@ if (GRLIB_global_stop == 1) exitWith {
 	disableUserInput false;
 };
 
-waitUntil {sleep 0.5; !isNil "GRLIB_endgame"};
+waitUntil {sleep 0.1; !isNil "GRLIB_endgame"};
 if (GRLIB_endgame == 1) exitWith {
 	private _msg = localize "STR_MSG_END_GAME";
 	titleText [_msg, "BLACK FADED", 100];
@@ -178,11 +180,12 @@ waituntil {
 [] execVM "addons\FOB\officer_init.sqf";
 
 // Start intro
+diag_log "--- Client Intro start ---";
 playMusic GRLIB_music_startup;
 [] execVM "scripts\client\ui\intro.sqf";
 sleep 2;
 
-waitUntil {sleep 0.5; startgame == 1};
+waitUntil {sleep 0.1; startgame == 1};
 [] spawn {
 	waituntil {sleep 1; GRLIB_player_configured};
 	10 fadeMusic 0;

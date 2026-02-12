@@ -11,16 +11,16 @@ if (!isMultiplayer) exitWith {
 
 if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
 
+disableUserInput true;
+titleText ["","BLACK FADED", 100];
+0 fadeSound 0;
+
 [] call compileFinal preprocessFileLineNumbers "build_info.sqf";
 diag_log format ["LRX version %1 - build version: %2 build date: %3", localize "STR_MISSION_VERSION", GRLIB_build_version, GRLIB_build_date];
 
 clean_unit = compileFinal preprocessFileLineNumbers "scripts\client\misc\clean_unit.sqf";
 player_loadout = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_loadout.sqf";
 
-disableUserInput true;
-titleText ["","BLACK FADED", 100];
-0 fadeSound 0;
-sleep 2;
 if (!isServer && isMultiplayer && count (entities "HeadlessClient_F") > 0) then {
 	titleText ["Waiting for Headless client....","BLACK FADED", 100];
 	sleep 10;
@@ -86,7 +86,6 @@ if (isServer) then {
 	} else {
 		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 	};	
-	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\server_functions.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
 };

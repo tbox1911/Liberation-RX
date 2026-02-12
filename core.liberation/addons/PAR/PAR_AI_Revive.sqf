@@ -117,4 +117,3 @@ if (GRLIB_ACE_medical_enabled) then {
 } else {
     systemChat localize "STR_PAR_AI_REVIVE_INITIALIZED";
 };
-diag_log "--- LRX PAR Addon loaded.";
