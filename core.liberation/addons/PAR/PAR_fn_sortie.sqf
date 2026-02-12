@@ -5,7 +5,7 @@ if ((!alive _wnded) || (!alive _medic) || ([_medic] call PAR_is_wounded || !([_w
 
 if (!isPlayer _medic) then {
 	private _msg = format [localize "STR_PAR_ST_01", name _medic, name _wnded];
-	[_wnded, _msg] call PAR_fn_globalchat;
+	[_medic, _msg] call PAR_fn_globalchat;
 	private _bleedOut = _wnded getVariable ["PAR_BleedOutTimer", 0];
 	_wnded setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_bleedout_extra, true];
 	_medic setDir (_medic getDir _wnded);

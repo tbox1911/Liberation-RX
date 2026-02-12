@@ -43,6 +43,9 @@ PAR_AI_bros = [];
 // PAR_ai_revive_max = 7;    // from settings
 PAR_AI_recover_revive = (20*60);
 
+// PAR message chat
+PAR_AI_old_msg = "";
+
 //------------------------------------------//
 PAR_BloodSplat = [
     "BloodPool_01_Large_New_F",

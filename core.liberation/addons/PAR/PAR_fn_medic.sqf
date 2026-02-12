@@ -19,10 +19,8 @@ if (isNil "_medic") exitWith {
 	[_wnded, _msg] call PAR_fn_globalchat;
 };
 
-private _force = false;
 _msg = format [localize "STR_PAR_MD_03", name _wnded, name _medic, round (_medic distance2D _wnded)];
-if (isPlayer _wnded) then { _force = true };
-[_wnded, _msg, _force] call PAR_fn_globalchat;
+[_medic, _msg] call PAR_fn_globalchat;
 
 _medic setVariable ["PAR_busy", true];
 _wnded setVariable ["PAR_myMedic", _medic];

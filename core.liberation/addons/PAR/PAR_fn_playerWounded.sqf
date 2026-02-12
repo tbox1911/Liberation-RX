@@ -21,7 +21,8 @@ if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
     ["PAR_deathMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 };
 
-_unit globalChat (localize selectRandom ["STR_PAR_Need_Medic1", "STR_PAR_Need_Medic2", "STR_PAR_Need_Medic3"]);
+private _msg = localize selectRandom ["STR_PAR_Need_Medic1", "STR_PAR_Need_Medic2", "STR_PAR_Need_Medic3"];
+[_unit, _msg] call PAR_fn_globalchat;
 
 // Mute Radio
 5 fadeRadio 0;

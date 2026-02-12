@@ -44,14 +44,11 @@ while { alive _unit && ([_unit] call PAR_is_wounded) && time <= (_unit getVariab
 		};
 	} else {
 		private _msg = format [localize "STR_PAR_UC_03", name player];
-		private _force = false;
 		if ([player] call PAR_is_wounded) then {
 			_msg = format [localize "STR_PAR_UC_02", name player];
-			_force = true;
 		};
-		[_unit, _msg, _force] call PAR_fn_globalchat;
+		[_unit, _msg] call PAR_fn_globalchat;
 	};
-	//systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
 	sleep 5;
 };
 
