@@ -1,5 +1,5 @@
 // Static manager
-manage_one_static = compileFinal preprocessFileLineNumbers "scripts\shared\manage_one_static.sqf";
+manage_one_static = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_static.sqf";
 
 // Attach objects
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\shared\attach_object_direct.sqf";
