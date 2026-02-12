@@ -413,7 +413,7 @@ while {true} do {
 			sleep 0.1;
 
 			// Building
-			if (_buildtype == GRLIB_BuildingBuildType) exitWith {
+			if (_buildtype == GRLIB_BuildingBuildType || _classname == taxi_helipad_type) exitWith {
 				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				_vehicle setPosATL _veh_pos;
@@ -423,6 +423,7 @@ while {true} do {
 					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
 					_vehicle allowdamage false;
 				};
+				build_vehicle = _vehicle;
 			};
 
 			repeatbuild = false;
