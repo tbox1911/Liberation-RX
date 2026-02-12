@@ -52,7 +52,6 @@ switch (GRLIB_side_enemy) do {
 // LRX Selectable
 [] call F_readParamsLRX;
 
-GRLIB_alarms_enabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
 GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
 GRLIB_cleanup_vehicles = [GRLIB_PARAM_CleanupVehicles] call lrx_getParamValue;
 GRLIB_Commander_AutoStart = [GRLIB_PARAM_CommanderAutoStart] call lrx_getParamValue;
