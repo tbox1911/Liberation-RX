@@ -24,6 +24,9 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 _unit setVariable ["GRLIB_is_kamikaze", true, true];
 _grp setCombatMode "BLUE";
 _grp setBehaviourStrong "SAFE";
+_unit setSpeedMode "NORMAL";
+[_grp, getPos _unit, _range] call BIS_fnc_taskPatrol;
+sleep 2;
 
 private ["_targets", "_target", "_expl1","_expl2","_expl3"];
 while {alive _unit} do {
@@ -31,12 +34,8 @@ while {alive _unit} do {
 	if (count _targets > 0) then {
 		[_grp] call F_deleteWaypoints;
 		_target = _targets select 0;
-		_unit doMove (getPos _target);
+		_unit doMove (getPosATL _target);
 		_unit setSpeedMode "FULL";
-		if (speed vehicle _unit == 0) then {
-			_unit switchMove "AmovPercMwlkSrasWrflDf";
-			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-		};
 
 		if (_unit distance2D _target < 15) then {
 			_expl1 = "DemoCharge_Remote_Ammo" createVehicle (getPosATL _unit);
@@ -69,12 +68,6 @@ while {alive _unit} do {
 			sleep 1;
 			{ deleteVehicle _x } forEach [_expl1,_expl2,_expl3];
 			{ _x setVariable ["GRLIB_last_killer", nil, true] } forEach _civils;
-		};
-	} else {
-		if (count waypoints _grp == 0 && _range > 20) then {
-			_unit setSpeedMode "NORMAL";
-			[_grp, getPos _unit, _range] call BIS_fnc_taskPatrol;
-			sleep 2;
 		};
 	};
 	sleep 2;
