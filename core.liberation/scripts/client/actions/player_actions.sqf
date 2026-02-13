@@ -42,7 +42,7 @@ player addAction ["<t color='#00F080'>" + localize "STR_BUY_FUEL" + "</t> <img s
 //player addAction ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Heal_ca.paa'/>" + localize "STR_HEAL_SELF_ACTION", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", "call GRLIB_checkHeal"];
 
 // Trench Menu
-player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_TRENCH_ACTION" + "</t> <img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\Obsolete\ui_action_turnin_ca'/>","scripts\client\build\open_build_menu.sqf",true,-400,false,true,"","call GRLIB_checkBuildTrench"];
+player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_TRENCH_ACTION" + "</t> <img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\Obsolete\ui_action_turnin_ca'/>","scripts\client\build\open_build_menu.sqf",true,-300,false,true,"","call GRLIB_checkBuildTrench"];
 
 // UnPack Beacon
 player addAction ["<t color='#FFFF00'>" + localize "STR_UNPACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,false,true,"","call GRLIB_checkUnpackBeacon"];
