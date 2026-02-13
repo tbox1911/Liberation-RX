@@ -24,6 +24,7 @@ private _check_sortie = {
 };
 
 private _healed = false;
+private _ticks = 0;
 while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 	_msg = "";
 	_dist = round (_wnded distance2D _medic);
@@ -79,9 +80,12 @@ while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 		if (_fail == 0) then {
 			_msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _dist, round (speed vehicle _medic)];
 		};
-		[_wnded, _msg] call PAR_fn_globalchat;
+		if (_ticks % 3 == 0) then {
+			[_wnded, _msg] call PAR_fn_globalchat;
+		};
 	};
 
+	_ticks = _ticks + 1;
 	sleep 3;
 };
 
