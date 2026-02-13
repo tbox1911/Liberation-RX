@@ -36,8 +36,8 @@ while {true} do {
 
     {
         _vehicle = _x;
-        _vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_BOX" + "</t> <img size='1' image='res\ui_unload.paa'/>","scripts\client\actions\do_unload_truck.sqf","all",-400,false,true,"","[_target, _this] call GRLIB_checkAction_UnloadBox", GRLIB_ActionDist_10];
-        _vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_ONE_BOX" + "</t> <img size='1' image='res\ui_unload.paa'/>","scripts\client\actions\do_unload_truck.sqf","one",-401,false,true,"","[_target, _this] call GRLIB_checkAction_UnloadLastBox", GRLIB_ActionDist_10];
+        _vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_BOX" + "</t> <img size='1' image='res\ui_unload.paa'/>","scripts\client\actions\do_unload_truck.sqf","all",-500,false,true,"","[_target, _this] call GRLIB_checkAction_UnloadBox", GRLIB_ActionDist_10];
+        _vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_ONE_BOX" + "</t> <img size='1' image='res\ui_unload.paa'/>","scripts\client\actions\do_unload_truck.sqf","one",-501,false,true,"","[_target, _this] call GRLIB_checkAction_UnloadLastBox", GRLIB_ActionDist_10];
         _vehicle setVariable ["GRLIB_vehicle_transport", true];
     } forEach _neartransport;
 

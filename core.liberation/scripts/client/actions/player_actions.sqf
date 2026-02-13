@@ -27,10 +27,10 @@ if (!isNil "_my_squad") then { [true] call player_squad_actions };
 player addAction ["<t color='#0080F0'>" + localize "STR_VEH_SUPPORT" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_support.sqf","",997,false,true,"","call GRLIB_checkVehicleSupport"];
 
 // Redeploy
-player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-500,false,true,"","call GRLIB_checkRedeploy"];
+player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-300,false,true,"","call GRLIB_checkRedeploy"];
 
 // Halo Jump
-player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-501,false,true,"","call GRLIB_checkHalo"];
+player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-301,false,true,"","call GRLIB_checkHalo"];
 
 // Send Ressource
 player addAction ["<t color='#80FF00'>" + localize "STR_SEND_RSC" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_send_ammo.sqf","",-981,true,true,"","call GRLIB_checkSendAmmo"];
