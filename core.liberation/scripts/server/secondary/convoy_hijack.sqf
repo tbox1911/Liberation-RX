@@ -45,7 +45,7 @@ sleep 2;
 
 //-----------------------------------------
 // wait
-(driver _scout_vehicle) MoveTo (_convoy_destinations select 1);
+(driver _scout_vehicle) doMove (_convoy_destinations select 1);
 private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _scout_vehicle distance2D _spawnpos > 30 || time > _timout};
 
@@ -59,7 +59,7 @@ _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if 
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
 
 // wait
-(driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
+(driver _transport_vehicle) doMove (_convoy_destinations select 1);
 private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _transport_vehicle distance2D _spawnpos > 30 || time > _timout};
 
@@ -73,7 +73,7 @@ _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( si
 private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 [_troop_vehicle, (units _troops_group)] call F_manualCrew;
 
-(driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
+(driver _transport_vehicle) doMove (_convoy_destinations select 1);
 
 //-----------------------------------------
 // Markers

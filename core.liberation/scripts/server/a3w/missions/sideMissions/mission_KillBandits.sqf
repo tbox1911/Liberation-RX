@@ -70,7 +70,7 @@ _setupObjects = {
 	[_aiGroup, _convoy_destinations] call add_convoy_waypoints;
 
 	// wait
-	(driver _vehicle1) MoveTo (_convoy_destinations select 1);
+	(driver _vehicle1) doMove (_convoy_destinations select 1);
 	private _timout = round (time + (3 * 60));
 	waitUntil {sleep 1; _vehicle1 distance2D _missionPos > 30 || time > _timout};
 
@@ -83,7 +83,7 @@ _setupObjects = {
 	_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
 
 	// wait
-	(driver _vehicle2) MoveTo (_convoy_destinations select 1);
+	(driver _vehicle2) doMove (_convoy_destinations select 1);
 	private _timout = round (time + (3 * 60));
 	waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
 
@@ -94,7 +94,7 @@ _setupObjects = {
 	_grp addVehicle _vehicle3;
 	(units _grp) joinSilent _aiGroup;
 	_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
-	(driver _vehicle3) MoveTo (_convoy_destinations select 1);
+	(driver _vehicle3) doMove (_convoy_destinations select 1);
 	sleep 1;
 
 	// define final

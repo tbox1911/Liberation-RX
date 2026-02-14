@@ -40,7 +40,7 @@ _setupObjects = {
 	[_aiGroup, _convoy_destinations] call add_convoy_waypoints;
 
 	// wait
-	(driver _vehicle1) MoveTo (_convoy_destinations select 1);
+	(driver _vehicle1) doMove (_convoy_destinations select 1);
 	private _timout = round (time + (3 * 60));
 	waitUntil {sleep 1; _vehicle1 distance2D _missionPos > 30 || time > _timout};
 
@@ -62,7 +62,7 @@ _setupObjects = {
 		(units _grp) joinSilent _aiGroup;
 
 		// wait
-		(driver _vehicle2) MoveTo (_convoy_destinations select 1);
+		(driver _vehicle2) doMove (_convoy_destinations select 1);
 		private _timout = round (time + (3 * 60));
 		waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
 	};
@@ -77,7 +77,7 @@ _setupObjects = {
 		private _grp = [_missionPos, 8, "infantry", false] call createCustomGroup;
 		[_vehicle3, (units _grp)] call F_manualCrew;
 		(units _grp) joinSilent _aiGroup;
-		(driver _vehicle3) MoveTo (_convoy_destinations select 1);
+		(driver _vehicle3) doMove (_convoy_destinations select 1);
 	};
 
 	// define final
