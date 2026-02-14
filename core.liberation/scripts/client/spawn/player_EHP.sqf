@@ -127,20 +127,21 @@ if (_unit == player) then {
 				};
 			};
 			if (!([_unit] call PAR_is_wounded) && !(captive _unit)) then {
-				if (isPlayer _killer && _killer != _unit && vehicle _unit != vehicle _killer && _killer distance2D _unit >= 3) then {
-					if (_damage >= 0.35 && (time >= (_unit getVariable ["GRLIB_isProtected", 0]))) then {
+				if (isPlayer _killer && _killer != _unit && vehicle _unit != vehicle _killer && _killer distance2D _unit >= 3) exitWith {
+					if (time >= (_unit getVariable ["GRLIB_isProtected", 0])) then {
 						_unit setVariable ["GRLIB_isProtected", round(time + 10)];
 						private _msg = format ["%1 (%2)", localize "STR_FRIENDLY_FIRE", name _killer];
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
-						[_killer, -5] remoteExec ["F_addScore", 2];
+						[_killer, -15] remoteExec ["F_addScore", 2];
 						// TK Protect
 						if (GRLIB_tk_mode > 0) then {
 							["PAR_tkMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 							[_unit, _killer] remoteExec ["LRX_tk_check", 0];
-							_damage = 0;
 						};
 					};
+					_damage = 0;
 				};
+
 				private _veh_unit = objectParent _unit;
 				if (_damage >= 0.86) then {
 					if !(isNull _veh_unit) then {[_unit, _veh_unit] spawn PAR_fn_eject};
@@ -148,7 +149,7 @@ if (_unit == player) then {
 					[_unit, _killer] spawn PAR_fn_playerWounded;
 				};
 			};
-			_damage min 0.86;
+			(_damage min 0.86);
 		}];
 	};
 
