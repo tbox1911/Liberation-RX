@@ -121,7 +121,6 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_T_MRAP_02_hmg_ghex_F",
 	"O_T_MRAP_02_hmg_ghex_F",
 	"O_T_MRAP_02_gmg_ghex_F",
-	"O_Heli_Light_02_dynamicLoadout_F",
 	"O_T_LSV_02_armed_F",
 	"O_T_LSV_02_AT_F"
 ];
