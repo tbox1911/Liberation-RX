@@ -52,7 +52,7 @@ _setupObjects = {
     _waypoint = _aiGroup addWaypoint [_wp0, 0];
     _waypoint setWaypointType "CYCLE";
     sleep 1;
-    { _x doFollow (leader _aiGroup) } foreach units _aiGroup;
+    (units _aiGroup) doFollow leader _aiGroup;
 
 	// manage mission
 	[_patrol_grp, _aiGroup] spawn {

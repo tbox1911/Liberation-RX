@@ -71,19 +71,7 @@ _troop_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
 _troop_vehicle allowCrewInImmobile [true, true];
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
-private _lock = locked _troop_vehicle;
-_troop_vehicle lock 0;
-{
-	_x assignAsCargoIndex [_troop_vehicle, (_forEachIndex + 1)];
-	_x moveInCargo _troop_vehicle;
-	_x setSkill 0.65;
-	_x setSkill ["courage", 1];
-	_x allowFleeing 0;
-} foreach (units _troops_group);
-(units _troops_group) allowGetIn true;
-(units _troops_group) orderGetIn true;
-sleep 1;
-_troop_vehicle lock _lock;
+[_troop_vehicle, (units _troops_group)] call F_manualCrew;
 
 (driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
 

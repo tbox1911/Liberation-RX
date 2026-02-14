@@ -4,6 +4,9 @@ private _vehicle_roles = [];
 { _vehicle_roles pushBack (_x select 1)} forEach (fullCrew [_vehicle, "", true] - fullCrew _vehicle);
 if (count _units > count _vehicle_roles) then { diag_log format ["--- LRX Error: group too large for vehicle %1", typeOf _vehicle]};
 
+private _lock = locked _vehicle;
+_vehicle lock 0;
+
 private _cargo_indx = 1;
 {
     if (_forEachIndex >= count _vehicle_roles) then {
@@ -12,7 +15,6 @@ private _cargo_indx = 1;
             deleteVehicle _x;
         };
     } else {
-        doStop _x;
         private _assigned = false;
         private _role = _vehicle_roles select _forEachIndex;
 
@@ -37,9 +39,12 @@ private _cargo_indx = 1;
             _x moveInCargo _vehicle;
             _cargo_indx = _cargo_indx + 1;
         };
-        sleep 0.2;
+        if (!_delete) then { sleep 0.2 };
     };
 } forEach _units;
 
 _units allowGetIn true;
 _units orderGetIn true;
+
+_vehicle lock _lock;
+sleep 1;

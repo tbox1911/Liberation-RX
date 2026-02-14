@@ -82,11 +82,7 @@ _setupObjects = {
 	if !(isNull _vehicle3) then {
 		// troops
 		private _grp = [_missionPos, 8, "infantry", false] call createCustomGroup;
-		{
-			_x assignAsCargo _vehicle3;
-			_x moveInCargo _vehicle3;
-			sleep 0.1;
-		} forEach (units _grp);
+		[_vehicle3, (units _grp)] call F_manualCrew;
 		(units _grp) joinSilent _aiGroup;
 		(driver _vehicle3) MoveTo (_convoy_destinations select 1);
 	};

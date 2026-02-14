@@ -53,28 +53,12 @@ _setupObjects = {
 	if !(isNull _vehicle2) then {
 		// Prisoners
 		private _grp = [_missionPos, 5, "prisoner", false] call createCustomGroup;
-		{
-			_prisoners pushBack _x;
-			removeAllWeapons _x;
-			_x setSkill ["courage", 0.5];
-			_x assignAsCargo _vehicle2;
-			_x moveInCargo _vehicle2;
-			[_x] spawn {
-				params ["_unit"];
-				waitUntil { sleep 1; (isNull objectParent _unit || !alive _unit) };
-				if (!alive _unit) exitWith {};
-				[_unit, true, false] spawn prisoner_ai;
-			};
-			sleep 0.1;
-		} forEach (units _grp);
-
+		_prisoners = (units _grp);
+		[_vehicle2, _prisoners] call F_manualCrew;
+		
 		// troops
 		private _grp = [_missionPos, 3, "infantry", false] call createCustomGroup;
-		{
-			_x assignAsCargo _vehicle2;
-			_x moveInCargo _vehicle2;
-			sleep 0.1;
-		} forEach (units _grp);
+		[_vehicle2, (units _grp)] call F_manualCrew;
 		(units _grp) joinSilent _aiGroup;
 
 		// wait
@@ -91,11 +75,7 @@ _setupObjects = {
 	if !(isNull _vehicle3) then {
 		// troops
 		private _grp = [_missionPos, 8, "infantry", false] call createCustomGroup;
-		{
-			_x assignAsCargo _vehicle3;
-			_x moveInCargo _vehicle3;
-			sleep 0.1;
-		} forEach (units _grp);
+		[_vehicle3, (units _grp)] call F_manualCrew;
 		(units _grp) joinSilent _aiGroup;
 		(driver _vehicle3) MoveTo (_convoy_destinations select 1);
 	};

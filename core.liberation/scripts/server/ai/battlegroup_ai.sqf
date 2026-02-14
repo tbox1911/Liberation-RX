@@ -52,7 +52,7 @@ while {true} do {
 		_waypoint = _grp addWaypoint [_wp0, 0];
 		_waypoint setWaypointType "CYCLE";
 		sleep 1;
-		{ _x doFollow (leader _grp) } foreach units _grp;
+		(units _grp) doFollow leader _grp;
 
 		if (_vehicle isKindOf "AllVehicles") then {
 			(driver _vehicle) doMove _objective_pos;

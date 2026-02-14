@@ -58,15 +58,7 @@ if ( dorepackage > 0 ) then {
 	if (dorepackage == 3) then {
 		{ _x enableSimulationGlobal true } forEach _unit_list_redep;
 		player moveInDriver _fob_box;
-		private _destpos = (getPosASL player);
-		{
-			_x doFollow player;
-			_x setPosASL (_destpos getPos [10, random 360]);
-			_x assignAsCargoIndex [_fob_box, (_forEachIndex + 1)];
-			_x moveInCargo _fob_box;
-			sleep 0.5;
-		} forEach _unit_list_redep;
-
+		[_fob_box, _unit_list_redep] call F_manualCrew;
 		disableUserInput false;
 		disableUserInput true;
 		disableUserInput false;
