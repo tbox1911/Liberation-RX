@@ -61,6 +61,16 @@ private _grp = [_pos, _unitclass, _side, _type, true] call F_libSpawnUnits;
 		_x setSkill 0.88;
 		_x addGoggles "G_Balaclava_lowprofile";
 	};
+	if (_type == "prisoner") then {
+		removeAllWeapons _x;
+		[_x] spawn {
+			params ["_unit"];
+			sleep 10;
+			waitUntil { sleep 1; (isNull objectParent _unit || !alive _unit) };
+			if (!alive _unit) exitWith {};
+			[_unit, true, false] spawn prisoner_ai;
+		};
+	};
 } forEach (units _grp);
 
 if (_patrol) then {

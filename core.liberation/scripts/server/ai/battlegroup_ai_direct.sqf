@@ -43,7 +43,7 @@ while { alive _objective } do {
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 	sleep 1;
-	{ _x doFollow (leader _grp) } foreach units _grp;
+	(units _grp) doFollow leader _grp;
 	if (alive (leader _grp)) then { _last_pos = getPosATL (leader _grp) };
 	sleep 300;
 };

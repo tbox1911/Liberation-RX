@@ -26,7 +26,7 @@ if (_type == "para") then {
 private _rank_range = [0, 6];
 switch (_type) do {
 	case "militia"  : { _rank_range = [0, 3] };
-	case "cargo"    : { _rank_range = [1, 4] };
+	case "cargo"    : { _rank_range = [2, 4] };
 	case "infantry" : { _rank_range = [4, 6] };
 	case "building" : { _rank_range = [3, 5] };
 	case "para"     : { _rank_range = [4, 6] };
@@ -76,6 +76,11 @@ private ["_unit", "_rank_unit", "_pos", "_backpack"];
 			for "_i" from 1 to 2 do {_unit addItemToBackpack "MRAWS_HEAT_F"};
 		};
 
+		if (_type == "cargo") then {
+			_unit setSkill ["courage", 1];
+			_unit allowFleeing 0;
+		};
+
 		[_unit] spawn reammo_ai;
 		_rank_range params ["_rank_min", "_rank_max"];
 		_rank_unit = GRLIB_rank_level select (_rank_min + floor random (_rank_max - _rank_min + 1));
@@ -83,6 +88,8 @@ private ["_unit", "_rank_unit", "_pos", "_backpack"];
 		[_unit, _rank_unit] spawn F_setUnitSkill;
 
 		if (_type == "para") then {
+			_unit setSkill ["courage", 1];
+			_unit allowFleeing 0;
 			_backpack = backpack _unit;
 			if (_backpack != "" && !(_backpack isKindOf "B_Parachute")) then {
 				_unit setVariable ["GRLIB_para_backpack", _backpack];
