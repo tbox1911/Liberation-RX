@@ -106,7 +106,6 @@ opfor_battlegroup_vehicles = [
 	"O_MRAP_02_gmg_F",
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_v2_F",
-	"O_Truck_03_covered_F",
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
 	"O_Heli_Attack_02_dynamicLoadout_F",
@@ -121,9 +120,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
-	"O_Truck_02_covered_F",
 	"O_Heli_Light_02_dynamicLoadout_F",
-	"O_Heli_Transport_04_covered_F",
 	"O_LSV_02_armed_F",
 	"O_LSV_02_AT_F"
 ];

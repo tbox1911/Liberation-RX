@@ -140,7 +140,6 @@ opfor_troup_transports_heli = [
 	opfor_transport_helo,
 	"B_Heli_Transport_03_F",
 	"B_Heli_Transport_01_F",
-	"B_Heli_Transport_03_F",
 	"B_Heli_Light_01_F"
 ];
 
