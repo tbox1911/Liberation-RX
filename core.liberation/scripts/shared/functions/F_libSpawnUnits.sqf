@@ -70,8 +70,10 @@ private ["_unit", "_rank_unit", "_pos", "_backpack"];
 		};
 		if (_type == "guards" && _forEachIndex % 4 == 0) then {
 			removeBackpack _unit;
-			_unit addBackpack "B_AssaultPack_blk";
 			_unit addWeapon "launch_MRAWS_green_F";
+			_unit addSecondaryWeaponItem "MRAWS_HEAT_F";
+			_unit addBackpack "B_AssaultPack_blk";
+			for "_i" from 1 to 2 do {_unit addItemToBackpack "MRAWS_HEAT_F"};
 		};
 
 		[_unit] spawn reammo_ai;

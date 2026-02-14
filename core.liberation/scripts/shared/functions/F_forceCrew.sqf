@@ -33,9 +33,8 @@ private ["_unit", "_path", "_loadout"];
 		case GRLIB_side_enemy: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 			if (_type == "militia") then {
-				_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
-				[_path, _unit] call F_getTemplateFile;
-				[_unit] spawn reammo_ai;
+				_loadout = getUnitLoadout (selectRandom militia_squad);
+				_unit setUnitLoadout _loadout;
 			};
 			if (_type == "infantry") then {
 				_loadout = getUnitLoadout opfor_crew;
