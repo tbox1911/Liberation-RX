@@ -47,6 +47,11 @@ GRLIB_build_force_mode = [
 	Warehouse_typename
 ];
 
+GRLIB_build_as_building = [
+	taxi_helipad_type,
+	medic_heal_typename
+];
+
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
 	GRLIB_preview_spheres pushback ("Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ]);
@@ -413,7 +418,7 @@ while {true} do {
 			sleep 0.1;
 
 			// Building
-			if (_buildtype == GRLIB_BuildingBuildType || _classname == taxi_helipad_type) exitWith {
+			if (_buildtype == GRLIB_BuildingBuildType || _classname in GRLIB_build_as_building) exitWith {
 				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				_vehicle setPosATL _veh_pos;
@@ -503,14 +508,11 @@ while {true} do {
 			waitUntil { sleep 0.5; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
 
 			_vehicle = player getVariable "GRLIB_player_vehicle_build";
-			if (typeName _vehicle == "SCALAR") exitWith {
+			if (typeName _vehicle == "SCALAR" || !alive _vehicle) exitWith {
 				private _msg = format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _veh_pos];
 				systemchat _msg;
 				diag_log _msg;
 			};
-
-			waitUntil { sleep 0.1; (!alive _vehicle || local _vehicle) };
-			if (!alive _vehicle) exitWith {};
 
 			// HandleDamage EH
 			if !(_classname in list_static_weapons) then {
