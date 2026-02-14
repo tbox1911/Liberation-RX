@@ -71,7 +71,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 		} foreach _vehicles;
 	};
 
-    sleep 2;
+    sleep 1;
 };
 
 if (_convoy_attacked) then {

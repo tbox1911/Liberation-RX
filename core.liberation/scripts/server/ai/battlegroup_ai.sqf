@@ -24,6 +24,13 @@ private _target = [_objective_pos, GRLIB_spawn_min] call F_getNearestBlufor;
 if (!isNull _target) then { _objective_pos = getPosATL _target };
 _objective_pos set [2, 0];
 
+if (_vehicle isKindOf "AllVehicles") then {
+	(driver _vehicle) doMove _objective_pos;
+} else {
+	(leader _grp) doMove _objective_pos;
+};
+(units _grp) doFollow leader _grp;
+
 diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
 
 private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep"];
@@ -44,9 +51,6 @@ while {true} do {
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "FULL";
-		_waypoint setWaypointBehaviour "AWARE";
-		_waypoint setWaypointCombatMode "YELLOW";
-		_waypoint setWaypointCompletionRadius 50;
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
 		_waypoint setWaypointType "MOVE";
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
@@ -56,13 +60,6 @@ while {true} do {
 		_wp0 = waypointPosition [_grp, 0];
 		_waypoint = _grp addWaypoint [_wp0, 0];
 		_waypoint setWaypointType "CYCLE";
-
-		if (_vehicle isKindOf "AllVehicles") then {
-			(driver _vehicle) doMove _objective_pos;
-		} else {
-			(leader _grp) doMove _objective_pos;
-		};
-		(units _grp) doFollow leader _grp;
 
 		_timer = round (time + 300);
 	};

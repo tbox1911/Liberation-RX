@@ -72,13 +72,14 @@ for "_i" from 1 to _target_size do {
 	[_nextgrp, _objective_pos] spawn battlegroup_ai;
 	[_nextgrp, 3600] call F_setUnitTTL;
 	_bg_groups pushback _nextgrp;
-	sleep 10;
+	sleep 20;
 };
 
 if (count opfor_troup_transports_truck > 0) then {
 	if (floor random 3 == 0) exitWith {};
 	_vehicle = [markerpos _spawn_marker, (selectRandom opfor_troup_transports_truck)] call F_libSpawnVehicle;
 	[_vehicle, _objective_pos] spawn troup_transport;
+	sleep 10;
 };
 
 private _nb_squad = round ((3 * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));

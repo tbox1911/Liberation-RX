@@ -37,7 +37,7 @@ for "_i" from 0 to _target_size do {
 	[_nextgrp, _objective_pos] spawn battlegroup_ai;
 	[_nextgrp, 3600] call F_setUnitTTL;
 	_bg_groups pushback _nextgrp;
-	sleep 2;
+	sleep 20;
 } foreach _selected_opfor_battlegroup;
 
 if (floor random 3 == 0) then {
@@ -51,6 +51,7 @@ if (count opfor_troup_transports_truck > 0) then {
 	if (floor random 3 == 0) exitWith {};
 	_vehicle = [markerpos _spawn_marker, (selectRandom opfor_troup_transports_truck)] call F_libSpawnVehicle;
 	[_vehicle, _objective_pos] spawn troup_transport;
+	sleep 10;
 };
 
 [_objective_pos] spawn send_paratroopers;
