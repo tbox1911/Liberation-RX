@@ -55,7 +55,8 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 			_waypoint setWaypointType "MOVE";
 			_waypoint = _grp addWaypoint [_basepos, _radius];
 			_waypoint setWaypointType "CYCLE";
-			{ _x doFollow leader _grp } foreach units _grp;
+			(leader _grp) doMove (waypointPosition [_grp, 0]);
+			(units _grp) doFollow leader _grp;
 			_timer = round (time + 600);
 		};
 	};

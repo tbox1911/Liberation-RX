@@ -137,7 +137,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && count _ta
 	_wp0 = waypointPosition [_grp, 0];
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
-	{ _x doFollow leader _grp } foreach units _grp;
+	(units _grp) doFollow leader _grp;
 
 	_vehicle setFuel 1;
 	_vehicle setVehicleAmmo 1;

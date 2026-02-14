@@ -37,7 +37,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 	// Destination ?
 	if (count _objective_pos > 0) then {
 		{
-			_unload_range = 250;
+			_unload_range = 300;
 			if (_x isKindOf "Air") then {
 				_unload_range = 800;
 				if (_x distance2D _objective_pos <= (_unload_range * 2) && _slow == 1) then {
@@ -94,7 +94,7 @@ if (_convoy_attacked) then {
 				sleep 0.2;
 			} forEach (crew _vehicle);
 		};
-		sleep 1;
+		sleep 0.5;
 	} foreach _vehicles;
 
 	(units _grp) allowGetIn false;

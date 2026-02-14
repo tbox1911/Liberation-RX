@@ -7,6 +7,7 @@ if (isDedicated && !isNull _hc) exitWith {
 	[_objective_pos, _intensity] remoteExec ["spawn_battlegroup_direct", owner _hc];
 };
 
+_objective_pos set [2, 0];
 private _bg_groups = [];
 private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
 if (_spawn_marker == "") exitWith {};
@@ -20,7 +21,7 @@ if ( _intensity == 1 ) then {
 
 [markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 
-private ["_vehicle", "_nextgrp"];
+private ["_vehicle", "_driver", "_nextgrp"];
 private _selected_opfor_battlegroup = [];
 private _target_size = GRLIB_battlegroup_size;
 
@@ -30,7 +31,9 @@ for "_i" from 0 to _target_size do {
 
 {
 	_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
-	_nextgrp = group driver _vehicle;
+	_driver = driver _vehicle;
+	_nextgrp = group _driver;
+	_driver doMove _objective_pos;
 	[_nextgrp, _objective_pos] spawn battlegroup_ai;
 	[_nextgrp, 3600] call F_setUnitTTL;
 	_bg_groups pushback _nextgrp;

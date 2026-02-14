@@ -2,7 +2,6 @@ params ["_targetpos", ["_qrf", false], ["_unload_dist", 500]];
 if (count opfor_troup_transports_heli == 0) exitWith { grpNull };
 
 private _name = "";
-private _unit_skill = 0.65;
 private _para_squad = [
 	opfor_squad_leader,
 	opfor_paratrooper,
@@ -18,7 +17,6 @@ private _para_squad = [
 if (_qrf == true) then {
 	_name = "QRF-";
 	_unload_dist = 800;
-	_unit_skill = 0.75;
 	_para_squad = [
 		opfor_squad_leader,
 		opfor_sniper,
@@ -61,7 +59,6 @@ if (isNull _vehicle) exitWith { grpNull };
 private _pilot_group = group driver _vehicle;
 private _spawnpos = getPosATL _vehicle;
 _vehicle flyInHeight 350;
-[_vehicle, 1800] call F_setUnitTTL;
 
 private _cargo_seat_free = _vehicle emptyPositions "Cargo";
 if (_cargo_seat_free == 0) exitWith {
@@ -72,22 +69,10 @@ if (_cargo_seat_free == 0) exitWith {
 
 private _unitclass = _para_squad select [0, (_cargo_seat_free min 10)];
 private _para_group = [_spawnpos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
-private _lock = locked _vehicle;
-_vehicle lock 0;
-{
-	_x assignAsCargoIndex [_vehicle, (_forEachIndex + 1)];
-	_x moveInCargo _vehicle;
-	_x setSkill _unit_skill;
-	_x setSkill ["courage", 1];
-	_x allowFleeing 0;
-} foreach (units _para_group);
+[_vehicle, (units _para_group)] call F_manualCrew;
 
-[_para_group, 3600] call F_setUnitTTL;
-(units _para_group) allowGetIn true;
-(units _para_group) orderGetIn true;
-sleep 1;
-_vehicle lock _lock;
-
+// Move to obj
+[_vehicle, 3600] call F_setUnitTTL;
 [_pilot_group, _targetpos, getPosATL _vehicle] call _go_target;
 
 if (floor random 3 == 0) then {

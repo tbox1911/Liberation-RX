@@ -1,5 +1,6 @@
-if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 params ["_liberated_sector"];
+if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
+if (_liberated_sector == "") exitWith {};
 
 private _hc = [] call F_lessLoadedHC;
 if (isDedicated && !isNull _hc) exitWith {
@@ -46,6 +47,7 @@ if (_spawn_marker == "") exitWith {
 	};
 };
 
+_objective_pos set [2, 0];
 diag_log format ["Spawn BattlegGroup target %1 from %2 at %3", _objective_pos, markerPos _spawn_marker, time];
 
 GRLIB_last_battlegroup_time = time;
@@ -60,11 +62,13 @@ if ( _target_size < 2 ) then { _target_size = 2 };
 
 [markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 
-private ["_nextgrp", "_vehicle"];
+private ["_nextgrp", "_vehicle", "_driver"];
 private _bg_groups = [];
 for "_i" from 1 to _target_size do {
 	_vehicle = [markerpos _spawn_marker, (selectRandom _vehicle_pool)] call F_libSpawnVehicle;
-	_nextgrp = group driver _vehicle;
+	_driver = driver _vehicle;
+	_nextgrp = group _driver;
+	_driver doMove _objective_pos;
 	[_nextgrp, _objective_pos] spawn battlegroup_ai;
 	[_nextgrp, 3600] call F_setUnitTTL;
 	_bg_groups pushback _nextgrp;

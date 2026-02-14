@@ -52,6 +52,9 @@ private _prev = _patrolcorners select 0;
 
 if (count (waypoints _grp) > 1) then {
 	_wp0 = waypointPosition [_grp, 0];
+	(leader _grp) doMove _wp0;
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 };
+
+(units _grp) doFollow leader _grp;

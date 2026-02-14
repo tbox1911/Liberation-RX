@@ -12,22 +12,27 @@ if (_vehicle isKindOf "ParachuteBase") then {
 	waitUntil { sleep 1; ({getPos _x select 2 > 2} count (units _grp) == 0) };
 };
 
-sleep 15;
+sleep 5;
 private _veh_type = "No vehicle";
 if !(isNull _vehicle) then { _veh_type = typeOf _vehicle };
 private _attack = true;
 private _patrol = true;
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
+
+private _target = [_objective_pos, GRLIB_spawn_min] call F_getNearestBlufor;
+if (!isNull _target) then { _objective_pos = getPosATL _target };
+_objective_pos set [2, 0];
+
 diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
 
-private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep", "_target"];
+private ["_waypoint", "_wp0", "_next_objective", "_timer", "_sleep"];
 while {true} do {
 	if (!_patrol || {alive _x} count (units _grp) == 0) exitWith {};
 	_sleep = 60;
 	{
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > (GRLIB_sector_size * 1.5)) then { deleteVehicle _x } else { [_x] call F_fixPosUnit };
-		sleep 0.5;
+		sleep 0.2;
 	} forEach (units _grp);
 
 	if (_attack) then {
@@ -51,12 +56,13 @@ while {true} do {
 		_wp0 = waypointPosition [_grp, 0];
 		_waypoint = _grp addWaypoint [_wp0, 0];
 		_waypoint setWaypointType "CYCLE";
-		sleep 1;
-		(units _grp) doFollow leader _grp;
 
 		if (_vehicle isKindOf "AllVehicles") then {
 			(driver _vehicle) doMove _objective_pos;
+		} else {
+			(leader _grp) doMove _objective_pos;
 		};
+		(units _grp) doFollow leader _grp;
 
 		_timer = round (time + 300);
 	};
@@ -85,13 +91,14 @@ while {true} do {
 	};
 	if (count _objective_pos == 0) exitWith {};
 
-	if (!isNull _vehicle) then {
-		[_vehicle] call F_vehicleUnflip;
-		_vehicle setFuel 1;
-		_vehicle setVehicleAmmo 1;
-		if (alive _vehicle) then { _last_pos = getPosATL _vehicle };
+	if (alive _vehicle) then {
+		_last_pos = getPosATL _vehicle;
+		if (round (speed _vehicle) == 0) then {
+			[_vehicle] call F_vehicleUnflip;
+			_vehicle setFuel 1;
+			_vehicle setVehicleAmmo 1;
+		};
 	};
-
 	sleep _sleep;
 };
 
