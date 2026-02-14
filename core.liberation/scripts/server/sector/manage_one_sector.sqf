@@ -276,6 +276,7 @@ if (_building_ai_max > 0) then {
 _sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
 
 // Create civilians
+private _managed_civs = [];
 if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 	private _nbcivs = round ((5 + (floor random 6)) * GRLIB_civilian_activity);
 	if (_sector in sectors_bigtown) then { _nbcivs = _nbcivs + 12 };
@@ -285,11 +286,12 @@ if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 		_max_units = (selectRandom _rnd) min _nbcivs;
 		_grp = [_sector_pos, _max_units] call F_spawnCivilians;
 		[_grp, _sector_pos] spawn civilian_ai;
-		_managed_units = _managed_units + (units _grp);
+		_managed_civs = _managed_civs + (units _grp);
 		_nbcivs = _nbcivs - _max_units;
 		_ratio = round linearConversion [0, _civ, _civ - _nbcivs, 85, 99];
 		_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
 	};
+	_managed_units = _managed_units + _managed_civs;
 };
 
 // Create static weapons
@@ -421,8 +423,8 @@ while {true} do {
 			[_sector_pos] spawn {
 				params ["_sector_pos"];
 				sleep 30;
-				private _civilians = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 1.2]) select {
-					(side _x == GRLIB_side_civilian) && !(captive _x) &&
+				private _civilians = _managed_civs select {
+					(alive _x) && !(captive _x) &&
 					!(isAgent teamMember _x) && (isNull objectParent _x)
 				};
 				if (count _civilians > 5) then {
