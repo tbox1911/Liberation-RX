@@ -1,6 +1,8 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
-params [ "_classname", "_bounty", "_killer" ];
+if (isNil "GRLIB_player_spawned") exitWith {};
 if (!GRLIB_player_spawned) exitWith {};
+
+params [ "_classname", "_bounty", "_killer" ];
 
 gamelogic globalChat format [localize "STR_BOUNTY_MESSAGE"+".  Bonus Score %4pts !", 
     (_bounty select 0), ([_classname] call F_getLRXName),

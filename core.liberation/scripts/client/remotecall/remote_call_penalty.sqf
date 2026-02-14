@@ -1,4 +1,7 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+if (isNil "GRLIB_player_spawned") exitWith {};
+if (!GRLIB_player_spawned) exitWith {};
+
 params [ "_location", "_penalty"];
 
 if ([player] call F_getScore < GRLIB_perm_tank || (player distance2D _location < GRLIB_sector_size) || time < (15 * 60) ) exitWith {};

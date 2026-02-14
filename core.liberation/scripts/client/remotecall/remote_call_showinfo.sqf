@@ -1,6 +1,7 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
-if (GRLIB_endgame == 1) exitWith {};
+if (isNil "GRLIB_player_spawned") exitWith {};
 if (!GRLIB_player_spawned) exitWith {};
+if (GRLIB_endgame == 1) exitWith {};
 
 params ["_title", "_sub", "_picture", "_text", "_titleColor"];
 

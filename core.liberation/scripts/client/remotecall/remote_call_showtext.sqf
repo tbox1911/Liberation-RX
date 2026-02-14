@@ -1,4 +1,5 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+if (isNil "GRLIB_player_spawned") exitWith {};
 if (!GRLIB_player_spawned) exitWith {};
 
 params ["_type"];
