@@ -20,6 +20,7 @@ if ( _intensity == 1 ) then {
 
 [markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 
+private ["_vehicle", "_nextgrp"];
 private _selected_opfor_battlegroup = [];
 private _target_size = GRLIB_battlegroup_size;
 
@@ -28,23 +29,37 @@ for "_i" from 0 to _target_size do {
 };
 
 {
-	_nextgrp = createGroup [GRLIB_side_enemy, true];
 	_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
-	[_vehicle, 3600] call F_setUnitTTL;
-	(crew _vehicle) joinSilent _nextgrp;
-	if (typeOf _vehicle in opfor_troup_transports_truck) then {
-		[_vehicle, _objective_pos] spawn troup_transport;
-	} else {
-		[_nextgrp, _objective_pos] spawn battlegroup_ai;
-		[_nextgrp, 3600] call F_setUnitTTL;
-	};
+	_nextgrp = group driver _vehicle;
+	[_nextgrp, _objective_pos] spawn battlegroup_ai;
+	[_nextgrp, 3600] call F_setUnitTTL;
 	_bg_groups pushback _nextgrp;
 	sleep 2;
 } foreach _selected_opfor_battlegroup;
 
+if (floor random 3 == 0) then {
+	_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp), false] call F_spawnRegularSquad;
+	[_nextgrp, _objective_pos] spawn battlegroup_ai;
+	[_nextgrp, 3600] call F_setUnitTTL;
+	sleep 10
+};
+
+if (count opfor_troup_transports_truck > 0) then {
+	if (floor random 3 == 0) exitWith {};
+	_vehicle = [markerpos _spawn_marker, (selectRandom opfor_troup_transports_truck)] call F_libSpawnVehicle;
+	[_vehicle, _objective_pos] spawn troup_transport;
+};
+
+[_objective_pos] spawn send_paratroopers;
+sleep 10;
 if (combat_readiness >= 70) then {
+	[_objective_pos] spawn send_paratroopers;
+	sleep 10;
+};
+
+if (combat_readiness >= 80) then {
 	[_objective_pos, 3] spawn send_drones;
-	sleep 20;
+	sleep 10;
 	[_objective_pos, 3] spawn send_drones;
 };
 
