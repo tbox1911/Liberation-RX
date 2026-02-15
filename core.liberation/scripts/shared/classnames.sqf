@@ -342,10 +342,6 @@ if (isNil "a3w_resistance_static") then {
 	a3w_resistance_static = "B_static_AA_F";
 };
 
-if (isNil "a3w_enemy_static") then {
-	a3w_enemy_static = ["O_HMG_01_high_F", "O_GMG_01_high_F"];
-};
-
 if (isNil "a3w_vip_vehicle") then {
 	a3w_vip_vehicle = "C_Offroad_01_covered_F";
 };
