@@ -18,7 +18,7 @@ if (count (units _grp) == 0) exitWith { diag_log format ["--- LRX can't create c
 // Drone / UAV / Aircraft
 if (_vehicle_class in (uavs_vehicles + static_vehicles_AI)) exitWith { _grp };
 
-private ["_unit", "_path", "_loadout"];
+private ["_unit", "_path"];
 {
 	_unit = _x;
 	_unit allowDamage false;
@@ -33,24 +33,20 @@ private ["_unit", "_path", "_loadout"];
 		case GRLIB_side_enemy: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 			if (_type == "militia") then {
-				_loadout = getUnitLoadout (selectRandom militia_squad);
-				_unit setUnitLoadout _loadout;
+				_unit setUnitLoadout (getUnitLoadout (selectRandom militia_squad));
 			};
 			if (_type == "infantry") then {
-				_loadout = getUnitLoadout opfor_crew;
-				_unit setUnitLoadout _loadout;
+				_unit setUnitLoadout (getUnitLoadout opfor_crew);
 			};
 		};
 		case GRLIB_side_friendly: {
 			if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
-			_loadout = getUnitLoadout crewman_classname;
-			_unit setUnitLoadout _loadout;
+			_unit setUnitLoadout (getUnitLoadout crewman_classname);
 		};
 		case GRLIB_side_civilian: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
 			_unit setVariable ['GRLIB_can_speak', true, true];
-			_loadout = getUnitLoadout (selectRandom civilians);
-			_unit setUnitLoadout _loadout;
+			_unit setUnitLoadout (getUnitLoadout (selectRandom civilians));
 		};
 	};
 } forEach (units _grp);
