@@ -30,5 +30,5 @@ sleep 10;
 if (!alive _vehicle) exitWith {};
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_vehicle, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+sleep 30;
 [_vehicle, true, true] call F_vehicleClean;
