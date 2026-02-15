@@ -1,8 +1,8 @@
-params ["_sector", "_infsquad", "_squadies_to_spawn", "_mission_ai"];
+params ["_sector_pos", "_infsquad", "_squadies_to_spawn", "_mission_ai"];
 
 if (opforcap_max) exitWith { grpNull };
 
-private _spawn_pos = [markerpos _sector, (50 + floor random 100)] call F_getRandomPos;
+private _spawn_pos = [_sector_pos, (50 + floor random 100)] call F_getRandomPos;
 private _spawn_safe = [_spawn_pos, 5, 0, 100] call F_findSafePlace;
 if (count _spawn_safe == 0) exitWith { grpNull };
 
