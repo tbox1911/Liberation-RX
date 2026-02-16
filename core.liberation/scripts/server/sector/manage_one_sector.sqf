@@ -79,6 +79,7 @@ switch true do {
         _building_range = 300;
         _local_capture_size = _local_capture_size * 1.4;
         _ied_count = (4 + (floor (random 5)));
+		_static_count = (floor random 3);
     };
     case (_sector in sectors_capture): {
         while { count _squad1 < 12 } do { _squad1 pushback (selectRandom militia_squad) };
@@ -108,6 +109,7 @@ switch true do {
         _building_ai_max = 10;
         _building_range = 200;
         _ied_count = (3 + (floor random 4));
+		_static_count = (floor random 3);
     };
     case (_sector in sectors_military): {
         _infsquad1 = "infantry";
@@ -242,7 +244,7 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 	private _infsquad = _x select 1;
 	private _range = _x select 2;
 	if (count _squad > 0) then {
-		_grp = [_sector, _infsquad, _squad, false] call F_spawnRegularSquad;
+		_grp = [_sector_pos, _infsquad, _squad, false] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
 	};
@@ -295,7 +297,9 @@ if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 };
 
 // Create static weapons
-[_sector, _static_count] spawn spawn_static;
+if (_static_count > 0) then {
+	_managed_units append ([_sector_pos, _static_count, GRLIB_side_enemy, false, _infsquad1] call spawn_static);
+};
 
 // Radio send renforcement
 if (_nearRadioTower) then {
@@ -420,8 +424,8 @@ while {true} do {
 				[_sector, 4, _building_destroyed] remoteExec ["remote_call_sector", 0];
 				{ [_x, -(_building_destroyed * 3)] call F_addReput } forEach ([_sector_pos, _local_capture_size] call F_getNearbyPlayers);
 			};
-			[_sector_pos] spawn {
-				params ["_sector_pos"];
+			[_sector_pos, _managed_civs] spawn {
+				params ["_sector_pos", "_managed_civs"];
 				sleep 30;
 				private _civilians = _managed_civs select {
 					(alive _x) && !(captive _x) &&

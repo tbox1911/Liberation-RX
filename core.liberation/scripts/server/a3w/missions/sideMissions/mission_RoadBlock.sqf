@@ -25,7 +25,7 @@ _setupObjects = {
 			while {!_found && _idx > 0} do {
 				private _pos_check = ([_sector_pos, GRLIB_sector_size] call F_getRandomPos);
 				if ((!isOnRoad _pos_check) && (!surfaceIsWater _pos_check)) then {
-					private _roads = (_pos_check nearRoads 15) select { (getRoadInfo _x select 0) in ["TRACK","ROAD","MAIN ROAD"] };
+					private _roads = (_pos_check nearRoads 13) select { (getRoadInfo _x select 0) in ["TRACK","ROAD","MAIN ROAD"] };
 					if (count _roads > 0) exitWith {
 						_found = true;
 						_missionPos = _pos_check;
@@ -62,36 +62,28 @@ _setupObjects = {
 	// R3F disable
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_bunker, _def1, _def2];
 
-	private _veh1_pos = (getPosATL _def1) vectorAdd ([[0, -1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
-	_veh1 = createVehicle [selectRandom a3w_enemy_static, _veh1_pos, [], 0, "None"];
-	_veh1 setVariable ["R3F_LOG_disabled", true, true];
-	_veh1 disableCollisionWith _def1;
-	_veh1 setDir _bunker_dir;
-	_veh1 setPos _veh1_pos;
-
-	private _veh2_pos = (getPosATL _def2) vectorAdd ([[0, 1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
-	_veh2 = createVehicle [selectRandom a3w_enemy_static, _veh2_pos, [], 0, "None"];
-	_veh2 setVariable ["R3F_LOG_disabled", true, true];
-	_veh2 disableCollisionWith _def2;
-	_veh2 setDir (_bunker_dir -180);
-	_veh2 setPos _veh2_pos;
-
 	//----- spawn units ---------------------------------
-	_guard_grp = [_missionPos, 3, "militia", false] call createCustomGroup;
+	_guard_grp = [_missionPos, 4, "militia", false] call createCustomGroup;
 	private _guard = (units _guard_grp) select 0;
 	_guard setPosATL (getPosATL _bunker);
 	_guard setUnitPos "UP";
 	_guard disableAI "PATH";
 
-	private _gunner1 = (units _guard_grp) select 1;
-	_gunner1 assignAsGunner _veh1;
-	_gunner1 moveInGunner _veh1;
-	//_veh1 setVariable ["GRLIB_vehicle_gunner", [_gunner1, _guard]];
+	private _veh1_pos = (getPosATL _def1) vectorAdd ([[0, -1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
+	private _static_units = [_veh1_pos, 1, GRLIB_side_enemy, true, "militia"] call spawn_static;
+	_veh1 = _static_units select 0;
+	_static_units joinSilent _guard_grp;
+	_veh1 disableCollisionWith _def1;
+	_veh1 setDir _bunker_dir;
+	_veh1 setPos _veh1_pos;
 
-	private _gunner2 = (units _guard_grp) select 2;
-	_gunner2 assignAsGunner _veh2;
-	_gunner2 moveInGunner _veh2;
-	//_veh2 setVariable ["GRLIB_vehicle_gunner", [_gunner2, _guard]];
+	private _veh2_pos = (getPosATL _def2) vectorAdd ([[0, 1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
+	private _static_units = [_veh2_pos, 1, GRLIB_side_enemy, true, "militia"] call spawn_static;
+	_veh2 = _static_units select 0;
+	_static_units joinSilent _guard_grp;
+	_veh2 disableCollisionWith _def2;
+	_veh2 setDir (_bunker_dir -180);
+	_veh2 setPos _veh2_pos;
 
 	_aiGroup = [_missionPos, ([] call getNbUnits), "militia"] call createCustomGroup;
 	_vehicles = [_bunker, _def1, _def2, _veh1, _veh2];

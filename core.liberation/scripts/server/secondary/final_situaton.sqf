@@ -80,8 +80,9 @@ opfor_target_assembled = createVehicle ["Land_Device_assembled_F", zeropos, [], 
 opfor_target_assembled setVectorDirAndUp [vectorDir opfor_target, vectorUp opfor_target];
 opfor_target_assembled hideObjectGlobal true;
 
-[_marker, 4] spawn spawn_static;
-private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp), true] call F_spawnRegularSquad;
+[_sector_pos, 3, GRLIB_side_enemy, false, "infantry"] call spawn_static;
+
+private _grp = [markerPos _marker, "csat", ([] call F_getAdaptiveSquadComp), true] call F_spawnRegularSquad;
 [_grp, _spawnpos, 200] spawn defence_ai;
 
 private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVehicle;
@@ -99,7 +100,7 @@ while { _continue } do {
 
 	if ({alive _x} count (units _grp) == 0) then {
 		if (time > _last) then {
-			_grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp), true] call F_spawnRegularSquad;
+			_grp = [markerPos _marker, "csat", ([] call F_getAdaptiveSquadComp), true] call F_spawnRegularSquad;
 			[_grp, _spawnpos, 200] spawn defence_ai;
 			_last = round (time + 180);
 		};

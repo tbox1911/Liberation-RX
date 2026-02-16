@@ -40,18 +40,18 @@ _setupObjects = {
 	private _veh1 = objNull;
 	private _pos = [_missionPos, 3, 0, 80] call F_findSafePlace;
 	if (count _pos > 0) then {
-		_veh1 = [_pos, a3w_resistance_static, 2, GRLIB_side_friendly, "", true, true] call F_libSpawnVehicle;
-		_veh1 setVariable ["R3F_LOG_disabled", true, true];
-		_managed_units append (crew _veh1);
+		private _static_units = [_pos, 1, GRLIB_side_friendly, true, "resistance"] call spawn_static;
+		_veh1 = _static_units select 0;
+		_managed_units append _static_units;
 		sleep 1;
 	};
 	
 	private _veh2 = objNull;
 	private _pos = [_missionPos, 3, 0, 80] call F_findSafePlace;
 	if (count _pos > 0) then {
-		_veh2 = [_pos, a3w_resistance_static, 2, GRLIB_side_friendly, "", true, true] call F_libSpawnVehicle;
-		_veh2 setVariable ["R3F_LOG_disabled", true, true];
-		_managed_units append (crew _veh2);
+		private _static_units = [_pos, 1, GRLIB_side_friendly, true, "resistance"] call spawn_static;
+		_veh2 = _static_units select 0;
+		_managed_units append _static_units;
 		sleep 1;
 	};
 

@@ -41,7 +41,12 @@ private ["_unit", "_path"];
 		};
 		case GRLIB_side_friendly: {
 			if (GRLIB_force_english) then { _unit setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
-			_unit setUnitLoadout (getUnitLoadout crewman_classname);
+			if (_type == "resistance") then {
+				_unit setUnitLoadout (getUnitLoadout (selectRandom a3w_resistance_squad));
+			};
+			if (_type == "infantry") then {
+				_unit setUnitLoadout (getUnitLoadout crewman_classname);
+			};
 		};
 		case GRLIB_side_civilian: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];

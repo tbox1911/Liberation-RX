@@ -44,7 +44,7 @@ while {alive _static} do {
                 [_gunner] spawn F_getNearestEnemy;
             };
         } else {
-            if (_static_class in opfor_statics) then {
+            if (_static_class in opfor_statics && (_static getVariable ["R3F_LOG_disabled", false])) then {
                 [_static] call F_searchGunner;
             };
         };

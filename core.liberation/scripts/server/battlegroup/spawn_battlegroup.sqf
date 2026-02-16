@@ -53,50 +53,48 @@ diag_log format ["Spawn BattlegGroup target %1 from %2 at %3", _objective_pos, m
 GRLIB_last_battlegroup_time = time;
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness <= 80 ) then { _vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
-private _target_size = round ((GRLIB_battlegroup_size * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
-private _current_players = count (AllPlayers - (entities "HeadlessClient_F"));
-if ( _current_players <= 2 ) then { _target_size = round (_target_size / 2) };
-if ( _target_size > 10 && GRLIB_csat_aggressivity >= 2 ) then { _target_size = 10 };
-if ( _target_size > 8 && GRLIB_csat_aggressivity < 2 ) then { _target_size = 8 };
-if ( _target_size < 2 ) then { _target_size = 2 };
 
-[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
+private _target_size = 2;
+private _current_players = count (AllPlayers - (entities "HeadlessClient_F"));
+if (_current_players >= 2) then { _target_size = 3 };
+if (combat_readiness > 70) then { _target_size = _target_size + 1 };
+if (GRLIB_csat_aggressivity >= 2) then { _target_size = _target_size + 1 };
+
+private _spawn_pos = markerPos _spawn_marker;
+[_spawn_pos] remoteExec ["remote_call_battlegroup", 0];
 
 private ["_nextgrp", "_vehicle", "_driver"];
-private _bg_groups = [];
+
 for "_i" from 1 to _target_size do {
-	_vehicle = [markerpos _spawn_marker, (selectRandom _vehicle_pool)] call F_libSpawnVehicle;
+	_vehicle = [_spawn_pos, (selectRandom _vehicle_pool)] call F_libSpawnVehicle;
 	_driver = driver _vehicle;
 	_nextgrp = group _driver;
 	_driver doMove _objective_pos;
 	[_nextgrp, _objective_pos] spawn battlegroup_ai;
 	[_nextgrp, 3600] call F_setUnitTTL;
-	_bg_groups pushback _nextgrp;
-	sleep 20;
+	sleep 15;
 };
 
-if (count opfor_troup_transports_truck > 0) then {
-	if (floor random 3 == 0) exitWith {};
-	_vehicle = [markerpos _spawn_marker, (selectRandom opfor_troup_transports_truck)] call F_libSpawnVehicle;
-	[_vehicle, _objective_pos] spawn troup_transport;
-	sleep 10;
-};
-
-private _nb_squad = round ((3 * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
-if (_nb_squad > 6) then { _nb_squad = 6 };
-if ( _current_players <= 2 ) then { _nb_squad = round (_nb_squad / 2) };
-if ( _nb_squad < 2 ) then { _nb_squad = 2 };
+private _nb_squad = 2;
+if (_current_players >= 2) then { _nb_squad = 3 };
+if (combat_readiness > 70) then { _nb_squad = _nb_squad + 1 };
+if (GRLIB_csat_aggressivity >= 2) then { _nb_squad = _nb_squad + 1 };
 
 for "_i" from 1 to _nb_squad do {
-	if (floor random 2 == 0) then {
-		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp), false] call F_spawnRegularSquad;
-		[_nextgrp, _objective_pos] spawn battlegroup_ai;
-		[_nextgrp, 3600] call F_setUnitTTL;
+	if (count opfor_troup_transports_truck > 0 && floor random 3 > 0) then {
+		_vehicle = [_spawn_pos, (selectRandom opfor_troup_transports_truck)] call F_libSpawnVehicle;
+		[_vehicle, _objective_pos] spawn troup_transport;
+		sleep 10;
 	} else {
-		[_objective_pos] spawn send_paratroopers;
+		if (count opfor_troup_transports_heli > 0) then {
+			[_objective_pos] spawn send_paratroopers;
+		} else {
+			_nextgrp = [_spawn_pos, "csat", ([] call F_getAdaptiveSquadComp), false] call F_spawnRegularSquad;
+			[_nextgrp, _objective_pos] spawn battlegroup_ai;
+			[_nextgrp, 3600] call F_setUnitTTL;
+		};
 	};
 	_target_size = _target_size + 1;
-	_bg_groups pushback _nextgrp;
 	sleep 10;
 };
 
@@ -109,7 +107,7 @@ if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 && _current_players >=
 	if (floor random 2 == 0) then {
 		[_objective_pos, GRLIB_side_enemy, 4] spawn spawn_air;
 		sleep 20;
-		[_objective_pos] spawn spawn_halo_vehicle;		
+		[_objective_pos] spawn spawn_halo_vehicle;
 	} else {
 		[_objective_pos, GRLIB_side_enemy, 2] spawn spawn_air;
 		sleep 20;

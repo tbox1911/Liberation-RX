@@ -34,7 +34,8 @@ _setupObjects = {
 	};
 	_prisoners = (units _grp_prisoners);
 	_prisoners joinSilent _grp_prisoners;
-	[_missionLocation, 3] spawn spawn_static;
+	private _static_units = [_missionPos, 3, GRLIB_side_enemy, true, "infantry"] call spawn_static;
+	_static_units joinSilent _aiGroup;
 	true;
 };
 
