@@ -3,7 +3,7 @@ private [ "_crates_amount", "_vehicle"];
 
 if ( isNil "GRLIB_military_sectors_already_activated" ) then { GRLIB_military_sectors_already_activated = [] };
 
-if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
+if !(_sector in GRLIB_military_sectors_already_activated) then {
 
 	GRLIB_military_sectors_already_activated pushBackUnique _sector;
 

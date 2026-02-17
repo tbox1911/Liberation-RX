@@ -22,6 +22,7 @@ switch (_cmd) do {
 		{ _vehicle lockTurret [_x, false] } forEach (allTurrets _vehicle);
 		_vehicle setVehicleLock "UNLOCKED";
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
+		[_vehicle] call F_aceInitVehicle;
 	};
 	case "abandon" : {
 		_vehicle lockCargo false;
@@ -31,6 +32,7 @@ switch (_cmd) do {
 		_vehicle setVehicleLock "UNLOCKED";
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
 		_vehicle setVariable ["GRLIB_vehicle_owner", "", true];
+		[_vehicle] call F_aceInitVehicle;
 		[_vehicle] spawn RPT_fnc_ResetVehicle;
 	};
 };
