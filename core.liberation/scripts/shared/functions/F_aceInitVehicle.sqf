@@ -10,13 +10,13 @@ if (_vehicle_class in GRLIB_ACE_blacklist) exitWith {};
 
 // Set object movable with ACE.
 if ([_vehicle_class, GRLIB_ACE_movable] call F_itemIsInClass) then {
-    [_vehicle, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+    [_vehicle, true, [0, 3, 1], 0, true, true] call ace_dragging_fnc_setCarryable;
     // _vehicle setVariable ["ace_dragging_ignoreWeightCarry", true, true];
 };
 
 //Set the cargo size of objects.
 if ([_vehicle_class, (GRLIB_ACE_cargoSize select 0)] call F_itemIsInClass) then {
-    [_vehicle, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+    [_vehicle, true, [0, 3, 1], 0, true, true] call ace_dragging_fnc_setCarryable;
     _vehicle setVariable ["ace_dragging_ignoreWeightCarry", true, true];
     [_vehicle, ([_vehicle, GRLIB_ACE_cargoSize] call ACE_getSize)] call ace_cargo_fnc_setSize;
 };
