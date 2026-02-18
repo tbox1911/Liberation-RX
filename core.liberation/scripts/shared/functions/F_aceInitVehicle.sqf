@@ -35,5 +35,10 @@ if ([_vehicle_class, ai_healing_sources] call F_itemIsInClass) then {
     _vehicle setVariable ["ace_medical_isMedicalFacility", true, true];
 };
 
+// Set ACE Repair Facility
+if ([_vehicle_class, vehicle_repair_box] call F_itemIsInClass) then {
+    _vehicle setVariable ["ace_medical_isRepairFacility", true, true];
+};
+
 // Clean ACE Cargo
 { [_x, _vehicle] call ace_cargo_fnc_removeCargoItem } forEach (_vehicle getVariable ["ace_cargo_loaded", []]);
