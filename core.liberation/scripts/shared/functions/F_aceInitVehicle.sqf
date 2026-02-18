@@ -37,7 +37,7 @@ if ([_vehicle_class, ai_healing_sources] call F_itemIsInClass) then {
 
 // Set ACE Repair Facility
 if ([_vehicle_class, vehicle_repair_box] call F_itemIsInClass) then {
-    _vehicle setVariable ["ace_medical_isRepairFacility", true, true];
+    _vehicle setVariable ["ace_isRepairFacility", true, true];
 };
 
 // Clean ACE Cargo
