@@ -46,6 +46,8 @@ private _building_blacklist = [
 	"Land_TTowerBig_1_F",
 	"Land_Radar_01_HQ_F",
 	"Land_i_Stone_HouseSmall_V1_dam_F",
+	"Land_DeerSkeleton_damaged_01_F",
+	"Land_LampStreet_02_triple_F",
 	"Land_Shop_City_03_F",
 	"Land_Radar_F"
 ];
