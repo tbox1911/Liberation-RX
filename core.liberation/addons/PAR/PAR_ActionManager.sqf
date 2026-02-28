@@ -1,7 +1,6 @@
 // PAR Player Actions Manager
 
 if (PAR_revive == 0) exitWith {};
-if (GRLIB_ACE_medical_enabled) exitWith {};
 
 // Grave Name
 addMissionEventHandler ["Draw3D",{

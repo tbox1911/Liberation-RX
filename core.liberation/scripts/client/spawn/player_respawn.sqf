@@ -1,5 +1,9 @@
 params ["_newUnit", "_oldUnit"];
 
+// LRX Player Respawn
+
+titleText ["" ,"BLACK FADED", 100];
+
 GRLIB_player_configured = false;
 [_newUnit] call clean_unit;
 _newUnit switchMove "";

@@ -101,7 +101,8 @@ waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 // Action Manager
 [] spawn PAR_ActionManager;
 
-if (PAR_revive != 0) then {
+private _enabled = ((["PAR_Revive"] call lrx_getParamValue) != 0);
+if (_enabled) then {
 	waitUntil {!(isNull (findDisplay 46))};
 	if (GRLIB_ACE_medical_enabled) then {
 		systemChat localize "STR_PAR_AI_REVIVE_ACE_INITIALIZED";
