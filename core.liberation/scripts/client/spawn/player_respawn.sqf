@@ -50,6 +50,10 @@ if (GRLIB_side_friendly == WEST) then {
     deleteVehicle _newUnit;
 };
 
+// Remove old unit
+removeAllWeapons _oldUnit;
+deleteVehicle _oldUnit;
+
 // Player Loadout
 if !(_unit getVariable ["GRLIB_player_context_loaded", false]) then {
     [_unit] remoteExec ["load_player_context_remote_call", 2];
@@ -61,7 +65,7 @@ waitUntil { sleep 0.5; (_unit getVariable ["GRLIB_player_context_loaded", false]
 waitUntil { sleep 0.5; startgame == 1 };
 
 [_unit] call player_EH;
-[_unit] spawn player_init;
+[_unit] call player_init;
 _unit setvariable ["PAR_grave_box", PAR_grave_box, true];
 
 // Keep player first / Reset group
@@ -74,7 +78,3 @@ if (count (units GRLIB_player_group) > 1) then {
         _x setVariable ["PAR_Grp_AI", GRLIB_player_group];
     } forEach PAR_AI_bros;
 };
-
-// Remove old unit
-removeAllWeapons _oldUnit;
-deleteVehicle _oldUnit;

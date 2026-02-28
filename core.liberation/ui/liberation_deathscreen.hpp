@@ -108,7 +108,7 @@ class par_respawn {
 		w = 0.1 * safezoneW;
 		h = 0.04 * safezoneH;
 		text = "Respawn";
-		action = "closeDialog 0; player setDamage 1";
+		action = "closeDialog 0; if (GRLIB_ACE_medical_enabled) then {[player] call ace_medical_statemachine_fnc_enteredStateDeath} else {player setDamage 1}";
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
 	class PAR_RecallMedic : RscButton {

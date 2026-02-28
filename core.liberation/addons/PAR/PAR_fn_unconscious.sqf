@@ -3,6 +3,7 @@ params ["_unit"];
 if (GRLIB_ACE_medical_enabled) exitWith {};
 if (rating _unit < -2000) exitWith {_unit setDamage 1};
 if (!([] call F_getValid)) exitWith {_unit setDamage 1};
+
 private _cur_revive = 1;
 if (PAR_ai_revive_max > 0 && !isPlayer _unit && local _unit) then {
 	_cur_revive = ([_unit] call PAR_revive_cur);

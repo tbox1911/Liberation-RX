@@ -39,11 +39,9 @@ while {true} do {
 			};
 
 			// AI revive
-			if (PAR_ai_revive_max > 0) then {
+			if (PAR_revive != 0 && PAR_ai_revive_max > 0) then {
 				// Medic Auto Heal units
-				if (PAR_revive != 0 && behaviour player in ["SAFE", "AWARE"]) then {
-					[_unit] call PAR_fn_heal;
-				};
+				if (behaviour player in ["SAFE", "AWARE"]) then { [_unit] call PAR_fn_heal };
 
 				// AI medical status
 				private _msg = "";

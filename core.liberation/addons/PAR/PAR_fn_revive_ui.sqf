@@ -130,7 +130,6 @@ closeDialog 0;
 
 if (alive player) then {
 	titleText ["", "PLAIN DOWN"];
-	player setVariable ["PAR_ACE_isUnconscious", false, true];
 } else {
 	titleText ["" ,"BLACK FADED", 100];
 };

@@ -101,19 +101,11 @@ waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 // Action Manager
 [] spawn PAR_ActionManager;
 
-// Grave Name
-addMissionEventHandler ["Draw3D",{
-	private _near_grave = nearestObjects [player, PAR_graves, 2];
-	if (count (_near_grave) > 0) then {
-		private _grave = _near_grave select 0;
-		private _grave_pos = ASLToAGL getPosASL _grave;
-		drawIcon3D [getMissionPath "res\skull.paa", [1,1,1,1], _grave_pos vectorAdd [0, 0, 1], 2, 2, 0, (_grave getVariable ["PAR_grave_message", ""]), 2, 0.05, "RobotoCondensed", "center"];
+if (PAR_revive != 0) then {
+	waitUntil {!(isNull (findDisplay 46))};
+	if (GRLIB_ACE_medical_enabled) then {
+		systemChat localize "STR_PAR_AI_REVIVE_ACE_INITIALIZED";
+	} else {
+		systemChat localize "STR_PAR_AI_REVIVE_INITIALIZED";
 	};
-}];
-
-waitUntil {!(isNull (findDisplay 46))};
-if (GRLIB_ACE_medical_enabled) then {
-    systemChat localize "STR_PAR_AI_REVIVE_ACE_INITIALIZED";
-} else {
-    systemChat localize "STR_PAR_AI_REVIVE_INITIALIZED";
 };

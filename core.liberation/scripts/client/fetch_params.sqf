@@ -50,7 +50,12 @@ PAR_respawn_btn = ["PAR_Respawn"] call lrx_getParamValue;
 
 PAR_grave = ["PAR_Grave"] call lrx_getParamValue;
 // Disable PAR/Fatigue if ACE Medical is present
-if (GRLIB_ACE_medical_enabled) then { PAR_revive = 0; PAR_grave = 0; GRLIB_fatigue = 1 };
+if (GRLIB_ACE_medical_enabled) then {
+	PAR_revive = 0;
+	PAR_ai_revive_max = 0;
+	PAR_grave = 0;
+	GRLIB_fatigue = 1;
+};
 
 // Transfom true/false Param
 GRLIB_introduction = (GRLIB_introduction == 1);

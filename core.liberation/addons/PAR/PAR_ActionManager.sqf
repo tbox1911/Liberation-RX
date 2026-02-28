@@ -1,6 +1,18 @@
 // PAR Player Actions Manager
 
 if (PAR_revive == 0) exitWith {};
+if (GRLIB_ACE_medical_enabled) exitWith {};
+
+// Grave Name
+addMissionEventHandler ["Draw3D",{
+	private _near_grave = nearestObjects [player, PAR_graves, 2];
+	if (count (_near_grave) > 0) then {
+		private _grave = _near_grave select 0;
+		private _grave_pos = ASLToAGL getPosASL _grave;
+		drawIcon3D [getMissionPath "res\skull.paa", [1,1,1,1], _grave_pos vectorAdd [0, 0, 1], 2, 2, 0, (_grave getVariable ["PAR_grave_message", ""]), 2, 0.05, "RobotoCondensed", "center"];
+	};
+}];
+
 private ["_unit", "_wnded_list", "_id1", "_id2", "_id3"];
 private _checkAction = {
 	params ["_unit"];

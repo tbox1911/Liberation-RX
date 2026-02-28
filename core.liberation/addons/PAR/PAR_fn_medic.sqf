@@ -10,8 +10,8 @@ if (isNil "_medic") exitWith {
 	[_wnded, _msg] call PAR_fn_globalchat;
 
 	if (PAR_revive in [2,3]) then {
-	_msg = localize "STR_PAR_MD_04";
-	[_wnded, _msg] call PAR_fn_globalchat;
+		_msg = localize "STR_PAR_MD_04";
+		[_wnded, _msg] call PAR_fn_globalchat;
 	};
 
 	private _lst = PAR_AI_bros select { !([_x] call PAR_is_wounded) };

@@ -115,7 +115,8 @@ if (_unit == player) then {
 
 	// Player Handle Damage EH
 	if (PAR_revive != 0) then {
-		player addEventHandler ["HandleDamage", {
+		_unit removeAllEventHandlers "HandleDamage";
+		_unit addEventHandler ["HandleDamage", {
 			params ["_unit", "", "_damage", "_killer", "", "", "_instigator"];
 			if (!isNull _instigator) then {
 				if (isNull (getAssignedCuratorLogic _instigator)) then {
@@ -160,7 +161,6 @@ if (_unit == player) then {
 			["ace_unconscious", {
 				params ["_unit", "_isUnconsious"];
 				if (_isUnconsious && _unit == player) then {
-					_unit setVariable ["PAR_ACE_isUnconscious", true, true];
 					_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 					private _killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
 					[_unit, _killer] spawn PAR_fn_playerWounded;

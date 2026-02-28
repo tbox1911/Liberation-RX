@@ -10,14 +10,15 @@ _unit allowDamage false;
 _unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
 if (PAR_grave == 1 && !isNull _oldUnit) then { deleteVehicle _oldUnit };
 if (GRLIB_ACE_medical_enabled) then {
-    [_unit] call ACE_medical_treatment_fnc_fullHealLocal;
-    [_unit] call ACE_medical_statemachine_fnc_resetStateDefault;
-    _unit setvariable ["ace_medical_causeofdeath", nil];
+    //[_unit, false] call ace_medical_fnc_setUnconscious;
+    [_unit] call ace_medical_treatment_fnc_fullHealLocal;
+    [_unit] call ace_medical_statemachine_fnc_resetStateDefault;
+    _unit setVariable ["ace_medical_causeofdeath", nil];
 };
 
 _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 _unit setVariable ["PAR_isUnconscious", false, true];
-_unit setVariable ["PAR_ACE_isUnconscious", false, true];
+_unit setVariable ["ACE_isUnconscious", false, true];
 _unit setVariable ["PAR_isDragged", 0, true];
 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 _unit setVariable ["GRLIB_action_inuse", false, true];

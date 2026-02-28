@@ -47,8 +47,8 @@ if (_unit == player) then {
 
 	// TFAR
 	if (GRLIB_TFR_enabled) then {
-		player setVariable ["GRLIB_TFAR_SW_config", (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings];
-		player setVariable ["GRLIB_TFAR_LR_config", (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings];
+		_unit setVariable ["GRLIB_TFAR_SW_config", (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings];
+		_unit setVariable ["GRLIB_TFAR_LR_config", (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings];
 	};
 
 	// Marker
@@ -59,7 +59,7 @@ if (_unit == player) then {
 
 	// Respawn Cooldown
 	if (GRLIB_respawn_cooldown > 0) then {
-		player setVariable ["GRLIB_last_respawn", round (time + GRLIB_respawn_cooldown)];
+		_unit setVariable ["GRLIB_last_respawn", round (time + GRLIB_respawn_cooldown)];
 	};
 
 	// No stuff
