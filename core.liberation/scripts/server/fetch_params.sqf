@@ -116,14 +116,12 @@ GRLIB_param_wipe_keepcontext = [GRLIB_PARAM_KeepContext] call lrx_getParamValue;
 GRLIB_param_wipe_keepscore = [GRLIB_PARAM_KeepScore] call lrx_getParamValue;
 GRLIB_passive_ammount = [GRLIB_PARAM_PassiveIncomeAmmount] call lrx_getParamValue;
 GRLIB_passive_income = [GRLIB_PARAM_PassiveIncome] call lrx_getParamValue;
-GRLIB_server_persistent = [GRLIB_PARAM_Persistent] call lrx_getParamValue;
 GRLIB_side_verif = [GRLIB_PARAM_SideVerification] call lrx_getParamValue;
 GRLIB_victory_condition = [GRLIB_PARAM_VictoryCondition] call lrx_getParamValue;
 GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
 GRLIB_weather_param = [GRLIB_PARAM_Weather] call lrx_getParamValue;
 
 // Transfom true/false Param
-GRLIB_server_persistent = (GRLIB_server_persistent == 1);
 GRLIB_Commander_AutoStart = (GRLIB_Commander_AutoStart == 1);
 GRLIB_hide_opfor = (GRLIB_hide_opfor == 1);
 

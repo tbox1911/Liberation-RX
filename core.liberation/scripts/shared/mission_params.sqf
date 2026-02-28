@@ -107,7 +107,6 @@ GRLIB_PARAM_RespawnCD = "RespawnCD";
 GRLIB_PARAM_KickIdle = "KickIdle";
 GRLIB_PARAM_TK_mode = "TK_mode";
 GRLIB_PARAM_TK_count = "TK_count";
-GRLIB_PARAM_Persistent = "Persistent";
 GRLIB_PARAM_UndercoverModeEnabled = "UndercoverMode";
 GRLIB_PARAM_CommanderModeEnabled = "CommanderMode";
 GRLIB_PARAM_CommanderModeRadius = "CommanderRadius";
@@ -1437,18 +1436,6 @@ _Mission_Params = [
             format [localize "STR_TK_COUNT_OPT0", 4],
             format [localize "STR_TK_COUNT_OPT0", 5],
             format [localize "STR_TK_COUNT_OPT0", 6]
-        ]]
-    ]],
-    [GRLIB_PARAM_Persistent, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 0],
-        [GRLIB_PARAM_NameKey, localize "STR_PERSISTENT_MODE"],
-        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
-        [GRLIB_PARAM_OptionValuesKey, [0,1]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_SystemCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_PERSISTENT_MODE_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PERSISTENT_MODE_OPT0",
-            localize "STR_PERSISTENT_MODE_OPT1"
         ]]
     ]],
     [GRLIB_PARAM_CommanderModeEnabled, createHashMapFromArray [

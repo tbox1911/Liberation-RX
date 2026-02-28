@@ -6055,12 +6055,6 @@
 			<Chinesesimp>UI - 在地图上显示队友</Chinesesimp>
 			<Chinese>UI - 在地圖上顯示隊友</Chinese>
 		</Key>
-		<Key ID="STR_PERSISTENT_MODE">
-			<Original>Server in Persistent Mode</Original>
-			<French>Serveur en Mode Persistant.</French>
-			<Chinesesimp>服务器处于持续模式</Chinesesimp>
-			<Chinese>服務器處於持續模式</Chinese>
-		</Key>
 		<Key ID="STR_KEEP_SCORE">
 			<Original>Keep the Basic Players datas (score, permissions)</Original>
 			<French>Garder les données de Base (score, permissions)</French>
@@ -13487,33 +13481,6 @@
 			<Chinese>允許最多 %1 次隊友擊殺。</Chinese>
 			<Portuguese>Permitir até %1 team kills.</Portuguese>
 			<Czech>Povolit až %1 zabití vlastních.</Czech>
-		</Key>
-		<Key ID="STR_PERSISTENT_MODE_DESC">
-			<Original>Enables or disables persistent mode, maintaining mission state across sessions.</Original>
-			<Russian>Включает или отключает постоянный режим, сохраняя состояние миссии между сессиями.</Russian>
-			<French>Active ou désactive le mode persistant, maintenant l’état de la mission entre les sessions.</French>
-			<Chinesesimp>启用或禁用持久模式，在会话之间维护任务状态。</Chinesesimp>
-			<Chinese>啟用或禁用持久模式，在會話之間維護任務狀態。</Chinese>
-			<Portuguese>Ativa ou desativa o modo persistente, mantendo o estado da missão entre sessões.</Portuguese>
-			<Czech>Povolit nebo zakázat perzistentní režim, zachovávající stav mise mezi relacemi.</Czech>
-		</Key>
-		<Key ID="STR_PERSISTENT_MODE_OPT0">
-			<Original>Disable persistent mode</Original>
-			<Russian>Отключить постоянный режим</Russian>
-			<French>Désactiver le mode persistant</French>
-			<Chinesesimp>禁用持久模式。</Chinesesimp>
-			<Chinese>禁用持久模式。</Chinese>
-			<Portuguese>Desativar modo persistente.</Portuguese>
-			<Czech>Zakázat perzistentní režim.</Czech>
-		</Key>
-		<Key ID="STR_PERSISTENT_MODE_OPT1">
-			<Original>Enable persistent mode</Original>
-			<Russian>Включить постоянный режим</Russian>
-			<French>Activer le mode persistant</French>
-			<Chinesesimp>启用持久模式。</Chinesesimp>
-			<Chinese>啟用持久模式。</Chinese>
-			<Portuguese>Ativar modo persistente.</Portuguese>
-			<Czech>Povolit perzistentní režim.</Czech>
 		</Key>
 		<Key ID="STR_UNDERCOVER_MODE_DESC">
 			<Original>Enables the Civilian undercover mode.</Original>
