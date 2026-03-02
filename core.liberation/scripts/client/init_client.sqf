@@ -273,7 +273,7 @@ addMissionEventHandler ["Draw3D",{
 	};
 
 	private _near_box = nearestObjects [player, [playerbox_typename], 3];
-	if (count (_near_box) > 0) then {
+	if (count _near_box > 0) then {
 		private _box = _near_box select 0;
 		private _box_pos = ASLToAGL getPosASL _box;
 		private _gid = _box getVariable ["GRLIB_vehicle_owner", ""];
