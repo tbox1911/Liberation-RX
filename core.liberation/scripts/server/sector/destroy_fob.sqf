@@ -45,6 +45,11 @@ if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 		{ deleteVehicle _x } forEach (_building getVariable ["GRLIB_FOB_Objects", []]);
 		deleteVehicle (_building getVariable ["GRLIB_FOB_Officer", objNull]);
 	};
+
+	if (_building getVariable ["GRLIB_vehicle_manned", false]) then {
+		[_building, true, true] call F_vehicleClean;
+	};
+
 	deleteVehicle _building;
 	sleep _sleep;
 } foreach _all_buildings_to_destroy;
