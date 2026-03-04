@@ -279,7 +279,7 @@ _sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
 
 // Create civilians
 private _managed_civs = [];
-if ( _spawncivs && GRLIB_civilian_activity > 0) then {
+if (_spawncivs && GRLIB_civilian_activity > 0) then {
 	private _nbcivs = round ((5 + (floor random 6)) * GRLIB_civilian_activity);
 	if (_sector in sectors_bigtown) then { _nbcivs = _nbcivs + 12 };
 	private _rnd = [1,1,1,1,2,2,3];
