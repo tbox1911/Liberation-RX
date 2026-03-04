@@ -94,7 +94,7 @@ GRLIB_checkBuildTrench = {
 
 GRLIB_checkBuildFOB = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && !(_target getVariable ['box_in_use', false]))
+	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && count (crew _target) == 0 && !(_target getVariable ['box_in_use', false]))
 };
 
 GRLIB_checkBuildFOBWater = {
