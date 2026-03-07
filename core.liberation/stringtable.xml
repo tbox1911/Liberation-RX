@@ -2010,10 +2010,10 @@
 			<Chinese>PAR：限制AI復活</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
-			<Original>PAR: Bleedout Timer (sec)</Original>
-			<French>PAR: Durée Attente Blessé (sec)</French>
-			<Chinesesimp>PAR：失血计时器（秒）</Chinesesimp>
-			<Chinese>PAR：失血計時器（秒）</Chinese>
+			<Original>PAR: Bleedout Timer</Original>
+			<French>PAR: Durée Attente Blessé</French>
+			<Chinesesimp>PAR：失血计时器</Chinesesimp>
+			<Chinese>PAR：失血計時器</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_GRAVE">
 			<Original>PAR: Grave + Stuff in a box</Original>
@@ -3348,6 +3348,10 @@
 			<Chinese>自動保存計时器</Chinese>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM0">
+			<Original>%1 seconds</Original>
+			<French>%1 secondes</French>
+		</Key>		
+		<Key ID="STR_CLEANUP_PARAM1">
 			<Original>%1 minutes</Original>
 			<French>%1 minutes</French>
 			<Russian>%1 минут</Russian>
@@ -3356,7 +3360,7 @@
 			<Portuguese>%1 minutos</Portuguese>
 			<Czech>%1 minutt</Czech>
 		</Key>
-		<Key ID="STR_CLEANUP_PARAM1">
+		<Key ID="STR_CLEANUP_PARAM2">
 			<Original>%1 hour(s)</Original>
 			<French>%1 heure(s)</French>
 			<Russian>%1 час(а)</Russian>
@@ -6038,16 +6042,16 @@
 			<Chinese>地圖重啓時保留玩家數據（小隊、武器庫、虛擬車庫）</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_RESPAWN">
-			<Original>PAR: Respawn button Timer (sec)</Original>
-			<French>PAR: Attente Bouton Respawn (sec)</French>
-			<Chinesesimp>PAR：重生按钮计时器（秒）</Chinesesimp>
-			<Chinese>PAR：重生按鈕計時器（秒）</Chinese>
+			<Original>PAR: Respawn button Timer</Original>
+			<French>PAR: Attente Bouton Respawn</French>
+			<Chinesesimp>PAR：重生按钮计时器</Chinesesimp>
+			<Chinese>PAR：重生按鈕計時器</Chinese>
 		</Key>
 		<Key ID="STR_RESPAWN_CD">
-			<Original>Cooldown if player respawn too fast (min)</Original>
-			<French>Attente si le joueur réapparaît trop rapidement (min)</French>
-			<Chinesesimp>玩家重生过快时的冷却时间（分钟）</Chinesesimp>
-			<Chinese>玩家重生過快時的冷卻時間（分鐘）</Chinese>
+			<Original>Cooldown if player respawn too fast</Original>
+			<French>Attente si le joueur réapparaît trop rapidement</French>
+			<Chinesesimp>玩家重生过快时的冷却时间</Chinesesimp>
+			<Chinese>玩家重生過快時的冷卻時間</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN">
 			<Original>Duration of activity of an Attacked Sector</Original>
@@ -11237,58 +11241,13 @@
 			<Czech>Neomezená oživení AI</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT1">
-			<Original>Up to 3 AI revives</Original>
-			<Russian>До 3 воскрешений ИИ</Russian>
-			<French>Jusqu'à 3 réanimations d'IA</French>
-			<Chinesesimp>最多3次AI复活</Chinesesimp>
-			<Chinese>最多3次AI復活</Chinese>
-			<Portuguese>Até 3 revives de IA</Portuguese>
-			<Czech>Až 3 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT2">
-			<Original>Up to 5 AI revives</Original>
-			<Russian>До 5 воскрешений ИИ</Russian>
-			<French>Jusqu'à 5 réanimations d'IA</French>
-			<Chinesesimp>最多5次AI复活</Chinesesimp>
-			<Chinese>最多5次AI復活</Chinese>
-			<Portuguese>Até 5 revives de IA</Portuguese>
-			<Czech>Až 5 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT3">
-			<Original>Up to 7 AI revives</Original>
-			<Russian>До 7 воскрешений ИИ</Russian>
-			<French>Jusqu'à 7 réanimations d'IA</French>
-			<Chinesesimp>最多7次AI复活</Chinesesimp>
-			<Chinese>最多7次AI復活</Chinese>
-			<Portuguese>Até 7 revives de IA</Portuguese>
-			<Czech>Až 7 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT4">
-			<Original>Up to 10 AI revives</Original>
-			<Russian>До 10 воскрешений ИИ</Russian>
-			<French>Jusqu'à 10 réanimations d'IA</French>
-			<Chinesesimp>最多10次AI复活</Chinesesimp>
-			<Chinese>最多10次AI復活</Chinese>
-			<Portuguese>Até 10 revives de IA</Portuguese>
-			<Czech>Až 10 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT5">
-			<Original>Up to 15 AI revives</Original>
-			<Russian>До 15 воскрешений ИИ</Russian>
-			<French>Jusqu'à 15 réanimations d'IA</French>
-			<Chinesesimp>最多15次AI复活</Chinesesimp>
-			<Chinese>最多15次AI復活</Chinese>
-			<Portuguese>Até 15 revives de IA</Portuguese>
-			<Czech>Až 15 oživení AI</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_AI_REVIVE_OPT6">
-			<Original>Up to 20 AI revives</Original>
-			<Russian>До 20 воскрешений ИИ</Russian>
-			<French>Jusqu'à 20 réanimations d'IA</French>
-			<Chinesesimp>最多20次AI复活</Chinesesimp>
-			<Chinese>最多20次AI復活</Chinese>
-			<Portuguese>Até 20 revives de IA</Portuguese>
-			<Czech>Až 20 oživení AI</Czech>
+			<Original>Up to %1 revives</Original>
+			<Russian>До %1 воскрешений ИИ</Russian>
+			<French>Jusqu'à %1 réanimations</French>
+			<Chinesesimp>最多%1次AI复活</Chinesesimp>
+			<Chinese>最多%1次AI復活</Chinese>
+			<Portuguese>Até %1 revives</Portuguese>
+			<Czech>Až %1 oživení</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT_DESC">
 			<Original>Defines the bleed-out time (in seconds) for downed players.</Original>
@@ -11300,58 +11259,13 @@
 			<Czech>Nastavuje čas do vykrvení (v sekundách) pro zraněné hráče.</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT0">
-			<Original>Bleed-out time: 100 seconds</Original>
-			<Russian>Время истечения: 100 секунд</Russian>
-			<French>Temps d'agonie : 100 secondes</French>
-			<Chinesesimp>流血结束时间：100秒</Chinesesimp>
-			<Chinese>流血結束時間：100秒</Chinese>
-			<Portuguese>Tempo de sangramento: 100 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 100 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT1">
-			<Original>Bleed-out time: 200 seconds</Original>
-			<Russian>Время истечения: 200 секунд</Russian>
-			<French>Temps d'agonie : 200 secondes</French>
-			<Chinesesimp>流血结束时间：200秒</Chinesesimp>
-			<Chinese>流血結束時間：200秒</Chinese>
-			<Portuguese>Tempo de sangramento: 200 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 200 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT2">
-			<Original>Bleed-out time: 300 seconds</Original>
-			<Russian>Время истечения: 300 секунд</Russian>
-			<French>Temps d'agonie : 300 secondes</French>
-			<Chinesesimp>流血结束时间：300秒</Chinesesimp>
-			<Chinese>流血結束時間：300秒</Chinese>
-			<Portuguese>Tempo de sangramento: 300 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 300 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT3">
-			<Original>Bleed-out time: 400 seconds</Original>
-			<Russian>Время истечения: 400 секунд</Russian>
-			<French>Temps d'agonie : 400 secondes</French>
-			<Chinesesimp>流血结束时间：400秒</Chinesesimp>
-			<Chinese>流血結束時間：400秒</Chinese>
-			<Portuguese>Tempo de sangramento: 400 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 400 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT4">
-			<Original>Bleed-out time: 500 seconds</Original>
-			<Russian>Время истечения: 500 секунд</Russian>
-			<French>Temps d'agonie : 500 secondes</French>
-			<Chinesesimp>流血结束时间：500秒</Chinesesimp>
-			<Chinese>流血結束時間：500秒</Chinese>
-			<Portuguese>Tempo de sangramento: 500 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 500 s</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_PAR_BLEEDOUT_OPT5">
-			<Original>Bleed-out time: 600 seconds</Original>
-			<Russian>Время истечения: 600 секунд</Russian>
-			<French>Temps d'agonie : 600 secondes</French>
-			<Chinesesimp>流血结束时间：600秒</Chinesesimp>
-			<Chinese>流血結束時間：600秒</Chinese>
-			<Portuguese>Tempo de sangramento: 600 segundos</Portuguese>
-			<Czech>Čas do vykrvení: 600 s</Czech>
+			<Original>Bleed-out time: %1 seconds</Original>
+			<Russian>Время истечения: %1 секунд</Russian>
+			<French>Temps d'agonie : %1 secondes</French>
+			<Chinesesimp>流血结束时间：%1秒</Chinesesimp>
+			<Chinese>流血結束時間：%1秒</Chinese>
+			<Portuguese>Tempo de sangramento: %1 segundos</Portuguese>
+			<Czech>Čas do vykrvení: %1 seconds</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_GRAVE_DESC">
 			<Original>Enables or disables grave mechanics following player death.</Original>
@@ -11528,58 +11442,13 @@
 			<Czech>Nastavuje prodlevu respawnu (v sekundách) po smrti hráče.</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_OPT0">
-			<Original>Respawn delay: 5 seconds</Original>
-			<Russian>Задержка возрождения: 5 секунд</Russian>
-			<French>Délai de réapparition : 5 secondes</French>
-			<Chinesesimp>重生延迟：5秒</Chinesesimp>
-			<Chinese>重生延遲：5秒</Chinese>
-			<Portuguese>Atraso de respawn: 5 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 5 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT1">
-			<Original>Respawn delay: 10 seconds</Original>
-			<Russian>Задержка возрождения: 10 секунд</Russian>
-			<French>Délai de réapparition : 10 secondes</French>
-			<Chinesesimp>重生延迟：10秒</Chinesesimp>
-			<Chinese>重生延遲：10秒</Chinese>
-			<Portuguese>Atraso de respawn: 10 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 10 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT2">
-			<Original>Respawn delay: 20 seconds</Original>
-			<Russian>Задержка возрождения: 20 секунд</Russian>
-			<French>Délai de réapparition : 20 secondes</French>
-			<Chinesesimp>重生延迟：20秒</Chinesesimp>
-			<Chinese>重生延遲：20秒</Chinese>
-			<Portuguese>Atraso de respawn: 20 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 20 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT3">
-			<Original>Respawn delay: 25 seconds</Original>
-			<Russian>Задержка возрождения: 25 секунд</Russian>
-			<French>Délai de réapparition : 25 secondes</French>
-			<Chinesesimp>重生延迟：25秒</Chinesesimp>
-			<Chinese>重生延遲：25秒</Chinese>
-			<Portuguese>Atraso de respawn: 25 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 25 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT4">
-			<Original>Respawn delay: 30 seconds</Original>
-			<Russian>Задержка возрождения: 30 секунд</Russian>
-			<French>Délai de réapparition : 30 secondes</French>
-			<Chinesesimp>重生延迟：30秒</Chinesesimp>
-			<Chinese>重生延遲：30秒</Chinese>
-			<Portuguese>Atraso de respawn: 30 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 30 s</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_OPT5">
-			<Original>Respawn delay: 60 seconds</Original>
-			<Russian>Задержка возрождения: 60 секунд</Russian>
-			<French>Délai de réapparition : 60 secondes</French>
-			<Chinesesimp>重生延迟：60秒</Chinesesimp>
-			<Chinese>重生延遲：60秒</Chinese>
-			<Portuguese>Atraso de respawn: 60 segundos</Portuguese>
-			<Czech>Prodleva respawnu: 60 s</Czech>
+			<Original>Respawn delay: %1 seconds</Original>
+			<Russian>Задержка возрождения: %1 секунд</Russian>
+			<French>Délai de réapparition : %1 secondes</French>
+			<Chinesesimp>重生延迟：%1秒</Chinesesimp>
+			<Chinese>重生延遲：%1秒</Chinese>
+			<Portuguese>Atraso de respawn: %1 segundos</Portuguese>
+			<Czech>Prodleva respawnu: %1 seconds</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SQUAD_SIZE_START_DESC">
 			<Original>Defines the starting squad size available to players.</Original>
@@ -13138,85 +13007,31 @@
 			<Czech>Povolit administrační nabídku.</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_CD_DESC">
-			<Original>Specifies the cooldown period (in seconds) before a player can respawn.</Original>
-			<Russian>Определяет период восстановления (в секундах) перед возрождением игрока.</Russian>
-			<French>Spécifie la période de recharge (en secondes) avant qu’un joueur puisse réapparaître.</French>
+			<Original>Specifies the cooldown period (in seconds) before a player can respawn</Original>
+			<Russian>Определяет период восстановления (в секундах) перед возрождением игрока</Russian>
+			<French>Spécifie la période (en secondes) avant qu’un joueur puisse réapparaître</French>
 			<Chinesesimp>指定玩家重生前的冷却时间（秒）。</Chinesesimp>
 			<Chinese>指定玩家重生前的冷卻時間（秒）。</Chinese>
-			<Portuguese>Especifica o período de recarga (em segundos) antes de um jogador poder ressurgir.</Portuguese>
-			<Czech>Určuje dobu obnovení (v sekundách), než se hráč může znovu objevit.</Czech>
+			<Portuguese>Especifica o período (em segundos) antes de um jogador poder ressurgir</Portuguese>
+			<Czech>Určuje dobu (v sekundách), než se hráč může znovu objevit.</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_CD_OPT0">
 			<Original>No respawn cooldown</Original>
 			<Russian>Без восстановления</Russian>
-			<French>Pas de délai de rechargement</French>
+			<French>Pas de délai de réapparition</French>
 			<Chinesesimp>无重生冷却。</Chinesesimp>
 			<Chinese>無重生冷卻。</Chinese>
-			<Portuguese>Sem tempo de recarga.</Portuguese>
+			<Portuguese>Sem tempo de ressurgir</Portuguese>
 			<Czech>Bez doby obnovy.</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_CD_OPT1">
-			<Original>4‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 4 минуты</Russian>
-			<French>Délai de rechargement : 4 minutes</French>
-			<Chinesesimp>4分钟重生冷却。</Chinesesimp>
-			<Chinese>4分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 4 minutos.</Portuguese>
-			<Czech>Doba obnovy: 4 minuty.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT2">
-			<Original>5‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 5 минут</Russian>
-			<French>Délai de rechargement : 5 minutes</French>
-			<Chinesesimp>5分钟重生冷却。</Chinesesimp>
-			<Chinese>5分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 5 minutos.</Portuguese>
-			<Czech>Doba obnovy: 5 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT3">
-			<Original>6‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 6 минут</Russian>
-			<French>Délai de rechargement : 6 minutes</French>
-			<Chinesesimp>6分钟重生冷却。</Chinesesimp>
-			<Chinese>6分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 6 minutos.</Portuguese>
-			<Czech>Doba obnovy: 6 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT4">
-			<Original>7‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 7 минут</Russian>
-			<French>Délai de rechargement : 7 minutes</French>
-			<Chinesesimp>7分钟重生冷却。</Chinesesimp>
-			<Chinese>7分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 7 minutos.</Portuguese>
-			<Czech>Doba obnovy: 7 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT5">
-			<Original>8‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 8 минут</Russian>
-			<French>Délai de rechargement : 8 minutes</French>
-			<Chinesesimp>8分钟重生冷却。</Chinesesimp>
-			<Chinese>8分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 8 minutos.</Portuguese>
-			<Czech>Doba obnovy: 8 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT6">
-			<Original>9‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 9 минут</Russian>
-			<French>Délai de rechargement : 9 minutes</French>
-			<Chinesesimp>9分钟重生冷却。</Chinesesimp>
-			<Chinese>9分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 9 minutos.</Portuguese>
-			<Czech>Doba obnovy: 9 minut.</Czech>
-		</Key>
-		<Key ID="STR_RESPAWN_CD_OPT7">
-			<Original>10‑minute respawn cooldown</Original>
-			<Russian>Время восстановления: 10 минут</Russian>
-			<French>Délai de rechargement : 10 minutes</French>
-			<Chinesesimp>10分钟重生冷却。</Chinesesimp>
-			<Chinese>10分鐘重生冷卻。</Chinese>
-			<Portuguese>Tempo de recarga de 10 minutos.</Portuguese>
-			<Czech>Doba obnovy: 10 minut.</Czech>
+			<Original>%1 minute respawn cooldown</Original>
+			<Russian>Время восстановления: %1 минуты</Russian>
+			<French>%1 minutes de délai de réapparition</French>
+			<Chinesesimp>%1分钟重生冷却。</Chinesesimp>
+			<Chinese>%1分鐘重生冷卻。</Chinese>
+			<Portuguese>%1 minutos de tempo de ressurgir</Portuguese>
+			<Czech>%1 minuty Doba obnovy</Czech>
 		</Key>
 		<Key ID="STR_KICK_IDLE_DESC">
 			<Original>Determines the idle time limit (in seconds) before a player is automatically kicked.</Original>
@@ -13245,7 +13060,7 @@
 			<Portuguese>Expulsar após %1 minutos de inatividade.</Portuguese>
 			<Czech>Vykopnout po %1 minutách nečinnosti.</Czech>
 		</Key>
-		<Key ID="STR_KICK_IDLE_OPT1">
+		<Key ID="STR_KICK_IDLE_OPT2">
 			<Original>Kick after %1 hour(s) idle</Original>
 			<Russian>Удалить после %1 час(а) бездействия</Russian>
 			<French>Expulser après %1 heure(s) d’inactivité</French>
@@ -13348,68 +13163,14 @@
 			<Portuguese>Quando o comandante escolhe um setor para atacar, setores inimigos próximos dentro desse alcance defenderão.</Portuguese>
 			<Czech>Když velitel zvolí sektor k útoku, blízké nepřátelské sektory v tomto rozmezí budou bránit.</Czech>
 		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT5">
-			<Original>Defense activation range: 500 m</Original>
-			<Russian>Диапазон активации защиты : 500 м</Russian>
-			<French>Portée d’activation de la défense : 500 m</French>
-			<Chinesesimp>防御激活范围：500 米</Chinesesimp>
-			<Chinese>防禦激活範圍：500 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 500 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 500 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT6">
-			<Original>Defense activation range: 600 m</Original>
-			<Russian>Диапазон активации защиты : 600 м</Russian>
-			<French>Portée d’activation de la défense : 600 m</French>
-			<Chinesesimp>防御激活范围：600 米</Chinesesimp>
-			<Chinese>防禦激活範圍：600 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 600 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 600 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT7">
-			<Original>Defense activation range: 700 m</Original>
-			<Russian>Диапазон активации защиты : 700 м</Russian>
-			<French>Portée d’activation de la défense : 700 m</French>
-			<Chinesesimp>防御激活范围：700 米</Chinesesimp>
-			<Chinese>防禦激活範圍：700 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 700 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 700 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT8">
-			<Original>Defense activation range: 800 m</Original>
-			<Russian>Диапазон активации защиты : 800 м</Russian>
-			<French>Portée d’activation de la défense : 800 m</French>
-			<Chinesesimp>防御激活范围：800 米</Chinesesimp>
-			<Chinese>防禦激活範圍：800 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 800 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 800 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT9">
-			<Original>Defense activation range: 900 m</Original>
-			<Russian>Диапазон активации защиты : 900 м</Russian>
-			<French>Portée d’activation de la défense : 900 m</French>
-			<Chinesesimp>防御激活范围：900 米</Chinesesimp>
-			<Chinese>防禦激活範圍：900 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 900 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 900 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT10">
-			<Original>Defense activation range: 1000 m</Original>
-			<Russian>Диапазон активации защиты : 1000 м</Russian>
-			<French>Portée d’activation de la défense : 1000 m</French>
-			<Chinesesimp>防御激活范围：1000 米</Chinesesimp>
-			<Chinese>防禦激活範圍：1000 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 1000 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 1000 m</Czech>
-		</Key>
-		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT15">
-			<Original>Defense activation range: 1500 m</Original>
-			<Russian>Диапазон активации защиты : 1500 м</Russian>
-			<French>Portée d’activation de la défense : 1500 m</French>
-			<Chinesesimp>防御激活范围：1500 米</Chinesesimp>
-			<Chinese>防禦激活範圍：1500 米</Chinese>
-			<Portuguese>Alcance de ativação de defesa: 1500 m</Portuguese>
-			<Czech>Rozsah aktivace obrany: 1500 m</Czech>
+		<Key ID="STR_COMMANDER_MODE_RADIUS_OPT0">
+			<Original>Defense activation range: %1</Original>
+			<Russian>Диапазон активации защиты : %1</Russian>
+			<French>Portée d’activation de la défense : %1</French>
+			<Chinesesimp>防御激活范围：%1</Chinesesimp>
+			<Chinese>防禦激活範圍：%1</Chinese>
+			<Portuguese>Alcance de ativação de defesa: %1</Portuguese>
+			<Czech>Rozsah aktivace obrany: %1</Czech>
 		</Key>
 		<Key ID="STR_ALARMS">
 			<Original>Alarms</Original>
