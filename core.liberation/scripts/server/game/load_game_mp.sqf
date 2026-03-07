@@ -256,6 +256,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 			_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 		};
 	} foreach _s1;
+	sleep 1;
 
 	// Objects
 	{
@@ -331,6 +332,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 		sleep 0.1;
 	} foreach _s2;
+	sleep 1;
 
 	// Vehicles
 	{
@@ -353,7 +355,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 		_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
-		_nextbuilding setPos (getPos _nextbuilding);
 		_buildings_created pushback _nextbuilding;
 
 		if (GRLIB_ACE_enabled) then {
@@ -436,6 +437,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 		sleep 0.1;
 	} foreach _s3;
+	sleep 1;
 
 	[_buildings_created] spawn {
 		params ["_list"];

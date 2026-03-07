@@ -1,5 +1,5 @@
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
-sleep 12;
+sleep 35;
 
 private _all_static = [];
 
