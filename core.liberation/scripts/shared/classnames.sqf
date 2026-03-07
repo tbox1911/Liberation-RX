@@ -507,6 +507,7 @@ vehicle_big_units = [
 	"VTOL_01_base_F",
 	"VTOL_02_base_F",
 	"Land_SM_01_shed_F",
+	"Land_TentHangar_V1_F",
 	"Land_Hangar_F"
 ] + vehicle_big_west + vehicle_big_east;
 vehicle_big_units = vehicle_big_units arrayIntersect vehicle_big_units;
@@ -601,6 +602,36 @@ GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + stati
 // AIR DROP
 [] call compileFinal preprocessFileLineNumbers format ["default\default_airdrop_classnames.sqf"];
 
+// Camo Net
+GRLIB_camo_net = ["CamoNet_BLUFOR_F"];
+if (GRLIB_CUP_enabled) then {
+	GRLIB_camo_net append [
+		"Land_CamoNet_NATO",
+		"Land_CamoNetVar_NATO",
+		"Land_CamoNetB_NATO",
+		"Land_CamoNet_EAST",
+		"Land_CamoNetVar_EAST",
+		"Land_CamoNetB_EAST",
+		"Land_CamoNet_NATO_EP1",
+		"Land_CamoNetVar_NATO_EP1",
+		"Land_CamoNetB_NATO_EP1",
+		"Land_CamoNet_EAST_EP1",
+		"Land_CamoNetVar_EAST_EP1",
+		"Land_CamoNetB_EAST_EP1"
+	];
+};
+
+// Quick delete MP Event
+GRLIB_quick_delete = [
+	Arsenal_typename,
+	FOB_box_typename,
+	foodbarrel_typename,
+	waterbarrel_typename,
+	medic_heal_typename,
+	"Land_MedicalTent_01_base_F",
+	"Shelter_base_F"
+] + GRLIB_camo_net;
+
 // Filter Mods
 diag_log "--- LRX: Check Classnames ---";
 infantry_units = [ infantry_units ] call F_filterMods;
@@ -638,6 +669,7 @@ opfor_squad_low_intensity = [
 	opfor_sentry,
 	opfor_sentry
 ];
+
 opfor_squad_8_standard = [
 	opfor_squad_leader,
 	opfor_medic,
@@ -649,6 +681,7 @@ opfor_squad_8_standard = [
 	opfor_marksman,
 	opfor_grenadier
 ];
+
 opfor_squad_8_infkillers = [
 	opfor_squad_leader,
 	opfor_medic,
@@ -662,6 +695,7 @@ opfor_squad_8_infkillers = [
 	opfor_rifleman,
 	opfor_rpg
 ];
+
 opfor_squad_8_tankkillers = [
 	opfor_squad_leader,
 	opfor_medic,
@@ -673,6 +707,7 @@ opfor_squad_8_tankkillers = [
 	opfor_at,
 	opfor_at
 ];
+
 opfor_squad_8_airkillers = [
 	opfor_squad_leader,
 	opfor_medic,
@@ -754,8 +789,6 @@ GRLIB_ignore_colisions = [
 	"StaticMGWeapon",
 	"StaticGrenadeLauncher",
 	"StaticMortar",
-	"CamoNet_BLUFOR_open_F",
-	"CamoNet_BLUFOR_big_F",
 	"Land_NavigLight",
 	"Lamps_base_F",
 	"Helipad_base_F",

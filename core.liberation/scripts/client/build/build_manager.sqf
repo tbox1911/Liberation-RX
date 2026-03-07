@@ -428,6 +428,16 @@ while {true} do {
 					_vehicle allowdamage false;
 				};
 
+				// Camo Net
+				if ([_classname, GRLIB_camo_net] call F_itemIsInClass) then {
+					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+				};
+
+				// MP Killed
+				if ([_classname, GRLIB_quick_delete] call F_itemIsInClass) then {
+					_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+				};
+
 				build_vehicle = _vehicle;
 			};
 

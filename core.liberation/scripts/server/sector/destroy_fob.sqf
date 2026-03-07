@@ -10,7 +10,6 @@ private _classnames_to_destroy = [
 	repair_station_typename,
 	"Land_MedicalTent_01_base_F",
 	"Land_MedicalTent_01_floor_base_F",
-	"CamoNet_BLUFOR_F",	
 	"Helipad_base_F",
 	"Land_fs_feed_F"
 ];

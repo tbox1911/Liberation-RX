@@ -323,6 +323,10 @@ if (!isNil "_lrx_liberation_savegame") then {
 			GRLIB_mobile_respawn pushback _nextbuilding;
 		};
 
+		if ([_nextclass, GRLIB_camo_net] call F_itemIsInClass) then {
+			_nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+		};
+
 		if (_nextclass == medic_heal_typename && _nextclass isKindOf "Land_MedicalTent_01_base_F") then {
 			private _med_floor_class = selectRandom ["Land_MedicalTent_01_floor_light_F", "Land_MedicalTent_01_floor_dark_F"];
 			private _med_floor = createVehicle [_med_floor_class, _nextpos, [], 0, "CAN_COLLIDE"];
