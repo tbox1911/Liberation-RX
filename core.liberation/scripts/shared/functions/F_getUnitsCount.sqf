@@ -1,4 +1,4 @@
-params [ "_position", "_distance", "_side" ];
+params ["_position", "_distance", "_side"];
 
 if (_side == GRLIB_side_friendly) exitWith {
     {
