@@ -1734,23 +1734,23 @@
 		</Key>
 		<Key ID="STR_PARAMS_MAX_SHOT">
 			<Original>Artillery cooldown</Original>
-			<French>Temps de recharge de l'artillerie</French>
+			<French>Limite d'artillerie</French>
 		</Key>
 		<Key ID="STR_PARAMS_MAX_SHOT_DESC">
 			<Original>Maximum number of artillery shots per 30 minutes</Original>
 			<French>Nombre maximal de tirs d'artillerie par 30 minutes</French>
 		</Key>
 		<Key ID="STR_PARAMS_A3W_COUNT">
-			<Original>LRX maximum concurrent Side Missions</Original>
-			<French>LRX Missions Secondaires Maximum</French>
+			<Original>Side Missions: maximum concurrent</Original>
+			<French>Missions Secondaires: maximal simultanées</French>
 		</Key>
 		<Key ID="STR_PARAMS_A3W_DELAY">
-			<Original>Delay between Side Missions (min)</Original>
-			<French>Delais entre les Missions Secondaires (min)</French>
+			<Original>Side Missions: delay between missions</Original>
+			<French>Missions Secondaires: delais entre les missions</French>
 		</Key>
 		<Key ID="STR_VULN_TIMER">
-			<Original>Enemy capture sector duration </Original>
-			<French>Durée de capture du secteur par l'ennemi </French>
+			<Original>Time to capture the sector by the enemy</Original>
+			<French>Temp de capture du secteur par l'ennemi.</French>
 		</Key>
 		<Key ID="STR_VICTORY_CONDITION">
 			<Original>Victory Condition</Original>
@@ -3348,52 +3348,22 @@
 			<Chinese>自動保存計时器</Chinese>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM0">
-			<Original>10 minutes delay</Original>
-			<French> 10 minutes de délai</French>
-			<Chinesesimp>10分钟间隔</Chinesesimp>
-			<Chinese>10分鐘間隔</Chinese>
-			<Portuguese>10 minutos de atraso</Portuguese>
-			<Czech>za 10 minut Vymazat</Czech>
+			<Original>%1 minutes</Original>
+			<French>%1 minutes</French>
+			<Russian>%1 минут</Russian>
+			<Chinesesimp>%1 分钟间隔</Chinesesimp>
+			<Chinese>%1 分鐘間隔</Chinese>
+			<Portuguese>%1 minutos</Portuguese>
+			<Czech>%1 minutt</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM1">
-			<Original>15 minutes delay</Original>
-			<French> 15 minutes de délai</French>
-			<Chinesesimp>15分钟间隔</Chinesesimp>
-			<Chinese>15分鐘間隔</Chinese>
-			<Portuguese>15 minutos de atraso</Portuguese>
-			<Czech>za 15 minut Vymazat</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM2">
-			<Original>20 minutes delay</Original>
-			<French> 20 minutes de délai</French>
-			<Chinesesimp>20分钟间隔</Chinesesimp>
-			<Chinese>20分鐘間隔</Chinese>
-			<Portuguese>20 minutos de atraso</Portuguese>
-			<Czech>za 20 minut Vymazat</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM3">
-			<Original>30 minutes delay</Original>
-			<French> 30 minutes de délai</French>
-			<Chinesesimp>30分钟间隔</Chinesesimp>
-			<Chinese>30分鐘間隔</Chinese>
-			<Portuguese>30 minutos de atraso</Portuguese>
-			<Czech>za 30 minut vymazat</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM4">
-			<Original>1 hour delay</Original>
-			<French>1 heure de délai</French>
-			<Chinesesimp>1小时间隔</Chinesesimp>
-			<Chinese>1小時間隔</Chinese>
-			<Portuguese>1 hora de atraso</Portuguese>
-			<Czech>za 1 hodinu vymazat</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM5">
-			<Original>2 hours delay</Original>
-			<French>2 heures de délai</French>
-			<Chinesesimp>2小时间隔</Chinesesimp>
-			<Chinese>2小時間隔</Chinese>
-			<Portuguese>2 horas de atraso</Portuguese>
-			<Czech>za 2 hodiny vymazat</Czech>
+			<Original>%1 hour(s)</Original>
+			<French>%1 heure(s)</French>
+			<Russian>%1 час(а)</Russian>
+			<Chinesesimp>%1 小时间隔</Chinesesimp>
+			<Chinese>%1 小時間隔</Chinese>
+			<Portuguese>%1 hora(s)</Portuguese>
+			<Czech>%1 hodin(u/y)</Czech>
 		</Key>
 		<Key ID="STR_SORRY">
 			<Original>Sorry!</Original>
@@ -6080,10 +6050,8 @@
 			<Chinese>玩家重生過快時的冷卻時間（分鐘）</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN">
-			<Original>Clear unattacked Sectors (min)</Original>
-			<French>Nettoyer secteurs non attaqués (min)</French>
-			<Chinesesimp>清理未被攻击的区域（分钟）</Chinesesimp>
-			<Chinese>清理未被攻擊的區域（分鐘）</Chinese>
+			<Original>Duration of activity of an Attacked Sector</Original>
+			<French>Durée d'activité d'un Secteur Attaqué</French>
 		</Key>
 		<Key ID="STR_REDEPLOY">
 			<Original>Allow Redeploy</Original>
@@ -10414,40 +10382,22 @@
 			<Czech>Zakázat pasivní příjem</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT0">
-			<Original>Delay between payouts: 20 minutes</Original>
-			<Russian>Задержка между выплатами: 20 минут</Russian>
-			<French>Délai entre paiements : 20 minutes</French>
-			<Chinesesimp>支付间隔：20分钟</Chinesesimp>
-			<Chinese>支付間隔：20分鐘</Chinese>
-			<Portuguese>Atraso entre pagamentos: 20 minutos</Portuguese>
-			<Czech>Prodleva mezi výplatami: 20 minut</Czech>
+			<Original>Delay between payouts: %1 minutes</Original>
+			<Russian>Задержка между выплатами: %1 минут</Russian>
+			<French>Délai entre paiements : %1 </French>
+			<Chinesesimp>支付间隔：%1分钟</Chinesesimp>
+			<Chinese>支付間隔：%1分鐘</Chinese>
+			<Portuguese>Atraso entre pagamentos: %1 minutos</Portuguese>
+			<Czech>Prodleva mezi výplatami: %1 minut</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT1">
-			<Original>Delay between payouts: 30 minutes</Original>
-			<Russian>Задержка между выплатами: 30 минут</Russian>
-			<French>Délai entre paiements : 30 minutes</French>
-			<Chinesesimp>支付间隔：30分钟</Chinesesimp>
-			<Chinese>支付間隔：30分鐘</Chinese>
-			<Portuguese>Atraso entre pagamentos: 30 minutos</Portuguese>
-			<Czech>Prodleva mezi výplatami: 30 minut</Czech>
-		</Key>
-		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT2">
-			<Original>Delay between payouts: 1 hour</Original>
-			<Russian>Задержка между выплатами: 1 час</Russian>
-			<French>Délai entre paiements : 1 heure</French>
-			<Chinesesimp>支付间隔：1小时</Chinesesimp>
-			<Chinese>支付間隔：1小時</Chinese>
-			<Portuguese>Atraso entre pagamentos: 1 hora</Portuguese>
-			<Czech>Prodleva mezi výplatami: 1 hodina</Czech>
-		</Key>
-		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY_OPT3">
-			<Original>Delay between payouts: 2 hours</Original>
-			<Russian>Задержка между выплатами: 2 часа</Russian>
-			<French>Délai entre paiements : 2 heures</French>
-			<Chinesesimp>支付间隔：2小时</Chinesesimp>
-			<Chinese>支付間隔：2小時</Chinese>
-			<Portuguese>Atraso entre pagamentos: 2 horas</Portuguese>
-			<Czech>Prodleva mezi výplatami: 2 hodiny</Czech>
+			<Original>Delay between payouts: %1 hour(s)</Original>
+			<Russian>Задержка между выплатами: %1 час(a)</Russian>
+			<French>Délai entre paiements : %1 heure(s)</French>
+			<Chinesesimp>支付间隔：%1小时</Chinesesimp>
+			<Chinese>支付間隔：%1小時</Chinese>
+			<Portuguese>Atraso entre pagamentos: %1 hora(s)</Portuguese>
+			<Czech>Prodleva mezi výplatami: %1 hodin(u/y)</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT_DESC">
 			<Original>Defines the amount of passive income awarded per interval.</Original>
@@ -12826,22 +12776,15 @@
 			<Czech>Poloměr sektoru: 2000 m</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN_DESC">
-			<Original>Sets the time multiplier for sector despawn delays, affecting sector persistence.</Original>
-			<Russian>Устанавливает множитель времени для задержек исчезновения секторов, влияя на их сохранение.</Russian>
-			<French>Définit le multiplicateur de temps pour les délais de disparition des secteurs, affectant leur persistance.</French>
-			<Chinesesimp>设置扇区消失延迟的时间乘数，影响扇区持久性。</Chinesesimp>
-			<Chinese>設置扇區消失延遲的時間乘數，影響扇區持久性。</Chinese>
-			<Portuguese>Define o multiplicador de tempo para atrasos de desaparecimento de setores, afetando a persistência.</Portuguese>
-			<Czech>Nastavuje časový násobitel pro zpoždění zmizení sektorů, ovlivňující jejich perzistenci.</Czech>
+			<Original>Defines the duration for which an Attacked Sector remains active when there are no more friendly units.</Original>
+			<French>Définit la durée pendant laquelle un Secteur Attaqué reste actif quand il n'y à plus d'unitées amies.</French>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT0">
-			<Original>Sector despawn after 3 hours</Original>
-			<Russian>Исчезновение сектора через 3 часа</Russian>
-			<French>Disparition du secteur après 3 heures</French>
-			<Chinesesimp>扇区在 3 小时后消失</Chinesesimp>
-			<Chinese>扇區在 3 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 3 horas</Portuguese>
-			<Czech>Zmizení sektoru po 3 hodinách</Czech>
+			<Original>Sector despawn after %1 minutes</Original>
+			<French>Disparition du secteur après %1 minutes</French>
+			<Russian>Исчезновение сектора через %1 минут</Russian>
+			<Portuguese>Desaparecimento do setor após %1 minutos</Portuguese>
+			<Czech>Zmizení sektoru po %1 minutt</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT1">
 			<Original>Sector despawn after 6 hours</Original>
@@ -12851,42 +12794,6 @@
 			<Chinese>扇區在 6 小時後消失</Chinese>
 			<Portuguese>Desaparecimento do setor após 6 horas</Portuguese>
 			<Czech>Zmizení sektoru po 6 hodinách</Czech>
-		</Key>
-		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT2">
-			<Original>Sector despawn after 8 hours</Original>
-			<Russian>Исчезновение сектора через 8 часов</Russian>
-			<French>Disparition du secteur après 8 heures</French>
-			<Chinesesimp>扇区在 8 小时后消失</Chinesesimp>
-			<Chinese>扇區在 8 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 8 horas</Portuguese>
-			<Czech>Zmizení sektoru po 8 hodinách</Czech>
-		</Key>
-		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT3">
-			<Original>Sector despawn after 12 hours</Original>
-			<Russian>Исчезновение сектора через 12 часов</Russian>
-			<French>Disparition du secteur après 12 heures</French>
-			<Chinesesimp>扇区在 12 小时后消失</Chinesesimp>
-			<Chinese>扇區在 12 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 12 horas</Portuguese>
-			<Czech>Zmizení sektoru po 12 hodinách</Czech>
-		</Key>
-		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT4">
-			<Original>Sector despawn after 16 hours</Original>
-			<Russian>Исчезновение сектора через 16 часов</Russian>
-			<French>Disparition du secteur após 16 heures</French>
-			<Chinesesimp>扇区在 16 小时后消失</Chinesesimp>
-			<Chinese>扇區在 16 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 16 horas</Portuguese>
-			<Czech>Zmizení sektoru po 16 hodinách</Czech>
-		</Key>
-		<Key ID="STR_PARAM_SECTOR_DESPAWN_OPT5">
-			<Original>Sector despawn after 20 hours</Original>
-			<Russian>Исчезновение сектора через 20 часов</Russian>
-			<French>Disparition du secteur depois de 20 heures</French>
-			<Chinesesimp>扇区在 20 小时后消失</Chinesesimp>
-			<Chinese>扇區在 20 小時後消失</Chinese>
-			<Portuguese>Desaparecimento do setor após 20 horas</Portuguese>
-			<Czech>Zmizení sektoru po 20 hodinách</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_BUILDING_RATIO_DESC">
 			<Original>Multiplier for how many units are placed in buildings</Original>
@@ -13052,62 +12959,35 @@
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM_OPT0">
 			<Original>Do not clean up vehicles</Original>
-			<Russian>Не удалять транспортные средства</Russian>
 			<French>Ne pas supprimer les véhicules</French>
+			<Russian>Не удалять транспортные средства</Russian>
 			<Chinesesimp>不移除车辆。</Chinesesimp>
 			<Chinese>不移除車輛。</Chinese>
 			<Portuguese>Não remover veículos.</Portuguese>
 			<Czech>Neodstraňovat vozidla.</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM_OPT1">
-			<Original>Clean up after 15 minutes</Original>
-			<Russian>Удалить через 15 минут</Russian>
-			<French>Supprimer après 15 minutes</French>
-			<Chinesesimp>15 分钟后移除。</Chinesesimp>
-			<Chinese>15 分鐘後移除。</Chinese>
-			<Portuguese>Remover após 15 minutos.</Portuguese>
-			<Czech>Odstranit po 15 minutách.</Czech>
+			<Original>Clean up after %1 minutes</Original>
+			<French>Supprimer après %1 minutes</French>
+			<Russian>Удалить через %1 минут</Russian>
+			<Chinesesimp>%1 分钟后移除。</Chinesesimp>
+			<Chinese>%1 分鐘後移除。</Chinese>
+			<Portuguese>Remover após %1 minutos.</Portuguese>
+			<Czech>Odstranit po %1 minutách.</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM_OPT2">
-			<Original>Clean up after 20 minutes</Original>
-			<Russian>Удалить через 20 минут</Russian>
-			<French>Supprimer après 20 minutes</French>
-			<Chinesesimp>20 分钟后移除。</Chinesesimp>
-			<Chinese>20 分鐘後移除。</Chinese>
-			<Portuguese>Remover após 20 minutos.</Portuguese>
-			<Czech>Odstranit po 20 minutách.</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM_OPT3">
-			<Original>Clean up after 30 minutes</Original>
-			<Russian>Удалить через 30 минут</Russian>
-			<French>Supprimer après 30 minutes</French>
-			<Chinesesimp>30 分钟后移除。</Chinesesimp>
-			<Chinese>30 分鐘後移除。</Chinese>
-			<Portuguese>Remover após 30 minutos.</Portuguese>
-			<Czech>Odstranit po 30 minutách.</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM_OPT4">
-			<Original>Clean up after 1 hour</Original>
-			<Russian>Удалить через 1 час</Russian>
-			<French>Supprimer après 1 heure</French>
-			<Chinesesimp>1 小时后移除。</Chinesesimp>
-			<Chinese>1 小時後移除。</Chinese>
-			<Portuguese>Remover após 1 hora.</Portuguese>
-			<Czech>Odstranit po 1 hodině.</Czech>
-		</Key>
-		<Key ID="STR_CLEANUP_PARAM_OPT5">
-			<Original>Clean up after 2 hours</Original>
-			<Russian>Удалить через 2 часа</Russian>
-			<French>Supprimer após 2 heures</French>
-			<Chinesesimp>2 小时后移除。</Chinesesimp>
-			<Chinese>2 小時後移除。</Chinese>
-			<Portuguese>Remover após 2 horas.</Portuguese>
-			<Czech>Odstranit po 2 hodinách.</Czech>
+			<Original>Clean up after %1 hour(s)</Original>
+			<French>Supprimer après %1 heure(s)</French>
+			<Russian>Удалить через %1 час(a)</Russian>
+			<Chinesesimp>%1 小时后移除。</Chinesesimp>
+			<Chinese>%1 小時後移除。</Chinese>
+			<Portuguese>Remover após %1 hora(s)</Portuguese>
+			<Czech>Odstranit po %1 hodině</Czech>
 		</Key>
 		<Key ID="STR_AUTO_SAVE_DESC">
 			<Original>Determines the interval (in seconds) for automatic mission saves.</Original>
-			<Russian>Определяет интервал (в секундах) для автоматического сохранения миссии.</Russian>
 			<French>Détermine l’intervalle (en secondes) pour les sauvegardes automatiques de mission.</French>
+			<Russian>Определяет интервал (в секундах) для автоматического сохранения миссии.</Russian>
 			<Chinesesimp>确定自动任务保存的间隔（秒）。</Chinesesimp>
 			<Chinese>確定自動任務保存的間隔（秒）。</Chinese>
 			<Portuguese>Determina o intervalo (em segundos) para salvamentos automáticos de missão.</Portuguese>
@@ -13115,57 +12995,30 @@
 		</Key>
 		<Key ID="STR_AUTO_SAVE_OPT0">
 			<Original>Disable autosave</Original>
-			<Russian>Отключить автосохранение</Russian>
 			<French>Désactiver la sauvegarde automatique</French>
+			<Russian>Отключить автосохранение</Russian>
 			<Chinesesimp>禁用自动保存。</Chinesesimp>
 			<Chinese>禁用自動保存。</Chinese>
 			<Portuguese>Desativar salvamento automático.</Portuguese>
 			<Czech>Zakázat automatické ukládání.</Czech>
 		</Key>
 		<Key ID="STR_AUTO_SAVE_OPT1">
-			<Original>Autosave every 15 minutes</Original>
-			<Russian>Автосохранение каждые 15 минут</Russian>
-			<French>Sauvegarde automatique toutes les 15 minutes</French>
-			<Chinesesimp>每 15 分钟自动保存。</Chinesesimp>
-			<Chinese>每 15 分鐘自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 15 minutos.</Portuguese>
-			<Czech>Automaticky ukládat každých 15 minut.</Czech>
+			<Original>Autosave every %1 minutes</Original>
+			<French>Sauvegarde automatique toutes les %1 minutes</French>
+			<Russian>Автосохранение каждые %1 минут</Russian>
+			<Chinesesimp>每 %1 分钟自动保存。</Chinesesimp>
+			<Chinese>每 %1 分鐘自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada %1 minutos.</Portuguese>
+			<Czech>Automaticky ukládat každých %1 minut.</Czech>
 		</Key>
 		<Key ID="STR_AUTO_SAVE_OPT2">
-			<Original>Autosave every 20 minutes</Original>
-			<Russian>Автосохранение каждые 20 минут</Russian>
-			<French>Sauvegarde automatique toutes les 20 minutes</French>
-			<Chinesesimp>每 20 分钟自动保存。</Chinesesimp>
-			<Chinese>每 20 分鐘自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 20 minutos.</Portuguese>
-			<Czech>Automaticky ukládat každých 20 minut.</Czech>
-		</Key>
-		<Key ID="STR_AUTO_SAVE_OPT3">
-			<Original>Autosave every 30 minutes</Original>
-			<Russian>Автосохранение каждые 30 минут</Russian>
-			<French>Sauvegarde automatique toutes les 30 minutes</French>
-			<Chinesesimp>每 30 分钟自动保存。</Chinesesimp>
-			<Chinese>每 30 分鐘自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 30 minutos.</Portuguese>
-			<Czech>Automaticky ukládat každých 30 minut.</Czech>
-		</Key>
-		<Key ID="STR_AUTO_SAVE_OPT4">
-			<Original>Autosave every 1 hour</Original>
-			<Russian>Автосохранение каждые 1 час</Russian>
-			<French>Sauvegarde automatique toutes les 1 heure</French>
-			<Chinesesimp>每 1 小时自动保存。</Chinesesimp>
-			<Chinese>每 1 小時自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 1 hora.</Portuguese>
-			<Czech>Automaticky ukládat každou 1 hodinu.</Czech>
-		</Key>
-		<Key ID="STR_AUTO_SAVE_OPT5">
-			<Original>Autosave every 2 hours</Original>
-			<Russian>Автосохранение каждые 2 часа</Russian>
-			<French>Sauvegarde automatique toutes les 2 heures</French>
-			<Chinesesimp>每 2 小时自动保存。</Chinesesimp>
-			<Chinese>每 2 小時自動保存。</Chinese>
-			<Portuguese>Salvamento automático a cada 2 horas.</Portuguese>
-			<Czech>Automaticky ukládat každé 2 hodiny.</Czech>
+			<Original>Autosave every %1 hour(s)</Original>
+			<French>Sauvegarde automatique toutes les %1 heure(s)</French>
+			<Russian>Автосохранение каждые %1 час(a)</Russian>
+			<Chinesesimp>每 %1 小时自动保存。</Chinesesimp>
+			<Chinese>每 %1 小時自動保存。</Chinese>
+			<Portuguese>Salvamento automático a cada %1 hora(s)</Portuguese>
+			<Czech>Automaticky ukládat každou %1 hodinu.</Czech>
 		</Key>
 		<Key ID="STR_PARAM_TFAR_RADIUS_DESC">
 			<Original>Sets the effective range of the TFAR radio for in‑game communications.</Original>
@@ -13384,49 +13237,22 @@
 			<Czech>Nevykopávat nečinné hráče.</Czech>
 		</Key>
 		<Key ID="STR_KICK_IDLE_OPT1">
-			<Original>Kick after 15 minutes idle</Original>
-			<Russian>Удалить после 15 минут бездействия</Russian>
-			<French>Expulser après 15 minutes d’inactivité</French>
-			<Chinesesimp>空闲 15 分钟后踢出。</Chinesesimp>
-			<Chinese>閒置 15 分鐘后踢出。</Chinese>
-			<Portuguese>Expulsar após 15 minutos de inatividade.</Portuguese>
-			<Czech>Vykopnout po 15 minutách nečinnosti.</Czech>
+			<Original>Kick after %1 minutes idle</Original>
+			<Russian>Удалить после %1 минут бездействия</Russian>
+			<French>Expulser après %1 minutes d’inactivité</French>
+			<Chinesesimp>空闲 %1 分钟后踢出。</Chinesesimp>
+			<Chinese>閒置 %1 分鐘后踢出。</Chinese>
+			<Portuguese>Expulsar após %1 minutos de inatividade.</Portuguese>
+			<Czech>Vykopnout po %1 minutách nečinnosti.</Czech>
 		</Key>
-		<Key ID="STR_KICK_IDLE_OPT2">
-			<Original>Kick after 20 minutes idle</Original>
-			<Russian>Удалить после 20 минут бездействия</Russian>
-			<French>Expulser après 20 minutes d’inactivité</French>
-			<Chinesesimp>空闲 20 分钟后踢出。</Chinesesimp>
-			<Chinese>閒置 20 分鐘后踢出。</Chinese>
-			<Portuguese>Expulsar após 20 minutos de inatividade.</Portuguese>
-			<Czech>Vykopnout po 20 minutách nečinnosti.</Czech>
-		</Key>
-		<Key ID="STR_KICK_IDLE_OPT3">
-			<Original>Kick after 30 minutes idle</Original>
-			<Russian>Удалить после 30 минут бездействия</Russian>
-			<French>Expulser après 30 minutes d’inactivité</French>
-			<Chinesesimp>空闲 30 分钟后踢出。</Chinesesimp>
-			<Chinese>閒置 30 分鐘后踢出。</Chinese>
-			<Portuguese>Expulsar após 30 minutos de inatividade.</Portuguese>
-			<Czech>Vykopnout po 30 minutách nečinnosti.</Czech>
-		</Key>
-		<Key ID="STR_KICK_IDLE_OPT4">
-			<Original>Kick after 1 hour idle</Original>
-			<Russian>Удалить после 1 часа бездействия</Russian>
-			<French>Expulser après 1 heure d’inactivité</French>
-			<Chinesesimp>空闲 1 小时后踢出。</Chinesesimp>
-			<Chinese>閒置 1 小時后踢出。</Chinese>
-			<Portuguese>Expulsar após 1 hora de inatividade.</Portuguese>
-			<Czech>Vykopnout po 1 hodině nečinnosti.</Czech>
-		</Key>
-		<Key ID="STR_KICK_IDLE_OPT5">
-			<Original>Kick after 2 hours idle</Original>
-			<Russian>Удалить после 2 часов бездействия</Russian>
-			<French>Expulser après 2 heures d’inactivité</French>
-			<Chinesesimp>空闲 2 小时后踢出。</Chinesesimp>
-			<Chinese>閒置 2 小時后踢出。</Chinese>
-			<Portuguese>Expulsar após 2 horas de inatividade.</Portuguese>
-			<Czech>Vykopnout po 2 hodinách nečinnosti.</Czech>
+		<Key ID="STR_KICK_IDLE_OPT1">
+			<Original>Kick after %1 hour(s) idle</Original>
+			<Russian>Удалить после %1 час(а) бездействия</Russian>
+			<French>Expulser après %1 heure(s) d’inactivité</French>
+			<Chinesesimp>空闲 %1 小时后踢出。</Chinesesimp>
+			<Chinese>閒置 %1 小時后踢出。</Chinese>
+			<Portuguese>Expulsar após %1 hora(s) de inatividade.</Portuguese>
+			<Czech>Vykopnout po %1 hodině nečinnosti.</Czech>
 		</Key>
 		<Key ID="STR_TK_MODE_DESC">
 			<Original>Configures the team killing mode.</Original>
@@ -14765,7 +14591,7 @@
 		<Key ID="STR_MSG_INVALID_LRXMOD_VERSION">
 			<Original>Invalid version for LRX_Template mod detected...\nAll client/server must use the same version of this mod, Please update LRX_Template!</Original>
 		</Key>
-		
+
 		<Key ID="STR_MSG_END_GAME">
 			<Original>You come too late...\nThe mission is ending, reconnect when the mission is restarted</Original>
 			<French>Vous arrivez trop tard...\nLa mission se termine, reconnectez-vous lorsque la mission redémarre</French>
@@ -15675,7 +15501,7 @@
 		</Key>
 		<Key ID="STR_PAR_AI_REVIVE_ACE_INITIALIZED">
 			<Original>-------- pSiKo AI Revive (ACE version) Initialized --------</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_PAR_Need_Medic1">
 			<Original>I need a medic!</Original>
 			<French>J'ai besoin d'un médecin!</French>
