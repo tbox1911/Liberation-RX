@@ -48,8 +48,7 @@ GRLIB_build_force_mode = [
 ];
 
 GRLIB_build_as_building = [
-	taxi_helipad_type,
-	medic_heal_typename
+	taxi_helipad_type
 ];
 
 GRLIB_preview_spheres = [];
@@ -171,7 +170,7 @@ while {true} do {
 
 		if (!repeatbuild) then {
 			if (build_water == 0) then {
-				if (_buildtype == GRLIB_BuildingBuildType && !(_classname in GRLIB_build_force_mode)) then {
+				if (_buildtype == GRLIB_BuildingBuildType && !(_classname in GRLIB_build_force_mode) && (_classname isKindOf "Wall_F")) then {
 					_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",750,true,false,"","build_valid && build_confirmed == 1"];
 					_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",746,false,false,"","build_confirmed == 1"];
 				};
@@ -428,6 +427,7 @@ while {true} do {
 					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
 					_vehicle allowdamage false;
 				};
+
 				build_vehicle = _vehicle;
 			};
 

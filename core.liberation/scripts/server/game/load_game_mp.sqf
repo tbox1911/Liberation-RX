@@ -319,6 +319,17 @@ if (!isNil "_lrx_liberation_savegame") then {
 			_drop_zone setVectorDirAndUp [[-cos _drop_zone_dir, sin _drop_zone_dir, 0] vectorCrossProduct surfaceNormal _drop_zone_pos, surfaceNormal _drop_zone_pos];
 		};
 
+		if (_nextclass == mobile_respawn) then {
+			GRLIB_mobile_respawn pushback _nextbuilding;
+		};
+
+		if (_nextclass == medic_heal_typename && _nextclass isKindOf "Land_MedicalTent_01_base_F") then {
+			private _med_floor_class = selectRandom ["Land_MedicalTent_01_floor_light_F", "Land_MedicalTent_01_floor_dark_F"];
+			private _med_floor = createVehicle [_med_floor_class, _nextpos, [], 0, "CAN_COLLIDE"];
+			_med_floor setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
+			_med_floor setPosWorld _nextpos;
+		};
+
 		if (_owner != "") then {
 			_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 			if (_owner != "public") then {
@@ -327,9 +338,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 			};
 		};
 
-		if (_nextclass == mobile_respawn) then {
-			GRLIB_mobile_respawn pushback _nextbuilding;
-		};
 		sleep 0.1;
 	} foreach _s2;
 	sleep 1;

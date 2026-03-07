@@ -39,6 +39,10 @@ if (isServer) then {
 
 	// Quick Delete
 	if ([_unit_class, GRLIB_quick_delete] call F_itemIsInClass) exitWith {
+		if (_unit_class == medic_heal_typename) then {
+			private _med_floor = (nearestObjects [_unit, ["Land_MedicalTent_01_floor_base_F"], 20]) select 0;
+			if (!isNil "_med_floor") then { deleteVehicle _med_floor };
+		};
 		_unit setDamage 1;
 		sleep 5;
 		deleteVehicle _unit;

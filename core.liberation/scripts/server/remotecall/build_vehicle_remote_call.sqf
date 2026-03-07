@@ -34,7 +34,6 @@ _vehicle allowDamage false;
 _vehicle hideobjectglobal true;
 _vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 _vehicle setPosATL _veh_pos;
-_vehicle hideobjectglobal false;
 
 // Killed EH
 _vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
@@ -142,6 +141,14 @@ if (_classname == storage_medium_typename) then {
 	_allow_damage = false;
 };
 
+// Medical Tent
+if (_classname == medic_heal_typename && _classname isKindOf "Land_MedicalTent_01_base_F") then {	
+	private _med_floor_class = selectRandom ["Land_MedicalTent_01_floor_light_F", "Land_MedicalTent_01_floor_dark_F"];
+	private _med_floor = createVehicle [_med_floor_class, _veh_pos, [], 0, "CAN_COLLIDE"];
+	_med_floor setVectorDirAndUp [_veh_dir, _veh_vup];
+	_med_floor setPosATL _veh_pos;
+};
+
 if (_allow_damage) then { _vehicle allowDamage true };
 _vehicle setDamage 0;
 
@@ -155,4 +162,5 @@ if (_owner != 0) then {
 	};
 };
 
+_vehicle hideobjectglobal false;
 _player setVariable ["GRLIB_player_vehicle_build", _vehicle, true];
