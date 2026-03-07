@@ -8,7 +8,6 @@ if (_sector in active_sectors + blufor_sectors) exitWith {
 	diag_log format ["--- LRX Manage Sector: Sector %1 already active, aborting.", _sector];
 };
 
-sleep 5;
 private _sector_pos = markerPos _sector;
 if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount) == 0 && !GRLIB_Commander_mode) exitWith {
 	diag_log format ["--- LRX Manage Sector: Sector %1 have no more enemy, aborting.", _sector];
@@ -303,7 +302,7 @@ if (_static_count > 0) then {
 
 // Radio send renforcement
 if (_nearRadioTower) then {
-	if (floor random 2 == 0) then {
+	if (floor random 5 != 0) then {
 		if (combat_readiness > 35) then {
 			private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
 			if (count _pilots > 0) then {
@@ -312,6 +311,8 @@ if (_nearRadioTower) then {
 				[_sector_pos] spawn send_paratroopers;
 			};
 		};
+	} else {
+		[gamelogic, "A lucky day..."] remoteExec ["globalChat", 0];
 	};
 } else {
 	[gamelogic, "Enemies can't call Air support. No radio tower nearby."] remoteExec ["globalChat", 0];
@@ -402,8 +403,7 @@ while {true} do {
 		private _tower = [_sector_pos] call F_getNearestRadioTower;
 		if (!isNil "_tower") then { _sector_ownership = GRLIB_side_enemy };
 	};
-	private _ratio = 100 - round (([_sector, _local_capture_size] call F_getForceRatio) * 100);
-	_sector setMarkerText format ["%2 - %1%%", _ratio, _sectorName];
+	//_sector setMarkerText format ["%2 - %1%%", _ratio, _sectorName];
 	if (_sector_ownership == GRLIB_side_friendly) exitWith { // Victory
 		diag_log format ["Sector %1 mission succeeded.", _sector];
 		_sector setMarkerText _sectorName;
@@ -471,8 +471,9 @@ while {true} do {
 		} forEach _active_players;
 	};
 
-	_nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
-	if (_nearRadioTower) then { // Sector Defense
+	// Sector Defense
+	if (_nearRadioTower) then {
+		private _ratio = 100 - round (([_sector, _local_capture_size] call F_getForceRatio) * 100);
 		{
 			_stage = _forEachIndex + 1;
 			if ((_x select 0) >= _ratio && !(_x select 1)) then {

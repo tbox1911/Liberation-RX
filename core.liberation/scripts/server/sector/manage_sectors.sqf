@@ -1,33 +1,25 @@
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
-sleep 13;
+sleep 30;
 
-private ["_nextsector", "_unit", "_msg"];
-private _countblufor = [];
-private _hc_missions = [];
 active_sectors_hc = [];
+private _hc_missions = [];
+private ["_sector", "_count_blu"];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
-	_countblufor = (AllPlayers - (entities "HeadlessClient_F")) select {
-		(alive _x) && !(captive _x) &&
-		(getPosATL _x select 2 < 150) && (speed vehicle _x <= 80)
-	};
-
 	{
-		if (!opforcap_max && count active_sectors < GRLIB_max_active_sectors) then {
-			_unit = _x;
-			_nextsector = [GRLIB_sector_size, _unit, (opfor_sectors - active_sectors)] call F_getNearestSector;
-			if (_nextsector != "" && !GRLIB_sector_spawning) then {
-				[_nextsector] call start_sector;
-			};
-		};
-	} foreach _countblufor;
+		waitUntil { sleep 1; !GRLIB_sector_spawning && !opforcap_max && count active_sectors < GRLIB_max_active_sectors };
+		_sector = _x;
+		_count_blu = [markerPos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount;
+		if (_count_blu > 0) then { [_sector] call start_sector };
+		sleep 0.1;
+	} forEach (opfor_sectors - active_sectors);
 
 	_hc_missions = active_sectors_hc;
 	{
 		_nextsector = _x select 0;
 		_hc = _x select 1;
 		if (owner _hc == 2 && _nextsector in active_sectors) then {
-			_msg = format ["Headless client %1 lost control of sector %2!", str _hc, _nextsector];
+			private _msg = format ["Headless client %1 lost control of sector %2!", str _hc, _nextsector];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			diag_log _msg;
 			sleep 0.1;
