@@ -2,7 +2,7 @@ params ["_pos"];
 
 if (isNil "_pos") then { _pos = getPosASL player };
 if (_pos distance2D lhd <= 200) exitWith {
-    player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
+    player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 0.3]);
     player setVariable ["GRLIB_action_inuse", false, true];
 };
 
@@ -22,7 +22,7 @@ player allowDamage false;
 
 private _destdir = getDir _near_sign;
 private _destpos = getPosASL _near_sign;
-private _alt = (_destpos select 2) + 1;
+private _alt = (_destpos select 2) + 0.3;
 _destpos = _destpos getPos [6, (_destdir-180)];
 _destpos set [2, _alt];
 player setDir _destdir;

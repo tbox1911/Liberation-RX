@@ -182,7 +182,7 @@ if (deploy == 1) then {
 	_spawn_str = (_choiceslist select _idxchoice) select 0;
 	if (_spawn_str == _basenamestr) then {
 		// LHD (Chimera)
-		player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
+		player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 0.3]);
 		[_spawn_str, false] spawn spawn_camera;
 	} else {
 		private _destpos = [];
@@ -207,7 +207,7 @@ if (deploy == 1) then {
 
 if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) then {
 	_spawn_str = _basenamestr;
-	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
+	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 0.3]);
 };
 
 sleep _sleep;
