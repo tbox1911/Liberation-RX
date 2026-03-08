@@ -1,3 +1,3 @@
-if (build_distance < 7) then {
-	build_distance = build_distance + 0.2;
+if (build_distance < 10) then {
+	build_distance = build_distance + 0.5;
 };

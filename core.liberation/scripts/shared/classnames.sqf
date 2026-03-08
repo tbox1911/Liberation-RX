@@ -507,8 +507,9 @@ vehicle_big_units = [
 	"VTOL_01_base_F",
 	"VTOL_02_base_F",
 	"Land_SM_01_shed_F",
-	"Land_TentHangar_V1_F",
-	"Land_Hangar_F"
+	"Land_Hangar_F",
+	"Land_Airport_01_hangar_F",
+	"Land_TentHangar_V1_F"
 ] + vehicle_big_west + vehicle_big_east;
 vehicle_big_units = vehicle_big_units arrayIntersect vehicle_big_units;
 
@@ -776,6 +777,7 @@ GRLIB_ignore_colisions = [
 	FOB_truck_typename,
 	FOB_boat_typename,
 	FOB_box_outpost,
+	FOB_Man,
 	huron_typename,
 	Arsenal_typename,
 	mobile_respawn,

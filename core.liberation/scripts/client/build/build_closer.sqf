@@ -1,3 +1,3 @@
-if (build_distance > 1) then {
-	build_distance = build_distance - 0.2;
+if (build_distance + build_radius > 1) then {
+	build_distance = build_distance - 0.5;
 };
