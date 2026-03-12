@@ -14,7 +14,7 @@ private _fob_pos = getPosATL _fob;
 {
     if (getObjectType _x >= 8 && _x distance2D _fob_pos > 14) then { deleteVehicle _x };
     sleep 0.05;
-} foreach (nearestObjects [_fob_pos, fob_defenses_classnames, GRLIB_fob_range]);
+} foreach (nearestObjects [_fob_pos, all_fob_defense_classnames, GRLIB_fob_range]);
 
 gamelogic globalChat localize "STR_FOB_DEFENSE_REMOVED";
 sleep 1;

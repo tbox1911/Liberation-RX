@@ -10,7 +10,7 @@ GRLIB_base_objects = [
 	helipad_typename
 ];
 
-GRLIB_classnames_to_save = [] + all_buildings_classnames + fob_defenses_classnames;
+GRLIB_classnames_to_save = [] + all_buildings_classnames;
 GRLIB_classnames_to_save_blu = [
 	huron_typename
 ] + GRLIB_base_objects + all_friendly_classnames + all_hostile_classnames;
@@ -28,6 +28,6 @@ GRLIB_no_kill_handler_classnames = [];
 	if !([_x, GRLIB_quick_delete] call F_itemIsInClass) then {
 		GRLIB_no_kill_handler_classnames pushBackUnique _x;
 	};
-} foreach (GRLIB_base_objects + all_buildings_classnames + fob_defenses_classnames);
+} foreach (GRLIB_base_objects + all_buildings_classnames);
 
 GRLIB_explo_delete = [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename];

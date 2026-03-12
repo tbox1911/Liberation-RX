@@ -580,14 +580,35 @@ private _buildings_to_delete = [];
 } forEach buildings;
 buildings = buildings - _buildings_to_delete;
 
-// FOB Defense buildings
-[] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
+all_lrx_buildings_classnames = buildings apply { _x select 0 };
 
-private _objects_to_build = [];
+// FOB Template
+all_fob_buildings_classnames = [];
 if (GRLIB_naval_type == 3) then {
 	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
+	{ all_fob_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
 };
-all_buildings_classnames = (buildings + _objects_to_build) apply { _x select 0 };
+
+// FOB Defense buildings
+all_fob_defense_classnames = [];
+[] call compileFinal preprocessFileLineNumbers "addons\FOB\fob_defense_init.sqf";
+fob_defenses_blacklist = [] + GRLIB_recycleable_blacklist + all_friendly_classnames + all_hostile_classnames;
+{
+    private _defense_path = (_x select 1);
+    if (count _defense_path > 0) then {
+	    private _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_path);
+	    {
+            _class = (_x select 0);
+            if (_class in fob_defenses_blacklist) then {
+                diag_log format ["--- LRX Defense filter: in %1 - object %2 rejected!", _defense_path, _class];
+            } else {
+                all_fob_defense_classnames pushBackUnique _class;
+            };
+        } forEach _objects_to_build;
+    };
+} forEach GRLIB_FOB_Defense;
+
+all_buildings_classnames = all_lrx_buildings_classnames + all_fob_buildings_classnames + all_fob_defense_classnames;
 all_buildings_classnames = all_buildings_classnames arrayIntersect all_buildings_classnames;
 
 // Recyclable
@@ -772,6 +793,11 @@ GRLIB_ide_traps = [
 	"VirtualReammoBox_camonet_F"
 ];
 
+GRLIB_force_colisions = [
+	"Land_CzechHedgehog_01_new_F",
+	"Land_ConcreteHedgehog_01_F"
+];
+
 GRLIB_ignore_colisions = [
 	FOB_box_typename,
 	FOB_truck_typename,
@@ -806,7 +832,7 @@ GRLIB_ignore_colisions = [
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_base_F",
 	"Land_Carrier_01_hull_base_F"
-] + all_buildings_classnames;
+] + all_buildings_classnames - GRLIB_force_colisions;
 
 // FORCE DELETE (used by GC)
 GRLIB_force_cleanup_classnames = [

@@ -23,7 +23,7 @@ private _input_controls = [521,522,523,524,525,526,527];
 
 private _display = findDisplay 2309;
 private _icon = getMissionPath "res\ui_build.paa";
-private ["_selected_item", "_text", "_defense_template", "_template_creator", "_defense_name", "_defense_price"];
+private ["_selected_item", "_text", "_defense_path", "_template_creator", "_defense_name", "_defense_price"];
 
 lbClear 110;
 {
@@ -45,10 +45,10 @@ while { dialog && alive player } do {
         _selected_item = lbCurSel 110;
         _defense_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
         _defense_price = (_display displayCtrl (110)) lnbText [_selected_item, 1];
-        _defense_template = GRLIB_FOB_Defense select _selected_item select 1;
-        if (count _defense_template > 0) then {
-            _template_creator = GRLIB_FOB_Defense select _selected_item select 3;
-            _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_template);
+        _defense_path = GRLIB_FOB_Defense select _selected_item select 1;
+        _template_creator = GRLIB_FOB_Defense select _selected_item select 3;
+        if (count _defense_path > 0) then {
+            _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_path);
         } else {
             { ctrlShow [_x, true] } foreach _input_controls;
             input_save = "";
@@ -89,22 +89,23 @@ _fob_pos set [2, 0];
 	_nextpos = (_x select 1);
 	_nextdir = (_x select 2) + _fob_dir;
     _nextpos = _fob_pos vectorAdd ([_nextpos, -_fob_dir] call BIS_fnc_rotateVector2D);
-    if (_nextclass in fob_defenses_classnames) then {
-        if (!surfaceIsWater _nextpos && !isOnRoad _nextpos) then {
-            _building_count = _building_count + 1;
-            _nextobject = _nextclass createVehicle _nextpos;
-            _nextobject setVariable ["R3F_LOG_disabled", true, true];
-            _nextobject allowDamage false;
-            _nextobject setPosATL _nextpos;
-            if (_nextclass in GRLIB_FOB_Defense_Sea_level) then {
-                _nextobject setVectorDirAndUp [[sin _nextdir, cos _nextdir, 0], [0, 0, 1]];
-            } else {
-                _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
-            };
-            sleep 0.1;
-        };
+    if (_nextclass in fob_defenses_blacklist) then {
+        _msg = format [localize "STR_FOB_DEFENSE_TEMPLATE_REJECTED", _defense_name, _nextclass];
+        diag_log _msg;
+        if ([] call is_admin) then { gamelogic globalChat _msg };
     } else {
-        diag_log format [localize "STR_FOB_DEFENSE_TEMPLATE_REJECTED", _defense_name, _nextclass];
+        _building_count = _building_count + 1;
+        _nextobject = _nextclass createVehicle _nextpos;
+        _nextobject setVariable ["R3F_LOG_disabled", true, true];
+        _nextobject allowDamage false;
+        _nextobject setPosATL _nextpos;
+        if (_nextclass in GRLIB_FOB_Defense_Sea_level) then {
+            _nextobject setVectorDirAndUp [[sin _nextdir, cos _nextdir, 0], [0, 0, 1]];
+        } else {
+            _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
+        };
+        all_fob_defense_classnames pushBackUnique _nextclass;
+        sleep 0.1;
     };
 } foreach _objects_to_build;
 
