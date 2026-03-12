@@ -70,7 +70,7 @@ if (isNull _building) then {
 
 private _position_count = count _building_pos min _building_ai_max;
 if (_position_count == 0) exitWith {
-	diag_log format ["--- LRX Error: Can't build squad(%1) type %2 in building %3", _position_count, _type, typeOf _building];
+	diag_log format ["No building to spawn %1 %2 squad at pos %3", _building_ai_max, _type, _sector_pos];
 	[]
 };
 
