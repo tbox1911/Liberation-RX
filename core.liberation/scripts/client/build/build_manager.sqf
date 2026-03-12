@@ -361,6 +361,7 @@ while {true} do {
 		if (build_confirmed == 3) then {
 			deleteVehicle _vehicle;
 			dobuild = 0;
+			repeatbuild = false;
 			sleep 3;	// time to trap build canceled
 		};
 
@@ -386,7 +387,7 @@ while {true} do {
 					_vehicle allowdamage false;
 				};
 
-				// Camo Net
+				// CamoNet
 				if ([_classname, GRLIB_camo_net] call F_itemIsInClass) then {
 					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 				};
@@ -398,8 +399,6 @@ while {true} do {
 
 				build_vehicle = _vehicle;
 			};
-
-			repeatbuild = false;
 
 			// FOB
 			if(_buildtype in [99,98,97]) exitWith {

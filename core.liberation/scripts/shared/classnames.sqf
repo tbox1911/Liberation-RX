@@ -793,11 +793,6 @@ GRLIB_ide_traps = [
 	"VirtualReammoBox_camonet_F"
 ];
 
-GRLIB_force_colisions = [
-	"Land_CzechHedgehog_01_new_F",
-	"Land_ConcreteHedgehog_01_F"
-];
-
 GRLIB_ignore_colisions = [
 	FOB_box_typename,
 	FOB_truck_typename,
@@ -832,7 +827,7 @@ GRLIB_ignore_colisions = [
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_base_F",
 	"Land_Carrier_01_hull_base_F"
-] + all_buildings_classnames - GRLIB_force_colisions;
+] + all_buildings_classnames;
 
 // FORCE DELETE (used by GC)
 GRLIB_force_cleanup_classnames = [
