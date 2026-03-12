@@ -198,7 +198,7 @@ while {GRLIB_run_cleanup} do {
 		if ((count allDeadMen) > _deadMenLimit) then {
 			if (_deadMenDistCheck) then {
 				{
-					if ([_x, _deadMenDist, _hidden_from] call _isHidden) then {
+					if ([_x, _deadMenDist, _hidden_from] call _isHidden && isNil {_x getVariable "GRLIB_mission_AI"}) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 					};

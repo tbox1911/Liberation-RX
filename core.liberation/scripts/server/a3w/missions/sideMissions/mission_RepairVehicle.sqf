@@ -87,6 +87,7 @@ _setupObjects = {
 		if (!alive _tank) exitWith {};
 		_tank setFuel 1;
 		_tank engineOn true;
+		_tank setPos (getPos _tank);
 
 		// loop
 		private ["_spawn_pos", "_last_tank_pos", "_grp"];
@@ -103,6 +104,7 @@ _setupObjects = {
 			waitUntil {sleep 1; (_tank getHitPointDamage "HitEngine" < 1)};
 			_tank setFuel 1;
 			_tank engineOn true;
+			_tank setPos (getPos _tank);
 		};
 	};
 

@@ -7,6 +7,7 @@ private _minesTypes =  ["ATMine", "APERSMine", "APERSBoundingMine", "SLAMDirecti
 for "_i" from 1 to _nbMines do {
 	if (floor random 100 < GRLIB_MineProbability) then {
 		private _mine = createMine [(selectRandom _minesTypes), _pos, [], _radius];
+		_mine setPos (getPos _mine);
 		GRLIB_side_enemy revealMine _mine;
 		GRLIB_side_civilian revealMine _mine;
 	};
