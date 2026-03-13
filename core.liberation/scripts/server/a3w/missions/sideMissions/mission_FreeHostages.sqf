@@ -1,7 +1,7 @@
 if (!isServer) exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_all_buildings", "_hostages", "_managed_units", "_civ_units", "_detected"];
+private ["_all_buildings", "_hostages", "_managed_units", "_bombers", "_civilians", "_detected"];
 
 _setupVars = {
 	_missionType = "STR_FREE_HOSTAGES";
@@ -11,18 +11,20 @@ _setupVars = {
 };
 
 _setupObjects = {
-	// Spawn hostages
-	_missionPos = markerPos (selectRandom blufor_sectors);
-	_managed_units = (["militia", 12, _missionPos] call F_buildingSquad);
+	// Spawn building squad
+	_sector = (selectRandom blufor_sectors);
+	_missionPos = markerPos _sector;
+	_managed_units = (["militia", 8, _missionPos, 150] call F_spawnBuildingSquad);
+	GRLIB_building_used = nil;
 	if (count _managed_units < 8) exitWith {
-		diag_log format ["--- LRX Error: side mission %1, cannot create hostages!", localize _missionType];
+		diag_log format ["--- LRX Error: side mission %1, cannot create hostages at %2!", localize _missionType, _sector];
 		{ deleteVehicle _x } forEach _managed_units;
 		false;
 	};
 
-	// Conf hostages
+	// Convert to hostages
 	_hostages = [];
-	for "_i" from 0 to round (3 + floor random 4) do {
+	for "_i" from 0 to 4 do {
 		_unit = selectRandom (_managed_units - _hostages);
 		_loadout = getUnitLoadout (selectRandom civilians);
 		_unit setUnitLoadout _loadout;
@@ -42,23 +44,28 @@ _setupObjects = {
 
 	// Spawn Enemy
 	_missionPos = getPosATL (_hostages select 0);
-	_managed_units append (["militia", 6, _missionPos] call F_buildingSquad);
-
-	// Spawn bombers
-	private _grp_bomber = [_missionPos, (3 + floor random 5), "militia", false] call createCustomGroup;
-	_managed_units append (units _grp_bomber);
-	{
-		[_x, 40] spawn bomber_ai;
-		sleep 0.5;
-	} forEach (units _grp_bomber);
-
+	_managed_units append (["militia", 12, _missionPos, 100] call F_buildingSquad);
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_managed_units joinSilent _aiGroup;
 
-	// Spawn civvies
-	private _grp_civ = [_missionPos, (5 + floor random 5)] call F_spawnCivilians;
+	// Spawn bombers
+	private _grp_bomber = [_missionPos, (4 + floor random 5), "militia", false] call createCustomGroup;
+	_bombers = (units _grp_bomber);
+	{
+		[_x, 40] spawn bomber_ai;
+		sleep 0.5;
+	} forEach _bombers;
+
+	// Spawn civies
+	private _grp_civ = [_missionPos, (1 + floor random 3)] call F_spawnCivilians;
 	[_grp_civ, _missionPos] spawn add_civ_waypoints;
-	_civ_units = (units _grp_civ);
+	_civilians = (units _grp_civ);
+	_grp_civ = [_missionPos, (1 + floor random 3)] call F_spawnCivilians;
+	[_grp_civ, _missionPos] spawn add_civ_waypoints;
+	_civilians append (units _grp_civ);
+	_grp_civ = [_missionPos, (1 + floor random 3)] call F_spawnCivilians;
+	[_grp_civ, _missionPos] spawn add_civ_waypoints;
+	_civilians append (units _grp_civ);
 
 	_missionPicture = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 	_missionHintText = ["STR_FREE_HOSTAGES_MESSAGE1", sideMissionColor];
@@ -105,8 +112,9 @@ _failedExec = {
 	// Mission failed
 	_failedHintMessage = ["STR_FREE_HOSTAGES_MESSAGE3", sideMissionColor];
 	{ deleteVehicle _x } forEach _hostages;
+	{ deleteVehicle _x } forEach _bombers;
 	{ deleteVehicle _x } forEach _managed_units;
-	{ deleteVehicle _x } forEach _civ_units;
+	{ deleteVehicle _x } forEach _civilians;
 	{ [_x, -15] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -15];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
@@ -116,7 +124,8 @@ _successExec = {
 	// Mission completed
 	_successHintMessage = "STR_FREE_HOSTAGES_MESSAGE2";
 	{ deleteVehicle _x } forEach _hostages;
-	{ deleteVehicle _x } forEach _civ_units;
+	{ deleteVehicle _x } forEach _bombers;
+	{ deleteVehicle _x } forEach _civilians;
 	if (combat_readiness > 50) then { combat_readiness = combat_readiness - 7 };
 	{ [_x, 10] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 };
