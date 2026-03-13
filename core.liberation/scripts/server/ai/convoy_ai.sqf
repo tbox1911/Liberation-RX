@@ -89,6 +89,7 @@ if (_convoy_attacked) then {
 			};
 			if (!alive _vehicle) exitWith {};
 			sleep 1;
+			_vehicle lock 0;
 			{
 				[_x, false] spawn F_ejectUnit;
 				sleep 0.2;
