@@ -1,10 +1,6 @@
 params ["_targetpos", "_side", "_count"];
 
 if (_count == 0) exitWith {};
-if (_count > 1) then {
-	sleep 10;
-	[_targetpos, _side, _count - 1] spawn spawn_air;
-};
 
 private _planeType = opfor_air;
 if (_side == GRLIB_side_friendly) then { _planeType = blufor_air };
@@ -49,7 +45,6 @@ if (_side == GRLIB_side_friendly) exitWith {
 	private _msg = format ["Air support %1 incoming...", [typeOf _vehicle] call F_getLRXName];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 };
-diag_log format ["Spawn Air Squad %1 objective %2 at %3", typeOf _vehicle, _targetpos, time];
 
 if (_vehicle isKindOf "Plane" && (GRLIB_SOG_enabled || GRLIB_SPE_enabled)) then {
 	// Bombers AI (for slow aircraft)
@@ -111,6 +106,12 @@ if (isDedicated && !isNull _hc) then {
 	_grp setGroupOwner (owner _hc);
 };
 
+diag_log format ["Spawn Air Squad %1 objective %2 at %3", typeOf _vehicle, _targetpos, time];
+_count = _count - 1;
+if (_count >= 1) then {
+	sleep 5;
+	[_targetpos, _side, _count] spawn spawn_air;
+};
 sleep 300;
 
 while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && count _targetpos > 0 } do {

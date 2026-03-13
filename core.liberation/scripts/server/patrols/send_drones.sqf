@@ -1,13 +1,8 @@
 params ["_targetpos", "_count"];
 
+if (_count == 0) exitWith {};
 if (combat_readiness <= 50) exitWith {};
 if (count uavs_vehicles == 0) exitWith {};
-
-if (_count == 0) exitWith {};
-if (_count > 1) then {
-	sleep 15;
-	[_targetpos, _count - 1] spawn send_drones;
-};
 
 private _uav_light = "O_UAV_01_F";
 private _uav_bomb = "O_UAV_06_F";
@@ -56,6 +51,11 @@ _grp setCombatMode "WHITE";
 _grp setSpeedMode "FULL";
 
 diag_log format ["--- LRX Enemy Drones - type: %1 target: %2", _uav_role, _targetpos];
+_count = _count - 1;
+if (_count >= 1) then {
+	sleep 5;
+	[_targetpos, _count] spawn send_drones;
+};
 sleep 20;
 
 // UAV logic
