@@ -105,7 +105,7 @@ while {true} do {
 				// Medic
 				_near_medic = [_unit, "MEDIC", _distarsenal] call F_check_near;
 				if (_near_medic) then {
-					if (damage _unit > 0.1 && (behaviour _unit) != "COMBAT" && isNil {_unit getVariable "PAR_heal"}) then {
+					if (!([_unit] call PAR_is_wounded) && damage _unit > 0.1 && (behaviour _unit) != "COMBAT") then {
 						_needmedic = true;
 					};
 				};

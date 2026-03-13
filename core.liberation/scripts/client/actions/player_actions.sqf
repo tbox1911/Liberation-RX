@@ -16,11 +16,11 @@ if ([] call is_admin) then { [true] call player_admin_actions };
 player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true];
 
 // Dog - Actions
-private _my_dog = player getVariable ["my_dog", nil];
+private _my_dog = player getVariable "my_dog";
 if (!isNil "_my_dog") then { [true] call player_dog_actions };
 
 // Squad - Actions
-private _my_squad = player getVariable ["my_squad", nil];
+private _my_squad = player getVariable "my_squad";
 if (!isNil "_my_squad") then { [true] call player_squad_actions };
 
 // Support vehicle

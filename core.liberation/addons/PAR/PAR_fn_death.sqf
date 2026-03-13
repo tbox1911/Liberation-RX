@@ -71,10 +71,12 @@ if (_unit == player) then {
 
 	titleText ["" ,"BLACK FADED", 100];
 } else {
-	PAR_AI_bros = PAR_AI_bros - [_unit];
-	private _msg = format [localize "STR_PAR_DE_01", name _unit];
-	[_unit, _msg] call PAR_fn_globalchat;
-	sleep 50;
+	if (_unit in PAR_AI_bros) then {
+		PAR_AI_bros = PAR_AI_bros - [_unit];
+		private _msg = format [localize "STR_PAR_DE_01", name _unit];
+		[_unit, _msg] call PAR_fn_globalchat;
+		sleep 30;
+	};
 	removeAllWeapons _unit;
 	hideBody _unit;
 	sleep 10;

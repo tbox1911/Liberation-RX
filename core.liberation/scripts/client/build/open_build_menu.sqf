@@ -220,7 +220,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 			};
 
 			if ( buildtype == GRLIB_SquadBuildType ) then {
-				if !(isNil {player getVariable ["my_squad", nil]}) then {
+				if !(isNil {player getVariable "my_squad"}) then {
 					_affordable = false;
 				};
 			};

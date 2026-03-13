@@ -2,7 +2,6 @@ params ["_classname"];
 
 private _pos = getPosATL player;
 private _grp = createGroup [GRLIB_side_friendly, true];
-player setVariable ["my_squad", _grp, true];
 _grp setGroupIdGlobal [format ["%1 %2", squads_names select buildindex, groupId _grp]];
 
 private ["_unitrank", "_unit", "_class_overide"];
@@ -37,6 +36,7 @@ if (player != hcLeader _grp) then {
 	(hcLeader _grp) hcRemoveGroup _grp;
 	player hcSetGroup [_grp];
 };
+player setVariable ["my_squad", _grp, true];
 
 [true] call player_squad_actions;
 build_refresh = true;
