@@ -256,7 +256,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 			_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 		};
 	} foreach _s1;
-	sleep 1;
 
 	// Objects
 	{
@@ -341,10 +340,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 			};
 		};
-
-		sleep 0.1;
 	} foreach _s2;
-	sleep 1;
 
 	// Vehicles
 	{
@@ -447,9 +443,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				};
 			};
 		};
-		sleep 0.1;
 	} foreach _s3;
-	sleep 1;
 
 	[_buildings_created] spawn {
 		params ["_list"];
@@ -469,7 +463,6 @@ if (!isNil "_lrx_liberation_savegame") then {
 			if (typeOf _x in _no_damage) then { _allow_damage = false };
 			_x setDamage 0;
 			if (_allow_damage) then { _x allowDamage true };
-			sleep 0.1;
 		} foreach _list;
 	};
 

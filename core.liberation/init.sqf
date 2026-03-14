@@ -85,7 +85,7 @@ if (isServer) then {
 		[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
 	} else {
 		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
-	};	
+	};
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\server_functions.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
 };

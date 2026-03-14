@@ -2,7 +2,7 @@
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_static.sqf";
 
 // Init Chimera unit look
-[] call compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
 
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\events\kill_manager.sqf";

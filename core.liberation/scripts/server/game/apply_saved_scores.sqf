@@ -6,12 +6,15 @@ private [
 	"_nextplayer_uid",
 	"_newscores",
 	"_knownplayers",
-	"_playerindex",
 	"_score", "_rank", "_ammo", "_fuel",
 	"_kills_inf", "_kills_soft", "_kills_armor", "_kills_air", "_killed"
 ];
 
+private _playercount = 0;
+
 while {true} do {
+	waitUntil { sleep 1; count (AllPlayers - (entities "HeadlessClient_F")) != _playercount };
+	_playercount = count (AllPlayers - (entities "HeadlessClient_F"));
 	_newscores = GRLIB_player_scores;
 	_knownplayers = GRLIB_player_scores apply { _x select 0 };
 
@@ -79,7 +82,7 @@ while {true} do {
 				_kills_air = _nextplayer getVariable ["GREUH_kills_air", 0];
 				_killed = _nextplayer getVariable ["GREUH_killed", 0];
 
-				_playerindex = _knownplayers find _nextplayer_uid;
+				private _playerindex = _knownplayers find _nextplayer_uid;
 				if (_playerindex >= 0) then {
 					_newscores set [_playerindex, [_nextplayer_uid, _score, _ammo, _fuel, _reput, name _nextplayer, _kills_inf, _kills_soft, _kills_armor, _kills_air, _killed]];
 				} else {
@@ -89,11 +92,10 @@ while {true} do {
 
 			_score = _nextplayer getVariable ["GREUH_score_count", 0];
 			_nextplayer addScore (_score - score _nextplayer);
-			sleep 0.2;
+			sleep 0.1;
 		};
 	} foreach (AllPlayers - (entities "HeadlessClient_F"));
 
 	GRLIB_player_scores = _newscores;
 	publicVariable "GRLIB_player_scores";
-	sleep 4;
 };

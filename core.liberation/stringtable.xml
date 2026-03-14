@@ -5067,7 +5067,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cost: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Original>
@@ -5082,7 +5082,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Coût: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</French>
@@ -5097,7 +5097,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Kosten: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 30% reduziert&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 30%% reduziert&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</German>
@@ -5112,7 +5112,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cost: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nivel de alerta del OPFOR reducido en un 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nivel de alerta del OPFOR reducido en un 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Spanish>
@@ -5123,7 +5123,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Требуется: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Russian>
@@ -5138,7 +5138,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花费: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低30% &lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低30%% &lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Chinesesimp>
@@ -5153,7 +5153,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花費: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;獎勵: OPFOR 警戒級別降低30% &lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;獎勵: OPFOR 警戒級別降低30%% &lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Chinese>
@@ -5168,7 +5168,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;コスト: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;報酬: 敵の警戒レベル30%減少&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;報酬: 敵の警戒レベル30%%減少&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Japanese>
@@ -5183,7 +5183,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Custo: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nível de alerta OPFOR reduzido em 30%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nível de alerta OPFOR reduzido em 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Portuguese>
@@ -5198,7 +5198,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Náklady: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Odměna: Úroveň nasranosti nepřítele snížena o 30 %&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Odměna: Úroveň nasranosti nepřítele snížena o 30%%&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Czech>
@@ -5226,7 +5226,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Cost: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 15%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 15%%&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Side reward: All the ammunition you can retrieve.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5243,7 +5243,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Coût: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 15%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 15%%&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Récompense secondaire: toutes les munitions que vous pourrez récupérer.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5260,7 +5260,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Kosten: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 15% reduziert&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 15%% reduziert&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Seiten Belohnung: Soviel Munition wie Sie erbeuten können.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5277,7 +5277,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Требуется: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 15%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 15%%&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Вторичная награда: Всё вооружение, которое можно получить за утилизацию груза конвоя.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5294,7 +5294,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花费: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低15% &lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低15%% &lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;支线奖励: 所有你能找到的弹药资源。&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5311,7 +5311,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;花費: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;獎勵: OPFOR 警戒級別降低15% &lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;獎勵: OPFOR 警戒級別降低15%% &lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;支線獎勵: 所有你能找到的彈藥資源。 &lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5328,7 +5328,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;コスト: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;メイン報酬: 敵の警戒レベル15%減少。&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;メイン報酬: 敵の警戒レベル15%%減少。&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;サイド報酬: 現地で回収できる弾薬。&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
@@ -5345,7 +5345,7 @@
 				&lt;br/&gt;&lt;br/&gt;
 				&lt;t size='1.15' color='#00a0ff'&gt;Custo: %1&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 				&lt;br/&gt;
-				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nível de alerta OPFOR reduzido em 15%&lt;/t&gt;
+				&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nível de alerta OPFOR reduzido em 15%%&lt;/t&gt;
 				&lt;br/&gt;
 				&lt;t size='1.15' color='#ffa000'&gt;Recompensa adicional: Toda a munição que você conseguir recuperar.&lt;/t&gt;
 				&lt;br/&gt;&lt;br/&gt;
