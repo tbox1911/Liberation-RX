@@ -50,7 +50,7 @@ blufor_sectors = [_marker];
 GRLIB_secondary_used_positions pushbackUnique _marker;
 
 // spawn nuclear device + static + def squad
-private _base_output = [_spawnpos, false, true] call createOutpost;
+private _base_output = [_spawnpos, false, true, false] call createOutpost;
 opfor_target = createVehicle ["Land_Device_disassembled_F", _spawnpos, [], 1, "CAN_COLLIDE"];
 opfor_target addEventHandler ["HandleDamage", {
 	params ["_unit", "_selection", "_damage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];

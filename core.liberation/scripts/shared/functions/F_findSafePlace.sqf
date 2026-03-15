@@ -9,6 +9,7 @@ private _radius = 1;
 private _maxalt = 120;
 private _spawn_pos = [];
 private _maxpos = [];
+private _found = false;
 
 while { _radius < _max_radius } do {
     _spawn_pos = ([_start_pos, _radius] call F_getRandomPos);
@@ -49,14 +50,15 @@ while { _radius < _max_radius } do {
         };
     };
 
-    if (_vfree && _hfree) exitWith {};
+    if (_vfree && _hfree) exitWith { _found = true };
     _radius = _radius + 0.2;
     sleep 0.01;
 };
 
-if (_radius >= _max_radius) then { _spawn_pos = [] };
-if (count _spawn_pos == 0) then {
-    diag_log format ["--- LRX Debug: Cant find suitable position at %1 - DGB: S%2:R%3:W%4", _start_pos, _size, _max_radius, _water_mode];
+if (_found) exitWith {
+    _spawn_pos set [2, 0];
+    _spawn_pos;
 };
-_spawn_pos set [2, 0];
-_spawn_pos;
+
+diag_log format ["--- LRX Debug: Cant find suitable position at %1 - DGB: S%2:R%3:W%4", _start_pos, _size, _max_radius, _water_mode];
+[];

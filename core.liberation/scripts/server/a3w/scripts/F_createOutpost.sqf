@@ -1,4 +1,4 @@
-params ["_base_position", "_enable_objectives", "_enable_defenders"];
+params ["_base_position", "_enable_objectives", "_enable_defenders", "_enable_prisoners"];
 
 private _fob_templates = [
     "scripts\fob_templates\template5.sqf",
@@ -27,18 +27,16 @@ private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 	_nextpos = _x select 1;
 	_nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),0];
 	_nextdir = _x select 2;
-
 	_nextobject = _nextclass createVehicle _nextpos;
     _nextobject allowDamage false;
     _nextobject setPosATL _nextpos;
     if (_nextclass isKindOf "HBarrier_base_F") then {
         _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
      } else {
-        _nextobject setVectorDirAndUp [[_nextdir, _nextdir, 0], [0,0,1]];
+        _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, [0,0,1]];
     };
-
 	_base_objects pushBack _nextobject;
-    sleep 0.1;
+    sleep 0.05;
 } foreach _objects_to_build;
 sleep 1;
 
@@ -49,19 +47,16 @@ if (_enable_objectives) then {
         _nextpos = _x select 1;
         _nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),0.5];
         _nextdir = _x select 2;
-
-        _nextobject = _nextclass createVehicle [(_nextpos select 0) + floor(random 500),(_nextpos select 1) + floor(random 500),0.5];
+        _nextobject = _nextclass createVehicle zeropos;
         _nextobject allowDamage false;
-        _nextobject setVectorUp [0,0,1];
-        _nextobject setPos _nextpos;
-        _nextobject setDir _nextdir;
-
+        _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, [0,0,1]];
+        _nextobject setPosATL _nextpos;
         _base_objectives pushBack _nextobject;
         sleep 0.1;
     } foreach _objectives_to_build;
-    sleep 4;
 };
 
+sleep 4;
 {
     _x setDamage 0;
     _x setVariable ["R3F_LOG_disabled", true, true];
@@ -74,17 +69,18 @@ if (_enable_objectives) then {
 } foreach (_base_objectives + _base_objects);
 
 // Add Defenders
-private _grpdefenders = grpNull;
-private _grpsentry = grpNull;
+private _grp_defenders = grpNull;
+private _grp_sentry = grpNull;
 private _defenders = [];
 private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 
 if (_enable_defenders) then {
+    // Static Defenders
     private _classname = _defenders_to_build apply { _x select 0 };
     if (_nb_player <= 2) then {
         _classname = (_classname call BIS_fnc_arrayShuffle) select [0, 12 min (count _classname)];
     };
-    _grpdefenders = [_base_position, _classname, GRLIB_side_enemy, "building", true] call F_libSpawnUnits;
+    _grp_defenders = [_base_position, _classname, GRLIB_side_enemy, "building", true] call F_libSpawnUnits;
     {
         _unit = _x;
         _nextentry = _defenders_to_build select _forEachIndex;
@@ -97,22 +93,36 @@ if (_enable_defenders) then {
         _unit setPos _nextpos;
         [_unit, true] spawn building_defence_ai;
         sleep 0.1;
-    } forEach (units _grpdefenders);
+    } forEach (units _grp_defenders);
 
-    private _sentry = ceil ((5 + (floor (random 4))) * (sqrt (GRLIB_unitcap)) );
+    // Patrol
+    private _sentry = (6 + (floor random 4));
     private _base_sentry_pos = [(_base_position select 0) + ((_base_corners select 0) select 0), (_base_position select 1) + ((_base_corners select 0) select 1),0];
-    _grpsentry = [_base_sentry_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
-    [_grpsentry] call F_deleteWaypoints;
+    _grp_sentry = [_base_sentry_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
+    [_grp_sentry] call F_deleteWaypoints;
     {
-        _waypoint = _grpsentry addWaypoint [[((_base_position select 0) + (_x select 0)), ((_base_position select 1) + (_x select 1)),0], 0];
+        _waypoint = _grp_sentry addWaypoint [[((_base_position select 0) + (_x select 0)), ((_base_position select 1) + (_x select 1)),0], 0];
         _waypoint setWaypointType "MOVE";
         _waypoint setWaypointSpeed "LIMITED";
         _waypoint setWaypointBehaviour "SAFE";
         _waypoint setWaypointCompletionRadius 5;
     } foreach _base_corners;
 
-    _waypoint = _grpsentry addWaypoint [[(_base_position select 0) + ((_base_corners select 0) select 0), (_base_position select 1) + ((_base_corners select 0) select 1),0], 0];
+    _waypoint = _grp_sentry addWaypoint [[(_base_position select 0) + ((_base_corners select 0) select 0), (_base_position select 1) + ((_base_corners select 0) select 1),0], 0];
     _waypoint setWaypointType "CYCLE";
 };
 
-[ _base_objects, _base_objectives, _grpdefenders, _grpsentry ];
+// Add Prisonners
+private _prisoners = [];
+if (_enable_prisoners) then {
+    private _grp_prisoners = createGroup [GRLIB_side_civilian, true];
+    for "_i" from 0 to (3 + (floor random 3)) do {
+        private _unit = _grp_prisoners createUnit [pilot_classname, _missionPos, [], 20, "NONE"];
+        _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+        [_unit, true, false] spawn prisoner_ai;
+        _prisoners pushBack  _unit;
+        sleep 0.1;
+    };
+};
+
+[_base_objects, _base_objectives, _grp_defenders, _grp_sentry, _prisoners];

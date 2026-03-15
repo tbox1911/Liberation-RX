@@ -5,35 +5,34 @@ private ["_grp_defenders", "_grp_sentry", "_prisoners"];
 
 _setupVars = {
 	_missionType = "STR_OUTPOST";
-	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
+	_locationsArray = nil;
 	_precise_marker = false;
 	_missionTimeout = (45 * 60);
 };
 
 _setupObjects = {
-	_missionPos = markerpos _missionLocation;  // getPos [100, random 360]
+	private _all_possible_sectors = ([SpawnMissionMarkers] call checkSpawn) apply { _x select 0 };
+	if (count _all_possible_sectors == 0) exitWith {
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
+    	false;
+	};
+	_missionPos = [_all_possible_sectors, 40] call F_findFlatPlace;
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
-	_base_output = [_missionPos, false, true] call createOutpost;
+
+	_base_output = [_missionPos, false, true, true] call createOutpost;
 	_vehicles = _base_output select 0;
 	//_objectives = _base_output select 1;
 	_grp_defenders = _base_output select 2;
 	_grp_sentry = _base_output select 3;
-	_aiGroup = _grp_defenders;
+	_prisoners = _base_output select 4;
+
+	_aiGroup = _grp_sentry;
 	[_missionPos, 30] call createlandmines;
 	_missionHintText = ["STR_OUTPOST_MESSAGE1", sideMissionColor];
 
-	private _grp_prisoners = createGroup [GRLIB_side_civilian, true];
-	for "_i" from 0 to 3 do {
-		private _unit = _grp_prisoners createUnit [pilot_classname, _missionPos, [], 20, "NONE"];
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		[_unit, true, false] spawn prisoner_ai;
-		sleep 0.3;
-	};
-	_prisoners = (units _grp_prisoners);
-	_prisoners joinSilent _grp_prisoners;
 	private _static_units = [_missionPos, 3, GRLIB_side_enemy, true, "infantry"] call spawn_static;
 	_static_units joinSilent _aiGroup;
 	true;

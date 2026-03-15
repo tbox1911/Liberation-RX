@@ -27,6 +27,7 @@ F_filterLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_filterMods = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_filterMods.sqf";
 F_findOpforSpawnPoint = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_findOpforSpawnPoint.sqf";
 F_findRandomPlace = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_findRandomPlace.sqf";
+F_findFlatPlace = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_findFlatPlace.sqf";
 F_findSafePlace = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_findSafePlace.sqf";
 F_fixModUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixModUnit.sqf";
 F_fixModVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixModVehicle.sqf";
