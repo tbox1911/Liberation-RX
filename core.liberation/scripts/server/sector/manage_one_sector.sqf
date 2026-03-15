@@ -286,7 +286,6 @@ if (_spawncivs && GRLIB_civilian_activity > 0) then {
 	while { _nbcivs > 0 } do {
 		_max_units = (selectRandom _rnd) min _nbcivs;
 		_grp = [_sector_pos, _max_units] call F_spawnCivilians;
-		[_grp, _sector_pos] spawn civilian_ai;
 		_managed_civs = _managed_civs + (units _grp);
 		_nbcivs = _nbcivs - _max_units;
 		_ratio = round linearConversion [0, _civ, _civ - _nbcivs, 85, 99];

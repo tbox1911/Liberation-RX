@@ -25,6 +25,7 @@ while { _max_try > 0 && count units _grp < _nb_unit } do {
 			_unit setVariable ['GRLIB_can_speak', true, true];
 			_unit setVariable ["acex_headless_blacklist", true, true];
 			_unit addEventHandler ["HandleDamage", {_this call damage_manager_civilian}];
+			if (floor random 2 == 0) then { [_grp, _sector_pos] spawn civilian_ai };
 			if (floor random 4 == 0) then { _unit setDamage 0.45 };
 			_max_try = 30;
 		};
