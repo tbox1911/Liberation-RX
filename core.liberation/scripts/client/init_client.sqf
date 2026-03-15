@@ -129,7 +129,6 @@ if (GRLIB_respawn_cooldown > 0) then {
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
-	[] execVM "scripts\client\markers\spot_timer.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 
@@ -206,7 +205,6 @@ waitUntil {sleep 0.1; (LRX_arsenal_init_done && startgame == 1)};
 [] execVM "scripts\client\markers\players_marker.sqf";
 [] execVM "scripts\client\markers\vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
-[] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\commander\commander_marker.sqf";
 //[] execVM "scripts\client\markers\logs_markers.sqf";
 
