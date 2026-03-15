@@ -40,6 +40,7 @@ _setupObjects = {
 	{ _tank lockTurret [_x, true] } forEach (allTurrets _tank);
 	_tank setVehicleAmmo 0;
 	_tank setFuel 0;
+	_tank setVariable ["R3F_LOG_disabled", true, true];
 	_smoke = GRLIB_sar_fire createVehicle (getPos _tank);
 	_smoke attachTo [_tank, [0, 1.5, 0]];
 	_managed_units = crew _tank;
@@ -63,22 +64,9 @@ _setupObjects = {
 	waitUntil {sleep 1; isNil {_tank getVariable "GRLIB_vehicle_init"}};
 	_tank setHitPointDamage ["HitEngine", 1];
 	_tank_driver allowDamage false;
+	_tank_driver doMove _targetPos;
 	_tank allowCrewInImmobile [true, true];
 	_tank setUnloadInCombat [false, false];
-
-	// waypoints
-	private _tank_grp = group _tank_driver;
-	_tank_grp setBehaviourStrong "CARELESS";
-	_tank_grp setCombatMode "BLUE";
-	_tank_grp setSpeedMode "LIMITED";
-
-	[_tank_grp] call F_deleteWaypoints;
-	private _waypoint = _tank_grp addWaypoint [_targetPos, 10];
-	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointBehaviour "CARELESS";
-	_waypoint setWaypointCombatMode "BLUE";
-	_waypoint setWaypointCompletionRadius 30;
 
 	// manage mission
 	[_tank, _targetPos] spawn {
