@@ -5,7 +5,7 @@ private _cargo_seat_free = 0;
 
 while {true} do {
 	// If Squad
-	private _my_squad = player getVariable ["my_squad", nil];
+	private _my_squad = player getVariable "my_squad";
 	if (!isNil "_my_squad") then {
 		private _leader = leader _my_squad;
 		private _veh_player = vehicle player;
@@ -67,7 +67,7 @@ while {true} do {
 			private _squad_grp = (units _my_squad - [_leader]);
 			_squad_grp doFollow _leader;
 		};
-		
+
 		private _my_squad_order = player getVariable ["my_squad_order", nil];
 		if (!isNil "_my_squad_order") then {
 			_leader sideChat "Order Received !!";
