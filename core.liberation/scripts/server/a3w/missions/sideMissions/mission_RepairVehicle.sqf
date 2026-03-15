@@ -45,6 +45,7 @@ _setupObjects = {
 	_smoke attachTo [_tank, [0, 1.5, 0]];
 	_managed_units = crew _tank;
 	_tank_driver = driver _tank;
+	(group _tank_driver) setBehaviourStrong "SAFE";
 	_last_dead_pos = [];
 	{
 		if (_x != _tank_driver) then {
