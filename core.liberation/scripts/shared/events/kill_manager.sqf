@@ -199,7 +199,7 @@ if (isServer) then {
 				};
 				if (_unit_side == GRLIB_side_friendly) exitWith {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
-					[_killer, -50] call F_addScore;
+					if (GRLIB_civ_penalties > 0) then { [_killer, -50] call F_addScore };
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 				};

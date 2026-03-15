@@ -121,10 +121,10 @@ player createDiaryRecord ["Ranking", ["Ranking", format ["-= How Work the Rankin
 
 player createDiarySubject["Table","Table"];
 player createDiaryRecord ["Table", ["Table", format ["<br>note: XP points may vary depending on the nature or rank of the targets."]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-50</font> pts  :  Killing Friendly Vehicles"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Friendly Units"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Prisoners"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-10</font> pts  :  Killing Civilians"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-50</font> pts  :  Killing Friendly"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> up to <font color='#ff4000'>-80</font> pts  :  Killing Prisoners"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> up to <font color='#ff4000'>-80</font> pts  :  Killing Civilians"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Civilians by AI"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Eject Civilian from Vehicle"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Friendly Fires"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Respawn (Sergeant and above)"]]];
