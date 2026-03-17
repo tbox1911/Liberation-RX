@@ -61,6 +61,7 @@ if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 };
 
 // Enforce White list
+GRLIB_is_Commander = (player getvariable ["GRLIB_is_Commander", false]);
 [] call compileFinal preprocessFileLineNumbers "scripts\client\commander\enforce_whitelist.sqf";
 
 private _name = name player;

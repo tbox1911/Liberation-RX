@@ -1,2 +1,2 @@
 params ["_unit"];
-(_unit == GRLIB_active_commander || typeOf _unit == commander_classname)
+(_unit == GRLIB_active_commander || (_unit getvariable ["GRLIB_is_Commander", false]));

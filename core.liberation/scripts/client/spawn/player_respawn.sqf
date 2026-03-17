@@ -27,8 +27,7 @@ if (GRLIB_side_friendly == WEST) then {
     selectPlayer _unit;
     if (!isNull _oldUnit) then {
         // Set player variables
-        _unit setVariable ["my_dog", (_oldUnit getVariable ["my_dog", nil])];
-        _unit setVariable ["my_squad", (_oldUnit getVariable ["my_squad", nil])];
+        _unit setVariable ["GRLIB_is_Commander", (_oldUnit getVariable ["GRLIB_is_Commander", false]), true];
         _unit setVariable ["GRLIB_player_context_loaded", (_oldUnit getVariable ["GRLIB_player_context_loaded", false]), true];
         _unit setVariable ["GRLIB_squad_context_loaded", (_oldUnit getVariable ["GRLIB_squad_context_loaded", false]), true];
         _unit setVariable ["GRLIB_virtual_garage", (_oldUnit getVariable ["GRLIB_virtual_garage", []]), true];
@@ -47,6 +46,8 @@ if (GRLIB_side_friendly == WEST) then {
         _unit setVariable ["GREUH_killed", (_oldUnit getVariable ["GREUH_killed", 0]), true];
         _unit setVariable ["GRLIB_TFAR_SW_config", (_oldUnit getVariable ["GRLIB_TFAR_SW_config", []]), true];
         _unit setVariable ["GRLIB_TFAR_LR_config", (_oldUnit getVariable ["GRLIB_TFAR_LR_config", []]), true];
+        _unit setVariable ["my_dog", (_oldUnit getVariable ["my_dog", nil])];
+        _unit setVariable ["my_squad", (_oldUnit getVariable ["my_squad", nil])];
     };
     [_unit] call player_EHP;
     [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";

@@ -8432,56 +8432,56 @@
 		<!-- welcome.sqf -->
 		<Key ID="STR_UI_WELCOME_MSG">
 			<Original>
-				Welcome &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Welcome, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
 				Your Rank : &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Your Score : &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Your Credit : &lt;t color='#800000'&gt;%4&lt;/t&gt; AMMO &lt;br/&gt;&lt;br/&gt;
 				Your Reputation with Civilians is &lt;t color='%5'>%6&lt;/t&gt;
 			</Original>
 			<French>
-				Bienvenue &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Bienvenue, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
 				Votre grade : &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Votre score : &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Vos crédits : &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNITIONS &lt;br/&gt;&lt;br/&gt;
 				Votre réputation auprès des civils est &lt;t color='%5'>%6&lt;/t&gt;
 			</French>
 			<German>
-				Willkommen &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Willkommen, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
 				Dein Rang: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Dein Punktestand: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Dein Guthaben: &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNITION &lt;br/&gt;&lt;br/&gt;
 				Dein Ansehen bei Zivilisten ist &lt;t color='%5'>%6&lt;/t&gt;
 			</German>
 			<Spanish>
-				Bienvenido &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Bienvenido, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
 				Tu Rango: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Tu Puntuación: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Tu Crédito: &lt;t color='#800000'&gt;%4&lt;/t&gt; MUNICIÓN &lt;br/&gt;&lt;br/&gt;
 				Tu Reputación con Civiles es &lt;t color='%5'>%6&lt;/t&gt;
 			</Spanish>
 			<Russian>
-				Добро пожаловать, &lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
+				Добро пожаловать, %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;!&lt;br/&gt;&lt;br/&gt;
 				Ваш ранг: &lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				Ваш счёт: &lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				Ваши ресурсы: &lt;t color='#800000'&gt;%4&lt;/t&gt; БОЕПРИПАСЫ&lt;br/&gt;&lt;br/&gt;
 				Ваша репутация среди гражданских: &lt;t color='%5'>%6&lt;/t&gt;
 			</Russian>
 			<Chinesesimp>
-				欢迎 &lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
+				欢迎 %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
 				你的军衔：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				你的得分：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				你的弹药：&lt;t color='#800000'&gt;%4&lt;/t&gt; 点&lt;br/&gt;&lt;br/&gt;
 				你在平民中的声望为 &lt;t color='%5'>%6&lt;/t&gt;
 			</Chinesesimp>
 			<Chinese>
-				歡迎 &lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
+				歡迎 %7&lt;t color='#00008f'&gt;%1&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;
 				你的軍階：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				你的得分：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				你的彈藥：&lt;t color='#800000'&gt;%4&lt;/t&gt; 點&lt;br/&gt;&lt;br/&gt;
 				你在平民中的聲望為 &lt;t color='%5'>%6&lt;/t&gt;
 			</Chinese>
 			<Japanese>
-				ようこそ &lt;t color='#00008f'&gt;%1&lt;/t&gt; さん！&lt;br/&gt;&lt;br/&gt;
+				ようこそ %7&lt;t color='#00008f'&gt;%1&lt;/t&gt; さん！&lt;br/&gt;&lt;br/&gt;
 				階級：&lt;t color='#000080'&gt;%2&lt;/t&gt;&lt;br/&gt;
 				スコア：&lt;t color='#008000'&gt;%3&lt;/t&gt; XP&lt;br/&gt;
 				弾薬ポイント：&lt;t color='#800000'&gt;%4&lt;/t&gt; &lt;br/&gt;&lt;br/&gt;

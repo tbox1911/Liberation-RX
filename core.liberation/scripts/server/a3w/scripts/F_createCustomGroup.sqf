@@ -31,7 +31,7 @@ switch (_type) do {
 		_side = GRLIB_side_friendly;
 	};
 	case ("prisoner"): {
-		_unitTypes = [pilot_classname, crewman_classname, commander_classname];
+		_unitTypes = [pilot_classname, crewman_classname, crewman_classname];
 	};
 };
 
