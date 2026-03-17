@@ -10,11 +10,7 @@ private [
 	"_kills_inf", "_kills_soft", "_kills_armor", "_kills_air", "_killed"
 ];
 
-private _playercount = 0;
-
 while {true} do {
-	waitUntil { sleep 1; count (AllPlayers - (entities "HeadlessClient_F")) != _playercount };
-	_playercount = count (AllPlayers - (entities "HeadlessClient_F"));
 	_newscores = GRLIB_player_scores;
 	_knownplayers = GRLIB_player_scores apply { _x select 0 };
 
@@ -98,4 +94,5 @@ while {true} do {
 
 	GRLIB_player_scores = _newscores;
 	publicVariable "GRLIB_player_scores";
+	sleep 5;
 };

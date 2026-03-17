@@ -21,8 +21,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		GRLIB_players_known_uid = _current_uid;
 	};
 
-	// save player contexts every 10 minutes
-	if (_ticks % 10 == 0) then {
+	// save player contexts every 5 minutes
+	if (_ticks % 5 == 0) then {
 		{
 		    _uid = _x;
 			if (_uid != "") then {
