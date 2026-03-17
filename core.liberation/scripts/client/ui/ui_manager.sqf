@@ -40,6 +40,34 @@ while {true} do {
 		!([player] call PAR_is_wounded)
 	);
 
+	if (sector_timer == 0) then {
+		"opfor_capture_marker" setMarkerPosLocal markers_reset;
+	};	
+
+	if ((markerPos "opfor_capture_marker") distance2D markers_reset > 100) then {
+		_attacked_string = [markerpos "opfor_capture_marker"] call F_getLocationName;
+		_sector_timer = round (sector_timer - serverTime);
+		_attacked_timer = "VULNERABLE";
+		_marker_timer = format ["%1 - VULNERABLE!", _attacked_string];
+		if (_sector_timer > 0) then { 
+			_attacked_timer = [_sector_timer] call F_secondsToTimer;
+			_marker_timer = format ["%1 - %2", _attacked_string, _attacked_timer];
+		};
+		if (_overlayshown) then {
+			(_overlay displayCtrl (401)) ctrlShow true;
+			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;	
+			(_overlay displayCtrl (403)) ctrlSetText _attacked_timer;
+		};
+		"opfor_capture_marker" setMarkerTextLocal _marker_timer;
+	} else {
+		if (_overlayshown) then {
+			(_overlay displayCtrl (401)) ctrlShow false;
+			(_overlay displayCtrl (402)) ctrlSetText "";
+			(_overlay displayCtrl (403)) ctrlSetText "";
+		};
+		"opfor_capture_marker" setMarkerTextLocal "";
+	};
+
 	if (_overlay_check && !_overlayshown) then {
 		"LibUI" cutRsc ["statusoverlay", "PLAIN", 1];
 		_overlay = uiNamespace getVariable ['GUI_OVERLAY', objNull];
@@ -62,30 +90,6 @@ while {true} do {
 		if (_overlayshown) then {
 			(_overlay displayCtrl (266)) ctrlSetText format ["%1", GRLIB_ui_notif];
 			(_overlay displayCtrl (267)) ctrlSetText format ["%1", GRLIB_ui_notif];
-
-			if (sector_timer == 0) then {
-				"opfor_capture_marker" setMarkerPosLocal markers_reset;
-			};	
-
-			if ((markerPos "opfor_capture_marker") distance2D markers_reset > 100) then {
-				_attacked_string = [markerpos "opfor_capture_marker"] call F_getLocationName;
-				(_overlay displayCtrl (401)) ctrlShow true;
-				(_overlay displayCtrl (402)) ctrlSetText _attacked_string;
-				_sector_timer = round (sector_timer - serverTime);
-				_attacked_timer = "VULNERABLE";
-				_marker_timer = format ["%1 - VULNERABLE!", _attacked_string];
-				if (_sector_timer > 0) then { 
-					_attacked_timer = [_sector_timer] call F_secondsToTimer;
-					_marker_timer = format ["%1 - %2", _attacked_string, _attacked_timer];
-				};
-				(_overlay displayCtrl (403)) ctrlSetText _attacked_timer;
-				"opfor_capture_marker" setMarkerTextLocal _marker_timer;
-			} else {
-				(_overlay displayCtrl (401)) ctrlShow false;
-				(_overlay displayCtrl (402)) ctrlSetText "";
-				(_overlay displayCtrl (403)) ctrlSetText "";
-				"opfor_capture_marker" setMarkerTextLocal "";
-			};
 
 			if (_uiticks % 2 == 0) then {
 				(_overlay displayCtrl (107)) ctrlSetText format ["%1", (player getVariable ["GREUH_score_count",0])];
