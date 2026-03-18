@@ -2,7 +2,7 @@
 
 GRLIB_FOB_Defense = [];
 if ([] call is_admin) then {
-    GRLIB_FOB_Defense = [["From Clipboard", "", 0, ([player] call get_player_name)]];
+    GRLIB_FOB_Defense = [["From Clipboard", "", 0, name player]];
 };
 
 GRLIB_FOB_Defense append [
