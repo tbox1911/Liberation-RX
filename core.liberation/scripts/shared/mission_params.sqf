@@ -997,12 +997,11 @@ _Mission_Params = [
     [GRLIB_PARAM_ForcedLoadout, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 1],
         [GRLIB_PARAM_NameKey, localize "STR_FORCE_LOADOUT"],
-        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", "Preset 1", "Preset 2"]],
-        [GRLIB_PARAM_OptionValuesKey, [0,1,2]],
+        [GRLIB_PARAM_OptionLabelKey, ["Preset 1", "Preset 2"]],
+        [GRLIB_PARAM_OptionValuesKey, [1,2]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_ArsenalCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_FORCE_LOADOUT_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_FORCE_LOADOUT_OPT0",
             localize "STR_FORCE_LOADOUT_OPT1",
             localize "STR_FORCE_LOADOUT_OPT2"
         ]]

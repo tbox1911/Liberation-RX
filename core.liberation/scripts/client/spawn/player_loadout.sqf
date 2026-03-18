@@ -24,20 +24,8 @@ if (isNil {player getVariable "GREUH_stuff_price"}) then {
 
 if (isNil {player getVariable "GREUH_stuff_price"}) then {
 	// Forced init loadout
-	if (GRLIB_forced_loadout > 0) then {
-		private _path = format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout];
-		[_path, player] call F_getTemplateFile;
-	} else {
-		// Overide
-		private _class_overide = toLower (typeOf player);
-		if (_class_overide in units_loadout_overide) then {
-			private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, _class_overide];
-			[_path, player] call F_getTemplateFile;
-		} else {
-			// Default
-			[player, configOf player] call BIS_fnc_loadInventory;
-		};
-	};
+	private _path = format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout];
+	[_path, player] call F_getTemplateFile;
 	player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice), true];
 };
 

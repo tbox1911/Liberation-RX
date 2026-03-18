@@ -11855,15 +11855,6 @@
 			<Portuguese>Força os jogadores a usar um loadout predefinido se ativado.</Portuguese>
 			<Czech>Nutí hráče používat přednastavené vybavení, pokud je povoleno.</Czech>
 		</Key>
-		<Key ID="STR_FORCE_LOADOUT_OPT0">
-			<Original>Disable forced loadout</Original>
-			<Russian>Отключить принудительный комплект</Russian>
-			<French>Désactiver le loadout forcé</French>
-			<Chinesesimp>禁用强制加载配置</Chinesesimp>
-			<Chinese>禁用強制加載配置</Chinese>
-			<Portuguese>Desativar loadout forçado</Portuguese>
-			<Czech>Zakázat vynucené vybavení</Czech>
-		</Key>
 		<Key ID="STR_FORCE_LOADOUT_OPT1">
 			<Original>Force loadout Preset 1</Original>
 			<Russian>Принудительный комплект 1</Russian>
