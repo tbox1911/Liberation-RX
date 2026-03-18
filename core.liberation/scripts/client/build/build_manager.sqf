@@ -367,7 +367,7 @@ while {true} do {
 
 		// Build done
 		if (build_confirmed == 2) then {
-			if (!([_price, _price_fuel] call F_pay)) exitWith {deleteVehicle _vehicle};
+			if (!([_price, _price_fuel] call F_pay)) exitWith { deleteVehicle _vehicle };
 			private _veh_dir = vectorDir _vehicle;
 			private _veh_vup = vectorUp _vehicle;
 			private _veh_pos = getPosATL _vehicle;
@@ -476,6 +476,7 @@ while {true} do {
 
 			_vehicle = player getVariable "GRLIB_player_vehicle_build";
 			if (typeName _vehicle == "SCALAR" || !alive _vehicle) exitWith {
+				[player, _price, _price_fuel] remoteExec ["ammo_add_remote_call", 2];
 				private _msg = format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _veh_pos];
 				systemchat _msg;
 				diag_log _msg;
