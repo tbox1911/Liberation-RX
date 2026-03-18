@@ -8,10 +8,7 @@
 			<Original>[AKH] pSiKO</Original>
 		</Key>
 		<Key ID="STR_MISSION_VERSION">
-			<Original>v2.8</Original>
-			<Chinesesimp>2.8版本</Chinesesimp>
-			<Chinese>2.8版本</Chinese>
-			<Japanese>バージョン2.8</Japanese>
+			<Original>v2.9</Original>
 		</Key>
 		<Key ID="STR_MISSION_MOTD">
 			<Original>It should not be too easy...</Original>
