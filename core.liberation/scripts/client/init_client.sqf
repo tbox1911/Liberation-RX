@@ -127,7 +127,7 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
-if ( typeOf player == "VirtualSpectator_F" ) exitWith {
+if (typeOf player == "VirtualSpectator_F") exitWith {
 	[] execVM "scripts\client\markers\vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
