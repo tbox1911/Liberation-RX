@@ -106,7 +106,7 @@ PAR_fn_globalchat = {
 	if (isDedicated || !(local _speaker) || _msg == "") exitWith {};
 	if (_msg == PAR_AI_old_msg) exitWith {};
 	if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format ["Bros_%1", PAR_Grp_ID] || isPlayer _speaker) then {
-		_speaker sideChat _msg;
+		gamelogic globalChat _msg;
 		PAR_AI_old_msg = _msg;
 	};
 };
