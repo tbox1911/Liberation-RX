@@ -1,5 +1,8 @@
-//Blacklist Items
+// Blacklist Items
+blacklisted_bag = [];
+blacklisted_weapon = [];
 
+//Whitelist Items
 whitelisted_from_arsenal = [
 	"MineDetector",
 	"Binocular",
@@ -23,8 +26,7 @@ whitelisted_from_arsenal = [
 	"ClaymoreDirectionalMine_Remote_Mag"
 ];
 
-// overide default Personal Arsenal
-
+// Overide default Personal Arsenal
 // default_personal_arsenal = [
 // 	// basic: [items, nb]
 // 	["FirstAidKit", 15],
