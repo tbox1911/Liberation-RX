@@ -21,13 +21,13 @@ if (GRLIB_side_friendly == WEST) then {
     if (GRLIB_side_friendly == INDEPENDENT) then { _class = "I" + (_class select [1]) };
     _unit = GRLIB_player_group createUnit [_class, position player, [], 1, "NONE"];
     [_unit] joinSilent GRLIB_player_group;
+    if (GRLIB_is_Commander) then { _unit setvariable ["GRLIB_is_Commander", true, true] };
     [_unit] call clean_unit;
     [_unit, [profileName,profileName,profileName]] remoteExec ["setName", 0];
     _unit switchMove "";
     selectPlayer _unit;
     if (!isNull _oldUnit) then {
         // Set player variables
-        _unit setVariable ["GRLIB_is_Commander", (_oldUnit getVariable ["GRLIB_is_Commander", false]), true];
         _unit setVariable ["GRLIB_player_context_loaded", (_oldUnit getVariable ["GRLIB_player_context_loaded", false]), true];
         _unit setVariable ["GRLIB_squad_context_loaded", (_oldUnit getVariable ["GRLIB_squad_context_loaded", false]), true];
         _unit setVariable ["GRLIB_virtual_garage", (_oldUnit getVariable ["GRLIB_virtual_garage", []]), true];
