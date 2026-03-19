@@ -27,7 +27,7 @@ private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 	_nextpos = _x select 1;
 	_nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),0];
 	_nextdir = _x select 2;
-	_nextobject = _nextclass createVehicle _nextpos;
+	_nextobject = _nextclass createVehicle zeropos;
     _nextobject allowDamage false;
     if (_nextclass isKindOf "HBarrier_base_F") then {
         _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
