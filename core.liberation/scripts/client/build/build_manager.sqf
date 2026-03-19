@@ -209,7 +209,7 @@ while {true} do {
 		_vehicle setVariable ["R3F_LOG_disabled", true];
 		[_vehicle] call F_clearCargo;
 
-		// Customize by classname 
+		// Customize by classname
 		[_classname] call build_customize;
 
 		// Improved retexture for preview

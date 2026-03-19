@@ -9,7 +9,7 @@ if (_add) then {
         // Fast Onboard Crew
         GRLIB_player_vehicle_actions pushBack (player addAction ["<t color='#0080F0'>" + localize "STR_ONBOARD_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_onboard_crew.sqf","",998,false,true,"","call GRLIB_checkOnboardCrew"]);
         // Build Water FOB
-        GRLIB_player_vehicle_actions pushBack (player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",981,false,true,"","call GRLIB_checkBuildFOBWater"]);
+        GRLIB_player_vehicle_actions pushBack (player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","Naval",981,false,true,"","call GRLIB_checkBuildFOBWater"]);
     };
 } else {
     if (count GRLIB_player_vehicle_actions > 0) then {

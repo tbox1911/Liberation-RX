@@ -1,5 +1,8 @@
-private _box = (objectParent player);
-if (isNull _box) then { _box = cursorObject };
+params ["_box", "_caller", "_actionId", "_arguments"];
+
+if (_arguments == "Naval") then { _box = objectParent _caller };
+if (isNull _box) exitWith {};
+
 private _box_type = typeOf _box;
 
 //only one at time
@@ -18,7 +21,7 @@ if (_box_type == FOB_box_outpost && count (GRLIB_all_outposts) >= GRLIB_max_outp
 if (count (GRLIB_all_fobs select { surfaceIsWater _x }) > 0 && _box_type == FOB_boat_typename) exitWith {
 	private _msg = format ["Only one Naval FOB Allowed!"];
 	hint _msg;
-	gamelogic globalChat _msg;
+	gamelogic globalChat _msg
 };
 private _sea_deep = round ((getPosATL player select 2) - (getPosASL player select 2));
 private _min_deep = 50;
@@ -55,9 +58,11 @@ if (_next_sector != "") exitWith {
 _box setVariable ["box_in_use", true, true];
 buildtype = 99;
 build_vehicle = _box;
-[_box, true] remoteExec ["hideObjectGlobal", 2];
 if (_box_type == FOB_box_outpost) then { buildtype = 98 };
 if (_box_type == FOB_boat_typename) then { buildtype = 97 };
+if (buildtype in [99, 98]) then {
+	[_box, true] remoteExec ["hideObjectGlobal", 2];
+};
 
 dobuild = 1;
 waitUntil { sleep 0.5; dobuild == 0 };
