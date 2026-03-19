@@ -12,7 +12,7 @@ private _nearstatics = [];
 private _nearsign = [];
 private _nearmoney = [];
 private _nearfobbox = [];
-private _neardronebox = [];
+private _nearpersobox = [];
 private _neartent = [];
 
 private _wreck_class = [
@@ -159,6 +159,28 @@ while {true} do {
 		};
 		_unit setVariable ["GRLIB_fobbox_action", true];
 	} foreach _nearfobbox;
+
+	// Personal Ammobox
+	_nearpersobox = (nearestObjects [player, [playerbox_typename], _searchradius]) select { isNil {_x getVariable "GRLIB_personalbox_action"} };
+	{
+		_unit = _x;
+		_unit addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_PICKUP" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_loot_veh.sqf","",-504,false,true,"","[_target, _this] call GRLIB_checkAction_Pickup_Weapons", GRLIB_ActionDist_5];
+		_unit setVariable ["GRLIB_personalbox_action", true];
+		private _gid = _unit getVariable ["GRLIB_vehicle_owner", ""];
+		if (_gid == PAR_Grp_ID) then {
+			if (isNull (player getVariable ["GRLIB_player_box", objNull])) then {
+				player setVariable ["GRLIB_player_box", _unit, true];
+				private _box_content = player getVariable ["GRLIB_player_box_content", []];
+				if (count _box_content > 0) then {
+					[_unit] call F_clearCargo;
+					_unit setMaxLoad playerbox_cargospace;
+					_unit setVariable ["GRLIB_player_box_loaded", PAR_Grp_ID, true];
+					[_unit, _box_content] call F_setCargo;
+					player setVariable ["GRLIB_player_box_content", [], true];
+				};
+			};
+		};
+	} foreach _nearpersobox;	
 
 	// Tent Respawn
 	_neartent = (GRLIB_mobile_respawn) select { typeOf _x == mobile_respawn && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_tent_action"} };
