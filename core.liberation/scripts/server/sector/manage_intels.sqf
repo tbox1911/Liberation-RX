@@ -43,9 +43,8 @@ if ( count _nearbuildings > 0 ) then {
 			_intelclassname = selectRandom GRLIB_intel_items;
 			_intelobject = _intelclassname createVehicle _pos;
 			_intelobject setVariable ["GRLIB_intel_search", true, true];
-			_intelobject setPosATL [_pos select 0, _pos select 1, (_pos select 2) - 0.15];
+			_intelobject setPosATL [_pos select 0, _pos select 1, (_pos select 2) - 0.10];
 			_intelobject allowDamage false;
-			_intelobject setdir (random 360);
 			_intel_created pushBack _intelobject;
 			if (_debug) then {
 				_marker = createMarkerLocal [ format ["markedintel_%1", (getpos _intelobject) select 0], getpos _intelobject ];
