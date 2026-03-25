@@ -98,9 +98,9 @@ switch _classname do {
             build_radius = 6;
             _dist = 4;
         };
-        if (_classname isKindOf "Van_01_base_F") then {
-            build_rotation = 90;
-        };
+        // if (_classname isKindOf "Van_01_base_F") then {
+        //     build_rotation = 90;
+        // };
         if (_classname in list_static_weapons) then {
             build_radius = 3;
             _dist = 1;

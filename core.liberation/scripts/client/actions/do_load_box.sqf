@@ -1,22 +1,12 @@
 params ["_ammobox"];
 
-private _neartransport = (nearestObjects [player, transport_vehicles, 20]) select {
-	alive _x && speed vehicle _x < 5 &&
-	((getpos _x) select 2) < 5 &&
-	([player, _x] call is_owner || [_x] call is_public || typeOf _x == storage_medium_typename) &&
-	!(_x getVariable ['R3F_LOG_disabled', false])
-};
+private _transport = [player, typeOf _ammobox, 15] call F_getNearestTransport;
+if (isNull _transport) exitWith { hint format [localize "STR_BOX_CANTLOAD", [_ammobox] call F_getLRXName] };
 
-if (count _neartransport == 0) exitWith { hint localize "STR_BOX_CANTLOAD" };
-_neartransport = _neartransport select 0;
-private _maxload = 0;
-{
-	if ((_x select 0) == typeof _neartransport) exitWith { _maxload = (count _x) - 2 };
-} foreach box_transport_config;
-
-private _truck_load = _neartransport getVariable ["GRLIB_ammo_truck_load", []];
-if ( count _truck_load < _maxload ) then {
-	[_neartransport, _ammobox, player] remoteExec ["load_truck_remote_call", 2];
+private _maxload = [typeOf _transport] call F_getVehicleMaxLoad;
+private _truck_load = _transport getVariable ["GRLIB_ammo_truck_load", []];
+if (count _truck_load < _maxload) then {
+	[_transport, _ammobox, player] remoteExec ["load_truck_remote_call", 2];
 } else {
- 	hint localize "STR_BOX_CANTLOAD";
+ 	hint format [localize "STR_BOX_CANTLOAD", [_ammobox] call F_getLRXName];
 };

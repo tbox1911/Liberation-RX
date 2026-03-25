@@ -416,16 +416,9 @@
 			<Czech>%1 vyloženo z vozidla.</Czech>
 		</Key>
 		<Key ID="STR_BOX_CANTLOAD">
-			<Original>There is no nearby vehicle capable of carrying the ammo box.</Original>
-			<French>Aucun véhicule à proximité capable de charger la caisse de munitions.</French>
-			<German>Kein Fahrzeug in der Nähe, das die Munitionskiste tragen kann.</German>
-			<Spanish>No hay ningún vehículo cercano capaz de cagar la caja de munición</Spanish>
-			<Russian>Рядом нет техники способной перевозить ящики с боеприпасами.</Russian>
-			<Chinesesimp>附近没有能够携带弹药箱的车辆。</Chinesesimp>
-			<Chinese>附近沒有能夠攜帶彈藥箱的車輛。</Chinese>
-			<Japanese>付近に弾薬箱を積み込める車両がありません。</Japanese>
-			<Portuguese>Não há nenhum veículo próximo capaz de transportar a caixa das munições.</Portuguese>
-			<Czech>V blízkosti není žádné vozidlo, které by dokázalo převézt bednu s municí.</Czech>
+			<Original>There is no nearby vehicle capable of carrying %1.</Original>
+			<French>Aucun véhicule à proximité capable de charger %1.</French>
+			<Spanish>No hay ningún vehículo cercano capaz de cagar %1.</Spanish>
 		</Key>
 		<Key ID="STR_BOX_CANTUNLOAD">
 			<Original>Unable to unload, the location is not free.</Original>

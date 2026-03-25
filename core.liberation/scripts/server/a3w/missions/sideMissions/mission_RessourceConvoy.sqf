@@ -12,10 +12,7 @@ _setupVars = {
 
 _setupObjects = {
 	// Check Box
-	private _boxes_amount = 0;
-	{
-		if ( _x select 0 == a3w_truck_open ) exitWith { _boxes_amount = (count _x) - 2 };
-	} foreach box_transport_config;
+	private _boxes_amount = [a3w_truck_open] call F_getVehicleMaxLoad;
 	if ( _boxes_amount == 0 ) exitWith {
 		diag_log format ["Opfor ammobox truck (%1) doesn't allow for ammobox transport, correct your classnames!",  a3w_truck_open];
 		false;

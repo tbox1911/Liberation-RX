@@ -11,10 +11,10 @@ if (!isNil "GRLIB_load_box") exitWith {};
 GRLIB_load_box = true;
 
 private _cargo = _all_objects;
-private _offset = 0;
+private _offset = -5;
 {
-	if ( _x select 0 == typeof _truck ) exitWith { _offset = _x select 1 };
-} foreach box_transport_config;
+	if ( _x select 0 == typeof _truck ) exitWith { _offset = (_x select 1) };
+} foreach (box_transport_config + box_transport_big_config);
 
 _truck allowDamage false;
 _truck enableSimulationGlobal false;
@@ -49,6 +49,12 @@ private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 			_next_box allowDamage false;
 			[_next_box, _truck] remoteExec ["disableCollisionWith", 0];
 			_next_box_dir = getDir _next_box;
+			if (_next_box isKindOf "Slingload_01_Base_F") then {
+				_next_box_dir = getDir _truck + 90;
+			};
+			if (_next_box isKindOf "Cargo_base_F") then {
+				_next_box_dir = getDir _truck + 180;
+			};			
 			detach _next_box;
 			_next_box setPos zeropos;
 			_next_box setVelocity [0,0,0];

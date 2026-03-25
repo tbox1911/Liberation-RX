@@ -25,6 +25,7 @@ repair_sling_typename = "B_Slingload_01_Repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
+cargo_sling_typename = "Land_Cargo20_grey_F";
 medic_heal_typename = "Land_MedicalTent_01_NATO_generic_open_F";
 respawn_truck_typename = "B_Truck_01_medical_F";
 repair_station_typename = "Land_RepairDepot_01_civ_F";

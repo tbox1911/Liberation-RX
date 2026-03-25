@@ -22,7 +22,7 @@ box_transport_config = box_transport_config + [
 // Additional offset per object
 // objects in this list can be loaded on vehicle position defined above
 box_transport_offset = box_transport_offset + [
-	["B_supplyCrate_F", [0, 0, 0]],
+	["B_supplyCrate_F", [0, 0, 0.1]],
 	["Box_NATO_Wps_F", [0, 0, -0.6]],
 	["Box_NATO_Ammo_F", [0, 0, -0.6]],
 	["Box_NATO_Support_F", [0, 0, -0.6]],
@@ -41,13 +41,25 @@ box_transport_offset = box_transport_offset + [
 
 // Flatbed transport for big objects
 box_transport_big_config = box_transport_big_config + [
-	["B_Truck_01_flatbed_F", -6.5, [0, -0.4, 0.4]],
-	["B_T_Truck_01_flatbed_F", -6.5, [0, -0.4, 0.4]]
+	["B_Truck_01_flatbed_F", -6.8, [0, -1.8, 0]],
+	["B_T_Truck_01_flatbed_F", -6.8, [0, -1.8, 0]]
 ];
 
 // Additional offset per big object
 box_transport_big_offset = box_transport_big_offset + [
-	["Land_Cargo20_grey_F", [0, 0.1, -2.5]]
+	["B_Slingload_01_Repair_F", [0, 0, 0.5]],
+	["B_Slingload_01_Fuel_F", [0, 0, 0.5]],
+	["B_Slingload_01_Ammo_F", [0, 0, 0.5]],
+	["B_Slingload_01_Medevac_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_ammo_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_ammo_black_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_box_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_box_black_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_fuel_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_fuel_black_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_repair_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_repair_black_F", [0, 0, 0.5]],
+	["Land_Cargo20_grey_F", [0, 0, 0.5]]
 ];
 
 // Storage

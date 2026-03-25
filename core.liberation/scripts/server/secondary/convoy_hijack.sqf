@@ -9,10 +9,7 @@ private _convoy_destinations = [_convoy_destinations_markers] call F_getPathRoad
 if (count _convoy_destinations < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 // Check Box
-private _boxes_amount = 0;
-{
-	if ( _x select 0 == opfor_transport_truck ) exitWith { _boxes_amount = (count _x) - 2 };
-} foreach box_transport_config;
+private _boxes_amount = [opfor_transport_truck] call F_getVehicleMaxLoad;
 if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doesn't allow for ammobox transport, correct your classnames.sqf" };
 
 //-----------------------------------------

@@ -239,6 +239,7 @@ support_vehicles append [
 	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
 	[ammo_sling_typename,0,400,0,GRLIB_perm_log],
 	[medic_sling_typename,0,200,0,GRLIB_perm_log],
+	[cargo_sling_typename,0,50,0,GRLIB_perm_log],
 	[ammo_truck_typename,5,400,10,GRLIB_perm_tank],
 	[repair_truck_typename,5,200,30,GRLIB_perm_tank],
 	[fuel_truck_typename,5,150,70,GRLIB_perm_tank],
@@ -488,6 +489,8 @@ if (isNil "vehicle_preset_inventory_east") then {
 // *** TRANSPORT CONFIG ***
 box_transport_config = [];
 box_transport_offset = [];
+box_transport_big_config = [];
+box_transport_big_offset = [];
 
 [] call compileFinal preprocessFileLineNumbers "default\default_classnames_transport.sqf";
 _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
@@ -496,17 +499,14 @@ _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
 [_path] call F_getTemplateFile;
 
 transport_vehicles = box_transport_config apply { _x select 0 };
+transport_big_vehicles = box_transport_big_config apply { _x select 0 };
+transport_vehicles append transport_big_vehicles;
 transport_vehicles = transport_vehicles arrayIntersect transport_vehicles;
 
 box_transport_loadable = box_transport_offset apply { _x select 0 };
-box_transport_loadable = box_transport_loadable arrayIntersect box_transport_loadable;
-
-transport_big_vehicles = box_transport_big_config apply { _x select 0 };
-transport_big_vehicles = transport_big_vehicles arrayIntersect transport_big_vehicles;
-
-box_transport_big_loadable = ["Slingload_01_Base_F"];
 box_transport_big_loadable = box_transport_big_offset apply { _x select 0 };
-box_transport_big_loadable = box_transport_big_loadable arrayIntersect box_transport_big_loadable;
+box_transport_loadable append box_transport_big_loadable;
+box_transport_loadable = box_transport_loadable arrayIntersect box_transport_loadable;
 
 // Big_units
 vehicle_big_units = [

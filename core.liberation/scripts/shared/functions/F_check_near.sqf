@@ -34,7 +34,6 @@ switch ( _list ) do {
 	case "REPAIR_BOX" : { _classlist = vehicle_repair_box };
 	case "REPAINT" : { _classlist = vehicle_repaint_sources };
 	case "WAREHOUSE" : { _classlist = [Warehouse_typename]; _use_fast = false };
-	case "TRANSPORT" : { _classlist = transport_vehicles; _use_fast = false };
 	default { _classlist = [] };
 };
 
