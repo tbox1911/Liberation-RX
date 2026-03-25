@@ -501,6 +501,10 @@ transport_vehicles = transport_vehicles arrayIntersect transport_vehicles;
 box_transport_loadable = box_transport_offset apply { _x select 0 };
 box_transport_loadable = box_transport_loadable arrayIntersect box_transport_loadable;
 
+box_transport_big_loadable = ["Slingload_01_Base_F"];
+box_transport_big_loadable = box_transport_big_offset apply { _x select 0 };
+box_transport_big_loadable = box_transport_big_loadable arrayIntersect box_transport_big_loadable;
+
 // Big_units
 vehicle_big_units = [
 	"Land_Cargo_Tower_V1_F",

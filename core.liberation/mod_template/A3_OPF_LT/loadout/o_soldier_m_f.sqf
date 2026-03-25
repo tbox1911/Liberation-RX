@@ -10,13 +10,13 @@ removeHeadgear _unit;
 removeGoggles _unit;
 
 #include "loadout_init.sqf"
-private _pmc_weapon = [ 
+private _pmc_weapon = [
     "srifle_DMR_03_tan_F",
     "srifle_DMR_03_khaki_F",
     "srifle_DMR_03_F"
 ];
 
-private _pmc_optic = [ 
+private _pmc_optic = [
     "optic_SOS_khk_F",
     "optic_SOS"
 ];

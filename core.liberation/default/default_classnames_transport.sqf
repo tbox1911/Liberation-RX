@@ -4,39 +4,49 @@
 // Following entries: attachTo position for each box, the number of boxes that can be loaded is derived from the number of entries
 
 box_transport_config = box_transport_config + [
-	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "C_IDAP_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
-	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
+	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2]],
+	[ "C_IDAP_Offroad_01_F", -5, [0, -1.55, 0.2]],
+	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2]],
+	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2]],
 	[ "C_Van_02_transport_F", -5, [0,-1.75,0]],
 	[ "C_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
   	[ "C_IDAP_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
 	[ "C_IDAP_Van_02_transport_F", -5, [0,-1.75,0]],
-	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_IDAP_Truck_02_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_IDAP_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_IDAP_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ]
+	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0]],
+	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0]],
+	[ "C_IDAP_Truck_02_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0]],
+	[ "C_IDAP_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0]],
+	[ "C_IDAP_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45]]
 ];
 
 // Additional offset per object
 // objects in this list can be loaded on vehicle position defined above
 box_transport_offset = box_transport_offset + [
-	["B_supplyCrate_F", [0, 0, 0] ],
-	["Box_NATO_Wps_F", [0, 0, -0.6] ],
-	["Box_NATO_Ammo_F", [0, 0, -0.6] ],
-	["Box_NATO_Support_F", [0, 0, -0.6] ],
-	["Box_NATO_WpsSpecial_F", [0, 0, -0.6] ],
-	["Box_NATO_WpsLaunch_F", [0, 0, -0.6] ],
-	["Box_East_Wps_F", [0, 0, -0.6] ],	
-	["Box_NATO_AmmoVeh_F", [0, 0, 0] ],
-	["Box_East_AmmoVeh_F", [0, 0, 0] ],
-	["Box_IND_AmmoVeh_F", [0, 0, 0] ],
-	["Land_BarrelWater_F", [0, 0, -0.4] ],
-	["Land_MetalBarrel_F", [0, 0, -0.4] ],
-	["Land_MetalCase_01_large_F", [0, 0, -0.45] ],
+	["B_supplyCrate_F", [0, 0, 0]],
+	["Box_NATO_Wps_F", [0, 0, -0.6]],
+	["Box_NATO_Ammo_F", [0, 0, -0.6]],
+	["Box_NATO_Support_F", [0, 0, -0.6]],
+	["Box_NATO_WpsSpecial_F", [0, 0, -0.6]],
+	["Box_NATO_WpsLaunch_F", [0, 0, -0.6]],
+	["Box_East_Wps_F", [0, 0, -0.6]],	
+	["Box_NATO_AmmoVeh_F", [0, 0, 0]],
+	["Box_East_AmmoVeh_F", [0, 0, 0]],
+	["Box_IND_AmmoVeh_F", [0, 0, 0]],
+	["Land_BarrelWater_F", [0, 0, -0.4]],
+	["Land_MetalBarrel_F", [0, 0, -0.4]],
+	["Land_MetalCase_01_large_F", [0, 0, -0.45]],
 	["Land_ToolTrolley_02_F", [0, 0, -0.4]],
-	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.4] ]
+	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.4]]
+];
+
+// Flatbed transport for big objects
+box_transport_big_config = box_transport_big_config + [
+	["B_Truck_01_flatbed_F", -6.5, [0, -0.4, 0.4]]
+];
+
+// Additional offset per big object
+box_transport_big_offset = box_transport_big_offset + [
+    ["B_MRAP_01_F", [0, 0, 0]]
 ];
 
 // Storage

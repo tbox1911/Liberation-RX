@@ -1,4 +1,4 @@
-params [ "_ammobox" ];
+params ["_ammobox"];
 
 private _neartransport = (nearestObjects [player, transport_vehicles, 20]) select {
 	alive _x && speed vehicle _x < 5 &&

@@ -1,6 +1,6 @@
 _unit = _this select 0;
 
-private _militia_uniforms = [ 
+private _militia_uniforms = [
     "U_OG_Guerilla1_1",
     "U_OG_Guerilla2_1",
     "U_OG_Guerilla2_2",

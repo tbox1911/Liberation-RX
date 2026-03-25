@@ -49,5 +49,13 @@ while {true} do {
         _vehicle setVariable ["GRLIB_boxes_action", true];
     } forEach _nearboxes;
 
+    // Big Box
+    _nearboxes = (player nearEntities [box_transport_big_loadable, _searchradius]) select { isNil {_x getVariable "GRLIB_boxes_action"} };
+    {
+        _vehicle = _x;
+        _vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_BOX" + "</t> <img size='1' image='res\ui_load.paa'/>","scripts\client\actions\do_load_box.sqf","",-400,true,true,"","[_target, _this] call GRLIB_checkAction_LoadBox", GRLIB_ActionDist_5];
+        _vehicle setVariable ["GRLIB_boxes_action", true];
+    } forEach _nearboxes;
+
     sleep 4;
 };
