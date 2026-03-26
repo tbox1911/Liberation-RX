@@ -2,7 +2,7 @@ private _vehicule_joueur = vehicle player;
 private _objet_heliportable = (_vehicule_joueur nearEntities [["All"], 20]) select {
     _x != _vehicule_joueur && !(_x getVariable "R3F_LOG_disabled") &&
     (_x getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select R3F_LOG_IDX_can_be_lifted) &&
-    ((getPosASL _vehicule_joueur select 2) - (getPosASL _x select 2) > 2 && (getPosASL _vehicule_joueur select 2) - (getPosASL _x select 2) < 15)
+    ((getPosASL _vehicule_joueur select 2) - (getPosASL _x select 2) > 5 && (getPosASL _vehicule_joueur select 2) - (getPosASL _x select 2) < 15)
 };
 
 private _ret = false;
