@@ -39,7 +39,7 @@ while {true} do {
 	_nearveh = (player nearEntities [["LandVehicle","Air","Ship_F"], _searchradius]) select {
 		isNil {_x getVariable "GRLIB_vehicle_action"} &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
-		!(typeOf _x in list_static_weapons)
+		!(typeOf _x in (list_static_weapons + static_vehicles_AI))
 	};
 
 	{

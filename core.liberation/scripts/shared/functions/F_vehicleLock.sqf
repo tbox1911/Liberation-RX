@@ -14,7 +14,7 @@ switch (_cmd) do {
 		_vehicle setVariable ["GRLIB_last_killer", nil, true];
 		_vehicle setVariable ["GRLIB_mission_AI", nil, true];
 		_vehicle engineOn false;
-	 };
+	};
 	case "unlock" : {
 		_vehicle lockCargo false;
 		_vehicle lockDriver false;
