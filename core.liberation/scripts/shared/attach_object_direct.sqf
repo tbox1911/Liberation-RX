@@ -27,11 +27,12 @@ if (count _truck_load < _maxload) then {
 	} foreach (box_transport_offset + box_transport_big_offset);
 
 	_truck allowDamage false;
-	_truck enableSimulationGlobal false;
 	sleep 0.1;
 	private _truck_offset = (_offsets select (count _truck_load)) vectorAdd _box_offset;
 	if (_create) then {
-		_object = createVehicle [_object_class, ([] call F_getFreePos), [], 0, "NONE"];
+		_spawn_pos = [(markerPos "ghost_spot"), 5, 0] call F_findSafePlace;
+		_object = createVehicle [_object_class, _spawn_pos, [], 0, "NONE"];
+		if (_object isKindOf "LandVehicle") then { sleep 1.5 };
 	};
 	_object allowDamage false;
 	[_object, _truck] remoteExec ["disableCollisionWith", 0];
@@ -62,6 +63,16 @@ if (count _truck_load < _maxload) then {
 		[_object] call F_clearCargo;
 	};
 
+	// Static AI
+	if (_object_class in static_vehicles_AI) then {
+		[_object] call F_forceCrew;
+		_object setVariable ["GRLIB_vehicle_manned", true, true];
+		_object setVehicleLock "LOCKED";
+		_object allowCrewInImmobile [true, false];
+		_object setUnloadInCombat [true, false];
+		_object setAutonomous true;
+	};
+
 	// MPKilled
 	_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
@@ -73,7 +84,6 @@ if (count _truck_load < _maxload) then {
 	_truck_load pushback _object;
 	_truck setVariable ["GRLIB_ammo_truck_load", _truck_load, true];
 	sleep 0.1;
-	_truck enableSimulationGlobal true;
 	_truck allowDamage true;
 };
 

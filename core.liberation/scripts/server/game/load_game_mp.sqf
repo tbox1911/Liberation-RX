@@ -307,6 +307,10 @@ if (!isNil "_lrx_liberation_savegame") then {
 			[_nextbuilding, (_x select 5)] call load_object_direct;
 		};
 
+		if (_nextclass == cargo_sling_typename) then {
+			{ [_nextbuilding, _x] call attach_object_direct } forEach (_x select 5);
+		};
+
 		if (_nextclass == storage_medium_typename) then {
 			{[_nextbuilding, _x] call attach_object_direct} forEach (_x select 5);
 			private _drop_zone_dir = (getdir _nextbuilding);

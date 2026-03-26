@@ -3,15 +3,17 @@ waitUntil {sleep 1; !isNil "GRLIB_player_near_fob" };
 
 GRLIB_checkAction_LoadBox = {
 	params ["_target", "_unit"];
+	if (_target getVariable ["R3F_LOG_disabled", false]) exitWith { false };
 	private _transport = [_unit, typeOf _target, 10] call F_getNearestTransport;
 	if (isNull _transport) exitWith { false };
 	private _owned = [_unit, _target] call is_owner;
 	private _ready = (alive _target && speed vehicle _transport < 5 && ((getPosATL _transport) select 2) < 5);
-	(GRLIB_player_is_menuok && _ready && _owned && isNil "GRLIB_load_box" && !(_target getVariable ['R3F_LOG_disabled', false]))
+	(GRLIB_player_is_menuok && _ready && _owned && isNil "GRLIB_load_box")
 };
 
 GRLIB_checkAction_UnloadBox = {
 	params ["_target", "_unit"];
+	if (_target getVariable ["R3F_LOG_disabled", false]) exitWith { false };
 	private _owned = (([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2);
 	private _loaded = (count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 0);
 	private _ready = (alive _target && speed vehicle _target < 5 && ((getPosATL _target) select 2) < 5);
@@ -21,6 +23,7 @@ GRLIB_checkAction_UnloadBox = {
 
 GRLIB_checkAction_UnloadLastBox = {
 	params ["_target", "_unit"];
+	if (_target getVariable ["R3F_LOG_disabled", false]) exitWith { false };
 	private _owned = (([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2);
 	private _loaded = (count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 1);
 	if (typeOf _target == storage_medium_typename) then { _owned = true };
@@ -35,7 +38,7 @@ while {true} do {
 
 	// Transport
 	GRLIB_transport_vehicles = (player nearEntities [transport_vehicles, _searchradius]) select {
-		!(_x getVariable ['R3F_LOG_disabled', false]) &&
+		!(_x getVariable ["R3F_LOG_disabled", false]) &&
 		([player, _x] call is_owner || [_x] call is_public)
 	};
 

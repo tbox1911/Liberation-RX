@@ -4,7 +4,7 @@
 // Following entries: attachTo position for each box, the number of boxes that can be loaded is derived from the number of entries
 
 box_transport_config = box_transport_config + [
-	["Land_Cargo20_grey_F", -6, [0, 0, 0], [0, -1.7, 0], [0, -3.4, 0]],
+	["Land_Cargo20_grey_F", -6, [1.7, 0, -0.3], [0, 0, -0.3], [-1.7, 0, -0.3]],
 	["C_Offroad_01_F", -5, [0, -1.55, 0.2]],
 	["C_IDAP_Offroad_01_F", -5, [0, -1.55, 0.2]],
 	["C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2]],

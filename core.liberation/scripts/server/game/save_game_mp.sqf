@@ -121,6 +121,14 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 							};
 							_default = false;
 						};
+
+						if (_nextclass == cargo_sling_typename) then {
+							private	_lst_lrx = [];
+							{ if !(isNull _x) then { _lst_lrx pushback (typeOf _x) } } forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
+							buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_lrx];
+							_default = false;
+						};
+
 						if (_default) then {
 							buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 						};
