@@ -42,15 +42,6 @@ _parachute disableCollisionWith _source;
 _parachute setVelocity (velocity _vehicle);
 _vehicle attachTo [_parachute, [0,0,0.6]];
 
-sleep 4;
-{
-	_object = _x select 0;
-	_offset = _x select 1;
-	_object attachTo [_vehicle, _offset];
-	_object hideObjectGlobal false;
-	_object enableSimulationGlobal true;
-} forEach _lst_lrx;
-
 private _timeout = time + 150;
 waitUntil {sleep 0.1;((getPos _vehicle select 2) < _start_smoke || time > _timeout)};
 private _smoke1 = (_shell_smoke select _one) createVehicle _pos;
@@ -62,9 +53,16 @@ waitUntil {sleep 0.1; ((getPos _vehicle select 2) < 7 || time > _timeout)};
 detach _smoke1;
 detach _smoke2;
 detach _vehicle;
+sleep 1;
+{
+	_object = _x select 0;
+	_offset = _x select 1;
+	_object attachTo [_vehicle, _offset];
+	_object hideObjectGlobal false;
+	_object enableSimulationGlobal true;
+} forEach _lst_lrx;
 sleep 3;
 deleteVehicle _parachute;
-sleep 1;
 [_vehicle] call F_vehicleUnflip;
 sleep 3;
 _vehicle allowDamage true;
