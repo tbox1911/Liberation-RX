@@ -17,7 +17,7 @@ if (_info) then {
 
 _vehicle allowDamage false;
 
-private	_lst_grl = [];
+private	_lst_lrx = [];
 private ["_object", "_offset"];
 {
 	_object = _x;
@@ -27,7 +27,7 @@ private ["_object", "_offset"];
 		round ((_offset select 1) * 100) / 100,
 		round ((_offset select 2) * 100) / 100
 	];
-	_lst_grl pushBack [_object, _offset];
+	_lst_lrx pushBack [_object, _offset];
 } forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 
 waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
@@ -35,7 +35,7 @@ waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
 	_object = _x select 0;
 	detach _object;
 	_object hideObjectGlobal true;
-} forEach _lst_grl;
+} forEach _lst_lrx;
 sleep 0.5;
 
 private _pos = getPos _vehicle;
@@ -51,7 +51,7 @@ sleep 2;
 	_offset = _x select 1;
 	_object attachTo [_vehicle, _offset];
 	_object hideObjectGlobal false;
-} forEach _lst_grl;
+} forEach _lst_lrx;
 
 private _timeout = time + 150;
 waitUntil {sleep 0.1;((getPos _vehicle select 2) < _start_smoke || time > _timeout)};

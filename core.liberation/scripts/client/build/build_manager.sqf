@@ -25,7 +25,7 @@ private _compo = [];
 private _ammo = 0;
 private _lst_a3 = [];
 private _lst_r3f = [];
-private _lst_grl = [];
+private _lst_lrx = [];
 
 // player build actions
 private _idactview = -1;
@@ -114,7 +114,7 @@ while {true} do {
 			_compo = build_unit select 3;
 			_lst_a3 = build_unit select 4;
 			_lst_r3f = build_unit select 5;
-			_lst_grl = build_unit select 6;
+			_lst_lrx = build_unit select 6;
 			build_altitude = 0.4;
 		};
 		default {
@@ -129,7 +129,7 @@ while {true} do {
 			_ammo = 0;
 			_lst_a3 = [];
 			_lst_r3f = [];
-			_lst_grl = [];
+			_lst_lrx = [];
 			if (_buildtype != GRLIB_TrenchBuildType) then {
 				_pos_origin = GRLIB_player_nearest_fob;
 				if ([_pos_origin] call F_getFobType == 0) then {
@@ -530,8 +530,8 @@ while {true} do {
 			};
 
 			// A3 / R3F Inventory
-			if (!(_lst_a3 isEqualTo []) || !(_lst_r3f isEqualTo []) || !(_lst_grl isEqualTo [])) then {
-				[_vehicle, _lst_a3, _lst_r3f, _lst_grl] remoteExec ["load_cargo_remote_call", 2];
+			if (!(_lst_a3 isEqualTo []) || !(_lst_r3f isEqualTo []) || !(_lst_lrx isEqualTo [])) then {
+				[_vehicle, _lst_a3, _lst_r3f, _lst_lrx] remoteExec ["load_cargo_remote_call", 2];
 			};
 
 			// Inform units

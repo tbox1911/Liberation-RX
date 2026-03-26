@@ -416,7 +416,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				[_x select 6] params [["_color_name", ""]];
 				[_x select 7] params [["_lst_a3", []]];
 				[_x select 8] params [["_lst_r3f", []]];
-				[_x select 9] params [["_lst_grl", []]];
+				[_x select 9] params [["_lst_lrx", []]];
 				[_x select 10] params [["_compo", []]];
 
 				_nextbuilding allowCrewInImmobile [true, false];
@@ -438,8 +438,8 @@ if (!isNil "_lrx_liberation_savegame") then {
 					[_nextbuilding, _lst_r3f] call load_object_direct;
 				};
 
-				if (count _lst_grl > 0) then {
-					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
+				if (count _lst_lrx > 0) then {
+					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_lrx;
 				};
 			};
 		};
