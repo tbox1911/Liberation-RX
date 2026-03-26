@@ -27,16 +27,13 @@ private ["_object", "_offset"];
 		round ((_offset select 1) * 100) / 100,
 		round ((_offset select 2) * 100) / 100
 	];
+	detach _object;
+	_object hideObjectGlobal true;
+	_object enableSimulationGlobal false;	
 	_lst_lrx pushBack [_object, _offset];
 } forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 
 waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
-{
-	_object = _x select 0;
-	detach _object;
-	_object hideObjectGlobal true;
-} forEach _lst_lrx;
-sleep 0.5;
 
 private _pos = getPos _vehicle;
 private _parachute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "NONE"];
@@ -45,12 +42,13 @@ _parachute disableCollisionWith _source;
 _parachute setVelocity (velocity _vehicle);
 _vehicle attachTo [_parachute, [0,0,0.6]];
 
-sleep 2;
+sleep 4;
 {
 	_object = _x select 0;
 	_offset = _x select 1;
 	_object attachTo [_vehicle, _offset];
 	_object hideObjectGlobal false;
+	_object enableSimulationGlobal true;
 } forEach _lst_lrx;
 
 private _timeout = time + 150;
