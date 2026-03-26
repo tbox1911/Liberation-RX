@@ -1,6 +1,6 @@
 params ["_ammobox"];
 
-private _transport = [player, typeOf _ammobox, 15] call F_getNearestTransport;
+private _transport = [player, typeOf _ammobox, 10] call F_getNearestTransport;
 if (isNull _transport) exitWith { hint format [localize "STR_BOX_CANTLOAD", [_ammobox] call F_getLRXName] };
 
 private _maxload = [typeOf _transport] call F_getVehicleMaxLoad;

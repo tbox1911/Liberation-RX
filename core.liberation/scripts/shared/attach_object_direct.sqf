@@ -67,7 +67,7 @@ if (count _truck_load < _maxload) then {
 
 	_object attachTo [_truck, _truck_offset];
 	if (_object isKindOf "Cargo_base_F") then {
-		_object setDir 90;
+		_object setDir 270;
 	};
 	_object setVariable ["R3F_LOG_disabled", true, true];
 	_truck_load pushback _object;

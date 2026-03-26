@@ -3,7 +3,7 @@ waitUntil {sleep 1; !isNil "GRLIB_player_near_fob" };
 
 GRLIB_checkAction_LoadBox = {
 	params ["_target", "_unit"];
-	private _transport = [_unit, typeOf _target, 15] call F_getNearestTransport;
+	private _transport = [_unit, typeOf _target, 10] call F_getNearestTransport;
 	if (isNull _transport) exitWith { false };
 	private _owned = [_unit, _target] call is_owner;
 	private _ready = (alive _target && speed vehicle _transport < 5 && ((getPosATL _transport) select 2) < 5);
@@ -27,7 +27,7 @@ GRLIB_checkAction_UnloadLastBox = {
 	(GRLIB_player_is_menuok && alive _target && isNil "GRLIB_load_box" && _owned && _loaded && isNull (_target getVariable ['R3F_LOG_remorque', objNull]))
 };
 
-private _searchradius = 20;
+private _searchradius = 50;
 private ["_nearboxes", "_vehicle"];
 
 while {true} do {
