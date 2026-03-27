@@ -4,7 +4,7 @@ params ["_truck", "_mode"];
 if (isNil "_truck") exitWith {};
 if (isNull _truck) exitWith {};
 
-private _all_objects = [] + (_truck getVariable ["GRLIB_ammo_truck_load", []]);
+private _all_objects = [] + (_truck getVariable ["GRLIB_ammo_vehicle_load", []]);
 if (count _all_objects == 0) exitWith {};
 
 if (!isNil "GRLIB_load_box") exitWith {};
@@ -74,7 +74,7 @@ private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 			_offset = _offset - 2.2;
 			[format [localize "STR_BOX_UNLOADED", [typeOf _next_box] call F_getLRXName]] remoteExec ["hintSilent", owner _truck];
 			_cargo = _cargo - [_next_box];
-			_truck setVariable ["GRLIB_ammo_truck_load", _cargo, true];
+			_truck setVariable ["GRLIB_ammo_vehicle_load", _cargo, true];
 			_next_box setVariable ["R3F_LOG_disabled", false, true];
 			sleep 0.5;
 			_next_box allowDamage true;

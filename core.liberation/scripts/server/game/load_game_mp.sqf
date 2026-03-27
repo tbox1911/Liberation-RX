@@ -308,11 +308,11 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_nextclass == cargo_sling_typename) then {
-			{ [_nextbuilding, _x] call attach_object_direct } forEach (_x select 5);
+			[_nextbuilding, (_x select 5)] call attach_lrx_objects;
 		};
 
 		if (_nextclass == storage_medium_typename) then {
-			{[_nextbuilding, _x] call attach_object_direct} forEach (_x select 5);
+			[_nextbuilding, (_x select 5)] call attach_lrx_objects;
 			private _drop_zone_dir = (getdir _nextbuilding);
 			private _drop_zone_pos = (getposATL _nextbuilding) vectorAdd ([[0, -5, 0], -_drop_zone_dir] call BIS_fnc_rotateVector2D);
 			private _drop_zone = createVehicle ["VR_Area_01_square_2x2_yellow_F", ([] call F_getFreePos), [], 0, "NONE"];
@@ -443,7 +443,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				};
 
 				if (count _lst_lrx > 0) then {
-					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_lrx;
+					[_nextbuilding, _lst_lrx] call attach_lrx_objects;
 				};
 			};
 		};

@@ -13,5 +13,5 @@ if (count _lst_r3f > 0) then {
 };
 
 if (count _lst_lrx > 0) then {
-    {[_vehicle, _x] call attach_object_direct} forEach _lst_lrx;
+    [_vehicle, _lst_lrx] call attach_lrx_objects;
 };

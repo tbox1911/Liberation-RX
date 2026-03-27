@@ -15,7 +15,7 @@ GRLIB_checkAction_UnloadBox = {
 	params ["_target", "_unit"];
 	if (_target getVariable ["R3F_LOG_disabled", false]) exitWith { false };
 	private _owned = (([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2);
-	private _loaded = (count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 0);
+	private _loaded = (count (_target getVariable ["GRLIB_ammo_vehicle_load", []]) > 0);
 	private _ready = (alive _target && speed vehicle _target < 5 && ((getPosATL _target) select 2) < 5);
 	if (typeOf _target == storage_medium_typename) then { _owned = true };
 	(GRLIB_player_is_menuok && _ready && _owned && _loaded && isNil "GRLIB_load_box" && isNull (_target getVariable ['R3F_LOG_remorque', objNull]))
@@ -25,7 +25,7 @@ GRLIB_checkAction_UnloadLastBox = {
 	params ["_target", "_unit"];
 	if (_target getVariable ["R3F_LOG_disabled", false]) exitWith { false };
 	private _owned = (([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2);
-	private _loaded = (count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 1);
+	private _loaded = (count (_target getVariable ["GRLIB_ammo_vehicle_load", []]) > 1);
 	if (typeOf _target == storage_medium_typename) then { _owned = true };
 	(GRLIB_player_is_menuok && alive _target && isNil "GRLIB_load_box" && _owned && _loaded && isNull (_target getVariable ['R3F_LOG_remorque', objNull]))
 };

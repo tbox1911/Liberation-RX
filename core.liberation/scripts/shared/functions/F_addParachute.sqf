@@ -31,7 +31,7 @@ private ["_object", "_offset"];
 	_object hideObjectGlobal true;
 	_object enableSimulationGlobal false;	
 	_lst_lrx pushBack [_object, _offset];
-} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+} forEach (_vehicle getVariable ["GRLIB_ammo_vehicle_load", []]);
 
 waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
 

@@ -63,7 +63,7 @@ _setupObjects = {
 			private _boxclass = selectRandom [ammobox_o_typename, waterbarrel_typename, fuelbarrel_typename, repairbox_typename, basic_weapon_typename];
 			[_vehicle2, _boxclass] call attach_object_direct;
 		};
-		_ressources = _vehicle2 getVariable ["GRLIB_ammo_truck_load", []];
+		_ressources = _vehicle2 getVariable ["GRLIB_ammo_vehicle_load", []];
 
 		// wait
 		(driver _vehicle2) doMove (_convoy_destinations select 1);

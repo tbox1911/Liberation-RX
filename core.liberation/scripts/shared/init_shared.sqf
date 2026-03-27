@@ -2,6 +2,7 @@
 manage_one_static = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_static.sqf";
 
 // Attach objects
+attach_lrx_objects = compileFinal preprocessFileLineNumbers "scripts\shared\attach_lrx_objects.sqf";
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\shared\attach_object_direct.sqf";
 
 // Event Handlers

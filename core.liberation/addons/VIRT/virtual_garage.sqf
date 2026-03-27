@@ -117,7 +117,7 @@ while { dialog && alive player } do {
 					if (typeOf _x == playerbox_typename) then {
 						player setVariable ["GRLIB_player_box_content", ([_x, true] call F_getCargo), true];
 					};
-				} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+				} forEach (_vehicle getVariable ["GRLIB_ammo_vehicle_load", []]);
 				GRLIB_virtual_garage append [[typeOf _vehicle,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_lrx]];
 				[_vehicle, true, true] call F_vehicleClean;
 				player setVariable ["GRLIB_virtual_garage", GRLIB_virtual_garage, true];

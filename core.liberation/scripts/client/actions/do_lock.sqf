@@ -15,7 +15,7 @@ if (local _vehicle) then {
 	if !(_x getVariable ["GRLIB_vehicle_owner", ""] in ["public", "server"]) then {
 		_x setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
 	};
-} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]) + (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]) + (_vehicle getVariable ["GRLIB_ammo_vehicle_load", []]);
 
 if (typeOf _vehicle in uavs_vehicles) then {
 	player disableUAVConnectability [_vehicle, true];

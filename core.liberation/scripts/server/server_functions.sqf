@@ -12,7 +12,8 @@ cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cle
 // Load Objects
 //attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
-save_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_object_direct.sqf";
+save_r3f_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_r3f_object_direct.sqf";
+save_lrx_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_lrx_object_direct.sqf";
 init_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\init_object_direct.sqf";
 
 // AI
