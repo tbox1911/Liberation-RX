@@ -1,3 +1,5 @@
+waitUntil {sleep 1; !isNil "opfor_sectors"};
+
 private [ "_marker", "_nextgroup", "_leader", "_sector", "_sideMission", "_permMission", "_nearRadioTower" ];
 if (GRLIB_fancy_info == 0) exitWith {};
 
