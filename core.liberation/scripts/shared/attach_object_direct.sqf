@@ -76,9 +76,7 @@ if (_object_class in static_vehicles_AI) then {
 _object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
 _object attachTo [_vehicle, _vehicle_offset];
-if (_object isKindOf "Cargo_base_F") then {
-	_object setDir 270;
-};
+if (_object isKindOf "Cargo_base_F") then { _object setDir 270 };
 _object setVariable ["R3F_LOG_disabled", true, true];
 _vehicle_load pushback _object;
 _vehicle setVariable ["GRLIB_ammo_vehicle_load", _vehicle_load, true];

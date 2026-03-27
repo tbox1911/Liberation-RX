@@ -58,6 +58,7 @@ sleep 1;
 	_object = _x select 0;
 	_offset = _x select 1;
 	_object attachTo [_vehicle, _offset];
+	if (_object isKindOf "Cargo_base_F") then { _object setDir 270 };
 	_object hideObjectGlobal false;
 	_object enableSimulationGlobal true;
 } forEach _lst_lrx;
