@@ -24,3 +24,16 @@ box_transport_config = box_transport_config + [
 box_transport_offset = box_transport_offset + [
     // use default config
 ];
+
+// Additional offset per big object
+box_transport_big_offset = box_transport_big_offset + [
+	["B_AAA_System_01_F", [0, 1, 1.7]],
+	["O_LSV_02_unarmed_F", [0, 1.5, 1.8]],
+	["O_LSV_02_armed_F", [0, 1.5, 1.8]],
+	["O_MRAP_02_F", [0, 1.5, 1.8]],
+	["O_MRAP_02_hmg_F", [0, 1.5, 1.8]],
+	["O_MRAP_02_gmg_F", [0, 1.5, 1.8]],
+	["O_APC_Tracked_02_cannon_F",[0, 0.5, 2]],
+	["O_APC_Tracked_02_AA_F", [0, 0.5, 2]],
+	["O_UAV_02_dynamicLoadout_F", [0, 0.1, 0.8]]
+];

@@ -20,7 +20,7 @@ box_transport_config = box_transport_config + [
 	["B_T_VTOL_01_infantry_F", -7.5,[0,4.7,-4.88], [0,3,-4.88], [0,1.3,-4.88], [0,-0.4,-4.88], [0,-2.1,-4.88]],
 	["B_T_VTOL_01_vehicle_F", -7.5,[0,4.7,-4.88], [0,3,-4.88], [0,1.3,-4.88], [0,-0.4,-4.88], [0,-2.1,-4.88]],
 	["I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0]],
-	["I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0]]    
+	["I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0]]
 ];
 
 // Additional offset per object
@@ -32,12 +32,19 @@ box_transport_offset = box_transport_offset + [
 
 // Flatbed transport for big objects
 box_transport_big_config = box_transport_big_config + [
-// 	["B_Truck_01_flatbed_F", -6.5, [0, -0.4, 0.05], [0, -2.1, 0.05], [0, -3.8, 0.05]],	
-	["B_Truck_01_flatbed_F", -6.5, [0, -0.4, 0.4]],
-	["B_T_Truck_01_flatbed_F", -6.5, [0, -0.4, 0.4]]
+	// Truck_01_flatbed already defined
 ];
 
 // Additional offset per big object
 box_transport_big_offset = box_transport_big_offset + [
-	["B_MRAP_01_F", [0, 0, 0]]
+	["B_AAA_System_01_F", [0, 1, 1.7]],
+	["B_LSV_01_unarmed_F", [0, 1.5, 1.8]],
+	["B_LSV_01_armed_F", [0, 1.5, 1.8]],
+	["B_MRAP_01_F", [0, 1.5, 1.8]],
+	["B_MRAP_01_hmg_F", [0, 1.5, 1.8]],
+	["B_MRAP_01_gmg_F", [0, 1.5, 1.8]],
+	["B_APC_Tracked_01_rcws_F",[0, 0.5, 2]],
+	["B_APC_Tracked_01_AA_F", [0, 0.5, 2]],
+	["B_UAV_02_dynamicLoadout_F", [0, 0.1, 0.8]],
+	["B_Heli_Light_01_F", [0, 0.5, 1]]
 ];

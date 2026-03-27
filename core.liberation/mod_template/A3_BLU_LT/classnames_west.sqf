@@ -84,6 +84,7 @@ light_vehicles = [
 	//["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
 	["B_Truck_01_transport_F",5,30,15,GRLIB_perm_log],
 	["B_Truck_01_covered_F",5,30,15,GRLIB_perm_tank],
+	["B_Truck_01_flatbed_F",5,30,15,GRLIB_perm_tank],
 	["I_Truck_02_transport_F",5,30,15,GRLIB_perm_log],
 	["I_Truck_02_covered_F",5,30,15,GRLIB_perm_tank]
 ];

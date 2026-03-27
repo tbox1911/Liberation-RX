@@ -141,6 +141,8 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["Tank_F", 50],
 	["B_Truck_01_flatbed_F", 15],
 	["B_T_Truck_01_flatbed_F", 15],
+	["O_Truck_03_transport_F", 15],
+	["O_T_Truck_03_transport_ghex_F", 15],
 	["Truck_F", 100],
 	["Hatchback_01_base_F", 7],
 	["SUV_01_base_F", 7],

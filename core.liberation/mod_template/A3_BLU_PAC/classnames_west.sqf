@@ -79,6 +79,7 @@ light_vehicles = [
 	["B_T_MRAP_01_gmg_F",5,125,12,GRLIB_perm_log],
 	["B_T_Truck_01_transport_F",5,30,15,GRLIB_perm_log],
 	["B_T_Truck_01_covered_F",5,30,15,GRLIB_perm_tank],
+	["B_T_Truck_01_flatbed_F",5,30,15,GRLIB_perm_tank],
 	["B_T_LSV_01_unarmed_F",2,25,10,GRLIB_perm_inf],
 	["B_T_LSV_01_armed_F",5,100,10,GRLIB_perm_log],
 	["B_T_LSV_01_AT_F",5,125,10,GRLIB_perm_log],

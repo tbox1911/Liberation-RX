@@ -29,7 +29,7 @@ box_transport_offset = box_transport_offset + [
 	["Box_NATO_Support_F", [0, 0, -0.6]],
 	["Box_NATO_WpsSpecial_F", [0, 0, -0.6]],
 	["Box_NATO_WpsLaunch_F", [0, 0, -0.6]],
-	["Box_East_Wps_F", [0, 0, -0.6]],	
+	["Box_East_Wps_F", [0, 0, -0.6]],
 	["Box_NATO_AmmoVeh_F", [0, 0, 0]],
 	["Box_East_AmmoVeh_F", [0, 0, 0]],
 	["Box_IND_AmmoVeh_F", [0, 0, 0]],
@@ -42,25 +42,24 @@ box_transport_offset = box_transport_offset + [
 
 // Flatbed transport for big objects
 box_transport_big_config = box_transport_big_config + [
-	["B_Truck_01_flatbed_F", -6.8, [0, -1.9, 0]],
-	["B_T_Truck_01_flatbed_F", -6.8, [0, -1.9, 0]]
+	["B_Truck_01_flatbed_F", -8, [0, -1.9, 0]],
+	["B_T_Truck_01_flatbed_F", -8, [0, -1.9, 0]],
+	["O_Truck_03_transport_F", -9, [0, -2.8, 0.3]],
+	["O_T_Truck_03_transport_ghex_F", -9, [0, -2.8, 0.3]]	
 ];
 
 // Additional offset per big object
 box_transport_big_offset = box_transport_big_offset + [
+	//["C_Heli_Light_01_F", [0, 0.5, 1]],
 	["B_Slingload_01_Cargo_F", [0, 0, 0.5]],
 	["B_Slingload_01_Repair_F", [0, 0, 0.5]],
 	["B_Slingload_01_Fuel_F", [0, 0, 0.5]],
 	["B_Slingload_01_Ammo_F", [0, 0, 0.5]],
 	["B_Slingload_01_Medevac_F", [0, 0, 0.5]],
-	["Land_Pod_Heli_Transport_04_ammo_F", [0, 0, 0.5]],
-	["Land_Pod_Heli_Transport_04_ammo_black_F", [0, 0, 0.5]],
-	["Land_Pod_Heli_Transport_04_box_F", [0, 0, 0.5]],
-	["Land_Pod_Heli_Transport_04_box_black_F", [0, 0, 0.5]],
-	["Land_Pod_Heli_Transport_04_fuel_F", [0, 0, 0.5]],
-	["Land_Pod_Heli_Transport_04_fuel_black_F", [0, 0, 0.5]],
-	["Land_Pod_Heli_Transport_04_repair_F", [0, 0, 0.5]],
-	["Land_Pod_Heli_Transport_04_repair_black_F", [0, 0, 0.5]],
+	["Land_Pod_Heli_Transport_04_ammo_F", [0, -0.5, 0.4]],
+	["Land_Pod_Heli_Transport_04_box_F", [0, -0.5, 0.4]],
+	["Land_Pod_Heli_Transport_04_fuel_F", [0, -0.5, 0.4]],
+	["Land_Pod_Heli_Transport_04_repair_F", [0, -0.5, 0.4]],
 	["Land_Cargo20_grey_F", [0, 0, 0.5]]
 ];
 
