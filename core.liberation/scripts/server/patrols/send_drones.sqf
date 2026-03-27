@@ -4,6 +4,7 @@ if (_count == 0) exitWith {};
 if (combat_readiness <= 50) exitWith {};
 if (count uavs_vehicles == 0) exitWith {};
 
+sleep 5;
 private _uav_light = "O_UAV_01_F";
 private _uav_bomb = "O_UAV_06_F";
 if (GRLIB_side_enemy == WEST) then {
@@ -52,15 +53,13 @@ _grp setSpeedMode "FULL";
 
 diag_log format ["--- LRX Enemy Drones - type: %1 target: %2", _uav_role, _targetpos];
 _count = _count - 1;
-if (_count >= 1) then {
-	sleep 5;
-	[_targetpos, _count] spawn send_drones;
-};
-sleep 20;
+if (_count >= 1) then { [_targetpos, _count] spawn send_drones };
 
 // UAV logic
 private ["_target"];
 while {alive _vehicle} do {
+	sleep 20;
+
 	// kamikaze + bomb
 	if (_uav_role == 0) then {
 		_target = [_targetpos, 300] call F_getNearestBlufor;
@@ -125,8 +124,6 @@ while {alive _vehicle} do {
 			sleep 60;
 		};
 	};
-
-	sleep 1;
 };
 
 

@@ -25,6 +25,8 @@ if (_nearest_sector != "") then {
     _waypoint setWaypointCompletionRadius 100;
     _waypoint setWaypointStatements ["true", "deleteVehicle this"];
     (units _grp) doFollow leader _grp;
+    sleep 300;
+    deleteVehicle _unit;
 } else {
     deleteVehicle _unit;
 };
