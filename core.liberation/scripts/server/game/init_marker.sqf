@@ -19,7 +19,7 @@ private ["_vehicle", "_spawn_pos"];
 		_vehicle enableSimulationGlobal true; // enable to keep facility
 		GRLIB_Marker_REP pushBack (getPosATL _vehicle);
 	} else {
-		diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
+		diag_log format ["--- LRX Repair Marker Error: No place to build %1 at sector %2", repair_offroad, _x];
 	};
 	sleep 0.2;
 } forEach sectors_factory;
@@ -49,52 +49,54 @@ private ["_man", "_manPos"];
 private ["_shop", "_desk_dir", "_desk_pos", "_desk", "_man", "_offset", "_str"];
 private _getRatio = { parseNumber(0.70 min (0.45 + random 0.25) toFixed 2) };
 {
-	_shop = nearestObjects [_x, ["House"], 10] select 0;
-	if (isNil "_shop") then { diag_log format ["--- LRX Error: no building found at pos %1", _x]; _shop = objNull };
+	_shop = nearestObjects [_x, ["House"], 15] select 0;
+	if (isNil "_shop") then {
+		diag_log format ["--- LRX Shop Marker Error: no building found at pos %1", _x];
+	} else {
+		// Specific position
+		_desk_dir = getDir _shop;
+		_offset = [-0.7, 1, 0.25];      // Default shop_01_v1_f
+		_str = toLower str _shop;
+		if (_str find "warehouse_03" > 0) then { _offset = [-2, 0, 0] };             // Tanoa
+		if (_str find "metalshelter_02" > 0) then { _desk_dir = (180 + _desk_dir); _offset = [2, 0, 0] };  // Tanoa
+		if (_str find "villagestore" > 0) then { _offset = [4, 2, 0.70] };           // Enoch
+		if (_str find "ind_workshop01_02" > 0) then { _offset = [0, 2, 0] };         // Chernarus
+		if (_str find "house_c_4_ep1" > 0) then { _offset = [1, 0, 0.60] };          // Isladuala
+		if (_str find "sara_domek_sedy" > 0) then { _offset = [2.5, 1.8, 0.6] };     // Sarahni
+		if (_str find "dum_istan3_hromada" > 0) then { _desk_dir = (90 + _desk_dir); _offset = [2.6, -0.6, -0.1] };  // Sarahni
+		if (_str find "house_c_1_v2_ep1" > 0) then { _offset = [5.5, 1, 0.10] };     // Takistan
+		if (_str find "vn_shop_town_03" > 0) then { _offset = [1.5, -1, 0.10] };     // Cam Lao
+		if (_str find "house_big_02" > 0) then { _desk_dir = (180 + _desk_dir); _offset = [-0.7, -2, 0.25] };
+		if (_str find "workshop_02_grey" > 0) then { _desk_dir = (180 + _desk_dir); _offset = [0, 0, 0] };		// Yukalia
+		if (_str find "shop_town_01_f" > 0) then { _desk_dir = (270 + _desk_dir); _offset = [-0.7, 3, 0] };		// Yukalia
+		if (_str find "spe_corner_house_02" > 0) then { _desk_dir = (270 +_desk_dir); _offset = [4.5, 5, 0.3] };	// SPE
+		if (_str find "spe_shop_02" > 0) then { _desk_dir = (180 +_desk_dir); _offset =  [-1.7, -0.5, 0.7] };		// SPE
 
-	// Specific position
-	_desk_dir = getDir _shop;
-	_offset = [-0.7, 1, 0.25];      // Default shop_01_v1_f
-	_str = toLower str _shop;
-	if (_str find "warehouse_03" > 0) then { _offset = [-2, 0, 0] };             // Tanoa
-	if (_str find "metalshelter_02" > 0) then { _desk_dir = (180 + _desk_dir); _offset = [2, 0, 0] };  // Tanoa
-	if (_str find "villagestore" > 0) then { _offset = [4, 2, 0.70] };           // Enoch
-	if (_str find "ind_workshop01_02" > 0) then { _offset = [0, 2, 0] };         // Chernarus
-	if (_str find "house_c_4_ep1" > 0) then { _offset = [1, 0, 0.60] };          // Isladuala
-	if (_str find "sara_domek_sedy" > 0) then { _offset = [2.5, 1.8, 0.6] };     // Sarahni
-	if (_str find "dum_istan3_hromada" > 0) then { _desk_dir = (90 + _desk_dir); _offset = [2.6, -0.6, -0.1] };  // Sarahni
-	if (_str find "house_c_1_v2_ep1" > 0) then { _offset = [5.5, 1, 0.10] };     // Takistan
-	if (_str find "vn_shop_town_03" > 0) then { _offset = [1.5, -1, 0.10] };     // Cam Lao
-	if (_str find "house_big_02" > 0) then { _desk_dir = (180 + _desk_dir); _offset = [-0.7, -2, 0.25] };
-	if (_str find "workshop_02_grey" > 0) then { _desk_dir = (180 + _desk_dir); _offset = [0, 0, 0] };		// Yukalia
-	if (_str find "shop_town_01_f" > 0) then { _desk_dir = (270 + _desk_dir); _offset = [-0.7, 3, 0] };		// Yukalia
-	if (_str find "spe_corner_house_02" > 0) then { _desk_dir = (270 +_desk_dir); _offset = [4.5, 5, 0.3] };	// SPE
-	if (_str find "spe_shop_02" > 0) then { _desk_dir = (180 +_desk_dir); _offset =  [-1.7, -0.5, 0.7] };		// SPE
+		// Create Desk
+		_desk_pos = (getposASL _shop) vectorAdd ([_offset, -_desk_dir] call BIS_fnc_rotateVector2D);
+		_desk = createVehicle ["Land_CashDesk_F", ([] call F_getFreePos), [], 0, "CAN_COLLIDE"];
+		_desk allowDamage false;
+		_desk enableSimulationGlobal false;
+		_desk setDir _desk_dir;
+		_desk setPosASL _desk_pos;
+		_desk setVariable ["R3F_LOG_disabled", true, true];
 
-	// Create Desk
-	_desk_pos = (getposASL _shop) vectorAdd ([_offset, -_desk_dir] call BIS_fnc_rotateVector2D);
-	_desk = createVehicle ["Land_CashDesk_F", ([] call F_getFreePos), [], 0, "CAN_COLLIDE"];
-	_desk allowDamage false;
-	_desk enableSimulationGlobal false;
-	_desk setDir _desk_dir;
-	_desk setPosASL _desk_pos;
-	_desk setVariable ["R3F_LOG_disabled", true, true];
-
-	// Create Man
-	_desk_dir = (180 + _desk_dir);
-	_manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_desk_dir] call BIS_fnc_rotateVector2D);
-	_man = createAgent [SHOP_Man, zeropos, [], 5, "CAN_COLLIDE"];
-	_man setCaptive true;
-	_man setVariable ["GRLIB_SHOP_group", true, true];
-	_man setVariable ["SHOP_ratio", ([] call _getRatio), true];
-	_man allowDamage false;
-	_man disableCollisionWith _desk;
-	_man setDir _desk_dir;
-	_man setPosATL _manPos;
-	doStop _man;
-	[_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
-	//_man enableSimulationGlobal false; // disabled to keep animation
-	sleep 0.2;
+		// Create Man
+		_desk_dir = (180 + _desk_dir);
+		_manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_desk_dir] call BIS_fnc_rotateVector2D);
+		_man = createAgent [SHOP_Man, zeropos, [], 5, "CAN_COLLIDE"];
+		_man setCaptive true;
+		_man setVariable ["GRLIB_SHOP_group", true, true];
+		_man setVariable ["SHOP_ratio", ([] call _getRatio), true];
+		_man allowDamage false;
+		_man disableCollisionWith _desk;
+		_man setDir _desk_dir;
+		_man setPosATL _manPos;
+		doStop _man;
+		[_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
+		//_man enableSimulationGlobal false; // disabled to keep animation
+		sleep 0.2;
+	};
 } forEach GRLIB_Marker_SHOP;
 
 // LRX Auto Name Sector
@@ -127,7 +129,7 @@ private _getRatio = { parseNumber(0.70 min (0.45 + random 0.25) toFixed 2) };
 // Base markers color
 if (GRLIB_fob_type == 0) then {
 	"huronmarker" setMarkerTextLocal "Huron";
-	"huronmarker" setMarkerColor GRLIB_color_friendly;	
+	"huronmarker" setMarkerColor GRLIB_color_friendly;
 } else {
 	deleteMarkerLocal "huronmarker";
 };
