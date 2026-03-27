@@ -15,7 +15,7 @@ if (count _eject_list == 0) exitWith {};
 	if (local _x) then {
 		[_x, false] spawn F_ejectUnit;
 	} else {
-		[_x, false] remoteExec ["F_ejectUnit", 2];
+		[_x, false] remoteExec ["eject_unit_remote_call", 2];
 	};
 	sleep 0.2;
 } forEach _eject_list;
