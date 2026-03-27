@@ -36,8 +36,16 @@ box_transport_offset = box_transport_offset + [
 	["Land_BarrelWater_F", [0, 0, -0.4]],
 	["Land_MetalBarrel_F", [0, 0, -0.4]],
 	["Land_MetalCase_01_large_F", [0, 0, -0.45]],
-	["Land_ToolTrolley_02_F", [0, 0, -0.4]],
-	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.4]]
+	["Land_ToolTrolley_02_F", [0, 0, -0.35]], 
+	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.4]],
+	["B_HMG_01_high_F", [0, -0.2, 0.85]], 
+	["B_GMG_01_high_F", [0, -0.2, 0.85]], 
+	["B_static_AA_F", [0, -0.4, 0.2]], 
+	["B_static_AT_F", [0, -0.4, 0.2]],
+	["O_HMG_01_high_F", [0, -0.2, 0.85]], 
+	["O_GMG_01_high_F", [0, -0.2, 0.85]], 
+	["O_static_AA_F", [0, -0.4, 0.2]], 
+	["O_static_AT_F", [0, -0.4, 0.2]]
 ];
 
 // Flatbed transport for big objects
