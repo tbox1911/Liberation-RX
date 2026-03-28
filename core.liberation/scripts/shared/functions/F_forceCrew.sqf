@@ -8,9 +8,6 @@ params [
 if (count crew _vehicle > 0) exitWith { grpNull };
 
 private _vehicle_class = typeOf _vehicle;
-_vehicle allowCrewInImmobile [true, false];
-_vehicle setUnloadInCombat [true, false];
-
 private _grp =_side createVehicleCrew _vehicle;
 sleep 0.1;
 if (count (units _grp) == 0) exitWith { diag_log format ["--- LRX can't create crew for vehicle %1", _vehicle_class]; grpNull };
@@ -64,9 +61,13 @@ if (_side == GRLIB_side_civilian) then {
 	_grp setCombatMode "BLUE";
 	_grp setBehaviourStrong "CARELESS";
 } else {
-	_grp setCombatMode "WHITE";
+	_grp setCombatMode "YELLOW";
 	_grp setBehaviourStrong "AWARE";
 };
+
+_vehicle allowCrewInImmobile [true, false];
+_vehicle setUnloadInCombat [true, false];
+_vehicle setAutonomous true;
 
 sleep 1;
 { _x allowDamage true } forEach (units _grp);

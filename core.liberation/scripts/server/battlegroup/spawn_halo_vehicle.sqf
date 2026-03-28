@@ -11,8 +11,6 @@ _pos set [2, 600];
 private _vehicle = createVehicle [selectRandom (_vehicle_light + _vehicle_apc), _pos, [], 0, "NONE"];
 _vehicle setPos _pos;
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-_vehicle allowCrewInImmobile [true, false];
-_vehicle setUnloadInCombat [true, false];
 
 [_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;

@@ -67,7 +67,4 @@ if (_classname in static_vehicles_AI) exitWith {
 	[_object] call F_forceCrew;
 	_object setVariable ["GRLIB_vehicle_manned", true, true];
 	_object setVehicleLock "LOCKED";
-	_object allowCrewInImmobile [true, false];
-	_object setUnloadInCombat [true, false];
-	_object setAutonomous true;
 };
