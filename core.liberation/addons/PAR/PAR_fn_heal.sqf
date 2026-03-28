@@ -28,9 +28,10 @@ if (isNull objectParent _unit && !([_unit] call PAR_is_wounded)) then {
 			if (count _wnded_list > 0) then {
 				private _wnded = (_wnded_list select 0);
 				_unit doMove (getPosATL _wnded);
-				sleep 10;
+				private _timer = time + 10;
+				waitUntil { sleep 1; (time > _timer || (_unit distance2D _wnded <= 3))};
 				if ([_unit] call PAR_is_wounded) exitWith {};
-				if (_unit distance2D _wnded <= 6) then {
+				if (_unit distance2D _wnded <= 3) then {
 					if ([_wnded] call PAR_is_wounded) exitWith {};
 					_wnded setVariable ["PAR_healing", _unit];
 					_unit setDir (_unit getDir _wnded);
@@ -41,6 +42,7 @@ if (isNull objectParent _unit && !([_unit] call PAR_is_wounded)) then {
 					if (_unit distance2D _wnded > 6 || ([_wnded] call PAR_is_wounded) || ([_unit] call PAR_is_wounded)) exitWith {};
 					_wnded setDamage 0;
 				};
+				_unit doFollow (leader group _unit);
 			};
 		};
 	};
