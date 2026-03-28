@@ -32,48 +32,15 @@ private _vehicle_offset = (_offsets select (count _vehicle_load)) vectorAdd _box
 if (_create) then {
 	_spawn_pos = [(markerPos "ghost_spot"), 5, 0] call F_findSafePlace;
 	_object = createVehicle [_object_class, _spawn_pos, [], 0, "NONE"];
+	if (GRLIB_ACE_enabled) then {
+		[_object] call F_aceInitVehicle;
+		[_object, _vehicle, true] call ace_cargo_fnc_loadItem;
+	};
+	[_object, _vehicle] call init_object_direct;
 	if (_object isKindOf "LandVehicle") then { sleep 1.5 };
 };
 _object allowDamage false;
 [_object, _vehicle] remoteExec ["disableCollisionWith", 0];
-
-// Mobile respawn
-if (_object_class == mobile_respawn) then {
-	if (isServer) then {
-		[_object, "add"] call mobile_respawn_remote_call;
-	} else {
-		[_object, "add"] remoteExec ["mobile_respawn_remote_call", 2];
-	};
-};
-
-// Owner
-private _vehicle_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
-if (!(_object_class in GRLIB_vehicle_blacklist) && !(_vehicle_owner in ["", "public", "server"])) then {
-	_object setVariable ["GRLIB_vehicle_owner", _vehicle_owner, true];
-};
-
-// Storage
-if (typeOf _vehicle == storage_medium_typename) then {
-	_object setVariable ["GRLIB_vehicle_owner", "", true];
-};
-
-// Clear Cargo
-if (!(_object_class in GRLIB_Ammobox_keep)) then {
-	[_object] call F_clearCargo;
-};
-
-// Static AI
-if (_object_class in static_vehicles_AI) then {
-	[_object] call F_forceCrew;
-	_object setVariable ["GRLIB_vehicle_manned", true, true];
-	_object setVehicleLock "LOCKED";
-	_object allowCrewInImmobile [true, false];
-	_object setUnloadInCombat [true, false];
-	_object setAutonomous true;
-};
-
-// MPKilled
-_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
 _object attachTo [_vehicle, _vehicle_offset];
 if (_object isKindOf "Cargo_base_F") then { _object setDir 270 };

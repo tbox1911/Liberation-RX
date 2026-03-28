@@ -12,12 +12,12 @@ switch _classname do {
     };
     case mobile_respawn: {
         build_radius = 1.5;
-        _dist = 1;
+        _dist = 2;
     };
     case playerbox_typename: {
         build_rotation = 90;
         build_radius = 1.5;
-        _dist = 1;
+        _dist = 2;
     };
     case "Land_Cargo_Patrol_V1_F": {
         build_rotation = 270;

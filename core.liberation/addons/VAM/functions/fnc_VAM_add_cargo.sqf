@@ -19,8 +19,8 @@ if (_item in VAM_cargo_class_names) then {
 			if (_near_outpost) then { _cost = round (_cost * 1.5) };
 			if !([_cost] call F_pay) exitWith { _msg = "" };
 			private _object = createVehicle [_item, ([] call F_getFreePos), [], 0, "NONE"];
-			_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_object] call F_aceInitVehicle;
+			[_object, _vehicle] call init_object_direct;
 			[_object, _vehicle, true] call ace_cargo_fnc_loadItem;
 			_msg = format ["%1 added to Cargo.", ([_item] call F_getLRXName) ];
 		};

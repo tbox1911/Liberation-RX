@@ -10,7 +10,6 @@ cleanup_uid = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanu
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
 
 // Load Objects
-//attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
 save_r3f_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_r3f_object_direct.sqf";
 save_lrx_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_lrx_object_direct.sqf";

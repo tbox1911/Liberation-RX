@@ -35,48 +35,19 @@ _vehicle hideobjectglobal true;
 _vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 _vehicle setPosATL _veh_pos;
 
-// Killed EH
-_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-
 // ACE Support
-[_vehicle] call F_aceInitVehicle;
-
-// Vehicle owner
-if (_owner != "") then {
-	if !([_vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass) then {
-		_vehicle setVariable ["GRLIB_vehicle_owner", _owner, true];
-		_vehicle allowCrewInImmobile [true, false];
-		_vehicle setUnloadInCombat [true, false];
-	};
+if (GRLIB_ACE_enabled) then {
+	[_vehicle] call F_aceInitVehicle;
 };
+
+// LRX Init
+[_vehicle, _player] call init_object_direct;
+
 
 // Crewed vehicle
 if (_manned) then {
 	[_vehicle] call F_forceCrew;
 	_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-};
-
-// UAVs box
-if (_classname == box_uavs_typename) then {
-	_vehicle setMaxLoad 0;
-	private _loaded_uavs = [];
-	for "_n" from 1 to box_uavs_max do { _loaded_uavs pushBack uavs_light };
-	[_vehicle, _loaded_uavs] call load_object_direct;
-};
-
-// Ammo Box clean inventory
-if !(_classname in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {
-	[_vehicle] call F_clearCargo;
-};
-
-// AI Static Weapon
-if (_classname in static_vehicles_AI) then {
-	[_vehicle] call F_forceCrew;
-	_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-	_vehicle setVehicleLock "LOCKED";
-	_vehicle allowCrewInImmobile [true, false];
-	_vehicle setUnloadInCombat [true, false];
-	_vehicle setAutonomous true;
 };
 
 // Vehicles
@@ -90,26 +61,11 @@ if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname
 	};
 };
 
-// Automatic ReAmmo
-if (_classname in vehicle_rearm_sources) then {
-	_vehicle setAmmoCargo 0;
-};
-
-// Mobile respawn
-if (_classname in respawn_vehicles) then {
-	[_vehicle, "add"] call mobile_respawn_remote_call;
-};
-
 // Personal Box
 if (_classname == playerbox_typename) then {
 	_vehicle setMaxLoad playerbox_cargospace;
 	[_vehicle] call F_clearCargo;
 	_allow_damage = false;
-};
-
-// Arsenalbox
-if (_classname == Arsenal_typename) then {
-	_vehicle setMaxLoad 0;
 };
 
 // Ammobox (add Charge)
@@ -142,7 +98,7 @@ if (_classname == storage_medium_typename) then {
 };
 
 // Medical Tent
-if (_classname == medic_heal_typename && _classname isKindOf "Land_MedicalTent_01_base_F") then {	
+if (_classname == medic_heal_typename && _classname isKindOf "Land_MedicalTent_01_base_F") then {
 	private _med_floor_class = selectRandom ["Land_MedicalTent_01_floor_light_F", "Land_MedicalTent_01_floor_dark_F"];
 	private _med_floor = createVehicle [_med_floor_class, _veh_pos, [], 0, "CAN_COLLIDE"];
 	_med_floor setVectorDirAndUp [_veh_dir, _veh_vup];

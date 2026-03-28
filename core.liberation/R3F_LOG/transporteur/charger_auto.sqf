@@ -25,7 +25,7 @@ waitUntil
 	};
 };
 
-private ["_transporteur", "_liste_a_charger", "_chargement", "_chargement_actuel", "_chargement_maxi", "_objets_charges", "_vehicle_owner", "_cout_chargement_objet"];
+private ["_transporteur", "_liste_a_charger", "_chargement", "_chargement_actuel", "_chargement_maxi", "_objets_charges", "_cout_chargement_objet"];
 private ["_objet_ou_classe", "_quantite", "_objet", "_classe", "_bbox", "_bbox_dim", "_pos_degagee", "_fonctionnalites", "_i"];
 
 _transporteur = _this select 0;
@@ -35,7 +35,6 @@ _chargement = [_transporteur] call R3F_calculer_chargement_vehicule;
 _chargement_actuel = _chargement select 0;
 _chargement_maxi = _chargement select 1;
 _objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
-_vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 
 // Pour chaque �l�ment de la liste � charger
 {
@@ -90,8 +89,6 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 				} else {
 					_objet = _classe createVehicle _pos_degagee;
 				};
-
-				_objet addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 				[_objet, _transporteur] call init_object_direct;
 			} else {
 				_objet = _objet_ou_classe;

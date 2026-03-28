@@ -10,7 +10,6 @@ _vehicle lock 0;
 if (GRLIB_ACE_enabled) then {
 	{
 		_object = createVehicle [_x, ([] call F_getFreePos), [], 0, "NONE"];
-		_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		[_object] call F_aceInitVehicle;
 		[_object, _vehicle] call init_object_direct;
 		[_object, _vehicle, true] call ace_cargo_fnc_loadItem;
