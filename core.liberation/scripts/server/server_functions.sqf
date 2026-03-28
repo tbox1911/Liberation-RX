@@ -13,7 +13,6 @@ cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cle
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
 save_r3f_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_r3f_object_direct.sqf";
 save_lrx_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_lrx_object_direct.sqf";
-init_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\init_object_direct.sqf";
 
 // AI
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";

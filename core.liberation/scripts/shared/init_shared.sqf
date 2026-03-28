@@ -4,6 +4,7 @@ manage_one_static = compileFinal preprocessFileLineNumbers "scripts\server\secto
 // Attach objects
 attach_lrx_objects = compileFinal preprocessFileLineNumbers "scripts\shared\attach_lrx_objects.sqf";
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\shared\attach_object_direct.sqf";
+init_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\init_object_direct.sqf";
 
 // Event Handlers
 damage_manager_civilian = compileFinal preprocessFileLineNumbers "scripts\shared\events\damage_manager_civilian.sqf";
