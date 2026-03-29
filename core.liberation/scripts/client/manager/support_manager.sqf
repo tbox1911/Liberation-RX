@@ -119,7 +119,7 @@ while {true} do {
 					} else {
 						_unit switchMove 'WeaponMagazineReloadStand';
 						_unit playMoveNow 'WeaponMagazineReloadStand';
-						sleep 4;
+						sleep 5;
 					};
 				};
 				if (_needmedic) then {

@@ -1,6 +1,17 @@
+speak_end = {
+	params ["_unit"];
+	sleep 3;
+	if (_unit isKindOf "CAManBase") then {
+		_unit doFollow (leader group _unit);
+	};
+
+	_unit setVariable ["GRLIB_speaking", nil];
+};
+
 speak_another_time = {
 	params ["_unit"];
 	_unit globalChat localize "STR_SPEAKMANAGER12";
+	[_unit] call speak_end;
 };
 
 speak_squad_AI = {
@@ -16,6 +27,7 @@ speak_squad_AI = {
 		if (_cur_revive == 0) then { _msg = localize "STR_REPLY_CRITICAL" };
 		_unit globalChat _msg;
 	};
+	[_unit] call speak_end;
 };
 
 speak_civil_AI = {
@@ -47,6 +59,7 @@ speak_civil_AI = {
 	if (_reputation <= -25) exitWith { [_unit] call speak_insult_unit };
 	_msg = selectRandom [localize "STR_SPEAKMANAGER3",localize "STR_SPEAKMANAGER4",localize "STR_SPEAKMANAGER5", "Anerríphthô kúbos ?"];
 	_unit globalChat _msg;
+	[_unit] call speak_end;
 };
 
 speak_info_unit = {
@@ -89,6 +102,7 @@ speak_info_unit = {
 	};
 	sleep 2;
 	_unit globalChat (selectRandom _goodbye);
+	[_unit] call speak_end;
 };
 
 speak_insult_unit = {
@@ -104,22 +118,26 @@ speak_insult_unit = {
 		localize "STR_INSULT_NO_TALK"
 	];
 	_unit globalChat (selectRandom _insults);
+	[_unit] call speak_end;
 };
 
 speak_repair_vehicle = {
     _unit globalChat localize "STR_DIALOG_REPAIR_HELLO";
     sleep 2;
     _unit globalChat localize "STR_DIALOG_REPAIR_WAIT";
+	[_unit] call speak_end;
 };
 
 speak_join_player = {
     _unit globalChat format [localize "STR_DIALOG_JOIN_HELLO", name _unit];
     sleep 2;
     _unit globalChat localize "STR_DIALOG_JOIN_FIGHT";
+	[_unit] call speak_end;
 };
 
 speak_repair = {
 	_unit globalChat localize "STR_DIALOG_NEED_REPAIR";
+	[_unit] call speak_end;
 };
 
 speak_player_repair = {
@@ -128,10 +146,12 @@ speak_player_repair = {
 		sleep 2;
 		[_unit] call speak_info_unit; // ← 继续对话，比如提供情报
 	};
+	[_unit] call speak_end;
 };
 
 speak_refuel = {
 	_unit globalChat localize "STR_DIALOG_NEED_FUEL";
+	[_unit] call speak_end;
 };
 
 speak_player_refuel = {
@@ -140,18 +160,21 @@ speak_player_refuel = {
 		sleep 2;
 		[_unit] call speak_info_unit;
 	};
+	[_unit] call speak_end;
 };
 
 speak_reammo_player = {
 	_unit globalChat localize "STR_DIALOG_OFFER_AMMO_1";
 	sleep 2;
 	_unit globalChat localize "STR_DIALOG_OFFER_AMMO_2";
+	[_unit] call speak_end;
 };
 
 speak_heal_player = {
 	_unit globalChat localize "STR_DIALOG_OFFER_HEAL_1";
 	sleep 2;
 	_unit globalChat localize "STR_DIALOG_OFFER_HEAL_2";
+	[_unit] call speak_end;
 };
 
 speak_heal_civ = {
@@ -167,6 +190,7 @@ speak_heal_civ = {
 	_unit globalChat localize "STR_DIALOG_THANK_YOU";
 	[player, 3] remoteExec ["F_addReput", 2];
 	_unit setDamage 0;
+	[_unit] call speak_end;
 };
 
 // Nikos
@@ -188,6 +212,7 @@ speak_mission_sdelivery1 = {
 	_unit globalChat localize "STR_SPEAKMANAGER16";
 	GRLIB_A3W_Mission_SD set [0, 1];
 	publicVariable "GRLIB_A3W_Mission_SD";
+	[_unit] call speak_end;
 };
 
 // Orestes
@@ -206,6 +231,7 @@ speak_mission_sdelivery2 = {
 	_unit globalChat localize "STR_SPEAKMANAGER22";
 	GRLIB_A3W_Mission_SD set [0, 2];
 	publicVariable "GRLIB_A3W_Mission_SD";
+	[_unit] call speak_end;
 };
 
 // Orestes
@@ -224,6 +250,7 @@ speak_mission_sdelivery3 = {
 	_unit globalChat localize "STR_SPEAKMANAGER19";
 	GRLIB_A3W_Mission_SD set [0, 3];
 	publicVariable "GRLIB_A3W_Mission_SD";
+	[_unit] call speak_end;
 };
 
 // Nikos Old
@@ -244,6 +271,7 @@ speak_mission_sdelivery4 = {
 	} else {
 		_unit globalChat localize "STR_SPEAKMANAGER24";
 	};
+	[_unit] call speak_end;
 };
 
 // Resistance
@@ -266,27 +294,32 @@ speak_mission_resistance = {
 		sleep 2;
 		_unit globalChat format [localize "STR_SPEAKMANAGER7", round (_unit distance2D _leader), round (_unit getDir _leader)];
 	};
+	[_unit] call speak_end;
 };
 
 // Delivery
 speak_mission_delivery_fuel = {
 	params ["_unit"];
 	[_unit, "Fuel", "barrels"] call speak_mission_delivery;
+	[_unit] call speak_end;
 };
 
 speak_mission_delivery_water = {
 	params ["_unit"];
 	[_unit, "Water", "barrels"] call speak_mission_delivery;
+	[_unit] call speak_end;
 };
 
 speak_mission_delivery_food = {
 	params ["_unit"];
 	[_unit, "Food", "pallets"] call speak_mission_delivery;
+	[_unit] call speak_end;
 };
 
 speak_mission_delivery_ammo = {
 	params ["_unit"];
 	[_unit, "Ammo", "small boxes"] call speak_mission_delivery;
+	[_unit] call speak_end;
 };
 
 speak_mission_delivery = {
@@ -303,6 +336,7 @@ speak_mission_delivery = {
 	sleep 3;
 	_unit switchMove "LHD_krajPaluby";
 	_unit playMoveNow "LHD_krajPaluby";
+	[_unit] call speak_end;
 };
 
 // Doctor
@@ -317,6 +351,7 @@ speak_mission_heal_doctor = {
 	_unit globalChat localize "STR_DIALOG_DOCTOR_INSTRUCT";
 	sleep 3;
 	_unit globalChat localize "STR_DIALOG_DOCTOR_HURRY";
+	[_unit] call speak_end;
 };
 
 // Wounded
@@ -328,6 +363,7 @@ speak_mission_heal_wounded = {
 	[_unit, player, 20] remoteExec ["a3w_follow_player", 2];
 	sleep 4;
 	_unit globalChat localize "STR_DIALOG_HEAL_LOOKING_DOCTOR";
+	[_unit] call speak_end;
 };
 
 // Civilian Transport
