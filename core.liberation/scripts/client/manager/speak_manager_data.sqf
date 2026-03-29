@@ -4,7 +4,6 @@ speak_end = {
 	if (_unit isKindOf "CAManBase") then {
 		_unit doFollow (leader group _unit);
 	};
-
 	_unit setVariable ["GRLIB_speaking", nil];
 };
 
@@ -32,7 +31,6 @@ speak_squad_AI = {
 
 speak_civil_AI = {
 	params ["_unit"];
-
 	if (_unit getVariable ["GRLIB_A3W_Mission_MR1", false]) exitWith {[_unit] call speak_mission_resistance};
 	if (_unit getVariable ["GRLIB_A3W_Mission_SD1", false]) exitWith {[_unit] call speak_mission_sdelivery1};
 	if (_unit getVariable ["GRLIB_A3W_Mission_SD2", false]) exitWith {[_unit] call speak_mission_sdelivery2};
@@ -122,6 +120,7 @@ speak_insult_unit = {
 };
 
 speak_repair_vehicle = {
+	params ["_unit"];	
     _unit globalChat localize "STR_DIALOG_REPAIR_HELLO";
     sleep 2;
     _unit globalChat localize "STR_DIALOG_REPAIR_WAIT";
@@ -129,6 +128,7 @@ speak_repair_vehicle = {
 };
 
 speak_join_player = {
+	params ["_unit"];	
     _unit globalChat format [localize "STR_DIALOG_JOIN_HELLO", name _unit];
     sleep 2;
     _unit globalChat localize "STR_DIALOG_JOIN_FIGHT";
@@ -136,25 +136,29 @@ speak_join_player = {
 };
 
 speak_repair = {
+	params ["_unit"];	
 	_unit globalChat localize "STR_DIALOG_NEED_REPAIR";
 	[_unit] call speak_end;
 };
 
 speak_player_repair = {
+	params ["_unit"];	
 	_unit globalChat localize "STR_DIALOG_THANK_REPAIR";
 	if (([player] call F_getReput) >= 25) then {
 		sleep 2;
-		[_unit] call speak_info_unit; // ← 继续对话，比如提供情报
+		[_unit] call speak_info_unit;
 	};
 	[_unit] call speak_end;
 };
 
 speak_refuel = {
+	params ["_unit"];	
 	_unit globalChat localize "STR_DIALOG_NEED_FUEL";
 	[_unit] call speak_end;
 };
 
 speak_player_refuel = {
+	params ["_unit"];	
 	_unit globalChat localize "STR_DIALOG_THANK_REFUEL";
 	if (([player] call F_getReput) >= 25) then {
 		sleep 2;
@@ -164,6 +168,7 @@ speak_player_refuel = {
 };
 
 speak_reammo_player = {
+	params ["_unit"];	
 	_unit globalChat localize "STR_DIALOG_OFFER_AMMO_1";
 	sleep 2;
 	_unit globalChat localize "STR_DIALOG_OFFER_AMMO_2";
@@ -171,6 +176,7 @@ speak_reammo_player = {
 };
 
 speak_heal_player = {
+	params ["_unit"];	
 	_unit globalChat localize "STR_DIALOG_OFFER_HEAL_1";
 	sleep 2;
 	_unit globalChat localize "STR_DIALOG_OFFER_HEAL_2";
