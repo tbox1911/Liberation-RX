@@ -11,7 +11,7 @@ if (([_vehicle, _blacklist_class] call F_itemIsInClass)) exitWith {};
 if (tolower (typeOf _vehicle) find "bicycle" > -1) exitWith {};
 if (count (crew _vehicle) == 0) exitWith {};
 if (count (units _grp) == 0) exitWith {};
-if (!local _vehicle) exitWith { [_vehicle, _grp] remoteExec ["civilian_ai_veh", owner _vehicle] };
+if (!local _vehicle) exitWith {};
 
 // must match speak_manger.sqf (_msg)
 #define _incd_repair 20

@@ -167,15 +167,16 @@ titleText ["", "BLACK FADED", 100];
 [] execVM "addons\WHS\warehouse_init.sqf";
 [] execVM "addons\FOB\officer_init.sqf";
 
+// LRX Arsenal
+diag_log "--- LRX: Build Arsenal Classnames ---";
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
+sleep 3;
+
 // Start intro
 diag_log "--- Client Intro start ---";
 playMusic GRLIB_music_startup;
 [] execVM "scripts\client\ui\intro.sqf";
-
-// LRX Arsenal
-diag_log "--- LRX: Build Arsenal Classnames ---";
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
 
 waitUntil {sleep 0.1; (LRX_arsenal_init_done && startgame == 1)};
 [] spawn {

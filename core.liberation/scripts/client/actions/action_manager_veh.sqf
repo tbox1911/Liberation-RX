@@ -1,4 +1,4 @@
-private	["_vehicle", "_unit"];
+private	["_vehicle", "_class", "_unit"];
 
 private _searchradius = 25;
 private _nearveh = [];
@@ -44,11 +44,14 @@ while {true} do {
 
 	{
 		_vehicle = _x;
+		_class = typeOf _vehicle;
 		GRLIB_ActionDist_5 = 5;
 		if ([_vehicle, vehicle_big_units] call F_itemIsInClass) then {
 			GRLIB_ActionDist_5 = GRLIB_ActionDist_5 * 3;
 		};
-		_vehicle addAction ["<t color='#00AA00'>" + localize "STR_MAN_MANAGER" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\actions\do_speak.sqf","",-504,false,true,"","[_target, _this] call GRLIB_checkAction_Speak", GRLIB_ActionDist_5];
+		if (_class in civilian_vehicles) then {
+			_vehicle addAction ["<t color='#00AA00'>" + localize "STR_MAN_MANAGER" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\actions\do_speak.sqf","",-504,false,true,"","[_target, _this] call GRLIB_checkAction_Speak", GRLIB_ActionDist_5];
+		};
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_UN_FLIP" + "</t> <img size='1' image='res\ui_flipveh.paa'/>","scripts\client\actions\do_unflip.sqf","",-505,false,true,"","[_target, _this] call GRLIB_checkAction_Flip", GRLIB_ActionDist_10];
 		_vehicle addAction ["<t color='#800000'>" + localize "STR_DE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_defuel.sqf","",-506,false,true,"","[_target, _this] call GRLIB_checkAction_DeFuel", GRLIB_ActionDist_5];
 		_vehicle addAction ["<t color='#009000'>" + localize "STR_RE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-506,false,true,"","[_target, _this] call GRLIB_checkAction_ReFuel", GRLIB_ActionDist_5];
@@ -59,7 +62,7 @@ while {true} do {
 			_vehicle addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_10];
 		};
 
-		if (typeOf _vehicle == FOB_truck_typename) then {
+		if (_class == FOB_truck_typename) then {
 			_unit addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
 		};
 
@@ -155,11 +158,9 @@ while {true} do {
 		};
 		if (typeOf _unit == FOB_box_typename) then {
 			_unit addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
-			_unit addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_5];
 		};
 		if (typeOf _unit == FOB_box_outpost) then {
 			_unit addAction ["<t color='#FF6F00'>" + localize "STR_OUTPOST_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
-			_unit addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_5];
 		};
 		_unit setVariable ["GRLIB_fobbox_action", true];
 	} foreach _nearfobbox;
