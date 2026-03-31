@@ -13,6 +13,15 @@ private _ticks = 0;
 while {true} do {
 	GRLIB_player_is_menuok = [] call is_menuok;
 
+	if (_ticks % 2 == 0) then {
+		GRLIB_player_near_arsenal = ([player, "ARSENAL", GRLIB_ActionDist_5] call F_check_near);
+		GRLIB_player_near_fuel = ([player, "FUEL", GRLIB_ActionDist_10, false] call F_check_near);
+		GRLIB_player_near_fuelbarrel = ([player, "REFUEL_DISP", GRLIB_ActionDist_10, false] call F_check_near);
+		GRLIB_player_near_repair = ([player, "REPAIR", GRLIB_ActionDist_10, false] call F_check_near);
+		GRLIB_player_near_repairbox = ([player, "REPAIR_BOX", GRLIB_ActionDist_5, false] call F_check_near);
+		GRLIB_player_near_repaint = ([player, "REPAINT", 30] call F_check_near);
+	};
+
 	if (_ticks % 4 == 0) then {
 		GRLIB_player_nearest_fob = ([player] call F_getNearestFob);
 		GRLIB_player_fobdistance = (player distance2D GRLIB_player_nearest_fob);

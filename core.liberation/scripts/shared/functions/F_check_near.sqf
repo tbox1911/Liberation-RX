@@ -14,6 +14,8 @@ private _classlist = [];
 private _use_fast = true;
 
 switch ( _list ) do {
+	case "FOB" : { _classlist = [FOB_typename] };
+	case "OUTPOST" : { _classlist = [FOB_outpost] };
 	case "LHD" : { _classlist = [lhd] };
 	case "SRV" : { _classlist = GRLIB_Marker_SRV };
 	case "ATM" : { _classlist = GRLIB_Marker_ATM };
@@ -24,19 +26,16 @@ switch ( _list ) do {
 	case "SPAWNT" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x == mobile_respawn} };
 	case "MEDIC" : { _classlist = ai_healing_sources };
 	case "ARSENAL" : { _classlist = [Arsenal_typename] };
-	case "REFUEL" : { _classlist = vehicle_refuel_sources; _use_fast = false };
+	case "REPAINT" : { _classlist = vehicle_repaint_sources };
 	case "REAMMO" : { _classlist = vehicle_rearm_sources };
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources };
+	case "REFUEL" : { _classlist = vehicle_refuel_sources };
+	case "REFUEL_DISP" : { _classlist = [canister_fuel_typename, fuelbarrel_typename] };
 	case "REPAIR" : { _classlist = vehicle_repair_sources };
 	case "REPAIR_BOX" : { _classlist = vehicle_repair_box; _use_fast = false };
-	case "REPAINT" : { _classlist = vehicle_repaint_sources };
 	case "WAREHOUSE" : { _classlist = [Warehouse_typename]; _use_fast = false };
-	default { _classlist = [] };
 };
 if (count _classlist == 0) exitWith { false };
-
-// Supply Always ON
-private _ignore_disabled = (_list in ["MEDIC","ARSENAL","REFUEL""REAMMO","REAMMO_AI","REPAIR","REPAIR_BOX"]);
 
 // Include FOB / Outpost
 private _ret = false;
@@ -44,8 +43,13 @@ if (_includeFOB) then {
 	_ret = ((_vehpos distance2D ([_vehpos, (_list == "OUTPOST")] call F_getNearestFob)) <= _dist);
 };
 if (_ret) exitWith { true };
-if (_list in ["FOB", "OUTPOST"]) exitWith { false };
+if (_list in ["FOB", "OUTPOST"]) exitWith { _ret };
+if (_list == "LHD") exitWith { (_vehpos distance2D lhd <= _dist) };
 
+// Supply Always ON
+private _ignore_disabled = (_list in ["MEDIC","ARSENAL","REFUEL""REAMMO","REAMMO_AI","REPAIR","REPAIR_BOX"]);
+
+diag_log format ["%1 %2", _list, "search"];
 // Search
 private _near = 0;
 if (typeName (_classlist select 0) == "STRING") then {

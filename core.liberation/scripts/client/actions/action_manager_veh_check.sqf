@@ -15,7 +15,7 @@ GRLIB_checkAction_Abandon = {
 
 GRLIB_checkAction_Paint = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && ([_target, 'REPAINT', 30] call F_check_near || GRLIB_player_near_fob) && [_unit, _target] call is_owner && locked _target < 2)
+	(GRLIB_player_is_menuok && alive _target && (GRLIB_player_near_repaint || GRLIB_player_near_fob) && [_unit, _target] call is_owner && locked _target < 2)
 };
 
 GRLIB_checkAction_Flip = {
@@ -30,15 +30,16 @@ GRLIB_checkAction_DeFuel = {
 
 GRLIB_checkAction_ReFuel = {
 	params ["_target", "_unit"];
-	private _near_fuelbarrel = (_target nearEntities [[canister_fuel_typename, fuelbarrel_typename], 15]) select { alive _x && getObjectType _x >= 8 };
-	private _near_fuel = [_target, "REFUEL", 15, false] call F_check_near;
-	(GRLIB_player_is_menuok && alive _target && fuel _target <= 0.75 && (_near_fuel || count _near_fuelbarrel > 0))
+	private _need_fuel = (fuel _target <= 0.75);
+	if (!_need_fuel) exitWith { false };
+	(GRLIB_player_is_menuok && alive _target && GRLIB_player_near_fuelbarrel)
 };
 
 GRLIB_checkAction_Repair = {
 	params ["_target", "_unit"];
-	private _near_repairbox = [_target, "REPAIR_BOX", GRLIB_ActionDist_15, false] call F_check_near;
-	(GRLIB_player_is_menuok && alive _target && ([_target] call F_vehicleNeedRepair) && _near_repairbox)
+	private _need_repair = ([_target] call F_vehicleNeedRepair);
+	if (!_need_repair) exitWith { false };
+	(GRLIB_player_is_menuok && alive _target && GRLIB_player_near_repairbox)
 };
 
 GRLIB_checkAction_Halo = {
@@ -50,7 +51,7 @@ GRLIB_checkAction_Halo = {
 
 GRLIB_checkAction_Wreck = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && !(_target getVariable ['wreck_in_use', false]) && ({alive _x} count (crew _target) == 0) && !(player getVariable ['salvage_wreck', false]))
+	(GRLIB_player_is_menuok && !(_target getVariable ["wreck_in_use", false]) && ({alive _x} count (crew _target) == 0) && !(player getVariable ["salvage_wreck", false]))
 };
 
 GRLIB_checkAction_SendArsenal = {
@@ -60,7 +61,7 @@ GRLIB_checkAction_SendArsenal = {
 
 GRLIB_checkAction_Pickup_Weapons = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && [_unit, _target] call is_owner && load _target < 0.8 && !(_target getVariable ['R3F_LOG_disabled', false]))
+	(GRLIB_player_is_menuok && alive _target && [_unit, _target] call is_owner && load _target < 0.8 && !(_target getVariable ["R3F_LOG_disabled", false]))
 };
 
 GRLIB_checkAction_UnpackInventory = {
@@ -85,10 +86,10 @@ GRLIB_checkAction_Sticky = {
 
 GRLIB_checkPackBeacon = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && [_unit, _target] call is_owner && !(_target getVariable ['tent_in_use', false]))
+	(GRLIB_player_is_menuok && [_unit, _target] call is_owner && !(_target getVariable ["tent_in_use", false]))
 };
 
 GRLIB_checkAction_LockWall = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && GRLIB_player_near_fob && PAR_Grp_ID == [GRLIB_player_nearest_fob] call F_getFobOwner && !(_target getVariable ['R3F_LOG_disabled', false]) && (typeOf _target) in all_buildings_classnames)
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && PAR_Grp_ID == [GRLIB_player_nearest_fob] call F_getFobOwner && !(_target getVariable ["R3F_LOG_disabled", false]) && (typeOf _target) in all_buildings_classnames)
 };

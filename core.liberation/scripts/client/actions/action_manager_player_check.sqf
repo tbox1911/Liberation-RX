@@ -52,9 +52,7 @@ GRLIB_checkSendFuel = {
 };
 
 GRLIB_checkBuyFuel = {
-	private _near_fuel = [player, "FUEL", GRLIB_ActionDist_10, false] call F_check_near;
-	private _near_repair = [player, "REPAIR", GRLIB_ActionDist_5, false] call F_check_near;
-	(GRLIB_player_is_menuok && (_near_fuel || _near_repair))
+	(GRLIB_player_is_menuok && (GRLIB_player_near_fuel || GRLIB_player_near_repair))
 };
 
 GRLIB_checkHeal = {
@@ -67,15 +65,13 @@ GRLIB_checkAirDrop = {
 
 GRLIB_checkArsenal = {
 	if (GRLIB_filter_arsenal == 4 || GRLIB_arsenal_open) exitWith { false };
-	private _near_arsenal = [player, "ARSENAL", GRLIB_ActionDist_5, false] call F_check_near;
-	private _mode1 = (GRLIB_enable_arsenal == 1 && (_near_arsenal || GRLIB_player_near_base));
+	private _mode1 = (GRLIB_enable_arsenal == 1 && (GRLIB_player_near_arsenal || GRLIB_player_near_base));
 	private _mode2 = (GRLIB_enable_arsenal == 2 && GRLIB_player_near_base);
 	(GRLIB_player_is_menuok && (_mode1 || _mode2))
 };
 
 GRLIB_checkArsenalPerso = {
-	private _near_arsenal = [player, "ARSENAL", GRLIB_ActionDist_5, false] call F_check_near;
-	(GRLIB_player_is_menuok && GRLIB_filter_arsenal == 4 && _near_arsenal)
+	(GRLIB_player_is_menuok && GRLIB_filter_arsenal == 4 && GRLIB_player_near_arsenal)
 };
 
 GRLIB_checkGarage = {
@@ -94,12 +90,12 @@ GRLIB_checkBuildTrench = {
 
 GRLIB_checkBuildFOB = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && count (crew _target) == 0 && !(_target getVariable ['box_in_use', false]))
+	(GRLIB_player_is_menuok && !GRLIB_player_near_lhd && count (crew _target) == 0 && !(_target getVariable ["box_in_use", false]))
 };
 
 GRLIB_checkBuildFOBWater = {
 	if (GRLIB_naval_type == 0) exitWith { false };
-	(alive player && surfaceIsWater getPos player && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (typeOf (vehicle player) == FOB_boat_typename) && driver (vehicle player) == player && round (speed vehicle player) == 0 && !((vehicle player) getVariable ["box_in_use", false]))
+	(alive player && surfaceIsWater getPos player && !GRLIB_player_near_lhd && (typeOf (vehicle player) == FOB_boat_typename) && driver (vehicle player) == player && round (speed vehicle player) == 0 && !((vehicle player) getVariable ["box_in_use", false]))
 };
 
 GRLIB_checkBuildDef = {
@@ -137,12 +133,12 @@ GRLIB_checkUpgradeOutpost = {
 
 GRLIB_checkSpeak = {
 	params ["_target"];
-	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_can_speak', false] && side group _target != GRLIB_side_enemy)
+	(GRLIB_player_is_menuok && alive _target && _target getVariable ["GRLIB_can_speak", false] && side group _target != GRLIB_side_enemy)
 };
 
 GRLIB_checkCapture = {
 	params ["_target"];
-	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_is_prisoner', false])
+	(GRLIB_player_is_menuok && alive _target && _target getVariable ["GRLIB_is_prisoner", false])
 };
 
 GRLIB_checkRemoveHelipad = {
