@@ -146,7 +146,7 @@ while {true} do {
 				private _task = [];
 
 				// REPAIR
-				_near_repair = ([_vehicle, "REPAIR", _distarsenal] call F_check_near || _near_lhd);
+				_near_repair = ([_vehicle, "REPAIR", _distarsenal] call F_check_near || [_vehicle, "REP", _distarsenal] call F_check_near || _near_lhd);
 				_vehicle_need_repair = [_vehicle] call F_vehicleNeedRepair;
 				if (_near_repair && _vehicle_need_repair) then { _task pushBack 1 };
 
@@ -156,7 +156,7 @@ while {true} do {
 				if (_near_arsenal && _vehicle_need_ammo) then { _task pushBack 2 };
 
 				// REFUEL
-				_near_refuel = ([_vehicle, "REFUEL", _distarsenal] call F_check_near || [_unit, "FUEL", _distarsenal, false] call F_check_near || _near_lhd);
+				_near_refuel = ([_vehicle, "REFUEL", _distarsenal] call F_check_near || [_vehicle, "FUEL", _distarsenal, false] call F_check_near || _near_lhd);
 				_vehicle_need_refuel = (fuel _vehicle <= 0.7);
 				if (_near_refuel && _vehicle_need_refuel) then { _task pushBack 3 };
 
