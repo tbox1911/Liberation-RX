@@ -141,6 +141,10 @@ while {true} do {
 					_maxdist = GRLIB_outpost_range;
 					_price = round(_price * 1.5)
 				};
+				if ([_pos_origin] call F_getFobType == 2) then {
+					// Naval FOB
+					_maxdist = GRLIB_fob_range;
+				};				
 			};
 		};
 	};

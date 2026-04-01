@@ -8,7 +8,10 @@ params [
 if (isNil "_list") exitWith { false };
 
 private _vehpos = _vehicle;
-if (typeName _vehicle == "OBJECT") then { _vehpos = getPos _vehicle };
+if (typeName _vehicle == "OBJECT") then {
+	_vehpos = getPosATL _vehicle;
+	if (surfaceIsWater _vehpos) then { _vehpos = getPosASL _vehicle };
+};
 
 private _classlist = [];
 private _use_fast = true;
