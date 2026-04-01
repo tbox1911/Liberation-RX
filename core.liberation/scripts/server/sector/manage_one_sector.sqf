@@ -108,7 +108,7 @@ switch true do {
         _building_ai_max = 10;
         _building_range = 200;
         _ied_count = (3 + (floor random 4));
-		_static_count = (floor random 3);
+		_static_count = 0;
     };
     case (_sector in sectors_military): {
         _infsquad1 = "infantry";
