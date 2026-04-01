@@ -77,7 +77,7 @@ taxi_cargo = {
 
 taxi_outboard = {
 	params ["_vehicle", "_cargo"];
-	if (count _cargo > 0) then { [player] call do_eject };
+	if (count _cargo > 0) then { [_vehicle] call do_eject };
 	_vehicle setVehicleLock "LOCKED";
 	_vehicle lockCargo true;
 };
