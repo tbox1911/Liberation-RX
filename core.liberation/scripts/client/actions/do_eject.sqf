@@ -1,5 +1,6 @@
 params ["_vehicle"];
 
+if (isPlayer _vehicle) then { _vehicle = objectParent _vehicle };
 if (isNull _vehicle) exitWith {};
 
 gamelogic globalChat format [localize "STR_EJECT_ALL_CREW", [_vehicle] call F_getLRXName];
