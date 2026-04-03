@@ -7,7 +7,7 @@ _unit setVariable ["GRLIB_speaking", true];
 
 if (_unit isKindOf "CAManBase") then {
 	[_unit, (_unit getDir player)] remoteExec ["setDir", 0];
-	[_unit, true] remoteExec ["stop", 0];
+	[_unit] remoteExec ["doStop", 0];
 };
 
 if (!isNil {_unit getVariable "PAR_Grp_ID"}) then {
