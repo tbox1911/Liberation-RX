@@ -1,3 +1,8 @@
+GRLIB_DALE_actionCond = {
+	params ["_target", "_unit"];
+    ((round (getPos _target select 2) <= 0) && (_unit == driver _target) && (speed vehicle _target < 1) && GRLIB_player_near_reammo)
+};
+
 GRLIB_checkAction_Lock = {
 	params ["_target", "_unit"];
 	(GRLIB_player_is_menuok && alive _target && count (crew _target) == 0 && (GRLIB_permission_vehicles && [_unit, _target] call is_owner) && locked _target < 2 && GRLIB_vehicle_lock)

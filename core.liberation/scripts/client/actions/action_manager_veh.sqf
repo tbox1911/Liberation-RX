@@ -62,6 +62,13 @@ while {true} do {
 			_vehicle addAction ["<t color='#009000'>" + localize "STR_HALO_VEH" + "</t> <img size='1' image='res\ui_redeploy.paa'/>", "scripts\client\spawn\do_halo.sqf","",-507,false,true,"","[_target, _this] call GRLIB_checkAction_Halo", GRLIB_ActionDist_10];
 		};
 
+		if (_vehicle isKindOf "Air") then {
+			private _cfgComponent = configOf _vehicle >> "Components" >> "TransportPylonsComponent";
+			if (!isClass _cfgComponent) exitWith {};
+			private _actionID = _vehicle addAction ["", DALE_fnc_dlgLoadoutOpen, nil, 20, false, true, "", "[_target, _this] call GRLIB_DALE_actionCond"];
+			_vehicle setUserActionText [_actionID, "<t color='#009000'>" + localize "STR_DALE_Actions_Loadout" + "</t> <img size='1' image='a3\ui_f\data\IGUI\Cfg\Actions\reammo_ca.paa'/>"];
+		};
+
 		if (_class == FOB_truck_typename) then {
 			_vehicle addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
 		};

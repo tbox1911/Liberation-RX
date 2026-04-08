@@ -197,3 +197,14 @@ player createDiaryRecord ["MapInfo", ["MapInfo", format ["This Map: %1<br/>was p
 player createDiaryRecord ["MapInfo", ["MapInfo", format ["The East faction <font color='#f80000'>%1</font><br/>was made by: <font color='%3'>%2</font>.", GRLIB_mod_east, GRLIB_east_modder, call _getRandomColor]]];
 player createDiaryRecord ["MapInfo", ["MapInfo", format ["The West faction <font color='#0000f8'>%1</font><br/>was made by: <font color='%3'>%2</font>.", GRLIB_mod_west, GRLIB_west_modder, call _getRandomColor]]];
 player createDiaryRecord ["MapInfo", ["MapInfo", format ["-= Map Information =-"]]];
+
+private _briefing = [
+    localize "STR_RPL_DALE_INTRO_1",
+    localize "STR_RPL_DALE_INTRO_2",
+    localize "STR_RPL_DALE_INTRO_3",
+    localize "STR_RPL_DALE_INTRO_4",
+    localize "STR_RPL_DALE_INTRO_5",
+    "<br />"
+];
+player createDiarySubject ["DALE", "DALE"];
+player createDiaryRecord ["DALE", ["DALE", _briefing joinString "<br />"]];

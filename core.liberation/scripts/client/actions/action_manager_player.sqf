@@ -19,6 +19,7 @@ while {true} do {
 		GRLIB_player_near_fuelbarrel = ([player, "REFUEL_DISP", GRLIB_ActionDist_10, false] call F_check_near);
 		GRLIB_player_near_repair = ([player, "REPAIR", GRLIB_ActionDist_10, false] call F_check_near);
 		GRLIB_player_near_repairbox = ([player, "REPAIR_BOX", GRLIB_ActionDist_5, false] call F_check_near);
+		GRLIB_player_near_reammo = ([player, "REAMMO", 30] call F_check_near);
 		GRLIB_player_near_repaint = ([player, "REPAINT", 30] call F_check_near);
 	};
 

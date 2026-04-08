@@ -52,7 +52,6 @@ if (_list == "LHD") exitWith { (_vehpos distance2D lhd <= _dist) };
 // Supply Always ON
 private _ignore_disabled = (_list in ["MEDIC","ARSENAL","REFUEL""REAMMO","REAMMO_AI","REPAIR","REPAIR_BOX"]);
 
-diag_log format ["%1 %2", _list, "search"];
 // Search
 private _near = 0;
 if (typeName (_classlist select 0) == "STRING") then {
