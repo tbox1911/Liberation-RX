@@ -1,5 +1,3 @@
-disableSerialization;
-
 private _array = _this select 0;
 private _ctrl_chkd = (_array select 2 == 1);
 
@@ -13,8 +11,8 @@ if (_ctrl_chkd) then {
 				player setPosATL _pos
 			};
 		};
-		do_teleport = 1;
 	};
+	do_teleport = 1;
 } else {
 	player onMapSingleClick "";
     do_teleport = 0;
