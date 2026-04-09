@@ -22,39 +22,17 @@ _setupObjects = {
 	};
 
 	private _buildings = [
-		"Land_i_Barracks_V1_F",
-		"Land_i_Barracks_V2_F",
-		"Land_u_Barracks_V2_F",
 		"Land_GH_House_1_F",
 		"Land_GH_House_2_F",
 		"Land_u_Addon_02_V1_F",
 		"Land_u_House_Small_01_V1_F",
+		"Land_i_House_Small_01_V2_F",
+		"Land_i_House_Small_01_V3_F",
 		"Land_u_House_Small_02_V1_F",
+		"Land_i_House_Small_02_V1_F",
+		"Land_i_House_Small_02_V2_F",
+		"Land_i_House_Small_02_V3_F",
 		"Land_i_Stone_HouseSmall_V3_F"
-	];
-
-	private _wrecks = [
-		"Land_Wreck_UAZ_F",
-		"Land_Wreck_Ural_F",
-		"Land_Wreck_Truck_dropside_F",
-		"Land_Wreck_Truck_F",
-		"Land_Wreck_HMMWV_F",
-		"Land_Wreck_Hunter_F",
-		"Land_Wreck_Skodovka_F",
-		"Land_Wreck_Skodovka_F",
-		"Land_Wreck_Slammer_F",
-		"Land_Wreck_Slammer_hull_F",
-		"Land_Wreck_Slammer_turret_F",
-		"Land_Wreck_T72_hull_F",
-		"Land_Wreck_T72_turret_F",
-		"Land_Wreck_Truck_dropside_F",
-		"Land_V3S_wreck_F",
-		"Land_Wreck_Van_F",
-		"Land_Wreck_Car2_F",
-		"Land_Wreck_Car3_F",
-		"Land_Wreck_Car_F",
-		"Land_Wreck_Offroad_F",
-		"Land_Wreck_Offroad2_F"
 	];
 
 	private _statues = [
@@ -91,7 +69,7 @@ _setupObjects = {
 	private _angle = 0;
 	for "_i" from 1 to 4 do {
 		_nextpos = (_town_center getPos [35, _angle]);
-		_nextpos = [_nextpos, 20, 0, 50] call F_findSafePlace;
+		_nextpos = [_nextpos, 15, 0, 50] call F_findSafePlace;
 		if (count _nextpos > 0) then {
 			_dir = floor random 360;
 			private _build = createVehicle [selectRandom _buildings, zeropos, [], 1, "None"];
@@ -101,18 +79,6 @@ _setupObjects = {
 		};
 		_angle = _angle + 90;
 		sleep 0.1;
-	};
-
-	// Wrecks
-	for "_i" from 1 to 3 do {
-		_nextpos = ([_town_center, 40] call F_getRandomPos);
-		if (count _nextpos == 3) then {
-			private _wreck = createVehicle [selectRandom _wrecks, zeropos, [], 1, "None"];
-			_dir = floor random 360;
-			_wreck setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
-			_wreck setPosATL _nextpos;
-			_vrac_list pushBack _wreck;
-		};
 	};
 
 	//----- spawn intels ---------------------------------
@@ -140,21 +106,24 @@ _setupObjects = {
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilSuccessCondition = { (count (_intels select { alive _x }) == 0) };
+_waitUntilSuccessCondition = { ({ alive _x } count _intels == 0) };
 
 _waitUntilCondition = {
 	private _ret = false;
-	if ({ alive _x } count _managed_units == 0) exitWith {
-		if (count _mission_markers == 0) then {
-			{
-				_marker = createMarkerLocal [format ["missionintel_%1", (_x call BIS_fnc_netId)], getPos _x];
+
+	if ({ alive _x } count _managed_units == 0) then {
+		{ deleteMarker _x } forEach _mission_markers;
+		_mission_markers = [];
+		{
+			if (alive _x) then {
+				private _marker = createMarkerLocal [format ["missionintel_%1", (_x call BIS_fnc_netId)], getPos _x];
 				_marker setMarkerColorLocal "ColorOrange";
 				_marker setMarkerType "loc_search";
 				_mission_markers pushBack _marker;
-			} forEach _intels;
-		};
-		_ret;
+			};
+		} forEach _intels;
 	};
+
 	private _grp = group (_managed_units select 0);
 	{
 		if (_grp knowsAbout _x == 4) then { _ret = true };

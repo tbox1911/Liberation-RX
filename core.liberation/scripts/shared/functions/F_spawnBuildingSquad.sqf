@@ -61,11 +61,11 @@ if (isNull _building) then {
 	_allbuildings = (_allbuildings - GRLIB_building_used);
 	{
 		_building = _x;
-		_building_pos = ([_building] call BIS_fnc_buildingPositions);
+		_building_pos = (_building buildingPos -1);
 		if (count _building_pos >= _building_ai_max) exitWith { GRLIB_building_used pushBack _building };
 	} foreach (_allbuildings call BIS_fnc_arrayShuffle);
 } else {
-	_building_pos = ([_building] call BIS_fnc_buildingPositions);
+	_building_pos = (_building buildingPos -1);
 };
 
 private _position_count = count _building_pos min _building_ai_max;
@@ -79,12 +79,10 @@ diag_log format ["Spawn building squad(%1) type %2 in building %3 at %4", _posit
 private _unitclass = [];
 while { count _unitclass < _position_count } do { _unitclass pushback (selectRandom _squad_comp) };
 
+_building_pos = _building_pos - [[0,0,0]];
 _building_pos = (_building_pos call BIS_fnc_arrayShuffle);
 private _grp = [_building_pos select 0, _unitclass, _side, "building", _mission_ai] call F_libSpawnUnits;
 {
-	//_x disableAI "MOVE";
-	_x disableAI "PATH";
-	_x setUnitPos "UP";
 	_x setPos (_building_pos select _forEachIndex);
 	[_x, _keep_position] spawn building_defence_ai;
 	if (_type == "militia") then { [_x] spawn loadout_militia };

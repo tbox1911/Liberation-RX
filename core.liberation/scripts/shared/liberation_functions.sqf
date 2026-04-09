@@ -32,6 +32,7 @@ F_findSafePlace = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_fixModUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixModUnit.sqf";
 F_fixModVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixModVehicle.sqf";
 F_fixPosUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixPosUnit.sqf";
+F_fixPosObject = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixPosObject.sqf";
 F_forceCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceCrew.sqf";
 F_getAdaptiveSquadComp = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAdaptiveSquadComp.sqf";
 F_getAdaptiveVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAdaptiveVehicle.sqf";

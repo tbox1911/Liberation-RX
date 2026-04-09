@@ -88,8 +88,6 @@ if (_enable_defenders) then {
         _nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),(_nextpos select 2)];
         _nextdir = _nextentry select 2;
         _nextobject setDir _nextdir;
-        _unit setUnitPos "UP";
-        _unit disableAI "PATH";
         _unit setPos _nextpos;
         [_unit, true] spawn building_defence_ai;
         sleep 0.1;

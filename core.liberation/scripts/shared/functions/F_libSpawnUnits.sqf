@@ -59,7 +59,12 @@ private ["_unit", "_rank_unit", "_pos", "_backpack"];
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] call F_fixModUnit;
 		if (_type == "militia") then { [_unit] spawn loadout_militia };
-		if (_type == "building") then { _unit setVariable ["GRLIB_in_building", true, true] };
+		if (_type == "building") then {
+			//_x disableAI "MOVE";
+			_unit disableAI "PATH";
+			_unit setUnitPos "UP";
+			_unit setVariable ["GRLIB_in_building", true, true];
+		};
 		if (_type == "bandits") then {
 			[_unit] spawn loadout_militia;
 			_unit addMPEventHandler ["MPKilled", {

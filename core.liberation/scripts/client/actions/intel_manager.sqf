@@ -12,7 +12,7 @@ while {true} do {
 	// Intel
 	_near_intel = nearestObjects [player, GRLIB_intel_items + GRLIB_ide_traps, _searchradius];
 	{
-		if (!(_x getVariable ["GRLIB_intel_action", false]) && (_x getVariable ["GRLIB_intel_search", false]) ) then {
+		if (!(_x getVariable ["GRLIB_intel_action", false]) && (_x getVariable ["GRLIB_intel_search", false])) then {
 			_x setVariable ["GRLIB_intel_action", true];
 			removeAllActions _x;
 			[
@@ -30,7 +30,7 @@ while {true} do {
 				10,
 				12,
 				true,
-				false				
+				false
 			] call BIS_fnc_holdActionAdd;
 		};
 	} forEach _near_intel;
