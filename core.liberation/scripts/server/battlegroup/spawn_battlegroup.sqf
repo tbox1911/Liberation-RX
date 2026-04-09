@@ -1,6 +1,6 @@
 params ["_liberated_sector"];
 if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
-if (_liberated_sector == "") exitWith {};
+if (time < (GRLIB_last_battlegroup_time + GRLIB_battlegroup_timer)) exitWith {};
 
 private _hc = [] call F_lessLoadedHC;
 if (isDedicated && !isNull _hc) exitWith {
@@ -50,7 +50,9 @@ if (_spawn_marker == "") exitWith {
 _objective_pos set [2, 0];
 diag_log format ["Spawn BattlegGroup target %1 from %2 at %3", _objective_pos, markerPos _spawn_marker, time];
 
-GRLIB_last_battlegroup_time = time;
+GRLIB_last_battlegroup_time = round serverTime;
+publicVariable "GRLIB_last_battlegroup_time";
+
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness <= 80 ) then { _vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
 

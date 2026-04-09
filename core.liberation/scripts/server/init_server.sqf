@@ -163,8 +163,14 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 
 // Manage sectors
+GRLIB_battlegroup_timer = (1200 / GRLIB_csat_aggressivity);
+
+GRLIB_last_battlegroup_time = 0;
+publicVariable "GRLIB_last_battlegroup_time";
+
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";
+
 if (GRLIB_Commander_mode) then {
 	// Commander functions
 	manage_sectors_commander = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_sectors_commander.sqf";

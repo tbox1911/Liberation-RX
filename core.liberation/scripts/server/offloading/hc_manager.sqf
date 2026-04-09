@@ -18,6 +18,7 @@ GRLIB_hide_opfor = [GRLIB_PARAM_HideOpfor] call lrx_getParamValue;
 GRLIB_MineProbability = [GRLIB_PARAM_MineProbability] call lrx_getParamValue;
 GRLIB_night_factor = [GRLIB_PARAM_NightDuration] call lrx_getParamValue;
 GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
+GRLIB_battlegroup_timer = (1200 / GRLIB_csat_aggressivity);
 
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\events\kill_manager.sqf";
