@@ -99,14 +99,14 @@ while { alive _vehicle && ({alive _x} count (units _grp) > 0) && (GRLIB_endgame 
 		// Modern aircraft AI
 		_target = [_targetpos, GRLIB_sector_size] call F_getNearestBlufor;
 		if (!isNull _target) then {
-			(gunner _plane) reveal [_target, 4];
-			(gunner _plane) doTarget _target;
+			(gunner _vehicle) reveal [_target, 4];
+			(gunner _vehicle) doTarget _target;
 			sleep 120;
 		};
-		// private _plane_dir = getDir _plane;
-		// private _spot = _plane getPos [1500, _plane_dir];
+		// private _plane_dir = getDir _vehicle;
+		// private _spot = _vehicle getPos [1500, _plane_dir];
 		// if ([_spot, 150, GRLIB_side_friendly] call F_getUnitsCount > 2) then {
-		// 	_round = "Cluster_155mm_AMOS" createVehicle (getPos _plane);
+		// 	_round = "Cluster_155mm_AMOS" createVehicle (getPos _vehicle);
 		// 	[_round, -80, 0] call BIS_fnc_setPitchBank;
 		// 	_round setVelocity [0,0,-100];
 		// };
