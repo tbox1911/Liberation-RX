@@ -10,7 +10,11 @@ unAssignVehicle _unit;
 [_unit] allowGetIn false;
 
 if (_slow) then { sleep 2 };
-moveOut _unit;
+if (local _unit) then {
+	moveOut _unit;
+} else {
+	[_unit] remoteExec ["moveOut", 0];
+};
 sleep 1;
 if (!alive _unit) exitWith {};
 
