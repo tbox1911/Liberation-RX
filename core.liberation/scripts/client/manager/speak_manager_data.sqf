@@ -2,6 +2,7 @@ speak_end = {
 	params ["_unit"];
 	sleep 3;
 	if (_unit isKindOf "CAManBase") then {
+		[_unit, false] remoteExec ["stop", 0];
 		_unit doFollow (leader group _unit);
 	};
 	_unit setVariable ["GRLIB_speaking", nil];
