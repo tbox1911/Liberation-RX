@@ -43,7 +43,9 @@ _object allowDamage false;
 [_object, _vehicle] remoteExec ["disableCollisionWith", 0];
 
 _object attachTo [_vehicle, _vehicle_offset];
-if (_object isKindOf "Cargo_base_F") then { _object setDir 270 };
+if (_object isKindOf "Cargo_base_F") then {
+	[_object, 270] remoteExec ["setDir", 0];
+};
 _object setVariable ["R3F_LOG_disabled", true, true];
 _vehicle_load pushback _object;
 _vehicle setVariable ["GRLIB_ammo_vehicle_load", _vehicle_load, true];
