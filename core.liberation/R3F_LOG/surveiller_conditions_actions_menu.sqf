@@ -139,7 +139,9 @@ while {true} do
 
 			// Condition action detacher
 			R3F_LOG_action_detacher_valide = (isNull R3F_LOG_joueur_deplace_objet) &&
-				!isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
+				!isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") &&
+				_objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled") &&
+				(([_joueur, _objet_pointe] call is_owner) || ([_objet_pointe] call is_public));
 		};
 
 		// Si l'objet est un objet transportable
