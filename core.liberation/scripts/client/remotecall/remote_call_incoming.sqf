@@ -1,6 +1,8 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params ["_attack_destination"];
 
+waitUntil {sleep 1; isNil "GRLIB_color_enemy_bright"};
+
 private _marker_name = format ["opfor_incoming_marker_%1", (round time)];
 private _marker = createMarkerLocal [_marker_name, _attack_destination];
 _marker setMarkerTypeLocal "selector_selectedMission";
