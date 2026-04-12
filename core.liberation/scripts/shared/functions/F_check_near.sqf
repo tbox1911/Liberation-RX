@@ -50,7 +50,7 @@ if (_list in ["FOB", "OUTPOST"]) exitWith { _ret };
 if (_list == "LHD") exitWith { (_vehpos distance2D lhd <= _dist) };
 
 // Supply Always ON
-private _ignore_disabled = (_list in ["MEDIC","ARSENAL","REFUEL""REAMMO","REAMMO_AI","REPAIR","REPAIR_BOX"]);
+private _ignore_disabled = (_list in ["MEDIC","ARSENAL","REFUEL","REAMMO","REAMMO_AI","REPAIR","REPAIR_BOX"]);
 
 // Search
 private _near = 0;
