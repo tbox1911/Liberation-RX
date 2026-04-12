@@ -51,6 +51,11 @@ GRLIB_build_as_building = [
 	taxi_helipad_type
 ];
 
+GRLIB_build_repeat = [
+	"Wall_F",
+	"BagFence_base_F"
+];
+
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
 	GRLIB_preview_spheres pushback ("Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ]);
@@ -175,7 +180,7 @@ while {true} do {
 
 		if (!repeatbuild) then {
 			if (build_water == 0) then {
-				if (_buildtype == GRLIB_BuildingBuildType && !(_classname in GRLIB_build_force_mode) && (_classname isKindOf "Wall_F")) then {
+				if (_buildtype == GRLIB_BuildingBuildType && !(_classname in GRLIB_build_force_mode) && ([_classname, GRLIB_build_repeat] call F_itemIsInClass)) then {
 					_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",750,true,false,"","build_valid && build_confirmed == 1"];
 					_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",746,false,false,"","build_confirmed == 1"];
 				};
@@ -435,6 +440,7 @@ while {true} do {
 				private _steps = 12;
 				private _stepHeight = (_zEnd - _zStart) / _steps;
 				for "_i" from 0 to _steps do {
+					if ([player] call PAR_is_wounded) exitWith {};
 					if (_i % 4 == 0) then {
 						playSound3D [getMissionPath "res\dig02.ogg", player, false, getPosASL player, 5, 1, 250];
 						//player playMoveNow "AinvPknlMstpSlayWrflDnon_medicOther";
