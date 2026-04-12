@@ -30,8 +30,8 @@ if (_classname == playerbox_typename) exitWith {
 	_object setMaxLoad playerbox_cargospace;
 };
 
-// Mobile respawn
-if (_classname == mobile_respawn) exitWith {
+// Mobile Respawn
+if (_classname in respawn_vehicles) exitWith {
 	if (isServer) then {
 		[_object, "add"] call mobile_respawn_remote_call;
 	} else {
