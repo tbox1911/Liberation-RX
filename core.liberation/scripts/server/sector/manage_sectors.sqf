@@ -39,5 +39,5 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	} forEach _hc_missions;
 
 	//diag_log format [ "Full sector scan at %1, active sectors: %2", time, active_sectors ];
-	sleep 5;
+	sleep 1;
 };

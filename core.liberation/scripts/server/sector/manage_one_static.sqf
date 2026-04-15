@@ -38,6 +38,7 @@ while {alive _static} do {
         if (count crew _static > 0) then {
             _gunner = gunner _static;
             if (isPlayer _gunner) exitWith {};
+            if (_gunner getVariable ["GRLIB_is_prisoner", false]) exitWith { [_gunner] spawn F_ejectUnit };
             if (side group _gunner == GRLIB_side_enemy) then {
                 // OPFor infinite Ammo + Seek
                 _static setVehicleAmmo 1;
@@ -46,8 +47,9 @@ while {alive _static} do {
         } else {
             if (_static_class in opfor_statics && (_static getVariable ["R3F_LOG_disabled", false])) then {
                 [_static] call F_searchGunner;
+                sleep 20;
             };
         };
     };
-    sleep 30;
+    sleep 10;
 };

@@ -1,5 +1,5 @@
 params ["_sector"];
-
+systemchat "sector start";
 if (GRLIB_sector_spawning) exitWith {
 	diag_log format ["--- LRX Manage Sector: Another Sector %1 is already spawning, aborting.", _sector];
 };
@@ -17,8 +17,10 @@ active_sectors pushback _sector;
 publicVariable "active_sectors";
 GRLIB_sector_spawning = true;
 publicVariable "GRLIB_sector_spawning";
-_sectorName = markerText _sector;
+
+private _sectorName = markerText _sector;
 _sector setMarkerText format ["%1 - Loading", _sectorName];
+
 private _spawncivs = false;
 private _building_ai_max = 0;
 private _building_range = 200;
@@ -29,8 +31,6 @@ private _uavs_count = 0;
 private _static_count = 0;
 private _vehtospawn = [];
 private _grp = grpNull;
-private _managed_units = [];
-private _managed_vehicles = [];
 private _squad1 = [];
 private _infsquad1 = "militia";
 private _squad2 = [];
@@ -209,7 +209,8 @@ switch true do {
         if (floor random 100 > 33) then {
             _vehtospawn pushback ([] call F_getAdaptiveVehicle)
         };
-        [_sector_pos, 50] call createlandmines;
+		// Create mines
+        [_sector_pos, 50] spawn createlandmines;
         _static_count = 4;
         _uavs_count = 3;
     };
@@ -226,10 +227,9 @@ if ((floor GRLIB_difficulty_modifier) > 1) then {
 	};
 };
 
-// Create mines
+// Create IEDs
 [_sector_pos, _building_range, round (_ied_count)] spawn ied_manager;
 [_sector_pos, _building_range, round (_ied_count)] spawn ied_trap_manager;
-sleep 1;
 
 // Create drones defender
 if (_uavs_count > 0) then {
@@ -239,30 +239,36 @@ if (_uavs_count > 0) then {
 _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 // Create units
 {
-	private _squad = _x select 0;
-	private _infsquad = _x select 1;
-	private _range = _x select 2;
-	if (count _squad > 0) then {
-		_grp = [_sector_pos, _infsquad, _squad, false] call F_spawnRegularSquad;
+	[_x select 0, _x select 1, _x select 2, _sector_pos, _sector] spawn {
+		params ["_squad", "_infsquad", "_range", "_sector_pos", "_sector"];
+		if (count _squad == 0) exitWith {};
+		private _grp = [_sector_pos, _infsquad, _squad, false] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
-		_managed_units = _managed_units + (units _grp);
+		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
+		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units + (units _grp)];
 	};
 	_ratio = round linearConversion [0, 4, _foreachIndex, 20, 40];
 	_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
+	sleep 0.5;
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
 
 // Create vehicles
 if (opforcap_max) then { _vehtospawn = [] };
 if (count _vehtospawn > 0) then {
 	{
-		private _pos = [_sector_pos, (80 + floor random 100)] call F_getRandomPos;
-		private _vehicle = [_pos, _x, 10, GRLIB_side_enemy, _infsquad1] call F_libSpawnVehicle;
-		if (!isNull _vehicle) then {
-			_managed_vehicles pushback _vehicle;
-			[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
+		[_x, _infsquad1, _sector_pos, _sector] spawn {
+			params ["_classname", "_type", "_sector_pos", "_sector"];
+			private _pos = [_sector_pos, (80 + floor random 100)] call F_getRandomPos;
+			private _vehicle = [_pos, _classname, 10, GRLIB_side_enemy, _type] call F_libSpawnVehicle;
+			if (!isNull _vehicle) then {
+				private _managed_vehicles = missionNamespace getVariable [format ["LRX_sector_%1_vehicles", _sector], []];
+				missionNamespace setVariable [format ["LRX_sector_%1_vehicles", _sector], _managed_vehicles + [_vehicle]];
+				[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
+			};
 		};
 		_ratio = round linearConversion [0, (count _vehtospawn) - 1, _foreachIndex, 50, 70];
 		_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
+		sleep 0.5;
 	} foreach _vehtospawn;
 };
 
@@ -272,31 +278,45 @@ if (_building_ai_max > 0) then {
 	_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
 	if (_sector in sectors_bigtown) then { _building_ai_max = _building_ai_max + 12 };
 	_sector setMarkerText format ["%2 - Loading %1%%", 75, _sectorName];
-	_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_buildingSquad);
+	[_infsquad1, _building_ai_max, _building_range, _sector_pos, _sector] spawn {
+		params ["_infsquad1", "_building_ai_max", "_building_range", "_sector_pos", "_sector"];
+		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
+		_managed_units append ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_buildingSquad);
+		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units];
+	};
+	sleep 0.5;
 };
 _sector setMarkerText format ["%2 - Loading %1%%", 80, _sectorName];
 
 // Create civilians
-private _managed_civs = [];
 if (_spawncivs && GRLIB_civilian_activity > 0) then {
 	private _nbcivs = round ((5 + (floor random 6)) * GRLIB_civilian_activity);
 	if (_sector in sectors_bigtown) then { _nbcivs = _nbcivs + 12 };
 	private _rnd = [1,1,1,1,2,2,3];
 	_civ = _nbcivs;
 	while { _nbcivs > 0 } do {
-		_max_units = (selectRandom _rnd) min _nbcivs;
-		_grp = [_sector_pos, _max_units] call F_spawnCivilians;
-		_managed_civs = _managed_civs + (units _grp);
+		private _max_units = (selectRandom _rnd) min _nbcivs;
+		[_sector_pos, _sector, _max_units] spawn {
+			params ["_sector_pos", "_sector", "_max_units"];
+			private _grp = [_sector_pos, _max_units] call F_spawnCivilians;
+			private _managed_civils = missionNamespace getVariable [format ["LRX_sector_%1_civils", _sector], []];
+			missionNamespace setVariable [format ["LRX_sector_%1_civils", _sector], _managed_civils + (units _grp)];
+		};
 		_nbcivs = _nbcivs - _max_units;
 		_ratio = round linearConversion [0, _civ, _civ - _nbcivs, 85, 99];
 		_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
+		sleep 0.5;
 	};
-	_managed_units = _managed_units + _managed_civs;
 };
 
 // Create static weapons
 if (_static_count > 0) then {
-	_managed_units append ([_sector_pos, _static_count, GRLIB_side_enemy, false, _infsquad1] call spawn_static);
+	[_static_count, _infsquad1, _sector_pos, _sector] spawn {
+		params ["_static_count", "_infsquad1", "_sector_pos", "_sector"];
+		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
+		_managed_units append ([_sector_pos, _static_count, GRLIB_side_enemy, false, _infsquad1] call spawn_static);
+		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units];
+	};
 };
 
 // Radio send renforcement
@@ -414,8 +434,9 @@ while {true} do {
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 		};
 
+		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
 		private _prisoners = [_sector_pos, _max_prisoners, _managed_units] call spawn_prisoners;
-		_managed_units = _managed_units - _prisoners;
+		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units - _prisoners];
 
 		if (_sector in (sectors_capture + sectors_factory + sectors_bigtown)) then {
 			private _building_destroyed = count (_building_alive select { !(alive _x) || (tolower (typeOf _x) find "ruin" != -1) });
@@ -423,10 +444,11 @@ while {true} do {
 				[_sector, 4, _building_destroyed] remoteExec ["remote_call_sector", 0];
 				{ [_x, -(_building_destroyed * 3)] call F_addReput } forEach ([_sector_pos, _local_capture_size] call F_getNearbyPlayers);
 			};
-			[_sector_pos, _managed_civs] spawn {
-				params ["_sector_pos", "_managed_civs"];
+			[_sector] spawn {
+				params ["_sector"];
 				sleep 30;
-				private _civilians = _managed_civs select {
+				private _managed_civils = missionNamespace getVariable [format ["LRX_sector_%1_civils", _sector], []];
+				private _civilians = _managed_civils select {
 					(alive _x) && !(captive _x) &&
 					!(isAgent teamMember _x) && (isNull objectParent _x)
 				};
@@ -500,6 +522,13 @@ diag_log format ["End Defend Sector %1 at %2", _sector, time];
 // Cleanup
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
-{ deleteVehicle _x; sleep 0.05 } forEach _managed_units;
-{ [_x] spawn F_vehicleClean; sleep 0.05 } forEach _managed_vehicles;
+private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
+{ deleteVehicle _x } forEach _managed_units;
+private _managed_civils = missionNamespace getVariable [format ["LRX_sector_%1_civils", _sector], []];
+{ deleteVehicle _x } forEach _managed_civils;
+private _managed_vehicles = missionNamespace getVariable [format ["LRX_sector_%1_vehicles", _sector], []];
+{ [_x] call F_vehicleClean } forEach _managed_vehicles;
 [_sector_pos] call clearlandmines;
+missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], nil];
+missionNamespace setVariable [format ["LRX_sector_%1_civils", _sector], nil];
+missionNamespace setVariable [format ["LRX_sector_%1_vehicles", _sector], nil];
