@@ -1,37 +1,21 @@
-if (!isServer && hasInterface) exitWith {};
 params [
-		"_player",
-		"_classname",
-		"_owner",
-		"_manned",
-		"_veh_pos",
-		"_veh_dir",
-		"_veh_vup"
+	"_classname",
+	"_owner",
+	"_manned",
+	"_veh_pos",
+	"_veh_dir",
+	"_veh_vup"
 ];
-
-private _need_cutter = [
-	Warehouse_typename,
-	medic_heal_typename,
-	storage_medium_typename,
-	"Land_PortableHelipadLight_01_F"
-];
-
-// Magic cutter
-if ([_classname, _need_cutter] call F_itemIsInClass) then {
-	private _vehicle = createVehicle [land_cutter_typename, _veh_pos, [], 0, "CAN_COLLIDE"];
-	_vehicle setPosATL _veh_pos;
-	[_veh_pos] call build_cutter_remote_call;
-};
 
 private _allow_damage = true;
-private _vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
+private _vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
+sleep 0.1;
 if (isNull _vehicle) exitWith {
 	diag_log format ["--- LRX Error: Cannot create vehicle %1 at %2", _classname, _veh_pos];
-	_player setVariable ["GRLIB_player_vehicle_build", -1, true];
+	objNull;
 };
 
 _vehicle allowDamage false;
-_vehicle hideobjectglobal true;
 _vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 _vehicle setPosATL _veh_pos;
 
@@ -41,8 +25,7 @@ if (GRLIB_ACE_enabled) then {
 };
 
 // LRX Init
-[_vehicle, _player] call init_object_direct;
-
+[_vehicle, player] call init_object_direct;
 
 // Crewed vehicle
 if (_manned) then {
@@ -57,7 +40,7 @@ if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname
 
 	// Default Paint
 	if (_classname in ["I_E_Truck_02_MRL_F"]) then {
-		[_vehicle, ["EAF",1], true ] spawn BIS_fnc_initVehicle;
+		[_vehicle, ["EAF",1], true] spawn BIS_fnc_initVehicle;
 	};
 };
 
@@ -105,18 +88,8 @@ if (_classname == medic_heal_typename && _classname isKindOf "Land_MedicalTent_0
 	_med_floor setPosATL _veh_pos;
 };
 
+sleep 0.1;
 if (_allow_damage) then { _vehicle allowDamage true };
 _vehicle setDamage 0;
 
-private _owner = (owner _player);
-if (_owner != 0) then {
-	if (count crew _vehicle == 0) then {
-		_vehicle setOwner _owner;
-	} else {
-		private _grp = group (crew _vehicle select 0);
-		_grp setGroupOwner _owner;
-	};
-};
-
-_vehicle hideobjectglobal false;
-_player setVariable ["GRLIB_player_vehicle_build", _vehicle, true];
+_vehicle;

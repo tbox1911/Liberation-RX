@@ -56,6 +56,13 @@ GRLIB_build_repeat = [
 	"BagFence_base_F"
 ];
 
+GRLIB_build_need_cutter = [
+	Warehouse_typename,
+	medic_heal_typename,
+	storage_medium_typename,
+	"Land_PortableHelipadLight_01_F"
+];
+
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
 	GRLIB_preview_spheres pushback ("Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ]);
@@ -149,7 +156,7 @@ while {true} do {
 				if ([_pos_origin] call F_getFobType == 2) then {
 					// Naval FOB
 					_maxdist = GRLIB_fob_range;
-				};				
+				};
 			};
 		};
 	};
@@ -381,8 +388,12 @@ while {true} do {
 			private _veh_vup = vectorUp _vehicle;
 			private _veh_pos = getPosATL _vehicle;
 			deleteVehicle _vehicle;
-			player setVariable ["GRLIB_player_vehicle_build", objNull, true];
 			sleep 0.1;
+
+			// Need Magic cutter
+			if ([_classname, GRLIB_build_need_cutter] call F_itemIsInClass) then {
+				[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
+			};
 
 			// Building
 			if (_buildtype == GRLIB_BuildingBuildType || _classname in GRLIB_build_as_building) exitWith {
@@ -417,14 +428,7 @@ while {true} do {
 					titleText [format ["Naval FOB (%1) Incoming...", _fob_text] ,"BLACK FADED", 30];
 					disableUserInput true;
 				};
-				[
-					player,
-					_classname,
-					_veh_pos,
-					_veh_dir,
-					_veh_vup
-				] remoteExec ["build_fob_remote_call", 2];
-				waitUntil { sleep 0.5; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
+				[player, _classname, _veh_pos, _veh_dir, _veh_vup] remoteExec ["build_fob_remote_call", 2];
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 			};
 
@@ -472,20 +476,8 @@ while {true} do {
 				_owner = PAR_Grp_ID;
 			};
 
-			// Server creation
-			[
-				player,
-				_classname,
-				_owner,
-				manned,
-				_veh_pos,
-				_veh_dir,
-				_veh_vup
-			] remoteExec ["build_vehicle_remote_call", 2];
-			waitUntil { sleep 0.5; !(isNull (player getVariable "GRLIB_player_vehicle_build")) };
-
-			_vehicle = player getVariable "GRLIB_player_vehicle_build";
-			if (typeName _vehicle == "SCALAR" || !alive _vehicle) exitWith {
+			_vehicle = [_classname, _owner, manned, _veh_pos, _veh_dir, _veh_vup] call do_build_vehicle;
+			if (isNull _vehicle || !alive _vehicle) exitWith {
 				[player, _price, _price_fuel] remoteExec ["ammo_add_remote_call", 2];
 				private _msg = format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _veh_pos];
 				systemchat _msg;
@@ -495,12 +487,6 @@ while {true} do {
 			// HandleDamage EH
 			if !(_classname in list_static_weapons) then {
 				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-			};
-
-			// MP fix pos
-			if (_vehicle distance2D _veh_pos > 10) then {
-				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-				_vehicle setPosATL _veh_pos;
 			};
 
 			// Crewed vehicle

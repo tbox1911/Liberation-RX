@@ -32,7 +32,7 @@ private _msg = "";
 private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _iscommandant = false;
-if ( _rank in ["Colonel", "Super Colonel"] ) then {	_iscommandant = true };
+if (_rank in ["Colonel", "Super Colonel"]) then { _iscommandant = true };
 
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];
@@ -173,7 +173,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 				_affordable = false;
 			};
 
-			if ( buildtype == GRLIB_InfantryBuildType ) then {
+			if (buildtype == GRLIB_InfantryBuildType) then {
 				if (_build_class in MFR_Dogs_classname + ["Alsatian_Random_F","Fin_random_F"] ) then {
 					if !(isNil {player getVariable ["my_dog", nil]}) then {
 						_affordable = false;
@@ -321,9 +321,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 	};
 
 	buildindex = _selected_item;
-	ctrlEnable [ 120, _affordable && _linked_unlocked && dobuild == 0];
-	ctrlShow [ 121, GRLIB_player_commander && buildtype in [GRLIB_TransportVehicleBuildType,GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_DefenceBuildType]];
-	ctrlEnable [ 121, _affordable_crew && _linked_unlocked && dobuild == 0];
+	ctrlEnable [120, _affordable && _linked_unlocked && dobuild == 0];
+	ctrlShow [121, GRLIB_player_commander && buildtype in [GRLIB_TransportVehicleBuildType,GRLIB_CombatVehicleBuildType,GRLIB_AerialBuildType,GRLIB_DefenceBuildType]];
+	ctrlEnable [121, _affordable_crew && _linked_unlocked && dobuild == 0];
 	sleep 0.2;
 };
 

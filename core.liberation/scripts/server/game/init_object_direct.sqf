@@ -21,13 +21,21 @@ if !(_classname in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {
 };
 
 // Arsenalbox
-if (_classname == Arsenal_typename) exitWith {
-	_object setMaxLoad 0;
+if (_classname in [Arsenal_typename, box_uavs_typename]) exitWith {
+	if (isServer) then {
+		_object setMaxLoad 0;
+	} else {
+		[_object, 0] remoteExec ["setMaxLoad", 2];
+	};
 };
 
 // Personal Box
 if (_classname == playerbox_typename) exitWith {
-	_object setMaxLoad playerbox_cargospace;
+	if (isServer) then {
+		_object setMaxLoad playerbox_cargospace;
+	} else {
+		[_object, playerbox_cargospace] remoteExec ["setMaxLoad", 2];
+	};
 };
 
 // Mobile Respawn
@@ -46,7 +54,6 @@ if (_classname in uavs_vehicles) exitWith {
 
 // UAVs box
 if (_classname == box_uavs_typename) exitWith {
-	_object setMaxLoad 0;
 	private _loaded_uavs = [];
 	for "_n" from 1 to box_uavs_max do { _loaded_uavs pushBack uavs_light };
 	[_object, _loaded_uavs] call load_object_direct;

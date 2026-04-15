@@ -85,11 +85,9 @@ while {true} do
 		};
 
 		// Si l'objet est un objet remorquable
-		if (_fonctionnalites select __can_be_towed) then
-		{
+		if (_fonctionnalites select __can_be_towed) then {
 			// Et qu'il est d�pla�able
-			if (_fonctionnalites select __can_be_moved_by_player) then
-			{
+			if (_fonctionnalites select __can_be_moved_by_player) then {
 				// Condition action remorquer_deplace
 				R3F_LOG_action_remorquer_deplace_valide = !(_objet_pointe getVariable "R3F_LOG_disabled") && (count crew _objet_pointe == 0 || _isUav) &&
 					(R3F_LOG_joueur_deplace_objet == _objet_pointe) && !isNull _objet_pointe_autre_que_deplace &&
@@ -105,12 +103,14 @@ while {true} do
 			R3F_LOG_action_remorquer_direct_valide = alive _objet_pointe && (count crew _objet_pointe == 0 || _isUav) && isNull R3F_LOG_joueur_deplace_objet &&
 				isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") && isNull (_objet_pointe getVariable ["R3F_LOG_remorque", objNull]) &&
 				_objet_pas_en_cours_de_deplacement && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled") &&
+				(([_joueur, _objet_pointe] call is_owner) || ([_objet_pointe] call is_public)) &&
 				{
 					{
 						_x != _objet_pointe && (_x getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_tow) &&
 						alive _x && isNull (_x getVariable "R3F_LOG_est_transporte_par") &&
 						isNull (_x getVariable "R3F_LOG_remorque") && (vectorMagnitude velocity _x < 6) &&
 						!([_x, _joueur] call R3F_LOG_FNCT_objet_est_verrouille) && !(_x getVariable "R3F_LOG_disabled") &&
+						(([_joueur, _x] call is_owner) || ([_x] call is_public)) &&
 						{
 							private ["_delta_pos"];
 

@@ -60,7 +60,6 @@ if (_classname in ["fob_water1"]) then {
 
 if (isNull _vehicle) exitWith {
 	diag_log format ["--- LRX Error: Cannot create FOB %1 at %2", _classname, _veh_pos];
-	_player setVariable ["GRLIB_player_vehicle_build", -1, true];
 };
 
 sleep 1;
@@ -80,5 +79,3 @@ publicVariable "GRLIB_all_outposts";
 stats_fobs_built = stats_fobs_built + 1;
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
-
-_player setVariable ["GRLIB_player_vehicle_build", _vehicle, true];
