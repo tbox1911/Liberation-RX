@@ -26,6 +26,7 @@ GRLIB_permission_enemy = [GRLIB_PARAM_EnemyLock] call lrx_getParamValue;
 GRLIB_civilian_activity = [GRLIB_PARAM_Civilians] call lrx_getParamValue;
 GRLIB_patrols_activity = [GRLIB_PARAM_Patrols] call lrx_getParamValue;
 GRLIB_wildlife_manager = [GRLIB_PARAM_Wildlife] call lrx_getParamValue;
+GRLIB_Facilities = [GRLIB_PARAM_Facilities] call lrx_getParamValue;
 GRLIB_civ_penalties = [GRLIB_PARAM_CivPenalties] call lrx_getParamValue;
 GRLIB_halo_param = [GRLIB_PARAM_HaloJump] call lrx_getParamValue;
 GRLIB_enable_drones = [GRLIB_PARAM_Drones] call lrx_getParamValue;
@@ -64,6 +65,7 @@ switch (GRLIB_naval_type) do {
 // Transfom true/false Param
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
 
+GRLIB_Facilities = (GRLIB_Facilities == 1);
 GRLIB_permission_vehicles = (GRLIB_permission_vehicles == 1);
 GRLIB_permission_enemy = (GRLIB_permission_enemy == 1);
 GRLIB_free_loadout = (GRLIB_free_loadout == 1);
@@ -71,7 +73,7 @@ GRLIB_force_english = (GRLIB_force_english == 1);
 GRLIB_enable_drones = (GRLIB_enable_drones == 1);
 GRLIB_Commander_mode = (GRLIB_Commander_mode == 1);
 GRLIB_alarms_enabled = (GRLIB_alarms_enabled == 1);
-GRLIB_Commander_VoteEnabled = GRLIB_Commander_VoteEnabled == 1;
+GRLIB_Commander_VoteEnabled = (GRLIB_Commander_VoteEnabled == 1);
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };

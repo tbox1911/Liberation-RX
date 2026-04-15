@@ -2297,6 +2297,9 @@
 			<Portuguese>Habilitar o Gerenciador de Vida Selvagem</Portuguese>
 			<Czech>Povolte divoké zvěře</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_FACILITIES">
+			<Original>Enable the PNJ Facilities</Original>
+		</Key>
 		<Key ID="STR_PARAM_PATROL">
 			<Original>Enable the Patrol Manager</Original>
 			<Russian>Включить менеджер патрулей</Russian>
@@ -3340,7 +3343,7 @@
 		<Key ID="STR_CLEANUP_PARAM0">
 			<Original>%1 seconds</Original>
 			<French>%1 secondes</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_CLEANUP_PARAM1">
 			<Original>%1 minutes</Original>
 			<French>%1 minutes</French>
@@ -9813,13 +9816,8 @@
 			<Czech>Povolit nasazovací cinematik</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_OPFORCAP_DESC">
-			<Original>Sets the enemy force cap to limit maximum enemy units.</Original>
-			<Russian>Устанавливает максимальное ограничение на количество вражеских подразделений.</Russian>
-			<French>Définit le plafond de forces ennemies pour limiter le nombre maximal d'unités ennemies.</French>
-			<Chinesesimp>设置敌方部队上限以限制最大敌军单位数。</Chinesesimp>
-			<Chinese>設置敵軍部隊上限以限制最大敵軍單位數。</Chinese>
-			<Portuguese>Define o limite de forças inimigas para restringir o número máximo de unidades inimigas.</Portuguese>
-			<Czech>Nastavuje strop nepřátelských sil pro omezení maximálního počtu jednotek nepřítele.</Czech>
+			<Original>Configure enemy patrol presence.</Original>
+
 		</Key>
 		<Key ID="STR_PARAMS_OPFORCAP_OPT0">
 			<Original>Limit enemy force cap to 100 units</Original>
@@ -10726,14 +10724,17 @@
 			<Portuguese>Ativar aparição de fauna</Portuguese>
 			<Czech>Povolit spawn divoké zvěře</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_FACILITIES_DESC">
+			<Original>Create and manage SHOP/SELL/REPAIR services.</Original>
+		</Key>
+		<Key ID="STR_PARAMS_FACILITIES_OPT0">
+			<Original>Disable all Facilities</Original>
+		</Key>
+		<Key ID="STR_PARAMS_FACILITIES_OPT1">
+			<Original>Enable all Facilities</Original>
+		</Key>
 		<Key ID="STR_PARAMS_CIVILIANS_DESC">
-			<Original>Configures civilian presence and behavior settings.</Original>
-			<Russian>Настраивает присутствие и поведение гражданских.</Russian>
-			<French>Configure la présence et le comportement des civils.</French>
-			<Chinesesimp>配置平民出现及行为设置。</Chinesesimp>
-			<Chinese>配置平民出現及行為設置。</Chinese>
-			<Portuguese>Configura presença e comportamento de civis.</Portuguese>
-			<Czech>Nastavuje přítomnost a chování civilistů.</Czech>
+			<Original>Configure civilian presence.</Original>
 		</Key>
 		<Key ID="STR_PARAMS_CIVILIANS_OPT0">
 			<Original>Disable civilians</Original>

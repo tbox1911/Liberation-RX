@@ -54,6 +54,7 @@ GRLIB_PARAM_HaloJump = "HaloJump";
 GRLIB_PARAM_Patrols = "Patrols";
 GRLIB_PARAM_Wildlife = "Wildlife";
 GRLIB_PARAM_Civilians = "Civilians";
+GRLIB_PARAM_Facilities = "Facilities";
 GRLIB_PARAM_AirSupport = "AirSupport";
 GRLIB_PARAM_CivPenalties = "CivPenalties";
 GRLIB_PARAM_ModPresetWest = "ModPresetWest";
@@ -599,6 +600,18 @@ _Mission_Params = [
         [GRLIB_PARAM_OptionDescriptionKey, [
             localize "STR_PARAM_WILDLIFE_OPT0",
             localize "STR_PARAM_WILDLIFE_OPT1"
+        ]]
+    ]],
+    [GRLIB_PARAM_Facilities, createHashMapFromArray [
+        [GRLIB_PARAM_ValueKey, 1],
+        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_FACILITIES"],
+        [GRLIB_PARAM_OptionLabelKey, [localize "STR_PARAMS_DISABLED", localize "STR_PARAMS_ENABLED"]],
+        [GRLIB_PARAM_OptionValuesKey, [0,1]],
+        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
+        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_FACILITIES_DESC"],
+        [GRLIB_PARAM_OptionDescriptionKey, [
+            localize "STR_PARAMS_FACILITIES_OPT0",
+            localize "STR_PARAMS_FACILITIES_OPT1"
         ]]
     ]],
     [GRLIB_PARAM_AirSupport, createHashMapFromArray [

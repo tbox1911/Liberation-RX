@@ -20,11 +20,11 @@ switch ( _list ) do {
 	case "FOB" : { _classlist = [FOB_typename] };
 	case "OUTPOST" : { _classlist = [FOB_outpost] };
 	case "LHD" : { _classlist = [lhd] };
-	case "SRV" : { _classlist = GRLIB_Marker_SRV };
 	case "ATM" : { _classlist = GRLIB_Marker_ATM };
+	case "REP" : { _classlist = GRLIB_Marker_REP };
+	case "SRV" : { _classlist = GRLIB_Marker_SELL };
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL };
 	case "SHOP" : { _classlist = GRLIB_Marker_SHOP };
-	case "REP" : { _classlist = GRLIB_Marker_REP };
 	case "SPAWN" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x != mobile_respawn} };
 	case "SPAWNT" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x == mobile_respawn} };
 	case "MEDIC" : { _classlist = ai_healing_sources };
