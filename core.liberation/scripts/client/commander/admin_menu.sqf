@@ -353,8 +353,6 @@ while { alive player && dialog } do {
 
 	if (do_zeus == 1) then {
 		do_zeus = 0;
-		GRLIB_active_commander = player;
-		publicVariable 'GRLIB_active_commander';
 		_msg = localize "STR_YOU_ARE_ZEUS_NOW";
 		_admin_msg = format [localize "STR_ADMIN_BECOME_ZEUS", name player];
 		ctrlEnable [1625, false];
