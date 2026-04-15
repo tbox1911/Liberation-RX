@@ -19,6 +19,7 @@ GRLIB_last_active_sectors = -1;
 
 sleep GRLIB_battlegroup_timer;
 
+private ["_countplayers", "_attack"];
 private _min_players = 2;
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
@@ -33,8 +34,18 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		)
 	};
 
-	private _countplayers = count (AllPlayers - (entities "HeadlessClient_F"));
-	if (_countplayers >= _min_players || combat_readiness >= 90) then {
+	_attack = false;
+	_countplayers = (AllPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_tank) };
+	if (count _countplayers >= 2 && combat_readiness >= 55) then {
+		_attack = true;
+	};
+
+	_countplayers = (AllPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_log) };
+	if (count _countplayers >= 3 && combat_readiness >= 70) then {
+		_attack = true;
+	};
+
+	if (_attack) then {
 		diag_log format ["Spawn Random BattleGroup at %1", time];
 		[] spawn spawn_battlegroup;
 		stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
