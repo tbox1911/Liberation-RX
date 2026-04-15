@@ -137,6 +137,7 @@ static_vehicles = [
 	["B_Mortar_01_F",0,500,0,GRLIB_perm_tank],
 	["B_SAM_System_01_F",10,1500,0,GRLIB_perm_air],
 	["B_SAM_System_02_F",10,1500,0,GRLIB_perm_air],
+	["B_SAM_System_03_F",10,2500,30,GRLIB_perm_max],
 	["B_AAA_System_01_F",10,1500,0,GRLIB_perm_max]
 ];
 
