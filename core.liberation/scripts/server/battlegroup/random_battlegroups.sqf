@@ -41,6 +41,10 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	};
 
 	_countplayers = (AllPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_log) };
+	if (count _countplayers >= 1 && combat_readiness >= 95 && floor random 6 == 0) then {
+		_attack = true;
+	};
+
 	if (count _countplayers >= 3 && combat_readiness >= 70) then {
 		_attack = true;
 	};
