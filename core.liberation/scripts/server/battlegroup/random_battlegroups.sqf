@@ -41,7 +41,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	};
 
 	_countplayers = (AllPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_log) };
-	if (count _countplayers >= 1 && combat_readiness >= 95 && floor random 6 == 0) then {
+	if (count _countplayers >= 1 && combat_readiness >= 95 && floor random 5 == 0) then {
 		_attack = true;
 	};
 
@@ -57,10 +57,12 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		sleep 60;
 	};
 
-	private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
-	if (count _pilots > 0 ) then {
-		[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
-		sleep 60;
+	if (time > (GRLIB_last_battlegroup_time + GRLIB_battlegroup_timer) && floor random 3 == 0) then {
+		private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
+		if (count _pilots > 0 ) then {
+			[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
+			sleep 60;
+		};
 	};
 
 	sleep 60;
