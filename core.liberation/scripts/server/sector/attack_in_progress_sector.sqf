@@ -88,7 +88,9 @@ if (_ownership == GRLIB_side_enemy) then {
 					params ["_sector_pos"];
 					sleep 30;
 					private _civilians = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]) select {
-						(side _x == GRLIB_side_civilian) && !(captive _x) && !(isAgent teamMember _x)
+						!(_x getVariable ["GRLIB_mission_AI", false]) &&
+						(side _x == GRLIB_side_civilian) && (alive _x) && !(captive _x) &&
+						!(isAgent teamMember _x) && (isNull objectParent _x)
 					};
 					if (count _civilians > 5) then {
 						for "_i" from 0 to (floor random 4) do {
