@@ -97,7 +97,7 @@ while { alive _vehicle && alive _driver } do {
 	if (_event_stared) then {
 		_helped = false;
 		if (_incd == _incd_repair && ([_vehicle] call F_getVehicleDamage) < _vehicle_damage) then { _helped = true };
-		if (_incd == _incd_fuel && fuel _vehicle >= 0.4) then { _helped = true };
+		if (_incd == _incd_fuel && fuel _vehicle >= 0.2) then { _helped = true };
 		if (time > _wait_max) then { _helped = true };
 
 		if (_helped) then {
