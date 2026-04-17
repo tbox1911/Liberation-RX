@@ -34,6 +34,7 @@ _setupObjects = {
 
 	// create enemies
     _spawn_pos = ([_objective_pos, 250] call F_getRandomPos);
+    _spawn_pos = [_spawn_pos, 5, 0] call F_findRandomPlace;
     _aiGroup = [_spawn_pos, 12, "militia", false] call createCustomGroup;
     [_aiGroup] call F_deleteWaypoints;
     _waypoint = _aiGroup addWaypoint [_objective_pos, 10];
