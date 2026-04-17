@@ -59,10 +59,13 @@ _vehicle lockTurret [[0,0], true];
 private _air_grp = GRLIB_side_civilian createVehicleCrew _vehicle;
 sleep 0.2;
 (crew _vehicle) joinSilent _air_grp;
+private _loadout = getUnitLoadout (selectRandom civilians);
 {
 	_x allowDamage false;
 	_x allowFleeing 0;
+	_x setUnitLoadout _loadout;
  } foreach (units _air_grp);
+ 
 _vehicle setVariable ["GRLIB_taxi_crew", (units _air_grp), true];
 _air_grp setBehaviourStrong "CARELESS";
 _air_grp setCombatMode "GREEN";
