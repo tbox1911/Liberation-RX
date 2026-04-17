@@ -299,6 +299,7 @@ if (_spawncivs && GRLIB_civilian_activity > 0) then {
 		[_sector_pos, _sector, _max_units] spawn {
 			params ["_sector_pos", "_sector", "_max_units"];
 			private _grp = [_sector_pos, _max_units] call F_spawnCivilians;
+			[_grp, _sector_pos] spawn add_civ_waypoints;
 			private _managed_civils = missionNamespace getVariable [format ["LRX_sector_%1_civils", _sector], []];
 			missionNamespace setVariable [format ["LRX_sector_%1_civils", _sector], _managed_civils + (units _grp)];
 		};
