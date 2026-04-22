@@ -58,6 +58,7 @@ while {true} do {
 				[_next_sector] spawn {
 					params ["_sector"];
 					private _marker_pos = markerPos _sector;
+					private _marker_text = markerText _sector;
 					private _player_dist = player distance2D _marker_pos;
 					if (_player_dist > GRLIB_sector_size) then {
 						private _msg = localize "STR_NOTIFICATION_ENTER_TERRITORY";
@@ -66,8 +67,8 @@ while {true} do {
 					};
 					while {(_player_dist <= GRLIB_activated_radius)} do {
 						_player_dist = player distance2D _marker_pos;
-						if (_player_dist < GRLIB_sector_size) exitWith {
-							private _msg = format [localize "STR_NOTIFICATION_ENTER_SECTOR", markerText _sector];
+						if (_player_dist <= GRLIB_sector_size) exitWith {
+							private _msg = format [localize "STR_NOTIFICATION_ENTER_SECTOR", _marker_text];
 							[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 							sleep 3;
 						};
