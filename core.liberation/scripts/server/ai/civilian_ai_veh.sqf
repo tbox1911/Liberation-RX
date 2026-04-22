@@ -67,6 +67,7 @@ while { alive _vehicle && alive _driver } do {
 		sleep 3;
 
 		_vehicle engineOn false;
+		(driver _vehicle) stop true;
 		_marker = createMarkerLocal [format ["civ_ai_veh_%1", (_vehicle call BIS_fnc_netId)], getPosATL _vehicle];
 		_marker setMarkerTypeLocal "loc_car";
 		_marker setMarkerTextLocal "Civilian need help.";
@@ -97,7 +98,7 @@ while { alive _vehicle && alive _driver } do {
 	if (_event_stared) then {
 		_helped = false;
 		if (_incd == _incd_repair && ([_vehicle] call F_getVehicleDamage) < _vehicle_damage) then { _helped = true };
-		if (_incd == _incd_fuel && fuel _vehicle >= 0.2) then { _helped = true };
+		if (_incd == _incd_fuel && fuel _vehicle >= 0.20) then { _helped = true };
 		if (time > _wait_max) then { _helped = true };
 
 		if (_helped) then {
@@ -123,6 +124,7 @@ while { alive _vehicle && alive _driver } do {
 			_vehicle allowDamage true;
 			_vehicle setFuel 1;
 			_vehicle engineOn true;
+			(driver _vehicle) stop false;
 			{_x doFollow (leader _grp)} foreach units _grp;
 			_event_stared = false;
 			deleteMarker _marker;

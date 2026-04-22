@@ -15,6 +15,7 @@ private _cargo_indx = 1;
             deleteVehicle _x;
         };
     } else {
+        doStop _x;
         private _assigned = false;
         private _role = _vehicle_roles select _forEachIndex;
 
