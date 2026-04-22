@@ -29,6 +29,7 @@ private _marker = "";
 private _ied_count = 0;
 private _uavs_count = 0;
 private _static_count = 0;
+private _mines_count = 0;
 private _vehtospawn = [];
 private _grp = grpNull;
 private _squad1 = [];
@@ -134,9 +135,10 @@ switch true do {
         _spawncivs = false;
         _building_ai_max = 8;
         _building_range = 150;
-        _ied_count = (3 + (floor random 3));
-        _uavs_count = 3;
-        _static_count = 3;
+        _ied_count = (3 + floor random 3);
+        _uavs_count = (3 + floor random 3);
+		_mines_count = 30;
+        _static_count = (3 + floor random 3);
 
 		if (GRLIB_alarms_enabled) then {
 			// Alarm!
@@ -209,10 +211,9 @@ switch true do {
         if (floor random 100 > 33) then {
             _vehtospawn pushback ([] call F_getAdaptiveVehicle)
         };
-		// Create mines
-        [_sector_pos, 50] spawn createlandmines;
-        _static_count = 4;
-        _uavs_count = 3;
+		_mines_count = 50;
+        _static_count = (3 + floor random 3);
+        _uavs_count = (3 + floor random 3);
     };
     default {
         diag_log "Sector type did not match any known sector arrays.";
@@ -225,6 +226,11 @@ if ((floor GRLIB_difficulty_modifier) > 1) then {
 	for "_i" from 1 to (floor (GRLIB_difficulty_modifier)) do {
 		_vehtospawn pushback ([] call F_getAdaptiveVehicle);
 	};
+};
+
+// Create land mines
+if (_mines_count > 0) then {
+	[_sector_pos, _mines_count] spawn createlandmines;
 };
 
 // Create IEDs
