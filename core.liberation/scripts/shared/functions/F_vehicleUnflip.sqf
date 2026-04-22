@@ -1,5 +1,6 @@
 params ["_vehicle", ["_force", false]];
 
+if (!local _vehicle) exitWith { [_vehicle, _force] remoteExec ["vehicle_unflip_remote_call", 2] };
 if !(_vehicle isKindOf "LandVehicle" || _vehicle isKindOf "StaticWeapon") exitWith {};
 if (round (speed vehicle _vehicle) > 0) exitWith {};
 if (surfaceIsWater (getPos _vehicle)) exitWith {};

@@ -1,6 +1,5 @@
 params ["_vehicle", "_targetpos"];
 
-
 diag_log format [ "Spawn Troop in vehicle %1 objective %2 at %3", typeOf _vehicle, _targetpos, time ];
 private _driver = (driver _vehicle);
 private _transport_group = group _driver;

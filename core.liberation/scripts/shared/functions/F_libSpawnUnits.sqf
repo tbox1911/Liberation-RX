@@ -38,7 +38,7 @@ switch (_type) do {
 private ["_unit", "_rank_unit", "_pos", "_backpack"];
 {
 	_unit = _grp createUnit [_x, _spawn_pos, [], 30, "NONE"];
-	if (!isNil "_unit") then {
+	if (!isNull _unit) then {
 		_unit allowDamage false;
 		[_unit] joinSilent _grp;
 		if (_mission_ai) then {

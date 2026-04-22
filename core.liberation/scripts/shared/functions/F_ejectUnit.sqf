@@ -1,4 +1,6 @@
 params ["_unit", ["_slow", true]];
+
+if (!local _unit) exitWith { [_unit, _slow] remoteExec ["eject_unit_remote_call", 2] };
 if (isNull objectParent _unit || isNull _unit) exitWith {};
 if ((vehicle _unit) isKindOf "ParachuteBase") exitWith {};
 
