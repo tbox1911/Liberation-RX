@@ -437,7 +437,7 @@ while {true} do {
 
 		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
 		private _prisoners = [_sector_pos, _max_prisoners, _managed_units] call spawn_prisoners;
-		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units - _prisoners];
+		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], (_managed_units - _prisoners)];
 
 		if (_sector in (sectors_capture + sectors_factory + sectors_bigtown)) then {
 			private _building_destroyed = count (_building_alive select { !(alive _x) || (tolower (typeOf _x) find "ruin" != -1) });

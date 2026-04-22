@@ -10,10 +10,14 @@ if (isNil "_managed_units") then {
 };
 
 private _enemy_left = _managed_units select {
-    !(_x getVariable ["GRLIB_mission_AI", false]) && (_x skill "courage" <= 0.8) &&
+    (isNil {_x getVariable "GRLIB_is_prisoner"}) &&
+    (isNil {_x getVariable "GRLIB_is_kamikaze"}) &&
+    (isNil {_x getVariable "GRLIB_mission_AI"}) &&
+    (_x skill "courage" <= 0.8) &&
     (side _x == GRLIB_side_enemy) && (alive _x) && !(captive _x) &&
     !(isAgent teamMember _x) && (isNull objectParent _x)
 };
+if (count _enemy_left == 0) exitWith {[]};
 
 private _prisoners = [];
 {

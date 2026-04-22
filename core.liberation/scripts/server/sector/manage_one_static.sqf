@@ -37,8 +37,8 @@ while {alive _static} do {
     } else {
         if (count crew _static > 0) then {
             _gunner = gunner _static;
-            if (isPlayer _gunner) exitWith {};
             if (_gunner getVariable ["GRLIB_is_prisoner", false]) exitWith { [_gunner] spawn F_ejectUnit };
+            if (_gunner getVariable ["GRLIB_is_kamikaze", false]) exitWith { [_gunner] spawn F_ejectUnit };
             if (side group _gunner == GRLIB_side_enemy) then {
                 // OPFor infinite Ammo + Seek
                 _static setVehicleAmmo 1;
