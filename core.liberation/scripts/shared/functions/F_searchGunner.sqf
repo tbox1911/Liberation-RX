@@ -6,9 +6,7 @@ private _gunner_nearby = (units GRLIB_side_enemy) select {
     (alive _x) && (isNull objectParent _x) &&
     (isNil {_x getVariable "GRLIB_is_prisoner"}) &&
     (isNil {_x getVariable "GRLIB_is_kamikaze"}) &&
-    (isNil {_x getVariable "GRLIB_mission_AI"}) &&
-    (secondaryWeapon _x == "") &&
-    isNil {_x getVariable "PAR_Grp_ID"}
+    (secondaryWeapon _x == "")
 };
 
 if (_blufor_nearby > 0 && count _gunner_nearby > 0) then {
