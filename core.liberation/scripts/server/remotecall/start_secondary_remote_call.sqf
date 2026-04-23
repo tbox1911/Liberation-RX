@@ -1,7 +1,16 @@
 if (!isServer && hasInterface) exitWith {};
 params [ "_mission_index", ["_mission_free", false], "_caller_id"];
 
-if ( GRLIB_secondary_starting ) exitWith { diag_log "-- LRX Error: Multiple calls to start secondary mission !!" };
+if (isNil "LRX_MissionMarkersMil") exitWith {
+	private _msg = "Markers for Secondary Mission not yet initialized, please wait.";
+	[gamelogic, _msg] remoteExec ["globalChat", 0];
+	diag_log format ["-- LRX Error: %1", _msg];
+};
+if (GRLIB_secondary_starting) exitWith {
+	private _msg = "Multiple calls to start Secondary Mission !!";
+	[gamelogic, _msg] remoteExec ["globalChat", 0];
+	diag_log format ["-- LRX Error: %1", _msg];
+};
 
 GRLIB_secondary_starting = true; publicVariable "GRLIB_secondary_starting";
 

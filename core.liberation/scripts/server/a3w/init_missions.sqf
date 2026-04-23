@@ -24,6 +24,8 @@ updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\
 getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getNbUnits.sqf";
 createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createOutpost.sqf";
 debugSpawnMarkers = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_debugSpawnMarkers.sqf";
+setupMissionMarker = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionMarker.sqf";
+setupMissionArrays = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 
 /*	***  Debug A3W missions ***
 	A3W_debug = true;            // Enable debug mode
@@ -41,10 +43,9 @@ A3W_sectors_in_use = [];
 publicVariable "A3W_sectors_in_use";
 
 if (A3W_Mission_count == 0) exitWith {};
-waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
-[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionMarker.sqf";
-[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+[] call setupMissionMarker;
+[] call setupMissionArrays;
 
 for "_i" from 1 to A3W_Mission_count do {
 	// Start Permanent controller
