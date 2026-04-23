@@ -44,10 +44,8 @@ private _objects_to_build = [
 
 private _objectives_to_build = [
     [opfor_fuel_truck,[10,8,0],185],
-    [opfor_fuel_truck,[5,8.5,0],190],
-    [opfor_fuel_truck,[0,9,0],192],
-    [opfor_ammo_truck,[-9,-8,0],10],
-    [opfor_ammo_truck,[-3,-8,0],15]
+    [opfor_ammo_truck,[5,8.5,0],190],
+    [opfor_fuel_truck,[0,9,0],192]
 ];
 
 private _defenders_to_build = [
