@@ -70,7 +70,10 @@ if (_enable_objectives) then {
         sleep 20;
         {
             _x setDamage 0;
+            _x setVariable ["R3F_LOG_disabled", true, true];
             _x allowDamage true;
+            _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+            [_x, "lock", "server"] call F_vehicleLock;
         } foreach _objectives;
     };
 };
