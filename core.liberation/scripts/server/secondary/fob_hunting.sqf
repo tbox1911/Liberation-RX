@@ -42,6 +42,7 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 {
 	if (_x isKindof "AllVehicles") then {
 		_x setVariable ["GRLIB_vehicle_owner", "", true];
+		_x setVariable ["R3F_LOG_disabled", false, true];
 		_x lock 0;
 	};
 } foreach _base_objects;
