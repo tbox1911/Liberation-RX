@@ -37,4 +37,4 @@ switch (_cmd) do {
 	};
 };
 
-{_x reveal [_vehicle, 4]} forEach (units GRLIB_side_friendly);
+// {_x reveal [_vehicle, 4]} forEach (units GRLIB_side_friendly);

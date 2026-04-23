@@ -28,13 +28,18 @@ private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 	_nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),0];
 	_nextdir = _x select 2;
 	_nextobject = _nextclass createVehicle zeropos;
-    _nextobject allowDamage false;
     if (_nextclass isKindOf "HBarrier_base_F") then {
         _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
      } else {
         _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, [0,0,1]];
     };
     _nextobject setPosATL _nextpos;
+    _nextobject setVariable ["R3F_LOG_disabled", true, true];
+    if (_nextobject isKindof "AllVehicles") then {
+        _nextobject addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+        _nextobject setVariable ["GRLIB_vehicle_owner", "server", true];
+        _nextobject setVehicleLock "LOCKED";
+    };
 	_base_objects pushBack _nextobject;
     sleep 0.05;
 } foreach _objects_to_build;
@@ -51,22 +56,24 @@ if (_enable_objectives) then {
         _nextobject allowDamage false;
         _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, [0,0,1]];
         _nextobject setPosATL _nextpos;
+        _nextobject setVariable ["R3F_LOG_disabled", true, true];
+        _nextobject addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+        _nextobject setVariable ["GRLIB_vehicle_owner", "server", true];
+        _nextobject setVehicleLock "LOCKED";
         _base_objectives pushBack _nextobject;
         sleep 0.1;
     } foreach _objectives_to_build;
-};
 
-sleep 4;
-{
-    _x setDamage 0;
-    _x setVariable ["R3F_LOG_disabled", true, true];
-    if (_x isKindof "AllVehicles" || _x in _base_objectives) then {
-        _x allowDamage true;
-        _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-        [_x, "lock", "server"] call F_vehicleLock;
+    // protect
+    [_base_objectives] spawn {
+        params ["_objectives"];
+        sleep 20;
+        {
+            _x setDamage 0;
+            _x allowDamage true;
+        } foreach _objectives;
     };
-    sleep 0.1;
-} foreach (_base_objectives + _base_objects);
+};
 
 // Add Defenders
 private _grp_defenders = grpNull;
@@ -114,8 +121,8 @@ if (_enable_defenders) then {
 private _prisoners = [];
 if (_enable_prisoners) then {
     private _grp_prisoners = createGroup [GRLIB_side_civilian, true];
-    for "_i" from 0 to (2 + (floor random 3)) do {
-        private _unit = _grp_prisoners createUnit [pilot_classname, _missionPos, [], 20, "NONE"];
+    for "_i" from 0 to (3 + (floor random 3)) do {
+        private _unit = _grp_prisoners createUnit [pilot_classname, _base_position, [], 25, "NONE"];
         _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_unit, true, false] spawn prisoner_ai;
         _prisoners pushBack  _unit;

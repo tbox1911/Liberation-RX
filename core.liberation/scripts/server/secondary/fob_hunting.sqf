@@ -40,7 +40,7 @@ combat_readiness = 15 max round (combat_readiness * GRLIB_secondary_objective_im
 stats_secondary_objectives = stats_secondary_objectives + 1;
 
 {
-	if (typeOf _x isKindof "AllVehicles") then {
+	if (_x isKindof "AllVehicles") then {
 		_x setVariable ["GRLIB_vehicle_owner", "", true];
 		_x lock 0;
 	};
