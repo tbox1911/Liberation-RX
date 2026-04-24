@@ -22,9 +22,6 @@ _setupObjects = {
 		false;
 	};
 
-	_missionPos = _convoy_destinations select 0;
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
-
 	private _blacklist = [
 		"tractor",
 		"bicycle",
@@ -48,8 +45,10 @@ _setupObjects = {
 		false;
 	};
 
+	_missionPos = _convoy_destinations select 0;
+
 	// veh1
-	_vehicle1 = [_missionPos, _bandits_car, 0, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
+	private _vehicle1 = [_missionPos, _bandits_car, 0, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
 	private _vehicle_seat = (_vehicle1 emptyPositions "") min 4;
 	if (_vehicle_seat < 3) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, vehicle %2, no enough seat!", localize _missionType ,typeOf _vehicle1];
@@ -57,12 +56,10 @@ _setupObjects = {
 		false;
 	};
 
+	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	private _grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle1, units _grp] call F_manualCrew;
-	_grp addVehicle _vehicle1;
 	(units _grp) joinSilent _aiGroup;
-	(driver _vehicle1) limitSpeed 50;
-	_aiGroup selectLeader (driver _vehicle1);
 	_vehicle1 setVariable ["GRLIB_vehicle_owner", "public", true];
 	sleep 1;
 
@@ -75,10 +72,9 @@ _setupObjects = {
 	waitUntil {sleep 1; _vehicle1 distance2D _missionPos > 30 || time > _timout};
 
 	// veh2
-	_vehicle2 = [_missionPos, _bandits_car, 0, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
-	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
+	private _vehicle2 = [_missionPos, _bandits_car, 0, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
+	private _grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle2, units _grp] call F_manualCrew;
-	_grp addVehicle _vehicle2;
 	(units _grp) joinSilent _aiGroup;
 	_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
 
@@ -88,10 +84,9 @@ _setupObjects = {
 	waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
 
 	// veh3
-	_vehicle3 = [_missionPos, _bandits_car, 0, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
-	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
+	private _vehicle3 = [_missionPos, _bandits_car, 0, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
+	private _grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle3, units _grp] call F_manualCrew;
-	_grp addVehicle _vehicle3;
 	(units _grp) joinSilent _aiGroup;
 	_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
 	(driver _vehicle3) doMove (_convoy_destinations select 1);

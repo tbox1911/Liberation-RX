@@ -6,6 +6,7 @@ if (count _vehicles == 0) exitWith {};
 _grp setBehaviourStrong "SAFE";
 _grp setCombatMode "GREEN";
 
+(_vehicles select 0) limitSpeed 35;
 if (count _vehicles == 1) then {
 	_grp setSpeedMode "NORMAL";
 } else {

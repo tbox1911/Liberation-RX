@@ -20,21 +20,17 @@ GRLIB_secondary_in_progress = 1;
 publicVariable "GRLIB_secondary_in_progress";
 
 private _spawnpos = _convoy_destinations select 0;
-private _convoy_group = createGroup [GRLIB_side_enemy, true];
 
 //-----------------------------------------
 // Scout Vehicles
 private _scout_class = selectRandom (opfor_vehicles_low_intensity - opfor_troup_transports_truck);
-private _scout_vehicle = [_spawnpos, _scout_class, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
+private _scout_vehicle = [_spawnpos, _scout_class, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
+private _convoy_group = createGroup [GRLIB_side_enemy, true];
 (crew _scout_vehicle) joinSilent _convoy_group;
-(driver _scout_vehicle) limitSpeed 40;
 
-_scout_vehicle allowCrewInImmobile [true, true];
 if (typeOf _scout_vehicle isKindOf "Wheeled_APC_F") then {
 	_scout_vehicle forceFollowRoad true;
 };
-_scout_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
-sleep 2;
 
 //-----------------------------------------
 // Waypoints
@@ -47,12 +43,9 @@ private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _scout_vehicle distance2D _spawnpos > 30 || time > _timout};
 
 // ammo transport
-private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
+private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
 (crew _transport_vehicle) joinSilent _convoy_group;
-
 _transport_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
-_transport_vehicle allowCrewInImmobile [true, true];
-_transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
 
 // wait
@@ -61,16 +54,19 @@ private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _transport_vehicle distance2D _spawnpos > 30 || time > _timout};
 
 // troop transport
-private _troop_vehicle = [_spawnpos, opfor_transport_truck, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
+private _troop_vehicle = [_spawnpos, opfor_transport_truck, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
 (crew _troop_vehicle) joinSilent _convoy_group;
-
 _troop_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
-_troop_vehicle allowCrewInImmobile [true, true];
-_troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
-private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
-[_troop_vehicle, (units _troops_group)] call F_manualCrew;
 
-(driver _transport_vehicle) doMove (_convoy_destinations select 1);
+private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
+private _cargo_indx = 3;
+{
+	_x assignAsCargoIndex [_troop_vehicle, _cargo_indx];
+	_x moveInCargo [_troop_vehicle, _cargo_indx];
+	_cargo_indx = _cargo_indx + 1;
+} forEach (units _troops_group);
+
+(driver _troop_vehicle) doMove (_convoy_destinations select 1);
 
 //-----------------------------------------
 // Markers

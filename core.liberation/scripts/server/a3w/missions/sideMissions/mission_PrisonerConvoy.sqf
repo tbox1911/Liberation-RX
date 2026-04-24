@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_prisoners", "_convoy_attacked", "_disembark_troops"];
+private ["_prisoners", "_troops"];
 
 _setupVars = {
 	_missionType = "STR_PRI_CONV";
@@ -26,13 +26,11 @@ _setupObjects = {
 	};
 
 	_missionPos = _convoy_destinations select 0;
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
 
 	// veh1
-	_vehicle1 = [_missionPos, opfor_mrap_hmg, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
+	private _vehicle1 = [_missionPos, opfor_mrap_hmg, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
+	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	(crew _vehicle1) joinSilent _aiGroup;
-	(driver _vehicle1) limitSpeed 50;
-	_aiGroup selectLeader (driver _vehicle1);
 	_vehicle1 setVariable ["GRLIB_vehicle_owner", "public", true];
 	sleep 1;
 
@@ -44,22 +42,33 @@ _setupObjects = {
 	private _timout = round (time + (3 * 60));
 	waitUntil {sleep 1; _vehicle1 distance2D _missionPos > 30 || time > _timout};
 
-	// veh2 + prisoners
-	_vehicle2 = [_missionPos, a3w_truck_covered, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
-	(crew _vehicle2) joinSilent _aiGroup;
-	_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
-
 	_prisoners = [];
+	_troops = [];
+
+	// veh2 + prisoners
+	private _vehicle2 = [_missionPos, a3w_truck_covered, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
 	if !(isNull _vehicle2) then {
+		(crew _vehicle2) joinSilent _aiGroup;
+		_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
+
 		// Prisoners
 		private _grp = [_missionPos, 5, "prisoner", false] call createCustomGroup;
+		private _cargo_indx = 3;
+		{
+		    _x assignAsCargoIndex [_vehicle2, _cargo_indx];
+            _x moveInCargo [_vehicle2, _cargo_indx];
+            _cargo_indx = _cargo_indx + 1;
+		} forEach (units _grp);
 		_prisoners = (units _grp);
-		[_vehicle2, _prisoners] call F_manualCrew;
-		
+
 		// troops
 		private _grp = [_missionPos, 3, "infantry", false] call createCustomGroup;
-		[_vehicle2, (units _grp)] call F_manualCrew;
-		(units _grp) joinSilent _aiGroup;
+		{
+		    _x assignAsCargoIndex [_vehicle2, _cargo_indx];
+            _x moveInCargo [_vehicle2, _cargo_indx];
+            _cargo_indx = _cargo_indx + 1;
+		} forEach (units _grp);
+		_troops = (units _grp);
 
 		// wait
 		(driver _vehicle2) doMove (_convoy_destinations select 1);
@@ -68,15 +77,20 @@ _setupObjects = {
 	};
 
 	// veh3
-	_vehicle3 = [_missionPos, a3w_truck_covered, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
-	(crew _vehicle3) joinSilent _aiGroup;
-	_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
-
+	private _vehicle3 = [_missionPos, a3w_truck_covered, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
 	if !(isNull _vehicle3) then {
+		(crew _vehicle3) joinSilent _aiGroup;
+		_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
+
 		// troops
 		private _grp = [_missionPos, 8, "infantry", false] call createCustomGroup;
-		[_vehicle3, (units _grp)] call F_manualCrew;
-		(units _grp) joinSilent _aiGroup;
+		private _cargo_indx = 3;
+		{
+		    _x assignAsCargoIndex [_vehicle3, _cargo_indx];
+            _x moveInCargo [_vehicle3, _cargo_indx];
+            _cargo_indx = _cargo_indx + 1;
+		} forEach (units _grp);
+		_troops = _troops + (units _grp);
 		(driver _vehicle3) doMove (_convoy_destinations select 1);
 	};
 
@@ -85,8 +99,6 @@ _setupObjects = {
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (a3w_truck_covered param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (a3w_truck_covered param [0,""]) >> "displayName");
 	_missionHintText = ["STR_PRI_CONV_MESSAGE1", sideMissionColor];
-	_convoy_attacked = false;
-	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
 
 	// Manage convoy
@@ -109,6 +121,7 @@ _failedExec = {
 	private _intel = (10 + floor random 15); 
 	_failedHintMessage = ["STR_PRI_CONV_MESSAGE2", sideMissionColor, _intel];
 	{ deleteVehicle _x } foreach _prisoners;
+	{ deleteVehicle _x } foreach _troops;
 	resources_intel = resources_intel - _intel;
 	if (resources_intel < 0) then { resources_intel = 0 };
 	publicVariable "resources_intel";

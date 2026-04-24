@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_ressources", "_convoy_attacked", "_disembark_troops"];
+private ["_ressources", "_troops"];
 
 _setupVars = {
 	_missionType = "STR_RSC_CONV";
@@ -33,13 +33,11 @@ _setupObjects = {
 	};
 
 	_missionPos = _convoy_destinations select 0;
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
 
 	// veh1
-	_vehicle1 = [_missionPos, opfor_mrap_hmg, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
+	private _vehicle1 = [_missionPos, opfor_mrap_hmg, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
+	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	(crew _vehicle1) joinSilent _aiGroup;
-	(driver _vehicle1) limitSpeed 50;
-	_aiGroup selectLeader (driver _vehicle1);
 	_vehicle1 setVariable ["GRLIB_vehicle_owner", "public", true];
 	sleep 1;
 
@@ -52,12 +50,12 @@ _setupObjects = {
 	waitUntil {sleep 1; _vehicle1 distance2D _missionPos > 30 || time > _timout};
 
 	// veh2 + ressources
-	_vehicle2 = [_missionPos, a3w_truck_open, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
+	private _vehicle2 = [_missionPos, a3w_truck_open, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
 	(crew _vehicle2) joinSilent _aiGroup;
-	_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
 
 	_ressources = [];
 	if !(isNull _vehicle2) then {
+		_vehicle2 setVariable ["GRLIB_vehicle_owner", "public", true];
 		// Ressources
 		for "_n" from 1 to _boxes_amount do {
 			private _boxclass = selectRandom [ammobox_o_typename, waterbarrel_typename, fuelbarrel_typename, repairbox_typename, basic_weapon_typename];
@@ -71,16 +69,22 @@ _setupObjects = {
 		waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
 	};
 
-	// veh3
-	_vehicle3 = [_missionPos, a3w_truck_covered, 0, GRLIB_side_enemy, "", true, true] call F_libSpawnVehicle;
-	(crew _vehicle3) joinSilent _aiGroup;
-	_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
+	_troops = [];
 
+	// veh3
+	private _vehicle3 = [_missionPos, a3w_truck_covered, 0, GRLIB_side_enemy, "infantry", true, true] call F_libSpawnVehicle;
 	if !(isNull _vehicle3) then {
+		(crew _vehicle3) joinSilent _aiGroup;
+		_vehicle3 setVariable ["GRLIB_vehicle_owner", "public", true];
 		// troops
 		private _grp = [_missionPos, 8, "infantry", false] call createCustomGroup;
-		[_vehicle3, (units _grp)] call F_manualCrew;
-		(units _grp) joinSilent _aiGroup;
+		private _cargo_indx = 3;
+		{
+		    _x assignAsCargoIndex [_vehicle2, _cargo_indx];
+            _x moveInCargo [_vehicle2, _cargo_indx];
+            _cargo_indx = _cargo_indx + 1;
+		} forEach (units _grp);
+		_troops = (units _grp);
 		(driver _vehicle3) doMove (_convoy_destinations select 1);
 	};
 
@@ -89,8 +93,6 @@ _setupObjects = {
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (a3w_truck_open param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (a3w_truck_open param [0,""]) >> "displayName");
 	_missionHintText = ["STR_RSC_CONV_MESSAGE1", sideMissionColor];
-	_convoy_attacked = false;
-	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
 
 	// Manage convoy
@@ -113,6 +115,7 @@ _failedExec = {
 	// Mission failed
 	_failedHintMessage = ["STR_RSC_CONV_MESSAGE2", sideMissionColor];
 	{ deleteVehicle _x } foreach _ressources;
+	{ deleteVehicle _x } foreach _troops;
 };
 
 _successExec = {

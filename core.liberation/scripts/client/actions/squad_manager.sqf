@@ -17,7 +17,7 @@ while {true} do {
 				_cargo_seat_free = _veh_player emptyPositions "Cargo";
 				if (vehicle _x != _veh_player && _cargo_seat_free > 0) then {
 					_x assignAsCargoIndex [_veh_player, _indx];
-					_x moveInCargo _veh_player;
+					_x moveInCargo [_veh_player, _indx];
 					_indx =_indx + 1;
 				};
 

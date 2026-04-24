@@ -35,9 +35,8 @@ private _cargo_indx = 1;
             _assigned = true;
         };
         if (!_assigned) then {
-            
             _x assignAsCargoIndex [_vehicle, _cargo_indx];
-            _x moveInCargo _vehicle;
+            _x moveInCargo [_vehicle, _cargo_indx];
             _cargo_indx = _cargo_indx + 1;
         };
         if (!_delete) then { sleep 0.2 };
