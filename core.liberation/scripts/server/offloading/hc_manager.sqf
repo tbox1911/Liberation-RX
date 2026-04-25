@@ -77,8 +77,6 @@ GRLIB_Marker_FUEL = [];
 GRLIB_Marker_SELL = [];
 GRLIB_Marker_SHOP = [];
 
-waituntil { sleep 1; !isNil "GRLIB_marker_init" };
-
 {
     private _name = _x;
     private _pos = markerPos _x;

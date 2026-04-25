@@ -102,8 +102,9 @@ if (abort_loading) exitWith {
 // Headless Client init
 if (!isDedicated && !hasInterface && isMultiplayer) then {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_server_params_loaded" };
-	[] call compileFinal preprocessFileLineNumbers "scripts\server\offloading\hc_manager.sqf";
+	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
 	[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\offloading\hc_manager.sqf";
 };
 
 diag_log "--- Init stop ---";

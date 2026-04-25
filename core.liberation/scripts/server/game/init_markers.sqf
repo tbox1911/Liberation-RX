@@ -1,5 +1,4 @@
 if (!isServer) exitWith {};
-waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 GRLIB_Marker_ATM = [];
 GRLIB_Marker_REP = [];
@@ -41,14 +40,15 @@ if (GRLIB_Facilities) then {
 		} else {
 			diag_log format ["--- LRX Repair Marker Error: No place to build %1 at sector %2", repair_offroad, _x];
 		};
-		sleep 0.2;
+		// sleep 0.2;
 	} forEach sectors_factory;
 
 	// FUEL
 	private ["_fuel_pump"];
+	diag_log GRLIB_Marker_FUEL;
 	{
-		_fuel_pump = (nearestObjects [_x, ["House"], 30]) select { (tolower(typeOf _x) find "fuelstation" != -1 && tolower(typeOf _x) find "feed" != -1) };
-		{ _x enableSimulationGlobal false } forEach _fuel_pump;
+		// _fuel_pump = (nearestObjects [_x, ["House"], 30]) select { (tolower(typeOf _x) find "fuelstation" != -1 && tolower(typeOf _x) find "feed" != -1) };
+		// { _x enableSimulationGlobal false } forEach _fuel_pump;
 		_marker = createMarkerLocal [format ["marked_fuel%1", _forEachIndex], _x];
 		_marker setMarkerColorLocal "ColorYellow";
 		_marker setMarkerTypeLocal "mil_dot";
@@ -73,7 +73,7 @@ if (GRLIB_Facilities) then {
 		_marker setMarkerTextLocal localize "STR_MARKER_SELL";
 		_marker setMarkerSize [0.75, 0.75];
 		GRLIB_Marker_SELL pushBack (getPosATL _man);
-		sleep 0.2;
+		// sleep 0.2;
 	} forEach GRLIB_Marker_SRV;
 
 	// SHOP
@@ -133,7 +133,7 @@ if (GRLIB_Facilities) then {
 			_marker setMarkerTextLocal localize "STR_MARKER_SHOP";
 			_marker setMarkerSize [0.75, 0.75];
 			_marker_SHOP pushBack (getPosATL _man);
-			sleep 0.2;
+			// sleep 0.2;
 		};
 	} forEach GRLIB_Marker_SHOP;
 	GRLIB_Marker_SHOP = _marker_SHOP;
@@ -175,9 +175,8 @@ if (GRLIB_fob_type == 0) then {
 };
 "base_chimera" setMarkerColor GRLIB_color_friendly;
 
-sleep 3;
+sleep 2;
 GRLIB_marker_init = true;
-publicVariable "GRLIB_marker_init";
 
 /*
 // test desk + man position in building

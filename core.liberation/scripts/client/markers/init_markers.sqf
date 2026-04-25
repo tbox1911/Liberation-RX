@@ -23,12 +23,9 @@ GRLIB_Marker_FUEL = [];
 GRLIB_Marker_SELL = [];
 GRLIB_Marker_SHOP = [];
 
-waituntil { sleep 1; !isNil "GRLIB_marker_init" };
-
 {
     private _name = _x;
-    private _pos = markerPos _x;
-    
+    private _pos = markerPos _x; 
     switch (true) do {
         case (_name select [0,10] == "marked_atm"):  { GRLIB_Marker_ATM  pushBack _pos };
         case (_name select [0,10] == "marked_rep"):  { GRLIB_Marker_REP  pushBack _pos };

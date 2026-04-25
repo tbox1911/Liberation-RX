@@ -1,7 +1,5 @@
 // LRX FOB Officer - init
 
-waituntil { sleep 1; !isNil "GRLIB_marker_init" };
-
 [] spawn {
 	while {true} do {
 		{

@@ -1,7 +1,5 @@
 // LRX Trader Shop - init
 
-waituntil { sleep 1; !isNil "GRLIB_marker_init" };
-
 SHOP_list = [
 	[Arsenal_typename, 0, 67],
 	[medicalbox_typename, 0, 48],
