@@ -130,6 +130,7 @@ if (_side == GRLIB_side_enemy) then {
 	// 	if (count (crew _vehicle) == 0) exitWith {};
 	// 	if (!_hasFuel) then { _vehicle setFuel 1 };
 	// }];
+	// _vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 	_vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 

@@ -48,7 +48,6 @@ if (isNil "_foundPos") exitWith {
 };
 
 diag_log format ["--- LRX Info: unblock unit %1 position %2", name _unit, _foundPos];
-private _state = isDamageAllowed _unit;
 _unit allowDamage false;
 _unit enableSimulation false;
 _unit setPosATL _foundPos;
@@ -58,6 +57,6 @@ _unit switchMove "AmovPercMwlkSrasWrflDf";
 _unit playMoveNow "AmovPercMwlkSrasWrflDf";
 sleep 2;
 _unit setHitPointDamage ["hitLegs", 0];
-_unit allowDamage _state;
+_unit allowDamage true;
 
 _unit setVariable ["LRX_unblock_running", false];
