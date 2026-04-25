@@ -17,11 +17,14 @@ if (vectorUp _vehicle select 2 < 0.60) then {
 
 if (getPosATL _vehicle select 2 < -0.50 || _force) then {
     _vehicle allowDamage false;
+    { _x allowDamage false } forEach (crew _vehicle);
     private _pos = (getpos _vehicle);
     if (_force) then {
-        _pos = (_pos vectorAdd [([[-5,0,5], 0] call F_getRND), ([[-5,0,5], 0] call F_getRND), 0.5]);
+        _pos = ([_pos, 2] call F_getRandomPos);
+        //_pos = (_pos vectorAdd [([[-5,0,5], 0] call F_getRND), ([[-5,0,5], 0] call F_getRND), 0.5]);
     };
     _vehicle setpos _pos;
-    sleep 2;
+    sleep 3;
     _vehicle allowDamage true;
+    { _x allowDamage true } forEach (crew _vehicle);
 };

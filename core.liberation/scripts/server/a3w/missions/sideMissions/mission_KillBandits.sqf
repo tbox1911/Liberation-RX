@@ -39,7 +39,7 @@ _setupObjects = {
 		_ret;
 	};
 
-	private _bandits_car = selectRandom (civilian_vehicles select { _x isKindOf "Car" && [tolower _x, _blacklist] call _allowed_veh });
+	private _bandits_car = selectRandom (civilian_vehicles select { (_x isKindOf "Car_F") && !(_x isKindOf "Truck_F") && [tolower _x, _blacklist] call _allowed_veh });
 	if (isNil "_bandits_car") exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find vehicle classname!", localize _missionType];
 		false;

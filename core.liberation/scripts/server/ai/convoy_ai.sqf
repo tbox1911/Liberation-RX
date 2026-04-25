@@ -5,24 +5,64 @@ if (count _vehicles == 0) exitWith {};
 // Group Behaviour
 _grp setBehaviourStrong "SAFE";
 _grp setCombatMode "GREEN";
+_grp setFormation "COLUMN";
+_grp setSpeedMode "LIMITED";
 
-(_vehicles select 0) limitSpeed 35;
-if (count _vehicles == 1) then {
-	_grp setSpeedMode "NORMAL";
-} else {
-	_grp setFormation "COLUMN";
-	_grp setSpeedMode "LIMITED";
-	{ _x setConvoySeparation 50 } forEach _vehicles;
-};
+private _first_veh = (_vehicles select 0);
+_grp selectLeader (driver _first_veh);
+{
+	_x allowCrewInImmobile [true, true];
+	_x setConvoySeparation 50;
+} forEach _vehicles;
 
 sleep 20;
 
 private _convoy_attacked = false;
 private _timeout = time + 800;
 private _slow = 1;
+private _speedNormal = 40;
+private _speedSlow = 15;
+private _speedStop = 5;
+private _maxGap = 80;
+private ["_veh_cur", "_killed", "_player_nearby", "_unload_range", "_veh_leader", "_maxDist"];
 
-private ["_veh_cur", "_killed", "_player_nearby", "_unload_range"];
 while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) > 0) } do {
+	// Dynamic Speed
+	if (!_convoy_attacked && count _vehicles > 1) then {
+		{
+			private _idx = _vehicles find _x;
+			if (_idx == 0) then {
+				// Leader
+				private _veh_behind = _vehicles select 1;
+				private _dist = _x distance2D _veh_behind;
+
+				if (_dist > _maxGap * 1.5) then {
+					_x limitSpeed _speedStop;
+				} else {
+					if (_dist > _maxGap) then {
+						_x limitSpeed _speedSlow;
+					} else {
+						_x limitSpeed _speedNormal;
+					};
+				};
+			} else {
+				// Follower 
+				private _veh_ahead = _vehicles select (_idx - 1);
+				private _dist = _x distance2D _veh_ahead;
+
+				if (_dist > _maxGap * 1.5) then {
+					_x limitSpeed 999;
+				} else {
+					if (_dist < 20) then {
+						_x limitSpeed _speedSlow;
+					} else {
+						_x limitSpeed _speedNormal;
+					};
+				};
+			};
+		} forEach _vehicles;
+	};
+
 	// Attacked ?
 	if (!_convoy_attacked) then {
 		_killed = ({!alive _x} count (units _grp) > 0);
@@ -48,31 +88,31 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 					(group driver _x) setSpeedMode "LIMITED";
 				};
 			};
-
 			if (_x distance2D _objective_pos <= _unload_range) then { _convoy_attacked = true };
 		} foreach _vehicles;
 	};
 
 	// Drivers Follow
 	if (!_convoy_attacked) then {
+		_veh_leader = vehicle (leader _grp);
 		{
 			_veh_cur = _x;
-			_veh_leader = vehicle (leader _grp);
-			if (speed _veh_cur < 2 && (_veh_cur distance2D _veh_leader > 50 || _veh_cur == _veh_leader)) then {
-				_veh_cur setFuel 1;
-				_veh_cur setDamage 0;
-				[_veh_cur] call F_vehicleUnflip;
-				_veh_cur setPos ([getPos _veh_cur, 2] call F_getRandomPos);
-				if (_veh_cur != _veh_leader) then {
-					(driver _veh_cur) doFollow (leader _grp);
-					(driver _veh_cur) doMove getPosATL (leader _grp);
+			if (count (crew _veh_cur) > 0) then {
+				if (speed _veh_cur < 2 && (_veh_cur distance2D _veh_leader > 50 || _veh_cur == _veh_leader)) then {
+					_veh_cur setFuel 1;
+					_veh_cur setDamage 0;
+					[_veh_cur, true] call F_vehicleUnflip;
+					if (_veh_cur != _veh_leader) then {
+						(driver _veh_cur) doFollow (leader _grp);
+						(driver _veh_cur) doMove getPosATL (leader _grp);
+					};
+					sleep 2;
 				};
-				sleep 2;
 			};
 		} foreach _vehicles;
 	};
 
-    sleep 1;
+	sleep 1;
 };
 
 if (_convoy_attacked) then {
