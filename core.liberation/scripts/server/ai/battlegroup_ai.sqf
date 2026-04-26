@@ -2,17 +2,14 @@ params ["_grp", "_objective_pos"];
 if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
-private _vehicle = objectParent leader _grp;
+private _vehicle = objectParent (leader _grp);
 if (_vehicle isKindOf "Ship_F") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
 };
 
-if (_vehicle isKindOf "ParachuteBase") then {
-	_vehicle = objNull;
-	waitUntil { sleep 1; ({getPos _x select 2 > 2} count (units _grp) == 0) };
-};
+waitUntil { sleep 1; ({(round (getPos _x select 2) > 1)} count (units _grp) == 0) };
 
-sleep 5;
+private _vehicle = objectParent (leader _grp);
 private _veh_type = "No vehicle";
 if !(isNull _vehicle) then { _veh_type = typeOf _vehicle };
 private _attack = true;
@@ -29,7 +26,7 @@ if (_vehicle isKindOf "AllVehicles") then {
 } else {
 	(leader _grp) doMove _objective_pos;
 };
-(units _grp) doFollow leader _grp;
+(units _grp) doFollow (leader _grp);
 
 diag_log format ["Group %1 (%2) - Attack: %3 - Distance: %4m", _grp, _veh_type, _objective_pos, round (_last_pos distance2D _objective_pos)];
 

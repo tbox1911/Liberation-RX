@@ -6,20 +6,20 @@ params ["_unit"];
 if (!local _unit || !alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit >= 3) exitWith {};
-if (surfaceIsWater (getPosATL _unit)) exitWith {};
+if (surfaceIsWater (getPos _unit)) exitWith {};
+if (round (getPos _unit select 2) > 1) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
 if (_unit getVariable ["LRX_unblock_running", false]) exitWith {};
 
 // Exit if forest / tree
 private _forest_type = ["forest", "wood"];
 private _typepos = tolower (surfaceType getPosWorld _unit);
-private _forest = count (_forest_type select { (_typepos find _x) > -1 }) + count (nearestTerrainObjects [_unit, ["Tree","Small Tree"], 10]);
+private _forest = count (_forest_type select { (_typepos find _x) > -1 }) + count (nearestTerrainObjects [_unit, ["Tree","Small Tree","Bush"], 10]);
 private _rocks = count (nearestTerrainObjects [_unit, ["ROCK"], 20]);
 if (_forest > 0 && _rocks == 0) exitWith {};
 
 // Default
 private _basepos = (getPosATL _unit) vectorAdd [0,0,0.5];
-private _foundPos = nil;
 private _step = 0.25;
 private _maxalt = 120;
 
@@ -58,5 +58,4 @@ _unit playMoveNow "AmovPercMwlkSrasWrflDf";
 sleep 2;
 _unit setHitPointDamage ["hitLegs", 0];
 _unit allowDamage true;
-
 _unit setVariable ["LRX_unblock_running", false];
