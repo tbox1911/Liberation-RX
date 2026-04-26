@@ -36,6 +36,7 @@ switch (_type) do {
 };
 
 private ["_unit", "_rank_unit", "_pos", "_backpack"];
+private _units = [];
 {
 	_unit = _grp createUnit [_x, _spawn_pos, [], 30, "NONE"];
 	if (!isNull _unit) then {
@@ -104,18 +105,19 @@ private ["_unit", "_rank_unit", "_pos", "_backpack"];
 			};
 			_unit addBackpack "B_Parachute";
 		};
+
+		_units pushBack _unit;
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
 	sleep 0.1;
 } foreach _classname;
 
-private _units = units _grp;
 if (count _units == 0) exitWith { diag_log "--- LRX Error: created group is empty."; grpNull };
 
 [_type, _units] spawn {
 	params ["_type", "_units"];
-	sleep 5;
+	sleep 10;
 	{
 		_x allowDamage true;
 		if (_type in ["militia", "infantry"]) then { [_x] spawn F_fixPosUnit };
