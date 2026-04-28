@@ -33,7 +33,7 @@ private ["_object", "_offset"];
 	_lst_lrx pushBack [_object, _offset];
 } forEach (_vehicle getVariable ["GRLIB_ammo_vehicle_load", []]);
 
-waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
+waitUntil {sleep 0.1; round (getPos _vehicle select 2) <= _open_parachute};
 
 private _pos = getPos _vehicle;
 private _parachute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "NONE"];
@@ -49,7 +49,8 @@ _smoke1 attachTo [_vehicle, [0,0,0.6]];
 private _smoke2 = (_shell_smoke select _two) createVehicle _pos;
 _smoke2 attachTo [_vehicle, [0,0,0.6]];
 
-waitUntil {sleep 0.1; ((getPos _vehicle select 2) < 7 || time > _timeout)};
+waitUntil {sleep 0.1; ((getPos _vehicle select 2) <= 7 || time > _timeout)};
+
 detach _smoke1;
 detach _smoke2;
 detach _vehicle;

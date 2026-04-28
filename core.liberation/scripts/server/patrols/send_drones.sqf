@@ -25,7 +25,6 @@ _spawn_pos set [2, _airveh_alt];
 
 // create uav
 private _vehicle = createVehicle [_uav_classname, _spawn_pos, [], 50, "FLY"];
-_vehicle allowDamage false;
 _vehicle setDir (_vehicle getDir _targetpos);
 _vehicle setPos _spawn_pos;
 _vehicle setVelocityModelSpace [0, 80, 0];
@@ -37,8 +36,7 @@ _vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 [_vehicle, 1800] call F_setUnitTTL;
 [_grp] call F_deleteWaypoints;
-sleep 0.5;
-_vehicle allowDamage true;
+sleep 1;
 
 private _uav_role = 1;
 if (_kamikaze) then {

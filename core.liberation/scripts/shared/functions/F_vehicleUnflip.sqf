@@ -11,13 +11,14 @@ if (vectorUp _vehicle select 2 < 0.60) then {
     _vehicle allowDamage false;
     _vehicle setpos [(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, 0.5];
     _vehicle setVectorUp surfaceNormal position _vehicle;
-    sleep 2;
+    sleep 3;
     _vehicle allowDamage true;
 };
 
 if (getPosATL _vehicle select 2 < -0.50 || _force) then {
     _vehicle allowDamage false;
-    { _x allowDamage false } forEach (crew _vehicle);
+    private _crew = crew _vehicle;
+    { _x allowDamage false } forEach _crew;
     private _pos = (getpos _vehicle);
     if (_force) then {
         _pos = ([_pos, 2] call F_getRandomPos);
@@ -26,5 +27,5 @@ if (getPosATL _vehicle select 2 < -0.50 || _force) then {
     _vehicle setpos _pos;
     sleep 3;
     _vehicle allowDamage true;
-    { _x allowDamage true } forEach (crew _vehicle);
+    { _x allowDamage true } forEach _crew;
 };

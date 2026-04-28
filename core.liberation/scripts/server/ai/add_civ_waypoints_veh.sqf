@@ -47,7 +47,7 @@ if (count _convoy_destinations < _min_waypoints) exitWith {
 if (_vehicle isKindOf "LandVehicle") then {
 	_vehicle allowDamage false;
 	_vehicle setPos (_convoy_destinations select 0);
-	sleep 1;
+	sleep 2;
 	_vehicle allowDamage true;
 	//(driver _vehicle) MoveTo (_convoy_destinations select 1)
 };

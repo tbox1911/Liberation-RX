@@ -24,7 +24,7 @@ while { dialog && alive player && dorepackage == 0 } do {
 	sleep 0.5;
 };
 
-if ( dorepackage > 0 ) then {
+if (dorepackage > 0) then {
 	closeDialog 0;
 	waitUntil { !dialog };
 
