@@ -60,14 +60,14 @@ private _pilot_group = group driver _vehicle;
 private _spawnpos = getPosATL _vehicle;
 _vehicle flyInHeight 350;
 
-private _cargo_seat_free = _vehicle emptyPositions "Cargo";
+private _cargo_seat_free = (_vehicle emptyPositions "Cargo") min 10;
 if (_cargo_seat_free == 0) exitWith {
 	diag_log format ["--- LRX Error bad classname (%1) for troup transport.", typeOf _vehicle];
 	[_vehicle, true, true] spawn F_vehicleClean;
 	grpNull;
 };
 
-private _unitclass = _para_squad select [0, (_cargo_seat_free min 10)];
+private _unitclass = _para_squad select [0, _cargo_seat_free];
 private _para_group = [_spawnpos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
 [_vehicle, (units _para_group)] call F_manualCrew;
 
@@ -100,7 +100,7 @@ if (floor random 3 == 0) then {
 
 sleep 1;
 
-diag_log format ["Send (%1) %2ParaTroopers to objective %3 at %4", _cargo_seat_free, _name, _targetpos, time];
+diag_log format ["Send (%1) %2ParaTroopers in %3 to objective %4 at %5", _cargo_seat_free, _name, typeOf _vehicle, _targetpos, time];
 stats_reinforcements_called = stats_reinforcements_called + 1;
 if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 };
 
