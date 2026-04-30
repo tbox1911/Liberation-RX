@@ -434,7 +434,7 @@ while {true} do {
 
 			// Trench
 			if (_buildtype == GRLIB_TrenchBuildType) exitWith {
-				private _vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
+				private _vehicle = createVehicle [_classname, zeropos, [], 100, "CAN_COLLIDE"];
 				_vehicle enableSimulationGlobal false;
 				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 				disableUserInput true;
@@ -480,6 +480,7 @@ while {true} do {
 			if (isNull _vehicle || !alive _vehicle) exitWith {
 				[player, _price, _price_fuel] remoteExec ["ammo_add_remote_call", 2];
 				private _msg = format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _veh_pos];
+				deleteVehicle _vehicle;
 				systemchat _msg;
 				diag_log _msg;
 			};

@@ -8,7 +8,7 @@ params [
 ];
 
 private _allow_damage = true;
-private _vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
+private _vehicle = createVehicle [_classname, zeropos, [], 100, "NONE"];
 sleep 0.1;
 if (isNull _vehicle) exitWith {
 	diag_log format ["--- LRX Error: Cannot create vehicle %1 at %2", _classname, _veh_pos];

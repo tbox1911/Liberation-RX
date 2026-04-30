@@ -76,7 +76,7 @@ opfor_target addEventHandler ["HandleDamage", {
 publicVariable "opfor_target";
 
 private _savedpos = getPosWorld opfor_target;
-opfor_target_assembled = createVehicle ["Land_Device_assembled_F", zeropos, [], 1, "CAN_COLLIDE"];
+opfor_target_assembled = createVehicle ["Land_Device_assembled_F", zeropos, [], 100, "CAN_COLLIDE"];
 opfor_target_assembled setVectorDirAndUp [vectorDir opfor_target, vectorUp opfor_target];
 opfor_target_assembled hideObjectGlobal true;
 

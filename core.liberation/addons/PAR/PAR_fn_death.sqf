@@ -27,7 +27,7 @@ if (_unit == player) then {
 		if (count _old_graves >= 3) then { deleteVehicle (selectRandom _old_graves) };
 
 		// create grave
-		private _grave = createVehicle [(selectRandom PAR_graves), zeropos, [], 0, "CAN_COLLIDE"];
+		private _grave = createVehicle [(selectRandom PAR_graves), zeropos, [], 100, "CAN_COLLIDE"];
 		_grave allowDamage false;
 		_grave setDir _dir;
 		_grave setPosATL _pos;

@@ -8,7 +8,7 @@ private _sign_offset = (_fob_data select 0 select 0);
 private _sign_dir = _fob_dir + (_fob_data select 0 select 1);
 private _sign_pos = _fob_pos vectorAdd ([_sign_offset, -_sign_dir] call BIS_fnc_rotateVector2D);
 
-private _sign = createVehicle [FOB_sign, zeropos, [], 0, "CAN_COLLIDE"];
+private _sign = createVehicle [FOB_sign, zeropos, [], 100, "CAN_COLLIDE"];
 _sign allowDamage false;
 _sign setDir _sign_dir;
 _sign setPosASL _sign_pos;

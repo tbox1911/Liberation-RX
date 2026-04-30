@@ -46,7 +46,7 @@ if (count _nearbuildings > 0) then {
 			};
 			_used_positions pushback _pos;
 
-			private _intelobject = createVehicle [selectRandom GRLIB_intel_items, zeropos, [], 10, "CAN_COLLIDE"];
+			private _intelobject = createVehicle [selectRandom GRLIB_intel_items, zeropos, [], 100, "CAN_COLLIDE"];
 			_intelobject setVariable ["GRLIB_intel_search", true, true];
 			[_intelobject, _pos] call F_fixPosObject;
 			_intelobject allowDamage false;

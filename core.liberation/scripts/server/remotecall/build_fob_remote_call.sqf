@@ -8,7 +8,7 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 	_vehicle = createVehicle [land_cutter_typename, _veh_pos, [], 0, "CAN_COLLIDE"];
 	_vehicle setPosATL _veh_pos;
 	[_veh_pos] call build_cutter_remote_call;
-	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
+	_vehicle = createVehicle [_classname, zeropos, [], 100, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
 	_vehicle enableSimulationGlobal true;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
@@ -18,7 +18,7 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 
 // Naval FOB
 if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
-	_vehicle = createVehicle [_classname, zeropos, [], 0, "CAN_COLLIDE"];
+	_vehicle = createVehicle [_classname, zeropos, [], 100, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosATL _veh_pos;
@@ -37,7 +37,7 @@ if (_classname in ["fob_water1"]) then {
 		_nextpos = (_x select 1);
 		_nextdir = (_x select 2);
 		_nextpos = _veh_pos vectorAdd ([_nextpos, 0] call BIS_fnc_rotateVector2D);
-		_nextobject = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
+		_nextobject = createVehicle [_nextclass, zeropos, [], 100, "CAN_COLLIDE"];
 		_nextobject allowDamage false;
 		_nextobject setDir _nextdir;
 		_nextobject setPosASL _nextpos;
@@ -51,7 +51,7 @@ if (_classname in ["fob_water1"]) then {
 		_curalt = _curalt + 0.5;
 		_veh_pos set [2, _curalt];
 	};
-	_vehicle = createVehicle [FOB_typename, zeropos, [], 0, "CAN_COLLIDE"];
+	_vehicle = createVehicle [FOB_typename, zeropos, [], 100, "CAN_COLLIDE"];
 	_vehicle allowDamage false;
 	_vehicle enableSimulationGlobal true;
 	_vehicle setVectorDirAndUp [[0,1,0], [0,0,1]];

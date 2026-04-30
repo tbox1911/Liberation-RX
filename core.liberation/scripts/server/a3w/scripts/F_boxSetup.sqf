@@ -3,7 +3,7 @@
 if (!isServer) exitWith {};
 params ["_type", "_pos", "_locked"];
 
-private _box = createVehicle [_type, zeropos, [], 10, "CAN_COLLIDE"];
+private _box = createVehicle [_type, zeropos, [], 100, "CAN_COLLIDE"];
 _box allowDamage false;
 _box addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 [_box, _pos] call F_fixPosObject;
