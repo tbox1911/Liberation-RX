@@ -43,14 +43,14 @@ while { dialog && alive player } do {
 				_price = round (_price * GRLIB_recycling_percentage);
 			} else {
 				_price = round (_price / GRLIB_recycling_percentage);
-			};		
+			};
 			_sell_list_dlg pushBack [(typeOf _x), _price];
 		} forEach _sell_list;
 
 		lbClear 110;
 		{
 			private _entrytext = [(_x select 0)] call F_getLRXName;
-			if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };	
+			if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };
 			lnbAddRow [110, [_entrytext, str (_x select 1)]];
 			private _icon = getText ( _cfg >> (_x select 0) >> "icon");
 			if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
@@ -72,7 +72,7 @@ while { dialog && alive player } do {
 			_price = parseNumber ((_display displayCtrl (110)) lnbText [_selected_item, 1]);
 			_price = _price min 999;
 			if (_price == 0) then {
-				gamelogic globalChat localize "STR_NOTHING_TO_SELL";			
+				gamelogic globalChat localize "STR_NOTHING_TO_SELL";
 			} else {
 				private _vehicle = _sell_list select _selected_item;
 				private _msg = format [localize "STR_SELL_CONFIRM", _vehicle_name, _price];
@@ -86,7 +86,7 @@ while { dialog && alive player } do {
 				};
 			_refresh = true;
 			};
-		};	
+		};
 		sell_action = 0;
 	};
 	sleep 0.3;
