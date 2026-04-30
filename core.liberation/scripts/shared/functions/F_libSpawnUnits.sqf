@@ -25,14 +25,16 @@ if (_type == "para") then {
 // ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 private _rank_range = [0, 6];
 switch (_type) do {
-	case "militia"  : { _rank_range = [0, 3] };
-	case "cargo"    : { _rank_range = [1, 4] };
-	case "infantry" : { _rank_range = [3, 5] };
-	case "building" : { _rank_range = [3, 5] };
-	case "para"     : { _rank_range = [4, 5] };
-	case "guards"   : { _rank_range = [4, 5] };
-	case "bandits"  : { _rank_range = [5, 5] };
-	case "defender" : { _rank_range = [4, 5] };
+	case "militia"    : { _rank_range = [0, 3] };
+	case "cargo"      : { _rank_range = [1, 4] };
+	case "infantry"   : { _rank_range = [3, 6] };
+	case "building"   : { _rank_range = [3, 5] };
+	case "para"       : { _rank_range = [4, 6] };
+	case "guards"     : { _rank_range = [4, 5] };
+	case "divers"     : { _rank_range = [3, 5] };
+	case "bandits"    : { _rank_range = [5, 6] };
+	case "defender"   : { _rank_range = [3, 4] };
+	case "resistance" : { _rank_range = [4, 5] };
 };
 
 private ["_unit", "_rank_unit", "_pos", "_backpack"];

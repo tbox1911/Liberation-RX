@@ -39,15 +39,9 @@ private _unitclass = [];
 while { (count _unitclass) < _nbUnits } do { _unitclass pushback (selectRandom _unitTypes) };
 private _grp = [_pos, _unitclass, _side, _type, true] call F_libSpawnUnits;
 
-//Unit Skill;
-//  Novice < 0.25
-//  Rookie >= 0.25 and <= 0.45
-//  Recruit > 0.45 and <= 0.65
-//  Veteran > 0.65 and <= 0.85
-//  Expert > 0.85
+// Cosmetic changes
 {
-	_x setSkill 0.75;
-	// cosmetic change
+
 	if (typeOf _x == "C_IDAP_Man_Paramedic_01_F") then {
 		//_unit addVest "V_Plain_medical_F";
 		_x addGoggles "G_Respirator_white_F";
@@ -58,7 +52,6 @@ private _grp = [_pos, _unitclass, _side, _type, true] call F_libSpawnUnits;
 		_x addGoggles "G_Respirator_white_F";
 	};
 	if (_type == "bandits") then {
-		_x setSkill 0.88;
 		_x addGoggles "G_Balaclava_lowprofile";
 	};
 	if (_type == "prisoner") then {
