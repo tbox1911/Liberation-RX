@@ -531,8 +531,6 @@ while {true} do {
 				[_vehicle, _lst_a3, _lst_r3f, _lst_lrx] remoteExec ["load_cargo_remote_call", 2];
 			};
 
-			// Inform units
-			GRLIB_player_group reveal [_vehicle, 4];
 			build_vehicle = _vehicle;
 			stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
 			publicVariable "stats_blufor_vehicles_built";

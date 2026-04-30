@@ -25,5 +25,5 @@ while {true} do {
 			_vehicle setVariable ["GRLIB_recycle_action", true];
 		} forEach _nearrecycl;
 	};
-	sleep 6;
+	sleep 3;
 };
