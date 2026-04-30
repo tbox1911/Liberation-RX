@@ -8973,6 +8973,14 @@
 			<Czech>%1\nBonusové skóre + %2 bodů\nBonusová munice + %3 !!</Czech>
 		</Key>
 
+		<!-- do_logistic.sqf -->
+		<Key ID="STR_LOGISTIC_ACTION">
+			<Original>-- AI LOGISTICS SYSTEM</Original>
+		</Key>		
+		<Key ID="STR_LOGISTIC_WELCOME">
+			<Original>Welcome to the AI Logistics System, where you can automate resource collection.</Original>
+		</Key>		
+
 		<!-- do_sell.sqf -->
 		<Key ID="STR_SELL_WELCOME_FOB">
 			<Original>Hello solider, The army can recycle your vehicle's cargo!</Original>

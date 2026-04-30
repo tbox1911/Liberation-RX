@@ -87,6 +87,7 @@ class CfgDebriefing {
 #include "addons\FOB\def_fob.hpp"
 #include "addons\FOB\def_sector.hpp"
 #include "addons\SELL\sell_shop.hpp"
+#include "addons\LOG\ai_logistic.hpp"
 #include "addons\WHS\warehouse.hpp"
 #include "addons\SDB_DALE\RscLoadout.hpp"
 #include "addons\JKB\JKB_dialog.hpp"

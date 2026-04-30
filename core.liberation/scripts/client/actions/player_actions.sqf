@@ -23,6 +23,9 @@ if (!isNil "_my_dog") then { [true] call player_dog_actions };
 private _my_squad = player getVariable "my_squad";
 if (!isNil "_my_squad") then { [true] call player_squad_actions };
 
+// AI Logistics System
+player addAction ["<t color='#0080F0'>" + localize "STR_LOGISTIC_ACTION" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_logistic.sqf","",997,false,true,"","call GRLIB_checkLogistic"];
+
 // Support vehicle
 player addAction ["<t color='#0080F0'>" + localize "STR_VEH_SUPPORT" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_support.sqf","",997,false,true,"","call GRLIB_checkVehicleSupport"];
 

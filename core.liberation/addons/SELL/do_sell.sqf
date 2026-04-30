@@ -26,13 +26,13 @@ while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
 		private _sell_classnames = ["LandVehicle","Air","Ship_F","ReammoBox_F"] + GRLIB_Ammobox_keep;
-		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
+		_sell_list = (player nearEntities [_sell_classnames, 50]) select {
 			alive _x && loadAbs _x > 0 && isNull (attachedTo _x) &&
 			(_x distance2D lhd > GRLIB_fob_range) &&
 			!(typeOf _x in list_static_weapons) &&
 			!(_x getVariable ['R3F_LOG_disabled', false]) &&
 			[player, _x] call is_owner && locked _x != 2
-		}] call BIS_fnc_conditionalSelect;
+		};
 
 		if (!isNil "GRLIB_personal_box") then { _sell_list append [GRLIB_personal_box] };
 
@@ -49,11 +49,10 @@ while { dialog && alive player } do {
 
 		lbClear 110;
 		{
-			_entrytext = [(_x select 0)] call F_getLRXName;
+			private _entrytext = [(_x select 0)] call F_getLRXName;
 			if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };	
 			lnbAddRow [110, [_entrytext, str (_x select 1)]];
-
-			_icon = getText ( _cfg >> (_x select 0) >> "icon");
+			private _icon = getText ( _cfg >> (_x select 0) >> "icon");
 			if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
 				_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 			};
@@ -66,11 +65,9 @@ while { dialog && alive player } do {
 
 	_selected_item = lbCurSel 110;
 	if (_selected_item != -1) then { ctrlEnable [120, true] } else { ctrlEnable [120, false] };
-	_selected_item = lbCurSel 111;
 
 	if (sell_action != 0) then {
 		if (sell_action == 1) then {
-			private _selected_item = lbCurSel 110;
 			private _vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
 			_price = parseNumber ((_display displayCtrl (110)) lnbText [_selected_item, 1]);
 			_price = _price min 999;
