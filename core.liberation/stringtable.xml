@@ -8976,10 +8976,19 @@
 		<!-- do_logistic.sqf -->
 		<Key ID="STR_LOGISTIC_ACTION">
 			<Original>-- AI LOGISTICS SYSTEM</Original>
-		</Key>		
+		</Key>
+		<Key ID="STR_LOGISTIC_CONTINUE">
+			<Original>-- AI LOGISTICS CONTINUE</Original>
+		</Key>
 		<Key ID="STR_LOGISTIC_WELCOME">
 			<Original>Welcome to the AI Logistics System, where you can automate resource collection.</Original>
-		</Key>		
+		</Key>
+		<Key ID="STR_LOGISTIC_SELECT">
+			<Original>AI Destination</Original>
+		</Key>
+		<Key ID="STR_LOGISTIC_WRONG_PLACE">
+			<Original>Sorry, the Transport cannot move on this place.</Original>
+		</Key>
 
 		<!-- do_sell.sqf -->
 		<Key ID="STR_SELL_WELCOME_FOB">
