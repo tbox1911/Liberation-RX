@@ -148,6 +148,10 @@ GRLIB_checkRemoveHelipad = {
 	);
 };
 
+GRLIB_checkLogistic = {
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && !GRLIB_AI_logistic_in_use && count transport_vehicles > 0)
+};
+
 GRLIB_checkVehicleSupport = { (count GRLIB_vehicle_need_support > 0) };
 
 GRLIB_checkEjectCrew = {
