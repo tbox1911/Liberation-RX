@@ -8975,10 +8975,10 @@
 
 		<!-- do_logistic.sqf -->
 		<Key ID="STR_LOGISTIC_ACTION">
-			<Original>-- AI LOGISTICS SYSTEM</Original>
+			<Original>-- LOGISTICS SYSTEM</Original>
 		</Key>
 		<Key ID="STR_LOGISTIC_CONTINUE">
-			<Original>-- AI LOGISTICS CONTINUE</Original>
+			<Original>-- LOGISTICS CONTINUE</Original>
 		</Key>
 		<Key ID="STR_LOGISTIC_WELCOME">
 			<Original>Welcome to the AI Logistics System, where you can automate resource collection.</Original>

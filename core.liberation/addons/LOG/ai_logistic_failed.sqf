@@ -8,4 +8,4 @@ if (_cmd == "unload") then {
     gamelogic globalChat "Transport cannot unload his cargo, your manual intervention is required!";
 };
 
-deleteVehicle _driver;
+[_driver] call ai_logistic_end;

@@ -10,13 +10,13 @@ private _ressources = (_transport nearEntities [GRLIB_AI_logistic_ressources, 10
 };
 
 private _maxload = [typeOf _transport] call F_getVehicleMaxLoad;
-private _truck_load = _transport getVariable ["GRLIB_ammo_vehicle_load", []];
+private _truck_load = [];
 {
+    _truck_load = _transport getVariable ["GRLIB_ammo_vehicle_load", []];
     if (count _truck_load < _maxload) then {
         [_transport, _x] remoteExec ["load_truck_remote_call", 2];
+        sleep 1;
     };
 } forEach _ressources;
 
-_truck_load = _transport getVariable ["GRLIB_ammo_vehicle_load", []];
-
-(count _truck_load <= _maxload);
+(count _truck_load == _maxload);

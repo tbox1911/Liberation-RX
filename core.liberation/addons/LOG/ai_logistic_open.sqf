@@ -48,7 +48,7 @@ while { dialog && alive player && isNull _transport} do {
 	if (logistic_action == 1) then {
 		_transport = _transport_list select _selected_item;
 		private _transport_name = [_transport] call F_getLRXName;
-		hintSilent format ["AI transport %1 selected!", _transport_name];
+		hintSilent format ["%1 selected for AI transport.", _transport_name];
 		playSound "taskSucceeded";
 		closeDialog 0;
 	};

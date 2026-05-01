@@ -19,7 +19,7 @@ waitUntil {
         _driver doMove _dest;
         sleep 5;
     };
-    ((_vehicle distance2D _dest <= _landing_range && unitReady driver _vehicle) || time >= _stop)
+    (isNull driver _vehicle || (_vehicle distance2D _dest <= _landing_range && unitReady driver _vehicle) || time >= _stop)
 };
 
-(time >= _stop);
+(time >= _stop || isNull driver _vehicle);
