@@ -63,7 +63,7 @@ if (isNull _driver) exitWith {};
 private _full = [_transport] call ai_logistic_collect;
 if (_full) then {
     gamelogic globalChat "AI Transport is full, go back to FOB!";
-    [_transport, _origin] call ai_logistic_return;
+    [_transport, _driver, _origin] call ai_logistic_return;
     if (isNull _driver) then {
         GRLIB_AI_logistic_new_order = false;
     } else {
@@ -80,7 +80,7 @@ if (_full) then {
     waitUntil { sleep 1; (GRLIB_AI_logistic_new_order || driver _transport != _driver || time >= _stop) };
     if (time >= _stop) then {
         gamelogic globalChat "AI Transport timeout, go back to FOB!";
-        [_transport, _origin] call ai_logistic_return;
+        [_transport, _driver, _origin] call ai_logistic_return;
         if (isNull _driver) then {
             GRLIB_AI_logistic_new_order = false;
         };
