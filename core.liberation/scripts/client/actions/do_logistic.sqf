@@ -9,8 +9,6 @@ private _fnc_waitOrder = {
     (time >= _stop)
 };
 
-GRLIB_AI_logistic_continue = false;
-
 if (_arguments == "CONTINUE") then {
     GRLIB_AI_logistic_new_order = true;
 } else {
@@ -45,6 +43,8 @@ if (_arguments == "CONTINUE") then {
 
     GRLIB_AI_logistic_driver = _driver;
     GRLIB_AI_logistic_in_use = true;
+    GRLIB_AI_logistic_continue = false;
+    GRLIB_AI_logistic_travel = false;
 };
 
 if (isNull GRLIB_AI_logistic_transport) exitWith {};
@@ -57,13 +57,12 @@ if (isNull _driver) exitWith {};
 
 // select dest
 [_transport] call ai_logistic_pickdest;
-diag_log [GRLIB_AI_logistic_continue, GRLIB_AI_logistic_new_order];
-
-if (dojump == 0 && !GRLIB_AI_logistic_continue) exitWith { [_driver] call ai_logistic_end };
-if (dojump == 0) exitWith { GRLIB_AI_logistic_continue = true };
+if (dojump == 0 && !GRLIB_AI_logistic_travel) exitWith { [_driver] call ai_logistic_end };
+if (dojump == 0) exitWith {};
 
 private _timeout = [_transport, _driver, halo_position] call ai_logistic_dest;
 if (_timeout) exitWith { [_driver, "collect"] call ai_logistic_failed };
+GRLIB_AI_logistic_travel = true;
 
 if (halo_position distance2D _origin < GRLIB_fob_range) then {
     [_transport] call ai_logistic_unload;
