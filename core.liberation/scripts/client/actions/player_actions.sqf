@@ -58,3 +58,8 @@ if (GRLIB_filter_arsenal == 4) then {
     // Classic Arsenal
     player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-401,true,true,"","call GRLIB_checkArsenal"];
 };
+
+// AI Logistics System
+player addAction ["<t color='#0080F0'>" + localize "STR_LOGISTIC_ACTION" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_logistic.sqf","",-985,false,true,"","call GRLIB_checkLogistic"];
+// AI Logistics Continue
+player addAction ["<t color='#0080F0'>" + localize "STR_LOGISTIC_CONTINUE" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_logistic.sqf","CONTINUE",-985,false,true,"","call GRLIB_checkLogisticContinue"];

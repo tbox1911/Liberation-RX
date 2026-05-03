@@ -1,5 +1,14 @@
 params ["_target", "_caller", "_actionId", "_arguments"];
 
+private _fnc_waitOrder = {
+    GRLIB_AI_logistic_new_order = false;
+    GRLIB_AI_logistic_continue  = true;
+    gamelogic globalChat "AI Transport is waiting for new order!";
+    private _stop = time + (15 * 60);
+    waitUntil { sleep 1; (GRLIB_AI_logistic_new_order || driver _transport != _driver || time >= _stop) };
+    (time >= _stop)
+};
+
 GRLIB_AI_logistic_continue = false;
 
 if (_arguments == "CONTINUE") then {
@@ -30,6 +39,7 @@ if (_arguments == "CONTINUE") then {
     [_driver] joinSilent _grp;
     _driver assignAsDriver _transport;
     _driver moveInDriver _transport;
+    _driver addMPEventHandler ['MPKilled', { _this spawn kill_manager }];
     _driver addEventHandler ["GetOutMan", { [_this select 0] spawn ai_logistic_end }];
     _driver addEventHandler ["SeatSwitchedMan", { [_this select 0] spawn ai_logistic_end }];
 
@@ -43,18 +53,14 @@ private _transport = GRLIB_AI_logistic_transport;
 private _driver = GRLIB_AI_logistic_driver;
 private _origin = GRLIB_AI_logistic_origin;
 
-private _fnc_waitOrder = {
-    GRLIB_AI_logistic_new_order = false;
-    GRLIB_AI_logistic_continue  = true;
-    gamelogic globalChat "AI Transport is waiting for new order!";
-    private _stop = time + (15 * 60);
-    waitUntil { sleep 1; (GRLIB_AI_logistic_new_order || driver _transport != _driver || time >= _stop) };
-    (time >= _stop)
-};
+if (isNull _driver) exitWith {};
 
 // select dest
 [_transport] call ai_logistic_pickdest;
-if (dojump == 0) exitWith { [_driver] call ai_logistic_end };
+diag_log [GRLIB_AI_logistic_continue, GRLIB_AI_logistic_new_order];
+
+if (dojump == 0 && !GRLIB_AI_logistic_continue) exitWith { [_driver] call ai_logistic_end };
+if (dojump == 0) exitWith { GRLIB_AI_logistic_continue = true };
 
 private _timeout = [_transport, _driver, halo_position] call ai_logistic_dest;
 if (_timeout) exitWith { [_driver, "collect"] call ai_logistic_failed };

@@ -7,10 +7,6 @@ if (_add) then {
         GRLIB_player_fob_actions pushBack (player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","call GRLIB_checkSquadMgmt"]);
         // Virtual Garage
         GRLIB_player_fob_actions pushBack (player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","call GRLIB_checkGarage"]);
-        // AI Logistics System
-        GRLIB_player_fob_actions pushBack (player addAction ["<t color='#0080F0'>" + localize "STR_LOGISTIC_ACTION" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_logistic.sqf","",-985,false,true,"","call GRLIB_checkLogistic"]);
-        // continue
-        GRLIB_player_fob_actions pushBack (player addAction ["<t color='#0080F0'>" + localize "STR_LOGISTIC_CONTINUE" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_logistic.sqf","CONTINUE",-985,false,true,"","call GRLIB_checkLogisticContinue"]);
         // Build Menu
         GRLIB_player_fob_actions pushBack (player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf",false,-350,false,true,"","call GRLIB_checkBuild"]);
         // Pack FOB
