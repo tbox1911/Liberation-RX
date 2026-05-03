@@ -10,14 +10,21 @@ private _storage_list = (nearestObjects [_transport, [storage_medium_typename], 
 
 if (count _storage_list > 0) then {
     private _storage = _storage_list select 0;
+    _transport allowDamage false;
     {
-        if (typeOf _x in GRLIB_AI_logistic_ressources) then {
-            detach _x;
-            [_storage, _x] remoteExec ["load_truck_remote_call", 2];
-            _truck_load = _truck_load - [_x];
+        _box = _x;
+        if (typeOf _box in GRLIB_AI_logistic_ressources) then {
+            _box allowDamage false;
+            detach _box;
+            _box setPos zeropos;
+			_box setVelocity [0,0,0];
+            [_storage, _box] remoteExec ["load_truck_remote_call", 2];
+            _truck_load = _truck_load - [_box];
             sleep 1;
+			_box allowDamage true;
         };
     } forEach _truck_load;
+    _transport allowDamage true;
     _transport setVariable ["GRLIB_ammo_vehicle_load", _truck_load, true];
     gamelogic globalChat format ["AI Transport unload cargo to %1!", [_storage] call F_getLRXName ];
 } else {

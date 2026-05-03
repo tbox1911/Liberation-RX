@@ -2,13 +2,13 @@ params ["_target", "_caller", "_actionId", "_arguments"];
 
 GRLIB_AI_logistic_continue = false;
 
-private _transport = objNull;
 if (_arguments == "CONTINUE") then {
     GRLIB_AI_logistic_new_order = true;
 } else {
-    _transport = [] call ai_logistic_open;
-    if (isNull _transport) exitWith { GRLIB_AI_logistic_transport = objNull };
-
+    private _transport = [] call ai_logistic_open;
+    if (isNull _transport) exitWith {
+        GRLIB_AI_logistic_transport = objNull;
+    };
     if !(isNull (driver _transport)) exitWith {
         gamelogic globalChat "Transport driver seat must be empty !";
         GRLIB_AI_logistic_transport = objNull;
@@ -16,10 +16,10 @@ if (_arguments == "CONTINUE") then {
 
     GRLIB_AI_logistic_transport = _transport;
     private _storage = nearestObjects [_transport, [storage_medium_typename], GRLIB_fob_range];
-    if (count _storage > 0) then {
-        GRLIB_AI_logistic_origin = getPos (_storage select 0);
+    GRLIB_AI_logistic_origin = if (count _storage > 0) then {
+        getPos (_storage select 0);
     } else {
-        GRLIB_AI_logistic_origin = [_transport] call F_getNearestFob;
+        [_transport] call F_getNearestFob;
     };
 
     private _grp = createGroup [GRLIB_side_friendly, true];
@@ -30,7 +30,7 @@ if (_arguments == "CONTINUE") then {
     [_driver] joinSilent _grp;
     _driver assignAsDriver _transport;
     _driver moveInDriver _transport;
-    _driver addEventHandler ["GetOutMan", {	[_this select 0] spawn ai_logistic_end }];
+    _driver addEventHandler ["GetOutMan", { [_this select 0] spawn ai_logistic_end }];
     _driver addEventHandler ["SeatSwitchedMan", { [_this select 0] spawn ai_logistic_end }];
 
     GRLIB_AI_logistic_driver = _driver;
@@ -43,50 +43,43 @@ private _transport = GRLIB_AI_logistic_transport;
 private _driver = GRLIB_AI_logistic_driver;
 private _origin = GRLIB_AI_logistic_origin;
 
-[_transport] call ai_logistic_pickdest;
-if (dojump == 0) exitWith { [_driver] call ai_logistic_end };
-
-private _timeout = [_transport, halo_position] call ai_logistic_dest;
-if (_timeout) exitWith { [_driver, "collect"] call ai_logistic_failed };
-
-if (halo_position distance2D GRLIB_AI_logistic_origin < GRLIB_fob_range) then {
-    [_transport] call ai_logistic_unload;
+private _fnc_waitOrder = {
     GRLIB_AI_logistic_new_order = false;
-    GRLIB_AI_logistic_continue = true;
+    GRLIB_AI_logistic_continue  = true;
     gamelogic globalChat "AI Transport is waiting for new order!";
     private _stop = time + (15 * 60);
     waitUntil { sleep 1; (GRLIB_AI_logistic_new_order || driver _transport != _driver || time >= _stop) };
-    if (time >= _stop) then { [_driver] call ai_logistic_end };
+    (time >= _stop)
+};
+
+// select dest
+[_transport] call ai_logistic_pickdest;
+if (dojump == 0) exitWith { [_driver] call ai_logistic_end };
+
+private _timeout = [_transport, _driver, halo_position] call ai_logistic_dest;
+if (_timeout) exitWith { [_driver, "collect"] call ai_logistic_failed };
+
+if (halo_position distance2D _origin < GRLIB_fob_range) then {
+    [_transport] call ai_logistic_unload;
+    private _timeout = call _fnc_waitOrder;
+    if (_timeout || !GRLIB_AI_logistic_new_order) exitWith { [_driver] call ai_logistic_end };
 };
 if (isNull _driver) exitWith {};
 
+// if transport full, go back
 private _full = [_transport] call ai_logistic_collect;
 if (_full) then {
     gamelogic globalChat "AI Transport is full, go back to FOB!";
     [_transport, _driver, _origin] call ai_logistic_return;
-    if (isNull _driver) then {
-        GRLIB_AI_logistic_new_order = false;
-    } else {
-        GRLIB_AI_logistic_continue = true;
-        gamelogic globalChat "AI Transport is waiting for new order!";
-        private _stop = time + (15 * 60);
-        waitUntil { sleep 1; (GRLIB_AI_logistic_new_order || driver _transport != _driver || time >= _stop) };
-    };
-} else {
-    GRLIB_AI_logistic_new_order = false;
-    GRLIB_AI_logistic_continue = true;
-    gamelogic globalChat "AI Transport is waiting for new order!";
-    private _stop = time + (15 * 60);
-    waitUntil { sleep 1; (GRLIB_AI_logistic_new_order || driver _transport != _driver || time >= _stop) };
-    if (time >= _stop) then {
-        gamelogic globalChat "AI Transport timeout, go back to FOB!";
-        [_transport, _driver, _origin] call ai_logistic_return;
-        if (isNull _driver) then {
-            GRLIB_AI_logistic_new_order = false;
-        };
-    };
+};
+if (isNull _driver) exitWith {};
+
+private _timeout = call _fnc_waitOrder;
+if (_timeout && !_full) then {
+    gamelogic globalChat "AI Transport timeout, go back to FOB!";
+    [_transport, _driver, _origin] call ai_logistic_return;
 };
 
-if (GRLIB_AI_logistic_new_order) exitWith {};
-
-[_driver] call ai_logistic_end;
+if (!GRLIB_AI_logistic_new_order) then {
+    [_driver] call ai_logistic_end;
+};

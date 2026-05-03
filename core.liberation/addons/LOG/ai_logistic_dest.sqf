@@ -1,13 +1,11 @@
-params ["_vehicle", "_dest"];
+params ["_vehicle", "_driver", "_dest"];
 
 gamelogic globalChat "AI Transport is in transit to destination...";
 
 _vehicle setFuel 1;
 _vehicle engineOn true;
-
-private _driver = driver _vehicle;
 _driver doMove _dest;
-sleep 30;
+sleep 15;
 
 private _landing_range = 150;
 private _stop = time + (15 * 60); // wait 15min max
@@ -19,9 +17,9 @@ waitUntil {
         [_vehicle] call F_vehicleUnflip;
         _vehicle setPos ((getPosATL _vehicle) vectorAdd [0, 0, 3]);
         _driver doMove _dest;
-        sleep 5;
+        sleep 10;
     };
-    (isNull driver _vehicle || (_vehicle distance2D _dest <= _landing_range && unitReady driver _vehicle) || time >= _stop)
+    (isNull _driver || (_vehicle distance2D _dest <= _landing_range && unitReady _driver) || time >= _stop)
 };
 
-(time >= _stop || isNull driver _vehicle);
+(time >= _stop || isNull _driver);
