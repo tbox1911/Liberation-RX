@@ -9,7 +9,7 @@ private _transport_list = [];
 private _display = findDisplay 2307;
 private _cfg = configFile >> "cfgVehicles";
 
-gamelogic globalChat localize "STR_LOGISTIC_WELCOME";
+hintSilent localize "STR_LOGISTIC_WELCOME";
 
 logistic_action = 0;
 private _refresh = true;

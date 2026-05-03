@@ -153,7 +153,7 @@ GRLIB_checkLogistic = {
 };
 
 GRLIB_checkLogisticContinue = {
-	(GRLIB_player_is_menuok && GRLIB_player_near_fob && GRLIB_AI_logistic_in_use && !GRLIB_AI_logistic_continue)
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && GRLIB_AI_logistic_in_use && GRLIB_AI_logistic_continue)
 };
 
 GRLIB_checkVehicleSupport = { (count GRLIB_vehicle_need_support > 0) };

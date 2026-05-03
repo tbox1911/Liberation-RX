@@ -10,7 +10,7 @@ if (_add) then {
         // AI Logistics System
         GRLIB_player_fob_actions pushBack (player addAction ["<t color='#0080F0'>" + localize "STR_LOGISTIC_ACTION" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_logistic.sqf","",-985,false,true,"","call GRLIB_checkLogistic"]);
         // continue
-        GRLIB_player_fob_actions pushBack (player addAction ["<t color='#0080F0'>" + localize "STR_LOGISTIC_CONTINUE" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_logistic_continue.sqf","",-985,false,true,"","call GRLIB_checkLogisticContinue"]);
+        GRLIB_player_fob_actions pushBack (player addAction ["<t color='#0080F0'>" + localize "STR_LOGISTIC_CONTINUE" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_logistic.sqf","CONTINUE",-985,false,true,"","call GRLIB_checkLogisticContinue"]);
         // Build Menu
         GRLIB_player_fob_actions pushBack (player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf",false,-350,false,true,"","call GRLIB_checkBuild"]);
         // Pack FOB

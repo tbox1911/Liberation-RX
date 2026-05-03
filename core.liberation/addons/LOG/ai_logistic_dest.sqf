@@ -1,5 +1,7 @@
 params ["_vehicle", "_dest"];
 
+gamelogic globalChat "AI Transport is in transit to destination...";
+
 _vehicle setFuel 1;
 _vehicle engineOn true;
 

@@ -8981,7 +8981,7 @@
 			<Original>-- LOGISTICS CONTINUE</Original>
 		</Key>
 		<Key ID="STR_LOGISTIC_WELCOME">
-			<Original>Welcome to the AI Logistics System, where you can automate resource collection.</Original>
+			<Original>Welcome to the AI Logistics System\nWhere you can automate resource collection.</Original>
 		</Key>
 		<Key ID="STR_LOGISTIC_SELECT">
 			<Original>AI Destination</Original>

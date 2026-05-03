@@ -2,6 +2,8 @@ params ["_transport"];
 
 // near storage
 private _truck_load = _transport getVariable ["GRLIB_ammo_vehicle_load", []];
+if (count _truck_load == 0) exitWith {};
+
 private _storage_list = (nearestObjects [_transport, [storage_medium_typename], GRLIB_fob_range]) select {
 	count _truck_load < (([typeOf _x] call F_getVehicleMaxLoad) - (count (_x getVariable ["GRLIB_ammo_vehicle_load", []])))
 };
@@ -17,6 +19,7 @@ if (count _storage_list > 0) then {
         };
     } forEach _truck_load;
     _transport setVariable ["GRLIB_ammo_vehicle_load", _truck_load, true];
+    gamelogic globalChat format ["AI Transport unload cargo to %1!", [_storage] call F_getLRXName ];
 } else {
     [_driver, "unload"] call ai_logistic_failed;
 };

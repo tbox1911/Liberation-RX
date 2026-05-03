@@ -2,6 +2,7 @@
 
 GRLIB_AI_logistic_in_use = false;
 GRLIB_AI_logistic_continue = false;
+GRLIB_AI_logistic_new_order = false;
 
 ai_logistic_end = compileFinal preprocessFileLineNumbers "addons\LOG\ai_logistic_end.sqf";
 ai_logistic_open = compileFinal preprocessFileLineNumbers "addons\LOG\ai_logistic_open.sqf";
