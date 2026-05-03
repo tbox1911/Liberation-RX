@@ -14,6 +14,12 @@ if (count _info == 0) exitWith { [_unit1, false] spawn F_ejectUnit; true };
 // Vehicle towed
 if !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith { [_unit1, false] spawn F_ejectUnit; true };
 
+// Priso
+if (_unit1 getVariable ["GRLIB_is_prisoner", false]) exitWith { [_unit1, false] spawn F_ejectUnit; true };
+
+// Kamikaze
+if (_unit1 getVariable ["GRLIB_is_kamikaze", false]) exitWith { [_unit1, false] spawn F_ejectUnit; true };
+
 private _role = _info select 0;
 private _turret = [0];
 if (count _info == 2) then { _turret = _info select 1 };

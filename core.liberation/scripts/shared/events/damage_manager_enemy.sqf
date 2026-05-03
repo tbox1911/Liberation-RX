@@ -31,10 +31,10 @@ if (_unit isKindOf "AllVehicles") then {
 
 if (_unit isKindOf "CAManBase") then {
 	if (isPlayer _killer && _unit != _killer) then {
-		private _veh_unit = vehicle _unit;
-		private _veh_killer = vehicle _killer;
+		private _veh_unit = objectParent _unit;
+		private _veh_killer = objectParent _killer;
 		// OpFor in vehicle
-		if (_veh_unit != _unit && _veh_killer == _killer && round (_killer distance2D _unit) <= 2) then {
+		if (!isNull _veh_unit && isNull _veh_killer && round (_killer distance2D _unit) <= 2) then {
 			private _msg = format ["%1 Stop Cheating !!", name _killer];
 			[gamelogic, _msg] remoteExec ["globalChat", owner _killer];
 			[_unit, _killer] spawn {

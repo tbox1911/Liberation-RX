@@ -1,5 +1,6 @@
 waitUntil { sleep 10; !isNil "GRLIB_all_fobs" };
 waitUntil { sleep 10; !isNil "blufor_sectors" };
+waitUntil { sleep 10; !isNil "active_sectors" };
 
 GRLIB_last_active_sectors = -1;
 

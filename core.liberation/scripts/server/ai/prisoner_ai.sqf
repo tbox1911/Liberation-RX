@@ -16,6 +16,10 @@ removeBackpack _unit;
 removeVest _unit;
 { _unit unlinkItem _x } forEach (assignedItems _unit);
 
+unAssignVehicle _unit;
+[_unit] orderGetIn false;
+[_unit] allowGetIn false;
+
 _unit setVariable ["GRLIB_can_speak", false, true];
 _unit removeAllEventHandlers "HandleDamage";
 _unit removeAllEventHandlers "GetInMan";
@@ -30,7 +34,7 @@ _unit setCaptive true;
 // Halt
 if (!_canmove) then { [_unit, "init"] remoteExec ["remote_call_prisoner", 0] };
 
-sleep 7;
+sleep 5;
 if (!alive _unit) exitWith {};
 
 private _grp = createGroup [GRLIB_side_civilian, true];

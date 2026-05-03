@@ -12,7 +12,19 @@ if (!local _unit) exitWith { [_unit, _range] remoteExec ["bomber_remote_call", 2
 private _loadout = getUnitLoadout (selectRandom civilians);
 _unit setUnitLoadout _loadout;
 
+unAssignVehicle _unit;
+[_unit] orderGetIn false;
+[_unit] allowGetIn false;
+
 [_unit] call F_fixPosUnit;
+
+_unit removeAllEventHandlers "HandleDamage";
+_unit removeAllEventHandlers "GetInMan";
+_unit removeAllEventHandlers "SeatSwitchedMan";
+_unit removeAllEventHandlers "Take";
+_unit addEventHandler ["GetInMan", {_this spawn vehicle_perm}];
+_unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_perm}];
+_unit addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
 
 {_unit disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 _unit setUnitPos "UP";

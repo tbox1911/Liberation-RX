@@ -32,7 +32,6 @@ private _grp = [_vehicle, GRLIB_side_enemy] call F_forceCrew;
 _vehicle engineOn true;
 _vehicle flyInHeight _airveh_alt;
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 [_vehicle, 1800] call F_setUnitTTL;
 [_grp] call F_deleteWaypoints;

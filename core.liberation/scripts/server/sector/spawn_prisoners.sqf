@@ -2,9 +2,6 @@ params ["_sector_pos", "_max_prisoners", "_managed_units"];
 
 if (_max_prisoners == 0) exitWith {[]};
 
-
-private _enemy_left = [];
-
 if (isNil "_managed_units") then {
     _managed_units = (_sector_pos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
 };
