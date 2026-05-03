@@ -85,7 +85,7 @@ GRLIB_checkBuild = {
 GRLIB_checkBuildTrench = {
 	if (count blufor_trenches == 0) exitWith { false };
 	if (GRLIB_current_trenches > 4) exitWith { false };
-	(GRLIB_player_is_menuok && !(surfaceIsWater getPos player) && !GRLIB_player_near_fob && !GRLIB_player_near_lhd && ([player, 3] call fetch_permission))
+	(GRLIB_player_is_menuok && !(surfaceIsWater getPos player) && round (getPosATL player select 2) == 0 && !GRLIB_player_near_fob && !GRLIB_player_near_lhd && ([player, 3] call fetch_permission))
 };
 
 GRLIB_checkBuildFOB = {
@@ -153,7 +153,7 @@ GRLIB_checkLogistic = {
 };
 
 GRLIB_checkLogisticContinue = {
-	(GRLIB_player_is_menuok && GRLIB_player_near_fob && GRLIB_AI_logistic_in_use && GRLIB_AI_logistic_continue)
+	(GRLIB_player_is_menuok && GRLIB_AI_logistic_in_use && GRLIB_AI_logistic_continue && alive GRLIB_AI_logistic_driver)
 };
 
 GRLIB_checkVehicleSupport = { (count GRLIB_vehicle_need_support > 0) };
