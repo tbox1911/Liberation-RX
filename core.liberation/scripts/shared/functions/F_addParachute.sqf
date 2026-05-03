@@ -15,8 +15,6 @@ if (_info) then {
 	[gamelogic, _text] remoteExec ["globalChat", 0];
 };
 
-_vehicle allowDamage false;
-
 private	_lst_lrx = [];
 private ["_object", "_offset"];
 {
@@ -55,6 +53,12 @@ detach _smoke1;
 detach _smoke2;
 detach _vehicle;
 sleep 1;
+if (!alive _vehicle) exitWith {
+	sleep 3;
+	deleteVehicle _parachute;
+	{ deleteVehicle _x } forEach _lst_lrx;
+};
+
 {
 	_object = _x select 0;
 	_offset = _x select 1;
@@ -66,8 +70,6 @@ sleep 1;
 sleep 3;
 deleteVehicle _parachute;
 [_vehicle] call F_vehicleUnflip;
-sleep 3;
-_vehicle allowDamage true;
 
 sleep 20;
 if (underwater _vehicle && !(_vehicle isKindOf "Ship")) then {

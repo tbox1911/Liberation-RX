@@ -4,8 +4,6 @@ if (!local _unit) exitWith { [_unit, _slow] remoteExec ["eject_unit_remote_call"
 if (isNull objectParent _unit || isNull _unit) exitWith {};
 if ((vehicle _unit) isKindOf "ParachuteBase") exitWith {};
 
-_unit allowDamage false;
-
 unAssignVehicle _unit;
 [_unit] orderGetIn false;
 [_unit] allowGetIn false;
@@ -13,7 +11,6 @@ unAssignVehicle _unit;
 if (_slow) then { sleep 2 };
 moveOut _unit;
 sleep 1;
-if (!alive _unit) exitWith {};
 
 private _unit_alt = getPos _unit select 2;
 if (_unit_alt >= 50) then {
@@ -43,6 +40,3 @@ if (_unit_alt >= 50) then {
 		};
 	};
 };
-
-sleep 1;
-_unit allowDamage true;
