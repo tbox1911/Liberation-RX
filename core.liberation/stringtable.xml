@@ -8987,7 +8987,19 @@
 			<Original>AI Destination</Original>
 		</Key>
 		<Key ID="STR_LOGISTIC_WRONG_PLACE">
-			<Original>Sorry, the Transport cannot move on this place.</Original>
+			<Original>Sorry, the AI Transport cannot move on this place.</Original>
+		</Key>
+		<Key ID="STR_LOGISTIC_BACK_FOB">
+			<Original>AI Transport is full, go back to FOB!</Original>
+		</Key>		
+		<Key ID="STR_LOGISTIC_WAIT">
+			<Original>AI Transport is waiting for new order!</Original>
+		</Key>		
+		<Key ID="STR_LOGISTIC_TRANSIT">
+			<Original>AI Transport is in transit to destination...</Original>
+		</Key>	
+		<Key ID="STR_LOGISTIC_NO_DRIVER">
+			<Original>AI Transport driver seat must be empty !</Original>
 		</Key>
 
 		<!-- do_sell.sqf -->

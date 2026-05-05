@@ -1,6 +1,6 @@
 params ["_vehicle", "_driver", "_dest"];
 
-gamelogic globalChat "AI Transport is in transit to destination...";
+gamelogic globalChat localize "STR_LOGISTIC_TRANSIT";
 
 _vehicle setFuel 1;
 _vehicle engineOn true;

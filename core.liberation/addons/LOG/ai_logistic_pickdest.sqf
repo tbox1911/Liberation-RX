@@ -5,9 +5,9 @@ waitUntil { dialog };
 dojump = 0;
 halo_position = getPosATL player;
 
-"spawn_marker" setMarkerTextLocal (localize "STR_LOGISTIC_SELECT");
-ctrlSetText [201, toUpper (localize "STR_LOGISTIC_SELECT")];
-ctrlSetText [202, (localize "STR_LOGISTIC_SELECT")];
+"spawn_marker" setMarkerTextLocal localize "STR_LOGISTIC_SELECT";
+ctrlSetText [201, toUpper localize "STR_LOGISTIC_SELECT"];
+ctrlSetText [202, localize "STR_LOGISTIC_SELECT"];
 
 onMapSingleClick {
 	halo_position = _pos;

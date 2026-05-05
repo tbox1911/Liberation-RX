@@ -3,7 +3,7 @@ params ["_target", "_caller", "_actionId", "_arguments"];
 private _fnc_waitOrder = {
     GRLIB_AI_logistic_new_order = false;
     GRLIB_AI_logistic_continue  = true;
-    gamelogic globalChat "AI Transport is waiting for new order!";
+    gamelogic globalChat localize  "STR_LOGISTIC_WAIT";
     private _stop = time + (15 * 60);
     waitUntil { sleep 1; (GRLIB_AI_logistic_new_order || driver _transport != _driver || time >= _stop) };
     (time >= _stop)
@@ -17,7 +17,7 @@ if (_arguments == "CONTINUE") then {
         GRLIB_AI_logistic_transport = objNull;
     };
     if !(isNull (driver _transport)) exitWith {
-        gamelogic globalChat "Transport driver seat must be empty !";
+        gamelogic globalChat localize "STR_LOGISTIC_NO_DRIVER";
         GRLIB_AI_logistic_transport = objNull;
     };
 
@@ -74,14 +74,14 @@ if (isNull _driver) exitWith {};
 // if transport full, go back
 private _full = [_transport] call ai_logistic_collect;
 if (_full) then {
-    gamelogic globalChat "AI Transport is full, go back to FOB!";
+    gamelogic globalChat localize "STR_LOGISTIC_BACK_FOB";
     [_transport, _driver, _origin] call ai_logistic_return;
 };
 if (isNull _driver) exitWith {};
 
 private _timeout = call _fnc_waitOrder;
 if (_timeout && !_full) then {
-    gamelogic globalChat "AI Transport timeout, go back to FOB!";
+    gamelogic globalChat localize "STR_LOGISTIC_BACK_FOB";
     [_transport, _driver, _origin] call ai_logistic_return;
 };
 
