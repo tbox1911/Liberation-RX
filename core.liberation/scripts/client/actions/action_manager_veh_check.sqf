@@ -25,7 +25,7 @@ GRLIB_checkAction_Paint = {
 
 GRLIB_checkAction_Flip = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && side group _target != GRLIB_side_enemy && locked _target < 2 && !(typeOf _target in uavs_vehicles))
+	(GRLIB_player_is_menuok && alive _target && side group _target != GRLIB_side_enemy && locked _target < 2 && !(typeOf _target in uavs_vehicles) && isNull (attachedTo _target))
 };
 
 GRLIB_checkAction_DeFuel = {
