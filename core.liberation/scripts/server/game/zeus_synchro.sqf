@@ -1,7 +1,7 @@
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "huron_typename"};
 
-private _vehicleClassnames = [huron_typename] + all_friendly_classnames;
+private _vehicleClassnames = [huron_typename] + all_friendly_classnames + all_hostile_classnames;
 private _objects_to_mark = [];
 { _objects_to_mark pushBackUnique (_x select 0) } forEach (buildings + support_vehicles);
 private _zeusunits = [];
@@ -17,10 +17,10 @@ while {true} do {
 		if ((_x distance2D lhd > 500) && alive _x) then {
 			_zeusunits pushback _x;
 		};
-	} foreach (units GRLIB_side_friendly) + (units GRLIB_side_enemy);
+	} foreach (units GRLIB_side_friendly + units GRLIB_side_enemy);
 
 	{
-		if ((typeof _x in _vehicleClassnames ) && (typeof _x != ammobox_o_typename) && (( _x distance2D lhd > 500 ) || (typeof _x == huron_typename)) && alive _x ) then {
+		if ((typeof _x in _vehicleClassnames ) && (( _x distance2D lhd > 500 ) || (typeof _x == huron_typename)) && alive _x) then {
 			_zeusunits pushback _x;
 		};
 	} foreach vehicles;

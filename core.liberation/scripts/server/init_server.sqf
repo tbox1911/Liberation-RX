@@ -54,8 +54,16 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
 	params ["_networkId", "_loggedIn", "_votedIn"];
 	if (_loggedIn) then {
 		[true] remoteExec ["player_admin_actions", owner GRLIB_active_commander];
+		GRLIB_active_commander = (_networkId getUserInfo 10);
+		publicVariable "GRLIB_active_commander";
 	} else {
 		[false] remoteExec ["player_admin_actions", owner GRLIB_active_commander];
+		GRLIB_active_commander = (allPlayers select {(_x getvariable ["GRLIB_is_Commander", false])}) select 0;
+		if (isNil "GRLIB_active_commander") then {
+			GRLIB_active_commander = objNull;
+			{unassignCurator _x} forEach allCurators;
+		};
+		publicVariable "GRLIB_active_commander";		
 	};
 }];
 
