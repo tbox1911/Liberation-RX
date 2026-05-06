@@ -1,5 +1,15 @@
 params ["_vehicle", "_object", ["_create", true]];
 
+private _object_class = _object;
+if (typeName _object == "OBJECT") then {
+	_object_class = typeOf _object;
+};
+
+private _transport_vehicles = box_transport_config;
+if (_object_class in box_transport_big_loadable) then {
+	_transport_vehicles = box_transport_big_config;
+};
+
 private _config = [];
 private _maxload = 0;
 {
@@ -7,7 +17,7 @@ private _maxload = 0;
 		_config = _x;
 		_maxload = (count _x) - 2;
 	};
-} foreach (box_transport_config + box_transport_big_config);
+} foreach _transport_vehicles;
 if (_maxload == 0) exitWith { objNull };
 
 private _vehicle_load = _vehicle getVariable ["GRLIB_ammo_vehicle_load", []];
@@ -15,11 +25,6 @@ if (count _vehicle_load >= _maxload) exitWith { objNull };
 
 private _offsets = [];
 for "_i" from 2 to (2+_maxload) do { _offsets pushback (_config select _i) };
-
-private _object_class = _object;
-if (typeName _object == "OBJECT") then {
-	_object_class = typeOf _object;
-};
 
 private _box_offset = [0, 0, 0];
 {

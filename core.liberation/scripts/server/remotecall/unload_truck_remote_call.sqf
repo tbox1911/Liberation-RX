@@ -45,7 +45,7 @@ private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 		if (surfaceIsWater _next_pos) then {
 			_next_pos set [2, ((getPosASL _truck) select 2) + 0.2];
 		} else {
-			_next_pos set [2, ((getPosATL _truck) select 2) + 0.2];
+			_next_pos set [2, 0.2];
 		};
 		_obstacle = ((nearestObjects [_next_pos, ["All"], 3]) - _all_objects - [player]) select { !([_x, _ignore_collision] call F_itemIsInClass) };
 		if (count _obstacle == 0) then {
