@@ -68,7 +68,6 @@ while { alive _vehicle && alive _driver } do {
 
 		_vehicle engineOn false;
 		_vehicle allowDamage false;
-		(driver _vehicle) stop true;
 		_marker = createMarkerLocal [format ["civ_ai_veh_%1", (_vehicle call BIS_fnc_netId)], getPosATL _vehicle];
 		_marker setMarkerTypeLocal "loc_car";
 		_marker setMarkerTextLocal "Civilian need help.";
@@ -105,7 +104,7 @@ while { alive _vehicle && alive _driver } do {
 			if (time <= _wait_max) then {
 				private _winner = ([_vehicle, 30] call F_getNearbyPlayers) select 0;
 				if (!isNil "_winner") then {
-					private _bonus = 7 + (floor random 10);
+					private _bonus = 6 + (floor random 10);
 					if (isServer) then {
 						[_driver, (_incd+1), _winner] spawn speak_manager_remote_call;
 						[_winner, _bonus] call F_addScore;
@@ -124,7 +123,6 @@ while { alive _vehicle && alive _driver } do {
 			_vehicle allowDamage true;
 			_vehicle setFuel 1;
 			_vehicle engineOn true;
-			(driver _vehicle) stop false;
 			{_x doFollow (leader _grp)} foreach units _grp;
 			_event_stared = false;
 			deleteMarker _marker;

@@ -99,7 +99,7 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 					_hascrew = _x getVariable ["GRLIB_fob_type", FOB_typename];
 					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 				};
-				if (_nextclass in [storage_medium_typename, cargo_sling_typename]) exitWith {
+				if (_nextclass in [storage_medium_typename, storage_large_typename, cargo_sling_typename]) exitWith {
 					private	_lst_lrx = [_x] call save_lrx_object_direct;
 					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_lrx];
 				};

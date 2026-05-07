@@ -17,7 +17,7 @@ if (_transport isKindOf "Helicopter_Base_F") then {
 private _truck_load = _transport getVariable ["GRLIB_ammo_vehicle_load", []];
 if (count _truck_load == 0) exitWith {};
 
-private _storage_list = (nearestObjects [_transport, [storage_medium_typename], GRLIB_fob_range]) select {
+private _storage_list = (nearestObjects [_transport, [storage_medium_typename, storage_large_typename], GRLIB_fob_range]) select {
 	count _truck_load < (([typeOf _x] call F_getVehicleMaxLoad) - (count (_x getVariable ["GRLIB_ammo_vehicle_load", []])))
 };
 
