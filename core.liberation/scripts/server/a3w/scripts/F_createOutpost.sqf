@@ -124,7 +124,7 @@ if (_enable_defenders) then {
 private _prisoners = [];
 if (_enable_prisoners) then {
     private _grp_prisoners = createGroup [GRLIB_side_civilian, true];
-    for "_i" from 0 to (3 + (floor random 3)) do {
+    for "_i" from 0 to (2 + (floor random 3)) do {
         private _unit = _grp_prisoners createUnit [pilot_classname, _base_position, [], 25, "NONE"];
         _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_unit, true, false] spawn prisoner_ai;
