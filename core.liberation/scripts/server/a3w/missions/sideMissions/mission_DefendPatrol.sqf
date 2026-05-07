@@ -17,14 +17,14 @@ _setupObjects = {
 	};
 
     // create friendly
-    _patrol_grp = [_missionPos, 8, "infantry-friendly", true, 25] call createCustomGroup;
+    _patrol_grp = [_missionPos, 6, "infantry-friendly", true, 25] call createCustomGroup;
     _objective_pos = getPosATL (leader _patrol_grp);
     {
 		_x addEventHandler ["HandleDamage", {
 			params ["_unit", "_selection", "_damage"];
             private _newDamage = _unit getVariable ["GRLIB_accumulated", 0];
             if (_damage > 0.5 && time >= (_unit getVariable ["GRLIB_isProtected", 0])) then {
-                _newDamage = (_newDamage + 0.1) min 1;
+                _newDamage = (_newDamage + 0.15) min 1;
                 _unit setVariable ["GRLIB_accumulated", _newDamage];
                 _unit setVariable ["GRLIB_isProtected", round (time + 10), true];
             };
