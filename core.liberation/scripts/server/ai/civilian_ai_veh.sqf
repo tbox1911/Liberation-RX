@@ -67,7 +67,6 @@ while { alive _vehicle && alive _driver } do {
 		sleep 3;
 
 		_vehicle engineOn false;
-		_vehicle allowDamage false;
 		_marker = createMarkerLocal [format ["civ_ai_veh_%1", (_vehicle call BIS_fnc_netId)], getPosATL _vehicle];
 		_marker setMarkerTypeLocal "loc_car";
 		_marker setMarkerTextLocal "Civilian need help.";
@@ -81,6 +80,7 @@ while { alive _vehicle && alive _driver } do {
 				_vehicle setHitPointDamage [selectRandom _hit_index, 1];
 				_vehicle setHitPointDamage ["HitEngine", 1];
 				_vehicle_damage = [_vehicle] call F_getVehicleDamage;
+				_vehicle allowDamage false;
 			};
 
 			// refuel
