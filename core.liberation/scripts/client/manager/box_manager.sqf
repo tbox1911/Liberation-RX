@@ -29,7 +29,7 @@ GRLIB_checkAction_UnloadBox = {
 	private _owned = (([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2);
 	private _loaded = (count (_target getVariable ["GRLIB_ammo_vehicle_load", []]) > 0);
 	private _ready = (alive _target && speed vehicle _target < 5 && ((getPosATL _target) select 2) < 5);
-	if (typeOf _target == storage_medium_typename) then { _owned = true };
+	if (typeOf _target in [storage_medium_typename,storage_large_typename]) then { _owned = true };
 	(GRLIB_player_is_menuok && _ready && _owned && _loaded)
 };
 
@@ -40,7 +40,7 @@ GRLIB_checkAction_UnloadLastBox = {
 	if (_target getVariable ["R3F_LOG_disabled", false] && typeOf _target != cargo_sling_typename) exitWith { false };
 	private _owned = (([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2);
 	private _loaded = (count (_target getVariable ["GRLIB_ammo_vehicle_load", []]) > 1);
-	if (typeOf _target == storage_medium_typename) then { _owned = true };
+	if (typeOf _target in [storage_medium_typename,storage_large_typename]) then { _owned = true };
 	private _ready = (alive _target && speed vehicle _target < 5 && ((getPosATL _target) select 2) < 5);
 	(GRLIB_player_is_menuok && _ready && _owned && _loaded)
 };
@@ -59,7 +59,7 @@ while {true} do {
 
 	// Storage
 	if (GRLIB_player_near_fob) then {
-		_transport_vehicles append (nearestObjects [player, [storage_medium_typename], _searchradius]);
+		_transport_vehicles append (nearestObjects [player, [storage_medium_typename,storage_large_typename], _searchradius]);
 	};
 
 	{

@@ -79,10 +79,12 @@ if (_classname == Warehouse_typename) then {
 };
 
 // Storage
-if (_classname == storage_medium_typename) then {
+if (_classname in [storage_medium_typename, storage_large_typename]) then {
 	_vehicle setVariable ["GRLIB_vehicle_owner", _owner, true];
+	private _offest = [0, -5, 0];
+	if (_classname == storage_large_typename) then { _offest = [0, -7, 0] };
 	private _drop_zone_dir = (getdir _vehicle);
-	private _drop_zone_pos = (getposATL _vehicle) vectorAdd ([[0, -5, 0], -_drop_zone_dir] call BIS_fnc_rotateVector2D);
+	private _drop_zone_pos = (getposATL _vehicle) vectorAdd ([_offest, -_drop_zone_dir] call BIS_fnc_rotateVector2D);
 	private _drop_zone = createVehicle ["VR_Area_01_square_2x2_yellow_F", ([] call F_getFreePos), [], 0, "NONE"];
 	_drop_zone_pos set [2, 0.02];
 	_drop_zone setDir _drop_zone_dir;

@@ -65,7 +65,7 @@ if (_classname == box_uavs_typename) exitWith {
 // };
 
 // Storage
-if (typeOf _vehicle == storage_medium_typename) exitWith {
+if (typeOf _vehicle in [storage_medium_typename, storage_large_typename]) exitWith {
 	_object setVariable ["GRLIB_vehicle_owner", "", true];
 };
 

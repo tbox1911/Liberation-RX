@@ -22,7 +22,7 @@ if (_arguments == "CONTINUE") then {
     };
 
     GRLIB_AI_logistic_transport = _transport;
-    private _storage = nearestObjects [_transport, [storage_medium_typename], GRLIB_fob_range];
+    private _storage = nearestObjects [_transport, [storage_medium_typename, storage_large_typename], GRLIB_fob_range];
     GRLIB_AI_logistic_origin = if (count _storage > 0) then {
         getPos (_storage select 0);
     } else {

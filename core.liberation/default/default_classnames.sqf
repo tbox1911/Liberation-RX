@@ -43,6 +43,7 @@ fuelbarrel_typename = "Land_MetalBarrel_F";
 foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
 repairbox_typename = "Land_ToolTrolley_02_F";
 storage_medium_typename = "ContainmentArea_02_black_F";
+storage_large_typename = "ContainmentArea_01_black_F";
 blufor_texture_overide = [];
 blufor_flag = "Flag_NATO_F";
 opfor_flag = "Flag_CSAT_F";

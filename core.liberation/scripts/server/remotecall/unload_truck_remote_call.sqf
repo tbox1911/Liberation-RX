@@ -33,7 +33,7 @@ private _ignore_collision = [
 	"VR_Helper_base_F",
 	"Helipad_base_F"
 ];
-private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
+private ["_next_box", "_next_pos", "_next_box_dir", "_obstacle"];
 {
 	_next_box = _x;
 	if (!isNull _next_box) then {

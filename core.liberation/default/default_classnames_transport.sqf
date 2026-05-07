@@ -87,7 +87,7 @@ box_transport_config = box_transport_config + [
 		[0.850586,-1.79883,0.6],
 		[2.4502,-1.79883,0.6]
 	],
-	["ContainmentArea_01_black_F", -5,
+	["ContainmentArea_01_black_F", -7,
 		[-5.59961,3.60938,0.6],
 		[-3.99902,3.60938,0.6],
 		[-2.39941,3.60938,0.6],

@@ -60,6 +60,7 @@ GRLIB_build_need_cutter = [
 	Warehouse_typename,
 	medic_heal_typename,
 	storage_medium_typename,
+	storage_large_typename,
 	"Land_PortableHelipadLight_01_F"
 ];
 
