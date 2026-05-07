@@ -1,4 +1,17 @@
-params ["_transport"];
+params ["_transport", '_driver'];
+
+if (!alive _transport) exitWith {};
+
+if (_transport isKindOf "Helicopter_Base_F") then {
+	private _stop = time + (3 * 60);
+	waitUntil {
+        _transport land "LAND";
+		sleep 10;
+		private _alt = getPos _transport select 2;
+		(_alt <= 3 || time > _stop);
+	};
+	doStop _driver;
+};
 
 // near storage
 private _truck_load = _transport getVariable ["GRLIB_ammo_vehicle_load", []];

@@ -5,6 +5,7 @@ gamelogic globalChat localize "STR_LOGISTIC_TRANSIT";
 _vehicle setFuel 1;
 _vehicle engineOn true;
 _driver doMove _dest;
+if (_vehicle isKindOf "Helicopter_Base_F") then { _vehicle flyInHeight [100, true] };
 sleep 15;
 
 private _landing_range = 150;
@@ -19,7 +20,14 @@ waitUntil {
         _driver doMove _dest;
         sleep 10;
     };
-    (isNull _driver || (_vehicle distance2D _dest <= _landing_range && unitReady _driver) || time >= _stop)
+    (!alive _vehicle || isNull _driver || (_vehicle distance2D _dest <= _landing_range && unitReady _driver) || time >= _stop)
 };
 
-(time >= _stop || isNull _driver);
+if (!alive _vehicle) exitWith { true };
+
+if (_vehicle isKindOf "Helicopter_Base_F") then {
+    _vehicle flyInHeight [15, true];
+    sleep 15;
+};
+
+(time >= _stop || isNull _driver || !alive _vehicle);

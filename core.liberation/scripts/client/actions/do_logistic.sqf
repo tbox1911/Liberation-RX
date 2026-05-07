@@ -65,7 +65,7 @@ if (_timeout) exitWith { [_driver, "collect"] call ai_logistic_failed };
 GRLIB_AI_logistic_travel = true;
 
 if (halo_position distance2D _origin < GRLIB_fob_range) then {
-    [_transport] call ai_logistic_unload;
+    [_transport, _driver] call ai_logistic_unload;
     private _timeout = call _fnc_waitOrder;
     if (_timeout || !GRLIB_AI_logistic_new_order) exitWith { [_driver] call ai_logistic_end };
 };

@@ -2,7 +2,7 @@
 taxi_land = {
 	params ["_vehicle"];
 	private ["_alt", "_speed", "_vspeed"];
-	private _stop = time + (3 * 60); // wait 2min max
+	private _stop = time + (3 * 60); // wait 3min max
 	private _alt_old = 999;
 	_vehicle land "LAND";
 	hintSilent localize "STR_TAXI_LANDING";

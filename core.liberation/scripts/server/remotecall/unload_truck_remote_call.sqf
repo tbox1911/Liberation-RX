@@ -37,6 +37,9 @@ private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 {
 	_next_box = _x;
 	if (!isNull _next_box) then {
+		if (typeOf _next_box in box_transport_big_loadable) then {
+			_offset = _offset - 2;
+		};
 		if (_truck isKindOf "Cargo_base_F") then {
 			_next_pos = _truck getPos [_offset, (getdir _truck) + 90];
 		} else {

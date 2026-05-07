@@ -50,10 +50,10 @@ box_transport_offset = box_transport_offset + [
 
 // Flatbed transport for big objects
 box_transport_big_config = box_transport_big_config + [
-	["B_Truck_01_flatbed_F", -8, [0, -1.9, 0]],
-	["B_T_Truck_01_flatbed_F", -8, [0, -1.9, 0]],
-	["O_Truck_03_transport_F", -9, [0, -2.8, 0.3]],
-	["O_T_Truck_03_transport_ghex_F", -9, [0, -2.8, 0.3]]	
+	["B_Truck_01_flatbed_F", -6.5, [0, -1.9, 0]],
+	["B_T_Truck_01_flatbed_F", -6.5, [0, -1.9, 0]],
+	["O_Truck_03_transport_F", -7, [0, -2.8, 0.3]],
+	["O_T_Truck_03_transport_ghex_F", -7, [0, -2.8, 0.3]]	
 ];
 
 // Additional offset per big object
