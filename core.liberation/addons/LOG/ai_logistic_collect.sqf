@@ -19,4 +19,5 @@ private _truck_load = [];
     };
 } forEach _ressources;
 
+_truck_load = _transport getVariable ["GRLIB_ammo_vehicle_load", []];
 (count _truck_load == _maxload);
