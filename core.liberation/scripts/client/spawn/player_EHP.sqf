@@ -262,6 +262,7 @@ if (_unit == player) then {
 
 	// AI Handle Damage EH
 	if (PAR_revive != 0) then {
+		_unit removeAllEventHandlers "HandleDamage";
 		_unit addEventHandler ["HandleDamage", {
 			params ["_unit","","_damage"];
 			if (!([_unit] call PAR_is_wounded) && _damage >= 0.86) then {
