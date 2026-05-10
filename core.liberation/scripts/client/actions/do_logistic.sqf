@@ -86,5 +86,6 @@ if (_timeout && !_full) then {
 };
 
 if (!GRLIB_AI_logistic_new_order) then {
-    [_driver] call ai_logistic_end;
+    private _timeout = call _fnc_waitOrder;
+    if (_timeout) then { [_driver] call ai_logistic_end };
 };
