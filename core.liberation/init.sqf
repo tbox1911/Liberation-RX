@@ -21,11 +21,6 @@ diag_log format ["LRX version %1 - build version: %2 build date: %3", localize "
 clean_unit = compileFinal preprocessFileLineNumbers "scripts\client\misc\clean_unit.sqf";
 player_loadout = compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_loadout.sqf";
 
-if (!isServer && isMultiplayer && count (entities "HeadlessClient_F") > 0) then {
-	titleText ["Waiting for Headless client....","BLACK FADED", 100];
-	sleep 10;
-};
-
 diag_log "--- Init start ---";
 titleText ["-- Liberation RX --","BLACK FADED", 100];
 
@@ -103,6 +98,7 @@ if (abort_loading) exitWith {
 if (!isDedicated && !hasInterface && isMultiplayer) then {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_server_params_loaded" };
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\offloading\fetch_params.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\offloading\hc_manager.sqf";
 };

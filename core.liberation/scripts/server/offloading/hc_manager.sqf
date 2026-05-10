@@ -1,11 +1,5 @@
 diag_log "--- HC Server Init start ---";
 
-// Mission Parameter constant
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\mission_params.sqf";
-
-// LRX Selectable
-[] call F_readParamsLRX;
-
 GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
 GRLIB_cleanup_vehicles = [GRLIB_PARAM_CleanupVehicles] call lrx_getParamValue;
 GRLIB_Commander_AutoStart = [GRLIB_PARAM_CommanderAutoStart] call lrx_getParamValue;
