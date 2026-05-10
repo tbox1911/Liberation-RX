@@ -5,8 +5,7 @@ if ([] call is_admin) exitWith {};
 private _whitelisted = (PAR_Grp_ID in GRLIB_whitelisted_steamids);
 
 if (GRLIB_is_Commander && _whitelisted) exitWith {
-	GRLIB_active_commander = player;
-	publicVariable "GRLIB_active_commander";
+	player setvariable ["GRLIB_is_Commander", true, true];
 };
 
 private _msg = localize "STR_COMMANDER_NOT_AUTHORIZED";

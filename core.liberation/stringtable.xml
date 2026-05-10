@@ -7124,7 +7124,7 @@
 			<Czech>Administrátor (%1) odbanoval hráče %2</Czech>
 		</Key>
 
-		<Key ID="STR_YOU_ARE_ZEUS_NOW">
+		<Key ID="STR_YOU_ARE_ZEUS">
 			<Original>You are Zeus now...</Original>
 			<French>Vous êtes désormais Zeus...</French>
 			<German>Du bist jetzt Zeus...</German>

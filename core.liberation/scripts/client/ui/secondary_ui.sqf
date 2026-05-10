@@ -49,7 +49,7 @@ while { dialog && alive player && dostartsecondary == 0 } do {
 		(_display displayCtrl (102)) ctrlSetStructuredText parseText _missiontext;
 	};
 
-	_secondary_ok = !(_oldchoice == 3 && !([] call is_admin));
+	_secondary_ok = !(_oldchoice == 3 && !GRLIB_player_admin);
 	if ((_missioncost <= resources_intel) && !GRLIB_secondary_starting && _secondary_ok)  then {
 		ctrlEnable [ 103, true ];
 		(_display displayCtrl (103)) ctrlSetTooltip "";

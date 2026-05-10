@@ -1,7 +1,7 @@
 private _fob_pos = GRLIB_player_nearest_fob;
 private _fob_name = [_fob_pos] call F_getFobName;
 private _fob_owner = [_fob_pos] call F_getFobOwner;
-if ((PAR_Grp_ID != _fob_owner) && !([] call is_admin)) exitWith { hintSilent localize "STR_HINT_FOB_WRONG_OWNER" };
+if ((PAR_Grp_ID != _fob_owner) && !GRLIB_player_admin) exitWith { hintSilent localize "STR_HINT_FOB_WRONG_OWNER" };
 if (player distance2D _fob_pos > 20) exitWith {};
 
 build_confirmed = 1;

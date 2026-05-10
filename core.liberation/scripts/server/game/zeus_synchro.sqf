@@ -54,12 +54,5 @@ while {true} do {
 		_zgm setCuratorCoef ["destroy", 0];
 	} foreach allCurators;
 
-
-	if (!isNull GRLIB_active_commander) then {
-		if !(GRLIB_active_commander in (call BIS_fnc_listCuratorPlayers)) then {
-			GRLIB_active_commander assignCurator (allCurators select 0);
-		};
-	};
-
 	sleep 20;
 };

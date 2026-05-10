@@ -259,7 +259,7 @@ while {true} do {
 					default { };
 				};
 			};
-			if ([] call is_admin) then { hintSilent format ["%1 - %2", _truepos, round _truedir] };
+			if (GRLIB_player_admin) then { hintSilent format ["%1 - %2", _truepos, round _truedir] };
 
 			private _is_water = (surfaceIsWater _truepos);
 			private _preview_spheres = GRLIB_preview_spheres;
