@@ -31,7 +31,12 @@ private ["_unit", "_path"];
 		case GRLIB_side_enemy: {
 			_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 			if (_type == "militia") then {
-				_unit setUnitLoadout (getUnitLoadout (selectRandom militia_squad));
+				private _loadout = toLower (selectRandom militia_squad);
+				if (_loadout in militia_loadout_overide) then {
+					[_unit] spawn loadout_militia;
+				} else {
+					_unit setUnitLoadout (getUnitLoadout _loadout);
+				};
 			};
 			if (_type == "infantry") then {
 				_unit setUnitLoadout (getUnitLoadout opfor_crew);
