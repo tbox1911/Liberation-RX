@@ -157,7 +157,7 @@ player createDiaryRecord ["Table", ["Civilian Reputation", "Most Bonuses apply t
 player createDiaryRecord ["Table", ["Civilian Reputation", "Each Player has a Civillian Reputation rating displayed on the right side of your screen, which indicates your current 'Reputation' among the Civillian population. It scales from -100 to +100.<br/><br/>If you have a higher Rep, the civillians will at times help you: Heal you, Repair your vehicle, Supply you with Ammo during combat.<br/><br/>The lower your Rep goes, especially into the negative, then they will harass you, and do other things to make your life miserable!.<br/><br/>It is beneficial to you, that you keep them happy by completing humanitarian missions and taking care not to kill any of them or let their property be destroyed in combat.<br/><br/>Successfully completing certain things raises your rep, while failing to complete certain things lowers your rep..."]];
 
 player createDiarySubject["Table","Killing Table"];
-player createDiaryRecord ["Table", ["Killing Table", format ["<br>note: XP points may vary depending on the nature or rank of the targets."]]];
+player createDiaryRecord ["Table", ["Killing Table", format ["<br/>note: XP points may vary depending on the nature or rank of the targets."]]];
 player createDiaryRecord ["Table", ["Killing Table", format ["<font color='#ff4000'>-50</font> pts  :  Killing Friendly"]]];
 player createDiaryRecord ["Table", ["Killing Table", format ["<font color='#ff4000'>-20</font> up to <font color='#ff4000'>-80</font> pts  :  Killing Prisoners"]]];
 player createDiaryRecord ["Table", ["Killing Table", format ["<font color='#ff4000'>-20</font> up to <font color='#ff4000'>-80</font> pts  :  Killing Civilians"]]];
