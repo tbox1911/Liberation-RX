@@ -10,8 +10,8 @@ if (side _unit == GRLIB_side_friendly) then {
 };
 
 if (isPlayer _unit) exitWith {
-    private _msg = format ["<t color='#80FF80' size='1.0'>Second Chance !</t>"];
-    private _data = [_msg, 0, -1, 8, 0, -6, 5];
+    private _msg = format ["<t color='#80FF80' size='1.0'>Second Chance !</t><br/>"];
+    private _data = [_msg, 0, -1, 8, 0, -5, 5];
     _data spawn BIS_fnc_dynamicText;
     _unit setUnconscious true;
     [3000] call BIS_fnc_bloodEffect;
@@ -24,7 +24,7 @@ if (isPlayer _unit) exitWith {
     "colorCorrections" ppEffectEnable false;
     "filmGrain" ppEffectEnable false;
     [3000] call BIS_fnc_bloodEffect;
-    sleep 8;
+    sleep 5;
     [3000] call BIS_fnc_bloodEffect;
     _unit setUnconscious false;
     showChat true;
@@ -33,14 +33,14 @@ if (isPlayer _unit) exitWith {
 
 _unit setUnconscious true;
 _unit setVariable ["GRLIB_isLucky", 1];
-if !(PAR_AidKit in (items _unit) || PAR_Medikit in (items _unit)) exitWith {};
-sleep 3;
+sleep 4;
 _unit setUnconscious false;
-_unit setUnitPos "DOWN";
-sleep 7 + (floor random 20);
+sleep 5 + (floor random 20);
 if (alive _unit) then {
-    _unit action ["HealSoldierSelf", _unit];
-    sleep 6;
-    _unit setUnitPos "AUTO";
+    if (PAR_AidKit in (items _unit) || PAR_Medikit in (items _unit)) then {
+        _unit action ["HealSoldierSelf", _unit];
+        sleep 6;
+    };
+    _unit doFollow (leader group _unit);
     _unit setVariable ["GRLIB_isLucky", nil];
 };
