@@ -152,7 +152,7 @@ GRLIB_checkRemoveHelipad = {
 };
 
 GRLIB_checkLogistic = {
-	(GRLIB_player_is_menuok && GRLIB_player_score >= GRLIB_perm_log && GRLIB_player_near_fob && !GRLIB_AI_logistic_in_use && count transport_vehicles > 0)
+	(GRLIB_player_is_menuok && GRLIB_player_score >= GRLIB_perm_log && GRLIB_player_near_fob && !GRLIB_player_near_outpost && !GRLIB_AI_logistic_in_use && count transport_vehicles > 0)
 };
 
 GRLIB_checkLogisticContinue = {
