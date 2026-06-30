@@ -4,7 +4,7 @@ if (_item == "") exitWith { true };
 if (GRLIB_filter_arsenal in [0, 4]) exitWith { true };
 
 // Magazines
-if (isClass (configFile >> "CFGMagazines" >> _item)) exitWith { true };
+if (isClass (configFile >> "CfgMagazines" >> _item)) exitWith { true };
 
 // TFAR Radio
 if (GRLIB_TFR_enabled && (["TF_", _item] call F_startsWith)) exitWith { true };

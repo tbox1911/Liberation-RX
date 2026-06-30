@@ -106,7 +106,7 @@ if (["USP_", GRLIB_mod_west, true] call F_startsWith) then {
 (
 	"
 	getNumber (_x >> 'scope') > 1 &&
-	(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
+	!('VehicleMagazine' in ([_x, true] call BIS_fnc_returnParents)) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")
