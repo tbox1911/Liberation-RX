@@ -90,7 +90,7 @@ while { ([_wnded] call PAR_is_wounded) && _fail <= 6 } do {
 };
 
 if (_healed) then {
-	[_wnded, _medic] call PAR_fn_sortie;
+	[_wnded, _medic] spawn PAR_fn_sortie;
 } else {
-	[_medic, _wnded] call PAR_fn_medicRelease;
+	[_medic, _wnded] spawn PAR_fn_medicRelease;
 };

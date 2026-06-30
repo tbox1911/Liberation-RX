@@ -45,7 +45,7 @@ while {true} do {
 					(_target getVariable ['PAR_isDragged',0] == 0) &&
 					(PAR_revive == 1 || [_this] call PAR_has_medikit || [_this] call PAR_is_medic)
 				",
-				"(alive _target && _caller distance _target < 3)",
+				"(alive _target && _caller distance _target <= 3)",
 				{
 					[(_target getVariable ["PAR_myMedic", objNull]), _target] call PAR_fn_medicRelease;
 					_target setVariable ["PAR_myMedic", _caller];
