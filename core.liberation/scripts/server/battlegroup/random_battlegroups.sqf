@@ -25,12 +25,12 @@ private _min_players = 2;
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 	waitUntil {
-		sleep 10;
+		sleep 30;
 		(
 			count GRLIB_all_fobs >= 1 &&
 			count blufor_sectors >= 5 &&
 			combat_readiness >= 50 &&
-			time >= (GRLIB_last_battlegroup_time + GRLIB_battlegroup_timer) &&
+			time >= (GRLIB_last_battlegroup + GRLIB_battlegroup_timer) &&
 			time >= (GRLIB_last_active_sectors + GRLIB_battlegroup_timer)
 		)
 	};
@@ -42,7 +42,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	};
 
 	_countplayers = (AllPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_log) };
-	if (count _countplayers >= 1 && combat_readiness >= 95 && floor random 5 == 0) then {
+	if (count _countplayers >= 1 && combat_readiness >= 90 && floor random 5 == 0) then {
 		_attack = true;
 	};
 
@@ -53,17 +53,13 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	if (_attack) then {
 		diag_log format ["Spawn Random BattleGroup at %1", time];
 		[] spawn spawn_battlegroup;
+		sleep 60;
+		private _pilots = { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x } count allPlayers;
+		if (_pilots > 0 && floor random 3 == 0) then {
+			[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
+		};
 		stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
 		publicVariable "stats_hostile_battlegroups";
-		sleep 60;
-	};
-
-	if (time > (GRLIB_last_battlegroup_time + GRLIB_battlegroup_timer) && floor random 3 == 0) then {
-		private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
-		if (count _pilots > 0 ) then {
-			[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
-			sleep 60;
-		};
 	};
 
 	sleep 60;

@@ -152,11 +152,9 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\offloading\offload_calculation.sqf";
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 
-// Manage sectors
-GRLIB_battlegroup_timer = (1200 / GRLIB_csat_aggressivity);
-
-GRLIB_last_battlegroup_time = 0;
-publicVariable "GRLIB_last_battlegroup_time";
+// Manage BattleGroup
+GRLIB_battlegroup_timer = (300 / GRLIB_csat_aggressivity);
+GRLIB_last_battlegroup = 0;
 
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";

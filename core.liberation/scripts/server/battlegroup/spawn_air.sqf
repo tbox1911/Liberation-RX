@@ -7,8 +7,8 @@ private _planeType = opfor_air;
 if (_side == GRLIB_side_friendly) then { _planeType = blufor_air };
 
 if (_side == GRLIB_side_enemy) then {
-	private _pilots = (units GRLIB_side_friendly) select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
-	if (count _pilots == 0) then {
+	private _pilots = { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x } count allPlayers;
+	if (_pilots == 0) then {
 		_planeType = opfor_air select { _x isKindOf "Helicopter_Base_F" };
 		if (count _planeType == 0) then { _planeType = opfor_air };
 	};

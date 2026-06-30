@@ -1,18 +1,25 @@
 params ["_liberated_sector"];
 if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
-if (time < (GRLIB_last_battlegroup_time + GRLIB_battlegroup_timer)) exitWith {};
 
 private _hc = [] call F_lessLoadedHC;
 if (isDedicated && !isNull _hc) exitWith {
-	diag_log format ["Spawn BattlegGroup on %1 at %2", _hc, time];
+	diag_log format ["Spawn BattleGroup on %1 at %2", _hc, time];
 	[_liberated_sector] remoteExec ["spawn_battlegroup", owner _hc];
 };
+
+if (time <= (GRLIB_last_battlegroup + GRLIB_battlegroup_timer)) then {
+	waitUntil {
+		sleep 30;
+		(time > (GRLIB_last_battlegroup + GRLIB_battlegroup_timer));
+	};
+};
+GRLIB_last_battlegroup = round time;
 
 private _spawn_marker = "";
 private _objective_pos = [];
 
 if (isNil "_liberated_sector") then {
-	diag_log format ["Spawn BattlegGroup search target at %1", time];
+	diag_log format ["Spawn BattleGroup search target at %1", time];
 	{
 		_objective_pos = markerPos _x;
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
@@ -25,7 +32,7 @@ if (isNil "_liberated_sector") then {
 };
 
 if (_spawn_marker == "") exitWith {
-	diag_log "BattlegGroup could not find accessible Objective.";
+	diag_log "BattleGroup could not find accessible Objective.";
 	if (count blufor_sectors > 5) then {
 		private _para_pos = [];
 		if (isNil "_liberated_sector") then {
@@ -43,15 +50,12 @@ if (_spawn_marker == "") exitWith {
 		sleep 20;
 		[_para_pos] spawn spawn_halo_vehicle;
 		combat_readiness = combat_readiness - 15;
-		diag_log format ["Done Spawning Paratrooper BattlegGroup at %1", time];
+		diag_log format ["Done Spawning Paratrooper BattleGroup at %1", time];
 	};
 };
 
 _objective_pos set [2, 0];
-diag_log format ["Spawn BattlegGroup target %1 from %2 at %3", _objective_pos, markerPos _spawn_marker, time];
-
-GRLIB_last_battlegroup_time = round serverTime;
-publicVariable "GRLIB_last_battlegroup_time";
+diag_log format ["Spawn BattleGroup target %1 from %2 at %3", _objective_pos, markerPos _spawn_marker, time];
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness <= 80 ) then { _vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
@@ -124,4 +128,4 @@ publicVariable "combat_readiness";
 stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
 publicVariable "stats_hostile_battlegroups";
 
-diag_log format ["Done Spawning BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
+diag_log format ["Done Spawning BattleGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
