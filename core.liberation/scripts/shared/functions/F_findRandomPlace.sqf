@@ -5,7 +5,7 @@ params ["_start_pos", ["_size", 5], ["_water_mode", -1], ["_max_radius", 150], [
 // -1: to ignore
 
 private _spawn_pos = [];
-private _max_try = 25;
+private _max_try = 50;
 
 while { count _spawn_pos == 0 && _max_try > 0} do {
     private _radius = 10 + (floor random GRLIB_sector_size);
@@ -34,7 +34,7 @@ while { count _spawn_pos == 0 && _max_try > 0} do {
         _spawn_pos = [_rnd_pos, _size, _water_mode, _max_radius, _on_road] call F_findSafePlace;
     };
     _max_try = _max_try - 1;
-    sleep 0.2;
+    sleep 0.5;
 };
 
 _spawn_pos;
