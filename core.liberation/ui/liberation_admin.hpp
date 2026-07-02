@@ -12,6 +12,7 @@ class liberation_admin {
 	  "AmmoButton",
     "RespawnButton",
     "UnusedButton",
+    "KillButton",
     "CaptureButton",
     "BuildButton",
     "BuildList",
@@ -113,6 +114,15 @@ class liberation_admin {
     x = 0.3725 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
     w = 0.042 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class KillButton: StdButton {
+    idc = 1632;
+    action = "do_kill=1";
+    text = $STR_KILL;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.26 * safezoneH + safezoneY;
+    w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class CaptureButton: StdButton {

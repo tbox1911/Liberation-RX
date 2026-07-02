@@ -563,6 +563,9 @@
 			<Portuguese>Ressurgimento</Portuguese>
 			<Czech>Respawn</Czech>
 		</Key>
+		<Key ID="STR_KILL">
+			<Original>Kill Enemy</Original>		
+		</Key>
 		<Key ID="STR_ARSENAL_BOX">
 			<Original>Arsenal box</Original>
 			<French>Caisse Arsenal</French>
@@ -7279,7 +7282,12 @@
 			<Portuguese>Administrador (%1) excluiu o veículo %2 (%3)</Portuguese>
 			<Czech>Administrátor (%1) odstranil vozidlo %2 (%3)</Czech>
 		</Key>
-
+		<Key ID="STR_ENEMY_KILLED_BY_ADMIN">
+			<Original>All Enemy at %1 Killed by Admin.</Original>
+		</Key>	
+		<Key ID="STR_ADMIN_KILL_ENEMY">
+			<Original>Admin (%1) Kill all Enemy at %2</Original>
+		</Key>
 		<!-- admin_menu_a3w.sqf -->
 		<Key ID="STR_TOOLTIP_DEBUG_MODE">
 			<Original>Enable the Debug mode.</Original>

@@ -29,6 +29,7 @@ do_save = 0;
 do_skip = 0;
 do_unlock = 0;
 do_delete = 0;
+do_kill = 0;
 
 // Watchdog
 if (isNil "lrx_admin_watchdog") then {
@@ -111,8 +112,8 @@ private _output_controls = [531,532,533,534,535,536];
 { ctrlShow [_x, false] } foreach _output_controls;
 
 // Action buttons
-private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619,1623,1624,1631,1625,1626];
-private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620,1626];
+private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619,1623,1624,1625,1626,1630,1631,1632];
+private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620,1626,1630,1631,1632];
 
 // Build Banned
 [_ban_combo] call _getBannedUID;
@@ -407,6 +408,17 @@ while { alive player && dialog } do {
 		deleteVehicle _vehicle;
 		_msg = format [localize "STR_VEHICLE_DELETED_BY_ADMIN", _vehicle_name];
 		_admin_msg = format [localize "STR_ADMIN_DELETE_VEHICLE", name player, _vehicle_name, typeOf _vehicle];
+		closeDialog 0;
+	};
+
+	if (do_kill == 1) then {
+		do_kill = 0;
+		_pos = getPos player;
+		[_pos, {
+			{if (_x distance2D _this <= GRLIB_sector_size) then {_x setdamage 1}} foreach (units GRLIB_side_enemy);
+		}] remoteExec ["bis_fnc_call", 2];
+		_msg = format [localize "STR_ENEMY_KILLED_BY_ADMIN", _pos];
+		_admin_msg = format [localize "STR_ADMIN_KILL_ENEMY", name player, _pos];
 		closeDialog 0;
 	};
 
