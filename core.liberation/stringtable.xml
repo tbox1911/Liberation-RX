@@ -7283,10 +7283,10 @@
 			<Czech>Administrátor (%1) odstranil vozidlo %2 (%3)</Czech>
 		</Key>
 		<Key ID="STR_ENEMY_KILLED_BY_ADMIN">
-			<Original>All Enemy at %1 Killed by Admin.</Original>
+			<Original>All Enemy near %1 Killed by Admin.</Original>
 		</Key>	
 		<Key ID="STR_ADMIN_KILL_ENEMY">
-			<Original>Admin (%1) Kill all Enemy at %2</Original>
+			<Original>Admin (%1) Kill all Enemy near %2</Original>
 		</Key>
 		<!-- admin_menu_a3w.sqf -->
 		<Key ID="STR_TOOLTIP_DEBUG_MODE">

@@ -414,9 +414,13 @@ while { alive player && dialog } do {
 	if (do_kill == 1) then {
 		do_kill = 0;
 		_pos = getPos player;
+		if (_sector != "") then { _pos = markerPos _sector };
+		_pos set [2, 0];
 		[_pos, {
+
 			{if (_x distance2D _this <= GRLIB_sector_size) then {_x setdamage 1}} foreach (units GRLIB_side_enemy);
 		}] remoteExec ["bis_fnc_call", 2];
+		if (_sector != "") then { _pos = _sector };
 		_msg = format [localize "STR_ENEMY_KILLED_BY_ADMIN", _pos];
 		_admin_msg = format [localize "STR_ADMIN_KILL_ENEMY", name player, _pos];
 		closeDialog 0;
