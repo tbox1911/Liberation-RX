@@ -157,8 +157,10 @@ switch true do {
 				};
 			};
 		};
-		private _pilots = { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x } count allPlayers;
-        if (_pilots > 0) then {
+        private _pilots = allPlayers select {
+            (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x
+        };
+        if (count _pilots > 0) then {
             [getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
         };
         _ied_count = 4;
@@ -332,8 +334,8 @@ if (_static_count > 0) then {
 if (_nearRadioTower) then {
 	if (floor random 5 != 0) then {
 		if (combat_readiness > 35) then {
-			private _pilots = { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x } count allPlayers;
-			if (_pilots > 0) then {
+			private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
+			if (count _pilots > 0) then {
 				[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
 			} else {
 				[_sector_pos] spawn send_paratroopers;
