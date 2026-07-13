@@ -22,16 +22,14 @@ player allowDamage false;
 
 private _destdir = getDir _near_sign;
 private _destpos = getPosASL _near_sign;
-private _alt = (_destpos select 2) + 0.3;
+private _alt = (_destpos select 2) + 0.1;
 _destpos = _destpos getPos [6, (_destdir-180)];
 _destpos set [2, _alt];
 player setDir _destdir;
 player setPosASL _destpos;
 sleep 1;
 {
-    _destpos = ([player, 3] call F_getRandomPos);
-    _destpos set [2, _alt];
-	_x setPosASL _destpos;
+    _x setPosASL ([getPosASL player, 5] call F_getRandomPos);
 	sleep 0.5;
 } forEach _list_redep;
 

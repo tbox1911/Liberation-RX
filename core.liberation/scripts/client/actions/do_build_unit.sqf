@@ -1,19 +1,15 @@
 params ["_classname"];
 
-private _pos = getPosATL player;
-private _alt = _pos select 2;
 private _grp = group player;
+private _pos = ([getPosATL player, 5] call F_getRandomPos);
+if (surfaceIsWater _pos) then { _pos = (ATLtoASL _pos) };
+
 private _unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 [_unit] joinSilent _grp;
 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 [_unit] call PAR_fn_AI_Damage_EH;
 [_unit] call F_fixModUnit;
 
-if (surfaceIsWater _pos) then {
-    _pos = ([_pos, 3] call F_getRandomPos);
-    _pos set [2, _alt];
-    _unit setPosASL (ATLtoASL _pos);
-};
 _unit enableIRLasers true;
 _unit enableGunLights "Auto";
 _unit setUnitRank "PRIVATE";

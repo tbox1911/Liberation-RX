@@ -9,12 +9,17 @@ params [
 
 private _allow_damage = true;
 private _pos_degagee = [];
-if (_classname isKindOf "AllVehicles") then {
+if (_classname isKindOf "Air") then {
+	_pos_degagee = [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel;
+} else {
 	private _bbox = [_classname] call R3F_LOG_FNCT_3D_get_bounding_box_depuis_classname;
 	private _bbox_dim = (vectorMagnitude (_bbox select 0)) max (vectorMagnitude (_bbox select 1));
 	_pos_degagee = [_bbox_dim, _veh_pos, 200, 50] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
-} else {
-	_pos_degagee = [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel;
+};
+
+if (count _pos_degagee == 0) exitWith {
+	diag_log format ["--- LRX Error: Cannot create vehicle %1 at %2", _classname, _veh_pos];
+	objNull;
 };
 
 private _vehicle = createVehicle [_classname, _pos_degagee, [], 100, "CAN_COLLIDE"];

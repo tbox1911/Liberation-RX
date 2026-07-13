@@ -62,8 +62,7 @@
  * @return la distance entre la position du rayon et la bounding box; 1E39 (infini) si pas d'intersection
  * @note le rayon doit être défini dans le repère de la bbox (worldToModel)
  */
-R3F_LOG_FNCT_3D_ray_intersect_bbox =
-{
+R3F_LOG_FNCT_3D_ray_intersect_bbox = {
 	private ["_ray_pos", "_ray_dir", "_bbox_min", "_bbox_max", "_inv_ray_x", "_inv_ray_y", "_inv_ray_z"];
 	private ["_tmin", "_tmax", "_tymin", "_tymax", "_tzmin", "_tzmax"];
 
@@ -134,8 +133,7 @@ R3F_LOG_FNCT_3D_ray_intersect_bbox =
  * @param 2 l'objet pour lequel calculer l'intersection de bounding box
  * @return la distance entre la position du rayon et la bounding box; 1E39 (infini) si pas d'intersection
  */
-R3F_LOG_FNCT_3D_ray_intersect_bbox_obj =
-{
+R3F_LOG_FNCT_3D_ray_intersect_bbox_obj = {
 	private ["_ray_pos", "_ray_dir", "_objet"];
 
 	_ray_pos = _this select 0;
@@ -156,8 +154,7 @@ R3F_LOG_FNCT_3D_ray_intersect_bbox_obj =
  * @param 0 l'objet pour lequel on souhaite calculer l'intersection de bounding box
  * @return la distance entre la caméra du joueur et la bounding box; 1E39 (infini) si pas d'intersection
  */
-R3F_LOG_FNCT_3D_cam_intersect_bbox_obj =
-{
+R3F_LOG_FNCT_3D_cam_intersect_bbox_obj = {
 	private ["_objet", "_pos_cam", "_pos_devant", "_dir_cam"];
 
 	_objet = _this select 0;
@@ -179,8 +176,7 @@ R3F_LOG_FNCT_3D_cam_intersect_bbox_obj =
  * @return true si la position se trouve à l'intérieur de la bounding box, false sinon
  * @note la position doit être défini dans le repère de la bbox (worldToModel)
  */
-R3F_LOG_FNCT_3D_pos_est_dans_bbox =
-{
+R3F_LOG_FNCT_3D_pos_est_dans_bbox = {
 	private ["_pos", "_bbox_min", "_bbox_max"];
 
 	_pos = _this select 0;
@@ -199,8 +195,7 @@ R3F_LOG_FNCT_3D_pos_est_dans_bbox =
  * @param 2 position max de la bounding box
  * @return distance du segment le plus court reliant la position à la bounding box
  */
-R3F_LOG_FNCT_3D_distance_min_pos_bbox =
-{
+R3F_LOG_FNCT_3D_distance_min_pos_bbox = {
 	private ["_pos", "_bbox_min", "_bbox_max", "_pos_intersect_min_bbox"];
 
 	_pos = _this select 0;
@@ -227,8 +222,7 @@ R3F_LOG_FNCT_3D_distance_min_pos_bbox =
  * @note les deux bounding sphere doivent être définies dans le même repère (worldASL ou model)
  * @note pour effecteur un test entre un point et une sphere, définir un rayon de 0
  */
-R3F_LOG_FNCT_3D_bounding_sphere_intersect_bounding_sphere =
-{
+R3F_LOG_FNCT_3D_bounding_sphere_intersect_bounding_sphere = {
 	private ["_pos1", "_rayon1", "_pos2", "_rayon2"];
 
 	_pos1 = _this select 0;
@@ -245,8 +239,7 @@ R3F_LOG_FNCT_3D_bounding_sphere_intersect_bounding_sphere =
  * @param 1 le deuxième objet pour lequel calculer l'intersection de bounding sphere
  * @return true s'il y a intersection entre les bounding sphere des deux objets, false sinon
  */
-R3F_LOG_FNCT_3D_intersect_bounding_sphere_objs =
-{
+R3F_LOG_FNCT_3D_intersect_bounding_sphere_objs = {
 	private ["_objet1", "_objet2"];
 
 	_objet1 = _this select 0;
@@ -275,8 +268,7 @@ R3F_LOG_FNCT_3D_intersect_bounding_sphere_objs =
  * @param 3 position max de la bounding box
  * @return true s'il y a intersection entre la bounding box et la bounding sphere, false sinon
  */
-R3F_LOG_FNCT_3D_bounding_sphere_intersect_bounding_box =
-{
+R3F_LOG_FNCT_3D_bounding_sphere_intersect_bounding_box = {
 	private ["_pos_bsphere", "_rayon_bsphere", "_bbox_min", "_bbox_max", "_pos_intersect_min_bbox"];
 
 	// Utilisation "inline" de la fonction R3F_LOG_FNCT_3D_distance_min_pos_bbox
@@ -307,8 +299,7 @@ R3F_LOG_FNCT_3D_bounding_sphere_intersect_bounding_box =
  * @note les objets peuvent être d'un type ne correspondant pas aux bounding box
  * @note cela permet par exemple d'utiliser une logique de jeu, pour un calcul à priori
  */
-R3F_LOG_FNCT_3D_bbox_intersect_bbox =
-{
+R3F_LOG_FNCT_3D_bbox_intersect_bbox = {
 	private ["_objet1", "_objet2", "_bbox1_min", "_bbox1_max", "_bbox2_min", "_bbox2_max", "_intersect", "_coins", "_rayons"];
 
 	_objet1 = _this select 0;
@@ -424,8 +415,7 @@ R3F_LOG_FNCT_3D_bbox_intersect_bbox =
  * @param 1 le deuxième objet pour lequel calculer l'intersection
  * @return true s'il y a intersection entre les bounding box des deux objets, false sinon
  */
-R3F_LOG_FNCT_3D_bbox_intersect_bbox_objs =
-{
+R3F_LOG_FNCT_3D_bbox_intersect_bbox_objs = {
 	private ["_objet1", "_objet2"];
 
 	_objet1 = _this select 0;
@@ -451,8 +441,7 @@ R3F_LOG_FNCT_3D_bbox_intersect_bbox_objs =
  *
  * @note WARNING WORK IN PROGRESS FUNCTION, NOT FOR USE !!! TODO FINALIZE IT
  */
-R3F_LOG_FNCT_3D_mesh_collision_objs =
-{
+R3F_LOG_FNCT_3D_mesh_collision_objs = {
 	private ["_objet1", "_objet2", "_objet_test1", "_objet_test2", "_force_test_mesh", "_pos_test", "_num_frame_start", "_collision"];
 
 	_objet1 = _this select 0;
@@ -516,13 +505,12 @@ R3F_LOG_FNCT_3D_mesh_collision_objs =
  * @return position dégagée (sphère de 50m de rayon) dans le ciel
  * pSiKo rewrite
  */
-R3F_LOG_FNCT_3D_tirer_position_degagee_ciel =
-{
+R3F_LOG_FNCT_3D_tirer_position_degagee_ciel = {
 	private _nb_tirages = 1;
-	private _position_degagee = [([[-300,0,300]] call F_getRND), ([[-300,0,300]] call F_getRND), (10000 + random 20000)];
+	private _position_degagee = [] call F_getFreePos;
 
 	while { !isNull (nearestObject _position_degagee) && _nb_tirages < 25 } do {
-		_position_degagee = [([[-300,0,300]] call F_getRND), ([[-300,0,300]] call F_getRND), (10000 + random 20000)];
+		_position_degagee = [] call F_getFreePos;
 		_nb_tirages = _nb_tirages + 1;
 	};
 
@@ -594,7 +582,7 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol = {
 	] do {};
 
 	// Echec, position introuvée
-	if (_nb_tirages >= _nb_tirages_max) then {_position_degagee = [];};
+	if (_nb_tirages >= _nb_tirages_max) then { _position_degagee = [] };
 
 	_position_degagee;
 };
@@ -603,8 +591,7 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol = {
  * Calcule la distance entre le joueur et la bbox de l'objet pointé
  * @return tableau avec en premier élément l'objet pointé (ou objNull), et en deuxième élément la distance entre le joueur et la bbox de l'objet pointé
  */
-R3F_LOG_FNCT_3D_cursorTarget_distance_bbox =
-{
+R3F_LOG_FNCT_3D_cursorTarget_distance_bbox = {
 	private ["_objet", "_joueur"];
 
 	_objet = cursorObject;
@@ -633,8 +620,7 @@ R3F_LOG_FNCT_3D_cursorTarget_distance_bbox =
  * @param 1 (optionnel) distance maximale entre l'unité et la bounding box des objets (défaut : 10)
  * @return l'objet pointé par le joueur ou objNull
  */
-R3F_LOG_FNCT_3D_cursorTarget_virtuel =
-{
+R3F_LOG_FNCT_3D_cursorTarget_virtuel = {
 	private ["_liste_ingores", "_distance_max", "_joueur", "_objet_pointe", "_cursorTarget_distance"];
 
 	if (isNull player) exitWith {objNull};
@@ -686,8 +672,7 @@ R3F_LOG_FNCT_3D_cursorTarget_virtuel =
  * @param 1 position max de la bounding box
  * @return tableau contenant la position des huit coins d'une bounding box dans le repère du modèle
  */
-R3F_LOG_FNCT_3D_get_huit_coins_bounding_box_model =
-{
+R3F_LOG_FNCT_3D_get_huit_coins_bounding_box_model = {
 	private ["_bbox_min", "_bbox_max"];
 
 	_bbox_min = _this select 0;
@@ -710,8 +695,7 @@ R3F_LOG_FNCT_3D_get_huit_coins_bounding_box_model =
  * @param 0 l'objet pour lequel calculer les huit coins de la bbox dans le repère world
  * @return tableau contenant la position des huit coins d'une bounding box dans le repère world
  */
-R3F_LOG_FNCT_3D_get_huit_coins_bounding_box_world =
-{
+R3F_LOG_FNCT_3D_get_huit_coins_bounding_box_world = {
 	private ["_objet", "_bbox_min", "_bbox_max"];
 
 	_objet = _this select 0;
@@ -792,8 +776,7 @@ R3F_LOG_FNCT_3D_get_objets_genants_rayon = {
  * @param 0 le nom de classe de l'objet
  * @return la bounding box d'un objet correspondant au nom de classe
  */
-R3F_LOG_FNCT_3D_get_bounding_box_depuis_classname =
-{
+R3F_LOG_FNCT_3D_get_bounding_box_depuis_classname = {
 	private ["_classe", "_objet_tmp", "_bbox"];
 
 	_classe = _this select 0;
@@ -812,8 +795,7 @@ R3F_LOG_FNCT_3D_get_bounding_box_depuis_classname =
  * @param 0 l'objet pour lequel calculer les hauteur de terrains min et max
  * @return tableau contenant respectivement las hauteurs de terrain ASL minimal et maximal
  */
-R3F_LOG_FNCT_3D_get_hauteur_terrain_min_max_objet =
-{
+R3F_LOG_FNCT_3D_get_hauteur_terrain_min_max_objet = {
 	private ["_objet", "_x1", "_x2", "_y1", "_y2", "_z", "_hauteur_min", "_hauteur_max", "_hauteur"];
 
 	_objet = _this select 0;
@@ -845,8 +827,7 @@ R3F_LOG_FNCT_3D_get_hauteur_terrain_min_max_objet =
  * @param 1 la deuxième matrice 3x3 à multiplier
  * @return la matrice 3x3 résultant de la multiplication
  */
-R3F_LOG_FNCT_3D_mult_mat3x3 =
-{
+R3F_LOG_FNCT_3D_mult_mat3x3 = {
 	private ["_a", "_b"];
 
 	_a = _this select 0;
@@ -877,8 +858,7 @@ R3F_LOG_FNCT_3D_mult_mat3x3 =
  * @param 1 le matrice 3x3 avec laquelle multiplier le vecteur
  * @return le vecteur 3D résultant de la multiplication
  */
-R3F_LOG_FNCT_3D_mult_vec_mat3x3 =
-{
+R3F_LOG_FNCT_3D_mult_vec_mat3x3 = {
 	private ["_vec", "_mat"];
 
 	_vec = _this select 0;
@@ -896,8 +876,7 @@ R3F_LOG_FNCT_3D_mult_vec_mat3x3 =
  * @param l'angle de rotation en degrés
  * @return la matrice 3x3 de rotation en roulis (roll) pour un angle donné
  */
-R3F_LOG_FNCT_3D_mat_rot_roll =
-{
+R3F_LOG_FNCT_3D_mat_rot_roll = {
 	[
 		[cos _this, 0, sin _this],
 		[0, 1, 0],
@@ -910,8 +889,7 @@ R3F_LOG_FNCT_3D_mat_rot_roll =
  * @param l'angle de rotation en degrés
  * @return la matrice 3x3 de rotation en tangage (pitch) pour un angle donné
  */
-R3F_LOG_FNCT_3D_mat_rot_pitch =
-{
+R3F_LOG_FNCT_3D_mat_rot_pitch = {
 	[
 		[1, 0, 0],
 		[0, cos _this, -sin _this],
@@ -924,8 +902,7 @@ R3F_LOG_FNCT_3D_mat_rot_pitch =
  * @param l'angle de rotation en degrés
  * @return la matrice 3x3 de rotation en lacet (yaw) pour un angle donné
  */
-R3F_LOG_FNCT_3D_mat_rot_yaw =
-{
+R3F_LOG_FNCT_3D_mat_rot_yaw = {
 	[
 		[cos _this, -sin _this, 0],
 		[sin _this, cos _this, 0],
@@ -941,8 +918,7 @@ R3F_LOG_FNCT_3D_mat_rot_yaw =
  * @note les objets peuvent être d'un type ne correspondant pas aux bounding box
  * @note cela permet par exemple d'utiliser une logique de jeu, pour un calcul à priori
  */
-R3F_LOG_FNCT_3D_tracer_bbox =
-{
+R3F_LOG_FNCT_3D_tracer_bbox = {
 	private ["_objet", "_bbox_min", "_bbox_max", "_coins", "_couleur"];
 
 	_objet = _this select 0;
@@ -979,8 +955,7 @@ R3F_LOG_FNCT_3D_tracer_bbox =
  * Trace dans le jeu la bounding box de l'objet passé en paramètre
  * @param 0 l'objet pour lequel tracer la bounding box
  */
-R3F_LOG_FNCT_3D_tracer_bbox_obj =
-{
+R3F_LOG_FNCT_3D_tracer_bbox_obj = {
 	private ["_objet"];
 
 	_objet = _this select 0;

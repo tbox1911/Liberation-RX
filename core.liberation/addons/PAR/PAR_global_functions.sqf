@@ -26,16 +26,13 @@ PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
 	params ["_unit_array"];
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
-	if ( isNull (objectParent player) && count _unit_array == 0 ) then {
+	if (isNull (objectParent player) && count _unit_array == 0) then {
 		if (surfaceIsWater (getPos player)) then {
-			private _pos = getPosASL player;
-			private _zpos = _pos select 2;
-			if (_zpos < -1.4) then { _pos set [2, -1.4 max _zpos] };
-			player setPosASL _pos;
+			player setPosASL ([getPosASL player, 5] call F_getRandomPos);
 			player switchMove "";
 			player playMoveNow "";
 		} else {
-			player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.3]);
+			player setPosATL ([getPosATL player, 5] call F_getRandomPos);
 		};
 	} else {
 		{
@@ -55,9 +52,9 @@ PAR_unblock_AI = {
 				[_unit] allowGetIn false;
 				sleep 0.2;
 				if (surfaceIsWater (getPos _unit)) then {
-					_unit setPosASL (getPosASL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0]);
+					_unit setPosASL ([getPosASL player, 5] call F_getRandomPos);
 				} else {
-					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.3]);
+					_unit setPosATL ([getPosATL player, 5] call F_getRandomPos);
 				};
 				sleep 0.2;
 				_unit stop false;

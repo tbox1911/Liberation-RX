@@ -235,7 +235,7 @@ if (isServer) then {
 
 		if (_unit_class in GRLIB_explo_delete && (getPosATL _unit) select 2 <= 10) exitWith {
 			detach _unit;
-			_unit setVelocity [([] call F_getRND), ([] call F_getRND), 10];
+			_unit setVelocity [(floor random 20) - 10, (floor random 20) - 10, 10];
 			sleep 2;
 			_unit setDamage 1;
 			private _explo = "DemoCharge_Remote_Ammo" createVehicle (getPosATL _unit);

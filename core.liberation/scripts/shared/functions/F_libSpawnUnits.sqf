@@ -15,7 +15,6 @@ if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpN
 _grp setCombatMode "WHITE";
 _grp setBehaviourStrong "AWARE";
 
-if ((_spawn_pos select 2) < 0) then { _spawn_pos set [2, 0.1] };
 if (_type == "para") then {
 	diag_log format ["Spawn (%1) %2 Units (%3-%4)", count _classname, _type, _side, _grp];
 } else {
@@ -37,10 +36,11 @@ switch (_type) do {
 	case "resistance" : { _rank_range = [4, 5] };
 };
 
-private ["_unit", "_rank_unit", "_pos", "_backpack"];
+private ["_unit", "_rank_unit", "_unit_pos", "_backpack"];
 private _units = [];
 {
-	_unit = _grp createUnit [_x, _spawn_pos, [], 30, "NONE"];
+	_unit_pos = (_spawn_pos getPos [20 * sqrt random 1, floor random 360]);
+	_unit = _grp createUnit [_x, _unit_pos, [], 1, "CAN_COLLIDE"];
 	if (!isNull _unit) then {
 		_unit allowDamage false;
 		[_unit] joinSilent _grp;
@@ -53,13 +53,13 @@ private _units = [];
 		};
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-		_pos = getPos _unit;
+		
 		if (_type == "divers") then {
-			_pos set [2, -6];
-			_unit setPosASL _pos;
+			_unit_pos set [2, -6];
+			_unit setPosASL _unit_pos;
 		};
 
-		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
+		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _unit_pos];
 		[_unit] call F_fixModUnit;
 		if (_type == "militia") then { [_unit] spawn loadout_militia };
 		if (_type == "building") then {
@@ -110,7 +110,7 @@ private _units = [];
 
 		_units pushBack _unit;
 	} else {
-		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
+		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _unit_pos];
 	};
 	sleep 0.1;
 } foreach _classname;

@@ -9,7 +9,7 @@ private _squad_move = {
 		private _unit = _x;
 		_unit setUnitPos "UP";
 		_unit setSpeedMode "FULL";
-		_unit setPosATL (getPosATL _leader vectorAdd [([] call F_getRND), ([] call F_getRND), 0.3]);
+		_unit setPosATL ([getPosATL _leader, 10] call F_getRandomPos);
 		sleep 0.2;
 		_unit switchMove "AmovPercMwlkSrasWrflDf";
 		_unit playMoveNow "AmovPercMwlkSrasWrflDf";

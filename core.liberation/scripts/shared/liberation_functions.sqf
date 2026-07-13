@@ -68,7 +68,6 @@ F_getRandomPos = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_getRank = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRank.sqf";
 F_getReput = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getReput.sqf";
 F_getReputText = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getReputText.sqf";
-F_getRND = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRND.sqf";
 F_getScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getScore.sqf";
 F_getSectorPath = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getSectorPath.sqf";
 F_getTemplateFile = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getTemplateFile.sqf";
