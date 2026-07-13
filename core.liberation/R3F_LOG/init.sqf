@@ -99,8 +99,7 @@
 
 	/* FIN import config */
 
-	if (isServer) then
-	{
+	if (isServer) then {
 		// On crée le point d'attache qui servira aux attachTo pour les objets é charger virtuellement dans les véhicules
 		R3F_LOG_PUBVAR_point_attache = "Land_HelipadEmpty_F" createVehicle [0,0,0];
 		R3F_LOG_PUBVAR_point_attache setPosASL [0,0,0];
@@ -108,14 +107,6 @@
 
 		// Partage du point d'attache avec tous les joueurs
 		publicVariable "R3F_LOG_PUBVAR_point_attache";
-
-		// /** Liste des objets é ne pas perdre dans un vehicule/cargo détruit */
-		// R3F_LOG_liste_objets_a_proteger = [];
-
-		// /* Protége les objets présents dans R3F_LOG_liste_objets_a_proteger */
-		// if (count R3F_LOG_liste_objets_a_proteger > 0) then {
-		// 	[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\surveiller_objets_a_proteger.sqf";
-		// };
 	};
 
 	/**
@@ -125,8 +116,7 @@
 	 * @param 2 les éventuels paramétres de la commande (optionnel)
 	 * @note il faut passer par la fonction R3F_LOG_FNCT_exec_commande_MP
 	 */
-	R3F_LOG_FNCT_PVEH_commande_MP =
-	{
+	R3F_LOG_FNCT_PVEH_commande_MP =	{
 		private ["_argument", "_commande", "_parametre"];
 		_argument = _this select 1 select 0;
 		_commande = _this select 1 select 1;
@@ -161,8 +151,7 @@
 	 * @param 2 les éventuels paramétres de la commande (optionnel)
 	 * @usage [_objet, "setDir", 160] call R3F_LOG_FNCT_exec_commande_MP
 	 */
-	R3F_LOG_FNCT_exec_commande_MP =
-	{
+	R3F_LOG_FNCT_exec_commande_MP =	{
 		R3F_LOG_PV_commande_MP = _this;
 		publicVariable "R3F_LOG_PV_commande_MP";
 		["R3F_LOG_PV_commande_MP", R3F_LOG_PV_commande_MP] spawn R3F_LOG_FNCT_PVEH_commande_MP;
@@ -201,7 +190,7 @@
 		/** Objet actuellement sélectionner pour étre chargé/remorqué */
 		R3F_LOG_objet_selectionne = objNull;
 
-		/** Objet actuellement sélectionner pour étre heliporté */	
+		/** Objet actuellement sélectionner pour étre heliporté */
 		R3F_LOG_objet_heliporter = objNull;
 
 		/** Tableau contenant toutes les usines créées */
@@ -262,8 +251,7 @@
 		R3F_LOG_action_deverrouiller_valide = false;
 
 		/** Sur ordre (publicVariable), révéler la présence d'un objet au joueur (accélérer le retour des addActions) */
-		R3F_LOG_FNCT_PUBVAR_reveler_au_joueur =
-		{
+		R3F_LOG_FNCT_PUBVAR_reveler_au_joueur = {
 			private ["_objet"];
 			_objet = _this select 1;
 
@@ -274,8 +262,7 @@
 		"R3F_LOG_PUBVAR_reveler_au_joueur" addPublicVariableEventHandler R3F_LOG_FNCT_PUBVAR_reveler_au_joueur;
 
 		/** Event handler GetIn : ne pas monter dans un véhicule qui est en cours de transport */
-		R3F_LOG_FNCT_EH_GetIn =
-		{
+		R3F_LOG_FNCT_EH_GetIn =	{
 			if (local (_this select 2)) then
 			{
 				_this spawn
@@ -291,25 +278,24 @@
 			};
 		};
 
-		// Actions é faire quand le joueur est apparu
-		0 spawn
-		{
-			waitUntil {sleep 1; !isNull player};
+		// // Actions a faire quand le joueur est apparu
+		// [] spawn {
+		// 	waitUntil {sleep 1; !isNull player};
 
-			// Ajout d'un event handler "WeaponDisassembled" pour gérer le cas oé une arme est démontée alors qu'elle est en cours de transport
-			player addEventHandler ["WeaponDisassembled",
-			{
-				private ["_objet"];
+		// 	// Ajout d'un event handler "WeaponDisassembled" pour gérer le cas ou une arme est démontée alors qu'elle est en cours de transport
+		// 	player addEventHandler ["WeaponDisassembled",
+		// 	{
+		// 		private ["_objet"];
 
-				// Récupération de l'arme démontée avec cursorObject au lieu de _this (http://feedback.arma3.com/view.php?id=18090)
-				_objet = cursorObject;
+		// 		// Récupération de l'arme démontée avec cursorObject au lieu de _this (http://feedback.arma3.com/view.php?id=18090)
+		// 		_objet = cursorObject;
 
-				if (!isNull _objet && {!isNull (_objet getVariable ["R3F_LOG_est_deplace_par", objNull])}) then
-				{
-					_objet setVariable ["R3F_LOG_est_deplace_par", objNull, true];
-				};
-			}];
-		};
+		// 		if (!isNull _objet && {!isNull (_objet getVariable ["R3F_LOG_est_deplace_par", objNull])}) then
+		// 		{
+		// 			_objet setVariable ["R3F_LOG_est_deplace_par", objNull, true];
+		// 		};
+		// 	}];
+		// };
 
 		/** Variable publique passer é true pour informer le script surveiller_nouveaux_objets.sqf de la création d'un objet */
 		R3F_LOG_PUBVAR_nouvel_objet_a_initialiser = false;
