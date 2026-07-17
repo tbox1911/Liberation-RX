@@ -37,7 +37,7 @@ while {true} do {
 	};
 
 	// Leadership
-	if (count units GRLIB_player_group > 1 && leader GRLIB_player_group != player && local GRLIB_player_group) then {
+	if (lifeState player != "INCAPACITATED" && count units GRLIB_player_group > 1 && leader GRLIB_player_group != player && local GRLIB_player_group) then {
 		player addrating ((abs rating player) + 500);
 		GRLIB_player_group selectLeader player;
 		gamelogic globalChat format [localize "STR_LOG_LRX_LEADERSHIP_TAKEN", name player];
