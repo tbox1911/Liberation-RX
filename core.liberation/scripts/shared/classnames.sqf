@@ -257,6 +257,12 @@ support_vehicles append [
 	[fuelbarrel_typename,0,120,50,GRLIB_perm_hidden],
 	[foodbarrel_typename,0,130,0,GRLIB_perm_hidden]
 ] + support_vehicles_west;
+
+// Fix Template
+if (GRLIB_SPE_enabled) then {
+	support_vehicles = support_vehicles select { (_x select 0) != huron_typename };
+};
+
 support_vehicles_classname = support_vehicles apply { _x select 0 };
 support_vehicles_classname = support_vehicles_classname arrayIntersect support_vehicles_classname;
 
