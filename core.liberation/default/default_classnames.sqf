@@ -93,6 +93,7 @@ GRLIB_music_startup = "BackgroundTrack02_F";		//"LeadTrack01a_F" (This Is War)
 GRLIB_music_endgame = "LeadTrack06_F_Tank";
 GRLIB_vehicle_whitelist = [];
 GRLIB_vehicle_blacklist = [];
+GRLIB_chopper_enabled = true;
 static_vehicles_AI = [];
 units_loadout_overide = [];
 militia_loadout_overide = [];

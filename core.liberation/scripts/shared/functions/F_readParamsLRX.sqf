@@ -39,6 +39,12 @@ GRLIB_Commander_VoteEnabled = [GRLIB_PARAM_CommPlayerVote] call lrx_getParamValu
 // Disable TFAR Relay
 if (GRLIB_TFR_radius == 0) then { GRLIB_TFR_enabled = false };
 
+// Chopper disabled (force truck/ no taxi)
+if (!GRLIB_chopper_enabled) then {
+	GRLIB_fob_type = 1;
+	GRLIB_mod_taxi = 3;
+};
+
 // Overide Huron type
 switch (GRLIB_huron_type) do {
 	case 0: { huron_typename = "B_Heli_Transport_03_unarmed_F" };

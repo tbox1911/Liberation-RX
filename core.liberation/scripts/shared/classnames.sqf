@@ -258,8 +258,8 @@ support_vehicles append [
 	[foodbarrel_typename,0,130,0,GRLIB_perm_hidden]
 ] + support_vehicles_west;
 
-// Fix Template
-if (GRLIB_SPE_enabled) then {
+// Fix Template (Chopper disabled)
+if (!GRLIB_chopper_enabled) then {
 	support_vehicles = support_vehicles select { (_x select 0) != huron_typename };
 };
 
