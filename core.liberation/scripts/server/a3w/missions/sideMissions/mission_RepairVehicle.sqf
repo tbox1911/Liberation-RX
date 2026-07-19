@@ -53,7 +53,7 @@ _setupObjects = {
 	_last_dead_pos = [];
 	{
 		if (_x != _tank_driver) then {
-			_x setPos ([_tank, 10] call F_getRandomPos);
+			_x setPos ([getPosATL _tank, 10] call F_getRandomPos);
 			_x setDamage 1;
 			_last_dead_pos = getPosATL _x;
 			sleep 0.1;
@@ -90,7 +90,7 @@ _setupObjects = {
 			_tank setHitPointDamage ["HitEngine", 1];
 			_tank setFuel 0;
 			_tank engineOn false;
-			_spawn_pos = ([_tank, 200] call F_getRandomPos);
+			_spawn_pos = ([getPosATL _tank, 200] call F_getRandomPos);
 			_grp = [_spawn_pos, ([] call getNbUnits), "militia", false] call createCustomGroup;
 			[_grp, _tank] spawn battlegroup_ai_direct;
 			sleep 10;
