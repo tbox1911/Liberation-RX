@@ -24,6 +24,12 @@ private _blufor_vehicles = [];
 { [_x] call F_checkClass } forEach _blufor_vehicles;
 { units_loadout_overide set [_forEachIndex, toLower _x] } forEach units_loadout_overide;
 
+// Chopper disabled (force truck/ no taxi)
+if (!GRLIB_chopper_enabled) then {
+	GRLIB_fob_type = 1;
+	GRLIB_mod_taxi = 3;
+};
+
 // *** MFR Dogs ****
 MFR_Dogs_classname = [];
 if (GRLIB_MFR_enabled) then {
