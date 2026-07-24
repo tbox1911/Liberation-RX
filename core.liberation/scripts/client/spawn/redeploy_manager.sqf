@@ -154,8 +154,6 @@ camUseNVG false;
 closeDialog 0;
 if (!alive player) exitWith {};
 
-private _sleep = 2;
-if (GRLIB_deployment_cinematic) then { _sleep = 7 };
 cinematic_camera_started = false;
 titleText ["","BLACK IN", 5];
 
@@ -210,6 +208,6 @@ if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) the
 	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 0.3]);
 };
 
-sleep _sleep;
+sleep 10;
 player setVariable ["GRLIB_action_inuse", false, true];
 GRLIB_player_spawned = ([] call F_getValid);
