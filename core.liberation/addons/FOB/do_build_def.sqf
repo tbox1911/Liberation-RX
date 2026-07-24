@@ -11,8 +11,7 @@ if (isNil "_fob") exitWith {};
 private _fob_pos = getPosATL _fob;
 private _fob_dir = (getDir _fob_sign - 90);
 
-private _walls = count (_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]);
-_walls = _walls + count (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]);
+private _walls = { getObjectType _x != 8 } count ((_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]) + (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]));
 if (_walls > 10) exitWith { hint localize "STR_FOB_CONSTRUCTION_TOO_MANY_WALLS" };
 
 createDialog "FOB_Defense";
