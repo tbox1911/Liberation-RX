@@ -40,8 +40,13 @@ while { alive _unit && ([_unit] call PAR_is_wounded) && time <= (_unit getVariab
 	private _unit_list = [] call PAR_protected_units;
 	if ( {!([_x] call PAR_is_wounded)} count _unit_list > 0 ) then {
 		if (isNil {_unit getVariable "PAR_myMedic"}) then {
-			_msg = localize "STR_PAR_UC_01";
-			[_unit, _msg] call PAR_fn_globalchat;
+			if (_unit in units player) then {
+				if (_unit getSlotItemName 611 != "") then {
+					_unit sideChat _msg;
+				} else {
+					gamelogic globalChat format ["%1: %2", name _unit, localize "STR_PAR_UC_01"];
+				};
+			};
 			[_unit] call PAR_fn_medic;
 		};
 	} else {

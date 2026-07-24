@@ -22,7 +22,13 @@ if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
 };
 
 private _msg = localize selectRandom ["STR_PAR_Need_Medic1", "STR_PAR_Need_Medic2", "STR_PAR_Need_Medic3"];
-[_unit, _msg] call PAR_fn_globalchat;
+if (_unit in units player) then {
+    if (_unit getSlotItemName 611 != "") then {
+        _unit sideChat _msg;
+    } else {
+        gamelogic globalChat format ["%1: %2", name _unit, _msg];
+    };
+};
 
 // Mute Radio
 5 fadeRadio 0;
