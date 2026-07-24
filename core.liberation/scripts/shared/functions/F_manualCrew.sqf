@@ -59,7 +59,7 @@ _units allowGetIn true;
             _x assignAsCargo _vehicle;
             _x moveInCargo _vehicle;
         };
-        if (!_delete) then { sleep 0.2 };
+        if (!_delete) then { sleep 0.5 };
     };
 } forEach _units;
 
