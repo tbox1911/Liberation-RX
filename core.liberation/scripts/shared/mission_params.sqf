@@ -1045,7 +1045,7 @@ _Mission_Params = [
         ]]
     ]],
     [GRLIB_PARAM_MaxFobs, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 3],
+        [GRLIB_PARAM_ValueKey, 4],
         [GRLIB_PARAM_NameKey, localize "STR_PARAM_FOBS_COUNT"],
         [GRLIB_PARAM_OptionLabelKey, ["0","1","2","3","4","5","6","7","8","9","10"]],
         [GRLIB_PARAM_OptionValuesKey, [0,1,2,3,4,5,6,7,8,9,10]],
