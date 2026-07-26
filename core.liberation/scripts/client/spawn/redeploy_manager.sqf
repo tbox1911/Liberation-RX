@@ -157,6 +157,7 @@ if (!alive player) exitWith {};
 cinematic_camera_started = false;
 titleText ["","BLACK IN", 5];
 
+private _nb_unit = 0;
 if (deploy == 1) then {
 	player setVariable ["GRLIB_action_inuse", true, true];
 
@@ -197,9 +198,17 @@ if (deploy == 1) then {
 			_destdist = 12;
 		};
 		if (_destpos distance2D zeropos < 300) exitWith {};
+		private _unit_list = units group player;
+		private _my_squad = player getVariable ["my_squad", nil];
+		if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
+		private _list_redep = _unit_list select {
+			!(isPlayer _x) && (isNull objectParent _x) &&
+			(_x distance2D player <= 30) && lifestate _x != 'INCAPACITATED'
+		};
+		_nb_unit = count _list_redep;
 		if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
 		[_spawn_str, _mobile] spawn spawn_camera;
-		[_destpos, _destdist, _mobile] call do_redeploy;
+		[_destpos, _destdist, _mobile, _list_redep] call do_redeploy;
 	};
 };
 
@@ -208,6 +217,6 @@ if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) the
 	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 0.3]);
 };
 
-sleep 10;
+sleep (1 + (_nb_unit * 0.6));
 player setVariable ["GRLIB_action_inuse", false, true];
 GRLIB_player_spawned = ([] call F_getValid);
