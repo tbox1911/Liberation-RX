@@ -20,6 +20,7 @@ if (!alive _unit) exitWith {};
 
 _unit removeAllEventHandlers "GetInMan";
 _unit removeAllEventHandlers "SeatSwitchedMan";
+_unit removeAllEventHandlers "HandleDamage";
 _unit removeAllEventHandlers "Take";
 _unit addEventHandler ["GetInMan", {_this spawn vehicle_perm}];
 _unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_perm}];

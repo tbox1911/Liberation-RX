@@ -158,9 +158,9 @@ cinematic_camera_started = false;
 titleText ["","BLACK IN", 5];
 
 private _nb_unit = 0;
-if (deploy == 1) then {
-	player setVariable ["GRLIB_action_inuse", true, true];
+player setVariable ["GRLIB_action_inuse", true, true];
 
+if (deploy == 1) then {
 	// choosen loadout
 	if (GRLIB_player_spawned && _loadoutchoice > 0) then {
 		private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
@@ -217,6 +217,6 @@ if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) the
 	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 0.3]);
 };
 
-sleep (1 + (_nb_unit * 0.6));
+sleep (1 + _nb_unit);
 player setVariable ["GRLIB_action_inuse", false, true];
 GRLIB_player_spawned = ([] call F_getValid);
