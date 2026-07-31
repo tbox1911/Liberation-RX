@@ -1,5 +1,5 @@
 params ["_sector"];
-systemchat "sector start";
+
 if (GRLIB_sector_spawning) exitWith {
 	diag_log format ["--- LRX Manage Sector: Another Sector %1 is already spawning, aborting.", _sector];
 };
