@@ -1,7 +1,6 @@
 params ["_unit"];
 
 if ([_unit] call PAR_is_wounded) exitWith {};
-_unit setVariable ["GRLIB_isProtected", round(time + 6)];
 
 //if (!alive _unit) exitWith {};
 //systemchat format ["semi wounded - unit: %1 - damage: %2 - protected: %3", name _unit, damage _unit, (_unit getVariable ["GRLIB_isProtected", 0])];
@@ -34,7 +33,11 @@ if (isPlayer _unit) exitWith {
 
 _unit setUnconscious true;
 _unit setVariable ["GRLIB_isLucky", 1];
-sleep 4;
+sleep 5;
+if ([_unit] call PAR_is_wounded) exitWith {
+    _unit setVariable ["GRLIB_isLucky", nil];
+};
+
 _unit setUnconscious false;
 sleep 5 + (floor random 20);
 if (alive _unit) then {
