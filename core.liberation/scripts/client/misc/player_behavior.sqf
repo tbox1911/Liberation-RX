@@ -23,7 +23,7 @@ private _timer_bonus = 120;
 private ["_msg", "_side", "_result", "_player_units"];
 
 while {true} do {
-	waitUntil { sleep 1; GRLIB_player_configured && !([player] call PAR_is_wounded) && !(captive player) };
+	waitUntil { sleep 1; GRLIB_player_configured && !([player] call PAR_is_wounded || lifeState player == "INCAPACITATED") && !(captive player) };
 
 	// Renegade
 	_side = side player;
