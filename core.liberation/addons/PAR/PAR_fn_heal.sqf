@@ -1,6 +1,6 @@
 params ["_unit"];
 
-if (isNull objectParent _unit && !([_unit] call PAR_is_wounded)) then {
+if (isNull objectParent _unit && !([_unit] call PAR_is_wounded) && behaviour _unit != "COMBAT") then {
 	if (damage _unit >= 0.1) then {
 		if (isNull objectParent _unit && !(surfaceIsWater (getPos _unit))) then {
 			_unit setVariable ["PAR_healing", _unit];
@@ -20,6 +20,7 @@ if (isNull objectParent _unit && !([_unit] call PAR_is_wounded)) then {
 			round(speed _x) <= 1 &&
 			(damage _x) >= 0.1 &&
 			!([_x] call PAR_is_wounded) &&
+			behaviour _x != "COMBAT" &&
 			isNil {_x getVariable "PAR_busy"} &&
 			isNil {_x getVariable "PAR_healing"}
 		};
