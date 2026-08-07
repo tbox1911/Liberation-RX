@@ -6,7 +6,9 @@ params ["_type", "_pos", "_locked"];
 private _box = createVehicle [_type, zeropos, [], 100, "CAN_COLLIDE"];
 _box allowDamage false;
 _box addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-[_box, _pos] call F_fixPosObject;
+
+private _spawn_pos = [_pos, 10] call F_getRandomPos;
+[_box, _spawn_pos] call F_fixPosObject;
 
 if (isNil "_locked") then { _locked = false};
 if (_locked) then {
