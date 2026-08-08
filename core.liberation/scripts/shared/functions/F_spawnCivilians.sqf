@@ -15,7 +15,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 while { _max_try > 0 && count units _grp < _nb_unit } do {
 	_spawn_pos = [(((_sector_pos select 0) + (75 * _spread)) - (floor random (150 * _spread))),(((_sector_pos select 1) + (75 * _spread)) - (floor random (150 * _spread))), 0.5];
 	if !(surfaceIsWater _spawn_pos) then {
-		private _unit = _grp createUnit [selectRandom _class_civ, _spawn_pos, [], 20, "NONE"];
+		private _unit = _grp createUnit [selectRandom _class_civ, _spawn_pos, [], 1, "NONE"];
 		sleep 0.1;
 		if (!isNil "_unit") then {
 			_unit allowDamage false;

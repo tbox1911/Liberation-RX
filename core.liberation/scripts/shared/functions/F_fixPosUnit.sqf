@@ -3,7 +3,7 @@
 
 params ["_unit"];
 
-if (!local _unit || !alive _unit) exitWith {};
+if (!local _unit || !alive _unit || isNull _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit >= 3) exitWith {};
 if (surfaceIsWater (getPos _unit)) exitWith {};

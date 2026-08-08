@@ -39,7 +39,7 @@ switch (_type) do {
 private ["_unit", "_rank_unit", "_unit_pos", "_backpack"];
 private _units = [];
 {
-	_unit_pos = (_spawn_pos getPos [10 * sqrt random 1, floor random 360]);
+	_unit_pos = (_spawn_pos getPos [5 + (15 * sqrt (random 1 + 0.1)), floor random 360]);
 	_unit = _grp createUnit [_x, _unit_pos, [], 1, "CAN_COLLIDE"];
 	if (!isNull _unit) then {
 		_unit allowDamage false;
