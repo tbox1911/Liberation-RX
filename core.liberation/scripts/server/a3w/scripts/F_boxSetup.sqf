@@ -3,12 +3,14 @@
 if (!isServer) exitWith {};
 params ["_type", "_pos", "_locked"];
 
+private _spawn_pos = [_pos, 3, 0, 50, false] call F_findSafePlace;
+if (count _spawn_pos == 0) exitWith {};
+
 private _box = createVehicle [_type, zeropos, [], 100, "CAN_COLLIDE"];
 _box allowDamage false;
 _box addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-
-private _spawn_pos = [_pos, 10] call F_getRandomPos;
 [_box, _spawn_pos] call F_fixPosObject;
+[_box] call F_clearCargo;
 
 if (isNil "_locked") then { _locked = false};
 if (_locked) then {
@@ -17,7 +19,7 @@ if (_locked) then {
 	[_box] call F_aceLockVehicle;
 } else {
 	_box setVariable ["R3F_LOG_disabled", false, true];
-	_box setVariable ["GRLIB_vehicle_owner", "", true];	
+	_box setVariable ["GRLIB_vehicle_owner", "", true];
 	[_box] call F_aceInitVehicle;
 };
 
