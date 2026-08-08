@@ -17,7 +17,7 @@ publicVariable "GRLIB_patrol_sectors_list";
 
 while {true} do {
 	if (GRLIB_patrol_current < GRLIB_patrol_amount && diag_fps > 15) then {
-		private _search_sectors_all = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors - active_sectors - GRLIB_patrol_sectors);
+		private _search_sectors_all = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors) - (active_sectors + GRLIB_patrol_sectors);
 		GRLIB_patrol_sectors_list = _search_sectors_all select {
 			([markerPos _x, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount > 0) &&
 			([markerPos _x, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0)
