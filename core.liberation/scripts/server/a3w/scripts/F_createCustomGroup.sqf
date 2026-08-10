@@ -38,6 +38,9 @@ switch (_type) do {
 private _unitclass = [];
 while { (count _unitclass) < _nbUnits } do { _unitclass pushback (selectRandom _unitTypes) };
 private _grp = [_pos, _unitclass, _side, _type, true] call F_libSpawnUnits;
+if (count units _grp == 0) exitWith { 
+	grpNull 
+};
 
 // Cosmetic changes
 {

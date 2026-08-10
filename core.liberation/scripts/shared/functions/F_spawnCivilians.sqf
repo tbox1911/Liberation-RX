@@ -37,6 +37,11 @@ while { _max_try > 0 && count units _grp < _nb_unit } do {
 	sleep 0.1;
 };
 
+if (count units _grp == 0) exitWith { 
+	deleteGroup _grp;
+	grpNull 
+};
+
 sleep 1;
 { _x allowDamage true } forEach (units _grp);
 
