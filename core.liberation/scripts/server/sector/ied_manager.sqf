@@ -19,7 +19,7 @@ private _ied_type = selectRandom [
 ];
 
 private _roadobj = selectRandom (_sector_pos nearRoads _radius);
-if !(isNil "_roadobj" && random 100 < GRLIB_MineProbability) then {
+if (!isNil "_roadobj" && random 100 < GRLIB_MineProbability) then {
 	private _ied_obj = createMine [_ied_type, (_roadobj getPos [1, random(360)]), [], 0];
 	GRLIB_side_enemy revealMine _ied_obj;
 	GRLIB_side_civilian revealMine _ied_obj;
