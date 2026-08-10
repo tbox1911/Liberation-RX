@@ -309,7 +309,7 @@ while {GRLIB_run_cleanup} do {
 				sleep 0.1;
 				_list = _list select {!isNull _x};
 				_count = count _list;
-				while {((_count - _deadMenLimitMax) > 0)} do {
+				while {((_count - _deadVehiclesLimitMax) > 0)} do {
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
