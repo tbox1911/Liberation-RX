@@ -52,7 +52,7 @@ while { _radius < _max_radius } do {
     };
 
     if (_vfree && _hfree) exitWith { _found = true };
-    _radius = _radius + 0.2;
+    _radius = _radius + 1;
     sleep 0.01;
 };
 

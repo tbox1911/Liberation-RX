@@ -1,6 +1,3 @@
-GRLIB_civilians_current = GRLIB_civilians_current + 1;
-publicVariable "GRLIB_civilians_current";
-
 sleep (30 + (floor random 60));
 
 waitUntil { sleep 1; count GRLIB_civilian_sectors_list > 0 };
@@ -32,6 +29,9 @@ if (floor random 100 >= 60) then {
 
 sleep 1;
 if (isNull _civ_grp) exitWith { deleteVehicle _civ_veh };
+
+GRLIB_civilians_current = GRLIB_civilians_current + 1;
+publicVariable "GRLIB_civilians_current";
 
 // Waiting
 private _unit_ttl = round (time + 1800);

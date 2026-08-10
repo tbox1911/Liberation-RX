@@ -17,7 +17,7 @@ while { _max_try > 0 && count units _grp < _nb_unit } do {
 	if !(surfaceIsWater _spawn_pos) then {
 		private _unit = _grp createUnit [selectRandom _class_civ, _spawn_pos, [], 1, "NONE"];
 		sleep 0.1;
-		if (!isNil "_unit") then {
+		if (!isNull _unit) then {
 			_unit allowDamage false;
 			[_unit] joinSilent _grp;
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
@@ -28,6 +28,8 @@ while { _max_try > 0 && count units _grp < _nb_unit } do {
 			if (floor random 4 == 0) then { _unit setDamage 0.45 };
 			if (_nb_unit == 1 && floor random 2 == 0) then { [_unit, _sector_pos] spawn civilian_ai };
 			_max_try = 30;
+		} else {
+			_max_try = _max_try - 1;
 		};
 	} else {
 		_max_try = _max_try - 1;

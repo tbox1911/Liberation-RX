@@ -31,7 +31,7 @@ if (_classname isKindOf "Air") then {
 		_vehicle setPosATL _spawn_pos;
 		_vehicle setVelocityModelSpace [0, 80, 0];
 	} else {
-		diag_log format ["--- LRX Error: Cannot find Air spawn for position %2", _sectorpos];
+		diag_log format ["--- LRX Error: Cannot find Air spawn for position %1", _sectorpos];
 		_vehicle = objNull;	
 	};
 } else {

@@ -43,7 +43,7 @@ for "_i" from 0 to (_maxalt / _step) do {
     };
 };
 if (isNil "_foundPos") exitWith {
-    diag_log format ["--- LRX Error: unit %1 no free position %2", name _unit, _basePos];
+    diag_log format ["--- LRX Error: unit %1 no free position %2", name _unit, _basepos];
     deleteVehicle _unit;
 };
 

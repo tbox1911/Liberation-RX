@@ -2,11 +2,7 @@ params ["_level"];
 
 diag_log format ["--- LRX Enemy Patrol - trigger alert %1", _level];
 
-GRLIB_patrol_current = GRLIB_patrol_current + 1;
-publicVariable "GRLIB_patrol_current";
-
 sleep (60 + (floor random 60));
-while { combat_readiness < _level } do { sleep 60 };
 waitUntil { sleep 1; combat_readiness >= _level };
 waitUntil { sleep 1; count (GRLIB_patrol_sectors_list - GRLIB_patrol_sectors) > 0 };
 
@@ -35,6 +31,8 @@ if (floor random 100 > 50 && count militia_vehicles > 0) then {
 sleep 1;
 if (isNull _opfor_grp) exitWith { deleteVehicle _opfor_veh };
 
+GRLIB_patrol_current = GRLIB_patrol_current + 1;
+publicVariable "GRLIB_patrol_current";
 GRLIB_patrol_sectors pushBackUnique _sector;
 publicVariable "GRLIB_patrol_sectors";
 
