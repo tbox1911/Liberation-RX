@@ -23,6 +23,7 @@ if (floor random 100 > 50 && count militia_vehicles > 0) then {
 	diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
 } else {
 	_opfor_grp = [_sector_pos, (6 + floor random 6), "militia", false] call createCustomGroup;
+	if (isNull _opfor_grp) exitWith {};
 	if (floor random 4 == 0) then {
 		[_opfor_grp, _sector_pos, objNull] spawn add_civ_waypoints_veh;
 	} else {

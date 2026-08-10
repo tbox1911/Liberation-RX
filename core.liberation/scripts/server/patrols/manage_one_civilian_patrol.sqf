@@ -23,6 +23,7 @@ if (floor random 100 >= 60) then {
 	[_civ_grp, _sector_pos, _civ_veh] call add_civ_waypoints_veh;
 } else {
 	_civ_grp = [_sector_pos] call F_spawnCivilians;
+	if (isNull _civ_grp) exitWith {};
 	if (floor random 4 == 0) then {
 		[_civ_grp, _sector_pos, objNull] call add_civ_waypoints_veh;
 	} else {
