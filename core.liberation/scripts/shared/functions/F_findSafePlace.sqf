@@ -25,9 +25,7 @@ private _isPosValid = {
 	if (!_on_road && {isOnRoad _pos}) exitWith { false };
 
 	// cheap reject: solid terrain props in footprint
-	if (_water_mode != 2) then {
-		if (count (nearestTerrainObjects [_pos, ["House", "Building", "Wall", "Fence", "Rock", "Rocks"], _size, false, true]) > 0) exitWith { false };
-	};
+    if (_water_mode != 2 && {count (nearestTerrainObjects [_pos, ["House","Building","Wall","Fence","Rock","Rocks"], _size, false, true]) > 0}) exitWith { false };
 
 	_pos = +_pos;
 	_pos set [2, 0.5];
@@ -51,11 +49,13 @@ private _isPosValid = {
 // 1) fast engine guess (land only)
 if (_water_mode != 2) then {
 	private _guess = _start_pos findEmptyPosition [_size, (_max_radius min 80)];
-	if (count _guess > 0 && {[_guess] call _isPosValid}) exitWith {
+	if (count _guess > 0 && {[_guess] call _isPosValid}) then {
 		_guess set [2, 0];
-		_guess
+		_spawn_pos = _guess;
+		_found = true;
 	};
 };
+if (_found) exitWith { _spawn_pos };
 
 // 2) expanding rings with multiple samples
 private _spawn_pos = [];
