@@ -46,6 +46,9 @@ private _isPosValid = {
 	_hfree
 };
 
+private _spawn_pos = [];
+private _found = false;
+
 // 1) fast engine guess (land only)
 if (_water_mode != 2) then {
 	private _guess = _start_pos findEmptyPosition [_size, (_max_radius min 80)];
@@ -58,9 +61,6 @@ if (_water_mode != 2) then {
 if (_found) exitWith { _spawn_pos };
 
 // 2) expanding rings with multiple samples
-private _spawn_pos = [];
-private _found = false;
-
 while { !_found && {_attempt < _max_attempts} && {_radius < _max_radius} } do {
 	for "_i" from 1 to _tries_per_ring do {
 		_attempt = _attempt + 1;
