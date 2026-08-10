@@ -18,6 +18,11 @@ publicVariable "active_sectors";
 GRLIB_sector_spawning = true;
 publicVariable "GRLIB_sector_spawning";
 
+// Tracking arrays
+missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], []];
+missionNamespace setVariable [format ["LRX_sector_%1_civils", _sector], []];
+missionNamespace setVariable [format ["LRX_sector_%1_vehicles", _sector], []];
+
 private _sectorName = markerText _sector;
 _sector setMarkerText format ["%1 - Loading", _sectorName];
 
@@ -250,8 +255,7 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 		if (count _squad == 0) exitWith {};
 		private _grp = [_sector_pos, _infsquad, _squad, false] call F_spawnRegularSquad;
 		[_grp, _sector_pos, _range] spawn defence_ai;
-		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
-		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units + (units _grp)];
+		(missionNamespace getVariable format ["LRX_sector_%1_units", _sector]) append (units _grp);
 	};
 	_ratio = round linearConversion [0, 4, _foreachIndex, 20, 40];
 	_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
@@ -267,8 +271,7 @@ if (count _vehtospawn > 0) then {
 			private _pos = [_sector_pos, (80 + floor random 100)] call F_getRandomPos;
 			private _vehicle = [_pos, _classname, 10, GRLIB_side_enemy, _type] call F_libSpawnVehicle;
 			if (!isNull _vehicle) then {
-				private _managed_vehicles = missionNamespace getVariable [format ["LRX_sector_%1_vehicles", _sector], []];
-				missionNamespace setVariable [format ["LRX_sector_%1_vehicles", _sector], _managed_vehicles + [_vehicle]];
+				(missionNamespace getVariable format ["LRX_sector_%1_vehicles", _sector]) pushBack _vehicle;
 				[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
 			};
 		};
@@ -286,9 +289,7 @@ if (_building_ai_max > 0) then {
 	_sector setMarkerText format ["%2 - Loading %1%%", 75, _sectorName];
 	[_infsquad1, _building_ai_max, _building_range, _sector_pos, _sector] spawn {
 		params ["_infsquad1", "_building_ai_max", "_building_range", "_sector_pos", "_sector"];
-		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
-		_managed_units append ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_buildingSquad);
-		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units];
+		(missionNamespace getVariable format ["LRX_sector_%1_units", _sector]) append ([_infsquad1, _building_ai_max, _sector_pos, _building_range, objNull, false] call F_buildingSquad);
 	};
 	sleep 0.5;
 };
@@ -305,9 +306,9 @@ if (_spawncivs && GRLIB_civilian_activity > 0) then {
 		[_sector_pos, _sector, _max_units] spawn {
 			params ["_sector_pos", "_sector", "_max_units"];
 			private _grp = [_sector_pos, _max_units] call F_spawnCivilians;
+			if (isNull _grp) exitWith {};
 			[_grp, _sector_pos] spawn add_civ_waypoints;
-			private _managed_civils = missionNamespace getVariable [format ["LRX_sector_%1_civils", _sector], []];
-			missionNamespace setVariable [format ["LRX_sector_%1_civils", _sector], _managed_civils + (units _grp)];
+			(missionNamespace getVariable format ["LRX_sector_%1_civils", _sector]) append (units _grp);
 		};
 		_nbcivs = _nbcivs - _max_units;
 		_ratio = round linearConversion [0, _civ, _civ - _nbcivs, 85, 99];
@@ -320,13 +321,9 @@ if (_spawncivs && GRLIB_civilian_activity > 0) then {
 if (_static_count > 0) then {
 	[_static_count, _infsquad1, _sector_pos, _sector] spawn {
 		params ["_static_count", "_infsquad1", "_sector_pos", "_sector"];
-		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
-		private _managed_vehicles = missionNamespace getVariable [format ["LRX_sector_%1_vehicles", _sector], []];
 		([_sector_pos, _static_count, GRLIB_side_enemy, false, _infsquad1] call spawn_static) params ["_static_vehicles", "_static_units"];
-		_managed_vehicles append _static_vehicles;
-		_managed_units append _static_units;
-		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units];
-		missionNamespace setVariable [format ["LRX_sector_%1_vehicles", _sector], _managed_vehicles];
+		(missionNamespace getVariable format ["LRX_sector_%1_units", _sector]) append _static_units;
+		(missionNamespace getVariable format ["LRX_sector_%1_vehicles", _sector]) append _static_vehicles;
 	};
 };
 
