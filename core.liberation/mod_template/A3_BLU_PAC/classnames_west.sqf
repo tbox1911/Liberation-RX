@@ -22,7 +22,7 @@ crewman_classname = "B_T_Crew_F";
 uavs_terminal_typename = "B_UavTerminal";
 blufor_flag = "Flag_NATO_F";
 
-// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
+// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK, DESC]
 infantry_units_west = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],

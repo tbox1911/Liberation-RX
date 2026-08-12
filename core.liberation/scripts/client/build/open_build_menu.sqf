@@ -2,7 +2,7 @@ params ["_target", "_caller", "_actionId", "_trench"];
 private [
 	"_build_list", "_config_list", "_entrytext", "_icon", "_affordable", "_affordable_crew",
 	"_selected_item", "_linked_state", "_link_color", "_link_str", "_picture",
-	"_veh_man", "_veh_ammo", "_veh_fuel"
+	"_veh_man", "_veh_ammo", "_veh_fuel", "_tooltip"
 ];
 if (isNil "resources_infantry") exitWith {};
 
@@ -151,6 +151,12 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 				};
 				if (_icon == "") then { _icon = "\A3\ui_f\data\map\VehicleIcons\iconObject_ca.paa" };
 				lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
+				if (buildtype == GRLIB_InfantryBuildType) then {
+					_unit_desc = format [ "%1", _x select 5];
+					if (_unit_desc != "") then {
+						lnbSetTooltip [110, [((lnbSize 110) select 0) - 1, 0], _unit_desc];
+					};
+				};
 			} else {
 				if ( ((lnbSize  110) select 0) <= count squads_names ) then {
 					_squadname = squads_names select ((lnbSize  110) select 0);
