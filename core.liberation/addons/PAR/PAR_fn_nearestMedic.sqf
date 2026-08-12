@@ -1,11 +1,9 @@
 params ["_wnded"];
 
-private _grp_id = _wnded getVariable ["PAR_Grp_ID","1"];
-private _medics = (units group _wnded) select {
-    ((_x getVariable ["PAR_Grp_ID","0"]) == _grp_id) &&
+private _unit_list = ([_wnded] call PAR_protected_units) select { !([_x] call PAR_is_wounded) };
+private _medics = _unit_list select {
     (_x distance2D _wnded <= 500) &&
     (speed vehicle _x <= 20) && (getPos _x select 2 <= 15) &&
-    !(isPlayer _x) && !([_x] call PAR_is_wounded) &&
     !(objectParent _x iskindof "ParachuteBase") &&
     isNil {_x getVariable "PAR_busy"}
 };

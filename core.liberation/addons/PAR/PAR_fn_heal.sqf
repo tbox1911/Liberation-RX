@@ -12,7 +12,8 @@ if (isNull objectParent _unit && !([_unit] call PAR_is_wounded) && behaviour _un
 			_unit setDamage 0;
 		};
 	} else {
-		private _unit_list = [player] + ([] call PAR_protected_units);
+		private _unit_list = [_unit] call PAR_protected_units;
+		if (_unit in PAR_AI_bros) then { _unit_list pushBack player };
 		private _wnded_list = _unit_list select {
 			(_x distance2D _unit) < 30 &&
 			!(surfaceIsWater (getPos _x)) &&

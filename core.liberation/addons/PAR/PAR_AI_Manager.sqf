@@ -1,13 +1,13 @@
 // PAR Manage AI
 
 private _comm_id1 = 0;
-private ["_unit_list", "_unit", "_is_medic", "_has_medikit", "_wnded_list", "_wnded", "_have_priso"];
+private ["_unit_list", "_unit", "_is_medic", "_has_medikit", "_have_priso"];
 
 while {true} do {
 	waitUntil {
 		sleep 1;
 		_unit_list = [] call PAR_protected_units;
-		(count _unit_list > 1)
+		(count _unit_list > 0)
 	};
 
 	{

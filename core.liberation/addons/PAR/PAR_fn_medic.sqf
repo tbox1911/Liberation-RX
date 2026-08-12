@@ -14,9 +14,8 @@ if (isNil "_medic") exitWith {
 		[_wnded, _msg] call PAR_fn_globalchat;
 	};
 
-	private _unit_list = [] call PAR_protected_units;
-	private _lst = _unit_list select { !([_x] call PAR_is_wounded) };
-	_msg = format [localize "STR_PAR_MD_02", count (_lst)];
+	private _unit_list = ([_wnded] call PAR_protected_units) select { !([_x] call PAR_is_wounded) };
+	_msg = format [localize "STR_PAR_MD_02", count (_unit_list)];
 	[_wnded, _msg] call PAR_fn_globalchat;
 };
 

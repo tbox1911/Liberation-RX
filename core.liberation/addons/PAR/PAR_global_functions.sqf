@@ -17,11 +17,19 @@ PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_u
 // PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";  // moved to shared
 
 PAR_protected_units = {
-	private _units = PAR_AI_bros;
-	private _my_squad = player getVariable "my_squad";
-	if (!isNil "_my_squad") then { _units = _units + (units _my_squad) };
-	(_units select { alive _x});
+	params ["_unit"];
+	private _my_squad = player getVariable ["my_squad", grpNull];
+	if (isNil "_unit") then {
+		((PAR_AI_bros + units _my_squad) select { alive _x });
+	} else {
+		if (_unit in PAR_AI_bros || _unit == player) then {
+			(PAR_AI_bros select { alive _x });
+		} else {
+			(units _my_squad select { alive _x });
+		};
+	};
 };
+
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
 	params ["_unit_array"];
@@ -76,6 +84,7 @@ PAR_unblock_AI = {
 		} forEach _unit_array;
 	};
 };
+
 PAR_abandon_priso = {
 	// Abandon selected prisoners 0-8-2
 	params ["_unit_array"];
@@ -104,15 +113,17 @@ PAR_abandon_priso = {
 		} forEach _unit_array;
 	};
 };
+
 PAR_fn_globalchat = {
 	params ["_speaker", "_msg"];
 	if (isDedicated || !(local _speaker) || _msg == "") exitWith {};
 	if (_msg == PAR_AI_old_msg) exitWith {};
-	if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format ["Bros_%1", PAR_Grp_ID] || isPlayer _speaker) then {
+	if (_speaker in PAR_AI_bros || isPlayer _speaker) then {
 		gamelogic globalChat _msg;
 		PAR_AI_old_msg = _msg;
 	};
 };
+
 PAR_fn_fixPos = {
 	params ["_medic", "_wnded"];
 	{
@@ -131,14 +142,17 @@ PAR_fn_fixPos = {
 		};
 	} forEach [_medic, _wnded];
 };
+
 PAR_is_medic = {
 	params ["_unit"];
 	(getNumber (configOf _unit >> "attendant") == 1);
 };
+
 PAR_has_medikit = {
 	params ["_unit"];
 	(PAR_AidKit in (items _unit) || PAR_Medikit in (items _unit));
 };
+
 PAR_public_EH = {
 	params ["_EH", "_target"];
 	private _killed = _target select 0;
@@ -162,14 +176,17 @@ PAR_public_EH = {
 		};
 	};
 };
+
 PAR_revive_max = {
 	params ["_unit"];
 	(PAR_ai_revive_max + (GRLIB_rank_level find (rank _unit)));
 };
+
 PAR_revive_cur = {
 	params ["_unit"];
 	(([_unit] call PAR_revive_max) - count (_unit getVariable ["PAR_revive_history", []]));
 };
+
 PAR_revive_dec = {
 	params ["_unit"];
 	private _cur_revive = ([_unit] call PAR_revive_cur);
@@ -180,6 +197,7 @@ PAR_revive_dec = {
 	_history pushBack round (time + PAR_AI_recover_revive);
 	_unit setVariable ["PAR_revive_history", _history];
 };
+
 PAR_spawn_gargbage = {
 	params ["_target"];
 	private _pos = getPos _target;
@@ -188,6 +206,7 @@ PAR_spawn_gargbage = {
 	private _grbg = createVehicle [(selectRandom PAR_MedGarbage), _pos, [], 0, "CAN_COLLIDE"];
 	_grbg spawn {sleep (60 + floor(random 30)); deleteVehicle _this};
 };
+
 PAR_spawn_blood = {
 	params ["_target"];
 	private _pos = getPos _target;
