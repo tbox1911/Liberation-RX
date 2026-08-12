@@ -37,7 +37,7 @@ if (_ownership == GRLIB_side_enemy) then {
 			private _sound = "A3\Sounds_F\sfx\alarm_blufor.wss";
 			while { ([_pos] call F_sectorOwnership) == GRLIB_side_enemy && _pos in GRLIB_all_fobs } do {
 				[_pos, 1] remoteExec ["remote_call_fob", 0];
-				playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
+				playSound3D [_sound, objNull, false, ATLToASL _pos, 5, 1, 1000];
 				sleep (60 + (floor(random 4) * 45));
 			};
 		};

@@ -22,7 +22,6 @@ private ["_unit", "_path"];
 	_unit allowDamage false;
 	if (_mission_ai) then { _unit setVariable ["GRLIB_mission_AI", true, true] };
 	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-	_unit setPitch 1;
 	_unit setSkill 0.65;
 	_unit allowFleeing 0;
 
