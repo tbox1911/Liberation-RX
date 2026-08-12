@@ -1,7 +1,7 @@
 
 // Heli Taxi classname definition
 
-// Taxi classname by size 
+// Taxi classname by size
 taxi_type_2 = [];
 taxi_type_6 = [];
 taxi_type_8 = [];
@@ -35,6 +35,7 @@ default_taxi_type_6 = [
 
 default_taxi_type_8 = [
 	"B_Heli_Transport_01_F",
+	"B_Heli_Transport_01_unarmed_F",
 	"B_Heli_Transport_01_camo_F"
 ];
 

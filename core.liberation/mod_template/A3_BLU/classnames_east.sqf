@@ -122,7 +122,9 @@ opfor_battlegroup_vehicles = [
 	"B_MBT_01_cannon_F",
 	"B_MBT_01_cannon_F",
 	"B_APC_Tracked_01_AA_F",
-	"B_Heli_Attack_01_F",
+	"B_Heli_Attack_01_dynamicLoadout_F",
+	"B_Heli_Attack_01_pylons_dynamicLoadout_F",
+	"B_Heli_Transport_01_pylons_F",
 	"B_MBT_01_TUSK_F",
 	"B_MBT_01_TUSK_F"
 ];
@@ -147,14 +149,17 @@ opfor_troup_transports_heli = [
 	opfor_transport_helo,
 	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_03_F",
+	"B_Heli_Transport_01_pylons_F",
 	"B_CTRG_Heli_Transport_01_sand_F"
 ];
 
 // used by battlegroup air attack
 opfor_air = [
 	"B_Heli_Light_01_dynamicLoadout_F",
-	"B_Heli_Attack_01_F",
-	"B_Heli_Attack_01_F",	
+	"B_Heli_Attack_01_dynamicLoadout_F",
+	"B_Heli_Attack_01_dynamicLoadout_F",
+	"B_Heli_Attack_01_pylons_dynamicLoadout_F",
+	"B_Heli_Transport_01_pylons_F",
 	"B_Plane_CAS_01_dynamicLoadout_F",
 	"B_Plane_Fighter_01_F"
 ];
@@ -163,7 +168,7 @@ opfor_statics = [
 	"B_HMG_01_high_F",
 	"B_GMG_01_high_F",
 	"B_HMG_01_high_F",
-	"B_GMG_01_high_F",	
+	"B_GMG_01_high_F",
 	"B_static_AA_F",
 	"B_static_AT_F",
 	"B_Mortar_01_F"
@@ -195,10 +200,13 @@ opfor_recyclable = [
 	["B_MBT_01_arty_F",15,round (3500 / GRLIB_recycling_percentage),20],
 	["B_Heli_Light_01_F",10,round (150 / GRLIB_recycling_percentage),18],
 	["B_Heli_Light_01_dynamicLoadout_F",10,round (250 / GRLIB_recycling_percentage),20],
-	["B_Heli_Transport_01_F",10,round (300 / GRLIB_recycling_percentage),20],
+	["B_Heli_Transport_01_F",10,round (600 / GRLIB_recycling_percentage),20],
+	["B_Heli_Transport_01_pylons_F",10,round (800 / GRLIB_recycling_percentage),20],
+	["B_Heli_Transport_01_unarmed_F",10,round (300 / GRLIB_recycling_percentage),20],
 	["B_Heli_Transport_03_F",10,round (400 / GRLIB_recycling_percentage),20],
 	["B_CTRG_Heli_Transport_01_sand_F",10,round (350 / GRLIB_recycling_percentage),20],
-	["B_Heli_Attack_01_F",10,round (1300 / GRLIB_recycling_percentage),20],
+	["B_Heli_Attack_01_dynamicLoadout_F",10,round (1300 / GRLIB_recycling_percentage),20],
+	["B_Heli_Attack_01_pylons_dynamicLoadout_F",10,round (1300 / GRLIB_recycling_percentage),20],
 	["B_T_VTOL_01_infantry_F",10,round (1500 / GRLIB_recycling_percentage),25],
 	["B_T_VTOL_01_vehicle_F",10,round (1500 / GRLIB_recycling_percentage),25],
 	["B_T_VTOL_01_armed_F",10,round (1500 / GRLIB_recycling_percentage),25],
@@ -219,7 +227,7 @@ opfor_vehicle_preset_launchers = [
 	"launch_B_Titan_F",
 	"launch_B_Vorona_brown_F",
 	"launch_RPG32_F",
-	"launch_RPG32_F"		
+	"launch_RPG32_F"
 ];
 opfor_vehicle_preset_weapons = [
 	"","",
@@ -229,7 +237,7 @@ opfor_vehicle_preset_weapons = [
 	"HandGrenade"
 ];
 opfor_vehicle_preset_items = [
-	"","",		
+	"","",
 	"ToolKit",
 	PAR_Medikit,
 	PAR_AidKit,

@@ -109,6 +109,8 @@ opfor_battlegroup_vehicles = [
 	"B_T_APC_Tracked_01_rcws_F",
 	"B_Heli_Light_01_dynamicLoadout_F",
 	"B_Heli_Attack_01_dynamicLoadout_F",
+	"B_Heli_Attack_01_pylons_dynamicLoadout_F",
+	"B_Heli_Transport_01_pylons_F",
 	"B_T_APC_Tracked_01_rcws_F",
 	"B_T_AFV_Wheeled_01_cannon_F",
 	"B_T_MBT_01_cannon_F",
@@ -146,8 +148,10 @@ opfor_troup_transports_heli = [
 // used by battlegroup air attack
 opfor_air = [
 	"B_Heli_Light_01_dynamicLoadout_F",
-	"B_Heli_Attack_01_F",
-	"B_Heli_Attack_01_F",
+	"B_Heli_Attack_01_dynamicLoadout_F",
+	"B_Heli_Attack_01_dynamicLoadout_F",
+	"B_Heli_Attack_01_pylons_dynamicLoadout_F",
+	"B_Heli_Transport_01_pylons_F",
 	"B_Plane_CAS_01_dynamicLoadout_F",
 	"B_Plane_Fighter_01_F"
 ];
@@ -209,12 +213,14 @@ opfor_recyclable = [
 	["B_T_MBT_01_mlrs_F",15,round (1800 / GRLIB_recycling_percentage),15],
 	//Heli:
 	["B_Heli_Light_01_dynamicLoadout_F",10,round (150 / GRLIB_recycling_percentage),18],
-	["B_Heli_Attack_01_F",10,round (250 / GRLIB_recycling_percentage),20],
-	["B_Heli_Attack_01_dynamicLoadout_F",10,round (250 / GRLIB_recycling_percentage),20],
+	["B_Heli_Attack_01_dynamicLoadout_F",10,round (1300 / GRLIB_recycling_percentage),20],
+	["B_Heli_Attack_01_pylons_dynamicLoadout_F",10,round (1300 / GRLIB_recycling_percentage),20],
+	["B_Heli_Transport_01_F",10,round (600 / GRLIB_recycling_percentage),20],
+	["B_Heli_Transport_01_pylons_F",10,round (800 / GRLIB_recycling_percentage),20],
+	["B_Heli_Transport_01_unarmed_F",10,round (300 / GRLIB_recycling_percentage),20],
 	["B_Heli_Transport_03_F",10,round (50 / GRLIB_recycling_percentage),18],
 	["B_Heli_Transport_03_unarmed_F",10,round (50 / GRLIB_recycling_percentage),18],
 	["B_Heli_Light_01_F",10,round (50 / GRLIB_recycling_percentage),15],
-	["B_Heli_Transport_01_F",10,round (50 / GRLIB_recycling_percentage),15],
 	//Planes:
 	["C_Plane_Civil_01_F",5,round (100 / GRLIB_recycling_percentage),12],
 	["B_T_VTOL_01_armed_F",10,round (1250 / GRLIB_recycling_percentage),20],
