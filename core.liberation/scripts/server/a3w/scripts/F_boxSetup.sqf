@@ -3,7 +3,7 @@
 if (!isServer) exitWith {};
 params ["_type", "_pos", "_locked"];
 
-private _spawn_pos = [_pos, 3, 0, 50, false] call F_findSafePlace;
+private _spawn_pos = [_pos, 3, -1, 50, false] call F_findSafePlace;
 if (count _spawn_pos == 0) exitWith {};
 
 private _box = createVehicle [_type, zeropos, [], 100, "CAN_COLLIDE"];
