@@ -52,8 +52,7 @@ private _vehicle_list = [];
 {
 	private _vehicle_pos = ([_helopos, 70] call F_getRandomPos);
 	_vehicle = [_vehicle_pos, _x, 0] call F_libSpawnVehicle;
-	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
-	_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
+	// _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 	_vehicle_list pushBack _vehicle;
 } foreach _vehtospawn;
 
@@ -79,6 +78,7 @@ if ( _alive_crew_count == 0 ) then {
 	combat_readiness = 15 max round (combat_readiness * GRLIB_secondary_objective_impact);
 	stats_secondary_objectives = stats_secondary_objectives + 1;
 };
+
 [_vehicle_list] spawn cleanMissionVehicles;
 
 sleep 5;
