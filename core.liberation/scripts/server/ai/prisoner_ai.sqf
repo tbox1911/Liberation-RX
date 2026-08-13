@@ -10,7 +10,8 @@ if (surfaceIsWater (getPosATL _unit)) exitWith {};
 if (!local _unit) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_remote_call", 2] };
 
 // Init priso
-doStop _unit;
+_unit stop true;
+_unit switchMove "";
 removeAllWeapons _unit;
 //removeHeadgear _unit;
 removeBackpack _unit;
@@ -28,6 +29,7 @@ if (!_canmove) then { [_unit, "init"] remoteExec ["remote_call_prisoner", 0] };
 sleep 5;
 if (!alive _unit) exitWith {};
 
+_unit stop false;
 private _grp = createGroup [GRLIB_side_civilian, true];
 [_unit] joinSilent _grp;
 

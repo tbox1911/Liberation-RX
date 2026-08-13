@@ -2,8 +2,18 @@ params ["_unit", "_friendly"];
 
 private _fleeing = false;
 private _captured = false;
-private _target = objNull;
+private _can_flee = false;
 private _timeout = time + (15 * 60);
+
+private _unit_can_flee = {
+	params ["_unit", "_friendly"];
+	if (_friendly) exitWith { false };
+	({
+		(alive _x) && !(captive _x) &&
+		(_x distance2D _unit) <= 100  &&
+		!isNil {_x getVariable "PAR_Grp_ID"}
+	} count (units GRLIB_side_friendly) == 0);
+};
 
 while { alive _unit && !_captured } do {
 	// Captured
@@ -15,20 +25,15 @@ while { alive _unit && !_captured } do {
 	// Stopped
 	if !(_unit getVariable ["GRLIB_is_prisoner", true]) then {
 		_fleeing = false;
+		_timeout = time + (15 * 60);
 	};
 
 	// Flee
-	_target = [_unit] call F_getNearestBlufor;
-	if (isNull _target && !_friendly && !_fleeing) then {
+	_can_flee = [_unit, _friendly] call _unit_can_flee;
+	if (_can_flee && !_fleeing) then {
 		private _player = _unit getVariable ["GRLIB_prisoner_owner", objNull];
-		private _in_action = _player getVariable ["GRLIB_action_inuse", false];
-		private _blufor_near = ({
-			(alive _x) && !(captive _x) &&
-			(_x distance2D _unit) <= 100  &&
-			!isNil {_x getVariable "PAR_Grp_ID"}
-		} count (units GRLIB_side_friendly) > 0);
-
-		if (!_blufor_near && !_in_action) then {
+		private _not_in_action = !(_player getVariable ["GRLIB_action_inuse", false]);
+		if (_not_in_action) then {
 			_unit setVariable ["GRLIB_is_prisoner", true, true];
 			_fleeing = true;
 			if (side group _unit == GRLIB_side_friendly) then {
@@ -41,10 +46,9 @@ while { alive _unit && !_captured } do {
 	};
 
 	// Timeout
-	if (isNull _target && !_friendly && time > _timeout) then {
+	if (_can_flee && time > _timeout) then {
 		deleteVehicle _unit;
 	};
-
 	sleep 5;
 };
 
