@@ -8,7 +8,8 @@ if (count (_vehicle_light + _vehicle_apc) == 0) exitWith {};
 private _pos = _targetpos getPos [floor(random GRLIB_capture_size), floor(random 360)];
 _pos set [2, 600];
 
-private _vehicle = createVehicle [selectRandom (_vehicle_light + _vehicle_apc), _pos, [], 0, "NONE"];
+private _vehicle_class = selectRandom (_vehicle_light + _vehicle_apc);
+private _vehicle = createVehicle [_vehicle_class, _pos, [], 0, "NONE"];
 _vehicle setPos _pos;
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 
@@ -20,6 +21,7 @@ _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 [_vehicle, 3600] call F_setUnitTTL;
 
+diag_log format ["Server Air Drop Vehicle %1 at %2", _vehicle_class, time];
 [_pos, "parasound"] spawn sound_range_remote_call;
 [_vehicle, objNull, false] spawn F_addParachute;
 
