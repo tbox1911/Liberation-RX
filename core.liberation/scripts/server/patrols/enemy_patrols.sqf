@@ -28,6 +28,7 @@ while {true} do {
 			private _level = round (20 + floor random 70);
 			private _hc = [] call F_lessLoadedHC;
 			if (isNull _hc) then {
+				diag_log format ["--- LRX Server: Patrol: %1 spawned on server", _level];
 				[_level] spawn manage_one_enemy_patrol;
 			} else {
 				[_level] remoteExec ["manage_one_enemy_patrol", owner _hc];
