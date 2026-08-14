@@ -21,6 +21,7 @@ if (side _grp == GRLIB_side_enemy) then {
 if (_vehicle isKindOf "Air") then {
 	_check_water = false;
 	_speed = "NORMAL";
+	if (_vehicle isKindOf "Plane") then { _speed = "LIMITED" };
 };
 
 _grp setCombatMode _combatMode;
