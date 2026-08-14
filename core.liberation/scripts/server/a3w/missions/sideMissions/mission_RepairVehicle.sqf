@@ -22,7 +22,7 @@ _setupObjects = {
 	private	_found = false;
 	private _idx = 200;
 	while {!_found && _idx > 0} do {
-		private _pos_check = ([_targetPos, GRLIB_sector_size] call F_getRandomPos);
+		private _pos_check = _targetPos getPos [GRLIB_sector_size, floor random 360];
 		if (isOnRoad _pos_check) then {
 			_missionPos = _pos_check;
 			_found = true;
@@ -45,11 +45,7 @@ _setupObjects = {
 	_smoke attachTo [_tank, [0, 1.5, 0]];
 	_managed_units = crew _tank;
 	_tank_driver = driver _tank;
-	private _grp_tank = group _tank_driver;
-	_grp_tank setSpeedMode "LIMITED";
-	_grp_tank setBehaviourStrong "CARELESS";
-	_grp_tank setCombatMode "GREEN";
-	[_grp_tank] call F_deleteWaypoints;
+	_tank_driver allowDamage false;
 	_last_dead_pos = [];
 	{
 		if (_x != _tank_driver) then {
@@ -68,10 +64,21 @@ _setupObjects = {
 
 	waitUntil {sleep 1; isNil {_tank getVariable "GRLIB_vehicle_init"}};
 	_tank setHitPointDamage ["HitEngine", 1];
-	_tank_driver allowDamage false;
-	_tank_driver doMove _targetPos;
 	_tank allowCrewInImmobile [true, true];
 	_tank setUnloadInCombat [false, false];
+
+	private _grp_tank = group _tank_driver;
+	[_grp_tank] call F_deleteWaypoints;
+    _waypoint = _grp_tank addWaypoint [_targetPos, 1];
+    _waypoint setWaypointType "MOVE";
+    _waypoint setWaypointSpeed "LIMITED";
+    _waypoint setWaypointBehaviour "CARELESS";
+    _waypoint setWaypointCombatMode "YELLOW";
+    _waypoint setWaypointCompletionRadius 50;	
+    _waypoint = _grp_tank addWaypoint [_targetPos, 1];
+    _waypoint setWaypointType "MOVE";
+    sleep 1;
+    (units _grp_tank) doFollow leader _grp_tank;
 
 	// manage mission
 	[_tank, _targetPos] spawn {
@@ -80,7 +87,7 @@ _setupObjects = {
 		if (!alive _tank) exitWith {};
 		_tank setFuel 1;
 		_tank engineOn true;
-		_tank setPos (getPos _tank);
+		[_tank, true] call F_vehicleUnflip;
 
 		// loop
 		private ["_spawn_pos", "_last_tank_pos", "_grp"];
@@ -90,15 +97,14 @@ _setupObjects = {
 			_tank setHitPointDamage ["HitEngine", 1];
 			_tank setFuel 0;
 			_tank engineOn false;
-			_spawn_pos = ([getPosATL _tank, 200] call F_getRandomPos);
+			_spawn_pos = _tank getPos [200, floor random 360];
 			_grp = [_spawn_pos, ([] call getNbUnits), "militia", false] call createCustomGroup;
 			[_grp, _tank] spawn battlegroup_ai_direct;
 			sleep 10;
 			waitUntil {sleep 1; (_tank getHitPointDamage "HitEngine" < 1)};
 			_tank setFuel 1;
 			_tank engineOn true;
-			_tank setPos (getPos _tank);
-			(driver _tank) doMove _targetPos;
+			[_tank, true] call F_vehicleUnflip;
 		};
 	};
 
