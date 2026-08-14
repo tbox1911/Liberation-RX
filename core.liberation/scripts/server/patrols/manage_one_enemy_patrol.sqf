@@ -26,7 +26,7 @@ if (floor random 100 > 50 && count militia_vehicles > 0) then {
 	_opfor_grp = group (driver _opfor_veh);
 	[_opfor_grp, _sector_pos, _opfor_veh] spawn add_civ_waypoints_veh;
 	if (isNull _opfor_grp) exitWith {};
-	diag_log format ["--- LRX Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
+	diag_log format ["--- LRX start Enemy Patrol %1 (%2)", _opfor_grp, _veh_type];
 } else {
 	_opfor_grp = [_sector_pos, (4 + floor random 3), "militia", false] call createCustomGroup;
 	if (isNull _opfor_grp) exitWith {};
@@ -35,7 +35,7 @@ if (floor random 100 > 50 && count militia_vehicles > 0) then {
 	} else {
 		[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
 	};
-	diag_log format ["--- LRX Enemy Patrol %1", _opfor_grp];
+	diag_log format ["--- LRX start Enemy Patrol %1", _opfor_grp];
 };
 
 sleep 1;
