@@ -29,20 +29,20 @@ _grp setSpeedMode _speed;
 
 private _min_waypoints = 3;
 private _citylist = (sectors_allSectors select { (_basepos distance2D (markerPos _x) < _radius) });
-private _convoy_destinations_markers = [_radius, _citylist, _min_waypoints, 10, _check_water] call F_getSectorPath;
+if (count _citylist < _min_waypoints) exitWith { [_grp, _basepos, 220] call patrol_ai };
+
+private _convoy_destinations_markers = [_radius, _citylist, _min_waypoints, 20, _check_water] call F_getSectorPath;
 private _convoy_destinations = [];
+
 if (_vehicle isKindOf "Air") then {
 	{ _convoy_destinations pushback (markerPos _x) } forEach _convoy_destinations_markers;
 } else {
 	_convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
 };
+
 if (count _convoy_destinations < _min_waypoints) exitWith {
-	if (isNull _vehicle) then {
-		diag_log format ["--- LRX Error: %1 patrol waypoints fail, group %2 cannot find sector path from %3.", side _grp, _grp, _basepos];
-	} else {
-		diag_log format ["--- LRX Error: %1 patrol waypoints fail, vehicle %2 cannot find sector path from %3.", side _grp, typeOf _vehicle, _basepos];
-	};
-	false;
+	diag_log format ["--- LRX Error: %1 patrol waypoints fail, cannot find sector path (%2).", side _grp, _basepos];
+	[_grp, _basepos] call add_civ_waypoints;
 };
 
 if (_vehicle isKindOf "LandVehicle") then {
@@ -50,7 +50,6 @@ if (_vehicle isKindOf "LandVehicle") then {
 	_vehicle setPos (_convoy_destinations select 0);
 	sleep 2;
 	_vehicle allowDamage true;
-	//(driver _vehicle) MoveTo (_convoy_destinations select 1)
 };
 
 private ["_waypoint", "_wp0"];

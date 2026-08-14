@@ -1,5 +1,11 @@
 params ["_level"];
 
+private _opfor_veh = objNull;
+private _opfor_grp = grpNull;
+private _sector = selectRandom (GRLIB_patrol_sectors_list - GRLIB_patrol_sectors);
+private _sector_pos = markerPos _sector;
+if ([_sector_pos, GRLIB_spawn_max*2, GRLIB_side_enemy, 11] call F_getUnitsCount > 10) exitWith {};
+
 diag_log format ["--- LRX Enemy Patrol - trigger alert %1", _level];
 
 GRLIB_patrol_current = GRLIB_patrol_current + 1;
@@ -43,16 +49,19 @@ GRLIB_patrol_sectors pushBackUnique _sector;
 publicVariable "GRLIB_patrol_sectors";
 
 // Waiting
-if (_opfor_veh isKindOf "Air") then { sleep 120 };
 private _unit_ttl = round (time + 1800);
 private _unit_pos = getPosATL (leader _opfor_grp);
+private _unit_range = GRLIB_spawn_max;
+if (_opfor_veh isKindOf "LandVehicle") then { _unit_range = GRLIB_spawn_max * 1.5 };
+if (_opfor_veh isKindOf "Air") then { _unit_range = GRLIB_spawn_max * 2; sleep 60 };
+
 waitUntil {
 	sleep 60;
 	if (diag_fps <= 15) exitWith { true };
 	if (alive (leader _opfor_grp)) then { _unit_pos = getPosATL (leader _opfor_grp) };
 	(
 		GRLIB_global_stop == 1 || (time > _unit_ttl) || ({alive _x} count (units _opfor_grp) == 0) ||
-		([_unit_pos, GRLIB_spawn_max, GRLIB_side_friendly, 1] call F_getUnitsCount == 0)
+		([_unit_pos, _unit_range, GRLIB_side_friendly, 1] call F_getUnitsCount == 0)
 	)
 };
 
