@@ -96,41 +96,41 @@ while { alive _vehicle && alive _driver } do {
 	// Rescued
 	if (_event_stared) then {
 		_helped = false;
-		if (_incd == _incd_repair && ([_vehicle] call F_getVehicleDamage) < _vehicle_damage) then { _helped = true };
-		if (_incd == _incd_fuel && fuel _vehicle >= 0.20) then { _helped = true };
-		if (time > _wait_max) then { _helped = true };
-
-		if (_helped) then {
-			if (time <= _wait_max) then {
-				private _winner = ([_vehicle, 30] call F_getNearbyPlayers) select 0;
-				if (!isNil "_winner") then {
-					private _bonus = 6 + (floor random 10);
-					if (isServer) then {
-						[_driver, (_incd+1), _winner] spawn speak_manager_remote_call;
-						[_winner, _bonus] call F_addScore;
-						[_winner, 5] call F_addReput;
-					} else {
-						[_driver, (_incd+1), _winner] remoteExec ["speak_manager_remote_call", 2];
-						[_winner, _bonus] remoteExec ["F_addScore", 2];
-						[_winner, 5] remoteExec ["F_addReput", 2];
-					};
-					sleep 5;
-				};
-			};
-			_vehicle setVariable ["GRLIB_civ_incd", 0, true];
-			{ _vehicle setHitPointDamage [_x, 0] } forEach (getAllHitPointsDamage _vehicle select 0);
-			_vehicle setDamage 0;
-			_vehicle allowDamage true;
-			_vehicle setFuel 1;
-			_vehicle engineOn true;
-			{_x doFollow (leader _grp)} foreach units _grp;
-			_event_stared = false;
-			deleteMarker _marker;
-			_trigger = (time + _delay);
+		while { alive _vehicle && alive _driver && !_helped } do {
+			if (_incd == _incd_repair && ([_vehicle] call F_getVehicleDamage) < _vehicle_damage) then { _helped = true };
+			if (_incd == _incd_fuel && fuel _vehicle >= 0.20) then { _helped = true };
+			if (time > _wait_max) then { _helped = true };
+			sleep 1;
 		};
+		if (_helped && time <= _wait_max) then {
+			private _winner = ([_vehicle, 30] call F_getNearbyPlayers) select 0;
+			if (!isNil "_winner") then {
+				private _bonus = 6 + (floor random 10);
+				if (isServer) then {
+					[_driver, (_incd+1), _winner] spawn speak_manager_remote_call;
+					[_winner, _bonus] call F_addScore;
+					[_winner, 5] call F_addReput;
+				} else {
+					[_driver, (_incd+1), _winner] remoteExec ["speak_manager_remote_call", 2];
+					[_winner, _bonus] remoteExec ["F_addScore", 2];
+					[_winner, 5] remoteExec ["F_addReput", 2];
+				};
+				sleep 5;
+			};
+		};
+		_vehicle setVariable ["GRLIB_civ_incd", 0, true];
+		{ _vehicle setHitPointDamage [_x, 0] } forEach (getAllHitPointsDamage _vehicle select 0);
+		_vehicle setDamage 0;
+		_vehicle allowDamage true;
+		_vehicle setFuel 1;
+		_vehicle engineOn true;
+		{_x doFollow (leader _grp)} foreach units _grp;
+		_event_stared = false;
+		deleteMarker _marker;
+		_trigger = (time + _delay);
 	};
 
-	sleep 3;
+	sleep 5;
 };
 
 deleteMarker _marker;
