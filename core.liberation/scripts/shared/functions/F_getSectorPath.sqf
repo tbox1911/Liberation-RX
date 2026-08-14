@@ -12,7 +12,7 @@ while { count _destinations_markers < _min_wp && _max_try > 0} do {
 	_destinations_markers = [_start_marker];
 	_sector_list_tmp = _sector_list - [_start_marker];
 
-	while { count _destinations_markers < _min_wp && count _sector_list_tmp > _min_wp} do {
+	while { count _destinations_markers < _min_wp && count _sector_list_tmp > _min_wp } do {
 		_next_marker = [_sector_list_tmp, _start_marker, _radius] call F_getNextSector;
 		if (_next_marker != "") then {
 			if (_check_water && [markerPos _start_marker, markerPos _next_marker] call F_isWaterBetween) then {
