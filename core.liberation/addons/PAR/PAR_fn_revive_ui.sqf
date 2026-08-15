@@ -24,7 +24,7 @@ _cam camSetTarget getpos player;	//static view
 createDialog "par_deathscreen";
 waitUntil { sleep 0.1; dialog };
 
-[player] call F_deathSound;
+[player] call PAR_deathSound;
 uiSleep 3.5;
 
 titleText ["" ,"BLACK IN", 3];

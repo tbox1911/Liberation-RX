@@ -23,7 +23,7 @@ if (_unit == player) then {
 	PAR_backup_loadout = [_unit] call F_getCargoUnit;
 } else {
 	_unit setVariable ["GRLIB_can_speak", false, true];
-	[_unit] spawn F_deathSound;
+	[_unit] call PAR_deathSound;
 };
 [_unit, _unit] call PAR_fn_medicRelease;
 

@@ -16,6 +16,12 @@ PAR_fn_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_sortie
 PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 // PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";  // moved to shared
 
+PAR_deathSound = {
+	params ["_unit"];
+	private _deathsound = format ["A3\sounds_f\characters\human-sfx\P%1\hit_max_%2.wss", selectRandom ["03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18"], selectRandom [1,2,3]];
+	playSound3D [_deathsound, _unit, false, getPosASL _unit, 4, 1, 300];
+};
+
 PAR_protected_units = {
 	params ["_unit"];
 	private _my_squad = player getVariable ["my_squad", grpNull];
