@@ -31,6 +31,7 @@ remote_call_incoming = compileFinal preprocessFileLineNumbers "scripts\client\re
 remote_call_intel = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_intel.sqf";
 remote_call_load_context = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_load_context.sqf";
 remote_call_penalty = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_penalty.sqf";
+remote_call_playsound = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_playsound.sqf";
 remote_call_prisoner = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_prisoner.sqf";
 remote_call_sector = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_sector.sqf";
 remote_call_showinfo = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_showinfo.sqf";

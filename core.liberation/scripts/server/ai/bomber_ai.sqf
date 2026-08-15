@@ -60,7 +60,7 @@ while {alive _unit} do {
 			_expl3 attachTo [_unit, [0.1, 0.1, 0.15], "Pelvis"];
 			_expl3 setVectorDirAndUp [[0.5, -0.5, 0], [0.5, 0.5, 0]];
 			sleep 1.5;
-			playSound3D [getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 500];
+			[getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 500] call F_playSound;
 			sleep 0.5;
 			private _civils = [];
 			if (alive _unit) then {

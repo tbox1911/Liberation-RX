@@ -53,7 +53,7 @@ if (count _ide_pos > 0 && floor random 100 < GRLIB_MineProbability) then {
 			[_ied_obj] spawn {
 				params ["_obj"];
 				for "_i" from 1 to 5 do {
-					playSound3D ["A3\Missions_F_Oldman\Data\sound\beep.ogg", _obj, false, getPosASL _obj, 5, 1, 100];
+					["A3\Missions_F_Oldman\Data\sound\beep.ogg", _obj, false, getPosASL _obj, 5, 1, 100] call F_playSound;
 					sleep 0.5;
 				};
 			};

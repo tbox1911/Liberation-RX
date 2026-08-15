@@ -191,7 +191,7 @@ if (isServer) then {
 					};
 					if (floor random 2 == 0) then {
 						private _deathsound = format ["A3\sounds_f\characters\human-sfx\P%1\hit_max_%2.wss", selectRandom ["03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18"], selectRandom [1,2,3]];
-						playSound3D [_deathsound, _unit, false, getPosASL _unit, 5, 1, 300];
+						[_deathsound, _unit, false, getPosASL _unit, 5, 1, 300] call F_playSound;
 					};
 					if (_killer_side == GRLIB_side_civilian) then {
 						[_killer, 3500] remoteExec ["addrating", owner _killer];

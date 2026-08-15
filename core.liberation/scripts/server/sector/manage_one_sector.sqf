@@ -152,10 +152,10 @@ switch true do {
 				private _pos = markerPos [_sector, true];
 				private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
 				while { _sector in active_sectors } do {
-					for "_i" from 0 to (floor(random 4)) do {
+					for "_i" from 0 to (floor random 4) do {
 						if !(_sector in blufor_sectors) then {
-							playSound3D [_sound, objNull, false, AGLToASL _pos, 5, 1, 1000];
-							sleep (5 + floor(random 4));
+							[_sound, objNull, false, AGLToASL _pos, 5, 1, 1000] call F_playSound;
+							sleep (5 + floor random 4);
 						};
 					};
 					sleep 60;

@@ -92,7 +92,7 @@ while {alive _unit && _continue} do {
 					[_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
 				};
 				if (_action == 10) then {
-					playSound3D ["A3\Sounds_F_Tacops\SFX\Missions\Crowd_b.wss", _unit, false, getPosASL _unit, 3, 1, 250];
+					["A3\Sounds_F_Tacops\SFX\Missions\Crowd_b.wss", _unit, false, getPosASL _unit, 3, 1, 250] call F_playSound;
 				};
 				sleep 4;
 			};
@@ -139,9 +139,9 @@ while {alive _unit && _continue} do {
 				_unit setDir (_unit getDir _target);
 				_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
 				_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
-				playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250];
+				["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250] call F_playSound;
 				sleep 3;
-				playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250];
+				["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250] call F_playSound;
 				sleep 3;
 				{ _target setHitPointDamage [_x, 0] } forEach (getAllHitPointsDamage _target select 0);
 				_unit stop false;

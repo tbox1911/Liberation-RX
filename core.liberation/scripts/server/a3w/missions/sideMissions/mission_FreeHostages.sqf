@@ -82,7 +82,7 @@ _waitUntilExec = {
 		_detected = true;
 		private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
 		if (GRLIB_alarms_enabled) then {
-			playSound3D [_sound, objNull, false, ATLToASL _missionPos, 5, 1, 1000];
+			[_sound, objNull, false, ATLToASL _missionPos, 5, 1, 1000] call F_playSound;
 		};
 		sleep 5;
 		private _msg = ["<t color='#FFFFFF' size='2'>You have been Detected!!<br/><br/>Enemies call for </t><t color='#ff0000' size='3'>Reinforcements</t><t color='#FFFFFF' size='2'> !!</t>", "PLAIN", -1, false, true];
@@ -95,7 +95,7 @@ _waitUntilExec = {
 		private _grp = [([_missionPos, 120] call F_getRandomPos), 6, "militia", false] call createCustomGroup;
 		[_grp, _missionPos] spawn battlegroup_ai;
 		if (GRLIB_alarms_enabled) then {
-			playSound3D [_sound, objNull, false, ATLToASL _missionPos, 5, 1, 1000];
+			[_sound, objNull, false, ATLToASL _missionPos, 5, 1, 1000] call F_playSound;
 		};
 	};
 };
