@@ -50,19 +50,33 @@ publicVariable "GRLIB_patrol_sectors";
 
 // Waiting
 private _unit_ttl = round (time + 1800);
-private _unit_pos = getPosATL (leader _opfor_grp);
+private _unit_pos = getPosATL (units _opfor_grp select 0);
 private _unit_range = GRLIB_spawn_max;
 if (_opfor_veh isKindOf "LandVehicle") then { _unit_range = GRLIB_spawn_max * 1.5 };
 if (_opfor_veh isKindOf "Air") then { _unit_range = GRLIB_spawn_max * 2; sleep 60 };
 
-waitUntil {
-	sleep 60;
-	if (diag_fps <= 15) exitWith { true };
-	if (alive (leader _opfor_grp)) then { _unit_pos = getPosATL (leader _opfor_grp) };
-	(
-		GRLIB_global_stop == 1 || (time > _unit_ttl) || ({alive _x} count (units _opfor_grp) == 0) ||
-		([_unit_pos, _unit_range, GRLIB_side_friendly, 1] call F_getUnitsCount == 0)
-	)
+if (isNull _opfor_veh) then {
+	waitUntil {
+		sleep 60;
+		if (diag_fps <= 15) exitWith { true };
+		private _last_unit = (units _opfor_grp) select { alive _x };
+		if (count _last_unit > 0) then { _unit_pos = getPosATL (_last_unit select 0) };
+		(
+			GRLIB_global_stop == 1 || (time > _unit_ttl) || (count _last_unit == 0) ||
+			([_unit_pos, _unit_range, GRLIB_side_friendly, 1] call F_getUnitsCount == 0)
+		)
+	};
+} else {
+	waitUntil {
+		sleep 60;
+		if (diag_fps <= 15) exitWith { true };
+		private _last_unit = (units _opfor_grp) select { alive _x };
+		_unit_pos = getPosATL _opfor_veh;
+		(
+			GRLIB_global_stop == 1 || (time > _unit_ttl) || (count _last_unit == 0) ||
+			([_unit_pos, _unit_range, GRLIB_side_friendly, 1] call F_getUnitsCount == 0)
+		)
+	};
 };
 
 // Cleanup
