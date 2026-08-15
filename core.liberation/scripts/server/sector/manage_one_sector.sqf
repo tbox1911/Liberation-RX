@@ -60,7 +60,7 @@ if (GRLIB_Commander_mode) then {
 };
 
 private _count_players = count _active_players;
-diag_log format ["Spawn Defend Sector %1 - player in combat %2 / readiness %3 at %4", _sector, _count_players, combat_readiness, time];
+diag_log format ["Spawn Attack Sector %1 - player in combat %2 / readiness %3 at %4", _sector, _count_players, combat_readiness, time];
 
 // Sector type refactored using a switch statement
 switch true do {
@@ -528,7 +528,7 @@ if (_sector in active_sectors) then {
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly, 1] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
 private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
 { deleteVehicle _x } forEach _managed_units;

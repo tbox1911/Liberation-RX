@@ -19,14 +19,16 @@ if (!_force) then {
 	_opfed = ({side group _x == GRLIB_side_enemy} count (crew _vehicle) > 0);
 	_maned = ({side group _x == GRLIB_side_friendly} count (crew _vehicle) > 0);
 	_fobed = (_vehicle distance2D _fob_pos < GRLIB_capture_size);
-	_blued = ([_vehicle, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount > 0);
+	_blued = ([_vehicle, GRLIB_capture_size, GRLIB_side_friendly, 1] call F_getUnitsCount > 0);
 };
+
 if (!isNil "GRLIB_LRX_debug") then {
 	diag_log format [
 		"DBG: Cleanup vehicle check %1 at %2: towed=%3 owned=%4 maned=%5 opfed=%6 fobed=%7 blued=%8 t=%9",
 		typeOf _vehicle, time, _towed, _owned, _maned, _opfed, _fobed, _blued, (_maned && !_opfed)
 	];
 };
+
 if (_towed || _maned || (_owned && !_opfed) || _fobed || _blued) exitWith { false };
 
 // diag_log format ["Cleanup vehicle %1 at %2", typeOf _vehicle, time];
