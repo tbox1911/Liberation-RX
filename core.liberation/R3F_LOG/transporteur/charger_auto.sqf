@@ -25,11 +25,10 @@ waitUntil
 	};
 };
 
-private ["_transporteur", "_liste_a_charger", "_chargement", "_chargement_actuel", "_chargement_maxi", "_objets_charges", "_cout_chargement_objet"];
-private ["_objet_ou_classe", "_quantite", "_objet", "_classe", "_bbox", "_bbox_dim", "_pos_degagee", "_fonctionnalites", "_i"];
+params ["_transporteur", "_liste_a_charger"];
 
-_transporteur = _this select 0;
-_liste_a_charger = _this select 1;
+private ["_chargement", "_chargement_actuel", "_chargement_maxi", "_objets_charges", "_cout_chargement_objet"];
+private ["_objet_ou_classe", "_quantite", "_objet", "_classe", "_bbox", "_bbox_dim", "_pos_degagee", "_fonctionnalites", "_i"];
 
 _chargement = [_transporteur] call R3F_calculer_chargement_vehicule;
 _chargement_actuel = _chargement select 0;

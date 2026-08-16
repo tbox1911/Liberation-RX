@@ -9,7 +9,7 @@ private _lst_lrx = [];
 	if (_class == cargo_sling_typename) exitWith {
 		_lst_lrx = [_class, ([_x] call save_lrx_object_direct)];
 	};
-	_lst_lrx pushback _class;
+	if (_class != "") then { _lst_lrx pushback _class };
 } forEach _vehicle_cargo;
 
 _lst_lrx;

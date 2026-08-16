@@ -7,11 +7,15 @@ if (GRLIB_ACE_enabled) then {
 		if (typeName _x == "STRING") then {
 			_lst_r3f pushback _x;
 		} else {
-			_lst_r3f pushback (typeOf _x);
+			private _class = typeOf _x;
+			if (_class != "") then { _lst_r3f pushback _class };
 		};
 	} forEach (_vehicle getVariable ["ace_cargo_loaded", []]);
 } else {
-	{_lst_r3f pushback (typeOf _x)} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+	{
+		private _class = typeOf _x;
+		if (_class != "") then { _lst_r3f pushback _class };
+	} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 };
 
 _lst_r3f;

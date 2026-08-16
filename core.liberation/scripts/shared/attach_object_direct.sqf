@@ -1,5 +1,7 @@
 params ["_vehicle", "_object", ["_create", true]];
 
+if (_object == "") exitWith { objNull };
+
 private _object_class = _object;
 if (typeName _object == "OBJECT") then {
 	_object_class = typeOf _object;
