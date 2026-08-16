@@ -22,7 +22,7 @@ if (floor random 100 >= 60) then {
 } else {
 	_civ_grp = [_sector_pos] call F_spawnCivilians;
 	if (isNull _civ_grp) exitWith {};
-	{ [ _x] call F_fixPosUnit } forEach (units _civ_grp);
+	{ [_x] call F_fixPosUnit } forEach (units _civ_grp);
 	if (floor random 4 == 0) then {
 		[_civ_grp, _sector_pos, objNull] call add_civ_waypoints_veh;
 	} else {
@@ -31,7 +31,7 @@ if (floor random 100 >= 60) then {
 };
 
 sleep 1;
-if (isNull _civ_grp) exitWith {
+if (isNull _civ_grp || count (units _civ_grp) == 0) exitWith {
 	deleteVehicle _civ_veh;
 	GRLIB_civilians_current = (GRLIB_civilians_current - 1) max 0;
 	publicVariable "GRLIB_civilians_current";

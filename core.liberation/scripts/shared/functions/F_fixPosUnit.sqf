@@ -33,17 +33,17 @@ if !(lineIntersects [ATLtoASL _basepos, ATLtoASL _maxpos, _unit]) exitWith {};
 _unit setVariable ["LRX_unblock_running", true];
 
 private _foundPos = [];
-for "_i" from 0 to (_maxalt / _step) do {
-    private _z = _maxalt - (_i * _step);
-    private _testPos = _basepos vectorAdd [0,0,_z];
+for "_i" from 0 to (_maxalt/_step) do {
+    private _testPos = _basepos vectorAdd [0,0,(_i*_step)];
     if (lineIntersects [
         ATLtoASL _testPos,
-        ATLtoASL _testPos vectorAdd [0,0,-0.05],
+        ATLtoASL _testPos vectorAdd [0,0,0.5],
         _unit
     ]) exitWith {
         _foundPos = _testPos vectorAdd [0,0,0.5];
     };
 };
+
 if (count _foundPos == 0) exitWith {
     diag_log format ["--- LRX Error: unit %1 no free position %2", name _unit, _basepos];
     deleteVehicle _unit;

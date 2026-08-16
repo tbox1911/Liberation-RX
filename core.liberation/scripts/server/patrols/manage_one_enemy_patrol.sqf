@@ -39,7 +39,7 @@ if (floor random 100 > 50 && count militia_vehicles > 0) then {
 };
 
 sleep 1;
-if (isNull _opfor_grp) exitWith {
+if (isNull _opfor_grp || count (units _opfor_grp) == 0) exitWith {
 	deleteVehicle _opfor_veh;
 	GRLIB_patrol_current = (GRLIB_patrol_current - 1) max 0;
 	publicVariable "GRLIB_patrol_current";

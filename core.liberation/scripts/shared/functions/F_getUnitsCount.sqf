@@ -4,6 +4,8 @@ if (_distance <= 0) exitWith {0};
 
 private _count = 0;
 private _list = _position nearEntities ["CAManBase", _distance];
+if (isNil "_list") exitWith {0};
+if (count _list == 0) exitWith {0};
 
 if (_side isEqualTo GRLIB_side_friendly) exitWith {
 	{
