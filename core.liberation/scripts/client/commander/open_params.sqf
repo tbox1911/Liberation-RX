@@ -5,7 +5,7 @@ disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 
-if ( !([] call is_admin) && !GRLIB_ParamsInitialized) then {
+if (!([] call is_admin) && !GRLIB_ParamsInitialized) then {
 	waitUntil {
 		titleText [localize "STR_WAITING_FOR_LRX_CONFIG", "BLACK FADED", 100];
 		uIsleep 2;
