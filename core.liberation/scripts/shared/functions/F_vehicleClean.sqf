@@ -34,7 +34,11 @@ if (_towed || _maned || (_owned && !_opfed) || _fobed || _blued) exitWith { fals
 // diag_log format ["Cleanup vehicle %1 at %2", typeOf _vehicle, time];
 
 // unTow
+private _tracted = _vehicle getVariable ["R3F_LOG_remorque", objNull];
 [_vehicle] call F_vehicleUntow;
+if (!isNull _tracted) then {
+	[_tracted, "unlock"] call F_vehicleLock;
+};
 
 //Delete A3 Cargo
 [_vehicle] call F_clearCargo;
