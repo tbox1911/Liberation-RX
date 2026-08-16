@@ -118,7 +118,7 @@ waitUntil {
 		_marker setMarkerText format ["%1 - time over", localize _missionType];
 	};
 
-	_count_blu = [_lastPos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount;
+	_count_blu = [_lastPos, (GRLIB_sector_size * 2), GRLIB_side_friendly, 1] call F_getUnitsCount;
 	_expired = (_time_left <= 0 && _count_blu == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
 	_complete = (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition});
@@ -184,7 +184,7 @@ if (_count_blu == 0) then {
 	};
 	if (!isNil "_vehicles") then {
 		[_vehicles, true] spawn cleanMissionVehicles;
-	};	
+	};
 	{ deleteVehicle _x; sleep 0.1 } forEach (units _aiGroup);
 	deleteGroup _aiGroup;
 } else {
@@ -196,7 +196,7 @@ if (_count_blu == 0) then {
 	};
 	[_lastPos, _aiGroup] spawn {
 		params ["_pos", "_grp"];
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_pos, GRLIB_sector_size, GRLIB_side_friendly, 1] call F_getUnitsCount == 0) };
 		{ deleteVehicle _x; sleep 0.1 } forEach (units _grp);
 		deleteGroup _grp;
 	};

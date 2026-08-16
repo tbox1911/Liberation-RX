@@ -3,11 +3,10 @@ params ["_position", "_distance", "_side", ["_stopAt", 1e9]];
 if (_distance <= 0) exitWith {0};
 
 private _count = 0;
-private _list = _position nearEntities ["CAManBase", _distance];
-if (isNil "_list") exitWith {0};
-if (count _list == 0) exitWith {0};
 
-if (_side isEqualTo GRLIB_side_friendly) exitWith {
+if (_side == GRLIB_side_friendly) exitWith {
+	private _list = units GRLIB_side_friendly;
+	_list = _list + (units GRLIB_side_civilian);
 	{
 		if (
 			alive _x &&
@@ -17,21 +16,18 @@ if (_side isEqualTo GRLIB_side_friendly) exitWith {
 			{(getPosATL _x select 2) < 150} &&
 			{(speed vehicle _x) < 100}
 		) then {
-			private _unitSide = side group _x;
-			if (_unitSide isEqualTo GRLIB_side_friendly || {_unitSide isEqualTo GRLIB_side_civilian}) then {
-				_count = _count + 1;
-			};
+			_count = _count + 1;
 		};
 		if (_count >= _stopAt) exitWith {};
 	} forEach _list;
 	_count
 };
 
-if (_side isEqualTo GRLIB_side_enemy) exitWith {
+if (_side == GRLIB_side_enemy) exitWith {
+	private _list = units GRLIB_side_enemy;
 	{
 		if (
 			alive _x &&
-			{(side group _x) isEqualTo GRLIB_side_enemy} &&
 			{(_x distance2D _position) < _distance} &&
 			{!(captive _x)} &&
 			{(getPosATL _x select 2) < 150} &&
@@ -48,11 +44,11 @@ if (_side isEqualTo GRLIB_side_enemy) exitWith {
 	_count
 };
 
-if (_side isEqualTo GRLIB_side_civilian) exitWith {
+if (_side == GRLIB_side_civilian) exitWith {
+	private _list = units GRLIB_side_civilian;
 	{
 		if (
 			alive _x &&
-			{(side group _x) isEqualTo GRLIB_side_civilian} &&
 			{(_x distance2D _position) < _distance} &&
 			{!(captive _x)} &&
 			{isNil {_x getVariable "GRLIB_vehicle_owner"}} &&
