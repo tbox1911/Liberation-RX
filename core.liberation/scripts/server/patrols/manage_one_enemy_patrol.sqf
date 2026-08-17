@@ -17,8 +17,6 @@ if ([_sector_pos, GRLIB_spawn_max*2, GRLIB_side_enemy, 11] call F_getUnitsCount 
 
 private _opfor_veh = objNull;
 private _opfor_grp = grpNull;
-private _sector = selectRandom (GRLIB_patrol_sectors_list - GRLIB_patrol_sectors);
-private _sector_pos = markerPos _sector;
 
 // 50% in vehicles
 if (floor random 100 > 50 && count militia_vehicles > 0) then {
