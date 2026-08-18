@@ -4,8 +4,8 @@ if (!GRLIB_player_spawned) exitWith {};
 
 params ["_type"];
 
-private _enemy_nearby = [player, GRLIB_sector_size, GRLIB_side_enemy] call F_getUnitsCount;
-if (_enemy_nearby > 0 || (behaviour player) in [ "COMBAT", "STEALTH"] || !(isNull objectParent player)) exitWith {};
+private _enemy_nearby = (([player, GRLIB_sector_size, GRLIB_side_enemy, 1] call F_getUnitsCount) > 0);
+if (_enemy_nearby || (behaviour player) in [ "COMBAT", "STEALTH"] || !(isNull objectParent player)) exitWith {};
 
 private _data = [];
 private _last_news = 0;

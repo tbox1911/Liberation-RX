@@ -122,7 +122,7 @@ _failedExec = {
 	if (isNil "GRLIB_A3W_Mission_MR_OPFOR") then { GRLIB_A3W_Mission_MR_OPFOR = [] };
 	[_missionPos, GRLIB_A3W_Mission_MR_BLUFOR + GRLIB_A3W_Mission_MR_OPFOR] spawn {
 		params ["_pos", "_list"];
-		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly, 1] call F_getUnitsCount == 0) };
 		{ deleteVehicle _x } forEach _list;
 	};
 	GRLIB_A3W_Mission_MR_START = nil;
@@ -139,7 +139,7 @@ _successExec = {
 	{ [_x, 25] call F_addReput } forEach ([_missionPos, GRLIB_sector_size] call F_getNearbyPlayers);
 	[_missionPos, GRLIB_A3W_Mission_MR_BLUFOR + GRLIB_A3W_Mission_MR_OPFOR] spawn {
 		params ["_pos", "_list"];
-		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly, 1] call F_getUnitsCount == 0) };
 		{ deleteVehicle _x } forEach _list;
 	};
 	GRLIB_A3W_Mission_MR_START = nil;

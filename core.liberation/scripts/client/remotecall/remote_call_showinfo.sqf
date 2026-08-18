@@ -8,8 +8,8 @@ params ["_title", "_sub", "_picture", "_text", "_titleColor"];
 private _subtitle = _sub call BIS_fnc_localize;
 private _formated_text = "";
 
-private _enemy_nearby = [player, GRLIB_sector_size, GRLIB_side_enemy] call F_getUnitsCount;
-if (_enemy_nearby > 0 || (behaviour player) in [ "COMBAT", "STEALTH"] || !(isNull objectParent player)) exitWith {};
+private _enemy_nearby = (([player, GRLIB_sector_size, GRLIB_side_enemy, 1] call F_getUnitsCount) > 0);
+if (_enemy_nearby || (behaviour player) in [ "COMBAT", "STEALTH"] || !(isNull objectParent player)) exitWith {};
 
 if (GRLIB_fancy_info == 2) then {
 	if (typeName _text == "ARRAY") then {

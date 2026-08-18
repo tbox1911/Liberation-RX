@@ -47,7 +47,7 @@ while {true} do {
 			// Medic Auto Heal units
 			private _is_medic = [_unit] call PAR_is_medic;
 			private _has_medikit = [_unit] call PAR_has_medikit;
-			private _no_enemy = (([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) == 0);
+			private _no_enemy = (([_unit, GRLIB_capture_size, GRLIB_side_enemy, 1] call F_getUnitsCount) == 0);
 			if (_no_enemy && _is_medic && _has_medikit) then { [_unit] call PAR_fn_heal };
 
 			// AI medical status

@@ -1,6 +1,6 @@
 params ["_static", ["_dist", 120]];
 
-private _blufor_nearby = [_static, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount;
+private _blufor_nearby = (([_static, GRLIB_sector_size, GRLIB_side_friendly, 1] call F_getUnitsCount) > 0);
 private _gunner_nearby = (units GRLIB_side_enemy) select {
     (_x distance2D _static < _dist) &&
     (alive _x) && (isNull objectParent _x) &&
@@ -9,7 +9,7 @@ private _gunner_nearby = (units GRLIB_side_enemy) select {
     (secondaryWeapon _x == "")
 };
 
-if (_blufor_nearby > 0 && count _gunner_nearby > 0) then {
+if (_blufor_nearby && count _gunner_nearby > 0) then {
     private _gunner_sorted = _gunner_nearby apply {[_x distance2D _static, _x]};
     _gunner_sorted sort true;
     _gunner = (_gunner_sorted select 0 select 1);
