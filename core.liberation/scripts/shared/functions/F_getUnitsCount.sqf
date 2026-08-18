@@ -1,4 +1,4 @@
-params ["_position", "_distance", "_side", ["_stopAt", 1e9]];
+params ["_position", "_distance", "_side", ["_stopAt", 200]];
 
 if (_distance <= 0) exitWith {0};
 

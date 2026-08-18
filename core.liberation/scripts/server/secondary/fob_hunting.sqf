@@ -47,7 +47,7 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 	};
 } foreach _base_objects;
 
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_sector_size, GRLIB_side_friendly, 1] call F_getUnitsCount == 0) };
 
 private _vehicles = (_base_objectives + _base_objects);
 [_vehicles, true] call cleanMissionVehicles;

@@ -29,9 +29,9 @@ if (!isNil "_roadobj" && random 100 < GRLIB_MineProbability) then {
 	private ["_nearinfantry", "_nearvehicles"];
 	private _timeout = time + (60 * 60);
 	while { alive _ied_obj && time < _timeout && mineActive _ied_obj } do {
-		_nearinfantry = [_ied_pos, _activation_radius_infantry, GRLIB_side_friendly] call F_getUnitsCount;
+		_nearinfantry = ([_ied_pos, _activation_radius_infantry, GRLIB_side_friendly, _infantry_trigger+1] call F_getUnitsCount >= _infantry_trigger);
 		_nearvehicles = { side _x == GRLIB_side_friendly } count (_ied_pos nearEntities [["LandVehicle"], _activation_radius_vehicles]);
-		if (_nearinfantry >= _infantry_trigger || _nearvehicles >= _vehicle_trigger) then {
+		if (_nearinfantry || _nearvehicles >= _vehicle_trigger) then {
 			sleep 0.5;
 			_ied_obj setDamage 1;
 			stats_ieds_detonated = stats_ieds_detonated + 1;

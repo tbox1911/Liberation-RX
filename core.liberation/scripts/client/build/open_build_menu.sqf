@@ -9,7 +9,7 @@ if (isNil "resources_infantry") exitWith {};
 if (_trench) then {
 	buildtype = GRLIB_TrenchBuildType;
 };
-if (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) > 4 && !_trench) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
+if (([player, GRLIB_capture_size, GRLIB_side_enemy, 5] call F_getUnitsCount) > 4 && !_trench) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 if (buildtype > GRLIB_SquadBuildType && !_trench) then { buildtype = GRLIB_InfantryBuildType };
 if (isNil "buildindex") then { buildindex = -1 };
 

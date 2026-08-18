@@ -47,7 +47,7 @@ while {true} do {
 		// Civilian Undercover
 		if (!GRLIB_player_near_lhd) then {
 			// go CIV
-			private _no_enemy = (([player, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount) == 0);
+			private _no_enemy = (([player, GRLIB_capture_size, GRLIB_side_enemy, 1] call F_getUnitsCount) == 0);
 			if (_side == GRLIB_side_friendly && _no_enemy && !dialog && !GRLIB_arsenal_open) then {
 				private _can_change = ({ [_x] call F_checkCivUnit && !([objectParent _x] call _detectedVehicle)} count (units GRLIB_player_group) == count units GRLIB_player_group);
 				if (_timer < time && _can_change) then {

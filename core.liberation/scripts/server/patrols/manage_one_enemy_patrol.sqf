@@ -1,11 +1,5 @@
 params ["_level"];
 
-private _opfor_veh = objNull;
-private _opfor_grp = grpNull;
-private _sector = selectRandom (GRLIB_patrol_sectors_list - GRLIB_patrol_sectors);
-private _sector_pos = markerPos _sector;
-if ([_sector_pos, GRLIB_spawn_max*2, GRLIB_side_enemy, 11] call F_getUnitsCount > 10) exitWith {};
-
 diag_log format ["--- LRX Enemy Patrol - trigger alert %1", _level];
 
 GRLIB_patrol_current = GRLIB_patrol_current + 1;
@@ -14,10 +8,15 @@ publicVariable "GRLIB_patrol_current";
 waitUntil { sleep 1; combat_readiness >= _level };
 waitUntil { sleep 1; count (GRLIB_patrol_sectors_list - GRLIB_patrol_sectors) > 0 };
 
-private _opfor_veh = objNull;
-private _opfor_grp = grpNull;
 private _sector = selectRandom (GRLIB_patrol_sectors_list - GRLIB_patrol_sectors);
 private _sector_pos = markerPos _sector;
+if ([_sector_pos, GRLIB_spawn_max*2, GRLIB_side_enemy, 11] call F_getUnitsCount > 10) exitWith {
+	GRLIB_patrol_current = (GRLIB_patrol_current - 1) max 0;
+	publicVariable "GRLIB_patrol_current";
+};
+
+private _opfor_veh = objNull;
+private _opfor_grp = grpNull;
 
 // 50% in vehicles
 if (floor random 100 > 50 && count militia_vehicles > 0) then {

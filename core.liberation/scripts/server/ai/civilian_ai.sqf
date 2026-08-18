@@ -153,7 +153,7 @@ while {alive _unit && _continue} do {
 
 		//--- Reammo
 		case 4: {
-			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
+			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy, 6] call F_getUnitsCount >= 5);
 			if (_danger) then {
 				_ret = [_unit, _target] call _moveTo;
 				if (_ret) then {
@@ -181,7 +181,7 @@ while {alive _unit && _continue} do {
 
 		//--- Help (armed)
 		case 5: {
-			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
+			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy, 6] call F_getUnitsCount >= 5);
 			if (_danger && count (units group _target) < 8) then {
 				_ret = [_unit, _target] call _moveTo;
 				if (_ret) then {
@@ -201,7 +201,7 @@ while {alive _unit && _continue} do {
 					_unit setCaptive false;
 					[_unit] spawn {
 						params ["_unit"];
-						waitUntil {sleep 10; (!(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount == 0)) };
+						waitUntil {sleep 10; (!(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_enemy, 1] call F_getUnitsCount == 0)) };
 						deleteVehicle _unit;
 					};
 					_continue = false;
@@ -239,7 +239,7 @@ while {alive _unit && _continue} do {
 
 		//--- Attack (armed)
 		case 12: {
-			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
+			_danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy, 6] call F_getUnitsCount >= 5);
 			if (_danger) then {
 				removeAllAssignedItems _unit;
 				_unit addWeapon (selectRandom _weapons_light);
@@ -252,7 +252,7 @@ while {alive _unit && _continue} do {
 				[_new_grp, getPosATL _target] spawn defence_ai;
 				[_unit] spawn {
 					params ["_unit"];
-					waitUntil {sleep 10; !(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+					waitUntil {sleep 10; !(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_friendly, 1] call F_getUnitsCount == 0) };
 					deleteVehicle _unit;
 				};
 				_continue = false;

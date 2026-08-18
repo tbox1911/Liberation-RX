@@ -2,8 +2,8 @@ params ["_unit"];
 
 if !(local _unit) exitWith {};
 
-private _enemy_nearby = [_unit, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount;
-if (_enemy_nearby == 0) exitWith {};
+private _blufor_nearby = (([_unit, (GRLIB_sector_size * 2), GRLIB_side_friendly, 1] call F_getUnitsCount) > 0);
+if (!_blufor_nearby == 0) exitWith {};
 
 private _vehicle = objectParent _unit;
 private _vehicle_class = typeOf _vehicle;

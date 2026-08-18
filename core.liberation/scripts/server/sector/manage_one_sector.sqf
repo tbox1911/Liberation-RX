@@ -480,7 +480,7 @@ while {true} do {
 	};
 
 	if (!GRLIB_Commander_mode) then {
-		if (([_sector_pos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0) then {
+		if (([_sector_pos, (GRLIB_sector_size + 300), GRLIB_side_friendly, 1] call F_getUnitsCount) == 0) then {
 			_sector_despawn_tickets = _sector_despawn_tickets - 1;
 		} else {
 			_sector_despawn_tickets = GRLIB_despawn_tickets;

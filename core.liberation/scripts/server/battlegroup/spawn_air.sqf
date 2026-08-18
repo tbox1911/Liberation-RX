@@ -77,7 +77,7 @@ while { alive _vehicle && ({alive _x} count (units _grp) > 0) && (GRLIB_endgame 
 		// Bombers AI (for slow aircraft)
 		private _plane_dir = getDir _vehicle;
 		private _spot = _vehicle getPos [1000, _plane_dir];
-		if ([_spot, 80, GRLIB_side_friendly] call F_getUnitsCount > 0) then {
+		if ([_spot, 80, GRLIB_side_friendly, 1] call F_getUnitsCount > 0) then {
 			_vehicle action ["useWeapon", _vehicle, driver _vehicle, selectRandom [10, 11]];
 			_bomb = createVehicle [(selectRandom _bombs), ((getPos _vehicle) vectorAdd [0, 0, -40]), [], 5, "FLY"];
 			_bomb setDir _plane_dir;
