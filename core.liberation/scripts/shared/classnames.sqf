@@ -764,6 +764,7 @@ opfor_squad_8_airkillers = [
 	opfor_aa
 ];
 
+// Extra Squad Name
 squads_names = [
 	localize "STR_LIGHT_RIFLE_SQUAD",
 	localize "STR_RIFLE_SQUAD",
@@ -771,6 +772,13 @@ squads_names = [
 	localize "STR_AA_SQUAD",
 	localize "STR_MIXED_SQUAD"
 ];
+if (count squads > 0) then {
+	if (count (squads select 0) > 5) then {
+		squads_names = [];
+		{ squads_names pushBack (_x select 5) } foreach squads;
+
+	};
+};
 
 opfor_infantry = [opfor_sentry,opfor_rifleman,opfor_grenadier,opfor_squad_leader,opfor_team_leader,opfor_marksman,opfor_machinegunner,opfor_heavygunner,opfor_medic,opfor_rpg,opfor_at,opfor_aa,opfor_officer,opfor_sharpshooter,opfor_sniper,opfor_engineer];
 GRLIB_rank_level = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
