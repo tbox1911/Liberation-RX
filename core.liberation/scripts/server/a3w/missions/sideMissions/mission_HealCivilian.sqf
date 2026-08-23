@@ -78,6 +78,7 @@ _setupObjects = {
 	{
 		_x setVariable ["GRLIB_can_speak", true, true];
 		_x setVariable ["GRLIB_A3W_Mission_HC1", true, true];
+		_x allowDamage false;
 	} forEach (units _aiGroup);
 
 	// add wounded
