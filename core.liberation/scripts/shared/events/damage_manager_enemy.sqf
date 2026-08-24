@@ -59,6 +59,7 @@ if (isPlayer _killer && _unit != _killer) then {
 			params ["_unit", "_killer"];
 			_unit reveal [_killer, 4];
 			sleep 0.5;
+			private _veh_unit = objectParent _unit;
 			(gunner _veh_unit) doTarget _killer;
 			sleep 1.5;
 			_veh_unit fireAtTarget [_killer];
