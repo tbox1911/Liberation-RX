@@ -36,13 +36,19 @@ while { _max_try > 0 && count units _grp < _nb_unit } do {
 	sleep 0.1;
 };
 
-if (count units _grp == 0) exitWith { 
+if (count units _grp == 0) exitWith {
 	deleteGroup _grp;
-	grpNull 
+	grpNull
 };
 
-sleep 1;
-{ _x allowDamage true } forEach (units _grp);
+[_grp] spawn {
+	params ["_grp"];
+	sleep 3;
+	{
+		[_x] call F_fixPosUnit;
+		_x allowDamage true;
+	} forEach (units _grp);
+};
 
 _grp setCombatMode "BLUE";
 _grp setBehaviourStrong "SAFE";
