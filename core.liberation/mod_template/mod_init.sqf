@@ -17,7 +17,8 @@ GRLIB_mod_list_east = [
 	"A3_OPF_PAC",
 	"A3_OPF_LT",
 	"A3_OPF_UB",
-	"A3_BLU_PAC"
+	"A3_BLU_PAC",
+	"A3_BLU_LT"	
 ];
 
 GRLIB_mod_list_name = [
