@@ -100,7 +100,8 @@ air_vehicles = [
 	["O_UAV_01_F",0,10,0,GRLIB_perm_log],
 	["O_UAV_06_F",0,30,0,GRLIB_perm_tank],
 	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
-	["O_Heli_Light_02_unarmed_F",1,250,5,GRLIB_perm_air]
+	["O_Heli_Light_02_unarmed_F",1,250,5,GRLIB_perm_air],
+	["O_Heli_Transport_04_F",1,350,5,GRLIB_perm_air]
 ];
 
 blufor_air = [
