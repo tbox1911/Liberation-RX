@@ -37,6 +37,7 @@ switch ( _list ) do {
 	case "REPAIR" : { _classlist = vehicle_repair_sources };
 	case "REPAIR_BOX" : { _classlist = vehicle_repair_box; _use_fast = false };
 	case "WAREHOUSE" : { _classlist = [Warehouse_typename]; _use_fast = false };
+	case "MEDICAL" : { _classlist = [medic_heal_typename]; _use_fast = false };
 };
 if (count _classlist == 0) exitWith { false };
 

@@ -63,7 +63,7 @@ while {true} do {
 					_msg = format [localize "STR_PAR_REVIVE_RESTORED", name _unit, _cur_revive];
 					_timer = 0;
 				} else {
-					private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename, a3w_heal_tent], 12]) > 0);
+					private _near_medical = (count ([_unit, "MEDICAL", 15] call F_check_near) > 0);
 					if (_near_medical) then {
 						_history set [0, (_first - 60)];
 						_unit setVariable ["PAR_revive_history", _history];
