@@ -19,6 +19,10 @@ switch _classname do {
     case playerbox_typename: {
         _rotation = 90;
     };
+    case medic_heal_typename: {
+        _radius = 15;
+        _distance = 10;
+    };
     case "Land_Cargo_Patrol_V1_F": {
         _rotation = 270;
     };

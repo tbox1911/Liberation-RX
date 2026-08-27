@@ -34,6 +34,7 @@ _vehicle setPosATL _veh_pos;
 
 // Notify player
 player reveal [_vehicle, 4];
+private _public = false;
 
 // ACE Support
 if (GRLIB_ACE_enabled) then {
@@ -81,6 +82,7 @@ if (_classname isKindOf "Land_PortableHelipadLight_01_F") then {
 if (_classname == Warehouse_typename) then {
 	[_vehicle] call warehouse_init;
 	_allow_damage = false;
+	_public = true;
 };
 
 // Storage
@@ -96,6 +98,7 @@ if (_classname in [storage_medium_typename, storage_large_typename]) then {
 	_drop_zone setPosATL _drop_zone_pos;
 	_drop_zone setVectorDirAndUp [[-cos _drop_zone_dir, sin _drop_zone_dir, 0] vectorCrossProduct surfaceNormal _drop_zone_pos, surfaceNormal _drop_zone_pos];
 	_allow_damage = false;
+	_public = true;
 };
 
 // Medical Tent
@@ -104,9 +107,15 @@ if (_classname == medic_heal_typename && _classname isKindOf "Land_MedicalTent_0
 	private _med_floor = createVehicle [_med_floor_class, _veh_pos, [], 0, "CAN_COLLIDE"];
 	_med_floor setVectorDirAndUp [_veh_dir, _veh_vup];
 	_med_floor setPosATL _veh_pos;
+	_public = true;
 };
 
-sleep 0.1;
+sleep 0.5;
+if (_public) then {
+	GRLIB_redraw_marker_fob = true;
+	publicVariable "GRLIB_redraw_marker_fob";
+};
+
 if (_allow_damage) then { _vehicle allowDamage true };
 _vehicle setDamage 0;
 

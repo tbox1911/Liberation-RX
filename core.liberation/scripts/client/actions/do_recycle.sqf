@@ -60,6 +60,7 @@ ctrlSetText [134, format [localize "STR_RECYCLING_YIELD", [(_objectinfo select 0
 while { dialog && (alive player) && dorecycle == 0 } do { sleep 0.5 };
 if ( dialog ) then { closeDialog 0 };
 
+private _public = false;
 if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in all_buildings_classnames) ) exitWith {
 	if (_veh_class in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && [player] call F_getScore <= GRLIB_perm_tank) then {
 		[player, 10] remoteExec ["F_addScore", 2];
@@ -72,6 +73,17 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in al
 		[_vehicle, "del"] remoteExec ["mobile_respawn_remote_call", 2];
 	};
 
+	if (_veh_class in [storage_medium_typename, storage_large_typename]) then {
+		{ deleteVehicle _x } forEach ((nearestObjects [_vehicle, ["VR_Area_01_square_2x2_yellow_F"], 20]));
+		_public = true;		
+	};
+
+	if (_veh_class == medic_heal_typename) then {
+		private _med_floor = (nearestObjects [_vehicle, ["Land_MedicalTent_01_floor_base_F"], 20]) select 0;
+		if (!isNil "_med_floor") then { deleteVehicle _med_floor };
+		_public = true;	
+	};
+
 	{ deleteVehicle _x } forEach (crew _vehicle);
 	deleteVehicle _vehicle;
 
@@ -79,13 +91,14 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in al
 		[player] call F_correctUAVT;
 	};
 
-	if (_veh_class in [storage_medium_typename, storage_large_typename]) then {
-		{
-			deleteVehicle _x;
-		} forEach ((nearestObjects [getPos _vehicle, ["VR_Area_01_square_2x2_yellow_F"], 20]));
-	};
-
 	stats_vehicles_recycled = stats_vehicles_recycled + 1;
 	publicVariable "stats_vehicles_recycled";
+	if (_public) then {
+		sleep 1;
+		GRLIB_redraw_marker_fob = true;
+		publicVariable "GRLIB_redraw_marker_fob";
+	};
 };
+
+sleep 1;
 _vehicle setVariable ["recycle_in_use", false, true];

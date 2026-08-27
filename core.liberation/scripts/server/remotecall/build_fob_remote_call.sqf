@@ -63,12 +63,14 @@ if (isNull _vehicle) exitWith {
 };
 
 sleep 1;
+// check fob is visible
 [_vehicle, getPlayerUID _player] call fob_init;
 
 private _fob_pos = getPosATL _vehicle;
 if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
 	_fob_pos = getPosATL (nearestObjects [_fob_pos, [FOB_sign], 200] select 0);
 };
+
 GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 if (_classname == FOB_outpost) then { GRLIB_all_outposts pushBack _fob_pos };
 
