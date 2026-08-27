@@ -151,6 +151,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 				};
 				if (_icon == "") then { _icon = "\A3\ui_f\data\map\VehicleIcons\iconObject_ca.paa" };
 				lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
+				if ([] call is_admin) then {
+					lnbSetTooltip [110, [((lnbSize 110) select 0) - 1, 0], _build_class];
+				};
 				if (buildtype == GRLIB_InfantryBuildType) then {
 					_unit_desc = format [ "%1", _x select 5];
 					if (_unit_desc != "") then {

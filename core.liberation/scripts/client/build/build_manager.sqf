@@ -237,7 +237,7 @@ while {true} do {
 			_pos = getPosATL player;
 			if (surfaceIsWater _pos) then { _pos = getPosASL player };
 			_truedir = 90 - _dir;
-			_truepos = [(_pos select 0) + ((build_distance + build_radius) * (cos _truedir)), (_pos select 1) + ((build_distance + build_radius) * (sin _truedir)), (_pos select 2) + build_altitude];
+			_truepos = [(_pos select 0) + (build_distance * cos _truedir), (_pos select 1) + (build_distance * sin _truedir), (_pos select 2) + build_altitude];
 			_actualdir = (_dir + build_rotation);
 			if (_classname in GRLIB_build_force_mode) then { build_mode = 1 };
 			_actualdir = _actualdir - (floor(_actualdir / 360)) * 360;
@@ -266,7 +266,7 @@ while {true} do {
 			};
 			private _step = round (360 / count _preview_spheres);
 			{
-				_sphere_pos = (_truepos getPos [build_radius, _foreachIndex * _step]);
+				_sphere_pos = (_truepos getPos [build_radius/2, _foreachIndex * _step]);
 				_sphere_pos set [2, (_truepos select 2)];
 				if (_is_water) then {
 					_x setposASL _sphere_pos;
@@ -285,10 +285,9 @@ while {true} do {
 					_near_objects append (_truepos nearObjects _x);
 				} forEach [
 					["AllVehicles", build_radius],
-					[FOB_typename, 12],
-					[FOB_outpost, 10],
-					[Warehouse_typename, 12],
-					[medic_heal_typename, 8]
+					["Static", build_radius],
+					["Cargo_base_F", build_radius],
+					["ReammoBox_F", build_radius]
 				];
 
 				if !(_buildtype in [GRLIB_BuildingBuildType, GRLIB_TrenchBuildType]) then {
