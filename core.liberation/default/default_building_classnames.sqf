@@ -52,7 +52,6 @@ buildings_default = [
 	["Land_LampAirport_F",0,0,0,GRLIB_perm_tank],
 	["Land_House_Small_01_F",0,0,0,GRLIB_perm_tank],
 	["Land_Shed_05_F",0,0,0,GRLIB_perm_tank],
-	["Land_SY_01_stockpile_01_F",0,0,0,GRLIB_perm_tank],
 	["Land_Stone_4m_F",0,0,0,GRLIB_perm_tank],
 	["Land_Stone_8m_F",0,0,0,GRLIB_perm_tank],
 	["Land_Stone_Gate_F",0,0,0,GRLIB_perm_tank],
