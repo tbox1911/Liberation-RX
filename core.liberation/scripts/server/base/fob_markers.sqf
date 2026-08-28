@@ -30,7 +30,6 @@ while {true} do {
 			_marker setMarkerDrawPriority -1;
 			_marker setMarkerPos _fobpos;
 			_markers pushback _marker;
-			sleep 0.1;
 		} forEach GRLIB_all_fobs;
 	};
 
@@ -58,7 +57,6 @@ while {true} do {
 				_marker setMarkerPos (markerPos _sector);
 				_markers_def pushback _marker;
 			};
-			sleep 0.1;
 		} forEach (keys GRLIB_sector_defense);
 	};
 
@@ -106,7 +104,6 @@ while {true} do {
 					};
 				} forEach _facility_buildings;
 			};
-			sleep 0.1;
 		} forEach GRLIB_all_fobs;
 	};
 
