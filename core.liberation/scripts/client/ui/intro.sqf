@@ -1,3 +1,5 @@
+playMusic GRLIB_music_startup;
+
 titleText ["", "BLACK FADED", 100];
 waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
 waitUntil { sleep 1; !isNil "active_sectors" };
@@ -44,3 +46,10 @@ if ( howtoplay == 1 ) then {
 cinematic_camera_started = false;
 titleText ["","BLACK FADED", 100];
 startgame = 1;
+
+[] spawn {
+	waituntil {sleep 1; GRLIB_player_spawned};
+	10 fadeMusic 0;
+	sleep 10;
+	playMusic "";
+};

@@ -1,9 +1,9 @@
-waitUntil {sleep 1; GRLIB_player_configured};
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 private _cargo_seat_free = 0;
 
 while {true} do {
+	waitUntil {sleep 1; GRLIB_player_spawned};
 	private _my_squad = player getVariable "my_squad";
 	// If Squad exist
 	if (!isNil "_my_squad") then {

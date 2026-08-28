@@ -1,4 +1,4 @@
-waitUntil {sleep 1; !isNil "GRLIB_player_near_fob" };
+// Manage Box actions (Transported, Stocked, Load/Unload)
 
 GRLIB_checkAction_AbandonBox = {
 	params ["_target", "_unit"];

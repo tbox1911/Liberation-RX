@@ -4,9 +4,6 @@ GRLIB_player_fob_actions = [];
 GRLIB_activated_sectors = [];
 GRLIB_activated_radius = GRLIB_sector_size * 1.4;
 
-waituntil {sleep 1; GRLIB_player_configured};
-if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
-
 private ["_near_spawn", "_near_spawn_tent", "_next_sector"];
 
 private _ticks = 0;
@@ -82,6 +79,7 @@ while {true} do {
 	};
 
 	_ticks = _ticks + 1;
+	if (_ticks == 4) then { GRLIB_action_player_ready = true };
 	if (_ticks >= 65535) then { _ticks = 0 };
 	sleep 0.25;
 };

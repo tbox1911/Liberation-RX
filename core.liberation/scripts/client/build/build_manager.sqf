@@ -1,10 +1,11 @@
+waituntil {sleep 1; GRLIB_player_configured};
+
 private [
 	"_unit", "_pos", "_pos_origin", "_classname", "_fob_box",
 	"_idx", "_unitrank", "_ghost_pos", "_ghost_spot", "_ghost_name", "_vehicle",
 	"_actualdir", "_near_objects"
 ];
 
-build_confirmed = 0;
 buildindex = 0;
 build_unit = [];
 build_vehicle = objNull;
@@ -74,6 +75,7 @@ build_altitude = 0;
 build_distance = 0;
 build_radius = 0;
 building_altitude = 0;
+build_confirmed = 0;
 
 waitUntil { sleep 0.2; !isNil "dobuild" };
 

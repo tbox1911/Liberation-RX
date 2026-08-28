@@ -30,11 +30,10 @@ private _wreck_class = [
 
 [] call compile preprocessFileLineNumbers "scripts\client\actions\action_manager_veh_check.sqf";
 
-waituntil {sleep 1; GRLIB_player_configured};
-sleep 3;
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 while {true} do {
+	waitUntil {sleep 1; GRLIB_player_spawned};
 	// Vehicles actions
 	_nearveh = (player nearEntities [["LandVehicle","Air","Ship_F"], _searchradius]) select {
 		isNil {_x getVariable "GRLIB_vehicle_action"} &&

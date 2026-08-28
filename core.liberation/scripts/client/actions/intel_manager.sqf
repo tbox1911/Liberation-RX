@@ -3,11 +3,10 @@ private ["_near_intel"];
 private _distvehclose = 5;
 private _searchradius = 20;
 
-waituntil {sleep 1; GRLIB_player_configured};
-waitUntil {sleep 1; !isNil "build_confirmed" };
 sleep 15;
 
 while {true} do {
+	waitUntil {sleep 1; GRLIB_player_spawned};
 
 	// Intel
 	_near_intel = nearestObjects [player, GRLIB_intel_items + GRLIB_ide_traps, _searchradius];

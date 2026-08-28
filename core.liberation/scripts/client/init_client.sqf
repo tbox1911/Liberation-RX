@@ -74,7 +74,7 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 };
 
 // LRX_Template mod version check
-waitUntil {sleep 0.1; !isNil "GRLIB_LRX_Template_version"};
+waitUntil {sleep 0.5; !isNil "GRLIB_LRX_Template_version"};
 private _version_checked = true;
 if (!isNil "LRX_Template_version") then {
 	if (typeName LRX_Template_version == "SCALAR") then {
@@ -91,7 +91,7 @@ if (!_version_checked) exitWith {
 	disableUserInput false;
 };
 
-waitUntil {sleep 0.1; !isNil "GRLIB_global_stop"};
+waitUntil {sleep 0.5; !isNil "GRLIB_global_stop"};
 if (GRLIB_global_stop == 1) exitWith {
 	private _msg = localize "STR_MSG_FINAL_MISSION_RUNNING";
 	titleText [_msg, "BLACK FADED", 100];
@@ -100,7 +100,7 @@ if (GRLIB_global_stop == 1) exitWith {
 	disableUserInput false;
 };
 
-waitUntil {sleep 0.1; !isNil "GRLIB_endgame"};
+waitUntil {sleep 0.5; !isNil "GRLIB_endgame"};
 if (GRLIB_endgame == 1) exitWith {
 	private _msg = localize "STR_MSG_END_GAME";
 	titleText [_msg, "BLACK FADED", 100];
@@ -138,20 +138,35 @@ if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 [player] call player_EHP;
 [player, objNull] spawn player_respawn;
 
-// Create Player Group
+// Player Scripts
+LRX_init_done = false;
+LRX_arsenal_init_done = false;
+GRLIB_player_configured = false;
+GRLIB_action_player_ready = false;
+build_confirmed = -1;
 startgame = 0;
-GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
-waituntil {
-	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
-	uIsleep 1;
-	titleText [localize "STR_TITLE_PLEASE_WAIT", "BLACK FADED", 100];
-	uIsleep 1;
-	(player getVariable ["GRLIB_score_set", 0] == 1 && player in (units GRLIB_player_group));
+[] spawn {
+	waituntil {
+		titleText ["... Loading Player Data ...", "BLACK FADED", 100];
+		uIsleep 1;
+		titleText [localize "STR_TITLE_PLEASE_WAIT", "BLACK FADED", 100];
+		uIsleep 1;
+		(LRX_init_done);
+	};
 };
-titleText ["", "BLACK FADED", 100];
+
+// Create Player Group
+GRLIB_player_group = createGroup [GRLIB_side_friendly, true];
 [GRLIB_player_group, "add"] remoteExec ["addel_group_remote_call", 2];
+waitUntil { sleep 1; player getVariable ["GRLIB_score_set", 0] == 1 && player in (units GRLIB_player_group) };
 
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_client.sqf";
+
+// LRX Arsenal
+diag_log "--- LRX: Build Arsenal Classnames ---";
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
+waitUntil { sleep 1; LRX_arsenal_init_done };
 
 // LRX Addons
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";
@@ -169,27 +184,20 @@ titleText ["", "BLACK FADED", 100];
 [] execVM "addons\FOB\officer_init.sqf";
 [] execVM "addons\TXU\txu_init.sqf";
 
-// LRX Arsenal
-diag_log "--- LRX: Build Arsenal Classnames ---";
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\default_classnames.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
-sleep 3;
+LRX_init_done = true;
+sleep 1;
 
 // Start intro
 diag_log "--- Client Intro start ---";
-playMusic GRLIB_music_startup;
 [] execVM "scripts\client\ui\intro.sqf";
 
-waitUntil {sleep 0.1; (LRX_arsenal_init_done && startgame == 1)};
-[] spawn {
-	waituntil {sleep 1; GRLIB_player_configured};
-	10 fadeMusic 0;
-	sleep 10;
-	playMusic "";
-};
+// Init actions
+[] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
+[] execVM "scripts\client\actions\action_manager_player.sqf";
+[] execVM "scripts\client\build\build_manager.sqf";
+waitUntil {sleep 1; (GRLIB_player_configured && GRLIB_action_player_ready && build_confirmed == 0)};
 
 // Player actions manager
-[] execVM "scripts\client\actions\action_manager_player.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";
 [] execVM "scripts\client\actions\intel_manager.sqf";
@@ -201,7 +209,6 @@ waitUntil {sleep 0.1; (LRX_arsenal_init_done && startgame == 1)};
 // LRX client scripts
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
-[] execVM "scripts\client\build\build_manager.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
 
 // Markers
@@ -244,68 +251,8 @@ GRLIB_LastNews = 0;
 // Draw Zeus
 { [_x] call BIS_fnc_drawCuratorLocations } foreach allCurators;
 
-// Sign Add
-dobuild = 0;
-addMissionEventHandler ["Draw3D",{
-	if !(isNull objectParent player) exitWith {};
-	private _pos = ASLToAGL getPosASL chimera_sign;
-	if (player distance2D _pos <= 30) then {
-		drawIcon3D ["", [1,1,1,1], _pos vectorAdd [0, 0, 3], 0, 0, 0, "- READ ME -", 2, 0.05, "TahomaB"];
-	};
-
-	private _near_sign = nearestObjects [player, [FOB_sign], 5];
-	if (count (_near_sign) > 0 && (player distance2D lhd > GRLIB_fob_range)) then {
-		private _sign = _near_sign select 0;
-		private _gid = _sign getVariable ["GRLIB_vehicle_owner", ""];
-		private _type = "FOB";
-		private _near_outpost = ([_sign, "OUTPOST", 30] call F_check_near);
-		if (_near_outpost) then { _type = "Outpost" };
-		private _name = "- LRX";
-		if (_gid != "lrx") then {
-			_name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 5;
-		};
-		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- %1 %2 -", _type, _name], 2, 0.07, "RobotoCondensed", "center"];
-	};
-
-	if (dobuild == 0) then {
-		private _near_box = nearestObjects [player, [playerbox_typename], 3];
-		if (count _near_box > 0) then {
-			private _box = _near_box select 0;
-			private _box_pos = ASLToAGL getPosASL _box;
-			private _gid = _box getVariable ["GRLIB_vehicle_owner", ""];
-			private _name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 5;
-			drawIcon3D ["", [1,1,1,1], _box_pos vectorAdd [0, 0, 1], 2, 2, 0, format ["- %1 Personal Box -", _name], 2, 0.05, "RobotoCondensed", "center"];
-		};
-
-		private _near_storage = nearestObjects [player, ["VR_Area_01_square_2x2_yellow_F"], 2];
-		if (count (_near_storage) > 0) then {
-			private _storage = _near_storage select 0;
-			private _storage_pos = ASLToAGL getPosASL _storage;
-			drawIcon3D ["", [1,1,1,1], _storage_pos vectorAdd [0, 0, 1], 2, 2, 0, "Use LOAD / UNLOAD Action", 2, 0.05, "RobotoCondensed", "center"];
-		};
-	};
-
-	private _near_static = nearestObjects [player, static_vehicles_AI, 5];
-	if (count (_near_static) > 0) then {
-		private _static = _near_static select 0;
-		private _static_pos = ASLToAGL getPosASL _static;
-		private _screenmsg = "";
-		private _timer = _static getVariable ["GREUH_rearm_timer", 0];
-		private _ammo = [_static] call F_getVehicleAmmoDef;
-		if (_timer > time && _ammo <= 0.85) then {
-			_screenmsg = format [ "%1 Rearming Cooldown (%2 sec)...", ([_static] call F_getLRXName), round (_timer - time) ];
-		};
-		private _timer = _static getVariable ["GREUH_repair_timer", 0];
-		private _damage = [_static] call F_getVehicleDamage;
-		if (_timer > time && _damage >= 0.04) then {
-			_screenmsg = format [ "%1 Repairing Cooldown (%2 sec)...", ([_static] call F_getLRXName), round (_timer - time) ];
-		};
-		if (_screenmsg != "") then {
-			drawIcon3D ["", [1,1,1,1], _static_pos vectorAdd [0, 0, 1], 2, 2, 0, _screenmsg, 2, 0.05, "RobotoCondensed", "center"];
-		};
-	};
-
-}];
+// Draw3D Mission EventHandler
+[] execVM "scripts\client\ui\mission_EH.sqf";
 
 // kart support
 {
@@ -318,6 +265,7 @@ addMissionEventHandler ["Draw3D",{
 if (isServer && hasInterface) then {
 	(findDisplay 46) displayAddEventHandler ["Unload",{
 		diag_log "--- LRX Local Save Game ---";
+		if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 		[player, PAR_Grp_ID, true] call save_context;
 		[player, PAR_Grp_ID] call cleanup_player;
 		[] call save_game_mp;
