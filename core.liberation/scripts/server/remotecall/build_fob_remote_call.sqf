@@ -66,9 +66,10 @@ sleep 1;
 // check fob is visible
 [_vehicle, getPlayerUID _player] call fob_init;
 
+private _fob_sign = _vehicle getVariable ["GRLIB_fob_sign", objNull];
 private _fob_pos = getPosATL _vehicle;
 if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
-	_fob_pos = getPosATL (nearestObjects [_fob_pos, [FOB_sign], 200] select 0);
+	_fob_pos = getPosATL _fob_sign;
 };
 
 GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];

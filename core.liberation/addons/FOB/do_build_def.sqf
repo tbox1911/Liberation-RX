@@ -1,15 +1,11 @@
 // LRX FOB Defense
 // by pSiKO
 
-private _fob_sign = player nearObjects [FOB_sign, 20] select 0;
-if (isNil "_fob_sign") exitWith {};
-
-private _fob_class = _fob_sign getVariable ["GRLIB_fob_type", FOB_typename];
-private _fob = (player nearObjects [_fob_class, 20] select 0);
+private _fob = [] call F_getFob;
 if (isNil "_fob") exitWith {};
 
 private _fob_pos = getPosATL _fob;
-private _fob_dir = (getDir _fob_sign - 90);
+private _fob_dir = getDir _fob;
 
 private _walls = { getObjectType _x != 8 } count ((_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]) + (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]));
 if (_walls > 10) exitWith { hint localize "STR_FOB_CONSTRUCTION_TOO_MANY_WALLS" };

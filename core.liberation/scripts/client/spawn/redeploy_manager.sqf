@@ -65,8 +65,7 @@ if (GRLIB_player_spawned) then {
 private _choiceslist = [[_basenamestr, getPosATL lhd]];
 for "_idx" from 0 to (count GRLIB_all_fobs - 1) do {
 	_fobpos = GRLIB_all_fobs select _idx;
-	_near_outpost = (_fobpos in GRLIB_all_outposts);
-	if (_near_outpost) then {
+	if (_fobpos in GRLIB_all_outposts) then {
 		_choiceslist append [[format ["Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx)], GRLIB_all_fobs select _idx]];
 	} else {
 		_choiceslist append [[format ["FOB %1 - %2", (military_alphabet select _idx), mapGridPosition (GRLIB_all_fobs select _idx)], GRLIB_all_fobs select _idx]];
