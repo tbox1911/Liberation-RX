@@ -49,6 +49,14 @@ GRLIB_build_force_mode = [
 ];
 
 GRLIB_build_as_building = [
+	land_cutter_typename,
+	playerbox_typename,
+	Warehouse_typename,
+	medic_heal_typename,
+	storage_medium_typename,
+	storage_large_typename,
+	GRLIB_camo_net,
+	Box_Ammo_typename,
 	taxi_helipad_type
 ];
 
@@ -394,26 +402,7 @@ while {true} do {
 
 			// Building
 			if (_buildtype == GRLIB_BuildingBuildType || _classname in GRLIB_build_as_building) exitWith {
-				private _vehicle = createVehicle [_classname, _veh_pos, [], 0, "CAN_COLLIDE"];
-				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-				_vehicle setPosATL _veh_pos;
-
-				// Magic ClutterCutter
-				if (_classname == land_cutter_typename) then {
-					[_veh_pos] remoteExec ["build_cutter_remote_call", 2];
-					_vehicle allowdamage false;
-				};
-
-				// CamoNet
-				if ([_classname, GRLIB_camo_net] call F_itemIsInClass) then {
-					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-				};
-
-				// MP Killed
-				if ([_classname, GRLIB_quick_delete] call F_itemIsInClass) then {
-					_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-				};
-
+				_vehicle = [_classname, PAR_Grp_ID, _veh_pos, _veh_dir, _veh_vup] call do_build_building;
 				build_vehicle = _vehicle;
 			};
 

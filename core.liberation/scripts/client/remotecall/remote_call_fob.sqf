@@ -9,7 +9,6 @@ if (_fobpos in GRLIB_all_outposts) then {_fob_type = "Outpost"};
 if (_status == 0) then {
 	sleep 1;
 	["lib_fob_built", [_fob_type, _fob_name]] call BIS_fnc_showNotification;
-	_public = true;
 };
 
 if (_status == 1) then {
