@@ -2,9 +2,9 @@ diag_log "--- Client wait for Server init ---";
 
 waitUntil {
 	titleText [localize "STR_TITLE_LOADING", "BLACK FADED", 100];
-	uisleep 1;
+	sleep 1;
 	titleText [localize "STR_TITLE_PLEASE_WAIT", "BLACK FADED", 100];
-	uisleep 1;
+	sleep 1;
 	(!isNil "GRLIB_init_server")
 };
 titleText ["", "BLACK FADED", 100];
@@ -45,7 +45,7 @@ if (abort_loading) exitWith {
 	private _msg = format [localize "STR_MSG_SERVER_STARTUP_ERROR", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];
 	diag_log abort_loading_msg;
-	uisleep 10;
+	sleep 10;
 	endMission "LOSER";
 	disableUserInput false;
 };
@@ -55,7 +55,7 @@ PAR_Grp_ID = getPlayerUID player;
 if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	private _msg = localize "STR_MSG_SERVER_INIT_ERROR";
 	titleText [_msg, "BLACK FADED", 100];
-	uisleep 10;
+	sleep 10;
 	endMission "LOSER";
 	disableUserInput false;
 };
@@ -68,7 +68,7 @@ private _name = name player;
 if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name) || (count trim _name <= 2)) exitWith {
 	private _msg = format [localize "STR_NAME_PROHIBITED", _name];
 	titleText [_msg, "BLACK FADED", 100];
-	uisleep 10;
+	sleep 10;
 	endMission "LOSER";
 	disableUserInput false;
 };
@@ -86,7 +86,7 @@ if (!isNil "LRX_Template_version") then {
 if (!_version_checked) exitWith {
 	private _msg = localize "STR_MSG_INVALID_LRXMOD_VERSION";
 	titleText [_msg, "BLACK FADED", 100];
-	uisleep 10;
+	sleep 10;
 	endMission "LOSER";
 	disableUserInput false;
 };
@@ -95,7 +95,7 @@ waitUntil {sleep 0.5; !isNil "GRLIB_global_stop"};
 if (GRLIB_global_stop == 1) exitWith {
 	private _msg = localize "STR_MSG_FINAL_MISSION_RUNNING";
 	titleText [_msg, "BLACK FADED", 100];
-	uisleep 10;
+	sleep 10;
 	endMission "LOSER";
 	disableUserInput false;
 };
@@ -104,7 +104,7 @@ waitUntil {sleep 0.5; !isNil "GRLIB_endgame"};
 if (GRLIB_endgame == 1) exitWith {
 	private _msg = localize "STR_MSG_END_GAME";
 	titleText [_msg, "BLACK FADED", 100];
-	uisleep 10;
+	sleep 10;
 	endMission "LOSER";
 	disableUserInput false;
 };
@@ -148,9 +148,9 @@ startgame = 0;
 [] spawn {
 	waituntil {
 		titleText ["... Loading Player Data ...", "BLACK FADED", 100];
-		uIsleep 1;
+		sleep 1;
 		titleText [localize "STR_TITLE_PLEASE_WAIT", "BLACK FADED", 100];
-		uIsleep 1;
+		sleep 1;
 		(LRX_init_done);
 	};
 };
@@ -184,15 +184,16 @@ waitUntil { sleep 1; LRX_arsenal_init_done };
 [] execVM "addons\FOB\officer_init.sqf";
 [] execVM "addons\TXU\txu_init.sqf";
 
+[] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
+[] call compile preprocessFileLineNumbers "scripts\client\markers\init_markers.sqf";
 LRX_init_done = true;
-sleep 1;
+sleep 2;
 
 // Start intro
 diag_log "--- Client Intro start ---";
 [] execVM "scripts\client\ui\intro.sqf";
 
 // Init actions
-[] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
 [] execVM "scripts\client\actions\action_manager_player.sqf";
 [] execVM "scripts\client\build\build_manager.sqf";
 waitUntil {sleep 1; (GRLIB_player_configured && GRLIB_action_player_ready && build_confirmed == 0)};
@@ -212,7 +213,6 @@ waitUntil {sleep 1; (GRLIB_player_configured && GRLIB_action_player_ready && bui
 [] execVM "scripts\client\build\build_overlay.sqf";
 
 // Markers
-[] execVM "scripts\client\markers\init_markers.sqf";
 [] execVM "scripts\client\markers\players_marker.sqf";
 [] execVM "scripts\client\markers\vehicles_marker.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";

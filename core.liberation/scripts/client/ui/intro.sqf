@@ -1,4 +1,5 @@
 playMusic GRLIB_music_startup;
+sleep 1;
 
 titleText ["", "BLACK FADED", 100];
 waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
