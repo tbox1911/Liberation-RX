@@ -47,32 +47,34 @@ while {true} do {
 		};
 
 		// Warn Sector
-		_next_sector = [GRLIB_activated_radius, player, opfor_sectors] call F_getNearestSector;
-		if (_next_sector != "" && !(_next_sector in GRLIB_activated_sectors)) then {
-			_dist_sector = (player distance2D (markerPos _next_sector));
-			if (_dist_sector <= GRLIB_activated_radius) then {
-				GRLIB_activated_sectors pushBackUnique _next_sector;
-				[_next_sector] spawn {
-					params ["_sector"];
-					private _marker_pos = markerPos _sector;
-					private _marker_text = markerText _sector;
-					private _player_dist = player distance2D _marker_pos;
-					if (_player_dist > GRLIB_sector_size) then {
-						private _msg = localize "STR_NOTIFICATION_ENTER_TERRITORY";
-						[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
-						sleep 3;
-					};
-					while {(_player_dist <= GRLIB_activated_radius)} do {
-						_player_dist = player distance2D _marker_pos;
-						if (_player_dist <= GRLIB_sector_size) exitWith {
-							private _msg = format [localize "STR_NOTIFICATION_ENTER_SECTOR", _marker_text];
+		if (!isNil "opfor_sectors") then {
+			_next_sector = [GRLIB_activated_radius, player, opfor_sectors] call F_getNearestSector;
+			if (_next_sector != "" && !(_next_sector in GRLIB_activated_sectors)) then {
+				_dist_sector = (player distance2D (markerPos _next_sector));
+				if (_dist_sector <= GRLIB_activated_radius) then {
+					GRLIB_activated_sectors pushBackUnique _next_sector;
+					[_next_sector] spawn {
+						params ["_sector"];
+						private _marker_pos = markerPos _sector;
+						private _marker_text = markerText _sector;
+						private _player_dist = player distance2D _marker_pos;
+						if (_player_dist > GRLIB_sector_size) then {
+							private _msg = localize "STR_NOTIFICATION_ENTER_TERRITORY";
 							[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 							sleep 3;
 						};
-						sleep 1;
+						while {(_player_dist <= GRLIB_activated_radius)} do {
+							_player_dist = player distance2D _marker_pos;
+							if (_player_dist <= GRLIB_sector_size) exitWith {
+								private _msg = format [localize "STR_NOTIFICATION_ENTER_SECTOR", _marker_text];
+								[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
+								sleep 3;
+							};
+							sleep 1;
+						};
+						waitUntil { sleep 10; (player distance2D _marker_pos > GRLIB_activated_radius)};
+						GRLIB_activated_sectors = GRLIB_activated_sectors - [_sector];
 					};
-					waitUntil { sleep 10; (player distance2D _marker_pos > GRLIB_activated_radius)};
-					GRLIB_activated_sectors = GRLIB_activated_sectors - [_sector];
 				};
 			};
 		};
