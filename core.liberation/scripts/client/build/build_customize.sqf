@@ -27,6 +27,14 @@ switch _classname do {
         _radius = 25;
         _dist = 16;
     };
+    case storage_medium_typename: {
+        _radius = 10;
+        _dist = 6;
+    };
+    case storage_large_typename: {
+        _radius = 25;
+        _dist = 16;
+    };    
     case "Land_Cargo_Patrol_V1_F": {
         _rotation = 270;
     };
