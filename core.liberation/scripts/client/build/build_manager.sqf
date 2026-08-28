@@ -305,10 +305,15 @@ while {true} do {
 				};
 			};
 
+			private _ignore_colisions = [] + GRLIB_ignore_colisions;
+			if (_buildtype in [99,98]) then {
+				_ignore_colisions append [FOB_box_typename, FOB_box_outpost];
+			};
+
 			// Improved filter out objects that dont actually clip
 			_near_objects = _near_objects select {
 				!(_x isKindOf "Animal") &&
-				!([_x, GRLIB_ignore_colisions] call F_itemIsInClass) &&
+				!([_x, _ignore_colisions] call F_itemIsInClass) &&
 				!(_x isEqualTo player) &&
 				!(_x isEqualTo _vehicle) &&
 				{(_truepos distance2D _x < ((0.5 * (sizeOf (typeof _x))) max 1))}
