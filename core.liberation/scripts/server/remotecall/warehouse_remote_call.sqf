@@ -6,6 +6,11 @@ if (isNil "_box") exitWith {};
 private _msg = "";
 private _count = 0;
 
+// Init
+if (_cmd == 0) exitWith {
+    [_box] call warehouse_init;
+};
+
 // Add
 if (_cmd == 1) then {
     private _box_class = typeOf _box;
@@ -28,15 +33,14 @@ if (_cmd == 2) then {
     };
 };
 
+// Update
 if (_msg != "") then {
     [gamelogic, _msg] remoteExec ["globalChat", 0];
-
     // update all warehouse
     {
         if (_x getVariable ["GRLIB_WHS_Group", false]) then {
             [getPosATL (agent _x)] call warehouse_update;
         };
     } forEach agents;
-
     publicVariable "GRLIB_warehouse";
 };

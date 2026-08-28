@@ -21,7 +21,11 @@ switch _classname do {
     };
     case medic_heal_typename: {
         _radius = 15;
-        _distance = 10;
+        _dist = 10;
+    };
+    case Warehouse_typename: {
+        _radius = 25;
+        _dist = 16;
     };
     case "Land_Cargo_Patrol_V1_F": {
         _rotation = 270;
@@ -83,7 +87,7 @@ switch _classname do {
         if (_classname isKindOf "Cargo_HQ_base_F") then {
             _rotation = 270;
             _radius = 20;
-            _distance = 13.5;
+            _dist = 13.5;
         };
         if (_classname isKindOf "Slingload_base_F") then {
             _rotation = 90;

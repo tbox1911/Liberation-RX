@@ -27,6 +27,8 @@ if (_fob_class == FOB_typename) then {
 	[_fob] call fob_init_officer;
 };
 
+GRLIB_redraw_marker_fob = true;
+
 // if (GRLIB_enable_arsenal == 0) then {
 // 	sleep 1;
 // 	private _ammo_pos = (getposATL _sign) vectorAdd ([[10, 0, 0], -(getDir _sign) - 90] call BIS_fnc_rotateVector2D);

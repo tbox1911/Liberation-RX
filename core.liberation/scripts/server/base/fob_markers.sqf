@@ -9,7 +9,7 @@ GRLIB_redraw_marker_fob = true;
 sleep 2;
 while {true} do {
 	// FOB markers
-	if (count GRLIB_all_fobs > 0 && (count _markers != count GRLIB_all_fobs || GRLIB_redraw_marker_fob)) then {
+	if (count _markers != count GRLIB_all_fobs || GRLIB_redraw_marker_fob) then {
 		{ deleteMarker _x } foreach _markers;
 		_markers = [];
 		{
@@ -61,7 +61,9 @@ while {true} do {
 	};
 
 	// Facility Buildings
-	if (GRLIB_redraw_marker_fob || (round time) % 600 == 0) then {
+	if ((round time) % 600 == 0 || GRLIB_redraw_marker_fob) then {
+		{ deleteMarker _x } foreach _markers_build;
+		_markers_build = [];
 		{
 			private _fobpos = _x;
 			private _facility_buildings = [];
@@ -69,41 +71,36 @@ while {true} do {
 			_facility_buildings append (_fobpos nearObjects [medic_heal_typename, GRLIB_fob_range]);
 			_facility_buildings append (_fobpos nearObjects [storage_medium_typename, GRLIB_fob_range]);
 			_facility_buildings append (_fobpos nearObjects [storage_large_typename, GRLIB_fob_range]);
+			{
+				private _bulding = _x;
+				private _building_class = typeOf _bulding;
+				private _color = "ColorGrey";
+				private _type = "";
+				private _text = [_building_class] call F_getLRXName;
 
-			if (count _facility_buildings > 0) then {
-				{ deleteMarker _x } foreach _markers_build;
-				_markers_build = [];
-				{
-					private _bulding = _x;
-					private _building_class = typeOf _bulding;
-					private _color = "ColorGrey";
-					private _type = "";
-					private _text = [_building_class] call F_getLRXName;
-
-					if (_building_class == medic_heal_typename) then {
-						_type = "loc_Hospital";
-						_color = "ColorGreen";
-					};
-					if (_building_class == Warehouse_typename) then {
-						_type = "loc_container";
-						_color = "ColorBlue";
-					};
-					if (_building_class in [storage_medium_typename, storage_large_typename]) then {
-						_type = "loc_container";
-						_color = "ColorBrown";
-					};
-					if (_type != "") then {
-						private _marker = createMarkerLocal [format ["defense_%1", (_bulding call BIS_fnc_netId)], markers_reset];
-						_marker setMarkerShapeLocal "ICON";
-						_marker setMarkerTypeLocal _type;
-						_marker setMarkerColorLocal _color;
-						_marker setMarkerTextLocal _text;
-						//_marker setMarkerDrawPriority 1;
-						_marker setMarkerPos (getPosATL _bulding);
-						_markers_build pushback _marker;
-					};
-				} forEach _facility_buildings;
-			};
+				if (_building_class == medic_heal_typename) then {
+					_type = "loc_Hospital";
+					_color = "ColorGreen";
+				};
+				if (_building_class == Warehouse_typename) then {
+					_type = "loc_container";
+					_color = "ColorBlue";
+				};
+				if (_building_class in [storage_medium_typename, storage_large_typename]) then {
+					_type = "loc_container";
+					_color = "ColorBrown";
+				};
+				if (_type != "") then {
+					private _marker = createMarkerLocal [format ["defense_%1", (_bulding call BIS_fnc_netId)], markers_reset];
+					_marker setMarkerShapeLocal "ICON";
+					_marker setMarkerTypeLocal _type;
+					_marker setMarkerColorLocal _color;
+					_marker setMarkerTextLocal _text;
+					//_marker setMarkerDrawPriority 1;
+					_marker setMarkerPos (getPosATL _bulding);
+					_markers_build pushback _marker;
+				};
+			} forEach _facility_buildings;
 		} forEach GRLIB_all_fobs;
 	};
 
@@ -113,5 +110,6 @@ while {true} do {
 	};
 
 	GRLIB_redraw_marker_fob = false;
+	publicVariable "GRLIB_redraw_marker_fob";
 	sleep 3;
 };

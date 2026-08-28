@@ -80,7 +80,7 @@ if (_classname isKindOf "Land_PortableHelipadLight_01_F") then {
 
 // WareHouse
 if (_classname == Warehouse_typename) then {
-	[_vehicle] call warehouse_init;
+	[_vehicle, 0, player] remoteExec ["warehouse_remote_call", 2];
 	_allow_damage = false;
 	_public = true;
 };
@@ -113,7 +113,7 @@ if (_classname == medic_heal_typename && _classname isKindOf "Land_MedicalTent_0
 sleep 0.5;
 if (_public) then {
 	GRLIB_redraw_marker_fob = true;
-	publicVariable "GRLIB_redraw_marker_fob";
+	publicVariableServer "GRLIB_redraw_marker_fob";
 };
 
 if (_allow_damage) then { _vehicle allowDamage true };

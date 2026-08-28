@@ -96,7 +96,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in al
 	if (_public) then {
 		sleep 1;
 		GRLIB_redraw_marker_fob = true;
-		publicVariable "GRLIB_redraw_marker_fob";
+		publicVariableServer "GRLIB_redraw_marker_fob";
 	};
 };
 

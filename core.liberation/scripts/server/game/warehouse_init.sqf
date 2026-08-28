@@ -74,6 +74,7 @@ _man setPosATL _manPos;
 doStop _man;
 [_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
 _warehouse setVariable ["GRLIB_WarehouseOwner", _man];
+_warehouse setVariable ["GRLIB_WarehouseDesk", _desk];
 
 // build box
 _warehouse_dir = getdir _warehouse;
