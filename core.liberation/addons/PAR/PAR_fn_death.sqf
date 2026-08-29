@@ -12,7 +12,7 @@ if (_unit == player) then {
 	// Grave + Save Stuff
 	private _pos = getPosATL _unit;
 	private _dir = getDir _unit;
-	if (PAR_grave == 1 && isNull objectParent player &&	!([_unit, "LHD", GRLIB_capture_size] call F_check_near) && (_pos select 2) <= 2 && !(surfaceIsWater _pos)) then {
+	if (PAR_grave == 1 && isNull objectParent player &&	!GRLIB_player_near_lhd && (_pos select 2) <= 10 && !(surfaceIsWater _pos)) then {
 
 		// Clean body
 		removeAllWeapons _unit;

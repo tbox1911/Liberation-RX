@@ -210,7 +210,6 @@ if (isServer) then {
 				stats_blufor_soldiers_killed = stats_blufor_soldiers_killed + 1;
 			};
 		};
-
 	} else {
 		private _bombs = (attachedObjects _unit) select { typeOf _x in sticky_bombs_typename };
 		if (count _bombs > 0) exitWith {
