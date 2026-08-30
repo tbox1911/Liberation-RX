@@ -13,7 +13,7 @@ player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t> <im
 if ([] call is_admin) then { [true] call player_admin_actions };
 
 // Extended Options
-player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true];
+player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-999,false,true,"","GRLIB_player_is_menuok"];
 
 // Dog - Actions
 private _my_dog = player getVariable "my_dog";
