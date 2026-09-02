@@ -192,6 +192,7 @@ opfor_recyclable = [
 	["B_T_Boat_Armed_01_minigun_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["B_APC_Tracked_01_rcws_F",10,round (350 / GRLIB_recycling_percentage),10],
 	["B_APC_Wheeled_01_cannon_F",10,round (400 / GRLIB_recycling_percentage),10],
+	["B_APC_Wheeled_03_cannon_F",10,round (450 / GRLIB_recycling_percentage),10],
 	["B_APC_Tracked_01_AA_F",10,round (500 / GRLIB_recycling_percentage),10],
 	["B_MBT_01_cannon_F",15,round (1400 / GRLIB_recycling_percentage),15],
 	["B_MBT_01_TUSK_F",15,round (2500 / GRLIB_recycling_percentage),15],

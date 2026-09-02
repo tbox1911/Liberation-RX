@@ -86,6 +86,7 @@ opfor_vehicles = [
 	"B_T_APC_Wheeled_01_cannon_F",
 	"B_T_APC_Tracked_01_rcws_F",
 	"B_T_APC_Tracked_01_AA_F",
+	"B_APC_Wheeled_03_cannon_F",
 	"B_Heli_Light_01_dynamicLoadout_F"
 ];
 
@@ -97,6 +98,7 @@ opfor_vehicles_low_intensity = [
 	"B_T_MRAP_01_hmg_F",
 	"B_T_MRAP_01_gmg_F",
 	"B_T_APC_Wheeled_01_cannon_F",
+	"B_APC_Wheeled_03_cannon_F",
 	"B_Heli_Light_01_dynamicLoadout_F"
 ];
 
@@ -113,6 +115,7 @@ opfor_battlegroup_vehicles = [
 	"B_Heli_Transport_01_pylons_F",
 	"B_T_APC_Tracked_01_rcws_F",
 	"B_T_AFV_Wheeled_01_cannon_F",
+	"B_APC_Wheeled_03_cannon_F",
 	"B_T_MBT_01_cannon_F",
 	"B_T_MBT_01_TUSK_F",
 	"B_T_APC_Tracked_01_AA_F"
@@ -127,6 +130,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"B_Heli_Light_01_dynamicLoadout_F",
 	"B_T_APC_Tracked_01_rcws_F",
 	"B_T_AFV_Wheeled_01_cannon_F",
+	"B_APC_Wheeled_03_cannon_F",
 	"B_T_MBT_01_cannon_F",
 	"B_T_MBT_01_TUSK_F"
 ];
@@ -201,6 +205,7 @@ opfor_recyclable = [
 	["B_T_APC_Tracked_01_AA_F",5,round (250 / GRLIB_recycling_percentage),10],
 	// Troup Transporter:
 	["B_T_APC_Wheeled_01_cannon_F",5,round (350 / GRLIB_recycling_percentage),10],
+	["B_APC_Wheeled_03_cannon_F",10,round (450 / GRLIB_recycling_percentage),10],
 	["B_T_APC_Tracked_01_CRV_F",5,round (450 / GRLIB_recycling_percentage),10],
 	["B_T_APC_Tracked_01_rcws_F",5,round (550 / GRLIB_recycling_percentage),10],
 	["B_T_AFV_Wheeled_01_cannon_F",5,round (650 / GRLIB_recycling_percentage),10],
