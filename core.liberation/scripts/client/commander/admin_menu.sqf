@@ -5,6 +5,8 @@
 // create object
 // manage player ban/score/ammo
 
+if !([] call is_admin) exitWith {};
+
 createDialog "liberation_admin";
 waitUntil { dialog };
 
@@ -44,7 +46,9 @@ if (isNil "lrx_admin_watchdog") then {
 };
 
 private _msg = "";
+private _text = "";
 private _admin_msg = "";
+private _timer = 0;
 private _getBannedUID = {
 	params ["_ban_combo"];
 	lbClear _ban_combo;
@@ -267,17 +271,16 @@ while { alive player && dialog } do {
 			{ ctrlEnable [_x, false] } foreach _button_controls;
 			{ ctrlShow [_x, true] } foreach _output_controls;
 			output_save = [];
-			[player, {
-				[] call save_game_mp;
-				[missionNamespace, ["output_save", (profileNamespace getVariable GRLIB_save_key)]] remoteExec ["setVariable", owner _this];
-				["Copy the save game from the text field."] remoteExec ["hintSilent", owner _this];
-			}] remoteExec ["bis_fnc_call", 2];
-			waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};
-			ctrlSetText [ 536, str output_save ];
-			waitUntil {uiSleep 0.3; (!(dialog) || !(alive player)) };
+			_timer = round (time + 10);
+			["export", player] remoteExec ["admin_menu_remote_call", 2];
+			waitUntil {uiSleep 0.3; ((count output_save > 0) || time > _timer || !(dialog) || !(alive player))};
+			if (count output_save > 0) then {
+				ctrlSetText [ 536, str output_save ];
+				waitUntil {uiSleep 0.3; (!(dialog) || !(alive player)) };
+				_admin_msg = format ["Admin (%1) export the save game (%2)", name player, GRLIB_save_key];
+			};
+			{ ctrlEnable [_x, true] } foreach _button_controls;			
 			{ ctrlShow [_x, false] } foreach _output_controls;
-			{ ctrlEnable [_x, true] } foreach _button_controls;
-			_admin_msg = format ["Admin (%1) export the save game (%2)", name player, GRLIB_save_key];
 		};
 	};
 
@@ -293,12 +296,8 @@ while { alive player && dialog } do {
 			closeDialog 0;
 			titleText [localize "STR_RESTARTING_NOW", "BLACK FADED", 100];
 			disableUserInput true;
-			[(parseSimpleArray input_save), {
-				GRLIB_server_stopped = true;
-				profileNamespace setVariable [GRLIB_save_key, _this];
-				saveProfileNamespace;
-				["END"] remoteExec ["endMission", 0];
-			}] remoteExec ["bis_fnc_call", 2];
+			["import", (parseSimpleArray input_save)] remoteExec ["admin_menu_remote_call", 2];
+			sleep 1;
 			disableUserInput false;
 		} else { _msg = localize "STR_ERROR_INVALID_DATA";};
 		{ ctrlShow [_x, false] } foreach _input_controls;
@@ -309,16 +308,7 @@ while { alive player && dialog } do {
 		do_kick = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, {
-			private _kicked = _this call BIS_fnc_getUnitByUID;
-			if (isPlayer _kicked) then {
-				private _name = name _kicked;
-				["LOSER"] remoteExec ["endMission", owner _kicked];
-				serverCommand format ["#kick %1", _name];
-				private _msg = format [localize "STR_ADMIN_KICK_PLAYER", _name];
-				[gamelogic, _msg] remoteExec ["globalChat", -2];
-			};
-		}] remoteExec ["bis_fnc_call", 2];
+		["kick", _uid] remoteExec ["admin_menu_remote_call", 2];
 		_admin_msg = format ["Admin (%1) kick player %2", name player, _name];
 	};
 
@@ -326,15 +316,7 @@ while { alive player && dialog } do {
 		do_ban = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, {
-			private _player = _this call BIS_fnc_getUnitByUID;
-			if (isPlayer _player) then {
-				BTC_logic setVariable [_this, 99, true];
-				[_player] remoteExec ["LRX_tk_actions", owner _player];
-				private _msg = format [localize "STR_ADMIN_BAN_PLAYER", name _player];
-				[gamelogic, _msg] remoteExec ["globalChat", -2];
-			};
-		}] remoteExec ["bis_fnc_call", 2];
+		["ban", _uid] remoteExec ["admin_menu_remote_call", 2];
 		_admin_msg = format [localize "STR_ADMIN_BAN_PLAYER_BY", name player, _name];
 	};
 
@@ -360,11 +342,7 @@ while { alive player && dialog } do {
 
 	if (do_capture == 1) then {
 		do_capture = 0;
-		[_sector, {
-			blufor_sectors pushBackUnique _this;
-			opfor_sectors = (sectors_allSectors - blufor_sectors);
-			publicVariable "blufor_sectors";
-		}] remoteExec ["bis_fnc_call", 2];
+		["capture", _sector] remoteExec ["admin_menu_remote_call", 2];
 		_msg = format [localize "STR_SECTOR_FORCEFULLY_CAPTURED", markerText _sector];
 		_admin_msg = format [localize "STR_ADMIN_FORCE_CAPTURE_SECTOR", name player, markerText _sector];
 		closeDialog 0;
@@ -372,10 +350,7 @@ while { alive player && dialog } do {
 
 	if (do_save == 1) then {
 		do_save = 0;
-		[{
-			{ [_x, getPlayerUID _x] call save_context } foreach (AllPlayers - (entities "HeadlessClient_F"));
-			[] call save_game_mp;
-		}] remoteExec ["bis_fnc_call", 2];
+		["save"] remoteExec ["admin_menu_remote_call", 2];
 		_msg = format [localize "STR_GAME_FORCEFULLY_SAVED", GRLIB_save_key];
 		_admin_msg = format [localize "STR_ADMIN_FORCE_SAVE_GAME", name player, GRLIB_save_key];
 		closeDialog 0;
@@ -413,16 +388,12 @@ while { alive player && dialog } do {
 
 	if (do_kill == 1) then {
 		do_kill = 0;
-		_pos = getPos player;
+		_pos = getPosATL player;
 		if (_sector != "") then { _pos = markerPos _sector };
-		_pos set [2, 0];
-		[_pos, {
-
-			{if (_x distance2D _this <= GRLIB_sector_size) then {_x setdamage 1}} foreach (units GRLIB_side_enemy);
-		}] remoteExec ["bis_fnc_call", 2];
-		if (_sector != "") then { _pos = _sector };
-		_msg = format [localize "STR_ENEMY_KILLED_BY_ADMIN", _pos];
-		_admin_msg = format [localize "STR_ADMIN_KILL_ENEMY", name player, _pos];
+		["kill", _pos] remoteExec ["admin_menu_remote_call", 2];
+		_text = [_pos] call F_getLocationName;
+		_msg = format [localize "STR_ENEMY_KILLED_BY_ADMIN", _text];
+		_admin_msg = format [localize "STR_ADMIN_KILL_ENEMY", name player, _text];
 		closeDialog 0;
 	};
 
