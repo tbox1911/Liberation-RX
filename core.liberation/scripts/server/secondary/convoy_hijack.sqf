@@ -1,4 +1,4 @@
-params [ ["_mission_cost", 0], "_caller" ];
+params [["_mission_cost", 0], "_caller"];
 if ( count (opfor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 // Get Path & Check
@@ -70,14 +70,14 @@ private _cargo_indx = 3;
 
 //-----------------------------------------
 // Markers
-private _convoy_marker = createMarkerLocal [ format [ "convoymarker%1", round time], getpos _transport_vehicle ];
+private _convoy_marker = createMarkerLocal [format ["convoymarker%1", round time], getpos _transport_vehicle];
 _convoy_marker setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY");
 _convoy_marker setMarkerType "o_armor";
 _convoy_marker setMarkerColor GRLIB_color_enemy_bright;
 
 private _convoy_marker_list = [_convoy_marker];
 for "_i" from 0 to ((count _convoy_destinations) -1) do {
-	_convoy_marker_wp = createMarkerLocal [ format [ "convoymarkerwp%1", _i], _convoy_destinations select _i];
+	_convoy_marker_wp = createMarkerLocal [format ["convoymarkerwp%1", _i], _convoy_destinations select _i];
 	_convoy_marker_wp setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY_WP");
 	_convoy_marker_wp setMarkerType "o_armor";
 	_convoy_marker_wp setMarkerColor GRLIB_color_enemy_bright;
@@ -85,7 +85,7 @@ for "_i" from 0 to ((count _convoy_destinations) -1) do {
 	_convoy_marker_list pushback _convoy_marker_wp;
 };
 
-[ 4, _spawnpos ] remoteExec ["remote_call_intel", 0];
+[4, _spawnpos] remoteExec ["remote_call_intel", 0];
 
 //-----------------------------------------
 // Manage convoy
@@ -110,13 +110,15 @@ diag_log format ["--- LRX: %1 end static mission: Convoy Hijack at %2", _caller,
 { deleteMarker _x } foreach _convoy_marker_list;
 
 if (time > _mission_timeout || !alive _transport_vehicle) then {
+	// failed
 	combat_readiness = combat_readiness + 5;
 	if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
-	[51] remoteExec ["remote_call_intel", 0];
+	[5, false] remoteExec ["remote_call_intel", 0];
 } else {
+	// success
 	combat_readiness = 15 max (combat_readiness - 10);
 	stats_secondary_objectives = stats_secondary_objectives + 1;
-	[5] remoteExec ["remote_call_intel", 0];
+	[5, true] remoteExec ["remote_call_intel", 0];
 };
 
 private _vehicles = [_scout_vehicle, _transport_vehicle, _troop_vehicle];
