@@ -1,6 +1,7 @@
 diag_log "--- Server Init start ---";
 
 GRLIB_players_known_uid = [];
+GRLIB_admin_uid = [];
 
 // Server EventHandler
 addMissionEventHandler ["PlayerConnected", {
@@ -50,12 +51,16 @@ addMissionEventHandler ["MPEnded", {
 addMissionEventHandler ["OnUserAdminStateChanged", {
 	params ["_networkId", "_loggedIn", "_votedIn"];
 	private _player = (_networkId getUserInfo 10);
+	private _uid = getPlayerUID _player;
+	if (_uid == "")  exitWith {};
 	if (_loggedIn) then {
 		[true] remoteExec ["player_admin_actions", owner _player];
 		_player assignCurator (allCurators select 0);
+		GRLIB_admin_uid pushBackUnique _uid;
 	} else {
 		[false] remoteExec ["player_admin_actions", owner _player];
 		{unassignCurator _x} forEach allCurators;
+		GRLIB_admin_uid = GRLIB_admin_uid - [_uid];
 	};
 }];
 

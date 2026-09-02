@@ -146,18 +146,7 @@ GRLIB_cancelParams = {
 GRLIB_saveParams = {
     if (!dialog || !GRLIB_DialogOpen || !hasInterface) exitWith {};
     [] call GRLIB_CloseDialog;
-    [
-        [GRLIB_ModParams],
-        {
-            params ["_params"];
-            profileNamespace setVariable [GRLIB_paramsV2_save_key, _params];
-            saveProfileNamespace;
-            GRLIB_LRX_params = _params;
-            publicVariable "GRLIB_LRX_params";
-            GRLIB_ParamsInitialized = true;
-            publicVariable "GRLIB_ParamsInitialized";
-        }
-    ] remoteExec ["bis_fnc_call", 2];
+    [GRLIB_ModParams] remoteExec ["save_settings_remote_call", 2];
 
     waitUntil { sleep 0.5; GRLIB_ParamsInitialized};
 

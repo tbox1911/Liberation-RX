@@ -93,10 +93,12 @@ warehouse_init = compileFinal preprocessFileLineNumbers "scripts\server\game\war
 warehouse_update = compileFinal preprocessFileLineNumbers "scripts\server\game\warehouse_update.sqf";
 
 // Remote Call - Server Side
-mobile_respawn_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\mobile_respawn_remote_call.sqf";
+activate_sector_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\activate_sector_remote_call.sqf";
 addel_group_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_group_remote_call.sqf";
+admin_menu_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\admin_menu_remote_call.sqf";
 ammo_add_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_add_remote_call.sqf";
 ammo_del_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_del_remote_call.sqf";
+bomber_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\bomber_remote_call.sqf";
 build_cutter_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\build_cutter_remote_call.sqf";
 build_fob_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\build_fob_remote_call.sqf";
 call_artillery_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\call_artillery_remote_call.sqf";
@@ -105,12 +107,13 @@ destroy_static_remote_call = compileFinal preprocessFileLineNumbers "scripts\ser
 eject_unit_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\eject_unit_remote_call.sqf";
 ied_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ied_remote_call.sqf";
 intel_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\intel_remote_call.sqf";
+load_cargo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_cargo_remote_call.sqf";
 load_player_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_player_context_remote_call.sqf";
 load_squad_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_squad_context_remote_call.sqf";
 load_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_truck_remote_call.sqf";
-load_cargo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_cargo_remote_call.sqf";
+mobile_respawn_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\mobile_respawn_remote_call.sqf";
 prisoner_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\prisoner_remote_call.sqf";
-bomber_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\bomber_remote_call.sqf";
+save_settings_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\save_settings_remote_call.sqf";
 sector_defenses_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sector_defenses_remote_call.sqf";
 sector_liberated_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sector_liberated_remote_call.sqf";
 send_aircraft_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\send_aircraft_remote_call.sqf";
@@ -123,9 +126,8 @@ unload_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\serve
 upgrade_fob_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\upgrade_fob_remote_call.sqf";
 vehicle_lock_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_lock_remote_call.sqf";
 vehicle_unflip_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_unflip_remote_call.sqf";
-warehouse_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\warehouse_remote_call.sqf";
-activate_sector_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\activate_sector_remote_call.sqf";
 vote_sector_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vote_sector_remote_call.sqf";
+warehouse_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\warehouse_remote_call.sqf";
 
 // A3W Side Mission - Server Side
 a3w_follow_player = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_follow_player.sqf";
