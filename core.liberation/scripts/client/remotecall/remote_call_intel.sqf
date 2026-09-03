@@ -1,11 +1,8 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params ["_notif_type", "_notif_data"];
 
-private _obj_position = getPosATL player;
-
 if (_notif_type == 0) exitWith {
-	private _friendly = _notif_data select 0;
-	if (_friendly) then {
+	if (_notif_data) then {
 		["lib_intel_hostage"] call BIS_fnc_showNotification;
 	} else {
 		["lib_intel_prisoner"] call BIS_fnc_showNotification;
@@ -43,15 +40,16 @@ if (_notif_type == 3) exitWith {
 };
 
 if (_notif_type == 4) exitWith {
-	private _spawn_position = _notif_data select 0;
-	waitUntil {_spawn_position distance2D zeropos > 300 };
-	private _location_name = [_spawn_position] call F_getLocationName;
-	["lib_intel_convoy", [_location_name]] call BIS_fnc_showNotification;
+	private _spawn_position = getPosATL player;
+	if (!isNil "_notif_data") then { _spawn_position = _notif_data };
+	if (_spawn_position distance2D zeropos > 300) then {
+		private _location_name = [_spawn_position] call F_getLocationName;
+		["lib_intel_convoy", [_location_name]] call BIS_fnc_showNotification;
+	};
 };
 
 if (_notif_type == 5) exitWith {
-	private _success = _notif_data select 0;
-	if (_success) then {
+	if (_notif_data) then {
 		["lib_secondary_convoy_success"] call BIS_fnc_showNotification;
 	} else {
 		["lib_secondary_convoy_failed"] call BIS_fnc_showNotification;
