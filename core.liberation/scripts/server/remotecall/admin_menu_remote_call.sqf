@@ -1,19 +1,22 @@
 private _access = false;
 if (isServer && hasInterface) then { _access = true };
 
-private _callerUID = ""; 
+private _uid = "unknow";
+private _netid = remoteExecutedOwner;
 if (!_access) then {
     if (!isServer && hasInterface && !isRemoteExecuted) exitWith {};
-    private _callerRE = remoteExecutedOwner;
-    if (_callerRE == 0) exitWith {};
-    private _callerUnit = _callerRE call BIS_fnc_getUnitByOwner;
-    _callerUID = getPlayerUID _callerUnit;
-    if (_callerUID == GRLIB_admin_uid) then { _access = true };
+    if (_netid == 0) exitWith {};
+    private _caller = (allPlayers select { owner _x == _netid }) select 0;
+    if (isNil "_caller") exitWith {};
+    _uid = getPlayerUID _caller;
+    if (admin _netid == 2) then { _access = true };
 };
 
 if (!_access) exitWith {
-    diag_log format ["--- LRX SECURITY: unauthorized remoteExec attempt by UID %1", _callerUID];
+    diag_log format ["--- LRX SECURITY: Unauthorized remoteExec attempt by UID %1 / NETID %2", _uid, _netid];
 };
+
+diag_log format ["--- LRX SECURITY: Admin call from UID %1 / NETID %2", _uid, _netid];
 
 params ["_cmd", "_data"];
 
