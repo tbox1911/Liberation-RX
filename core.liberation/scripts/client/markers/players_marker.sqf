@@ -1,11 +1,9 @@
 private _players_markers = [];
 private _markertype = "EmptyIcon";
 
-while {true} do {
-	disableMapIndicators [false,true,false,false];
-	waitUntil { sleep 1; show_teammates };
-	disableMapIndicators [true,true,false,false];
+waitUntil { sleep 1; !isNil "show_teammates" };
 
+while {true} do {
 	while { show_teammates } do {
 		waitUntil {sleep 0.1; (visibleMap || dialog)};
 
@@ -84,6 +82,11 @@ while {true} do {
 
 		{ deleteMarkerLocal _x } foreach (_players_markers - _players_markers_bak);
 		_players_markers = _players_markers_bak;
+		sleep 1;
+	};
+
+	if (count _players_markers > 0) then {
+		{ deleteMarkerLocal _x } foreach _players_markers;
 	};
 	sleep 1;
 };
