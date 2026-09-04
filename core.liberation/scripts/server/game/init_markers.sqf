@@ -52,14 +52,19 @@ if (GRLIB_Facilities) then {
 	} forEach GRLIB_Marker_FUEL;
 
 	// SELL
-	private ["_man", "_manPos"];
+	private ["_man", "_manPos", "_obj_list"];
 	{
 		_manPos = _x;
-		_man = createAgent [SELL_Man, _manPos, [], 5, "NONE"];
+		_man = createAgent [SELL_Man, _manPos, [], 5, "CAN_COLLIDE"];
+		_man allowDamage false;
 		_man setCaptive true;
 		_man setVariable ["GRLIB_SELL_group", true, true];
-		_man allowDamage false;
-		_man setPosATL (_manPos vectorAdd [0, 0, 0.1]);
+		_obj_list = nearestTerrainObjects [_manPos, ["House"], 20, false, true];
+		if (count _obj_list > 0) then {
+			_azth = (getPosATL (_obj_list select 0)) select 2;
+			_manPos set [2, _azth];
+		};
+		_man setPosATL (_manPos vectorAdd [0, 1, 0.1]);
 		doStop _man;
 		[_man, "LHD_krajPaluby"] spawn F_startAnimMP;
 		_marker = createMarkerLocal [format ["marked_sell%1", _forEachIndex], getPosATL _man];
@@ -99,7 +104,7 @@ if (GRLIB_Facilities) then {
 			if (_str find "spe_shop_02" > 0) then { _desk_dir = (180 +_desk_dir); _offset =  [-1.7, -0.5, 0.7] };		// SPE
 
 			// Create Desk
-			_desk_pos = (getposASL _shop) vectorAdd ([_offset, -_desk_dir] call BIS_fnc_rotateVector2D);
+			_desk_pos = (getPosASL _shop) vectorAdd ([_offset, -_desk_dir] call BIS_fnc_rotateVector2D);
 			_desk = createVehicle ["Land_CashDesk_F", ([] call F_getFreePos), [], 0, "CAN_COLLIDE"];
 			_desk allowDamage false;
 			_desk enableSimulationGlobal false;
@@ -111,10 +116,10 @@ if (GRLIB_Facilities) then {
 			_desk_dir = (180 + _desk_dir);
 			_manPos = (ASLToATL _desk_pos) vectorAdd ([[0, -0.7, 0.1], -_desk_dir] call BIS_fnc_rotateVector2D);
 			_man = createAgent [SHOP_Man, zeropos, [], 5, "CAN_COLLIDE"];
+			_man allowDamage false;
 			_man setCaptive true;
 			_man setVariable ["GRLIB_SHOP_group", true, true];
 			_man setVariable ["SHOP_ratio", ([] call _getRatio), true];
-			_man allowDamage false;
 			_man disableCollisionWith _desk;
 			_man setDir _desk_dir;
 			_man setPosATL _manPos;
