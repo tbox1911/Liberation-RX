@@ -25,6 +25,7 @@ switch ( _list ) do {
 	case "SRV" : { _classlist = GRLIB_Marker_SELL };
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL };
 	case "SHOP" : { _classlist = GRLIB_Marker_SHOP };
+	case "ACTIVE" : { _classlist = active_sectors apply {markerPos _x} };
 	case "SPAWN" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x != mobile_respawn} };
 	case "SPAWNT" : { _classlist = ([] call F_getMobileRespawns) select {typeOf _x == mobile_respawn} };
 	case "MEDIC" : { _classlist = ai_healing_sources };
@@ -53,8 +54,8 @@ if (_list == "LHD") exitWith { (_vehpos distance2D lhd <= _dist) };
 // Supply Always ON
 private _ignore_disabled = (_list in ["MEDIC","ARSENAL","REFUEL","REAMMO","REAMMO_AI","REPAIR","REPAIR_BOX"]);
 
-// Search
 private _near = 0;
+// Search Objects classname
 if (typeName (_classlist select 0) == "STRING") then {
 	private _obj_list = [];
 	// From Objects classname
@@ -80,8 +81,9 @@ if (typeName (_classlist select 0) == "STRING") then {
 			} count _obj_list);
 		};
 	};
-} else {
-	// From Position
+};
+if (typeName (_classlist select 0) == "ARRAY") then {
+	// From Objects position
 	_near = ({ (_vehpos distance2D _x) <= _dist } count _classlist);
 };
 

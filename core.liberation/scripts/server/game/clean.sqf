@@ -254,10 +254,12 @@ while {GRLIB_run_cleanup} do {
 	// VEHICLES
 	if (!(_vehiclesLimit == -1)) then {
 		private _nbVehicles = vehicles select {
+			([_x, ["LandVehicle","Air","Ship"]] call F_itemIsInClass) &&
 			alive _x &&	[_x] call is_abandoned &&
 			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 			!(_x getVariable ['R3F_LOG_disabled', false]) &&
 			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+			!([_x, "ACTIVE", GRLIB_sector_size] call F_check_near) &&
 			!([_x, _no_cleanup_classnames] call F_itemIsInClass)
 		};
 		private _nbVehiclesWater = _nbVehicles select { (getPosASL _x select 2) <= -15 };
