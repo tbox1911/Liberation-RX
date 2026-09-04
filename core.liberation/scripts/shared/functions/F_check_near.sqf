@@ -82,7 +82,7 @@ if (typeName (_classlist select 0) == "STRING") then {
 		};
 	};
 };
-if (typeName (_classlist select 0) == "ARRAY") then {
+if (typeName (_classlist select 0) in ["ARRAY", "OBJECT"]) then {
 	// From Objects position
 	_near = ({ (_vehpos distance2D _x) <= _dist } count _classlist);
 };
