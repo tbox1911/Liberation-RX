@@ -9,6 +9,8 @@ if (surfaceIsWater (getPosATL _unit)) exitWith {};
 // Check locality
 if (!local _unit) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_remote_call", 2] };
 
+waitUntil { sleep 1; isNil { _unit getVariable "GRLIB_in_building"} };
+
 // Init priso
 _unit switchMove "";
 removeAllWeapons _unit;
