@@ -18,10 +18,7 @@ _setupObjects = {
 	};
 	_chopper_only = []; 
 	{if !(_x isKindOf "Plane") then {_chopper_only pushBack _x}; true} count opfor_air;
-	_vehicle = createVehicle [(selectRandom _chopper_only), _missionPos, [], 0, "NONE"];
-	_vehicle allowDamage false;
-	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	_vehicle setPos (getPos _vehicle);
+	_vehicle = [_missionPos, selectRandom _chopper_only, 5, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
 	[_vehicle, "lock", "server"] call F_vehicleLock;
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
@@ -29,9 +26,6 @@ _setupObjects = {
 	_vehicle setHitPointDamage ["HitEngine", 1, false];
 	_smoke = GRLIB_sar_fire createVehicle _missionPos;
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
-	sleep 2;
-	_vehicle allowDamage true;
-
 	[_missionPos, 30] call createlandmines;
 	_aiGroup = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;
 	_missionPicture = getText (configOf _vehicle >> "picture");
