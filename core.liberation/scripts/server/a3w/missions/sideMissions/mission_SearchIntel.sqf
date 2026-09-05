@@ -50,16 +50,15 @@ _setupObjects = {
 	private _build_list = [];
 
 	// Lamps
-	private _lamp = createVehicle ["Land_LampStreet_02_triple_F", zeropos, [], 100, "None"];
+	private _lamp = createVehicle ["Land_LampStreet_02_triple_F", zeropos, [], 1, "None"];
 	_lamp setPos ([_town_center, 3] call F_getRandomPos);
 	_vrac_list pushBack _lamp;
 	private _angle = 0;
 	for "_i" from 1 to 7 do {
 		_nextpos = (_town_center getPos [45, _angle]);
-		_lamp = createVehicle ["Land_LampStreet_02_triple_F", zeropos, [], 100, "None"];
+		_lamp = createVehicle ["Land_LampStreet_02_triple_F", _nextpos, [], 1, "None"];
 		_dir = floor random 360;
 		_lamp setVectorDirAndUp [[sin _dir, cos _dir, 0], [0, 0, 1]];
-		_lamp setPosATL _nextpos;
 		_angle = _angle + 45;
 		_vrac_list pushBack _lamp;
 	};
@@ -72,9 +71,8 @@ _setupObjects = {
 		_nextpos = [_nextpos, 15, 0, 50] call F_findSafePlace;
 		if (count _nextpos > 0) then {
 			_dir = floor random 360;
-			private _build = createVehicle [selectRandom _buildings, zeropos, [], 100, "None"];
+			private _build = createVehicle [selectRandom _buildings, _nextpos, [], 1, "None"];
 			_build setVectorDirAndUp [[sin _dir, cos _dir, 0], [0, 0, 1]];
-			_build setPosATL _nextpos;
 			_build_list pushBack _build;
 		};
 		_angle = _angle + 90;

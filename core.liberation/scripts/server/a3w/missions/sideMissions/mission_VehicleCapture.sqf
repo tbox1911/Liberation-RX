@@ -11,18 +11,23 @@ _setupVars = {
 };
 
 _setupObjects = {
-	_missionPos = [(markerpos _missionLocation), 5, 0] call F_findRandomPlace;
+	_missionPos = [(markerpos _missionLocation), 5, 0, 80] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
-	_vehicle = [_missionPos, selectRandom opfor_vehicles, 5, GRLIB_side_enemy, "", false, true] call F_libSpawnVehicle;
+	_vehicle = createVehicle [(selectRandom opfor_vehicles), _missionPos, [], 1, "NONE"];
+	_vehicle allowDamage false;
+	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	private _dir = getDir _vehicle;
+	_vehicle setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
 	[_vehicle, "lock", "server"] call F_vehicleLock;
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
 	_vehicle setHitPointDamage ["HitEngine", 1, false];
 	_smoke = GRLIB_sar_fire createVehicle (getPos _vehicle);
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
+	_vehicle spawn { sleep 10; _this allowDamage true };
 	[_missionPos, 30] call createlandmines;
 	_aiGroup = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;
 	_missionPicture = getText (configOf _vehicle >> "picture");

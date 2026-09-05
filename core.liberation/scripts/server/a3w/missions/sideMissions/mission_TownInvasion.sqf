@@ -19,11 +19,11 @@ _setupObjects = {
 
 	// create some atmosphere around the crates 8)
 	_tent1 = createVehicle ["Land_cargo_addon02_V2_F", _missionPos, [], 3, "None"];
-	_tent1 setDir random 360;
+	_tent1 setDir (floor random 360);
 	_chair1 = createVehicle ["Land_CampingChair_V1_F", _missionPos, [], 2, "None"];
-	_chair1 setDir random 90;
+	_chair1 setDir (floor random 90);
 	_chair2 = createVehicle ["Land_CampingChair_V2_F", _missionPos, [], 2, "None"];
-	_chair2 setDir random 180;
+	_chair2 setDir (floor random 180);
 	_fire1	= createVehicle ["Campfire_burning_F", _missionPos, [], 2, "None"];
 
 	_vehicles = [_tent1, _chair1, _chair2, _fire1];

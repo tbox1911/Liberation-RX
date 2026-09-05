@@ -45,19 +45,19 @@ _setupObjects = {
 
 	//----- build Check point ---------------------------------
 	private _bunker_typename = selectRandom ["Land_BagBunker_Small_F"];
-	_bunker = createVehicle [_bunker_typename, _missionPos, [], 0, "None"];
+	_bunker = createVehicle [_bunker_typename, _missionPos, [], 1, "None"];
 	_bunker setVectorDirAndUp [[-cos (_road_dir - 180), sin (_road_dir - 180), 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
 
 	private _bunker_dir = (90 + getdir _bunker);
 	private _def1_pos = (getPosATL _bunker) vectorAdd ([[0, 12, 0], -_bunker_dir] call BIS_fnc_rotateVector2D);
 	_def1 = createVehicle ["Land_BagFence_Round_F", _def1_pos, [], 1, "None"];
 	_def1 setVectorDirAndUp [[-cos (_bunker_dir - 180), sin (_bunker_dir - 180), 0] vectorCrossProduct surfaceNormal _def1_pos, surfaceNormal _def1_pos];
-	_def1 setPosATL _def1_pos;
+	//_def1 setPosATL _def1_pos;
 
 	private _def2_pos = (getPosATL _bunker) vectorAdd ([[0, -12, 0], -_bunker_dir] call BIS_fnc_rotateVector2D);
 	_def2 = createVehicle ["Land_BagFence_Round_F", _def2_pos, [], 1, "None"];
 	_def2 setVectorDirAndUp [[-cos _bunker_dir, sin _bunker_dir, 0] vectorCrossProduct surfaceNormal _def2_pos, surfaceNormal _def2_pos];
-	_def2 setPosATL _def2_pos;
+	//_def2 setPosATL _def2_pos;
 
 	_vehicles = [_bunker, _def1, _def2];
 

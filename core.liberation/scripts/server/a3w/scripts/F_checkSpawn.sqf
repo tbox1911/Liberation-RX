@@ -1,4 +1,7 @@
-// Filter markers list too close from blufor sectors and/or FOB
+// Filter side mission markers list
+// too close from opfor sectors/FOB
+// too far from blufor sectors
+// not in use
 params ["_markers"];
 
 if (count _markers == 0) exitWith {[]};
