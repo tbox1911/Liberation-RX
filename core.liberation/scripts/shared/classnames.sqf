@@ -210,9 +210,9 @@ if (GRLIB_TFR_enabled) then {
 // *** SUPPORT ***
 support_vehicles = [];
 if (GRLIB_enable_arsenal == 1) then {
+	support_vehicles pushBack [Arsenal_typename,0,35,0,0];
 	if (GRLIB_filter_arsenal == 4) then {
-		support_vehicles = [
-			[Arsenal_typename,0,35,0,0],
+		support_vehicles append [
 			[Box_Weapon_typename,0,180,0,0],
 			[Box_Ammo_typename,0,0,0,0],
 			[Box_Grenades_typename,0,100,0,0],
@@ -221,10 +221,6 @@ if (GRLIB_enable_arsenal == 1) then {
 			[Box_Support_typename,0,270,0,GRLIB_perm_inf],
 			[Box_Special_typename,0,365,0,GRLIB_perm_log],
 			[Box_Launcher_typename,0,370,0,GRLIB_perm_tank]
-		];
-	} else {
-		support_vehicles = [
-			[Arsenal_typename,0,35,0,0]
 		];
 	};
 };
