@@ -1,6 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_fob_pos", "_owner"];
 
+if (!isNil "GRLIB_fob_inuse") exitWith {};
+GRLIB_fob_inuse = true;
+
 [_fob_pos, "Land_Carrier_01_blast_deflector_up_sound"] spawn sound_range_remote_call;
 
 private _sector = format ["fobmarker%1", mapGridPosition _fob_pos];
@@ -30,3 +33,6 @@ sleep 1;
 
 GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 publicVariable "GRLIB_all_fobs";
+
+sleep 10;
+GRLIB_fob_inuse = nil;

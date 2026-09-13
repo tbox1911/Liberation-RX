@@ -9,7 +9,7 @@ if (!isMultiplayer) exitWith {
 	endMission "LOSER";
 };
 
-if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
+if (isServer && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
 
 disableUserInput true;
 titleText ["","BLACK FADED", 100];
@@ -98,9 +98,11 @@ if (abort_loading) exitWith {
 if (!isDedicated && !hasInterface && isMultiplayer) then {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_server_params_loaded" };
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
-	[] call compileFinal preprocessFileLineNumbers "scripts\server\offloading\fetch_params.sqf";
-	[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
-	[] call compileFinal preprocessFileLineNumbers "scripts\server\offloading\hc_manager.sqf";
+	if (GRLIB_init_server) then {
+		[] call compileFinal preprocessFileLineNumbers "scripts\server\offloading\fetch_params.sqf";
+		[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
+		[] call compileFinal preprocessFileLineNumbers "scripts\server\offloading\hc_manager.sqf";
+	};
 };
 
 diag_log "--- Init stop ---";

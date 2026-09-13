@@ -1,5 +1,8 @@
 params ["_fob_pos"];
 
+if (!isNil "GRLIB_fob_inuse") exitWith {};
+GRLIB_fob_inuse = true;
+
 private _classnames_to_destroy = [
 	FOB_typename,
 	FOB_outpost,
@@ -43,8 +46,8 @@ if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 		} foreach allSimpleObjects [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename];
 	};
 
-	if (_class == mobile_respawn) exitWith {
-		[_building, "del"] remoteExec ["mobile_respawn_remote_call", 2];
+	if (_class == mobile_respawn) then {
+		[_building, "del"] call mobile_respawn_remote_call;
 	};
 
 	if (_class in [storage_medium_typename, storage_large_typename]) then {
@@ -86,3 +89,6 @@ stats_fobs_lost = stats_fobs_lost + 1;
 GRLIB_redraw_marker_fob = true;
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
+
+sleep 10;
+GRLIB_fob_inuse = nil;

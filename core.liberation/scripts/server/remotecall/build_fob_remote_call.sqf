@@ -1,6 +1,11 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_player", "_classname", "_veh_pos", "_veh_dir", "_veh_vup"];
 
+if (_veh_pos distance2D ([_veh_pos] call F_getNearestFob) <= GRLIB_fob_range) exitWith {};
+
+if (!isNil "GRLIB_fob_inuse") exitWith {};
+GRLIB_fob_inuse = true;
+
 private _vehicle = objNull;
 
 // Ground FOB
@@ -59,6 +64,7 @@ if (_classname in ["fob_water1"]) then {
 
 if (isNull _vehicle) exitWith {
 	diag_log format ["--- LRX Error: Cannot create FOB %1 at %2", _classname, _veh_pos];
+	GRLIB_fob_inuse = nil;
 };
 
 sleep 2;
@@ -81,3 +87,6 @@ stats_fobs_built = stats_fobs_built + 1;
 
 GRLIB_redraw_marker_fob = true;
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
+
+sleep 10;
+GRLIB_fob_inuse = nil;
