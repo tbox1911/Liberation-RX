@@ -35,7 +35,7 @@ if (count _ide_pos > 0 && floor random 100 < GRLIB_MineProbability) then {
 	_ied_obj enableSimulationGlobal false;
 	_ide_pos = getPosATL _ied_obj;
 
-	private _timeout = time + (60 * 60);
+	private _timeout = time + (90 * 60);
 	// Good box :)
 	if (floor random 2 == 0) exitWith {
 		waitUntil { sleep 1; time > _timeout };
