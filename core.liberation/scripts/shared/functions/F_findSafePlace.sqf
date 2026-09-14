@@ -34,7 +34,7 @@ private _isPosValid = {
 	if (_water_mode == 2) then { _wfree = surfaceIsWater _pos };
 	if (!_wfree) exitWith { false };
 
-	// _on_road == false => avoid roads ; true => roads allowed
+	// _on_road (true = roads allowed)
 	if (!_on_road && {isOnRoad _pos}) exitWith { false };
 
 	// cheap reject: solid terrain props in footprint

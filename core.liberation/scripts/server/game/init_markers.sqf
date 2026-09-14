@@ -27,7 +27,6 @@ if (GRLIB_Facilities) then {
 		if (count _spawn_pos > 0) then {
 			_vehicle = createVehicle [repair_offroad, _spawn_pos, [], 0, "CAN_COLLIDE"];
 			_vehicle allowDamage false;
-			//_vehicle setPos _spawn_pos;
 			[_vehicle] call F_clearCargo;
 			[_vehicle, "lock", "server"] call F_vehicleLock;
 			_vehicle enableSimulationGlobal true; // enable to keep facility
@@ -56,17 +55,10 @@ if (GRLIB_Facilities) then {
 	{
 		_man_pos = [_x, 5, -1, 30, false] call F_findSafePlace;
 		if (count _man_pos > 0) then {
-			//_man_pos = _x;
 			_man = createAgent [SELL_Man, _man_pos, [], 0, "CAN_COLLIDE"];
 			_man allowDamage false;
 			_man setCaptive true;
 			_man setVariable ["GRLIB_SELL_group", true, true];
-			// _obj_list = nearestTerrainObjects [_man_pos, ["House"], 20, false, true];
-			// if (count _obj_list > 0) then {
-			// 	_azth = (getPosATL (_obj_list select 0)) select 2;
-			// 	_man_pos set [2, _azth];
-			// };
-			// _man setPosATL (_man_pos vectorAdd [0, 1, 0.1]);
 			doStop _man;
 			[_man, "LHD_krajPaluby"] spawn F_startAnimMP;
 			_marker = createMarkerLocal [format ["marked_sell%1", _forEachIndex], getPosATL _man];
