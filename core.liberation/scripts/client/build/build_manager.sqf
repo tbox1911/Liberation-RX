@@ -306,16 +306,19 @@ while {true} do {
 			};
 
 			private _ignore_colisions = [] + GRLIB_ignore_colisions;
-			if (_buildtype in [99,98]) then {
-				_ignore_colisions append [FOB_box_typename, FOB_box_outpost];
+			if (_buildtype == 99) then {
+				_ignore_colisions append [FOB_box_typename, FOB_truck_typename];
+			};
+			if (_buildtype == 98) then {
+				_ignore_colisions append [FOB_box_outpost];
 			};
 
 			// Improved filter out objects that dont actually clip
 			_near_objects = _near_objects select {
 				!(_x isKindOf "Animal") &&
 				!([_x, _ignore_colisions] call F_itemIsInClass) &&
-				!(_x isEqualTo player) &&
-				!(_x isEqualTo _vehicle) &&
+				(_x != player) &&
+				(_x != _vehicle) &&
 				{(_truepos distance2D _x < ((0.5 * (sizeOf (typeof _x))) max 1))}
 			};
 
@@ -326,7 +329,7 @@ while {true} do {
 			//Remove redundant check, if its empty, it will set to empty array
 			GRLIB_conflicting_objects = _near_objects;
 
-			_noObjectsClip = (_near_objects isEqualTo []);
+			_noObjectsClip = (count _near_objects == 0);
 			_withinDistance = ((_truepos distance2D _pos_origin) < _maxdist || _buildtype == 97);
 			_boatValid = ((_classname in boats_names || build_water == 1) && _is_water);
 			_surfaceIsValid = (!_is_water || _boatValid);
@@ -502,11 +505,11 @@ while {true} do {
 			// Vehicles
 			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship_F") then {
 				// Color
-				if !(_color isEqualTo []) then {
+				if (count _color > 0) then {
 					[_vehicle, _color] call RPT_fnc_TextureVehicle;
 				};
 				// Composant
-				if !(_compo isEqualTo []) then {
+				if (count _compo > 0) then {
 					[_vehicle, _compo] call RPT_fnc_CompoVehicle;
 				};
 				// Remaining Ammo
@@ -518,7 +521,7 @@ while {true} do {
 			};
 
 			// A3 / R3F Inventory
-			if (!(_lst_a3 isEqualTo []) || !(_lst_r3f isEqualTo []) || !(_lst_lrx isEqualTo [])) then {
+			if ((count _lst_a3 > 0) || (count _lst_r3f > 0) || (count _lst_lrx > 0)) then {
 				[_vehicle, _lst_a3, _lst_r3f, _lst_lrx] remoteExec ["load_cargo_remote_call", 2];
 			};
 
