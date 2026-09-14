@@ -28,7 +28,7 @@ private _isPosValid = {
     if (_water_mode != 2 && {count (nearestTerrainObjects [_pos, ["House","Building","Wall","Fence","Rock","Rocks"], _size, false, true]) > 0}) exitWith { false };
 
 	_pos = +_pos;
-	_pos set [2, 0.5];
+	//_pos set [2, 0.5];
 	private _posASL = ATLtoASL _pos;
 	private _maxASL = ATLtoASL (_pos vectorAdd [0, 0, _maxalt]);
 
@@ -53,7 +53,7 @@ private _found = false;
 if (_water_mode != 2) then {
 	private _guess = _start_pos findEmptyPosition [_size, (_max_radius min 80)];
 	if (count _guess > 0 && {[_guess] call _isPosValid}) then {
-		_guess set [2, 0];
+		//_guess set [2, 0];
 		_spawn_pos = _guess;
 		_found = true;
 	};
@@ -73,8 +73,9 @@ while { !_found && {_attempt < _max_attempts} && {_radius < _max_radius} } do {
 };
 
 if (_found) exitWith {
-	_spawn_pos set [2, 0];
-    _spawn_pos
+	//_spawn_pos set [2, 0];
+    //_spawn_pos
+	(_spawn_pos vectorAdd [0, 0, 0.3])
 };
 
 diag_log format ["--- LRX Debug: Cant find suitable position at %1 - DGB: S%2:R%3:W%4", _start_pos, _size, _max_radius, _water_mode];
