@@ -23,7 +23,7 @@ if (GRLIB_Facilities) then {
 	// REPAIR
 	{
 		// Add repair pickup
-		_spawn_pos = [(markerPos _x), 5, -1, 50, false] call F_findSafePlace;
+		_spawn_pos = [(markerPos _x), 5, 0, 50, false] call F_findSafePlace;
 		if (count _spawn_pos > 0) then {
 			_vehicle = createVehicle [repair_offroad, _spawn_pos, [], 0, "CAN_COLLIDE"];
 			_vehicle allowDamage false;
@@ -53,7 +53,7 @@ if (GRLIB_Facilities) then {
 	// SELL
 	private ["_man", "_man_pos", "_obj_list"];
 	{
-		_man_pos = [_x, 5, -1, 30, false] call F_findSafePlace;
+		_man_pos = [_x, 2, 0, 30, false] call F_findSafePlace;
 		if (count _man_pos > 0) then {
 			_man = createAgent [SELL_Man, _man_pos, [], 0, "CAN_COLLIDE"];
 			_man allowDamage false;

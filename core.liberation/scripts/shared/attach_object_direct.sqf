@@ -36,16 +36,19 @@ _vehicle allowDamage false;
 
 private _vehicle_offset = (_offsets select (count _vehicle_load)) vectorAdd _box_offset;
 if (_create) then {
-	_spawn_pos = [(markerPos "ghost_spot"), 5, 0] call F_findSafePlace;
+	_spawn_pos = [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel;
 	_object = createVehicle [_object_class, _spawn_pos, [], 0, "NONE"];
+	_object allowDamage false;
 	if (GRLIB_ACE_enabled) then {
 		[_object] call F_aceInitVehicle;
 		[_object, _vehicle, true] call ace_cargo_fnc_loadItem;
 	};
 	[_object, _vehicle] call init_object_direct;
 	if (_object isKindOf "LandVehicle") then { sleep 1.5 };
+} else {
+	_object allowDamage false;
 };
-_object allowDamage false;
+
 [_object, _vehicle] remoteExec ["disableCollisionWith", 0];
 
 _object attachTo [_vehicle, _vehicle_offset];

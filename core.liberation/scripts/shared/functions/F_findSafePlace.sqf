@@ -8,9 +8,9 @@ if (count _start_pos == 0) exitWith {[]};
 
 private _maxalt = 120;
 private _angle_step = 15;
-private _radius_step = 2;
-private _tries_per_ring = 4;
-private _max_attempts = 60;
+private _radius_step = 1;
+private _tries_per_ring = 10;
+private _max_attempts = 100;
 private _attempt = 0;
 private _radius = (_size max 1);
 
@@ -30,7 +30,7 @@ private _snapToSurface = {
 private _isPosValid = {
 	params ["_pos"];
 	private _wfree = true;
-	if (_water_mode == 0) then { _wfree = !(surfaceIsWater _pos) };
+	if (_water_mode == 0) then { _wfree = !(surfaceIsWater _pos && ATLtoASL _pos select 2 < 1) };
 	if (_water_mode == 2) then { _wfree = surfaceIsWater _pos };
 	if (!_wfree) exitWith { false };
 
@@ -38,7 +38,7 @@ private _isPosValid = {
 	if (!_on_road && {isOnRoad _pos}) exitWith { false };
 
 	// cheap reject: solid terrain props in footprint
-	if (_water_mode != 2 && {count (nearestTerrainObjects [_pos, ["House","Building","Wall","Fence","Rock","Rocks"], _size, false, true]) > 0}) exitWith { false };
+	if (_water_mode != 2 && {count (nearestTerrainObjects [_pos, ["House","Building","Wall","Fence","Rock","Rocks"], (_size + 3), false, true]) > 0}) exitWith { false };
 
 	private _posASL = ATLtoASL _pos;
 	private _maxASL = ATLtoASL (_pos vectorAdd [0, 0, _maxalt]);
