@@ -8,9 +8,8 @@ if (count _start_pos == 0) exitWith {[]};
 
 private _maxalt = 120;
 private _angle_step = 15;
-private _radius_step = 1;
-private _tries_per_ring = 10;
-private _max_attempts = 100;
+private _radius_step = 2;
+private _max_attempts = 200;
 private _attempt = 0;
 private _radius = (_size max 1);
 
@@ -37,7 +36,7 @@ private _isPosValid = {
 	// _on_road (true = roads allowed)
 	if (!_on_road && {isOnRoad _pos}) exitWith { false };
 
-	// cheap reject: solid terrain props in footprint
+	// cheap reject: solid terrain props
 	if (_water_mode != 2 && {count (nearestTerrainObjects [_pos, ["House","Building","Wall","Fence","Rock","Rocks"], (_size + 3), false, true]) > 0}) exitWith { false };
 
 	private _posASL = ATLtoASL _pos;
@@ -60,7 +59,7 @@ private _isPosValid = {
 private _tryPos = {
 	params ["_pos"];
 	if (count _pos == 0) exitWith { [] };
-	_pos = ([_pos] call _snapToSurface) vectorAdd [0, 0, 0.2];
+	if (surfaceIsWater _pos) then { _pos = ([_pos] call _snapToSurface) vectorAdd [0, 0, 0.5] };
 	if ([_pos] call _isPosValid) exitWith { _pos };
 	[]
 };
@@ -83,12 +82,13 @@ if (_found) exitWith { _spawn_pos };
 
 // 2) expanding rings with multiple samples
 while { !_found && {_attempt < _max_attempts} && {_radius < _max_radius} } do {
-	for "_i" from 1 to _tries_per_ring do {
+	private _angle = 0;
+	while { _angle < 360 } do {
 		_attempt = _attempt + 1;
-		_spawn_pos = [[_start_pos, _radius] call F_getRandomPos] call _tryPos;
+		_spawn_pos = [(_start_pos getPos [_radius, _angle])] call _tryPos;
 		if (count _spawn_pos > 0) exitWith { _found = true };
-
 		if ((_attempt mod 8) == 0) then { sleep 0.01 };
+		_angle = _angle + _angle_step;
 	};
 	if (!_found) then { _radius = _radius + _radius_step };
 };
