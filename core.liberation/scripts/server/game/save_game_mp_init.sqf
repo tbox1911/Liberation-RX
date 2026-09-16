@@ -20,7 +20,7 @@ private _support_vehicles_light = support_vehicles_classname select {!( _x isKin
 GRLIB_vehicles_light = _support_vehicles_light + list_static_weapons + static_vehicles_AI + uavs_vehicles;
 GRLIB_vehicles_light = GRLIB_vehicles_light arrayIntersect GRLIB_vehicles_light;
 
-GRLIB_classnames_to_save = GRLIB_classnames_to_save + GRLIB_classnames_to_save_blu + GRLIB_vehicles_light - GRLIB_disabled_arsenal;
+GRLIB_classnames_to_save = GRLIB_classnames_to_save + GRLIB_classnames_to_save_blu + GRLIB_vehicles_light - GRLIB_Ammobox_temp;
 GRLIB_classnames_to_save = GRLIB_classnames_to_save arrayIntersect GRLIB_classnames_to_save;
 
 GRLIB_no_kill_handler_classnames = [];

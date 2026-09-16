@@ -39,12 +39,12 @@ while { dialog && alive player } do {
 		private _sell_list_dlg = [];
 		{
 			_price = [_x] call F_loadoutPrice;
-			if (_nearfob) then {
+			if (_nearfob || typeOf _x in GRLIB_Ammobox_temp) then {
 				_price = round (_price * GRLIB_recycling_percentage);
 			} else {
 				_price = round (_price / GRLIB_recycling_percentage);
 			};
-			_sell_list_dlg pushBack [(typeOf _x), _price];
+			if (_price > 0) then { _sell_list_dlg pushBack [(typeOf _x), _price] };
 		} forEach _sell_list;
 
 		lbClear 110;
@@ -80,9 +80,9 @@ while { dialog && alive player } do {
 				if (_result) then {
 					[_vehicle] call F_clearCargo;
 					[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
-					hintSilent format [localize "STR_CARGO_SOLD", _vehicle_name, name player, _price];
+					hintSilent format [localize "STR_CARGO_SOLD", _vehicle_name, _price];
 					playSound "taskSucceeded";
-					if (typeOf _vehicle in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal - [playerbox_typename])) then {deleteVehicle _vehicle};
+					if (typeOf _vehicle in (GRLIB_Ammobox_keep + GRLIB_Ammobox_temp - [playerbox_typename])) then {deleteVehicle _vehicle};
 				};
 			_refresh = true;
 			};

@@ -9044,14 +9044,14 @@
 			<Czech>V nákladním prostoru vašeho vozidla nemůžu nic koupit</Czech>
 		</Key>
 		<Key ID="STR_CARGO_SOLD">
-			<Original>%1 Cargo Sold.\n%2 +%3 AMMO !</Original>
-			<Russian>%1 Груз продан.\n%2 +%3 AMMO !</Russian>
-			<French>%1 Vente Cargo.\n%2 +%3 AMMO !</French>
-			<Japanese>%1 の荷物は売られました。\n%2 +%3 弾薬！</Japanese>
-			<Chinesesimp>%1 库存已出售。\n%2 +%3 弹药！</Chinesesimp>
-			<Chinese>%1 庫存已出售。 \n%2 +%3 彈藥！</Chinese>
-			<Portuguese>%1 carga vendida.\n%2 +%3 Ammo !</Portuguese>
-			<Czech>%1 náklad prodán.\n%2 +%3 AMMO!</Czech>
+			<Original>Sold Cargo:\n%1\n+ %2 AMMO !</Original>
+			<Russian>Груз продан:\n%1\n+ %2 AMMO !</Russian>
+			<French>Cargo vendu:\n%1\n+ %2 AMMO !</French>
+			<Japanese>売却済みの貨物：\n%1\n+ %2 AMMO !</Japanese>
+			<Chinesesimp>已出售货物：\n%1\n+ %2 AMMO !</Chinesesimp>
+			<Chinese>已出售貨物：\n%1\n+ %2 AMMO !</Chinese>
+			<Portuguese>Carga vendida:\n%1\n+ %2 AMMO !</Portuguese>
+			<Czech>Prodán náklad:\n%1\n+ %2 AMMO !</Czech>
 		</Key>
 		<Key ID="STR_SELL_BUTTON">
 			<Original>SELL CARGO</Original>

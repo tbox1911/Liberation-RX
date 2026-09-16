@@ -109,5 +109,28 @@ LOADOUT_free_items = [];
 // see https://community.bistudio.com/wiki/nearestTerrainObjects for list
 GRLIB_clutter_cutter = ["TREE","SMALL TREE","BUSH","HIDE","HOUSE","FENCE","RUINS","ROCK","ROCKS","BUILDING","WALL"];
 
+// Ammobox you want keep contents
+GRLIB_Ammobox_keep = [
+	playerbox_typename,
+	medicalbox_typename,
+	basic_weapon_typename
+];
+
+// Ammobox when Arsenal is disabled (not saved)
+if (GRLIB_enable_arsenal == 1 && GRLIB_filter_arsenal == 4) then {
+	GRLIB_Ammobox_temp = [
+		Box_Weapon_typename,
+		Box_Ammo_typename,
+		Box_Grenades_typename,
+		Box_Explosives_typename,
+		Box_Equipment_typename,
+		Box_Support_typename,
+		Box_Special_typename,
+		Box_Launcher_typename
+	];
+} else {
+	GRLIB_Ammobox_temp = [];
+};
+
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***
 [] call compileFinal preprocessFileLineNumbers "default\default_building_classnames.sqf";

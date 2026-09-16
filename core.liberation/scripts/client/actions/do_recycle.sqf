@@ -43,7 +43,7 @@ waitUntil { dialog };
 private _ammount_ammo = round (((_objectinfo select 2) * GRLIB_recycling_percentage) * (1 - damage _vehicle));
 private _ammount_fuel = _objectinfo select 3;
 if (_veh_class == fuelbarrel_typename) then { _ammount_ammo = 0 };
-if (_veh_class in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {
+if (_veh_class in (GRLIB_Ammobox_keep + GRLIB_Ammobox_temp)) then {
 	_ammount_ammo = round (([_vehicle] call F_loadoutPrice) * GRLIB_recycling_percentage);
 };
 
@@ -75,13 +75,13 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in al
 
 	if (_veh_class in [storage_medium_typename, storage_large_typename]) then {
 		{ deleteVehicle _x } forEach ((nearestObjects [_vehicle, ["VR_Area_01_square_2x2_yellow_F"], 20]));
-		_public = true;		
+		_public = true;
 	};
 
 	if (_veh_class == medic_heal_typename) then {
 		private _med_floor = (nearestObjects [_vehicle, ["Land_MedicalTent_01_floor_base_F"], 20]) select 0;
 		if (!isNil "_med_floor") then { deleteVehicle _med_floor };
-		_public = true;	
+		_public = true;
 	};
 
 	{ deleteVehicle _x } forEach (crew _vehicle);
