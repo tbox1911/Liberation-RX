@@ -209,10 +209,13 @@ if (GRLIB_TFR_enabled) then {
 
 // *** SUPPORT ***
 support_vehicles = [];
+
+// Arsenal
 if (GRLIB_enable_arsenal == 1) then {
 	support_vehicles pushBack [Arsenal_typename,0,35,0,0];
 	if (GRLIB_filter_arsenal == 4) then {
-		support_vehicles append [
+		// Personal Arsenal extra boxes
+		private _personal_arsenal_boxes = [
 			[Box_Weapon_typename,0,180,0,0],
 			[Box_Ammo_typename,0,0,0,0],
 			[Box_Grenades_typename,0,100,0,0],
@@ -222,6 +225,8 @@ if (GRLIB_enable_arsenal == 1) then {
 			[Box_Special_typename,0,365,0,GRLIB_perm_log],
 			[Box_Launcher_typename,0,370,0,GRLIB_perm_tank]
 		];
+		{ GRLIB_Ammobox_temp pushBackUnique (_x select 0) } forEach _personal_arsenal_boxes;
+		support_vehicles append _personal_arsenal_boxes;
 	};
 };
 
@@ -860,25 +865,6 @@ GRLIB_force_cleanup_classnames = [
 	"gm_fim43_spent_oli",
 	"gm_1rnd_60mm_empty_pzf3",
 	"gm_missile_milan_heat_dm92_empty"
-];
-
-// Ammobox you want keep contents
-GRLIB_Ammobox_keep = [
-	playerbox_typename,
-	medicalbox_typename,
-	basic_weapon_typename
-];
-
-// Ammobox when Arsenal is disabled (not saved)
-GRLIB_disabled_arsenal = [
-	Box_Weapon_typename,
-	Box_Ammo_typename,
-	Box_Grenades_typename,
-	Box_Explosives_typename,
-	Box_Equipment_typename,
-	Box_Support_typename,
-	Box_Special_typename,
-	Box_Launcher_typename
 ];
 
 diag_log "--- LRX: Classnames Loaded ---";

@@ -23,8 +23,8 @@ private _civ_blacklist = ["fuel", "service", "medevac"];
 private _reputation = [player] call F_getReput;
 private _civ_vehicle = [];
 private _find_multiple = {
-    params ["_item", "_list"]; 
-    private _ret = false; 
+    params ["_item", "_list"];
+    private _ret = false;
     { if (_item find _x > 0) exitWith { _ret = true } } foreach _list;
     _ret;
 };
@@ -107,17 +107,16 @@ while { dialog && alive player } do {
 
 		private _sell_list_dlg = [];
 		{
-			private _price = 1 max ([(typeOf _x)] call F_getObjectPrice);
-			_sell_list_dlg pushBack [
-				(typeOf _x),
-				round ((_price * _ratio) * (1 - damage _x))
-			];			
+			private _veh_class = typeOf _x;
+			private _price = 1 max ([_veh_class] call F_getObjectPrice);
+			_price = round ((_price * _ratio) * (1 - damage _x));
+			if (_price > 0) then { _sell_list_dlg pushBack [_veh_class, _price] };
 		} forEach _sell_list;
 
 		lbClear 110;
 		{
 			_entrytext = [(_x select 0)] call F_getLRXName;
-			if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };	
+			if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };
 			lnbAddRow [110, [_entrytext, str (_x select 1)]];
 
 			_icon = getText ( _cfg >> (_x select 0) >> "icon");

@@ -1,8 +1,6 @@
 params [ "_unit" ];
 if (isNil "_unit") exitWith {0};
 if (GRLIB_free_loadout) exitWith {0};
-if (isNil "GRLIB_Ammobox_keep") then { GRLIB_Ammobox_keep = [] };
-if (isNil "GRLIB_disabled_arsenal") then { GRLIB_disabled_arsenal = [] };
 
 // item name MUST be lowercase
 private _fixed_price = LOADOUT_fixed_price + [
@@ -94,7 +92,7 @@ private _fn_getprice = {
 				if (_isexpensive) then {_ret = 55} else {_ret = 32};
 			};
 		};
-	} else { _ret = _price };	
+	} else { _ret = _price };
 	//diag_log format ["DBG: %1 %2", _item, _ret];
 	_ret;
 };
@@ -137,13 +135,14 @@ if (typeName _unit == "OBJECT") then {
 		_val = _val + (2 * count(assignedItems _unit));
 	};
 
-	if (_unit iskindof "LandVehicle" || typeOf _unit in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {
+	private _unit_class = typeOf _unit;
+	if (_unit iskindof "LandVehicle" || _unit_class in (GRLIB_Ammobox_keep + GRLIB_Ammobox_temp)) then {
 		private _count= 0;
 		{
 			if (typeName (_x select 1) == "ARRAY") then {
 				{
 					_count = (_x select 1);
-					{ 
+					{
 						//diag_log [_x, _count select _foreachIndex];
 						_val = _val + (([_x] call _fn_getprice) * (_count select _foreachIndex));
 					} forEach (_x select 0);
@@ -154,6 +153,11 @@ if (typeName _unit == "OBJECT") then {
 				_val = _val + (([(_x select 0)] call _fn_getprice) * _count);
 			};
 		} forEach ([_unit, true] call F_getCargo);
+
+		if (_unit_class in GRLIB_Ammobox_temp) then {
+			private _price = [_unit_class, support_vehicles] call F_getObjectPrice;
+			_val = _val min _price;
+		};
 	};
 };
 

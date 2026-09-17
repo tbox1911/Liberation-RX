@@ -16,7 +16,7 @@ if !(_vehicle_owner in ["", "public", "server"]) then {
 };
 
 // Box clean inventory
-if !(_classname in (GRLIB_Ammobox_keep + GRLIB_disabled_arsenal)) then {
+if !(_classname in (GRLIB_Ammobox_keep + GRLIB_Ammobox_temp)) then {
 	[_object] call F_clearCargo;
 };
 
