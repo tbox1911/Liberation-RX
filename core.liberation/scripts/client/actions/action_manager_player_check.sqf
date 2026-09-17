@@ -181,6 +181,7 @@ GRLIB_checkOnboardCrew = {
 	if (getPos _vehicle select 2 >= 5) exitWith { false };
 	if (abs (speed vehicle _vehicle) >= 5) exitWith { false };
 	if (_vehicle isKindOf "ParachuteBase") exitWith { false };
+	if (count (fullCrew [_vehicle, "", true] - fullCrew _vehicle) <= 1) exitWith { false };
 	if !([_target, _vehicle] call is_owner || [_vehicle] call is_public) exitWith { false };
 	private _onboard_list = { !isPlayer _x && isNull objectParent _x && _x distance2D player <= 30 } count (units player);
 	if (_onboard_list == 0) exitWith { false };
