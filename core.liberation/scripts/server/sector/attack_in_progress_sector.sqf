@@ -48,9 +48,9 @@ if (_ownership == GRLIB_side_enemy) then {
 		sector_timer = sector_timer + (10 * 60);
 	};
 	publicVariable "sector_timer";
-
 	[_sector, 1] remoteExec ["remote_call_sector", 0];
-	sleep 10;
+	_sector setMarkerAlpha 0;
+	sleep 5;
 
 	private _activeplayers = 0;
 	while { (serverTime < sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
@@ -58,6 +58,7 @@ if (_ownership == GRLIB_side_enemy) then {
 		_activeplayers = { alive _x && (_x distance2D _sector_pos) < GRLIB_sector_size } count (units GRLIB_side_friendly);
 		sleep 3;
 	};
+	_sector setMarkerAlpha 1;
 
 	if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 		if (_ownership == GRLIB_side_enemy) then {
