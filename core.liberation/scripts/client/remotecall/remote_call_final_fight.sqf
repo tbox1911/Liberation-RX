@@ -1,12 +1,69 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
+[4] spawn BIS_fnc_earthquake;
+
 private _msg = format ["%1, the <t color='#800000'>ARMAGEDDON</t> has begun...<br/><br/>Be ready for the <t color='#000080'>Final FIGHT</t> !<br/>", name player];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
-[1] spawn BIS_fnc_earthquake;
-
 waitUntil { sleep 1; !isNil "opfor_target"};
 waitUntil { sleep 1; sector_timer > 0};
+
+// Info
+private _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
+disableUserInput true;
+player allowDamage false;
+closeDialog 0;
+
+camUseNVG false;
+showCinemaBorder false;
+_startpos0 = [ 0, 500, 3000];
+_startpos1 = [ 0, 500, 250];
+_endpos1 = [ 0, 450, 225];
+_startpos2 = [ 0, 100, 40];
+_endpos2 = [ 0, 80, 30];
+_startpos3 = [ 0, 8, 2.8];
+_endpos3 = [ 0, 6, 2.25];
+
+_spawn_camera = "camera" camCreate _startpos0;
+_spawn_camera cameraEffect ["internal","front"];
+_spawn_camera camSetTarget opfor_target;
+_spawn_camera camSetRelPos _startpos0;
+_spawn_camera camcommit 0;
+_spawn_camera camSetRelPos _startpos1;
+_spawn_camera camcommit 1.5;
+waitUntil { camCommitted _spawn_camera };
+
+_spawn_camera camSetRelPos _endpos1;
+_spawn_camera camcommit 2;
+waitUntil { camCommitted _spawn_camera };
+
+private _msg = format ["You have to <t color='#F00000'>DESTROY</t> this Device!<br/><br/>Only <t color='#0000F0'>Heavy Weapons</t> can damage it.<br/><br/>Hit Hard!"];
+[_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
+
+_spawn_camera camSetRelPos _startpos2;
+_spawn_camera camcommit 1;
+waitUntil { camCommitted _spawn_camera };
+
+_spawn_camera camSetRelPos _endpos2;
+_spawn_camera camcommit 2;
+waitUntil { camCommitted _spawn_camera };
+
+_spawn_camera camSetRelPos _startpos3;
+_spawn_camera camcommit 1;
+waitUntil { camCommitted _spawn_camera };
+
+_spawn_camera camSetRelPos _endpos3;
+_spawn_camera camcommit 2;
+waitUntil { camCommitted _spawn_camera };
+
+sleep 5;
+_spawn_camera cameraEffect ["Terminate","back"];
+camDestroy _spawn_camera;
+camUseNVG false;
+disableUserInput false;
+disableUserInput true;
+disableUserInput false;
+(findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 
 // GUI
 private _final_progressBar = findDisplay 46 ctrlCreate ["GREUH_Progress", -1];
@@ -24,10 +81,11 @@ private _progress = damage opfor_target;
 while {sector_timer > 0 && _progress < 1} do {
 	_progress = damage opfor_target;
 	_final_progressBar progressSetPosition _progress;
-	_final_text ctrlSetStructuredText parseText format [localize "STR_UI_ENEMY_DAMAGE_TEXT_2",round (100 * _progress),"%"];
+	_final_text ctrlSetStructuredText parseText format [localize "STR_UI_ENEMY_DAMAGE_TEXT",round (100 * _progress),"%"];
 	sleep 2;
 };
 
+"opfor_capture_marker" setMarkerPosLocal markers_reset;
 ctrlDelete _final_progressBar;
 ctrlDelete _final_text;
 
@@ -43,8 +101,6 @@ if (sector_timer <= 0) then {
 	};
 
 	cinematic_camera_started = true;
-	sector_timer = 0;
-	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 	sleep 2;
 
 	camUseNVG false;

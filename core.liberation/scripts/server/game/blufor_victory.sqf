@@ -38,7 +38,7 @@ publicstats pushback stats_fobs_built;
 publicstats pushback stats_fobs_lost;
 publicstats pushback (round stats_readiness_earned);
 
-sleep 2;
+sleep 1;
 [publicstats] remoteExec ["remote_call_endgame", 0];
 
 // GRLIB_endgame = 1;

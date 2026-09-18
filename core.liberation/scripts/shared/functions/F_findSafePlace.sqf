@@ -37,7 +37,7 @@ private _isPosValid = {
 	if (!_on_road && {isOnRoad _pos}) exitWith { false };
 
 	// cheap reject: solid terrain props
-	if (_water_mode != 2 && {count (nearestTerrainObjects [_pos, ["House","Building","Wall","Fence","Rock","Rocks"], (_size + 3), false, true]) > 0}) exitWith { false };
+	if (_water_mode != 2 && {count (nearestObjects [_pos, ["House","Building","Wall","Fence","Rock","Rocks"], (_size + 3), false, true]) > 0}) exitWith { false };
 
 	private _posASL = ATLtoASL _pos;
 	private _maxASL = ATLtoASL (_pos vectorAdd [0, 0, _maxalt]);

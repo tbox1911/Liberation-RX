@@ -34,6 +34,7 @@ stats_readiness_earned = publicstats select 27;
 
 sleep 20;
 waitUntil {sleep 1; !dialog };
+titleText ["", "BLACK FADED", 100];
 cinematic_camera_started = false;
 endMission "END";
 forceEnd;

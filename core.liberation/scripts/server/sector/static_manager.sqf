@@ -3,7 +3,7 @@ sleep 35;
 
 private _all_static = [];
 
-while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
+while { GRLIB_endgame == 0 } do {
     _all_static = vehicles select { alive _x && (typeOf _x) in (list_static_weapons + static_vehicles_AI) && !(_x getVariable ["LRX_managed_static", false]) };
     {
         _static  = _x;

@@ -7,10 +7,15 @@ if (isDedicated && !isNull _hc) exitWith {
 	[_objective_pos, _intensity] remoteExec ["spawn_battlegroup_direct", owner _hc];
 };
 
-_objective_pos set [2, 0];
-
-private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
-if (_spawn_marker == "") exitWith {};
+private _max_try = 10;
+private _spawn_pos = [];
+while {count _spawn_pos == 0 && _max_try > 0} do {
+	_max_try = _max_try - 1;
+	private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
+	if (_spawn_marker != "") then { _spawn_pos = [markerPos _spawn_marker, 30, 0] call F_findSafePlace };
+	sleep 1;
+};
+if (count _spawn_pos == 0) exitWith { diag_log "BattleGroup could not find accessible Objective." };
 
 diag_log format ["Spawn Direct BattleGroup level %1 to %2 at %3", _intensity, _objective_pos, time];
 
@@ -19,7 +24,6 @@ if (_intensity == 1) then {
 	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity;
 };
 
-private _spawn_pos = markerPos _spawn_marker;
 [_spawn_pos] remoteExec ["remote_call_battlegroup", 0];
 
 private ["_vehicle", "_driver", "_nextgrp"];
@@ -31,7 +35,7 @@ for "_i" from 0 to _target_size do {
 };
 
 {
-	_vehicle = [_spawn_pos, _x] call F_libSpawnVehicle;
+	_vehicle = [_spawn_pos, _x, 15] call F_libSpawnVehicle;
 	_driver = driver _vehicle;
 	_nextgrp = group _driver;
 	_driver doMove _objective_pos;
@@ -41,7 +45,7 @@ for "_i" from 0 to _target_size do {
 } foreach _selected_opfor_battlegroup;
 
 if (count opfor_troup_transports_truck > 0 && floor random 3 > 0) then {
-	_vehicle = [_spawn_pos, (selectRandom opfor_troup_transports_truck)] call F_libSpawnVehicle;
+	_vehicle = [_spawn_pos, (selectRandom opfor_troup_transports_truck), 15] call F_libSpawnVehicle;
 	[_vehicle, _objective_pos] spawn troup_transport;
 	sleep 10;
 } else {

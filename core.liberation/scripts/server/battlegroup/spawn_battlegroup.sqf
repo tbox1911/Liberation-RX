@@ -17,21 +17,24 @@ GRLIB_last_battlegroup = round time;
 
 private _spawn_marker = "";
 private _objective_pos = [];
+private _spawn_pos = [];
 
 if (isNil "_liberated_sector") then {
 	diag_log format ["Spawn BattleGroup search target at %1", time];
 	{
 		_objective_pos = markerPos _x;
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
-		if (_spawn_marker != "") exitWith {};
+		if (_spawn_marker != "") then { _spawn_pos = [markerPos _spawn_marker, 30, 0] call F_findSafePlace };
+		if (count _spawn_pos > 0) exitWith {};
 		sleep 1;
 	} foreach (blufor_sectors call BIS_fnc_arrayShuffle);
 } else {
 	_objective_pos = markerPos _liberated_sector;
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
+	if (_spawn_marker != "") then { _spawn_pos = [markerPos _spawn_marker, 30, 0] call F_findSafePlace };
 };
 
-if (_spawn_marker == "") exitWith {
+if (count _spawn_pos == 0) exitWith {
 	diag_log "BattleGroup could not find accessible Objective.";
 	if (count blufor_sectors > 5) then {
 		private _para_pos = [];
@@ -54,8 +57,7 @@ if (_spawn_marker == "") exitWith {
 	};
 };
 
-_objective_pos set [2, 0];
-diag_log format ["Spawn BattleGroup target %1 from %2 at %3", _objective_pos, markerPos _spawn_marker, time];
+diag_log format ["Spawn BattleGroup target %1 from %2 at %3", _objective_pos, _spawn_pos, time];
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness <= 80 ) then { _vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
@@ -66,13 +68,12 @@ if (_current_players >= 2) then { _target_size = 3 };
 if (combat_readiness > 70) then { _target_size = _target_size + 1 };
 if (GRLIB_csat_aggressivity >= 2) then { _target_size = _target_size + 1 };
 
-private _spawn_pos = markerPos _spawn_marker;
 [_spawn_pos] remoteExec ["remote_call_battlegroup", 0];
 
 private ["_nextgrp", "_vehicle", "_driver"];
 
 for "_i" from 1 to _target_size do {
-	_vehicle = [_spawn_pos, (selectRandom _vehicle_pool)] call F_libSpawnVehicle;
+	_vehicle = [_spawn_pos, (selectRandom _vehicle_pool), 15] call F_libSpawnVehicle;
 	_driver = driver _vehicle;
 	_nextgrp = group _driver;
 	_driver doMove _objective_pos;
@@ -88,7 +89,7 @@ if (GRLIB_csat_aggressivity >= 2) then { _nb_squad = _nb_squad + 1 };
 
 for "_i" from 1 to _nb_squad do {
 	if (count opfor_troup_transports_truck > 0 && floor random 3 > 0) then {
-		_vehicle = [_spawn_pos, (selectRandom opfor_troup_transports_truck)] call F_libSpawnVehicle;
+		_vehicle = [_spawn_pos, (selectRandom opfor_troup_transports_truck), 15] call F_libSpawnVehicle;
 		[_vehicle, _objective_pos] spawn troup_transport;
 		sleep 10;
 	} else {

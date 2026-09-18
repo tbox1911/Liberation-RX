@@ -19,7 +19,7 @@ mdh_nuke_ash				= 1;	// ASH AFTER NUKEDETONATION 1=ON, 0=OFF
 //[_target] spawn compileFinal preprocessFileLineNumbers "addons\NUKE\nuke.sqf";
 //*******************************************************************
 
-[5] spawn BIS_fnc_earthquake;
+[4] spawn BIS_fnc_earthquake;
 
 private _cone = "#particlesource" createVehicleLocal getpos _target;
 _cone setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48], "", "Billboard", 1, 10, [0, 0, 0],
@@ -68,7 +68,7 @@ sleep 6;
 [] spawn compileFinal preprocessFileLineNumbers "addons\NUKE\colorcorrection.sqf";
 
 //--- Earthquake
-[5] spawn BIS_fnc_earthquake;
+[4] spawn BIS_fnc_earthquake;
 sleep 2;
 
 // ASH
@@ -110,7 +110,7 @@ _smoke setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 
 _smoke setDropInterval 0.012;
 _cone setDropInterval 0.02;
 _wave setDropInterval 0.01;
-[3] spawn BIS_fnc_earthquake;
+[4] spawn BIS_fnc_earthquake;
 
 sleep 20;
 deleteVehicle _wave;

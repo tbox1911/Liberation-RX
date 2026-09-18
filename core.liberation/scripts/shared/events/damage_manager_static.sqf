@@ -15,7 +15,7 @@ if (_damage >= 0.8 && (time >= (_unit getVariable ["GRLIB_isProtected", 0]))) th
     _unit setVariable ["GRLIB_isProtected", round(time + 5)];
     _newDamage = (_newDamage + 0.25) min 1;
 	if (_damage >= 10) then { _newDamage = 1 };
-	if (hasInterface) then {
+	if (hasInterface && side _unit == GRLIB_side_friendly) then {
 		systemchat format ["%1 damaged to %2%%.", [_unit] call F_getLRXName, (_newDamage * 100)];
 	};
 	_unit setVariable ["GRLIB_unitDamage", _newDamage, true];

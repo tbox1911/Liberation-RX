@@ -8492,28 +8492,16 @@
 
 		<!-- remote_call -->
 		<Key ID="STR_UI_ENEMY_DAMAGE_TEXT">
-			<Original>&lt;t size='1' align='center'&gt;Enemy Damage: %1%2&lt;/t&gt;</Original>
-			<French>&lt;t size='1' align='center'&gt;Dégâts ennemis : %1%2&lt;/t&gt;</French>
-			<German>&lt;t size='1' align='center'&gt;Feindschaden: %1%2&lt;/t&gt;</German>
-			<Spanish>&lt;t size='1' align='center'&gt;Daño al enemigo: %1%2&lt;/t&gt;</Spanish>
-			<Russian>&lt;t size='1' align='center'&gt;Урон противнику: %1%2&lt;/t&gt;</Russian>
-			<Chinesesimp>&lt;t size='1' align='center'&gt;敌方伤害：%1%2&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='1' align='center'&gt;敵方傷害：%1%2&lt;/t&gt;</Chinese>
-			<Japanese>&lt;t size='1' align='center'&gt;敵へのダメージ: %1%2&lt;/t&gt;</Japanese>
-			<Portuguese>&lt;t size='1' align='center'&gt;Dano ao inimigo: %1%2&lt;/t&gt;</Portuguese>
-			<Czech>&lt;t size='1' align='center'&gt;Poškození nepřítele: %1%2&lt;/t&gt;</Czech>
-		</Key>
-		<Key ID="STR_UI_ENEMY_DAMAGE_TEXT_2">
-			<Original>&lt;t size='1' align='center'&gt;Enemy Damage: %1%2&lt;/t&gt;</Original>
-			<French>&lt;t size='1' align='center'&gt;Dégâts ennemis : %1%2&lt;/t&gt;</French>
-			<German>&lt;t size='1' align='center'&gt;Feindschaden: %1%2&lt;/t&gt;</German>
-			<Spanish>&lt;t size='1' align='center'&gt;Daño al enemigo: %1%2&lt;/t&gt;</Spanish>
-			<Russian>&lt;t size='1' align='center'&gt;Урон по врагу: %1%2&lt;/t&gt;</Russian>
-			<Chinesesimp>&lt;t size='1' align='center'&gt;敌方伤害：%1%2&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='1' align='center'&gt;敵方傷害：%1%2&lt;/t&gt;</Chinese>
-			<Japanese>&lt;t size='1' align='center'&gt;敵へのダメージ: %1%2&lt;/t&gt;</Japanese>
-			<Portuguese>&lt;t size='1' align='center'&gt;Dano ao inimigo: %1%2&lt;/t&gt;</Portuguese>
-			<Czech>&lt;t size='1' align='center'&gt;Poškození nepřítele: %1%2&lt;/t&gt;</Czech>
+			<Original>&lt;t size='1' align='center'&gt;Bomb Damage: %1%2&lt;/t&gt;</Original>
+			<French>&lt;t size='1' align='center'&gt;Dégâts sur la bombe : %1%2&lt;/t&gt;</French>
+			<German>&lt;t size='1' align='center'&gt;Schaden an der Bombe: %1%2&lt;/t&gt;</German>
+			<Spanish>&lt;t size='1' align='center'&gt;Daño a la bomba: %1%2&lt;/t&gt;</Spanish>
+			<Russian>&lt;t size='1' align='center'&gt;Урон бомбе: %1%2&lt;/t&gt;</Russian>
+			<Chinesesimp>&lt;t size='1' align='center'&gt;炸弹损伤：%1%2&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t size='1' align='center'&gt;炸彈損傷：%1%2&lt;/t&gt;</Chinese>
+			<Japanese>&lt;t size='1' align='center'&gt;爆弾へのダメージ: %1%2&lt;/t&gt;</Japanese>
+			<Portuguese>&lt;t size='1' align='center'&gt;Dano à bomba: %1%2&lt;/t&gt;</Portuguese>
+			<Czech>&lt;t size='1' align='center'&gt;Poškození bomby: %1%2&lt;/t&gt;</Czech>
 		</Key>
 		<Key ID="STR_TITLE_THANKS_RX">
 			<Original>Thank you for playing Liberation RX !</Original>
