@@ -65,7 +65,7 @@ _successExec = {
 	};
 
 	{
-		if (_x isKindof "AllVehicles") then {
+		if (!(_x isKindOf "StaticWeapon") && (_x isKindof "LandVehicle" || _x iskindof "Air")) then {
 			_x setVariable ["GRLIB_vehicle_owner", "", true];
 			_x setVariable ["R3F_LOG_disabled", false, true];
 			_x lock 0;
