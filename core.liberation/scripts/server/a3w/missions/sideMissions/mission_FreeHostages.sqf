@@ -30,12 +30,13 @@ _setupObjects = {
 		_unit setUnitLoadout _loadout;
 		if (_i == 0) then {
 			[_unit, 10] spawn bomber_ai;
-			sleep 3;
+			sleep 1; // load loadout
 			[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
 			_unit addGoggles selectRandom ["G_Bandanna_shades","G_Bandanna_CandySkull","G_Balaclava_Halloween_01"];
 		} else {
 			[_unit, true, false] spawn prisoner_ai;
 			_unit addGoggles "G_Blindfold_01_black_F";
+			_unit setVariable ["GRLIB_is_prisoner", true, true];
 		};
 		_hostages pushBack _unit;
 		sleep 0.1;
