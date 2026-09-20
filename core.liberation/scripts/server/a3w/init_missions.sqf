@@ -52,7 +52,7 @@ if (A3W_Mission_count == 0) exitWith {};
 
 for "_i" from 1 to A3W_Mission_count do {
 	// Start Permanent controller
-	private _init_sleep = ((2 + floor random 10) * 60);
+	private _init_sleep = ((2 + floor random 5) * 60);
 	while {_init_sleep > 0 && isNil "A3W_debug"} do { sleep 1; _init_sleep = _init_sleep - 1 };
 	diag_log format ["--- LRX A3W Starting Mission Controller #%1 at %2", _i, time];
 	[_i, false] spawn compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionController.sqf";
