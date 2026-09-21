@@ -119,5 +119,14 @@ GRLIB_Ammobox_keep = [
 	basic_weapon_typename
 ];
 
+// Arty shell not counted for maxshot limit
+GRLIB_artillery_free = [
+	"8Rnd_82mm_Mo_Smoke_white",
+	"8Rnd_82mm_Mo_Flare_white",
+	"vn_mortar_m29_mag_chem_x8",
+	"vn_mortar_m2_mag_lume_x8",
+	"vn_mortar_m29_mag_lume_x8"
+];
+
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***
 [] call compileFinal preprocessFileLineNumbers "default\default_building_classnames.sqf";

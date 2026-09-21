@@ -64,19 +64,10 @@ _unit addEventHandler ["FiredMan", {
 	// 	};
 	// };
 
-	// Limit artillery fire
-	if (GRLIB_global_stop == 1) exitWith {};
-	private _free_rounds_typename = [
-		"8Rnd_82mm_Mo_Smoke_white",
-		"8Rnd_82mm_Mo_Flare_white",
-		"vn_mortar_m29_mag_chem_x8",
-		"vn_mortar_m2_mag_lume_x8",
-		"vn_mortar_m29_mag_lume_x8"
-	];
-	private _is_arty = getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner");
-	if (_is_arty == 1 && !(_magazine in _free_rounds_typename)) exitWith {
-		[_unit, _vehicle] spawn artillery_cooldown;
-	};
+	// Cooldown artillery fire
+	if (GRLIB_artillery_maxshot == 0) exitWith {};
+	if (isNull _vehicle) exitWith {};
+	[_unit, _vehicle, _magazine] spawn artillery_cooldown;
 }];
 
 // Player Event Handlers

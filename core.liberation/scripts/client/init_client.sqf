@@ -135,6 +135,7 @@ if (typeOf player == "VirtualSpectator_F") exitWith {
 
 // Player Setup
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
+GRLIB_artillery_shot = 0;
 [player] call player_EHP;
 [player, objNull] spawn player_respawn;
 

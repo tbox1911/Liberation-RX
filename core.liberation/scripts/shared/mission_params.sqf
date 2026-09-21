@@ -1244,16 +1244,16 @@ _Mission_Params = [
         ]]
     ]],
     [GRLIB_PARAM_ArtyMaxShot, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 10],
+        [GRLIB_PARAM_ValueKey, 15],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_MAX_SHOT"],
         [GRLIB_PARAM_OptionLabelKey, [
-            "10 shots","15 shots","20 shots","25 shots","30 shots"
+            localize "STR_PARAMS_DISABLED","10 shots","15 shots","20 shots","25 shots","30 shots","40 shots"
         ]],
-        [GRLIB_PARAM_OptionValuesKey, [10,15,20,25,30]],
+        [GRLIB_PARAM_OptionValuesKey, [0,10,15,20,25,30,40]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_MiscCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_MAX_SHOT_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
-            "10 shots","15 shots","20 shots","25 shots","30 shots"
+            localize "STR_PARAMS_DISABLED","10 shots","15 shots","20 shots","25 shots","30 shots","40 shots"
         ]]
     ]],
     [GRLIB_PARAM_A3WCount, createHashMapFromArray [
