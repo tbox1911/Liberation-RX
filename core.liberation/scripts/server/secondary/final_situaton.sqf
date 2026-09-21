@@ -3,7 +3,7 @@ params [ ["_mission_cost", 0], "_caller" ];
 private _spawnpos = [];
 private _spawnlist = [];
 {
-	_spawnpos = [(markerpos _x), 30, 0] call F_findSafePlace;
+	_spawnpos = [(markerpos _x), 25, 0] call F_findSafePlace;
 	if (count _spawnpos > 0) then { _spawnlist pushBack _spawnpos };
 } foreach sectors_allSectors;
 if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free space for Armageddon mission"] remoteExec ["globalChat", 0]};
@@ -32,7 +32,9 @@ publicVariable "GRLIB_global_stop";
 skipTime ((10 - dayTime + 24) % 24);
 setTimeMultiplier 0;
 
+private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 sector_timer = round (serverTime + (35 * 60));
+if (_nb_player <= 2) then { sector_timer = round (serverTime + (55 * 60)) };
 publicVariable "sector_timer";
 [] remoteExec ["remote_call_final_fight", 0];
 
@@ -80,8 +82,8 @@ opfor_target_assembled setVectorDirAndUp [vectorDir opfor_target, vectorUp opfor
 opfor_target_assembled hideObjectGlobal true;
 
 // battlegroup loop
-[_spawnpos] spawn {
-	params ["_spawnpos"];
+[_spawnpos, _nb_player] spawn {
+	params ["_spawnpos", "_nb_player"];
 
 	sleep 10;
 	[_spawnpos, 3, GRLIB_side_enemy, false, "infantry"] call spawn_static;
@@ -93,45 +95,48 @@ opfor_target_assembled hideObjectGlobal true;
 	(driver _vehicle) doFollow leader _grp;
 
 	private _players = [];
-	private _last_send = 0;
 	private _target = objNull;
 	private _last = 0;
+	private _last_send = 0;
 
 	sleep 30;
-	while { damage opfor_target < 1 && ServerTime < sector_timer} do {
-		if (damage opfor_target >= 1) exitWith {};
-		if ({alive _x} count (units _grp) == 0) then {
-			if (time > _last) then {
-				_grp = [_spawnpos, "csat", ([] call F_getAdaptiveSquadComp), true] call F_spawnRegularSquad;
-				[_grp, _spawnpos, 200] spawn defence_ai;
-				sleep 10;
-				_last = round (time + 180);
-			};
+	while { damage opfor_target < 1 && ServerTime < sector_timer } do {
+		if ({alive _x} count (units _grp) == 0 && time > _last) then {
+			_grp = [_spawnpos, "csat", ([] call F_getAdaptiveSquadComp), true] call F_spawnRegularSquad;
+			[_grp, _spawnpos, 200] spawn defence_ai;
+			_last = round (time + 180);
+			if (_nb_player <= 2) then { _last = round (time + 300) };
+			sleep 10;
 		};
 		if (damage opfor_target >= 1) exitWith {};
 
 		if ((time > _last_send || opforcap < 50) && !opforcap_max) then {
 			_last_send = round (time + 600);
+			if (_nb_player <= 2) then { _last_send = round (time + 900) };
 			_players = (AllPlayers - (entities "HeadlessClient_F")) select { _x distance2D lhd > GRLIB_sector_size && _x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_sector_size};
-			_target = selectRandom _players;
-			if (isNil "_target") then {
-				[getPosATL _target] spawn send_paratroopers;
-				sleep 10;
-			};
-			if (damage opfor_target >= 1) exitWith {};
-			if (_target distance2D opfor_target > GRLIB_spawn_max) then {
-				[getPosATL _target, GRLIB_side_enemy, 3] spawn spawn_air;
-				sleep 10;
-			};
+			if (count _players > 0) then {
+				_target = selectRandom _players;
+				private _air = 3;
+				if (_nb_player > 2) then { _air = floor random 2 };
+				if (_target distance2D opfor_target > GRLIB_spawn_max) then {
 
-			if (damage opfor_target >= 1) exitWith {};
-			_int = floor random 3;
-			switch (_int) do {
-				case 0: { [_spawnpos] spawn send_paratroopers };
-				case 1: { [_spawnpos, _int] spawn spawn_battlegroup_direct };
-				case 2: { [_spawnpos, GRLIB_side_enemy, 3] spawn spawn_air };
+					[getPosATL _target, GRLIB_side_enemy, _air] spawn spawn_air;
+				} else {
+					[getPosATL _target] spawn send_paratroopers;
+				};
+				sleep 10;
 			};
-			sleep 10;
+			if (damage opfor_target >= 1) exitWith {};
+
+			if (_nb_player > 2) then {
+				_int = floor random 3;
+				switch (_int) do {
+					case 0: { [_spawnpos] spawn send_paratroopers };
+					case 1: { [_spawnpos, _int] spawn spawn_battlegroup_direct };
+					case 2: { [_spawnpos, GRLIB_side_enemy, 3] spawn spawn_air };
+				};
+				sleep 10;
+			};
 			if (damage opfor_target >= 1) exitWith {};
 			[4] remoteExec ["BIS_fnc_earthquake", 0];
 			sleep 5;
