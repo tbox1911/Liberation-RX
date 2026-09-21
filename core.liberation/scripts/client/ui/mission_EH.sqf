@@ -43,7 +43,7 @@ addMissionEventHandler ["Draw3D",{
 	};
 
     // statics Info
-	private _near_static = nearestObjects [player, static_vehicles_AI, 5];
+	private _near_static = (nearestObjects [player, static_vehicles_AI, 5]) select { alive _x };
 	if (count (_near_static) > 0) then {
 		private _static = _near_static select 0;
 		private _static_pos = ASLToAGL getPosASL _static;
