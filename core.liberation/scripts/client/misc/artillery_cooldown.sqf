@@ -3,7 +3,7 @@ params ["_unit", "_vehicle", "_magazine"];
 if (_unit != gunner _vehicle) exitWith {};
 
 private _is_arty = getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner");
-if (_is_arty == 0 || _magazine in GRLIB_artillery_free) exitWith {};
+if (_is_arty == 0) exitWith {};
 
 private _cooldown = (1800/GRLIB_artillery_maxshot);
 GRLIB_artillery_shot = GRLIB_artillery_shot + 1;

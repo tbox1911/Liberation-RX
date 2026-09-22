@@ -66,7 +66,7 @@ _unit addEventHandler ["FiredMan", {
 
 	// Cooldown artillery fire
 	if (GRLIB_artillery_maxshot == 0) exitWith {};
-	if (isNull _vehicle) exitWith {};
+	if (isNull _vehicle || _magazine in GRLIB_artillery_free) exitWith {};
 	[_unit, _vehicle, _magazine] spawn artillery_cooldown;
 }];
 
