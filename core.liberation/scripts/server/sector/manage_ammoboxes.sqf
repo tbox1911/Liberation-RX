@@ -12,7 +12,7 @@ if !(_sector in GRLIB_military_sectors_already_activated) then {
 		if (GRLIB_difficulty_modifier > 1.5) then {
 			_crates_amount = (1 + floor random 3);
 		};
-		_vehicle = [markerPos _sector, opfor_transport_truck, 3, GRLIB_side_enemy, "", false] call F_libSpawnVehicle;
+		_vehicle = [markerPos _sector, opfor_transport_truck, 10, GRLIB_side_enemy, "", false] call F_libSpawnVehicle;
 		if (isNull _vehicle) then {
 			diag_log format ["--- LRX Error: No place to build %1 at sector %2", opfor_transport_truck, _sector];
 		} else {
@@ -22,6 +22,7 @@ if !(_sector in GRLIB_military_sectors_already_activated) then {
 		for "_i" from 1 to _crates_amount do {
 			_newbox = [ammobox_o_typename, markerpos _sector, true] call boxSetup;
 			[_newbox] call F_clearCargo;
+			sleep 0.5;
 		};
 	};
 	[markerPos _sector] spawn manage_intels;

@@ -268,7 +268,7 @@ if (count _vehtospawn > 0) then {
 		[_x, _infsquad1, _sector_pos, _sector] spawn {
 			params ["_classname", "_type", "_sector_pos", "_sector"];
 			private _pos = [_sector_pos, (80 + floor random 100)] call F_getRandomPos;
-			private _vehicle = [_pos, _classname, 5, GRLIB_side_enemy, _type] call F_libSpawnVehicle;
+			private _vehicle = [_pos, _classname, 10, GRLIB_side_enemy, _type] call F_libSpawnVehicle;
 			if (!isNull _vehicle) then {
 				(missionNamespace getVariable format ["LRX_sector_%1_vehicles", _sector]) pushBack _vehicle;
 				[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
