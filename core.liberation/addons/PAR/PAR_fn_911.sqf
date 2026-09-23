@@ -3,7 +3,9 @@ params ["_wnded","_medic"];
 _medic allowDamage false;
 _medic setCaptive true;
 _medic setHitPointDamage ["hitLegs",0];
-_medic setVariable ["PAR_AIteam", assignedTeam _medic];
+private _ai_team = assignedTeam _medic;
+if (_ai_team == "") then { _ai_team = "MAIN" };
+_medic setVariable ["PAR_AIteam", _ai_team];
 
 private _grpmedic = createGroup [GRLIB_side_civilian, true];
 sleep 0.2;
