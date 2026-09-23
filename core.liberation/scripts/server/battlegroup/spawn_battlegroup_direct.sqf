@@ -1,5 +1,6 @@
-if (GRLIB_endgame == 1) exitWith {};
 params ["_objective_pos", "_intensity"];
+if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
+if (opforcap_max) exitWith { diag_log "Spawn Direct BattleGroup aborted, opfor max units reached." };
 
 private _hc = [] call F_lessLoadedHC;
 if (isDedicated && !isNull _hc) exitWith {
@@ -20,29 +21,25 @@ if (count _spawn_pos == 0) exitWith { diag_log "BattleGroup could not find acces
 diag_log format ["Spawn Direct BattleGroup level %1 to %2 at %3", _intensity, _objective_pos, time];
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
-if (_intensity == 1) then {
+private _target_size = GRLIB_battlegroup_size;
+if (_intensity == 0) then {
 	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity;
+	_target_size = round (GRLIB_battlegroup_size / 2);
 };
 
 [_spawn_pos] remoteExec ["remote_call_battlegroup", 0];
 
 private ["_vehicle", "_driver", "_nextgrp"];
-private _selected_opfor_battlegroup = [];
-private _target_size = GRLIB_battlegroup_size;
 
 for "_i" from 0 to _target_size do {
-	_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
-};
-
-{
-	_vehicle = [_spawn_pos, _x, 15] call F_libSpawnVehicle;
+	_vehicle = [_spawn_pos, (selectRandom _vehicle_pool), 15] call F_libSpawnVehicle;
 	_driver = driver _vehicle;
 	_nextgrp = group _driver;
 	_driver doMove _objective_pos;
 	[_nextgrp, _objective_pos] spawn battlegroup_ai;
 	[_nextgrp, 3600] call F_setUnitTTL;
 	sleep 15;
-} foreach _selected_opfor_battlegroup;
+};
 
 if (count opfor_troup_transports_truck > 0 && floor random 3 > 0) then {
 	_vehicle = [_spawn_pos, (selectRandom opfor_troup_transports_truck), 15] call F_libSpawnVehicle;
@@ -57,15 +54,21 @@ if (count opfor_troup_transports_truck > 0 && floor random 3 > 0) then {
 
 [_objective_pos] spawn send_paratroopers;
 sleep 10;
-if (combat_readiness >= 70) then {
+
+if (combat_readiness >= 70 && GRLIB_difficulty_modifier >= 2) then {
 	[_objective_pos] spawn send_paratroopers;
 	sleep 10;
 };
 
-if (combat_readiness >= 80) then {
+if (combat_readiness >= 80 && GRLIB_difficulty_modifier >= 2) then {
 	[_objective_pos, 3] spawn send_drones;
 	sleep 10;
 	[_objective_pos, 3] spawn send_drones;
+};
+
+if (combat_readiness >= 90) then {
+	[_objective_pos] spawn send_paratroopers;
+	sleep 10;
 };
 
 stats_hostile_battlegroups = stats_hostile_battlegroups + 1;

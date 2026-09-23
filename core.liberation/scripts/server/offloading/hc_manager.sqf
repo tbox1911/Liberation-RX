@@ -4,18 +4,12 @@ GRLIB_building_ai_ratio = [GRLIB_PARAM_BuildingRatio] call lrx_getParamValue;
 GRLIB_cleanup_vehicles = [GRLIB_PARAM_CleanupVehicles] call lrx_getParamValue;
 GRLIB_Commander_AutoStart = [GRLIB_PARAM_CommanderAutoStart] call lrx_getParamValue;
 GRLIB_Commander_VoteTime = [GRLIB_PARAM_CommanderVoteTimeout] call lrx_getParamValue;
-GRLIB_csat_aggressivity = [GRLIB_PARAM_Aggressivity] call lrx_getParamValue;
 GRLIB_day_factor = [GRLIB_PARAM_DayDuration] call lrx_getParamValue;
 GRLIB_despawn_tickets = [GRLIB_PARAM_SectorDespawn] call lrx_getParamValue;
-GRLIB_difficulty_modifier = [GRLIB_PARAM_Difficulty] call lrx_getParamValue;
 GRLIB_hide_opfor = [GRLIB_PARAM_HideOpfor] call lrx_getParamValue;
 GRLIB_MineProbability = [GRLIB_PARAM_MineProbability] call lrx_getParamValue;
 GRLIB_night_factor = [GRLIB_PARAM_NightDuration] call lrx_getParamValue;
 GRLIB_vulnerability_timer = [GRLIB_PARAM_VulnerabilityTimer] call lrx_getParamValue;
-
-// Manage BattleGroup
-GRLIB_battlegroup_timer = (300 / GRLIB_csat_aggressivity);
-GRLIB_last_battlegroup = 0;
 
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\events\kill_manager.sqf";

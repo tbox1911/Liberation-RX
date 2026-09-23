@@ -20,10 +20,7 @@ while { _loop } do {
 		publicVariable "blufor_sectors";
 	};
 
-	opforcap_max = false;
-	if (opforcap >= GRLIB_opfor_cap) then {
-		opforcap_max = true;
-	};
+	opforcap_max = (opforcap >= GRLIB_opforcap);
 
 	publicVariable "civcap";
 	publicVariable "unitcap";

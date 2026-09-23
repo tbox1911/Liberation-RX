@@ -1,40 +1,49 @@
 // LRX Selectable
 
-GRLIB_opforcap = [GRLIB_PARAM_Opforcap] call lrx_getParamValue;
-GRLIB_unitcap = [GRLIB_PARAM_Unitcap] call lrx_getParamValue;
-GRLIB_fancy_info = [GRLIB_PARAM_FancyInfo] call lrx_getParamValue;
-GRLIB_fob_type = [GRLIB_PARAM_FobType] call lrx_getParamValue;
-GRLIB_huron_type = [GRLIB_PARAM_HuronType] call lrx_getParamValue;
-GRLIB_naval_type = [GRLIB_PARAM_NavalFobType] call lrx_getParamValue;
-GRLIB_resources_multiplier = [GRLIB_PARAM_ResourcesMultiplier] call lrx_getParamValue;
-GRLIB_mod_west = [GRLIB_PARAM_ModPresetWest] call lrx_getParamValue;
-GRLIB_mod_east = [GRLIB_PARAM_ModPresetEast] call lrx_getParamValue;
-GRLIB_mod_civ = [GRLIB_PARAM_ModPresetCiv] call lrx_getParamValue;
-GRLIB_mod_taxi = [GRLIB_PARAM_ModPresetTaxi] call lrx_getParamValue;
-GRLIB_enable_arsenal = [GRLIB_PARAM_EnableArsenal] call lrx_getParamValue;
-GRLIB_filter_arsenal = [GRLIB_PARAM_FilterArsenal] call lrx_getParamValue;
-GRLIB_free_loadout = [GRLIB_PARAM_FreeLoadout] call lrx_getParamValue;
-GRLIB_force_english = [GRLIB_PARAM_ForceEnglish] call lrx_getParamValue;
-GRLIB_sector_radius = [GRLIB_PARAM_SectorRadius] call lrx_getParamValue;
-GRLIB_TFR_radius = [GRLIB_PARAM_TFRadioRange] call lrx_getParamValue;
-GRLIB_squad_size = [GRLIB_PARAM_SquadSize] call lrx_getParamValue;
-GRLIB_max_squad_size = [GRLIB_PARAM_MaxSquadSize] call lrx_getParamValue;
-GRLIB_max_spawn_point = [GRLIB_PARAM_MaxSpawnPoint] call lrx_getParamValue;
-GRLIB_allow_redeploy = [GRLIB_PARAM_Redeploy] call lrx_getParamValue;
-GRLIB_permission_vehicles = [GRLIB_PARAM_EnableLock] call lrx_getParamValue;
-GRLIB_permission_enemy = [GRLIB_PARAM_EnemyLock] call lrx_getParamValue;
-GRLIB_civilian_activity = [GRLIB_PARAM_Civilians] call lrx_getParamValue;
-GRLIB_patrols_activity = [GRLIB_PARAM_Patrols] call lrx_getParamValue;
-GRLIB_wildlife_manager = [GRLIB_PARAM_Wildlife] call lrx_getParamValue;
-GRLIB_Facilities = [GRLIB_PARAM_Facilities] call lrx_getParamValue;
-GRLIB_civ_penalties = [GRLIB_PARAM_CivPenalties] call lrx_getParamValue;
-GRLIB_halo_param = [GRLIB_PARAM_HaloJump] call lrx_getParamValue;
-GRLIB_enable_drones = [GRLIB_PARAM_Drones] call lrx_getParamValue;
 GRLIB_alarms_enabled = [GRLIB_PARAM_Alarms] call lrx_getParamValue;
-GRLIB_Undercover_mode = [GRLIB_PARAM_UndercoverModeEnabled] call lrx_getParamValue;
+GRLIB_allow_redeploy = [GRLIB_PARAM_Redeploy] call lrx_getParamValue;
+GRLIB_civ_penalties = [GRLIB_PARAM_CivPenalties] call lrx_getParamValue;
+GRLIB_civilian_activity = [GRLIB_PARAM_Civilians] call lrx_getParamValue;
 GRLIB_Commander_mode = [GRLIB_PARAM_CommanderModeEnabled] call lrx_getParamValue;
 GRLIB_Commander_radius = [GRLIB_PARAM_CommanderModeRadius] call lrx_getParamValue;
 GRLIB_Commander_VoteEnabled = [GRLIB_PARAM_CommPlayerVote] call lrx_getParamValue;
+GRLIB_difficulty_modifier = [GRLIB_PARAM_Difficulty] call lrx_getParamValue;
+GRLIB_enable_arsenal = [GRLIB_PARAM_EnableArsenal] call lrx_getParamValue;
+GRLIB_enable_drones = [GRLIB_PARAM_Drones] call lrx_getParamValue;
+GRLIB_Facilities = [GRLIB_PARAM_Facilities] call lrx_getParamValue;
+GRLIB_fancy_info = [GRLIB_PARAM_FancyInfo] call lrx_getParamValue;
+GRLIB_filter_arsenal = [GRLIB_PARAM_FilterArsenal] call lrx_getParamValue;
+GRLIB_fob_type = [GRLIB_PARAM_FobType] call lrx_getParamValue;
+GRLIB_force_english = [GRLIB_PARAM_ForceEnglish] call lrx_getParamValue;
+GRLIB_free_loadout = [GRLIB_PARAM_FreeLoadout] call lrx_getParamValue;
+GRLIB_halo_param = [GRLIB_PARAM_HaloJump] call lrx_getParamValue;
+GRLIB_huron_type = [GRLIB_PARAM_HuronType] call lrx_getParamValue;
+GRLIB_max_spawn_point = [GRLIB_PARAM_MaxSpawnPoint] call lrx_getParamValue;
+GRLIB_max_squad_size = [GRLIB_PARAM_MaxSquadSize] call lrx_getParamValue;
+GRLIB_mod_civ = [GRLIB_PARAM_ModPresetCiv] call lrx_getParamValue;
+GRLIB_mod_east = [GRLIB_PARAM_ModPresetEast] call lrx_getParamValue;
+GRLIB_mod_taxi = [GRLIB_PARAM_ModPresetTaxi] call lrx_getParamValue;
+GRLIB_mod_west = [GRLIB_PARAM_ModPresetWest] call lrx_getParamValue;
+GRLIB_naval_type = [GRLIB_PARAM_NavalFobType] call lrx_getParamValue;
+GRLIB_opforcap = [GRLIB_PARAM_Opforcap] call lrx_getParamValue;
+GRLIB_patrols_activity = [GRLIB_PARAM_Patrols] call lrx_getParamValue;
+GRLIB_permission_enemy = [GRLIB_PARAM_EnemyLock] call lrx_getParamValue;
+GRLIB_permission_vehicles = [GRLIB_PARAM_EnableLock] call lrx_getParamValue;
+GRLIB_resources_multiplier = [GRLIB_PARAM_ResourcesMultiplier] call lrx_getParamValue;
+GRLIB_sector_radius = [GRLIB_PARAM_SectorRadius] call lrx_getParamValue;
+GRLIB_squad_size = [GRLIB_PARAM_SquadSize] call lrx_getParamValue;
+GRLIB_TFR_radius = [GRLIB_PARAM_TFRadioRange] call lrx_getParamValue;
+GRLIB_Undercover_mode = [GRLIB_PARAM_UndercoverModeEnabled] call lrx_getParamValue;
+GRLIB_wildlife_manager = [GRLIB_PARAM_Wildlife] call lrx_getParamValue;
+
+// Manage BattleGroup
+GRLIB_battlegroup_timer = (600 / GRLIB_difficulty_modifier) max 300;
+GRLIB_last_battlegroup = 0;
+
+// Limit
+GRLIB_battlegroup_size = (GRLIB_battlegroup_size * GRLIB_difficulty_modifier) min 8; 	// Maximal size of enemy battlegroups
+GRLIB_civilians_amount = (GRLIB_civilians_amount * GRLIB_civilian_activity) min 100;  	// Maximal Number of civilians
+GRLIB_patrol_amount = (GRLIB_patrol_amount * GRLIB_patrols_activity) min 50; 			// Maximal number of patrols
 
 // Disable TFAR Relay
 if (GRLIB_TFR_radius == 0) then { GRLIB_TFR_enabled = false };

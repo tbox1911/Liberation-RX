@@ -263,7 +263,6 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
 
 // Create vehicles
-if (opforcap_max) then { _vehtospawn = [] };
 if (count _vehtospawn > 0) then {
 	{
 		[_x, _infsquad1, _sector_pos, _sector] spawn {
@@ -282,7 +281,6 @@ if (count _vehtospawn > 0) then {
 };
 
 // Create garrison
-if (opforcap_max) then { _building_ai_max = 0 };
 if (_building_ai_max > 0) then {
 	_building_ai_max = (_building_ai_max * GRLIB_building_ai_ratio);
 	if (_sector in sectors_bigtown) then { _building_ai_max = _building_ai_max + 12 };

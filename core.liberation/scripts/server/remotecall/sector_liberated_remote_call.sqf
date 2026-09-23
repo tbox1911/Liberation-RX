@@ -5,15 +5,15 @@ diag_log format ["Sector %1 Liberated!", _liberated_sector];
 private _combat_readiness_increase = 0;
 
 if (_liberated_sector in sectors_bigtown) then {
-	_combat_readiness_increase = (5 + (floor (random 10))) * GRLIB_difficulty_modifier;
+	_combat_readiness_increase = (20 + (floor random 10)) * GRLIB_difficulty_modifier;
 };
 
 if (_liberated_sector in sectors_capture) then {
-	_combat_readiness_increase = (3 + (floor (random 5))) * GRLIB_difficulty_modifier;
+	_combat_readiness_increase = (5 + (floor random 10)) * GRLIB_difficulty_modifier;
 };
 
 if (_liberated_sector in sectors_military) then {
-	_combat_readiness_increase = (5 + (floor (random 10))) * GRLIB_difficulty_modifier;
+	_combat_readiness_increase = (15 + (floor random 10)) * GRLIB_difficulty_modifier;
 
 	private _trucklist = (entities [[opfor_transport_truck], [], false, false]) select {
 		_x distance2D (markerPos _liberated_sector) < 300 &&
@@ -36,11 +36,11 @@ if (_liberated_sector in sectors_military) then {
 };
 
 if (_liberated_sector in sectors_factory) then {
-	_combat_readiness_increase = (3 + (floor (random 7))) * GRLIB_difficulty_modifier;
+	_combat_readiness_increase = (10 + (floor random 10)) * GRLIB_difficulty_modifier;
 };
 
 if (_liberated_sector in sectors_tower) then {
-	_combat_readiness_increase = (2 + (floor (random 4)));
+	_combat_readiness_increase = (6 + (floor random 10)) * GRLIB_difficulty_modifier;
 	private _text = format ["Enemies can no longer call Air Support nearby %1 Sector!", markerText _liberated_sector];
 	[gamelogic, _text] remoteExec ["globalChat", 0];
 };
@@ -88,15 +88,14 @@ if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 	if (
 	   !(_liberated_sector in sectors_tower) &&
-	   ((combat_readiness >= 70 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 95)
+	   ((combat_readiness >= 65 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 90)
 	) then {
 		[_liberated_sector] spawn {
 			params ["_liberated_sector"];
-			sleep 60 + (floor random 300);
 			diag_log format ["Spawn Revenge BattleGroup at %1", time];
-			if (floor random 4 == 0) then {
-				private _all_fobs = (allMapMarkers select { _x select [0,9] == "fobmarker" });
-				[selectRandom _all_fobs] spawn spawn_battlegroup;
+			sleep 60 + (floor random 150);
+			if (floor random 3 == 0) then {
+				[selectRandom GRLIB_all_fobs] spawn spawn_battlegroup;
 			} else {
 				[_liberated_sector] spawn spawn_battlegroup;
 			};

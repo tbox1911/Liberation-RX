@@ -127,7 +127,6 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\base\huron_manager.sqf";
 [] execVM "scripts\server\game\spawn_radio_towers.sqf";
 [] execVM "scripts\server\game\hall_of_fame.sqf";
-[] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
 [] execVM "scripts\server\battlegroup\random_battlegroups.sqf";
 [] execVM "scripts\server\battlegroup\readiness_decrease.sqf";
 [] execVM "scripts\server\resources\manage_resources.sqf";
@@ -153,10 +152,6 @@ if (abort_loading) exitWith {
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";
 [] execVM "scripts\server\offloading\offload_manager.sqf";
-
-// Manage BattleGroup
-GRLIB_battlegroup_timer = (300 / GRLIB_csat_aggressivity);
-GRLIB_last_battlegroup = 0;
 
 GRLIB_sector_spawning = false;
 publicVariable "GRLIB_sector_spawning";

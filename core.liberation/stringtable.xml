@@ -1898,18 +1898,6 @@
 			<Czech>Extrémní</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_DIFFICULTY7">
-			<Original>Ludicrous</Original>
-			<French>Affolant</French>
-			<German>grotesk</German>
-			<Spanish>Ridículo</Spanish>
-			<Russian>Весело</Russian>
-			<Chinesesimp>噩梦</Chinesesimp>
-			<Chinese>噩夢</Chinese>
-			<Japanese>クレイジー</Japanese>
-			<Portuguese>Ridículo</Portuguese>
-			<Czech>Smýšený</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DIFFICULTY8">
 			<Original>Oh god oh god we're all gonna die</Original>
 			<French>Oh mon dieu, on va tous mourir</French>
 			<German>Mein Gott, wir werden alle sterben!</German>
@@ -2157,84 +2145,6 @@
 			<French>Nombre maximum d'unités ennemies</French>
 			<Chinesesimp>敌方单位的最大数量</Chinesesimp>
 			<Chinese>敵方組織的最大數量</Chinese>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP">
-			<Original>Maximum unit modifier</Original>
-			<French>Modificateur d'unité maximum</French>
-			<Chinesesimp>最大单位修正器</Chinesesimp>
-			<Chinese>最大組織修正器</Chinese>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP1">
-			<Original>50% - Recommended for local hosting</Original>
-			<French>50% - Recommandé pour un hébergement local</French>
-			<German>50 % - Empfohlen für lokal gehostete Spiele</German>
-			<Spanish>50% - Recomendado para host local</Spanish>
-			<Russian>50% - Рекомендуется для локального хостинга</Russian>
-			<Chinesesimp>50% - 建议为本地托管</Chinesesimp>
-			<Chinese>50% - 建議為本地託管</Chinese>
-			<Japanese>50% - ローカルホスト向け</Japanese>
-			<Portuguese>50% - Recomendado para hospedagem local</Portuguese>
-			<Czech>50 % – Doporučeno pro místní hosting</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP2">
-			<Original>75% - Dedicated server recommended</Original>
-			<French>75% - Serveur dédié recommandé</French>
-			<German>75 % - Dezidierter Server empfohlen</German>
-			<Spanish>75% - Recomendado para servidor dedicado</Spanish>
-			<Russian>75% - Выделенный сервер рекомендуется</Russian>
-			<Chinesesimp>75% - 推荐为专用服务器</Chinesesimp>
-			<Chinese>75% - 推薦為專用服務器</Chinese>
-			<Japanese>75% - 専用サーバー向け</Japanese>
-			<Portuguese>75% - Servidor dedicado recomendado</Portuguese>
-			<Czech>75 % – doporučený dedikovaný server</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP3">
-			<Original>100% - Dedicated server recommended</Original>
-			<French>100% - Serveur dédié recommandé</French>
-			<German>100 % - Dezidierter Server empfohlen</German>
-			<Spanish>100% - Recomendado para servidor dedicado</Spanish>
-			<Russian>100% - Выделенный сервер рекомендуется</Russian>
-			<Chinesesimp>100% - 推荐专用服务器</Chinesesimp>
-			<Chinese>100% - 推薦專用服務器</Chinese>
-			<Japanese>100% - 専用サーバー向け</Japanese>
-			<Portuguese>100% - Servidor dedicado recomendado</Portuguese>
-			<Czech>100 % – doporučený dedikovaný server</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP4">
-			<Original>125% - Dedicated server with headless client recommended</Original>
-			<French>125% - Serveur dédié avec headless client recommandé</French>
-			<German>125 % - Dezidierter Server mit Headless Client empfohlen</German>
-			<Spanish>125% - Recomendado para servidor dedicado con cliente descabezado</Spanish>
-			<Russian>125% - Выделенный сервер вместе с headless client рекомендуется</Russian>
-			<Chinesesimp>125% - 推荐专用服务器和无头客户端</Chinesesimp>
-			<Chinese>125% - 推薦專用服務器和無頭客戶端</Chinese>
-			<Japanese>125% - ヘッドレスクライアント使用の専用サーバー向け</Japanese>
-			<Portuguese>125% - Servidor dedicado com cliente headless recomendado</Portuguese>
-			<Czech>125 % – doporučený dedikovaný server s headless klientem</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP5">
-			<Original>150% - Dedicated server with multiple headless clients recommended</Original>
-			<French>150% - Serveur dédié avec clients headless multiples recommandé</French>
-			<German>150 % - Dezidierter Server mit mehreren Headless Clients empfohlen</German>
-			<Spanish>150% - Recomendado para servidor dedicado con múltiples clientes descabezados</Spanish>
-			<Russian>150% - Выделенный сервер вместе с несколькими headless client рекомендуется</Russian>
-			<Chinesesimp>150% - 推荐使用具有多个无头客户端的专用服务器</Chinesesimp>
-			<Chinese>150% - 推薦使用具有多個無頭客戶端的專用服務器</Chinese>
-			<Japanese>150% - 複数のヘッドレスクライアント使用の専用サーバー向け</Japanese>
-			<Portuguese>150% - Servidor dedicado com vários clientes headless recomendados</Portuguese>
-			<Czech>150 % – Doporučujeme dedikovaný server s několika headless klienty</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP6">
-			<Original>200% - Dedicated server with multiple headless clients recommended</Original>
-			<French>200% - Serveur dédié avec clients headless multiples recommandé</French>
-			<German>200 % - Dezidierter Server mit mehreren Headless Clients empfohlen</German>
-			<Spanish>200% - Recomendado para servidor dedicado con múltiples clientes descabezados</Spanish>
-			<Russian>200% - Выделенный сервер вместе с несколькими headless client рекомендуется</Russian>
-			<Chinesesimp>200% - 推荐使用具有多个无头客户端的专用服务器</Chinesesimp>
-			<Chinese>200% - 推薦使用具有多個無頭客戶端的專用服務器</Chinese>
-			<Japanese>200% - 複数のヘッドレスクライアント使用の専用サーバー向け</Japanese>
-			<Portuguese>200% - Servidor dedicado com vários clientes headless recomendados</Portuguese>
-			<Czech>200% - Doporučujeme dedikovaný server s několika headless klienty</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PATROLS">
 			<Original>Enable the Patrols Manager</Original>
@@ -3469,78 +3379,6 @@
 			<Japanese>出撃先:</Japanese>
 			<Portuguese>Local das instalações:</Portuguese>
 			<Czech>Místo nasazení:</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM">
-			<Original>OPFOR aggressivity</Original>
-			<French>Aggressivité de l'OPFOR</French>
-			<German>OPFOR Aggressivität</German>
-			<Spanish>Agresividad del OPFOR</Spanish>
-			<Russian>Уровень обеспокоенности OPFOR</Russian>
-			<Chinesesimp>OPFOR攻击性</Chinesesimp>
-			<Chinese>OPFOR攻擊性</Chinese>
-			<Japanese>敵のアグレッシブ度</Japanese>
-			<Portuguese>OPFOR agressividade</Portuguese>
-			<Czech>Agresivita Nepřátel</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM0">
-			<Original>Anemic</Original>
-			<French>Anémique</French>
-			<German>Mutlos</German>
-			<Spanish>Anémica</Spanish>
-			<Russian>Вяло</Russian>
-			<Chinesesimp>乏力</Chinesesimp>
-			<Chinese>乏力</Chinese>
-			<Japanese>とても弱い</Japanese>
-			<Portuguese>Anêmico</Portuguese>
-			<Czech>Měnící</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM1">
-			<Original>Weak</Original>
-			<French>Faible</French>
-			<German>Schwacht</German>
-			<Spanish>Floja</Spanish>
-			<Russian>Слабо</Russian>
-			<Chinesesimp>软弱</Chinesesimp>
-			<Chinese>軟弱</Chinese>
-			<Japanese>弱い</Japanese>
-			<Portuguese>Fraco</Portuguese>
-			<Czech>Slabý</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM2">
-			<Original>Normal</Original>
-			<French>Normale</French>
-			<German>Normal</German>
-			<Spanish>Normal</Spanish>
-			<Russian>Нормально</Russian>
-			<Chinesesimp>常规</Chinesesimp>
-			<Chinese>常規</Chinese>
-			<Japanese>通常</Japanese>
-			<Portuguese>Normal</Portuguese>
-			<Czech>Nomrální</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM3">
-			<Original>Strong</Original>
-			<French>Forte</French>
-			<German>Stark</German>
-			<Spanish>Fuerte</Spanish>
-			<Russian>Сильно</Russian>
-			<Chinesesimp>强劲</Chinesesimp>
-			<Chinese>強勁</Chinese>
-			<Japanese>強い</Japanese>
-			<Portuguese>Forte</Portuguese>
-			<Czech>Silný</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM4">
-			<Original>Extreme</Original>
-			<French>Extreme</French>
-			<German>Extrem</German>
-			<Spanish>Extrema</Spanish>
-			<Russian>Очень сильно</Russian>
-			<Chinesesimp>疯狂</Chinesesimp>
-			<Chinese>瘋狂</Chinese>
-			<Japanese>エクストリーム</Japanese>
-			<Portuguese>Extremo</Portuguese>
-			<Czech>Extrémní</Czech>
 		</Key>
 		<Key ID="STR_WEATHER_PARAM">
 			<Original>Weather</Original>
@@ -9880,69 +9718,6 @@
 			<Portuguese>Limitar forças inimigas a 400 unidades</Portuguese>
 			<Czech>Omezit nepřátelské síly na 400 jednotek</Czech>
 		</Key>
-		<Key ID="STR_PARAMS_UNITCAP_DESC">
-			<Original>Adjusts the unit cap multiplier for player forces.</Original>
-			<Russian>Настраивает множитель ограничения числа юнитов для сил игрока.</Russian>
-			<French>Ajuste le multiplicateur de plafond d'unités pour les forces du joueur.</French>
-			<Chinesesimp>调整玩家部队单位上限的乘数。</Chinesesimp>
-			<Chinese>調整玩家部隊單位上限的乘數。</Chinese>
-			<Portuguese>Ajusta o multiplicador do limite de unidades para as forças do jogador.</Portuguese>
-			<Czech>Upravuje násobitel stropu jednotek pro hráčovy síly.</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP_OPT0">
-			<Original>50% of the normal unit cap</Original>
-			<Russian>50% от обычного ограничения</Russian>
-			<French>50 % du plafond normal d'unités</French>
-			<Chinesesimp>正常单位上限的50%</Chinesesimp>
-			<Chinese>正常單位上限的50%</Chinese>
-			<Portuguese>50% do limite normal de unidades</Portuguese>
-			<Czech>50 % běžného stropu jednotek</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP_OPT1">
-			<Original>75% of the normal unit cap</Original>
-			<Russian>75% от обычного ограничения</Russian>
-			<French>75 % du plafond normal d'unités</French>
-			<Chinesesimp>正常单位上限的75%</Chinesesimp>
-			<Chinese>正常單位上限的75%</Chinese>
-			<Portuguese>75% do limite normal de unidades</Portuguese>
-			<Czech>75 % běžného stropu jednotek</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP_OPT2">
-			<Original>100% (default) unit cap</Original>
-			<Russian>100 % (по умолчанию) ограничения</Russian>
-			<French>100 % (par défaut) du plafond d'unités</French>
-			<Chinesesimp>100%（默认）单位上限</Chinesesimp>
-			<Chinese>100%（預設）單位上限</Chinese>
-			<Portuguese>100% (padrão) do limite de unidades</Portuguese>
-			<Czech>100 % (výchozí) strop jednotek</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP_OPT3">
-			<Original>125% of the normal unit cap</Original>
-			<Russian>125% от обычного ограничения</Russian>
-			<French>125 % du plafond normal d'unités</French>
-			<Chinesesimp>正常单位上限的125%</Chinesesimp>
-			<Chinese>正常單位上限的125%</Chinese>
-			<Portuguese>125% do limite normal de unidades</Portuguese>
-			<Czech>125 % běžného stropu jednotek</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP_OPT4">
-			<Original>150% of the normal unit cap</Original>
-			<Russian>150% от обычного ограничения</Russian>
-			<French>150 % du plafond normal d'unités</French>
-			<Chinesesimp>正常单位上限的150%</Chinesesimp>
-			<Chinese>正常單位上限的150%</Chinese>
-			<Portuguese>150% do limite normal de unidades</Portuguese>
-			<Czech>150 % běžného stropu jednotek</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_UNITCAP_OPT5">
-			<Original>200% of the normal unit cap</Original>
-			<Russian>200% от обычного ограничения</Russian>
-			<French>200 % du plafond normal d'unités</French>
-			<Chinesesimp>正常单位上限的200%</Chinesesimp>
-			<Chinese>正常單位上限的200%</Chinese>
-			<Portuguese>200% do limite normal de unidades</Portuguese>
-			<Czech>200 % běžného stropu jednotek</Czech>
-		</Key>
 		<Key ID="STR_PARAMS_DIFFICULTY_DESC">
 			<Original>Sets the game difficulty level using various multipliers.</Original>
 			<Russian>Устанавливает уровень сложности игры с использованием различных множителей.</Russian>
@@ -10007,76 +9782,13 @@
 			<Czech>Extrémní (násobitel 2×)</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_DIFFICULTY_OPT6">
-			<Original>Insane (4x multiplier)</Original>
-			<Russian>Безумно (множитель 4x)</Russian>
-			<French>Dément (multiplicateur ×4)</French>
-			<Chinesesimp>疯狂（4倍乘数）</Chinesesimp>
-			<Chinese>瘋狂（4倍乘數）</Chinese>
-			<Portuguese>Insano (multiplicador x4)</Portuguese>
-			<Czech>Šílené (násobitel 4×)</Czech>
-		</Key>
-		<Key ID="STR_PARAMS_DIFFICULTY_OPT7">
-			<Original>Nightmare (10x multiplier)</Original>
-			<Russian>Кошмар (множитель 10x)</Russian>
-			<French>Cauchemar (multiplicateur ×10)</French>
-			<Chinesesimp>噩梦（10倍乘数）</Chinesesimp>
-			<Chinese>噩夢（10倍乘數）</Chinese>
-			<Portuguese>Pesadelo (multiplicador x10)</Portuguese>
-			<Czech>Noční můra (násobitel 10×)</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM_DESC">
-			<Original>Determines the aggressivity level of enemy forces.</Original>
-			<Russian>Определяет уровень агрессивности вражеских сил.</Russian>
-			<French>Détermine le niveau d'agressivité des forces ennemies.</French>
-			<Chinesesimp>确定敌军的攻击强度等级。</Chinesesimp>
-			<Chinese>確定敵軍的侵略性級別。</Chinese>
-			<Portuguese>Determina o nível de agressividade das forças inimigas.</Portuguese>
-			<Czech>Určuje úroveň agresivity nepřátelských sil.</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM_OPT0">
-			<Original>Very Passive (25% aggressivity)</Original>
-			<Russian>Очень пассивно (25% агрессивности)</Russian>
-			<French>Très passif (25 % d'agressivité)</French>
-			<Chinesesimp>非常被动（25%侵略性）</Chinesesimp>
-			<Chinese>非常被動（25%侵略性）</Chinese>
-			<Portuguese>Muito passivo (25% de agressividade)</Portuguese>
-			<Czech>Velmi pasivní (25% agresivity)</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM_OPT1">
-			<Original>Low Aggressivity (50%)</Original>
-			<Russian>Низкая агрессивность (50%)</Russian>
-			<French>Faible agressivité (50 %)</French>
-			<Chinesesimp>低侵略性（50%）</Chinesesimp>
-			<Chinese>低侵略性（50%）</Chinese>
-			<Portuguese>Baixa agressividade (50%)</Portuguese>
-			<Czech>Nízká agresivita (50%)</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM_OPT2">
-			<Original>Normal Aggressivity (100%)</Original>
-			<Russian>Нормальная агрессивность (100%)</Russian>
-			<French>Agressivité normale (100 %)</French>
-			<Chinesesimp>正常侵略性（100%）</Chinesesimp>
-			<Chinese>正常侵略性（100%）</Chinese>
-			<Portuguese>Agressividade normal (100%)</Portuguese>
-			<Czech>Normální agresivita (100%)</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM_OPT3">
-			<Original>High Aggressivity (200%)</Original>
-			<Russian>Высокая агрессивность (200%)</Russian>
-			<French>Haute agressivité (200 %)</French>
-			<Chinesesimp>高侵略性（200%）</Chinesesimp>
-			<Chinese>高侵略性（200%）</Chinese>
-			<Portuguese>Alta agressividade (200%)</Portuguese>
-			<Czech>Vysoká agresivita (200%)</Czech>
-		</Key>
-		<Key ID="STR_AGGRESSIVITY_PARAM_OPT4">
-			<Original>Extreme Aggressivity (400%)</Original>
-			<Russian>Экстремальная агрессивность (400%)</Russian>
-			<French>Agressivité extrême (400 %)</French>
-			<Chinesesimp>极端侵略性（400%）</Chinesesimp>
-			<Chinese>極端侵略性（400%）</Chinese>
-			<Portuguese>Agressividade extrema (400%)</Portuguese>
-			<Czech>Extrémní agresivita (400%)</Czech>
+			<Original>Nightmare (4x multiplier)</Original>
+			<Russian>Кошмар (множитель 4x)</Russian>
+			<French>Cauchemar (multiplicateur ×4)</French>
+			<Chinesesimp>噩梦（4倍乘数）</Chinesesimp>
+			<Chinese>噩夢（4倍乘數）</Chinese>
+			<Portuguese>Pesadelo (multiplicador x4)</Portuguese>
+			<Czech>Noční můra (násobitel 4×)</Czech>
 		</Key>
 		<Key ID="STR_VULN_TIMER_PARAM_DESC">
 			<Original>Selects the duration of sector capture by the enemy..</Original>

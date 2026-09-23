@@ -33,6 +33,7 @@ skipTime ((10 - dayTime + 24) % 24);
 setTimeMultiplier 0;
 
 private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
+if (GRLIB_difficulty_modifier >= 2) then { _nb_player = 4 };
 sector_timer = round (serverTime + (35 * 60));
 if (_nb_player <= 2) then { sector_timer = round (serverTime + (55 * 60)) };
 publicVariable "sector_timer";
@@ -132,7 +133,7 @@ opfor_target_assembled hideObjectGlobal true;
 				_int = floor random 3;
 				switch (_int) do {
 					case 0: { [_spawnpos] spawn send_paratroopers };
-					case 1: { [_spawnpos, _int] spawn spawn_battlegroup_direct };
+					case 1: { [_spawnpos, 1] spawn spawn_battlegroup_direct };
 					case 2: { [_spawnpos, GRLIB_side_enemy, 3] spawn spawn_air };
 				};
 				sleep 10;

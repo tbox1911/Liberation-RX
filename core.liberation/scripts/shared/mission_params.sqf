@@ -37,9 +37,7 @@ GRLIB_PARAM_separatorKey = "=========";
 GRLIB_PARAM_introductionKey = "Introduction";
 GRLIB_PARAM_DeploymentCinematic = "DeploymentCinematic";
 GRLIB_PARAM_Opforcap = "Opforcap";
-GRLIB_PARAM_Unitcap = "Unitcap";
 GRLIB_PARAM_Difficulty = "Difficulty";
-GRLIB_PARAM_Aggressivity = "Aggressivity";
 GRLIB_PARAM_VulnerabilityTimer = "VulnerabilityTimer";
 GRLIB_PARAM_VictoryCondition = "VictoryCondition";
 GRLIB_PARAM_HideOpfor = "HideOpfor";
@@ -206,29 +204,6 @@ _Mission_Params = [
             localize "STR_PARAMS_OPFORCAP_OPT3"
         ]]
     ]],
-    [GRLIB_PARAM_Unitcap, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1],
-        [GRLIB_PARAM_NameKey, localize "STR_PARAMS_UNITCAP"],
-        [GRLIB_PARAM_OptionLabelKey, [
-            localize "STR_PARAMS_UNITCAP1",
-            localize "STR_PARAMS_UNITCAP2",
-            localize "STR_PARAMS_UNITCAP3",
-            localize "STR_PARAMS_UNITCAP4",
-            localize "STR_PARAMS_UNITCAP5",
-            localize "STR_PARAMS_UNITCAP6"
-        ]],
-        [GRLIB_PARAM_OptionValuesKey, [0.5, 0.75, 1, 1.25, 1.5, 2]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_UNITCAP_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_PARAMS_UNITCAP_OPT0",
-            localize "STR_PARAMS_UNITCAP_OPT1",
-            localize "STR_PARAMS_UNITCAP_OPT2",
-            localize "STR_PARAMS_UNITCAP_OPT3",
-            localize "STR_PARAMS_UNITCAP_OPT4",
-            localize "STR_PARAMS_UNITCAP_OPT5"
-        ]]
-    ]],
     [GRLIB_PARAM_Difficulty, createHashMapFromArray [
         [GRLIB_PARAM_ValueKey, 1],
         [GRLIB_PARAM_NameKey, localize "STR_PARAMS_DIFFICULTY"],
@@ -239,10 +214,9 @@ _Mission_Params = [
             localize "STR_PARAMS_DIFFICULTY4",
             localize "STR_PARAMS_DIFFICULTY5",
             localize "STR_PARAMS_DIFFICULTY6",
-            localize "STR_PARAMS_DIFFICULTY7",
-            localize "STR_PARAMS_DIFFICULTY8"
+            localize "STR_PARAMS_DIFFICULTY7"
         ]],
-        [GRLIB_PARAM_OptionValuesKey, [0.5, 0.75, 1, 1.25, 1.5, 2, 4, 10]],
+        [GRLIB_PARAM_OptionValuesKey, [0.5, 0.75, 1, 1.25, 1.5, 2, 4]],
         [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
         [GRLIB_PARAM_DescriptionKey, localize "STR_PARAMS_DIFFICULTY_DESC"],
         [GRLIB_PARAM_OptionDescriptionKey, [
@@ -252,29 +226,7 @@ _Mission_Params = [
             localize "STR_PARAMS_DIFFICULTY_OPT3",
             localize "STR_PARAMS_DIFFICULTY_OPT4",
             localize "STR_PARAMS_DIFFICULTY_OPT5",
-            localize "STR_PARAMS_DIFFICULTY_OPT6",
-            localize "STR_PARAMS_DIFFICULTY_OPT7"
-        ]]
-    ]],
-    [GRLIB_PARAM_Aggressivity, createHashMapFromArray [
-        [GRLIB_PARAM_ValueKey, 1],
-        [GRLIB_PARAM_NameKey, localize "STR_AGGRESSIVITY_PARAM"],
-        [GRLIB_PARAM_OptionLabelKey, [
-            localize "STR_AGGRESSIVITY_PARAM0",
-            localize "STR_AGGRESSIVITY_PARAM1",
-            localize "STR_AGGRESSIVITY_PARAM2",
-            localize "STR_AGGRESSIVITY_PARAM3",
-            localize "STR_AGGRESSIVITY_PARAM4"
-        ]],
-        [GRLIB_PARAM_OptionValuesKey, [0.25, 0.5, 1, 2, 4]],
-        [GRLIB_PARAM_CategoryKey, GRLIB_PARAM_GameCatKey],
-        [GRLIB_PARAM_DescriptionKey, localize "STR_AGGRESSIVITY_PARAM_DESC"],
-        [GRLIB_PARAM_OptionDescriptionKey, [
-            localize "STR_AGGRESSIVITY_PARAM_OPT0",
-            localize "STR_AGGRESSIVITY_PARAM_OPT1",
-            localize "STR_AGGRESSIVITY_PARAM_OPT2",
-            localize "STR_AGGRESSIVITY_PARAM_OPT3",
-            localize "STR_AGGRESSIVITY_PARAM_OPT4"
+            localize "STR_PARAMS_DIFFICULTY_OPT6"
         ]]
     ]],
     [GRLIB_PARAM_VulnerabilityTimer, createHashMapFromArray [

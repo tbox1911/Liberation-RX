@@ -14,6 +14,7 @@ private _controllerSuffix = format ["%1", _controllerNum];
 
 while {true} do {
 	if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
+	waitUntil {sleep 1; !opforcap_max };
     waitUntil {sleep 1; (_controllerNum == 1 || isNil "A3W_debug")};
 
 	// Select Mission
