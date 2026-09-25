@@ -21,24 +21,34 @@ private _vehicle = [_targetpos, selectRandom _planeType, 0, _side] call F_libSpa
 (crew _vehicle) joinSilent _grp;
 
 private _spawnpos = getPosATL _vehicle;
-private _radius = 600;
+private _radius = 400;
 if (_vehicle isKindOf "Plane") then { _radius = 1200 };
 
+private _patrolpos = [_targetpos, 200] call F_getRandomPos;
+private _patrolcorners = [
+	[ (_patrolpos select 0) - _radius, (_patrolpos select 1) - _radius, 0 ],
+	[ (_patrolpos select 0) + _radius, (_patrolpos select 1) - _radius, 0 ],
+	[ (_patrolpos select 0) + _radius, (_patrolpos select 1) + _radius, 0 ],
+	[ (_patrolpos select 0) - _radius, (_patrolpos select 1) + _radius, 0 ]
+];
+
 [_grp] call F_deleteWaypoints;
-private _waypoint = _grp addWaypoint [ _targetpos, _radius];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "COMBAT";
-_waypoint setWaypointCombatMode "RED";
-_waypoint = _grp addWaypoint [_targetpos, _radius];
-_waypoint setWaypointType "MOVE";
-_waypoint = _grp addWaypoint [_targetpos, _radius];
-_waypoint setWaypointType "MOVE";
-_waypoint = _grp addWaypoint [_targetpos, _radius];
-_waypoint setWaypointType "MOVE";
+
+{
+	_pos = _x;
+	_waypoint = _grp addWaypoint [_pos, 0];
+	_waypoint setWaypointType "MOVE";
+	_waypoint setWaypointSpeed "FULL";
+	_waypoint setWaypointBehaviour "COMBAT";
+	_waypoint setWaypointCombatMode "RED";
+	_waypoint setWaypointCompletionRadius 300;
+} foreach _patrolcorners;
+
 _wp0 = waypointPosition [_grp, 0];
+(leader _grp) doMove _wp0;
 _waypoint = _grp addWaypoint [_wp0, 0];
 _waypoint setWaypointType "CYCLE";
+
 {_x doFollow leader _grp} foreach units _grp;
 
 _count = _count - 1;
@@ -52,8 +62,6 @@ if (_side == GRLIB_side_friendly) exitWith {
 	private _waypoint = _grp addWaypoint [_spawnpos, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "CARELESS";
-	_waypoint setWaypointCombatMode "BLUE";
 	_waypoint setWaypointCompletionRadius 300;
 	_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn F_vehicleClean"];
 	{_x doFollow (leader _grp)} foreach units _grp;
@@ -71,7 +79,7 @@ diag_log format ["Spawn Air Squad %1 objective %2 at %3", typeOf _vehicle, _targ
 sleep 60;
 
 private _bombs = ["Bomb_03_F","Bomb_04_F","Bo_GBU12_LGB","Bo_GBU12_LGB_MI10","Bo_Mk82","Bo_Mk82_MI08"];
-private _timer = time + 600;
+private _timer = time + 300;
 while { alive _vehicle && ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && time <= _timer } do {
 	if (_vehicle isKindOf "Plane" && (GRLIB_SOG_enabled || GRLIB_SPE_enabled)) then {
 		// Bombers AI (for slow aircraft)
@@ -123,8 +131,6 @@ if ({alive _x} count (units _grp) == 0) exitWith {};
 private _waypoint = _grp addWaypoint [_spawnpos, 0];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "CARELESS";
-_waypoint setWaypointCombatMode "BLUE";
 _waypoint setWaypointCompletionRadius 300;
 _waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn F_vehicleClean"];
 {_x doFollow (leader _grp)} foreach units _grp;
