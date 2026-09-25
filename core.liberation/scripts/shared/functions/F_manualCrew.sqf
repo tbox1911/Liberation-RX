@@ -12,17 +12,6 @@ private _vehicle_roles_sorted = [];
 } forEach _role_order;
 _vehicle_roles = _vehicle_roles_sorted;
 
-if (!local _vehicle) then {
-	if (count crew _vehicle == 0) then {
-		[_vehicle, clientOwner] remoteExec ["setOwner", 2];
-	} else {
-		private _grp = group (crew _vehicle select 0);
-		[_grp, clientOwner] remoteExec ["setGroupOwner", 2];
-	};
-	waitUntil { sleep 0.2; local _vehicle };
-    sleep 1;
-};
-
 private _turrets = (allTurrets [_vehicle, true]) select { isNull (_vehicle turretUnit _x)};
 private _lock = locked _vehicle;
 private _indx = 0;

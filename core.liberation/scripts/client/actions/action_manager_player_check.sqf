@@ -175,6 +175,7 @@ GRLIB_checkEjectCrew = {
 
 GRLIB_checkOnboardCrew = {
 	params ["_target"];
+	if (!local _target) exitWith { false };
 	if (!alive _target || captive _target) exitWith { false };
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };
