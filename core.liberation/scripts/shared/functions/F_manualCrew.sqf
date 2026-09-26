@@ -19,6 +19,7 @@ _vehicle lock 0;
 _units allowGetIn true;
 
 {
+    if (!alive _vehicle) exitWith {};
     if (_forEachIndex >= count _vehicle_roles) then {
         if (_delete) then {
             diag_log format ["--- LRX crew overload: unit %1 deleted!", name _x];
@@ -48,9 +49,10 @@ _units allowGetIn true;
             _x assignAsCargo _vehicle;
             _x moveInCargo _vehicle;
         };
+        [_x] orderGetIn true;
         if (!_delete) then { sleep 0.5 };
     };
 } forEach _units;
 
+sleep 0.5;
 _vehicle lock _lock;
-sleep 1;

@@ -305,6 +305,7 @@ if (_unit == player) then {
 	}];
 
 	// Get out Vehicle
+	_unit removeAllEventHandlers "GetOutMan";
 	_unit addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
 		if (_vehicle == getConnectedUAV player) then {
