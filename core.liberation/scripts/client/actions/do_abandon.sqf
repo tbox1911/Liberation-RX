@@ -7,6 +7,7 @@ if (local _vehicle) then {
 	[_vehicle, "abandon"] call F_vehicleLock;
 } else {
 	[_vehicle, "abandon"] remoteExec ["vehicle_lock_remote_call", 2];
+	sleep 1;
 };
 
 {

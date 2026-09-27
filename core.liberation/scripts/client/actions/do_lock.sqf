@@ -2,7 +2,8 @@ params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
 GRLIB_vehicle_lock = false;
-private _prev_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
+
+private _new_owner = ((_vehicle getVariable ["GRLIB_vehicle_owner", ""]) != PAR_Grp_ID);
 
 if (local _vehicle) then {
 	[_vehicle, "lock", PAR_Grp_ID] call F_vehicleLock;
@@ -23,8 +24,14 @@ if (typeOf _vehicle in uavs_vehicles) then {
 };
 
 hintSilent format [localize "STR_DO_LOCK", [typeOf _vehicle] call F_getLRXName];
-if (_prev_owner != PAR_Grp_ID) then {
+
+if (_new_owner) then {
 	gamelogic globalChat localize "STR_DO_LOCK_MSG";
+};
+
+if (!local _vehicle) then {
+	[_vehicle, clientOwner] remoteExec ["setOwner", 2];
+	sleep 10;
 };
 
 sleep 0.5;

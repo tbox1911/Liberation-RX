@@ -78,8 +78,8 @@ if (R3F_LOG_mutex_local_verrou) then {
 		if (_objet isKindOf "AllVehicles") then {
 			_objet lockCargo true;
 			_objet lockDriver true;
-			for "_i" from 0 to (_objet emptyPositions "Cargo") do { _objet lockCargo [_i, true] };
-			{ _objet lockTurret [_x, true] } forEach (allTurrets _objet);
+			for "_i" from 0 to (_objet emptyPositions ["Cargo", true]) do { _objet lockCargo [_i, true] };
+			{ _objet lockTurret [_x, true] } forEach (allTurrets [_objet, true]);
 		};
 
 		detach player;

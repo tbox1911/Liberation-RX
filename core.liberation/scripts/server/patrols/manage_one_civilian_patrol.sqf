@@ -16,7 +16,7 @@ if (floor random 100 >= 60) then {
 	[_civ_veh, _civ_grp] spawn civilian_ai_veh;
 	_civ_veh lockCargo true;
 	_civ_veh lockDriver true;
-	{ _civ_veh lockTurret [_x, true] } forEach (allTurrets _civ_veh);
+	{ _civ_veh lockTurret [_x, true] } forEach (allTurrets [_civ_veh, true]);
 	_civ_veh setVehicleLock "LOCKED";
 	[_civ_grp, _sector_pos, _civ_veh] call add_civ_waypoints_veh;
 } else {

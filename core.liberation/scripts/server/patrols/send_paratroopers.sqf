@@ -64,7 +64,7 @@ private _pilot_group = group driver _vehicle;
 private _spawnpos = getPosATL _vehicle;
 _vehicle flyInHeight 350;
 
-private _cargo_seat_free = (_vehicle emptyPositions "Cargo") min 10;
+private _cargo_seat_free = (_vehicle emptyPositions ["Cargo", true]) min 10;
 if (_cargo_seat_free == 0) exitWith {
 	diag_log format ["--- LRX Error bad classname (%1) for troup transport.", typeOf _vehicle];
 	[_vehicle, true, true] spawn F_vehicleClean;

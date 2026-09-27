@@ -163,6 +163,7 @@ GRLIB_checkVehicleSupport = { (count GRLIB_vehicle_need_support > 0) };
 
 GRLIB_checkEjectCrew = {
 	params ["_target"];
+	if (!GRLIB_vehicle_lock) exitWith { false };
 	if (!alive _target || captive _target) exitWith { false };
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };
@@ -175,6 +176,7 @@ GRLIB_checkEjectCrew = {
 
 GRLIB_checkOnboardCrew = {
 	params ["_target"];
+	if (!GRLIB_vehicle_lock) exitWith { false };
 	if (!alive _target || captive _target) exitWith { false };
 	private _vehicle = objectParent _target;
 	if (isNull _vehicle) exitWith { false };

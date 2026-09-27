@@ -37,7 +37,7 @@ _setupObjects = {
 	_tank = [_missionPos, _opfor_tank, 5, GRLIB_side_friendly, "", true, true] call F_libSpawnVehicle;
 	_tank setVariable ["GRLIB_vehicle_owner", "server", true];
 	_tank lockCargo true;
-	{ _tank lockTurret [_x, true] } forEach (allTurrets _tank);
+	{ _tank lockTurret [_x, true] } forEach (allTurrets [_tank, true]);
 	_tank setVehicleAmmo 0;
 	_tank setFuel 0;
 	_tank setVariable ["R3F_LOG_disabled", true, true];
