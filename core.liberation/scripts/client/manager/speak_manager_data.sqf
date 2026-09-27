@@ -190,13 +190,14 @@ speak_heal_civ = {
 	private _timer = time + 45;
 	private _damage = damage _unit;
 	waitUntil {
-		sleep 5;
+		sleep 1;
 		(time > _timer || (damage _unit < _damage))
 	};
-	if (time > _timer) exitWith {};
-	_unit globalChat localize "STR_DIALOG_THANK_YOU";
-	[player, 3] remoteExec ["F_addReput", 2];
-	_unit setDamage 0;
+	if (time <= _timer) then {
+		_unit globalChat localize "STR_DIALOG_THANK_YOU";
+		[player, 3] remoteExec ["F_addReput", 2];
+		_unit setDamage 0;
+	};
 	[_unit] call speak_end;
 };
 
