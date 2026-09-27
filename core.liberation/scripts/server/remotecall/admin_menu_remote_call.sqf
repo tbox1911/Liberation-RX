@@ -3,9 +3,10 @@ if (isServer && hasInterface) then { _access = true };
 
 private _uid = "unknow";
 private _netid = remoteExecutedOwner;
+if (_netid == 0) exitWith {};
+
 if (!_access) then {
     if (!isServer && hasInterface && !isRemoteExecuted) exitWith {};
-    if (_netid == 0) exitWith {};
     private _caller = (allPlayers select { owner _x == _netid }) select 0;
     if (isNil "_caller") exitWith {};
     _uid = getPlayerUID _caller;
