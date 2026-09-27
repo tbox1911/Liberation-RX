@@ -21,10 +21,9 @@ private _spawn_pos = [];
 
 if (isNil "_liberated_sector") then {
 	diag_log format ["Spawn BattleGroup search target at %1", time];
-	private _search_list = blufor_sectors apply {markerPos _x };
-	_search_list = _search_list + GRLIB_all_fobs;
+	private _search_list = (blufor_sectors apply { markerPos _x }) + GRLIB_all_fobs;
 	{
-		_objective_pos = markerPos _x;
+		_objective_pos = _x;
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
 		if (_spawn_marker != "") then { _spawn_pos = [markerPos _spawn_marker, 30, 0] call F_findSafePlace };
 		if (count _spawn_pos > 0) exitWith {};
