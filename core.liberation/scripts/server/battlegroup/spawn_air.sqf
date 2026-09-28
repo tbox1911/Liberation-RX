@@ -15,10 +15,10 @@ if (_side == GRLIB_side_enemy) then {
 };
 if (count _planeType == 0) exitWith { diag_log format ["--- LRX Error: Cannot find Air classname in template %1", _side]; };
 
-private _grp = createGroup [_side, true];
 private _vehicle = [_targetpos, selectRandom _planeType, 0, _side] call F_libSpawnVehicle;
+private _grp = group driver _vehicle;
+
 [_vehicle, 1800] call F_setUnitTTL;
-(crew _vehicle) joinSilent _grp;
 
 private _spawnpos = getPosATL _vehicle;
 private _radius = 400;
@@ -34,6 +34,7 @@ private _patrolcorners = [
 
 [_grp] call F_deleteWaypoints;
 
+private ["_waypoint", "_wp0"];
 {
 	_pos = _x;
 	_waypoint = _grp addWaypoint [_pos, 0];
@@ -80,7 +81,7 @@ sleep 60;
 
 private _bombs = ["Bomb_03_F","Bomb_04_F","Bo_GBU12_LGB","Bo_GBU12_LGB_MI10","Bo_Mk82","Bo_Mk82_MI08"];
 private _timer = time + 300;
-while { alive _vehicle && ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && time <= _timer } do {
+while { alive _vehicle && (GRLIB_endgame == 0) && time <= _timer } do {
 	if (_vehicle isKindOf "Plane" && (GRLIB_SOG_enabled || GRLIB_SPE_enabled)) then {
 		// Bombers AI (for slow aircraft)
 		private _plane_dir = getDir _vehicle;
@@ -124,6 +125,7 @@ while { alive _vehicle && ({alive _x} count (units _grp) > 0) && (GRLIB_endgame 
 	_vehicle setFuel 1;
 };
 
+sleep 3;
 if ({alive _x} count (units _grp) == 0) exitWith {};
 
 // Cleanup

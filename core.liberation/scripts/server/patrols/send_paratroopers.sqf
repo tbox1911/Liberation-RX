@@ -78,12 +78,6 @@ private _para_group = [_spawnpos, _unitclass, GRLIB_side_enemy, "para"] call F_l
 // Move to obj
 [_vehicle, 3600] call F_setUnitTTL;
 [_pilot_group, _targetpos, _spawnpos, false] call _go_target;
-[_vehicle] spawn {
-	params ["_vehicle"];
-	sleep 300;
-	if (!alive _vehicle) exitWith {};
-	[_vehicle, true, true] spawn F_vehicleClean;
-};
 
 if (floor random 3 == 0 && count opfor_air > 0) then {
 	sleep 5;
@@ -92,12 +86,6 @@ if (floor random 3 == 0 && count opfor_air > 0) then {
 	_escort_veh flyInHeight 350;
 	[_escort_veh, 1800] call F_setUnitTTL;
 	[_escort_group, _targetpos, _spawnpos, true] call _go_target;
-	[_escort_veh] spawn {
-		params ["_vehicle"];
-		sleep 300;
-		if (!alive _vehicle) exitWith {};
-		[_vehicle, true, true] spawn F_vehicleClean;
-	};
 };
 
 sleep 1;
@@ -109,6 +97,7 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 [_vehicle, _targetpos, _para_group, _unload_dist] spawn {
 	params [ "_vehicle", "_targetpos", "_para_group", "_unload_dist"];
 
+	sleep 10;
 	waitUntil {
 		sleep 0.2;
 		if (_vehicle distance2D _targetpos <= _unload_dist * 3) then {

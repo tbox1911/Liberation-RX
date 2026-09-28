@@ -4,6 +4,7 @@ if (isNull _grp) exitWith {};
 
 private _grp_veh = objectParent (leader _grp);
 if (_grp_veh isKindOf "Ship_F") exitWith { [_grp, getPosATL _grp_veh, 200] call patrol_ai };
+if (_grp_veh isKindOf "Air") exitWith { [_grp, getPosATL _grp_veh, 500] call patrol_ai };
 
 sleep 10;
 _flagpos = ([_flagpos, 5] call F_getRandomPos);

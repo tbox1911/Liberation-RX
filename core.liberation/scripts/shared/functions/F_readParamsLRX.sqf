@@ -37,7 +37,7 @@ GRLIB_Undercover_mode = [GRLIB_PARAM_UndercoverModeEnabled] call lrx_getParamVal
 GRLIB_wildlife_manager = [GRLIB_PARAM_Wildlife] call lrx_getParamValue;
 
 // Manage BattleGroup
-GRLIB_battlegroup_timer = (600 / GRLIB_difficulty_modifier) max 300;
+GRLIB_battlegroup_timer = (1800 / GRLIB_difficulty_modifier) max 300;
 GRLIB_last_battlegroup = 0;
 
 // Limit

@@ -271,7 +271,7 @@ if (count _vehtospawn > 0) then {
 			private _vehicle = [_pos, _classname, 10, GRLIB_side_enemy, _type] call F_libSpawnVehicle;
 			if (!isNull _vehicle) then {
 				(missionNamespace getVariable format ["LRX_sector_%1_vehicles", _sector]) pushBack _vehicle;
-				[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
+				[group driver _vehicle, getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
 			};
 		};
 		_ratio = round linearConversion [0, (count _vehtospawn) - 1, _foreachIndex, 50, 70];

@@ -11,7 +11,7 @@ if (floor random 100 >= 60) then {
 	private _spread = 3;
 	private _spawn_pos = [(((_sector_pos select 0) + (75 * _spread)) - (floor random (150 * _spread))),(((_sector_pos select 1) + (75 * _spread)) - (floor random (150 * _spread))), 0.5];
 	_civ_veh = [_spawn_pos, (selectRandom civilian_vehicles), 3, GRLIB_side_civilian, "", true, true] call F_libSpawnVehicle;
-	_civ_grp = group (driver _civ_veh);
+	_civ_grp = group driver _civ_veh;
 	if (isNull _civ_grp) exitWith {};
 	[_civ_veh, _civ_grp] spawn civilian_ai_veh;
 	_civ_veh lockCargo true;

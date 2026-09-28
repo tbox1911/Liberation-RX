@@ -43,6 +43,7 @@ private _units = [];
 	_unit = _grp createUnit [_x, _unit_pos, [], 1, "CAN_COLLIDE"];
 	if (!isNull _unit) then {
 		_unit allowDamage false;
+		sleep 0.1;
 		[_unit] joinSilent _grp;
 		if (_mission_ai) then {
 			_unit setVariable ["GRLIB_mission_AI", true, true];
@@ -57,6 +58,8 @@ private _units = [];
 		if (_type == "divers") then {
 			_unit_pos set [2, -6];
 			_unit setPosASL _unit_pos;
+		} else {
+			_unit setPosATL _unit_pos;
 		};
 
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _unit_pos];

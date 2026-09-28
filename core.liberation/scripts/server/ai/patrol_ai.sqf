@@ -6,9 +6,9 @@ sleep 10;
 if (isNil "_targetpos") then { _targetpos = getPos (leader _grp) };
 
 private ["_waypoint"];
-private _completion_radius = (_radius/4);
+private _completion_radius = (_radius/4) max 0;
 private _grp_veh = objectParent (leader _grp);
-if (_grp_veh isKindOf "Air") then { _completion_radius = 250 };
+if (_grp_veh isKindOf "Air") then { _completion_radius = 300 };
 
 private _patrol_in_water = surfaceIsWater _targetpos;
 if (_grp_veh isKindOf "Ship_F") then {
@@ -33,7 +33,7 @@ private _prev = _patrolcorners select 0;
 			_waypoint = _grp addWaypoint [_pos, 0];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointBehaviour "AWARE";
-			_waypoint setWaypointCombatMode "WHITE";
+			_waypoint setWaypointCombatMode "YELLOW";
 			_waypoint setWaypointSpeed "LIMITED";
 			_waypoint setWaypointCompletionRadius _completion_radius;
 		};
@@ -42,7 +42,7 @@ private _prev = _patrolcorners select 0;
 			_waypoint = _grp addWaypoint [_pos, 30];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointBehaviour "AWARE";
-			_waypoint setWaypointCombatMode "WHITE";
+			_waypoint setWaypointCombatMode "YELLOW";
 			_waypoint setWaypointSpeed "LIMITED";
 			_waypoint setWaypointCompletionRadius _completion_radius;
 			_prev = _pos;
