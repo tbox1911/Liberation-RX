@@ -5,5 +5,5 @@ if (isNull _vehicle) exitWith {};
 
 gamelogic globalChat format [localize "STR_ONBOARD_ALL_CREW", [_vehicle] call F_getLRXName];
 
-private _list_board = (units _target) select { (isNull objectParent _x) && (_x distance2D _target <= 30) };
+private _list_board = (units _target) select { (isNull objectParent _x) && (_x distance2D _target <= 30) && !([_x] call PAR_is_wounded) };
 [_vehicle, _list_board, false] call F_manualCrew;
