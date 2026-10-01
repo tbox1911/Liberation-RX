@@ -36,7 +36,7 @@ while { dialog && alive player } do {
         lbClear 110;
         {
             _text = [_x] call F_getLocationName;
-            _sector = format ["fobmarker%1", mapGridPosition _x];
+            _sector = [_x] call F_getFobMarker;
             _defense_type = [_sector] call F_getDefenseType;
             lnbAddRow [110, [_text, (_defense_list select _defense_type)]];
             lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];

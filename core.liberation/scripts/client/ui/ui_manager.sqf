@@ -42,20 +42,20 @@ while {true} do {
 
 	if (sector_timer == 0) then {
 		"opfor_capture_marker" setMarkerPosLocal markers_reset;
-	};	
+	};
 
 	if ((markerPos "opfor_capture_marker") distance2D markers_reset > 100) then {
 		_attacked_string = [markerpos "opfor_capture_marker"] call F_getLocationName;
 		_sector_timer = round (sector_timer - serverTime);
 		_attacked_timer = "VULNERABLE";
 		_marker_timer = format [" %1 - VULNERABLE!", _attacked_string];
-		if (_sector_timer > 0) then { 
+		if (_sector_timer > 0) then {
 			_attacked_timer = [_sector_timer] call F_secondsToTimer;
 			_marker_timer = format [" %1 - %2", _attacked_string, _attacked_timer];
 		};
 		if (_overlayshown) then {
 			(_overlay displayCtrl (401)) ctrlShow true;
-			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;	
+			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;
 			(_overlay displayCtrl (403)) ctrlSetText _attacked_timer;
 		};
 		"opfor_capture_marker" setMarkerTextLocal _marker_timer;
@@ -129,7 +129,7 @@ while {true} do {
 				_ratio = linearConversion [0, 1.5, _awareness, 0, 1, true];
 				_barwidth = 0.084 * safezoneW * _ratio;
 				_bar ctrlSetPosition [(ctrlPosition _bar) select 0,(ctrlPosition _bar) select 1,_barwidth,(ctrlPosition _bar) select 3];
-				_bar ctrlCommit 1;				
+				_bar ctrlCommit 1;
 			};
 
 			if (_uiticks % 4 == 0) then {
@@ -142,7 +142,7 @@ while {true} do {
 					_fob_sector = true;
 				} else {
 					if (GRLIB_player_near_fob) then {
-						_nearest_active_sector = format ["fobmarker%1", mapGridPosition GRLIB_player_nearest_fob];
+						_nearest_active_sector = [GRLIB_player_nearest_fob] call F_getFobMarker;
 						_fob_sector = true;
 					} else {
 						_nearest_active_sector = [GRLIB_sector_size] call F_getNearestSector;

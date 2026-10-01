@@ -6,7 +6,7 @@ GRLIB_fob_inuse = true;
 
 [_fob_pos, "Land_Carrier_01_blast_deflector_up_sound"] spawn sound_range_remote_call;
 
-private _sector = format ["fobmarker%1", mapGridPosition _fob_pos];
+private _sector = [_fob_pos] call F_getFobMarker;
 [_sector, 0] call sector_defenses_remote_call;
 
 private _outpost = nearestObjects [_fob_pos, [FOB_outpost], 30] select 0;

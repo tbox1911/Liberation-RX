@@ -43,6 +43,7 @@ F_getCommander = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_getDefenseType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getDefenseType.sqf";
 F_getEmptyArmored = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getEmptyArmored.sqf";
 F_getFob = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFob.sqf";
+F_getFobMarker = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobMarker.sqf";
 F_getFobName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobName.sqf";
 F_getFobOwner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobOwner.sqf";
 F_getFobType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobType.sqf";
