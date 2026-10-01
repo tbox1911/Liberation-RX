@@ -109,6 +109,7 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 
 	if ({alive _x} count (units _para_group) > 0) then {
 		[_para_group, _vehicle] call F_ejectGroup;
+		waitUntil { sleep 1; ({ !(isNull objectParent _x) } count (units _para_group) == 0) };
 		[_para_group, _targetpos] spawn battlegroup_ai;
 	};
 };

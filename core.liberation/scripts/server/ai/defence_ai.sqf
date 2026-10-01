@@ -12,7 +12,7 @@ diag_log format ["Group %1 - Defend: %2", _grp, _flagpos];
 
 private _timer = 0;
 private _patrol = false;
-private ["_target", "_target_list", "_basepos", "_waypoint", "_wp0"];
+private ["_target", "_target_list", "_waypoint", "_wp0"];
 
 while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 	if (time >= _timer) then {
@@ -38,29 +38,34 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 			};
 			_timer = round (time + 300);
 		} else {
-			_basepos = getPosATL _target;
+			_flagpos = getPosATL _target;
 			_patrol = false;
 			if (_grp_veh isKindOf "Truck_F" && count (crew _grp_veh) > 0 ) then { [_grp] call F_ejectGroup };
 
 			[_grp] call F_deleteWaypoints;
-			_waypoint = _grp addWaypoint [_basepos, _radius];
+			_waypoint = _grp addWaypoint [_flagpos, _radius];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "YELLOW";
 			_waypoint setWaypointSpeed "FULL";
-			_waypoint = _grp addWaypoint [_basepos, _radius];
+			_waypoint = _grp addWaypoint [_flagpos, _radius];
 			_waypoint setWaypointType "MOVE";
-			_waypoint = _grp addWaypoint [_basepos, _radius];
+			_waypoint = _grp addWaypoint [_flagpos, _radius];
 			_waypoint setWaypointType "MOVE";
-			_waypoint = _grp addWaypoint [_basepos, _radius];
+			_waypoint = _grp addWaypoint [_flagpos, _radius];
 			_waypoint setWaypointType "MOVE";
-			_waypoint = _grp addWaypoint [_basepos, _radius];
+			_waypoint = _grp addWaypoint [_flagpos, _radius];
 			_waypoint setWaypointType "CYCLE";
-			(leader _grp) doMove (waypointPosition [_grp, 0]);
-			(units _grp) doFollow leader _grp;
+
+			{_x doFollow (leader _grp)} foreach units _grp;
 			_timer = round (time + 600);
 		};
 	};
 
 	sleep 60;
 };
+
+// Cleanup
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_flagpos, GRLIB_sector_size, GRLIB_side_friendly, 1] call F_getUnitsCount == 0) };
+{ deleteVehicle _x } forEach (units _grp);
+deleteGroup _grp;

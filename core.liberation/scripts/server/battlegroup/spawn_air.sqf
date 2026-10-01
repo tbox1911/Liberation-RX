@@ -46,11 +46,10 @@ private ["_waypoint", "_wp0"];
 } foreach _patrolcorners;
 
 _wp0 = waypointPosition [_grp, 0];
-(leader _grp) doMove _wp0;
 _waypoint = _grp addWaypoint [_wp0, 0];
 _waypoint setWaypointType "CYCLE";
 
-{_x doFollow leader _grp} foreach units _grp;
+{_x doFollow (leader _grp)} foreach units _grp;
 
 _count = _count - 1;
 if (_count >= 1) then {	[_targetpos, _side, _count] spawn spawn_air };

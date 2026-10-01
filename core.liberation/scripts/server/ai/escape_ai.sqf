@@ -24,7 +24,7 @@ if (_nearest_sector != "") then {
     _waypoint setWaypointCombatMode "BLUE";
     _waypoint setWaypointCompletionRadius 100;
     _waypoint setWaypointStatements ["true", "if (this getVariable ['GRLIB_is_prisoner', true]) then { deleteVehicle this }"];
-    (units _grp) doFollow leader _grp;
+    {_x doFollow (leader _grp)} foreach units _grp;
 };
 
 sleep 300;

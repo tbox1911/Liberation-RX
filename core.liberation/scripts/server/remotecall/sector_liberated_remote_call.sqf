@@ -92,10 +92,11 @@ if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 	) then {
 		[_liberated_sector] spawn {
 			params ["_liberated_sector"];
-			diag_log format ["Spawn Revenge BattleGroup at %1", time];
 			sleep 60 + (floor random 150);
+			diag_log format ["Spawn Revenge BattleGroup at %1", time];
 			if (floor random 3 == 0) then {
-				[selectRandom GRLIB_all_fobs] spawn spawn_battlegroup;
+				private _fob_marker = (allMapMarkers select { ["fobmarker", _x] call F_startsWith });
+				[selectRandom _fob_marker] spawn spawn_battlegroup;
 			} else {
 				[_liberated_sector] spawn spawn_battlegroup;
 			};

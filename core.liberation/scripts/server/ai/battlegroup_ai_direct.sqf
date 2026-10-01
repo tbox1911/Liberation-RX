@@ -3,9 +3,8 @@ if (isNil "_grp" || isNil "_objective") exitWith {};
 if (isNull _grp) exitWith {};
 
 private _vehicle = objectParent leader _grp;
-if (_vehicle isKindOf "Ship_F") exitWith {
-	[_grp, getPosATL _vehicle] spawn defence_ai;
-};
+if (_vehicle isKindOf "Ship_F") exitWith { [_grp, getPosATL _vehicle] spawn defence_ai };
+if (_vehicle isKindOf "Air") exitWith { [_grp, getPosATL _vehicle, 500] call patrol_ai };
 
 if (_vehicle isKindOf "ParachuteBase") then {
 	_vehicle = objNull;
@@ -43,7 +42,7 @@ while { alive _objective } do {
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 	sleep 1;
-	(units _grp) doFollow leader _grp;
+	{_x doFollow (leader _grp)} foreach units _grp;
 	if (alive (leader _grp)) then { _last_pos = getPosATL (leader _grp) };
 	sleep 300;
 };

@@ -5,7 +5,7 @@ private _vehicle_light = (opfor_vehicles_low_intensity - opfor_troup_transports_
 private _vehicle_apc = _vehicle_heavy select { ([_x, ["Wheeled_APC_F", "APC_Tracked_01_base_F", "APC_Tracked_02_base_F", "APC_Tracked_03_base_F"]] call F_itemIsInClass) };
 if (count (_vehicle_light + _vehicle_apc) == 0) exitWith {};
 
-private _pos = _targetpos getPos [floor(random GRLIB_capture_size), floor(random 360)];
+private _pos = _targetpos getPos [floor random GRLIB_capture_size, floor random 360];
 _pos set [2, 600];
 
 private _vehicle_class = selectRandom (_vehicle_light + _vehicle_apc);

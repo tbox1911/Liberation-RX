@@ -47,7 +47,7 @@ if (count _nearest_fob > 0) then {
 	if (count _nearest_sect > 0) then {
 		_nearest = _nearest_sect;
 	} else {
-		_nearest = [_startpos, 999999];
+		_nearest = [_startpos, GRLIB_spawn_max];
 	};
 };
 

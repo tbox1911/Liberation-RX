@@ -177,8 +177,6 @@ if (_side == GRLIB_side_enemy) then {
 	_vehicle setVariable ["GRLIB_vehicle_init", nil, true];
 };
 
-if (_side != GRLIB_side_civilian) then {
-	diag_log format [ "Done Spawning Vehicle %1 at %2", _classname , time ];
-};
+// diag_log format [ "Done Spawning Vehicle %1 at %2", _classname , time ];
 
 _vehicle;
