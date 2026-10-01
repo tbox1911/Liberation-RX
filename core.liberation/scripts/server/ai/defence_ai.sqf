@@ -2,9 +2,9 @@ params ["_grp", "_flagpos", ["_radius", 100]];
 if (isNil "_grp" || isNil "_flagpos") exitWith {};
 if (isNull _grp) exitWith {};
 
-private _grp_veh = objectParent (leader _grp);
-if (_grp_veh isKindOf "Ship_F") exitWith { [_grp, getPosATL _grp_veh, 200] call patrol_ai };
-if (_grp_veh isKindOf "Air") exitWith { [_grp, getPosATL _grp_veh, 500] call patrol_ai };
+private _vehicle = objectParent (leader _grp);
+if (_vehicle isKindOf "Ship_F") exitWith { [_grp, getPosATL _vehicle, 200] call patrol_ai };
+if (_vehicle isKindOf "Air") exitWith { [_grp, getPosATL _vehicle, 500] call patrol_ai };
 
 sleep 10;
 _flagpos = ([_flagpos, 5] call F_getRandomPos);
@@ -40,14 +40,14 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 		} else {
 			_flagpos = getPosATL _target;
 			_patrol = false;
-			if (_grp_veh isKindOf "Truck_F" && count (crew _grp_veh) > 0 ) then { [_grp] call F_ejectGroup };
+			if (_vehicle isKindOf "Truck_F" && count (crew _vehicle) > 0 ) then { [_grp] call F_ejectGroup };
 
 			[_grp] call F_deleteWaypoints;
 			_waypoint = _grp addWaypoint [_flagpos, _radius];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "YELLOW";
-			_waypoint setWaypointSpeed "FULL";
+			_waypoint setWaypointSpeed "LIMITED";
 			_waypoint = _grp addWaypoint [_flagpos, _radius];
 			_waypoint setWaypointType "MOVE";
 			_waypoint = _grp addWaypoint [_flagpos, _radius];
@@ -56,6 +56,12 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 			_waypoint setWaypointType "MOVE";
 			_waypoint = _grp addWaypoint [_flagpos, _radius];
 			_waypoint setWaypointType "CYCLE";
+
+			if (isNull _vehicle) then {
+				(leader _grp) doMove _flagpos;
+			} else {
+				(driver _vehicle) doMove _flagpos;
+			};
 
 			{_x doFollow (leader _grp)} foreach units _grp;
 			_timer = round (time + 600);

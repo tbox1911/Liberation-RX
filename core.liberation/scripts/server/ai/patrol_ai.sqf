@@ -7,12 +7,12 @@ if (isNil "_targetpos") then { _targetpos = getPos (leader _grp) };
 
 private ["_waypoint"];
 private _completion_radius = (_radius/4) max 0;
-private _grp_veh = objectParent (leader _grp);
-if (_grp_veh isKindOf "Air") then { _completion_radius = 300 };
+private _vehicle = objectParent (leader _grp);
+if (_vehicle isKindOf "Air") then { _completion_radius = 300 };
 
 private _patrol_in_water = surfaceIsWater _targetpos;
-if (_grp_veh isKindOf "Ship_F") then {
-	_targetpos = getPosATL _grp_veh;
+if (_vehicle isKindOf "Ship_F") then {
+	_targetpos = getPosATL _vehicle;
 	_patrol_in_water = true;
 };
 
@@ -54,6 +54,12 @@ if (count (waypoints _grp) > 1) then {
 	_wp0 = waypointPosition [_grp, 0];
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
+
+	if (isNull _vehicle) then {
+		(leader _grp) doMove _wp0;
+	} else {
+		(driver _vehicle) doMove _wp0;
+	};
 };
 
 {_x doFollow (leader _grp)} foreach units _grp;

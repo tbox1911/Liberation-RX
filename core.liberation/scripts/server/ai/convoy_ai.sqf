@@ -46,7 +46,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 					};
 				};
 			} else {
-				// Follower 
+				// Follower
 				private _veh_ahead = _vehicles select (_idx - 1);
 				private _dist = _x distance2D _veh_ahead;
 
@@ -76,7 +76,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 	};
 
 	// Destination ?
-	if (count _objective_pos > 0) then {
+	if (!_convoy_attacked && count _objective_pos > 0) then {
 		{
 			_unload_range = 300;
 			if (_x isKindOf "Air") then {
@@ -85,7 +85,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 					_slow = 0;
 					_x flyInHeight [60, true];
 					_x flyInHeightASL [60, 60, 60];
-					(group driver _x) setSpeedMode "LIMITED";
+					(group (driver _x)) setSpeedMode "LIMITED";
 				};
 			};
 			if (_x distance2D _objective_pos <= _unload_range) then { _convoy_attacked = true };
@@ -93,7 +93,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 	};
 
 	// Drivers Follow
-	if (!_convoy_attacked) then {
+	if (!_convoy_attacked && count _vehicles > 1) then {
 		_veh_leader = vehicle (leader _grp);
 		{
 			_veh_cur = _x;
@@ -144,15 +144,19 @@ if (_convoy_attacked) then {
 
 	waitUntil { sleep 1; ({ !(isNull objectParent _x) } count (units _grp) == 0) };
 
-	_grp setFormation "WEDGE";
-	_grp setSpeedMode "NORMAL";
+	// Group Behaviour
 	_grp setBehaviourStrong "AWARE";
+	_grp setCombatMode "YELLOW";
+	_grp setFormation "WEDGE";
+	_grp setSpeedMode "FULL";
 
 	if ({alive _x} count (units _grp) > 0) then {
 		if (count _objective_pos > 0) then {
+			(leader _grp) doMove _objective_pos;
 			[_grp, _objective_pos] spawn battlegroup_ai;
 		} else {
 			_objective_pos = getPosATL (leader _grp);
+			(leader _grp) doMove _objective_pos;
 			[_grp, _objective_pos] spawn defence_ai;
 		};
 	};
