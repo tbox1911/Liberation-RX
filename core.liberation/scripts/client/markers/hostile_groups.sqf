@@ -40,5 +40,5 @@ while {true} do {
 		sleep 0.1;
 	} foreach _hostile_group;
 
-	sleep (30 + floor(random 60));
+	sleep (30 + floor random 60);
 };
