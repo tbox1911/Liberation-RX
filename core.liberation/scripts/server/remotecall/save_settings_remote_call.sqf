@@ -1,11 +1,13 @@
-if (!isServer && hasInterface) exitWith {};
+if (!isServer) exitWith {};
 
 params ["_params"];
 
 profileNamespace setVariable [GRLIB_paramsV2_save_key, _params];
 saveProfileNamespace;
+
 GRLIB_LRX_params = _params;
 publicVariable "GRLIB_LRX_params";
+
 GRLIB_ParamsInitialized = true;
 publicVariable "GRLIB_ParamsInitialized";
 

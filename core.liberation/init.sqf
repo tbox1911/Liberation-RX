@@ -74,6 +74,7 @@ if (abort_loading) exitWith {
 
 // Server init
 if (isServer) then {
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\server_functions.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\fetch_params.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
 	if (GRLIB_ACE_enabled) then {
@@ -81,7 +82,6 @@ if (isServer) then {
 	} else {
 		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 	};
-	[] call compileFinal preprocessFileLineNumbers "scripts\server\server_functions.sqf";
 	[] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
 };
 

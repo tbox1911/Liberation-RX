@@ -112,7 +112,13 @@ GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 
 if (!([] call F_getValid)) exitWith {};
 
+// Init Chimera unit look
+[] call compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
+
+// Init LRX save list
+[] call compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp_init.sqf";
 [] call load_game_mp;
+
 if (abort_loading) exitWith {
 	GRLIB_init_server = false;
 	publicVariable "GRLIB_init_server";

@@ -1,9 +1,6 @@
 // Init LRX vehicle paints
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init_static.sqf";
 
-// Init Chimera unit look
-[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
-
 // Cleanup
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\events\kill_manager.sqf";
 cleanup_uid = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_uid.sqf";
@@ -44,7 +41,6 @@ spawn_battlegroup_direct = compileFinal preprocessFileLineNumbers "scripts\serve
 manage_one_enemy_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_enemy_patrol.sqf";
 
 // Game
-[] call compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp_init.sqf";
 load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_game_mp.sqf";
 save_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
 load_player_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_player_context.sqf";
