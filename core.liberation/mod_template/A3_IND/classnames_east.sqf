@@ -25,7 +25,7 @@ opfor_engineer = "I_engineer_F";
 opfor_paratrooper = "I_soldier_F";
 opfor_mrap_hmg = "I_MRAP_02_hmg_F";
 opfor_mrap_gmg = "I_MRAP_02_gmg_F";
-opfor_transport_helo = "I_Heli_Transport_04_bench_F";
+opfor_transport_helo = "I_Heli_Transport_02_F";
 opfor_transport_truck = "I_Truck_02_covered_F";
 opfor_fuel_truck = "I_Truck_02_fuel_F";
 opfor_ammo_truck = "I_Truck_02_ammo_F";
@@ -184,8 +184,9 @@ opfor_recyclable = [
 	["I_APC_Wheeled_03_cannon_F",15,round (600 / GRLIB_recycling_percentage),15],
 	["I_APC_tracked_03_cannon_F",15,round (500 / GRLIB_recycling_percentage),15],
 	["I_MBT_03_cannon_F",15,round (1200 / GRLIB_recycling_percentage),15],
-	["I_Heli_light_03_dynamicLoadout_F",10,round (150 / GRLIB_recycling_percentage),15],
-	["I_Heli_Transport_02_F",10,round (500 / GRLIB_recycling_percentage),10],
+	["I_Heli_light_03_dynamicLoadout_F",10,round (550 / GRLIB_recycling_percentage),15],
+	["I_Heli_light_03_unarmed_F",10,round (250 / GRLIB_recycling_percentage),15],
+	["I_Heli_Transport_02_F",10,round (400 / GRLIB_recycling_percentage),10],
 	["I_Plane_Fighter_03_CAS_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["I_Plane_Fighter_04_F",20,round (1000 / GRLIB_recycling_percentage),30]
 ];
