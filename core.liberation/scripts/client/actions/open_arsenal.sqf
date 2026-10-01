@@ -1,3 +1,6 @@
+// Stop running
+AR_active = false;
+
 load_loadout = 0;
 edit_loadout = 0;
 respawn_loadout = 0;
