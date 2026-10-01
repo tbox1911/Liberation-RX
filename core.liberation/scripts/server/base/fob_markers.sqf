@@ -13,9 +13,10 @@ while {true} do {
 		{ deleteMarker _x } foreach _markers;
 		_markers = [];
 		{
-			_fobpos = _x;
-			_near_outpost = (_fobpos in GRLIB_all_outposts);
-			_marker = createMarkerLocal [format ["fobmarker%1", mapGridPosition _fobpos], markers_reset];
+			private _fob_pos = _x;
+			private _near_outpost = (_fob_pos in GRLIB_all_outposts);
+			private _marker_name = [_fob_pos] call F_getFobMarker;
+			private _marker = createMarkerLocal [_marker_name, markers_reset];
 			if (_near_outpost) then {
 				_marker setMarkerTypeLocal "b_support";
 				_marker setMarkerSizeLocal [ 1.2, 1.2 ];
@@ -28,7 +29,7 @@ while {true} do {
 				_marker setMarkerColorLocal "ColorYellow";
 			};
 			_marker setMarkerDrawPriority -1;
-			_marker setMarkerPos _fobpos;
+			_marker setMarkerPos _fob_pos;
 			_markers pushback _marker;
 		} forEach GRLIB_all_fobs;
 	};
@@ -65,12 +66,12 @@ while {true} do {
 		{ deleteMarker _x } foreach _markers_build;
 		_markers_build = [];
 		{
-			private _fobpos = _x;
+			private _fob_pos = _x;
 			private _facility_buildings = [];
-			_facility_buildings append (_fobpos nearObjects [Warehouse_typename, GRLIB_fob_range]);
-			_facility_buildings append (_fobpos nearObjects [medic_heal_typename, GRLIB_fob_range]);
-			_facility_buildings append (_fobpos nearObjects [storage_medium_typename, GRLIB_fob_range]);
-			_facility_buildings append (_fobpos nearObjects [storage_large_typename, GRLIB_fob_range]);
+			_facility_buildings append (_fob_pos nearObjects [Warehouse_typename, GRLIB_fob_range]);
+			_facility_buildings append (_fob_pos nearObjects [medic_heal_typename, GRLIB_fob_range]);
+			_facility_buildings append (_fob_pos nearObjects [storage_medium_typename, GRLIB_fob_range]);
+			_facility_buildings append (_fob_pos nearObjects [storage_large_typename, GRLIB_fob_range]);
 			{
 				private _bulding = _x;
 				private _building_class = typeOf _bulding;

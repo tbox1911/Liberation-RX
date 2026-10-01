@@ -1,19 +1,19 @@
-params [ "_fob" ];
+params ["_fob"];
 waitUntil { !isNil "military_alphabet" };
 
-private _fobname = "";
-private _fobindex = -1;
-private _currentidx = 0;
+private _fob_name = "";
+private _fob_index = -1;
+private _idx = 0;
 
 {
 	if ((_x distance2D _fob) < GRLIB_fob_range) then {
-		_fobindex = _currentidx;
+		_fob_index = _idx;
 	};
-	_currentidx = _currentidx + 1;
+	_idx = _idx + 1;
 } foreach GRLIB_all_fobs;
 
-if (_fobindex != -1) then {
-	_fobname = military_alphabet select _fobindex;
+if (_fob_index != -1) then {
+	_fob_name = military_alphabet select _fob_index;
 };
 
-_fobname
+_fob_name
