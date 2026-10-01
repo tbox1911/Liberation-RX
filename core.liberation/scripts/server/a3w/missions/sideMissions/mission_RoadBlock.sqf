@@ -18,12 +18,11 @@ _setupObjects = {
 	private _road_dir = 0;
 	{
 		_sector_pos = markerPos _x;
-		private _next_objective = [_sector_pos] call F_getNearestBluforObjective;
-		private _next_objective_dist = _next_objective select 1;
-		if (_next_objective_dist >= GRLIB_sector_size && _next_objective_dist <= GRLIB_spawn_max) then {
-			private _idx = 200;
-			while {!_found && _idx > 0} do {
-				private _pos_check = ([_sector_pos, GRLIB_sector_size] call F_getRandomPos);
+		private _next_objective = [(GRLIB_sector_size * 2), _sector_pos, blufor_sectors, true] call F_getNearestSector;
+		if (_next_objective != "") then {
+			private _angle = 0;
+			while { _angle < 360 } do {
+				private _pos_check = (markerPos _next_objective) getPos [GRLIB_sector_size, _angle];
 				if ((!isOnRoad _pos_check) && (!surfaceIsWater _pos_check)) then {
 					private _roads = (_pos_check nearRoads 13) select { (getRoadInfo _x select 0) in ["TRACK","ROAD","MAIN ROAD"] };
 					if (count _roads > 0) exitWith {
@@ -32,10 +31,11 @@ _setupObjects = {
 						_road_dir = _pos_check getDir (_roads select 0);
 					};
 				};
-				_idx = _idx - 1;
+				_angle = _angle + 10;
 			};
 		};
 		if (_found) exitWith {};
+		sleep 0.1;
 	} forEach ((opfor_sectors - sectors_tower) call BIS_fnc_arrayShuffle);
 
 	if (count _missionPos == 0) exitWith {
@@ -65,7 +65,7 @@ _setupObjects = {
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach _vehicles;
 
 	//----- spawn units ---------------------------------
-	_guard_grp = [_missionPos, 4, "militia", false] call createCustomGroup;
+	_guard_grp = [_missionPos, 3, "militia", false] call createCustomGroup;
 	private _guard = (units _guard_grp) select 0;
 	_guard setPosATL (getPosATL _bunker);
 	_guard setUnitPos "UP";
