@@ -62,10 +62,10 @@ private ["_waypoint", "_wp0"];
 	_waypoint setWaypointCompletionRadius 200;
 } foreach _convoy_destinations;
 
-if (count (waypoints _grp) > 1) then {
-	_wp0 = waypointPosition [_grp, 0];
-	_waypoint = _grp addWaypoint [_wp0, 0];
-	_waypoint setWaypointType "CYCLE";
-};
+_wp0 = waypointPosition [_grp, 0];
+_waypoint = _grp addWaypoint [_wp0, 0];
+_waypoint setWaypointType "CYCLE";
+
+(driver _vehicle) doMove _wp0;
 
 {_x doFollow leader _grp} foreach units _grp;
