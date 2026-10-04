@@ -16,7 +16,6 @@ private _outpost_dir = getDir _outpost;
 
 GRLIB_all_outposts = GRLIB_all_outposts - [_fob_pos];
 publicVariable "GRLIB_all_outposts";
-sleep 1;
 
 private _fob = createVehicle [FOB_typename, _fob_pos, [], 1, "None"];
 _fob allowDamage false;
@@ -30,9 +29,6 @@ sleep 1;
 
 [_fob, _owner] call fob_init;
 [_fob_pos, 6] remoteExec ["remote_call_fob", 0];
-
-GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
-publicVariable "GRLIB_all_fobs";
 
 sleep 10;
 GRLIB_fob_inuse = nil;

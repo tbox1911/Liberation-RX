@@ -76,6 +76,7 @@ if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
 	_fob_pos = getPosATL _fob_sign;
 };
 
+_fob_pos set [2, 0];
 GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 if (_classname == FOB_outpost) then { GRLIB_all_outposts pushBack _fob_pos };
 
