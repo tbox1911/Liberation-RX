@@ -27,13 +27,13 @@ _setupObjects = {
 	_grp_hvt setBehaviourStrong "AWARE";
 
 	// Add HVT
-	_hvt = _grp_hvt createUnit [ opfor_officer, _missionPos, [], 0, "NONE"];
+	_hvt = _grp_hvt createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
+	_hvt allowDamage false;
 	[_hvt] joinSilent _grp_hvt;
 	_hvt setVariable ["GRLIB_mission_AI", true, true];
 	_hvt addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_hvt setrank "COLONEL";
 
-	sleep 1;
 	private _building = nearestBuilding (getPosATL _hvt) buildingPos -1;
 	// Move HVT into Building
 	{
@@ -42,7 +42,10 @@ _setupObjects = {
 		_x disableAI "MOVE";
 		sleep 0.3;
 	} foreach (units _grp_hvt);
+
+	sleep 2;
 	_hvt_pos = getPosATL _hvt;
+	_hvt allowDamage true;
 
 	// Spawn Enemy
 	// Vehicle
