@@ -51,6 +51,7 @@ infantry_units_west = [
 ];
 
 units_loadout_overide = [
+	"O_Soldier_lite_F",
 	"O_Soldier_F",
 	"O_medic_F",
 	"O_engineer_F",
