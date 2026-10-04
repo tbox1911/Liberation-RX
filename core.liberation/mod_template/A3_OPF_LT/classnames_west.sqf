@@ -58,6 +58,8 @@ units_loadout_overide = [
 	"O_soldier_M_F",
 	"O_soldier_LAT_F",
 	"O_HeavyGunner_F",
+	"O_Soldier_AR_F",
+	"O_Soldier_SL_F",
 	"O_soldier_AA_F",
 	"O_soldier_AT_F",
 	"O_sniper_F"
