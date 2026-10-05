@@ -495,7 +495,8 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 };
 
 {
-	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
+	// Outpost
+	if ([_x] call F_getFobType == 1) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
 
 // Default Personal Arsenal
