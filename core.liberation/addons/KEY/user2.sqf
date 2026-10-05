@@ -5,7 +5,7 @@ if (isNil "AR_active") then {AR_active = false};
 if (AR_active) exitWith {AR_active = false};
 if ((!isNull objectParent player) || (surfaceIsWater (getPos player)) || (lifeState player == 'INCAPACITATED') || PAR_isDragging ) exitWith {};
 
-// player carring 
+// player carring
 private _carry = false;
 if (!isNull R3F_LOG_joueur_deplace_objet) then { _carry = true };
 if (!isNull ((player getVariable ["ace_dragging_carriedObject", objNull]))) then { _carry = true };
@@ -23,10 +23,11 @@ AR_animation = switch (true) do {
 
 waitUntil {sleep 0.2; !(isSwitchingWeapon player)};
 player addEventHandler ["AnimDone", {
-	if ((!AR_active) || dialog || {!((currentWeapon player) isEqualTo AR_weapon)} ||
-		{!isNull objectParent player} || {surfaceIsWater (getPos player)} ||
+	if ((!AR_active) || dialog || (currentWeapon player != AR_weapon) ||
+		!(isNull objectParent player) || (surfaceIsWater getPos player) ||
 		(_this select 1 == AR_animation && speed vehicle player <= 0) ||
-		(lifeState player == 'INCAPACITATED')) exitWith {
+		(lifeState player == 'INCAPACITATED')
+	) exitWith {
 			player removeEventHandler ["AnimDone", _thisEventHandler];
 			AR_active = false;
 			AR_weapon = nil;
