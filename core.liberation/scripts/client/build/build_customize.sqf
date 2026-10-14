@@ -12,9 +12,9 @@ private _dist = ((round(_radius / 1.5) + 1.5) max 2);
 
 switch _classname do {
     // check direct classname
-    case FOB_carrier: {
+    case "VR_3DSelector_01_default_F": {
         _rotation = 90;
-        _dist = 35;
+        _dist = 65;
     };
     case playerbox_typename: {
         _rotation = 90;
@@ -34,7 +34,10 @@ switch _classname do {
     case storage_large_typename: {
         _radius = 25;
         _dist = 16;
-    };    
+    };
+    case FOB_boat_typename: {
+        _altitude = 1.5;
+    };
     case "Land_Cargo_Patrol_V1_F": {
         _rotation = 270;
     };

@@ -6626,7 +6626,7 @@
 			<Czech>Kanistr připraven.\nDěkuji!</Czech>
 		</Key>
 
-		<!-- do_destroy_fob.sqf -->
+		<!-- do_fob_destroy.sqf -->
 		<Key ID="STR_DO_DESTROYFOB">
 			<Original>&lt;t align='center'&gt;Destroy the Outpost&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 			<Russian>&lt;t align='center'&gt;Уничтожить Аванпост&lt;br/&gt;Вы уверены ?&lt;/t&gt;</Russian>

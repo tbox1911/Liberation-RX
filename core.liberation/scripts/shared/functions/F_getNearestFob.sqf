@@ -9,8 +9,4 @@ if (count _fob_list == 0) exitWith { _retvalue };
 if (_check_water) then { _fob_list = GRLIB_all_fobs select { !([_source_pos,  _x] call F_isWaterBetween) } };
 if (count _fob_list == 0) exitWith { _retvalue };
 
-_retvalue = ([_fob_list ,[_source_pos] ,{ _x distance2D _input0 }, 'ASCEND'] call BIS_fnc_sortBy) select 0;
-
-if (surfaceIsWater _retvalue) exitWith { ATLtoASL _retvalue };
-
-_retvalue;
+(([_fob_list ,[_source_pos] ,{ _x distance2D _input0 }, 'ASCEND'] call BIS_fnc_sortBy) select 0);

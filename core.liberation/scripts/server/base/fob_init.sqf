@@ -1,4 +1,4 @@
-params ["_fob","_owner"];
+params ["_fob", "_owner"];
 
 private _fob_class = typeOf _fob;
 private _fob_pos = getPosASL _fob;
@@ -14,7 +14,7 @@ _sign setDir _sign_dir;
 _sign setPosASL _sign_pos;
 _sign enableSimulationGlobal false;
 _sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-_sign setVariable ["GRLIB_fob_type", _fob_class, true];
+
 if (count GRLIB_all_fobs == 0) then {
 	_sign setVariable ["GRLIB_vehicle_owner", "lrx", true];
 } else {
@@ -28,6 +28,8 @@ if (_fob_class == FOB_typename) then {
 };
 
 GRLIB_redraw_marker_fob = true;
+
+_sign;
 
 // if (GRLIB_enable_arsenal == 0) then {
 // 	sleep 1;

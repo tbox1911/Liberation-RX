@@ -3,6 +3,8 @@ params ["_fob_pos"];
 if (!isNil "GRLIB_fob_inuse") exitWith {};
 GRLIB_fob_inuse = true;
 
+private _fob_name = [_fob_pos] call F_getFobName;
+
 private _classnames_to_destroy = [
 	FOB_typename,
 	FOB_outpost,
@@ -78,17 +80,18 @@ _all_buildings_to_destroy = (_fob_pos nearObjects (GRLIB_fob_range * 2)) select 
 private _sector = [_fob_pos] call F_getFobMarker;
 [_sector, 0] call sector_defenses_remote_call;
 
-diag_log format ["FOB %1 destroyed at %2", _fob_pos, time];
-
 GRLIB_all_fobs = GRLIB_all_fobs - [_fob_pos];
 GRLIB_all_outposts = GRLIB_all_outposts - [_fob_pos];
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
+
+diag_log format ["FOB %1 (%2) destroyed at %3", _fob_name, _fob_pos, time];
+[_fob_pos, 5] remoteExec ["remote_call_fob", 0];
 
 stats_fobs_lost = stats_fobs_lost + 1;
 GRLIB_redraw_marker_fob = true;
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 
-sleep 10;
+sleep 5;
 GRLIB_fob_inuse = nil;

@@ -28,21 +28,28 @@ if (dorepackage > 0) then {
 	closeDialog 0;
 	waitUntil { !dialog };
 
-	private _unit_list_redep = (units player - [player]) select { (isNull objectParent _x) && (_x distance2D player < 40) && !(captive _x) };
+	private _list_redep = (units player) select { (isNull objectParent _x) && (_x distance2D player <= 30) && lifestate _x != 'INCAPACITATED'};
 	if (dorepackage == 3) then {
 		private _fob_text = ((["NavalFobType"] call lrx_getParamData) select 1) select (["NavalFobType"] call lrx_getParamValue);
 		titleText [format [localize "STR_NAVAL_FOB_LEAVING", _fob_text], "BLACK FADED", 30];
 		disableUserInput true;
-		{ _x allowDamage false; _x enableSimulationGlobal false } forEach _unit_list_redep;
+		{ _x allowDamage false } forEach _list_redep;
 	};
 	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
-	private _count_fobs = count GRLIB_all_fobs;
-	waitUntil {
-		sleep 3;
-		[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
-		(count GRLIB_all_fobs != _count_fobs)
+
+	sleep 3;
+
+	if (_fob_pos in GRLIB_all_fobs) exitWith {
+		{ _x allowDamage true } forEach _list_redep;
+		titleText ["" ,"BLACK IN", 3];
+		sleep 1;
+		disableUserInput false;
+		disableUserInput true;
+		disableUserInput false;
 	};
+
+	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 
 	private _box_typename = "";
 	if (dorepackage == 1) then { _box_typename = FOB_box_typename };
@@ -53,20 +60,22 @@ if (dorepackage > 0) then {
 	[_fob_box] call F_clearCargo;
 	_fob_box addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_fob_box setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
+	_fob_box setVariable ["box_in_use", true, true];
 	hintSilent format ["%1 %2 "+ localize "STR_FOB_REPACKAGE_HINT", "FOB", _fob_name];
 
 	if (dorepackage == 3) then {
-		{ _x enableSimulationGlobal true } forEach _unit_list_redep;
 		player moveInDriver _fob_box;
-		[_fob_box, _unit_list_redep] call F_manualCrew;
+		[_fob_box, _list_redep] call F_manualCrew;
+		{ _x allowDamage true } forEach _list_redep;
+		titleText ["" ,"BLACK IN", 3];
+		sleep 1;
 		disableUserInput false;
 		disableUserInput true;
 		disableUserInput false;
-		titleText ["" ,"BLACK IN", 3];
-		sleep 1;
-		{ _x allowDamage true } forEach _unit_list_redep;
 	};
 	GRLIB_player_fobdistance = (player distance2D ([] call F_getNearestFob));
+	sleep 3;
+	_fob_box setVariable ["box_in_use", false, true];
 };
 
 sleep 2;

@@ -52,6 +52,7 @@ blufor_victory = compileFinal preprocessFileLineNumbers "scripts\server\game\blu
 fob_init = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init.sqf";
 fob_init_data = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init_data.sqf";
 fob_init_officer = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init_officer.sqf";
+fob_destroy = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_destroy.sqf";
 
 // Secondary objectives
 fob_hunting = compileFinal preprocessFileLineNumbers "scripts\server\secondary\fob_hunting.sqf";
@@ -62,7 +63,6 @@ final_situaton = compileFinal preprocessFileLineNumbers "scripts\server\secondar
 // Sector
 attack_in_progress_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_fob.sqf";
 attack_in_progress_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_sector.sqf";
-destroy_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\destroy_fob.sqf";
 ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
 ied_trap_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_trap_manager.sqf";
 spawn_static = compileFinal preprocessFileLineNumbers "scripts\server\sector\spawn_static.sqf";

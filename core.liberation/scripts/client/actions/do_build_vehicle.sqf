@@ -9,7 +9,7 @@ params [
 
 private _allow_damage = true;
 private _pos_degagee = [];
-if (_classname isKindOf "Air") then {
+if (_classname isKindOf "Air" || surfaceIsWater _veh_pos) then {
 	_pos_degagee = [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel;
 } else {
 	private _bbox = [_classname] call R3F_LOG_FNCT_3D_get_bounding_box_depuis_classname;

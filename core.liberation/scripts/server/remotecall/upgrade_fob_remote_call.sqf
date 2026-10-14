@@ -27,8 +27,9 @@ _fob setVectorDirAndUp [[sin _fob_dir, cos _fob_dir, 0], [0, 0, 1]];
 [_fob_pos, "Land_Carrier_01_blast_deflector_up_sound"] spawn sound_range_remote_call;
 sleep 1;
 
-[_fob, _owner] call fob_init;
+private _sign = [_fob, _owner] call fob_init;
+_sign setVariable ["GRLIB_fob_type", FOB_typename, true];
 [_fob_pos, 6] remoteExec ["remote_call_fob", 0];
 
-sleep 10;
+sleep 5;
 GRLIB_fob_inuse = nil;

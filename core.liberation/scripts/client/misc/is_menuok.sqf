@@ -7,5 +7,6 @@ private _no_flight = (round (getPos player select 2) <= 20);
 private _no_tunnel = !(player getVariable ["SOG_player_in_tunnel", false]);
 private _no_action = !(player getVariable ["GRLIB_action_inuse", false]);
 private _no_selection = (count (groupSelectedUnits player) == 0);
+private _no_build = (build_confirmed == 0);
 
-(_alive && _on_foot && _on_land && _R3F_move && _no_flight && _no_tunnel && _no_action && _no_uav && _no_selection && build_confirmed == 0);
+(_alive && _on_foot && _on_land && _R3F_move && _no_flight && _no_tunnel && _no_action && _no_uav && _no_selection && _no_build);

@@ -65,17 +65,12 @@ if (buildtype in [99, 98]) then {
 };
 
 dobuild = 1;
+
 waitUntil { sleep 0.5; dobuild == 0 };
+
 if (build_confirmed == 0) then {
+	[] call do_onboard;
 	deleteVehicle _box;
-	if (_box_type == FOB_boat_typename) then {
-		sleep 1;
-		[] spawn do_onboard;
-		titleText ["" ,"BLACK IN", 3];
-		disableUserInput false;
-		disableUserInput true;
-		disableUserInput false;
-	};
 } else {
 	[_box, false] remoteExec ["hideObjectGlobal", 2];
 	sleep 3;

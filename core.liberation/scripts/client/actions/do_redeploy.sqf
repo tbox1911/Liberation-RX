@@ -1,7 +1,6 @@
 params ["_pos", "_dist", "_mobile", "_list_redep"];
 
 if (_mobile) then { _pos = getPosATL _pos };
-if (surfaceIsWater _pos) exitWith { [_pos] spawn do_onboard };
 
 private _sign = nearestObjects [_pos, [FOB_sign], 20] select 0;
 if (isNil "_sign" && !_mobile) exitWith {};

@@ -42,9 +42,9 @@ private _idactplace = -1;
 private _idactplacebis = -1;
 
 GRLIB_build_force_mode = [
+	"VR_3DSelector_01_default_F",
 	FOB_typename,
 	FOB_outpost,
-	FOB_carrier,
 	Warehouse_typename
 ];
 
@@ -118,10 +118,11 @@ while {true} do {
 			_fob_box = build_vehicle;
 		};
 		case 97: {
-			_classname = FOB_carrier;
+			_classname = "VR_3DSelector_01_default_F";
 			_price = 0;
 			_price_fuel = 0;
 			_fob_box = build_vehicle;
+			build_water = 1;
 		};
 		case GRLIB_BuildTypeDirect: {
 			_price = 0;
@@ -221,9 +222,6 @@ while {true} do {
 		// Create ghost vehicle
 		_ghost_spot = (markerPos "ghost_spot") vectorAdd [0, 0, build_altitude];
 		_ghost_name = _classname;
-		if (_classname == FOB_carrier) then {
-			_ghost_name = "VR_3DSelector_01_default_F";
-		};
 		_vehicle = _ghost_name createVehicleLocal _ghost_spot;
 		_vehicle allowdamage false;
 		_vehicle enableSimulation false;
@@ -415,15 +413,33 @@ while {true} do {
 			};
 
 			// FOB
-			if(_buildtype in [99,98,97]) exitWith {
+			if (_buildtype in [99,98,97]) exitWith {
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
-				if (_classname == FOB_carrier) then {
+				private _count_fobs = count GRLIB_all_fobs;
+				if (_buildtype == 97) then {
+					_classname = FOB_carrier;
 					private _fob_text = ((["NavalFobType"] call lrx_getParamData) select 1) select (["NavalFobType"] call lrx_getParamValue);
 					titleText [format ["Naval FOB (%1) Incoming...", _fob_text] ,"BLACK FADED", 30];
 					disableUserInput true;
+					[] spawn {
+						waitUntil { sleep 0.5; dobuild == 0 };
+						sleep 2;
+						titleText ["" ,"BLACK IN", 3];
+						disableUserInput false;
+						disableUserInput true;
+						disableUserInput false;
+					};
 				};
+				sleep 0.5;
 				[player, _classname, _veh_pos, _veh_dir, _veh_vup] remoteExec ["build_fob_remote_call", 2];
-				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
+				sleep 3;
+				if (count GRLIB_all_fobs == _count_fobs) then {
+					build_confirmed = 3;
+					dobuild = 0;
+					sleep 3;
+				} else {
+					[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
+				};
 			};
 
 			// Trench

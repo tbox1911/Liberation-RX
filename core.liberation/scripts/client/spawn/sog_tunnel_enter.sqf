@@ -8,16 +8,16 @@ private _tunnel = missionNameSpace getVariable [_tunnel_name, objNull];
 // AI follow
 private _ai_follow = false;
 private _ai_follow_max = 2;
-private _unit_list_redep = [];
+private _list_redep = [];
 
 // Enter SoG tunnel with AI
 if (_ai_follow) then {
     if (count (player getVariable ["SOG_unit_list", []]) == 0) then {
-        _unit_list_redep = ((units group player) select {
+        _list_redep = ((units group player) select {
             !(isPlayer _x) && vehicle _x == _x &&
             (_x distance2D (getPosATL _tunnel)) < 40 &&
-            !(captive _x) }) select [0, _ai_follow_max];
-        [_unit_list_redep] spawn {
+            lifestate _x != 'INCAPACITATED' }) select [0, _ai_follow_max];
+        [_list_redep] spawn {
             sleep 1;
             params ["_list"];
             {
@@ -26,7 +26,7 @@ if (_ai_follow) then {
                 sleep 0.3;
             } forEach _list;
         };
-        player setVariable ["SOG_unit_list", _unit_list_redep];
+        player setVariable ["SOG_unit_list", _list_redep];
     };
 };
 { doStop _x } foreach (units group player);

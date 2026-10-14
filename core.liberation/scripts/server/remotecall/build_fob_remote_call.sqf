@@ -26,7 +26,6 @@ if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
 	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 	_vehicle setPosATL _veh_pos;
-	[_vehicle] call BIS_fnc_carrier01Init;
 	[_vehicle] call BIS_fnc_Carrier01PosUpdate;
 };
 
@@ -46,7 +45,6 @@ if (_classname in ["fob_water1"]) then {
 		_nextobject setDir _nextdir;
 		_nextobject setPosASL _nextpos;
 	} foreach _objects_to_build;
-	sleep 1;
 
 	private _curalt = 0;
 	private _maxalt = 50;
@@ -67,27 +65,28 @@ if (isNull _vehicle) exitWith {
 	GRLIB_fob_inuse = nil;
 };
 
-sleep 2;
-[_vehicle, getPlayerUID _player] call fob_init;
+private _sign = [_vehicle, getPlayerUID _player] call fob_init;
+_sign setVariable ["GRLIB_fob_type", _classname, true];
 
-private _fob_sign = _vehicle getVariable ["GRLIB_fob_sign", objNull];
 private _fob_pos = getPosATL _vehicle;
 if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
-	_fob_pos = getPosATL _fob_sign;
+	_fob_pos = getPosATL (_vehicle getVariable ["GRLIB_fob_sign", objNull]);
 };
 
 _fob_pos set [2, 0];
 GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 if (_classname == FOB_outpost) then { GRLIB_all_outposts pushBack _fob_pos };
-
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
 
+private _fob_name = [_fob_pos] call F_getFobName;
+diag_log format ["FOB %1 (%2) created at %3", _fob_name, _fob_pos, time];
 [_fob_pos, 0] remoteExec ["remote_call_fob", 0];
-stats_fobs_built = stats_fobs_built + 1;
 
+stats_fobs_built = stats_fobs_built + 1;
 GRLIB_redraw_marker_fob = true;
+
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 
-sleep 10;
+sleep 5;
 GRLIB_fob_inuse = nil;

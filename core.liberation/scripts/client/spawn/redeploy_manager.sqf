@@ -107,9 +107,9 @@ while { dialog && alive player && deploy == 0} do {
 		if (isNil "_objectpos") then { _objectpos = zeropos };
 
 		if (surfaceIsWater _objectpos) then {
-			respawn_object setposasl [_objectpos select 0, _objectpos select 1, _alti];
+			respawn_object setPosASL [_objectpos select 0, _objectpos select 1, _alti];
 		} else {
-			respawn_object setpos ((_choiceslist select _oldsel) select 1);
+			respawn_object setPos ((_choiceslist select _oldsel) select 1);
 		};
 
 		"spawn_marker" setMarkerPosLocal (getPosATL respawn_object);
@@ -197,6 +197,7 @@ if (deploy == 1) then {
 			_destdist = 12;
 		};
 		if (_destpos distance2D zeropos < 300) exitWith {};
+		if (surfaceIsWater _destpos) exitWith { [_destpos] call do_onboard };
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
@@ -212,7 +213,7 @@ if (deploy == 1) then {
 };
 
 if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) then {
-	_spawn_str = _basenamestr;
+	[_basenamestr, false] spawn spawn_camera;
 	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 0.3]);
 };
 

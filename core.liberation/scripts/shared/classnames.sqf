@@ -308,7 +308,7 @@ if (isNil "civilian_boats") then {
 		"C_Rubberboat"
 	];
 };
-boats_names = [FOB_boat_typename, FOB_carrier] + civilian_boats + opfor_boats + boats_west;
+boats_names = [FOB_boat_typename] + civilian_boats + opfor_boats + boats_west;
 
 // *** LRX - A3W Side Mission ***
 if (isNil "a3w_guard_squad") then {
