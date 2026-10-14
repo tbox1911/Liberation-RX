@@ -18,7 +18,7 @@ GRLIB_last_active_sectors = -1;
     };
 };
 
-sleep GRLIB_battlegroup_timer;
+sleep (GRLIB_battlegroup_timer * 2);
 
 private ["_players_hi", "_players_lo", "_attack"];
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {

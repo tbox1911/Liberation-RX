@@ -99,7 +99,7 @@ if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 				{ _fob_marker pushBack ([_x] call F_getFobMarker) } forEach GRLIB_all_fobs;
 				[selectRandom _fob_marker] spawn spawn_battlegroup;
 			} else {
-				[_liberated_sector] spawn spawn_battlegroup;
+				[_liberated_sector, 1] spawn spawn_battlegroup_direct;
 			};
 		};
 	} else {
