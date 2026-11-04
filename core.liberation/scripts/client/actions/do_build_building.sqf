@@ -24,6 +24,7 @@ if ([_classname, GRLIB_camo_net] call F_itemIsInClass) then {
 
 // Personal Box
 if (_classname == playerbox_typename) then {
+    _vehicle setVariable ["GRLIB_vehicle_owner", _owner, true];
     _vehicle setMaxLoad playerbox_cargospace;
     [_vehicle] call F_clearCargo;
     _allow_damage = false;
