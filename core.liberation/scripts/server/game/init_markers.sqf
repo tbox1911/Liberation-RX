@@ -170,7 +170,6 @@ if (GRLIB_fob_type == 0) then {
 };
 "base_chimera" setMarkerColor GRLIB_color_friendly;
 
-sleep 2;
 GRLIB_marker_init = true;
 
 /*

@@ -1,5 +1,14 @@
 diag_log "--- Client wait for Server init ---";
 
+// PBO Validations
+if !([] call F_getValid) exitWith {
+	private _msg = localize "STR_MSG_INVALID_PBO_ERROR";
+	titleText [_msg, "BLACK FADED", 100];
+	sleep 10;
+	endMission "LOSER";
+	disableUserInput false;
+};
+
 waitUntil {
 	titleText [localize "STR_TITLE_LOADING", "BLACK FADED", 100];
 	sleep 1;
@@ -10,35 +19,6 @@ waitUntil {
 titleText ["", "BLACK FADED", 100];
 
 diag_log "--- Client Init start ---";
-
-// Game life / details
-setTerrainGrid 25;
-initAmbientLife;
-enableEnvironment [true, true];
-
-// Local Constants
-R3F_LOG_joueur_deplace_objet = objNull;
-GRLIB_player_spawned = false;
-GRLIB_player_is_menuok = false;
-GRLIB_vehicle_lock = true;
-GRLIB_arsenal_open = false;
-
-GRLIB_ActionDist_3 = 3;
-GRLIB_ActionDist_5 = 5;
-GRLIB_ActionDist_10 = 10;
-GRLIB_ActionDist_15 = 15;
-GRLIB_current_trenches = 0;
-
-GRLIB_InfantryBuildType = 1;
-GRLIB_TransportVehicleBuildType = 2;
-GRLIB_CombatVehicleBuildType = 3;
-GRLIB_AerialBuildType = 4;
-GRLIB_DefenceBuildType = 5;
-GRLIB_BuildingBuildType = 6;
-GRLIB_SupportBuildType = 7;
-GRLIB_SquadBuildType = 8;
-GRLIB_TrenchBuildType = 9;
-GRLIB_BuildTypeDirect = 90;
 
 // Server Init Error
 if (abort_loading) exitWith {
@@ -113,9 +93,8 @@ if (GRLIB_kick_idle > 0) then {
 	[] execVM "scripts\client\misc\kick_idle.sqf";
 };
 
+waitUntil {sleep 0.5; !isNil "BTC_logic"};
 if (GRLIB_respawn_cooldown > 0) then {
-	if (isServer) exitWith {};
-	waitUntil {sleep 1; !isNil "BTC_logic"};
 	private _cooldown = BTC_logic getVariable [format ["%1_last_respawn", PAR_Grp_ID], 0];
 	if (_cooldown > time) then {
 		while { time < _cooldown } do {
@@ -127,6 +106,38 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
+// TKP Init
+[] call compile preprocessFileLineNumbers "addons\TKP\tk_init.sqf";
+
+// Game life / details
+setTerrainGrid 25;
+initAmbientLife;
+enableEnvironment [true, true];
+
+// Local Constants
+R3F_LOG_joueur_deplace_objet = objNull;
+GRLIB_player_spawned = false;
+GRLIB_player_is_menuok = false;
+GRLIB_vehicle_lock = true;
+GRLIB_arsenal_open = false;
+
+GRLIB_ActionDist_3 = 3;
+GRLIB_ActionDist_5 = 5;
+GRLIB_ActionDist_10 = 10;
+GRLIB_ActionDist_15 = 15;
+GRLIB_current_trenches = 0;
+
+GRLIB_InfantryBuildType = 1;
+GRLIB_TransportVehicleBuildType = 2;
+GRLIB_CombatVehicleBuildType = 3;
+GRLIB_AerialBuildType = 4;
+GRLIB_DefenceBuildType = 5;
+GRLIB_BuildingBuildType = 6;
+GRLIB_SupportBuildType = 7;
+GRLIB_SquadBuildType = 8;
+GRLIB_TrenchBuildType = 9;
+GRLIB_BuildTypeDirect = 90;
+
 if (typeOf player == "VirtualSpectator_F") exitWith {
 	[] execVM "scripts\client\markers\vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
@@ -134,7 +145,6 @@ if (typeOf player == "VirtualSpectator_F") exitWith {
 };
 
 // Player Setup
-if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 GRLIB_artillery_shot = 0;
 [player] call player_EHP;
 [player, objNull] spawn player_respawn;
