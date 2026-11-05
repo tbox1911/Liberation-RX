@@ -1,16 +1,14 @@
 params ["_killer", "_unit"];
+
 if (isDedicated) exitWith {};
 if (player != _killer) exitWith {};
-if (LRX_tk_ban_player) exitWith {};
 
 if (!isNil "_unit") exitWith {
-	disableUserInput true;
+	private _r1 = createSimpleObject ["Land_ClutterCutter_small_F", getPosASL _killer];
+	[_r1, nil, true] remoteExec ["BIS_fnc_moduleLightning", 0];
 	private _msg = format [localize "STR_TK_INFO2", name _unit];
 	[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 	sleep 3;
-	disableUserInput false;
-	disableUserInput true;
-	disableUserInput false;
 };
 
 private _kill = BTC_logic getVariable [PAR_Grp_ID, 0];
@@ -26,8 +24,7 @@ if (_kill == GRLIB_tk_count - 1) then {
 	[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 };
 
-if (_kill >= GRLIB_tk_count) exitWith {
-	LRX_tk_ban_player = true;
+if (_kill >= GRLIB_tk_count) then {
 	disableUserInput true;
 	closeDialog 0;
 	closeDialog 0;
@@ -37,16 +34,16 @@ if (_kill >= GRLIB_tk_count) exitWith {
 	titleText ["","BLACK FADED", 100];
 	waitUntil {!(isNull (findDisplay 46))};
 	player enableSimulationGlobal false;
-	createDialog "deathscreen";
+	createDialog "par_deathscreen";
 	waitUntil { dialog };
 	player setpos [0,0,0];
 	private _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 	private _text = ["YOU","HAVE","BEEN","BANNED!","","YOU","ARE","NOT","WELCOME","ANYMORE...",""];
 	{
-		if (_x != "") then { ctrlSetText [4867, _x] };
+		if (_x != "") then { ctrlSetText [667, _x] };
 		sleep 1;
 	} forEach _text;
-	ctrlSetText [4867, ""];
+	ctrlSetText [667, ""];
 	sleep 3;
 	disableUserInput false;
 	disableUserInput true;

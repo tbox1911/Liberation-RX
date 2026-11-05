@@ -48,7 +48,7 @@ class par_deathscreen {
 		text = "res\skull.paa";
 	};
 	class WoundedLabel {
-		idc = -1;
+		idc = 667;
 		type =  CT_STATIC;
 		style = ST_CENTER;
 		colorText[] = COLOR_WHITE;
@@ -140,7 +140,7 @@ class par_respawn {
 		text = "";
 		size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		shadow = 2;
-    };	
+    };
 	class PAR_LRX_Tips: PAR_RscStructuredText {
 		idc = 676;
 		text = "";
@@ -149,7 +149,7 @@ class par_respawn {
 		w = 0.200 * safezoneW;
 		h = 0.08 * safezoneH;
 		sizeEx = -2 * GUI_GRID_H;
-	};	
+	};
 	class PAR_ReviveLabel {
 		idc = 678;
 		type =  CT_STATIC;

@@ -17,16 +17,13 @@ heavily modified by pSiKO
 */
 
 LRX_tk_actions = compileFinal preprocessFileLineNumbers "addons\TKP\tk_actions.sqf";
-if ((BTC_logic getVariable [PAR_Grp_ID, 0]) >= GRLIB_tk_count) exitWith {[player] spawn LRX_tk_actions};
-if (!([] call F_getValid)) exitWith {endMission "LOSER"};
+
+if ((BTC_logic getVariable [PAR_Grp_ID, 0]) >= GRLIB_tk_count) then { [player] call LRX_tk_actions };
 if (GRLIB_tk_mode == 0) exitWith {};
 
 // TK VIP Protect
 LRX_tk_vip = [];
 LRX_tk_player_action = 0;
-
-// TK Check Handler
-LRX_tk_ban_player = false;
 
 LRX_tk_check = {
 	params ["_unit", "_killer"];

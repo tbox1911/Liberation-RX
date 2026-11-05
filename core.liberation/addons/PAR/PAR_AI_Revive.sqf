@@ -28,7 +28,6 @@ diag_log format ["--- LRX PAR Addon v%1 Loading...", PAR_version];
 //player globalChat format ["PAR - pSiKO Ai Revive v%1 loading...", PAR_version];
 
 // Init functions
-[] call compile preprocessFileLineNumbers "addons\TKP\tk_init.sqf";
 [] call compile preprocessFileLineNumbers "addons\PAR\PAR_global_functions.sqf";
 
 // Seconds until unconscious unit bleeds out and dies.

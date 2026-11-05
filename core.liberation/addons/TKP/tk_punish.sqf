@@ -12,7 +12,7 @@ if (_result) then {
 	private _kill = 1 + (BTC_logic getVariable [_killer_uid, 0]);
 	BTC_logic setVariable [_killer_uid, _kill, true];
 	_msg = format [localize "STR_TK_MSG1", name _target, _killer_name];
-	[_killer, _target] remoteExec ["LRX_tk_server_actions", 2];
+	[_killer, _target] remoteExec ["tk_actions_remote_call", 2];
 } else {
 	_msg = format [localize "STR_TK_MSG2", name _target, _killer_name];
 };

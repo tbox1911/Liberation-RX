@@ -118,6 +118,7 @@ sog_tunnel_enter_remotecall = compileFinal preprocessFileLineNumbers "scripts\se
 sound_range_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sound_range_remote_call.sqf";
 speak_manager_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\speak_manager_remote_call.sqf";
 start_secondary_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\start_secondary_remote_call.sqf";
+tk_actions_remote_call = compileFinal preprocessFileLineNumbers "addons\TKP\tk_actions_remote_call.sqf";
 unload_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\unload_truck_remote_call.sqf";
 upgrade_fob_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\upgrade_fob_remote_call.sqf";
 vehicle_lock_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_lock_remote_call.sqf";

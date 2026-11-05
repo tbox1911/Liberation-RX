@@ -12,9 +12,6 @@ damage_manager_friendly = compileFinal preprocessFileLineNumbers "scripts\shared
 damage_manager_enemy = compileFinal preprocessFileLineNumbers "scripts\shared\events\damage_manager_enemy.sqf";
 damage_manager_static = compileFinal preprocessFileLineNumbers "scripts\shared\events\damage_manager_static.sqf";
 
-// TK Manager
-LRX_tk_server_actions = compileFinal preprocessFileLineNumbers "addons\TKP\tk_server_actions.sqf";
-
 // PAR functions
 PAR_is_wounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_is_wounded.sqf";
 
