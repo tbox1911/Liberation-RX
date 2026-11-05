@@ -1,5 +1,7 @@
 diag_log "--- Client wait for Server init ---";
 
+[] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
+
 // PBO Validations
 if !([] call F_getValid) exitWith {
 	private _msg = localize "STR_MSG_INVALID_PBO_ERROR";
@@ -195,10 +197,9 @@ waitUntil { sleep 1; LRX_arsenal_init_done };
 [] execVM "addons\FOB\officer_init.sqf";
 [] execVM "addons\TXU\txu_init.sqf";
 
-[] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
 [] call compile preprocessFileLineNumbers "scripts\client\markers\init_markers.sqf";
 LRX_init_done = true;
-sleep 2;
+sleep 1;
 
 // Start intro
 diag_log "--- Client Intro start ---";
