@@ -61,7 +61,6 @@ F_getNearestRadioTower = compileFinal preprocessFileLineNumbers "scripts\shared\
 F_getNearestSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestSector.sqf";
 F_getNearestTower = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestTower.sqf";
 F_getNearestTransport = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestTransport.sqf";
-F_getNextSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNextSector.sqf";
 F_getObjectPrice = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getObjectPrice.sqf";
 F_getPathRoadFilter = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getPathRoadFilter.sqf";
 F_getRandomPos = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRandomPos.sqf";

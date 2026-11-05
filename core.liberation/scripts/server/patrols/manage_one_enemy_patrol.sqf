@@ -6,15 +6,21 @@ GRLIB_patrol_current = GRLIB_patrol_current + 1;
 publicVariable "GRLIB_patrol_current";
 
 waitUntil { sleep 1; combat_readiness >= _level };
-waitUntil { sleep 1; count (GRLIB_patrol_sectors_list - GRLIB_patrol_sectors) > 0 };
 
-private _sector = selectRandom (GRLIB_patrol_sectors_list - GRLIB_patrol_sectors);
-private _sector_pos = markerPos _sector;
-if ([_sector_pos, GRLIB_spawn_max*2, GRLIB_side_enemy, 11] call F_getUnitsCount > 10) exitWith {
+private _search_sectors_all = (sectors_allSectors + sectors_opforSpawn + A3W_mission_sectors) - (active_sectors + GRLIB_patrol_sectors);
+private _patrol_sectors_list = _search_sectors_all select {
+	([markerPos _x, GRLIB_spawn_max, GRLIB_side_friendly, 1] call F_getUnitsCount > 0) &&
+	([markerPos _x, GRLIB_sector_size, GRLIB_side_friendly, 1] call F_getUnitsCount == 0) &&
+	([markerPos _x, GRLIB_spawn_min, GRLIB_side_enemy, 11] call F_getUnitsCount < 10)
+};
+
+if (count _patrol_sectors_list == 0) exitWith {
 	GRLIB_patrol_current = (GRLIB_patrol_current - 1) max 0;
 	publicVariable "GRLIB_patrol_current";
 };
 
+private _sector = selectRandom _patrol_sectors_list;
+private _sector_pos = markerPos _sector;
 private _opfor_veh = objNull;
 private _opfor_grp = grpNull;
 

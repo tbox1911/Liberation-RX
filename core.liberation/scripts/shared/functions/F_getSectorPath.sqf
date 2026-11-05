@@ -1,4 +1,4 @@
-params ["_radius", "_sector_list", ["_min_wp", 3], ["_max_try", 10], ["_check_water", true]];
+params ["_sector_list", "_radius", ["_min_wp", 3], ["_max_try", 10], ["_check_water", true]];
 
 if (count _sector_list < _min_wp) exitWith {[]};
 
@@ -8,23 +8,24 @@ private _start_marker = "";
 private _next_marker = "";
 
 while { count _destinations_markers < _min_wp && _max_try > 0 } do {
+	_sector_list = _sector_list call BIS_fnc_arrayShuffle;
 	_start_marker = selectRandom _sector_list;
 	_destinations_markers = [_start_marker];
 	_sector_list_tmp = _sector_list - [_start_marker];
 
 	while { count _destinations_markers < _min_wp && count _sector_list_tmp > 0 } do {
-		_next_marker = [_sector_list_tmp, _start_marker, _radius] call F_getNextSector;
-		if (_next_marker != "") then {
+		if (count _sector_list_tmp > 0) then {
+			_next_marker = _sector_list_tmp select 0;
 			if (_check_water) then {
 				if ([markerPos _start_marker, markerPos _next_marker] call F_isWaterBetween) then {
 					_sector_list_tmp = _sector_list_tmp - [_next_marker];
 				} else {
-					_destinations_markers pushback _next_marker;
+					_destinations_markers pushBack _next_marker;
 					_sector_list_tmp = _sector_list_tmp - [_next_marker];
 					_start_marker = _next_marker;
 				};
 			} else {
-				_destinations_markers pushback _next_marker;
+				_destinations_markers pushBack _next_marker;
 				_sector_list_tmp = _sector_list_tmp - [_next_marker];
 				_start_marker = _next_marker;
 			};

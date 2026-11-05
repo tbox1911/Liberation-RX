@@ -1,7 +1,8 @@
+params ["_sector_pos"];
+
 private _civ_veh = objNull;
 private _civ_grp = grpNull;
-private _sector_pos = markerPos (selectRandom GRLIB_civilian_sectors_list);
-if ([_sector_pos, GRLIB_spawn_max, GRLIB_side_civilian, 11] call F_getUnitsCount > 10) exitWith {};
+if ([_sector_pos, GRLIB_spawn_min, GRLIB_side_civilian, 11] call F_getUnitsCount > 10) exitWith {};
 
 GRLIB_civilians_current = GRLIB_civilians_current + 1;
 publicVariable "GRLIB_civilians_current";
