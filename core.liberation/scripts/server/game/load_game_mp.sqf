@@ -236,11 +236,11 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_nextclass == Warehouse_typename) then {
-			[_nextbuilding] call warehouse_init;
+			[_nextbuilding] spawn warehouse_init;
 		};
 
 		if (_nextclass == FOB_typename) then {
-			[_nextbuilding] call fob_init_officer;
+			[_nextbuilding] spawn fob_init_officer;
 		};
 
 		if (_nextclass == FOB_carrier) then {
@@ -299,17 +299,17 @@ if (!isNil "_lrx_liberation_savegame") then {
 
 		if (_nextclass == box_uavs_typename) then {
 			_nextbuilding setMaxLoad 0;
-			[_nextbuilding, (_x select 5)] call load_object_direct;
+			[_nextbuilding, (_x select 5)] spawn load_object_direct;
 		};
 
 		if (_nextclass == cargo_sling_typename) then {
-			[_nextbuilding, (_x select 5)] call attach_lrx_objects;
+			[_nextbuilding, (_x select 5)] spawn attach_lrx_objects;
 		};
 
 		if (_nextclass in [storage_medium_typename, storage_large_typename]) then {
 			private _offest = [0, -5, 0];
 			if (_nextclass == storage_large_typename) then { _offest = [0, -7, 0] };
-			[_nextbuilding, (_x select 5)] call attach_lrx_objects;
+			[_nextbuilding, (_x select 5)] spawn attach_lrx_objects;
 			private _drop_zone_dir = (getdir _nextbuilding);
 			private _drop_zone_pos = (getposATL _nextbuilding) vectorAdd ([_offest, -_drop_zone_dir] call BIS_fnc_rotateVector2D);
 			private _drop_zone = createVehicle ["VR_Area_01_square_2x2_yellow_F", ([] call F_getFreePos), [], 0, "NONE"];
@@ -379,7 +379,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_hascrew) then {
-			[_nextbuilding] call F_forceCrew;
+			[_nextbuilding] spawn F_forceCrew;
 			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
 		};
 
@@ -424,23 +424,23 @@ if (!isNil "_lrx_liberation_savegame") then {
 				_nextbuilding setUnloadInCombat [true, false];
 
 				if (_color_name != "") then {
-					[_nextbuilding, _color_name] call RPT_fnc_TextureVehicle;
+					[_nextbuilding, _color_name] spawn RPT_fnc_TextureVehicle;
 				};
 
 				if (count _compo > 0) then {
-					[_nextbuilding, _compo] call RPT_fnc_CompoVehicle;
+					[_nextbuilding, _compo] spawn RPT_fnc_CompoVehicle;
 				};
 
 				if (count _lst_a3 > 0) then {
-					[_nextbuilding, _lst_a3] call F_setCargo;
+					[_nextbuilding, _lst_a3] spawn F_setCargo;
 				};
 
 				if (count _lst_r3f > 0) then {
-					[_nextbuilding, _lst_r3f] call load_object_direct;
+					[_nextbuilding, _lst_r3f] spawn load_object_direct;
 				};
 
 				if (count _lst_lrx > 0) then {
-					[_nextbuilding, _lst_lrx] call attach_lrx_objects;
+					[_nextbuilding, _lst_lrx] spawn attach_lrx_objects;
 				};
 			};
 		};
@@ -487,7 +487,7 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 } else {
 	_classnames_to_check = GRLIB_vehicle_to_military_base_links;
 	{
-		if (! ([_x select 0] call F_checkClass)) then {
+		if !([_x select 0] call F_checkClass) then {
 			GRLIB_vehicle_to_military_base_links = GRLIB_vehicle_to_military_base_links - [_x];
 		};
 	} foreach _classnames_to_check;

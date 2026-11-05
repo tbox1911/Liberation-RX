@@ -89,31 +89,29 @@ GRLIB_side_enemy setFriend [civilian, 1];
 GRLIB_side_enemy setFriend [GRLIB_side_friendly, 0];
 GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 
-// Init owner on map vehicles
-{
-	if (_x iskindof "LandVehicle" || _x iskindof "Air" || _x iskindof "Ship_F") then {
-		_x removeAllMPEventHandlers "MPKilled";
-		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
-			_x setVehicleLock "UNLOCKED";
-			_x setVariable ["GRLIB_vehicle_owner", "public", true];
-		};
-	};
-} foreach vehicles;
+// // Init owner on map vehicles
+// {
+// 	if (_x iskindof "LandVehicle" || _x iskindof "Air" || _x iskindof "Ship_F") then {
+// 		_x removeAllMPEventHandlers "MPKilled";
+// 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+// 		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
+// 			_x setVehicleLock "UNLOCKED";
+// 			_x setVariable ["GRLIB_vehicle_owner", "public", true];
+// 		};
+// 	};
+// } foreach vehicles;
 
-// Init owner on user placed objects
-{
-	if (getObjectType _x >= 8 && !(_x iskindof "CAManBase")) then {
-		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
-			_x setVariable ["GRLIB_vehicle_owner", "server", true];
-		};
-	};
-} forEach (allMissionObjects "");
-
-if (!([] call F_getValid)) exitWith {};
+// // Init owner on user placed objects
+// {
+// 	if (getObjectType _x >= 8 && !(_x iskindof "CAManBase")) then {
+// 		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
+// 			_x setVariable ["GRLIB_vehicle_owner", "server", true];
+// 		};
+// 	};
+// } forEach (allMissionObjects "");
 
 // Init Chimera unit look
-[] call compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\chimera_units_overide.sqf";
 
 // Init LRX save list
 [] call compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp_init.sqf";
@@ -127,6 +125,7 @@ if (abort_loading) exitWith {
 };
 
 // Execute server Managers
+[] execVM "scripts\server\game\init_markers.sqf";
 [] execVM "scripts\server\game\synchronise_vars.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
@@ -142,7 +141,6 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\manage_score.sqf";
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
-[] execVM "scripts\server\game\init_markers.sqf";
 [] execVM "scripts\server\game\manage_undercover.sqf";
 [] execVM "scripts\server\base\fob_markers.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";

@@ -14003,6 +14003,10 @@
 			<Czech>... Prosím čekejte ...</Czech>
 		</Key>
 
+		<Key ID="STR_MSG_INVALID_PBO_ERROR">
+			<Original>Invalid PBO file detected!\nPlease contact the server administrator.</Original>
+		</Key>
+
 		<Key ID="STR_MSG_SERVER_INIT_ERROR">
 			<Original>ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server...</Original>
 			<French>Erreur d'initialisation multijoueur ARMA3 !\nVeuillez vous reconnecter au serveur...</French>
