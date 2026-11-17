@@ -18,7 +18,7 @@ _setupObjects = {
 		false;
 	};
 
-	private _convoy_destinations_markers = [6000, _citylist, _min_waypoints] call F_getSectorPath;
+	private _convoy_destinations_markers = [_citylist, 6000, _min_waypoints] call F_getSectorPath;
 	private _convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
 	if (count _convoy_destinations < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", localize _missionType];

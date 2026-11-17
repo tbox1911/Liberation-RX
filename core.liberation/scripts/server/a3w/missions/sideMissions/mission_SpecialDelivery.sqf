@@ -25,7 +25,7 @@ _setupObjects = {
 		false;
 	};
 
-	private _waypoints = [5000, _sector_list, _max_waypoints, 10, false] call F_getSectorPath;
+	private _waypoints = [_sector_list, 6000, _max_waypoints, 10, false] call F_getSectorPath;
 	if (count _waypoints < _max_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", localize _missionType];
 		false;
