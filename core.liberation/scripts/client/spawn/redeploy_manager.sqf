@@ -39,7 +39,6 @@ respawn_camera camcommit 0;
 
 private _standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
 private _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
-private _mobile = false;
 private _loadout_controls = [101,203,205];
 
 lbClear 203;
@@ -73,7 +72,6 @@ for "_idx" from 0 to (count GRLIB_all_fobs - 1) do {
 };
 
 private _mobile_respawn = ([] call F_getMobileRespawns);
-_mobile_respawn = _mobile_respawn select {!([_x, "LHD", GRLIB_fob_range] call F_check_near)};
 _mobile_respawn = ([_mobile_respawn, [player], {_input0 distance2D _x}, 'ASCEND'] call BIS_fnc_sortBy);
 private ["_vehicle", "_player", "_name"];
 for "_idx" from 0 to ((count _mobile_respawn) -1) do {
@@ -157,6 +155,9 @@ cinematic_camera_started = false;
 titleText ["","BLACK IN", 5];
 
 private _nb_unit = 0;
+private _mobile = false;
+private _naval = false;
+
 player setVariable ["GRLIB_action_inuse", true, true];
 
 if (deploy == 1) then {
@@ -194,10 +195,11 @@ if (deploy == 1) then {
 		} else {
 			// FOB / Outpost
 			_destpos = (_choiceslist select _idxchoice) select 1;
+			if (surfaceIsWater _destpos) then { _naval = true };
 			_destdist = 12;
 		};
 		if (_destpos distance2D zeropos < 300) exitWith {};
-		if (surfaceIsWater _destpos) exitWith { [_destpos] call do_onboard };
+		if (_naval) exitWith { [_destpos] call do_onboard };
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
