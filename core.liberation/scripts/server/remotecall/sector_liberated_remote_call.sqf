@@ -3,6 +3,7 @@ params ["_liberated_sector"];
 
 diag_log format ["Sector %1 Liberated!", _liberated_sector];
 private _combat_readiness_increase = 0;
+private _sector_pos = markerPos _liberated_sector;
 
 if (_liberated_sector in sectors_bigtown) then {
 	_combat_readiness_increase = (20 + (floor random 10)) * GRLIB_difficulty_modifier;
@@ -16,7 +17,7 @@ if (_liberated_sector in sectors_military) then {
 	_combat_readiness_increase = (15 + (floor random 10)) * GRLIB_difficulty_modifier;
 
 	private _trucklist = (entities [[opfor_transport_truck], [], false, false]) select {
-		_x distance2D (markerPos _liberated_sector) < 300 &&
+		_x distance2D _sector_pos < 300 &&
 		_x getVariable ["GRLIB_vehicle_owner", ""] == "server"
 	};
 	{
@@ -25,7 +26,7 @@ if (_liberated_sector in sectors_military) then {
 	} forEach _trucklist;
 
 	private _boxlist = (entities [[ammobox_o_typename], [], false, false]) select {
-		_x distance2D (markerPos _liberated_sector) < 300 &&
+		_x distance2D _sector_pos < 300 &&
 		_x getVariable ["GRLIB_vehicle_owner", ""] == "server"
 	};
 	{
@@ -55,9 +56,9 @@ if (_liberated_sector in (sectors_capture + sectors_bigtown)) then {
 
 private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_fuel];
 {
-	if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size) then {
+	if (_x distance2D _sector_pos < GRLIB_sector_size) then {
 		if (_liberated_sector in (sectors_capture + sectors_bigtown) && (call is_night)) then {
-			[markerPos _liberated_sector, 15] remoteExec ["remote_call_fireworks", owner _x];
+			[_sector_pos, 15] remoteExec ["remote_call_fireworks", owner _x];
 		};
 		[_x, _rwd_ammo, _rwd_fuel] call ammo_add_remote_call;
 		if (_rwd_rep > 0) then { [_x, _rwd_rep] call F_addReput };
@@ -65,7 +66,7 @@ private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_
 	};
 } forEach (AllPlayers - (entities "HeadlessClient_F"));
 
-[markerPos _liberated_sector] call showlandmines;
+[_sector_pos] call showlandmines;
 
 combat_readiness = combat_readiness + _combat_readiness_increase;
 if (combat_readiness > 100 && GRLIB_difficulty_modifier < 2.0) then { combat_readiness = 100 };
@@ -86,6 +87,7 @@ if ([] call F_checkVictory) exitWith { sleep 15; [] spawn blufor_victory };
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 
 if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
+	// Revenge BattleGroup
 	if (
 	   !(_liberated_sector in sectors_tower) &&
 	   ((combat_readiness >= 65 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 90)
@@ -99,7 +101,7 @@ if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 				{ _fob_marker pushBack ([_x] call F_getFobMarker) } forEach GRLIB_all_fobs;
 				[selectRandom _fob_marker] spawn spawn_battlegroup;
 			} else {
-				[_liberated_sector, 1] spawn spawn_battlegroup_direct;
+				[_sector_pos, 1] spawn spawn_battlegroup_direct;
 			};
 		};
 	} else {
@@ -110,9 +112,8 @@ if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 sleep 45;
 
 if (_liberated_sector in sectors_tower) then {
-	_pos = markerPos _liberated_sector;
-	_nextower = Radio_tower createVehicle _pos;
-	_nextower setpos _pos;
+	_nextower = Radio_tower createVehicle _sector_pos;
+	_nextower setpos _sector_pos;
 	_nextower setVectorUp [0,0,1];
 	_nextower setVariable ["GRLIB_Radio_Tower", true, true];
 	if (GRLIB_TFR_enabled) then {
