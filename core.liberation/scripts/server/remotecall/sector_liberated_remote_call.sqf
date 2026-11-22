@@ -92,14 +92,16 @@ if (GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 	   !(_liberated_sector in sectors_tower) &&
 	   ((combat_readiness >= 65 && floor random 2 > 0) || _liberated_sector in sectors_bigtown || combat_readiness >= 90)
 	) then {
-		[_liberated_sector] spawn {
-			params ["_liberated_sector"];
+		[_sector_pos] spawn {
+			params ["_sector_pos"];
 			sleep 60 + (floor random 150);
 			diag_log format ["Spawn Revenge BattleGroup at %1", time];
 			if (floor random 3 == 0) then {
 				private _fob_marker = [];
 				{ _fob_marker pushBack ([_x] call F_getFobMarker) } forEach GRLIB_all_fobs;
-				[selectRandom _fob_marker] spawn spawn_battlegroup;
+				if (count _fob_marker > 0) then {
+					[selectRandom _fob_marker] spawn spawn_battlegroup;
+				};
 			} else {
 				[_sector_pos, 1] spawn spawn_battlegroup_direct;
 			};

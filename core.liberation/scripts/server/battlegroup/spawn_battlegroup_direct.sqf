@@ -1,5 +1,6 @@
 params ["_objective_pos", "_intensity"];
 
+if (isNil "_objective_pos") exitWith { diag_log "Spawn Direct BattleGroup aborted, no objective pos." };
 if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
 if (opforcap_max) exitWith { diag_log "Spawn Direct BattleGroup aborted, opfor max units reached." };
 
